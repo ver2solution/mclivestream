@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="utf-8">
+<html lang="vi"><head>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MC Livestream — ver2solution.com/mclivestream | Sàn việc làm mẫu live của Ver2Solution</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#16202a;background:#f4f7f9;line-height:1.55}
-a{color:#0b5cab}header{background:#0d2b45;color:#fff;padding:18px 16px}header .wrap,main{max-width:1180px;margin:0 auto}
-header h1{margin:0 0 4px;font-size:26px}header p{margin:4px 0}.tag{display:inline-block;background:#ff8c1a;color:#fff;padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
-main{padding:16px}.card{background:#fff;border:1px solid #dbe4ea;border-radius:14px;padding:14px}
+*{box-sizing:border-box}body{margin:0;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;color:#182420;background:#f7f6f3;line-height:1.55}
+a{color:#0d5c4d}header{background:#ffffff;color:#182420;padding:18px 16px}header .wrap,main{max-width:1180px;margin:0 auto}
+header h1{margin:0 0 4px;font-size:26px}header p{margin:4px 0}.tag{display:inline-block;background:#0d5c4d;color:#fff;padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
+main{padding:16px}.card{background:#fff;border:1px solid #e3ded2;border-radius:14px;padding:14px}
 .controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}label{font-size:13px;font-weight:700;display:block;margin-bottom:4px}
-select,button,input{width:100%;padding:9px 10px;border:1px solid #b9c6cf;border-radius:9px;font-size:15px}button{background:#0b5cab;color:#fff;border:0;font-weight:700;cursor:pointer}
-button.ghost{background:#eef3f6;color:#16202a}.warn{color:#b00020;font-weight:700;display:none}
+select,button,input{width:100%;padding:9px 10px;border:1px solid #d4cdbb;border-radius:9px;font-size:15px}button{background:#0d5c4d;color:#fff;border:0;font-weight:700;cursor:pointer}
+button.ghost{background:#f1efe9;color:#182420}.warn{color:#b00020;font-weight:700;display:none}
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-.hero-card{border:3px solid #0d2b45;border-radius:18px;overflow:hidden;background:#101827;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.hero-top{display:flex;justify-content:space-between;padding:10px 14px;background:#ff8c1a;font-weight:800}
+.hero-card{border:1px solid #e3ded2;border-radius:18px;overflow:hidden;background:#ffffff;color:#182420;box-shadow:0 1px 2px rgba(24,36,32,.05), 0 4px 14px rgba(24,36,32,.05)}
+.hero-top{display:flex;justify-content:space-between;padding:10px 14px;background:#0d5c4d;font-weight:800}
 .hero-body{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:14px}
-.ph{height:280px;border:2px dashed #ffd166;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:#ffd166;font-weight:800;background:repeating-linear-gradient(45deg,#1b2a3d,#1b2a3d 14px,#22364f 14px,#22364f 28px)}
+.ph{height:280px;border:2px dashed #d4cdbb;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:#d4cdbb;font-weight:800;background:#f1efe9}
 .hero-body h3{margin:0 0 8px;font-size:22px}.hero-body p{margin:5px 0}
-.btn{display:inline-block;margin:6px 6px 0 0;padding:8px 12px;border-radius:9px;background:#ff8c1a;color:#fff;text-decoration:none;font-weight:700}
-.btn.light{background:#fff;color:#0d2b45}.notice{background:#fff7d6;border:1px solid #f0c453;border-radius:10px;padding:10px 12px;margin:12px 0}
+.btn{display:inline-block;margin:6px 6px 0 0;padding:8px 12px;border-radius:9px;background:#0d5c4d;color:#fff;text-decoration:none;font-weight:700}
+.btn.light{background:#fff;color:#0d5c4d}.notice{background:#fdf3e0;border:1px solid #b97a14;border-radius:10px;padding:10px 12px;margin:12px 0}
 .layout{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;align-items:start}
-.model-row{border-bottom:1px solid #e2e8ed;padding:10px 0}.model-row:last-child{border:0}
-.model-row h3{margin:0;font-size:17px}.meta{color:#52606d;font-size:14px}
-.news-item{border-bottom:1px solid #e2e8ed;padding:10px 0}.news-item:last-child{border:0}
-.news-item a{font-weight:700;text-decoration:none}.news-cat{font-size:12px;font-weight:800;color:#0b5cab}
-footer{max-width:1180px;margin:0 auto;padding:16px;color:#52606d}
+.model-row{border-bottom:1px solid #e3ded2;padding:10px 0}.model-row:last-child{border:0}
+.model-row h3{margin:0;font-size:17px}.meta{color:#43534c;font-size:14px}
+.news-item{border-bottom:1px solid #e3ded2;padding:10px 0}.news-item:last-child{border:0}
+.news-item a{font-weight:700;text-decoration:none}.news-cat{font-size:12px;font-weight:800;color:#0d5c4d}
+footer{max-width:1180px;margin:0 auto;padding:16px;color:#43534c}
 @media(max-width:820px){.hero{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.hero-body{grid-template-columns:1fr}.ph{height:220px}}
 
 /* Final: styles for full news section below game layout (classes from merged head, scoped) */
-.tt-news{background:#fff;border:1px solid #dbe4ea;border-radius:14px;padding:18px;margin-top:16px}
+.tt-news{background:#fff;border:1px solid #e3ded2;border-radius:14px;padding:18px;margin-top:16px}
 .tt-news .wrap{max-width:none;padding:0}
 .tt-news .news-top-label{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#b00020;margin-bottom:10px}
-.tt-news .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e11d48}
-.tt-news h2{margin:0 0 8px;font-size:24px;color:#0f2a4a}
-.tt-news .sec-sub{color:#52606d;margin:0 0 12px;max-width:66ch}
-.tt-news .tt-nav a{color:#0f2a4a}
+.tt-news .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#d92b1f}
+.tt-news h2{margin:0 0 8px;font-size:24px;color:#182420}
+.tt-news .sec-sub{color:#43534c;margin:0 0 12px;max-width:66ch}
+.tt-news .tt-nav a{color:#182420}
 
-.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.topmenu a{color:#fff;text-decoration:none;font-weight:700;padding:8px 14px;border:1px solid rgba(255,255,255,.45);border-radius:999px}.topmenu a.active,.topmenu a:hover{background:#ff8c1a;border-color:#ff8c1a;color:#fff}
+.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.topmenu a{color:#0d5c4d;text-decoration:none;font-weight:700;padding:8px 14px;border:1px solid #d4cdbb;border-radius:999px}.topmenu a.active,.topmenu a:hover{background:#0d5c4d;border-color:#0d5c4d;color:#fff}
 </style></head><body>
 <header><div class="wrap"><span class="tag">ver2solution.com/mclivestream</span>
 <h1>MC Livestream — Sàn việc làm mẫu live của Ver2Solution</h1>
-<p>Bản trang chủ tích hợp v2 — nhãn điều hướng mới, <strong>chưa deploy</strong>. Trang chủ là 20 hồ sơ thật từ bài đăng công khai, click vào mẫu sẽ mở trang chi tiết mới trong tab mới.</p>
+<p>Bản trang chủ tích hợp v3 — màu và font cũ, chỉ đổi tên 2 nút menu. Trang chủ là 20 hồ sơ thật từ bài đăng công khai, click vào mẫu sẽ mở trang chi tiết mới trong tab mới.</p>
 <p>Shop tìm mẫu theo <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong>. Hồ sơ nhiều lượt xem và bình luận nhất được đẩy lên đầu.</p><nav class="topmenu" aria-label="Menu chính"><a href="index.html" class="active">Trang chủ</a><a href="danh-sach-shop.html">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a></nav></div></header>
 <main>
 <section class="card" aria-label="Bộ lọc và sắp xếp">
-<h2 style="margin-top:0">Bộ lọc và sắp xếp — áp dụng cho cả 2 ô lớn, trang Dành cho Mẫu và danh sách bài báo</h2>
+<h2 style="margin-top:0">Bộ lọc và sắp xếp — áp dụng cho cả 2 ô lớn, trang Việc đang tuyển và danh sách bài báo</h2>
 <div class="controls">
 <div><label for="prov">1 · Tỉnh / Thành phố * — Bắt buộc (mẫu)</label>
 <select id="prov"><option value="">— Chọn tỉnh —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option></select></div>
@@ -65,12 +69,12 @@ footer{max-width:1180px;margin:0 auto;padding:16px;color:#52606d}
 <div class="notice"><strong>Lưu ý về số liệu sắp xếp:</strong> cả 20 hồ sơ thật hiện đều chưa có lượt xem / bình luận đã kiểm chứng (mặc định 0 / 0), nên sắp xếp theo lượt xem và bình luận lúc này giữ nguyên thứ tự TH-01 → TH-20. Khi có số liệu thật, hệ thống sẽ tự đẩy hồ sơ cao nhất lên đầu mà không cần sửa thứ tự tay. Lương “Thỏa thuận” được xếp sau lương có số khi sắp xếp theo lương.</div>
 </section>
 
-<section class="card" aria-label="Dành cho Shop"><h2>🏪 Dành cho Shop — Danh sách các shop đang tuyển mẫu</h2><p><strong>Trang đang xây dựng.</strong> Danh sách các shop đang tuyển mẫu sẽ cập nhật sau. Trang này hiện chưa liệt kê shop nào, để không đưa ra danh sách shop chưa có thật.</p><p><a href="danh-sach-shop.html">Xem trang Dành cho Shop →</a> · <a href="danh-sach-mau.html">Xem trang Dành cho Mẫu →</a></p></section>
+<section class="card" aria-label="Tìm mẫu live"><h2>🏪 Tìm mẫu live — Danh sách các shop đang tuyển mẫu</h2><p><strong>Trang đang xây dựng.</strong> Danh sách các shop đang tuyển mẫu sẽ cập nhật sau. Trang này hiện chưa liệt kê shop nào, để không đưa ra danh sách shop chưa có thật.</p><p><a href="danh-sach-shop.html">Xem trang Tìm mẫu live →</a> · <a href="danh-sach-mau.html">Xem trang Việc đang tuyển →</a></p></section>
 <section aria-label="Hai mẫu nổi bật đầu trang"><h2>⭐ 2 mẫu nổi bật đầu trang — như giao diện game</h2><div id="hero" class="hero"></div></section>
 
 <div class="layout">
-<section class="card" aria-label="Dành cho Mẫu — mẫu live chính"><h2>🎥 Dành cho Mẫu — Mẫu live chính, danh sách rút gọn</h2><div id="modelList"></div>
-<p><a href="danh-sach-mau.html" target="_blank" rel="noopener">Xem trang Dành cho Mẫu đầy đủ →</a> (trang này nằm cùng thư mục khi deploy)</p></section>
+<section class="card" aria-label="Việc đang tuyển — mẫu live chính"><h2>🎥 Việc đang tuyển — Mẫu live chính, danh sách rút gọn</h2><div id="modelList"></div>
+<p><a href="danh-sach-mau.html" target="_blank" rel="noopener">Xem trang Việc đang tuyển đầy đủ →</a> (trang này nằm cùng thư mục khi deploy)</p></section>
 <aside class="card" aria-label="Bài báo mới nhất"><h2>📰 Bài báo mới nhất</h2>
 <div class="notice" style="margin-top:0"><strong>Chưa đủ 20 bài:</strong> hiện chỉ có <strong>13 bài</strong> (10 bài tin tức thị trường mới + 3 bài demo cũ). Cần thêm <strong>7 bài mới</strong> nữa mới đủ 20 bài như yêu cầu, không bịa tiêu đề bài chưa có.</div>
 <div id="newsList"></div></aside>
@@ -98,21 +102,21 @@ footer{max-width:1180px;margin:0 auto;padding:16px;color:#52606d}
           </nav>
           <style>
             .tt-news .tt-nav{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
-            .tt-news .tt-nav a{display:inline-block;padding:8px 14px;border:1px solid #d7dee8;border-radius:999px;text-decoration:none;color:#0f2a4a;font-weight:600;background:#fff}
+            .tt-news .tt-nav a{display:inline-block;padding:8px 14px;border:1px solid #e3ded2;border-radius:999px;text-decoration:none;color:#182420;font-weight:600;background:#fff}
             .tt-news .tt-group{margin:26px 0}
-            .tt-news .tt-group-title{font-size:20px;margin:0 0 14px;color:#0f2a4a}
+            .tt-news .tt-group-title{font-size:20px;margin:0 0 14px;color:#182420}
             .tt-news .tt-cards{display:grid;grid-template-columns:1fr;gap:16px}
-            .tt-news .tt-card{border:1px solid #d7dee8;border-radius:14px;padding:18px;background:#fff}
-            .tt-news .tt-card h3{font-size:18px;line-height:1.45;margin:0 0 8px;color:#0f2a4a}
-            .tt-news .tt-meta{font-size:13px;color:#5a6b80;margin:0 0 10px;line-height:1.6}
-            .tt-news .tt-meta a{color:#0b6bcb}
+            .tt-news .tt-card{border:1px solid #e3ded2;border-radius:14px;padding:18px;background:#fff}
+            .tt-news .tt-card h3{font-size:18px;line-height:1.45;margin:0 0 8px;color:#182420}
+            .tt-news .tt-meta{font-size:13px;color:#6d7c75;margin:0 0 10px;line-height:1.6}
+            .tt-news .tt-meta a{color:#0d5c4d}
             .tt-news .tt-summary{font-size:15px;line-height:1.7;margin:0 0 12px}
-            .tt-news .tt-data{border:1px solid #e3ecf5;border-radius:10px;padding:12px 14px;background:#f4f8fc;margin:0 0 12px}
-            .tt-news .tt-data-title{font-weight:700;font-size:14px;margin-bottom:10px;color:#0f2a4a}
+            .tt-news .tt-data{border:1px solid #e4f0ec;border-radius:10px;padding:12px 14px;background:#e4f0ec;margin:0 0 12px}
+            .tt-news .tt-data-title{font-weight:700;font-size:14px;margin-bottom:10px;color:#182420}
             .tt-news .tt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-            .tt-news .tt-stat b{display:block;font-size:12px;color:#5a6b80;font-weight:600;margin-bottom:4px}
-            .tt-news .tt-stat span{font-size:15px;font-weight:700;color:#0f2a4a;line-height:1.4}
-            .tt-news .tt-data-note{font-size:12px;color:#5a6b80;margin:10px 0 0}
+            .tt-news .tt-stat b{display:block;font-size:12px;color:#6d7c75;font-weight:600;margin-bottom:4px}
+            .tt-news .tt-stat span{font-size:15px;font-weight:700;color:#182420;line-height:1.4}
+            .tt-news .tt-data-note{font-size:12px;color:#6d7c75;margin:10px 0 0}
             .tt-news .tt-takeaway{font-size:15px;line-height:1.7;margin:0}
             @media (max-width:700px){.tt-news .tt-stats{grid-template-columns:1fr}}
           </style>
@@ -282,10 +286,10 @@ function heroHTML(list){
       <p><b>Hình thức:</b> ${esc(m.form)} · <b>Trạng thái:</b> ${esc(m.status)}</p>
       <p><b>Kinh nghiệm:</b> ${esc(m.exp)}</p><p><b>Lịch:</b> ${esc(m.schedule)}</p>
       <p><b>Lương:</b> ${salaryLabel(m)}</p><p><b>Chiều cao / cân nặng:</b> ${esc(m.height)}</p>
-      <p style="background:#fff7d6;color:#5a3a00;padding:8px;border-radius:8px">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
+      <p style="background:#fdf3e0;color:#7c5410;padding:8px;border-radius:8px">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <a class="btn" href="ho-so.html?id=${esc(m.id)}" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a>
       <a class="btn light" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a>
-      <p><a style="color:#ffd166" href="${esc(m.src)}" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: ${esc(m.date)}</p></div>
+      <p><a style="color:#d4cdbb" href="${esc(m.src)}" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: ${esc(m.date)}</p></div>
     </div></article>`).join('');
 }
 function modelHTML(list){
