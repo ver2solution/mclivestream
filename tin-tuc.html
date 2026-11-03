@@ -6,13 +6,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tin tức — MC Livestream | Ver2Solution</title>
-<style>:root{--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
-@media (prefers-color-scheme: dark){:root{--bg:#0f1412;--surface:#182019;--surface-2:#202a23;--ink:#edf3f0;--ink-2:#bfccc5;--muted:#8fa298;--line:#2b3a31;--line-strong:#3a4c41;--brand:#45b894;--brand-dark:#8fd4bd;--brand-soft:#1c2e27;--live:#ff5a4d;--live-dark:#ff7a6e;--amber:#f0b95e;--amber-soft:#33291a;--ok:#4cc084;--shadow-sm:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--shadow-md:0 2px 4px rgba(0,0,0,.35),0 12px 32px rgba(0,0,0,.4);--header-bg:rgba(15,20,18,.94)}}
+<style>:root{color-scheme:light;--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
+
 
 *{box-sizing:border-box}body{margin:0;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
-a{color:var(--brand)}header{background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:18px 16px;color:var(--ink)}header .wrap,main{max-width:1180px;margin:0 auto}
-header h1{margin:0 0 4px;font-size:26px}header p{margin:4px 0}.tag{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
-.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;background:var(--header-bg);backdrop-filter:blur(12px);border:1px solid var(--line);padding:10px;border-radius:var(--r-md)}.topmenu a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border:1px solid transparent;border-radius:var(--r-sm)}.topmenu a:hover{background:var(--surface-2);color:var(--ink)}.topmenu a.active{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
+a{color:var(--brand)}main{max-width:1180px;margin:0 auto}
+.tag{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
+
 main{padding:16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
 .layout{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;align-items:start}
 .notice{background:var(--amber-soft);border:1px solid var(--amber);border-radius:10px;padding:10px 12px;margin:12px 0}
@@ -29,18 +29,18 @@ main{padding:16px}.card{background:var(--surface);border:1px solid var(--line);b
 footer{max-width:1180px;margin:0 auto;padding:16px;color:var(--ink-2)}
 @media(max-width:820px){.layout{grid-template-columns:1fr}.tt-news .tt-stats{grid-template-columns:1fr}}
 h1{font-size:clamp(30px,4.2vw,44px);line-height:1.16;font-weight:900;letter-spacing:-.02em;margin:18px 0 14px}h2{font-size:clamp(23px,3vw,29px);font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0 0 8px}header a{color:var(--brand)}header .tag{background:var(--brand-soft);color:var(--brand)}
-/* v10: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
+/* v12 — bản màu và giao diện nguyên bản: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
 .topstrip{background:var(--brand-dark);color:#dcebe4;font-size:13px}
 .topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
 .topstrip b{color:#fff}
-@media (prefers-color-scheme: dark){.topstrip{color:#0e1a15}.topstrip b{color:#0e1a15}}
+
 header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
 .btn-live{background:var(--live);color:#fff}
 .btn-live:hover{background:var(--live-dark)}
 .btn-brand{background:var(--brand);color:#fff}
 .btn-brand:hover{background:var(--brand-dark)}
-@media (prefers-color-scheme: dark){.btn-brand,button,.btn-primary{color:#0b1512}}
+
 .btn-ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
 .btn-ghost:hover{background:var(--surface-2)}
 .btn-white-o{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
@@ -56,23 +56,55 @@ section.block{padding:52px 0}
 .status .sd{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .status.seeking{background:#e5f4ec;color:#14663c;border:1px solid #bfe3cf}
 .status.employed{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line-strong)}
-@media (prefers-color-scheme: dark){.status.seeking{background:#173327;color:#6fd598;border-color:#2c5240}}
+
 .c2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-</style></head><body><div class="topstrip"><div class="wrap"><span>Sàn việc làm MC Livestream · <b>ver2solution.com/mclivestream</b></span><span>Shop tìm mẫu theo Tỉnh và Lĩnh vực bắt buộc</span></div></div>
-<header><div class="wrap"><span class="tag">ver2solution.com/mclivestream</span>
-<h1>Tin tức — Sàn việc làm mẫu live của Ver2Solution</h1>
-<p>Trang tin tức riêng: tin mới nhất xếp trước, với 3 mục lớn đã thiết kế. Nội dung chính của các bài này cũng đã có đủ trên trang chủ, không cần sang trang khác mới thấy tin tức và mẫu live.</p>
-<p class="brandhome"><a href="index.html">← ver2solution.com/mclivestream — Trang chủ</a></p>
-<nav class="topmenu" aria-label="Menu chính"><a href="danh-sach-shop.html">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html" class="active">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav></div></header>
-<main>
-<div class="notice"><strong>Lưu ý về số liệu:</strong> hiện chỉ có <strong>13 bài</strong> đã có (10 bài tin tức thị trường đầy đủ + 3 bài demo nội bộ), <strong>chưa đủ 20 bài</strong> cho danh mục nhiều người đọc nhất. Hiện <strong>chưa có số lượt đọc đã kiểm chứng</strong> cho bất kỳ bài nào, nên không bịa số lượt đọc: mọi bài trong danh mục nhiều người đọc nhất đều ghi “chưa kiểm chứng (tạm ghi 0)”, thứ tự hiện tại là thứ tự mới nhất làm mốc tạm thời, và sẽ cập nhật lại khi có số liệu đọc thật.</div>
+
+/* v12 — bản màu và giao diện nguyên bản: header compact gốc, ép chế độ sáng */
+html{color-scheme:light}
+.parentbar{background:#0c1210;color:#dfe9e4;font-size:13px}
+.parentbar-in{display:flex;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px}
+.parent-home{color:#dfe9e4;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.parent-nav{display:flex;gap:2px;margin-left:auto}
+.parent-nav a{color:#dfe9e4;text-decoration:none;font-weight:600;font-size:13.5px;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.parent-nav a.active{background:#1c2e27;color:#fff}
+.parent-tag{background:#1c2e27;color:#dcebe4;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:700}
+.crumb-here{color:#bfccc5;font-size:13px;white-space:nowrap}
+.crumb-here code{color:#dcebe4}
+.topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
+.topstrip b{color:#fff}
+.topstrip a{color:#ffd9d4;font-weight:700;text-decoration:none;white-space:nowrap}
+header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
+.brandlock{display:flex;flex-direction:column;justify-content:center;text-decoration:none;color:var(--ink);flex:none;min-width:0}
+.brandlock .wordmark{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.brandlock .sub{display:block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--live);margin-top:1px;white-space:nowrap}
+.wordmark-sm{font-weight:800;display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.logo2{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--live);color:#fff;font-weight:900;flex:none}
+.logo2.sm{width:19px;height:19px;font-size:11px}
+.logo2.lg{width:30px;height:30px;font-size:17px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+nav.main{display:flex;gap:2px;margin-left:auto}
+nav.main a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border-radius:var(--r-sm);white-space:nowrap}
+nav.main a:hover{background:var(--surface-2);color:var(--ink)}
+nav.main a.active{background:var(--brand-soft);color:var(--brand)}
+.header-cta{display:flex;gap:8px;flex:none}
+.header-cta .btn{padding:9px 12px;font-size:13.5px}
+.menu-btn{display:none;margin-left:auto;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:9px 14px;font-weight:700;font-size:14px}
+.page-head{padding:48px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(620px 300px at 88% -60px, var(--brand-soft), transparent 70%), var(--bg)}
+.page-head h1{font-size:clamp(30px,4.2vw,44px);line-height:1.15;margin:0 0 10px;color:var(--ink)}
+.page-head .sec-sub{color:var(--ink-2);max-width:860px;margin:0}
+@media(max-width:1080px){.mc-grid{grid-template-columns:repeat(3,1fr)}nav.main{display:none}nav.main.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px 16px 16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md)}nav.main.open a{padding:11px 12px}.menu-btn{display:block}.header-cta .btn-ghost{display:none}.parent-nav{display:none}}
+@media(max-width:680px){.brandlock .wordmark{font-size:17.5px}.header-cta .btn{padding:9px 12px;font-size:13.5px}.topstrip .wrap{justify-content:center;text-align:center}.page-head{padding:30px 0 32px}}
+</style></head><body><div class="parentbar"><div class="wrap parentbar-in"><a class="parent-home" href="index.html">← <span class="wordmark-sm">ver<span class="logo2 sm">2</span>solution.com</span> <span class="parent-tag">Website chủ</span></a><nav class="parent-nav" aria-label="Các mảng chính của website chủ"><a href="tin-tuc.html">Tin tức thị trường</a><a href="danh-sach-shop.html">Sàn bán hàng tồn kho</a><a href="index.html" class="active" aria-current="page">Sàn mẫu live · đang xem</a></nav><span class="crumb-here">Web con: <code>/mclivestream</code></span></div></div>
+<div class="topstrip"><div class="wrap"><span>Chuyên mục việc làm livestream thuộc <b>Ver2Solution</b> — Tư duy đúng, giá trị thật.</span><span>Tư vấn: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></span></div></div>
+<header class="site"><div class="wrap header-in"><a class="brandlock" href="index.html" aria-label="Ver2Solution — MC Livestream"><span class="wordmark">ver<span class="logo2 lg">2</span>solution.com</span><span class="sub">MC Livestream</span></a><button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main" id="mainNav"><a href="danh-sach-shop.html">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html" class="active" aria-current="page">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav><div class="header-cta"><a class="btn btn-brand" href="index.html#dang-nhap-mau">Đăng nhập mẫu</a><a class="btn btn-ghost" href="index.html#dang-nhap-mau">Tạo hồ sơ MC</a><a class="btn btn-live" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></div></header><section class="page-head"><div class="wrap"><div class="news-top-label"><span class="live-dot"></span> TIN TỨC · VER2SOLUTION</div><h1>Tin tức — Sàn việc làm mẫu live của Ver2Solution</h1><p class="sec-sub">Bản màu và giao diện nguyên bản. Trang tin tức riêng: tin mới nhất xếp trước, với 4 mục lớn. Nội dung chính của các bài này cũng đã có đủ trên trang chủ, không cần sang trang khác mới thấy tin tức và mẫu live.</p></div></section><main>
+<div class="notice"><strong>Lưu ý về số liệu:</strong> đã có <strong>20 bài</strong> (10 bài tin tức thị trường Việt Nam đầy đủ + 3 bài demo nội bộ + 7 bài tin thị trường thế giới mới) cho danh mục nhiều người đọc nhất. Hiện <strong>chưa có số lượt đọc đã kiểm chứng</strong> cho bất kỳ bài nào, nên không bịa số lượt đọc: mọi bài trong danh mục nhiều người đọc nhất đều ghi “chưa kiểm chứng (tạm ghi 0)”, thứ tự hiện tại là thứ tự mới nhất làm mốc tạm thời, và sẽ cập nhật lại khi có số liệu đọc thật.</div>
 <div class="layout">
 <section class="tt-news" aria-label="Tin tức mới nhất">
 <h2 style="margin-top:0">Tin mới nhất — xếp mới nhất trước</h2>
-<p>3 mục lớn: <strong>Bán hàng Online hiệu quả (3 bài)</strong> · <strong>Tin mới Livestream (4 bài)</strong> · <strong>Tin ngành hàng (3 bài)</strong>. Các bài dưới đây là tổng hợp và diễn giải lại từ báo chính thống, không sao chép nguyên văn báo gốc, không dùng ảnh báo gốc; hộp số liệu là tự làm từ số liệu trong bài.</p>
+<p>4 mục lớn: <strong>Bán hàng Online hiệu quả (3 bài)</strong> · <strong>Tin mới Livestream (4 bài)</strong> · <strong>Tin ngành hàng (3 bài)</strong> · <strong>Tin thị trường thế giới (7 bài)</strong>. Các bài dưới đây là tổng hợp và diễn giải lại từ báo chính thống, không sao chép nguyên văn báo gốc, không dùng ảnh báo gốc; hộp số liệu là tự làm từ số liệu trong bài.</p>
 <div class="controls">
 <label style="font-weight:700">Lọc theo chuyên mục:
-<select id="newsCat"><option value="">Tất cả 3 mục</option><option>Bán hàng Online hiệu quả</option><option>Tin mới Livestream</option><option>Tin ngành hàng</option></select></label>
+<select id="newsCat"><option value="">Tất cả 4 mục</option><option>Bán hàng Online hiệu quả</option><option>Tin mới Livestream</option><option>Tin ngành hàng</option><option>Tin thị trường thế giới</option></select></label>
 <label style="font-weight:700">Sắp xếp:
 <select id="newsSort"><option value="newest">Mới nhất trước (mặc định)</option><option value="oldest">Cũ nhất trước</option></select></label>
 </div>
@@ -208,12 +240,68 @@ section.block{padding:52px 0}
               <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Làm bảng tính cho mỗi sản phẩm: giá bán trừ giá vốn, phí cố định, phí giao dịch, voucher, quảng cáo và hoàn hủy, còn lại mới là lãi thật. Nếu bảng tính âm thì đừng chạy sale lấy đơn cho vui, vì càng bán càng lỗ.</p>
             </article>
 </div>
-<p style="color:#43534c">3 bài demo nội bộ không có bài đầy đủ ở đây; chúng chỉ xuất hiện trong danh mục bên phải và trên trang chủ, ghi rõ là bài demo nội bộ.</p>
+<article class="tt-card" id="tg-05" data-cat="Tin thị trường thế giới" data-date="2026-11-03" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026-11-03" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">Lễ 11/11 Trung Quốc bán cả gói AI qua livestream: shop nhỏ học gì từ cơn sốt mới này?</h3>
+              <p class="tt-meta">Nguồn tin: Reuters · Ngày đăng bài gốc: 03/11/2026 · <a href="https://www.reuters.com/business/retail-consumer/chinas-lipstick-king-touts-ai-tokens-first-singles-day-festival-2026-11-03/" target="_blank" rel="noopener">Bài gốc trên Reuters</a></p>
+              <p class="tt-summary" itemprop="articleBody">Lễ mua sắm Singles’ Day tại Trung Quốc năm nay có thêm mặt hàng mới: gói tín dụng dùng để truy cập công cụ AI, hay gói token AI, lần đầu được bán như một mặt hàng tiêu dùng đáng kể trong lễ hội này. Trong một phiên Taobao Live, người livestream Austin Li đã bán 100.000 gói thành viên hàng tháng của dịch vụ AI văn phòng QwenWork của Alibaba trong nửa giờ; Alibaba cũng mở trung tâm gói token AI trên Tmall, còn JD.com mở mục riêng.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Gói QwenWork bán trong nửa giờ</b><span>100.000 gói</span></div><div class="tt-stat"><b>Doanh số gói token AI 01–20/10</b><span>tăng 450% so với tháng trước</span></div><div class="tt-stat"><b>Doanh số laptop AI, giờ đầu 11/11</b><span>tăng hơn 300% so với cùng kỳ</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Khách đã quen trả tiền cho thứ vô hình có ích ngay: công cụ làm việc, gói dùng thử, khóa học ngắn, dịch vụ đi kèm sản phẩm. Shop nhỏ có thể học ở quy mô nhỏ hơn: bán sản phẩm kèm hướng dẫn dùng thật, gói hỗ trợ sau bán và video hướng dẫn, thay vì chỉ bán món hàng rồi hết trách nhiệm. Nhưng phải nói rõ hạn dùng, điều kiện và rủi ro thay đổi sản phẩm.</p>
+            </article><article class="tt-card" id="tg-04" data-cat="Tin thị trường thế giới" data-date="2026-10-27" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026-10-27" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">TikTok Shop tiến tới 100 tỷ USD: shop nhỏ nên bán bằng video hay bằng gian hàng?</h3>
+              <p class="tt-meta">Nguồn tin: For You — tổng hợp nhiều nguồn, trong đó có eMarketer · Ngày đăng bài gốc: 27/10/2026 · <a href="https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f" target="_blank" rel="noopener">Bài gốc trên For You</a></p>
+              <p class="tt-summary" itemprop="articleBody">TikTok Shop đã chuyển từ thử nghiệm sang hạ tầng bán lẻ. Các nguồn không thống nhất một con số duy nhất: một bản tổng hợp dự báo tổng giá trị giao dịch toàn cầu năm 2026 khoảng 112,2 tỷ USD, gần gấp đôi mức khoảng 64,3 tỷ USD năm 2025; một phân tích khác đưa ra mức 87 tỷ USD. Khoảng chênh lệch này phản ánh phương pháp và định nghĩa khác nhau, nên phải đọc các con số này như ước tính, không phải kết quả đã kiểm toán. Xu hướng đang chuyển từ live dài 60–90 phút sang live ngắn 15–20 phút, làm nhiều lần trong tuần.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>GMV toàn cầu 2026, theo các nguồn</b><span>87 tỷ USD – 112,2 tỷ USD</span></div><div class="tt-stat"><b>GMV 2025, một bản tổng hợp</b><span>khoảng 64,3 tỷ USD</span></div><div class="tt-stat"><b>Doanh số tại Mỹ, eMarketer</b><span>vượt 20 tỷ USD năm 2026</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Đừng chỉ chạy một phiên live dài rồi nghỉ cả tuần. Hãy làm video ngắn mỗi ngày để khách thấy sản phẩm dùng thật, rồi dùng live ngắn để chốt đơn cho sản phẩm đã có người hỏi nhiều nhất. Gian hàng cũng quan trọng không kém, vì khách sau khi xem video thường tìm lại gian hàng để mua.</p>
+            </article><article class="tt-card" id="tg-07" data-cat="Tin thị trường thế giới" data-date="2026-10-14" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026-10-14" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">Mùa lễ 2026 ở Mỹ: điện thoại chiếm gần 3/4 số tiền tăng thêm, shop nhỏ cần sửa gì trước?</h3>
+              <p class="tt-meta">Nguồn tin: DesignRush News, dẫn dự báo eMarketer · Ngày đăng bài gốc: 14/10/2026 · <a href="https://news.designrush.com/mobile-holiday-ecommerce-checkout" target="_blank" rel="noopener">Bài gốc trên DesignRush News</a></p>
+              <p class="tt-summary" itemprop="articleBody">Dự báo được dẫn cho thấy doanh số bán lẻ trực tuyến mùa lễ ở Mỹ sẽ lần đầu vượt 300 tỷ USD trong năm 2026, chiếm 21,5% tổng doanh số mùa lễ. Phần tăng thêm chủ yếu đến từ điện thoại: doanh số qua điện thoại được dự báo đạt 174,91 tỷ USD, chiếm 58% doanh số trực tuyến mùa lễ và đóng góp 71,8% số tiền tăng thêm. Ngược lại, tổng doanh số bán lẻ mùa lễ chỉ được dự báo tăng 4,1%.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Trực tuyến mùa lễ ở Mỹ</b><span>vượt 300 tỷ USD lần đầu</span></div><div class="tt-stat"><b>Qua điện thoại</b><span>174,91 tỷ USD, chiếm 58%</span></div><div class="tt-stat"><b>Đóng góp vào số tiền tăng thêm</b><span>71,8%</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Khách Việt Nam cũng xem live và mua hàng chủ yếu bằng điện thoại. Trước mùa cao điểm, shop nên tự kiểm tra: mở video và gian hàng trên điện thoại, chọn sản phẩm, đổi số lượng, nhập mã giảm giá, thanh toán và xem có lỗi ở bước nào không. Sửa 3 điểm gây cản trở gần khâu chốt đơn sẽ hiệu quả hơn làm thêm 20 nội dung mới.</p>
+            </article><article class="tt-card" id="tg-03" data-cat="Tin thị trường thế giới" data-date="2026-10-07" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026-10-07" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">Hàng đã qua sử dụng lên ngôi toàn cầu: shop nhỏ bán hàng tồn kho học được gì?</h3>
+              <p class="tt-meta">Nguồn tin: eBay Inc. — eBay 2026 Recommerce Report · Ngày đăng bài gốc: 07/10/2026 · <a href="https://www.ebayinc.com/stories/news/ebay-recommerce-report-secondhand-shopping-rises-worldwide-as-consumers-seek-value-and-stretch-budgets/" target="_blank" rel="noopener">Bài gốc trên eBay</a></p>
+              <p class="tt-summary" itemprop="articleBody">Báo cáo dựa trên hơn 10.500 người tiêu dùng và hơn 1.700 người bán, khảo sát tháng 7–8/2026. Mua hàng đã qua sử dụng đã trở thành một phần thường xuyên trong chi tiêu gia đình, chứ không còn là lựa chọn thỉnh thoảng. Động lực lớn nhất vẫn là tiết kiệm và quản lý ngân sách, đi kèm yếu tố bền vững và cộng đồng, trong đó có mua sắm qua live.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Đã mua hàng đã qua sử dụng</b><span>76% trong năm qua</span></div><div class="tt-stat"><b>Mua ít nhất mỗi tháng</b><span>47%, tăng từ 35% năm 2025</span></div><div class="tt-stat"><b>Dự định giữ hoặc tăng chi tiêu</b><span>89% trong năm sau</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Đây là cơ hội trực tiếp cho shop xả kho và bán hàng tồn kho, nhưng phải bán bằng sự thật về tình trạng hàng: ghi rõ mới bao nhiêu phần trăm, đã qua sử dụng ra sao, có lỗi gì, có đổi trả không, và quay thật sản phẩm trên live thay vì chỉ chụp ảnh đẹp. Khách mua hàng cũ sợ nhất là nhận hàng khác mô tả.</p>
+            </article><article class="tt-card" id="tg-01" data-cat="Tin thị trường thế giới" data-date="2026" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">Livestream bán hàng ở Mỹ tăng gần 50%: shop nhỏ học gì từ tỷ lệ chốt tới 30%?</h3>
+              <p class="tt-meta">Nguồn tin: DesignRush — tổng hợp xu hướng TMĐT 2026, dẫn eMarketer và Firework · Ngày đăng bài gốc: 2026 (trang tổng hợp xu hướng 2026, không ghi ngày đăng cụ thể) · <a href="https://www.designrush.com/agency/ecommerce/trends/ecommerce-trends" target="_blank" rel="noopener">Bài gốc trên DesignRush</a></p>
+              <p class="tt-summary" itemprop="articleBody">Livestream ở Mỹ không còn là thử nghiệm giải trí: doanh số tăng gần 50% trong năm 2025, lên 14,64 tỷ USD, số người mua qua livestream tăng 21,5%. Điểm khác biệt không phải là đông người xem, mà là người xem mua ngay trong lúc xem, với tỷ lệ chuyển đổi khoảng 9% đến 30% theo Firework, trong khi TMĐT truyền thống thường chỉ khoảng 2% đến 3%.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Doanh số livestream Mỹ 2025</b><span>14,64 tỷ USD, tăng gần 50%</span></div><div class="tt-stat"><b>Người mua qua livestream</b><span>tăng 21,5%</span></div><div class="tt-stat"><b>Tỷ lệ chuyển đổi livestream</b><span>9%–30% theo Firework</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Đừng đo livestream bằng lượt xem. Hãy đo bằng số người ở lại tới đoạn dùng thử, số câu hỏi về giá và số đơn chốt trong phiên. Shop nhỏ không cần phiên dài, chỉ cần một sản phẩm dùng được ngay trên camera, một mức giá rõ ràng và một lý do chốt thật trong phiên.</p>
+            </article><article class="tt-card" id="tg-02" data-cat="Tin thị trường thế giới" data-date="2026" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2026" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">AI làm thay phần tìm hàng: shop nhỏ làm sao để AI còn “thấy” sản phẩm của mình?</h3>
+              <p class="tt-meta">Nguồn tin: McKinsey &amp; Company — McKinsey Agentic Commerce Consumer Survey · Ngày đăng bài gốc: 2026; khảo sát tháng 6/2026 · <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/who-wins-when-ai-does-the-shopping-new-evidence-on-agentic-commerce" target="_blank" rel="noopener">Bài gốc trên McKinsey</a></p>
+              <p class="tt-summary" itemprop="articleBody">Trung bình các thị trường được khảo sát, 53% người tiêu dùng đã dùng AI để mua sắm trong 3 tháng gần nhất; ở Mỹ, tỷ lệ người dùng AI hoàn tất một giao dịch mua bằng AI tăng từ 10% lên 17% so với năm trước. Công cụ AI độc lập đang dẫn đầu ở khâu tìm kiếm và cân nhắc, nhưng tới khâu thanh toán thì trợ lý AI của chính nhà bán lẻ bắt kịp, vì nhà bán lẻ đã có sẵn kho, giá, thanh toán và giao hàng.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Dùng AI để mua sắm</b><span>53% trung bình các thị trường</span></div><div class="tt-stat"><b>Mỹ: hoàn tất mua bằng AI</b><span>10% → 17%</span></div><div class="tt-stat"><b>Ảnh hưởng lớn nhất của AI</b><span>cao gấp 3,2 lần so với tìm kiếm truyền thống</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Khách sẽ hỏi AI một câu và nhận vài gợi ý, nên thông tin sản phẩm phải đủ rõ để máy đọc được: tên đúng, chất liệu, kích cỡ, giá, tình trạng còn hàng, chính sách đổi trả và đánh giá thật. Video và livestream tạo niềm tin, nhưng nếu trang sản phẩm thiếu thông tin cơ bản, AI sẽ không chọn sản phẩm đó để gợi ý.</p>
+            </article><article class="tt-card" id="tg-06" data-cat="Tin thị trường thế giới" data-date="2025-11-05" data-reads="0" itemscope itemtype="https://schema.org/NewsArticle">
+              <meta itemprop="datePublished" content="2025-11-05" />
+              <meta itemprop="author" content="Ver2Solution" />
+              <h3 itemprop="headline">Người tiêu dùng 2026 muốn vừa thoải mái vừa thật: shop nhỏ bán hàng theo cảm xúc hay theo bằng chứng?</h3>
+              <p class="tt-meta">Nguồn tin: Euromonitor International, qua BusinessWire · Ngày đăng bài gốc: 05/11/2025 (báo cáo xu hướng cho năm 2026) · <a href="http://www.businesswire.com/news/home/20251105486775/en/Euromonitor-International-unveils-Global-Consumer-Trends-for-2026" target="_blank" rel="noopener">Bài gốc trên BusinessWire</a></p>
+              <p class="tt-summary" itemprop="articleBody">Euromonitor nêu 4 xu hướng tiêu dùng toàn cầu cho năm 2026: tìm kiếm sự thoải mái và đơn giản trong bối cảnh biến động; thể hiện bản thân thẳng thắn, không tô vẽ quá mức; chăm sóc sức khỏe theo hướng chuyên nghiệp hơn, với sản phẩm có công thức khoa học và bằng chứng rõ ràng; và làn sóng thương hiệu châu Á, đặc biệt là thương hiệu Trung Quốc, mở rộng nhờ giá hợp lý, đổi mới và trải nghiệm số từ đầu.</p>
+              <div class="tt-data" aria-label="Infographic tự làm từ số liệu trong bài"><div class="tt-data-title">Số liệu chính — tự tổng hợp từ bài báo (số liệu của nguồn, không phải của Ver2Solution)</div><div class="tt-stats"><div class="tt-stat"><b>Căng thẳng vừa đến cực độ mỗi ngày</b><span>58%</span></div><div class="tt-stat"><b>Muốn sản phẩm thiết kế riêng</b><span>50%</span></div><div class="tt-stat"><b>Trả thêm từ 10% cho làm đẹp có công thức khoa học</b><span>49%</span></div></div><p class="tt-data-note">Hộp số liệu do Ver2Solution tự tổng hợp từ bài báo gốc, không dùng ảnh của báo gốc.</p></div>
+              <p class="tt-takeaway"><b>Ver2Solution rút ra cho shop nhỏ:</b> Shop nhỏ không cần chạy theo mọi trào lưu, chỉ cần trả lời rõ 3 câu hỏi của khách: sản phẩm giúp tôi thoải mái hơn ở điểm nào, có thật như quảng cáo không, và có bằng chứng gì. Live là nơi tốt nhất để trả lời cả 3 cùng lúc, vì khách thấy sản phẩm dùng thật, nghe người bán nói thật về giới hạn sản phẩm và thấy đánh giá thật từ người đã mua.</p>
+            </article><p style="color:#43534c">3 bài demo nội bộ không có bài đầy đủ ở đây; chúng chỉ xuất hiện trong danh mục bên phải và trên trang chủ, ghi rõ là bài demo nội bộ.</p>
 </section>
 <aside>
 <section class="card" aria-label="Danh mục bài báo nhiều người đọc nhất">
 <h2 style="margin-top:0">Danh mục: 20 bài báo nhiều người đọc nhất</h2>
-<p style="color:#43534c;margin-top:0">Hiện chỉ có 13 bài. Còn thiếu 7 bài nữa mới đủ 20. Thứ tự dưới đây chưa phải thứ hạng đọc thật vì chưa có số lượt đọc đã kiểm chứng.</p>
+<p style="color:#43534c;margin-top:0">Đã đủ 20 bài. Thứ tự dưới đây chưa phải thứ hạng đọc thật vì chưa có số lượt đọc đã kiểm chứng.</p>
 <ol class="most">
 <li><span class="rank">1</span><div><a href="#tt-04">Livestream cùng KOL mở thêm đầu ra cho hộ kinh doanh nhỏ: đơn tăng gấp chục lần, nhưng phải tính lãi</a><div class="meta">Tin mới Livestream · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
 <li><span class="rank">2</span><div><a href="#tt-03">Người tiêu dùng bớt “săn sale”: sale quanh năm khiến sale mất giá</a><div class="meta">Bán hàng Online hiệu quả · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
@@ -228,6 +316,13 @@ section.block{padding:52px 0}
 <li><span class="rank">11</span><div><a href="index.html">Vì sao 90% Page bị bóp reach khi đi share group? 3 tín hiệu Facebook chấm spam</a><div class="meta">Bán hàng Online hiệu quả · Bài demo nội bộ · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
 <li><span class="rank">12</span><div><a href="index.html">Hồ sơ MC livestream: 7 mục bắt buộc giúp mẫu được shop tìm thấy nhanh hơn</a><div class="meta">Tin mới Livestream · Bài demo nội bộ · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
 <li><span class="rank">13</span><div><a href="index.html">Lương MC livestream theo buổi: Mặt bằng giá ở thời trang, mỹ phẩm và gia dụng</a><div class="meta">Tin ngành hàng · Bài demo nội bộ · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">14</span><div><a href="#tg-01">Livestream bán hàng ở Mỹ tăng gần 50%: shop nhỏ học gì từ tỷ lệ chốt tới 30%?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">15</span><div><a href="#tg-02">AI làm thay phần tìm hàng: shop nhỏ làm sao để AI còn “thấy” sản phẩm của mình?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">16</span><div><a href="#tg-03">Hàng đã qua sử dụng lên ngôi toàn cầu: shop nhỏ bán hàng tồn kho học được gì?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">17</span><div><a href="#tg-04">TikTok Shop tiến tới 100 tỷ USD: shop nhỏ nên bán bằng video hay bằng gian hàng?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">18</span><div><a href="#tg-05">Lễ 11/11 Trung Quốc bán cả gói AI qua livestream: shop nhỏ học gì từ cơn sốt mới này?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">19</span><div><a href="#tg-06">Người tiêu dùng 2026 muốn vừa thoải mái vừa thật: shop nhỏ bán hàng theo cảm xúc hay theo bằng chứng?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
+<li><span class="rank">20</span><div><a href="#tg-07">Mùa lễ 2026 ở Mỹ: điện thoại chiếm gần 3/4 số tiền tăng thêm, shop nhỏ cần sửa gì trước?</a><div class="meta">Tin thị trường thế giới · Lượt đọc: chưa kiểm chứng (tạm ghi 0)</div></div></li>
 </ol>
 </section>
 <section class="card" style="margin-top:16px" aria-label="Danh mục theo chuyên mục">
@@ -236,6 +331,7 @@ section.block{padding:52px 0}
 <li>Bán hàng Online hiệu quả — 4 bài (3 bài đầy đủ + 1 bài demo)</li>
 <li>Tin mới Livestream — 5 bài (4 bài đầy đủ + 1 bài demo)</li>
 <li>Tin ngành hàng — 4 bài (3 bài đầy đủ + 1 bài demo)</li>
+<li>Tin thị trường thế giới — 7 bài</li>
 </ul>
 <p><a href="index.html">← Về trang chủ tích hợp đầy đủ</a></p>
 </section>
@@ -254,4 +350,4 @@ function applyNews(){
 document.getElementById('newsCat').addEventListener('change', applyNews);
 document.getElementById('newsSort').addEventListener('change', applyNews);
 applyNews();
-</script></body></html>
+</script><script>document.getElementById('menuBtn')?.addEventListener('click',()=>{const n=document.getElementById('mainNav');const o=n.classList.toggle('open');document.getElementById('menuBtn').setAttribute('aria-expanded',o?'true':'false');});</script></body></html>

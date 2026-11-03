@@ -5,21 +5,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Việc đang tuyển — Trang mẫu tìm việc | Sàn việc làm MC Livestream Ver2Solution</title>
-<style>:root{--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
-@media (prefers-color-scheme: dark){:root{--bg:#0f1412;--surface:#182019;--surface-2:#202a23;--ink:#edf3f0;--ink-2:#bfccc5;--muted:#8fa298;--line:#2b3a31;--line-strong:#3a4c41;--brand:#45b894;--brand-dark:#8fd4bd;--brand-soft:#1c2e27;--live:#ff5a4d;--live-dark:#ff7a6e;--amber:#f0b95e;--amber-soft:#33291a;--ok:#4cc084;--shadow-sm:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--shadow-md:0 2px 4px rgba(0,0,0,.35),0 12px 32px rgba(0,0,0,.4);--header-bg:rgba(15,20,18,.94)}}
-body{background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;max-width:960px;margin:0 auto;padding:24px;line-height:1.6} .th-card{border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px} a{color:var(--brand)} .note{background:var(--amber-soft);border:1px solid var(--amber);padding:12px;border-radius:8px}.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;background:var(--header-bg);backdrop-filter:blur(12px);border:1px solid var(--line);padding:10px;border-radius:var(--r-md)}.topmenu a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border:1px solid transparent;border-radius:var(--r-sm)}.topmenu a:hover{background:var(--surface-2);color:var(--ink)}.topmenu a.active{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}h1{font-size:clamp(30px,4.2vw,44px);line-height:1.16;font-weight:900;letter-spacing:-.02em;margin:18px 0 14px}h2{font-size:clamp(23px,3vw,29px);font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0 0 8px}header a{color:var(--brand)}header .tag{background:var(--brand-soft);color:var(--brand)}
-/* v10: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
+<style>:root{color-scheme:light;--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
+
+body{background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;max-width:960px;margin:0 auto;padding:24px;line-height:1.6} .th-card{border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px} a{color:var(--brand)} .note{background:var(--amber-soft);border:1px solid var(--amber);padding:12px;border-radius:8px}h1{font-size:clamp(30px,4.2vw,44px);line-height:1.16;font-weight:900;letter-spacing:-.02em;margin:18px 0 14px}h2{font-size:clamp(23px,3vw,29px);font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0 0 8px}header a{color:var(--brand)}header .tag{background:var(--brand-soft);color:var(--brand)}
+/* v12 — bản màu và giao diện nguyên bản: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
 .topstrip{background:var(--brand-dark);color:#dcebe4;font-size:13px}
 .topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
 .topstrip b{color:#fff}
-@media (prefers-color-scheme: dark){.topstrip{color:#0e1a15}.topstrip b{color:#0e1a15}}
+
 header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
 .btn-live{background:var(--live);color:#fff}
 .btn-live:hover{background:var(--live-dark)}
 .btn-brand{background:var(--brand);color:#fff}
 .btn-brand:hover{background:var(--brand-dark)}
-@media (prefers-color-scheme: dark){.btn-brand,button,.btn-primary{color:#0b1512}}
+
 .btn-ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
 .btn-ghost:hover{background:var(--surface-2)}
 .btn-white-o{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
@@ -35,18 +35,56 @@ section.block{padding:52px 0}
 .status .sd{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .status.seeking{background:#e5f4ec;color:#14663c;border:1px solid #bfe3cf}
 .status.employed{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line-strong)}
-@media (prefers-color-scheme: dark){.status.seeking{background:#173327;color:#6fd598;border-color:#2c5240}}
+
 .c2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.th-card{background:var(--surface);border-color:var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}</style>
-</head><body><div class="topstrip"><div class="wrap"><span>Sàn việc làm MC Livestream · <b>ver2solution.com/mclivestream</b></span><span>Shop tìm mẫu theo Tỉnh và Lĩnh vực bắt buộc</span></div></div><p class="notice" style="background:#e4f0ec;border:1px solid #0d5c4d;border-radius:10px;padding:10px 12px">Quy tắc bộ lọc tỉnh v7: ưu tiên khu vực mẫu muốn làm việc trong bài; nếu bài không ghi mà tên nhóm nguồn có tên tỉnh thành thì dùng tên đó — TH-10 gán TP. Hồ Chí Minh theo nhóm “Tại Sài Gòn”, TH-14 gán Hà Nội theo nhóm “Tại Hà Nội” (cả hai đều cần xác nhận lại với mẫu, vì bài gốc không ghi rõ tỉnh). TH-02, TH-06, TH-07, TH-18 vẫn ở Toàn quốc vì cả bài và tên nhóm đều không có địa điểm làm việc.</p>
-<p class="brandhome"><a href="index.html">← ver2solution.com/mclivestream — Trang chủ</a></p>
-<nav class="topmenu" aria-label="Menu chính"><a href="danh-sach-shop.html">Dành cho Shop</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav>
-<p><a href="danh-sach-shop.html">Tìm mẫu live — danh sách các shop đang tuyển mẫu (trang đang xây dựng)</a></p>
+.th-card{background:var(--surface);border-color:var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+/* v12 — bản màu và giao diện nguyên bản: header compact gốc, ép chế độ sáng */
+html{color-scheme:light}
+.parentbar{background:#0c1210;color:#dfe9e4;font-size:13px}
+.parentbar-in{display:flex;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px}
+.parent-home{color:#dfe9e4;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.parent-nav{display:flex;gap:2px;margin-left:auto}
+.parent-nav a{color:#dfe9e4;text-decoration:none;font-weight:600;font-size:13.5px;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.parent-nav a.active{background:#1c2e27;color:#fff}
+.parent-tag{background:#1c2e27;color:#dcebe4;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:700}
+.crumb-here{color:#bfccc5;font-size:13px;white-space:nowrap}
+.crumb-here code{color:#dcebe4}
+.topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
+.topstrip b{color:#fff}
+.topstrip a{color:#ffd9d4;font-weight:700;text-decoration:none;white-space:nowrap}
+header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
+.brandlock{display:flex;flex-direction:column;justify-content:center;text-decoration:none;color:var(--ink);flex:none;min-width:0}
+.brandlock .wordmark{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.brandlock .sub{display:block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--live);margin-top:1px;white-space:nowrap}
+.wordmark-sm{font-weight:800;display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.logo2{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--live);color:#fff;font-weight:900;flex:none}
+.logo2.sm{width:19px;height:19px;font-size:11px}
+.logo2.lg{width:30px;height:30px;font-size:17px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+nav.main{display:flex;gap:2px;margin-left:auto}
+nav.main a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border-radius:var(--r-sm);white-space:nowrap}
+nav.main a:hover{background:var(--surface-2);color:var(--ink)}
+nav.main a.active{background:var(--brand-soft);color:var(--brand)}
+.header-cta{display:flex;gap:8px;flex:none}
+.header-cta .btn{padding:9px 12px;font-size:13.5px}
+.menu-btn{display:none;margin-left:auto;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:9px 14px;font-weight:700;font-size:14px}
+.page-head{padding:48px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(620px 300px at 88% -60px, var(--brand-soft), transparent 70%), var(--bg)}
+.page-head h1{font-size:clamp(30px,4.2vw,44px);line-height:1.15;margin:0 0 10px;color:var(--ink)}
+.page-head .sec-sub{color:var(--ink-2);max-width:860px;margin:0}
+@media(max-width:1080px){.mc-grid{grid-template-columns:repeat(3,1fr)}nav.main{display:none}nav.main.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px 16px 16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md)}nav.main.open a{padding:11px 12px}.menu-btn{display:block}.header-cta .btn-ghost{display:none}.parent-nav{display:none}}
+@media(max-width:680px){.brandlock .wordmark{font-size:17.5px}.header-cta .btn{padding:9px 12px;font-size:13.5px}.topstrip .wrap{justify-content:center;text-align:center}.page-head{padding:30px 0 32px}}
+</style>
+</head><body><div class="parentbar"><div class="wrap parentbar-in"><a class="parent-home" href="index.html">← <span class="wordmark-sm">ver<span class="logo2 sm">2</span>solution.com</span> <span class="parent-tag">Website chủ</span></a><nav class="parent-nav" aria-label="Các mảng chính của website chủ"><a href="tin-tuc.html">Tin tức thị trường</a><a href="danh-sach-shop.html">Sàn bán hàng tồn kho</a><a href="index.html" class="active" aria-current="page">Sàn mẫu live · đang xem</a></nav><span class="crumb-here">Web con: <code>/mclivestream</code></span></div></div>
+<div class="topstrip"><div class="wrap"><span>Chuyên mục việc làm livestream thuộc <b>Ver2Solution</b> — Tư duy đúng, giá trị thật.</span><span>Tư vấn: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></span></div></div>
+<header class="site"><div class="wrap header-in"><a class="brandlock" href="index.html" aria-label="Ver2Solution — MC Livestream"><span class="wordmark">ver<span class="logo2 lg">2</span>solution.com</span><span class="sub">MC Livestream</span></a><button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main" id="mainNav"><a href="danh-sach-shop.html">Dành cho Shop</a><a href="danh-sach-mau.html" class="active" aria-current="page">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav><div class="header-cta"><a class="btn btn-brand" href="index.html#dang-nhap-mau">Đăng nhập mẫu</a><a class="btn btn-ghost" href="index.html#dang-nhap-mau">Tạo hồ sơ MC</a><a class="btn btn-live" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></div></header><section class="page-head"><div class="wrap"><div class="news-top-label"><span class="live-dot"></span> VIỆC ĐANG TUYỂN · TRANG MẪU TÌM VIỆC</div><h1>Việc đang tuyển — Trang mẫu tìm việc: 20 hồ sơ thật</h1><p class="sec-sub">Bản màu và giao diện nguyên bản. Sắp xếp theo lượt xem và bình luận, hồ sơ nhiều lượt xem và bình luận nhất lên đầu. Lương không ghi trong bài gốc ghi là Thỏa thuận; thông tin không lấy được ghi Chưa cập nhật; mỗi thẻ gắn nhãn CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB và có nút Yêu cầu gỡ hồ sơ.</p></div></section><p class="notice" style="background:#e4f0ec;border:1px solid #0d5c4d;border-radius:10px;padding:10px 12px">Quy tắc bộ lọc tỉnh: ưu tiên khu vực mẫu muốn làm việc trong bài; nếu bài không ghi mà tên nhóm nguồn có tên tỉnh thành thì dùng tên đó — TH-10 gán TP. Hồ Chí Minh theo nhóm “Tại Sài Gòn”, TH-14 gán Hà Nội theo nhóm “Tại Hà Nội” (cả hai đều cần xác nhận lại với mẫu, vì bài gốc không ghi rõ tỉnh). TH-02, TH-06, TH-07, TH-18 vẫn ở Toàn quốc vì cả bài và tên nhóm đều không có địa điểm làm việc.</p>
 
-<p><a href="index.html">← Quay lại trang chủ</a></p>
-<h1>Việc đang tuyển — Trang mẫu tìm việc: 20 hồ sơ thật</h1>
+
+
+
+
+<h2>Việc đang tuyển — Trang mẫu tìm việc: 20 hồ sơ thật</h2>
 <p class="note"><b>Cách sắp xếp:</b> theo lượt xem và bình luận, hồ sơ nhiều lượt xem và bình luận nhất lên đầu. Hiện tại các hồ sơ thật chưa có số lượt xem/bình luận đã kiểm chứng nên đều là 0 và giữ thứ tự gốc TH-01 đến TH-20; khi có số liệu thật, thứ tự sẽ tự đổi. Lương không ghi trong bài gốc ghi là Thỏa thuận; thông tin không lấy được ghi Chưa cập nhật; mỗi thẻ gắn nhãn CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB và có nút Yêu cầu gỡ hồ sơ. Click vào một mẫu sẽ mở trang mới hiển thị toàn bộ thông tin mẫu đó.</p>
 <section aria-label="Bộ lọc và sắp xếp Việc đang tuyển"><h2>Bộ lọc và sắp xếp — Việc đang tuyển</h2>
 <p>Shop chọn đủ <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong> rồi ấn Áp dụng lọc mẫu. Sắp xếp mặc định theo lượt xem, rồi bình luận; hồ sơ nhiều lượt xem và bình luận nhất lên đầu.</p>
@@ -56,7 +94,7 @@ section.block{padding:52px 0}
 <label>Sắp xếp <select id="sortM"><option value="views">Lượt xem, rồi bình luận (mặc định)</option><option value="comments">Bình luận nhiều nhất</option></select></label>
 <button type="button" id="applyBtn">Áp dụng lọc mẫu</button> <button type="button" id="resetBtn">Đặt lại toàn bộ</button></p>
 <p class="note">Giới tính chỉ gán Nam hoặc Nữ khi bài gốc ghi rõ giới tính; các hồ sơ còn lại ghi “Chưa cập nhật”, không suy đoán từ tên, ảnh hay ngành hàng. Hiện chỉ TH-10 ghi rõ “nam” trong bài gốc.</p>
-<p id="filterWarn" style="display:none;color:#b00020;font-weight:700">Vui lòng chọn đủ cả Tỉnh / Thành phố và Lĩnh vực trước khi áp dụng lọc.</p><p id="emptyMsg" style="display:none;color:#b00020;font-weight:700"></p><p>Bộ lọc Tỉnh v8: đủ 34 tỉnh thành (6 thành phố trực thuộc trung ương + 28 tỉnh) + Toàn quốc / Live online. Nếu chọn tỉnh chưa có hồ sơ thật nào, trang hiển thị rõ là chưa có hồ sơ ở tỉnh đó và không bịa hồ sơ.</p></section>
+<p id="filterWarn" style="display:none;color:#b00020;font-weight:700">Vui lòng chọn đủ cả Tỉnh / Thành phố và Lĩnh vực trước khi áp dụng lọc.</p><p id="emptyMsg" style="display:none;color:#b00020;font-weight:700"></p><p>Bộ lọc Tỉnh — bản màu và giao diện nguyên bản: đủ 34 tỉnh thành (6 thành phố trực thuộc trung ương + 28 tỉnh) + Toàn quốc / Live online. Nếu chọn tỉnh chưa có hồ sơ thật nào, trang hiển thị rõ là chưa có hồ sơ ở tỉnh đó và không bịa hồ sơ.</p></section>
 <section aria-label="2 mẫu nổi bật đầu trang"><h2>⭐ 2 mẫu nổi bật đầu trang</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
 <div style="border:1px solid var(--line);background:var(--surface);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow-sm)"><p><strong>TOP 1 — TH-01</strong></p><p>📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành · Hình thức: livestream · Lương mong muốn: Thỏa thuận · Trạng thái: Đang tìm việc</p><p><a href="ho-so.html?id=th-01" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a></p></div>
@@ -478,4 +516,4 @@ section.block{padding:52px 0}
   });
   apply();
 })();</script>
-</body></html>
+<script>document.getElementById('menuBtn')?.addEventListener('click',()=>{const n=document.getElementById('mainNav');const o=n.classList.toggle('open');document.getElementById('menuBtn').setAttribute('aria-expanded',o?'true':'false');});</script></body></html>
