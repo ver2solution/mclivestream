@@ -39,21 +39,24 @@
 <p class="note"><b>Cách sắp xếp:</b> theo lượt xem và bình luận, hồ sơ nhiều lượt xem và bình luận nhất lên đầu. Hiện tại các hồ sơ thật chưa có số lượt xem/bình luận đã kiểm chứng nên đều là 0 và giữ thứ tự gốc TH-01 đến TH-20; khi có số liệu thật, thứ tự sẽ tự đổi. Lương không ghi trong bài gốc ghi là Thỏa thuận; thông tin không lấy được ghi Chưa cập nhật; mỗi thẻ gắn nhãn CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB và có nút Yêu cầu gỡ hồ sơ. Click vào một mẫu sẽ mở trang mới hiển thị toàn bộ thông tin mẫu đó.</p>
 <section aria-label="Bộ lọc và sắp xếp Việc đang tuyển"><h2>Bộ lọc và sắp xếp — Việc đang tuyển</h2>
 <p>Shop chọn đủ <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong> rồi ấn Áp dụng lọc mẫu. Sắp xếp mặc định theo lượt xem, rồi bình luận; hồ sơ nhiều lượt xem và bình luận nhất lên đầu.</p>
-<p><label>1 · Tỉnh / Thành phố * — Bắt buộc <select id="prov"><option value="">— Chọn tỉnh —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option></select></label>
+<p><label>1 · Tỉnh / Thành phố * — Bắt buộc <select id="prov"><option value="">— Chọn tỉnh —</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc / Live online</option></select></label>
 <label>2 · Lĩnh vực * — Bắt buộc <select id="cat"><option value="">— Chọn lĩnh vực —</option><option>Chung / Đa ngành</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Thời trang</option></select></label>
+<label>Giới tính <select id="gender"><option value="">Tất cả</option><option>Nam</option><option>Nữ</option></select></label>
 <label>Sắp xếp <select id="sortM"><option value="views">Lượt xem, rồi bình luận (mặc định)</option><option value="comments">Bình luận nhiều nhất</option></select></label>
 <button type="button" id="applyBtn">Áp dụng lọc mẫu</button> <button type="button" id="resetBtn">Đặt lại toàn bộ</button></p>
-<p id="filterWarn" style="display:none;color:#b00020;font-weight:700">Vui lòng chọn đủ cả Tỉnh / Thành phố và Lĩnh vực trước khi áp dụng lọc.</p></section>
+<p class="note">Giới tính chỉ gán Nam hoặc Nữ khi bài gốc ghi rõ giới tính; các hồ sơ còn lại ghi “Chưa cập nhật”, không suy đoán từ tên, ảnh hay ngành hàng. Hiện chỉ TH-10 ghi rõ “nam” trong bài gốc.</p>
+<p id="filterWarn" style="display:none;color:#b00020;font-weight:700">Vui lòng chọn đủ cả Tỉnh / Thành phố và Lĩnh vực trước khi áp dụng lọc.</p><p id="emptyMsg" style="display:none;color:#b00020;font-weight:700"></p><p>Bộ lọc Tỉnh v8: đủ 34 tỉnh thành (6 thành phố trực thuộc trung ương + 28 tỉnh) + Toàn quốc / Live online. Nếu chọn tỉnh chưa có hồ sơ thật nào, trang hiển thị rõ là chưa có hồ sơ ở tỉnh đó và không bịa hồ sơ.</p></section>
 <section aria-label="2 mẫu nổi bật đầu trang"><h2>⭐ 2 mẫu nổi bật đầu trang — như giao diện game</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
 <div style="border:2px solid #222;padding:16px"><p><strong>TOP 1 — TH-01</strong></p><p>Khung ảnh toàn thân: CHƯA CÓ ẢNH TOÀN THÂN — Ảnh sẽ do mẫu tự tải lên.</p><p>📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành · Hình thức: livestream · Lương mong muốn: Thỏa thuận · Trạng thái: Đang tìm việc</p><p><a href="ho-so.html?id=th-01" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a></p></div>
 <div style="border:2px solid #222;padding:16px"><p><strong>TOP 2 — TH-02</strong></p><p>Khung ảnh toàn thân: CHƯA CÓ ẢNH TOÀN THÂN — Ảnh sẽ do mẫu tự tải lên.</p><p>📍 Toàn quốc / Live online · Giỏi live nhất: Gia dụng · Hình thức: host livestream, part-time / theo ca · Lương mong muốn: Thỏa thuận · Trạng thái: Đang tìm việc</p><p><a href="ho-so.html?id=th-02" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a></p></div>
 </div><p>2 ô lớn trên là 2 mẫu đầu tiên (TH-01, TH-02); khi có số lượt xem và bình luận thật, thứ tự sẽ đổi theo sắp xếp đã chọn.</p></section>
 <div class="th-grid">
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-01">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-01">
       <div class="th-top"><span class="th-code">TH-01</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live bán hàng, người mới</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream</span><span class="tag alt">Live bán hàng</span></div>
       <p><b>Kinh nghiệm:</b> Người mới, hoạt bát, học hỏi nhanh.</p>
@@ -68,10 +71,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/1490259981922483/permalink/2214441499504324/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-11-03</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Gia dụng" id="th-02">
+<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Gia dụng" data-gender="Chưa cập nhật" id="th-02">
       <div class="th-top"><span class="th-code">TH-02</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Host livestream part-time / theo ca</h3>
       <p class="th-meta">📍 Toàn quốc / Live online — Thỏa thuận địa điểm (bài gốc không ghi rõ tỉnh) · Giỏi live nhất: Gia dụng</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: host livestream, part-time / theo ca</span><span class="tag alt">Gia dụng</span><span class="tag alt">Thực phẩm</span></div>
       <p><b>Kinh nghiệm:</b> 3 tháng livestream bán hàng.</p>
@@ -86,10 +90,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/1490259981922483/permalink/2210083783273429/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-10-30</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-03">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-03">
       <div class="th-top"><span class="th-code">TH-03</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Host live — Thủ Đức</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream cố định, full tuần</span><span class="tag alt">Host live</span></div>
       <p><b>Kinh nghiệm:</b> 2 năm. Tên ghi trong bài: Kiều Nguyễn.</p>
@@ -104,10 +109,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/1490259981922483/permalink/2119153999033075/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-07-24</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Thời trang" id="th-04">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-04">
       <div class="th-top"><span class="th-code">TH-04</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live part-time — Gò Vấp, Quận 12</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream part-time</span><span class="tag alt">Quần áo</span><span class="tag alt">Thực phẩm</span><span class="tag alt">Sản phẩm</span></div>
       <p><b>Kinh nghiệm:</b> Chưa cập nhật số tháng cụ thể.</p>
@@ -122,10 +128,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/1018764843295910/permalink/1709354917570229/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-10-23</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-05">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-05">
       <div class="th-top"><span class="th-code">TH-05</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live và trợ live — Bình Thạnh</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: live và trợ live, full-time hoặc part-time</span><span class="tag alt">Live</span><span class="tag alt">Trợ live</span></div>
       <p><b>Kinh nghiệm:</b> Chưa cập nhật.</p>
@@ -140,10 +147,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/1018764843295910/permalink/1649796980192690/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-08-19</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" id="th-06">
+<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-06">
       <div class="th-top"><span class="th-code">TH-06</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Mẫu ảnh mới</h3>
       <p class="th-meta">📍 Toàn quốc / Live online — Thỏa thuận địa điểm (bài gốc không ghi rõ tỉnh) · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: mẫu ảnh</span><span class="tag alt">Thời trang</span><span class="tag alt">Lookbook</span><span class="tag alt">Concept chụp ảnh</span><span class="tag alt">Quảng cáo sản phẩm</span></div>
       <p><b>Kinh nghiệm:</b> Chưa có kinh nghiệm chuyên nghiệp, tự tin trước ống kính, phối hợp ekip, học pose dáng.</p>
@@ -158,10 +166,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/224376760569987/permalink/985559207785068/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-04-25</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" id="th-07">
+<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-07">
       <div class="th-top"><span class="th-code">TH-07</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Mẫu ảnh</h3>
       <p class="th-meta">📍 Toàn quốc / Live online — Thỏa thuận địa điểm (bài gốc không ghi rõ tỉnh) · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: mẫu ảnh, hợp tác lâu dài</span><span class="tag alt">Thời trang</span><span class="tag alt">Lookbook</span><span class="tag alt">Quảng cáo sản phẩm</span><span class="tag alt">Concept cho photo</span><span class="tag alt">Mẫu nail</span></div>
       <p><b>Kinh nghiệm:</b> Mẫu ảnh mới, biết makeup đơn giản, dáng thon dễ phối đồ.</p>
@@ -176,10 +185,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/224376760569987/permalink/940499302291059/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-03-02</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Gia dụng" id="th-08">
+<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Gia dụng" data-gender="Chưa cập nhật" id="th-08">
       <div class="th-top"><span class="th-code">TH-08</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Mẫu live — Cầu Giấy, Bắc Từ Liêm</h3>
       <p class="th-meta">📍 Hà Nội · Giỏi live nhất: Gia dụng</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream</span><span class="tag alt">Đồ gia dụng</span><span class="tag alt">Thời trang</span><span class="tag alt">Đồ mặc nhà</span></div>
       <p><b>Kinh nghiệm:</b> Hơn 1 năm, học kịch bản nhanh, hiểu chính sách nền tảng.</p>
@@ -194,10 +204,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/173192415749028/permalink/892703943797868/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-04-10</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-09">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-09">
       <div class="th-top"><span class="th-code">TH-09</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live tại nhà trên kênh shop</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, nhận sản phẩm live tại nhà trên kênh shop</span><span class="tag alt">Live tại nhà</span></div>
       <p><b>Kinh nghiệm:</b> Đã có kinh nghiệm live, giao tiếp tốt, hoạt ngôn, tương tác tốt.</p>
@@ -212,10 +223,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/593928429520087/permalink/748992390680356/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2024-03-09</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-10">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Nam" id="th-10">
       <div class="th-top"><span class="th-code">TH-10</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live / phụ live, nam</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh — Suy ra từ tên nhóm “Tại Sài Gòn”, bài gốc không ghi rõ tỉnh, cần xác nhận lại · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Nam</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, phụ live</span><span class="tag alt">Live</span><span class="tag alt">Phụ live</span></div>
       <p><b>Kinh nghiệm:</b> Chưa cập nhật. Điểm ghi trong bài: nam, giọng nói không ngọng, nhiều năng lượng.</p>
@@ -230,10 +242,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/593928429520087/permalink/1321158746797048/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-05-16</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-11">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-11">
       <div class="th-top"><span class="th-code">TH-11</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live, quay mẫu clip — Quận 1, Phú Nhuận, Bình Thạnh, Tân Bình</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, quay mẫu clip, không live idol, không full-time</span><span class="tag alt">Đa dạng sản phẩm, dịch vụ</span></div>
       <p><b>Kinh nghiệm:</b> 5 năm.</p>
@@ -248,10 +261,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/136266936145068/permalink/774093982362357/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2025-12-04</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" id="th-12">
+<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-12">
       <div class="th-top"><span class="th-code">TH-12</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live ca tối — Vân Canh, Hoài Đức</h3>
       <p class="th-meta">📍 Hà Nội · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream ca tối</span><span class="tag alt">Thời trang nam nữ</span><span class="tag alt">Mỹ phẩm</span><span class="tag alt">Giày dép</span><span class="tag alt">Gia dụng</span></div>
       <p><b>Kinh nghiệm:</b> Trên 1 năm live TikTok, Shopee, có video test live.</p>
@@ -266,10 +280,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/136266936145068/permalink/889318007506620/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-05-01</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" id="th-13">
+<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-13">
       <div class="th-top"><span class="th-code">TH-13</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live thời trang, ca ngày — Cầu Giấy</h3>
       <p class="th-meta">📍 Hà Nội · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, làm content, tìm lâu dài</span><span class="tag alt">Thời trang</span></div>
       <p><b>Kinh nghiệm:</b> Trên 1 năm live thời trang, năng lượng, nhiệt huyết.</p>
@@ -284,10 +299,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/101453323024054/permalink/817192814783431/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2026-04-28</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" id="th-14">
+<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-14">
       <div class="th-top"><span class="th-code">TH-14</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live thời trang, ca tối</h3>
       <p class="th-meta">📍 Hà Nội — Suy ra từ tên nhóm “Tại Hà Nội”, bài gốc không ghi rõ tỉnh, cần xác nhận lại · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, tìm job cố định</span><span class="tag alt">Thời trang</span><span class="tag alt">Đa nền tảng</span></div>
       <p><b>Kinh nghiệm:</b> 4 năm live thời trang đa nền tảng.</p>
@@ -302,10 +318,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/101453323024054/permalink/658426093993438/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2025-10-07</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-15">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-15">
       <div class="th-top"><span class="th-code">TH-15</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Livestream, reviewer</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, TikTok, reviewer, clip giả live</span><span class="tag alt">Tất cả sản phẩm, có cả sản phẩm trẻ em</span></div>
       <p><b>Kinh nghiệm:</b> 5 năm, giọng miền Nam. Tên ghi trong bài: HNgọc (ghi nguyên văn, có dấu không chuẩn trong bài gốc).</p>
@@ -320,10 +337,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/576293879131836/permalink/4313382758756244/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2021-08-13</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" id="th-16">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-16">
       <div class="th-top"><span class="th-code">TH-16</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Mẫu live, ưu tiên ca tối — Tân Bình và lân cận</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: mẫu live, ưu tiên lâu dài</span><span class="tag alt">Mẫu live</span></div>
       <p><b>Kinh nghiệm:</b> Đã có kinh nghiệm live, tự tin trước ống kính, hoạt ngôn, giọng dễ nghe, lưu loát.</p>
@@ -338,10 +356,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/576293879131836/permalink/6747171492044013/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2023-10-02</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Mỹ phẩm" id="th-17">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Mỹ phẩm" data-gender="Chưa cập nhật" id="th-17">
       <div class="th-top"><span class="th-code">TH-17</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live, vận hành live, lookbook</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Mỹ phẩm</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream, quay video + thoại lồng tiếng, chụp lookbook</span><span class="tag alt">Mỹ phẩm skincare</span><span class="tag alt">Makeup</span><span class="tag alt">Thời trang</span><span class="tag alt">Phụ kiện</span><span class="tag alt">Nước hoa</span><span class="tag alt">Túi xách</span></div>
       <p><b>Kinh nghiệm:</b> Live và vận hành live cho celeb/KOC/KOL, từng live cho nhiều brand ghi trong bài, làm chủ phiên live lớn nhỏ, hoạt ngôn, giọng bền.</p>
@@ -356,10 +375,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/576293879131836/permalink/6667029263391570/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2023-09-11</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" id="th-18">
+<article class="th-card" data-views="0" data-comments="0" data-province="Toàn quốc / Live online" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-18">
       <div class="th-top"><span class="th-code">TH-18</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live tại nhà, giả live, feedback</h3>
       <p class="th-meta">📍 Toàn quốc / Live online — Thỏa thuận địa điểm (bài gốc không ghi rõ tỉnh) · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: live tại nhà, giả live, feedback, MC live</span><span class="tag alt">Thời trang</span><span class="tag alt">Áo dài</span><span class="tag alt">Đồ công sở</span><span class="tag alt">Hot trend</span></div>
       <p><b>Kinh nghiệm:</b> 1 năm chuyên live, giả live, MC live.</p>
@@ -374,10 +394,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/576293879131836/permalink/7720950844666068/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2024-06-03</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Thời trang" id="th-19">
+<article class="th-card" data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-19">
       <div class="th-top"><span class="th-code">TH-19</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live, có góc live riêng</h3>
       <p class="th-meta">📍 TP. Hồ Chí Minh · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream trên kênh shop, live lâu dài</span><span class="tag alt">Thời trang</span><span class="tag alt">Nước hoa</span><span class="tag alt">Quay chụp feedback</span></div>
       <p><b>Kinh nghiệm:</b> Đã có kinh nghiệm live, giao tiếp, tương tác tốt, giọng to rõ, không ngọng, chịu khó học hỏi.</p>
@@ -392,10 +413,11 @@
       <p class="th-src">Nguồn bài gốc: <a href="https://facebook.com/groups/576293879131836/permalink/7031338710293955/" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: 2023-12-17</p>
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
-<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" id="th-20">
+<article class="th-card" data-views="0" data-comments="0" data-province="Hà Nội" data-cat="Thời trang" data-gender="Chưa cập nhật" id="th-20">
       <div class="th-top"><span class="th-code">TH-20</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live, ưu tiên thời trang nữ, túi — Thanh Xuân</h3>
       <p class="th-meta">📍 Hà Nội · Giỏi live nhất: Thời trang</p>
+      <p><b>Giới tính:</b> Chưa cập nhật</p>
       <p class="th-label">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ tự lấy từ bài đăng công khai, sẽ xóa khi có hồ sơ của người mới tự đăng ký thay thế.</p>
       <div class="tags"><span class="tag main">Hình thức: livestream</span><span class="tag alt">Đa dạng sản phẩm</span><span class="tag alt">Ưu tiên thời trang nữ, túi</span></div>
       <p><b>Kinh nghiệm:</b> Đã có chút kinh nghiệm live.</p>
@@ -416,12 +438,14 @@
   var all=Array.prototype.slice.call(grid.querySelectorAll('.th-card'));
   function apply(){
     var prov=document.getElementById('prov').value, cat=document.getElementById('cat').value, warn=document.getElementById('filterWarn');
+    var gender=document.getElementById('gender').value;
     if((prov||cat) && !(prov&&cat)){ warn.style.display='block'; return; }
     warn.style.display='none';
     var mode=document.getElementById('sortM').value;
     var items=all.filter(function(el){
       if(prov && el.getAttribute('data-province')!==prov) return false;
       if(cat && el.getAttribute('data-cat')!==cat) return false;
+      if(gender && el.getAttribute('data-gender')!==gender) return false;
       return true;
     });
     items.sort(function(a,b){
@@ -433,11 +457,12 @@
     });
     all.forEach(function(el){ el.style.display='none'; });
     items.forEach(function(el){ el.style.display=''; grid.appendChild(el); });
+    var em=document.getElementById('emptyMsg'); if(em){ if(!items.length && prov){ em.textContent='Chưa có hồ sơ ở '+prov+'. Hiện chưa có hồ sơ thật nào ở tỉnh/thành này — không bịa hồ sơ. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại toàn bộ.'; em.style.display='block'; } else { em.style.display='none'; } }
   }
   document.getElementById('applyBtn').addEventListener('click',apply);
   document.getElementById('sortM').addEventListener('change',apply);
   document.getElementById('resetBtn').addEventListener('click',function(){
-    document.getElementById('prov').value=''; document.getElementById('cat').value='';
+    document.getElementById('prov').value=''; document.getElementById('cat').value=''; document.getElementById('gender').value='';
     document.getElementById('filterWarn').style.display='none'; apply();
   });
   apply();
