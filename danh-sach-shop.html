@@ -4,32 +4,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tìm mẫu live — Danh sách các shop đang tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution</title>
-<style>
-body{margin:0;background:#f7f6f3;color:#182420;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+<style>:root{--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
+@media (prefers-color-scheme: dark){:root{--bg:#0f1412;--surface:#182019;--surface-2:#202a23;--ink:#edf3f0;--ink-2:#bfccc5;--muted:#8fa298;--line:#2b3a31;--line-strong:#3a4c41;--brand:#45b894;--brand-dark:#8fd4bd;--brand-soft:#1c2e27;--live:#ff5a4d;--live-dark:#ff7a6e;--amber:#f0b95e;--amber-soft:#33291a;--ok:#4cc084;--shadow-sm:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--shadow-md:0 2px 4px rgba(0,0,0,.35),0 12px 32px rgba(0,0,0,.4);--header-bg:rgba(15,20,18,.94)}}
+
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
 .wrap{max-width:960px;margin:0 auto;padding:24px}
-a{color:#0d5c4d}
-.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;background:#0d5c4d;padding:10px;border-radius:14px}
-.topmenu a{color:#ffffff;text-decoration:none;font-weight:700;padding:8px 14px;border:1px solid rgba(255,255,255,.45);border-radius:999px}
-.topmenu a.active,.topmenu a:hover{background:#083f34;border-color:#083f34;color:#fff}
-.hero{background:#ffffff;border:1px solid #e3ded2;border-radius:16px;padding:24px}
+a{color:var(--brand)}
+.topmenu{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;background:var(--header-bg);backdrop-filter:blur(12px);border:1px solid var(--line);padding:10px;border-radius:var(--r-md)}
+.topmenu a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border:1px solid transparent;border-radius:var(--r-sm)}
+.topmenu a:hover{background:var(--surface-2);color:var(--ink)}.topmenu a.active{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
 .hero h1{margin-top:0}
-.badge{display:inline-block;background:#e4f0ec;color:#083f34;font-weight:700;padding:4px 12px;border-radius:999px}
+.badge{display:inline-block;background:var(--brand-soft);color:var(--brand-dark);font-weight:700;padding:4px 12px;border-radius:999px}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
-.btn{display:inline-block;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px;border:1px solid #0d5c4d}
-.btn-primary{background:#0d5c4d;color:#fff}
-.btn-ghost{background:#fff;color:#0d5c4d}
-.card{background:#ffffff;border:1px solid #e3ded2;border-radius:16px;padding:20px;margin:16px 0}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px;border:1px solid var(--brand)}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:var(--surface);color:var(--brand)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.step{background:#f1efe9;border:1px solid #e3ded2;border-radius:12px;padding:16px}
-.step b{color:#0d5c4d}
-.notice{background:#fdf3e0;border:1px solid #d4cdbb;border-radius:12px;padding:16px}
+.step{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.step b{color:var(--brand)}
+.notice{background:var(--amber-soft);border:1px solid var(--line-strong);border-radius:12px;padding:16px}
 label{display:block;font-weight:600;margin-top:12px}
-input,select,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #d4cdbb;border-radius:10px;font:inherit;background:#fff}
+input,select,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid var(--line-strong);border-radius:10px;font:inherit;background:var(--surface)}
 button{cursor:pointer}
-.checks{border:1px solid #e3ded2;border-radius:10px;padding:12px;margin-top:12px}.checks legend{font-weight:700}.checks label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:4px 12px 4px 0}.checks label input{width:auto}.checks input[type=text]{width:100%}
+.checks{border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:12px}.checks legend{font-weight:700}.checks label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:4px 12px 4px 0}.checks label input{width:auto}.checks input[type=text]{width:100%}
 @media(max-width:700px){.steps{grid-template-columns:1fr}}
-h1{background:#0d5c4d;color:#ffffff;padding:12px 16px;border-radius:12px}main h2,section h2{background:#0d5c4d;color:#ffffff;padding:10px 14px;border-radius:10px}header a{color:#ffffff}header .tag{background:#083f34;color:#ffffff}</style>
-</head><body><div class="wrap">
+h1{font-size:clamp(30px,4.2vw,44px);line-height:1.16;font-weight:900;letter-spacing:-.02em;margin:18px 0 14px}h2{font-size:clamp(23px,3vw,29px);font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0 0 8px}header a{color:var(--brand)}header .tag{background:var(--brand-soft);color:var(--brand)}
+/* v10: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
+.topstrip{background:var(--brand-dark);color:#dcebe4;font-size:13px}
+.topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
+.topstrip b{color:#fff}
+@media (prefers-color-scheme: dark){.topstrip{color:#0e1a15}.topstrip b{color:#0e1a15}}
+header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
+.btn-live{background:var(--live);color:#fff}
+.btn-live:hover{background:var(--live-dark)}
+.btn-brand{background:var(--brand);color:#fff}
+.btn-brand:hover{background:var(--brand-dark)}
+@media (prefers-color-scheme: dark){.btn-brand,button,.btn-primary{color:#0b1512}}
+.btn-ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-white-o{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
+.btn-white-o:hover{background:rgba(255,255,255,.1)}
+.btn-sm{padding:8px 14px;font-size:13.5px;border-radius:var(--r-sm)}
+section.block{padding:52px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:24px;flex-wrap:wrap}
+.sec-sub{color:var(--ink-2);margin:0;max-width:66ch}
+.live-dot{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;background:var(--live)}
+.tag{font-size:12px;font-weight:600;background:var(--brand-soft);color:var(--brand);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.tag.alt{background:var(--surface-2);color:var(--ink-2)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;white-space:nowrap;line-height:1.4}
+.status .sd{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.status.seeking{background:#e5f4ec;color:#14663c;border:1px solid #bfe3cf}
+.status.employed{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line-strong)}
+@media (prefers-color-scheme: dark){.status.seeking{background:#173327;color:#6fd598;border-color:#2c5240}}
+.c2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+</head><body><div class="topstrip"><div class="wrap"><span>Sàn việc làm MC Livestream · <b>ver2solution.com/mclivestream</b></span><span>Shop tìm mẫu theo Tỉnh và Lĩnh vực bắt buộc</span></div></div><div class="wrap">
 <p class="brandhome"><a href="index.html">← ver2solution.com/mclivestream — Trang chủ</a></p>
 <nav class="topmenu" aria-label="Menu chính"><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav>
 
