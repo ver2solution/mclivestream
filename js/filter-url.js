@@ -1,11 +1,11 @@
-/* v18 — Module Filter URL: trạng thái lọc tỉnh / lĩnh vực / giới tính /
- * sắp xếp được đưa vào URL để chia sẻ và quay lại không mất lọc.
- * Bài học từ CareerViet và Joboko: lọc không đưa vào URL thì sang trang
- * là mất, người dùng phải chọn lại từ đầu. Module này chỉ làm phần thuần
- * (parse / build) để test được bằng Node; phần trình duyệt chỉ đặt lại
- * select theo URL rồi bấm nút Áp dụng lọc có sẵn, không tự viết lại
- * logic lọc, và ghi lại URL khi shop bấm Áp dụng — phân trang vẫn về
- * trang 1 khi đổi lọc, đúng hành vi đã chốt ở v17.2.
+/* v19 — Module Filter URL: trạng thái lọc tỉnh / lĩnh vực / giới tính /
+ * sắp xếp + từ khóa tìm kiếm (q) + số trang (page) được đưa vào URL để
+ * chia sẻ và quay lại không mất lọc. V19 sửa điểm còn thiếu của v18:
+ * tham số page trước đây chưa nối vào URL nên chia sẻ link kèm số trang
+ * không được; nay page được parse/build cùng 5 khóa còn lại, và đổi lọc
+ * thì page về 1 (đúng hành vi đã chốt ở v17.2).
+ * Bài học từ CareerViet và timviec: lọc không đưa vào URL thì sang trang
+ * là mất, người dùng phải chọn lại từ đầu.
  * Tương thích trình duyệt (window.McFilterUrl) và Node (module.exports).
  */
 (function (root, factory) {
@@ -15,7 +15,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var KEYS = ['prov', 'cat', 'gender', 'sort'];
+  var KEYS = ['prov', 'cat', 'gender', 'sort', 'q', 'page'];
 
   function parseFilterParams(search) {
     var out = {};
