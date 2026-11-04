@@ -1,305 +1,224 @@
-<!DOCTYPE html><html lang="vi"><head>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tìm mẫu live — Danh sách các shop đang tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution</title>
-<style>:root{color-scheme:light;--bg:#f7f6f3;--surface:#ffffff;--surface-2:#f1efe9;--ink:#182420;--ink-2:#43534c;--muted:#6d7c75;--line:#e3ded2;--line-strong:#d4cdbb;--brand:#0d5c4d;--brand-dark:#083f34;--brand-soft:#e4f0ec;--live:#d92b1f;--live-dark:#b31b12;--amber:#b97a14;--amber-soft:#fdf3e0;--ok:#1c7c4d;--r-sm:8px;--r-md:12px;--r-lg:16px;--shadow-sm:0 1px 2px rgba(24,36,32,.05),0 4px 14px rgba(24,36,32,.05);--shadow-md:0 2px 4px rgba(24,36,32,.06),0 12px 32px rgba(24,36,32,.10);--header-h:64px;--header-bg:rgba(255,255,255,.94)}
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dành cho Shop — Tìm mẫu livestream, đăng tin tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution</title>
+<meta name="description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu. Xem hồ sơ không cần đăng nhập.">
+<link rel="canonical" href="https://ver2solution.github.io/mclivestream/danh-sach-shop.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ver2Solution">
+<meta property="og:title" content="Dành cho Shop — Sàn việc làm MC Livestream Ver2Solution">
+<meta property="og:description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu."><meta property="og:url" content="https://ver2solution.github.io/mclivestream/danh-sach-shop.html">
+<meta property="og:image" content="https://ver2solution.github.io/mclivestream/logo.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Dành cho Shop — Ver2Solution">
+<meta name="twitter:description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu."><meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/logo.png">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ver2Solution">
+<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
+<link rel="stylesheet" href="v20.css"></head><body>
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></header>
+<main class="wrap">
+<section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu live</h1><p>Shop tìm mẫu theo 2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực — chỉ gồm tỉnh và lĩnh vực hiện đang có hồ sơ trên thị trường. Xem hồ sơ có album ảnh và 1 video demo, tự liên hệ mẫu, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p></div></div>
+<div class="steps"><div class="step"><b>1</b><h3>Tìm mẫu</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lượt xem, bình luận, lương hoặc mới nhất để lọc nhanh đúng mẫu.</p></div>
+<div class="step"><b>2</b><h3>Xem hồ sơ và liên hệ</h3><p>Mở trang chi tiết của mẫu để xem toàn bộ thông tin: tỉnh, lĩnh vực, hình thức, kinh nghiệm, lịch, lương, album, video demo và liên hệ. Sau đó tự liên hệ mẫu qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
+<div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với mẫu về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang hồ sơ để đánh giá, không cần đăng nhập.</p></div></div>
+<div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a> <a class="btn btn-ghost" href="#dang-tin">Đăng tin tuyển mẫu ↓</a> <a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
+<p>20 hồ sơ thật hiện có trên trang mẫu tìm việc, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
 
+<section class="form-card" aria-labelledby="shops-title"><h2 id="shops-title">Danh sách các shop đang tuyển mẫu</h2>
+<p id="shopBackendStatus">Đang kiểm tra kết nối backend shop…</p>
+<div class="notice" id="approvedShopsEmpty"><p><strong>Hiện chưa liệt kê shop nào.</strong></p><p>Danh sách này sẽ hiển thị khi shop tự đăng tin tuyển mẫu và tin được duyệt. Trang này không tự tạo tên shop, địa chỉ hay tin tuyển chưa có thật.</p></div>
+<div id="approvedShopsList"></div>
+<h3>Tin tuyển mẫu đã duyệt</h3><p id="approvedJobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
+<p style="font-size:13px">Số điện thoại và email riêng của shop không hiện công khai; cần ứng tuyển thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> và ghi tên tin tuyển.</p></section>
 
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
-.wrap{max-width:960px;margin:0 auto;padding:24px}
-a{color:var(--brand)}
-
-
-
-.hero{padding:32px 0;border-bottom:1px solid var(--line);background:radial-gradient(620px 300px at 88% -60px, var(--brand-soft), transparent 70%), var(--bg)}
-.hero h1{margin-top:0}
-.badge{display:inline-block;background:var(--brand-soft);color:var(--brand-dark);font-weight:700;padding:4px 12px;border-radius:999px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
-.btn{display:inline-block;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px;border:1px solid var(--brand)}
-.btn-primary{background:var(--brand);color:#fff}
-.btn-ghost{background:var(--surface);color:var(--brand)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.step{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px}
-.step b{color:var(--brand)}
-.notice{background:var(--amber-soft);border:1px solid var(--line-strong);border-radius:12px;padding:16px}
-label{display:block;font-weight:600;margin-top:12px}
-input,select,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid var(--line-strong);border-radius:10px;font:inherit;background:var(--surface)}
-button{cursor:pointer}
-.checks{border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:12px}.checks legend{font-weight:700}.checks label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:4px 12px 4px 0}.checks label input{width:auto}.checks input[type=text]{width:100%}
-@media(max-width:700px){.steps{grid-template-columns:1fr}}
-h1{font-size:clamp(30px,4.2vw,44px);line-height:1.16;font-weight:900;letter-spacing:-.02em;margin:18px 0 14px}h2{font-size:clamp(23px,3vw,29px);font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0 0 8px}header a{color:var(--brand)}header .tag{background:var(--brand-soft);color:var(--brand)}
-/* v12 — bản màu và giao diện nguyên bản: giao dien goc — topstrip, header trang mo, nut, the tom tat, trang thai */
-.topstrip{background:var(--brand-dark);color:#dcebe4;font-size:13px}
-.topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
-.topstrip b{color:#fff}
-
-header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
-.btn-live{background:var(--live);color:#fff}
-.btn-live:hover{background:var(--live-dark)}
-.btn-brand{background:var(--brand);color:#fff}
-.btn-brand:hover{background:var(--brand-dark)}
-
-.btn-ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
-.btn-ghost:hover{background:var(--surface-2)}
-.btn-white-o{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
-.btn-white-o:hover{background:rgba(255,255,255,.1)}
-.btn-sm{padding:8px 14px;font-size:13.5px;border-radius:var(--r-sm)}
-section.block{padding:52px 0}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:24px;flex-wrap:wrap}
-.sec-sub{color:var(--ink-2);margin:0;max-width:66ch}
-.live-dot{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;background:var(--live)}
-.tag{font-size:12px;font-weight:600;background:var(--brand-soft);color:var(--brand);padding:4px 9px;border-radius:999px;white-space:nowrap}
-.tag.alt{background:var(--surface-2);color:var(--ink-2)}
-.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;white-space:nowrap;line-height:1.4}
-.status .sd{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
-.status.seeking{background:#e5f4ec;color:#14663c;border:1px solid #bfe3cf}
-.status.employed{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line-strong)}
-
-.c2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-
-/* v12 — bản màu và giao diện nguyên bản: header compact gốc, ép chế độ sáng */
-html{color-scheme:light}
-.parentbar{background:#0c1210;color:#dfe9e4;font-size:13px}
-.parentbar-in{display:flex;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px}
-.parent-home{color:#dfe9e4;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-.parent-nav{display:flex;gap:2px;margin-left:auto}
-.parent-nav a{color:#dfe9e4;text-decoration:none;font-weight:600;font-size:13.5px;padding:6px 10px;border-radius:8px;white-space:nowrap}
-.parent-nav a.active{background:#1c2e27;color:#fff}
-.parent-tag{background:#1c2e27;color:#dcebe4;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:700}
-.crumb-here{color:#bfccc5;font-size:13px;white-space:nowrap}
-.crumb-here code{color:#dcebe4}
-.topstrip .wrap{display:flex;justify-content:space-between;gap:8px 20px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
-.topstrip b{color:#fff}
-.topstrip a{color:#ffd9d4;font-weight:700;text-decoration:none;white-space:nowrap}
-header.site{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.header-in{display:flex;align-items:center;gap:20px;height:var(--header-h)}
-.brandlock{display:flex;flex-direction:column;justify-content:center;text-decoration:none;color:var(--ink);flex:none;min-width:0}
-.brandlock .wordmark{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:4px;white-space:nowrap}
-.brandlock .sub{display:block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--live);margin-top:1px;white-space:nowrap}
-.wordmark-sm{font-weight:800;display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
-.logo2{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--live);color:#fff;font-weight:900;flex:none}
-.logo2.sm{width:19px;height:19px;font-size:11px}
-.logo2.lg{width:30px;height:30px;font-size:17px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
-nav.main{display:flex;gap:2px;margin-left:auto}
-nav.main a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 12px;border-radius:var(--r-sm);white-space:nowrap}
-nav.main a:hover{background:var(--surface-2);color:var(--ink)}
-nav.main a.active{background:var(--brand-soft);color:var(--brand)}
-.header-cta{display:flex;gap:8px;flex:none}
-.header-cta .btn{padding:9px 12px;font-size:13.5px}
-.menu-btn{display:none;margin-left:auto;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:9px 14px;font-weight:700;font-size:14px}
-.page-head{padding:48px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(620px 300px at 88% -60px, var(--brand-soft), transparent 70%), var(--bg)}
-.page-head h1{font-size:clamp(30px,4.2vw,44px);line-height:1.15;margin:0 0 10px;color:var(--ink)}
-.page-head .sec-sub{color:var(--ink-2);max-width:860px;margin:0}
-@media(max-width:1320px){.mc-grid{grid-template-columns:repeat(3,1fr)}nav.main{display:none}nav.main.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px 16px 16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md)}nav.main.open a{padding:11px 12px}.menu-btn{display:block}.header-cta .btn-ghost{display:none}.parent-nav{display:none}}
-@media(max-width:680px){.brandlock .wordmark{font-size:17.5px}.header-cta .btn{padding:9px 12px;font-size:13.5px}.topstrip .wrap{justify-content:center;text-align:center}.page-head{padding:30px 0 32px}}
-</style>
-<style>
-/* v14 — sửa mobile, chống chồng text / lệch khung */
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
-html,body{overflow-x:hidden}
-img{max-width:100%;height:auto}
-.header-cta .btn{margin:0}
-.pin{display:inline-block;background:#d92b1f;color:#fff;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
-.pinned-card{border:2px solid #0d5c4d;background:#e4f0ec;border-radius:14px;padding:16px;margin:0 0 16px}
-.pinned-card a{font-weight:800;text-decoration:none;font-size:18px;line-height:1.4}
-@media(max-width:680px){
-.wrap{padding:0 12px}
-.header-in{height:auto;min-height:64px;flex-wrap:wrap;gap:8px 12px;padding:10px 0}
-.brandlock{flex:1 1 auto}
-.menu-btn{margin-left:0}
-.header-cta{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:8px}
-.header-cta .btn{flex:1 1 auto;text-align:center;padding:10px 8px;font-size:13px}
-.parentbar-in{flex-wrap:wrap;gap:6px}
-.crumb-here{white-space:normal;overflow-wrap:anywhere}
-.topstrip .wrap{flex-direction:column;gap:4px;text-align:center}
-section.block{padding:28px 0}
-.page-head{padding:28px 0}
-h1{font-size:28px;line-height:1.25}
-.controls{grid-template-columns:1fr !important}
-.layout{grid-template-columns:1fr}
-.sec-head{flex-wrap:wrap}
-.mc-name{font-size:15px}
-main{padding:12px}
-table{display:block;overflow-x:auto;white-space:nowrap}
-}
-@media(max-width:560px){.mc-grid{grid-template-columns:1fr}}
-</style><style>.header-in{flex-wrap:wrap;height:auto;min-height:64px}nav.main{flex-wrap:wrap}.header-cta{flex-wrap:wrap}.parentbar-in{flex-wrap:wrap}</style><link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="logo.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Ver2Solution.com"><meta property="og:title" content="Tìm mẫu live — Danh sách các shop đang tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution"><meta property="og:image" content="https://ver2solution.github.io/mclivestream/logo.png"><meta property="og:image:alt" content="Ver2Solution"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tìm mẫu live — Danh sách các shop đang tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution"><meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/logo.png"></head><body><div class="parentbar"><div class="wrap parentbar-in"><a class="parent-home" href="index.html">← <span class="wordmark-sm">ver<span class="logo2 sm">2</span>solution.com</span> <span class="parent-tag">Website chủ</span></a><nav class="parent-nav" aria-label="Các mảng chính của website chủ"><a href="tin-tuc.html">Tin tức thị trường</a><a href="danh-sach-shop.html">Sàn bán hàng tồn kho</a><a href="index.html" class="active" aria-current="page">Sàn mẫu live · đang xem</a></nav><span class="crumb-here">Web con: <code>/mclivestream</code></span></div></div>
-<div class="topstrip"><div class="wrap"><span>Chuyên mục việc làm livestream thuộc <b>Ver2Solution</b> — Tư duy đúng, giá trị thật.</span><span>Tư vấn: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></span></div></div>
-<header class="site"><div class="wrap header-in"><a class="brandlock" href="index.html" aria-label="Ver2Solution — MC Livestream"><span class="wordmark">ver<span class="logo2 lg">2</span>solution.com</span><span class="sub">MC Livestream</span></a><button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main" id="mainNav"><a href="danh-sach-shop.html" class="active" aria-current="page">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a></nav><div class="header-cta"><a class="btn btn-live" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></div></header><section class="page-head"><div class="wrap"><div class="news-top-label"><span class="live-dot"></span> DÀNH CHO SHOP · TÌM MẪU LIVE</div><h1>Tìm mẫu live — Danh sách các shop đang tuyển mẫu</h1><p class="sec-sub">Bản màu và giao diện nguyên bản. Shop tìm mẫu theo <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong>, xem hồ sơ rồi tự liên hệ mẫu qua Zalo và tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p></div></section><div class="wrap">
-
-
-
-<section class="hero">
-<p class="badge">Trang dành cho chủ shop</p>
-<h2>Tìm mẫu live — Danh sách các shop đang tuyển mẫu</h2>
-<p>Shop tìm mẫu theo <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong> — chỉ gồm tỉnh và lĩnh vực hiện đang có hồ sơ trên thị trường. Xem hồ sơ có album ảnh và 1 video demo, tự liên hệ mẫu qua Zalo, và tự chốt lịch trực tiếp với mẫu.</p>
-<p><strong>Giai đoạn đầu, sàn không trung gian và không giữ tiền:</strong> shop tự liên hệ, tự trao đổi kịch bản, sản phẩm và giờ live, tự chốt job với mẫu. Hồ sơ nhiều lượt xem và bình luận nhất được đẩy lên đầu, để shop thấy ngay những mẫu đang được quan tâm nhất.</p>
-<div class="cta">
-<a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a>
-<a class="btn btn-ghost" href="#dang-tin">Đăng tin tuyển mẫu ↓</a>
-<a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a>
-</div>
-<p>20 hồ sơ thật hiện có trên trang mẫu tìm việc, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p>
-</section>
-
-<section class="card" aria-labelledby="steps-title">
-<h2 id="steps-title">Hướng dẫn 3 bước cho shop</h2>
-<div class="steps">
-<div class="step"><b>Bước 1 — Tìm mẫu</b><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực bắt buộc, rồi dùng thêm sắp xếp theo lượt xem, bình luận, lương hoặc mới nhất để lọc nhanh đúng mẫu.</p></div>
-<div class="step"><b>Bước 2 — Xem hồ sơ và liên hệ</b><p>Mở trang chi tiết của mẫu để xem toàn bộ thông tin: tỉnh, lĩnh vực, hình thức, kinh nghiệm, lịch, lương, album, video demo và liên hệ. Sau đó tự liên hệ mẫu qua Zalo hoặc qua bài gốc / inbox như thông tin trên thẻ ghi.</p></div>
-<div class="step"><b>Bước 3 — Chốt lịch</b><p>Tự trao đổi với mẫu về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang hồ sơ để đánh giá, không cần đăng nhập.</p></div>
-</div>
-</section>
-
-<section class="card" aria-labelledby="shops-title">
-<h2 id="shops-title">Danh sách các shop đang tuyển mẫu</h2>
-<div class="notice">
-<p><strong>Hiện chưa liệt kê shop nào.</strong></p>
-<p>Danh sách này sẽ hiển thị khi shop tự đăng tin tuyển mẫu và tin được duyệt. Trang này không tự tạo tên shop, địa chỉ hay tin tuyển chưa có thật.</p>
-</div>
-<p>Shop muốn tuyển mẫu có thể điền form đăng tin bên dưới. Khi có tin thật được duyệt, danh sách ở mục này sẽ được cập nhật.</p>
-</section>
-
-
-<section class="card" id="ho-so-shop" aria-labelledby="shop-profile-title">
-<h2 id="shop-profile-title">Hồ sơ shop</h2>
-<div class="notice">
-<p><strong>Lưu ý:</strong> Form dưới đây hiện tại chỉ là giao diện mô phỏng, chưa lưu thật, vì web hiện tại là web tĩnh, chưa có backend và chưa có tài khoản shop thật. Nhấn gửi chỉ hiển thị thông báo mô phỏng trên trang, không gửi dữ liệu đi đâu. Trang này không tự tạo dữ liệu shop thật nào.</p>
-</div>
+<section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
+<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> form này lưu vào bảng <code>shop_profiles</code> khi shop đã đăng nhập và đã chạy migration M2/M3 (<code>supabase-migration-shop-m2-m3.sql</code>) trên Supabase Dashboard. Nếu bảng chưa có, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
 <form id="shopProfileForm">
-<label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*" /></label>
-<label>Tên shop *<input name="shopName" required placeholder="Tên shop" /></label>
-<label>Địa chỉ<input name="address" placeholder="Địa chỉ shop" /></label>
-<label>Số điện thoại<input type="tel" name="phone" placeholder="Số điện thoại liên hệ của shop" /></label>
-<label>Email liên hệ<input type="email" name="email" placeholder="Email liên hệ của shop" /></label>
+<label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*"></label>
+<label>Tên shop *<input name="shopName" required placeholder="Tên shop"></label>
+<label>Địa chỉ<input name="address" placeholder="Địa chỉ shop"></label>
+<label>Số điện thoại<input type="tel" name="phone" placeholder="Số điện thoại liên hệ của shop"></label>
+<label>Email liên hệ<input type="email" name="email" placeholder="Email liên hệ của shop"></label>
 <label>Tỉnh / Thành phố shop ở đó *<select name="shopProvince" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác (ghi rõ ở mục địa chỉ)</option></select></label>
-<fieldset class="checks"><legend>Mặt hàng kinh doanh <span style="font-weight:400">(tích chọn nhiều)</span></legend>
-<label><input type="checkbox" name="businessItems" value="Thời trang" /> Thời trang</label>
-<label><input type="checkbox" name="businessItems" value="Mỹ phẩm" /> Mỹ phẩm</label>
-<label><input type="checkbox" name="businessItems" value="Mẹ và bé" /> Mẹ và bé</label>
-<label><input type="checkbox" name="businessItems" value="Gia dụng" /> Gia dụng</label>
-<label><input type="checkbox" name="businessItems" value="Thực phẩm" /> Thực phẩm</label>
-<label><input type="checkbox" name="businessItems" value="Điện tử" /> Điện tử</label>
-<label><input type="checkbox" name="businessItems" value="Phụ kiện" /> Phụ kiện</label>
-<label><input type="checkbox" name="businessItems" value="Thể thao" /> Thể thao</label>
-<label><input type="checkbox" name="businessItems" value="Khác" /> Khác</label>
-<input name="businessItemsOther" placeholder="Mặt hàng khác (tự điền, nếu chọn Khác)" />
+<fieldset><legend>Mặt hàng kinh doanh <span style="font-weight:400">(tích chọn nhiều)</span></legend>
+<label><input type="checkbox" name="businessItems" value="Thời trang"> Thời trang</label>
+<label><input type="checkbox" name="businessItems" value="Mỹ phẩm"> Mỹ phẩm</label>
+<label><input type="checkbox" name="businessItems" value="Mẹ và bé"> Mẹ và bé</label>
+<label><input type="checkbox" name="businessItems" value="Gia dụng"> Gia dụng</label>
+<label><input type="checkbox" name="businessItems" value="Thực phẩm"> Thực phẩm</label>
+<label><input type="checkbox" name="businessItems" value="Điện tử"> Điện tử</label>
+<label><input type="checkbox" name="businessItems" value="Phụ kiện"> Phụ kiện</label>
+<label><input type="checkbox" name="businessItems" value="Thể thao"> Thể thao</label>
+<label><input type="checkbox" name="businessItems" value="Khác"> Khác</label>
+<input name="businessItemsOther" placeholder="Mặt hàng khác (tự điền, nếu chọn Khác)">
 </fieldset>
-<fieldset class="checks"><legend>Cửa hàng có hoặc không *</legend>
-<label><input type="radio" name="hasStore" value="Có" required /> Có</label>
-<label><input type="radio" name="hasStore" value="Không" /> Không</label>
+<fieldset><legend>Cửa hàng có hoặc không *</legend>
+<label><input type="radio" name="hasStore" value="Có" required> Có</label>
+<label><input type="radio" name="hasStore" value="Không"> Không</label>
 </fieldset>
 <div id="storeDetails" hidden>
-<label>Số lượng cửa hàng<input type="number" name="storeCount" min="0" step="1" placeholder="Ví dụ: 2" /></label>
-<label>Địa chỉ các cửa hàng <span style="font-weight:400">(tự điền, mỗi cửa hàng một dòng)</span><textarea name="storeAddresses" rows="4" placeholder="Cửa hàng 1: địa chỉ…&#10;Cửa hàng 2: địa chỉ…"></textarea></label>
+<label>Số lượng cửa hàng<input type="number" name="storeCount" min="0" step="1" placeholder="Ví dụ: 2"></label>
+<label>Địa chỉ các cửa hàng <span style="font-weight:400">(tự điền, mỗi cửa hàng một dòng)</span><textarea name="storeAddresses" rows="4" placeholder="Cửa hàng 1: địa chỉ…"></textarea></label>
 </div>
-<label>Giờ lên livestream <span style="font-weight:400">(tự điền)</span><input name="liveHours" placeholder="Ví dụ: 20h–22h30, các ngày trong tuần" /></label>
-<fieldset class="checks"><legend>Các kênh livestream <span style="font-weight:400">(chọn nhiều và tự điền)</span></legend>
-<label><input type="checkbox" name="liveChannels" value="TikTok" /> TikTok</label>
-<label><input type="checkbox" name="liveChannels" value="Shopee" /> Shopee</label>
-<label><input type="checkbox" name="liveChannels" value="Facebook" /> Facebook</label>
-<label><input type="checkbox" name="liveChannels" value="Lazada" /> Lazada</label>
-<label><input type="checkbox" name="liveChannels" value="YouTube" /> YouTube</label>
-<label><input type="checkbox" name="liveChannels" value="Khác" /> Khác</label>
-<input name="liveChannelsOther" placeholder="Kênh khác (tự điền, nếu chọn Khác)" />
+<label>Giờ lên livestream <span style="font-weight:400">(tự điền)</span><input name="liveHours" placeholder="Ví dụ: 20h–22h30, các ngày trong tuần"></label>
+<fieldset><legend>Các kênh livestream <span style="font-weight:400">(chọn nhiều và tự điền)</span></legend>
+<label><input type="checkbox" name="liveChannels" value="TikTok"> TikTok</label>
+<label><input type="checkbox" name="liveChannels" value="Shopee"> Shopee</label>
+<label><input type="checkbox" name="liveChannels" value="Facebook"> Facebook</label>
+<label><input type="checkbox" name="liveChannels" value="Lazada"> Lazada</label>
+<label><input type="checkbox" name="liveChannels" value="YouTube"> YouTube</label>
+<label><input type="checkbox" name="liveChannels" value="Khác"> Khác</label>
+<input name="liveChannelsOther" placeholder="Kênh khác (tự điền, nếu chọn Khác)">
 </fieldset>
-<p><button class="btn btn-primary" type="submit">Lưu hồ sơ shop (mô phỏng)</button></p>
+<p><button class="btn btn-primary" type="submit">Lưu hồ sơ shop</button></p>
 <p id="shopProfileMsg" role="status"></p>
-</form>
-<script>
-(function(){
-  var radios = document.querySelectorAll('input[name="hasStore"]');
-  var details = document.getElementById('storeDetails');
-  function toggle(){ details.hidden = !(document.querySelector('input[name="hasStore"]:checked') && document.querySelector('input[name="hasStore"]:checked').value === 'Có'); }
-  radios.forEach(function(r){ r.addEventListener('change', toggle); });
-  toggle();
-  document.getElementById('shopProfileForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('shopProfileMsg').textContent = 'Đã ghi nhận hồ sơ shop mô phỏng trên trình duyệt của bạn. Hồ sơ chưa được lưu thật và chưa hiển thị trong danh sách shop, vì web tĩnh chưa có backend và chưa có tài khoản shop thật.';
-  });
-})();
-</script>
-</section>
+</form></section>
 
-<section class="card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản dùng chung hệ thống đăng nhập Supabase của sàn; phần hồ sơ shop và đăng tin lưu thật sẽ hoàn thiện tiếp sau, hiện form đăng tin bên dưới vẫn là mô phỏng.</p><h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><button class="btn btn-brand" type="submit">Đăng ký</button></form><h3>2. Đăng nhập</h3><form id="shopSignIn"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-brand" type="submit">Đăng nhập</button></form><h3>3. Quên mật khẩu</h3><form id="shopForgot"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form><p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section><section class="card" id="dang-tin" aria-labelledby="form-title">
-<h2 id="form-title">Đăng tin tuyển mẫu</h2>
-<div class="notice">
-<p><strong>Lưu ý:</strong> Form dưới đây hiện tại chỉ là giao diện mô phỏng, chưa lưu thật, vì web hiện tại là web tĩnh, chưa có backend và chưa có tài khoản shop thật. Nhấn gửi chỉ hiển thị thông báo mô phỏng trên trang, không gửi dữ liệu đi đâu.</p>
-</div>
+<section class="form-card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản dùng chung hệ thống đăng nhập Supabase của sàn; hồ sơ shop và đăng tin lưu thật qua Supabase (cần chạy migration M2/M3 trên Dashboard trước).</p>
+<h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit">Đăng ký</button></form>
+<h3>2. Đăng nhập</h3><form id="shopSignIn"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-primary" type="submit">Đăng nhập</button></form>
+<h3>3. Quên mật khẩu</h3><form id="shopForgot"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
+<p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
+
+<section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
+<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào bảng <code>shop_job_posts</code>, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm">
-<label>Tên shop / nhãn hàng<input name="shop" placeholder="Ví dụ: Shop thời trang …" /></label>
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option></select></label>
 <label>Lĩnh vực cần tuyển *<select name="field" required><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Chung / Đa ngành</option></select></label>
-<label>Hình thức live<input name="form" placeholder="Ví dụ: live chính, phụ live, quay short" /></label>
-<label>Lịch live<input name="schedule" placeholder="Ví dụ: ca tối 20h–22h30" /></label>
-<label>Lương / thù lao<input name="salary" placeholder="Ví dụ: Thỏa thuận, hoặc 120.000–150.000 đồng/giờ" /></label>
-<label>Liên hệ Zalo<input name="zalo" placeholder="Số điện thoại chính dùng Zalo của shop" /></label>
+<fieldset><legend>Các kênh livestream <span style="font-weight:400">(chọn nhiều)</span></legend>
+<label><input type="checkbox" name="jobChannels" value="TikTok"> TikTok</label>
+<label><input type="checkbox" name="jobChannels" value="Shopee"> Shopee</label>
+<label><input type="checkbox" name="jobChannels" value="Facebook"> Facebook</label>
+<label><input type="checkbox" name="jobChannels" value="Lazada"> Lazada</label>
+<label><input type="checkbox" name="jobChannels" value="YouTube"> YouTube</label>
+<input name="jobChannelsOther" placeholder="Kênh khác (tự điền)"></fieldset>
+<label>Lịch live<input name="schedule" placeholder="Ví dụ: ca tối 20h–22h30"></label>
+<label>Lương / thù lao<input name="salary" placeholder="Ví dụ: Thỏa thuận, hoặc 120.000–150.000 đồng/giờ"></label>
+<label>Liên hệ Zalo<input name="zalo" placeholder="Số điện thoại chính dùng Zalo của shop"></label>
 <label>Mô tả công việc<textarea name="desc" rows="4" placeholder="Sản phẩm, yêu cầu, địa điểm, thời gian hợp tác…"></textarea></label>
-<p><button class="btn btn-primary" type="submit">Gửi tin tuyển mẫu (mô phỏng)</button></p>
+<p><button class="btn btn-primary" type="submit">Gửi tin tuyển mẫu</button></p>
 <p id="jobMsg" role="status"></p>
-</form>
-<script>
-document.getElementById('jobForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  document.getElementById('jobMsg').textContent = 'Đã ghi nhận nội dung mô phỏng trên trình duyệt của bạn. Tin chưa được lưu thật và chưa hiển thị trong danh sách shop đang tuyển, vì web tĩnh chưa có backend và chưa có duyệt tin thật.';
-});
-</script>
-</section>
-
-<p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Sang trang Việc đang tuyển — mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
-</div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="mclivestream-supabase.js"></script>
-<script>document.getElementById('menuBtn')?.addEventListener('click',()=>{const n=document.getElementById('mainNav');const o=n.classList.toggle('open');document.getElementById('menuBtn').setAttribute('aria-expanded',o?'true':'false');});</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="mclivestream-supabase.js"></script>
-
-<script>(function(){function msg(t){var e=document.getElementById('shopAuthMsg');if(e)e.textContent=t}function api(){return window.McLivestreamAPI}var su=document.getElementById('shopSignUp');if(su)su.addEventListener('submit',async function(e){e.preventDefault();var p1=document.getElementById('shSuPass').value,p2=document.getElementById('shSuPass2').value;if(p1!==p2){msg('Mật khẩu nhập lại chưa khớp.');return}try{await api().signUp({email:document.getElementById('shSuEmail').value.trim(),password:p1,phoneZalo:document.getElementById('shSuPhone').value.trim()});msg('Đã gửi đăng ký. Nếu project bật xác nhận email, hãy kiểm tra email để xác nhận trước khi đăng nhập.')}catch(err){msg('Đăng ký chưa thành công: '+(err.message||err))}});var si=document.getElementById('shopSignIn');if(si)si.addEventListener('submit',async function(e){e.preventDefault();try{await api().signIn({email:document.getElementById('shSiEmail').value.trim(),password:document.getElementById('shSiPass').value});msg('Đăng nhập thành công.');showUser()}catch(err){msg('Đăng nhập chưa thành công: '+(err.message||err))}});var fp=document.getElementById('shopForgot');if(fp)fp.addEventListener('submit',async function(e){e.preventDefault();try{await api().resetPassword(document.getElementById('shFpEmail').value.trim());msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.')}catch(err){msg('Gửi link chưa thành công: '+(err.message||err))}});async function showUser(){try{var s=await api().getSession();var u=s&&s.user;var b=document.getElementById('shopAuthUserBox');if(u){b.style.display='';document.getElementById('shopAuthUserEmail').textContent=u.email}}catch(_){}}var so=document.getElementById('shopSignOut');if(so)so.addEventListener('click',async function(){await api().signOut();document.getElementById('shopAuthUserBox').style.display='none';msg('Đã đăng xuất.')});showUser();})();</script><style>
-.gopy-fab{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:90;background:#d92b1f;color:#fff;border:0;border-radius:50%;width:56px;height:56px;padding:0;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
-.gopy-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px}
-.gopy-overlay.open{display:flex}
-.gopy-box{background:#fff;border-radius:16px;padding:20px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
-.gopy-box label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
-.gopy-box input,.gopy-box select,.gopy-box textarea{width:100%;padding:10px;border:1px solid #d4cdbb;border-radius:9px;font-size:15px;font-family:inherit}
-.gopy-box textarea{min-height:110px}
-.gopy-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.gopy-actions button{flex:1;padding:11px;border-radius:9px;font-weight:800;cursor:pointer}
-.gopy-submit{background:#0d5c4d;color:#fff;border:0}.gopy-close{background:#f1efe9;color:#182420;border:1px solid #d4cdbb}
-</style>
-<button class="gopy-fab" type="button" aria-label="Góp ý" title="Góp ý" onclick="document.getElementById('gopyOverlay').classList.add('open')">💬</button>
-<div class="gopy-overlay" id="gopyOverlay" onclick="if(event.target===this)this.classList.remove('open')">
-<div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến">
-<h2 style="margin:0">Đóng góp ý kiến</h2>
-<p style="color:#43534c;font-size:14px">Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
-<form id="gopyForm">
-<label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
+</form></section>
+<p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Sang trang mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
+</main>
+<footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
+<p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p></div></footer>
+<button class="gopy-fab" id="gopyFab" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
+<p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
+<form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
 <label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
-<label>Đánh giá chung (không bắt buộc)<select name="gopyRating"><option value="">Chưa chọn</option><option value="5">5 sao — Rất tốt</option><option value="4">4 sao — Tốt</option><option value="3">3 sao — Tạm được</option><option value="2">2 sao — Chưa tốt</option><option value="1">1 sao — Rất chưa tốt</option></select></label>
-<label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối, hoặc nút gọi Zalo ngay trên thẻ mẫu…"></textarea></label>
-<p id="gopyMsg" style="font-size:14px;color:#43534c"></p>
-<div class="gopy-actions"><button class="gopy-submit" type="submit">Gửi góp ý</button><button class="gopy-close" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
-<p style="font-size:13px;color:#6d7c75">Góp ý gửi về hệ thống của Ver2Solution để tổng hợp, không hiển thị công khai tên bạn trên web. Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p>
-</form></div></div>
+<label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="mclivestream-supabase.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/data.js"></script><script src="js/app.js"></script>
 <script>
 (function(){
-var f=document.getElementById('gopyForm'); if(!f) return;
-f.addEventListener('submit', async function(e){
-e.preventDefault();
-var msg=document.getElementById('gopyMsg');
-var data={name:f.gopyName.value.trim(), kind:f.gopyKind.value, rating:f.gopyRating.value?Number(f.gopyRating.value):null, content:f.gopyContent.value.trim(), page:location.pathname};
-if(!data.content){ msg.textContent='Bạn nhập nội dung góp ý trước nhé.'; return; }
-msg.textContent='Đang gửi…';
-try{
-  var API=window.McLivestreamAPI;
-  if(API && API.submitFeedback){ await API.submitFeedback(data); msg.textContent='Cảm ơn bạn! Góp ý đã gửi về Ver2Solution để tổng hợp.'; f.reset(); }
-  else { var arr=JSON.parse(localStorage.getItem('mclivestream-feedback')||'[]'); arr.push(data); localStorage.setItem('mclivestream-feedback', JSON.stringify(arr)); msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn (web chưa kết nối cơ sở dữ liệu ở trang này), bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; f.reset(); }
-}catch(err){ msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; try{var a=JSON.parse(localStorage.getItem('mclivestream-feedback')||'[]'); a.push(data); localStorage.setItem('mclivestream-feedback', JSON.stringify(a));}catch(_){} }
-});
+  var radios=document.querySelectorAll('input[name="hasStore"]'); var details=document.getElementById('storeDetails');
+  function toggle(){ var c=document.querySelector('input[name="hasStore"]:checked'); details.hidden=!(c&&c.value==='Có'); }
+  radios.forEach(function(r){r.addEventListener('change',toggle);}); toggle();
+  function checked(form, name){
+    var out=[];
+    form.querySelectorAll('input[name="'+name+'"]:checked').forEach(function(c){out.push(c.value);});
+    return out;
+  }
+  function missingMsg(e){
+    if(window.McLivestreamAPI && McLivestreamAPI.isTableMissingError && McLivestreamAPI.isTableMissingError(e)){
+      return 'Chưa lưu được: bảng shop chưa có trên Supabase. Hãy chạy file supabase-migration-shop-m2-m3.sql (M2/M3) trên Supabase Dashboard → SQL Editor → Run, rồi gửi lại. Form này không giả vờ đã lưu khi bảng chưa có.';
+    }
+    return 'Chưa lưu được: '+(e.message||e);
+  }
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  async function loadApproved(){
+    var st=document.getElementById('shopBackendStatus');
+    if(!window.McLivestreamAPI){ st.textContent='Chưa kết nối Supabase nên chưa tải được danh sách shop và tin đã duyệt.'; document.getElementById('approvedJobsStatus').textContent='Chưa kết nối Supabase.'; return; }
+    try{
+      var shops=await McLivestreamAPI.fetchApprovedShops();
+      var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
+      st.textContent='Đã kết nối bảng shop thật (shop_profiles, shop_job_posts).';
+      var empty=document.getElementById('approvedShopsEmpty');
+      if(shops.length){ empty.style.display='none';
+        document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
+          return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ live: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
+        }).join('');
+      }
+      var js=document.getElementById('approvedJobsStatus');
+      if(jobs.length){ js.textContent='Đang hiện '+jobs.length+' tin đã duyệt.';
+        document.getElementById('approvedJobsList').innerHTML=jobs.map(function(j){
+          var shop=(j.shop_profiles&&j.shop_profiles.shop_name)||'Shop đã duyệt';
+          return '<article class="news-item"><h3 style="margin:0">'+esc(shop)+' — '+esc(j.field||'Chưa ghi lĩnh vực')+'</h3><p>Tỉnh: '+esc(j.province||'Chưa cập nhật')+' · Lịch: '+esc(j.schedule||'Chưa cập nhật')+' · Lương: '+esc(j.salary||'Thỏa thuận')+(j.channels&&j.channels.length?' · Kênh: '+esc(j.channels.join(', ')):'')+'</p>'+(j.description?('<p>'+esc(j.description)+'</p>'):'')+'</article>';
+        }).join('');
+      } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; }
+    }catch(e){
+      st.textContent=missingMsg(e);
+      document.getElementById('approvedJobsStatus').textContent=missingMsg(e);
+    }
+  }
+  loadApproved();
+  // Prefill hồ sơ shop của tài khoản đang đăng nhập (nếu có).
+  (async function(){
+    if(!window.McLivestreamAPI) return;
+    try{
+      var my=await McLivestreamAPI.fetchMyShopProfile();
+      if(!my) return;
+      var f=document.getElementById('shopProfileForm'); if(!f) return;
+      f.shopName.value=my.shop_name||''; f.address.value=my.address||''; f.phone.value=my.phone||''; f.email.value=my.email||'';
+      f.shopProvince.value=my.province||'';
+      f.liveHours.value=my.live_hours||''; f.storeCount.value=my.store_count||''; f.storeAddresses.value=my.store_addresses||'';
+    }catch(e){}
+  })();
+  document.getElementById('shopProfileForm').addEventListener('submit', async function(e){
+    e.preventDefault(); var f=e.target, msg=document.getElementById('shopProfileMsg'); msg.textContent='Đang lưu…';
+    try{
+      if(!window.McLivestreamAPI) throw new Error('Chưa kết nối Supabase.');
+      var items=checked(f,'businessItems'); var other=f.businessItemsOther.value.trim();
+      if(other && items.indexOf('Khác')!==-1) items.push(other);
+      var channels=checked(f,'liveChannels'); var chOther=f.liveChannelsOther.value.trim();
+      if(chOther && channels.indexOf('Khác')!==-1) channels.push(chOther);
+      var logoUrl=null, logoFile=f.logo.files[0];
+      if(logoFile){
+        try{ logoUrl=await McLivestreamAPI.uploadShopLogo(logoFile); }
+        catch(upErr){ msg.textContent='Tải logo chưa được ('+upErr.message+'), hồ sơ vẫn sẽ lưu mà không có logo mới. '; }
+      }
+      var data={ shop_name:f.shopName.value.trim(), address:f.address.value.trim()||null, phone:f.phone.value.trim()||null,
+        email:f.email.value.trim()||null, province:f.shopProvince.value, business_items:items,
+        has_store:(f.querySelector('input[name="hasStore"]:checked')||{}).value==='Có',
+        store_count:parseInt(f.storeCount.value,10)||0, store_addresses:f.storeAddresses.value.trim()||null,
+        live_hours:f.liveHours.value.trim()||null, live_channels:channels };
+      if(logoUrl) data.logo_url=logoUrl;
+      var saved=await McLivestreamAPI.saveMyShopProfile(data);
+      msg.textContent=(saved.moderation_status==='approved'?'Đã lưu hồ sơ shop. Hồ sơ vẫn hiện công khai theo trạng thái đã duyệt.':'Đã lưu hồ sơ shop. Hồ sơ mới ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt.');
+      loadApproved();
+    }catch(err){ msg.textContent=missingMsg(err); }
+  });
+  document.getElementById('jobForm').addEventListener('submit', async function(e){
+    e.preventDefault(); var f=e.target, msg=document.getElementById('jobMsg'); msg.textContent='Đang gửi…';
+    try{
+      if(!window.McLivestreamAPI) throw new Error('Chưa kết nối Supabase.');
+      var channels=checked(f,'jobChannels'); var chOther=f.jobChannelsOther.value.trim(); if(chOther) channels.push(chOther);
+      var saved=await McLivestreamAPI.submitJobPost({
+        province:f.province.value, field:f.field.value, schedule:f.schedule.value.trim()||null,
+        salary:f.salary.value.trim()||null, channels:channels,
+        description:f.desc.value.trim()||null, contact_zalo:f.zalo.value.trim()||null });
+      msg.textContent='Đã gửi tin tuyển mẫu. Tin ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt.';
+      loadApproved();
+    }catch(err){ msg.textContent=missingMsg(err); }
+  });
+  function msg(t){var e=document.getElementById('shopAuthMsg');if(e)e.textContent=t;}
+  function api(){return window.McLivestreamAPI;}
+  var su=document.getElementById('shopSignUp');
+  if(su)su.addEventListener('submit',async function(e){e.preventDefault();var p1=document.getElementById('shSuPass').value,p2=document.getElementById('shSuPass2').value;if(p1!==p2){msg('Mật khẩu nhập lại chưa khớp.');return;} if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().signUp({email:document.getElementById('shSuEmail').value.trim(),password:p1,phoneZalo:document.getElementById('shSuPhone').value.trim(),marketingOptIn:!!document.getElementById('shSuMarketing').checked});try{if(window.Ver2Wallet) await window.Ver2Wallet.saveMarketingConsent(!!document.getElementById('shSuMarketing').checked,'shop');}catch(_){}msg('Đã gửi đăng ký. Nếu project bật xác nhận email, hãy kiểm tra email để xác nhận trước khi đăng nhập.');}catch(err){msg('Đăng ký chưa thành công: '+(err.message||err));}});
+  var si=document.getElementById('shopSignIn');
+  if(si)si.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().signIn({email:document.getElementById('shSiEmail').value.trim(),password:document.getElementById('shSiPass').value});msg('Đăng nhập thành công.');showUser();}catch(err){msg('Đăng nhập chưa thành công: '+(err.message||err));}});
+  var fp=document.getElementById('shopForgot');
+  if(fp)fp.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().resetPassword(document.getElementById('shFpEmail').value.trim());msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.');}catch(err){msg('Gửi link chưa thành công: '+(err.message||err));}});
+  async function showUser(){try{var s=await api().getSession();var u=s&&s.user;var b=document.getElementById('shopAuthUserBox');if(u){b.style.display='';document.getElementById('shopAuthUserEmail').textContent=u.email;}}catch(_){}}
+  var so=document.getElementById('shopSignOut');
+  if(so)so.addEventListener('click',async function(){if(api())await api().signOut();document.getElementById('shopAuthUserBox').style.display='none';msg('Đã đăng xuất.');});
+  showUser();
 })();
 </script>
-
-</body></html>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>

@@ -54,10 +54,18 @@
 
   // ---------- Auth ----------
   async function signUp(opts) {
+    // Đồng ý marketing là ô tick RIÊNG, mặc định không tick sẵn (xem form đăng ký).
+    // Lưu vào user_metadata để còn dấu vết đồng ý ngay cả khi bảng
+    // marketing_consents (migration M4) chưa chạy; bảng M4 là nguồn chính
+    // để tách danh sách marketing, xem js/wallet.js saveMarketingConsent().
     var res = await client.auth.signUp({
       email: opts.email,
       password: opts.password,
-      options: { data: { phone_zalo: opts.phoneZalo || '' } }
+      options: { data: {
+        phone_zalo: opts.phoneZalo || '',
+        marketing_opt_in: !!opts.marketingOptIn,
+        marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution'
+      } }
     });
     if (res.error) throw res.error;
     return res.data;
@@ -219,6 +227,88 @@
     return publicUrl(path);
   }
 
+
+  // ---------- Hồ sơ shop và tin tuyển mẫu (M2/M3, lưu thật) ----------
+  // Yêu cầu đã chạy supabase-migration-shop-m2-m3.sql trên Dashboard.
+  // Nếu bảng chưa có, các hàm này ném lỗi chứa 42P01/PGRST205 — trang Shop
+  // bắt lỗi đó để báo "chưa chạy migration", KHÔNG giả vờ đã lưu.
+  function isTableMissingError(err) {
+    var m = String((err && (err.code || err.message)) || '');
+    return m.indexOf('42P01') !== -1 || m.indexOf('PGRST205') !== -1
+      || /does not exist|Could not find the table/i.test(m);
+  }
+
+  async function fetchApprovedShops() {
+    var res = await client.from('shop_profiles').select('*')
+      .eq('moderation_status', 'approved')
+      .order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+
+  async function fetchMyShopProfile() {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới xem được hồ sơ shop.');
+    var res = await client.from('shop_profiles').select('*')
+      .eq('auth_user_id', session.user.id).maybeSingle();
+    if (res.error) throw res.error;
+    return res.data || null;
+  }
+
+  async function saveMyShopProfile(data) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới lưu được hồ sơ shop.');
+    var clean = stripProtected(data);
+    clean.auth_user_id = session.user.id;
+    requireFields(clean, ['shop_name', 'province']);
+    var res = await client.from('shop_profiles')
+      .upsert(clean, { onConflict: 'auth_user_id' }).select().single();
+    if (res.error) throw res.error;
+    return res.data;
+  }
+
+  async function uploadShopLogo(file) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới tải logo lên được.');
+    if (!file) throw new Error('Cần 1 file logo.');
+    var path = 'shop/' + session.user.id + '/logo/' + Date.now() + '-' + file.name;
+    var up = await client.storage.from('profile-media').upload(path, file);
+    if (up.error) throw up.error;
+    return publicUrl(path);
+  }
+
+  async function fetchApprovedJobPosts() {
+    var res = await client.from('shop_job_posts')
+      .select('*, shop_profiles(shop_name, province)')
+      .eq('moderation_status', 'approved')
+      .order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+
+  async function fetchMyJobPosts() {
+    var shop = await fetchMyShopProfile();
+    if (!shop) return [];
+    var res = await client.from('shop_job_posts').select('*')
+      .eq('shop_id', shop.id).order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+
+  async function submitJobPost(data) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới đăng tin được.');
+    var shop = await fetchMyShopProfile();
+    if (!shop) throw new Error('Chưa có hồ sơ shop. Hãy lưu hồ sơ shop trước, rồi mới đăng tin.');
+    var clean = stripProtected(data);
+    clean.shop_id = shop.id;
+    clean.auth_user_id = session.user.id;
+    requireFields(clean, ['province', 'field']);
+    var res = await client.from('shop_job_posts').insert(clean).select().single();
+    if (res.error) throw res.error;
+    return res.data;
+  }
+
   window.McLivestreamAPI = {
     client: client,
     signUp: signUp, signIn: signIn, signOut: signOut, getSession: getSession,
@@ -227,6 +317,11 @@
     fetchMyProfile: fetchMyProfile, saveMyProfile: saveMyProfile,
     incrementView: incrementView,
     fetchApprovedReviews: fetchApprovedReviews, submitReview: submitReview, submitFeedback: submitFeedback,
-    uploadAlbumImages: uploadAlbumImages, uploadDemoVideo: uploadDemoVideo
+    uploadAlbumImages: uploadAlbumImages, uploadDemoVideo: uploadDemoVideo,
+    isTableMissingError: isTableMissingError,
+    fetchApprovedShops: fetchApprovedShops, fetchMyShopProfile: fetchMyShopProfile,
+    saveMyShopProfile: saveMyShopProfile, uploadShopLogo: uploadShopLogo,
+    fetchApprovedJobPosts: fetchApprovedJobPosts, fetchMyJobPosts: fetchMyJobPosts,
+    submitJobPost: submitJobPost
   };
 })();
