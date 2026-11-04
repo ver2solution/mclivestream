@@ -38,6 +38,12 @@
     var done = 0;
     Object.keys(PHOTOS).forEach(function (id) {
       var card = doc.getElementById(id);
+      if (!card && doc.querySelector) {
+        // v19: thẻ tĩnh trang mẫu không có id, chỉ có link ho-so.html?id=th-xx
+        // (bài học từ lỗi deploy v17.2: applyPhotos tìm theo id thì không bao giờ trúng).
+        var link = doc.querySelector('a[href*="id=' + id + '"]');
+        card = link ? link.closest('article') : null;
+      }
       if (!card) return;
       var box = card.querySelector('.th-photo, .mc-photo');
       if (!box || box.querySelector('img[data-real-photo]')) return;

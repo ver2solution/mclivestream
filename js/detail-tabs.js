@@ -32,13 +32,37 @@
     };
   }
 
+  /* Khôi phục #detail gốc khi hero/tab lỗi: bỏ thanh tab + panel và
+   * hiện lại nội dung gốc đã lưu trước khi ẩn. Đây là đường fallback
+   * của v19: trang không bao giờ được để trống chỉ vì tab/hero lỗi. */
+  function restoreDetail() {
+    if (typeof document === 'undefined') return false;
+    var detail = document.getElementById('detail');
+    if (!detail) return false;
+    var bar = document.getElementById('duoTabBar');
+    if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
+    var wrap = document.getElementById('duoPanels');
+    if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
+    if (detail.getAttribute('data-original-detail-html')) {
+      detail.innerHTML = detail.getAttribute('data-original-detail-html');
+    }
+    detail.style.display = '';
+    return !!detail.innerHTML.trim();
+  }
+
   /* Bản trình duyệt: quét <p> trong #detail rồi dựng tab, giữ đúng
-   * hành vi v16 (tab đầu active, panel đầu là toàn bộ nội dung Hồ sơ,
-   * ẩn phần detail gốc sau khi dựng tab). */
-  function buildTabs() {
+   * hành vi v16 (tab đầu active, panel đầu là toàn bộ nội dung Hồ sơ).
+   * v19: chỉ ẩn #detail gốc sau khi đã lưu bản gốc vào data attribute,
+   * và chỉ khi options.hideOriginal !== false. Trang gọi (ho-so.html)
+   * phải dựng hero TRƯỚC rồi mới gọi buildTabs, nên tab không bao giờ
+   * là nguyên nhân làm mất nội dung trước khi hero xong. */
+  function buildTabs(options) {
     if (typeof document === 'undefined') return false;
     var detail = document.getElementById('detail');
     if (!detail || !detail.innerHTML.trim() || document.getElementById('duoTabBar')) return false;
+    if (!detail.getAttribute('data-original-detail-html')) {
+      detail.setAttribute('data-original-detail-html', detail.innerHTML);
+    }
     var tmp = document.createElement('div');
     tmp.innerHTML = detail.innerHTML;
     var ps = Array.prototype.slice.call(tmp.querySelectorAll('p'));
@@ -68,9 +92,11 @@
     wrap.innerHTML = '<div class="duo-panel">' + panels['Hồ sơ'] + '</div>';
     detail.parentNode.insertBefore(bar, detail);
     detail.parentNode.insertBefore(wrap, detail);
-    detail.style.display = 'none';
+    if (!options || options.hideOriginal !== false) {
+      detail.style.display = 'none';
+    }
     return true;
   }
 
-  return { TAB_NAMES: TAB_NAMES, buildPanels: buildPanels, buildTabs: buildTabs };
+  return { TAB_NAMES: TAB_NAMES, buildPanels: buildPanels, buildTabs: buildTabs, restoreDetail: restoreDetail };
 });
