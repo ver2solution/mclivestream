@@ -627,7 +627,7 @@ render();
         myAlbumUrls = myProfile.album_images || []; myDemoUrl = myProfile.demo_video_url || '';
         var ex = document.getElementById('myMediaExisting');
         if(ex) ex.textContent = 'Đã lưu trước đó: ' + myAlbumUrls.length + ' ảnh, video demo: ' + (myDemoUrl ? 'đã có' : 'chưa có') + '. Chỉ tải lại file mới nếu muốn thay.';
-        if(st) st.textContent = 'Trạng thái hồ sơ: ' + (myProfile.moderation_status || 'pending') + ' — chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.';
+        if(st) st.textContent = 'Trạng thái hồ sơ: ' + (myProfile.moderation_status || 'pending') + ((myProfile.moderation_status === 'approved' && myProfile.consent_status === 'consented') ? ' — đã hiện công khai trên trang chủ.' : ' — chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.');
       } else if(st) st.textContent = 'Chưa có hồ sơ. Điền đủ các trường bắt buộc rồi bấm Lưu hồ sơ.';
     }catch(e){ setMsg(document.getElementById('myProfileMsg'), 'Không tải được hồ sơ của tôi: ' + (e && e.message ? e.message : e)); }
   }
@@ -691,7 +691,7 @@ render();
       data.album_images = albumUrls; data.demo_video_url = demoUrl;
       var saved = await API.saveMyProfile(data);
       myAlbumUrls = albumUrls; myDemoUrl = demoUrl;
-      setMsg(out, 'Đã lưu hồ sơ qua Supabase. Trạng thái: ' + (saved && saved.moderation_status ? saved.moderation_status : 'pending') + ' — hồ sơ chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.');
+      setMsg(out, 'Đã lưu hồ sơ qua Supabase. Trạng thái: ' + (saved && saved.moderation_status ? saved.moderation_status : 'pending') + ((saved && saved.moderation_status === 'approved' && saved.consent_status === 'consented') ? ' — hồ sơ đã hiện công khai trên trang chủ.' : ' — hồ sơ chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.'));
       loadMyProfile();
     }catch(e){ setMsg(out, 'Lưu hồ sơ chưa thành công: ' + (e && e.message ? e.message : e)); }
   });
