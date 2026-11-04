@@ -97,7 +97,37 @@ nav.main a.active{background:var(--brand-soft);color:var(--brand)}
 @media(max-width:1080px){.mc-grid{grid-template-columns:repeat(3,1fr)}nav.main{display:none}nav.main.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px 16px 16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md)}nav.main.open a{padding:11px 12px}.menu-btn{display:block}.header-cta .btn-ghost{display:none}.parent-nav{display:none}}
 @media(max-width:680px){.brandlock .wordmark{font-size:17.5px}.header-cta .btn{padding:9px 12px;font-size:13.5px}.topstrip .wrap{justify-content:center;text-align:center}.page-head{padding:30px 0 32px}}
 </style>
-</head><body><div class="parentbar"><div class="wrap parentbar-in"><a class="parent-home" href="index.html">← <span class="wordmark-sm">ver<span class="logo2 sm">2</span>solution.com</span> <span class="parent-tag">Website chủ</span></a><nav class="parent-nav" aria-label="Các mảng chính của website chủ"><a href="tin-tuc.html">Tin tức thị trường</a><a href="danh-sach-shop.html">Sàn bán hàng tồn kho</a><a href="index.html" class="active" aria-current="page">Sàn mẫu live · đang xem</a></nav><span class="crumb-here">Web con: <code>/mclivestream</code></span></div></div>
+<style>
+/* v14 — sửa mobile, chống chồng text / lệch khung */
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+.header-cta .btn{margin:0}
+.pin{display:inline-block;background:#d92b1f;color:#fff;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.pinned-card{border:2px solid #0d5c4d;background:#e4f0ec;border-radius:14px;padding:16px;margin:0 0 16px}
+.pinned-card a{font-weight:800;text-decoration:none;font-size:18px;line-height:1.4}
+@media(max-width:680px){
+.wrap{padding:0 12px}
+.header-in{height:auto;min-height:64px;flex-wrap:wrap;gap:8px 12px;padding:10px 0}
+.brandlock{flex:1 1 auto}
+.menu-btn{margin-left:0}
+.header-cta{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:8px}
+.header-cta .btn{flex:1 1 auto;text-align:center;padding:10px 8px;font-size:13px}
+.parentbar-in{flex-wrap:wrap;gap:6px}
+.crumb-here{white-space:normal;overflow-wrap:anywhere}
+.topstrip .wrap{flex-direction:column;gap:4px;text-align:center}
+section.block{padding:28px 0}
+.page-head{padding:28px 0}
+h1{font-size:28px;line-height:1.25}
+.controls{grid-template-columns:1fr !important}
+.layout{grid-template-columns:1fr}
+.sec-head{flex-wrap:wrap}
+.mc-name{font-size:15px}
+main{padding:12px}
+table{display:block;overflow-x:auto;white-space:nowrap}
+}
+@media(max-width:560px){.mc-grid{grid-template-columns:1fr}}
+</style></head><body><div class="parentbar"><div class="wrap parentbar-in"><a class="parent-home" href="index.html">← <span class="wordmark-sm">ver<span class="logo2 sm">2</span>solution.com</span> <span class="parent-tag">Website chủ</span></a><nav class="parent-nav" aria-label="Các mảng chính của website chủ"><a href="tin-tuc.html">Tin tức thị trường</a><a href="danh-sach-shop.html">Sàn bán hàng tồn kho</a><a href="index.html" class="active" aria-current="page">Sàn mẫu live · đang xem</a></nav><span class="crumb-here">Web con: <code>/mclivestream</code></span></div></div>
 <div class="topstrip"><div class="wrap"><span>Chuyên mục việc làm livestream thuộc <b>Ver2Solution</b> — Tư duy đúng, giá trị thật.</span><span>Tư vấn: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></span></div></div>
 <header class="site"><div class="wrap header-in"><a class="brandlock" href="index.html" aria-label="Ver2Solution — MC Livestream"><span class="wordmark">ver<span class="logo2 lg">2</span>solution.com</span><span class="sub">MC Livestream</span></a><button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main" id="mainNav"><a href="danh-sach-shop.html" class="active" aria-current="page">Dành cho Shop</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#cach-hoat-dong">Cách hoạt động</a><a href="index.html#lo-trinh">Lộ trình</a><a href="index.html#faq">Hỏi đáp</a><a href="index.html#dang-nhap-mau">Đăng nhập mẫu</a></nav><div class="header-cta"><a class="btn btn-brand" href="index.html#dang-nhap-mau">Đăng nhập mẫu</a><a class="btn btn-ghost" href="index.html#dang-nhap-mau">Tạo hồ sơ MC</a><a class="btn btn-live" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></div></header><section class="page-head"><div class="wrap"><div class="news-top-label"><span class="live-dot"></span> DÀNH CHO SHOP · TÌM MẪU LIVE</div><h1>Tìm mẫu live — Danh sách các shop đang tuyển mẫu</h1><p class="sec-sub">Bản màu và giao diện nguyên bản. Shop tìm mẫu theo <strong>2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực</strong>, xem hồ sơ rồi tự liên hệ mẫu qua Zalo và tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p></div></section><div class="wrap">
 
@@ -221,4 +251,55 @@ document.getElementById('jobForm').addEventListener('submit', function(e){
 </section>
 
 <p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Sang trang Việc đang tuyển — mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
-</div><script>document.getElementById('menuBtn')?.addEventListener('click',()=>{const n=document.getElementById('mainNav');const o=n.classList.toggle('open');document.getElementById('menuBtn').setAttribute('aria-expanded',o?'true':'false');});</script></body></html>
+</div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="mclivestream-supabase.js"></script>
+<script>document.getElementById('menuBtn')?.addEventListener('click',()=>{const n=document.getElementById('mainNav');const o=n.classList.toggle('open');document.getElementById('menuBtn').setAttribute('aria-expanded',o?'true':'false');});</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="mclivestream-supabase.js"></script>
+
+<style>
+.gopy-fab{position:fixed;right:16px;bottom:16px;z-index:90;background:#d92b1f;color:#fff;border:0;border-radius:999px;padding:13px 18px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.gopy-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;padding:16px}
+.gopy-overlay.open{display:flex}
+.gopy-box{background:#fff;border-radius:16px;padding:20px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.gopy-box label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+.gopy-box input,.gopy-box select,.gopy-box textarea{width:100%;padding:10px;border:1px solid #d4cdbb;border-radius:9px;font-size:15px;font-family:inherit}
+.gopy-box textarea{min-height:110px}
+.gopy-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.gopy-actions button{flex:1;padding:11px;border-radius:9px;font-weight:800;cursor:pointer}
+.gopy-submit{background:#0d5c4d;color:#fff;border:0}.gopy-close{background:#f1efe9;color:#182420;border:1px solid #d4cdbb}
+</style>
+<button class="gopy-fab" type="button" onclick="document.getElementById('gopyOverlay').classList.add('open')">💬 Góp ý</button>
+<div class="gopy-overlay" id="gopyOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="gopy-box" role="dialog" aria-label="Góp ý cho Ver2Solution">
+<h2 style="margin:0">Góp ý cho web sàn mẫu live</h2>
+<p style="color:#43534c;font-size:14px">Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
+<form id="gopyForm">
+<label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
+<label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
+<label>Đánh giá chung (không bắt buộc)<select name="gopyRating"><option value="">Chưa chọn</option><option value="5">5 sao — Rất tốt</option><option value="4">4 sao — Tốt</option><option value="3">3 sao — Tạm được</option><option value="2">2 sao — Chưa tốt</option><option value="1">1 sao — Rất chưa tốt</option></select></label>
+<label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối, hoặc nút gọi Zalo ngay trên thẻ mẫu…"></textarea></label>
+<p id="gopyMsg" style="font-size:14px;color:#43534c"></p>
+<div class="gopy-actions"><button class="gopy-submit" type="submit">Gửi góp ý</button><button class="gopy-close" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p style="font-size:13px;color:#6d7c75">Góp ý gửi về hệ thống của Ver2Solution để tổng hợp, không hiển thị công khai tên bạn trên web. Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p>
+</form></div></div>
+<script>
+(function(){
+var f=document.getElementById('gopyForm'); if(!f) return;
+f.addEventListener('submit', async function(e){
+e.preventDefault();
+var msg=document.getElementById('gopyMsg');
+var data={name:f.gopyName.value.trim(), kind:f.gopyKind.value, rating:f.gopyRating.value?Number(f.gopyRating.value):null, content:f.gopyContent.value.trim(), page:location.pathname};
+if(!data.content){ msg.textContent='Bạn nhập nội dung góp ý trước nhé.'; return; }
+msg.textContent='Đang gửi…';
+try{
+  var API=window.McLivestreamAPI;
+  if(API && API.submitFeedback){ await API.submitFeedback(data); msg.textContent='Cảm ơn bạn! Góp ý đã gửi về Ver2Solution để tổng hợp.'; f.reset(); }
+  else { var arr=JSON.parse(localStorage.getItem('mclivestream-feedback')||'[]'); arr.push(data); localStorage.setItem('mclivestream-feedback', JSON.stringify(arr)); msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn (web chưa kết nối cơ sở dữ liệu ở trang này), bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; f.reset(); }
+}catch(err){ msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; try{var a=JSON.parse(localStorage.getItem('mclivestream-feedback')||'[]'); a.push(data); localStorage.setItem('mclivestream-feedback', JSON.stringify(a));}catch(_){} }
+});
+})();
+</script>
+
+</body></html>
