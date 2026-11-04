@@ -523,7 +523,8 @@ let filtered = DATA.models.slice();
 function salaryLabel(m){return esc(m.salary)}
 function mcHTML(list){
   if(!list.length){ var pv=document.getElementById('prov')?document.getElementById('prov').value:''; if(pv) return '<p>Chưa có hồ sơ ở '+esc(pv)+'. Hiện chưa có hồ sơ thật nào ở tỉnh/thành này — không bịa hồ sơ. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại toàn bộ.</p>'; return '<p>Không có mẫu nào khớp bộ lọc. Hãy đặt lại bộ lọc.</p>'; }
-  return list.map(m=>`<article class="mc-card"><div class="mc-photo"><span>Ảnh minh hoạ tạm — chưa phải ảnh thật</span></div><div class="mc-body">
+  var shown = list.slice(0, 8);
+  var cards = shown.map(m=>`<article class="mc-card"><div class="mc-photo"><span class="mc-photo-note">Ảnh minh hoạ tạm — chưa phải ảnh thật</span></div><div class="mc-body">
     <span class="status ${m.status==='Đang tìm việc'?'seeking':'employed'}"><span class="sd"></span>${esc(m.status)}</span>
     <div class="mc-name"><span class="nm c2">${esc(m.name||m.title)} — ${esc(m.title)}</span></div>
     <div class="mc-meta"><span class="t1">📍 ${esc(m.province)} · ${esc(m.cat)}</span></div>
@@ -533,7 +534,10 @@ function mcHTML(list){
     <div class="mc-foot"><div class="mc-price"><b>${salaryLabel(m)}</b><span>Lương / thù lao ghi trong bài</span></div><a class="btn btn-brand btn-sm" href="ho-so.html?id=${esc(m.id)}" target="_blank" rel="noopener">Xem toàn bộ →</a></div>
     ${m.isSupabase ? '<p class="mc-warn">✓ Hồ sơ đã duyệt và đã đồng ý hiển thị qua Supabase.</p>' : '<p class="mc-warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a> · <a href="${esc(m.src)}" target="_blank" rel="noopener">Xem bài gốc</a></p>'}
   </div></article>`).join('');
+  var more = list.length > 8 ? '<p class="mc-more">Trang chủ chỉ hiện 2 hàng (8 hồ sơ) nổi bật nhất. <a href="danh-sach-mau.html">Xem tất cả '+list.length+' hồ sơ →</a></p>' : '';
+  return cards + more;
 }
+
 function modelHTML(list){
   if(!list.length){ var pv=document.getElementById('prov')?document.getElementById('prov').value:''; if(pv) return '<p>Chưa có hồ sơ ở '+esc(pv)+'. Hiện chưa có hồ sơ thật nào ở tỉnh/thành này — không bịa hồ sơ. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại toàn bộ.</p>'; return '<p>Không có mẫu nào khớp bộ lọc.</p>'; }
   return list.map(m=>`<div class="model-row"><h3>${esc(m.name||m.title)} — ${esc(m.title)}</h3>
