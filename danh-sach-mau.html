@@ -125,12 +125,7 @@ table{display:block;overflow-x:auto;white-space:nowrap}
 <button type="button" id="applyBtn">Áp dụng lọc mẫu</button> <button type="button" id="resetBtn">Đặt lại toàn bộ</button></p>
 <p class="note">Giới tính chỉ gán Nam hoặc Nữ khi bài gốc ghi rõ giới tính; các hồ sơ còn lại ghi “Chưa cập nhật”, không suy đoán từ tên, ảnh hay ngành hàng. Hiện chỉ Đoàn Vũ Tiến ghi rõ “nam” trong bài gốc.</p>
 <p id="filterWarn" style="display:none;color:#b00020;font-weight:700">Vui lòng chọn đủ cả Tỉnh / Thành phố và Lĩnh vực trước khi áp dụng lọc.</p><p id="emptyMsg" style="display:none;color:#b00020;font-weight:700"></p><p>Bộ lọc Tỉnh — bản màu và giao diện nguyên bản: đủ 34 tỉnh thành (6 thành phố trực thuộc trung ương + 28 tỉnh) + Toàn quốc / Live online. Nếu chọn tỉnh chưa có hồ sơ thật nào, trang hiển thị rõ là chưa có hồ sơ ở tỉnh đó và không bịa hồ sơ.</p></section>
-<section aria-label="2 mẫu nổi bật đầu trang"><h2>⭐ 2 mẫu nổi bật đầu trang</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-<div style="border:1px solid var(--line);background:var(--surface);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow-sm)"><p><strong>TOP 1 — Đình Tiển-HiFriendz</strong></p><p>📍 TP. Hồ Chí Minh · Giỏi live nhất: Chung / Đa ngành · Hình thức: livestream · Lương mong muốn: Thỏa thuận · Trạng thái: Đang tìm việc</p><p><a href="ho-so.html?id=th-01" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a></p></div>
-<div style="border:1px solid var(--line);background:var(--surface);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow-sm)"><p><strong>TOP 2 — G T MY Duyênn</strong></p><p>📍 Toàn quốc / Live online · Giỏi live nhất: Gia dụng · Hình thức: host livestream, part-time / theo ca · Lương mong muốn: Thỏa thuận · Trạng thái: Đang tìm việc</p><p><a href="ho-so.html?id=th-02" target="_blank" rel="noopener">Xem toàn bộ thông tin mẫu →</a></p></div>
-</div><p>2 mẫu trên là 2 mẫu đầu tiên (Đình Tiển-HiFriendz, G T MY Duyênn); khi có số lượt xem và bình luận thật, thứ tự sẽ đổi theo sắp xếp đã chọn.</p></section>
-<div class="th-grid">
+<p class="notice">Trang riêng này phân trang: mỗi trang tối đa 6 hồ sơ, phần còn lại sang các trang sau bằng nút chuyển trang bên dưới danh sách.</p><div class="th-grid">
 <article class="th-card"><div class="th-photo"><span>Ảnh minh hoạ tạm — chưa phải ảnh thật</span></div> data-views="0" data-comments="0" data-province="TP. Hồ Chí Minh" data-cat="Chung / Đa ngành" data-gender="Chưa cập nhật" id="th-01">
       <div class="th-top"><span class="th-code">Đình Tiển-HiFriendz</span><span class="status seeking"><span class="sd"></span>Đang tìm việc</span></div>
       <h3>Live bán hàng, người mới</h3>
@@ -552,9 +547,54 @@ table{display:block;overflow-x:auto;white-space:nowrap}
       <p><a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>
     </article>
 </div>
+<style>#thPager button{padding:8px 12px;border-radius:9px;border:1px solid #d4cdbb;background:#fff;font-weight:700;cursor:pointer}#thPager button:disabled{opacity:.45;cursor:default}</style>
+<nav id="thPager" aria-label="Chuyển trang hồ sơ" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:16px 0"><button id="thPagePrev" type="button">← Trang trước</button><span id="thPageNums" style="display:flex;gap:6px;flex-wrap:wrap"></span><button id="thPageNext" type="button">Trang sau →</button><span id="thPageInfo" style="font-weight:700"></span></nav>
 <script>(function(){
   var grid=document.querySelector('.th-grid');
   var all=Array.prototype.slice.call(grid.querySelectorAll('.th-card'));
+  // Phân trang trang riêng dành cho mẫu tìm việc: mỗi trang tối đa 6 hàng
+  // (thẻ trên trang này xếp dọc, 1 thẻ = 1 hàng). 20 hồ sơ = 4 trang: 6, 6, 6, 2.
+  var PAGE_SIZE = 6;
+  var currentPage = 1;
+  var filteredItems = all.slice();
+  function renderPage(){
+    var totalPages = Math.max(1, Math.ceil(filteredItems.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    all.forEach(function(el){ el.style.display='none'; });
+    var start = (currentPage - 1) * PAGE_SIZE;
+    var pageItems = filteredItems.slice(start, start + PAGE_SIZE);
+    pageItems.forEach(function(el){ el.style.display=''; grid.appendChild(el); });
+    var pager = document.getElementById('thPager');
+    var info = document.getElementById('thPageInfo');
+    if (info) {
+      info.textContent = filteredItems.length === 0
+        ? 'Chưa có hồ sơ khớp bộ lọc.'
+        : ('Trang ' + currentPage + ' / ' + totalPages + ' — đang hiện hồ sơ ' + (start + 1) + '–' + (start + pageItems.length) + ' trên tổng số ' + filteredItems.length + ' hồ sơ.');
+    }
+    if (pager) {
+      var prev = document.getElementById('thPagePrev');
+      var next = document.getElementById('thPageNext');
+      var nums = document.getElementById('thPageNums');
+      if (prev) prev.disabled = currentPage <= 1;
+      if (next) next.disabled = currentPage >= totalPages;
+      if (nums) {
+        nums.innerHTML = '';
+        for (var pg = 1; pg <= totalPages; pg++) {
+          (function(page){
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.textContent = page;
+            b.setAttribute('aria-label', 'Trang ' + page);
+            if (page === currentPage) { b.disabled = true; b.setAttribute('aria-current', 'page'); }
+            b.addEventListener('click', function(){ currentPage = page; renderPage(); grid.scrollIntoView(); });
+            nums.appendChild(b);
+          })(pg);
+        }
+      }
+      pager.style.display = filteredItems.length === 0 ? 'none' : '';
+    }
+  }
   function apply(){
     var prov=document.getElementById('prov').value, cat=document.getElementById('cat').value, warn=document.getElementById('filterWarn');
     var gender=document.getElementById('gender').value;
@@ -574,10 +614,15 @@ table{display:block;overflow-x:auto;white-space:nowrap}
       else { if(vb!==va) return vb-va; if(cb!==ca) return cb-ca; }
       return 0;
     });
-    all.forEach(function(el){ el.style.display='none'; });
-    items.forEach(function(el){ el.style.display=''; grid.appendChild(el); });
+    filteredItems = items;
+    currentPage = 1;
+    renderPage();
     var em=document.getElementById('emptyMsg'); if(em){ if(!items.length && prov){ em.textContent='Chưa có hồ sơ ở '+prov+'. Hiện chưa có hồ sơ thật nào ở tỉnh/thành này — không bịa hồ sơ. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại toàn bộ.'; em.style.display='block'; } else { em.style.display='none'; } }
   }
+  var prevBtn = document.getElementById('thPagePrev');
+  if (prevBtn) prevBtn.addEventListener('click', function(){ if (currentPage > 1) { currentPage--; renderPage(); grid.scrollIntoView(); } });
+  var nextBtn = document.getElementById('thPageNext');
+  if (nextBtn) nextBtn.addEventListener('click', function(){ var tp = Math.max(1, Math.ceil(filteredItems.length / PAGE_SIZE)); if (currentPage < tp) { currentPage++; renderPage(); grid.scrollIntoView(); } });
   document.getElementById('applyBtn').addEventListener('click',apply);
   document.getElementById('sortM').addEventListener('change',apply);
   document.getElementById('resetBtn').addEventListener('click',function(){
@@ -637,4 +682,5 @@ try{
 })();
 </script>
 
+<script src="js/photos.js"></script>
 </body></html>
