@@ -37,7 +37,7 @@
     if (!doc) return 0;
     var done = 0;
     Object.keys(PHOTOS).forEach(function (id) {
-      var card = doc.getElementById(id);
+      var card=doc.getElementById(id);if(!card){var a=doc.querySelector('a[href*="id='+id+'"]');if(a&&a.closest)card=a.closest('article');}
       if (!card) return;
       var box = card.querySelector('.th-photo, .mc-photo');
       if (!box || box.querySelector('img[data-real-photo]')) return;
