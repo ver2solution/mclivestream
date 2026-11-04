@@ -1,9 +1,10 @@
 /* v17 — Module Detail Tabs: dựng 5 tab trang chi tiết hồ sơ.
- * Nguồn: tách từ code inline của ho-so.html v16, giữ nguyên 5 tab và
- * nội dung từng tab. Hàm buildTabs nhận phần tử detail đã có nội dung
- * hồ sơ và tự dựng thanh tab + panel; không tự tải dữ liệu.
- * Tương thích trình duyệt (window.McDetailTabs) và Node (module.exports
- * chỉ export danh sách tab và hàm buildPanels thuần để test).
+ * Nguồn: tách từ code inline của ho-so.html v16, giữ nguyên 5 tab.
+ * v17.3: tab Hồ sơ rút gọn (chỉ mục chính, không tường chữ, không dòng
+ * "Liên hệ:" cũ), các tab còn lại giữ ngắn gọn. Hàm buildTabs nhận phần
+ * tử detail đã có nội dung hồ sơ và tự dựng thanh tab + panel; không
+ * tự tải dữ liệu. Tương thích trình duyệt (window.McDetailTabs) và Node
+ * (module.exports chỉ export danh sách tab và hàm buildPanels thuần).
  */
 (function (root, factory) {
   var api = factory();
@@ -20,7 +21,10 @@
   function buildPanels(detailHTML, pick) {
     pick = pick || function () { return '<p>Chưa cập nhật</p>'; };
     return {
-      'Hồ sơ': detailHTML,
+      // v17.3 — tab Hồ sơ rút gọn, không còn tường chữ: chỉ các mục chính,
+      // không lặp lại ảnh (hero đã có ảnh lớn), không lặp dòng "Liên hệ:"
+      // cũ và không lặp link chi tiết / link trang mẫu.
+      'Hồ sơ': pick(['CHƯA XÁC NHẬN', 'Kinh nghiệm', 'Lịch làm việc', 'Lương mong muốn', 'Doanh thu cao nhất', 'Học vấn', 'Chiều cao', 'Ghi chú']),
       'Dịch vụ live': pick(['Lĩnh vực', 'Hình thức', 'Kinh nghiệm', 'Doanh thu cao nhất']) + '<p>Giai đoạn 1: shop liên hệ trực tiếp với mẫu qua thông tin trong bài gốc hoặc qua Zalo của Ver2Solution. Không có thanh toán nội bộ, chat riêng hay donate trong bản này.</p>',
       'Lịch nhận đơn': pick(['Lịch làm việc', 'Lịch:']) + '<p>Lịch nhận đơn chi tiết theo ca: Chưa cập nhật. Lịch ghi trong bài gốc là lịch tại thời điểm bài đăng, cần xác nhận lại với mẫu trước khi chốt.</p>',
       'Đánh giá': '<p><b>Chưa có đánh giá.</b> Chưa có đánh giá nào đã kiểm chứng cho hồ sơ này, nên không hiển thị sao hay nhận xét bịa. Đánh giá mới gửi qua form trên web sẽ ở trạng thái chờ duyệt trước khi hiện công khai.</p>',

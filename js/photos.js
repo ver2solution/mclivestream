@@ -37,7 +37,7 @@
     if (!doc) return 0;
     var done = 0;
     Object.keys(PHOTOS).forEach(function (id) {
-      var card=doc.getElementById(id);if(!card){var a=doc.querySelector('a[href*="id='+id+'"]');if(a&&a.closest)card=a.closest('article');}
+      var card = doc.getElementById(id);
       if (!card) return;
       var box = card.querySelector('.th-photo, .mc-photo');
       if (!box || box.querySelector('img[data-real-photo]')) return;
@@ -46,6 +46,7 @@
       img.src = PHOTOS[id];
       img.alt = 'Ảnh thật từ bài gốc';
       img.loading = 'lazy';
+      img.decoding = 'async';
       img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
       box.insertBefore(img, box.firstChild);
       var note = box.querySelector('span');
