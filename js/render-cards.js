@@ -28,7 +28,10 @@
     }
     var shown = list.slice(0, limit || list.length);
     var cards = shown.map(function (m) {
-      return '<article class="mc-card duo-card"><div class="mc-photo"><span class="duo-dot ' + (m.status === 'Đang tìm việc' ? 'seeking' : 'employed') + '"><i></i>' + esc(m.status) + '</span><span class="duo-rating">Chưa có đánh giá</span><span class="mc-photo-note">' + (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật') + '</span></div><div class="mc-body">\n' +
+      var photoUrl = m.photoUrl || (typeof window !== 'undefined' && window.MC_PHOTOS ? window.MC_PHOTOS[m.id] : null);
+      var photoTag = photoUrl ? '<img src="' + esc(photoUrl) + '" alt="Ảnh thật từ bài gốc" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">' : '';
+      var photoNote = photoUrl ? 'Ảnh thật từ bài gốc' : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật');
+      return '<article class="mc-card duo-card"><div class="mc-photo">' + photoTag + '<span class="duo-dot ' + (m.status === 'Đang tìm việc' ? 'seeking' : 'employed') + '"><i></i>' + esc(m.status) + '</span><span class="duo-rating">Chưa có đánh giá</span><span class="mc-photo-note">' + photoNote + '</span></div><div class="mc-body">\n' +
         '    <div class="mc-name"><span class="nm c2">' + esc(m.name || m.title) + '</span></div>\n' +
         '    <div class="mc-meta"><span class="t1">📍 ' + esc(m.province) + ' · Giới tính: ' + esc(m.gender) + '</span></div>\n' +
         '    <p class="duo-intro">' + esc(m.title) + ' — ' + esc(m.exp) + '</p>\n' +
