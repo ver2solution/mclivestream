@@ -5,7 +5,7 @@
    links fell back to the original source URLs instead of the internal
    bai-viet pages. The CACHE name must be bumped on EVERY web deploy
    that changes data.js/app.js/v20.css. */
-const CACHE = 'v41-shell-1';
+const CACHE = 'v42-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
