@@ -82,10 +82,24 @@
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
 <div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào bảng <code>shop_job_posts</code>, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm">
-<label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option></select></label>
-<label>Lĩnh vực cần tuyển *<select name="field" required><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Chung / Đa ngành</option></select></label>
+<label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
+<label>Quận / huyện, địa điểm làm việc <span style="font-weight:400">(ví dụ: Cầu Giấy, Tây Mỗ, Bình Tân — tin tuyển thật luôn ghi quận/huyện)</span><input name="district" placeholder="Quận / huyện, địa điểm làm việc"></label>
+<label>Lĩnh vực cần tuyển *<select name="field" required><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Mỹ phẩm</option><option>Mẹ và bé</option><option>Gia dụng</option><option>Thực phẩm</option><option>Điện tử</option><option>Phụ kiện</option><option>Thể thao</option><option>Chung / Đa ngành</option><option>Khác</option></select></label>
+<label>Lĩnh vực khác <span style="font-weight:400">(tự điền, nếu chọn Khác — ví dụ: dược phẩm/wellness, chăm sóc tóc, giày dép)</span><input name="fieldOther" placeholder="Lĩnh vực khác"></label>
+<label>Mặt hàng cụ thể <span style="font-weight:400">(ví dụ: thời trang nữ, mỹ phẩm, gia dụng bếp)</span><input name="productDetail" placeholder="Mặt hàng cụ thể cần mẫu live"></label>
+<label>Số lượng cần tuyển<input type="number" name="quantity" min="1" step="1" value="1" placeholder="Ví dụ: 2"></label>
+<label>Hình thức làm việc<select name="workMode"><option value="">— Không yêu cầu cụ thể —</option><option>Tại shop / studio</option><option>Tại nhà mẫu</option><option>Live online</option><option>Linh hoạt (shop hoặc online)</option><option>Fulltime tại shop</option><option>Part-time</option></select></label>
+<label>Giới tính yêu cầu<select name="genderReq"><option value="">Không yêu cầu</option><option>Nữ</option><option>Nam</option></select></label>
+<label>Độ tuổi yêu cầu<input name="ageReq" placeholder="Ví dụ: 18–25, hoặc Không yêu cầu"></label>
+<label>Kinh nghiệm yêu cầu<select name="expReq"><option value="">Không yêu cầu</option><option>Dưới 3 tháng</option><option>3–6 tháng</option><option>6 tháng–1 năm</option><option>1–2 năm</option><option>Trên 2 năm</option></select></label>
+<label>Chiều cao / cân nặng / size quần áo yêu cầu <span style="font-weight:400">(tùy chọn — tin thật hay ghi, ví dụ: nữ cao 1m6, 47–53kg, size S–M)</span><input name="appearanceReq" placeholder="Chiều cao, cân nặng, size quần áo nếu có"></label>
+<label>Hoa hồng <span style="font-weight:400">(tùy chọn — ví dụ: 1%/gmv, 0,5%–1% doanh thu)</span><input name="commission" placeholder="Hoa hồng theo doanh thu nếu có"></label>
+<label>Phụ cấp / thưởng <span style="font-weight:400">(tùy chọn — ví dụ: phụ cấp ăn ca, thưởng doanh số, thưởng nóng)</span><input name="bonus" placeholder="Phụ cấp, thưởng nếu có"></label>
+<label>Link fanpage / kênh bán hàng <span style="font-weight:400">(tùy chọn — chỉ link shop tự công khai, tách khỏi số điện thoại/Zalo riêng tư)</span><input name="fanpageUrl" placeholder="https://www.facebook.com/..."></label>
+<label>Hạn nhận hồ sơ<input type="date" name="deadline"></label>
 <fieldset><legend>Các kênh livestream <span style="font-weight:400">(chọn nhiều)</span></legend>
 <label><input type="checkbox" name="jobChannels" value="TikTok"> TikTok</label>
+<label><input type="checkbox" name="jobChannels" value="TikTok Shop"> TikTok Shop</label>
 <label><input type="checkbox" name="jobChannels" value="Shopee"> Shopee</label>
 <label><input type="checkbox" name="jobChannels" value="Facebook"> Facebook</label>
 <label><input type="checkbox" name="jobChannels" value="Lazada"> Lazada</label>
@@ -199,10 +213,26 @@
     try{
       if(!window.McLivestreamAPI) throw new Error('Chưa kết nối Supabase.');
       var channels=checked(f,'jobChannels'); var chOther=f.jobChannelsOther.value.trim(); if(chOther) channels.push(chOther);
+      var lines=[];
+      if(f.productDetail.value.trim()) lines.push('Mặt hàng cụ thể: '+f.productDetail.value.trim());
+      if(f.quantity.value) lines.push('Số lượng cần tuyển: '+f.quantity.value);
+      if(f.workMode.value) lines.push('Hình thức làm việc: '+f.workMode.value);
+      if(f.genderReq.value) lines.push('Giới tính yêu cầu: '+f.genderReq.value);
+      if(f.ageReq.value.trim()) lines.push('Độ tuổi yêu cầu: '+f.ageReq.value.trim());
+      if(f.expReq.value) lines.push('Kinh nghiệm yêu cầu: '+f.expReq.value);
+      if(f.deadline.value) lines.push('Hạn nhận hồ sơ: '+f.deadline.value);
+      if(f.district.value.trim()) lines.push('Quận / huyện, địa điểm làm việc: '+f.district.value.trim());
+      if(f.appearanceReq.value.trim()) lines.push('Chiều cao / cân nặng / size yêu cầu: '+f.appearanceReq.value.trim());
+      if(f.commission.value.trim()) lines.push('Hoa hồng: '+f.commission.value.trim());
+      if(f.bonus.value.trim()) lines.push('Phụ cấp / thưởng: '+f.bonus.value.trim());
+      if(f.fanpageUrl.value.trim()) lines.push('Link fanpage / kênh bán hàng: '+f.fanpageUrl.value.trim());
+      var fieldVal=f.field.value;
+      if(fieldVal==='Khác' && f.fieldOther.value.trim()) fieldVal='Khác: '+f.fieldOther.value.trim();
+      var fullDesc=lines.join('\n')+(lines.length&&f.desc.value.trim()?'\n':'')+(f.desc.value.trim()||'');
       var saved=await McLivestreamAPI.submitJobPost({
-        province:f.province.value, field:f.field.value, schedule:f.schedule.value.trim()||null,
+        province:f.province.value, field:fieldVal, schedule:f.schedule.value.trim()||null,
         salary:f.salary.value.trim()||null, channels:channels,
-        description:f.desc.value.trim()||null, contact_zalo:f.zalo.value.trim()||null });
+        description:fullDesc||null, contact_zalo:f.zalo.value.trim()||null });
       msg.textContent='Đã gửi tin tuyển mẫu. Tin ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt.';
       loadApproved();
     }catch(err){ msg.textContent=missingMsg(err); }
