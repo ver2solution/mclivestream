@@ -65,6 +65,22 @@ function withPhotoFirst(list){
     .concat(list.filter(function(m){return !m.photoUrl && m.photoHas;}))
     .concat(list.filter(function(m){return !m.photoHas;}));
 }
+/* Daily rotation (v24): order rotates by day-of-year, stable within a day.
+   Rotation happens INSIDE each tier, so the photo-first rule (home) and the
+   views/comments sort (list page) never break: profiles stay in their tier,
+   only their order inside the tier changes from day to day. No hardcoded
+   order for any specific date; data and titles are untouched. */
+function dayOfYear(d){ d = d || new Date(); var start = new Date(d.getFullYear(), 0, 0); return Math.floor((d - start) / 86400000); }
+function rotateArr(list, offset){ var n = list.length; if(!n) return list.slice(); var k = ((offset % n) + n) % n; return list.slice(k).concat(list.slice(0, k)); }
+function photoTier(m){ return m.photoUrl ? 'a' : (m.photoHas ? 'b' : 'c'); }
+function rotateDaily(list, tierOf, date){
+  var doy = dayOfYear(date);
+  var tiers = {}, order = [];
+  list.forEach(function(m){ var k = tierOf(m); if(!(k in tiers)){ tiers[k] = []; order.push(k); } tiers[k].push(m); });
+  var out = [];
+  order.forEach(function(k){ out = out.concat(rotateArr(tiers[k], doy)); });
+  return out;
+}
 function params(){
   var p={}; try{new URLSearchParams(location.search).forEach(function(v,k){p[k]=v;});}catch(e){} return p;
 }
@@ -102,7 +118,9 @@ function articleLink(a){
 function articleHref(a){ return a.page || a.url || ''; }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
-  var shown=withPhotoFirst(D.models).slice(0,8);
+  // v24: still exactly 8, still photo-first, but the order inside each photo
+  // tier rotates by day-of-year so the home feels alive day to day.
+  var shown=rotateDaily(withPhotoFirst(D.models), photoTier).slice(0,8);
   grid.innerHTML=shown.map(cardHTML).join('');
   var news=document.getElementById('homeNews');
   if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
@@ -141,6 +159,9 @@ function initList(){
     // Sắp xếp theo lượt xem rồi bình luận, giảm dần; cả 20 hồ sơ hiện đều 0/0 nên
     // thứ tự hòa được phá bằng ảnh thật trước, không dùng mã nội bộ để sắp xếp.
     list=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments)||((b.photoUrl?1:0)-(a.photoUrl?1:0));});
+    // v24: xoay thứ tự theo ngày trong năm, ổn định trong ngày — xoay riêng
+    // trong từng nhóm cùng lượt xem/bình luận/nhóm ảnh để không phá thứ tự đã sắp.
+    list=rotateDaily(list, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); });
     var totalPages=Math.max(1,Math.ceil(list.length/6)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*6,pg*6).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
     renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();});
@@ -242,6 +263,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref};
+window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

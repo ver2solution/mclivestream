@@ -1,6 +1,9 @@
-/* v22 data: 20 real profiles + 20 shops (public job posts, public info only,
+/* v24 data: 20 real profiles + 24 shops (public job posts, public info only,
    no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
-   Internal ids exist only here and in ?id= URLs; they must never be rendered as visible text. */
+   v24 adds 4 selling shops from the 05/11 noon Facebook run (Javata, Truong
+   Phuc Anh, Rustico, Mylan); the 6 idol/game streamer posts from the same run
+   are NOT in this list. Internal ids exist only here and in ?id= URLs; they
+   must never be rendered as visible text. */
 window.V20_DATA = {
  "models": [
   {
@@ -704,6 +707,54 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-09-09",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"
+  },
+  {
+   "name": "Javata Affiliate Team",
+   "shopNameKnown": true,
+   "product": "Chưa cập nhật",
+   "province": "Hà Nội",
+   "district": "Long Biên",
+   "salary": "Chưa cập nhật",
+   "req": "CTV livestream part-time.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-05",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"
+  },
+  {
+   "name": "Truong Phuc Anh",
+   "shopNameKnown": true,
+   "product": "Phụ kiện Nail",
+   "province": "Hà Nội",
+   "district": "Dương Nội",
+   "salary": "Chưa cập nhật",
+   "req": "Part-time 19–23h.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"
+  },
+  {
+   "name": "Thời Trang Nam Rustico",
+   "shopNameKnown": true,
+   "product": "Thời trang nam",
+   "province": "Hà Nội",
+   "district": "Hà Đông",
+   "salary": "Chưa cập nhật",
+   "req": "Livestream TikTok Shop thời trang nam.",
+   "channels": "TikTok Shop",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"
+  },
+  {
+   "name": "Công ty TNHH Giấy Mylan",
+   "shopNameKnown": true,
+   "product": "Gia dụng",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 12",
+   "salary": "Chưa cập nhật",
+   "req": "Host Livestream Full-time.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"
   }
  ],
  "articles": [
