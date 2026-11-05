@@ -60,6 +60,18 @@ function decisionHTML(m){
 /* v40: dong mien tru trach nhiem o cuoi moi the mau/shop (yeu cau nguoi dung
    toi 05/11/2026, ban viet lai da chot) — dat sau nut hanh dong, o day the. */
 var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.';
+/* v42: dong huong dan chu so huu o cuoi moi the (yeu cau nguoi dung 06/11/2026),
+   ngay DUOI .disclaimer, la phan tu cuoi cung cua the. Khop quy tac so huu ho
+   so chot 05/11/2026 23:38: chi chu ho so dang ky tai khoan, khop thong tin
+   lien he moi duoc sua/huy ho so — dong nay huong dan chu ho so cach sua
+   (dang ky/dang nhap) hoac go (lien he Zalo). Link dang ky/dang nhap dung loai:
+   the mau -> danh-sach-mau.html#dang-nhap-mau, the shop ->
+   danh-sach-shop.html#dang-nhap-shop (duong dan tuong doi day du de link dung
+   tu moi trang: trang chu, trang danh sach, trang chi tiet). */
+function ownerNoteHTML(kind){
+  var href = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
+  return '<p class="owner-note"><a href="'+href+'">Đăng ký</a> &gt; <a href="'+href+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
+}
 function cardHTML(m){
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
   // v28: data-gender carries "" (not the placeholder "Chưa cập nhật") when the
@@ -75,7 +87,7 @@ function cardHTML(m){
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế. <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
   + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
-  + '<p class="disclaimer">'+DISCLAIMER+'</p></div></article>';
+  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model')+'</div></article>';
 }
 function miniHTML(m){
   return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
@@ -173,7 +185,7 @@ function shopCardHTML(s){
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết →</a>'
   + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
-  + '<p class="disclaimer">'+DISCLAIMER+'</p></article>';
+  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('shop')+'</article>';
   /* v37: (a) .card-actions moved to the END (after .shop-src + .warn) so
      margin-top:auto pins the buttons to the very bottom of the card and they
      line up across a row. Before, .warn/.shop-src sat below the buttons, so
@@ -313,13 +325,24 @@ function pinCardHTML(a, n){
    dung xac nhan, khong bao gio tinh tu data.js. */
 function fmtVnd(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
 function parseMonthlyMax(s){
-  if(!s || s.indexOf('triệu/tháng') < 0) return null;
-  var head = s.slice(0, s.indexOf('triệu/tháng'));
-  var nums = head.match(/\d+(?:[.,]\d+)?/g);
-  if(!nums) return null;
-  var max = null;
-  nums.forEach(function(x){ var v = parseFloat(x.replace(',', '.')); if(max === null || v > max) max = v; });
-  return max;
+  if(!s || s.indexOf('/tháng') < 0) return null;
+  // Dang "triệu/tháng": so la trieu (vd "16–36" -> 36; "Tu 15" -> 15).
+  if(s.indexOf('triệu/tháng') >= 0){
+    var head = s.slice(0, s.indexOf('triệu/tháng'));
+    var nums = head.match(/\d+(?:[.,]\d+)?/g);
+    if(!nums) return null;
+    var max = null;
+    nums.forEach(function(x){ var v = parseFloat(x.replace(',', '.')); if(max === null || v > max) max = v; });
+    return max;
+  }
+  // Dang "đ/tháng": so la VND (vd "8.000.000đ - 15.000.000đ/tháng" -> 15 trieu).
+  // Regex quet toi khoang ngay truoc "/tháng" nen khong lay nham luong gio
+  // dung truoc (vd sh-05: "70.000đ - 100.000đ / giờ (8.000.000đ - 15.000.000đ/tháng" -> 15).
+  var m = s.match(/([\d.]+)\s*đ(?:\s*[–-]\s*([\d.]+)\s*đ)?\s*\/tháng/);
+  if(!m) return null;
+  var hi = m[2] || m[1];
+  var v = parseFloat(hi.replace(/\./g, '')) / 1000000;
+  return isNaN(v) ? null : v;
 }
 function parseRevenue(s){
   if(!s || s === 'Chưa cập nhật') return null;
@@ -332,6 +355,69 @@ function parseRevenue(s){
   else if(unit === 'triệu' || unit === 'tr') v *= 1000000;
   else if(unit === 'k' || unit === 'nghìn') v *= 1000;
   return v;
+}
+/* v42: parse luong gio thap nhat tu text salary cua shop.
+   Chi xet chuoi co don vi gio ("giờ" hoac "/h"); lay phan text TRUOC moc gio
+   dau tien de khong lay nham so %/thang o sau (vd "95.000 – 140.000đ/giờ
+   + 0.5% - 1%" -> 95000, khong lay 0.5/1; "70.000đ - 100.000đ / giờ
+   (8.000.000đ - 15.000.000đ/tháng)" -> 70000, khong lay phan thang).
+   So co dau "." la phan cach hang nghin ("50.000" -> 50000); so < 1000 hoac
+   co hau to "k" hieu la nghin dong ("100k" -> 100000, "150-170/h" -> 150000).
+   Tra ve so thap nhat trong khoang, hoac null neu khong co luong gio. */
+function parseHourlyMin(s){
+  if(!s) return null;
+  var low = String(s).toLowerCase();
+  var cut = low.indexOf('giờ');
+  var cutH = low.indexOf('/h');
+  if(cut === -1 && cutH === -1) return null;
+  var end = cut !== -1 && cutH !== -1 ? Math.min(cut, cutH) : (cut !== -1 ? cut : cutH);
+  var head = low.slice(0, end);
+  var toks = head.match(/(\d[\d.,]*)\s*(k)?/g);
+  if(!toks) return null;
+  var min = null;
+  toks.forEach(function(tok){
+    var m = tok.match(/([\d.,]+)\s*(k)?/);
+    if(!m) return;
+    var raw = m[1];
+    var v;
+    if(raw.indexOf('.') !== -1){ v = parseInt(raw.replace(/\./g, ''), 10); }
+    else if(raw.indexOf(',') !== -1){ v = parseFloat(raw.replace(',', '.')); }
+    else { v = parseInt(raw, 10); }
+    if(isNaN(v)) return;
+    if(m[2] === 'k' || v < 1000) v = v * 1000;
+    if(min === null || v < min) min = v;
+  });
+  return min;
+}
+/* v42: sap xep. null (khong co gia tri) LUON xep cuoi cung o ca 2 chieu.
+   sortModelsBy: 'wage-asc'/'wage-desc' dung salaryNum; 'revenue-asc'/
+   'revenue-desc' dung parseRevenue(topRevenue) — hien ca 20 mau deu
+   "Chưa cập nhật" nen sap xep doanh thu khong doi thu tu (tat ca bang nhau).
+   sortShopsBy: 'hourly-asc'/'hourly-desc' dung parseHourlyMin; 'monthly-asc'/
+   'monthly-desc' dung parseMonthlyMax (v41). Mac dinh ('') tra ve ban sao
+   khong doi thu tu — trang goi se dung pipeline mac dinh cua rieng no. */
+function sortByVal(list, get, dir){
+  return list.slice().sort(function(a, b){
+    var va = get(a), vb = get(b);
+    if(va === null && vb === null) return 0;
+    if(va === null) return 1;
+    if(vb === null) return -1;
+    return dir * (va - vb);
+  });
+}
+function sortModelsBy(list, sort){
+  if(sort === 'wage-asc') return sortByVal(list, function(m){ return (typeof m.salaryNum === 'number' ? m.salaryNum : null); }, 1);
+  if(sort === 'wage-desc') return sortByVal(list, function(m){ return (typeof m.salaryNum === 'number' ? m.salaryNum : null); }, -1);
+  if(sort === 'revenue-asc') return sortByVal(list, function(m){ return parseRevenue(m.topRevenue); }, 1);
+  if(sort === 'revenue-desc') return sortByVal(list, function(m){ return parseRevenue(m.topRevenue); }, -1);
+  return list.slice();
+}
+function sortShopsBy(list, sort){
+  if(sort === 'hourly-asc') return sortByVal(list, function(s){ return parseHourlyMin(s.salary); }, 1);
+  if(sort === 'hourly-desc') return sortByVal(list, function(s){ return parseHourlyMin(s.salary); }, -1);
+  if(sort === 'monthly-asc') return sortByVal(list, function(s){ return parseMonthlyMax(s.salary); }, 1);
+  if(sort === 'monthly-desc') return sortByVal(list, function(s){ return parseMonthlyMax(s.salary); }, -1);
+  return list.slice();
 }
 function trustStats(models, shops){
   models = models || []; shops = shops || [];
@@ -425,6 +511,15 @@ function filterShops(list, f){
   return list.filter(function(s){
     if(f.prov && s.province!==f.prov) return false;
     if(f.cat && shopCatGroup(s.product)!==f.cat) return false;
+    /* v42: loc gio lam theo truong shifts (suy ra tu req, xem data.js).
+       Quyet dinh: shop fulltime hien trong MOI ca (Sang/Chieu/Toi) vi fulltime
+       lam ca ngay, dong thoi hien khi loc rieng "Fulltime". Shop khong co gio
+       (shifts rong) chi hien khi chon "Tất cả giờ". */
+    if(f.shift){
+      var sh = s.shifts || [];
+      if(f.shift === 'fulltime'){ if(sh.indexOf('fulltime') === -1) return false; }
+      else if(sh.indexOf(f.shift) === -1 && sh.indexOf('fulltime') === -1) return false;
+    }
     if(f.q){var hay=(s.name+' '+s.product+' '+s.province+' '+(s.district||'')+' '+(s.channels||'')+' '+(s.req||'')).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
   });
@@ -437,9 +532,11 @@ function initShops(){
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   var perPage=9;
-  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,q:document.getElementById('fShopQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,q:document.getElementById('fShopQ').value.trim()};}
   function render(pg){
-    var f=readForm(); var list=filterShops(sortShopsNewest(D.shops||[]),f);
+    var f=readForm();
+    // v42: mac dinh (sort='') giu sortShopsNewest; chon sap xep thi dung sortShopsBy (bo qua thu tu ngay).
+    var list=filterShops(f.sort ? sortShopsBy(D.shops||[],f.sort) : sortShopsNewest(D.shops||[]),f);
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):'<p>Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.</p>';
     renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); el.scrollIntoView();},perPage,'tin tuyển');
@@ -450,24 +547,32 @@ function initShops(){
   // prefill from URL keys
   if(p.prov) document.getElementById('fShopProv').value=p.prov;
   if(p.cat) document.getElementById('fShopCat').value=p.cat;
+  if(p.sort) document.getElementById('fShopSort').value=p.sort;
+  if(p.shift) document.getElementById('fShopShift').value=p.shift;
   if(p.q) document.getElementById('fShopQ').value=p.q;
   document.getElementById('applyShopBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fShopQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
   render(page);
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,q:document.getElementById('fQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,q:document.getElementById('fQ').value.trim()};}
   function render(pg){
     var f=readForm(); var list=filterModels(D.models,f);
+    if(f.sort){
+      // v42: chon sap xep thi dung sortModelsBy (bo qua pipeline mac dinh:
+      // sap theo luot xem + xoay theo ngay se pha thu tu luong/doanh thu).
+      list=sortModelsBy(list,f.sort);
+    } else {
     // Sắp xếp theo lượt xem rồi bình luận, giảm dần; cả 20 hồ sơ hiện đều 0/0 nên
     // thứ tự hòa được phá bằng ảnh thật trước, không dùng mã nội bộ để sắp xếp.
     list=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments)||((b.photoUrl?1:0)-(a.photoUrl?1:0));});
     // v24: xoay thứ tự theo ngày trong năm, ổn định trong ngày — xoay riêng
     // trong từng nhóm cùng lượt xem/bình luận/nhóm ảnh để không phá thứ tự đã sắp.
     list=rotateDaily(list, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); });
+    }
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
     renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();},12,'hồ sơ');
@@ -479,9 +584,10 @@ function initList(){
   if(p.prov) document.getElementById('fProv').value=p.prov;
   if(p.cat) document.getElementById('fCat').value=p.cat;
   if(p.gender) document.getElementById('fGender').value=p.gender;
+  if(p.sort) document.getElementById('fSort').value=p.sort;
   if(p.q) document.getElementById('fQ').value=p.q;
   document.getElementById('applyBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
   render(page);
 }
 /* News page: newest first by default, category filter, oldest sort option.
@@ -623,6 +729,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, ownerNoteHTML:ownerNoteHTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
