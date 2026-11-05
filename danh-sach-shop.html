@@ -16,9 +16,9 @@
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
-<section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu live</h1><p id="publicShopsCount">Đang tải tin tuyển…</p><p>Trang riêng này phân trang: mỗi trang tối đa 9 shop, phần còn lại sang các trang sau.</p></div></div>
+<section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu livestream</h1><p id="publicShopsCount">Đang tải tin tuyển…</p><p>Trang riêng này phân trang: mỗi trang tối đa 9 shop, phần còn lại sang các trang sau.</p></div></div>
 <div class="filter-card cols-3"><div><label>Tỉnh / Thành phố</label><select id="fShopProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option></select></div>
-<div><label>Lĩnh vực live</label><select id="fShopCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option>Thời trang</option><option>Mỹ phẩm &amp; Làm đẹp</option><option>Gia dụng &amp; Đời sống</option><option>Idol / Streamer</option><option>Công nghệ</option><option>Khác</option></select></div>
+<div><label>Lĩnh vực livestream</label><select id="fShopCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option>Thời trang</option><option>Mỹ phẩm &amp; Làm đẹp</option><option>Gia dụng &amp; Đời sống</option><option>Idol / Streamer</option><option>Công nghệ</option><option>Khác</option></select></div>
 <div><label>Sắp xếp lương</label><select id="fShopSort" data-track="sap-xep-shop"><option value="">Mặc định (mới nhất)</option><option value="hourly-asc">Lương giờ: thấp → cao</option><option value="hourly-desc">Lương giờ: cao → thấp</option><option value="monthly-asc">Lương tháng: thấp → cao</option><option value="monthly-desc">Lương tháng: cao → thấp</option></select></div>
 <div><label>Giờ làm</label><select id="fShopShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
 <div><label>Tìm theo tên shop, mặt hàng, tỉnh</label><input id="fShopQ" type="search" data-track="o-tim-kiem-shop" placeholder="VD: thời trang, Hà Nội"></div>
@@ -29,7 +29,7 @@
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
 
 <section class="section"><p>Shop tìm mẫu theo 2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực — chỉ gồm tỉnh và lĩnh vực hiện đang có hồ sơ trên thị trường. Xem hồ sơ có album ảnh và 1 video demo, tự liên hệ mẫu, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
-<div class="steps"><div class="step"><b>1</b><h3>Tìm mẫu</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lượt xem, bình luận, lương hoặc mới nhất để lọc nhanh đúng mẫu.</p></div>
+<div class="steps"><div class="step"><b>1</b><h3>Tìm mẫu</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng hoặc lọc theo giờ làm để tìm đúng mẫu nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem hồ sơ và liên hệ</h3><p>Mở trang chi tiết của mẫu để xem toàn bộ thông tin: tỉnh, lĩnh vực, hình thức, kinh nghiệm, lịch, lương, album, video demo và liên hệ. Sau đó tự liên hệ mẫu qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
 <div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với mẫu về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang hồ sơ để đánh giá, không cần đăng nhập.</p></div></div>
 <div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a> <a class="btn btn-ghost" href="#dang-tin">Đăng tin tuyển mẫu ↓</a> <a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
@@ -42,7 +42,7 @@
 <p style="font-size:13px">Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop; thông tin chưa công khai không hiển thị. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Cần ứng tuyển mà shop không ghi liên hệ thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> để được giới thiệu.</p></section>
 
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
-<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> form này lưu vào cơ sở dữ liệu khi shop đã đăng nhập và đã chạy migration M2/M3 (<code>supabase-migration-shop-m2-m3.sql</code>) trên Supabase Dashboard. Nếu bảng chưa có, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
+<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> form này lưu hồ sơ thật khi shop đã đăng nhập. Nếu hệ thống chưa sẵn sàng, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
 <form id="shopProfileForm" data-track="form-ho-so-shop">
 <label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*"></label>
 <label>Tên shop *<input name="shopName" required placeholder="Tên shop"></label>
@@ -84,20 +84,20 @@
 <p id="shopProfileMsg" role="status"></p>
 </form></section>
 
-<section class="form-card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản dùng chung hệ thống đăng nhập Supabase của sàn; hồ sơ shop và đăng tin lưu thật qua Supabase (cần chạy migration M2/M3 trên Dashboard trước).</p>
+<section class="form-card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản đăng nhập dùng chung cho cả sàn; hồ sơ shop và đăng tin đều được lưu thật vào hệ thống.</p>
 <h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp" data-track="form-dang-ky-shop"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit" data-track="nut-dang-ky-shop">Đăng ký</button></form>
 <h3>2. Đăng nhập</h3><form id="shopSignIn" data-track="form-dang-nhap-shop"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-shop">Đăng nhập</button></form>
 <h3>3. Quên mật khẩu</h3><form id="shopForgot" data-track="form-quen-mat-khau-shop"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
 <p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" data-track="nut-dang-xuat-shop" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
 
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
-<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào cơ sở dữ liệu, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
+<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> tin được lưu vào hệ thống, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm" data-track="form-dang-tin-tuyen">
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
 <label>Quận / huyện, địa điểm làm việc <span style="font-weight:400">(ví dụ: Cầu Giấy, Tây Mỗ, Bình Tân — tin tuyển thật luôn ghi quận/huyện)</span><input name="district" placeholder="Quận / huyện, địa điểm làm việc"></label>
 <label>Lĩnh vực cần tuyển *<select name="field" required><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Mỹ phẩm</option><option>Mẹ và bé</option><option>Gia dụng</option><option>Thực phẩm</option><option>Điện tử</option><option>Phụ kiện</option><option>Thể thao</option><option>Chung / Đa ngành</option><option>Khác</option></select></label>
 <label>Lĩnh vực khác <span style="font-weight:400">(tự điền, nếu chọn Khác — ví dụ: dược phẩm/wellness, chăm sóc tóc, giày dép)</span><input name="fieldOther" placeholder="Lĩnh vực khác"></label>
-<label>Mặt hàng cụ thể <span style="font-weight:400">(ví dụ: thời trang nữ, mỹ phẩm, gia dụng bếp)</span><input name="productDetail" placeholder="Mặt hàng cụ thể cần mẫu live"></label>
+<label>Mặt hàng cụ thể <span style="font-weight:400">(ví dụ: thời trang nữ, mỹ phẩm, gia dụng bếp)</span><input name="productDetail" placeholder="Mặt hàng cụ thể cần mẫu livestream"></label>
 <label>Số lượng cần tuyển<input type="number" name="quantity" min="1" step="1" value="1" placeholder="Ví dụ: 2"></label>
 <label>Hình thức làm việc<select name="workMode"><option value="">— Không yêu cầu cụ thể —</option><option>Tại shop / studio</option><option>Tại nhà mẫu</option><option>Live online</option><option>Linh hoạt (shop hoặc online)</option><option>Fulltime tại shop</option><option>Part-time</option></select></label>
 <label>Giới tính yêu cầu<select name="genderReq"><option value="">Không yêu cầu</option><option>Nữ</option><option>Nam</option></select></label>
@@ -116,7 +116,7 @@
 <label><input type="checkbox" name="jobChannels" value="Lazada"> Lazada</label>
 <label><input type="checkbox" name="jobChannels" value="YouTube"> YouTube</label>
 <input name="jobChannelsOther" placeholder="Kênh khác (tự điền)"></fieldset>
-<label>Lịch live<input name="schedule" placeholder="Ví dụ: ca tối 20h–22h30"></label>
+<label>Lịch livestream<input name="schedule" placeholder="Ví dụ: ca tối 20h–22h30"></label>
 <label>Lương / thù lao<input name="salary" placeholder="Ví dụ: Thỏa thuận, hoặc 120.000–150.000 đồng/giờ"></label>
 <label>Liên hệ Zalo<input name="zalo" placeholder="Số điện thoại chính dùng Zalo của shop"></label>
 <label>Mô tả công việc<textarea name="desc" rows="4" placeholder="Sản phẩm, yêu cầu, địa điểm, thời gian hợp tác…"></textarea></label>
@@ -152,7 +152,7 @@
   }
   function missingMsg(e){
     if(window.McLivestreamAPI && McLivestreamAPI.isTableMissingError && McLivestreamAPI.isTableMissingError(e)){
-      return 'Chưa lưu được: bảng shop chưa có trên Supabase. Hãy chạy file supabase-migration-shop-m2-m3.sql (M2/M3) trên Supabase Dashboard → SQL Editor → Run, rồi gửi lại. Form này không giả vờ đã lưu khi bảng chưa có.';
+      return 'Chưa lưu được: hệ thống chưa sẵn sàng. Vui lòng thử lại sau hoặc liên hệ Zalo 032 998 3699. Form này không giả vờ đã lưu khi chưa lưu được.';
     }
     return 'Chưa lưu được: '+(e.message||e);
   }
@@ -166,7 +166,7 @@
       st.textContent='Shop đăng ký hồ sơ và đăng tin ở form bên dưới; hồ sơ và tin đã duyệt sẽ hiện ở mục này.';
       if(shops.length){
         document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
-          return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ live: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
+          return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ livestream: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
         }).join('');
       } else {
         document.getElementById('approvedShopsList').innerHTML='<p class="empty-state">Hiện chưa có shop nào đăng ký hồ sơ trên sàn được duyệt. Shop đăng ký hồ sơ ở <a href="#ho-so-shop">form bên dưới</a> — sau khi Ver2Solution duyệt, hồ sơ sẽ hiện công khai tại đây.</p>';

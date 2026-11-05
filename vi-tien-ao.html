@@ -13,7 +13,7 @@
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Ví tiền ảo và email marketing</h1>
-<p class="notice"><strong>Trạng thái: KHUNG CHỜ — chưa thu tiền thật.</strong> Nạp tiền ở đây chỉ tạo yêu cầu ở trạng thái chờ xác nhận, không cộng xu ngay và không trừ tiền thật. Up top ở đây chỉ tạo đơn ở trạng thái chờ duyệt, không kích hoạt hiển thị ngay. Khi nào có cổng thanh toán và đối soát thì mới bật thu tiền thật, theo thiết kế trong <code>docs-email-marketing-va-tien-ao.md</code>.</p>
+<p class="notice"><strong>Trạng thái: KHUNG CHỜ — chưa thu tiền thật.</strong> Nạp tiền ở đây chỉ tạo yêu cầu ở trạng thái chờ xác nhận, không cộng xu ngay và không trừ tiền thật. Up top ở đây chỉ tạo đơn ở trạng thái chờ duyệt, không kích hoạt hiển thị ngay. Khi nào có cổng thanh toán và đối soát thì mới bật thu tiền thật.</p>
 <p>Xu nền tảng chỉ dùng trong nền tảng để mua dịch vụ up top, ghim hồ sơ và làm nổi bật tin tuyển mẫu. Xu không phải tiền thật, không rút thành tiền mặt, không chuyển nhượng cho tài khoản khác.</p>
 <p>Điểm thưởng là sổ riêng, tách khỏi xu: bạn nhận điểm khi bình luận, thích và chia sẻ trên hồ sơ mẫu, hồ sơ shop và bài báo. Xem bảng điểm đầy đủ tại <a href="quy-tac-diem-thuong.html">Quy tắc cộng điểm thưởng</a>.</p></section>
 
@@ -22,7 +22,7 @@
 <form id="consentForm"><p><label><input id="consentOptIn" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p>
 <p><label>Chỉ nhận tin theo tỉnh (tùy chọn, chỉ có ý nghĩa khi đã tick đồng ý)<br><input id="consentProvince" placeholder="VD: TP. Hồ Chí Minh, Hà Nội, hoặc để trống là nhận mọi tỉnh"></label></p>
 <p><label>Chỉ nhận tin theo lĩnh vực (tùy chọn)<br><input id="consentField" placeholder="VD: Thời trang, Gia dụng, Mỹ phẩm"></label></p>
-<p style="font-size:13px">Mục đích: chỉ gửi thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution. Email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) vẫn gửi cho mọi tài khoản, không phụ thuộc ô này. Rút đồng ý: bỏ tick và bấm Lưu, hoặc nhắn Zalo 032 998 3699; sau khi rút sẽ không nhận email marketing nữa. Danh sách marketing được tách riêng trong bảng <code>marketing_consents</code>, chỉ gồm người đang có <code>marketing_opt_in = true</code>.</p>
+<p style="font-size:13px">Mục đích: chỉ gửi thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution. Email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) vẫn gửi cho mọi tài khoản, không phụ thuộc ô này. Rút đồng ý: bỏ tick và bấm Lưu, hoặc nhắn Zalo 032 998 3699; sau khi rút sẽ không nhận email marketing nữa. Danh sách nhận email marketing được tách riêng, chỉ gồm những tài khoản đang đồng ý nhận.</p>
 <button class="btn btn-primary" type="submit">Lưu đồng ý</button><p id="consentMsg"></p></form></section>
 
 <section class="form-card"><h2>2. Ví của bạn</h2>
@@ -50,7 +50,7 @@
 <li>Ghim hồ sơ ở trang chủ 7 ngày (cần duyệt, không đảm bảo vị trí cố định) — 200 xu / 7 ngày — vị trí: hàng hồ sơ nổi bật ở trang chủ, trong 2 hàng đã chốt — kích hoạt trong 24 giờ sau khi duyệt.</li>
 <li>Làm nổi bật tin tuyển mẫu 7 ngày — 80 xu / 7 ngày — vị trí: khung nổi bật ở đầu danh sách tin đã duyệt của shop — kích hoạt trong 24 giờ sau khi duyệt. Chỉ áp cho tin của shop đã được duyệt, không áp cho tin chưa duyệt.</li>
 </ul>
-<h3>Theo dõi đơn: Chờ duyệt → Đã duyệt → Đang chạy → Hết hạn / Hoàn xu</h3>
+<h3>Theo dõi đơn: Chờ duyệt → Đã duyệt → Đang chạy → Hết hạn → Hoàn xu</h3>
 <p>Đơn up top nào cũng hiện đúng 1 trong 5 trạng thái trên trong mục Đơn up top của bạn ở cuối trang này, không để trạng thái mơ hồ. Nếu quá 24 giờ sau khi duyệt mà chưa chạy, hệ thống hoàn xu theo mục hoàn tiền dưới đây.</p>
 <p><strong>Gợi ý theo hồ sơ thật, không phải gợi ý ảo:</strong> hồ sơ chưa có ảnh thật thì ưu tiên hoàn thiện ảnh và video demo trước khi mua up top, vì up top chỉ tăng người xem, không tự làm hồ sơ đẹp lên; hồ sơ đã có ảnh thật và đã được duyệt thì up top mới phát huy. Đây là gợi ý dựa trên dữ liệu thật của chính tài khoản, không phải xếp hạng ảo.</p>
 <p style="font-size:13px">Hoàn tiền: nếu dịch vụ không được kích hoạt trong 24 giờ sau khi duyệt, hoặc lỗi kỹ thuật khiến dịch vụ không hiển thị đúng thời gian đã mua, hoàn toàn bộ xu đã trừ vào ví. Nếu hủy trước khi kích hoạt, hoàn toàn bộ xu. Sau khi đã kích hoạt và hiển thị đúng, chỉ hoàn phần thời gian chưa chạy khi lỗi thuộc về nền tảng. Không hoàn tiền mặt cho xu đã nạp, trừ trường hợp cổng thanh toán và chính sách hoàn tiền sau này quy định khác và được công bố trước.</p>
@@ -62,7 +62,7 @@
 <div id="boostBox"></div></section>
 
 <section class="form-card"><h2>5. Chống gian lận và game hóa thật</h2>
-<p>Không có nhân vật ảo tạo lượt xem, bình luận hay tương tác giả. Lượt xem và bình luận chỉ tính từ người dùng thật. Điểm thưởng (nếu có) chỉ tính từ hoạt động thật đã kiểm chứng được, ví dụ hồ sơ được duyệt, tin tuyển mẫu được duyệt, và chỉ do admin hoặc hệ thống tự động ghi nhận, không do người dùng tự cộng. Một đối tượng, một dịch vụ, chỉ tối đa 1 đơn đang active tại 1 thời điểm. Client không tự cộng hoặc trừ số dư, không tự kích hoạt up top.</p></section>
+<p>Không có nhân vật ảo tạo lượt xem, bình luận hay tương tác giả. Lượt xem và bình luận chỉ tính từ người dùng thật. Điểm thưởng (nếu có) chỉ tính từ hoạt động thật đã kiểm chứng được, ví dụ hồ sơ được duyệt, tin tuyển mẫu được duyệt, và chỉ do admin hoặc hệ thống tự động ghi nhận, không do người dùng tự cộng. Một đối tượng, một dịch vụ, chỉ tối đa 1 đơn đang chạy tại 1 thời điểm. Bạn không thể tự cộng hoặc trừ số dư, cũng không thể tự kích hoạt up top.</p></section>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

@@ -19,7 +19,7 @@
 <main class="wrap">
 <section class="section"><h1>Trang của tôi</h1>
 <p id="myStatus">Đang kiểm tra đăng nhập…</p>
-<p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-mau.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b>, không lưu mật khẩu dạng text, không dùng service_role trên web.</p>
+<p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-mau.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b> và không lưu mật khẩu của bạn.</p>
 <form class="form-card" id="myProfileForm" data-track="form-ho-so-mau" style="display:none">
 <h2>1. Thông tin bắt buộc</h2>
 <p><label>Họ tên *<br><input id="myFullName" required></label></p>
@@ -27,7 +27,7 @@
 <p><label>Quê quán *<br><input id="myHometown" required></label></p>
 <p><label>Nơi muốn làm việc *<br><select id="myWorkLocation" required><option value="">Chọn tỉnh / thành phố</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc / Live online</option></select></label></p>
 <p><label>Học vấn *<br><input id="myEducation" required></label></p>
-<p><label>Kinh nghiệm *<br><textarea id="myExperience" required placeholder="VD: 3 tháng live gia dụng, 1 năm live thời trang"></textarea></label></p>
+<p><label>Kinh nghiệm *<br><textarea id="myExperience" required placeholder="VD: 3 tháng livestream gia dụng, 1 năm livestream thời trang"></textarea></label></p>
 <p><label>Lĩnh vực mong muốn *<br><select id="myDesiredField" required><option value="">Chọn lĩnh vực</option><option>Chung / Đa ngành</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Thời trang</option></select></label></p>
 <p><label>Số điện thoại chính dùng Zalo *<br><input id="myPhoneZalo" type="tel" required></label></p>
 <p><label>Email liên hệ *<br><input id="myEmail" type="email" required></label></p>
@@ -35,7 +35,7 @@
 <p><label>Lương mong muốn<br><input id="mySalary" placeholder="VD: Thỏa thuận, hoặc 8–12 triệu/tháng"></label></p>
 <p><label>Lịch làm việc<br><input id="mySchedule" placeholder="VD: Part-time / theo ca, tối thứ 2–thứ 6"></label></p>
 <p><label>Địa điểm mong muốn<br><input id="myPlace" placeholder="VD: Làm tại Hà Nội, hoặc live online"></label></p>
-<p><label>Loại sản phẩm muốn live<br><input id="myProductTypes" placeholder="VD: Thời trang, mỹ phẩm"></label></p>
+<p><label>Loại sản phẩm muốn livestream<br><input id="myProductTypes" placeholder="VD: Thời trang, mỹ phẩm"></label></p>
 <p><label>Thời gian mong muốn<br><input id="myDuration" placeholder="VD: Dài hạn, hoặc theo chiến dịch 11.11"></label></p>
 <p><label>Doanh thu cao nhất (tự khai, chỉ ghi số đã kiểm chứng được)<br><input id="myTopRevenue" placeholder="VD: Chưa cập nhật, hoặc 120 triệu/tháng"></label></p>
 <p><label>Giới tính<br><select id="myGender"><option value="">Chưa cập nhật</option><option>Nam</option><option>Nữ</option></select></label></p>
@@ -45,7 +45,7 @@
 <p><label>TikTok<br><input id="myTiktok" placeholder="Link TikTok"></label></p>
 <p><label>Zalo<br><input id="myZalo" placeholder="Số Zalo hoặc link Zalo công khai"></label></p>
 <p><label>Album ảnh (1–5 ảnh, không bắt buộc nếu đã có ảnh)<br><input id="myAlbum" type="file" accept="image/*" multiple></label></p>
-<p><label>Video demo (1 video live mẫu, không bắt buộc nếu đã có)<br><input id="myDemo" type="file" accept="video/*"></label></p>
+<p><label>Video demo (1 video livestream mẫu, không bắt buộc nếu đã có)<br><input id="myDemo" type="file" accept="video/*"></label></p>
 <p id="myFormMsg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-mau">Lưu hồ sơ</button>
 <p style="font-size:13px">Bấm Lưu là gửi hồ sơ về hệ thống để admin duyệt. Hồ sơ chưa duyệt sẽ không hiện ở danh sách công khai.</p>
@@ -119,7 +119,7 @@
         if(/top_revenue/i.test(err.message||'')){
           var retry=Object.assign({},data); delete retry.top_revenue;
           saved=await McLivestreamAPI.saveMyProfile(retry);
-          msg.textContent='Đã lưu hồ sơ, nhưng riêng Doanh thu cao nhất chưa lưu được vì bảng profiles chưa có cột top_revenue — cần chạy file supabase-migration-top-revenue.sql trên Supabase Dashboard, rồi lưu lại. Trạng thái: '+(saved.moderation_status||'pending');
+          msg.textContent='Đã lưu hồ sơ, nhưng riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng. Vui lòng thử lại sau hoặc liên hệ Zalo 032 998 3699. Trạng thái: '+(saved.moderation_status||'pending');
           existing=saved; return;
         }
         throw err;
