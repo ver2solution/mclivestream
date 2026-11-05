@@ -13,7 +13,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
 <section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu live</h1><p>Shop tìm mẫu theo 2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực — chỉ gồm tỉnh và lĩnh vực hiện đang có hồ sơ trên thị trường. Xem hồ sơ có album ảnh và 1 video demo, tự liên hệ mẫu, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p></div></div>
@@ -32,7 +32,7 @@
 
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
 <div class="notice"><p><strong>Lưu thật qua Supabase:</strong> form này lưu vào bảng <code>shop_profiles</code> khi shop đã đăng nhập và đã chạy migration M2/M3 (<code>supabase-migration-shop-m2-m3.sql</code>) trên Supabase Dashboard. Nếu bảng chưa có, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
-<form id="shopProfileForm">
+<form id="shopProfileForm" data-track="form-ho-so-shop">
 <label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*"></label>
 <label>Tên shop *<input name="shopName" required placeholder="Tên shop"></label>
 <label>Địa chỉ<input name="address" placeholder="Địa chỉ shop"></label>
@@ -69,19 +69,19 @@
 <label><input type="checkbox" name="liveChannels" value="Khác"> Khác</label>
 <input name="liveChannelsOther" placeholder="Kênh khác (tự điền, nếu chọn Khác)">
 </fieldset>
-<p><button class="btn btn-primary" type="submit">Lưu hồ sơ shop</button></p>
+<p><button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-shop">Lưu hồ sơ shop</button></p>
 <p id="shopProfileMsg" role="status"></p>
 </form></section>
 
 <section class="form-card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản dùng chung hệ thống đăng nhập Supabase của sàn; hồ sơ shop và đăng tin lưu thật qua Supabase (cần chạy migration M2/M3 trên Dashboard trước).</p>
-<h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit">Đăng ký</button></form>
-<h3>2. Đăng nhập</h3><form id="shopSignIn"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-primary" type="submit">Đăng nhập</button></form>
-<h3>3. Quên mật khẩu</h3><form id="shopForgot"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
-<p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
+<h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp" data-track="form-dang-ky-shop"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit" data-track="nut-dang-ky-shop">Đăng ký</button></form>
+<h3>2. Đăng nhập</h3><form id="shopSignIn" data-track="form-dang-nhap-shop"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-shop">Đăng nhập</button></form>
+<h3>3. Quên mật khẩu</h3><form id="shopForgot" data-track="form-quen-mat-khau-shop"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
+<p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" data-track="nut-dang-xuat-shop" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
 
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
 <div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào bảng <code>shop_job_posts</code>, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
-<form id="jobForm">
+<form id="jobForm" data-track="form-dang-tin-tuyen">
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
 <label>Quận / huyện, địa điểm làm việc <span style="font-weight:400">(ví dụ: Cầu Giấy, Tây Mỗ, Bình Tân — tin tuyển thật luôn ghi quận/huyện)</span><input name="district" placeholder="Quận / huyện, địa điểm làm việc"></label>
 <label>Lĩnh vực cần tuyển *<select name="field" required><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Mỹ phẩm</option><option>Mẹ và bé</option><option>Gia dụng</option><option>Thực phẩm</option><option>Điện tử</option><option>Phụ kiện</option><option>Thể thao</option><option>Chung / Đa ngành</option><option>Khác</option></select></label>
@@ -109,26 +109,26 @@
 <label>Lương / thù lao<input name="salary" placeholder="Ví dụ: Thỏa thuận, hoặc 120.000–150.000 đồng/giờ"></label>
 <label>Liên hệ Zalo<input name="zalo" placeholder="Số điện thoại chính dùng Zalo của shop"></label>
 <label>Mô tả công việc<textarea name="desc" rows="4" placeholder="Sản phẩm, yêu cầu, địa điểm, thời gian hợp tác…"></textarea></label>
-<p><button class="btn btn-primary" type="submit">Gửi tin tuyển mẫu</button></p>
+<p><button class="btn btn-primary" type="submit" data-track="nut-dang-tin-tuyen">Gửi tin tuyển mẫu</button></p>
 <p id="jobMsg" role="status"></p>
 </form></section>
 <p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Sang trang mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p></div></footer>
-<button class="gopy-fab" id="gopyFab" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
 <label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
 <label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
-<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
 <script src="js/wallet.js"></script>
-<script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/data.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>
 (function(){
   var radios=document.querySelectorAll('input[name="hasStore"]'); var details=document.getElementById('storeDetails');

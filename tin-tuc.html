@@ -13,13 +13,13 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="active">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="active">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
 <section class="section"><div class="section-head"><div><h1>Tin tức thị trường</h1><p>Tin mới nhất xếp trước. Nội dung chính cũng đã có đủ trên trang chủ, không cần sang trang khác mới thấy tin tức và mẫu live. Các bài dưới đây là tổng hợp và diễn giải lại từ báo chính thống, không sao chép nguyên văn báo gốc. Ảnh đại diện (nếu có) là ảnh gốc của báo, ghi rõ nguồn và không phải ảnh của Ver2Solution.</p></div></div>
 <div class="notice"><strong>Lưu ý về số liệu:</strong> Hiện <strong>chưa có số lượt đọc đã kiểm chứng</strong> cho bất kỳ bài nào, nên không bịa số lượt đọc: mọi bài trong danh mục nhiều người đọc nhất đều ghi “chưa kiểm chứng (tạm ghi 0)”, thứ tự hiện tại là thứ tự mới nhất làm mốc tạm thời, và sẽ cập nhật lại khi có số liệu đọc thật.</div>
-<div class="filter-card"><div><label>Lọc theo chuyên mục</label><select id="newsCat"><option value="">Tất cả chuyên mục</option></select></div>
-<div><label>Sắp xếp</label><select id="newsSort"><option value="newest">Mới nhất trước (mặc định)</option><option value="oldest">Cũ nhất trước</option></select></div>
+<div class="filter-card"><div><label>Lọc theo chuyên mục</label><select id="newsCat" data-track="loc-chuyen-muc-tin"><option value="">Tất cả chuyên mục</option></select></div>
+<div><label>Sắp xếp</label><select id="newsSort" data-track="sap-xep-tin"><option value="newest">Mới nhất trước (mặc định)</option><option value="oldest">Cũ nhất trước</option></select></div>
 <div class="full"><p id="newsCount" style="margin:0;font-weight:800"></p></div></div>
 <div class="news-layout" style="margin-top:18px">
 <section aria-label="Tin tức mới nhất"><h2 style="margin-top:0">Tin mới nhất — xếp mới nhất trước</h2><div class="news-list" id="newsMain" style="grid-template-columns:1fr"></div></section>
@@ -28,16 +28,16 @@
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p></div></footer>
-<button class="gopy-fab" id="gopyFab" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
 <label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
 <label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
-<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
-<script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/data.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>

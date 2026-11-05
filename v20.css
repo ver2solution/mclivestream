@@ -71,6 +71,22 @@ a:hover{text-decoration:underline}
 .facts b{font-weight:800}
 .facts span{text-align:right}
 .card-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+/* DÒNG QUYẾT ĐỊNH (v28, thẻ 5 giây, thiết kế 2026-11-05): mặt thẻ chỉ hiện
+   hàng có giá trị thật — hàng trống không được render nên không còn chữ
+   "Chưa cập nhật" nào trên mặt thẻ. Lương số + Lịch xếp 2 cột khi cả hai
+   đều có; chỉ có 1 mục thì mục đó giãn hết hàng, không chừa ô trống.
+   Lương/ Lịch cắt 1 dòng có dấu …, Kinh nghiệm tối đa 2 dòng. Chip xám
+   "Lương thỏa thuận" chỉ hiện khi lương là "Thỏa thuận". Thẻ shop vẫn
+   dùng .facts ở trên, không đổi. Trang chi tiết giữ bảng đầy đủ. */
+.tag-negotiable{background:#eef1ef;color:#5c6f68}
+.decision{display:grid;gap:8px;font-size:14px}
+.decision-row{display:flex;gap:10px;flex-wrap:wrap}
+.decision-item{flex:1 1 0;min-width:0;background:#f4f8f6;border-radius:12px;padding:9px 12px}
+.decision-label{display:block;font-size:12px;font-weight:800;color:var(--mut)}
+.decision-value{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.decision-item .decision-value{font-weight:800}
+.decision-exp{background:#f4f8f6;border-radius:12px;padding:9px 12px}
+.decision-exp .decision-value{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .warn{font-size:13px;color:#7a5b00;background:#fff7dd;border-radius:12px;padding:10px 12px;margin:0}
 .warn a{font-weight:800}
 /* LỌC + PHÂN TRANG */
@@ -145,7 +161,9 @@ a:hover{text-decoration:underline}
 footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#fff;padding:26px 0;color:var(--mut)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%}.menu-btn{display:block}}
-@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.search-card,.filter-card{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}}
+@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.search-card,.filter-card{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
+/* v28: mobile — Lương 1 dòng, Lịch 1 dòng, Kinh nghiệm tối đa 2 dòng, xếp dọc. */
+.decision-row{flex-direction:column}.decision-item{flex:1 1 auto}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* MÀN HÌNH RẤT NHỎ (điện thoại nhỏ, đồng hồ ~200–320px): không tràn ngang,
    mọi thứ xếp dọc 1 cột, chữ vẫn đọc được, nút đủ lớn để bấm bằng ngón tay.
@@ -155,6 +173,13 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
   .search-card{padding:10px}.btn{width:100%;min-height:48px}.card-actions{grid-template-columns:1fr}
   .detail-body{padding:16px}.detail-body h1{font-size:24px}.fact-grid{grid-template-columns:1fr}
   .gopy-fab{width:48px;height:48px;right:8px}
+  /* v28: màn hình rất nhỏ — dòng quyết định chỉ còn tối đa 1 mục (ưu tiên
+     Lương nếu có số thật, không thì Lịch nếu có; Kinh nghiệm 1 dòng khi
+     không có Lương/Lịch). Trình duyệt chưa hỗ trợ :has thì vẫn hiện đủ
+     các mục — chỉ gọn hơn, không sai dữ liệu. */
+  .decision-row .decision-item:nth-child(2){display:none}
+  .card-body:has(.decision-row) .decision-exp{display:none}
+  .decision-exp .decision-value{-webkit-line-clamp:1}
 }
 @media(max-width:320px){
   body{font-size:15px}.logo{font-size:17px}.logo small{display:none}

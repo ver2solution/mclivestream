@@ -14,13 +14,13 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Trang của tôi</h1>
 <p id="myStatus">Đang kiểm tra đăng nhập…</p>
 <p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-mau.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b>, không lưu mật khẩu dạng text, không dùng service_role trên web.</p>
-<form class="form-card" id="myProfileForm" style="display:none">
+<form class="form-card" id="myProfileForm" data-track="form-ho-so-mau" style="display:none">
 <h2>1. Thông tin bắt buộc</h2>
 <p><label>Họ tên *<br><input id="myFullName" required></label></p>
 <p><label>Ngày tháng năm sinh *<br><input id="myDob" type="date" required></label></p>
@@ -47,7 +47,7 @@
 <p><label>Album ảnh (1–5 ảnh, không bắt buộc nếu đã có ảnh)<br><input id="myAlbum" type="file" accept="image/*" multiple></label></p>
 <p><label>Video demo (1 video live mẫu, không bắt buộc nếu đã có)<br><input id="myDemo" type="file" accept="video/*"></label></p>
 <p id="myFormMsg"></p>
-<button class="btn btn-primary" type="submit">Lưu hồ sơ</button>
+<button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-mau">Lưu hồ sơ</button>
 <p style="font-size:13px">Bấm Lưu là gửi hồ sơ về hệ thống để admin duyệt. Hồ sơ chưa duyệt sẽ không hiện ở danh sách công khai.</p>
 </form>
 <p><a href="danh-sach-mau.html">← Quay lại danh sách mẫu</a></p>
@@ -55,18 +55,18 @@
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p></div></footer>
-<button class="gopy-fab" id="gopyFab" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
 <label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
 <label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
-<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>
 (function(){
   var form=document.getElementById('myProfileForm'), status=document.getElementById('myStatus'), msg=document.getElementById('myFormMsg');
