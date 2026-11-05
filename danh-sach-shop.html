@@ -25,7 +25,7 @@
 
 <section class="form-card" aria-labelledby="shops-title"><h2 id="shops-title">Danh sách các shop đang tuyển mẫu</h2>
 <p id="shopBackendStatus">Đang tải danh sách shop đã duyệt…</p>
-<div id="publicShops"><p><strong>24 shop đang tuyển mẫu — tin tuyển công khai.</strong></p><p>Thông tin dưới đây chỉ lấy từ bài tuyển shop tự đăng công khai trên Facebook: tên shop, mặt hàng, tỉnh/quận, mức lương, yêu cầu chính, thông tin liên hệ đã công khai và ngày đăng tin. Web chỉ đăng thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop, không bịa link fanpage. Mỗi tin kèm link về bài tuyển gốc. Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p><p id="publicShopsCount" style="font-weight:800"></p><div class="shop-grid" id="publicShopsList"></div></div>
+<div id="publicShops"><p><strong>30 shop đang tuyển mẫu — tin tuyển công khai.</strong></p><p>Thông tin dưới đây chỉ lấy từ bài tuyển shop tự đăng công khai trên Facebook: tên shop, mặt hàng, tỉnh/quận, mức lương, yêu cầu chính, thông tin liên hệ đã công khai và ngày đăng tin. Web chỉ đăng thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop, không bịa link fanpage. Mỗi tin kèm link về bài tuyển gốc. Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p><p id="publicShopsCount" style="font-weight:800"></p><div class="shop-grid" id="publicShopsList"></div></div>
 <h3>Shop đã đăng ký hồ sơ trên sàn (đã duyệt)</h3><div id="approvedShopsList"><p class="empty-state">Hiện chưa có shop nào đăng ký hồ sơ trên sàn được duyệt. Shop đăng ký hồ sơ ở <a href="#ho-so-shop">form bên dưới</a> — sau khi Ver2Solution duyệt, hồ sơ sẽ hiện công khai tại đây.</p></div>
 <h3>Tin tuyển mẫu đã duyệt</h3><p id="approvedJobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
 <p style="font-size:13px">Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop; thông tin chưa công khai không hiển thị. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Cần ứng tuyển mà shop không ghi liên hệ thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> để được giới thiệu.</p></section>
@@ -148,7 +148,7 @@
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   async function loadApproved(){
     var st=document.getElementById('shopBackendStatus');
-    if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 24 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
+    if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 30 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
     try{
       var shops=await McLivestreamAPI.fetchApprovedShops();
       var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
