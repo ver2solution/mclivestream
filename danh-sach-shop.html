@@ -14,13 +14,15 @@
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
-<a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-tin">Đăng tin tuyển mẫu</a></div></header>
+<a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu livestream</h1><p id="publicShopsCount">Đang tải tin tuyển…</p><p>Trang riêng này phân trang: mỗi trang tối đa 9 shop, phần còn lại sang các trang sau.</p></div></div>
 <div class="filter-card cols-3"><div><label>Tỉnh / Thành phố</label><select id="fShopProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option></select></div>
 <div><label>Lĩnh vực livestream</label><select id="fShopCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option>Thời trang</option><option>Mỹ phẩm &amp; Làm đẹp</option><option>Gia dụng &amp; Đời sống</option><option>Idol / Streamer</option><option>Công nghệ</option><option>Khác</option></select></div>
 <div><label>Sắp xếp lương</label><select id="fShopSort" data-track="sap-xep-shop"><option value="">Mặc định (mới nhất)</option><option value="hourly-asc">Lương giờ: thấp → cao</option><option value="hourly-desc">Lương giờ: cao → thấp</option><option value="monthly-asc">Lương tháng: thấp → cao</option><option value="monthly-desc">Lương tháng: cao → thấp</option></select></div>
-<div><label>Giờ làm</label><select id="fShopShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
+<div><label>Giờ làm tuyển mẫu</label><select id="fShopShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
+<div><label>Loại lương</label><select id="fPayType" data-track="loc-loai-luong-shop"><option value="">Tất cả loại lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
+<div><label id="fPayMinLabel">Mức lương tối thiểu</label><input id="fPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled></div>
 <div><label>Tìm theo tên shop, mặt hàng, tỉnh</label><input id="fShopQ" type="search" data-track="o-tim-kiem-shop" placeholder="VD: thời trang, Hà Nội"></div>
 <div class="full"><button class="btn btn-primary" id="applyShopBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="resetShopBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div></div>
 <p><strong>30 shop đang tuyển mẫu — tin tuyển công khai.</strong></p>
@@ -32,7 +34,7 @@
 <div class="steps"><div class="step"><b>1</b><h3>Tìm mẫu</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng hoặc lọc theo giờ làm để tìm đúng mẫu nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem hồ sơ và liên hệ</h3><p>Mở trang chi tiết của mẫu để xem toàn bộ thông tin: tỉnh, lĩnh vực, hình thức, kinh nghiệm, lịch, lương, album, video demo và liên hệ. Sau đó tự liên hệ mẫu qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
 <div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với mẫu về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang hồ sơ để đánh giá, không cần đăng nhập.</p></div></div>
-<div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a> <a class="btn btn-ghost" href="#dang-tin">Đăng tin tuyển mẫu ↓</a> <a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
+<div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a> <a class="btn btn-ghost" href="#dang-nhap-shop">Đăng Nhập ↓</a> <a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
 <p>20 hồ sơ thật hiện có trên trang mẫu tìm việc, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
 
 <section class="form-card" aria-labelledby="shops-approved-title"><h2 id="shops-approved-title">Shop đã đăng ký hồ sơ trên sàn (đã duyệt)</h2>
@@ -85,12 +87,24 @@
 </form></section>
 
 <section class="form-card" id="dang-nhap-shop" aria-label="Đăng nhập shop"><h2>Đăng nhập shop</h2><p>Shop đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây, rồi dùng mục Đăng tin tuyển mẫu bên dưới. Tài khoản đăng nhập dùng chung cho cả sàn; hồ sơ shop và đăng tin đều được lưu thật vào hệ thống.</p>
-<h3>1. Đăng ký tài khoản shop</h3><form id="shopSignUp" data-track="form-dang-ky-shop"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><input id="shSuPass" type="password" required></label></p><p><label>Nhập lại mật khẩu *<br><input id="shSuPass2" type="password" required></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit" data-track="nut-dang-ky-shop">Đăng ký</button></form>
-<h3>2. Đăng nhập</h3><form id="shopSignIn" data-track="form-dang-nhap-shop"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><input id="shSiPass" type="password" required></label></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-shop">Đăng nhập</button></form>
-<h3>3. Quên mật khẩu</h3><form id="shopForgot" data-track="form-quen-mat-khau-shop"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
-<p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" data-track="nut-dang-xuat-shop" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
+<div class="auth-view" id="shViewLogin"><h3>Đăng nhập</h3><form id="shopSignIn" data-track="form-dang-nhap-shop"><p><label>Email *<br><input id="shSiEmail" type="email" required></label></p><p><label>Mật khẩu *<br><span class="pw-wrap"><input id="shSiPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="shSiPass" data-track="hien-mat-khau-shop" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-shop">Đăng nhập</button></form>
+<p class="auth-links"><a href="#" data-auth-view="register" data-auth-popup="1" data-track="mo-dang-ky-shop">Chưa có tài khoản? Đăng ký</a><a href="#" data-auth-view="forgot" data-track="mo-quen-mat-khau-shop">Quên mật khẩu?</a></p></div>
+<div class="auth-view" id="shViewRegister" hidden><h3>Đăng ký tài khoản shop</h3><form id="shopSignUp" data-track="form-dang-ky-shop"><p><label>Email *<br><input id="shSuEmail" type="email" required></label></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="shSuPhone" type="tel" required></label></p><p><label>Mật khẩu *<br><span class="pw-wrap"><input id="shSuPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="shSuPass" data-track="hien-mat-khau-shop" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p><label>Nhập lại mật khẩu *<br><span class="pw-wrap"><input id="shSuPass2" type="password" required><button class="pw-toggle" type="button" data-pw-for="shSuPass2" data-track="hien-mat-khau-shop" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p><label><input id="shSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit" data-track="nut-dang-ky-shop">Đăng ký</button></form>
+<p class="auth-links"><a href="#" data-auth-view="login" data-track="ve-dang-nhap-shop">Đã có tài khoản? Đăng nhập</a></p></div>
+<div class="auth-view" id="shViewForgot" hidden><h3>Quên mật khẩu</h3><form id="shopForgot" data-track="form-quen-mat-khau-shop"><p><label>Email đã đăng ký *<br><input id="shFpEmail" type="email" required></label></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
+<p class="auth-links"><a href="#" data-auth-view="login" data-track="ve-dang-nhap-shop">← Quay lại đăng nhập</a></p></div>
+<p id="shopAuthMsg"></p>
+<div id="shopAuthUserBox" style="display:none"><p>Đã đăng nhập: <span id="shopAuthUserEmail"></span></p><p><button class="btn btn-ghost btn-sm" id="shopSignOut" data-track="nut-dang-xuat-shop" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></div></section>
+<div class="gopy-overlay" id="shAuthTypeOverlay"><div class="gopy-box" role="dialog" aria-label="Chọn loại tài khoản"><h2 style="margin:0">Đăng ký tài khoản nào?</h2>
+<p>Chọn loại tài khoản phù hợp với bạn. Sau khi chọn sẽ hiện form đăng ký riêng của loại đó.</p>
+<button class="auth-type-btn" type="button" data-auth-type="shop" data-track="chon-dang-ky-shop"><b>Đăng ký tài khoản Cửa hàng / Doanh nghiệp</b><span>Dành cho shop cần tìm mẫu livestream</span></button>
+<button class="auth-type-btn" type="button" data-auth-type="model" data-track="chon-dang-ky-mau"><b>Đăng ký tài khoản tìm việc</b><span>Dành cho mẫu livestream tìm việc</span></button>
+<div style="display:flex;gap:10px"><button class="btn btn-ghost" type="button" id="shAuthTypeClose">Đóng</button></div>
+</div></div>
 
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
+<div id="jobGate"><p>Bạn cần đăng nhập để đăng tin tuyển mẫu.</p><p><a class="btn btn-primary" href="#dang-nhap-shop">Đăng Nhập</a></p></div>
+<div id="jobFormWrap" hidden>
 <div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> tin được lưu vào hệ thống, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm" data-track="form-dang-tin-tuyen">
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
@@ -122,7 +136,8 @@
 <label>Mô tả công việc<textarea name="desc" rows="4" placeholder="Sản phẩm, yêu cầu, địa điểm, thời gian hợp tác…"></textarea></label>
 <p><button class="btn btn-primary" type="submit" data-track="nut-dang-tin-tuyen">Gửi tin tuyển mẫu</button></p>
 <p id="jobMsg" role="status"></p>
-</form></section>
+</form>
+</div></section>
 <p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Sang trang mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
@@ -163,7 +178,7 @@
     try{
       var shops=await McLivestreamAPI.fetchApprovedShops();
       var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
-      st.textContent='Shop đăng ký hồ sơ và đăng tin ở form bên dưới; hồ sơ và tin đã duyệt sẽ hiện ở mục này.';
+      st.textContent='Shop đăng ký hồ sơ ở form bên dưới; đăng nhập để đăng tin tuyển mẫu. Hồ sơ và tin đã duyệt sẽ hiện ở mục này.';
       if(shops.length){
         document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
           return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ livestream: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
@@ -177,7 +192,7 @@
           var shop=(j.shop_profiles&&j.shop_profiles.shop_name)||'Shop đã duyệt';
           return '<article class="news-item"><h3 style="margin:0">'+esc(shop)+' — '+esc(j.field||'Chưa ghi lĩnh vực')+'</h3><p>Tỉnh: '+esc(j.province||'Chưa cập nhật')+' · Lịch: '+esc(j.schedule||'Chưa cập nhật')+' · Lương: '+esc(j.salary||'Thỏa thuận')+(j.channels&&j.channels.length?' · Kênh: '+esc(j.channels.join(', ')):'')+'</p>'+(j.description?('<p>'+esc(j.description)+'</p>'):'')+'</article>';
         }).join('');
-      } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; document.getElementById('approvedJobsList').innerHTML='<p class="empty-state">Shop đăng tin tuyển mẫu ở <a href="#dang-tin">form bên dưới</a> — sau khi Ver2Solution duyệt, tin sẽ hiện công khai tại đây.</p>'; }
+      } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; document.getElementById('approvedJobsList').innerHTML='<p class="empty-state">Shop đăng nhập rồi đăng tin tuyển mẫu ở <a href="#dang-tin">mục bên dưới</a> — sau khi Ver2Solution duyệt, tin sẽ hiện công khai tại đây.</p>'; }
     }catch(e){
       st.textContent=missingMsg(e);
       document.getElementById('approvedJobsStatus').textContent=missingMsg(e);
@@ -257,9 +272,78 @@
   if(si)si.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().signIn({email:document.getElementById('shSiEmail').value.trim(),password:document.getElementById('shSiPass').value});msg('Đăng nhập thành công.');showUser();}catch(err){msg('Đăng nhập chưa thành công: '+(err.message||err));}});
   var fp=document.getElementById('shopForgot');
   if(fp)fp.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().resetPassword(document.getElementById('shFpEmail').value.trim());msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.');}catch(err){msg('Gửi link chưa thành công: '+(err.message||err));}});
-  async function showUser(){try{var s=await api().getSession();var u=s&&s.user;var b=document.getElementById('shopAuthUserBox');if(u){b.style.display='';document.getElementById('shopAuthUserEmail').textContent=u.email;}}catch(_){}}
+  /* v45 auth: 1 the, 1 view hien tai 1 thoi diem. Mac dinh view Dang nhap;
+     ?auth=register mo view Dang ky, ?auth=forgot mo view Quen mat khau
+     (dung cho link cheo trang tu popup chon loai tai khoan). Khi da dang
+     nhap thi AN HET 3 view, chi hien hop "Da dang nhap" + nut "Dang xuat"
+     + link xuong muc Dang tin tuyen mau. */
+  var AUTH_VIEWS=['login','register','forgot'];
+  function viewEl(v){ return document.getElementById('shView'+v.charAt(0).toUpperCase()+v.slice(1)); }
+  function showAuthView(v){
+    if(AUTH_VIEWS.indexOf(v)===-1) v='login';
+    AUTH_VIEWS.forEach(function(x){ var el=viewEl(x); if(el) el.hidden=(x!==v); });
+  }
+  var initialAuthView=(function(){ try{ var a=new URLSearchParams(location.search).get('auth'); return (a==='register'||a==='forgot')?a:'login'; }catch(e){ return 'login'; } })();
+  document.querySelectorAll('#dang-nhap-shop [data-auth-view]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var v=a.getAttribute('data-auth-view');
+      if(v==='register' && a.getAttribute('data-auth-popup')){ openAuthType(); return; }
+      showAuthView(v);
+    });
+  });
+  /* v45: nut hien/an mat khau cho cac o mat khau (Dang nhap + Dang ky). */
+  document.querySelectorAll('#dang-nhap-shop .pw-toggle').forEach(function(b){
+    b.addEventListener('click',function(){
+      var inp=document.getElementById(b.getAttribute('data-pw-for'));
+      if(!inp) return;
+      var show=inp.type==='password';
+      inp.type=show?'text':'password';
+      b.textContent=show?'Ẩn':'Hiện';
+      b.setAttribute('aria-label',show?'Ẩn mật khẩu':'Hiện mật khẩu');
+    });
+  });
+  /* v45: popup chon loai tai khoan khi an "Dang ky". Chon dung loai cua trang
+     thi dong popup + hien view Dang ky; chon loai kia thi sang trang kia
+     kem ?auth=register de mo thang view Dang ky. */
+  var typeOv=document.getElementById('shAuthTypeOverlay');
+  function openAuthType(){ if(typeOv) typeOv.classList.add('open'); }
+  function closeAuthType(){ if(typeOv) typeOv.classList.remove('open'); }
+  if(typeOv) typeOv.addEventListener('click',function(e){ if(e.target===typeOv) closeAuthType(); });
+  var typeClose=document.getElementById('shAuthTypeClose');
+  if(typeClose) typeClose.addEventListener('click',closeAuthType);
+  if(typeOv) typeOv.querySelectorAll('[data-auth-type]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var kind=b.getAttribute('data-auth-type');
+      closeAuthType();
+      if(kind==='shop'){ showAuthView('register'); }
+      else { location.href='danh-sach-mau.html?auth=register#dang-nhap-mau'; }
+    });
+  });
+  /* v45: muc #dang-tin chi mo form khi da dang nhap; chua dang nhap chi
+     hien cong "Ban can dang nhap..." + nut "Dang Nhap". */
+  function updateJobGate(u){
+    var g=document.getElementById('jobGate'), w=document.getElementById('jobFormWrap');
+    if(!g||!w) return;
+    g.hidden=!!u; w.hidden=!u;
+  }
+  async function showUser(){
+    try{
+      var s=await api().getSession(); var u=s&&s.user;
+      var b=document.getElementById('shopAuthUserBox');
+      if(u){
+        b.style.display='';
+        document.getElementById('shopAuthUserEmail').textContent=u.email;
+        AUTH_VIEWS.forEach(function(x){ var el=viewEl(x); if(el) el.hidden=true; });
+      } else {
+        b.style.display='none';
+        showAuthView(initialAuthView);
+      }
+      updateJobGate(u);
+    }catch(_){}
+  }
   var so=document.getElementById('shopSignOut');
-  if(so)so.addEventListener('click',async function(){if(api())await api().signOut();document.getElementById('shopAuthUserBox').style.display='none';msg('Đã đăng xuất.');});
+  if(so)so.addEventListener('click',async function(){if(api())await api().signOut();document.getElementById('shopAuthUserBox').style.display='none';msg('Đã đăng xuất.');showAuthView('login');updateJobGate(null);});
   showUser();
 })();
 </script>

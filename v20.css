@@ -170,6 +170,17 @@ a:hover{text-decoration:underline}
 .form-card fieldset label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:4px 12px 4px 0}
 .form-card fieldset label input{width:auto}
 .form-card fieldset input[type=text]{width:100%}
+/* v45 auth: 1 the, 1 view hien tai 1 thoi diem (mau chuan login/signup) */
+.auth-view[hidden]{display:none}
+.auth-links{margin:14px 0 0;font-size:14px}
+.auth-links a{display:inline-block;margin:0 16px 6px 0}
+.pw-wrap{position:relative;display:block}
+.pw-wrap input{padding-right:56px}
+.pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:7px 10px;font:inherit;font-size:13px;font-weight:700;color:var(--brand);cursor:pointer}
+.auth-type-btn{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px;margin:10px 0;cursor:pointer;font:inherit}
+.auth-type-btn:hover{border-color:var(--brand)}
+.auth-type-btn b{display:block;font-size:16px;margin-bottom:2px}
+.auth-type-btn span{font-size:13px;color:var(--mut)}
 .notice{font-size:14px;color:#7a5b00;background:#fff7dd;border-radius:12px;padding:12px 14px;margin:12px 0}
 .empty-state{font-size:14px;color:#5b6470;background:#f2f5f7;border:1px dashed #c3ccd4;border-radius:12px;padding:12px 14px;margin:12px 0}
 .news-layout{display:grid;grid-template-columns:1.65fr 1fr;gap:18px;align-items:start}
