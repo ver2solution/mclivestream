@@ -25,7 +25,7 @@
 
 <section class="form-card" aria-labelledby="shops-title"><h2 id="shops-title">Danh sách các shop đang tuyển mẫu</h2>
 <p id="shopBackendStatus">Đang kiểm tra kết nối backend shop…</p>
-<div class="notice" id="approvedShopsEmpty"><p><strong>Hiện chưa liệt kê shop nào.</strong></p><p>Danh sách này sẽ hiển thị khi shop tự đăng tin tuyển mẫu và tin được duyệt. Trang này không tự tạo tên shop, địa chỉ hay tin tuyển chưa có thật.</p></div>
+<div id="publicShops"><p><strong>20 shop đang tuyển mẫu — tin tuyển công khai.</strong></p><p>Thông tin dưới đây chỉ lấy từ bài tuyển shop tự đăng công khai trên Facebook: tên shop, mặt hàng, tỉnh/quận, mức lương, yêu cầu chính và ngày đăng tin. Web không đăng số điện thoại, Zalo hay địa chỉ riêng tư của shop, không bịa link fanpage. Mỗi tin kèm link về bài tuyển gốc. Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p><p id="publicShopsCount" style="font-weight:800"></p><div class="shop-grid" id="publicShopsList"></div></div>
 <div id="approvedShopsList"></div>
 <h3>Tin tuyển mẫu đã duyệt</h3><p id="approvedJobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
 <p style="font-size:13px">Số điện thoại và email riêng của shop không hiện công khai; cần ứng tuyển thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> và ghi tên tin tuyển.</p></section>
@@ -153,8 +153,7 @@
       var shops=await McLivestreamAPI.fetchApprovedShops();
       var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
       st.textContent='Đã kết nối bảng shop thật (shop_profiles, shop_job_posts).';
-      var empty=document.getElementById('approvedShopsEmpty');
-      if(shops.length){ empty.style.display='none';
+      if(shops.length){
         document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
           return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ live: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
         }).join('');
