@@ -6,8 +6,14 @@
      never a fabricated photo. photoSrc says where a photo came from: "post" (the model's
      own public post) or "profile" (the model's public Facebook profile picture).
    - Visible text never contains an internal id (th-xx): ids live only in data and in ?id= URLs.
-   - No private phone/Zalo/email of a model is rendered: contact is only via the original
-     public post, or via Ver2Solution Zalo 032 998 3699. */
+   - Contact rule (v26, user-approved 2026-11-05 13:26, spec §8, audit contact-audit-v26.md):
+     `contacts` in data.js holds ONLY items the model/shop published themselves in
+     their public post or on their public channel, each with source_url. Those are
+     rendered in full (Zalo as zalo.me link, phone as tel: link, email as mailto:,
+     Facebook/TikTok/Shopee as external links) with the note "Các bên chủ động liên
+     hệ trao đổi, thông tin là công khai." and the CHƯA XÁC NHẬN label + removal
+     request. Anything not in `contacts` (no public source) is never rendered —
+     no private phone/Zalo/email is ever shown, invented or guessed. */
 (function(){
 'use strict';
 var D = window.V20_DATA || {models:[], articles:[], provinces:[], categories:[]};
@@ -38,22 +44,61 @@ function miniHTML(m){
   return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
   + '<p>'+esc(m.title)+'</p><p>📍 '+esc(m.province)+' · '+esc(m.cat)+'</p><p>Lương: '+esc(m.salary)+'</p><p>'+esc(m.exp)+'</p></div></article>';
 }
+/* Contacts (v26, spec §8): render ONLY the audited `contacts` array from data.js.
+   Every value is escaped before render (AGENTS.md §1.7). Zalo numbers are
+   10-digit strings already normalised in data.js; the link is always zalo.me,
+   never a bare number. Items with no public source simply do not exist in
+   `contacts`, so they are never rendered and never shown as "Chưa cập nhật". */
+var CONTACT_NOTE = 'Các bên chủ động liên hệ trao đổi, thông tin là công khai.';
+function defaultContactLabel(p){
+  return {facebook:'Facebook', zalo:'Zalo', phone:'Số điện thoại', email:'Email', tiktok:'TikTok', shopee:'Shopee'}[p] || 'Liên hệ';
+}
+function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
+function contactHref(c){
+  if(c.provider==='zalo') return 'https://zalo.me/'+digitsOnly(c.value);
+  if(c.provider==='phone') return 'tel:'+digitsOnly(c.value);
+  if(c.provider==='email') return 'mailto:'+c.value;
+  return c.value; // facebook / tiktok / shopee: full public URL
+}
+function contactItemHTML(c){
+  var label = esc(c.label || defaultContactLabel(c.provider));
+  var href = esc(contactHref(c));
+  var ext = (c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee') ? ' target="_blank" rel="noopener"' : '';
+  if(c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee'){
+    return '<li><a href="'+href+'"'+ext+'>'+label+'</a></li>';
+  }
+  return '<li>'+label+': <a href="'+href+'"'+ext+'>'+esc(c.value)+'</a></li>';
+}
+function contactsBlockHTML(contacts){
+  if(!contacts || !contacts.length) return '';
+  return '<ul class="contact-list">'+contacts.map(contactItemHTML).join('')+'</ul>';
+}
+function contactNoteHTML(){ return '<p class="contact-note">'+CONTACT_NOTE+'</p>'; }
 /* Shops (v22): tin tuyển công khai thu thập từ bài tuyển shop tự đăng.
-   Chỉ hiển thị thông tin công khai: tên, mặt hàng, tỉnh/quận, lương, yêu cầu,
-   kênh, ngày đăng, link bài gốc. Không số điện thoại/Zalo/địa chỉ riêng tư,
-   không link fanpage (chưa xác định được), không logo thật — ô chữ cái đầu
-   tên shop làm placeholder. 5 tin không ghi tên shop trong bài thì tên hiển
-   thị là tên người đăng tin, kèm ghi chú "người đăng tin tuyển". */
+   v26: 3 shops have a verified real logo (images-shop/; FANI square = cover,
+   Chạm Loa + Mylan transparent/wide = contain on white, never cropped).
+   The other 21 keep the initial-letter placeholder. Contact block + Notes
+   (spec §8.3) show ONLY the audited public contacts; a shop with no public
+   number/email shows no Zalo/phone/email line at all. No private phone/Zalo/
+   address, no fabricated fanpage link, no Thế Giới Giấy content for Mylan. */
 function shopInitial(s){ return (String(s.name||'?').trim().charAt(0)||'?').toUpperCase(); }
+function shopLogoHTML(s){
+  if(!s.logo) return '<span class="shop-initial" aria-hidden="true">'+esc(shopInitial(s))+'</span>';
+  var fit = s.logoFit==='contain' ? 'shop-logo--contain' : 'shop-logo--cover';
+  var init = esc(shopInitial(s));
+  return '<img class="shop-logo '+fit+'" src="'+esc(s.logo)+'" alt="Logo '+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<span class=shop-initial>'+init+'</span>\'">';
+}
 function shopCardHTML(s){
   var name = esc(s.name) + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
   return '<article class="shop-card">'
-  + '<div class="shop-head"><span class="shop-initial" aria-hidden="true">'+esc(shopInitial(s))+'</span><div><h3>'+name+'</h3>'
+  + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h3>'+name+'</h3>'
   + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
   + '<dl class="facts"><div><dt>Mức lương</dt><dd><b>'+esc(s.salary)+'</b></dd></div>'
   + '<div><dt>Yêu cầu chính</dt><dd>'+esc(s.req)+'</dd></div>'
   + '<div><dt>Kênh live</dt><dd>'+esc(s.channels)+'</dd></div>'
   + '<div><dt>Ngày đăng tin</dt><dd>'+esc(s.date)+'</dd></div></dl>'
+  + contactsBlockHTML(s.contacts)
+  + contactNoteHTML()
   + '<p class="shop-src">Tin tuyển công khai — <a href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
 }
@@ -129,6 +174,11 @@ function articleLink(a){
 function articleHref(a){ return a.page || a.url || ''; }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
+  // v26 trust strip (spec §4): counts from real data when available; the
+  // static numbers in index.html (24 / 20 / 400+) are the verified fallback.
+  // 400+ is a user-confirmed constant, never computed or increased.
+  var ts=document.getElementById('trustShops'); if(ts) ts.textContent=String((D.shops||[]).length);
+  var tm=document.getElementById('trustModels'); if(tm) tm.textContent=String(D.models.length);
   // v25: exactly 8, ALL with a real photo (homeTop8 filters by photoUrl first,
   // then rotates by day-of-year). Profiles without a real photo never reach home.
   var shown=homeTop8(D.models);
@@ -243,12 +293,11 @@ function initDetail(){
   + '<div class="fact"><b>Ngày bài gốc</b><span>'+esc(m.date)+'</span></div></div>'
   + '<h2>Kinh nghiệm</h2><p>'+esc(m.exp)+'</p>'
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế.</p></div></div>'
-  + '<div><div class="contact-card"><h2>Liên hệ tuyển mẫu này</h2><p>Shop liên hệ theo 2 cách, không cần đăng nhập để xem hồ sơ:</p>'
-  + '<ol><li><b>Cách 1 — qua bài gốc:</b> bấm Xem bài gốc, nhắn trực tiếp cho người đăng bài trên Facebook.</li>'
-  + '<li><b>Cách 2 — qua Ver2Solution:</b> nhắn Zalo 032 998 3699, ghi tên mẫu và tỉnh / lĩnh vực cần tuyển để được giới thiệu.</li></ol>'
-  + '<p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
+  + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
+  + contactsBlockHTML(m.contacts)
+  + contactNoteHTML()
+  + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
   + '<a class="btn btn-light" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
-  + '<a class="btn btn-light" href="'+esc(m.src)+'" target="_blank" rel="noopener">Nhắn Facebook qua bài gốc</a>'
   + '<a class="btn btn-light" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a>'
   + '<a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
   + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> <a href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
@@ -274,6 +323,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
+window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

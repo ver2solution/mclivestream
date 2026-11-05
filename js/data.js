@@ -1,5 +1,17 @@
-/* v25 data: 20 real profiles + 24 shops (public job posts, public info only,
-   no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
+/* v26 data: 20 real profiles + 24 shops (public job posts) + 22 articles.
+   v26 adds (user-approved 2026-11-05 13:26, spec v26 §8, audit contact-audit-v26.md):
+   - `contacts` on every model and shop: ONLY items the model/shop published
+     themselves in their public post or on their public channel (verified in the
+     audit, each with source_url). 5/20 models have a public Zalo/phone number
+     (th-02, th-03, th-12, th-14, th-17), 1/20 has a public email (th-14);
+     19/24 shops have a public Zalo/phone number, 1/24 a public email (FANI).
+     Every model/shop has at least its public Facebook link as a contact.
+     Items with no public source are NOT in `contacts` (never invented).
+   - `logo` on 3 shops (FANI cover, Chạm Loa + Mylan contain) + `logoFit`;
+     the other 21 shops keep `"logo": ""` (initial-letter placeholder).
+   Chạm Loa's original post could not be re-read (POST_NOT_FOUND) — its only
+   contact is the public fanpage link from its official website; no Zalo
+   number is guessed. Do NOT add Thế Giới Giấy content to Mylan.
    v25 adds real photos for 11 more profiles (18/20 now have a photo): th-11 and
    th-18 use the photo from the model's own public post; th-01, th-03, th-05,
    th-07, th-12, th-13, th-15, th-17 and th-19 use the model's public Facebook
@@ -39,8 +51,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-01.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100082318996082", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2214441499504324/"}
+   ]  },
   {
    "id": "th-02",
    "name": "G T MY Duyênn",
@@ -63,8 +77,11 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-02.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "zalo", "value": "0982725840", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2210083783273429/"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100075647083103", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2210083783273429/"}
+   ]  },
   {
    "id": "th-03",
    "name": "Kiều Nguyễn",
@@ -87,8 +104,11 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-03.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "zalo", "value": "0969151680", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2119153999033075/"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100022181344685", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2119153999033075/"}
+   ]  },
   {
    "id": "th-04",
    "name": "Bảo Trân",
@@ -111,8 +131,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null
-  },
+   "photoSrc": null,
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61589879181097", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1018764843295910/permalink/1709354917570229/"}
+   ]  },
   {
    "id": "th-05",
    "name": "Bá Hùng",
@@ -135,8 +157,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-05.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100048297613095", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1018764843295910/permalink/1649796980192690/"}
+   ]  },
   {
    "id": "th-06",
    "name": "Pham Thi Ngoc Diep",
@@ -159,8 +183,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-06.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100065334549357", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/224376760569987/permalink/985559207785068/"}
+   ]  },
   {
    "id": "th-07",
    "name": "Yen Nhi",
@@ -183,8 +209,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-07.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100054629757115", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/224376760569987/permalink/940499302291059/"}
+   ]  },
   {
    "id": "th-08",
    "name": "Thuỳ Trang",
@@ -207,8 +235,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-08.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100019645189131", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/173192415749028/permalink/892703943797868/"}
+   ]  },
   {
    "id": "th-09",
    "name": "Tran Tieu",
@@ -231,8 +261,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-09.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006855157771", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/593928429520087/permalink/748992390680356/"}
+   ]  },
   {
    "id": "th-10",
    "name": "Đoàn Vũ Tiến",
@@ -255,8 +287,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null
-  },
+   "photoSrc": null,
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100021640461563", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/593928429520087/permalink/1321158746797048/"}
+   ]  },
   {
    "id": "th-11",
    "name": "Elena Tienn",
@@ -279,8 +313,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-11.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100054949616936", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/774093982362357/"}
+   ]  },
   {
    "id": "th-12",
    "name": "Trần Thị Mỹ Lương",
@@ -303,8 +339,11 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-12.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "zalo", "value": "0363622099", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/889318007506620/"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100040601830739", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/889318007506620/"}
+   ]  },
   {
    "id": "th-13",
    "name": "Ngoc Diep",
@@ -327,8 +366,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-13.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100019409002255", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/817192814783431/"}
+   ]  },
   {
    "id": "th-14",
    "name": "Lâm Thu Hường",
@@ -351,8 +392,12 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-14.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "zalo", "value": "0986718540", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"},
+    {"provider": "email", "value": "huonglam2303@gmail.com", "label": "Email", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100024303263550", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"}
+   ]  },
   {
    "id": "th-15",
    "name": "Nguyễn Hải Ngọc",
@@ -375,8 +420,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-15.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100004386730543", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/4313382758756244/"}
+   ]  },
   {
    "id": "th-16",
    "name": "Anh Diep",
@@ -399,8 +446,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-16.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100081152650541", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6747171492044013/"}
+   ]  },
   {
    "id": "th-17",
    "name": "Mộng Nghi",
@@ -423,8 +472,11 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-17.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "zalo", "value": "0932542626", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6667029263391570/"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100008442013188", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6667029263391570/"}
+   ]  },
   {
    "id": "th-18",
    "name": "Minh Thuyên",
@@ -447,8 +499,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-18.jpg",
-   "photoSrc": "post"
-  },
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100011275561537", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/7720950844666068/"}
+   ]  },
   {
    "id": "th-19",
    "name": "Kiều Thư",
@@ -471,8 +525,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-19.jpg",
-   "photoSrc": "profile"
-  },
+   "photoSrc": "profile",
+   "contacts": [
+    {"provider": "facebook", "value": "https://facebook.com/kieu.thu.912207", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/7031338710293955/"}
+   ]  },
   {
    "id": "th-20",
    "name": "Nga Trần",
@@ -495,8 +551,10 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-20.jpg",
-   "photoSrc": "post"
-  }
+   "photoSrc": "post",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100009858678437", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6763530083741487/"}
+   ]  }
  ],
  "shops": [
   {
@@ -509,8 +567,12 @@ window.V20_DATA = {
    "req": "Giao tiếp tốt, năng động, tự tin trước camera, đam mê công nghệ; biết hát là lợi thế. Ưu tiên có kinh nghiệm livestream.",
    "channels": "TikTok, Shopee",
    "date": "2026-11-05",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326309658137327"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326309658137327",
+   "logo": "images-shop/shop-chamloa.png",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/people/Chạm-Loa/61576944824677/", "label": "Fanpage Chạm Loa", "source": "fanpage", "source_url": "https://www.facebook.com/people/Chạm-Loa/61576944824677/"}
+   ]  },
   {
    "name": "Đỗ Sỹ Khải",
    "shopNameKnown": false,
@@ -521,8 +583,12 @@ window.V20_DATA = {
    "req": "Nam, không yêu cầu kinh nghiệm; ca 11:00–14:00 và 20:00–23:00.",
    "channels": "KOC TikTok",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0941722001", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100090883478300", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"}
+   ]  },
   {
    "name": "Lâm",
    "shopNameKnown": false,
@@ -533,8 +599,12 @@ window.V20_DATA = {
    "req": "Đã có kinh nghiệm bán giày dép; tuyển 1 bạn.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0367889506", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029373981234", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"}
+   ]  },
   {
    "name": "Lâm Hoàng Dũng",
    "shopNameKnown": false,
@@ -545,8 +615,12 @@ window.V20_DATA = {
    "req": "2 nam + 1 nữ, có kinh nghiệm livestream bán hàng; ca 23–01h và 19–21h; yêu cầu chiều cao/cân nặng, nói lưu loát, tự tin trước camera.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0876020006", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012624346418", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"}
+   ]  },
   {
    "name": "Phạm Hoàng Lâm",
    "shopNameKnown": false,
@@ -557,8 +631,11 @@ window.V20_DATA = {
    "req": "Nữ, sinh năm 2K–2K6; ưu tiên đã có kinh nghiệm livestream thời trang nữ; 1 ngày 2 ca, mỗi ca 3 tiếng.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949",
+   "logo": "",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61594229461537", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949"}
+   ]  },
   {
    "name": "Le Paria",
    "shopNameKnown": true,
@@ -569,8 +646,12 @@ window.V20_DATA = {
    "req": "Ưu tiên có kinh nghiệm livestream/bán hàng/content creator, hiểu biết wellness; ca linh hoạt trong khung 6h–24h.",
    "channels": "TikTok Shop, Shopee",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0339705529", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61580462560218", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"}
+   ]  },
   {
    "name": "DOLLY SECRET",
    "shopNameKnown": true,
@@ -581,8 +662,14 @@ window.V20_DATA = {
    "req": "Nữ, từ 1 năm kinh nghiệm livestream; giao tiếp tốt, ngoại hình sáng, nữ cao từ 1m6.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0377067362", "label": "Zalo liên hệ tuyển dụng (Ms. Nhàn)", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100082410553515", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"},
+    {"provider": "tiktok", "value": "https://www.tiktok.com/@dollysecret.tight", "label": "TikTok @dollysecret.tight", "source": "topcv", "source_url": "https://www.tiktok.com/@dollysecret.tight"},
+    {"provider": "shopee", "value": "https://shopee.vn/dollysecret.tights", "label": "Shopee Dolly Secret Tights", "source": "shopee", "source_url": "https://shopee.vn/dollysecret.tights"}
+   ]  },
   {
    "name": "Nguyễn Minh Ngọc",
    "shopNameKnown": false,
@@ -593,8 +680,11 @@ window.V20_DATA = {
    "req": "Kinh nghiệm live trên 6 tháng; ca 20–22h; không ngọng, cao 1m6, 45–46 kg.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211",
+   "logo": "",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012425322917", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211"}
+   ]  },
   {
    "name": "CÔNG TY TNHH TM XNK FANI / TopGia, TopGiaKids",
    "shopNameKnown": true,
@@ -605,8 +695,14 @@ window.V20_DATA = {
    "req": "6 tháng – 1 năm kinh nghiệm livestream hoặc quay video; ca linh hoạt; đóng BHXH, BHYT, BHTN, thưởng lễ Tết, quà sinh nhật.",
    "channels": "TikTok",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382",
+   "logo": "images-shop/shop-fani-topgia.jpg",
+   "logoFit": "cover",
+   "contacts": [
+    {"provider": "zalo", "value": "0912569229", "label": "Zalo liên hệ nhanh", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"},
+    {"provider": "email", "value": "dungtvt3382@topgiafani.com", "label": "Email nhận CV", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"},
+    {"provider": "facebook", "value": "https://www.facebook.com/tuyendungfani", "label": "Fanpage Tuyển Dụng FANI", "source": "fanpage", "source_url": "https://www.facebook.com/tuyendungfani"}
+   ]  },
   {
    "name": "Ngoc Giang",
    "shopNameKnown": true,
@@ -617,8 +713,12 @@ window.V20_DATA = {
    "req": "Ưu tiên từng live ngành F&B/Thực phẩm; 3–4 tiếng/phiên, lịch linh hoạt.",
    "channels": "TikTok",
    "date": "2026-09-08",
-   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"
-  },
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0353215046", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100004639247783", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"}
+   ]  },
   {
    "name": "QTC Marketing",
    "shopNameKnown": true,
@@ -629,8 +729,11 @@ window.V20_DATA = {
    "req": "Nữ, livestream bán hàng từ 3–6 tháng trở lên, ưu tiên từng live vòng ngọc; yêu cầu bàn tay trắng, thon, ngón tay đẹp.",
    "channels": "Chưa cập nhật",
    "date": "2026-10-04",
-   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841"
-  },
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841",
+   "logo": "",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100084326330688", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841"}
+   ]  },
   {
    "name": "Phuongg Thảo",
    "shopNameKnown": true,
@@ -641,8 +744,12 @@ window.V20_DATA = {
    "req": "Nam/Nữ; 9:00–10:30 hàng ngày, ngày sale 2 ca sáng tối mỗi ca 2 tiếng.",
    "channels": "Chưa cập nhật",
    "date": "2026-10-15",
-   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"
-  },
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0975848831", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100063519480617", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"}
+   ]  },
   {
    "name": "Hiếu Ken",
    "shopNameKnown": true,
@@ -653,8 +760,12 @@ window.V20_DATA = {
    "req": "Chỉ tuyển nữ; tối thiểu 6 tháng kinh nghiệm; khung 11h–14h, 14h–17h.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-02",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0336190155", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100005592996221", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"}
+   ]  },
   {
    "name": "Lê Thị Liễu",
    "shopNameKnown": true,
@@ -665,8 +776,13 @@ window.V20_DATA = {
    "req": "Nữ, ưu tiên học sinh, sinh viên; không yêu cầu kinh nghiệm, được đào tạo; nữ cao m58–m68, da trắng.",
    "channels": "TikTok",
    "date": "2026-10-02",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0971759240", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"},
+    {"provider": "zalo", "value": "0981167717", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012358743057", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"}
+   ]  },
   {
    "name": "Nguyễn Thuý",
    "shopNameKnown": true,
@@ -677,8 +793,11 @@ window.V20_DATA = {
    "req": "Nữ, tuyển 2 mẫu; tối thiểu 6 tháng kinh nghiệm live thời trang; ca 6h–9h và 9h–12h sáng.",
    "channels": "TikTok",
    "date": "2026-10-18",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422",
+   "logo": "",
+   "contacts": [
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100028825702612", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422"}
+   ]  },
   {
    "name": "Lan Phương",
    "shopNameKnown": true,
@@ -689,8 +808,12 @@ window.V20_DATA = {
    "req": "Nữ; ít nhất 2–3 tháng live; ca tối 18–24h và ca ngày 2h–4h/ca.",
    "channels": "Chưa cập nhật",
    "date": "2026-09-16",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0352514268", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029066784370", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"}
+   ]  },
   {
    "name": "Vân Nguyễn",
    "shopNameKnown": true,
@@ -701,8 +824,12 @@ window.V20_DATA = {
    "req": "Nữ, tuyển 5 mẫu, 18–28 tuổi; kinh nghiệm live thời trang 6 tháng trở lên; tối thiểu 5 buổi/tuần, 2–3 tiếng/buổi.",
    "channels": "Chưa cập nhật",
    "date": "2026-10-30",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0967488936", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100009152456136", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"}
+   ]  },
   {
    "name": "Như Quỳnh",
    "shopNameKnown": true,
@@ -713,8 +840,12 @@ window.V20_DATA = {
    "req": "Fulltime tại TP HCM; tuyển 1 bạn.",
    "channels": "TikTok Shop, Shopee",
    "date": "2026-11-03",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0931482789", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61552293746603", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"}
+   ]  },
   {
    "name": "Nhung Hong Pham",
    "shopNameKnown": true,
@@ -725,8 +856,12 @@ window.V20_DATA = {
    "req": "Team 2 kênh bán hàng; tuyển 2 bạn host, part-time; kinh nghiệm live từ 6 tháng trở lên; ca linh hoạt 6h–24h.",
    "channels": "Chưa cập nhật",
    "date": "2026-10-25",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0829078209", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006865515051", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"}
+   ]  },
   {
    "name": "Vũ Linh Phương",
    "shopNameKnown": true,
@@ -737,8 +872,12 @@ window.V20_DATA = {
    "req": "Tối thiểu 6 tháng kinh nghiệm live thời trang thể thao; ca 10–22h hàng ngày.",
    "channels": "Chưa cập nhật",
    "date": "2026-09-09",
-   "src": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"
-  },
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0333422259", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100079002122590", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"}
+   ]  },
   {
    "name": "Javata Affiliate Team",
    "shopNameKnown": true,
@@ -749,8 +888,12 @@ window.V20_DATA = {
    "req": "CTV livestream part-time.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-05",
-   "src": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"
-  },
+   "src": "https://www.facebook.com/groups/337105752372137/posts/969098779172828",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0865863929", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61589467955549", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"}
+   ]  },
   {
    "name": "Truong Phuc Anh",
    "shopNameKnown": true,
@@ -761,8 +904,12 @@ window.V20_DATA = {
    "req": "Part-time 19–23h.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"
-  },
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968270825922290",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0868553009", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100037242465269", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"}
+   ]  },
   {
    "name": "Thời Trang Nam Rustico",
    "shopNameKnown": true,
@@ -773,8 +920,12 @@ window.V20_DATA = {
    "req": "Livestream TikTok Shop thời trang nam.",
    "channels": "TikTok Shop",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"
-  },
+   "src": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0965765494", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100056622261085", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"}
+   ]  },
   {
    "name": "Công ty TNHH Giấy Mylan",
    "shopNameKnown": true,
@@ -785,8 +936,13 @@ window.V20_DATA = {
    "req": "Host Livestream Full-time.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
-   "src": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"
-  }
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968219079260798",
+   "logo": "images-shop/shop-mylan.png",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0948972643", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"},
+    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61582223414128", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"}
+   ]  }
  ],
  "articles": [
   {
