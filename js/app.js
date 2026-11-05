@@ -301,13 +301,81 @@ function pinCardHTML(a, n){
   if(!tg.href) return '<article class="pin-card">'+inner+'</article>';
   return '<article class="pin-card"><a href="'+esc(tg.href)+'"'+(tg.blank?' target="_blank" rel="noopener"':'')+'>'+inner+'</a></article>';
 }
+/* v41 trust strip: so lieu tinh DONG tu data.js (khong ghi so cung vao HTML).
+   Quy tac luong/doanh thu cua mau (user-directed 06/11): doanh thu cao nhat
+   (topRevenue) la tieu de khi co du lieu da kiem chung; hien tai ca 20 mau
+   deu "Chua cap nhat" nen fallback la luong de xuat THAP NHAT (min salaryNum)
+   kem ghi chu doanh thu chua co du lieu. Khi 1 mau co topRevenue that thi
+   code tu chuyen sang hien thi doanh thu, khong can sua tay.
+   Luong shop cao nhat: chi xet luong thang — parse cac so TRUOC cum
+   "trieu/thang" (khoang "16–36" -> 36; "Tu 15" -> 15; "8–18" -> 18; phan
+   tram hoa hong sau cum do khong tinh). 400+ la hang so cong dong do nguoi
+   dung xac nhan, khong bao gio tinh tu data.js. */
+function fmtVnd(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+function parseMonthlyMax(s){
+  if(!s || s.indexOf('triệu/tháng') < 0) return null;
+  var head = s.slice(0, s.indexOf('triệu/tháng'));
+  var nums = head.match(/\d+(?:[.,]\d+)?/g);
+  if(!nums) return null;
+  var max = null;
+  nums.forEach(function(x){ var v = parseFloat(x.replace(',', '.')); if(max === null || v > max) max = v; });
+  return max;
+}
+function parseRevenue(s){
+  if(!s || s === 'Chưa cập nhật') return null;
+  var m = s.match(/([\d.,]+)\s*(tỷ|tỉ|triệu|tr|k|nghìn)?/i);
+  if(!m) return null;
+  var v = parseFloat(m[1].replace(/\./g, '').replace(',', '.'));
+  if(isNaN(v)) return null;
+  var unit = (m[2] || '').toLowerCase();
+  if(unit === 'tỷ' || unit === 'tỉ') v *= 1000000000;
+  else if(unit === 'triệu' || unit === 'tr') v *= 1000000;
+  else if(unit === 'k' || unit === 'nghìn') v *= 1000;
+  return v;
+}
+function trustStats(models, shops){
+  models = models || []; shops = shops || [];
+  var provs = {}, online = false, minWage = null, maxRev = null;
+  models.forEach(function(m){
+    if(m.province === 'Toàn quốc / Live online'){ online = true; }
+    else if(m.province){ provs[m.province] = true; }
+    if(typeof m.salaryNum === 'number' && m.salaryNum > 0 && (minWage === null || m.salaryNum < minWage)) minWage = m.salaryNum;
+    var r = parseRevenue(m.topRevenue);
+    if(r !== null && (maxRev === null || r > maxRev)) maxRev = r;
+  });
+  var shopProvs = {}, maxMonthly = null;
+  shops.forEach(function(s){
+    if(s.province){ shopProvs[s.province] = true; }
+    var mm = parseMonthlyMax(s.salary);
+    if(mm !== null && (maxMonthly === null || mm > maxMonthly)) maxMonthly = mm;
+  });
+  return {modelCount: models.length, modelProvinceCount: Object.keys(provs).length, modelOnline: online, minWage: minWage, maxRevenue: maxRev, shopCount: shops.length, shopProvinceCount: Object.keys(shopProvs).length, maxMonthly: maxMonthly};
+}
+function renderTrustStats(){
+  var st = trustStats(D.models, D.shops || []);
+  var tm = document.getElementById('trustModels'); if(tm) tm.textContent = String(st.modelCount);
+  var ts = document.getElementById('trustShops'); if(ts) ts.textContent = String(st.shopCount);
+  var mp = document.getElementById('trustModelProvinces');
+  if(mp) mp.textContent = 'hồ sơ mẫu thật · ' + st.modelProvinceCount + ' tỉnh' + (st.modelOnline ? ' + live online' : '');
+  var mpay = document.getElementById('trustModelPay');
+  var mnote = document.getElementById('trustModelPayNote');
+  if(st.maxRevenue !== null){
+    if(mpay) mpay.textContent = 'doanh thu cao nhất ' + fmtVnd(st.maxRevenue) + 'đ';
+    if(mnote) mnote.textContent = '';
+  } else if(st.minWage !== null){
+    if(mpay) mpay.textContent = 'lương đề xuất từ ' + fmtVnd(st.minWage) + 'đ/giờ';
+    if(mnote) mnote.textContent = '(doanh thu cao nhất chưa có dữ liệu — sẽ thay bằng doanh thu cao nhất khi có)';
+  }
+  var sp = document.getElementById('trustShopProvinces');
+  if(sp) sp.textContent = 'shop đang tuyển mẫu · ' + st.shopProvinceCount + ' tỉnh';
+  var spay = document.getElementById('trustShopPay');
+  if(spay && st.maxMonthly !== null) spay.textContent = 'lương cao nhất ' + st.maxMonthly + ' triệu/tháng';
+}
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
-  // v26 trust strip (spec §4): counts from real data when available; the
-  // static numbers in index.html (24 / 20 / 400+) are the verified fallback.
-  // 400+ is a user-confirmed constant, never computed or increased.
-  var ts=document.getElementById('trustShops'); if(ts) ts.textContent=String((D.shops||[]).length);
-  var tm=document.getElementById('trustModels'); if(tm) tm.textContent=String(D.models.length);
+  // v41 trust strip: so lieu tinh dong tu data.js; so tinh trong index.html
+  // (20 / 30) chi la du phong neu JS loi — dai khong bao gio trong.
+  renderTrustStats();
   // v25: exactly 8, ALL with a real photo (homeTop8 filters by photoUrl first,
   // then rotates by day-of-year). Profiles without a real photo never reach home.
   var shown=homeTop8(D.models);
@@ -555,6 +623,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
