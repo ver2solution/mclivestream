@@ -160,10 +160,12 @@ function shopCardHTML(s){
   + '<p class="shop-sub">📍 '+loc+(hasReal(s.product) ? ' · '+esc(s.product) : '')+'</p></div></div>'
   + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(negotiable ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+posterTag+'</div>'
   + shopDecisionHTML(s)
+  + '<div class="shop-foot">'
   + (hasReal(s.date) ? '<p class="shop-meta">Ngày đăng tin: '+esc(s.date)+'</p>' : '')
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
   + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Bài tuyển gốc →</a></p>'
+  + '</div>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết →</a>'
   + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></article>';
@@ -175,7 +177,13 @@ function shopCardHTML(s){
      clipped at the card edge) into the tags row. (c) The product pill was
      removed from the tags row — the product already shows in the subtitle and
      in the "Lĩnh vực live" box, so it duplicated. (d) Button labels shortened
-     ("Xem chi tiết →", "Bài tuyển gốc →") so they fit on one line. */
+     ("Xem chi tiết →", "Bài tuyển gốc →") so they fit on one line.
+     v38 (can doi khung shop nhu khung mau): (e) .shop-head thanh dai neo
+     thi giac co dinh (nen gradient xanh + padding + min-height) nhu
+     .card-photo cua the mau — moi the shop co cung nhip thi giac o dau the.
+     (f) Cac muc phu (ngay dang, lien he, ghi chu, link bai goc) gom vao
+     .shop-foot co duong ke tren + gap gon — thu tu trong foot giu nguyen
+     (note truoc src, actions van sau src + warn), khong xoa thong tin nao. */
 }
 function sortShopsNewest(list){
   return list.slice().sort(function(a,b){ return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0); });
@@ -228,12 +236,13 @@ function filterModels(list, f){
     return true;
   });
 }
-function renderPager(el, page, totalPages, total, onPage){
+function renderPager(el, page, totalPages, total, onPage, perPage, label){
   if(!el) return;
+  perPage=perPage||6; label=label||'hồ sơ';
   var html='<button type="button" data-track="chuyen-trang" data-p="'+(page-1)+'"'+(page<=1?' disabled':'')+'>← Trang trước</button>';
   for(var i=1;i<=totalPages;i++) html+='<button type="button" data-track="chuyen-trang" data-p="'+i+'"'+(i===page?' class="current" disabled':'')+'>'+i+'</button>';
   html+='<button type="button" data-track="chuyen-trang" data-p="'+(page+1)+'"'+(page>=totalPages?' disabled':'')+'>Trang sau →</button>';
-  html+='<span class="pager-info">Trang '+page+' / '+totalPages+' — đang hiện '+(total===0?0:((page-1)*6+1))+'–'+Math.min(page*6,total)+' trên tổng số '+total+' hồ sơ.</span>';
+  html+='<span class="pager-info">Trang '+page+' / '+totalPages+' — đang hiện '+(total===0?0:((page-1)*perPage+1))+'–'+Math.min(page*perPage,total)+' trên tổng số '+total+' '+label+'.</span>';
   el.innerHTML=html;
   el.querySelectorAll('button[data-p]').forEach(function(b){b.addEventListener('click',function(){onPage(parseInt(b.getAttribute('data-p'),10));});});
 }
@@ -247,6 +256,46 @@ function articleLink(a){
   return '<a href="'+esc(a.url)+'">'+esc(a.title)+'</a>';
 }
 function articleHref(a){ return a.page || a.url || ''; }
+function sortByDateDesc(list){
+  return list.slice().sort(function(x,y){ return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0); });
+}
+function articleTarget(a){
+  var href = articleHref(a);
+  if(!href) return {href:'', blank:false};
+  return {href:href, blank:!a.page};
+}
+function articleTitleHTML(a){
+  var tg = articleTarget(a);
+  if(!tg.href) return '<strong>'+esc(a.title)+'</strong>';
+  return '<a href="'+esc(tg.href)+'"'+(tg.blank?' target="_blank" rel="noopener"':'')+'>'+esc(a.title)+'</a>';
+}
+function articleMediaHTML(a, cls){
+  // Bai khong co anh -> o mau thuong hieu + so 2 (khong de trong, khong anh vo).
+  if(a.img) return '<img class="'+cls+'" src="'+esc(a.img)+'" alt="'+esc(a.title)+'" loading="lazy">';
+  return '<span class="'+cls+' pin-noimg" aria-hidden="true"><b>2</b></span>';
+}
+/* Hang ghim: toi da 4 bai co pinned:true (moi nhat truoc); chua du 4 thi lap
+   bang bai moi nhat (khong trung lap). Hien chi co 1 bai ghim nen 3 khung
+   con lai dang lap bang tin moi nhat — cron bai bao 08:21 quan ly ghim
+   (toi da 4 bai, ghim bai quan trong nhat moi ngay, go ghim bai qua 7 ngay). */
+function getPinnedRow(list){
+  var pinned = sortByDateDesc((list||[]).filter(function(a){ return !!a.pinned; }));
+  var newest = sortByDateDesc(list||[]);
+  var picked = pinned.slice(0, 4);
+  for(var i=0; i<newest.length && picked.length<4; i++){
+    if(picked.indexOf(newest[i]) === -1) picked.push(newest[i]);
+  }
+  return picked;
+}
+function pinCardHTML(a, n){
+  var tg = articleTarget(a);
+  var num = (typeof n === 'number') ? '<span class="pin-num" aria-label="Tin ' + n + '">' + n + '</span>' : '';
+  var inner = num + articleMediaHTML(a, 'pin-img')
+    + '<h3>'+esc(a.title)+'</h3>'
+    + '<p class="pin-cat">'+esc(a.cat)+' · '+esc(a.source)+'</p>';
+  if(!tg.href) return '<article class="pin-card">'+inner+'</article>';
+  return '<article class="pin-card"><a href="'+esc(tg.href)+'"'+(tg.blank?' target="_blank" rel="noopener"':'')+'>'+inner+'</a></article>';
+}
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
   // v26 trust strip (spec §4): counts from real data when available; the
@@ -258,6 +307,12 @@ function initHome(){
   // then rotates by day-of-year). Profiles without a real photo never reach home.
   var shown=homeTop8(D.models);
   grid.innerHTML=shown.map(cardHTML).join('');
+  // v38: hang tin ghim (4 khung) duoi hero search. Muc Tin moi (#homeNews)
+  // giu nguyen list 6 bai moi nhat nhu cu (user-directed 22:37 05/11:
+  // chi them 1 dong 4 o tin moi, muc Tin tuc de nguyen).
+  // v38c: hang tin moi danh so 1-4 (badge tren anh), o nho gon (anh 16:9).
+  var pinned=document.getElementById('homePinned');
+  if(pinned) pinned.innerHTML=getPinnedRow(D.articles||[]).map(function(a,i){return pinCardHTML(a,i+1);}).join('');
   var news=document.getElementById('homeNews');
   if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
     // Relative .html URLs are internal v20 pages (bai-viet-bop-reach.html now exists).
@@ -279,13 +334,55 @@ function initHome(){
   });
 }
 /* Shop page (v22): all public job posts, newest first, rendered from D.shops */
+/* v38: trang danh sach shop phan trang 9/trang (3 hang x 3 cot), dong bo
+   URL ?page= nhu trang mau; dong dem hien theo trang hien tai. */
+/* v38c: nhom linh vuc rong cho bo loc shop — truong product cua shop la
+   chu tu do (vd "Thời trang nữ size S–M", "Idol Livestream") nen gom ve
+   6 nhom rong de loc. Khong doi du lieu, chi gom nhom khi loc. */
+function shopCatGroup(p){
+  p = (p||'').toLowerCase();
+  if(p.indexOf('thời trang')!==-1 || p.indexOf('áo dài')!==-1 || p.indexOf('giày dép')!==-1 || p.indexOf('công sở')!==-1) return 'Thời trang';
+  if(p.indexOf('mỹ phẩm')!==-1 || p.indexOf('nail')!==-1 || p.indexOf('nhuộm')!==-1 || p.indexOf('vòng ngọc')!==-1 || p.indexOf('trang sức')!==-1 || p.indexOf('dược')!==-1) return 'Mỹ phẩm & Làm đẹp';
+  if(p.indexOf('gia dụng')!==-1 || p.indexOf('đồ dùng')!==-1 || p.indexOf('hải sản')!==-1) return 'Gia dụng & Đời sống';
+  if(p.indexOf('idol')!==-1 || p.indexOf('streamer')!==-1) return 'Idol / Streamer';
+  if(p.indexOf('công nghệ')!==-1) return 'Công nghệ';
+  return 'Khác';
+}
+function filterShops(list, f){
+  return list.filter(function(s){
+    if(f.prov && s.province!==f.prov) return false;
+    if(f.cat && shopCatGroup(s.product)!==f.cat) return false;
+    if(f.q){var hay=(s.name+' '+s.product+' '+s.province+' '+(s.district||'')+' '+(s.channels||'')+' '+(s.req||'')).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
+    return true;
+  });
+}
+/* Trang shop: grid + bo loc (tinh / linh vuc live / tim ten) + phan trang
+   9/trang, dong bo URL — cung khung bo cuc nhu trang Mau (section-head gon,
+   filter-card, grid, pager) nhung truong loc la nhu cau rieng cua shop
+   (khong co Gioi tinh). */
 function initShops(){
   var el=document.getElementById('publicShopsList'); if(!el) return;
-  var list=sortShopsNewest(D.shops||[]);
-  el.innerHTML=list.length?list.map(shopCardHTML).join(''):'<p>Chưa có tin tuyển công khai nào.</p>';
-  var cnt=document.getElementById('publicShopsCount'); if(cnt) cnt.textContent='Đang hiện '+list.length+' tin tuyển công khai.';
+  var p=params(); var page=parseInt(p.page||'1',10)||1;
+  var perPage=9;
+  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,q:document.getElementById('fShopQ').value.trim()};}
+  function render(pg){
+    var f=readForm(); var list=filterShops(sortShopsNewest(D.shops||[]),f);
+    var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
+    el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):'<p>Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.</p>';
+    renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); el.scrollIntoView();},perPage,'tin tuyển');
+    var cnt=document.getElementById('publicShopsCount');
+    if(cnt) cnt.textContent=list.length?('Đang hiện '+((pg-1)*perPage+1)+'–'+Math.min(pg*perPage,list.length)+' trên tổng số '+list.length+' tin tuyển công khai.'):'Chưa có tin tuyển công khai nào.';
+    setParams(Object.assign({},f,{page:String(pg)}));
+  }
+  // prefill from URL keys
+  if(p.prov) document.getElementById('fShopProv').value=p.prov;
+  if(p.cat) document.getElementById('fShopCat').value=p.cat;
+  if(p.q) document.getElementById('fShopQ').value=p.q;
+  document.getElementById('applyShopBtn').addEventListener('click',function(){render(1);});
+  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  render(page);
 }
-/* List page: grid + filters + pagination 6/page, URL-synced */
+/* List page: grid + filters + pagination 12/page, URL-synced */
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
@@ -298,9 +395,9 @@ function initList(){
     // v24: xoay thứ tự theo ngày trong năm, ổn định trong ngày — xoay riêng
     // trong từng nhóm cùng lượt xem/bình luận/nhóm ảnh để không phá thứ tự đã sắp.
     list=rotateDaily(list, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); });
-    var totalPages=Math.max(1,Math.ceil(list.length/6)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
-    grid.innerHTML=list.length?list.slice((pg-1)*6,pg*6).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
-    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();});
+    var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
+    grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
+    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();},12,'hồ sơ');
     var info=document.getElementById('listInfo'); if(info) info.textContent=list.length+' hồ sơ khớp bộ lọc.';
     setParams(Object.assign({},f,{page:String(pg)}));
   }
@@ -453,6 +550,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
