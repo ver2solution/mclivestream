@@ -1,4 +1,5 @@
-/* v20 data: 20 real profiles + 20 articles, copied verbatim from v19 DATA (no new figures).
+/* v22 data: 20 real profiles + 20 shops (public job posts, public info only,
+   no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
    Internal ids exist only here and in ?id= URLs; they must never be rendered as visible text. */
 window.V20_DATA = {
  "models": [
@@ -463,6 +464,248 @@ window.V20_DATA = {
    "photoUrl": "images/th-20.jpg"
   }
  ],
+ "shops": [
+  {
+   "name": "Chạm Loa",
+   "shopNameKnown": true,
+   "product": "Công nghệ, thiết bị âm thanh",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Tân Phú",
+   "salary": "Thỏa thuận năng lực",
+   "req": "Giao tiếp tốt, năng động, tự tin trước camera, đam mê công nghệ; biết hát là lợi thế. Ưu tiên có kinh nghiệm livestream.",
+   "channels": "TikTok, Shopee",
+   "date": "2026-11-05",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326309658137327"
+  },
+  {
+   "name": "Đỗ Sỹ Khải",
+   "shopNameKnown": false,
+   "product": "Áo dài nam",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Gò Vấp",
+   "salary": "50.000 – 120.000 VNĐ/giờ",
+   "req": "Nam, không yêu cầu kinh nghiệm; ca 11:00–14:00 và 20:00–23:00.",
+   "channels": "KOC TikTok",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"
+  },
+  {
+   "name": "Lâm",
+   "shopNameKnown": false,
+   "product": "Giày dép",
+   "province": "Hà Nội",
+   "district": "Xuân Đỉnh",
+   "salary": "80-100k/h",
+   "req": "Đã có kinh nghiệm bán giày dép; tuyển 1 bạn.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"
+  },
+  {
+   "name": "Lâm Hoàng Dũng",
+   "shopNameKnown": false,
+   "product": "Chưa cập nhật",
+   "province": "Hà Nội",
+   "district": "Tây Mỗ",
+   "salary": "100.000 – 150.000đ/giờ + Hoa hồng 1%/gmv",
+   "req": "2 nam + 1 nữ, có kinh nghiệm livestream bán hàng; ca 23–01h và 19–21h; yêu cầu chiều cao/cân nặng, nói lưu loát, tự tin trước camera.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"
+  },
+  {
+   "name": "Phạm Hoàng Lâm",
+   "shopNameKnown": false,
+   "product": "Thời trang nữ",
+   "province": "Hà Nội",
+   "district": "Nam Từ Liêm",
+   "salary": "70.000đ - 100.000đ / giờ (8.000.000đ - 15.000.000đ/tháng)",
+   "req": "Nữ, sinh năm 2K–2K6; ưu tiên đã có kinh nghiệm livestream thời trang nữ; 1 ngày 2 ca, mỗi ca 3 tiếng.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949"
+  },
+  {
+   "name": "Le Paria",
+   "shopNameKnown": true,
+   "product": "Dược / wellness — dược phẩm, thực phẩm bảo vệ sức khỏe",
+   "province": "Hà Nội",
+   "district": "Nguyễn Xiển",
+   "salary": "90.000đ/giờ livestream",
+   "req": "Ưu tiên có kinh nghiệm livestream/bán hàng/content creator, hiểu biết wellness; ca linh hoạt trong khung 6h–24h.",
+   "channels": "TikTok Shop, Shopee",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"
+  },
+  {
+   "name": "DOLLY SECRET",
+   "shopNameKnown": true,
+   "product": "Thời trang nữ",
+   "province": "Hà Nội",
+   "district": "Cầu Giấy",
+   "salary": "90.000đ - 100.000đ/h + Phụ cấp ăn ca + Hoa hồng",
+   "req": "Nữ, từ 1 năm kinh nghiệm livestream; giao tiếp tốt, ngoại hình sáng, nữ cao từ 1m6.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"
+  },
+  {
+   "name": "Nguyễn Minh Ngọc",
+   "shopNameKnown": false,
+   "product": "Hàng công sở",
+   "province": "Hà Nội",
+   "district": "Mai Dịch, Cầu Giấy",
+   "salary": "150-170/h (có ăn lãi doanh thu)",
+   "req": "Kinh nghiệm live trên 6 tháng; ca 20–22h; không ngọng, cao 1m6, 45–46 kg.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211"
+  },
+  {
+   "name": "CÔNG TY TNHH TM XNK FANI / TopGia, TopGiaKids",
+   "shopNameKnown": true,
+   "product": "Đồ dùng gia đình, ngành Giấy (TopGia), Mẹ & Bé (TopGiaKids)",
+   "province": "Hà Nội",
+   "district": "Bắc Từ Liêm / Cầu Giấy",
+   "salary": "20.000.000 – 50.000.000 VNĐ (Lương cơ bản 13 triệu + % Hoa hồng)",
+   "req": "6 tháng – 1 năm kinh nghiệm livestream hoặc quay video; ca linh hoạt; đóng BHXH, BHYT, BHTN, thưởng lễ Tết, quà sinh nhật.",
+   "channels": "TikTok",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"
+  },
+  {
+   "name": "Ngoc Giang",
+   "shopNameKnown": true,
+   "product": "Hải sản, cua hấp",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Tân Phú",
+   "salary": "Thỏa thuận (Lương cứng/phiên + Hoa hồng % doanh số) + Thưởng nóng khi vượt mốc doanh số",
+   "req": "Ưu tiên từng live ngành F&B/Thực phẩm; 3–4 tiếng/phiên, lịch linh hoạt.",
+   "channels": "TikTok",
+   "date": "2026-09-08",
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"
+  },
+  {
+   "name": "QTC Marketing",
+   "shopNameKnown": true,
+   "product": "Vòng ngọc (trang sức, phụ kiện)",
+   "province": "Hà Nội",
+   "district": "Chưa cập nhật",
+   "salary": "Thỏa thuận theo năng lực",
+   "req": "Nữ, livestream bán hàng từ 3–6 tháng trở lên, ưu tiên từng live vòng ngọc; yêu cầu bàn tay trắng, thon, ngón tay đẹp.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-10-04",
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841"
+  },
+  {
+   "name": "Phuongg Thảo",
+   "shopNameKnown": true,
+   "product": "Thời trang nam (sơ mi, T-shirt, Polo)",
+   "province": "Hà Nội",
+   "district": "Long Biên",
+   "salary": "Cast: 100k/h",
+   "req": "Nam/Nữ; 9:00–10:30 hàng ngày, ngày sale 2 ca sáng tối mỗi ca 2 tiếng.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-10-15",
+   "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"
+  },
+  {
+   "name": "Hiếu Ken",
+   "shopNameKnown": true,
+   "product": "Thời trang unisex",
+   "province": "Hà Nội",
+   "district": "Nhổn, Hoài Đức",
+   "salary": "80k-100k/h + thưởng gmv",
+   "req": "Chỉ tuyển nữ; tối thiểu 6 tháng kinh nghiệm; khung 11h–14h, 14h–17h.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-02",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"
+  },
+  {
+   "name": "Lê Thị Liễu",
+   "shopNameKnown": true,
+   "product": "Thời trang (đồ ngủ / hàng teen)",
+   "province": "Hà Nội",
+   "district": "Vinhome Smartcity, Tây Mỗ",
+   "salary": "100k-150k/h",
+   "req": "Nữ, ưu tiên học sinh, sinh viên; không yêu cầu kinh nghiệm, được đào tạo; nữ cao m58–m68, da trắng.",
+   "channels": "TikTok",
+   "date": "2026-10-02",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"
+  },
+  {
+   "name": "Nguyễn Thuý",
+   "shopNameKnown": true,
+   "product": "Thời trang nữ size S–M",
+   "province": "Hà Nội",
+   "district": "Trung Văn",
+   "salary": "100k/1h + thưởng doanh số",
+   "req": "Nữ, tuyển 2 mẫu; tối thiểu 6 tháng kinh nghiệm live thời trang; ca 6h–9h và 9h–12h sáng.",
+   "channels": "TikTok",
+   "date": "2026-10-18",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422"
+  },
+  {
+   "name": "Lan Phương",
+   "shopNameKnown": true,
+   "product": "Thời trang và Mẹ & Bé",
+   "province": "Hà Nội",
+   "district": "Hà Đông",
+   "salary": "Chưa cập nhật",
+   "req": "Nữ; ít nhất 2–3 tháng live; ca tối 18–24h và ca ngày 2h–4h/ca.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-09-16",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"
+  },
+  {
+   "name": "Vân Nguyễn",
+   "shopNameKnown": true,
+   "product": "Thời trang nữ",
+   "province": "Hà Nội",
+   "district": "Vinsmart, Tây Mỗ",
+   "salary": "100k/giờ + 1% doanh thu + thưởng",
+   "req": "Nữ, tuyển 5 mẫu, 18–28 tuổi; kinh nghiệm live thời trang 6 tháng trở lên; tối thiểu 5 buổi/tuần, 2–3 tiếng/buổi.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-10-30",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"
+  },
+  {
+   "name": "Như Quỳnh",
+   "shopNameKnown": true,
+   "product": "Thuốc nhuộm tóc, ủ, xả, gội, xịt tóc",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Bình Tân, An Lạc",
+   "salary": "Chưa cập nhật",
+   "req": "Fulltime tại TP HCM; tuyển 1 bạn.",
+   "channels": "TikTok Shop, Shopee",
+   "date": "2026-11-03",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"
+  },
+  {
+   "name": "Nhung Hong Pham",
+   "shopNameKnown": true,
+   "product": "Chưa cập nhật",
+   "province": "Hà Nội",
+   "district": "Geleximco A",
+   "salary": "95.000 – 140.000đ/giờ + 0.5% - 1% Hoa hồng",
+   "req": "Team 2 kênh bán hàng; tuyển 2 bạn host, part-time; kinh nghiệm live từ 6 tháng trở lên; ca linh hoạt 6h–24h.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-10-25",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"
+  },
+  {
+   "name": "Vũ Linh Phương",
+   "shopNameKnown": true,
+   "product": "Thời trang thể thao",
+   "province": "Hà Nội",
+   "district": "Vạn Phúc, Hà Đông",
+   "salary": "Cast 150-200k/h",
+   "req": "Tối thiểu 6 tháng kinh nghiệm live thời trang thể thao; ca 10–22h hàng ngày.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-09-09",
+   "src": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"
+  }
+ ],
  "articles": [
   {
    "title": "Vì sao 90% Page bị bóp reach khi đi share group? 3 tín hiệu Facebook chấm spam",
@@ -604,6 +847,25 @@ window.V20_DATA = {
    "source": "DesignRush News, dẫn dự báo eMarketer",
    "date": "2026-10-14",
    "url": "https://news.designrush.com/mobile-holiday-ecommerce-checkout"
+  },
+  {
+   "title": "Xả kho thời trang cuối năm: 12 chiêu dọn kho mà vẫn giữ thương hiệu",
+   "cat": "Bán hàng Online hiệu quả",
+   "source": "POS365",
+   "date": "2026-09-25",
+   "dateNote": "Đăng lần đầu 30/03/2025, cập nhật 25/09/2026",
+   "url": "https://www.pos365.vn/10-tuyet-chieu-xa-hang-cuoi-nam-quan-ao-thu-hoi-von-cuc-nhanh-8163.html",
+   "img": "https://pos365-ldp.cdn-vnpay.vn/media/2026/6/10-tuyet-chieu-xa-hang-cuoi-nam-quan-ao-thu-hoi-von-cuc-nhanh/tung-combo-mua-1-tang-1-hoac-mix-match-gia-hoi.jpeg",
+   "takeaway": "Đừng xả kho bằng một biển giảm giá duy nhất. Chia tồn thành 3 nhóm trước khi live: nhóm kéo khách (món hot ghép với món lẻ size), nhóm đồng giá để chốt nhanh, nhóm bán sỉ hoặc ký gửi khi đã thử bán lẻ mà không đi. Và tính biên sau phí sàn, phí vận chuyển và hàng hoàn trước khi ghi mức giảm, vì doanh thu xả kho tăng mà lãi âm thì kho sạch nhưng vốn vẫn mất."
+  },
+  {
+   "title": "11.11 trên TikTok Shop: tính lời trước khi giảm giá, live dài và đừng nghỉ ngay sau sale",
+   "cat": "Tin mới Livestream",
+   "source": "LaPage",
+   "date": "2026-10-27",
+   "url": "https://lapage.vn/vi/blog/post/tiktok-shop-1111-prep-plan",
+   "img": "https://strapi-cms.lapage.vn/uploads/hero_12721c449e.jpg",
+   "takeaway": "Trước 11.11, shop nhỏ chỉ cần làm đúng 3 việc: tính lời mỗi đơn bằng số thật của mình rồi mới chốt mức giảm, chọn 1-2 món chủ lực để kéo khách thay vì giảm đều cả gian hàng, và giữ lịch live đều cả tuần sau sale để dữ liệu ngày sale không bị đứt. Giảm sâu mà không tính lời thì bán được nhiều nhưng có thể lỗ nhiều hơn ngày thường."
   }
  ],
  "provinces": [

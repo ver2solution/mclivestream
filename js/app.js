@@ -36,6 +36,28 @@ function miniHTML(m){
   return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
   + '<p>'+esc(m.title)+'</p><p>📍 '+esc(m.province)+' · '+esc(m.cat)+'</p><p>Lương: '+esc(m.salary)+'</p><p>'+esc(m.exp)+'</p></div></article>';
 }
+/* Shops (v22): tin tuyển công khai thu thập từ bài tuyển shop tự đăng.
+   Chỉ hiển thị thông tin công khai: tên, mặt hàng, tỉnh/quận, lương, yêu cầu,
+   kênh, ngày đăng, link bài gốc. Không số điện thoại/Zalo/địa chỉ riêng tư,
+   không link fanpage (chưa xác định được), không logo thật — ô chữ cái đầu
+   tên shop làm placeholder. 5 tin không ghi tên shop trong bài thì tên hiển
+   thị là tên người đăng tin, kèm ghi chú "người đăng tin tuyển". */
+function shopInitial(s){ return (String(s.name||'?').trim().charAt(0)||'?').toUpperCase(); }
+function shopCardHTML(s){
+  var name = esc(s.name) + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
+  return '<article class="shop-card">'
+  + '<div class="shop-head"><span class="shop-initial" aria-hidden="true">'+esc(shopInitial(s))+'</span><div><h3>'+name+'</h3>'
+  + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
+  + '<dl class="facts"><div><dt>Mức lương</dt><dd><b>'+esc(s.salary)+'</b></dd></div>'
+  + '<div><dt>Yêu cầu chính</dt><dd>'+esc(s.req)+'</dd></div>'
+  + '<div><dt>Kênh live</dt><dd>'+esc(s.channels)+'</dd></div>'
+  + '<div><dt>Ngày đăng tin</dt><dd>'+esc(s.date)+'</dd></div></dl>'
+  + '<p class="shop-src">Tin tuyển công khai — <a href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
+  + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
+}
+function sortShopsNewest(list){
+  return list.slice().sort(function(a,b){ return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0); });
+}
 function withPhotoFirst(list){
   // Downloaded real photos first (7), then profiles whose original post has a photo
   // but whose file was not downloaded yet (labelled "Có ảnh trong bài gốc"), then the rest.
@@ -74,7 +96,7 @@ function initHome(){
   var shown=withPhotoFirst(D.models).slice(0,8);
   grid.innerHTML=shown.map(cardHTML).join('');
   var news=document.getElementById('homeNews');
-  if(news) news.innerHTML=D.articles.slice(0,6).map(function(a){
+  if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
     // Relative .html URLs are internal v20 pages (bai-viet-bop-reach.html now exists).
     var link = !a.url ? '<strong>'+esc(a.title)+'</strong>'
       : /^https?:\/\//.test(a.url) ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>'
@@ -83,6 +105,8 @@ function initHome(){
     + link
     + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)):'Chưa có ngày báo gốc')+'</div></div>';
   }).join('');
+  var homeShops=document.getElementById('homeShops');
+  if(homeShops) homeShops.innerHTML=sortShopsNewest(D.shops||[]).slice(0,6).map(shopCardHTML).join('');
   var form=document.getElementById('heroSearch');
   if(form) form.addEventListener('submit',function(e){e.preventDefault();
     var q=document.getElementById('heroQ').value.trim();
@@ -92,6 +116,13 @@ function initHome(){
     if(q) qs.push('q='+encodeURIComponent(q)); if(prov) qs.push('prov='+encodeURIComponent(prov)); if(cat) qs.push('cat='+encodeURIComponent(cat));
     location.href=dest+(qs.length?'?'+qs.join('&'):'');
   });
+}
+/* Shop page (v22): all public job posts, newest first, rendered from D.shops */
+function initShops(){
+  var el=document.getElementById('publicShopsList'); if(!el) return;
+  var list=sortShopsNewest(D.shops||[]);
+  el.innerHTML=list.length?list.map(shopCardHTML).join(''):'<p>Chưa có tin tuyển công khai nào.</p>';
+  var cnt=document.getElementById('publicShopsCount'); if(cnt) cnt.textContent='Đang hiện '+list.length+' tin tuyển công khai.';
 }
 /* List page: grid + filters + pagination 6/page, URL-synced */
 function initList(){
@@ -139,8 +170,10 @@ function initNews(){
     if(catSel.value) list=list.filter(function(a){return a.cat===catSel.value;});
     list.sort(function(x,y){var dx=x.date||'',dy=y.date||''; return sortSel.value==='oldest' ? (dx<dy?-1:dx>dy?1:0) : (dx>dy?-1:dx<dy?1:0);});
     main.innerHTML=list.map(function(a){
+      var img = a.img ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener"><img src="'+esc(a.img)+'" alt="Ảnh gốc từ bài của '+esc(a.source)+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.</div>' : '';
+      var tw = a.takeaway ? '<p><b>Ver2Solution rút ra:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
-      + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)):'Chưa có ngày báo gốc')+'</div></div>';
+      + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
     }).join('');
     var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
@@ -185,7 +218,7 @@ function initDetail(){
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
 }
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
-  initHome(); initList(); initNews(); initDetail();
+  initHome(); initList(); initNews(); initDetail(); initShops();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -202,6 +235,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean};
+window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
