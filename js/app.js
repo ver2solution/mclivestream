@@ -249,6 +249,11 @@ function filterModels(list, f){
     if(f.prov && m.province!==f.prov) return false;
     if(f.cat && m.cat!==f.cat) return false;
     if(f.gender && m.gender!==f.gender) return false;
+    /* v43: loc gio lam theo truong shifts (suy ra tu schedule, xem data.js).
+       Chi mau co ca do moi hien; shifts rong chi hien khi chon "Tất cả giờ".
+       Mau khong co fulltime nen khong ap quyet dinh fulltime-hien-trong-moi-ca
+       nhu shop. */
+    if(f.shift){ var sh = m.shifts || []; if(sh.indexOf(f.shift) === -1) return false; }
     if(f.q){var hay=(m.name+' '+m.title+' '+m.province+' '+m.cat+' '+m.form+' '+m.exp).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
   });
@@ -558,7 +563,7 @@ function initShops(){
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,q:document.getElementById('fQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,shift:document.getElementById('fShift').value,q:document.getElementById('fQ').value.trim()};}
   function render(pg){
     var f=readForm(); var list=filterModels(D.models,f);
     if(f.sort){
@@ -585,9 +590,10 @@ function initList(){
   if(p.cat) document.getElementById('fCat').value=p.cat;
   if(p.gender) document.getElementById('fGender').value=p.gender;
   if(p.sort) document.getElementById('fSort').value=p.sort;
+  if(p.shift) document.getElementById('fShift').value=p.shift;
   if(p.q) document.getElementById('fQ').value=p.q;
   document.getElementById('applyBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
   render(page);
 }
 /* News page: newest first by default, category filter, oldest sort option.
