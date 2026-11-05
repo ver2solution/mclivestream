@@ -849,21 +849,23 @@ window.V20_DATA = {
    "url": "https://news.designrush.com/mobile-holiday-ecommerce-checkout"
   },
   {
-   "title": "Xả kho thời trang cuối năm: 12 chiêu dọn kho mà vẫn giữ thương hiệu",
+   "title": "Xả kho thời trang cuối năm: 12 chiêu dọn kho mà vẫn giữ thương hiệu, không bán lỗ",
    "cat": "Bán hàng Online hiệu quả",
    "source": "POS365",
    "date": "2026-09-25",
    "dateNote": "Đăng lần đầu 30/03/2025, cập nhật 25/09/2026",
    "url": "https://www.pos365.vn/10-tuyet-chieu-xa-hang-cuoi-nam-quan-ao-thu-hoi-von-cuc-nhanh-8163.html",
+   "page": "bai-viet/xa-kho-thoi-trang-cuoi-nam.html",
    "img": "https://pos365-ldp.cdn-vnpay.vn/media/2026/6/10-tuyet-chieu-xa-hang-cuoi-nam-quan-ao-thu-hoi-von-cuc-nhanh/tung-combo-mua-1-tang-1-hoac-mix-match-gia-hoi.jpeg",
    "takeaway": "Đừng xả kho bằng một biển giảm giá duy nhất. Chia tồn thành 3 nhóm trước khi live: nhóm kéo khách (món hot ghép với món lẻ size), nhóm đồng giá để chốt nhanh, nhóm bán sỉ hoặc ký gửi khi đã thử bán lẻ mà không đi. Và tính biên sau phí sàn, phí vận chuyển và hàng hoàn trước khi ghi mức giảm, vì doanh thu xả kho tăng mà lãi âm thì kho sạch nhưng vốn vẫn mất."
   },
   {
-   "title": "11.11 trên TikTok Shop: tính lời trước khi giảm giá, live dài và đừng nghỉ ngay sau sale",
+   "title": "11.11 trên TikTok Shop: tính lời trước khi giảm giá — giảm 20%, lời mỗi đơn có thể tụt gần 5 lần",
    "cat": "Tin mới Livestream",
    "source": "LaPage",
    "date": "2026-10-27",
    "url": "https://lapage.vn/vi/blog/post/tiktok-shop-1111-prep-plan",
+   "page": "bai-viet/tiktok-shop-1111-tinh-loi.html",
    "img": "https://strapi-cms.lapage.vn/uploads/hero_12721c449e.jpg",
    "takeaway": "Trước 11.11, shop nhỏ chỉ cần làm đúng 3 việc: tính lời mỗi đơn bằng số thật của mình rồi mới chốt mức giảm, chọn 1-2 món chủ lực để kéo khách thay vì giảm đều cả gian hàng, và giữ lịch live đều cả tuần sau sale để dữ liệu ngày sale không bị đứt. Giảm sâu mà không tính lời thì bán được nhiều nhưng có thể lỗ nhiều hơn ngày thường."
   }

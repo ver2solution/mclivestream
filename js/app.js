@@ -91,6 +91,15 @@ function renderPager(el, page, totalPages, total, onPage){
   el.querySelectorAll('button[data-p]').forEach(function(b){b.addEventListener('click',function(){onPage(parseInt(b.getAttribute('data-p'),10));});});
 }
 /* Home: hero search + 2 rows, 8 with-photo first */
+/* Articles with their own page (v23): link to our page, not out to the source.
+   Older articles without a page still link out to the source as before. */
+function articleLink(a){
+  if(a.page) return '<a href="'+esc(a.page)+'">'+esc(a.title)+'</a>';
+  if(!a.url) return '<strong>'+esc(a.title)+'</strong>';
+  if(/^https?:\/\//.test(a.url)) return '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>';
+  return '<a href="'+esc(a.url)+'">'+esc(a.title)+'</a>';
+}
+function articleHref(a){ return a.page || a.url || ''; }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
   var shown=withPhotoFirst(D.models).slice(0,8);
@@ -98,9 +107,7 @@ function initHome(){
   var news=document.getElementById('homeNews');
   if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
     // Relative .html URLs are internal v20 pages (bai-viet-bop-reach.html now exists).
-    var link = !a.url ? '<strong>'+esc(a.title)+'</strong>'
-      : /^https?:\/\//.test(a.url) ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>'
-      : '<a href="'+esc(a.url)+'">'+esc(a.title)+'</a>';
+    var link = articleLink(a);
     return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'
     + link
     + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)):'Chưa có ngày báo gốc')+'</div></div>';
@@ -161,16 +168,16 @@ function initNews(){
   var cats=[]; D.articles.forEach(function(a){if(cats.indexOf(a.cat)===-1) cats.push(a.cat);});
   cats.forEach(function(c){var o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o);});
   function linkHTML(a){
-    if(!a.url) return '<strong>'+esc(a.title)+'</strong>';
-    if(/^https?:\/\//.test(a.url)) return '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>';
-    return '<a href="'+esc(a.url)+'">'+esc(a.title)+'</a>';
+    return articleLink(a);
   }
   function render(){
     var list=D.articles.slice();
     if(catSel.value) list=list.filter(function(a){return a.cat===catSel.value;});
     list.sort(function(x,y){var dx=x.date||'',dy=y.date||''; return sortSel.value==='oldest' ? (dx<dy?-1:dx>dy?1:0) : (dx>dy?-1:dx<dy?1:0);});
     main.innerHTML=list.map(function(a){
-      var img = a.img ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener"><img src="'+esc(a.img)+'" alt="Ảnh gốc từ bài của '+esc(a.source)+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.</div>' : '';
+      var href = articleHref(a);
+      var imgTarget = a.page ? '' : ' target="_blank" rel="noopener"';
+      var img = a.img ? '<a href="'+esc(href)+'"'+imgTarget+'><img src="'+esc(a.img)+'" alt="Ảnh gốc từ bài của '+esc(a.source)+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.</div>' : '';
       var tw = a.takeaway ? '<p><b>Ver2Solution rút ra:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
       + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
@@ -235,6 +242,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest};
+window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
