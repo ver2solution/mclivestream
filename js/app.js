@@ -38,15 +38,24 @@ function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đạ
    (initDetail không chạm tới đây) — chỉ dọn mặt thẻ, không giấu thông tin. */
 function hasReal(v){ var s = String(v==null?'':v).trim(); return s !== '' && s !== 'Chưa cập nhật'; }
 function isNegotiableSalary(m){ return String(m.salary||'').trim() === 'Thỏa thuận'; }
+/* v37: ALWAYS render all decision boxes, even when a value is missing
+   (shown muted as "Chưa cập nhật"). Hiding empty values made the inner blocks
+   start at different heights in every row (same root cause as the shop cards,
+   visual QA 05/11). */
 function decisionHTML(m){
-  var rows = '';
-  var first = '';
-  if(hasReal(m.salary) && !isNegotiableSalary(m)) first += '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value">'+esc(m.salary)+'</b></div>';
-  if(hasReal(m.schedule)) first += '<div class="decision-item"><span class="decision-label">🕒 Lịch</span><span class="decision-value">'+esc(m.schedule)+'</span></div>';
-  if(first) rows += '<div class="decision-row">'+first+'</div>';
-  if(hasReal(m.topRevenue)) rows += '<div class="decision-row"><div class="decision-item"><span class="decision-label">📈 Doanh thu cao nhất</span><b class="decision-value">'+esc(m.topRevenue)+'</b></div></div>';
-  if(hasReal(m.exp)) rows += '<div class="decision-exp"><span class="decision-label">Kinh nghiệm</span><span class="decision-value">'+esc(m.exp)+'</span></div>';
-  return rows ? '<div class="decision">'+rows+'</div>' : '';
+  var sal = (hasReal(m.salary) && !isNegotiableSalary(m)) ? esc(m.salary) : (isNegotiableSalary(m) ? 'Thỏa thuận' : 'Chưa cập nhật');
+  var sch = hasReal(m.schedule) ? esc(m.schedule) : 'Chưa cập nhật';
+  var rev = hasReal(m.topRevenue) ? esc(m.topRevenue) : 'Chưa cập nhật';
+  var exp = hasReal(m.exp) ? esc(m.exp) : 'Chưa cập nhật';
+  var miss = function(v){ return v === 'Chưa cập nhật' ? ' muted' : ''; };
+  return '<div class="decision">'
+  + '<div class="decision-row">'
+  + '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value'+miss(sal)+'">'+sal+'</b></div>'
+  + '<div class="decision-item"><span class="decision-label">🕒 Lịch</span><span class="decision-value'+miss(sch)+'">'+sch+'</span></div>'
+  + '</div>'
+  + '<div class="decision-row"><div class="decision-item"><span class="decision-label">📈 Doanh thu cao nhất</span><b class="decision-value'+miss(rev)+'">'+rev+'</b></div></div>'
+  + '<div class="decision-exp"><span class="decision-label">Kinh nghiệm</span><span class="decision-value'+miss(exp)+'">'+exp+'</span></div>'
+  + '</div>';
 }
 function cardHTML(m){
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
@@ -112,42 +121,61 @@ function shopLogoHTML(s){
   var init = esc(shopInitial(s));
   return '<img class="shop-logo '+fit+'" src="'+esc(s.logo)+'" alt="Logo '+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<span class=shop-initial>'+init+'</span>\'">';
 }
-/* Shop decision block (v32): same "5-second card" pattern as decisionHTML
-   for models — salary / province / field / channels / requirements up front,
-   empty values hidden (never rendered as "Chưa cập nhật"). A salary starting
-   with "Thỏa thuận" becomes a grey "Lương thỏa thuận" chip in the tags row
-   (same pattern as the model card); the full salary text stays on the
-   detail page fact-grid. */
+/* Shop decision block (v32, v37): same "5-second card" pattern as decisionHTML
+   for models — salary / province / field / channels / requirements up front.
+   v37: ALWAYS render all 4 boxes + the requirements box, even when a value is
+   missing (shown muted as "Chưa cập nhật"). v32 hid empty values, which made
+   the inner blocks start at different heights in every row, so the buttons
+   never lined up (visual QA 05/11: e.g. Javata had only a "Tỉnh" box, its
+   "Yêu cầu chính" started ~90px higher than its neighbours'). A salary
+   starting with "Thỏa thuận" shows "Thỏa thuận" in the box (the grey chip in
+   the tags row stays); the full salary text stays on the detail page. */
 function shopDecisionHTML(s){
-  var rows = '';
-  var first = '';
-  if(hasReal(s.salary) && s.salary.indexOf('Thỏa thuận') !== 0) first += '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value">'+esc(s.salary)+'</b></div>';
-  if(hasReal(s.province)) first += '<div class="decision-item"><span class="decision-label">📍 Tỉnh</span><span class="decision-value">'+esc(s.province)+'</span></div>';
-  if(first) rows += '<div class="decision-row">'+first+'</div>';
-  var second = '';
-  if(hasReal(s.product)) second += '<div class="decision-item"><span class="decision-label">🎯 Lĩnh vực live</span><span class="decision-value">'+esc(s.product)+'</span></div>';
-  if(hasReal(s.channels)) second += '<div class="decision-item"><span class="decision-label">📺 Kênh live</span><span class="decision-value">'+esc(s.channels)+'</span></div>';
-  if(second) rows += '<div class="decision-row">'+second+'</div>';
-  if(hasReal(s.req)) rows += '<div class="decision-exp"><span class="decision-label">Yêu cầu chính</span><span class="decision-value">'+esc(s.req)+'</span></div>';
-  return rows ? '<div class="decision">'+rows+'</div>' : '';
+  var sal = hasReal(s.salary) ? esc(s.salary) : 'Chưa cập nhật';
+  var prov = hasReal(s.province) ? esc(s.province) : 'Chưa cập nhật';
+  var field = hasReal(s.product) ? esc(s.product) : 'Chưa cập nhật';
+  var chan = hasReal(s.channels) ? esc(s.channels) : 'Chưa cập nhật';
+  var req = hasReal(s.req) ? esc(s.req) : 'Chưa cập nhật';
+  var miss = function(v){ return v === 'Chưa cập nhật' ? ' muted' : ''; };
+  return '<div class="decision">'
+  + '<div class="decision-row">'
+  + '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value'+miss(sal)+'">'+sal+'</b></div>'
+  + '<div class="decision-item"><span class="decision-label">📍 Tỉnh</span><span class="decision-value'+miss(prov)+'">'+prov+'</span></div>'
+  + '</div>'
+  + '<div class="decision-row">'
+  + '<div class="decision-item"><span class="decision-label">🎯 Lĩnh vực live</span><span class="decision-value'+miss(field)+'">'+field+'</span></div>'
+  + '<div class="decision-item"><span class="decision-label">📺 Kênh live</span><span class="decision-value'+miss(chan)+'">'+chan+'</span></div>'
+  + '</div>'
+  + '<div class="decision-exp"><span class="decision-label">Yêu cầu chính</span><span class="decision-value'+miss(req)+'">'+req+'</span></div>'
+  + '</div>';
 }
 function shopCardHTML(s){
   var url='chi-tiet-shop.html?id='+s.id;
   var loc = esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '');
-  var name = '<a href="'+url+'">'+esc(s.name)+'</a>' + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
+  var name = '<a href="'+url+'">'+esc(s.name)+'</a>';
   var negotiable = hasReal(s.salary) && s.salary.indexOf('Thỏa thuận') === 0;
+  var posterTag = s.shopNameKnown ? '' : '<span class="tag soft">người đăng tin tuyển</span>';
   return '<article class="shop-card">'
   + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h3>'+name+'</h3>'
   + '<p class="shop-sub">📍 '+loc+(hasReal(s.product) ? ' · '+esc(s.product) : '')+'</p></div></div>'
-  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(hasReal(s.product) ? '<span class="tag">'+esc(s.product)+'</span>' : '')+(negotiable ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+'</div>'
+  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(negotiable ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+posterTag+'</div>'
   + shopDecisionHTML(s)
   + (hasReal(s.date) ? '<p class="shop-meta">Ngày đăng tin: '+esc(s.date)+'</p>' : '')
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
-  + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết shop →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
-  + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
-  + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
+  + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Bài tuyển gốc →</a></p>'
+  + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
+  + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết →</a>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></article>';
+  /* v37: (a) .card-actions moved to the END (after .shop-src + .warn) so
+     margin-top:auto pins the buttons to the very bottom of the card and they
+     line up across a row. Before, .warn/.shop-src sat below the buttons, so
+     the buttons' height varied with the text below them. (b) The "người đăng
+     tin tuyển" pill moved from the h3 (where it wrapped to 2 lines and got
+     clipped at the card edge) into the tags row. (c) The product pill was
+     removed from the tags row — the product already shows in the subtitle and
+     in the "Lĩnh vực live" box, so it duplicated. (d) Button labels shortened
+     ("Xem chi tiết →", "Bài tuyển gốc →") so they fit on one line. */
 }
 function sortShopsNewest(list){
   return list.slice().sort(function(a,b){ return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0); });
