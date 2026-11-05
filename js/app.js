@@ -112,19 +112,40 @@ function shopLogoHTML(s){
   var init = esc(shopInitial(s));
   return '<img class="shop-logo '+fit+'" src="'+esc(s.logo)+'" alt="Logo '+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<span class=shop-initial>'+init+'</span>\'">';
 }
+/* Shop decision block (v32): same "5-second card" pattern as decisionHTML
+   for models — salary / province / field / channels / requirements up front,
+   empty values hidden (never rendered as "Chưa cập nhật"). A salary starting
+   with "Thỏa thuận" becomes a grey "Lương thỏa thuận" chip in the tags row
+   (same pattern as the model card); the full salary text stays on the
+   detail page fact-grid. */
+function shopDecisionHTML(s){
+  var rows = '';
+  var first = '';
+  if(hasReal(s.salary) && s.salary.indexOf('Thỏa thuận') !== 0) first += '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value">'+esc(s.salary)+'</b></div>';
+  if(hasReal(s.province)) first += '<div class="decision-item"><span class="decision-label">📍 Tỉnh</span><span class="decision-value">'+esc(s.province)+'</span></div>';
+  if(first) rows += '<div class="decision-row">'+first+'</div>';
+  var second = '';
+  if(hasReal(s.product)) second += '<div class="decision-item"><span class="decision-label">🎯 Lĩnh vực live</span><span class="decision-value">'+esc(s.product)+'</span></div>';
+  if(hasReal(s.channels)) second += '<div class="decision-item"><span class="decision-label">📺 Kênh live</span><span class="decision-value">'+esc(s.channels)+'</span></div>';
+  if(second) rows += '<div class="decision-row">'+second+'</div>';
+  if(hasReal(s.req)) rows += '<div class="decision-exp"><span class="decision-label">Yêu cầu chính</span><span class="decision-value">'+esc(s.req)+'</span></div>';
+  return rows ? '<div class="decision">'+rows+'</div>' : '';
+}
 function shopCardHTML(s){
   var url='chi-tiet-shop.html?id='+s.id;
+  var loc = esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '');
   var name = '<a href="'+url+'">'+esc(s.name)+'</a>' + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
+  var negotiable = hasReal(s.salary) && s.salary.indexOf('Thỏa thuận') === 0;
   return '<article class="shop-card">'
   + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h3>'+name+'</h3>'
-  + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
-  + '<dl class="facts"><div><dt>Mức lương</dt><dd><b>'+esc(s.salary)+'</b></dd></div>'
-  + '<div><dt>Yêu cầu chính</dt><dd>'+esc(s.req)+'</dd></div>'
-  + '<div><dt>Kênh live</dt><dd>'+esc(s.channels)+'</dd></div>'
-  + '<div><dt>Ngày đăng tin</dt><dd>'+esc(s.date)+'</dd></div></dl>'
+  + '<p class="shop-sub">📍 '+loc+(hasReal(s.product) ? ' · '+esc(s.product) : '')+'</p></div></div>'
+  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(hasReal(s.product) ? '<span class="tag">'+esc(s.product)+'</span>' : '')+(negotiable ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+'</div>'
+  + shopDecisionHTML(s)
+  + (hasReal(s.date) ? '<p class="shop-meta">Ngày đăng tin: '+esc(s.date)+'</p>' : '')
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
-  + '<p class="shop-src"><a href="'+url+'">Xem chi tiết shop →</a></p>'
+  + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết shop →</a>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
   + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
 }
@@ -331,18 +352,34 @@ function initDetail(){
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
 }
-/* Shop detail (v31): same 2-column layout as initDetail. The logo stays at
-   its designed 52px inside .shop-head — NOT inside .detail-photo, whose
-   img rule (absolute, inset 0, cover) would stretch it to fill a 4/3 frame. */
+/* Shop detail (v32): company-page layout after the big job sites
+   (VietnamWorks company page: header with big logo + name, key facts,
+   contact, then the company's own open jobs). The logo is 96px in
+   .company-head — NOT inside .detail-photo, whose img rule (absolute,
+   inset 0, cover) would stretch it to fill a 4/3 frame. The h1 is the
+   shop name only (company-page pattern); the province stays in the
+   subtitle, tags and facts. The fact-grid keeps the full table including
+   "Chưa cập nhật" (same rule as the model detail page); the job item
+   below hides empty values, like a job card. Each shop has exactly 1
+   open job (the collected post) — no extra jobs are invented. */
 function initShopDetail(){
   var root=document.getElementById('shopDetailRoot'); if(!root) return;
   var id=params().id || (D.shops[0]||{}).id;
   var s=(D.shops||[]).filter(function(x){return x.id===id;})[0];
   if(!s){root.innerHTML='<p>Không tìm thấy shop.</p>'; return;}
-  root.innerHTML='<div class="detail-layout"><div class="detail-main"><div class="detail-body">'
-  + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h1>'+esc(s.province)+' — '+esc(s.name)+'</h1>'
-  + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
-  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span><span class="tag">'+esc(s.product)+'</span>'+(s.shopNameKnown ? '' : '<span class="tag soft">người đăng tin tuyển</span>')+'</div>'
+  var loc = esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '');
+  var sub = (hasReal(s.product) ? '🎯 '+esc(s.product)+' · ' : '')+'📍 '+loc;
+  var meta = [];
+  if(hasReal(s.salary)) meta.push('💰 '+esc(s.salary));
+  meta.push('📍 '+loc);
+  if(hasReal(s.date)) meta.push('🗓 '+esc(s.date));
+  var jobTitle = hasReal(s.product) ? 'Tuyển mẫu livestream — '+esc(s.product) : 'Tuyển mẫu livestream';
+  root.innerHTML='<div class="detail-layout"><div class="detail-main">'
+  + '<div class="company-head">'+shopLogoHTML(s)+'<div><h1>'+esc(s.name)+'</h1>'
+  + '<p class="shop-sub">'+sub+'</p>'
+  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(hasReal(s.product) ? '<span class="tag">'+esc(s.product)+'</span>' : '')+(s.shopNameKnown ? '' : '<span class="tag soft">người đăng tin tuyển</span>')+'</div></div></div>'
+  + '<div class="detail-body">'
+  + '<h2>Thông tin shop</h2>'
   + '<div class="fact-grid">'
   + '<div class="fact"><b>Tỉnh / thành phố</b><span>'+esc(s.province)+'</span></div>'
   + '<div class="fact"><b>Quận / huyện</b><span>'+esc(s.district)+'</span></div>'
@@ -351,14 +388,22 @@ function initShopDetail(){
   + '<div class="fact"><b>Yêu cầu chính</b><span>'+esc(s.req)+'</span></div>'
   + '<div class="fact"><b>Kênh live</b><span>'+esc(s.channels)+'</span></div>'
   + '<div class="fact"><b>Ngày đăng tin</b><span>'+esc(s.date)+'</span></div></div>'
+  + '<h2>Tin tuyển đang mở</h2>'
+  + '<p class="job-count">Đang hiện 1 tin tuyển đang mở.</p>'
+  + '<article class="job-item">'
+  + '<h3>'+jobTitle+'</h3>'
+  + '<p class="job-meta">'+meta.join(' · ')+'</p>'
+  + '<p><b>Yêu cầu:</b> '+esc(s.req)+'</p>'
+  + (hasReal(s.channels) ? '<p><b>Kênh live:</b> '+esc(s.channels)+'</p>' : '')
+  + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution</a></div>'
+  + '</article>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
   + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'
-  + '<a class="btn btn-light" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
-  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a></div>'
-  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Tỉnh:</b> '+esc(s.province)+'</p><p><b>Quận / huyện:</b> '+esc(s.district)+'</p><p><b>Bài tuyển gốc:</b> <a href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook</a> · Ngày đăng: '+esc(s.date)+'</p></div></div></div>';
+  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a></div></div></div>';
   var others=document.getElementById('otherShops');
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
 }
@@ -380,6 +425,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
