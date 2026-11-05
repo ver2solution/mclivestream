@@ -1,10 +1,13 @@
-/* v34 data: 20 real profiles + 30 shops (public job posts) + 22 articles.
+/* v34 data: 20 real profiles + 30 shops (public job posts) + 25 articles.
    v34 adds the 6 idol/game streamer shops from the 05/11 noon Facebook run
    (59K Entertainment, KOSS 5, Anh Mai, GAMETOK LIVE, Qingxiang Nexplay,
    YAOHAI) — user-directed 2026-11-05 ~21:08: post ALL collected shop data.
    Salary/req/channels read from each shop's own public post; channels are
    "Chưa cập nhật" where the post does not state them; contacts are only the
    Zalo numbers the posts themselves publish (source "post").
+   v34 also adds 3 articles (Gia Dụng Nhanh — no date, source has none;
+   CoMaker Shopee AI 2026-10-30; Modern Retail TikTok Shop US Black Friday
+   2026-10-20) — total 25 articles, 22 with their own bai-viet page.
    v26 data: 20 real profiles + 24 shops (public job posts) + 22 articles.
    v26 adds (user-approved 2026-11-05 13:26, spec v26 §8, audit contact-audit-v26.md):
    - `contacts` on every model and shop: ONLY items the model/shop published
