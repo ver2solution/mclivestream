@@ -64,13 +64,14 @@ a:hover{text-decoration:underline}
 .card-body h3 a{color:var(--ink)}
 .card-title{color:var(--mut);margin:0}
 .tags{display:flex;gap:7px;flex-wrap:wrap}
-.tag{background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:800}
+.tag{background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:800;white-space:nowrap}
 .tag.soft{background:#f1f4f2;color:var(--ink)}
 .facts{margin:0;display:grid;gap:6px;font-size:14px}
 .facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
 .facts b{font-weight:800}
 .facts span{text-align:right}
 .card-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.card-actions .btn{white-space:nowrap}
 /* DÒNG QUYẾT ĐỊNH (v28, thẻ 5 giây, thiết kế 2026-11-05): mặt thẻ chỉ hiện
    hàng có giá trị thật — hàng trống không được render nên không còn chữ
    "Chưa cập nhật" nào trên mặt thẻ. Lương số + Lịch xếp 2 cột khi cả hai
@@ -81,11 +82,12 @@ a:hover{text-decoration:underline}
 .tag-negotiable{background:#eef1ef;color:#5c6f68}
 .decision{display:grid;gap:8px;font-size:14px}
 .decision-row{display:flex;gap:10px;flex-wrap:wrap}
-.decision-item{flex:1 1 0;min-width:0;background:#f4f8f6;border-radius:12px;padding:9px 12px}
+.decision-item{flex:1 1 0;min-width:0;background:#f4f8f6;border-radius:12px;padding:9px 12px;min-height:72px}
 .decision-label{display:block;font-size:12px;font-weight:800;color:var(--mut)}
-.decision-value{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.decision-value{display:block;overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .decision-item .decision-value{font-weight:800}
-.decision-exp{background:#f4f8f6;border-radius:12px;padding:9px 12px}
+.decision-value.muted{color:var(--mut);font-weight:600}
+.decision-exp{background:#f4f8f6;border-radius:12px;padding:9px 12px;min-height:72px}
 .decision-exp .decision-value{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .warn{font-size:13px;color:#7a5b00;background:#fff7dd;border-radius:12px;padding:10px 12px;margin:0}
 .warn a{font-weight:800}
@@ -199,7 +201,8 @@ img{max-width:100%}
 .shop-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 16px rgba(11,93,78,.06)}
 .shop-head{display:flex;gap:12px;align-items:flex-start}
 .shop-initial{flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:900}
-.shop-card h3{margin:0;font-size:21px;line-height:1.3}
+.shop-card h3{margin:0;font-size:21px;line-height:1.3;min-height:55px}
+.shop-card h3 a{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .shop-sub{margin:4px 0 0;color:var(--mut);font-size:14px}
 .shop-card .facts{margin:0;display:grid;gap:6px;font-size:14px}
 .shop-card .facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
@@ -236,7 +239,7 @@ img{max-width:100%}
    cover = ảnh vuông crop; contain = logo ngang/trong suốt, nền trắng, padding, không crop. */
 .shop-logo{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:block}
 .shop-logo--cover{object-fit:cover}
-.shop-logo--contain{object-fit:contain;background:#fff;border:1px solid var(--line);padding:6px}
+.shop-logo--contain{object-fit:contain;background:#eef7f2;border:1px solid var(--line);padding:6px}
 /* KHỐI LIÊN HỆ + DÒNG NOTES (v26, spec §8): chỉ mục đã công khai trong
    contact-audit-v26.md. Mục không có nguồn công khai không hiện. */
 .contact-list{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:14px}
