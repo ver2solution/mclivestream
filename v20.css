@@ -183,3 +183,24 @@ img{max-width:100%}
 .shop-src a{font-weight:800}
 @media(max-width:1000px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.shop-grid{grid-template-columns:1fr}}
+
+/* DẢI NIỀM TIN (v26, spec §4): ngay sau hero trang chủ, 3 số đã kiểm chứng
+   + nút CTA tới mục shop. 1 hàng trên desktop, xếp dọc trên mobile. */
+.trust-strip{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 24px;margin:16px 0 0;box-shadow:0 4px 16px rgba(11,93,78,.06)}
+.trust-lead{margin:0;font-weight:800;font-size:17px}
+.trust-nums{display:flex;gap:30px;margin-left:auto}
+.trust-num b{display:block;font-size:30px;line-height:1.1;color:var(--brand)}
+.trust-num span{font-size:13px;color:var(--mut);font-weight:700}
+/* LOGO SHOP (v26, spec §5): khung vuông 52px như ô chữ cái cũ để thẻ không lệch.
+   cover = ảnh vuông crop; contain = logo ngang/trong suốt, nền trắng, padding, không crop. */
+.shop-logo{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:block}
+.shop-logo--cover{object-fit:cover}
+.shop-logo--contain{object-fit:contain;background:#fff;border:1px solid var(--line);padding:6px}
+/* KHỐI LIÊN HỆ + DÒNG NOTES (v26, spec §8): chỉ mục đã công khai trong
+   contact-audit-v26.md. Mục không có nguồn công khai không hiện. */
+.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:14px}
+.contact-list a{font-weight:800}
+.contact-note{font-size:13px;color:var(--mut);background:#eef7f2;border-radius:10px;padding:8px 11px;margin:0}
+.contact-card .contact-list a{color:#fff}
+.contact-card .contact-note{color:#d7ece6;background:rgba(255,255,255,.12)}
+@media(max-width:600px){.trust-strip{flex-direction:column;align-items:flex-start;gap:14px}.trust-nums{margin-left:0;gap:20px}.trust-num b{font-size:26px}}
