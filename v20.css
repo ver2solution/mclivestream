@@ -199,7 +199,7 @@ img{max-width:100%}
 .shop-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 16px rgba(11,93,78,.06)}
 .shop-head{display:flex;gap:12px;align-items:flex-start}
 .shop-initial{flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:900}
-.shop-card h3{margin:0;font-size:19px;line-height:1.3}
+.shop-card h3{margin:0;font-size:21px;line-height:1.3}
 .shop-sub{margin:4px 0 0;color:var(--mut);font-size:14px}
 .shop-card .facts{margin:0;display:grid;gap:6px;font-size:14px}
 .shop-card .facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
@@ -207,6 +207,21 @@ img{max-width:100%}
 .shop-card .facts dd{margin:0;text-align:right}
 .shop-src{font-size:13px;color:var(--mut);margin:0}
 .shop-src a{font-weight:800}
+/* v32: thẻ shop theo mẫu thẻ mẫu MC — logo là điểm nhấn (72px), thông tin
+   quyết định (lĩnh vực, lương, tỉnh) đưa lên đầu; trang chi tiết shop theo
+   mẫu trang công ty — đầu trang logo lớn (96px) + tên, rồi thông tin shop
+   và tin tuyển đang mở của chính shop đó. */
+.shop-card .shop-logo,.shop-card .shop-initial{flex:0 0 72px;width:72px;height:72px;border-radius:18px;font-size:32px}
+.shop-meta{margin:0;color:var(--mut);font-size:13px}
+.company-head{display:flex;gap:18px;align-items:flex-start;padding:26px 26px 0}
+.company-head .shop-logo,.company-head .shop-initial{flex:0 0 96px;width:96px;height:96px;border-radius:22px;font-size:40px}
+.company-head h1{margin:0 0 6px;font-size:30px;line-height:1.2}
+.company-head .shop-sub{font-size:16px}
+.job-item{background:#f4f8f6;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:12px 0}
+.job-item h3{margin:0 0 6px;font-size:19px}
+.job-meta{margin:0 0 10px;color:var(--mut);font-size:14px}
+.job-count{margin:0;color:var(--mut);font-size:14px}
+@media(max-width:600px){.company-head{padding:18px 18px 0;gap:12px}.company-head .shop-logo,.company-head .shop-initial{flex:0 0 72px;width:72px;height:72px;font-size:30px}.company-head h1{font-size:24px}}
 @media(max-width:1000px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.shop-grid{grid-template-columns:1fr}}
 
