@@ -176,26 +176,37 @@ a:hover{text-decoration:underline}
 .most .meta{color:var(--mut);font-size:13px}
 footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#fff;padding:26px 0;color:var(--mut)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%}.menu-btn{display:block}}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
 @media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
 /* v28: mobile — Lương 1 dòng, Lịch 1 dòng, Kinh nghiệm tối đa 2 dòng, xếp dọc. */
-.decision-row{flex-direction:column}.decision-item{flex:1 1 auto}}
+.decision-row{flex-direction:column}.decision-item{flex:1 1 auto}
+/* v39: nut Gop y xuong goc duoi phai (khong che noi dung giua man hinh). */
+.gopy-fab{top:auto;bottom:20px;right:14px;transform:none}
+/* v39: nut phan trang du lon de bam bang ngon tay. */
+.pager button{min-height:44px;padding:10px 16px}
+/* v39: o tin dang ngang — anh 120px ben trai, tieu de + chuyen muc ben phai
+   (4 o xep doc 1 cot se rat dai neu giu anh 16:9 day chieu rong). */
+.pin-card a{display:grid;grid-template-columns:120px 1fr;grid-template-areas:"img title" "img cat";column-gap:10px;align-items:start;padding:10px}
+.pin-card:not(:has(>a)){display:grid;grid-template-columns:120px 1fr;grid-template-areas:"img title" "img cat";column-gap:10px;align-items:start;padding:10px}
+.pin-img,.pin-noimg{grid-area:img;width:120px;aspect-ratio:4/3}
+.pin-card h3{grid-area:title;margin:0}
+.pin-cat{grid-area:cat;margin:0}
+.pin-num{top:16px;left:16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* MÀN HÌNH RẤT NHỎ (điện thoại nhỏ, đồng hồ ~200–320px): không tràn ngang,
    mọi thứ xếp dọc 1 cột, chữ vẫn đọc được, nút đủ lớn để bấm bằng ngón tay.
    Các breakpoint này là mô phỏng bằng CSS, KHÔNG thay thế kiểm tra thiết bị thật. */
 @media(max-width:360px){
   .wrap{padding:0 10px}.hero{padding:20px 14px;border-radius:20px}.hero h1{font-size:24px}
-  .search-card{padding:10px}.btn{width:100%;min-height:48px}.card-actions{grid-template-columns:1fr}
+  .search-card{padding:10px}.card-actions .btn,.search-card .btn,.filter-card .btn,.form-card .btn{width:100%;min-height:48px}.card-actions{grid-template-columns:1fr}
   .detail-body{padding:16px}.detail-body h1{font-size:24px}.fact-grid{grid-template-columns:1fr}
   .gopy-fab{width:48px;height:48px;right:8px}
-  /* v28: màn hình rất nhỏ — dòng quyết định chỉ còn tối đa 1 mục (ưu tiên
-     Lương nếu có số thật, không thì Lịch nếu có; Kinh nghiệm 1 dòng khi
-     không có Lương/Lịch). Trình duyệt chưa hỗ trợ :has thì vẫn hiện đủ
-     các mục — chỉ gọn hơn, không sai dữ liệu. */
-  .decision-row .decision-item:nth-child(2){display:none}
-  .card-body:has(.decision-row) .decision-exp{display:none}
-  .decision-exp .decision-value{-webkit-line-clamp:1}
+  /* v39: man hinh rat nho — GIU DU thong tin tren the (khong an o thu 2
+     hay muc Kinh nghiem nhu v28 nua), chi thu gon padding/min-height de
+     vua man hinh 360px; decision-value van toi da 2 dong. */
+  .decision-item,.decision-exp{padding:7px 9px;min-height:56px}
+  /* v39: chong tran ngang — o nhap trong luoi khong duoc vuot chieu rong. */
+  .search-card input,.search-card select,.filter-card input,.filter-card select,.form-card input,.form-card select,.form-card textarea{min-width:0}
 }
 @media(max-width:320px){
   body{font-size:15px}.logo{font-size:17px}.logo small{display:none}
