@@ -558,6 +558,7 @@ window.V20_DATA = {
  ],
  "shops": [
   {
+   "id": "sh-01",
    "name": "Chạm Loa",
    "shopNameKnown": true,
    "product": "Công nghệ, thiết bị âm thanh",
@@ -574,6 +575,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/people/Chạm-Loa/61576944824677/", "label": "Fanpage Chạm Loa", "source": "fanpage", "source_url": "https://www.facebook.com/people/Chạm-Loa/61576944824677/"}
    ]  },
   {
+   "id": "sh-02",
    "name": "Đỗ Sỹ Khải",
    "shopNameKnown": false,
    "product": "Áo dài nam",
@@ -590,6 +592,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100090883478300", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"}
    ]  },
   {
+   "id": "sh-03",
    "name": "Lâm",
    "shopNameKnown": false,
    "product": "Giày dép",
@@ -606,6 +609,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029373981234", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"}
    ]  },
   {
+   "id": "sh-04",
    "name": "Lâm Hoàng Dũng",
    "shopNameKnown": false,
    "product": "Chưa cập nhật",
@@ -622,6 +626,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012624346418", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"}
    ]  },
   {
+   "id": "sh-05",
    "name": "Phạm Hoàng Lâm",
    "shopNameKnown": false,
    "product": "Thời trang nữ",
@@ -637,6 +642,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61594229461537", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949"}
    ]  },
   {
+   "id": "sh-06",
    "name": "Le Paria",
    "shopNameKnown": true,
    "product": "Dược / wellness — dược phẩm, thực phẩm bảo vệ sức khỏe",
@@ -653,6 +659,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61580462560218", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"}
    ]  },
   {
+   "id": "sh-07",
    "name": "DOLLY SECRET",
    "shopNameKnown": true,
    "product": "Thời trang nữ",
@@ -671,6 +678,7 @@ window.V20_DATA = {
     {"provider": "shopee", "value": "https://shopee.vn/dollysecret.tights", "label": "Shopee Dolly Secret Tights", "source": "shopee", "source_url": "https://shopee.vn/dollysecret.tights"}
    ]  },
   {
+   "id": "sh-08",
    "name": "Nguyễn Minh Ngọc",
    "shopNameKnown": false,
    "product": "Hàng công sở",
@@ -686,6 +694,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012425322917", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211"}
    ]  },
   {
+   "id": "sh-09",
    "name": "CÔNG TY TNHH TM XNK FANI / TopGia, TopGiaKids",
    "shopNameKnown": true,
    "product": "Đồ dùng gia đình, ngành Giấy (TopGia), Mẹ & Bé (TopGiaKids)",
@@ -704,6 +713,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/tuyendungfani", "label": "Fanpage Tuyển Dụng FANI", "source": "fanpage", "source_url": "https://www.facebook.com/tuyendungfani"}
    ]  },
   {
+   "id": "sh-10",
    "name": "Ngoc Giang",
    "shopNameKnown": true,
    "product": "Hải sản, cua hấp",
@@ -720,6 +730,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100004639247783", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"}
    ]  },
   {
+   "id": "sh-11",
    "name": "QTC Marketing",
    "shopNameKnown": true,
    "product": "Vòng ngọc (trang sức, phụ kiện)",
@@ -735,6 +746,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100084326330688", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841"}
    ]  },
   {
+   "id": "sh-12",
    "name": "Phuongg Thảo",
    "shopNameKnown": true,
    "product": "Thời trang nam (sơ mi, T-shirt, Polo)",
@@ -751,6 +763,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100063519480617", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"}
    ]  },
   {
+   "id": "sh-13",
    "name": "Hiếu Ken",
    "shopNameKnown": true,
    "product": "Thời trang unisex",
@@ -767,6 +780,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100005592996221", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"}
    ]  },
   {
+   "id": "sh-14",
    "name": "Lê Thị Liễu",
    "shopNameKnown": true,
    "product": "Thời trang (đồ ngủ / hàng teen)",
@@ -784,6 +798,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012358743057", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"}
    ]  },
   {
+   "id": "sh-15",
    "name": "Nguyễn Thuý",
    "shopNameKnown": true,
    "product": "Thời trang nữ size S–M",
@@ -799,6 +814,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100028825702612", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422"}
    ]  },
   {
+   "id": "sh-16",
    "name": "Lan Phương",
    "shopNameKnown": true,
    "product": "Thời trang và Mẹ & Bé",
@@ -815,6 +831,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029066784370", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"}
    ]  },
   {
+   "id": "sh-17",
    "name": "Vân Nguyễn",
    "shopNameKnown": true,
    "product": "Thời trang nữ",
@@ -831,6 +848,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100009152456136", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"}
    ]  },
   {
+   "id": "sh-18",
    "name": "Như Quỳnh",
    "shopNameKnown": true,
    "product": "Thuốc nhuộm tóc, ủ, xả, gội, xịt tóc",
@@ -847,6 +865,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61552293746603", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"}
    ]  },
   {
+   "id": "sh-19",
    "name": "Nhung Hong Pham",
    "shopNameKnown": true,
    "product": "Chưa cập nhật",
@@ -863,6 +882,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006865515051", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"}
    ]  },
   {
+   "id": "sh-20",
    "name": "Vũ Linh Phương",
    "shopNameKnown": true,
    "product": "Thời trang thể thao",
@@ -879,6 +899,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100079002122590", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"}
    ]  },
   {
+   "id": "sh-21",
    "name": "Javata Affiliate Team",
    "shopNameKnown": true,
    "product": "Chưa cập nhật",
@@ -895,6 +916,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61589467955549", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"}
    ]  },
   {
+   "id": "sh-22",
    "name": "Truong Phuc Anh",
    "shopNameKnown": true,
    "product": "Phụ kiện Nail",
@@ -911,6 +933,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100037242465269", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"}
    ]  },
   {
+   "id": "sh-23",
    "name": "Thời Trang Nam Rustico",
    "shopNameKnown": true,
    "product": "Thời trang nam",
@@ -927,6 +950,7 @@ window.V20_DATA = {
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100056622261085", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"}
    ]  },
   {
+   "id": "sh-24",
    "name": "Công ty TNHH Giấy Mylan",
    "shopNameKnown": true,
    "product": "Gia dụng",

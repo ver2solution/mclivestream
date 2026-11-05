@@ -113,7 +113,8 @@ function shopLogoHTML(s){
   return '<img class="shop-logo '+fit+'" src="'+esc(s.logo)+'" alt="Logo '+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<span class=shop-initial>'+init+'</span>\'">';
 }
 function shopCardHTML(s){
-  var name = esc(s.name) + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
+  var url='chi-tiet-shop.html?id='+s.id;
+  var name = '<a href="'+url+'">'+esc(s.name)+'</a>' + (s.shopNameKnown ? '' : ' <span class="tag soft">người đăng tin tuyển</span>');
   return '<article class="shop-card">'
   + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h3>'+name+'</h3>'
   + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
@@ -123,6 +124,7 @@ function shopCardHTML(s){
   + '<div><dt>Ngày đăng tin</dt><dd>'+esc(s.date)+'</dd></div></dl>'
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
+  + '<p class="shop-src"><a href="'+url+'">Xem chi tiết shop →</a></p>'
   + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
 }
@@ -329,8 +331,39 @@ function initDetail(){
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
 }
+/* Shop detail (v31): same 2-column layout as initDetail. The logo stays at
+   its designed 52px inside .shop-head — NOT inside .detail-photo, whose
+   img rule (absolute, inset 0, cover) would stretch it to fill a 4/3 frame. */
+function initShopDetail(){
+  var root=document.getElementById('shopDetailRoot'); if(!root) return;
+  var id=params().id || (D.shops[0]||{}).id;
+  var s=(D.shops||[]).filter(function(x){return x.id===id;})[0];
+  if(!s){root.innerHTML='<p>Không tìm thấy shop.</p>'; return;}
+  root.innerHTML='<div class="detail-layout"><div class="detail-main"><div class="detail-body">'
+  + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h1>'+esc(s.province)+' — '+esc(s.name)+'</h1>'
+  + '<p class="shop-sub">📍 '+esc(s.province)+(s.district && s.district!=='Chưa cập nhật' ? ' — '+esc(s.district) : '')+' · '+esc(s.product)+'</p></div></div>'
+  + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span><span class="tag">'+esc(s.product)+'</span>'+(s.shopNameKnown ? '' : '<span class="tag soft">người đăng tin tuyển</span>')+'</div>'
+  + '<div class="fact-grid">'
+  + '<div class="fact"><b>Tỉnh / thành phố</b><span>'+esc(s.province)+'</span></div>'
+  + '<div class="fact"><b>Quận / huyện</b><span>'+esc(s.district)+'</span></div>'
+  + '<div class="fact"><b>Mặt hàng</b><span>'+esc(s.product)+'</span></div>'
+  + '<div class="fact"><b>Mức lương</b><span>'+esc(s.salary)+'</span></div>'
+  + '<div class="fact"><b>Yêu cầu chính</b><span>'+esc(s.req)+'</span></div>'
+  + '<div class="fact"><b>Kênh live</b><span>'+esc(s.channels)+'</span></div>'
+  + '<div class="fact"><b>Ngày đăng tin</b><span>'+esc(s.date)+'</span></div></div>'
+  + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></div></div>'
+  + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
+  + contactsBlockHTML(s.contacts)
+  + contactNoteHTML()
+  + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'
+  + '<a class="btn btn-light" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
+  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a></div>'
+  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Tỉnh:</b> '+esc(s.province)+'</p><p><b>Quận / huyện:</b> '+esc(s.district)+'</p><p><b>Bài tuyển gốc:</b> <a href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook</a> · Ngày đăng: '+esc(s.date)+'</p></div></div></div>';
+  var others=document.getElementById('otherShops');
+  if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
+}
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
-  initHome(); initList(); initNews(); initDetail(); initShops();
+  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -347,6 +380,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
