@@ -16,7 +16,7 @@
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#cach-hoat-dong" class="">Cách hoạt động</a><a href="index.html#lo-trinh" class="">Lộ trình</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html">Đăng tin tuyển mẫu</a></div></header>
 <main class="wrap">
-<section class="section"><p><a href="danh-sach-mau.html">← Về danh sách mẫu</a></p><div id="detailRoot"><p>Đang tải hồ sơ…</p></div></section>
+<section class="section"><p><a href="danh-sach-mau.html">← Về danh sách mẫu</a></p><div id="detailRoot"><h1>Hồ sơ mẫu livestream</h1><p>Đang tải hồ sơ…</p></div></section>
 <section class="section"><div class="section-head"><h2 id="detailTitle">Các mẫu khác</h2><p>Tên thật, tiêu đề, tỉnh, lĩnh vực, lương và kinh nghiệm — bấm tên để xem chi tiết từng mẫu.</p></div>
 <div class="mini-grid" id="otherGrid"></div></section>
 </main>
@@ -30,4 +30,4 @@
 <label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
 <p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
-<script src="js/data.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="mclivestream-supabase.js"></script><script src="js/data.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>

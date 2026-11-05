@@ -24,14 +24,14 @@
 <p>20 hồ sơ thật hiện có trên trang mẫu tìm việc, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
 
 <section class="form-card" aria-labelledby="shops-title"><h2 id="shops-title">Danh sách các shop đang tuyển mẫu</h2>
-<p id="shopBackendStatus">Đang kiểm tra kết nối backend shop…</p>
+<p id="shopBackendStatus">Đang tải danh sách shop đã duyệt…</p>
 <div id="publicShops"><p><strong>24 shop đang tuyển mẫu — tin tuyển công khai.</strong></p><p>Thông tin dưới đây chỉ lấy từ bài tuyển shop tự đăng công khai trên Facebook: tên shop, mặt hàng, tỉnh/quận, mức lương, yêu cầu chính, thông tin liên hệ đã công khai và ngày đăng tin. Web chỉ đăng thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop, không bịa link fanpage. Mỗi tin kèm link về bài tuyển gốc. Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p><p id="publicShopsCount" style="font-weight:800"></p><div class="shop-grid" id="publicShopsList"></div></div>
-<div id="approvedShopsList"></div>
+<h3>Shop đã đăng ký hồ sơ trên sàn (đã duyệt)</h3><div id="approvedShopsList"><p class="empty-state">Hiện chưa có shop nào đăng ký hồ sơ trên sàn được duyệt. Shop đăng ký hồ sơ ở <a href="#ho-so-shop">form bên dưới</a> — sau khi Ver2Solution duyệt, hồ sơ sẽ hiện công khai tại đây.</p></div>
 <h3>Tin tuyển mẫu đã duyệt</h3><p id="approvedJobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
 <p style="font-size:13px">Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop; thông tin chưa công khai không hiển thị. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Cần ứng tuyển mà shop không ghi liên hệ thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> để được giới thiệu.</p></section>
 
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
-<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> form này lưu vào bảng <code>shop_profiles</code> khi shop đã đăng nhập và đã chạy migration M2/M3 (<code>supabase-migration-shop-m2-m3.sql</code>) trên Supabase Dashboard. Nếu bảng chưa có, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
+<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> form này lưu vào cơ sở dữ liệu khi shop đã đăng nhập và đã chạy migration M2/M3 (<code>supabase-migration-shop-m2-m3.sql</code>) trên Supabase Dashboard. Nếu bảng chưa có, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
 <form id="shopProfileForm" data-track="form-ho-so-shop">
 <label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*"></label>
 <label>Tên shop *<input name="shopName" required placeholder="Tên shop"></label>
@@ -80,7 +80,7 @@
 <p id="shopAuthMsg"></p><p id="shopAuthUserBox" style="display:none">Đã đăng nhập: <span id="shopAuthUserEmail"></span> <button class="btn btn-ghost btn-sm" id="shopSignOut" data-track="nut-dang-xuat-shop" type="button">Đăng xuất</button> · <a href="#dang-tin">Xuống mục Đăng tin tuyển mẫu ↓</a></p></section>
 
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
-<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào bảng <code>shop_job_posts</code>, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
+<div class="notice"><p><strong>Lưu thật qua Supabase:</strong> tin gửi vào cơ sở dữ liệu, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm" data-track="form-dang-tin-tuyen">
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
 <label>Quận / huyện, địa điểm làm việc <span style="font-weight:400">(ví dụ: Cầu Giấy, Tây Mỗ, Bình Tân — tin tuyển thật luôn ghi quận/huyện)</span><input name="district" placeholder="Quận / huyện, địa điểm làm việc"></label>
@@ -148,15 +148,17 @@
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   async function loadApproved(){
     var st=document.getElementById('shopBackendStatus');
-    if(!window.McLivestreamAPI){ st.textContent='Chưa kết nối Supabase nên chưa tải được danh sách shop và tin đã duyệt.'; document.getElementById('approvedJobsStatus').textContent='Chưa kết nối Supabase.'; return; }
+    if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 24 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
     try{
       var shops=await McLivestreamAPI.fetchApprovedShops();
       var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
-      st.textContent='Đã kết nối bảng shop thật (shop_profiles, shop_job_posts).';
+      st.textContent='Shop đăng ký hồ sơ và đăng tin ở form bên dưới; hồ sơ và tin đã duyệt sẽ hiện ở mục này.';
       if(shops.length){
         document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
           return '<article class="news-item"><h3 style="margin:0">'+esc(s.shop_name)+'</h3><p>Tỉnh: '+esc(s.province||'Chưa cập nhật')+(s.business_items&&s.business_items.length?' · Mặt hàng: '+esc(s.business_items.join(', ')):'')+(s.live_hours?' · Giờ live: '+esc(s.live_hours):'')+(s.live_channels&&s.live_channels.length?' · Kênh: '+esc(s.live_channels.join(', ')):'')+'</p></article>';
         }).join('');
+      } else {
+        document.getElementById('approvedShopsList').innerHTML='<p class="empty-state">Hiện chưa có shop nào đăng ký hồ sơ trên sàn được duyệt. Shop đăng ký hồ sơ ở <a href="#ho-so-shop">form bên dưới</a> — sau khi Ver2Solution duyệt, hồ sơ sẽ hiện công khai tại đây.</p>';
       }
       var js=document.getElementById('approvedJobsStatus');
       if(jobs.length){ js.textContent='Đang hiện '+jobs.length+' tin đã duyệt.';
@@ -164,7 +166,7 @@
           var shop=(j.shop_profiles&&j.shop_profiles.shop_name)||'Shop đã duyệt';
           return '<article class="news-item"><h3 style="margin:0">'+esc(shop)+' — '+esc(j.field||'Chưa ghi lĩnh vực')+'</h3><p>Tỉnh: '+esc(j.province||'Chưa cập nhật')+' · Lịch: '+esc(j.schedule||'Chưa cập nhật')+' · Lương: '+esc(j.salary||'Thỏa thuận')+(j.channels&&j.channels.length?' · Kênh: '+esc(j.channels.join(', ')):'')+'</p>'+(j.description?('<p>'+esc(j.description)+'</p>'):'')+'</article>';
         }).join('');
-      } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; }
+      } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; document.getElementById('approvedJobsList').innerHTML='<p class="empty-state">Shop đăng tin tuyển mẫu ở <a href="#dang-tin">form bên dưới</a> — sau khi Ver2Solution duyệt, tin sẽ hiện công khai tại đây.</p>'; }
     }catch(e){
       st.textContent=missingMsg(e);
       document.getElementById('approvedJobsStatus').textContent=missingMsg(e);
