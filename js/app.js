@@ -240,6 +240,9 @@ function homeTop8(models, date){
 function params(){
   var p={}; try{new URLSearchParams(location.search).forEach(function(v,k){p[k]=v;});}catch(e){} return p;
 }
+/* v45: doc gia tri o loc, an toan khi o khong co tren trang (vd test stub
+   DOM chi co cac o cu) — tra ve '' thay vi nem loi. */
+function elVal(id){ var el=document.getElementById(id); return el ? el.value : ''; }
 function setParams(p){
   var q=new URLSearchParams(); Object.keys(p).forEach(function(k){if(p[k]) q.set(k,p[k]);});
   try{history.replaceState(null,'',location.pathname+(q.toString()?'?'+q.toString():''));}catch(e){}
@@ -254,6 +257,12 @@ function filterModels(list, f){
        Mau khong co fulltime nen khong ap quyet dinh fulltime-hien-trong-moi-ca
        nhu shop. */
     if(f.shift){ var sh = m.shifts || []; if(sh.indexOf(f.shift) === -1) return false; }
+    /* v45: loc theo gia tri. revMin tinh theo trieu (topRevenue parse ra VND);
+       mau chua co doanh thu that (topRevenue null) bi loai khi co nhap — hien
+       0/20 mau co doanh thu that nen loc nay chua ra ket qua cho toi khi co
+       du lieu, dung thiet ke, khong bia du lieu. */
+    if(f.revMin != null){ var r = parseRevenue(m.topRevenue); if(r === null || r < f.revMin * 1000000) return false; }
+    if(f.wageMin != null){ var w = (typeof m.salaryNum === 'number' ? m.salaryNum : null); if(w === null || w < f.wageMin) return false; }
     if(f.q){var hay=(m.name+' '+m.title+' '+m.province+' '+m.cat+' '+m.form+' '+m.exp).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
   });
@@ -359,6 +368,22 @@ function parseRevenue(s){
   if(unit === 'tỷ' || unit === 'tỉ') v *= 1000000000;
   else if(unit === 'triệu' || unit === 'tr') v *= 1000000;
   else if(unit === 'k' || unit === 'nghìn') v *= 1000;
+  return v;
+}
+/* v45: parse so tien nguoi dung nhap o o loc gia tri ("150k", "150.000",
+   "1,5", "15"). Quy uoc Viet: dau "." la phan cach hang nghin, dau ","
+   la thap phan, hau to "k"/"K" = x1000. Tra ve so, hoac null neu rong /
+   khong phai so / <= 0 (0 tro xuong nghia la "khong gioi han"). */
+function parseMoneyInput(s){
+  if(s == null) return null;
+  var t = String(s).trim().toLowerCase().replace(/\s+/g, '');
+  if(!t) return null;
+  var mult = 1;
+  if(t.charAt(t.length - 1) === 'k'){ mult = 1000; t = t.slice(0, -1); }
+  t = t.replace(/\./g, '').replace(',', '.');
+  if(!/^\d+(\.\d+)?$/.test(t)) return null;
+  var v = parseFloat(t) * mult;
+  if(isNaN(v) || v <= 0) return null;
   return v;
 }
 /* v42: parse luong gio thap nhat tu text salary cua shop.
@@ -525,6 +550,13 @@ function filterShops(list, f){
       if(f.shift === 'fulltime'){ if(sh.indexOf('fulltime') === -1) return false; }
       else if(sh.indexOf(f.shift) === -1 && sh.indexOf('fulltime') === -1) return false;
     }
+    /* v45: loc theo loai luong + muc luong toi thieu. payMin chi ap dung khi
+       da chon loai luong; khong chon loai thi payMin bi bo qua (o nhap bi
+       disabled o giao dien). */
+    if(f.payType === 'hourly' && parseHourlyMin(s.salary) === null) return false;
+    if(f.payType === 'monthly' && parseMonthlyMax(s.salary) === null) return false;
+    if(f.payMin != null && f.payType === 'hourly'){ var h = parseHourlyMin(s.salary); if(h === null || h < f.payMin) return false; }
+    if(f.payMin != null && f.payType === 'monthly'){ var mm = parseMonthlyMax(s.salary); if(mm === null || mm < f.payMin) return false; }
     if(f.q){var hay=(s.name+' '+s.product+' '+s.province+' '+(s.district||'')+' '+(s.channels||'')+' '+(s.req||'')).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
   });
@@ -537,7 +569,7 @@ function initShops(){
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   var perPage=9;
-  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,q:document.getElementById('fShopQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,payType:elVal('fPayType'),payMin:parseMoneyInput(elVal('fPayMin')),q:document.getElementById('fShopQ').value.trim()};}
   function render(pg){
     var f=readForm();
     // v42: mac dinh (sort='') giu sortShopsNewest; chon sap xep thi dung sortShopsBy (bo qua thu tu ngay).
@@ -554,16 +586,31 @@ function initShops(){
   if(p.cat) document.getElementById('fShopCat').value=p.cat;
   if(p.sort) document.getElementById('fShopSort').value=p.sort;
   if(p.shift) document.getElementById('fShopShift').value=p.shift;
+  if(p.paytype){ var pt=document.getElementById('fPayType'); if(pt) pt.value=p.paytype; }
+  if(p.paymin){ var pm=document.getElementById('fPayMin'); if(pm) pm.value=p.paymin; }
   if(p.q) document.getElementById('fShopQ').value=p.q;
+  /* v45: o "Muc luong toi thieu" chi nhap duoc sau khi chon loai luong;
+     nhan/placeholder doi theo loai; bo chon loai thi khoa + xoa gia tri. */
+  function syncPayMin(){
+    var pt=elVal('fPayType');
+    var inp=document.getElementById('fPayMin'), lab=document.getElementById('fPayMinLabel');
+    if(!inp||!lab) return;
+    if(pt==='hourly'){ lab.textContent='Lương giờ tối thiểu (đ/giờ)'; inp.placeholder='VD: 100000'; inp.disabled=false; }
+    else if(pt==='monthly'){ lab.textContent='Lương tháng tối thiểu (triệu/tháng)'; inp.placeholder='VD: 15'; inp.disabled=false; }
+    else { lab.textContent='Mức lương tối thiểu'; inp.placeholder='Chọn loại lương trước'; inp.disabled=true; inp.value=''; }
+  }
+  var fPayTypeEl=document.getElementById('fPayType');
+  if(fPayTypeEl) fPayTypeEl.addEventListener('change',syncPayMin);
+  syncPayMin();
   document.getElementById('applyShopBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fShopQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin','fShopQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,shift:document.getElementById('fShift').value,q:document.getElementById('fQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,shift:document.getElementById('fShift').value,revMin:parseMoneyInput(elVal('fRevMin')),wageMin:parseMoneyInput(elVal('fWageMin')),q:document.getElementById('fQ').value.trim()};}
   function render(pg){
     var f=readForm(); var list=filterModels(D.models,f);
     if(f.sort){
@@ -591,9 +638,11 @@ function initList(){
   if(p.gender) document.getElementById('fGender').value=p.gender;
   if(p.sort) document.getElementById('fSort').value=p.sort;
   if(p.shift) document.getElementById('fShift').value=p.shift;
+  if(p.revmin){ var rv=document.getElementById('fRevMin'); if(rv) rv.value=p.revmin; }
+  if(p.wagemin){ var wm=document.getElementById('fWageMin'); if(wm) wm.value=p.wagemin; }
   if(p.q) document.getElementById('fQ').value=p.q;
   document.getElementById('applyBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fQ'].forEach(function(id){document.getElementById(id).value='';}); render(1);});
+  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
   render(page);
 }
 /* News page: newest first by default, category filter, oldest sort option.
@@ -735,6 +784,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, ownerNoteHTML:ownerNoteHTML};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
