@@ -1,14 +1,21 @@
-/* v26 data: 20 real profiles + 24 shops (public job posts) + 22 articles.
+/* v34 data: 20 real profiles + 30 shops (public job posts) + 22 articles.
+   v34 adds the 6 idol/game streamer shops from the 05/11 noon Facebook run
+   (59K Entertainment, KOSS 5, Anh Mai, GAMETOK LIVE, Qingxiang Nexplay,
+   YAOHAI) — user-directed 2026-11-05 ~21:08: post ALL collected shop data.
+   Salary/req/channels read from each shop's own public post; channels are
+   "Chưa cập nhật" where the post does not state them; contacts are only the
+   Zalo numbers the posts themselves publish (source "post").
+   v26 data: 20 real profiles + 24 shops (public job posts) + 22 articles.
    v26 adds (user-approved 2026-11-05 13:26, spec v26 §8, audit contact-audit-v26.md):
    - `contacts` on every model and shop: ONLY items the model/shop published
      themselves in their public post or on their public channel (verified in the
      audit, each with source_url). 5/20 models have a public Zalo/phone number
      (th-02, th-03, th-12, th-14, th-17), 1/20 has a public email (th-14);
-     19/24 shops have a public Zalo/phone number, 1/24 a public email (FANI).
+     25/30 shops have a public Zalo/phone number, 1/30 a public email (FANI).
      Every model/shop has at least its public Facebook link as a contact.
      Items with no public source are NOT in `contacts` (never invented).
    - `logo` on 3 shops (FANI cover, Chạm Loa + Mylan contain) + `logoFit`;
-     the other 21 shops keep `"logo": ""` (initial-letter placeholder).
+     the other 27 shops keep `"logo": ""` (initial-letter placeholder).
    Chạm Loa's original post could not be re-read (POST_NOT_FOUND) — its only
    contact is the public fanpage link from its official website; no Zalo
    number is guessed. Do NOT add Thế Giới Giấy content to Mylan.
@@ -25,7 +32,7 @@
    no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
    v24 adds 4 selling shops from the 05/11 noon Facebook run (Javata, Truong
    Phuc Anh, Rustico, Mylan); the 6 idol/game streamer posts from the same run
-   are NOT in this list. Internal ids exist only here and in ?id= URLs; they
+   were added in v34 (user-directed 2026-11-05). Internal ids exist only here and in ?id= URLs; they
    must never be rendered as visible text. */
 window.V20_DATA = {
  "models": [
@@ -966,6 +973,102 @@ window.V20_DATA = {
    "contacts": [
     {"provider": "zalo", "value": "0948972643", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"},
     {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61582223414128", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"}
+   ]  },
+  {
+   "id": "sh-25",
+   "name": "59K Entertainment",
+   "shopNameKnown": true,
+   "product": "Idol Livestream",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 8",
+   "salary": "16–36 triệu/tháng + KPI + thưởng ngày",
+   "req": "Tuyển nhiều vị trí: Idol Live nam/nữ, MC Livestream tiếng Anh, Trợ lý Idol 1:1, Stylist, Thợ tóc, Quản lý hình ảnh, Gimbal/Kỹ thuật, Phiên dịch tiếng Trung. Idol Live không cần kinh nghiệm, được đào tạo từ đầu; hỗ trợ Dance, Makeup, Hair, trang phục.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-05",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/969053609177345",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0369101543", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969053609177345"}
+   ]  },
+  {
+   "id": "sh-26",
+   "name": "KOSS 5",
+   "shopNameKnown": true,
+   "product": "Idol Livestream",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 1",
+   "salary": "Từ 15 triệu/tháng + hoa hồng",
+   "req": "Tuyển Idol Livestream, Trợ lý Vận hành, Stylist. Yêu thích livestream, vận hành nội dung hoặc thời trang. Idol được training và học nhảy miễn phí.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-05",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/969044702511569",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0347514152", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969044702511569"}
+   ]  },
+  {
+   "id": "sh-27",
+   "name": "Anh Mai",
+   "shopNameKnown": true,
+   "product": "Idol Livestream",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 5",
+   "salary": "17 triệu/tháng + hoa hồng và thưởng",
+   "req": "Không cần kinh nghiệm, được đào tạo từ A–Z, trợ lý hỗ trợ 1:1. Chỉ cần tự tin, chăm chỉ và ham học hỏi.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-05",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968970739185632",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0398717445", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968970739185632"}
+   ]  },
+  {
+   "id": "sh-28",
+   "name": "GAMETOK LIVE",
+   "shopNameKnown": true,
+   "product": "Streamer Game",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 4",
+   "salary": "8–18 triệu/tháng + hoa hồng",
+   "req": "Livestream TikTok, chơi game và trò chuyện với người xem. Hoạt bát, giao tiếp tốt. Không bắt buộc kinh nghiệm livestream. Live tối thiểu 5 tiếng/ngày.",
+   "channels": "TikTok",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968057325943640",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0398704111", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968057325943640"}
+   ]  },
+  {
+   "id": "sh-29",
+   "name": "Qingxiang Nexplay",
+   "shopNameKnown": true,
+   "product": "Streamer Game",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 4",
+   "salary": "8–18 triệu/tháng + thưởng KPI",
+   "req": "Nam/Nữ/LGBT, tự tin giao tiếp, tinh thần học hỏi. Được đào tạo từ đầu, hỗ trợ đầy đủ thiết bị. Livestream 6 tiếng/ngày, nghỉ 1 ngày/tuần.",
+   "channels": "TikTok",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/968342475915125",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0398855402", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968342475915125"}
+   ]  },
+  {
+   "id": "sh-30",
+   "name": "YAOHAI",
+   "shopNameKnown": true,
+   "product": "Streamer Game",
+   "province": "Hà Nội",
+   "district": "Hà Đông",
+   "salary": "15–17 triệu/tháng + hoa hồng 16–20%",
+   "req": "Đào tạo 1-1 từ đầu. Không áp KPI. Đến phỏng vấn nhận lì xì.",
+   "channels": "Chưa cập nhật",
+   "date": "2026-11-04",
+   "src": "https://www.facebook.com/groups/1002938194724844/posts/1705679061117417",
+   "logo": "",
+   "contacts": [
+    {"provider": "zalo", "value": "0358546899", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705679061117417"}
    ]  }
  ],
  "articles": [
@@ -1184,6 +1287,37 @@ window.V20_DATA = {
    "page": "bai-viet/tiktok-shop-1111-tinh-loi.html",
    "img": "https://strapi-cms.lapage.vn/uploads/hero_12721c449e.jpg",
    "takeaway": "Trước 11.11, shop nhỏ chỉ cần làm đúng 3 việc: tính lời mỗi đơn bằng số thật của mình rồi mới chốt mức giảm, chọn 1-2 món chủ lực để kéo khách thay vì giảm đều cả gian hàng, và giữ lịch live đều cả tuần sau sale để dữ liệu ngày sale không bị đứt. Giảm sâu mà không tính lời thì bán được nhiều nhưng có thể lỗ nhiều hơn ngày thường."
+  },
+  {
+   "title": "Xả kho đồ gia dụng cuối năm: giảm theo đợt, bán theo combo, ký gửi khi chọn sai khách",
+   "cat": "Bán hàng Online hiệu quả",
+   "source": "Gia Dụng Nhanh",
+   "url": "https://giadungnhanh.com/cach-xu-ly-amp-xa-hang-ton-kho-do-gia-dung-hieu-qua-cuoi-nam-n165660.html",
+   "page": "bai-viet/xa-kho-do-gia-dung-cuoi-nam.html",
+   "img": "https://pos.nvncdn.com/e8033b-157317/art/Cach-xu-ly-amp-xa-hang-ton-kho-do-gia-dung-hieu-qua-cuoi-nam_kich-cau-tieu-dung-dip-le-20240426194808-1714178538299343312397-1716178668387708676816-2.jpg",
+   "takeaway": "Với đồ gia dụng, xả kho hiệu quả nhất là giảm theo đợt có lịch công khai và combo theo nhu cầu dùng thật, không phải giảm sâu một lần rồi hết câu chuyện. Trước đợt live xả kho, kiểm kê tồn theo từng mã và ghi rõ mã nào giảm, mã nào ghép combo, mã nào ký gửi, để người dẫn live không phải vừa live vừa đoán giá và kho."
+  },
+  {
+   "title": "Shopee AI cho người bán: sàn lo phần đăng và chăm khách, video ngắn vẫn là việc của shop",
+   "cat": "Tin mới Livestream",
+   "source": "CoMaker",
+   "date": "2026-10-30",
+   "url": "https://comaker.me/blog/2026-10-30-shopee-ai-cho-nguoi-ban",
+   "page": "bai-viet/shopee-ai-cho-nguoi-ban.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/shopee-ai-cho-nguoi-ban.png",
+   "imgSelf": true,
+   "takeaway": "Dùng AI của sàn cho việc lặp lại như gợi ý tiêu đề, mô tả, ảnh bìa và trả lời chat lúc nửa đêm, nhưng video bán hàng thì tự làm một bản gốc thật rồi mới gắn nhãn AI đúng luật từng sàn. Ảnh người mẫu ảo phải đúng màu và đúng phom hàng thật, vì sai màu và sai phom là con đường nhanh nhất tới trả hàng và đánh giá xấu."
+  },
+  {
+   "title": "TikTok Shop Mỹ chạy Black Friday từ 11/11: live là trung tâm, hàng độc quyền mới là thứ giữ khách",
+   "cat": "Tin thị trường thế giới",
+   "source": "Modern Retail",
+   "date": "2026-10-20",
+   "url": "https://www.modernretail.co/marketing/brands-briefing-how-brands-are-gearing-up-for-tiktok-shops-biggest-holiday-season-yet/",
+   "page": "bai-viet/tiktok-shop-my-black-friday-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-my-black-friday-2026.png",
+   "imgSelf": true,
+   "takeaway": "Shop nhỏ Việt Nam không cần bắt chước quy mô của thương hiệu Mỹ, nhưng nên học đúng 2 điểm: live là nơi chốt đơn và lấy phản hồi thật, không chỉ là nơi giảm giá, và hàng độc quyền hoặc combo chỉ có trong phiên live mới là thứ giữ khách quay lại sau sale, thay vì giảm giá mà shop nào cũng có. Trước 11.11, chuẩn bị 1 món chỉ bán trong live và 1 câu chuyện thật về sản phẩm đó, thay vì chỉ chuẩn bị mã giảm."
   }
  ],
  "provinces": [
