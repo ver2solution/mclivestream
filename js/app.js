@@ -57,6 +57,9 @@ function decisionHTML(m){
   + '<div class="decision-exp"><span class="decision-label">Kinh nghiệm</span><span class="decision-value'+miss(exp)+'">'+exp+'</span></div>'
   + '</div>';
 }
+/* v40: dong mien tru trach nhiem o cuoi moi the mau/shop (yeu cau nguoi dung
+   toi 05/11/2026, ban viet lai da chot) — dat sau nut hanh dong, o day the. */
+var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.';
 function cardHTML(m){
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
   // v28: data-gender carries "" (not the placeholder "Chưa cập nhật") when the
@@ -71,7 +74,8 @@ function cardHTML(m){
   + decisionHTML(m)
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế. <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></div></article>';
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
+  + '<p class="disclaimer">'+DISCLAIMER+'</p></div></article>';
 }
 function miniHTML(m){
   return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
@@ -168,7 +172,8 @@ function shopCardHTML(s){
   + '</div>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></article>';
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
+  + '<p class="disclaimer">'+DISCLAIMER+'</p></article>';
   /* v37: (a) .card-actions moved to the END (after .shop-src + .warn) so
      margin-top:auto pins the buttons to the very bottom of the card and they
      line up across a row. Before, .warn/.shop-src sat below the buttons, so

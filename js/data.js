@@ -1081,6 +1081,7 @@ window.V20_DATA = {
    "source": "Ver2Solution",
    "date": "2026-11-03",
    "url": "bai-viet-bop-reach.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/bop-reach.webp",
    "pinned": true
   },
   {
@@ -1187,15 +1188,23 @@ window.V20_DATA = {
    "title": "Hồ sơ MC livestream: 7 mục bắt buộc giúp mẫu được shop tìm thấy nhanh hơn",
    "cat": "Tin mới Livestream",
    "source": "Bài demo nội bộ — Ver2Solution",
-   "date": null,
-   "url": null
+   "date": "2026-11-05",
+   "url": null,
+   "page": "bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.png",
+   "imgSelf": true,
+   "takeaway": "Mẫu muốn được shop tìm thấy nhanh thì điền đủ 7 mục bắt buộc — tên thật, ngày sinh, quê quán, nơi làm việc, học vấn, kinh nghiệm và lĩnh vực — càng cụ thể càng dễ lọt bộ lọc. Mục nào chưa có thì để hệ thống ghi \"Chưa cập nhật\", đừng bỏ trống hay ghi chung chung."
   },
   {
    "title": "Lương MC livestream theo buổi: Mặt bằng giá ở thời trang, mỹ phẩm và gia dụng",
    "cat": "Tin ngành hàng",
    "source": "Bài demo nội bộ — Ver2Solution",
-   "date": null,
-   "url": null
+   "date": "2026-11-05",
+   "url": null,
+   "page": "bai-viet/luong-mc-livestream-theo-buoi.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/luong-mc-livestream-theo-buoi.png",
+   "imgSelf": true,
+   "takeaway": "Chưa có số liệu lương theo buổi đã kiểm chứng trên sàn: 17/20 mẫu ghi \"Thỏa thuận\", shop thường trả theo tháng. Mẫu và shop nên thỏa thuận theo 5 yếu tố — lĩnh vực, kinh nghiệm, thời lượng phiên, hình thức live và hoa hồng — và chốt rõ 6 câu bằng tin nhắn trước phiên đầu tiên."
   },
   {
    "title": "Livestream bán hàng ở Mỹ tăng gần 50%: shop nhỏ học gì từ tỷ lệ chốt tới 30%?",
