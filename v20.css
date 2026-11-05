@@ -20,7 +20,7 @@ a:hover{text-decoration:underline}
 .logo:hover{text-decoration:none}
 .logo-badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--brand);color:#fff;font-size:22px}
 .logo small{display:block;font-size:11px;letter-spacing:.12em;color:var(--mut);font-weight:700}
-.main-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.main-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:nowrap}
 .main-nav a{color:var(--ink);font-weight:700;padding:9px 14px;border-radius:999px}
 .main-nav a:hover,.main-nav a.active{background:var(--brandsoft);color:var(--brand);text-decoration:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;cursor:pointer;font-size:15px}
