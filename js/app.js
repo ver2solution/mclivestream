@@ -24,7 +24,7 @@ function photoHTML(m, cls){
   if(m.photoUrl) return '<img src="'+esc(m.photoUrl)+'" alt="'+(m.photoSrc==='profile' ? 'Ảnh đại diện công khai của ' : 'Ảnh thật từ bài gốc của ')+esc(m.name)+'" loading="lazy" decoding="async">';
   return '<span class="ph-holder" aria-hidden="true">👤</span>';
 }
-function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đại diện công khai' : 'Ảnh thật từ bài gốc') : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật');}
+function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đại diện công khai' : 'Ảnh thật từ bài gốc') : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh họa tạm — chưa phải ảnh thật');}
 /* v28 — thẻ 5 giây (thiết kế 2026-11-05, design-2026-11-05-the-ho-so-5-giay.md):
    Mặt thẻ CHỈ render hàng có giá trị thật. Hàng nào là "Chưa cập nhật" hoặc
    rỗng thì không render — không hiện tiêu đề hàng kèm chữ chiếm chỗ. Lương
@@ -159,8 +159,8 @@ function shopDecisionHTML(s){
   + '<div class="decision-item"><span class="decision-label">📍 Tỉnh</span><span class="decision-value'+miss(prov)+'">'+prov+'</span></div>'
   + '</div>'
   + '<div class="decision-row">'
-  + '<div class="decision-item"><span class="decision-label">🎯 Lĩnh vực live</span><span class="decision-value'+miss(field)+'">'+field+'</span></div>'
-  + '<div class="decision-item"><span class="decision-label">📺 Kênh live</span><span class="decision-value'+miss(chan)+'">'+chan+'</span></div>'
+  + '<div class="decision-item"><span class="decision-label">🎯 Lĩnh vực livestream</span><span class="decision-value'+miss(field)+'">'+field+'</span></div>'
+  + '<div class="decision-item"><span class="decision-label">📺 Kênh livestream</span><span class="decision-value'+miss(chan)+'">'+chan+'</span></div>'
   + '</div>'
   + '<div class="decision-exp"><span class="decision-label">Yêu cầu chính</span><span class="decision-value'+miss(req)+'">'+req+'</span></div>'
   + '</div>';
@@ -193,7 +193,7 @@ function shopCardHTML(s){
      tin tuyển" pill moved from the h3 (where it wrapped to 2 lines and got
      clipped at the card edge) into the tags row. (c) The product pill was
      removed from the tags row — the product already shows in the subtitle and
-     in the "Lĩnh vực live" box, so it duplicated. (d) Button labels shortened
+     in the "Lĩnh vực livestream" box, so it duplicated. (d) Button labels shortened
      ("Xem chi tiết →", "Bài tuyển gốc →") so they fit on one line.
      v38 (can doi khung shop nhu khung mau): (e) .shop-head thanh dai neo
      thi giac co dinh (nen gradient xanh + padding + min-height) nhu
@@ -529,7 +529,7 @@ function filterShops(list, f){
     return true;
   });
 }
-/* Trang shop: grid + bo loc (tinh / linh vuc live / tim ten) + phan trang
+/* Trang shop: grid + bo loc (tinh / linh vuc livestream / tim ten) + phan trang
    9/trang, dong bo URL — cung khung bo cuc nhu trang Mau (section-head gon,
    filter-card, grid, pager) nhung truong loc la nhu cau rieng cua shop
    (khong co Gioi tinh). */
@@ -641,7 +641,7 @@ function initDetail(){
   + '<div class="tags"><span class="tag">📍 '+esc(m.province)+'</span><span class="tag">'+esc(m.cat)+'</span><span class="tag soft">'+esc(m.form)+'</span><span class="tag soft">Giới tính: '+esc(m.gender)+'</span></div>'
   + '<div class="fact-grid">'
   + '<div class="fact"><b>Tỉnh / nơi muốn làm việc</b><span>'+esc(m.province)+'</span></div>'
-  + '<div class="fact"><b>Giỏi live nhất</b><span>'+esc(m.cat)+'</span></div>'
+  + '<div class="fact"><b>Giỏi livestream nhất</b><span>'+esc(m.cat)+'</span></div>'
   + '<div class="fact"><b>Lương mong muốn</b><span>'+esc(m.salary)+'</span></div>'
   + '<div class="fact"><b>Lịch làm việc</b><span>'+esc(m.schedule)+'</span></div>'
   + '<div class="fact"><b>Doanh thu cao nhất</b><span>'+esc(m.topRevenue)+'</span></div>'
@@ -696,15 +696,15 @@ function initShopDetail(){
   + '<div class="fact"><b>Mặt hàng</b><span>'+esc(s.product)+'</span></div>'
   + '<div class="fact"><b>Mức lương</b><span>'+esc(s.salary)+'</span></div>'
   + '<div class="fact"><b>Yêu cầu chính</b><span>'+esc(s.req)+'</span></div>'
-  + '<div class="fact"><b>Kênh live</b><span>'+esc(s.channels)+'</span></div>'
+  + '<div class="fact"><b>Kênh livestream</b><span>'+esc(s.channels)+'</span></div>'
   + '<div class="fact"><b>Ngày đăng tin</b><span>'+esc(s.date)+'</span></div></div>'
   + '<h2>Tin tuyển đang mở</h2>'
-  + '<p class="job-count">Đang hiện 1 tin tuyển đang mở.</p>'
+  + '<p class="job-count">Hiện có 1 tin tuyển đang mở.</p>'
   + '<article class="job-item">'
   + '<h3>'+jobTitle+'</h3>'
   + '<p class="job-meta">'+meta.join(' · ')+'</p>'
   + '<p><b>Yêu cầu:</b> '+esc(s.req)+'</p>'
-  + (hasReal(s.channels) ? '<p><b>Kênh live:</b> '+esc(s.channels)+'</p>' : '')
+  + (hasReal(s.channels) ? '<p><b>Kênh livestream:</b> '+esc(s.channels)+'</p>' : '')
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
   + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution</a></div>'
   + '</article>'

@@ -1132,7 +1132,7 @@ window.V20_DATA = {
    "district": "Hà Đông",
    "salary": "15–17 triệu/tháng + hoa hồng 16–20%",
    "shifts": [],
-   "req": "Đào tạo 1-1 từ đầu. Không áp KPI. Đến phỏng vấn nhận lì xì.",
+   "req": "Đào tạo 1:1 từ đầu. Không áp KPI. Đến phỏng vấn nhận lì xì.",
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1002938194724844/posts/1705679061117417",
@@ -1219,7 +1219,7 @@ window.V20_DATA = {
    "url": "https://thanhnien.vn/cong-an-tphcm-canh-bao-thu-doan-lua-dao-mua-ngoc-trai-qua-livestream-185261009164623044.htm",
    "page": "bai-viet/canh-bao-lua-dao-livestream-ngoc-trai.html",
    "img": "https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/10/9/lua-dao-mua-ngoc-2-1791538727982307839114.jpg",
-   "takeaway": "Shop làm live chân chính cần phân biệt mình rõ với kiểu live này: không bao giờ hứa “thu mua lại giá cao” hay “trúng thưởng tiền tỉ”, không yêu cầu khách chuyển thêm tiền sau khi đã chốt đơn, giá và phí ghi rõ một lần ngay từ đầu. Và khi thấy một phiên live nào đó dùng đúng kịch bản này, đừng tham gia — mà hãy cảnh báo khách của mình, vì uy tín của cả nghề live bán hàng đang bị những vụ như vậy làm xấu đi."
+   "takeaway": "Shop làm live chân chính cần phân biệt mình rõ với kiểu live này: không bao giờ hứa “thu mua lại giá cao” hay “trúng thưởng tiền tỷ”, không yêu cầu khách chuyển thêm tiền sau khi đã chốt đơn, giá và phí ghi rõ một lần ngay từ đầu. Và khi thấy một phiên live nào đó dùng đúng kịch bản này, đừng tham gia — mà hãy cảnh báo khách của mình, vì uy tín của cả nghề live bán hàng đang bị những vụ như vậy làm xấu đi."
   },
   {
    "title": "TikTok Shop thu hẹp khoảng cách với Shopee: shop nhỏ nên đặt cửa nào trước?",
@@ -1365,7 +1365,7 @@ window.V20_DATA = {
    "url": "https://lapage.vn/vi/blog/post/tiktok-shop-1111-prep-plan",
    "page": "bai-viet/tiktok-shop-1111-tinh-loi.html",
    "img": "https://strapi-cms.lapage.vn/uploads/hero_12721c449e.jpg",
-   "takeaway": "Trước 11.11, shop nhỏ chỉ cần làm đúng 3 việc: tính lời mỗi đơn bằng số thật của mình rồi mới chốt mức giảm, chọn 1-2 món chủ lực để kéo khách thay vì giảm đều cả gian hàng, và giữ lịch live đều cả tuần sau sale để dữ liệu ngày sale không bị đứt. Giảm sâu mà không tính lời thì bán được nhiều nhưng có thể lỗ nhiều hơn ngày thường."
+   "takeaway": "Trước 11.11, shop nhỏ chỉ cần làm đúng 3 việc: tính lời mỗi đơn bằng số thật của mình rồi mới chốt mức giảm, chọn 1–2 món chủ lực để kéo khách thay vì giảm đều cả gian hàng, và giữ lịch live đều cả tuần sau sale để dữ liệu ngày sale không bị đứt. Giảm sâu mà không tính lời thì bán được nhiều nhưng có thể lỗ nhiều hơn ngày thường."
   },
   {
    "title": "Xả kho đồ gia dụng cuối năm: giảm theo đợt, bán theo combo, ký gửi khi chọn sai khách",
