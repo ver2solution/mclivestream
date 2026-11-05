@@ -1,4 +1,15 @@
-/* v24 data: 20 real profiles + 24 shops (public job posts, public info only,
+/* v25 data: 20 real profiles + 24 shops (public job posts, public info only,
+   no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
+   v25 adds real photos for 11 more profiles (18/20 now have a photo): th-11 and
+   th-18 use the photo from the model's own public post; th-01, th-03, th-05,
+   th-07, th-12, th-13, th-15, th-17 and th-19 use the model's public Facebook
+   profile picture (user-approved 2026-11-05 13:17: only the public profile
+   picture, no login, no private photo). th-19's post photo is only its live
+   setup (no person), so the profile picture is used instead. th-04 and th-10
+   still have no retrievable public photo, so they stay photo-less and can
+   never enter the home top 8. Field photoSrc: "post" | "profile" | null;
+   photoHas is unchanged and still means "the original post contains a photo".
+   v24 data: 20 real profiles + 24 shops (public job posts, public info only,
    no phone/Zalo/private address, no fabricated fanpage link) + 22 articles.
    v24 adds 4 selling shops from the 05/11 noon Facebook run (Javata, Truong
    Phuc Anh, Rustico, Mylan); the 6 idol/game streamer posts from the same run
@@ -27,7 +38,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-01.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-02",
@@ -50,7 +62,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-02.jpg"
+   "photoUrl": "images/th-02.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-03",
@@ -73,7 +86,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-03.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-04",
@@ -96,7 +110,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": null,
+   "photoSrc": null
   },
   {
    "id": "th-05",
@@ -119,7 +134,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-05.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-06",
@@ -142,7 +158,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-06.jpg"
+   "photoUrl": "images/th-06.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-07",
@@ -165,7 +182,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-07.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-08",
@@ -188,7 +206,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-08.jpg"
+   "photoUrl": "images/th-08.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-09",
@@ -211,7 +230,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-09.jpg"
+   "photoUrl": "images/th-09.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-10",
@@ -234,7 +254,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": null,
+   "photoSrc": null
   },
   {
    "id": "th-11",
@@ -257,7 +278,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": null
+   "photoUrl": "images/th-11.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-12",
@@ -280,7 +302,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-12.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-13",
@@ -303,7 +326,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": false,
-   "photoUrl": null
+   "photoUrl": "images/th-13.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-14",
@@ -326,7 +350,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-14.jpg"
+   "photoUrl": "images/th-14.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-15",
@@ -349,7 +374,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": null
+   "photoUrl": "images/th-15.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-16",
@@ -372,7 +398,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-16.jpg"
+   "photoUrl": "images/th-16.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-17",
@@ -395,7 +422,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": null
+   "photoUrl": "images/th-17.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-18",
@@ -418,7 +446,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": null
+   "photoUrl": "images/th-18.jpg",
+   "photoSrc": "post"
   },
   {
    "id": "th-19",
@@ -441,7 +470,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": null
+   "photoUrl": "images/th-19.jpg",
+   "photoSrc": "profile"
   },
   {
    "id": "th-20",
@@ -464,7 +494,8 @@ window.V20_DATA = {
    "comments": 0,
    "status": "Đang tìm việc",
    "photoHas": true,
-   "photoUrl": "images/th-20.jpg"
+   "photoUrl": "images/th-20.jpg",
+   "photoSrc": "post"
   }
  ],
  "shops": [
@@ -965,4 +996,4 @@ window.V20_DATA = {
   "Thời trang"
  ]
 };
-window.V20_PHOTOS = {"th-02": "images/th-02.jpg", "th-06": "images/th-06.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-14": "images/th-14.jpg", "th-16": "images/th-16.jpg", "th-20": "images/th-20.jpg"};
+window.V20_PHOTOS = {"th-01": "images/th-01.jpg", "th-02": "images/th-02.jpg", "th-03": "images/th-03.jpg", "th-05": "images/th-05.jpg", "th-06": "images/th-06.jpg", "th-07": "images/th-07.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-11": "images/th-11.jpg", "th-12": "images/th-12.jpg", "th-13": "images/th-13.jpg", "th-14": "images/th-14.jpg", "th-15": "images/th-15.jpg", "th-16": "images/th-16.jpg", "th-17": "images/th-17.jpg", "th-18": "images/th-18.jpg", "th-19": "images/th-19.jpg", "th-20": "images/th-20.jpg"};

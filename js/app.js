@@ -1,8 +1,10 @@
 /* v20 app: render cards / detail / filters / pagination from window.V20_DATA.
    Rules ported from v19-fix2:
    - Every <article> gets all attributes INSIDE its opening tag (never after a closing div).
-   - Real photos are embedded directly in the HTML string for the 7 profiles that have one;
-     the other 13 keep a placeholder glyph, never a fabricated photo.
+   - Real photos are embedded directly in the HTML string for the 18 profiles that have one;
+     the other 2 (th-04, th-10 — no retrievable public photo) keep a placeholder glyph,
+     never a fabricated photo. photoSrc says where a photo came from: "post" (the model's
+     own public post) or "profile" (the model's public Facebook profile picture).
    - Visible text never contains an internal id (th-xx): ids live only in data and in ?id= URLs.
    - No private phone/Zalo/email of a model is rendered: contact is only via the original
      public post, or via Ver2Solution Zalo 032 998 3699. */
@@ -13,10 +15,10 @@ var PH = window.V20_PHOTOS || {};
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]});}
 function clean(s){return String(s||'').replace(/\s*·\s*$/,'').trim() || 'Chưa cập nhật';}
 function photoHTML(m, cls){
-  if(m.photoUrl) return '<img src="'+esc(m.photoUrl)+'" alt="Ảnh thật từ bài gốc của '+esc(m.name)+'" loading="lazy" decoding="async">';
+  if(m.photoUrl) return '<img src="'+esc(m.photoUrl)+'" alt="'+(m.photoSrc==='profile' ? 'Ảnh đại diện công khai của ' : 'Ảnh thật từ bài gốc của ')+esc(m.name)+'" loading="lazy" decoding="async">';
   return '<span class="ph-holder" aria-hidden="true">👤</span>';
 }
-function photoNote(m){return m.photoUrl ? 'Ảnh thật từ bài gốc' : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật');}
+function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đại diện công khai' : 'Ảnh thật từ bài gốc') : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật');}
 function cardHTML(m){
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
   return '<article class="card" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(m.gender)+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
@@ -81,6 +83,15 @@ function rotateDaily(list, tierOf, date){
   order.forEach(function(k){ out = out.concat(rotateArr(tiers[k], doy)); });
   return out;
 }
+/* v25 (quy tắc người dùng chốt 2026-11-05 13:17): top 8 trang chủ CHỈ gồm hồ sơ
+   có ảnh đại diện thật (photoUrl). Hồ sơ không có ảnh thật không bao giờ vào
+   top 8 dù xoay ngày nào — kể cả hồ sơ có photoHas nhưng chưa tải được ảnh.
+   Xoay 1 lần/ngày theo day-of-year, ổn định trong ngày; xoay trong nhóm có
+   ảnh thật, không đổi dữ liệu hay tiêu đề. Trang danh sách vẫn hiện đủ 20. */
+function homeTop8(models, date){
+  var withPhoto = models.filter(function(m){ return !!m.photoUrl; });
+  return rotateArr(withPhoto, dayOfYear(date)).slice(0, 8);
+}
 function params(){
   var p={}; try{new URLSearchParams(location.search).forEach(function(v,k){p[k]=v;});}catch(e){} return p;
 }
@@ -118,9 +129,9 @@ function articleLink(a){
 function articleHref(a){ return a.page || a.url || ''; }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
-  // v24: still exactly 8, still photo-first, but the order inside each photo
-  // tier rotates by day-of-year so the home feels alive day to day.
-  var shown=rotateDaily(withPhotoFirst(D.models), photoTier).slice(0,8);
+  // v25: exactly 8, ALL with a real photo (homeTop8 filters by photoUrl first,
+  // then rotates by day-of-year). Profiles without a real photo never reach home.
+  var shown=homeTop8(D.models);
   grid.innerHTML=shown.map(cardHTML).join('');
   var news=document.getElementById('homeNews');
   if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
@@ -263,6 +274,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier};
+window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
