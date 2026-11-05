@@ -25,23 +25,47 @@ function photoHTML(m, cls){
   return '<span class="ph-holder" aria-hidden="true">👤</span>';
 }
 function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đại diện công khai' : 'Ảnh thật từ bài gốc') : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh hoạ tạm — chưa phải ảnh thật');}
+/* v28 — thẻ 5 giây (thiết kế 2026-11-05, design-2026-11-05-the-ho-so-5-giay.md):
+   Mặt thẻ CHỈ render hàng có giá trị thật. Hàng nào là "Chưa cập nhật" hoặc
+   rỗng thì không render — không hiện tiêu đề hàng kèm chữ chiếm chỗ. Lương
+   "Thỏa thuận" không phải một hàng: nó thành 1 chip xám "Lương thỏa thuận"
+   cạnh tag lĩnh vực. "Doanh thu cao nhất" rời khỏi mặt thẻ cho tới khi có
+   hồ sơ có số thật (hiện tại 0/20, nên chưa thẻ nào hiện hàng này); khi mẫu
+   tự đăng ký nhập được doanh thu đã kiểm chứng thì hàng tự xuất hiện lại,
+   không cần sửa code. Không suy ra nhãn mới từ dữ liệu cũ (không chip
+   "khung vàng", "còn trống 11.11"); không hiện lượt xem/bình luận (đang
+   0/0). Trang chi tiết GIỮ NGUYÊN bảng đầy đủ 4 hàng kể cả "Chưa cập nhật"
+   (initDetail không chạm tới đây) — chỉ dọn mặt thẻ, không giấu thông tin. */
+function hasReal(v){ var s = String(v==null?'':v).trim(); return s !== '' && s !== 'Chưa cập nhật'; }
+function isNegotiableSalary(m){ return String(m.salary||'').trim() === 'Thỏa thuận'; }
+function decisionHTML(m){
+  var rows = '';
+  var first = '';
+  if(hasReal(m.salary) && !isNegotiableSalary(m)) first += '<div class="decision-item"><span class="decision-label">💰 Lương</span><b class="decision-value">'+esc(m.salary)+'</b></div>';
+  if(hasReal(m.schedule)) first += '<div class="decision-item"><span class="decision-label">🕒 Lịch</span><span class="decision-value">'+esc(m.schedule)+'</span></div>';
+  if(first) rows += '<div class="decision-row">'+first+'</div>';
+  if(hasReal(m.topRevenue)) rows += '<div class="decision-row"><div class="decision-item"><span class="decision-label">📈 Doanh thu cao nhất</span><b class="decision-value">'+esc(m.topRevenue)+'</b></div></div>';
+  if(hasReal(m.exp)) rows += '<div class="decision-exp"><span class="decision-label">Kinh nghiệm</span><span class="decision-value">'+esc(m.exp)+'</span></div>';
+  return rows ? '<div class="decision">'+rows+'</div>' : '';
+}
 function cardHTML(m){
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
-  return '<article class="card" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(m.gender)+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
+  // v28: data-gender carries "" (not the placeholder "Chưa cập nhật") when the
+  // gender is unknown, so the placeholder string never enters the rendered DOM
+  // at all (design AC #2). No code reads data-gender (filtering uses the data
+  // object), so this changes no behaviour — only the invisible attribute value.
+  return '<article class="card" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(hasReal(m.gender)?m.gender:'')+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
   + '<div class="card-photo">'+photoHTML(m)+'<span class="status"><i></i>'+esc(m.status)+'</span><span class="ph-note">'+photoNote(m)+'</span></div>'
   + '<div class="card-body"><h3><a href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
   + '<p class="card-title">'+esc(m.title)+'</p>'
-  + '<div class="tags"><span class="tag">📍 '+esc(m.province)+'</span><span class="tag">'+esc(m.cat)+'</span><span class="tag soft">'+esc(m.form)+'</span></div>'
-  + '<dl class="facts"><div><dt>Lương mong muốn</dt><dd><b>'+esc(m.salary)+'</b></dd></div>'
-  + '<div><dt>Lịch làm việc</dt><dd>'+esc(m.schedule)+'</dd></div>'
-  + '<div><dt>Doanh thu cao nhất</dt><dd>'+esc(m.topRevenue)+'</dd></div>'
-  + '<div><dt>Kinh nghiệm</dt><dd>'+esc(m.exp)+'</dd></div></dl>'
+  + '<div class="tags"><span class="tag">📍 '+esc(m.province)+'</span><span class="tag">'+esc(m.cat)+'</span><span class="tag soft">'+esc(m.form)+'</span>'+(isNegotiableSalary(m) ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+'</div>'
+  + decisionHTML(m)
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế. <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>'
-  + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
-  + '<a class="btn btn-ghost btn-sm" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></div></article>';
+  + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div></div></article>';
 }
 function miniHTML(m){
-  return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
+  return '<article class="mini"><div class="mini-photo">'+photoHTML(m)+'</div><div class="mini-body"><h3><a data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
   + '<p>'+esc(m.title)+'</p><p>📍 '+esc(m.province)+' · '+esc(m.cat)+'</p><p>Lương: '+esc(m.salary)+'</p><p>'+esc(m.exp)+'</p></div></article>';
 }
 /* Contacts (v26, spec §8): render ONLY the audited `contacts` array from data.js.
@@ -99,7 +123,7 @@ function shopCardHTML(s){
   + '<div><dt>Ngày đăng tin</dt><dd>'+esc(s.date)+'</dd></div></dl>'
   + contactsBlockHTML(s.contacts)
   + contactNoteHTML()
-  + '<p class="shop-src">Tin tuyển công khai — <a href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
+  + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a></p>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></article>';
 }
 function sortShopsNewest(list){
@@ -155,9 +179,9 @@ function filterModels(list, f){
 }
 function renderPager(el, page, totalPages, total, onPage){
   if(!el) return;
-  var html='<button type="button" data-p="'+(page-1)+'"'+(page<=1?' disabled':'')+'>← Trang trước</button>';
-  for(var i=1;i<=totalPages;i++) html+='<button type="button" data-p="'+i+'"'+(i===page?' class="current" disabled':'')+'>'+i+'</button>';
-  html+='<button type="button" data-p="'+(page+1)+'"'+(page>=totalPages?' disabled':'')+'>Trang sau →</button>';
+  var html='<button type="button" data-track="chuyen-trang" data-p="'+(page-1)+'"'+(page<=1?' disabled':'')+'>← Trang trước</button>';
+  for(var i=1;i<=totalPages;i++) html+='<button type="button" data-track="chuyen-trang" data-p="'+i+'"'+(i===page?' class="current" disabled':'')+'>'+i+'</button>';
+  html+='<button type="button" data-track="chuyen-trang" data-p="'+(page+1)+'"'+(page>=totalPages?' disabled':'')+'>Trang sau →</button>';
   html+='<span class="pager-info">Trang '+page+' / '+totalPages+' — đang hiện '+(total===0?0:((page-1)*6+1))+'–'+Math.min(page*6,total)+' trên tổng số '+total+' hồ sơ.</span>';
   el.innerHTML=html;
   el.querySelectorAll('button[data-p]').forEach(function(b){b.addEventListener('click',function(){onPage(parseInt(b.getAttribute('data-p'),10));});});
@@ -259,7 +283,7 @@ function initNews(){
     main.innerHTML=list.map(function(a){
       var href = articleHref(a);
       var imgTarget = a.page ? '' : ' target="_blank" rel="noopener"';
-      var img = a.img ? '<a href="'+esc(href)+'"'+imgTarget+'><img src="'+esc(a.img)+'" alt="Ảnh gốc từ bài của '+esc(a.source)+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.</div>' : '';
+      var img = a.img ? '<a href="'+esc(href)+'"'+imgTarget+'><img src="'+esc(a.img)+'" alt="'+(a.imgSelf?'Infographic do Ver2Solution tự làm từ số liệu bài gốc':'Ảnh gốc từ bài của '+esc(a.source))+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">'+(a.imgSelf?'Infographic: Ver2Solution tự làm từ số liệu bài gốc.':'Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.')+'</div>' : '';
       var tw = a.takeaway ? '<p><b>Ver2Solution rút ra:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
       + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
@@ -297,9 +321,9 @@ function initDetail(){
   + contactsBlockHTML(m.contacts)
   + contactNoteHTML()
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
-  + '<a class="btn btn-light" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
-  + '<a class="btn btn-light" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a>'
-  + '<a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
+  + '<a class="btn btn-light" data-track="xem-bai-goc-mau" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
+  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a>'
+  + '<a class="btn btn-ghost" data-track="yeu-cau-go-ho-so" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
   + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> <a href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
   var others=document.getElementById('otherGrid');
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
@@ -323,6 +347,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

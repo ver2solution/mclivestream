@@ -958,70 +958,100 @@ window.V20_DATA = {
    "cat": "Bán hàng Online hiệu quả",
    "source": "Tuổi Trẻ Online",
    "date": "2026-10-01",
-   "url": "https://tuoitre.vn/cho-mang-tang-truong-27-trong-quy-3-gen-z-va-gen-y-tang-chi-tieu-100261015202516071.htm"
+   "url": "https://tuoitre.vn/cho-mang-tang-truong-27-trong-quy-3-gen-z-va-gen-y-tang-chi-tieu-100261015202516071.htm",
+   "page": "bai-viet/gen-z-gen-y-tang-chi-tieu-cuoi-nam.html",
+   "img": "https://cdn2.tuoitre.vn/zoom/1200_630/471584752817336320/2026/10/15/live-17920779487581276398485-0-186-589-1310-crop-1792077990500299736241.jpg",
+   "takeaway": "Cuối năm này, đừng đua giảm giá sâu với shop lớn — khách trẻ đã chuyển sang so chất lượng trước rồi mới so giá. Shop nhỏ nên dồn lực vào 1–2 món chủ lực có đánh giá tốt, quay video và livestream cho khách thấy rõ chất lượng thật, ghi rõ nguồn gốc và chính sách đổi trả, rồi mới tính mức giảm sao cho vẫn còn lời. Bán cho Gen Z, Gen Y là bán sự yên tâm, không chỉ bán giá rẻ."
   },
   {
    "title": "Người tiêu dùng bớt “săn sale”: sale quanh năm khiến sale mất giá",
    "cat": "Bán hàng Online hiệu quả",
    "source": "VnExpress",
    "date": "2026-10-23",
-   "url": "https://vnexpress.net/nguoi-tieu-dung-bot-san-sale-online-5135054.html"
+   "url": "https://vnexpress.net/nguoi-tieu-dung-bot-san-sale-online-5135054.html",
+   "page": "bai-viet/nguoi-tieu-dung-bot-san-sale.html",
+   "img": "https://vcdn1-kinhdoanh.vnecdn.net/2026/10/21/xe-chuye-n-ha-ng-cha-y-xa-ng-o-5742-1281-1792559569.jpg?w=1200&h=675&q=100&dpr=1&fit=crop&s=UBJl38Eh_yf55pGrLrG1vw",
+   "takeaway": "Khách đã thôi săn sale mù, nhưng họ vẫn mua — mua món đã theo dõi từ trước, ở shop họ tin. Thay vì dồn tiền giảm sâu cả gian hàng vào ngày đôi, shop nhỏ nên giữ giá ổn định quanh năm, dùng sale cho đúng 1–2 món chủ lực, và đầu tư vào thứ khách thực sự so sánh bây giờ: ảnh thật, video dùng thử, đánh giá tốt, mô tả rõ ràng và đổi trả dễ dàng. Giảm giá chỉ còn hiệu quả khi đi kèm niềm tin."
   },
   {
    "title": "Bán đa kênh để mở đầu ra cho hàng Việt: thị trường lớn, nhưng rào cản lớn nhất là vận hành",
    "cat": "Bán hàng Online hiệu quả",
    "source": "VnEconomy",
    "date": "2026-10-01",
-   "url": "https://vneconomy.vn/thuc-day-phat-trien-thi-truong-da-kenh-mo-rong-dau-ra-ben-vung-cho-hang-hoa-viet.htm"
+   "url": "https://vneconomy.vn/thuc-day-phat-trien-thi-truong-da-kenh-mo-rong-dau-ra-ben-vung-cho-hang-hoa-viet.htm",
+   "page": "bai-viet/ban-da-kenh-mo-dau-ra-hang-viet.html",
+   "img": "https://premedia.vneconomy.vn/files/uploads/2026/10/21/602f03c1059a40c9a0125b5df69bf5df-129099.jpg?w=1200&h=630&mode=crop",
+   "takeaway": "Đừng mở ồ ạt 4–5 kênh cùng lúc khi kho, dữ liệu và nhân sự chưa theo kịp — mở thêm gian hàng mà không có khách mới chỉ làm tăng chi phí quảng cáo, vận chuyển và hoàn trả. Shop nhỏ nên chọn 1 kênh chủ đạo (nơi khách của mình đông nhất, thường là TikTok Shop hoặc Shopee) làm thật tốt, 1 kênh bổ trợ (Facebook/Zalo) để giữ khách, và chỉ mở kênh thứ ba khi đã có quy trình gom hàng ổn định, tồn kho liên thông và người phụ trách rõ ràng. Đa kênh là bài toán vận hành, không phải bài toán mở gian hàng."
   },
   {
    "title": "Livestream cùng KOL mở thêm đầu ra cho hộ kinh doanh nhỏ: đơn tăng gấp chục lần, nhưng phải tính lãi",
    "cat": "Tin mới Livestream",
    "source": "VnExpress",
    "date": "2026-10-26",
-   "url": "https://vnexpress.net/livestream-cung-kol-mo-them-dau-ra-cho-ho-kinh-doanh-nho-5136414.html"
+   "url": "https://vnexpress.net/livestream-cung-kol-mo-them-dau-ra-cho-ho-kinh-doanh-nho-5136414.html",
+   "page": "bai-viet/livestream-cung-kol-mo-dau-ra.html",
+   "img": "https://vcdn1-kinhdoanh.vnecdn.net/2026/10/26/tho-1793001054-8807-1793001062.jpg?w=1200&h=675&q=100&dpr=1&fit=crop&s=wxh_RnS9kKKLJoDmXXNbyA",
+   "takeaway": "Trước khi book KOL, hãy tính lãi mỗi đơn sau khi trừ phí KOL, hoa hồng, phí sàn và hàng hoàn — 400 đơn trong 30 phút chỉ có ý nghĩa nếu mỗi đơn còn lời. Muốn hợp tác hiệu quả mà ngân sách mỏng, hãy bắt đầu từ các chương trình xúc tiến thương mại miễn phí của địa phương (như mô hình Tây Ninh, Vĩnh Long), chọn KOL nhỏ đúng tệp khách thay vì KOL lớn sai tệp, và chuẩn bị sẵn quy trình đóng gói, giao đúng hàng như cách vườn cây giống Chợ Lách quay cận cảnh từng cây — vì đơn tăng gấp chục lần mà giao sai, hoàn nhiều thì lãi bay hết."
   },
   {
    "title": "Bí thư phường livestream bán tôm, cua, hàu: 500 đơn trong 90 phút và bài học về niềm tin địa phương",
    "cat": "Tin mới Livestream",
    "source": "VnExpress",
    "date": "2026-10-22",
-   "url": "https://vnexpress.net/bi-thu-phuong-livestream-ban-tom-cua-hau-giup-dan-5135260.html"
+   "url": "https://vnexpress.net/bi-thu-phuong-livestream-ban-tom-cua-hau-giup-dan-5135260.html",
+   "page": "bai-viet/bi-thu-phuong-livestream-ban-tom-cua-hau.html",
+   "img": "https://i2-vnexpress.vnecdn.net/2026/10/21/856732532141880066378899827203-3221-5611-1792576458.jpg?w=1200&h=675&q=100&dpr=1&fit=crop&s=cfpcvJIxFSzknPZ_JuuVzg",
+   "takeaway": "Bài học lớn nhất của phiên live Bắc Gianh không phải là 500 đơn, mà là cách tạo niềm tin: người bán đã thử sản phẩm trước, nói được cách chế biến, bảo quản, và có uy tín địa phương đứng sau. Shop nhỏ bán đặc sản vùng miền nên học đúng 3 việc này: dùng thử và quay thật sản phẩm mình bán, kể rõ nguồn gốc và cách chế biến, và mượn uy tín của người/tổ chức địa phương (hợp tác xã, hội nông dân, chính quyền) để khách mới dám đặt đơn đầu tiên. Nhưng cũng như bà Lan nhắc: đừng trông chờ một phiên live — phải chuẩn bị sẵn nguồn cung, bao tiêu và thương hiệu thì đơn mới quay lại."
   },
   {
    "title": "Hết thời bán hàng online vô danh: livestream từ 01/07/2026 phải định danh và chịu trách nhiệm về lời nói",
    "cat": "Tin mới Livestream",
    "source": "Thanh Niên",
    "date": "2026-06-27",
-   "url": "https://thanhnien.vn/het-thoi-ban-hang-online-vo-danh-185260626171225509.htm"
+   "url": "https://thanhnien.vn/het-thoi-ban-hang-online-vo-danh-185260626171225509.htm",
+   "page": "bai-viet/het-thoi-ban-hang-online-vo-danh.html",
+   "img": "https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/6/26/ban-hang-online-1-17824687351092125688728.jpg",
+   "takeaway": "Trước 01/07/2026, shop nhỏ nên chuẩn bị 3 thứ: hoàn thiện hồ sơ định danh của gian hàng và của người live, gom đủ giấy tờ chứng minh chất lượng và nguồn gốc sản phẩm, và viết lại kịch bản live — bỏ các câu tuyệt đối kiểu “chính hãng 100%”, “chữa được”, “giá sốc nhất” nếu không có căn cứ. Live có tên tuổi rõ ràng là lợi thế, vì khách sẽ tin shop thật hơn shop vô danh."
   },
   {
    "title": "Cảnh báo lừa đảo qua livestream ngọc trai: giá rẻ, trúng thưởng lớn và những lần chuyển tiền tiếp theo",
    "cat": "Tin mới Livestream",
    "source": "Thanh Niên",
    "date": "2026-10-10",
-   "url": "https://thanhnien.vn/cong-an-tphcm-canh-bao-thu-doan-lua-dao-mua-ngoc-trai-qua-livestream-185261009164623044.htm"
+   "url": "https://thanhnien.vn/cong-an-tphcm-canh-bao-thu-doan-lua-dao-mua-ngoc-trai-qua-livestream-185261009164623044.htm",
+   "page": "bai-viet/canh-bao-lua-dao-livestream-ngoc-trai.html",
+   "img": "https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/10/9/lua-dao-mua-ngoc-2-1791538727982307839114.jpg",
+   "takeaway": "Shop làm live chân chính cần phân biệt mình rõ với kiểu live này: không bao giờ hứa “thu mua lại giá cao” hay “trúng thưởng tiền tỉ”, không yêu cầu khách chuyển thêm tiền sau khi đã chốt đơn, giá và phí ghi rõ một lần ngay từ đầu. Và khi thấy một phiên live nào đó dùng đúng kịch bản này, đừng tham gia — mà hãy cảnh báo khách của mình, vì uy tín của cả nghề live bán hàng đang bị những vụ như vậy làm xấu đi."
   },
   {
    "title": "TikTok Shop thu hẹp khoảng cách với Shopee: shop nhỏ nên đặt cửa nào trước?",
    "cat": "Tin ngành hàng",
    "source": "Znews",
    "date": "2026-10-14",
-   "url": "https://znews.vn/znews-post1689621.html"
+   "url": "https://znews.vn/znews-post1689621.html",
+   "page": "bai-viet/tiktok-shop-thu-hep-khoang-cach-shopee.html",
+   "img": "https://photo.znews.vn/Uploaded/yzfsm/2025_08_15/TMDT_znews.jpg",
+   "takeaway": "Đừng chọn sàn theo thói quen mà chọn theo cách khách tìm thấy shop. Nếu sản phẩm của shop cần xem, cần nghe kể, cần thấy dùng thử — TikTok Shop đang là nơi khách khám phá nhanh nhất; nếu khách đã biết rõ mình cần mua gì và so giá — Shopee vẫn là cửa lớn nhất. Shop nhỏ ít vốn nên làm chắc một cửa trước: làm tốt nội dung và live ở cửa đó, chứng minh chất lượng bằng đánh giá thật, rồi mới mở thêm cửa thứ hai. Vì khách giờ chọn chất lượng trước, giảm giá chỉ đứng thứ hai."
   },
   {
    "title": "Hàng Việt lên livestream ở Mỹ và Trung Quốc: cơ hội lớn, nhưng chỉ dành cho shop kể được câu chuyện thật",
    "cat": "Tin ngành hàng",
    "source": "Tuổi Trẻ Online",
    "date": "2026-09-03",
-   "url": "https://tuoitre.vn/khi-pho-goi-nong-san-viet-len-livestream-trieu-usd-tai-my-trung-quoc-100260903152632609.htm"
+   "url": "https://tuoitre.vn/khi-pho-goi-nong-san-viet-len-livestream-trieu-usd-tai-my-trung-quoc-100260903152632609.htm",
+   "page": "bai-viet/hang-viet-len-livestream-my-trung-quoc.html",
+   "img": "https://cdn2.tuoitre.vn/thumb_w/730/471584752817336320/2026/9/3/le-hoang-oanh-cuc-thuong-mai-dien-tu-va-kinh-te-so-dthien-17884237080481261127840.jpg",
+   "takeaway": "Cơ hội xuất khẩu qua livestream không dành cho shop chỉ biết giảm giá, mà dành cho shop kể được câu chuyện thật: món này từ đâu ra, ai làm ra, ăn/dùng như thế nào, khác gì món tương tự. Shop nhỏ nên bắt đầu bằng việc quay lại quy trình làm sản phẩm và câu chuyện đằng sau nó bằng video ngắn — đó chính là “vé” để sau này đưa hàng lên live ở thị trường nước ngoài, thay vì đợi có vốn lớn mới nghĩ tới xuất khẩu."
   },
   {
    "title": "Phí sàn tăng từ tháng 05/2026: Bộ Công Thương rà soát, shop nhỏ phải tính lại giá trước khi chạy sale",
    "cat": "Tin ngành hàng",
    "source": "Kinh tế Chứng khoán và Công nghiệp Tiêu dùng",
    "date": "2026-05-01",
-   "url": "https://kinhtechungkhoan.vn/bo-cong-thuong-ra-soat-chinh-sach-tang-phi-cua-shopee-tiktok-shop-1447988.html"
+   "url": "https://kinhtechungkhoan.vn/bo-cong-thuong-ra-soat-chinh-sach-tang-phi-cua-shopee-tiktok-shop-1447988.html",
+   "page": "bai-viet/phi-san-tang-thang-05-2026.html",
+   "img": "https://img.kinhtechungkhoan.vn/img/kinhtechungkhoan/2026/05/22/tmdt1.png",
+   "takeaway": "Trước mỗi đợt sale, làm một bảng tính một dòng cho mỗi món chủ lực: giá bán trừ giá vốn, trừ phí sàn theo ngành, trừ quảng cáo và tiếp thị liên kết, trừ vận chuyển và hoàn hàng — còn lại mới là lời thật mỗi đơn. Nếu lời thật đã mỏng, đừng giảm sâu thêm để đua đơn; hãy giảm ít hơn, bán kèm combo, hoặc chọn món khác có biên tốt hơn làm chủ lực. Phí sàn tăng là chuyện của sàn, nhưng giá bán là quyết định của shop."
   },
   {
    "title": "Hồ sơ MC livestream: 7 mục bắt buộc giúp mẫu được shop tìm thấy nhanh hơn",
@@ -1042,49 +1072,73 @@ window.V20_DATA = {
    "cat": "Tin thị trường thế giới",
    "source": "DesignRush",
    "date": "2026",
-   "url": "https://www.designrush.com/agency/ecommerce/trends/ecommerce-trends"
+   "url": "https://www.designrush.com/agency/ecommerce/trends/ecommerce-trends",
+   "page": "bai-viet/livestream-ban-hang-my-tang-gan-50-phan-tram.html",
+   "img": "https://media.designrush.com/articles/1062139/conversions/ecommerce-trends-preview-webp.webp",
+   "takeaway": "Đừng live chỉ để “cho có mặt”. Muốn chạm được mức chốt cao như thị trường Mỹ, mỗi phiên live của shop nhỏ cần đủ 3 thứ: một món chủ lực trình diễn được trước ống kính (khách phải thấy rõ sản phẩm đang dùng), một lý do chốt ngay trong phiên (giá theo khung giờ, số lượng có hạn, quà chỉ tặng khi live), và host trả lời câu hỏi của khách ngay lúc phát thay vì để khách nhắn tin rồi chờ. Live đều đặn 3–4 buổi/tuần với đúng 3 thứ đó còn hiệu quả hơn một phiên live dài nhưng không có gì để khách quyết định ngay."
   },
   {
    "title": "AI làm thay phần tìm hàng: shop nhỏ làm sao để AI còn “thấy” sản phẩm của mình?",
    "cat": "Tin thị trường thế giới",
    "source": "McKinsey & Company",
    "date": "2026",
-   "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/who-wins-when-ai-does-the-shopping-new-evidence-on-agentic-commerce"
+   "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/who-wins-when-ai-does-the-shopping-new-evidence-on-agentic-commerce",
+   "page": "bai-viet/ai-lam-thay-phan-tim-hang.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ai-lam-thay-phan-tim-hang.png",
+   "imgSelf": true,
+   "takeaway": "AI đang trở thành “người gác cổng” trước khi khách nhìn thấy sản phẩm. Shop nhỏ không cần mua công nghệ đắt tiền, chỉ cần làm đúng 3 việc ngay: ghi đầy đủ và chính xác tên, thông số, chất liệu, size, giá và tình trạng còn hàng trên mỗi sản phẩm (đừng để trống hoặc ghi chung chung); giữ giá và tồn kho cập nhật, vì AI sẽ bỏ qua sản phẩm có dữ liệu sai hoặc cũ; và gom đánh giá thật của khách vào trang sản phẩm, vì đó là thứ AI dùng để xếp hạng uy tín. Ai làm xong 3 việc này trước thì khi khách hỏi AI “mua áo này ở đâu tốt”, sản phẩm của shop đó mới có cửa xuất hiện."
   },
   {
    "title": "Hàng đã qua sử dụng lên ngôi toàn cầu: shop nhỏ bán hàng tồn kho học được gì?",
    "cat": "Tin thị trường thế giới",
    "source": "eBay Inc.",
    "date": "2026-10-07",
-   "url": "https://www.ebayinc.com/stories/news/ebay-recommerce-report-secondhand-shopping-rises-worldwide-as-consumers-seek-value-and-stretch-budgets/"
+   "url": "https://www.ebayinc.com/stories/news/ebay-recommerce-report-secondhand-shopping-rises-worldwide-as-consumers-seek-value-and-stretch-budgets/",
+   "page": "bai-viet/hang-da-qua-su-dung-len-ngoi-toan-cau.html",
+   "img": "https://static.ebayinc.com/static/assets/Uploads/Stories/Articles/_resampled/ScaleWidthWzEwMjRd/eBay-Recommerce-Report-Image-Static-15.jpeg?fs=65126a809960044c",
+   "takeaway": "Đừng gọi hàng tồn là “hàng xả” rồi bán tháo. Hãy bán nó như hàng secondhand có câu chuyện: chụp rõ tình trạng thật, ghi rõ “mới 95%, chỉ trưng bày”, “lẻ 1 size M”, đặt giá theo giá trị còn lại chứ không theo giá nhập ban đầu, và live riêng một phiên “săn đồ tồn giá tốt” mỗi tuần cho nhóm khách trẻ vốn đã quen mua đồ cũ mỗi tháng. Hàng tồn bán đúng cách vừa thu hồi vốn, vừa kéo thêm khách mới — vì 89% người mua đồ cũ dự định sẽ chi bằng hoặc nhiều hơn trong năm tới."
   },
   {
    "title": "TikTok Shop tiến tới 100 tỷ USD: shop nhỏ nên bán bằng video hay bằng gian hàng?",
    "cat": "Tin thị trường thế giới",
    "source": "For You",
    "date": "2026-10-27",
-   "url": "https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f"
+   "url": "https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f",
+   "page": "bai-viet/tiktok-shop-tien-toi-100-ty-usd.html",
+   "img": "https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f/og",
+   "takeaway": "Đừng chọn một trong hai — video và gian hàng phải đi cùng nhau, nhưng chia vai rõ ràng: video ngắn và micro-live 15–20 phút là “mồi” kéo khách mới (mỗi video chỉ nói 1 món, 1 lợi ích, 1 lý do mua ngay), gian hàng là “kho” giữ khách (đủ món, giá rõ, đánh giá thật, link mua dễ tìm). Mỗi tuần làm 3–5 video ngắn + 2–3 micro-live cho 1–2 món chủ lực, rồi đo xem món nào ra đơn từ video để dồn lực vào đó — thay vì đăng đều cả gian hàng mà không biết món nào đang kéo khách."
   },
   {
    "title": "Lễ 11/11 Trung Quốc bán cả gói AI qua livestream: shop nhỏ học gì từ cơn sốt mới này?",
    "cat": "Tin thị trường thế giới",
    "source": "Reuters",
    "date": "2026-11-03",
-   "url": "https://www.reuters.com/business/retail-consumer/chinas-lipstick-king-touts-ai-tokens-first-singles-day-festival-2026-11-03/"
+   "url": "https://www.reuters.com/business/retail-consumer/chinas-lipstick-king-touts-ai-tokens-first-singles-day-festival-2026-11-03/",
+   "page": "bai-viet/le-11-11-trung-quoc-ban-goi-ai-qua-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/le-11-11-trung-quoc-ban-goi-ai-qua-livestream.png",
+   "imgSelf": true,
+   "takeaway": "Cơn sốt token AI cho thấy khách bây giờ mua cả \"khả năng làm việc\", không chỉ mua đồ vật. Shop nhỏ không cần bán AI, nhưng cần học 3 điều: bán theo thói quen khách đã có (khách quen dùng gì thì gom ưu đãi cho thứ đó vào dịp sale), live có người thật hiểu sản phẩm để giải thích thay vì chỉ đọc giá, và bán kèm hệ sinh thái (món chính + món bổ trợ) thay vì bán lẻ từng món. Riêng với hàng công nghệ đổi nhanh, đừng đẩy khách mua tích trữ quá nhiều — giữ uy tín lâu dài quan trọng hơn một phiên live bùng nổ."
   },
   {
    "title": "Người tiêu dùng 2026 muốn vừa thoải mái vừa thật: shop nhỏ bán hàng theo cảm xúc hay theo bằng chứng?",
    "cat": "Tin thị trường thế giới",
    "source": "Euromonitor International, qua BusinessWire",
    "date": "2025-11-05",
-   "url": "http://www.businesswire.com/news/home/20251105486775/en/Euromonitor-International-unveils-Global-Consumer-Trends-for-2026"
+   "url": "http://www.businesswire.com/news/home/20251105486775/en/Euromonitor-International-unveils-Global-Consumer-Trends-for-2026",
+   "page": "bai-viet/nguoi-tieu-dung-2026-vua-thoai-mai-vua-that.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nguoi-tieu-dung-2026-vua-thoai-mai-vua-that.png",
+   "imgSelf": true,
+   "takeaway": "Người tiêu dùng 2026 mua bằng cả tim và óc: tim cần sự thoải mái và chân thật, óc cần bằng chứng khoa học và giá trị cá nhân hóa. Shop nhỏ hãy làm 3 việc: live bằng cảnh thật và lời thật (đừng dàn dựng hoàn hảo), ghi rõ thành phần — nguồn gốc — bằng chứng trong từng sản phẩm, và chia khách thành nhóm nhỏ để tư vấn đúng người đúng nỗi đau. Ai chỉ bán cảm xúc sẽ bị hỏi \"bằng chứng đâu\"; ai chỉ đọc thông số sẽ bị khách lướt qua vì khô khan. Bán cả hai, theo đúng thứ tự: cảm xúc trước, bằng chứng sau."
   },
   {
    "title": "Mùa lễ 2026 ở Mỹ: điện thoại chiếm gần 3/4 số tiền tăng thêm, shop nhỏ cần sửa gì trước?",
    "cat": "Tin thị trường thế giới",
    "source": "DesignRush News, dẫn dự báo eMarketer",
    "date": "2026-10-14",
-   "url": "https://news.designrush.com/mobile-holiday-ecommerce-checkout"
+   "url": "https://news.designrush.com/mobile-holiday-ecommerce-checkout",
+   "page": "bai-viet/mua-le-2026-my-dien-thoai-chiem-gan-3-4.html",
+   "img": "https://media.designrush.com/articles/1135483/conversions/Ryan_2026-10-02T160033.138-1-preview-webp.webp",
+   "takeaway": "Trước mùa sale lớn, shop nhỏ đừng đổ tiền kéo thêm lượt xem khi checkout trên điện thoại còn nghẽn. Hãy tự làm đúng 3 việc trong một buổi chiều: lấy điện thoại của mình đặt thử một đơn từ lúc bấm link live đến lúc thanh toán xong, ghi lại mọi chỗ chậm — thừa ô nhập — lỗi không rõ lý do; sửa 3 điểm nghẽn lớn nhất trước, đừng ôm 20 việc cùng lúc; và kiểm tra lại mã giảm giá, phương thức thanh toán, giỏ hàng trước mỗi phiên live lớn. Gần 3/4 tiền tăng thêm của mùa lễ đi qua điện thoại — ai sửa xong checkout trên điện thoại trước, người đó hưởng phần lớn nhất."
   },
   {
    "title": "Xả kho thời trang cuối năm: 12 chiêu dọn kho mà vẫn giữ thương hiệu, không bán lỗ",
