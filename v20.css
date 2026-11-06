@@ -45,8 +45,8 @@ a:hover{text-decoration:underline}
 .chips a{background:rgba(255,255,255,.16);color:#fff;border-radius:999px;padding:7px 13px;font-weight:700}
 .chips a:hover{background:#fff;color:var(--brand);text-decoration:none}
 .section{margin:17px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
-.section-head h2{margin:0;font-size:26px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:5px}
+.section-head h1{margin:0;font-size:28px}.section-head h2{margin:0;font-size:26px}
 .section-head p{margin:4px 0 0;color:var(--mut)}
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -402,6 +402,10 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
    desktop 3 cot -> 6 the, tablet 2 cot -> 4 the, mobile 1 cot -> 2 the. */
 .lot-section.collapsed .lot-extra{display:none}
 .lot-section.collapsed .lot-grid .lot-card:nth-child(n+7){display:none}
+/* v64: loc lo/xuong — the khong khop bo loc luon an, ke ca khi mo rong */
+.lot-card.lot-filtered-out{display:none}
+.filter-count{margin:6px 0 0;color:var(--mut);font-size:13px}
+.filter-empty{margin:6px 0 0;color:#8a5a00;font-size:13px}
 @media(max-width:1000px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+5){display:none}}
 @media(max-width:600px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+3){display:none}}
 .lot-more{display:block;margin:16px auto 0;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:#eef7f2;color:var(--brand);font-weight:800;font-size:15px;cursor:pointer}
