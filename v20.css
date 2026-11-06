@@ -276,19 +276,17 @@ img{max-width:100%}
 
 /* DẢI NIỀM TIN (v26, spec §4): ngay sau hero trang chủ, 3 số đã kiểm chứng
    + nút CTA tới mục shop. 1 hàng trên desktop, xếp dọc trên mobile. */
-.trust-strip{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 24px;margin:16px 0 0;box-shadow:0 4px 16px rgba(11,93,78,.06);overflow:hidden}
+.trust-strip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 22px;margin:16px 0 0;box-shadow:0 4px 16px rgba(11,93,78,.06);overflow:hidden}
 .trust-lead{margin:0;font-weight:800;font-size:17px}
 .trust-text{flex-basis:100%;min-width:0}/* v49: doan PR chiem tron 1 hang rieng — tranh hang voi o so lieu + nut gay day nut xuong */
-.trust-nums{display:flex;gap:30px;min-width:0;flex-wrap:wrap}/* v49: bo margin-left:auto (nut lay margin-left:auto); o so lieu tu xuong dong trong noi bo thay vi ep tran khung */
-.trust-nums-lots{flex-basis:100%;margin-top:4px}/* v58: hang so lieu lo xa kho (8 lo / 3 thu mua-ky gui / 2 xa theo dot) xuong dong rieng, day du chieu rong */
-.trust-nums-factories{flex-basis:100%;margin-top:4px}/* v61: hang so lieu xuong may (20 xuong / 6 tinh) xuong dong rieng, nam GIUA hang chinh (Mau/Tim Mau) va hang Xa kho — thu tu: Mau, Tim Mau, San xuat, Xa kho */
+.trust-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 20px;flex-basis:100%;min-width:0}/* v65: gop 3 hang so lieu thanh 1 grid 4 cot x 2 hang — gon, chuyen nghiep; thu tu: Mau/Shop/Khach/Xuong | Tinh/Lo/Thu mua/Cho */
 .trust-num{min-width:0}/* v49: nhan dai duoc xuong dong trong o, khong ep o rong ra */
-.trust-num b{display:block;font-size:30px;line-height:1.1;color:var(--brand)}
+.trust-num b{display:block;font-size:28px;line-height:1.1;color:var(--brand)}
 .trust-num span{display:block;font-size:13px;color:var(--mut);font-weight:700}
 /* v41: dong thu 2 cua moi o so lieu (luong/doanh thu) + ghi chu nho. */
 .trust-sub{display:block;font-size:12px;color:var(--mut);font-weight:700;margin-top:2px}
 .trust-note{display:none;font-size:11px;color:var(--mut);font-style:italic;margin-top:2px}/* v49: AN ghi chu noi bo (doanh thu cao nhat chua co du lieu) — chu noi bo lot ra giao dien; dong dai khong xuong dong ep hang so lieu tran khung, day nut xuong. Giu span trong HTML de JS cap nhat sau. */
-.trust-strip .btn{margin-left:auto}/* v49: nut "Xem shop đang tuyển" sat phai tren hang so lieu */
+.trust-cta{text-align:center;margin:14px 0 0}/* v65: nut "Xem shop đang tuyển" xuong DUOI khung trust-strip, can giua */
 /* DAI LOGO DOI TAC (v49, yeu cau nguoi dung 06/11/2026 — lam lai theo mau
    SEONGON; v50: doi thanh o tron 48px chua 1 icon; v51: logo MAU GOC,
    dai logo nam gon trong khung trang — .trust-strip overflow:hidden,
@@ -323,7 +321,8 @@ img{max-width:100%}
 .contact-note{font-size:13px;color:var(--mut);background:#eef7f2;border-radius:10px;padding:8px 11px;margin:0}
 .contact-card .contact-list a{color:#fff}
 .contact-card .contact-note{color:#d7ece6;background:rgba(255,255,255,.12)}
-@media(max-width:600px){.trust-strip{flex-direction:column;align-items:flex-start;gap:14px}.trust-nums{margin-left:0;gap:12px;flex-direction:column}.trust-num b{font-size:26px}.trust-strip .btn{margin-left:0}}
+@media(max-width:900px){.trust-nums{grid-template-columns:repeat(2,1fr);gap:12px 16px}}
+@media(max-width:600px){.trust-strip{flex-direction:column;align-items:flex-start;gap:14px}.trust-nums{margin-left:0}.trust-num b{font-size:26px}}
 
 /* SKIN LE HOI (v52, yeu cau nguoi dung 06/11/2026 — lam luon bo 3 skin Tet
    Nguyen Dan, Noel, Tet Duong lich; het dip tu tro ve giao dien mac dinh).
