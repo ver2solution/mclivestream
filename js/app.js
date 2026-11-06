@@ -695,7 +695,93 @@ function sortShopsBy(list, sort){
   if(sort === 'monthly-desc') return sortByVal(list, function(s){ return parseMonthlyMax(s.salary); }, -1);
   return list.slice();
 }
-function trustStats(models, shops){
+/* v76: lo/xuong trong data.js — so PR tinh tu data.js, khong con so ghi cung.
+   Quy tac 60 ngay: chi ap dung nhom 1 (lo si). Ngay trong data.js la ngay dang
+   goc trong bai goc (khong co ngay dang len web rieng); lo co (ngay hien tai -
+   ngay dang) > 60 ngay thi khong render va khong tinh vao so PR. Nhom 2
+   (thu mua/ky gui), nhom 3 (cho/san/TTTM/chuong trinh) va xuong may khong
+   gioi han thoi gian — render het. */
+function parseVnDate(s){
+  if(!s) return null;
+  var m = String(s).match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if(!m) return null;
+  var d = new Date(parseInt(m[3], 10), parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+  return isNaN(d.getTime()) ? null : d;
+}
+function lotActive(l, ref){
+  if(!l || l.group !== 1) return true; /* chi nhom 1 chiu quy tac 60 ngay */
+  var d = parseVnDate(l.date);
+  if(!d) return true; /* khong co ngay hop le: hien de khoi mat du lieu */
+  /* kiem tra kieu Date bang duck-type (khong dung instanceof) de chay dung
+     ca khi ref duoc tao o realm khac (vd test chay qua vm). */
+  var r = (ref && typeof ref.getTime === 'function') ? ref : new Date();
+  var days = (r.getTime() - d.getTime()) / 86400000;
+  return days <= 60; /* ngay tuong lai (days am) van hien */
+}
+function lotsByGroup(lots, ref){
+  var out = {g1: [], g2: [], g3: []};
+  (lots || []).forEach(function(l){
+    if(l.group === 1){ if(lotActive(l, ref)) out.g1.push(l); }
+    else if(l.group === 2){ out.g2.push(l); }
+    else if(l.group === 3){ out.g3.push(l); }
+  });
+  return out;
+}
+function lotFactoryStats(lots, factories, ref){
+  var byGroup = lotsByGroup(lots, ref);
+  var provs = {};
+  (factories || []).forEach(function(f){ if(f.prov) provs[f.prov] = true; });
+  return {lotCount: byGroup.g1.length, buyerCount: byGroup.g2.length, batchCount: byGroup.g3.length, factoryCount: (factories || []).length, factoryProvinceCount: Object.keys(provs).length};
+}
+/* v76: the lo/xuong render tu data.js — phai GIONG HET the tinh cu (cung
+   class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu. */
+function lotCardHTML(l){
+  return '<article class="lot-card" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '"><h4>' + esc(l.title) + '</h4><p class="lot-price">' + esc(l.price) + '</p><p class="lot-meta">' + esc(l.meta) + '</p><p class="lot-date">' + esc(l.dateLabel) + ': ' + esc(l.date) + '</p><p class="lot-label">' + esc(l.label) + '</p><p><a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.linkText) + '</a></p></article>';
+}
+function factoryCardHTML(f){
+  return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p></article>';
+}
+/* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
+   (.lot-sub) + o loc tinh xuong (fFacProv) theo so lieu thuc te. Goi TRUOC
+   initLotFilter/initFactoryFilter vi cac ham do chup lai danh sach the trong
+   grid luc khoi tao. Tren trang khac (khong co section lo/xuong) thi khong lam gi. */
+function renderLotSections(ref){
+  var lots = D.lots || [], factories = D.factories || [];
+  var byGroup = lotsByGroup(lots, ref);
+  var g1 = document.getElementById('lotGrid1');
+  if(g1) g1.innerHTML = byGroup.g1.map(lotCardHTML).join('');
+  var g2 = document.getElementById('lotGrid2');
+  if(g2) g2.innerHTML = byGroup.g2.map(lotCardHTML).join('');
+  var g3 = document.getElementById('lotGrid3');
+  if(g3) g3.innerHTML = byGroup.g3.map(lotCardHTML).join('');
+  var fg = document.getElementById('factoryGrid');
+  if(fg) fg.innerHTML = factories.map(factoryCardHTML).join('');
+  var s1 = document.getElementById('lotSub1');
+  if(s1) s1.textContent = 'Doanh nghiệp và shop xả hàng tồn kho theo lô sỉ — đang có ' + byGroup.g1.length + ' lô.';
+  var s2 = document.getElementById('lotSub2');
+  if(s2) s2.textContent = 'Doanh nghiệp cần xả kho số lượng lớn có thể liên hệ các đơn vị thu mua dưới đây để thu về vốn tái sản xuất. Giá thu mua không công khai, liên hệ trực tiếp để thỏa thuận. Đang có ' + byGroup.g2.length + ' đơn vị.';
+  var s3 = document.getElementById('lotSub3');
+  if(s3) s3.textContent = 'Chương trình xả kho theo đợt của chợ, sàn, trung tâm thương mại và tổ chức — bán lẻ từng món, không phải lô sỉ. Đang có ' + byGroup.g3.length + ' chương trình.';
+  var fs = document.getElementById('factorySub');
+  if(fs) fs.textContent = 'Xưởng và nhà máy may nhận gia công quần áo cho shop và thương hiệu — đang có ' + factories.length + ' xưởng/nhà máy.';
+  /* o loc tinh xuong: dung lua chon theo so xuong thuc te tung tinh */
+  var sel = document.getElementById('fFacProv');
+  if(sel){
+    var counts = {}, order = [];
+    factories.forEach(function(f){
+      if(!f.prov) return;
+      if(!counts[f.prov]){ counts[f.prov] = 0; order.push(f.prov); }
+      counts[f.prov]++;
+    });
+    var html = '<option value="">Tất cả tỉnh</option>';
+    order.forEach(function(p){
+      var label = (p === 'TP.HCM') ? 'TP. Hồ Chí Minh' : p;
+      html += '<option value="' + esc(p) + '">' + esc(label) + ' (' + counts[p] + ')</option>';
+    });
+    sel.innerHTML = html;
+  }
+}
+function trustStats(models, shops, lots, factories, ref){
   models = models || []; shops = shops || [];
   var provs = {}, online = false, minWage = null, maxRev = null;
   models.forEach(function(m){
@@ -711,10 +797,11 @@ function trustStats(models, shops){
     var mm = parseMonthlyMax(s.salary);
     if(mm !== null && (maxMonthly === null || mm > maxMonthly)) maxMonthly = mm;
   });
-  return {modelCount: models.length, modelProvinceCount: Object.keys(provs).length, modelOnline: online, minWage: minWage, maxRevenue: maxRev, shopCount: shops.length, shopProvinceCount: Object.keys(shopProvs).length, maxMonthly: maxMonthly};
+  var lf = lotFactoryStats(lots, factories, ref);
+  return {modelCount: models.length, modelProvinceCount: Object.keys(provs).length, modelOnline: online, minWage: minWage, maxRevenue: maxRev, shopCount: shops.length, shopProvinceCount: Object.keys(shopProvs).length, maxMonthly: maxMonthly, lotCount: lf.lotCount, buyerCount: lf.buyerCount, batchCount: lf.batchCount, factoryCount: lf.factoryCount, factoryProvinceCount: lf.factoryProvinceCount};
 }
 function renderTrustStats(){
-  var st = trustStats(D.models, D.shops || []);
+  var st = trustStats(D.models, D.shops || [], D.lots || [], D.factories || []);
   var tm = document.getElementById('trustModels'); if(tm) tm.textContent = String(st.modelCount);
   var ts = document.getElementById('trustShops'); if(ts) ts.textContent = String(st.shopCount);
   var mp = document.getElementById('trustModelProvinces');
@@ -732,6 +819,13 @@ function renderTrustStats(){
   if(sp) sp.textContent = 'Shop đang tuyển mẫu · ' + st.shopProvinceCount + ' tỉnh';
   var spay = document.getElementById('trustShopPay');
   if(spay && st.maxMonthly !== null) spay.textContent = 'Lương cao nhất ' + st.maxMonthly + ' triệu/tháng';
+  /* v76: 6 so lo/xuong tinh tu data.js (nhu mau/shop); so ghi cung trong
+     index.html chi la du phong khi JS loi. */
+  var tl = document.getElementById('trustLots'); if(tl) tl.textContent = String(st.lotCount);
+  var tb = document.getElementById('trustBuyers'); if(tb) tb.textContent = String(st.buyerCount);
+  var tba = document.getElementById('trustBatch'); if(tba) tba.textContent = String(st.batchCount);
+  var tf = document.getElementById('trustFactories'); if(tf) tf.textContent = String(st.factoryCount);
+  var tfp = document.getElementById('trustFactoryProvinces'); if(tfp) tfp.textContent = String(st.factoryProvinceCount);
 }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
@@ -811,6 +905,7 @@ function filterShops(list, f){
    filter-card, grid, pager) nhung truong loc la nhu cau rieng cua shop
    (khong co Gioi tinh). */
 function initShops(){
+  renderLotSections(); /* v76: render the lo/xuong TRUOC khi bo loc chup danh sach the */
   rotateStaticGrids();
   initLotFilter();
   initFactoryFilter();
@@ -1117,6 +1212,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
