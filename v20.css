@@ -548,3 +548,27 @@ th{background:#f4f8f6}
   .filter-section>.filter-card{display:none}
   .filter-section.filters-open>.filter-card{display:grid}
 }
+
+/* v73: sua vo mobile 360px (nguoi dung bao bang anh chup dien thoai that 19:22/19:34 ngay 06/11 — may 360px CSS, khong phai 390px nhu test v72). Hoc Shopee (luoi 2 cot minmax, pill cat gon) — giu nhan dien Ver2Solution. */
+.trust-num span.trust-note{display:none}/* G4: .trust-num span (0,1,1) de mat .trust-note (0,1,0) — ghi chu noi bo "(doanh thu cao nhat chua co du lieu...)" lot ra giao dien; an han bang specificity 0,2,1. */
+@media(max-width:380px){
+  .head-in{gap:6px}/* G5: o 360px logo 177 + Menu 57 + Dang Nhap 93 + 2 gap 8px = 343px > 336px — nut Dang Nhap rot hang 2 (cao 88px). Giam gap + co chu + bot padding de vua 1 hang (~322px). */
+  .logo{font-size:14px}
+  .menu-btn{padding:8px 8px}
+  .head-in .btn-sm{padding:8px 8px}
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}/* G1: 1fr = minmax(auto,1fr) — min-content the shop 240px lam luoi tran 430px trong khung 336px o 360px, cot phai bi cat khoi man hinh (anh 1). minmax(0,1fr) khoa 2 cot deu 162px. */
+  .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card,.shop-card{min-width:0}
+  .card-body{min-width:0}
+  .shop-head{min-width:0}
+  .shop-head h3{min-width:0;overflow-wrap:break-word}
+  .shop-foot{min-width:0}
+  .shop-foot>*{min-width:0}/* G2: chan .contact-list/.shop-meta lam tran .shop-foot (do 210px trong o 132px). */
+  .contact-list a,.shop-src a{overflow-wrap:anywhere}/* G2b: link dai (URL) duoc be xuong dong trong o hep. */
+  .card-actions{min-width:0}
+  .decision,.decision-row,.decision-item,.decision-exp{min-width:0}
+  .tags{min-width:0}
+  .tag{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}/* G3: pill dai nhat ~190px ("Toan quoc / Live online") tran o 132px — cat gon bang dau ..., thong tin day du van co trong o "Tinh" cua the. */
+}
