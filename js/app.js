@@ -557,11 +557,10 @@ function filterShops(list, f){
     if(f.payType === 'monthly' && parseMonthlyMax(s.salary) === null) return false;
     if(f.payMin != null && f.payType === 'hourly'){ var h = parseHourlyMin(s.salary); if(h === null || h < f.payMin) return false; }
     if(f.payMin != null && f.payType === 'monthly'){ var mm = parseMonthlyMax(s.salary); if(mm === null || mm < f.payMin) return false; }
-    if(f.q){var hay=(s.name+' '+s.product+' '+s.province+' '+(s.district||'')+' '+(s.channels||'')+' '+(s.req||'')).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
   });
 }
-/* Trang shop: grid + bo loc (tinh / linh vuc livestream / tim ten) + phan trang
+/* Trang shop: grid + bo loc (tinh / linh vuc livestream) + phan trang
    9/trang, dong bo URL — cung khung bo cuc nhu trang Mau (section-head gon,
    filter-card, grid, pager) nhung truong loc la nhu cau rieng cua shop
    (khong co Gioi tinh). */
@@ -569,7 +568,7 @@ function initShops(){
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   var perPage=9;
-  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,payType:elVal('fPayType'),payMin:parseMoneyInput(elVal('fPayMin')),q:document.getElementById('fShopQ').value.trim()};}
+  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,payType:elVal('fPayType'),payMin:parseMoneyInput(elVal('fPayMin'))};}
   function render(pg){
     var f=readForm();
     // v42: mac dinh (sort='') giu sortShopsNewest; chon sap xep thi dung sortShopsBy (bo qua thu tu ngay).
@@ -577,8 +576,6 @@ function initShops(){
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):'<p>Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.</p>';
     renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); el.scrollIntoView();},perPage,'tin tuyển');
-    var cnt=document.getElementById('publicShopsCount');
-    if(cnt) cnt.textContent=list.length?('Đang hiện '+((pg-1)*perPage+1)+'–'+Math.min(pg*perPage,list.length)+' trên tổng số '+list.length+' tin tuyển công khai.'):'Chưa có tin tuyển công khai nào.';
     setParams(Object.assign({},f,{page:String(pg)}));
   }
   // prefill from URL keys
@@ -588,7 +585,6 @@ function initShops(){
   if(p.shift) document.getElementById('fShopShift').value=p.shift;
   if(p.paytype){ var pt=document.getElementById('fPayType'); if(pt) pt.value=p.paytype; }
   if(p.paymin){ var pm=document.getElementById('fPayMin'); if(pm) pm.value=p.paymin; }
-  if(p.q) document.getElementById('fShopQ').value=p.q;
   /* v45: o "Muc luong toi thieu" chi nhap duoc sau khi chon loai luong;
      nhan/placeholder doi theo loai; bo chon loai thi khoa + xoa gia tri. */
   function syncPayMin(){
@@ -603,7 +599,7 @@ function initShops(){
   if(fPayTypeEl) fPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
   document.getElementById('applyShopBtn').addEventListener('click',function(){render(1);});
-  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin','fShopQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
+  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
