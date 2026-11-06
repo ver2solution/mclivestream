@@ -66,17 +66,27 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
+<script src="js/auth-ui.js"></script>
 <script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>
 (function(){
   var form=document.getElementById('myProfileForm'), status=document.getElementById('myStatus'), msg=document.getElementById('myFormMsg');
+  function ferr(e, context){ if(window.McLivestreamAPI && McLivestreamAPI.friendlyError) return McLivestreamAPI.friendlyError(e, context); return 'Đã có lỗi xảy ra, hãy thử lại sau.'; }
   var existing=null;
   function val(id){var el=document.getElementById(id); return el?el.value.trim():'';}
   function set(id,v){var el=document.getElementById(id); if(el&&v!=null) el.value=v;}
   async function init(){
     if(!window.McLivestreamAPI){status.textContent='Chưa kết nối Supabase, chưa lưu được hồ sơ.'; return;}
-    var session=await McLivestreamAPI.getSession();
-    if(!session){status.innerHTML='Bạn chưa đăng nhập. Hãy <a href="danh-sach-mau.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.'; return;}
+    // v46: dung chung trang thai dang nhap tu js/auth-ui.js (1 nguon dung
+    // duy nhat) thay vi doc session rieng.
+    var session=null;
+    try{
+      session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession();
+    }catch(err){
+      status.textContent='Không kiểm tra được trạng thái đăng nhập, hãy tải lại trang.';
+      return;
+    }
+    if(!session){status.innerHTML='Bạn cần đăng nhập để xem / sửa hồ sơ của mình. Hãy <a href="danh-sach-mau.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.'; return;}
     status.textContent='Đã đăng nhập: '+session.user.email;
     form.style.display='block';
     try{
@@ -91,10 +101,11 @@
         set('myFacebook',existing.contact_facebook); set('myInstagram',existing.contact_instagram); set('myTiktok',existing.contact_tiktok); set('myZalo',existing.contact_zalo);
         status.textContent='Đã đăng nhập: '+session.user.email+' · Trạng thái hồ sơ hiện tại: '+(existing.moderation_status||'pending');
       }
-    }catch(e){status.textContent='Đã đăng nhập: '+session.user.email+' · Chưa có hồ sơ, hãy điền form dưới đây. ('+e.message+')';}
+    }catch(e){status.textContent='Đã đăng nhập: '+session.user.email+' · Chưa có hồ sơ, hãy điền form dưới đây. ('+ferr(e)+')';}
   }
-  form.addEventListener('submit', async function(e){
+  form.addEventListener('submit', function(e){
     e.preventDefault(); msg.textContent='Đang lưu…';
+    var run = async function(){
     try{
       var album = existing&&existing.album_images ? existing.album_images.slice() : [];
       var albumFiles=document.getElementById('myAlbum').files;
@@ -127,7 +138,9 @@
       existing=saved;
       if(saved.moderation_status==='approved') msg.textContent='Đã lưu hồ sơ. Hồ sơ vẫn hiện công khai theo trạng thái đã duyệt.';
       else msg.textContent='Đã lưu hồ sơ. Hồ sơ mới ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.';
-    }catch(err){ msg.textContent='Chưa lưu được: '+err.message; }
+    }catch(err){ msg.textContent='Chưa lưu được: '+ferr(err); }
+    };
+    if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();
   });
   init();
 })();

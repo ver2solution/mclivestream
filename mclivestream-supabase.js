@@ -63,6 +63,7 @@
       password: opts.password,
       options: { data: {
         phone_zalo: opts.phoneZalo || '',
+        account_type: opts.accountType || '',
         marketing_opt_in: !!opts.marketingOptIn,
         marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution'
       } }
@@ -89,20 +90,67 @@
   }
 
   // Quên mật khẩu: gửi link đặt lại về email đã đăng ký.
-  // redirectTo nên trỏ về trang đăng nhập của web sau khi deploy thật.
+  // F-03/F-13 (v46): redirectTo mặc định trỏ về trang đặt mật khẩu mới
+  // dat-lai-mat-khau.html (phải thêm URL này vào Redirect URLs trên
+  // Dashboard); không dùng window.location.href nữa — link reset cũ trỏ
+  // về trang danh sách và thành link đăng nhập ma thuật.
+  var RESET_PASSWORD_URL = 'https://ver2solution.github.io/mclivestream/dat-lai-mat-khau.html';
   async function resetPassword(email, redirectTo) {
     var res = await client.auth.resetPasswordForEmail(email, {
-      redirectTo: redirectTo || window.location.href
+      redirectTo: redirectTo || RESET_PASSWORD_URL
     });
     if (res.error) throw res.error;
   }
 
+  // Đặt mật khẩu mới sau khi bấm link khôi phục (trang dat-lai-mat-khau.html).
+  // supabase-js tự nhận session từ hash #access_token=...&type=recovery.
+  async function updatePassword(newPassword) {
+    var res = await client.auth.updateUser({ password: newPassword });
+    if (res.error) throw res.error;
+    return res.data;
+  }
+
+  // F-09 (v46): dịch lỗi Supabase/PostgREST sang câu tiếng Việt thân thiện.
+  // Thông điệp do chính web tự ném (đã là tiếng Việt) giữ nguyên; lỗi
+  // tiếng Anh kỹ thuật không bao giờ hiện ra màn hình — lỗi gốc chỉ ghi
+  // console.error để debug. context: 'review' | 'jobpost' để dịch mã
+  // trùng lặp 23505 cho đúng chỗ.
+  var VIETNAMESE_RE = /[àáảãạăắằẳẵặâấầẩẫậđèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]/;
+  function friendlyError(err, context) {
+    var raw = String((err && (err.message || err.code)) || err || '');
+    var lower = raw.toLowerCase();
+    var code = String((err && err.code) || '');
+    var out = null;
+    if (lower.indexOf('invalid login credentials') !== -1) out = 'Email hoặc mật khẩu chưa đúng.';
+    else if (lower.indexOf('email not confirmed') !== -1) out = 'Email chưa được xác nhận. Hãy kiểm tra hộp thư và bấm link xác nhận.';
+    else if (lower.indexOf('user already registered') !== -1) out = 'Email này đã đăng ký. Hãy đăng nhập hoặc dùng chức năng quên mật khẩu.';
+    else if (lower.indexOf('email rate limit exceeded') !== -1) out = 'Đã gửi quá nhiều email trong 1 giờ. Hãy thử lại sau 1 giờ.';
+    else if (lower.indexOf('password should be at least') !== -1) out = 'Mật khẩu cần ít nhất 8 ký tự.';
+    else if (lower.indexOf('failed to fetch') !== -1 || lower.indexOf('networkerror') !== -1 || lower.indexOf('network request failed') !== -1) out = 'Không kết nối được mạng, hãy kiểm tra lại kết nối rồi thử lại.';
+    else if (code === '23505' || lower.indexOf('23505') !== -1 || lower.indexOf('duplicate key') !== -1) {
+      if (context === 'review') out = 'Bạn đã đánh giá hồ sơ này rồi.';
+      else if (context === 'jobpost') out = 'Tin này đã được gửi, hãy xem mục tin của tôi.';
+      else out = 'Nội dung này đã được gửi rồi.';
+    }
+    else if (code === '42501' || lower.indexOf('42501') !== -1 || lower.indexOf('row-level security') !== -1) out = 'Bạn chưa có quyền thực hiện việc này.';
+    else if (code === 'PGRST205' || code === '42P01' || lower.indexOf('pgrst205') !== -1 || lower.indexOf('42p01') !== -1 || lower.indexOf('could not find the table') !== -1 || lower.indexOf('does not exist') !== -1) out = 'Hệ thống chưa sẵn sàng, hãy thử lại sau.';
+    else if (VIETNAMESE_RE.test(raw)) out = raw; // Thông điệp web tự ném — đã là tiếng Việt.
+    else out = 'Đã có lỗi xảy ra, hãy thử lại sau.';
+    if (typeof console !== 'undefined' && console.error && out !== raw) {
+      try { console.error('[McLivestreamAPI]', err); } catch (e) {}
+    }
+    return out;
+  }
+
   // ---------- Hồ sơ ----------
+  // F-02 (v46): đọc view công khai public_profiles — view đã lọc sẵn
+  // approved + consented + NOT is_demo nên KHÔNG còn .eq moderation /
+  // consent (2 cột này không còn trong view). Cột riêng tư
+  // (date_of_birth, phone_zalo, contact_email, contact_zalo,
+  // auth_user_id) không có trong view nên API không thể lộ nữa.
   function publicProfileQuery() {
-    return client.from('profiles')
-      .select('*')
-      .eq('moderation_status', 'approved')
-      .eq('consent_status', 'consented');
+    return client.from('public_profiles')
+      .select('*');
   }
 
   async function fetchPublicProfiles() {
@@ -155,8 +203,18 @@
     return res.data;
   }
 
+  // F-06 (v46): gửi kèm mã phiên ẩn danh (1 lượt/ngày/mã phiên, theo
+  // hàm increment_profile_view mới); không có mã phiên thì bỏ qua,
+  // không đếm. Không bao giờ ném lỗi — đếm view không được làm vỡ trang.
   async function incrementView(profileId) {
-    await client.rpc('increment_profile_view', { p_profile_id: profileId });
+    try {
+      var hash = null;
+      if (typeof window !== 'undefined' && window.V2SAnalytics && typeof window.V2SAnalytics.getSessionId === 'function') {
+        hash = window.V2SAnalytics.getSessionId();
+      }
+      if (!hash) return;
+      await client.rpc('increment_profile_view', { p_profile_id: profileId, p_session_hash: hash });
+    } catch (e) { /* bỏ qua lặng lẽ */ }
   }
 
   // ---------- Đánh giá (không cần đăng nhập) ----------
@@ -174,14 +232,37 @@
     var rating = Number(review.rating);
     if (!rating || rating < 1 || rating > 5) throw new Error('Đánh giá phải từ 1 đến 5 sao.');
     if (!review.comment || !String(review.comment).trim()) throw new Error('Cần nhập nhận xét.');
-    var res = await client.from('profile_reviews').insert({
+    // F-17 (v46): chống gửi trùng 1 đánh giá / 1 hồ sơ / 60 giây (client).
+    // Ghi mốc thời gian CHỈ khi gửi thành công.
+    var throttleKey = 'v2s_review_' + profileId;
+    var throttled = false;
+    try {
+      var last = Number(window.localStorage.getItem(throttleKey) || 0);
+      throttled = !!(last && Date.now() - last < 60000);
+    } catch (e) { throttled = false; }
+    if (throttled) throw new Error('Bạn vừa đánh giá hồ sơ này, hãy thử lại sau 60 giây.');
+    // F-17 (v46): gửi kèm auth_user_id khi đã đăng nhập để chặn 1 tài
+    // khoản đánh giá 2 lần cùng hồ sơ (unique index phía server); khách
+    // vãng lai gửi null và vẫn đánh giá được (chờ duyệt như thiết kế).
+    var authUserId = null;
+    try { var s = await getSession(); if (s) authUserId = s.user.id; } catch (e) { /* bỏ qua */ }
+    var payload = {
       profile_id: profileId,
       reviewer_name: review.reviewerName || 'Khách',
       rating: rating,
       comment: String(review.comment).trim(),
       moderation_status: 'pending' // Luôn pending, admin duyệt mới hiển thị.
-    });
+    };
+    if (authUserId) payload.auth_user_id = authUserId;
+    var res = await client.from('profile_reviews').insert(payload);
+    // Cột auth_user_id chưa có (SQL F-17 chưa chạy): thử lại không kèm cột
+    // để form vẫn gửi được; chống trùng lúc này chỉ còn chống trùng client.
+    if (res.error && (res.error.code === '42703' || String(res.error.message || '').indexOf('42703') !== -1) && payload.auth_user_id) {
+      delete payload.auth_user_id;
+      res = await client.from('profile_reviews').insert(payload);
+    }
     if (res.error) throw res.error;
+    try { window.localStorage.setItem(throttleKey, String(Date.now())); } catch (e) {}
   }
 
   // ---------- Góp ý (không cần đăng nhập) ----------
@@ -198,6 +279,35 @@
   }
 
   // ---------- Media ----------
+  // F-10 (v46): tên file an toàn + kiểm tra loại/dung lượng trước khi tải.
+  // Tên gốc bị bỏ (chống '../' và ký tự đặc biệt); giới hạn 5 MB/file.
+  // Lưu ý: video demo cũng giới hạn 5 MB theo đặc tả — nếu đội muốn mức
+  // khác cho video thì đổi MAX_UPLOAD_BYTES riêng cho video ở đây.
+  var MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+  var IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+  var IMAGE_EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+  var VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/quicktime'];
+  var VIDEO_EXTS = ['mp4', 'webm', 'mov'];
+  function newUuid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+    } catch (e) {}
+    return 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  }
+  function safeUploadName(file, allowedExts) {
+    var name = String((file && file.name) || '');
+    var ext = name.split('.').pop().toLowerCase();
+    if (allowedExts.indexOf(ext) === -1) ext = allowedExts[0];
+    return newUuid() + '.' + ext;
+  }
+  function checkUploadFile(file, allowedTypes, allowedExts, label) {
+    if (!file) throw new Error('Cần 1 file ' + label + '.');
+    if (file.size && file.size > MAX_UPLOAD_BYTES) throw new Error('File quá lớn, tối đa 5 MB mỗi file.');
+    if (file.type && allowedTypes.indexOf(file.type) === -1) throw new Error('Định dạng file ' + label + ' chưa được hỗ trợ.');
+    var ext = String(file.name || '').split('.').pop().toLowerCase();
+    if (allowedExts.indexOf(ext) === -1) throw new Error('Định dạng file ' + label + ' chưa được hỗ trợ.');
+  }
+
   function publicUrl(path) {
     return client.storage.from('profile-media').getPublicUrl(path).data.publicUrl;
   }
@@ -209,7 +319,8 @@
     if (list.length < 1 || list.length > 5) throw new Error('Album cần 1 đến 5 ảnh.');
     var urls = [];
     for (var i = 0; i < list.length; i++) {
-      var path = session.user.id + '/album/' + Date.now() + '-' + i + '-' + list[i].name;
+      checkUploadFile(list[i], IMAGE_TYPES, IMAGE_EXTS, 'ảnh');
+      var path = session.user.id + '/album/' + safeUploadName(list[i], IMAGE_EXTS);
       var up = await client.storage.from('profile-media').upload(path, list[i]);
       if (up.error) throw up.error;
       urls.push(publicUrl(path));
@@ -221,7 +332,8 @@
     var session = await getSession();
     if (!session) throw new Error('Cần đăng nhập mới tải video lên được.');
     if (!file) throw new Error('Cần 1 video demo.');
-    var path = session.user.id + '/demo/' + Date.now() + '-' + file.name;
+    checkUploadFile(file, VIDEO_TYPES, VIDEO_EXTS, 'video demo');
+    var path = session.user.id + '/demo/' + safeUploadName(file, VIDEO_EXTS);
     var up = await client.storage.from('profile-media').upload(path, file);
     if (up.error) throw up.error;
     return publicUrl(path);
@@ -238,9 +350,12 @@
       || /does not exist|Could not find the table/i.test(m);
   }
 
+  // F-02 (v46): đọc view công khai public_shop_profiles — view đã lọc
+  // sẵn approved nên KHÔNG còn .eq moderation_status (cột không còn
+  // trong view). Cột riêng tư (phone, email, address, store_addresses)
+  // không có trong view.
   async function fetchApprovedShops() {
-    var res = await client.from('shop_profiles').select('*')
-      .eq('moderation_status', 'approved')
+    var res = await client.from('public_shop_profiles').select('*')
       .order('created_at', { ascending: false });
     if (res.error) throw res.error;
     return res.data || [];
@@ -271,16 +386,20 @@
     var session = await getSession();
     if (!session) throw new Error('Cần đăng nhập mới tải logo lên được.');
     if (!file) throw new Error('Cần 1 file logo.');
-    var path = 'shop/' + session.user.id + '/logo/' + Date.now() + '-' + file.name;
+    checkUploadFile(file, IMAGE_TYPES, IMAGE_EXTS, 'logo');
+    var path = 'shop/' + session.user.id + '/logo/' + safeUploadName(file, IMAGE_EXTS);
     var up = await client.storage.from('profile-media').upload(path, file);
     if (up.error) throw up.error;
     return publicUrl(path);
   }
 
+  // F-02 (v46): đọc view công khai public_shop_job_posts — view đã JOIN
+  // sẵn shop_name từ shop đã duyệt nên KHÔNG dùng quan hệ nhúng
+  // shop_profiles(...) nữa (view không có khóa ngoại) và KHÔNG còn
+  // .eq moderation_status. Giao diện đọc tên shop từ j.shop_name.
   async function fetchApprovedJobPosts() {
-    var res = await client.from('shop_job_posts')
-      .select('*, shop_profiles(shop_name, province)')
-      .eq('moderation_status', 'approved')
+    var res = await client.from('public_shop_job_posts')
+      .select('id, shop_name, province, field, schedule, salary, channels, description, created_at')
       .order('created_at', { ascending: false });
     if (res.error) throw res.error;
     return res.data || [];
@@ -303,16 +422,35 @@
     var clean = stripProtected(data);
     clean.shop_id = shop.id;
     clean.auth_user_id = session.user.id;
+    // F-07 (v46): khóa chống gửi trùng phía server — mỗi lần bấm gửi có
+    // 1 mã riêng; bấm đúp / gửi lại cùng mã trả 23505, UI báo "Tin này
+    // đã được gửi" (xem friendlyError với context 'jobpost').
+    clean.client_idempotency_key = newIdempotencyKey();
     requireFields(clean, ['province', 'field']);
     var res = await client.from('shop_job_posts').insert(clean).select().single();
+    // Cột client_idempotency_key chưa có (SQL F-07 chưa chạy): thử lại
+    // không kèm mã để form vẫn gửi được; chống trùng lúc này chỉ còn
+    // guardSubmit ở client.
+    if (res.error && (res.error.code === '42703' || String(res.error.message || '').indexOf('42703') !== -1)) {
+      delete clean.client_idempotency_key;
+      res = await client.from('shop_job_posts').insert(clean).select().single();
+    }
     if (res.error) throw res.error;
     return res.data;
+  }
+
+  function newIdempotencyKey() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+    } catch (e) {}
+    return 'idem-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
   }
 
   window.McLivestreamAPI = {
     client: client,
     signUp: signUp, signIn: signIn, signOut: signOut, getSession: getSession,
-    resetPassword: resetPassword,
+    resetPassword: resetPassword, updatePassword: updatePassword,
+    friendlyError: friendlyError,
     fetchPublicProfiles: fetchPublicProfiles, fetchTopProfiles: fetchTopProfiles,
     fetchMyProfile: fetchMyProfile, saveMyProfile: saveMyProfile,
     incrementView: incrementView,

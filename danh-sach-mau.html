@@ -62,6 +62,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
+<script src="js/auth-ui.js"></script>
 <script src="js/wallet.js"></script>
 <script>
 (function(){
@@ -72,7 +73,7 @@
     if(!jobs.length){ st.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; return; }
     st.textContent='Đang hiện '+jobs.length+' tin đã duyệt.';
     box.innerHTML=jobs.map(function(j){
-      var shop=(j.shop_profiles&&j.shop_profiles.shop_name)||'Shop đã duyệt';
+      var shop=j.shop_name||'Shop đã duyệt';
       var ch=(j.channels||[]).join(', ');
       return '<article class="news-item"><h3 style="margin:0">'+shop+' — '+(j.field||'Chưa ghi lĩnh vực')+'</h3>'
         + '<p>Tỉnh: '+(j.province||'Chưa cập nhật')+' · Lịch: '+(j.schedule||'Chưa cập nhật')+' · Lương: '+(j.salary||'Thỏa thuận')+(ch?' · Kênh: '+ch:'')+'</p>'
@@ -80,87 +81,24 @@
         + '<p><a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution để ứng tuyển →</a></p></article>';
     }).join('');
   }).catch(function(e){
-    st.textContent='Chưa tải được tin đã duyệt: '+e.message;
+    st.textContent='Chưa tải được tin đã duyệt: '+(window.McLivestreamAPI&&McLivestreamAPI.friendlyError?McLivestreamAPI.friendlyError(e):'Đã có lỗi xảy ra, hãy thử lại sau.');
   });
 })();
 </script>
 
 <script src="js/data.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>
-(function(){
-  function msg(t){var e=document.getElementById('mauAuthMsg');if(e)e.textContent=t;}
-  function api(){return window.McLivestreamAPI;}
-  var su=document.getElementById('mauSignUp');
-  if(su)su.addEventListener('submit',async function(e){e.preventDefault();var p1=document.getElementById('maSuPass').value,p2=document.getElementById('maSuPass2').value;if(p1!==p2){msg('Mật khẩu nhập lại chưa khớp.');return;} if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().signUp({email:document.getElementById('maSuEmail').value.trim(),password:p1,phoneZalo:document.getElementById('maSuPhone').value.trim(),marketingOptIn:!!document.getElementById('maSuMarketing').checked});try{if(window.Ver2Wallet) await window.Ver2Wallet.saveMarketingConsent(!!document.getElementById('maSuMarketing').checked,'model');}catch(_){}msg('Đã gửi đăng ký. Nếu project bật xác nhận email, hãy kiểm tra email để xác nhận trước khi đăng nhập.');}catch(err){msg('Đăng ký chưa thành công: '+(err.message||err));}});
-  var si=document.getElementById('mauSignIn');
-  if(si)si.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().signIn({email:document.getElementById('maSiEmail').value.trim(),password:document.getElementById('maSiPass').value});msg('Đăng nhập thành công.');showUser();}catch(err){msg('Đăng nhập chưa thành công: '+(err.message||err));}});
-  var fp=document.getElementById('mauForgot');
-  if(fp)fp.addEventListener('submit',async function(e){e.preventDefault(); if(!api()){msg('Chưa kết nối được Supabase, hãy thử lại sau.');return;} try{await api().resetPassword(document.getElementById('maFpEmail').value.trim());msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.');}catch(err){msg('Gửi link chưa thành công: '+(err.message||err));}});
-  /* v45 auth: 1 the, 1 view hien tai 1 thoi diem. Mac dinh view Dang nhap;
-     ?auth=register mo view Dang ky, ?auth=forgot mo view Quen mat khau
-     (dung cho link cheo trang tu popup chon loai tai khoan). Khi da dang
-     nhap thi AN HET 3 view, chi hien hop "Da dang nhap" + nut "Vao Trang
-     cua toi" + nut "Dang xuat". */
-  var AUTH_VIEWS=['login','register','forgot'];
-  function viewEl(v){ return document.getElementById('mauView'+v.charAt(0).toUpperCase()+v.slice(1)); }
-  function showAuthView(v){
-    if(AUTH_VIEWS.indexOf(v)===-1) v='login';
-    AUTH_VIEWS.forEach(function(x){ var el=viewEl(x); if(el) el.hidden=(x!==v); });
-  }
-  var initialAuthView=(function(){ try{ var a=new URLSearchParams(location.search).get('auth'); return (a==='register'||a==='forgot')?a:'login'; }catch(e){ return 'login'; } })();
-  document.querySelectorAll('#dang-nhap-mau [data-auth-view]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var v=a.getAttribute('data-auth-view');
-      if(v==='register' && a.getAttribute('data-auth-popup')){ openAuthType(); return; }
-      showAuthView(v);
-    });
-  });
-  /* v45: nut hien/an mat khau cho cac o mat khau (Dang nhap + Dang ky). */
-  document.querySelectorAll('#dang-nhap-mau .pw-toggle').forEach(function(b){
-    b.addEventListener('click',function(){
-      var inp=document.getElementById(b.getAttribute('data-pw-for'));
-      if(!inp) return;
-      var show=inp.type==='password';
-      inp.type=show?'text':'password';
-      b.textContent=show?'Ẩn':'Hiện';
-      b.setAttribute('aria-label',show?'Ẩn mật khẩu':'Hiện mật khẩu');
-    });
-  });
-  /* v45: popup chon loai tai khoan khi an "Dang ky". Chon dung loai cua trang
-     thi dong popup + hien view Dang ky; chon loai kia thi sang trang kia
-     kem ?auth=register de mo thang view Dang ky. */
-  var typeOv=document.getElementById('mauAuthTypeOverlay');
-  function openAuthType(){ if(typeOv) typeOv.classList.add('open'); }
-  function closeAuthType(){ if(typeOv) typeOv.classList.remove('open'); }
-  if(typeOv) typeOv.addEventListener('click',function(e){ if(e.target===typeOv) closeAuthType(); });
-  var typeClose=document.getElementById('mauAuthTypeClose');
-  if(typeClose) typeClose.addEventListener('click',closeAuthType);
-  if(typeOv) typeOv.querySelectorAll('[data-auth-type]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var kind=b.getAttribute('data-auth-type');
-      closeAuthType();
-      if(kind==='model'){ showAuthView('register'); }
-      else { location.href='danh-sach-shop.html?auth=register#dang-nhap-shop'; }
-    });
-  });
-  async function showUser(){
-    try{
-      var s=await api().getSession(); var u=s&&s.user;
-      var b=document.getElementById('mauAuthUserBox');
-      if(u){
-        b.style.display='';
-        document.getElementById('mauAuthUserEmail').textContent=u.email;
-        AUTH_VIEWS.forEach(function(x){ var el=viewEl(x); if(el) el.hidden=true; });
-      } else {
-        b.style.display='none';
-        showAuthView(initialAuthView);
-      }
-    }catch(_){}
-  }
-  var so=document.getElementById('mauSignOut');
-  if(so)so.addEventListener('click',async function(){if(api())await api().signOut();document.getElementById('mauAuthUserBox').style.display='none';msg('Đã đăng xuất.');showAuthView('login');});
-  showUser();
-})();
+/* v46: the auth dung module chung js/auth-ui.js (gop code trung lap 2 trang).
+   Cau hinh rieng trang Mau: id ma*, loai tai khoan 'model'. */
+V2SAuthUI.initAuthUI({
+  accountType: 'model',
+  cardId: 'dang-nhap-mau',
+  views: { login: 'mauViewLogin', register: 'mauViewRegister', forgot: 'mauViewForgot' },
+  forms: { signup: 'mauSignUp', signin: 'mauSignIn', forgot: 'mauForgot' },
+  inputs: { signupEmail: 'maSuEmail', signupPhone: 'maSuPhone', signupPass: 'maSuPass', signupPass2: 'maSuPass2', signupMarketing: 'maSuMarketing', signinEmail: 'maSiEmail', signinPass: 'maSiPass', forgotEmail: 'maFpEmail' },
+  msgId: 'mauAuthMsg', boxId: 'mauAuthUserBox', boxEmailId: 'mauAuthUserEmail', signOutId: 'mauSignOut',
+  overlayId: 'mauAuthTypeOverlay', overlayCloseId: 'mauAuthTypeClose',
+  crossRegisterUrl: 'danh-sach-shop.html?auth=register#dang-nhap-shop'
+});
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>

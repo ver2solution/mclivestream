@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đặt lại mật khẩu — Sàn việc làm MC Livestream Ver2Solution</title>
+<meta name="description" content="Đặt mật khẩu mới cho tài khoản Ver2Solution sau khi bấm link khôi phục trong email. Link chỉ dùng được một lần.">
+<link rel="canonical" href="https://ver2solution.github.io/mclivestream/dat-lai-mat-khau.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ver2Solution">
+<meta property="og:title" content="Đặt lại mật khẩu — Sàn việc làm MC Livestream Ver2Solution">
+<meta property="og:description" content="Đặt mật khẩu mới cho tài khoản Ver2Solution sau khi bấm link khôi phục trong email. Link chỉ dùng được một lần."><meta property="og:url" content="https://ver2solution.github.io/mclivestream/dat-lai-mat-khau.html">
+<meta property="og:image" content="https://ver2solution.github.io/mclivestream/logo.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Đặt lại mật khẩu — Ver2Solution">
+<meta name="twitter:description" content="Đặt mật khẩu mới cho tài khoản Ver2Solution sau khi bấm link khôi phục trong email. Link chỉ dùng được một lần."><meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/logo.png">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ver2Solution">
+<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
+<link rel="stylesheet" href="v20.css"></head><body>
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập</a></div></header>
+<main class="wrap">
+<section class="form-card" id="dat-lai-mat-khau" aria-label="Đặt lại mật khẩu"><h1>Đặt lại mật khẩu</h1>
+<p id="resetStatus">Đang kiểm tra link đặt lại mật khẩu…</p>
+<form id="resetForm" data-track="form-dat-lai-mat-khau" hidden>
+<p><label>Mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass" data-track="hien-mat-khau-moi" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
+<p><label>Nhập lại mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass2" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass2" data-track="hien-mat-khau-moi-2" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
+<p id="resetMsg"></p>
+<button class="btn btn-primary" type="submit" data-track="nut-dat-lai-mat-khau">Đặt lại mật khẩu</button>
+</form>
+<p id="resetLinks" hidden>Chưa nhận được link? Gửi lại từ mục <a href="danh-sach-mau.html#dang-nhap-mau">Quên mật khẩu (tài khoản mẫu)</a> hoặc <a href="danh-sach-shop.html#dang-nhap-shop">Quên mật khẩu (tài khoản shop)</a>.</p>
+<p><a href="danh-sach-mau.html#dang-nhap-mau">← Quay lại đăng nhập</a></p>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
+<p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="mclivestream-supabase.js"></script>
+<script src="js/auth-ui.js"></script>
+<script src="js/app.js"></script>
+<script src="js/analytics.js"></script>
+<script>
+/* v46 (F-03): trang đặt mật khẩu mới sau khi bấm link khôi phục trong
+   email. supabase-js tự nhận session từ hash #access_token=...&type=recovery
+   (detectSessionInUrl mặc định). Không có session thì link đã hết hạn
+   hoặc không hợp lệ. Đổi xong thì đăng xuất ngay (kết thúc phiên recovery
+   dùng một lần) rồi về trang đăng nhập. */
+(function(){
+  var status=document.getElementById('resetStatus'), form=document.getElementById('resetForm'),
+      msg=document.getElementById('resetMsg'), links=document.getElementById('resetLinks');
+  function ferr(e){
+    if(window.McLivestreamAPI && McLivestreamAPI.friendlyError) return McLivestreamAPI.friendlyError(e);
+    return 'Đã có lỗi xảy ra, hãy thử lại sau.';
+  }
+  document.querySelectorAll('#dat-lai-mat-khau .pw-toggle').forEach(function(b){
+    b.addEventListener('click',function(){
+      var inp=document.getElementById(b.getAttribute('data-pw-for'));
+      if(!inp) return;
+      var show=inp.type==='password';
+      inp.type=show?'text':'password';
+      b.textContent=show?'Ẩn':'Hiện';
+      b.setAttribute('aria-label',show?'Ẩn mật khẩu':'Hiện mật khẩu');
+    });
+  });
+  /* Nut Menu do js/app.js wire (giong moi trang khac); khong wire lai o day. */
+  async function init(){
+    if(!window.McLivestreamAPI){ status.textContent='Chưa kết nối Supabase, chưa đặt lại được mật khẩu.'; links.hidden=false; return; }
+    var session=null;
+    try{ session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession(); }
+    catch(e){ session=null; }
+    if(!session){
+      status.textContent='Link đã hết hạn hoặc không hợp lệ. Hãy gửi lại link đặt lại mật khẩu.';
+      links.hidden=false;
+      return;
+    }
+    status.textContent='Link hợp lệ. Hãy nhập mật khẩu mới (ít nhất 8 ký tự).';
+    form.hidden=false;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var run = async function(){
+      var p1=document.getElementById('resetPass').value, p2=document.getElementById('resetPass2').value;
+      if(p1!==p2){ msg.textContent='Mật khẩu nhập lại chưa khớp.'; return; }
+      if(p1.length<8){ msg.textContent='Mật khẩu cần ít nhất 8 ký tự.'; return; }
+      try{
+        await McLivestreamAPI.updatePassword(p1);
+        try{ await McLivestreamAPI.signOut(); }catch(_){}
+        msg.textContent='Đã đổi mật khẩu thành công. Đang chuyển về trang đăng nhập…';
+        setTimeout(function(){ location.href='danh-sach-mau.html#dang-nhap-mau'; }, 2000);
+      }catch(err){ msg.textContent='Chưa đổi được mật khẩu: '+ferr(err); }
+    };
+    if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();
+  });
+  init();
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
