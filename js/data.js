@@ -1460,6 +1460,61 @@ window.V20_DATA = {
    "page": "bai-viet/hai-phong-hoc-ban-tren-tiktok-shop.html",
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/hai-phong-hoc-ban-tren-tiktok-shop.jpeg",
    "takeaway": "Hải Phòng không dạy shop nhỏ một mẹo bán hàng, mà dạy cả một vòng: gian hàng, nội dung, live, quảng cáo — rồi cho thực hành live nhóm và tư vấn 1:1 ngay tại chỗ. Shop nhỏ ở tỉnh khác cũng nên làm đúng trình tự đó: mở 1 gian hàng, chọn 1–2 món chủ lực, quay video ngắn, live đều 2–3 buổi mỗi tuần, và theo dõi chương trình hỗ trợ của Sở Công Thương địa phương để được hướng dẫn trực tiếp. Bán trên TikTok Shop không khó vì thiếu mẹo — khó vì thiếu một vòng làm việc đầy đủ, và đó là thứ shop có thể bắt đầu ngay tuần này."
+  },
+  {
+   "title": "WeChat Channels: kênh livestream bán hàng tăng 74% ở Trung Quốc, shop nhỏ học gì?",
+   "cat": "Tin thị trường thế giới",
+   "source": "Marketing China",
+   "date": "2026-09-30",
+   "url": "https://marketingtochina.com/wechat-channels-ecommerce-2026/",
+   "page": "bai-viet/wechat-channels-livestream-ban-hang-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/wechat-channels-livestream-ban-hang-2026.jpg",
+   "pinned": false,
+   "takeaway": "WeChat Channels đạt doanh số khoảng 433 tỷ nhân dân tệ năm 2025, tăng 74,6%, nhờ khách mua ngay trong phòng live qua WeChat Pay, khán giả trên 40 tuổi mua giỏ lớn, và người bán giữ được khách trong nhóm riêng thay vì để sàn giữ. Shop nhỏ học được 3 điều: xây kênh riêng (nhóm Zalo, khách quen) để giữ khách sau mỗi buổi live; live với người am hiểu sản phẩm thay vì MC đọc kịch bản; và chọn kênh theo khách của mình — kênh của niềm tin thắng ở giỏ hàng lớn, kênh của lượt xem thắng ở số lượng."
+  },
+  {
+   "title": "Mỹ bãi bỏ miễn thuế de minimis: hàng Temu, Shein đội giá, shop nhập hàng Trung Quốc tính lại",
+   "cat": "Tin thị trường thế giới",
+   "source": "GP Fulfillment",
+   "date": "2026-08-21",
+   "url": "https://www.gp-fulfillment.com/blog/de-minimis-ends-aug-14-cross-border-sellers-cut-costs.html",
+   "page": "bai-viet/my-bai-bo-mien-thue-de-minimis-temu-shein.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/my-bai-bo-mien-thue-de-minimis-temu-shein.jpg",
+   "pinned": false,
+   "takeaway": "Mỹ đã bãi bỏ miễn thuế de minimis dưới 800 USD: tòa án liên bang giữ nguyên quyết định đình chỉ giữa tháng 8/2026, Temu chuyển sang bán hàng từ kho Mỹ, Shein tăng giá, mỗi kiện nhỏ chịu thêm phí 2–5 USD cộng thuế 0–25%. Shop nhập hàng Trung Quốc cần tính thuế và phí vào giá vốn, gộp đơn thành lô lớn, đa dạng nguồn hàng và theo dõi chính sách thuế của thị trường mình bán vào — vì một quy định tưởng như vĩnh viễn có thể biến mất trong một đêm."
+  },
+  {
+   "title": "YouTube Shopping tăng 13 lần trong 2 năm: shop nhỏ bán bằng video và live thế nào?",
+   "cat": "Tin thị trường thế giới",
+   "source": "ValueYourNetwork",
+   "date": "2026-10-19",
+   "url": "https://www.valueyournetwork.com/en/youtube-shopping-2026-figures/",
+   "page": "bai-viet/youtube-shopping-tang-13-lan.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/youtube-shopping-tang-13-lan.jpg",
+   "pinned": false,
+   "takeaway": "YouTube Shopping tăng GMV 13 lần trong 2 năm với hơn 1,3 triệu nhà sáng tạo (tháng 9/2026), mở tới 35 quốc gia cuối 2026; thẻ sản phẩm cho hơn gấp đôi lượt bấm so với link mô tả, và kênh từ 500 người đăng ký đã tham gia được từ tháng 3/2026. Shop nhỏ thắng bằng cách demo thật, gắn thẻ đúng lúc khách có ý định mua và đo lượt bấm + đơn + hoa hồng theo từng định dạng — đừng chỉ nhìn lượt xem hay hiểu nhầm GMV toàn chương trình là thu nhập của từng kênh."
+  },
+  {
+   "title": "Bán hàng livestream 2026: bỏ thuế khoán, sàn khấu trừ thuế, doanh thu trên 1 tỷ phải xuất hóa đơn điện tử",
+   "cat": "Tin mới Livestream",
+   "source": "Thanh Niên",
+   "date": "2026-08-19",
+   "url": "https://thanhnien.vn/rui-ro-phap-ly-khi-kinh-doanh-tren-mang-185260818202210556.htm",
+   "page": "bai-viet/thue-livestream-2026-bo-thue-khoan.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/thue-livestream-2026-bo-thue-khoan.jpg",
+   "pinned": false,
+   "takeaway": "Từ 2026, thuế khoán bị bãi bỏ, hộ kinh doanh phải kê khai theo doanh thu thật cộng gộp mọi kênh; doanh thu trên 1 tỷ đồng/năm phải xuất hóa đơn điện tử cho từng đơn; sàn khấu trừ 1% GTGT + 0,5% TNCN thay trên từng đơn; tài khoản, ví điện tử kinh doanh phải thông báo cho cơ quan thuế. Phạt hành chính tới 80 triệu đồng, trốn thuế từ 1 tỷ đồng có thể bị phạt tù 2–7 năm. Shop livestream cần ghi chép đầy đủ từ đầu, tách tiền kinh doanh khỏi tiền cá nhân và tính thuế vào giá bán."
+  },
+  {
+   "title": "Livestream bán nông sản OCOP: Tây Ninh đặt mục tiêu 100 tỷ/năm, KOL bán gấp 3 lần nông dân tự live",
+   "cat": "Tin mới Livestream",
+   "source": "Nông Thôn Việt",
+   "date": "2026-10-22",
+   "url": "https://nongthonviet.vn/tay-ninh-dat-muc-tieu-ban-nong-san-qua-mang-thu-100-ti-dong-moi-nam-46443.html",
+   "page": "bai-viet/nong-san-livestream-ocop.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nong-san-livestream-ocop.jpg",
+   "pinned": false,
+   "takeaway": "Tây Ninh đặt mục tiêu 100 tỷ đồng/năm từ bán nông sản online với 25 phòng livestream (lên hơn 50 phòng trước 01/2027); cơm cháy Tây Ninh bán hàng ngàn đơn qua Shopee, TikTok Shop nhờ gói nhỏ dùng thử rồi combo lớn. Nhưng 4 phiên KOL bán 1.724 đơn, gấp gần 3 lần 20 phiên nông dân tự live (606 đơn) — shop nhỏ cần học kỹ năng kể chuyện và chốt đơn, chuẩn bị đủ hồ sơ chất lượng, và dùng gói thử nhỏ để khách tin rồi mới bán combo lớn."
   }
  ],
  "provinces": [
