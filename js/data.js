@@ -15,7 +15,11 @@
    lam -> gan tuong ung (1 shop co the co nhieu ca); (3) req khong ghi gio nao
    -> shifts = [] (chi hien khi loc "Tất cả giờ"). Shop fulltime hien trong
    MOI ca khi loc gio lam (fulltime lam ca ngay) + khi loc rieng "Fulltime".
- 20 real profiles + 30 shops (public job posts) + 25 articles.
+ 20 real profiles + 30 shops (public job posts) + 30 articles.
+   v47 adds 5 articles (06/11/2026): 1 keyword SEO article ("tuyen mau
+   livestream", kind:"keyword", pinned) + 4 news articles (Shopee Q3,
+   11st AI hosts, EU Temu/Shein fee, Hai Phong TikTok Shop). Total 30
+   articles, 29 with their own bai-viet page (bop-reach links via url).
    v34 adds the 6 idol/game streamer shops from the 05/11 noon Facebook run
    (59K Entertainment, KOSS 5, Anh Mai, GAMETOK LIVE, Qingxiang Nexplay,
    YAOHAI) — user-directed 2026-11-05 ~21:08: post ALL collected shop data.
@@ -1397,6 +1401,62 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-my-black-friday-2026.png",
    "imgSelf": true,
    "takeaway": "Shop nhỏ Việt Nam không cần bắt chước quy mô của thương hiệu Mỹ, nhưng nên học đúng 2 điểm: live là nơi chốt đơn và lấy phản hồi thật, không chỉ là nơi giảm giá, và hàng độc quyền hoặc combo chỉ có trong phiên live mới là thứ giữ khách quay lại sau sale, thay vì giảm giá mà shop nào cũng có. Trước 11.11, chuẩn bị 1 món chỉ bán trong live và 1 câu chuyện thật về sản phẩm đó, thay vì chỉ chuẩn bị mã giảm."
+  },
+  {
+   "title": "Tuyển mẫu livestream cho shop nhỏ: 7 bước thuê đúng người",
+   "cat": "Tin mới Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-06",
+   "url": null,
+   "page": "bai-viet/tuyen-mau-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tuyen-mau-livestream.png",
+   "imgSelf": true,
+   "kind": "keyword",
+   "pinned": true,
+   "takeaway": "Thuê mẫu livestream không phải là mua một gương mặt, mà là thuê một người bán hàng đứng trước ống kính. Shop nhỏ chỉ cần làm đủ 3 việc: viết tin tuyển ghi rõ lương và ca làm để mẫu giỏi không bỏ qua; thử live 15–20 phút với sản phẩm thật trước khi chốt; và chốt lương, hoa hồng, lịch làm bằng tin nhắn. Làm đủ 3 việc này, shop sẽ thuê được mẫu hợp mà không mất tiền oan cho những buổi live không ra đơn — và mẫu cũng yên tâm gắn bó vì biết rõ mình được trả bao nhiêu, làm ca nào."
+  },
+  {
+   "title": "Shop nhỏ giữ chân khách bằng live và video: đơn qua live, video, affiliate tăng 52%",
+   "cat": "Tin mới Livestream",
+   "source": "vietnam.vn",
+   "date": "2026-11-03",
+   "url": "https://www.vietnam.vn/en/chu-shop-online-tim-cach-giu-chan-nguoi-mua",
+   "page": "bai-viet/shop-giu-chan-khach-live-video-tang-52-phan-tram.html",
+   "img": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793675324656_thuyhanh_znews.jpeg",
+   "takeaway": "Khách không còn vào app chỉ để mua — họ vào để xem, rồi mới mua. Shop nhỏ muốn giữ chân khách trước mùa sale 11/11 và 12/12 thì làm 3 việc: mỗi tuần có video demo và live đều cho 1–2 món chủ lực; ghi rõ xuất xứ, thành phần, cách dùng và giữ thông tin nhất quán giữa gian hàng, video và live; và tính kỹ chi phí thuê người live hay dùng AI live bằng số thật của mình trước khi nhân rộng. Đơn qua live, video và affiliate đã tăng 52% — phần tăng đó không tự rơi vào shop nào không có gì để khách xem."
+  },
+  {
+   "title": "Sàn Hàn Quốc 11st dùng MC AI dẫn live sale 11/11: shop nhỏ học gì?",
+   "cat": "Tin thị trường thế giới",
+   "source": "Aju Press",
+   "date": "2026-10-30",
+   "url": "https://m.ajupress.com/view/20261030180870483",
+   "page": "bai-viet/san-11st-mc-ai-live-sale-11-11.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/san-11st-mc-ai-live-sale-11-11.png",
+   "imgSelf": true,
+   "takeaway": "11st không dùng MC AI để thay người, mà dùng AI để live đều hơn, chia live theo ngành hàng và biến người xem thành người chơi. Shop nhỏ học được 3 điều ngay mà không cần mua công nghệ AI: live theo món chủ lực và mẫu đúng ngành hàng; cho khách bình chọn trong phiên để giữ họ ở lại; và dùng điểm thưởng hay quà nhỏ mỗi ngày để khách quay lại, thay vì giảm giá sâu một lần rồi hết chuyện. AI live là công cụ giữ nhịp, còn người bán mới là người giữ khách."
+  },
+  {
+   "title": "EU thu thêm phí với hàng Temu, Shein từ 01/11: shop nhập hàng Trung Quốc cần biết",
+   "cat": "Tin thị trường thế giới",
+   "source": "Continental Brief",
+   "date": "2026-10-30",
+   "dateNote": "Bài gốc đăng 30/10/2026, cập nhật 05/11/2026",
+   "url": "https://continentalbrief.org/economy/eu-customs-duty-low-value-parcels-temu-shein",
+   "page": "bai-viet/eu-thu-phi-buu-kien-temu-shein.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/eu-thu-phi-buu-kien-temu-shein.png",
+   "imgSelf": true,
+   "takeaway": "Từ 01/11, mỗi mặt hàng Temu, Shein vào EU chịu 5 euro (3 euro thuế cộng 2 euro phí) — và phí 2 euro không hoàn lại dù hàng bị trả. Shop bán sang EU thì tính ngay 5 euro mỗi mặt hàng vào giá trước sale 11/11 và Black Friday; shop nhập hàng Trung Quốc bán trong nước thì đọc đây làm tín hiệu: hàng rẻ không đạt chuẩn sẽ bị siết, nên chọn nhà cung cấp có giấy tờ đầy đủ ngay từ bây giờ. Đừng để một đơn hàng giá rẻ hôm nay thành một kiện hàng kẹt hải quan và một đánh giá xấu ngày mai."
+  },
+  {
+   "title": "Hơn 120 doanh nghiệp Hải Phòng học bán trên TikTok Shop: shop nhỏ bắt đầu từ đâu?",
+   "cat": "Tin mới Livestream",
+   "source": "vietnam.vn",
+   "date": "2026-11-05",
+   "url": "https://www.vietnam.vn/en/hon-120-doanh-nghiep-hai-phong-hoc-cach-tang-doanh-so-tren-tiktok-shop",
+   "page": "bai-viet/hai-phong-hoc-ban-tren-tiktok-shop.html",
+   "img": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/06/1793924562283_1793876280192_1993621279037438652_8198289787024162000_f8301c7987d9a493503d16a8c69003e7.jpeg",
+   "takeaway": "Hải Phòng không dạy shop nhỏ một mẹo bán hàng, mà dạy cả một vòng: gian hàng, nội dung, live, quảng cáo — rồi cho thực hành live nhóm và tư vấn 1:1 ngay tại chỗ. Shop nhỏ ở tỉnh khác cũng nên làm đúng trình tự đó: mở 1 gian hàng, chọn 1–2 món chủ lực, quay video ngắn, live đều 2–3 buổi mỗi tuần, và theo dõi chương trình hỗ trợ của Sở Công Thương địa phương để được hướng dẫn trực tiếp. Bán trên TikTok Shop không khó vì thiếu mẹo — khó vì thiếu một vòng làm việc đầy đủ, và đó là thứ shop có thể bắt đầu ngay tuần này."
   }
  ],
  "provinces": [
