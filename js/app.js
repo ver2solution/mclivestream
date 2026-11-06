@@ -274,7 +274,8 @@ function rotateStaticGrids(date){
      data-qty (so mon, ''), data-cat (nam/nu/tre-em/quan-ao/giay-dep/
      my-pham/phu-kien).
    - Xuong: data-moq (so san pham toi thieu, '' neu khong cong khai),
-     data-cat (nhu tren + tpcn). Gia tri don xuong hien chua co du lieu gia
+     data-cat (nhu tren + tpcn), data-prov (tinh: TP.HCM/Ha Noi/Binh Duong/
+     Nam Dinh/Hung Yen/Dong Nai). Gia tri don xuong hien chua co du lieu gia
      nen dung MOQ lam quy mo don (nho <30 / vua 30-100 / lon >100).
    Quy tac: the thieu du lieu cua 1 tieu chi dang loc thi KHONG khop (an di);
    the khop duoc dua len dau moi grid de quy tac thu gon 2 hang (nth-child)
@@ -307,6 +308,7 @@ function lotMatches(card, f){
   return true;
 }
 function facMatches(card, f){
+  if(f.prov && card.getAttribute('data-prov') !== f.prov) return false;
   if(f.value){
     var m = card.getAttribute('data-moq');
     if(m === null || m === '') return false;
@@ -347,7 +349,7 @@ function initSectionFilter(opts){
   }
   function apply(){
     var f = opts.readForm();
-    var active = !!(f.price || f.qty || f.value || f.moq || f.cat);
+    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat);
     var total = 0, first = null;
     grids.forEach(function(g){
       var matched = [], rest = [];
@@ -404,6 +406,7 @@ function initFactoryFilter(){
     countId: 'factoryCount', emptyId: 'factoryEmpty', label: 'xưởng',
     readForm: function(){
       return {
+        prov: document.getElementById('fFacProv').value,
         value: document.getElementById('fFacValue').value,
         moq: document.getElementById('fFacMoq').value,
         cat: document.getElementById('fFacCat').value
