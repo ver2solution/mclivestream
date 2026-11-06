@@ -347,6 +347,12 @@ function initFilterToggle(){
   var btns = (document.querySelectorAll) ? document.querySelectorAll('.filter-toggle') : [];
   for(var i = 0; i < btns.length; i++){
     (function(btn){
+      /* v78 C2: chi gan handler 1 lan cho moi nut. Dispatcher goi ca
+         initList() (trang Mau) lan initShops() (moi trang) — trang Mau bi
+         gan 2 listener: bam 1 lan toggle 2 lan (mo roi dong ngay) nen
+         .filter-card mai display:none, nut khong doi nhan. */
+      if(btn._filterToggleBound) return;
+      btn._filterToggleBound = true;
       btn.addEventListener('click', function(){
         var sec = filterSectionOf(btn);
         if(!sec) return;

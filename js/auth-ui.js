@@ -283,16 +283,27 @@
       });
     });
 
-    // Đăng xuất.
+    // Đăng xuất (v78 F-05: cap nhat UI NGAY truoc khi doi signOut xong —
+    // truoc day doi await api().signOut() (goi mang toi Supabase) roi moi
+    // doi UI nen nut co ve "khong tac dung" vai giay. Sau signOut thi
+    // dong bo lai bang showUser(): neu that bai thi hop "Da dang nhap"
+    // hien lai + bao loi, khong de UI lech voi session that.)
     var so = $(cfg.signOutId);
     if (so) so.addEventListener('click', async function () {
+      if (so.disabled) return;
+      so.disabled = true;
+      var box = $(cfg.boxId);
+      if (box) box.style.display = 'none';
+      msg('Đang đăng xuất…');
+      showAuthView('login');
       try { if (api()) await api().signOut(); } catch (e) {}
       sessionCache = null;
       sessionCacheReady = false;
-      var box = $(cfg.boxId);
-      if (box) box.style.display = 'none';
-      msg('Đã đăng xuất.');
-      showAuthView('login');
+      so.disabled = false;
+      await showUser();
+      var box2 = $(cfg.boxId);
+      if (box2 && box2.style.display !== 'none') { msg('Đăng xuất chưa thành công, hãy thử lại.'); }
+      else { msg('Đã đăng xuất.'); }
       if (typeof cfg.onSessionChange === 'function') {
         try { cfg.onSessionChange(null); } catch (e) {}
       }
