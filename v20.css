@@ -103,6 +103,8 @@ a:hover{text-decoration:underline}
 .filter-card label{font-size:12px;font-weight:800;color:var(--mut)}
 .filter-card input,.filter-card select{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
 .filter-card .full{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+.filter-title{margin:14px 0 6px;font-size:15px}
+.filter-area .filter-title:first-child{margin-top:6px}
 .pager{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:20px 0}
 .pager button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}
 .pager button:disabled{opacity:.45;cursor:default}

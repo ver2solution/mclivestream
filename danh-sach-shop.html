@@ -17,6 +17,8 @@
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><div class="section-head"><div><h1>Tìm shop tuyển mẫu livestream</h1></div></div>
+<div class="filter-area">
+<h3 class="filter-title">Tìm shop tuyển mẫu</h3>
 <div class="filter-card cols-3"><div><label>Tỉnh / Thành phố</label><select id="fShopProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option></select></div>
 <div><label>Lĩnh vực livestream</label><select id="fShopCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option>Thời trang</option><option>Mỹ phẩm &amp; Làm đẹp</option><option>Gia dụng &amp; Đời sống</option><option>Idol / Streamer</option><option>Công nghệ</option><option>Khác</option></select></div>
 <div><label>Sắp xếp lương</label><select id="fShopSort" data-track="sap-xep-shop"><option value="">Mặc định (mới nhất)</option><option value="hourly-asc">Lương giờ: thấp → cao</option><option value="hourly-desc">Lương giờ: cao → thấp</option><option value="monthly-asc">Lương tháng: thấp → cao</option><option value="monthly-desc">Lương tháng: cao → thấp</option></select></div>
@@ -25,14 +27,23 @@
 <div><label id="fPayMinLabel">Mức lương tối thiểu</label><input id="fPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled></div>
 
 <div class="full"><button class="btn btn-primary" id="applyShopBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="resetShopBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div></div>
-<section class="lot-section collapsed" id="lo-hang-xa-kho" aria-labelledby="lot-title">
-<h2 id="lot-title">Lô hàng xả kho</h2>
-<p class="lot-intro">Giúp doanh nghiệp xả hàng tồn kho thu về vốn tái sản xuất — Ver2Solution tổng hợp các lô hàng xả kho từ bài đăng công khai trên mạng. Các lô dưới đây chưa được Ver2Solution kiểm chứng trực tiếp; người mua tự liên hệ người đăng và tự kiểm tra hàng trước khi giao dịch. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
+<h3 class="filter-title">Tìm lô hàng xả kho</h3>
 <div class="filter-card cols-3" id="lotFilter"><div><label>Giá trị lô</label><select id="fLotPrice" data-track="loc-gia-lo"><option value="">Tất cả giá</option><option value="lt20">Dưới 20.000đ/cái</option><option value="20-50">20.000–50.000đ/cái</option><option value="50-100">50.000–100.000đ/cái</option><option value="gt100">Trên 100.000đ/cái</option></select></div>
 <div><label>Số lượng lô</label><select id="fLotQty" data-track="loc-so-luong-lo"><option value="">Tất cả số lượng</option><option value="lt500">Dưới 500 món</option><option value="500-1000">500–1.000 món</option><option value="1000-5000">1.000–5.000 món</option><option value="gt5000">Trên 5.000 món</option></select></div>
 <div><label>Mặt hàng</label><select id="fLotCat" data-track="loc-mat-hang-lo"><option value="">Tất cả mặt hàng</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="quan-ao">Quần áo</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option></select></div>
 <div class="full"><button class="btn btn-primary" id="lotApplyBtn" data-track="ap-dung-loc-lo" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="lotResetBtn" data-track="dat-lai-loc-lo" type="button">Đặt lại</button></div>
 <p class="filter-count" id="lotCount"></p><p class="filter-empty" id="lotEmpty" hidden>Không có lô nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại.</p></div>
+<h3 class="filter-title">Tìm xưởng may nhận gia công</h3>
+<div class="filter-card cols-3" id="factoryFilter"><div><label>Tỉnh / Thành phố</label><select id="fFacProv" data-track="loc-tinh-xuong"><option value="">Tất cả tỉnh</option><option value="TP.HCM">TP. Hồ Chí Minh (8)</option><option value="Hà Nội">Hà Nội (5)</option><option value="Bình Dương">Bình Dương (3)</option><option value="Nam Định">Nam Định (2)</option><option value="Hưng Yên">Hưng Yên (1)</option><option value="Đồng Nai">Đồng Nai (1)</option></select></div>
+<div><label>Giá trị đơn</label><select id="fFacValue" data-track="loc-gia-tri-don"><option value="">Tất cả</option><option value="small">Đơn nhỏ (MOQ dưới 30)</option><option value="medium">Đơn vừa (MOQ 30–100)</option><option value="large">Đơn lớn (MOQ trên 100)</option></select></div>
+<div><label>Số lượng tối thiểu</label><select id="fFacMoq" data-track="loc-so-luong-toi-thieu"><option value="">Tất cả</option><option value="10">Nhận đơn từ 10 sản phẩm</option><option value="30">Nhận đơn từ 30 sản phẩm</option><option value="100">Nhận đơn từ 100 sản phẩm</option><option value="300">Nhận đơn từ 300 sản phẩm</option></select></div>
+<div><label>Mặt hàng</label><select id="fFacCat" data-track="loc-mat-hang-xuong"><option value="">Tất cả mặt hàng</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="quan-ao">Quần áo</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option></select></div>
+<div class="full"><button class="btn btn-primary" id="factoryApplyBtn" data-track="ap-dung-loc-xuong" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="factoryResetBtn" data-track="dat-lai-loc-xuong" type="button">Đặt lại</button></div>
+<p class="filter-count" id="factoryCount"></p><p class="filter-empty" id="factoryEmpty" hidden>Không có xưởng nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại.</p></div>
+</div>
+<section class="lot-section collapsed" id="lo-hang-xa-kho" aria-labelledby="lot-title">
+<h2 id="lot-title">Lô hàng xả kho</h2>
+
 <h3>Doanh nghiệp/ Shop xả hàng tồn kho</h3>
 <p class="lot-sub">Doanh nghiệp và shop xả hàng tồn kho theo lô sỉ — đang có 8 lô.</p>
 <div class="lot-grid">
@@ -69,14 +80,8 @@
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav>
 <section class="lot-section collapsed" id="xuong-may-gia-cong" aria-labelledby="factory-title">
 <h2 id="factory-title">Xưởng / Nhà máy may nhận gia công</h2>
-<p class="lot-intro">Giúp shop và thương hiệu tìm xưởng may nhận gia công — Ver2Solution tổng hợp các xưởng/nhà máy may nhận gia công quần áo từ bài đăng công khai trên mạng. Các xưởng dưới đây chưa được Ver2Solution kiểm chứng trực tiếp; shop tự liên hệ xưởng và tự kiểm tra trước khi đặt hàng. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
 <p class="lot-sub">Xưởng và nhà máy may nhận gia công quần áo cho shop và thương hiệu — đang có 20 xưởng/nhà máy.</p>
-<div class="filter-card cols-3" id="factoryFilter"><div><label>Tỉnh / Thành phố</label><select id="fFacProv" data-track="loc-tinh-xuong"><option value="">Tất cả tỉnh</option><option value="TP.HCM">TP. Hồ Chí Minh (8)</option><option value="Hà Nội">Hà Nội (5)</option><option value="Bình Dương">Bình Dương (3)</option><option value="Nam Định">Nam Định (2)</option><option value="Hưng Yên">Hưng Yên (1)</option><option value="Đồng Nai">Đồng Nai (1)</option></select></div>
-<div><label>Giá trị đơn</label><select id="fFacValue" data-track="loc-gia-tri-don"><option value="">Tất cả</option><option value="small">Đơn nhỏ (MOQ dưới 30)</option><option value="medium">Đơn vừa (MOQ 30–100)</option><option value="large">Đơn lớn (MOQ trên 100)</option></select></div>
-<div><label>Số lượng tối thiểu</label><select id="fFacMoq" data-track="loc-so-luong-toi-thieu"><option value="">Tất cả</option><option value="10">Nhận đơn từ 10 sản phẩm</option><option value="30">Nhận đơn từ 30 sản phẩm</option><option value="100">Nhận đơn từ 100 sản phẩm</option><option value="300">Nhận đơn từ 300 sản phẩm</option></select></div>
-<div><label>Mặt hàng</label><select id="fFacCat" data-track="loc-mat-hang-xuong"><option value="">Tất cả mặt hàng</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="quan-ao">Quần áo</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option></select></div>
-<div class="full"><button class="btn btn-primary" id="factoryApplyBtn" data-track="ap-dung-loc-xuong" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="factoryResetBtn" data-track="dat-lai-loc-xuong" type="button">Đặt lại</button></div>
-<p class="filter-count" id="factoryCount"></p><p class="filter-empty" id="factoryEmpty" hidden>Không có xưởng nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại.</p></div>
+
 <div class="lot-grid">
 <article class="lot-card" data-moq="" data-cat="quan-ao" data-prov="TP.HCM"><h4>Xưởng may Vinasilk</h4><p class="lot-price">Áo thun, đồ công sở, hoodie, áo khoác, túi xách, khẩu trang</p><p class="lot-meta">TP.HCM — 1A Nguyễn Bỉnh Khiêm, P. 5, Q. Bình Thạnh · MOQ: Không công khai · SĐT 096 1982 305 · vinasilk.vn</p><p class="lot-date">Ngày đăng: 26/06/2025</p><p class="lot-label">Chưa xác thực — thông tin tổng hợp từ bài đăng công khai</p><p><a href="https://tripi.vn/blog/vi/xep-hang/top-10-xuong-may-gia-cong-quan-ao-uy-tin-chat-luong-hang-dau-tai-tphcm-tripi" target="_blank" rel="noopener">Xem trang gốc →</a></p></article>
 <article class="lot-card" data-moq="30" data-cat="quan-ao" data-prov="TP.HCM"><h4>Xưởng may VICT</h4><p class="lot-price">Quần áo thiết kế cho shop thời trang (theo mẫu khách gửi)</p><p class="lot-meta">TP.HCM — 37A Hiền Vương, P. Phú Thạnh, Q. Tân Phú · MOQ: Từ 30 sản phẩm/mẫu · SĐT 079 659 7878 · xuongmayvict.vn</p><p class="lot-date">Ngày đăng: 26/06/2025</p><p class="lot-label">Chưa xác thực — thông tin tổng hợp từ bài đăng công khai</p><p><a href="https://tripi.vn/blog/vi/xep-hang/top-10-xuong-may-gia-cong-quan-ao-uy-tin-chat-luong-hang-dau-tai-tphcm-tripi" target="_blank" rel="noopener">Xem trang gốc →</a></p></article>
@@ -121,7 +126,7 @@
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
 <div id="shopProfileGate"><p>Bạn cần đăng nhập để tạo / sửa hồ sơ shop.</p><p><a class="btn btn-primary" href="#dang-nhap-shop">Đăng Nhập</a></p></div>
 <div id="shopProfileFormWrap" hidden>
-<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> form này lưu hồ sơ thật khi shop đã đăng nhập. Nếu hệ thống chưa sẵn sàng, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
+<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> Form này lưu hồ sơ thật khi shop đã đăng nhập. Nếu hệ thống chưa sẵn sàng, bấm Lưu sẽ báo lỗi rõ ràng, không giả vờ đã lưu. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p></div>
 <form id="shopProfileForm" data-track="form-ho-so-shop">
 <label>1 ảnh logo <span style="font-weight:400">(chỉ chọn 1 ảnh)</span><input type="file" name="logo" accept="image/*"></label>
 <label>Tên shop *<input name="shopName" required placeholder="Tên shop"></label>
@@ -182,7 +187,7 @@
 <section class="form-card" id="dang-tin" aria-labelledby="form-title"><h2 id="form-title">Đăng tin tuyển mẫu</h2>
 <div id="jobGate"><p>Bạn cần đăng nhập để đăng tin tuyển mẫu.</p><p><a class="btn btn-primary" href="#dang-nhap-shop">Đăng Nhập</a></p></div>
 <div id="jobFormWrap" hidden>
-<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> tin được lưu vào hệ thống, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
+<div class="notice"><p><strong>Lưu thật vào hệ thống:</strong> Tin được lưu vào hệ thống, trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt. Cần lưu hồ sơ shop trước khi đăng tin. Số Zalo ở đây chỉ admin thấy, không hiện công khai.</p></div>
 <form id="jobForm" data-track="form-dang-tin-tuyen">
 <label>Tỉnh / Thành phố *<select name="province" required><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label>
 <label>Quận / huyện, địa điểm làm việc <span style="font-weight:400">(ví dụ: Cầu Giấy, Tây Mỗ, Bình Tân — tin tuyển thật luôn ghi quận/huyện)</span><input name="district" placeholder="Quận / huyện, địa điểm làm việc"></label>
