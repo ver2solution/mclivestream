@@ -665,7 +665,11 @@ function initNews(){
     main.innerHTML=list.map(function(a){
       var href = articleHref(a);
       var imgTarget = a.page ? '' : ' target="_blank" rel="noopener"';
-      var img = a.img ? '<a href="'+esc(href)+'"'+imgTarget+'><img src="'+esc(a.img)+'" alt="'+(a.imgSelf?'Infographic do Ver2Solution tự làm từ số liệu bài gốc':'Ảnh gốc từ bài của '+esc(a.source))+'" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">'+(a.imgSelf?'Infographic: Ver2Solution tự làm từ số liệu bài gốc.':'Ảnh gốc: '+esc(a.source)+' — không phải ảnh của Ver2Solution.')+'</div>' : '';
+      var imgCap = a.kind === 'keyword' ? 'Infographic: Ver2Solution tự làm từ số liệu tin tuyển thật trên sàn.'
+        : (a.imgSelf ? 'Infographic: Ver2Solution tự làm từ số liệu bài gốc.' : 'Ảnh gốc: ' + esc(a.source) + ' — không phải ảnh của Ver2Solution.');
+      var imgAlt = a.kind === 'keyword' ? 'Infographic do Ver2Solution tự làm từ số liệu tin tuyển thật trên sàn'
+        : (a.imgSelf ? 'Infographic do Ver2Solution tự làm từ số liệu bài gốc' : 'Ảnh gốc từ bài của ' + esc(a.source));
+      var img = a.img ? '<a href="' + esc(href) + '"' + imgTarget + '><img src="' + esc(a.img) + '" alt="' + imgAlt + '" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">' + imgCap + '</div>' : '';
       var tw = a.takeaway ? '<p><b>Ver2Solution rút ra:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
       + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
