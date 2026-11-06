@@ -48,6 +48,7 @@ a:hover{text-decoration:underline}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:5px}
 .section-head h1{margin:0;font-size:28px}.section-head h2{margin:0;font-size:26px}.section-head h2 a{color:var(--brand)}.section-head h2 a:hover{text-decoration:underline}
 .section-head p{margin:4px 0 0;color:var(--mut)}
+.section-foot{display:flex;justify-content:flex-end;margin:12px 0 0}/* v75: nut "Xem tất cả tin →" chuyen xuong duoi hang tin, can phai */
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
@@ -105,6 +106,21 @@ a:hover{text-decoration:underline}
 .filter-card .full{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
 .filter-title{margin:14px 0 6px;font-size:15px}
 .filter-area .filter-title:first-child{margin-top:6px}
+/* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
+   2026-11-06). 1 the noi bat ngay duoi tieu de trang, truoc the loc tin tuyen
+   shop; vung ket qua tai dung .grid.grid-3 (3 cot desktop, 2 cot <=1000px,
+   1 cot <=600px theo quy tac chung). Mobile <=360px chi hien toi da 1 the
+   (the dau theo dung thu tu); dong ho <=280px chi giu tieu de khoi + dong dem
+   / link "Xem tat ca" (hubCount), an o chon + ket qua + dong phu. */
+.hub-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin:0 0 9px;box-shadow:0 4px 16px rgba(11,93,78,.06)}
+.hub-card h2{margin:0 0 4px;font-size:22px}
+.hub-sub{margin:0 0 10px;color:var(--mut)}
+.hub-filters{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px}
+.hub-filters label{font-size:12px;font-weight:800;color:var(--mut)}
+.hub-filters select{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit;min-width:0}
+.hub-results{margin-top:4px}
+.hub-count{margin:10px 0 0}
+.hub-help{margin:6px 0 0;color:var(--mut);font-size:14px}
 .pager{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:20px 0}
 .pager button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}
 .pager button:disabled{opacity:.45;cursor:default}
@@ -198,7 +214,7 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .site-foot .powered{margin-top:10px;color:var(--ink);font-weight:700}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
-@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
+@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card,.hub-filters{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
 /* v28: mobile — Lương 1 dòng, Lịch 1 dòng, Kinh nghiệm tối đa 2 dòng, xếp dọc. */
 .decision-row{flex-direction:column}.decision-item{flex:1 1 auto}
 /* v39: nut Gop y xuong goc duoi phai (khong che noi dung giua man hinh). */
@@ -228,6 +244,14 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
   .decision-item,.decision-exp{padding:7px 9px;min-height:56px}
   /* v39: chong tran ngang — o nhap trong luoi khong duoc vuot chieu rong. */
   .search-card input,.search-card select,.filter-card input,.filter-card select,.form-card input,.form-card select,.form-card textarea{min-width:0}
+  /* v63: man hinh rat nho — khoi hub chi hien toi da 1 the ket qua. */
+  .hub-results .card:nth-child(n+2){display:none}
+  .hub-card{padding:14px}
+}
+@media(max-width:280px){
+  /* v63: dong ho — khoi hub chi giu tieu de + dong dem / link "Xem tat ca"
+     (hubCount), an o chon + ket qua + dong phu. */
+  .hub-filters,.hub-results,.hub-help{display:none}
 }
 @media(max-width:320px){
   body{font-size:15px}.logo{font-size:17px}.logo small{display:none}
@@ -288,7 +312,6 @@ img{max-width:100%}
 /* v41: dong thu 2 cua moi o so lieu (luong/doanh thu) + ghi chu nho. */
 .trust-sub{display:block;font-size:12px;color:var(--mut);font-weight:700;margin-top:2px}
 .trust-note{display:none;font-size:11px;color:var(--mut);font-style:italic;margin-top:2px}/* v49: AN ghi chu noi bo (doanh thu cao nhat chua co du lieu) — chu noi bo lot ra giao dien; dong dai khong xuong dong ep hang so lieu tran khung, day nut xuong. Giu span trong HTML de JS cap nhat sau. */
-.trust-cta{text-align:center;margin:14px 0 0}/* v65: nut "Xem shop đang tuyển" xuong DUOI khung trust-strip, can giua */
 /* DAI LOGO DOI TAC (v49, yeu cau nguoi dung 06/11/2026 — lam lai theo mau
    SEONGON; v50: doi thanh o tron 48px chua 1 icon; v51: logo MAU GOC,
    dai logo nam gon trong khung trang — .trust-strip overflow:hidden,
@@ -402,6 +425,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
    An nhom phu (.lot-extra) + the thu 7 tro di o luoi dau khi thu gon:
    desktop 3 cot -> 6 the, tablet 2 cot -> 4 the, mobile 1 cot -> 2 the. */
 .lot-section.collapsed .lot-extra{display:none}
+#faq.collapsed .faq-extra{display:none}/* v75: FAQ trang chu chi hien 3 cau dau, cac cau sau an sau nut Xem them */
 .lot-section.collapsed .lot-grid .lot-card:nth-child(n+7){display:none}
 /* v64: loc lo/xuong — the khong khop bo loc luon an, ke ca khi mo rong */
 .lot-card.lot-filtered-out{display:none}
