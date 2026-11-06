@@ -422,3 +422,42 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .coming{display:inline-block;background:#fff3cd;border:1px solid #e6c87a;color:#7a5b00;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:800;vertical-align:middle}
 .auth-type-btn.sel{border-color:var(--brand);background:#eef7f2}
 @media(max-width:900px){.auth-layout{grid-template-columns:1fr}}
+
+/* v70: SUA LOI MOBILE/TABLET (kiem tra tinh 06/11/2026 — KHONG chup duoc man
+   hinh that vi tai Chromium that bai 2 kenh (chromium + chromium-headless-
+   shell, deu "Download failure, code=1") va Chromium he thong tu choi chay
+   (Hatch WebGL domain policy); cac sua duoi day dua tren kiem tra tinh
+   v20.css + HTML, khong doi noi dung/so lieu/URL, khong doi hanh vi desktop.
+   Kiem chung truc quan tren dien thoai that de sau khi deploy. */
+/* (1) BANG RESPONSIVE: quy-tac-diem-thuong.html co bang 4 cot khong co CSS
+   rieng nen o mobile bang tran khung va bi cat (html,body overflow-x:hidden
+   che di). Quy tac chung: bang day du vien + cuon ngang o <=600px. */
+table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f4f8f6}
+@media(max-width:600px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}th,td{padding:6px 8px;font-size:13px}}
+/* (2) HEADER MOBILE 390px: logo + Menu + Dang Nhap (~414px) khong vua 1 hang
+   (noi dung 350px) nen nut Dang Nhap roi xuong hang 2 lech trai. Thu gon
+   header o <=600px de vua 1 hang. */
+@media(max-width:600px){
+  .wrap{padding:0 16px}
+  .head-in{gap:10px;min-height:60px}
+  .logo{font-size:17px}
+  .logo small{display:none}
+  .logo-badge{width:34px;height:34px;font-size:19px;border-radius:11px}
+  .menu-btn{padding:8px 11px;min-height:44px}
+  .head-in .btn-sm{padding:8px 12px;font-size:13px}
+  /* (4) Nut Gop y co dinh goc duoi phai che noi dung footer khi cuon toi
+     cuoi trang — them khoang trong duoi footer. */
+  footer.site-foot{padding-bottom:84px}
+}
+@media(max-width:360px){.wrap{padding:0 10px}}
+/* (3) STEPS O TABLET 768px: .steps giu 3 cot (moi cot ~230px) lam doan FAQ
+   dai bi hep; xuong 2 cot o <=1000px (<=600px van 1 cot nhu cu).
+   (5) Nav mo o tablet: link cao ~47px de bam bang ngon tay (>=44px). */
+@media(max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.main-nav.open a{padding:12px 14px}}
+/* (6) iOS tu zoom khi bam o nhap neu font <16px: giu o nhap 16px o <=320px
+   (body o muc nay la 15px). */
+@media(max-width:320px){
+  .search-card input,.search-card select,.filter-card input,.filter-card select,.form-card input,.form-card select,.form-card textarea{font-size:16px}
+}
