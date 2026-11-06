@@ -72,7 +72,13 @@ function ownerNoteHTML(kind){
   var href = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
   return '<p class="owner-note"><a href="'+href+'">Đăng ký</a> &gt; <a href="'+href+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
 }
-function cardHTML(m){
+function cardHTML(m, opts){
+  // v63: opts tuy chon (khong doi dau ra mac dinh) — opts.zaloHref doi link nut
+  // "Nhan Zalo" (khoi hub 11.11 dung tin nhan soan san), opts.demoUrl them link
+  // "Xem video demo" khi ho so co video demo that.
+  opts = opts || {};
+  var zaloHref = opts.zaloHref || 'https://zalo.me/0329983699';
+  var demoLink = opts.demoUrl ? '<a class="btn btn-ghost btn-sm" data-track="xem-video-demo" href="'+esc(opts.demoUrl)+'" target="_blank" rel="noopener">▶ Xem video demo</a>' : '';
   // All attributes are inside <article ...> here — the exact v19 bug is impossible in this template.
   // v28: data-gender carries "" (not the placeholder "Chưa cập nhật") when the
   // gender is unknown, so the placeholder string never enters the rendered DOM
@@ -86,7 +92,8 @@ function cardHTML(m){
   + decisionHTML(m)
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế. <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
+  + demoLink
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="'+esc(zaloHref)+'" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
   + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model')+'</div></article>';
 }
 function miniHTML(m){
@@ -358,6 +365,22 @@ function closeFilters(sec){
   if(btn){ btn.setAttribute('aria-expanded', 'false'); if(btn._label) btn.textContent = btn._label; }
 }
 function closeFilterOf(btn){ var sec = filterSectionOf(btn); if(sec) closeFilters(sec); }
+/* v75: FAQ trang chu chi hien 3 cau dau; nut "Xem thêm câu hỏi" mo/thu gon
+   cac cau con lai. Pattern giong nut Xem them lo/xuong: section bat dau co
+   class .collapsed, cac .step tu cau 4 mang class .faq-extra, CSS an khi
+   section collapsed; bam nut doi class + aria-expanded + nhan nut. */
+function initFaqToggle(){
+  var sec = document.getElementById('faq');
+  if(!sec) return;
+  var btn = document.getElementById('faqMoreBtn');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var collapsed = sec.classList.toggle('collapsed');
+    var open = !collapsed;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Thu gọn ↑' : 'Xem thêm câu hỏi ↓';
+  });
+}
 function initSectionFilter(opts){
   var section = document.getElementById(opts.sectionId);
   if(!section) return;
@@ -842,13 +865,8 @@ function initList(){
       // sap theo luot xem + xoay theo ngay se pha thu tu luong/doanh thu).
       list=sortModelsBy(list,f.sort);
     } else {
-    // Sắp xếp theo lượt xem rồi bình luận, giảm dần; cả 20 hồ sơ hiện đều 0/0 nên
-    // thứ tự hòa được phá bằng ảnh thật trước, không dùng mã nội bộ để sắp xếp.
-    list=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments)||((b.photoUrl?1:0)-(a.photoUrl?1:0));});
-    // v64: xoay thứ tự 3 lần/ngày theo cửa sổ 8 tiếng (giờ VN), ổn định
-    // trong cửa sổ — xoay riêng trong từng nhóm cùng lượt xem/bình luận/
-    // nhóm ảnh để không phá thứ tự đã sắp.
-    list=rotateWindow(list, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); });
+    // v63: tach ra defaultModelOrder de khoi hub 11.11 dung DUNG thu tu nay.
+    list=defaultModelOrder(list);
     }
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
@@ -868,6 +886,91 @@ function initList(){
   document.getElementById('applyBtn').addEventListener('click',function(){render(1); closeFilterOf(document.getElementById('applyBtn'));});
   document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
   render(page);
+}
+/* v63: thu tu mac dinh cua trang Mau (initList): luot xem giam dan, binh luan
+   giam dan, anh that truoc (photoTier), roi xoay trong tung nhom. v64: xoay
+   3 lan/ngay theo cua so 8 tieng (gio VN), on dinh trong cua so. Tach ra ham
+   rieng de khoi hub 11.11 dung DUNG thu tu do — shop khong thay hai thu tu
+   khac nhau cho cung mot bo loc. */
+function defaultModelOrder(list, date){
+  var out=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments)||((b.photoUrl?1:0)-(a.photoUrl?1:0));});
+  return rotateWindow(out, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); }, date);
+}
+/* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
+   2026-11-06, design-2026-11-06-tim-mau-nhanh-cho-shop-11-11.md). Chi 1 khoi
+   moi tren danh-sach-shop.html + ham render rieng o day + CSS .hub-card
+   trong v20.css. Khong doi du lieu js/data.js, bo loc tin tuyen shop, phan
+   trang, form ho so shop / dang tin, trang chu, trang mau hay trang chi tiet.
+   Khong hua "Con trong"/"San sang 11.11", khong hien luot xem/binh luan (0/0),
+   khong hien so rieng cua mau, khong them o loc gio lam / ca toi. */
+var HUB_ZALO = 'https://zalo.me/0329983699';
+/* v63: tin nhan Zalo soan san cho shop can mau dot 11.11 — dung mau cau cua
+   thiet ke 04/11 ("Hoi lich 11.11 qua Zalo", chua code toi 06/11): neu thiet
+   ke 04/11 duoc code sau thi tai dung ham nay, khong viet lai ham moi. Chi
+   dung Zalo chung Ver2Solution; khong hien so rieng cua mau o bat ky dau
+   (ke ca 5 ho so co Zalo cong khai trong du lieu). */
+function hubZaloHref(m){
+  var msg = 'Chào Ver2Solution, tôi là shop cần mẫu ' + (m.name || '') + ' live ' + (m.cat || '') + ' đợt 11.11 (10–13/11). Nhờ giới thiệu và xác nhận lịch trống giúp tôi.';
+  return HUB_ZALO + '?text=' + encodeURIComponent(msg);
+}
+/* v63: link video demo cua ho so — truong luu tren Supabase la demo_video_url
+   (trang-cua-toi.html, uploadDemoVideo tra ve public URL); chap nhan ca ten
+   bien the de phong doi ten truong. Hien tai 0/20 ho so co video demo nen
+   khong the nao duoc render; khi mau tu dang ky tai video demo len thi link
+   tu xuat hien, khong can sua code. */
+function demoUrlOf(m){ return (m && (m.demo_video_url || m.demoUrl || m.demo)) || ''; }
+/* v63: the ket qua trong khoi hub = the 5 giay cardHTML (v28) nhung nut
+   "Nhan Zalo" mo Zalo kem tin nhan soan san (ten that + linh vuc + dot
+   11.11) thay cho link Zalo chung tran; them link "Xem video demo" neu co. */
+function hubCardHTML(m){ return cardHTML(m, {zaloHref: hubZaloHref(m), demoUrl: demoUrlOf(m)}); }
+/* v63: ket qua hub = loc theo tinh + linh vuc (chi 2 o nay, khong loc gio lam
+   / luong / doanh thu) roi xep DUNG thu tu mac dinh cua trang Mau. */
+function hubResults(prov, cat, date){
+  return defaultModelOrder(filterModels(D.models, {prov: prov || '', cat: cat || ''}), date);
+}
+/* v63: link sang trang Mau dung tham so prov/cat ma initList da doc + dien
+   san vao bo loc khi tai trang (da kiem chung trong code v52). Ca 2 rong thi
+   ve trang Mau khong tham so. */
+function hubAllLink(prov, cat){
+  var qs = [];
+  if(prov) qs.push('prov=' + encodeURIComponent(prov));
+  if(cat) qs.push('cat=' + encodeURIComponent(cat));
+  return 'danh-sach-mau.html' + (qs.length ? '?' + qs.join('&') : '');
+}
+/* v63: dong trang thai khi to hop 0 mau — chi noi dung su that + duong doi
+   lua chon, khong goi y mau sai tinh/linh vuc, khong hien the trong. */
+function hubEmptyHTML(prov, cat){
+  var total = (D.models || []).length;
+  if(prov && cat) return 'Chưa có mẫu ' + esc(cat) + ' ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="' + hubAllLink('', cat) + '">xem tất cả mẫu ' + esc(cat) + ' →</a>';
+  if(prov) return 'Chưa có mẫu ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
+  if(cat) return 'Chưa có mẫu ' + esc(cat) + '. <a href="danh-sach-mau.html">Xem tất cả ' + total + ' mẫu →</a>';
+  return '';
+}
+function initHub(){
+  var box = document.getElementById('hubResults'); if(!box) return;
+  var provSel = document.getElementById('hubProv'), catSel = document.getElementById('hubCat');
+  var countEl = document.getElementById('hubCount'), sub = document.getElementById('hubSub');
+  var total = (D.models || []).length;
+  if(sub) sub.textContent = 'Hiện có ' + total + ' mẫu trên sàn. Chọn tỉnh và lĩnh vực rồi xem ngay mẫu phù hợp — chỉ hiện thông tin thật.';
+  function render(){
+    var prov = provSel ? provSel.value : '', cat = catSel ? catSel.value : '';
+    if(!prov && !cat){
+      box.innerHTML = '';
+      if(countEl) countEl.innerHTML = 'Chọn tỉnh và lĩnh vực ở trên để xem mẫu phù hợp — hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
+      return;
+    }
+    var list = hubResults(prov, cat);
+    if(!list.length){
+      box.innerHTML = '';
+      if(countEl) countEl.innerHTML = hubEmptyHTML(prov, cat);
+      return;
+    }
+    box.innerHTML = list.slice(0, 3).map(hubCardHTML).join('');
+    if(countEl) countEl.innerHTML = 'Có ' + list.length + ' mẫu phù hợp. <a href="' + hubAllLink(prov, cat) + '">Xem tất cả ' + list.length + ' mẫu →</a>';
+  }
+  if(provSel) provSel.addEventListener('change', render);
+  if(catSel) catSel.addEventListener('change', render);
+  render();
 }
 /* News page: newest first by default, category filter, oldest sort option.
    Sidebar "most read" is NOT a fabricated read count: no verified read numbers
@@ -995,7 +1098,7 @@ function initShopDetail(){
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
 }
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
-  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops();
+  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -1014,6 +1117,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
