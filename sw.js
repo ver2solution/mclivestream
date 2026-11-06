@@ -1,12 +1,16 @@
-/* v48 service worker — PWA shell cache only. Version bump = new cache.
+/* v49 service worker — PWA shell cache only. Version bump = new cache.
    FIX (05/11): js/data.js is now NETWORK-FIRST. data.js is content data
    (articles/models/shops) that changes on almost every deploy; the old
    cache-first rule served a stale data.js from before v29, so article
    links fell back to the original source URLs instead of the internal
    bai-viet pages. The CACHE name must be bumped on EVERY web deploy
    that changes data.js/app.js/v20.css. */
-const CACHE = 'v48-shell-1';
-const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'icon-192.png', 'icon-512.png'];
+const CACHE = 'v49-shell-1';
+const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'icon-192.png', 'icon-512.png',
+  'images/partners/google.png', 'images/partners/meta.png', 'images/partners/tiktok.png',
+  'images/partners/thaco.png', 'images/partners/tpbank.png', 'images/partners/coccoc.png',
+  'images/partners/dem-kim-cuong.png', 'images/partners/flamingo.jpg',
+  'images/partners/bao-kinh-te-do-thi.png'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });

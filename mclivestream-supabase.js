@@ -66,7 +66,9 @@
         account_type: opts.accountType || '',
         marketing_opt_in: !!opts.marketingOptIn,
         marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution'
-      } }
+      },
+      // v49: redirect xac nhan email ve trang chu /mclivestream/ (xem SITE_URL).
+      emailRedirectTo: SITE_URL }
     });
     if (res.error) throw res.error;
     return res.data;
@@ -94,6 +96,13 @@
   // dat-lai-mat-khau.html (phải thêm URL này vào Redirect URLs trên
   // Dashboard); không dùng window.location.href nữa — link reset cũ trỏ
   // về trang danh sách và thành link đăng nhập ma thuật.
+  // URL goc cua web (trang chu) — dung lam redirect xac nhan email dang ky.
+  // FIX (v49): GoTrue tu suy redirect_to mac dinh ve goc
+  // ver2solution.github.io (thieu /mclivestream/) du Site URL tren
+  // Dashboard da dung (kiem tra 2 lan, 11:23) — thu xac nhan 11:21 van sai
+  // — nen truyen tuong minh qua emailRedirectTo trong signUp. Doi cung luc
+  // voi RESET_PASSWORD_URL khi domain chinh ver2solution.com dung duoc.
+  var SITE_URL = 'https://ver2solution.github.io/mclivestream/';
   var RESET_PASSWORD_URL = 'https://ver2solution.github.io/mclivestream/dat-lai-mat-khau.html';
   async function resetPassword(email, redirectTo) {
     var res = await client.auth.resetPasswordForEmail(email, {
