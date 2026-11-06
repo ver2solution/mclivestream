@@ -165,7 +165,7 @@ a:hover{text-decoration:underline}
 .pinned-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .pin-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
 .pin-card a{display:block;color:inherit;text-decoration:none}
-.pin-num{position:absolute;top:8px;left:8px;z-index:1;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.pin-num{position:absolute;top:auto;bottom:8px;left:8px;z-index:1;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;box-shadow:0 2px 8px rgba(0,0,0,.25)}/* v78 B3: badge ghim xuong goc duoi-trai — goc tren-trai che chu "Ver2Solution" tren infographic */
 .pin-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .pin-noimg{display:grid;place-items:center;background:var(--brand);color:#fff}
 .pin-noimg b{font-size:40px;font-weight:900}
@@ -232,7 +232,7 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .pin-img,.pin-noimg{grid-area:img;width:120px;aspect-ratio:4/3}
 .pin-card h3{grid-area:title;margin:0}
 .pin-cat{grid-area:cat;margin:0}
-.pin-num{top:16px;left:16px}}
+.pin-num{top:auto;bottom:16px;left:16px}}/* v78 B3: goc duoi-trai (mobile) */
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* MÀN HÌNH RẤT NHỎ (điện thoại nhỏ, đồng hồ ~200–320px): không tràn ngang,
    mọi thứ xếp dọc 1 cột, chữ vẫn đọc được, nút đủ lớn để bấm bằng ngón tay.
@@ -552,6 +552,7 @@ th{background:#f4f8f6}
   .shop-card h3{font-size:17px;min-height:0}
   .shop-head{min-height:0;padding:10px}
   .gopy-fab{width:48px;height:48px;font-size:20px;bottom:16px;right:12px}
+  body{padding-bottom:76px}/* v78 B4: noi dung cuoi trang cuon len khoi FAB 48px + bottom 16px (du 12px tho) */
 }
 /* (F5b) The shop o mobile: logo + ten xep doc (logo 56px doc duoc, thay vi
    25% ~35px mo nhat); o tin (khong logo that) cung 56px. */
@@ -600,3 +601,7 @@ th{background:#f4f8f6}
   .tags{min-width:0}
   .tag{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}/* G3: pill dai nhat ~190px ("Toan quoc / Live online") tran o 132px — cat gon bang dau ..., thong tin day du van co trong o "Tinh" cua the. */
 }
+/* v78 C1: link chia se bai viet bi cat tren mobile (34 trang bai, body rong
+   444px @360/390 vi <b> chua URL khong nga dong duoc). Luat tap trung o day
+   thay vi sua inline <style> tung file bai-viet (34 file deu nap v20.css). */
+.share-box b{overflow-wrap:anywhere;word-break:break-all}

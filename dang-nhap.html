@@ -85,6 +85,11 @@
   }
   var nextUrl = safeNext(params.get('next'));
   var redirected = false;
+  /* v78 F-05: chi tu dong quay lai trang truoc khi nguoi dung VUA dang nhap
+     xong trong luot truy cap nay. Mo trang khi da dang nhap san (khoi phuc
+     session) thi o lai trang de dung nut Dang xuat — truoc day bi day ve
+     index.html sau 800ms nen khong bam duoc Dang xuat. */
+  var signedInNow = false;
   var TYPE_NAMES = { model: 'Cá nhân tìm việc (mẫu livestream)', shop: 'Doanh nghiệp / Tổ chức' };
   var TYPE_TITLES = { model: 'Đăng ký tài khoản Cá nhân tìm việc', shop: 'Đăng ký tài khoản Doanh nghiệp / Tổ chức' };
   var authCfg = {
@@ -95,7 +100,7 @@
     inputs: { signupEmail: 'authSuEmail', signupPhone: 'authSuPhone', signupPass: 'authSuPass', signupPass2: 'authSuPass2', signupMarketing: 'authSuMarketing', signinEmail: 'authSiEmail', signinPass: 'authSiPass', forgotEmail: 'authFpEmail' },
     msgId: 'authMsg', boxId: 'authUserBox', boxEmailId: 'authUserEmail', signOutId: 'authSignOut',
     onSessionChange: function (user) {
-      if (user && !redirected) {
+      if (user && signedInNow && !redirected) {
         redirected = true;
         setTimeout(function () { location.href = nextUrl; }, 800);
       }
@@ -124,6 +129,12 @@
     chooser.hidden = false;
   });
   V2SAuthUI.initAuthUI(authCfg);
+  /* v78 F-05: danh dau "vua dang nhap trong luot nay" khi submit form dang
+     nhap (chay truoc/sau handler cua auth-ui.js deu duoc — co chi dung khi
+     session thay doi sau do). Dang nhap that bai thi khong co session nen
+     khong chuyen trang. */
+  var siForm = document.getElementById('authSignIn');
+  if (siForm) siForm.addEventListener('submit', function () { signedInNow = true; });
   var presetType = params.get('type');
   if (params.get('auth') === 'register' && (presetType === 'model' || presetType === 'shop')) pickType(presetType);
 })();
