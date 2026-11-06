@@ -280,6 +280,7 @@ img{max-width:100%}
 .trust-lead{margin:0;font-weight:800;font-size:17px}
 .trust-text{flex-basis:100%;min-width:0}/* v49: doan PR chiem tron 1 hang rieng — tranh hang voi o so lieu + nut gay day nut xuong */
 .trust-nums{display:flex;gap:30px;min-width:0;flex-wrap:wrap}/* v49: bo margin-left:auto (nut lay margin-left:auto); o so lieu tu xuong dong trong noi bo thay vi ep tran khung */
+.trust-nums-lots{flex-basis:100%;margin-top:4px}/* v58: hang so lieu lo xa kho (8 lo / 3 thu mua-ky gui / 2 xa theo dot) xuong dong rieng, day du chieu rong */
 .trust-num{min-width:0}/* v49: nhan dai duoc xuong dong trong o, khong ep o rong ra */
 .trust-num b{display:block;font-size:30px;line-height:1.1;color:var(--brand)}
 .trust-num span{display:block;font-size:13px;color:var(--mut);font-weight:700}
