@@ -411,3 +411,14 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 @media(max-width:600px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+3){display:none}}
 .lot-more{display:block;margin:16px auto 0;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:#eef7f2;color:var(--brand);font-weight:800;font-size:15px;cursor:pointer}
 .lot-more:hover{background:#dff0ea}
+
+/* v68: trang dang nhap 2 cot (form trai, bang gioi thieu phai). */
+.auth-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start}
+.auth-side h2{margin:0 0 8px;font-size:22px}
+.auth-side h3{margin:18px 0 6px;font-size:17px}
+.auth-side ul{margin:6px 0;padding-left:20px}
+.auth-side li{margin:4px 0}
+.auth-note{font-size:13px;color:var(--mut)}
+.coming{display:inline-block;background:#fff3cd;border:1px solid #e6c87a;color:#7a5b00;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:800;vertical-align:middle}
+.auth-type-btn.sel{border-color:var(--brand);background:#eef7f2}
+@media(max-width:900px){.auth-layout{grid-template-columns:1fr}}

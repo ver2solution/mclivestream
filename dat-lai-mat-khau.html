@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
-<a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập</a></div></header>
+<a class="btn btn-primary btn-sm" href="dang-nhap.html?next=dat-lai-mat-khau.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="form-card" id="dat-lai-mat-khau" aria-label="Đặt lại mật khẩu"><h1>Đặt lại mật khẩu</h1>
 <p id="resetStatus">Đang kiểm tra link đặt lại mật khẩu…</p>
@@ -25,8 +25,13 @@
 <p id="resetMsg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-dat-lai-mat-khau">Đặt lại mật khẩu</button>
 </form>
-<p id="resetLinks" hidden>Chưa nhận được link? Gửi lại từ mục <a href="danh-sach-mau.html#dang-nhap-mau">Quên mật khẩu (tài khoản mẫu)</a> hoặc <a href="danh-sach-shop.html#dang-nhap-shop">Quên mật khẩu (tài khoản shop)</a>.</p>
-<p><a href="danh-sach-mau.html#dang-nhap-mau">← Quay lại đăng nhập</a></p>
+<p id="resetLinks" hidden>Chưa nhận được link? Nhập email bên dưới để gửi lại, hoặc <a href="dang-nhap.html">quay lại trang Đăng nhập</a>.</p>
+<form id="requestResetForm" data-track="form-gui-lai-link-dat-lai-mat-khau" hidden>
+<p><label>Email đã đăng ký *<br><input id="requestResetEmail" type="email" required></label></p>
+<p id="requestResetMsg"></p>
+<button class="btn btn-primary" type="submit" data-track="nut-gui-lai-link-dat-lai-mat-khau">Gửi link đặt lại về email</button>
+</form>
+<p><a href="dang-nhap.html">← Quay lại đăng nhập</a></p>
 </section>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
@@ -67,8 +72,9 @@
     try{ session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession(); }
     catch(e){ session=null; }
     if(!session){
-      status.textContent='Link đã hết hạn hoặc không hợp lệ. Hãy gửi lại link đặt lại mật khẩu.';
+      status.textContent='Link đã hết hạn hoặc không hợp lệ. Nhập email đã đăng ký bên dưới để gửi lại link đặt lại mật khẩu.';
       links.hidden=false;
+      document.getElementById('requestResetForm').hidden=false;
       return;
     }
     status.textContent='Link hợp lệ. Hãy nhập mật khẩu mới (ít nhất 8 ký tự).';
@@ -84,10 +90,27 @@
         await McLivestreamAPI.updatePassword(p1);
         try{ await McLivestreamAPI.signOut(); }catch(_){}
         msg.textContent='Đã đổi mật khẩu thành công. Đang chuyển về trang đăng nhập…';
-        setTimeout(function(){ location.href='danh-sach-mau.html#dang-nhap-mau'; }, 2000);
+        setTimeout(function(){ location.href='dang-nhap.html'; }, 2000);
       }catch(err){ msg.textContent='Chưa đổi được mật khẩu: '+ferr(err); }
     };
     if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();
+  });
+  /* v68: gui lai link dat lai mat khau khi chua co session khoi phuc
+     (nguoi dung tu trang dang-nhap.html bam "Quen mat khau?" sang day
+     ma chua co link trong email). */
+  var reqForm = document.getElementById('requestResetForm');
+  reqForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var run = async function(){
+      var em = document.getElementById('requestResetEmail').value.trim();
+      var m = document.getElementById('requestResetMsg');
+      if (!em) { m.textContent='Hãy nhập email đã đăng ký.'; return; }
+      try{
+        await McLivestreamAPI.resetPassword(em);
+        m.textContent='Đã gửi link đặt lại mật khẩu về email đã đăng ký (nếu email đã đăng ký tài khoản). Hãy kiểm tra hộp thư (cả mục Spam).';
+      }catch(err){ m.textContent='Gửi link chưa thành công: '+ferr(err); }
+    };
+    if (window.V2SAuthUI) V2SAuthUI.guardSubmit(reqForm, run); else run();
   });
   init();
 })();
