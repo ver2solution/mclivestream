@@ -369,3 +369,26 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .theme-greeting button{flex:0 0 auto;width:26px;height:26px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:13px;line-height:1;cursor:pointer}
 .theme-greeting button:hover{border-color:var(--brand);color:var(--brand)}
 @media(max-width:600px){.theme-greeting{font-size:13px;padding:8px 10px;margin-bottom:10px}}
+/* v55: MUC LO HANG XA KHO (danh-sach-shop.html, yeu cau nguoi dung 06/11/2026
+   — chien luoc giup doanh nghiep xa hang ton kho thu ve von tai san xuat):
+   muc dat o khu vuc top trang shop, ngay tren danh sach shop (truoc
+   #publicShopsList, sau phan tieu de/gioi thieu trang). Khop phong cach hien
+   tai: the trang bo tron, vien --line, bong --sh; gia in dam mau --brand;
+   nhan "Chua xac thuc" nen vang nhat de canh bao nhe, khong dung do gay gat.
+   Luoi 3 cot desktop, 2 cot <=1000px, 1 cot <=600px (khop .shop-grid). */
+.lot-section{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin:18px 0;box-shadow:var(--sh)}
+.lot-section h2{margin:0 0 8px;font-size:24px}
+.lot-section h3{margin:20px 0 8px;font-size:18px}
+.lot-intro{color:var(--mut);margin:0 0 4px}
+.lot-sub{color:var(--mut);font-size:14px;margin:0 0 12px}
+.lot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lot-card{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff}
+.lot-card h4{margin:0 0 6px;font-size:16px;line-height:1.4}
+.lot-price{margin:0 0 6px;font-size:17px;font-weight:900;color:var(--brand)}
+.lot-meta{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.lot-date{margin:0 0 8px;font-size:13px;color:var(--mut)}
+.lot-label{display:inline-block;margin:0 0 10px;padding:4px 10px;border-radius:999px;background:#fff4e5;color:#8a5a00;border:1px solid #f2d5a0;font-size:12px;font-weight:800}
+.lot-card p:last-child{margin:0}
+.lot-note{margin:16px 0 0;font-size:13px;color:var(--mut)}
+@media(max-width:1000px){.lot-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.lot-grid{grid-template-columns:1fr}.lot-section{padding:16px}.lot-section h2{font-size:21px}}

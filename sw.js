@@ -1,13 +1,13 @@
-/* v54 service worker — PWA shell cache only. Version bump = new cache.
+/* v55 service worker — PWA shell cache only. Version bump = new cache.
    FIX (05/11): js/data.js is now NETWORK-FIRST. data.js is content data
    (articles/models/shops) that changes on almost every deploy; the old
    cache-first rule served a stale data.js from before v29, so article
    links fell back to the original source URLs instead of the internal
    bai-viet pages. The CACHE name must be bumped on EVERY web deploy
-   that changes data.js/app.js/v20.css. v54: index.html + v20.css doi
-   (them 20 logo thuong hieu Viet vao dai logo doi tac: moi nhom 9 ->
-   29 logo; animation marquee 38s -> 122s, mobile 28s -> 90s). */
-const CACHE = 'v54-shell-1';
+   that changes data.js/app.js/v20.css. v55: danh-sach-shop.html + v20.css
+   doi (them muc "Lo hang xa kho" o khu vuc top trang shop: 13 muc tu
+   bao cao nghien cuu 06/11/2026, khong doi data.js/app.js). */
+const CACHE = 'v55-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
