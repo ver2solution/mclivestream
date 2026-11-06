@@ -294,7 +294,7 @@ img{max-width:100%}
 .trust-logos{flex-basis:100%;min-width:0;margin-top:6px;border-top:1px solid var(--line);padding-top:14px}
 .trust-logos-label{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
 .logo-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.logo-track{display:flex;width:max-content;animation:logo-scroll 38s linear infinite}
+.logo-track{display:flex;width:max-content;animation:logo-scroll 122s linear infinite}
 .logo-marquee:hover .logo-track{animation-play-state:paused}
 .logo-group{display:flex;align-items:center;gap:16px;padding-right:16px}
 @keyframes logo-scroll{to{transform:translateX(-50%)}}
@@ -305,7 +305,7 @@ img{max-width:100%}
 .logo-card{flex:0 0 auto;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:0}
 .logo-card img{width:70%;height:70%;object-fit:contain}
 
-@media(max-width:600px){.logo-group{gap:12px;padding-right:12px}.logo-card{width:44px;height:44px}.logo-track{animation-duration:28s}}
+@media(max-width:600px){.logo-group{gap:12px;padding-right:12px}.logo-card{width:44px;height:44px}.logo-track{animation-duration:90s}}
 /* LOGO SHOP (v26, spec §5): khung vuông 52px như ô chữ cái cũ để thẻ không lệch.
    cover = ảnh vuông crop; contain = logo ngang/trong suốt, nền trắng, padding, không crop. */
 .shop-logo{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:block}
