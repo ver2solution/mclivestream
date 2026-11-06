@@ -319,3 +319,42 @@ img{max-width:100%}
 .contact-card .contact-list a{color:#fff}
 .contact-card .contact-note{color:#d7ece6;background:rgba(255,255,255,.12)}
 @media(max-width:600px){.trust-strip{flex-direction:column;align-items:flex-start;gap:14px}.trust-nums{margin-left:0;gap:12px;flex-direction:column}.trust-num b{font-size:26px}.trust-strip .btn{margin-left:0}}
+
+/* SKIN LE HOI (v52, yeu cau nguoi dung 06/11/2026 — lam luon bo 3 skin Tet
+   Nguyen Dan, Noel, Tet Duong lich; het dip tu tro ve giao dien mac dinh).
+   - Class theme dat len <html> boi js/themes.js theo ngay; ngoai moi dip thi
+     khong co class nao -> bien mau mac dinh o :root.
+   - Moi theme chi doi bien mau CSS + dai mau 6px tren cung + hieu ung roi
+     nhe bang CSS thuan (khong anh, khong JS nang, pointer-events:none nen
+     khong chan click, khong che noi dung).
+   - .theme-fx-off (nguoi dung bam nut "Tat hieu ung", luu localStorage) chi
+     tat 2 lop roi, van giu mau theme.
+   - KHONG dong vao dai logo doi tac (.trust-strip/.logo-card): chi doi bien
+     mau chung; o logo tron 48px + anh icon mau goc giu nguyen. */
+html.theme-noel{--brand:#b91c1c;--brand2:#15803d;--brandsoft:#fdecec;--amber:#e8a100}
+html.theme-tet-duong{--brand:#8a6d00;--brand2:#b8860b;--brandsoft:#fdf6e0;--amber:#d99a00}
+html.theme-tet{--brand:#c8102e;--brand2:#a67c00;--brandsoft:#fdeeee;--amber:#e8a100}
+html.theme-noel body{border-top:6px solid #b91c1c;border-image:linear-gradient(90deg,#b91c1c,#15803d,#b91c1c) 1}
+html.theme-tet-duong body{border-top:6px solid #8a6d00;border-image:linear-gradient(90deg,#8a6d00,#f5b301,#8a6d00) 1}
+html.theme-tet body{border-top:6px solid #c8102e;border-image:linear-gradient(90deg,#c8102e,#f5b301,#c8102e) 1}
+/* Lop roi 1 (body::after, o 120px, roi 12s) + lop roi 2 (html::after, o 180px,
+   roi 20s): quang duong roi bang dung kich thuoc o nen lap lai khong giat. */
+html.theme-noel body::after,html.theme-tet body::after,html.theme-tet-duong body::after{content:"";position:fixed;inset:0;z-index:2000;pointer-events:none;background-repeat:repeat;animation:theme-fall-a 12s linear infinite}
+html.theme-noel::after,html.theme-tet::after,html.theme-tet-duong::after{content:"";position:fixed;inset:0;z-index:2000;pointer-events:none;background-repeat:repeat;animation:theme-fall-b 20s linear infinite}
+/* Noel: tuyet (cham xanh-xam nhat de thay tren nen sang). */
+html.theme-noel body::after{background-image:radial-gradient(circle at 25% 25%,#a8c4dc 1.6px,transparent 2px),radial-gradient(circle at 70% 60%,#c3d6e8 1.1px,transparent 1.5px),radial-gradient(circle at 45% 85%,#d3e2ef .9px,transparent 1.3px);background-size:120px 120px}
+html.theme-noel::after{background-image:radial-gradient(circle at 30% 40%,#8fb0cc 1.1px,transparent 1.5px),radial-gradient(circle at 65% 75%,#c3d6e8 .8px,transparent 1.2px);background-size:180px 180px}
+/* Tet Duong: phao giay/confetti vang-do-xanh. */
+html.theme-tet-duong body::after{background-image:radial-gradient(circle at 30% 30%,#f5b301 1.8px,transparent 2.2px),radial-gradient(circle at 70% 65%,#d92b1f 1.5px,transparent 1.9px),radial-gradient(circle at 50% 85%,#0e8a6d 1.5px,transparent 1.9px);background-size:120px 120px}
+html.theme-tet-duong::after{background-image:radial-gradient(circle at 35% 35%,#e8a100 1.2px,transparent 1.6px),radial-gradient(circle at 65% 70%,#c8102e 1px,transparent 1.4px);background-size:180px 180px}
+/* Tet: canh hoa dao hong + vang roi. */
+html.theme-tet body::after{background-image:radial-gradient(ellipse 3px 4.5px at 30% 30%,#ff8fa3 60%,transparent 66%),radial-gradient(ellipse 2.5px 4px at 70% 65%,#f5b301 60%,transparent 66%),radial-gradient(ellipse 2px 3.5px at 50% 85%,#ffb3c1 60%,transparent 66%);background-size:120px 120px}
+html.theme-tet::after{background-image:radial-gradient(ellipse 2.5px 3.5px at 35% 40%,#ff8fa3 60%,transparent 66%),radial-gradient(ellipse 2px 3px at 65% 70%,#f5b301 60%,transparent 66%);background-size:180px 180px}
+@keyframes theme-fall-a{from{background-position:0 0}to{background-position:0 120px}}
+@keyframes theme-fall-b{from{background-position:0 0}to{background-position:0 180px}}
+html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
+@media(prefers-reduced-motion:reduce){html.theme-noel body::after,html.theme-tet body::after,html.theme-tet-duong body::after,html.theme-noel::after,html.theme-tet::after,html.theme-tet-duong::after{animation:none}}
+/* Nut tat/bat hieu ung (js/themes.js tu tao khi co theme; goc duoi trai de
+   khong dung nut Gop y o phai). */
+.theme-fx-toggle{position:fixed;left:12px;bottom:12px;z-index:2002;padding:6px 12px;font-size:12px;font-weight:700;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);box-shadow:var(--sh);cursor:pointer}
+.theme-fx-toggle:hover{border-color:var(--brand)}
