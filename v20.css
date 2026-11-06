@@ -46,7 +46,7 @@ a:hover{text-decoration:underline}
 .chips a:hover{background:#fff;color:var(--brand);text-decoration:none}
 .section{margin:17px 0}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:5px}
-.section-head h1{margin:0;font-size:28px}.section-head h2{margin:0;font-size:26px}
+.section-head h1{margin:0;font-size:28px}.section-head h2{margin:0;font-size:26px}.section-head h2 a{color:var(--brand)}.section-head h2 a:hover{text-decoration:underline}
 .section-head p{margin:4px 0 0;color:var(--mut)}
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
