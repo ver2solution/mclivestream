@@ -670,7 +670,7 @@ function initNews(){
       var imgAlt = a.kind === 'keyword' ? 'Infographic do Ver2Solution tự làm từ số liệu tin tuyển thật trên sàn'
         : (a.imgSelf ? 'Infographic do Ver2Solution tự làm từ số liệu bài gốc' : 'Ảnh gốc từ bài của ' + esc(a.source));
       var img = a.img ? '<a href="' + esc(href) + '"' + imgTarget + '><img src="' + esc(a.img) + '" alt="' + imgAlt + '" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">' + imgCap + '</div>' : '';
-      var tw = a.takeaway ? '<p><b>Ver2Solution rút ra:</b> '+esc(a.takeaway)+'</p>' : '';
+      var tw = a.takeaway ? '<p><b>Theo Ver2Solution:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
       + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
     }).join('');
@@ -779,14 +779,16 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
   var ov=document.getElementById('gopyOverlay');
   if(ov) ov.addEventListener('click',function(e){if(e.target===ov) ov.classList.remove('open');});
   var gf=document.getElementById('gopyForm');
-  if(gf) gf.addEventListener('submit',async function(e){e.preventDefault(); var msg=document.getElementById('gopyMsg');
+  if(gf) gf.addEventListener('submit',function(e){e.preventDefault(); var msg=document.getElementById('gopyMsg');
+    var run=async function(){
     var data={name:gf.gopyName.value.trim(), kind:gf.gopyKind.value, rating:null, content:gf.gopyContent.value.trim(), page:location.pathname};
     if(!data.content){ if(msg) msg.textContent='Bạn nhập nội dung góp ý trước nhé.'; return; }
     try{
       var API=window.McLivestreamAPI;
       if(API && API.submitFeedback){ await API.submitFeedback(data); if(msg) msg.textContent='Cảm ơn bạn! Góp ý đã gửi về Ver2Solution để tổng hợp.'; gf.reset(); return; }
-    }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+(err.message||err)+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
-    if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();});
+    }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+((window.McLivestreamAPI&&McLivestreamAPI.friendlyError)?McLivestreamAPI.friendlyError(err):'Đã có lỗi xảy ra, hãy thử lại sau.')+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
+    if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
+    if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
 window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, photoTier:photoTier, homeTop8:homeTop8, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
