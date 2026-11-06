@@ -281,6 +281,30 @@ img{max-width:100%}
 /* v41: dong thu 2 cua moi o so lieu (luong/doanh thu) + ghi chu nho. */
 .trust-sub{display:block;font-size:12px;color:var(--mut);font-weight:700;margin-top:2px}
 .trust-note{display:block;font-size:11px;color:var(--mut);font-style:italic;margin-top:2px}
+/* DAI LOGO DOI TAC (v48, yeu cau nguoi dung 06/11/2026): 1 dong logo nho tu
+   dong xoay ngang trong dai niem tin, kieu "trusted by" cua agency lon:
+   mac dinh xam mo (grayscale + opacity), hover hien mau thuong hieu;
+   dung chuot thi tam dung. 2 nhom giong he de cuon lien tuc. */
+.trust-logos{flex-basis:100%;margin-top:6px;border-top:1px solid var(--line);padding-top:14px}
+.trust-logos-label{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.logo-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logo-track{display:flex;width:max-content;animation:logo-scroll 38s linear infinite}
+.logo-marquee:hover .logo-track{animation-play-state:paused}
+.logo-group{display:flex;align-items:center;gap:54px;padding-right:54px}
+@keyframes logo-scroll{to{transform:translateX(-50%)}}
+.logo-item{white-space:nowrap;font-weight:800;font-size:19px;line-height:1;filter:grayscale(1);opacity:.5;transition:filter .25s,opacity .25s}
+.logo-item:hover{filter:none;opacity:1}
+.logo-google{font-size:21px;letter-spacing:-.02em}
+.logo-google .g-b{color:#4285F4}.logo-google .g-r{color:#EA4335}.logo-google .g-y{color:#FBBC05}.logo-google .g-g{color:#34A853}
+.logo-meta{color:#0081FB;letter-spacing:.01em}
+.logo-tiktok{color:#111;text-shadow:1.5px 0 #25F4EE,-1.5px 0 #FE2C55}
+.logo-thaco{color:#003B71;letter-spacing:.06em}
+.logo-tpbank{color:#5F259F}
+.logo-coccoc{color:#009444}
+.logo-kimcuong{color:#9A7B2E;font-family:Georgia,serif}
+.logo-flamingo{color:#E85D75;letter-spacing:.08em}
+.logo-ktdt{color:#C0392B;font-size:16px}
+@media(max-width:600px){.logo-group{gap:32px;padding-right:32px}.logo-item{font-size:16px}.logo-google{font-size:18px}.logo-ktdt{font-size:14px}.logo-track{animation-duration:28s}}
 /* LOGO SHOP (v26, spec §5): khung vuông 52px như ô chữ cái cũ để thẻ không lệch.
    cover = ảnh vuông crop; contain = logo ngang/trong suốt, nền trắng, padding, không crop. */
 .shop-logo{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:block}
