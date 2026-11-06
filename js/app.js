@@ -325,6 +325,39 @@ function facMatches(card, f){
   if(f.cat && card.getAttribute('data-cat') !== f.cat) return false;
   return true;
 }
+/* v72: nut mo/dong bo loc tren mobile (<=600px). Nut chi hien tren mobile
+   (CSS .filter-toggle); desktop bo loc luon mo nen nut an, khong doi hanh vi.
+   Bam nut: doi class .filters-open tren section chua nut; cap nhat
+   aria-expanded + nhan nut. Sau khi ap dung bo loc thi gap lai (goi tu cac
+   handler apply) de thay ket qua ngay, kieu san TMDT. */
+function filterSectionOf(btn){
+  var el = btn;
+  if(el && el.closest){ var s = el.closest('section'); if(s) return s; }
+  while(el){ if(el.tagName && String(el.tagName).toLowerCase() === 'section') return el; el = el.parentElement || el.parentNode; }
+  return null;
+}
+function initFilterToggle(){
+  var btns = (document.querySelectorAll) ? document.querySelectorAll('.filter-toggle') : [];
+  for(var i = 0; i < btns.length; i++){
+    (function(btn){
+      btn.addEventListener('click', function(){
+        var sec = filterSectionOf(btn);
+        if(!sec) return;
+        if(!btn._label) btn._label = btn.textContent;
+        var open = sec.classList.toggle('filters-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? '✕ Ẩn bộ lọc' : btn._label;
+      });
+    })(btns[i]);
+  }
+}
+function closeFilters(sec){
+  if(!sec || !sec.classList) return;
+  sec.classList.remove('filters-open');
+  var btn = (sec.querySelector) ? sec.querySelector('.filter-toggle') : null;
+  if(btn){ btn.setAttribute('aria-expanded', 'false'); if(btn._label) btn.textContent = btn._label; }
+}
+function closeFilterOf(btn){ var sec = filterSectionOf(btn); if(sec) closeFilters(sec); }
 function initSectionFilter(opts){
   var section = document.getElementById(opts.sectionId);
   if(!section) return;
@@ -366,6 +399,8 @@ function initSectionFilter(opts){
     var emptyEl = document.getElementById(opts.emptyId);
     if(emptyEl) emptyEl.hidden = !(active && total === 0);
     if(active){ setExpanded(true); }
+    /* v72: mobile — gap bo loc sau khi ap dung de thay ket qua ngay. */
+    closeFilterOf(applyBtn);
     var target = first || section;
     if(target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   }
@@ -756,6 +791,7 @@ function initShops(){
   rotateStaticGrids();
   initLotFilter();
   initFactoryFilter();
+  initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   var perPage=9;
@@ -789,13 +825,14 @@ function initShops(){
   var fPayTypeEl=document.getElementById('fPayType');
   if(fPayTypeEl) fPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
-  document.getElementById('applyShopBtn').addEventListener('click',function(){render(1);});
+  document.getElementById('applyShopBtn').addEventListener('click',function(){render(1); closeFilterOf(document.getElementById('applyShopBtn'));});
   document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
+  initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,shift:document.getElementById('fShift').value,revMin:parseMoneyInput(elVal('fRevMin')),wageMin:parseMoneyInput(elVal('fWageMin')),q:document.getElementById('fQ').value.trim()};}
   function render(pg){
@@ -828,7 +865,7 @@ function initList(){
   if(p.revmin){ var rv=document.getElementById('fRevMin'); if(rv) rv.value=p.revmin; }
   if(p.wagemin){ var wm=document.getElementById('fWageMin'); if(wm) wm.value=p.wagemin; }
   if(p.q) document.getElementById('fQ').value=p.q;
-  document.getElementById('applyBtn').addEventListener('click',function(){render(1);});
+  document.getElementById('applyBtn').addEventListener('click',function(){render(1); closeFilterOf(document.getElementById('applyBtn'));});
   document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
   render(page);
 }
@@ -977,6 +1014,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
