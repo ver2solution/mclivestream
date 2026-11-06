@@ -192,6 +192,8 @@ a:hover{text-decoration:underline}
 .most a{font-weight:700}
 .most .meta{color:var(--mut);font-size:13px}
 footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#fff;padding:26px 0;color:var(--mut)}
+/* v56: dong Powered by Ver2Solution o cuoi footer moi trang. */
+.site-foot .powered{margin-top:10px;color:var(--ink);font-weight:700}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
 @media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
