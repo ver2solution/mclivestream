@@ -358,3 +358,14 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
    khong dung nut Gop y o phai). */
 .theme-fx-toggle{position:fixed;left:12px;bottom:12px;z-index:2002;padding:6px 12px;font-size:12px;font-weight:700;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);box-shadow:var(--sh);cursor:pointer}
 .theme-fx-toggle:hover{border-color:var(--brand)}
+/* Loi chuc mung ngay le (v53, yeu cau nguoi dung 06/11/2026 — them loi chuc
+   cho ngay dac biet dung skin): thanh chuc mung nho gon do js/themes.js tu
+   tao (id themeGreeting) khi co theme, dat dau <main> — ngay duoi header,
+   tren hero; an khi het dip (khong co theme) hoac nguoi dung bam nut dong
+   (luu localStorage 'ver2theme-greeting' theo mua). Mau nen lay tu bien
+   --brandsoft nen tu doi theo tung theme; khong dong vao dai logo. */
+.theme-greeting{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 14px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--brandsoft);color:var(--ink);font-size:14px;font-weight:600;line-height:1.5;text-align:center}
+.theme-greeting span{flex:1 1 auto}
+.theme-greeting button{flex:0 0 auto;width:26px;height:26px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:13px;line-height:1;cursor:pointer}
+.theme-greeting button:hover{border-color:var(--brand);color:var(--brand)}
+@media(max-width:600px){.theme-greeting{font-size:13px;padding:8px 10px;margin-bottom:10px}}
