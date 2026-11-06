@@ -257,7 +257,8 @@ img{max-width:100%}
    quyết định (lĩnh vực, lương, tỉnh) đưa lên đầu; trang chi tiết shop theo
    mẫu trang công ty — đầu trang logo lớn (96px) + tên, rồi thông tin shop
    và tin tuyển đang mở của chính shop đó. */
-.shop-card .shop-logo,.shop-card .shop-initial{flex:0 0 72px;width:72px;height:72px;border-radius:18px;font-size:32px}
+.shop-card .shop-logo,.shop-card .shop-initial{flex:0 0 25%;width:25%;height:auto;aspect-ratio:1;border-radius:18px;font-size:40px}
+/* v57: logo shop 1/4 chieu rong o thong tin (goc trai tren) — chi the shop, khong doi trang chi tiet (.company-head giu 96px). */
 .shop-meta{margin:0;color:var(--mut);font-size:13px}
 .shop-foot{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px}
 .shop-foot .contact-note{margin:0}
@@ -394,3 +395,12 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-note{margin:16px 0 0;font-size:13px;color:var(--mut)}
 @media(max-width:1000px){.lot-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.lot-grid{grid-template-columns:1fr}.lot-section{padding:16px}.lot-section h2{font-size:21px}}
+/* v57: muc lo hang chi hien 2 hang mac dinh (nut Xem them mo rong du 13 lo).
+   An nhom phu (.lot-extra) + the thu 7 tro di o luoi dau khi thu gon:
+   desktop 3 cot -> 6 the, tablet 2 cot -> 4 the, mobile 1 cot -> 2 the. */
+.lot-section.collapsed .lot-extra{display:none}
+.lot-section.collapsed .lot-grid .lot-card:nth-child(n+7){display:none}
+@media(max-width:1000px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+5){display:none}}
+@media(max-width:600px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+3){display:none}}
+.lot-more{display:block;margin:16px auto 0;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:#eef7f2;color:var(--brand);font-weight:800;font-size:15px;cursor:pointer}
+.lot-more:hover{background:#dff0ea}

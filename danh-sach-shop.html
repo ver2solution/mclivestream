@@ -1,13 +1,13 @@
 <!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dành cho Shop — Tìm mẫu livestream, đăng tin tuyển mẫu | Sàn việc làm MC Livestream Ver2Solution</title>
-<meta name="description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu. Xem hồ sơ không cần đăng nhập.">
+<title>Tìm shop tuyển mẫu livestream | Sàn việc làm MC Livestream Ver2Solution</title>
+<meta name="description" content="Trang dành cho mẫu: tìm shop tuyển mẫu livestream theo tỉnh và lĩnh vực, xem lương, giờ làm và liên hệ shop. Shop đăng ký tài khoản để đăng tin tuyển mẫu.">
 <link rel="canonical" href="https://ver2solution.github.io/mclivestream/danh-sach-shop.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ver2Solution">
-<meta property="og:title" content="Dành cho Shop — Sàn việc làm MC Livestream Ver2Solution">
-<meta property="og:description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu."><meta property="og:url" content="https://ver2solution.github.io/mclivestream/danh-sach-shop.html">
+<meta property="og:title" content="Tìm shop tuyển mẫu livestream — Sàn việc làm MC Livestream Ver2Solution">
+<meta property="og:description" content="Trang dành cho mẫu: tìm shop tuyển mẫu livestream theo tỉnh và lĩnh vực, xem lương, giờ làm và liên hệ shop. Shop đăng ký tài khoản để đăng tin tuyển mẫu."><meta property="og:url" content="https://ver2solution.github.io/mclivestream/danh-sach-shop.html">
 <meta property="og:image" content="https://ver2solution.github.io/mclivestream/logo.png">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Dành cho Shop — Ver2Solution">
-<meta name="twitter:description" content="Trang dành cho shop: tìm mẫu livestream theo tỉnh và lĩnh vực, đăng ký và đăng nhập tài khoản shop qua Supabase, đăng tin tuyển mẫu."><meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/logo.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tìm shop tuyển mẫu livestream — Ver2Solution">
+<meta name="twitter:description" content="Trang dành cho mẫu: tìm shop tuyển mẫu livestream theo tỉnh và lĩnh vực, xem lương, giờ làm và liên hệ shop. Shop đăng ký tài khoản để đăng tin tuyển mẫu."><meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/logo.png">
 <meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ver2Solution">
 <link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
@@ -16,18 +16,18 @@
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập</a></div></header>
 <main class="wrap">
-<section class="section"><div class="section-head"><div><h1>Dành cho Shop — tìm mẫu livestream</h1><p id="publicShopsCount">Đang tải tin tuyển…</p><p>Trang riêng này phân trang: mỗi trang tối đa 9 shop, phần còn lại sang các trang sau.</p></div></div>
+<section class="section"><div class="section-head"><div><h1>Tìm shop tuyển mẫu livestream</h1><p id="publicShopsCount">Đang tải tin tuyển…</p><p>Trang riêng này phân trang: mỗi trang tối đa 9 shop, phần còn lại sang các trang sau.</p></div></div>
 <div class="filter-card cols-3"><div><label>Tỉnh / Thành phố</label><select id="fShopProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option></select></div>
 <div><label>Lĩnh vực livestream</label><select id="fShopCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option>Thời trang</option><option>Mỹ phẩm &amp; Làm đẹp</option><option>Gia dụng &amp; Đời sống</option><option>Idol / Streamer</option><option>Công nghệ</option><option>Khác</option></select></div>
 <div><label>Sắp xếp lương</label><select id="fShopSort" data-track="sap-xep-shop"><option value="">Mặc định (mới nhất)</option><option value="hourly-asc">Lương giờ: thấp → cao</option><option value="hourly-desc">Lương giờ: cao → thấp</option><option value="monthly-asc">Lương tháng: thấp → cao</option><option value="monthly-desc">Lương tháng: cao → thấp</option></select></div>
-<div><label>Giờ làm tuyển mẫu</label><select id="fShopShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
+<div><label>Giờ làm</label><select id="fShopShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
 <div><label>Loại lương</label><select id="fPayType" data-track="loc-loai-luong-shop"><option value="">Tất cả loại lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
 <div><label id="fPayMinLabel">Mức lương tối thiểu</label><input id="fPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled></div>
 <div><label>Tìm theo tên shop, mặt hàng, tỉnh</label><input id="fShopQ" type="search" data-track="o-tim-kiem-shop" placeholder="VD: thời trang, Hà Nội"></div>
 <div class="full"><button class="btn btn-primary" id="applyShopBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="resetShopBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div></div>
 <p><strong>30 shop đang tuyển mẫu — tin tuyển công khai.</strong></p>
 <p>Thông tin dưới đây chỉ lấy từ bài tuyển shop tự đăng công khai trên Facebook: tên shop, mặt hàng, tỉnh/quận, mức lương, yêu cầu chính, thông tin liên hệ đã công khai và ngày đăng tin. Web chỉ đăng thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop, không bịa link fanpage. Mỗi tin kèm link về bài tuyển gốc. Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>
-<section class="lot-section" id="lo-hang-xa-kho" aria-labelledby="lot-title">
+<section class="lot-section collapsed" id="lo-hang-xa-kho" aria-labelledby="lot-title">
 <h2 id="lot-title">Lô hàng xả kho</h2>
 <p class="lot-intro">Giúp doanh nghiệp xả hàng tồn kho thu về vốn tái sản xuất — Ver2Solution tổng hợp các lô hàng xả kho từ bài đăng công khai trên mạng. Các lô dưới đây chưa được Ver2Solution kiểm chứng trực tiếp; người mua tự liên hệ người đăng và tự kiểm tra hàng trước khi giao dịch. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
 <h3>Lô hàng xả kho</h3>
@@ -41,6 +41,7 @@
 <article class="lot-card"><h4>Xả kho thời trang, chốt bằng mã sản phẩm — Thủy Top</h4><p class="lot-price">Dưới 50.000đ; 50.000đ/100.000đ</p><p class="lot-meta">Kênh: Facebook</p><p class="lot-date">Ngày đăng: 04/11/2026</p><p class="lot-label">Chưa xác thực — không phải lô chính hãng của thương hiệu</p><p><a href="https://www.facebook.com/thuytopthoitranggiare.official/posts/pfbid0nGwuFjdU5hdzJ46ftsqdG1LPDjb6BWdezX7zxtpSBAZjASPL4Ycs5f7sfAjq5nXol" target="_blank" rel="noopener">Xem bài đăng gốc →</a></p></article>
 <article class="lot-card"><h4>Kho quần áo mới còn tag (jeans, áo thun, jacket…) — Nguyễn Thị Huệ</h4><p class="lot-price">Giá không công khai trong bài đăng</p><p class="lot-meta">Bán sỉ/lẻ · Liên hệ trực tiếp · Kênh: Facebook</p><p class="lot-date">Ngày đăng: 12/10/2026</p><p class="lot-label">Chưa xác thực — không phải lô chính hãng của thương hiệu</p><p><a href="https://www.facebook.com/permalink.php?story_fbid=pfbid01SKEM2DTK3TRrw3bbam114ZdgXBymt2wBcGCnFv4kmMEqGqSJCDAVxDJawzcrLVrl&id=61591098601590" target="_blank" rel="noopener">Xem bài đăng gốc →</a></p></article>
 </div>
+<div class="lot-extra">
 <h3>Đơn vị thu mua / ký gửi tồn kho</h3>
 <p class="lot-sub">Doanh nghiệp cần xả kho số lượng lớn có thể liên hệ các đơn vị thu mua dưới đây để thu về vốn tái sản xuất. Giá thu mua không công khai, liên hệ trực tiếp để thỏa thuận.</p>
 <div class="lot-grid">
@@ -54,15 +55,18 @@
 <article class="lot-card"><h4>Super Sale 30/10–5/11/2026 — MaxxSport (Tràng Tiền Plaza, Hà Nội)</h4><p class="lot-price">Giảm tới 80% + thêm tới 30% khi mua số lượng lớn</p><p class="lot-meta">Hàng Nike, Adidas, Li-Ning, Asics · Kênh: Facebook</p><p class="lot-date">Ngày đăng: 28/10/2026</p><p class="lot-label">Chưa xác thực — không phải lô chính hãng của thương hiệu</p><p><a href="https://www.facebook.com/maxxsport.com.vn/posts/pfbid0aq4EaJkuVF1ZjMqqxLZCwzSCpVRRVQ84Byy1BWkz83hMZam83jRgKvzbUHd59iUXl" target="_blank" rel="noopener">Xem bài đăng gốc →</a></p></article>
 <article class="lot-card"><h4>Thanh lý cuối mùa, hơn 1.000 mã — Made By Phuong</h4><p class="lot-price">59.000đ–99.000đ/món</p><p class="lot-meta">Không mã nào quá 99.000đ · Kênh: Facebook</p><p class="lot-date">Ngày đăng: 25/10/2026</p><p class="lot-label">Chưa xác thực — không phải lô chính hãng của thương hiệu</p><p><a href="https://www.facebook.com/madebyphuong/posts/pfbid02fKX5vGhj24A4EftZ6qvoinGv2UngthPW2t94fGbyB6hj1NLkwVssw7qZ3W1ZG5Y5l" target="_blank" rel="noopener">Xem bài đăng gốc →</a></p></article>
 </div>
+</div>
+<button class="lot-more" id="lotMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
 </section>
+<script>(function(){var s=document.getElementById("lo-hang-xa-kho");if(!s)return;var b=document.getElementById("lotMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
 
-<section class="section"><p>Shop tìm mẫu theo 2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực — chỉ gồm tỉnh và lĩnh vực hiện đang có hồ sơ trên thị trường. Xem hồ sơ có album ảnh và 1 video demo, tự liên hệ mẫu, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
-<div class="steps"><div class="step"><b>1</b><h3>Tìm mẫu</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng hoặc lọc theo giờ làm để tìm đúng mẫu nhanh hơn.</p></div>
-<div class="step"><b>2</b><h3>Xem hồ sơ và liên hệ</h3><p>Mở trang chi tiết của mẫu để xem toàn bộ thông tin: tỉnh, lĩnh vực, hình thức, kinh nghiệm, lịch, lương, album, video demo và liên hệ. Sau đó tự liên hệ mẫu qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
-<div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với mẫu về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang hồ sơ để đánh giá, không cần đăng nhập.</p></div></div>
+<section class="section"><p>Mẫu tìm shop theo 2 mục bắt buộc: Tỉnh / Thành phố và Lĩnh vực — chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
+<div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn đủ Tỉnh / Thành phố và Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
+<div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
+<div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với shop về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang tin tuyển để đánh giá, không cần đăng nhập.</p></div></div>
 <div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem 20 hồ sơ thật →</a> <a class="btn btn-ghost" href="#dang-nhap-shop">Đăng Nhập ↓</a> <a class="btn btn-ghost" href="#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
 <p>20 hồ sơ thật hiện có trên trang mẫu tìm việc, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
 
