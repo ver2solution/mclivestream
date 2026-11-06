@@ -48,6 +48,12 @@ a:hover{text-decoration:underline}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
 .section-head h2{margin:0;font-size:26px}
 .section-head p{margin:4px 0 0;color:var(--mut)}
+/* v61: trang Shop gon lai — giam khoang cach tren tieu de + giua cac khoi
+   (chi ap cho trang Shop, khong doi cac trang khac) */
+.page-shop>.section:first-of-type{margin-top:14px}
+.page-shop .section-head{margin-bottom:12px}
+.page-shop .filter-card{padding:16px;gap:10px}
+.page-shop .lot-section{margin:14px 0}
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
@@ -281,6 +287,7 @@ img{max-width:100%}
 .trust-text{flex-basis:100%;min-width:0}/* v49: doan PR chiem tron 1 hang rieng — tranh hang voi o so lieu + nut gay day nut xuong */
 .trust-nums{display:flex;gap:30px;min-width:0;flex-wrap:wrap}/* v49: bo margin-left:auto (nut lay margin-left:auto); o so lieu tu xuong dong trong noi bo thay vi ep tran khung */
 .trust-nums-lots{flex-basis:100%;margin-top:4px}/* v58: hang so lieu lo xa kho (8 lo / 3 thu mua-ky gui / 2 xa theo dot) xuong dong rieng, day du chieu rong */
+.trust-nums-factories{flex-basis:100%;margin-top:4px}/* v61: hang so lieu xuong may (20 xuong / 6 tinh) xuong dong rieng, nam GIUA hang chinh (Mau/Tim Mau) va hang Xa kho — thu tu: Mau, Tim Mau, San xuat, Xa kho */
 .trust-num{min-width:0}/* v49: nhan dai duoc xuong dong trong o, khong ep o rong ra */
 .trust-num b{display:block;font-size:30px;line-height:1.1;color:var(--brand)}
 .trust-num span{display:block;font-size:13px;color:var(--mut);font-weight:700}
