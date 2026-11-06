@@ -296,10 +296,14 @@ img{max-width:100%}
 .logo-marquee:hover .logo-track{animation-play-state:paused}
 .logo-group{display:flex;align-items:center;gap:16px;padding-right:16px}
 @keyframes logo-scroll{to{transform:translateX(-50%)}}
-.logo-card{flex:0 0 auto;width:170px;height:64px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:10px 16px}
-.logo-card img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.5;transition:filter .25s,opacity .25s}
+/* DAI LOGO DOI TAC (v50, yeu cau nguoi dung 06/11/2026 11:44-11:45): moi thuong
+   hieu CHI 1 icon duy nhat, khong lay bo logo kem chu/slogan; o TRON 48px
+   (co ~2 dong chu), anh 70% trong o. Mac dinh xam mo, hover hien mau.
+   Giu marquee + mask mo 2 mep + tam dung khi hover. */
+.logo-card{flex:0 0 auto;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:0}
+.logo-card img{width:70%;height:70%;object-fit:contain;filter:grayscale(1);opacity:.5;transition:filter .25s,opacity .25s}
 .logo-card:hover img{filter:none;opacity:1}
-@media(max-width:600px){.logo-group{gap:12px;padding-right:12px}.logo-card{width:130px;height:52px;padding:8px 12px;border-radius:12px}.logo-track{animation-duration:28s}}
+@media(max-width:600px){.logo-group{gap:12px;padding-right:12px}.logo-card{width:44px;height:44px}.logo-track{animation-duration:28s}}
 /* LOGO SHOP (v26, spec §5): khung vuông 52px như ô chữ cái cũ để thẻ không lệch.
    cover = ảnh vuông crop; contain = logo ngang/trong suốt, nền trắng, padding, không crop. */
 .shop-logo{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:block}
