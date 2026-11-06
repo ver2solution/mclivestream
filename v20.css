@@ -44,16 +44,10 @@ a:hover{text-decoration:underline}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1}
 .chips a{background:rgba(255,255,255,.16);color:#fff;border-radius:999px;padding:7px 13px;font-weight:700}
 .chips a:hover{background:#fff;color:var(--brand);text-decoration:none}
-.section{margin:34px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.section{margin:17px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
 .section-head h2{margin:0;font-size:26px}
 .section-head p{margin:4px 0 0;color:var(--mut)}
-/* v61: trang Shop gon lai — giam khoang cach tren tieu de + giua cac khoi
-   (chi ap cho trang Shop, khong doi cac trang khac) */
-.page-shop>.section:first-of-type{margin-top:14px}
-.page-shop .section-head{margin-bottom:12px}
-.page-shop .filter-card{padding:16px;gap:10px}
-.page-shop .lot-section{margin:14px 0}
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
@@ -104,7 +98,7 @@ a:hover{text-decoration:underline}
 .owner-note a{color:var(--brand);font-weight:800;text-decoration:none}
 .owner-note a:hover{text-decoration:underline}
 /* LỌC + PHÂN TRANG */
-.filter-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.filter-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:9px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .filter-card.cols-3{grid-template-columns:repeat(3,1fr)}
 .filter-card label{font-size:12px;font-weight:800;color:var(--mut)}
 .filter-card input,.filter-card select{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
@@ -387,7 +381,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
    tai: the trang bo tron, vien --line, bong --sh; gia in dam mau --brand;
    nhan "Chua xac thuc" nen vang nhat de canh bao nhe, khong dung do gay gat.
    Luoi 3 cot desktop, 2 cot <=1000px, 1 cot <=600px (khop .shop-grid). */
-.lot-section{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin:18px 0;box-shadow:var(--sh)}
+.lot-section{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;margin:9px 0;box-shadow:var(--sh)}
 .lot-section h2{margin:0 0 8px;font-size:24px}
 .lot-section h3{margin:20px 0 8px;font-size:18px}
 .lot-intro{color:var(--mut);margin:0 0 4px}
@@ -402,7 +396,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-card p:last-child{margin:0}
 .lot-note{margin:16px 0 0;font-size:13px;color:var(--mut)}
 @media(max-width:1000px){.lot-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.lot-grid{grid-template-columns:1fr}.lot-section{padding:16px}.lot-section h2{font-size:21px}}
+@media(max-width:600px){.lot-grid{grid-template-columns:1fr}.lot-section{padding:8px}.lot-section h2{font-size:21px}}
 /* v57: muc lo hang chi hien 2 hang mac dinh (nut Xem them mo rong du 13 lo).
    An nhom phu (.lot-extra) + the thu 7 tro di o luoi dau khi thu gon:
    desktop 3 cot -> 6 the, tablet 2 cot -> 4 the, mobile 1 cot -> 2 the. */
