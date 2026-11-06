@@ -375,6 +375,9 @@ function initSectionFilter(opts){
     });
     var sels = section.querySelectorAll('select');
     for(var si = 0; si < sels.length; si++){ sels[si].value = ''; }
+    /* v67: khoi loc da chuyen len dau trang (ngoai section) — reset them select trong khoi loc theo id */
+    var fEl = opts.filterId ? document.getElementById(opts.filterId) : null;
+    if(fEl){ var fSels = fEl.querySelectorAll('select'); for(var fi = 0; fi < fSels.length; fi++){ fSels[fi].value = ''; } }
     var countEl = document.getElementById(opts.countId);
     if(countEl) countEl.textContent = '';
     var emptyEl = document.getElementById(opts.emptyId);
@@ -386,7 +389,7 @@ function initSectionFilter(opts){
 }
 function initLotFilter(){
   initSectionFilter({
-    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn',
+    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'lotFilter',
     applyId: 'lotApplyBtn', resetId: 'lotResetBtn',
     countId: 'lotCount', emptyId: 'lotEmpty', label: 'lô',
     readForm: function(){
@@ -401,7 +404,7 @@ function initLotFilter(){
 }
 function initFactoryFilter(){
   initSectionFilter({
-    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn',
+    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'factoryFilter',
     applyId: 'factoryApplyBtn', resetId: 'factoryResetBtn',
     countId: 'factoryCount', emptyId: 'factoryEmpty', label: 'xưởng',
     readForm: function(){
@@ -650,20 +653,20 @@ function renderTrustStats(){
   var tm = document.getElementById('trustModels'); if(tm) tm.textContent = String(st.modelCount);
   var ts = document.getElementById('trustShops'); if(ts) ts.textContent = String(st.shopCount);
   var mp = document.getElementById('trustModelProvinces');
-  if(mp) mp.textContent = 'hồ sơ mẫu thật · ' + st.modelProvinceCount + ' tỉnh' + (st.modelOnline ? ' + live online' : '');
+  if(mp) mp.textContent = 'Hồ sơ mẫu thật · ' + st.modelProvinceCount + ' tỉnh' + (st.modelOnline ? ' + live online' : '');
   var mpay = document.getElementById('trustModelPay');
   var mnote = document.getElementById('trustModelPayNote');
   if(st.maxRevenue !== null){
-    if(mpay) mpay.textContent = 'doanh thu cao nhất ' + fmtVnd(st.maxRevenue) + 'đ';
+    if(mpay) mpay.textContent = 'Doanh thu cao nhất ' + fmtVnd(st.maxRevenue) + 'đ';
     if(mnote) mnote.textContent = '';
   } else if(st.minWage !== null){
-    if(mpay) mpay.textContent = 'lương đề xuất từ ' + fmtVnd(st.minWage) + 'đ/giờ';
+    if(mpay) mpay.textContent = 'Lương đề xuất từ ' + fmtVnd(st.minWage) + 'đ/giờ';
     if(mnote) mnote.textContent = '(doanh thu cao nhất chưa có dữ liệu — sẽ thay bằng doanh thu cao nhất khi có)';
   }
   var sp = document.getElementById('trustShopProvinces');
-  if(sp) sp.textContent = 'shop đang tuyển mẫu · ' + st.shopProvinceCount + ' tỉnh';
+  if(sp) sp.textContent = 'Shop đang tuyển mẫu · ' + st.shopProvinceCount + ' tỉnh';
   var spay = document.getElementById('trustShopPay');
-  if(spay && st.maxMonthly !== null) spay.textContent = 'lương cao nhất ' + st.maxMonthly + ' triệu/tháng';
+  if(spay && st.maxMonthly !== null) spay.textContent = 'Lương cao nhất ' + st.maxMonthly + ' triệu/tháng';
 }
 function initHome(){
   var grid=document.getElementById('homeGrid'); if(!grid) return;
