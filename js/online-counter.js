@@ -20,15 +20,20 @@
      ở đây nghĩa là API/UI không trả/hiện số thật tách riêng; không phải
      là bảo mật mật mã. Số thật tách riêng chỉ hiện trong trang quản trị
      (quan-tri.html, chỉ chủ web đăng nhập mới xem được).
-   - Tick local: mỗi bộ đếm +1 sau mỗi khoảng xen kẽ 3s rồi 5s
-     ([3000, 5000] lặp lại). Timer 5 bộ đếm lệch nhau (stagger) để tổng
-     trang chủ tăng mượt, không nhảy +5 cùng lúc: stagger 0 / 1,6s / 3,2s /
-     4,8s / 6,4s → trong mỗi chu kỳ 8s có đúng 10 tick, mỗi tick cách nhau
-     0,8s, không có 2 tick nào trùng thời điểm (xem tickTimesMs + test).
+   - Tick local (quy ước người dùng chốt 22:09 ngày 07/11/2026): mỗi bộ
+     đếm tăng 3 lần rồi giảm 1 lần; số giảm = số tăng = 1. Chu kỳ 4 tick:
+     +1, +1, +1, −1 (tăng ròng +2/4 tick). Mỗi tick vẫn sau mỗi khoảng
+     xen kẽ 3s rồi 5s ([3000, 5000] lặp lại). Timer 5 bộ đếm lệch nhau
+     (stagger) để tổng trang chủ đổi mượt, không nhảy +5 cùng lúc:
+     stagger 0 / 1,6s / 3,2s / 4,8s / 6,4s → trong mỗi chu kỳ 8s có đúng
+     10 tick, mỗi tick cách nhau 0,8s, không có 2 tick nào trùng thời điểm
+     (xem tickTimesMs + test).
    - Lưu trữ (localStorage 'v20_online_counters_v2'): CHỈ lưu phần tăng
-     tick {tick: {mau, shop, kiot, hoidap, tintuc}, lastSeen}. Thoát web
-     vào lại: tiếp tục đúng số tick cũ, KHÔNG reset, KHÔNG cộng bù thời
-     gian vắng. Thoát ≥4 tiếng (now − lastSeen >= 4h): reset tick về 0.
+     tick {tick: {mau, shop, kiot, hoidap, tintuc}, count: {...}, lastSeen}
+     (count = số tick đã chạy của từng bộ đếm, để giữ đúng pha 3 tăng
+     1 giảm khi vào lại). Thoát web vào lại: tiếp tục đúng số tick cũ,
+     KHÔNG reset, KHÔNG cộng bù thời gian vắng. Thoát ≥4 tiếng
+     (now − lastSeen >= 4h): reset tick và count về 0.
      Cập nhật lastSeen mỗi tick + khi visibilitychange/beforeunload.
      Đa tab: đồng bộ hiển thị qua sự kiện storage (best-effort — 2 tab
      cùng tick thì lần ghi cuối thắng, số có thể lệch nhẹ, chấp nhận được
@@ -87,18 +92,22 @@
     return (now - lastSeen) >= RESET_AFTER_MS;
   }
 
-  // Pure: từ object đã parse trong localStorage (hoặc null) → {tick, lastSeen}.
-  // Không cộng bù thời gian vắng: vào lại chỉ tiếp tục tick cũ.
+  // Pure: từ object đã parse trong localStorage (hoặc null) →
+  // {tick, count, lastSeen}. Không cộng bù thời gian vắng: vào lại chỉ
+  // tiếp tục tick cũ. count thiếu (dữ liệu cũ chưa có) → 0.
   function loadState(stored, now) {
     if (!stored || typeof stored !== 'object' || shouldReset(stored.lastSeen, now)) {
-      return { tick: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, lastSeen: now };
+      return { tick: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, count: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, lastSeen: now };
     }
     var tick = {};
+    var count = {};
     KEYS.forEach(function (k) {
       var v = Math.floor(Number(stored.tick && stored.tick[k]));
       tick[k] = (isFinite(v) && v >= 0) ? v : 0;
+      var c = Math.floor(Number(stored.count && stored.count[k]));
+      count[k] = (isFinite(c) && c >= 0) ? c : 0;
     });
-    return { tick: tick, lastSeen: stored.lastSeen };
+    return { tick: tick, count: count, lastSeen: stored.lastSeen };
   }
 
   function nextIntervalMs(step) { return INTERVALS_MS[((step % 2) + 2) % 2]; }
@@ -113,10 +122,19 @@
     return times;
   }
 
-  function applyTick(tick, key) {
+  // Quy ước 3 tăng 1 giảm (người dùng chốt 22:09 ngày 07/11/2026):
+  // count = số tick đã chạy của bộ đếm; tick thứ 4, 8, 12... (count % 4
+  // === 3) thì GIẢM 1, các tick còn lại TĂNG 1. Số giảm = số tăng = 1.
+  function tickDelta(count) {
+    var c = Math.floor(Number(count) || 0);
+    return ((((c % 4) + 4) % 4) === 3) ? -1 : 1;
+  }
+
+  function applyTick(tick, key, count) {
     var out = {};
     KEYS.forEach(function (k) { out[k] = tick[k]; });
-    out[key] = (Math.floor(Number(tick[key]) || 0)) + 1;
+    var cur = Math.floor(Number(tick[key]) || 0);
+    out[key] = Math.max(0, cur + tickDelta(count));
     return out;
   }
 
@@ -148,7 +166,7 @@
   function shouldShowPopup(closedFlag) { return closedFlag !== '1'; }
 
   // ---- Phần chạy trên trình duyệt (guard window/document) ----
-  var state = null; // {tick, lastSeen}
+  var state = null; // {tick, count, lastSeen}
   var mergedValue = null; // số gộp server của trang hiện tại (null = chưa lấy được)
   var mergedKey = null; // 'mau'|'shop'|'kiot'|'hoidap'|'tintuc'|'total'
   var pageKey = null; // trang hiện tại, suy từ badge ('total' → heartbeat page 'home')
@@ -168,7 +186,7 @@
   function save() {
     if (!state) return;
     safe(function () {
-      var out = { tick: state.tick, lastSeen: Date.now() };
+      var out = { tick: state.tick, count: state.count, lastSeen: Date.now() };
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(out));
     }, null);
   }
@@ -246,7 +264,10 @@
 
   function tick(key) {
     if (!state) return;
-    state.tick = applyTick(state.tick, key);
+    if (!state.count) state.count = { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 };
+    var c = Math.floor(Number(state.count[key]) || 0);
+    state.tick = applyTick(state.tick, key, c);
+    state.count[key] = c + 1;
     state.lastSeen = Date.now();
     save();
     render();
@@ -350,7 +371,7 @@
     TOTAL_BASE: TOTAL_BASE,
     formatVi: formatVi, sumTick: sumTick, shouldReset: shouldReset,
     loadState: loadState, nextIntervalMs: nextIntervalMs,
-    tickTimesMs: tickTimesMs, applyTick: applyTick,
+    tickTimesMs: tickTimesMs, applyTick: applyTick, tickDelta: tickDelta,
     displayForPage: displayForPage, displayTotal: displayTotal,
     valueForKey: valueForKey, shouldShowPopup: shouldShowPopup,
     init: init
