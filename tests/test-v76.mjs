@@ -183,13 +183,13 @@ t('app.js: comment ghi ro quy tac 60 ngay chi ap dung nhom 1',
 
 // ---- (G) CACHE + hash khoa file da doi (v76) ----
 const swJs = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t("sw.js khong con cache cu (v75)", !swJs.includes('v75-shell-1'));
 t("sw.js: ghi chu dau file van la v60 (theo quy tac cu)", swJs.includes('/* v60 service worker'));
-t('js/data.js giong het v76 (them lots + factories) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('js/app.js giong het v76 (render lo/xuong + trustStats mo rong) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('danh-sach-shop.html giong het v76 (4 grid rong + id dong dem) (sha256)', sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t('sw.js giong het v76 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('js/data.js giong het v76 (them lots + factories) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('js/app.js giong het v76 (render lo/xuong + trustStats mo rong) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('danh-sach-shop.html giong het v76 (4 grid rong + id dong dem) (sha256)', sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t('sw.js giong het v76 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 console.log(`\nv76: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

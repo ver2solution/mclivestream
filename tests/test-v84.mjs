@@ -10,7 +10,7 @@
 //     sau nam CUOI mang articles -> dao nguoc mang), KHONG theo date bai goc.
 // (C) Mock: bai moi them du date cu hon van len truoc; bai ghim pinOrder van
 //     len truoc bai moi them.
-// (D) sw.js CACHE = v84-shell-1 + hash khoa file da doi.
+// (D) sw.js CACHE = v86-shell-1 + hash khoa file da doi.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -94,10 +94,10 @@ t('sortByDateDesc van ton tai (dung cho #homeNews + tin-tuc, khong xoa)',
   typeof V.sortByDateDesc === 'function');
 
 // ---- (D) CACHE + hash khoa file da doi (v84) ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
-t('js/data.js giong het v84 (chi 1 bai ghim bop-reach) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('js/app.js giong het v84 (getPinnedRow dao nguoc mang) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('sw.js giong het v84 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
+t('js/data.js giong het v84 (chi 1 bai ghim bop-reach) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('js/app.js giong het v84 (getPinnedRow dao nguoc mang) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('sw.js giong het v84 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 console.log(`v84: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

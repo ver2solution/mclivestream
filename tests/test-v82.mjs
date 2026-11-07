@@ -21,7 +21,7 @@
    800-1500 tu. sitemap 61 URL (56 cu + 5 moi), khong trung; articleLink
    noi bo cho ca 49 bai co page; initNews render 50 news-items; hang ghim (v84) =
    [bop reach (user ghim), 3 bai moi them gan nhat v82]. Khong trung URL goc / page / tieu de voi bai da co; sw.js
-   CACHE = 'v84-shell-1'. */
+   CACHE = 'v86-shell-1'. */
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -149,7 +149,7 @@ t('hang-viet article date 07/11/2026, links to cho-4.0 in same batch',
 // ---- sitemap / links / render / pinned ----
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap has 62 urls (56 cu + 5 bai moi v82)', locs.length === 62, 'got ' + locs.length);
+t('sitemap has 64 urls (56 cu + 5 bai moi v82)', locs.length === 64, 'got ' + locs.length);
 t('sitemap has no duplicates', new Set(locs).size === locs.length);
 for (const slug of NEW_SLUGS) t('sitemap has ' + slug, locs.includes(BASE + 'bai-viet/' + slug + '.html'));
 for (const a of news) {
@@ -157,8 +157,8 @@ for (const a of news) {
   t('articleHref == page: ' + (a.page || ''), V.articleHref(a) === a.page);
 }
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1';"));
-t('sw.js giong het v82 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1';"));
+t('sw.js giong het v82 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 // pinned row (khong doi so voi v80: v82 khong them bai ghim)
 const pinned = V.getPinnedRow(D.articles);

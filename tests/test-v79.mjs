@@ -21,9 +21,9 @@ const tick = () => new Promise(r => setTimeout(r, 0));
 
 // ---- (A) sw.js CACHE + sha pin ----
 const swJs = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con cache cu (v78)', !swJs.includes('v78-shell-1'));
-t('sw.js giong het v79 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('sw.js giong het v79 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 // ---- (B) static: analytics.js co utmQuery + pagePath dung no ----
 const an = fs.readFileSync(path.join(root, 'js/analytics.js'), 'utf8');

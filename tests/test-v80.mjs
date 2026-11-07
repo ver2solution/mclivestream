@@ -170,7 +170,7 @@ t('cart-limit article is first of TikTok Shop rules series (links to IP-freeze +
 // ---- (4) sitemap / links / render / pinned ----
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap has 62 urls (46 cu + 10 bai moi v80)', locs.length === 62, 'got ' + locs.length);
+t('sitemap has 64 urls (46 cu + 10 bai moi v80)', locs.length === 64, 'got ' + locs.length);
 t('sitemap has no duplicates', new Set(locs).size === locs.length);
 for (const slug of NEW_SLUGS) t('sitemap has ' + slug, locs.includes(BASE + 'bai-viet/' + slug + '.html'));
 for (const a of news) {
@@ -178,8 +178,8 @@ for (const a of news) {
   t('articleHref == page: ' + (a.page || ''), V.articleHref(a) === a.page);
 }
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1';"));
-t('sw.js giong het v80 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1';"));
+t('sw.js giong het v80 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 // pinned row
 const pinned = V.getPinnedRow(D.articles);

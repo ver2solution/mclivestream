@@ -107,7 +107,7 @@ t('F-05b: auth-ui dong bo lai bang showUser() sau signOut', (() => {
 
 // ---- (H) F-06: ghi nhan (khong tu chay migration) ----
 const myPage = fs.readFileSync(path.join(root, 'trang-cua-toi.html'), 'utf8');
-t('F-06: code trang-cua-toi van giu co che thu lai khi thieu top_revenue (chua doi hanh vi)', myPage.includes('delete retry.top_revenue;') && myPage.includes('riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng'));
+t('F-06 (v85: M1 da chay 13:57 07/11 — 3 cot highest_revenue_*): code trang-cua-toi KHONG con co che thu lai top_revenue (doan retry lang le bo du lieu da xoa), dung 2 truong moi', !myPage.includes('delete retry.top_revenue;') && !myPage.includes('riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng') && myPage.includes('highest_revenue_amount') && myPage.includes('highest_revenue_note'));
 t('F-06: file migration top_revenue san co trong prep (CHO chay, chua chay)', fs.existsSync(path.join(root, 'supabase-migration-top-revenue.sql')) && fs.readFileSync(path.join(root, 'supabase-migration-top-revenue.sql'), 'utf8').includes('ADD COLUMN IF NOT EXISTS top_revenue'));
 
 // ---- (I) B1/B2: KHONG sua (cho nguoi dung quyet) ----
@@ -116,16 +116,16 @@ t('B1/B2: v20.css khong them nen moi cho .shop-logo--contain (van #eef7f2 cu)', 
 
 // ---- (J) sw.js CACHE + sha pin file doi ----
 const swJs = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con cache cu (v77)', !swJs.includes('v77-shell-1'));
 t('sw.js: van la ban v60 (ghi chu dau file)', swJs.includes('/* v60 service worker'));
-t('v20.css giong het v78 (C1 + B3 + B4) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v78 (C2 guard) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('js/auth-ui.js giong het v78 (F-05b) (sha256)', sha('js/auth-ui.js') === '5fec3b5f2f9ea100fe516565beef2ec6aeb63fe12ac0bac8403668da1da8fdfa');
-t('dang-nhap.html giong het v78 (F-05a) (sha256)', sha('dang-nhap.html') === 'e9a1f910be96d489370fa7669e57b6ad2c51955c4c23bf11189131022ce4ec70');
-t('quy-tac-diem-thuong.html giong het v78 (C3 + D2) (sha256)', sha('quy-tac-diem-thuong.html') === 'b2cd8176ec2392c8567416bceb5b06f9572720c8c1ead403b13e12d5d8b993c0');
-t('bai-viet-bop-reach.html giong het v78 (C4-1) (sha256)', sha('bai-viet-bop-reach.html') === '61f8a48e3883955091fbe25bd54ead8174b3011c92840465d11b364d3c186f93');
-t('sw.js giong het v78 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('v20.css giong het v78 (C1 + B3 + B4) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v78 (C2 guard) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('js/auth-ui.js giong het v78 (F-05b) (sha256)', sha('js/auth-ui.js') === '46d13e3b95dea2a9157d5668c3b4fca700279a1df8fe5c95ce0b416fa64f2f5c');
+t('dang-nhap.html giong het v78 (F-05a) (sha256)', sha('dang-nhap.html') === '95f825c69c4040b252349bf13c23419644fc21baff849716ddcdc78fc33aece2');
+t('quy-tac-diem-thuong.html giong het v78 (C3 + D2) (sha256)', sha('quy-tac-diem-thuong.html') === 'b264c326c5e1e35c4735aacc4975c00a639f8d1c05eca4e96f494450208c5ce5');
+t('bai-viet-bop-reach.html giong het v78 (C4-1) (sha256)', sha('bai-viet-bop-reach.html') === '65c246d3de68760bf4181d310604678ca357be81e253c0c941cebdca8e9f8456');
+t('sw.js giong het v78 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 console.log(`\nv78: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

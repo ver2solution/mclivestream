@@ -9,7 +9,7 @@
        06/11/2026 = 9 (all group-1 lots still within 60 days).
    (3) js/data.js sha256 rebased to the new hash (lots change only).
    CACHE is NOT pinned here: sw.js belongs to the v83 calculator build
-   (CACHE v84-shell-1, pinned in tests/test-v83.mjs). */
+   (CACHE v86-shell-1, pinned in tests/test-v83.mjs). */
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -51,7 +51,7 @@ t('no lot assigned to a big brand (v55 list)', (() => {
   const BIG = ['Cocoon', 'Cỏ Mềm Homelab', 'Sao Thái Dương', 'Thorakao', 'M.O.I Cosmetics', 'Lemonade', 'Emmié', 'OFÉLIA', 'Lagumi', 'Vedette', 'Coolmate', 'Canifa', 'IVY Moda', 'Yody', 'Juno', 'Vascara', 'SSStutter', 'Routine', 'Degrey', 'Couple TX'];
   return D.lots.every(l => !BIG.some(b => l.title.includes(b)));
 })());
-t('js/data.js sha256 (lots change only)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
+t('js/data.js sha256 (lots change only)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
 
 console.log(`\nTOTAL v83-lots: ${pass} PASS, ${fail} FAIL`);
 if (fail) process.exitCode = 1;

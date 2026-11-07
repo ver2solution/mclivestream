@@ -104,7 +104,7 @@ function allHtml() {
   return out;
 }
 const files = allHtml();
-t('tong so file HTML = 66 (65 cu + 1 tinh-lai-1111 v83)', files.length === 66, 'got ' + files.length);
+t('tong so file HTML = 68 (67 cu + 1 thanh-ly-kiot v86)', files.length === 68, 'got ' + files.length);
 let footerOk = true, footerDetail = '';
 for (const f of files) {
   const html = fs.readFileSync(f, 'utf8');
@@ -123,11 +123,11 @@ const css = fs.readFileSync(path.join(root, 'v20.css'), 'utf8');
 t('v20.css: co luat .foot-legal (+ link gach chan)', css.includes('.site-foot .foot-legal{') && css.includes('.site-foot .foot-legal a{'));
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap: 62 URL', locs.length === 62, 'got ' + locs.length);
+t('sitemap: 64 URL', locs.length === 64, 'got ' + locs.length);
 t('sitemap: co 4 URL trang AdSense moi', ['gioi-thieu.html', 'chinh-sach-bao-mat.html', 'dieu-khoan-su-dung.html', 'lien-he.html'].every(p => locs.includes(BASE + p)));
 t('sitemap: khong trung URL', new Set(locs).size === locs.length);
 const swJs = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con cache cu (v76)', !swJs.includes('v76-shell-1'));
 t('sw.js: van la ban v60 (ghi chu dau file)', swJs.includes('/* v60 service worker'));
 

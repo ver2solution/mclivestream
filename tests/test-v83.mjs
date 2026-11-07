@@ -9,8 +9,8 @@
    Voucher Xtra 4% toi da 50.000d (chi TikTok Shop), Lazada +3.000d phi ha
    tang, gia hoa von = gia von / (1 - 6% - hoa hong % - voucher %) + phi
    ha tang + logistics, lam tron len 1.000d. Link noi bo: bai
-   tiktok-shop-1111-tinh-loi.html + trang chu (muc Tin tuc). sitemap 62 URL
-   (61 cu + 1 trang moi); sw.js CACHE = 'v84-shell-1'. js/data.js KHONG doi
+   tiktok-shop-1111-tinh-loi.html + trang chu (muc Tin tuc). sitemap 64 URL
+   (61 cu + 1 trang moi); sw.js CACHE = 'v86-shell-1'. js/data.js KHONG doi
    (cong cu khong them bai moi). */
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -165,11 +165,11 @@ t('trang chu van giu nut "Xem tất cả tin →"', idx.includes('Xem tất cả
 // ---- sitemap / sw.js ----
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap has 62 urls (61 cu + 1 trang moi v83)', locs.length === 62, 'got ' + locs.length);
+t('sitemap has 64 urls (61 cu + 1 trang moi v83)', locs.length === 64, 'got ' + locs.length);
 t('sitemap has tinh-lai-1111.html', locs.includes(BASE + PAGE));
 t('sitemap has no duplicates', new Set(locs).size === locs.length);
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1';"));
-t('sw.js (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1';"));
+t('sw.js (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 console.log(`\nTOTAL v83: ${pass} PASS, ${fail} FAIL`);
 if (fail) process.exitCode = 1;

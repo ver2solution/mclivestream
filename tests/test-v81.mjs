@@ -43,10 +43,10 @@ const swJs = read('sw.js');
 const appJs = read('js/app.js');
 
 // ---- (A) sw.js CACHE + sha pin ----
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js khong con cache cu (v80)', !swJs.includes('v80-shell-1'));
-t('sw.js giong het v81 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
-t('v20.css giong het v81 (P3-12 + M1) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
+t('sw.js giong het v81 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
+t('v20.css giong het v81 (P3-12 + M1) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
 
 // ---- (B) P3-11: FAB co mat + giong het index.html tren 3 trang ----
 const fabBlock = (html) => {

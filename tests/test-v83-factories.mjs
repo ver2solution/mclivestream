@@ -12,7 +12,7 @@
        id/name/phone-vs-existing-web-units (checked against fac-01..fac-20).
    (3) js/data.js sha256 rebased to the new hash (lots + factories change).
    CACHE is NOT pinned here: sw.js belongs to the v83 calculator build
-   (CACHE v84-shell-1, pinned in tests/test-v83.mjs). */
+   (CACHE v86-shell-1, pinned in tests/test-v83.mjs). */
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -55,7 +55,7 @@ t('new factories: cards render with target=_blank rel=noopener',
   NEW.every(f => { const h = V.factoryCardHTML(f); return h.includes('target="_blank"') && h.includes('rel="noopener"') && h.includes('href="' + f.url + '"'); }));
 t('trustStats: factoryCount 40 / factoryProvinceCount 7',
   (() => { const st = V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2026, 10, 6)); return st.factoryCount === 40 && st.factoryProvinceCount === 7; })());
-t('js/data.js sha256 (lots + factories change)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
+t('js/data.js sha256 (lots + factories change)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
 
 console.log(`\nTOTAL v83-factories: ${pass} PASS, ${fail} FAIL`);
 if (fail) process.exitCode = 1;
