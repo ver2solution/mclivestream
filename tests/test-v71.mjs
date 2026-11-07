@@ -144,22 +144,22 @@ for (const n of NEW) {
 // ---- (D) Sitemap 42 URL ----
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap co 62 URL (37 cu + 5 moi + 4 trang AdSense v77; v76 giu 42 theo chinh sach loai trang detail/app)', locs.length === 62, 'got ' + locs.length);
+t('sitemap co 64 URL (37 cu + 5 moi + 4 trang AdSense v77; v76 giu 42 theo chinh sach loai trang detail/app)', locs.length === 64, 'got ' + locs.length);
 t('sitemap co du 5 URL bai moi', NEW.every(n => locs.includes(BASE + 'bai-viet/' + n.slug + '.html')));
 t('sitemap khong trung', new Set(locs).size === locs.length);
 
 // ---- (F) CACHE + hash khoa file da doi (v71) ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con v69-shell-1", !sw.includes('v69-shell-1'));
-t('js/data.js giong het v71 (30 cu + 5 bai moi) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('sw.js giong het v71 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
-t('sitemap.xml giong het v71 (61 URL v77) (sha256)', sha('sitemap.xml') === 'a5253c4d14a1de2e1095db28a6b9b75998ffaa3af5e3726d1b4f819485fd39f5');
+t('js/data.js giong het v71 (30 cu + 5 bai moi) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('sw.js giong het v71 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
+t('sitemap.xml giong het v71 (61 URL v77) (sha256)', sha('sitemap.xml') === 'c229a7061ef8b60b611648874a475aaf96e5cb0ea2b46aef112265e7f350459f');
 const HTML_HASH = {
-  'wechat-channels-livestream-ban-hang-2026': '1135712880d56e976e7ee7979e19641349038b00a0fcd17e264ba929059009cf',
-  'my-bai-bo-mien-thue-de-minimis-temu-shein': '34cf4921280cfda815b1a674337a72915202813904a5b3bb9dd74a07876b65bb',
-  'youtube-shopping-tang-13-lan': '14f291d198a6fd4fabc557eac6e292397213131e24d6c50b5a66ab723e27430f',
-  'thue-livestream-2026-bo-thue-khoan': '5c5b184627e70bf764e4dcb487946986d5707d112b16b2d477937cefa1ae2c99',
-  'nong-san-livestream-ocop': '4409915220c23e37028fc2669d7b08deb8dcfd0fb6d51b2148f4efd3298d9275',
+  'wechat-channels-livestream-ban-hang-2026': '46aacec522a8973f28fd38d2b9a87b9fa3733197785503e45ef90f0acae7c7ae',
+  'my-bai-bo-mien-thue-de-minimis-temu-shein': 'd566f5e649b68ef92ab23c2e560679dcfd80a83191e726b948eb19910b5f9cd4',
+  'youtube-shopping-tang-13-lan': '4a1857817e829d7efa7d27a2c19532b9983d09c5522528d1c04a5cc84aeb7ed5',
+  'thue-livestream-2026-bo-thue-khoan': '7acc6a74bd01710d65c4c488e423eaf32b80ac3bcf84c7d338ac9f82ad4aceee',
+  'nong-san-livestream-ocop': '9337e30281a9a25e85e9de5a5633f95fe39f05a804ba84eebf303634ae1a13f7',
 };
 for (const [slug, h] of Object.entries(HTML_HASH))
   t('bai-viet/' + slug + '.html giong het v71 (sha256)', sha('bai-viet/' + slug + '.html') === h);

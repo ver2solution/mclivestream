@@ -32,7 +32,7 @@ const htmlFiles = [];
     else if (e.name.endsWith('.html')) htmlFiles.push(p);
   }
 })(root);
-t('66 file HTML co nav (v40: +2 bai-viet demo; v48: +1 dat-lai-mat-khau; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v80: +10 bai moi; v82: +5 bai moi; v83: +1 tinh-lai-1111)', htmlFiles.length === 66, 'got ' + htmlFiles.length);
+t('68 file HTML co nav (v40: +2 bai-viet demo; v48: +1 dat-lai-mat-khau; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v80: +10 bai moi; v82: +5 bai moi; v83: +1 tinh-lai-1111; v85: +1 dang-ky; v86: +1 thanh-ly-kiot)', htmlFiles.length === 68, 'got ' + htmlFiles.length);
 let navOk = true, navBad = [];
 for (const f of htmlFiles) {
   const s = fs.readFileSync(f, 'utf8');
@@ -41,13 +41,14 @@ for (const f of htmlFiles) {
   if (i < 0 || j < 0) { navOk = false; navBad.push(path.relative(root, f) + ': khong co nav'); continue; }
   const nav = s.slice(i, j);
   const n = (nav.match(/<a href=/g) || []).length;
-  const good = n === 5
+  const good = n === 6
     && nav.includes('Trang chủ') && nav.includes('Dành cho Mẫu') && nav.includes('Dành cho Shop')
+    && nav.includes('Thanh lý Kiot')
     && nav.includes('Tin tức') && nav.includes('Hỏi đáp')
     && !nav.includes('Cách hoạt động') && !nav.includes('Lộ trình');
   if (!good) { navOk = false; navBad.push(path.relative(root, f)); }
 }
-t('nav 5 muc, khong co Cách hoạt động / Lộ trình, trong ca 32 file', navOk, navBad.join('; '));
+t('nav 6 muc, khong co Cách hoạt động / Lộ trình, trong ca 68 file', navOk, navBad.join('; '));
 
 // ---- (2) CSS nav 1 hang ----
 const css = fs.readFileSync(path.join(root, 'v20.css'), 'utf8');
@@ -56,7 +57,7 @@ t('CSS .main-nav van co display:flex + margin-left:auto', /\.main-nav\{margin-le
 
 // ---- (3) sw.js cache v35 ----
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE = 'v84-shell-1' (v44 bumped the cache because nhat quan ngon ngu C1-C12 + sua noi dung F1-F5 doi nhieu bai-viet + js/app.js + js/data.js + 5 trang goc)", sw.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1' (v44 bumped the cache because nhat quan ngon ngu C1-C12 + sua noi dung F1-F5 doi nhieu bai-viet + js/app.js + js/data.js + 5 trang goc)", sw.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js khong con v34-shell-1', !sw.includes('v34-shell-1'));
 
 // ---- (4) data.js header + du lieu khong doi ----

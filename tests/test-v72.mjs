@@ -167,12 +167,12 @@ t('Mock apply lot: ap dung bo loc gap bo loc (filters-open bi go)',
   })());
 
 // ---- (E) CACHE + file khong doi giong het v71 ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con cache cu (v71)", !sw.includes('v71-shell-1'));
-t('js/data.js giong het v71 (khong doi) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('index.html giong het v71 (khong doi) (sha256)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('sitemap.xml giong het v71 (khong doi) (sha256)', sha('sitemap.xml') === 'a5253c4d14a1de2e1095db28a6b9b75998ffaa3af5e3726d1b4f819485fd39f5');
-t('tin-tuc.html giong het v71 (khong doi) (sha256)', sha('tin-tuc.html') === 'bab4ccb320ff4cc89e30e02e457aa0813de36ef8a65355d29426259d97768575');
+t('js/data.js giong het v71 (khong doi) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('index.html giong het v71 (khong doi) (sha256)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('sitemap.xml giong het v71 (khong doi) (sha256)', sha('sitemap.xml') === 'c229a7061ef8b60b611648874a475aaf96e5cb0ea2b46aef112265e7f350459f');
+t('tin-tuc.html giong het v71 (khong doi) (sha256)', sha('tin-tuc.html') === '0f462574e8c5afc7b09d179d4ec691f96fda11f1646c7aa6cc58eab136e529ac');
 
 console.log(`v72: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

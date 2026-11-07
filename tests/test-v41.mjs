@@ -19,12 +19,15 @@
    (2) So lieu ben duoi TINH DONG tu data.js bang ham moi renderTrustStats()
        + trustStats() trong js/app.js (khong ghi so cung vao HTML; so tinh
        trong index.html chi la du phong neu JS loi):
-       - Mau: 20 ho so · 2 tinh + live online; topRevenue ca 20 deu "Chua cap
-         nhat" -> fallback luong de xuat THAP NHAT = 120.000d/gio (3 mau co
-         salaryNum: 120.000 x2, 250.000 x1; 17/20 "Thoa thuan"), kem ghi chu
-         doanh thu cao nhat chua co du lieu — se thay bang doanh thu cao nhat
-         khi co. Khi 1 mau co topRevenue that thi code tu chuyen sang hien
-         thi doanh thu (logic fallback nam trong code, test bang du lieu gia).
+       - Mau: 20 ho so · 2 tinh + live online; chua co so doanh thu DA XAC
+         MINH nao (v85 M1: chi highest_revenue_amount kem
+         highest_revenue_verified=true moi tinh; chuoi topRevenue tu khai cu
+         KHONG tinh) -> fallback luong de xuat THAP NHAT = 120.000d/gio
+         (3 mau co salaryNum: 120.000 x2, 250.000 x1; 17/20 "Thoa thuan"),
+         kem ghi chu doanh thu cao nhat chua co du lieu — se thay bang doanh
+         thu cao nhat khi co. Khi 1 mau co doanh thu DA XAC MINH thi code tu
+         chuyen sang hien thi doanh thu (logic fallback nam trong code, test
+         bang du lieu gia).
        - Shop: 30 shop · 2 tinh; luong thang cao nhat 36 trieu/thang (59K
          Entertainment "16–36 trieu/thang"); chi xet luong thang, bo qua
          luong gio / thoa thuan / chua cap nhat; phan tram hoa hong sau cum
@@ -98,7 +101,7 @@ t('v20.css: anh icon 70% trong o (width+height 70%, object-fit contain)', /\.log
 t('v20.css: mobile <=600px o tron 44px', /@media\(max-width:600px\)\{[\s\S]*?\.logo-card\{[^}]*width:44px/.test(css));
 t('v20.css: khong con the chu nhat cu (border-radius:14px / width:170px)', !/\.logo-card\{[^}]*border-radius:14px/.test(css) && !/\.logo-card\{[^}]*width:170px/.test(css));
 t('v20.css: khong con class wordmark cu (.logo-item / .logo-google)', !css.includes('.logo-item') && !css.includes('.logo-google'));
-t('sw.js: CACHE v51 precache du 9 file icon doi tac', fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v84-shell-1';") && PARTNER_LOGOS.every(([src]) => fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("'" + src + "'")));
+t('sw.js: CACHE v51 precache du 9 file icon doi tac', fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v86-shell-1';") && PARTNER_LOGOS.every(([src]) => fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("'" + src + "'")));
 t('index.html: khong con dong PR cu "hơn 3 năm"', !indexHtml.includes('hơn 3 năm'));
 
 // ---- (2) HTML: du id moi + so tinh du phong ----
@@ -162,14 +165,19 @@ revCases.forEach(([s, want]) => {
 t('fmtVnd(120000) = 120.000', V.fmtVnd(120000) === '120.000');
 t('fmtVnd(50000000) = 50.000.000', V.fmtVnd(50000000) === '50.000.000');
 
-// ---- (6) Logic fallback: khi co topRevenue that thi chuyen sang doanh thu ----
+// ---- (6) Logic fallback: khi co doanh thu DA XAC MINH thi chuyen sang doanh thu (v85 M1) ----
 const fakeModels = [
-  { province: 'Hà Nội', salaryNum: null, topRevenue: 'Chưa cập nhật' },
-  { province: 'TP. Hồ Chí Minh', salaryNum: 120000, topRevenue: '50 triệu' },
-  { province: 'Toàn quốc / Live online', salaryNum: 250000, topRevenue: 'Chưa cập nhật' },
+  { province: 'Hà Nội', salaryNum: null, highest_revenue_amount: null, highest_revenue_verified: false },
+  { province: 'TP. Hồ Chí Minh', salaryNum: 120000, highest_revenue_amount: 50000000, highest_revenue_verified: true },
+  { province: 'Toàn quốc / Live online', salaryNum: 250000, highest_revenue_amount: null, highest_revenue_verified: false },
 ];
 const stFake = V.trustStats(fakeModels, []);
-t('trustStats (du lieu gia): co 1 mau topRevenue 50 trieu -> maxRevenue = 50000000', stFake.maxRevenue === 50000000, JSON.stringify(stFake));
+t('trustStats (du lieu gia): co 1 mau doanh thu DA XAC MINH 50 trieu -> maxRevenue = 50000000', stFake.maxRevenue === 50000000, JSON.stringify(stFake));
+const fakeUnverified = [
+  { province: 'Hà Nội', salaryNum: null, highest_revenue_amount: 2500000000, highest_revenue_verified: false },
+  { province: 'TP. Hồ Chí Minh', salaryNum: 120000, topRevenue: '50 triệu' },
+];
+t('trustStats (v85 M1): so chua xac minh + chuoi topRevenue tu khai cu deu KHONG tinh -> maxRevenue = null', V.trustStats(fakeUnverified, []).maxRevenue === null, JSON.stringify(V.trustStats(fakeUnverified, [])));
 t('trustStats (du lieu gia): minWage van 120000 (khong anh huong boi doanh thu)', stFake.minWage === 120000);
 t('trustStats (du lieu gia): 2 tinh + live online', stFake.modelProvinceCount === 2 && stFake.modelOnline === true);
 
@@ -187,7 +195,7 @@ t('renderTrustStats: trustShopPay = luong cao nhat 36 trieu/thang', els.trustSho
 const origModels = D.models;
 D.models = fakeModels;
 V.renderTrustStats();
-t('renderTrustStats (du lieu gia): trustModelPay chuyen sang doanh thu cao nhat 50.000.000d', els.trustModelPay.textContent === 'Doanh thu cao nhất 50.000.000đ', els.trustModelPay.textContent);
+t('renderTrustStats (du lieu gia, v85 M1): trustModelPay chuyen sang doanh thu cao nhat 50.000.000d (so da xac minh)', els.trustModelPay.textContent === 'Doanh thu cao nhất 50.000.000đ', els.trustModelPay.textContent);
 t('renderTrustStats (du lieu gia): ghi chu doanh thu duoc xoa khi da co doanh thu', els.trustModelPayNote.textContent === '', els.trustModelPayNote.textContent);
 D.models = origModels;
 V.renderTrustStats();
@@ -217,7 +225,7 @@ t('v49 CSS: .trust-note bi an (display:none) — ghi chu noi bo khong hien ra gi
 t('v65 CSS: mobile <=600px trust-strip xep doc (flex-direction:column)', /@media\(max-width:600px\)\{\.trust-strip\{flex-direction:column/.test(css));
 
 // ---- (11) sw.js + du lieu khong doi ----
-t("sw.js CACHE = 'v84-shell-1'", fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v86-shell-1';"));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai', D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50,
   `mau=${D.models.length} shop=${D.shops.length} bai=${D.articles.length}`);
 t('khong con "Shop thật, tin tuyển thật" o bat cu file nao (chi index.html doi)', !fs.readFileSync(path.join(root, 'js/app.js'), 'utf8').includes('Shop thật, tin tuyển thật'));

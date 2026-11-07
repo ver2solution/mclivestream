@@ -60,11 +60,11 @@ t('G5: header vua 1 hang o <=380px (gap 6px, logo 14px, nut padding 8px)',
   && v73css.includes('.head-in .btn-sm{padding:8px 8px}'));
 
 // ---- (E) CACHE + file khong doi giong het v72 ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con cache cu (v72)", !sw.includes('v72-shell-1'));
-t('v20.css la ban v73 (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v72 (khong doi) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('js/data.js giong het v72 (khong doi) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
+t('v20.css la ban v73 (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v72 (khong doi) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('js/data.js giong het v72 (khong doi) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
 
 console.log(`v73: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

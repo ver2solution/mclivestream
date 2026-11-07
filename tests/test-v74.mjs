@@ -217,7 +217,7 @@ t('Khong hoi quy: nen v73 van nguyen (rotateWindow/window8h + defaultShopOrder +
   appJs.includes('function rotateWindow(list, tierOf, date){') && appJs.includes('function defaultShopOrder(list, date){')
   && appJs.includes('function rotateStaticGrids(date){') && appJs.includes('rotateWindow:rotateWindow'));
 t('Khong hoi quy: js/data.js khong doi (20 mau / 30 shop / 50 bai)',
-  sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57'
+  sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf'
   && D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50);
 t('Khong hoi quy: bo loc tin tuyen shop + phan trang + form shop/dang tin van nguyen',
   ['fShopProv', 'fShopCat', 'fShopSort', 'fShopShift', 'fPayType', 'fPayMin'].every((id) => shopHtml.includes(`id="${id}"`))
@@ -231,12 +231,12 @@ t('Khong hoi quy: muc Lo hang xa kho (14 lo) + muc xuong may (40 xuong) van nguy
   && !shopHtml.includes('<article class="lot-card"'));
 
 // ---- (F) Hash khoa file da doi (v74) + CACHE ----
-t("sw.js CACHE = 'v84-shell-1'", fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes("const CACHE = 'v86-shell-1';"));
 t("sw.js khong con cache cu (v73)", !fs.readFileSync(path.join(root, 'sw.js'), 'utf8').includes('v73-shell-1'));
-t('danh-sach-shop.html giong het v74 (them khoi hub Tim mau 11.11) (sha256)', sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t('v20.css giong het v74 (them CSS .hub-card + responsive 360/280px) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v74 (them hubZaloHref/hubCardHTML/hubResults/initHub + defaultModelOrder) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('sw.js giong het v74 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('danh-sach-shop.html giong het v74 (them khoi hub Tim mau 11.11) (sha256)', sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t('v20.css giong het v74 (them CSS .hub-card + responsive 360/280px) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v74 (them hubZaloHref/hubCardHTML/hubResults/initHub + defaultModelOrder) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('sw.js giong het v74 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 console.log(`\n${pass} PASS, ${fail} FAIL`);
 if (fail) process.exitCode = 1;

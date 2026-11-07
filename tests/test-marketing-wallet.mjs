@@ -1,0 +1,31 @@
+/* Test khung email marketing + ví tiền ảo (M4). Chỉ kiểm tra file local, không gọi Supabase, không thu tiền thật. */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
+let pass = 0, fail = 0;
+function check(name, ok) { if (ok) { pass++; console.log('PASS marketing-wallet: ' + name); } else { fail++; console.log('FAIL marketing-wallet: ' + name); } }
+const mig = read('supabase-migration-marketing-wallet-m4.sql');
+check('M4 có đủ 4 bảng', ['marketing_consents','wallet_accounts','wallet_transactions','boost_orders'].every(t => mig.includes('CREATE TABLE IF NOT EXISTS public.' + t)));
+check('M4 không dùng service_role key thật, không gán mật khẩu', !/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/.test(mig) && !/password\s*=\s*['"][^'"]+['"]/i.test(mig));
+check('M4 wallet không có policy UPDATE cho client', !/wallet_accounts[^;]*FOR UPDATE/i.test(mig));
+check('M4 marketing không có SELECT công khai', mig.includes('marketing_consents_owner_read') && !/marketing_consents[^;]*public_read/i.test(mig));
+check('M4 có index chống 1 đơn active / 1 đối tượng / 1 dịch vụ', mig.includes('idx_boost_one_active_per_target_service'));
+const wallet = read('js/wallet.js');
+check('wallet.js có đủ hàm, không có hàm cộng/trừ số dư từ client', ['saveMarketingConsent','ensureWallet','requestTopUp','createBoostRequest'].every(f => wallet.includes(f)) && !/update.*balance_coins|balance_coins\s*\+=|balance_coins\s*-=/i.test(wallet));
+check('wallet.js chỉ tạo topup_request và boost pending, không tạo topup/bonus', wallet.includes("type: 'topup_request'") && wallet.includes("status: 'pending'") && !/type:\s*'topup'|type:\s*'bonus_real_activity'/i.test(wallet));
+check('wallet.js có bảng giá và gói', wallet.includes('PACKAGES') && wallet.includes('boost_24h') && wallet.includes('pin_home_7d'));
+const mau = read('danh-sach-mau.html'), shop = read('danh-sach-shop.html');
+check('Form mẫu có ô tick marketing, mặc định không tick', mau.includes('maSuMarketing') && !/maSuMarketing"[^>]*checked/i.test(mau));
+check('Form shop có ô tick marketing, mặc định không tick', shop.includes('shSuMarketing') && !/shSuMarketing"[^>]*checked/i.test(shop));
+check('Cả 2 form đều nạp js/wallet.js', mau.includes('js/wallet.js') && shop.includes('js/wallet.js'));
+const vi = read('vi-tien-ao.html');
+check('Trang Ví ghi rõ chưa thu tiền thật', /CHƯA THU TIỀN THẬT|chưa thu tiền thật/i.test(vi));
+check('Trang Ví có bảng giá, gói, trạng thái đơn và rút đồng ý', vi.includes('Gói Khởi động') && vi.includes('Đơn up top của bạn') && vi.includes('Rút đồng ý') || vi.includes('rút đồng ý'));
+check('Trang Ví có tùy chọn tỉnh/lĩnh vực cho email marketing', vi.includes('consentProvince') && vi.includes('consentField'));
+const docs = read('docs-email-marketing-va-tien-ao.md');
+check('Docs so sánh đủ 6 đối thủ và ghi điểm hơn/thua đã sửa', ['TopCV','VietnamWorks','CareerViet','Vieclam24h','Collabstr','Fiverr'].every(n => docs.includes(n)) && docs.includes('Điểm còn thua') && docs.includes('đã sửa'));
+check('Docs ghi rõ cần cổng thanh toán + đối soát trước khi bật thu tiền thật', docs.includes('cổng thanh toán') && docs.includes('đối soát'));
+console.log(pass + ' PASS, ' + fail + ' FAIL');
+process.exit(fail ? 1 : 0);

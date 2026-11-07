@@ -6,9 +6,11 @@
          Doanh thu dat duoc thap->cao / cao->thap. Luong dung salaryNum
          (17/20 "Thỏa thuận" = null, 3 mau co so: th-03/th-08 120.000,
          th-11 250.000); mau null LUON xep cuoi o ca 2 chieu. Doanh thu dung
-         parseRevenue(topRevenue) — hien ca 20 deu "Chưa cập nhật" nen sap
-         xep doanh thu khong doi thu tu (tat ca bang nhau, giu nguyen thu tu
-         goc); logic dung khi co topRevenue that (test bang du lieu gia).
+         verifiedRevenue (v85 M1: chi highest_revenue_amount kem
+         highest_revenue_verified=true moi tinh; chuoi topRevenue tu khai cu
+         KHONG tinh) — hien ca 20 deu chua xac minh nen sap xep doanh thu
+         khong doi thu tu (tat ca bang nhau, giu nguyen thu tu goc); logic
+         dung khi co doanh thu da xac minh (test bang du lieu gia).
        - Trang Shop (danh-sach-shop.html): them o "Sắp xếp" (fShopSort) sau o
          Linh vuc live (Mac dinh / Luong gio thap->cao / cao->thap / Luong
          thang thap->cao / cao->thap) + o "Giờ làm" (fShopShift) sau o Sap
@@ -125,14 +127,16 @@ t('sap doanh thu mau hien tai KHONG doi thu tu (ca 20 deu "Chưa cập nhật")'
   && revDesc.map(m => m.id).join(',') === D.models.map(m => m.id).join(','));
 const fakeModels = [
   { id: 'x1', salaryNum: null, topRevenue: 'Chưa cập nhật' },
-  { id: 'x2', salaryNum: null, topRevenue: '50 triệu' },
-  { id: 'x3', salaryNum: null, topRevenue: '120.000.000' },
-  { id: 'x4', salaryNum: null, topRevenue: '2,5 tỷ' },
+  { id: 'x2', salaryNum: null, highest_revenue_amount: 50000000, highest_revenue_verified: true },
+  { id: 'x3', salaryNum: null, highest_revenue_amount: 120000000, highest_revenue_verified: true },
+  { id: 'x4', salaryNum: null, highest_revenue_amount: 2500000000, highest_revenue_verified: true },
+  { id: 'x5', salaryNum: null, highest_revenue_amount: 9000000000, highest_revenue_verified: false },
+  { id: 'x6', salaryNum: null, topRevenue: '2,5 tỷ' },
 ];
-t('sap doanh thu dung voi du lieu gia: tang x2 (50tr) < x3 (120tr) < x4 (2,5 ty), x1 null cuoi',
-  V.sortModelsBy(fakeModels, 'revenue-asc').map(m => m.id).join(',') === 'x2,x3,x4,x1');
-t('sap doanh thu giam voi du lieu gia: x4 > x3 > x2, x1 null cuoi',
-  V.sortModelsBy(fakeModels, 'revenue-desc').map(m => m.id).join(',') === 'x4,x3,x2,x1');
+t('sap doanh thu dung voi du lieu gia (v85 M1): tang x2 (50tr) < x3 (120tr) < x4 (2,5 ty), x1/x5/x6 null cuoi (x5 chua xac minh, x6 chuoi cu)',
+  V.sortModelsBy(fakeModels, 'revenue-asc').map(m => m.id).join(',') === 'x2,x3,x4,x1,x5,x6');
+t('sap doanh thu giam voi du lieu gia (v85 M1): x4 > x3 > x2, x1/x5/x6 null cuoi',
+  V.sortModelsBy(fakeModels, 'revenue-desc').map(m => m.id).join(',') === 'x4,x3,x2,x1,x5,x6');
 
 // ---- (1g) sortShopsBy: luong gio ----
 const hAsc = V.sortShopsBy(D.shops, 'hourly-asc');
@@ -259,15 +263,15 @@ function runDom(search, extraEls) {
 // ---- (2) Dong huong dan chu so huu (.owner-note) ----
 const ownerModel = V.ownerNoteHTML('model');
 const ownerShop = V.ownerNoteHTML('shop');
-t('ownerNoteHTML(mau): dung van ban + link Dang ky/Dang nhap toi danh-sach-mau.html#dang-nhap-mau + link Zalo tab moi',
+t('ownerNoteHTML(mau): dung van ban + link Dang ky toi dang-ky.html?type=model (v85 tach trang) / Dang nhap toi danh-sach-mau.html#dang-nhap-mau + link Zalo tab moi',
   ownerModel.includes('<p class="owner-note">')
-  && ownerModel.includes('<a href="danh-sach-mau.html#dang-nhap-mau">Đăng ký</a>')
+  && ownerModel.includes('<a href="dang-ky.html?type=model">Đăng ký</a>')
   && ownerModel.includes('<a href="danh-sach-mau.html#dang-nhap-mau">Đăng nhập</a>')
   && ownerModel.includes('để sửa hồ sơ này, hoặc liên hệ')
   && ownerModel.includes('<a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a>')
   && ownerModel.includes('để được gỡ bỏ.</p>'));
-t('ownerNoteHTML(shop): dung van ban + link Dang ky/Dang nhap toi danh-sach-shop.html#dang-nhap-shop + link Zalo',
-  ownerShop.includes('<a href="danh-sach-shop.html#dang-nhap-shop">Đăng ký</a>')
+t('ownerNoteHTML(shop): dung van ban + link Dang ky toi dang-ky.html?type=shop (v85 tach trang) / Dang nhap toi danh-sach-shop.html#dang-nhap-shop + link Zalo',
+  ownerShop.includes('<a href="dang-ky.html?type=shop">Đăng ký</a>')
   && ownerShop.includes('<a href="danh-sach-shop.html#dang-nhap-shop">Đăng nhập</a>')
   && ownerShop.includes('https://zalo.me/0329983699'));
 const cardHtml = V.cardHTML(D.models[0]);
@@ -311,7 +315,7 @@ t('FAQ: thu tu dung — 3 muc cu, muc mien tru thu 4, muc sua ho so thu 5',
   && faqSection.indexOf('Ver2Solution có chịu trách nhiệm') < faqSection.indexOf('Muốn sửa hồ sơ thì phải làm thế nào?'));
 
 // ---- (5) sw.js + du lieu khong doi ----
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai',
   D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50);
 t('data.js: khong doi salary/topRevenue/req goc cua shop (chi them shifts)',

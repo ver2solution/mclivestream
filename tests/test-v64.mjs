@@ -127,9 +127,9 @@ t('Xuong may: du 20 the, nut Xem them rieng',
   && shopHtml.includes('id="factoryMoreBtn"'));
 
 // ---- (E) Hash khoa file da doi (v64) ----
-t('tin-tuc.html giong het v64 (bo ghi chu section-head) (sha256)', sha('tin-tuc.html') === 'bab4ccb320ff4cc89e30e02e457aa0813de36ef8a65355d29426259d97768575');
-t('v20.css giong het v64 (h1 margin 0 + section-head 5px + loc lot-filtered-out) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v64 (xoay 8h + uu tien logo + xoay the tinh + loc lo/xuong) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
+t('tin-tuc.html giong het v64 (bo ghi chu section-head) (sha256)', sha('tin-tuc.html') === '0f462574e8c5afc7b09d179d4ec691f96fda11f1646c7aa6cc58eab136e529ac');
+t('v20.css giong het v64 (h1 margin 0 + section-head 5px + loc lot-filtered-out) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v64 (xoay 8h + uu tien logo + xoay the tinh + loc lo/xuong) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
 
 
 // ---- (F) Bo loc lo/xuong (trang Shop) ----

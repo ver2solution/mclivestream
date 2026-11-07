@@ -104,8 +104,8 @@ t('(6) o <=600px .pin-card a dang grid ngang (anh 120px + chu)',
   m600.includes('.pin-carda{display:grid;grid-template-columns:120px1fr;grid-template-areas:"imgtitle""imgcat"'));
 t('(6) o <=600px anh/o placeholder 120px, ti le 4:3',
   m600.includes('.pin-img,.pin-noimg{grid-area:img;width:120px;aspect-ratio:4/3}'));
-t('(6) o <=600px tieu de + chuyen muc vao dung vung grid, khong tran',
-  m600.includes('.pin-cardh3{grid-area:title;margin:0}') && m600.includes('.pin-cat{grid-area:cat;margin:0}'));
+t('(6) o <=600px tieu de + chuyen muc vao dung vung grid, khong tran (v85: .pin-cat padding-left:0 — huy hieu o goc anh)',
+  m600.includes('.pin-cardh3{grid-area:title;margin:0}') && m600.includes('.pin-cat{grid-area:cat;margin:0;padding-left:0}'));
 t('(6) badge so 1-4 van o goc anh (duoi trai, bottom/left 16px — v78 B3)',
   m600.includes('.pin-num{top:auto;bottom:16px;left:16px}'));
 t('(6) desktop van giu o tin dung (anh 16:9 day chieu rong)',
@@ -120,7 +120,7 @@ t('(7) html,body co overflow-x:hidden (luoi cuoi chong tran ngang)',
   css.includes('html,body{overflow-x:hidden}'));
 
 // ---- (8) sw.js + du lieu + so the khong doi ----
-t('(8) sw.js CACHE = v84-shell-1', sw.includes("const CACHE = 'v84-shell-1';"));
+t('(8) sw.js CACHE = v86-shell-1', sw.includes("const CACHE = 'v86-shell-1';"));
 t('(8) du lieu khong doi: 20 mau, 30 shop, 50 bai',
   D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50);
 t('(8) trang chu van 2 hang (homeTop8 = 8), hang tin van 4 o',

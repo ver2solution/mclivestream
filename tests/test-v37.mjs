@@ -86,7 +86,7 @@ t('CSS: .shop-logo--contain nen #eef7f2 (logo trang hien ro)', /\.shop-logo--con
 t('CSS: .tag nowrap', /\.tag\{[^}]*white-space:nowrap/.test(flat));
 
 // ---- (6) sw.js cache ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 
 // ---- du lieu khong doi ----
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai', D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50);

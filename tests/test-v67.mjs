@@ -173,18 +173,18 @@ t('Mock reset: Dat lai xoa select trong khoi loc (khoi loc ngoai section, sectio
   })());
 
 // ---- (D) CACHE + hash khoa file da doi (v67) ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con cache cu (v66/v67/v68)", !/v6[678]-shell-1/.test(sw));
-t('index.html giong het v68 (10 nhan trust viet hoa + nut header dang-nhap) (sha256)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('js/app.js giong het v69 (5 chuoi trust + filterId + reset + pinOrder) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('danh-sach-shop.html giong het v68 (2 nhan + xoa 2 lot-intro + gop 3 bo loc + nut header dang-nhap) (sha256)', sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t('v20.css giong het v68 (them .filter-title + CSS auth) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('bai-viet-bop-reach.html giong het v68 (3 span rule-grid + nut header dang-nhap) (sha256)', sha('bai-viet-bop-reach.html') === '61f8a48e3883955091fbe25bd54ead8174b3011c92840465d11b364d3c186f93');
-t('bai-viet/tiktok-shop-1111-tinh-loi.html giong het v69-rebase (4 o bang + anh local + nut header dang-nhap) (sha256)', sha('bai-viet/tiktok-shop-1111-tinh-loi.html') === '1cadcbd8f1024f725278bd04075879a7f2b37aedc5979196651e16cff799e40d');
-t('vi-tien-ao.html giong het v68 (1 nhan + nut header dang-nhap) (sha256)', sha('vi-tien-ao.html') === 'b1e2c18a0d9cbc350c1607b06fdf991749682fa6a6f40e2a7264c8208ed11555');
-t('quy-tac-diem-thuong.html giong het v68 (1 nhan + nut header dang-nhap) (sha256)', sha('quy-tac-diem-thuong.html') === 'b2cd8176ec2392c8567416bceb5b06f9572720c8c1ead403b13e12d5d8b993c0');
-t('danh-sach-mau.html giong het v68 (nut header dang-nhap) (sha256)', sha('danh-sach-mau.html') === 'fb683b9e12417dd60e1ff38791fbd03724b9005cae012b91b52c123ff10af35e');
-t('tin-tuc.html giong het v68 (nut header dang-nhap) (sha256)', sha('tin-tuc.html') === 'bab4ccb320ff4cc89e30e02e457aa0813de36ef8a65355d29426259d97768575');
+t('index.html giong het v68 (10 nhan trust viet hoa + nut header dang-nhap) (sha256)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('js/app.js giong het v69 (5 chuoi trust + filterId + reset + pinOrder) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('danh-sach-shop.html giong het v68 (2 nhan + xoa 2 lot-intro + gop 3 bo loc + nut header dang-nhap) (sha256)', sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t('v20.css giong het v68 (them .filter-title + CSS auth) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('bai-viet-bop-reach.html giong het v68 (3 span rule-grid + nut header dang-nhap) (sha256)', sha('bai-viet-bop-reach.html') === '65c246d3de68760bf4181d310604678ca357be81e253c0c941cebdca8e9f8456');
+t('bai-viet/tiktok-shop-1111-tinh-loi.html giong het v69-rebase (4 o bang + anh local + nut header dang-nhap) (sha256)', sha('bai-viet/tiktok-shop-1111-tinh-loi.html') === '79fc15503ff48080e633af182a48965f68721d9e894ba8bf4f75e0e7f20f586c');
+t('vi-tien-ao.html giong het v68 (1 nhan + nut header dang-nhap) (sha256)', sha('vi-tien-ao.html') === '85b0fa7abc3352316f6a1d951cbb87f7a513cf2adeaef7c8ce2f8cd019546aa1');
+t('quy-tac-diem-thuong.html giong het v68 (1 nhan + nut header dang-nhap) (sha256)', sha('quy-tac-diem-thuong.html') === 'b264c326c5e1e35c4735aacc4975c00a639f8d1c05eca4e96f494450208c5ce5');
+t('danh-sach-mau.html giong het v68 (nut header dang-nhap) (sha256)', sha('danh-sach-mau.html') === '6e530e9407648b063ff96d6e1f19b2120a364a766004441ac991f3c096544159');
+t('tin-tuc.html giong het v68 (nut header dang-nhap) (sha256)', sha('tin-tuc.html') === '0f462574e8c5afc7b09d179d4ec691f96fda11f1646c7aa6cc58eab136e529ac');
 
 console.log(`v67: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

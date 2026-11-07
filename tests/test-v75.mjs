@@ -74,11 +74,11 @@ t('v75: v20.css van co .trust-nums grid 4 cot + .trust-strip',
 t('v75: hub "Tim mau 11.11" cua v74 van con tren trang Shop',
   shopHtml.includes('id="tim-mau-1111"') && shopHtml.includes('Tìm mẫu cho 11.11'));
 t('v75: danh-sach-shop.html khong doi so voi v74 (sha256)',
-  sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
+  sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
 t('v75: js/app.js khong doi so voi v74 (sha256)',
-  sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
+  sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
 t('v75: js/data.js khong doi so voi v74 (20 mau / 30 shop / 50 bai) (sha256)',
-  sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
+  sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
 
 // ---- (F) v75b: nut "Xem tất cả tin" chuyen xuong duoi hang tin ----
 t('v75: nut "Xem tất cả tin →" nam DUOI hang tin (sau #homeNews)',
@@ -117,14 +117,14 @@ t('v75: js/app.js co initFaqToggle (toggle .collapsed + aria-expanded + doi nhan
   && appJs.includes("classList.toggle('collapsed')")
   && appJs.includes('Xem thêm câu hỏi ↓') && appJs.includes('Thu gọn ↑')
   && appJs.includes('initFaqToggle();'));
-t('v75: js/app.js giong het v75 (them initFaqToggle) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
+t('v75: js/app.js giong het v75 (them initFaqToggle) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
 
 // ---- (E) Hash khoa file da doi (v75) + CACHE ----
-t("v75: sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("v75: sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t("v75: sw.js khong con cache cu (v74)", !swJs.includes('v74-shell-1'));
-t('v75: index.html giong het v75 (da xoa nut trust-cta) (sha256)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('v75: v20.css giong het v75 (da xoa luat .trust-cta) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('v75: sw.js giong het v75 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('v75: index.html giong het v75 (da xoa nut trust-cta) (sha256)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('v75: v20.css giong het v75 (da xoa luat .trust-cta) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('v75: sw.js giong het v75 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 
 console.log(`\n${pass} PASS, ${fail} FAIL`);
 if (fail) process.exitCode = 1;

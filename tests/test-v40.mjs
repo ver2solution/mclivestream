@@ -200,13 +200,13 @@ t('CSS .disclaimer: 12px, mau muted, in nghieng, ke tren, padding-top 8px',
 // ---- (7) sitemap 30 URL, khong trung ----
 const sm = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-t('sitemap du 62 URL (v48: +1 dat-lai-mat-khau; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense)', locs.length === 62, 'got ' + locs.length);
+t('sitemap du 64 URL (v48: +1 dat-lai-mat-khau; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v85: +1 dang-ky; v86: +1 thanh-ly-kiot)', locs.length === 64, 'got ' + locs.length);
 t('sitemap khong trung', new Set(locs).size === locs.length);
 for (const d of DEMOS) t('sitemap co ' + d.slug, locs.includes(BASE + 'bai-viet/' + d.slug + '.html'));
 t('sitemap giu bai-viet-bop-reach.html', locs.includes(BASE + 'bai-viet-bop-reach.html'));
 
 // ---- (8) sw.js + du lieu khong doi ----
-t('sw.js CACHE = v84-shell-1', sw.includes("const CACHE = 'v84-shell-1';"));
+t('sw.js CACHE = v86-shell-1', sw.includes("const CACHE = 'v86-shell-1';"));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai (khong phai 27 nhu nhiem vu goc ghi)',
   D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50,
   'mau=' + D.models.length + ' shop=' + D.shops.length + ' bai=' + D.articles.length);

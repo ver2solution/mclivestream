@@ -253,9 +253,10 @@ t('F3: vi-tien-ao het ten tai lieu noi bo / ten bang trong van ban hien thi',
 t('F3: vi-tien-ao dung cau moi ve danh sach marketing + bo "theo thiết kế trong <code>docs-..."',
   viTienAo.includes('Danh sách nhận email marketing được tách riêng, chỉ gồm những tài khoản đang đồng ý nhận.')
   && !viTienAo.includes('theo thiết kế trong <code>docs-email-marketing-va-tien-ao.md</code>'));
-t('F3 bo sung: trang-cua-toi het thong bao loi migration top-revenue, dung cau moi',
-  read('trang-cua-toi.html').includes('riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng. Vui lòng thử lại sau')
-  && !read('trang-cua-toi.html').includes('supabase-migration-top-revenue.sql'));
+t('F3 bo sung (v85: M1 da chay 13:57 07/11, doan retry da xoa): trang-cua-toi het thong bao loi migration top-revenue, dung 2 truong moi',
+  !read('trang-cua-toi.html').includes('riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng')
+  && !read('trang-cua-toi.html').includes('supabase-migration-top-revenue.sql')
+  && read('trang-cua-toi.html').includes('Doanh thu cao nhất (đồng/tháng, chỉ ghi số đã kiểm chứng được)'));
 
 // ---- (F4) bo "service_role" ----
 t('F4: trang-cua-toi "Web không thu thập CCCD và không lưu mật khẩu của bạn.", het "service_role"',
@@ -292,8 +293,8 @@ t('chuoi chot khong doi: owner-note v42 nguyen van trong app.js',
   appJs.includes('để sửa hồ sơ này, hoặc liên hệ') && appJs.includes('để được gỡ bỏ.'));
 
 // ---- sw.js + du lieu ----
-t("sw.js CACHE = 'v84-shell-1' + ghi chu dau file v49",
-  swJs.includes("const CACHE = 'v84-shell-1';") && swJs.includes('/* v60 service worker'));
+t("sw.js CACHE = 'v86-shell-1' + ghi chu dau file v49",
+  swJs.includes("const CACHE = 'v86-shell-1';") && swJs.includes('/* v60 service worker'));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai',
   D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50,
   'mau=' + D.models.length + ' shop=' + D.shops.length + ' bai=' + D.articles.length);

@@ -83,9 +83,9 @@ t('F-03: resetPassword mac dinh redirectTo ve dat-lai-mat-khau.html; updatePassw
 t('FIX v49: signUp truyen emailRedirectTo: SITE_URL (hang SITE_URL = trang chu /mclivestream/) de link xac nhan email khong ve goc',
   apiSup.includes("var SITE_URL = 'https://ver2solution.github.io/mclivestream/'")
   && fnBody(apiSup, 'async function signUp', 'async function signIn').includes('emailRedirectTo: SITE_URL'));
-t('F-03: sitemap co trang dat-lai-mat-khau.html (62 URL, v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v83: +1 tinh-lai-1111)',
+t('F-03: sitemap co trang dat-lai-mat-khau.html (64 URL, v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v83: +1 tinh-lai-1111; v85: +1 dang-ky; v86: +1 thanh-ly-kiot)',
   read('sitemap.xml').includes('dat-lai-mat-khau.html')
-  && (read('sitemap.xml').match(/<loc>/g) || []).length === 62);
+  && (read('sitemap.xml').match(/<loc>/g) || []).length === 64);
 
 // --- F-04: file SQL policy goc ---
 t('F-04: file SQL co 2 policy nguyen van (feedback_insert_public + reviews_public_insert)',
@@ -184,10 +184,10 @@ t('Kien truc: moi trang HTML (goc + bai-viet) deu nap js/auth-ui.js',
     console.log('   (trang goc: ' + roots.length + ', bai-viet: ' + posts.length + ', thieu: ' + (missing.join(', ') || 'khong') + ')');
     return missing.length === 0;
   })());
-t('Kien truc: sw.js CACHE = v84-shell-1',
-  swJs.includes("const CACHE = 'v84-shell-1';") && swJs.includes('/* v60 service worker'));
+t('Kien truc: sw.js CACHE = v86-shell-1',
+  swJs.includes("const CACHE = 'v86-shell-1';") && swJs.includes('/* v60 service worker'));
 t('v69: js/data.js da doi co chu dich (19 img local + bop-reach imgSelf + 11st pinned/pinOrder) — khong con giong v47-prep (sha256)',
-  sha256('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
+  sha256('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
 
 // --- Phan B: harness chay that API ---
 (async () => {

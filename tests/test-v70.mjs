@@ -83,10 +83,10 @@ t('iOS zoom: o nhap giu font 16px o <=320px (body muc nay la 15px)',
   css.includes('.search-card input,.search-card select,.filter-card input,.filter-card select,.form-card input,.form-card select,.form-card textarea{font-size:16px}'));
 
 // ---- (F) CACHE + hash ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con v67-shell-1", !sw.includes('v67-shell-1'));
 t('v20.css hash khoa dung ban v70 (them khoi v70)',
-  sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
+  sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
 
 // ---- (G) Khong doi hanh vi desktop ----
 t('Desktop: grid 4 cot, pinned-row 4 cot, trust-nums 4 cot, filter-card 4 cot',

@@ -103,7 +103,7 @@ t('CSS: KHONG con .news-cols / .news-col / .news-feat / .news-small',
 t('CSS: responsive 1000px -> 2 cot (chi .pinned-row)', /\.pinned-row\{grid-template-columns:repeat\(2,1fr\)\}/.test(flat));
 t('CSS: responsive 600px -> 1 cot (chi .pinned-row)', /\.pinned-row\{grid-template-columns:1fr\}/.test(flat));
 t('CSS: .news-list van ton tai cho trang tin-tuc.html', css.includes('.news-list'));
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai', D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50);
 
 // ---- (5) v38b: phan trang trang con 3 hang (mau 12/trang, shop 9/trang) + khung shop can doi; trang chu GIU NGUYEN 2 hang ----

@@ -59,11 +59,11 @@ t('CSS: lot-section mobile 16->8px', css.includes('.lot-section{padding:8px}'));
 t('CSS: khong con khoi page-shop (v61 da xoa, thay bang giam 1/2 toan site)', !css.includes('page-shop') && !shopHtml.includes('page-shop'));
 
 // ---- (C) Hash khoa file da doi (v62) ----
-t('index.html giong het v62 (bo 3 mo ta section-head + FAQ 3/9) (sha256)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('danh-sach-mau.html giong het v62 (bo listInfo + mo ta phan trang + ghi chu gioi tinh) (sha256)', sha('danh-sach-mau.html') === 'fb683b9e12417dd60e1ff38791fbd03724b9005cae012b91b52c123ff10af35e');
-t('danh-sach-shop.html giong het v62 (bo 2 doan gioi thieu + bo class page-shop) (sha256)', sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t('v20.css giong het v62 (giam 1/2 toan site + xoa page-shop) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v62 (bo cap nhat listInfo) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
+t('index.html giong het v62 (bo 3 mo ta section-head + FAQ 3/9) (sha256)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('danh-sach-mau.html giong het v62 (bo listInfo + mo ta phan trang + ghi chu gioi tinh) (sha256)', sha('danh-sach-mau.html') === '6e530e9407648b063ff96d6e1f19b2120a364a766004441ac991f3c096544159');
+t('danh-sach-shop.html giong het v62 (bo 2 doan gioi thieu + bo class page-shop) (sha256)', sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t('v20.css giong het v62 (giam 1/2 toan site + xoa page-shop) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v62 (bo cap nhat listInfo) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
 
 console.log(`v62: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

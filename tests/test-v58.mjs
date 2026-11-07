@@ -71,7 +71,7 @@ t('v75: nut "Xem shop đang tuyển" da xoa khoi trang chu', !indexHtml.includes
 t('PR cu nguyen ven: dai logo doi tac van du 29 icon/nhom', (indexHtml.match(/images\/partners\/[a-z0-9-]+-icon\.png/g) || []).length === 58, `got=${(indexHtml.match(/images\/partners\/[a-z0-9-]+-icon\.png/g) || []).length}`);
 
 // ---- (d) sw.js: CACHE v58 + SHELL nguyen ven ----
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con CACHE v57-shell-1', !swJs.includes('v57-shell-1'));
 t("sw.js: ghi chu dau file doi sang v60", swJs.includes('/* v60 service worker'));
 
@@ -88,12 +88,12 @@ vm.runInContext(fs.readFileSync(path.join(root, 'js/data.js'), 'utf8'), sb2);
 const DATA = sb2.window.V20_DATA;
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai', DATA.models.length === 20 && DATA.shops.length === 30 && DATA.articles.length === 50,
   `mau=${DATA.models.length} shop=${DATA.shops.length} bai=${DATA.articles.length}`);
-t('js/data.js giong het v57 (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('js/app.js giong het v57 (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('js/auth-ui.js giong het v57 (sha256)', sha('js/auth-ui.js') === '5fec3b5f2f9ea100fe516565beef2ec6aeb63fe12ac0bac8403668da1da8fdfa');
+t('js/data.js giong het v57 (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('js/app.js giong het v57 (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('js/auth-ui.js giong het v57 (sha256)', sha('js/auth-ui.js') === '46d13e3b95dea2a9157d5668c3b4fca700279a1df8fe5c95ce0b416fa64f2f5c');
 t('js/themes.js giong het v57 (sha256, greeting v53 nguyen ven)', sha('js/themes.js') === 'fd8a49bccef9ec152d390d5cfff17e63614967b82707c302191b4a8ebdc15e57');
-t('mclivestream-supabase.js giong het v57 (sha256)', sha('mclivestream-supabase.js') === '34e9c41f46aed58e4561c527995ceaec467c13d5bd22531edf0a1ffa19abb1bc');
-t('sitemap.xml giong het v57 (sha256)', sha('sitemap.xml') === 'a5253c4d14a1de2e1095db28a6b9b75998ffaa3af5e3726d1b4f819485fd39f5');
+t('mclivestream-supabase.js giong het v57 (sha256)', sha('mclivestream-supabase.js') === '28027730041e197b387fe8847255dd8c31bf1ec1dbbf0984427bb65d553dbd72');
+t('sitemap.xml giong het v57 (sha256)', sha('sitemap.xml') === 'c229a7061ef8b60b611648874a475aaf96e5cb0ea2b46aef112265e7f350459f');
 
 console.log(`v58: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

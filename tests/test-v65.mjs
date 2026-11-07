@@ -79,11 +79,11 @@ t('Loc xuong: facMatches that loc dung tinh (the khac tinh thi khong khop)',
   })());
 
 // ---- (C) Hash khoa file da doi (v65) ----
-t("index.html giong het v65 (trust grid 4 cot + nut xuong duoi khung) (sha256)", sha256('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t("danh-sach-shop.html giong het v65 (them loc tinh xuong + data-prov 20 the) (sha256)", sha256('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t("v20.css giong het v65 (trust grid + trust-cta) (sha256)", sha256('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t("js/app.js giong het v65 (facMatches them tinh) (sha256)", sha256('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("index.html giong het v65 (trust grid 4 cot + nut xuong duoi khung) (sha256)", sha256('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t("danh-sach-shop.html giong het v65 (them loc tinh xuong + data-prov 20 the) (sha256)", sha256('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t("v20.css giong het v65 (trust grid + trust-cta) (sha256)", sha256('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t("js/app.js giong het v65 (facMatches them tinh) (sha256)", sha256('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 
 console.log(`v65: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

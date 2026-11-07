@@ -177,7 +177,7 @@ t('v20.css: thanh chuc co ban mobile (<=600px nho hon)', /@media\(max-width:600p
 t('v20.css: khoi skin KHONG dong vao dai logo doi tac (bo qua chu trong comment)', (() => { const i = css.indexOf('/* SKIN LE HOI'); if (i === -1) return false; const j = css.indexOf('/* Loi chuc mung ngay le (v53', i); const block = css.slice(i, j === -1 ? undefined : j).replace(/\/\*[\s\S]*?\*\//g, ''); return !block.includes('logo-card') && !block.includes('trust-strip') && !block.includes('trust-logos'); })());
 
 // ---- (f) sw.js ----
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con CACHE v52-shell-1', !swJs.includes('v52-shell-1'));
 t("sw.js: ghi chu dau file doi sang v60", swJs.includes('/* v60 service worker'));
 t('sw.js: SHELL van precache js/themes.js', swJs.includes("'js/themes.js'"));
@@ -187,12 +187,12 @@ t('index.html: dai logo 58 the logo-card (v54 cap nhat: them 20 logo moi, tu 18 
 t('v20.css: o logo tron 48px (border-radius:50%, width+height 48px)', /\.logo-card\{[^}]*border-radius:50%/.test(css) && /\.logo-card\{[^}]*width:48px/.test(css) && /\.logo-card\{[^}]*height:48px/.test(css));
 t('v20.css: logo van MAU GOC (khong grayscale, khong opacity mo)', !css.includes('filter:grayscale(1)') && !/\.logo-card img\{[^}]*opacity:\.5/.test(css));
 t('v20.css: dai logo van nam gon trong khung trang (.trust-strip overflow:hidden + .trust-logos min-width:0)', /\.trust-strip\{[^}]*overflow:hidden/.test(css) && /\.trust-logos\{[^}]*min-width:0/.test(css));
-t('moi trang nap js/themes.js TRUOC js/app.js (66 trang; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v80: +10 bai moi; v82: +5 bai moi; v83: +1 tinh-lai-1111)', (() => {
+t('moi trang nap js/themes.js TRUOC js/app.js (68 trang; v68: +1 dang-nhap; v71: +5 bai moi; v77: +4 trang AdSense; v80: +10 bai moi; v82: +5 bai moi; v83: +1 tinh-lai-1111; v85: +1 dang-ky; v86: +1 thanh-ly-kiot)', (() => {
   function walk(dir) { let out = []; for (const e of fs.readdirSync(dir, { withFileTypes: true })) { const p = path.join(dir, e.name); if (e.isDirectory()) { if (!['node_modules', '.git'].includes(e.name)) out = out.concat(walk(p)); } else if (e.name.endsWith('.html')) out.push(p); } return out; }
   const files = walk(root).map((p) => fs.readFileSync(p, 'utf8')).filter((s) => s.includes('js/app.js'));
-  if (files.length !== 66) return false;
+  if (files.length !== 68) return false;
   return files.every((s) => { const ti = s.indexOf('js/themes.js'); const ai = s.indexOf('js/app.js'); return ti > -1 && ti < ai; });
-})(), `so trang nap app.js phai la 66`);
+})(), `so trang nap app.js phai la 68`);
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai', DATA.models.length === 20 && DATA.shops.length === 30 && DATA.articles.length === 50,
   `mau=${DATA.models.length} shop=${DATA.shops.length} bai=${DATA.articles.length}`);
 

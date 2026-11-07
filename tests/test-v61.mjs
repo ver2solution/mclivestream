@@ -66,10 +66,10 @@ t('PR: HTML trang Shop chi con container rong factoryGrid (khong con the tinh)',
 t('PR: hang lo Xa kho van nguyen (8/3/2)', indexHtml.includes('<b id="trustLots">8</b>') && indexHtml.includes('<b id="trustBuyers">3</b>') && indexHtml.includes('<b id="trustBatch">2</b>'));
 
 // ---- (C) Hash khoa file da doi (v61) ----
-t('index.html giong het v61 (FAQ 7 phan trang + hang so lieu xuong may) (sha256)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('danh-sach-shop.html giong het v61 (bo fShopQ + bo 2 dong gioi thieu + class page-shop) (sha256)', sha('danh-sach-shop.html') === 'c5abd47006c2c86393dca16fa16e549b8f37a1e65b099fefbfaa1723e23b6818');
-t('v20.css giong het v61 (them quy tac page-shop + trust-nums-factories) (sha256)', sha('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t('js/app.js giong het v61 (bo loc q + bo dong dem) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
+t('index.html giong het v61 (FAQ 7 phan trang + hang so lieu xuong may) (sha256)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('danh-sach-shop.html giong het v61 (bo fShopQ + bo 2 dong gioi thieu + class page-shop) (sha256)', sha('danh-sach-shop.html') === '42ae885d402e8e24c1e89b1063ae1f07483614fac7306a6f27eaea1a17bd0f56');
+t('v20.css giong het v61 (them quy tac page-shop + trust-nums-factories) (sha256)', sha('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t('js/app.js giong het v61 (bo loc q + bo dong dem) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
 
 console.log(`v61: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

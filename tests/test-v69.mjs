@@ -166,31 +166,31 @@ for (const slug of DOWNLOADED) {
 }
 
 // ---- (C) CACHE + hash khoa file da doi (v69) ----
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 t("sw.js khong con v67-shell-1", !sw.includes('v67-shell-1'));
-t('js/data.js giong het v69 (19 img local + bop-reach imgSelf + 11st pinned/pinOrder) (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('js/app.js giong het v69 (getPinnedRow pinOrder) (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('sw.js giong het v69 (CACHE v84-shell-1) (sha256)', sha('sw.js') === '609a81a1bdb77f85197f023f945af4a80acffaf408b450aa203c8d4c30926522');
+t('js/data.js giong het v69 (19 img local + bop-reach imgSelf + 11st pinned/pinOrder) (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('js/app.js giong het v69 (getPinnedRow pinOrder) (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('sw.js giong het v69 (CACHE v86-shell-1) (sha256)', sha('sw.js') === 'f8ee524a81f0c741d07806d784d6aa113e1341495ff73653b7e05124d2cc4253');
 const HTML_HASH = {
-  'gen-z-gen-y-tang-chi-tieu-cuoi-nam': '94176cf1d0d793a592eed27378cb243254dd600a9815f9ed9a38a84219bb073c',
-  'nguoi-tieu-dung-bot-san-sale': '9a59bdd7e5d268c3a703b85efd9d3422049ccb037bfdee30e178c8c022e6e8a2',
-  'ban-da-kenh-mo-dau-ra-hang-viet': 'df8f8339075125e3b2647f50c6a7af7fca7c5d40577bd36f45b0326776c42643',
-  'livestream-cung-kol-mo-dau-ra': '8fa335031a26429a49bccca56e4f7a727567ea3166b04541c77c61602feaf4df',
-  'bi-thu-phuong-livestream-ban-tom-cua-hau': 'f7cd84c1c50f02cd333a6614d02b1aaa4cce3aeb6289cc3927e4a7be9ea3eab5',
-  'het-thoi-ban-hang-online-vo-danh': 'fb0d0e891eac15343666c7fba2c91e310386320fe3dc4ff62d002bc8b52f91f8',
-  'canh-bao-lua-dao-livestream-ngoc-trai': 'a9de74b5fb760b1dd63d73e39e9bdb33aabe19e9778877ce4c9c1f270c931ed0',
-  'tiktok-shop-thu-hep-khoang-cach-shopee': '4f05fda5592913427ec9d3d30c1915cf70ba9fe9fb6d9d40c3557eb04bfdeaec',
-  'hang-viet-len-livestream-my-trung-quoc': 'a0ebb5ea61ba06123136321bb72584db97cd130633e87f84c3715d688966e3a2',
-  'phi-san-tang-thang-05-2026': '49875459ad369bfe0237cdc16c845d4f07d80c1f75b6a8c9b1b5c0c72b740d2b',
-  'livestream-ban-hang-my-tang-gan-50-phan-tram': '9198fac9dd6719b6fbfba3ff046fdcf93295fee2cc567db91f114e405a71d9a0',
-  'hang-da-qua-su-dung-len-ngoi-toan-cau': 'e24c258732f1613514ef27b897b5a7d02829a351c633236e6a81ed7b5299826a',
-  'tiktok-shop-tien-toi-100-ty-usd': '2f1f892a51a659172b0c2f261eee36ebed54edd10a5392c521c1c73cc3c19452',
-  'mua-le-2026-my-dien-thoai-chiem-gan-3-4': '969cb4e4e9f924a4ed8bc1ea050def42a580f438bcb99e8a2c1122add9d93234',
-  'xa-kho-thoi-trang-cuoi-nam': 'fc5da25489b07658abc0bc5fcceb6c1be8324abff5e33f25e2771387dda29fc9',
-  'tiktok-shop-1111-tinh-loi': '1cadcbd8f1024f725278bd04075879a7f2b37aedc5979196651e16cff799e40d',
-  'xa-kho-do-gia-dung-cuoi-nam': '65ecec69c2ba0cdbdf9c86de36d8869acdae109e5f20e4ecbf608bdf479a6fba',
-  'shop-giu-chan-khach-live-video-tang-52-phan-tram': 'e3b2341b17630d2f2f975c6c750fd954e95c3ebff165b04e3b1f73a0cf2d6abd',
-  'hai-phong-hoc-ban-tren-tiktok-shop': 'ab9a0e98908ddf5d34c3c77a348aea866640a422eccebdc783ff4a5065ee6c5c',
+  'gen-z-gen-y-tang-chi-tieu-cuoi-nam': 'bcc6a8d2f4376579d49a6c0be819ebd87e1e988a7564f782f5bf01f0ee793b90',
+  'nguoi-tieu-dung-bot-san-sale': '0b94485f4899c4885585b265fa6c0ff0811b8d8d0228a82f3c36014ba7be8525',
+  'ban-da-kenh-mo-dau-ra-hang-viet': '94f917744fe6a27f948238e15c6b7d5ef38b85b766415973a1141de6066d3d4c',
+  'livestream-cung-kol-mo-dau-ra': '8a817fbb728111c80ee49a767f8c06e3eae49a30a1ff16b6eb23192b418ab66c',
+  'bi-thu-phuong-livestream-ban-tom-cua-hau': '524118186c18c0f95d53be682a1dfd64d38d79a069960c3230563bfd57762ae6',
+  'het-thoi-ban-hang-online-vo-danh': '15da82861b1de52d3f6184da5181532b2fb51d86fc40890ac21044bcdee1d73d',
+  'canh-bao-lua-dao-livestream-ngoc-trai': '05199b2a677c3a6c4057d559b5d9268e4b80509dac7b960504aecc21235d3343',
+  'tiktok-shop-thu-hep-khoang-cach-shopee': 'b524362fc253fd38654e85435d0a8d16fe0fb3fdd97a982bc7866813a03c2f57',
+  'hang-viet-len-livestream-my-trung-quoc': 'b0ca08212adbff939d762258343db5c3b1a42ed20971355e4f4b2995744a518d',
+  'phi-san-tang-thang-05-2026': '7a93f0edcdaaf61cbac73ff45b9efc5f5fafb7d317cae52100f90d8e92073297',
+  'livestream-ban-hang-my-tang-gan-50-phan-tram': 'f1a5479a010eca09d3a7431e974a4993e4660a9b7290529391aecf73ed9e0f73',
+  'hang-da-qua-su-dung-len-ngoi-toan-cau': 'a6635a4932f4be395c98ce06932268887bd0328fbd9302d05fe9493c5006ebc0',
+  'tiktok-shop-tien-toi-100-ty-usd': 'c150f76efd839385fa6d95476a51bc66ac73010c25ba978370f58b699745785b',
+  'mua-le-2026-my-dien-thoai-chiem-gan-3-4': 'd058ba8815d112b6160b160bc393218781515c62027f46f273b6a9692d6b1397',
+  'xa-kho-thoi-trang-cuoi-nam': 'c3e90c370e58b3f7352999468445e82bfc7a3674cf97f00e289f09ce6787582c',
+  'tiktok-shop-1111-tinh-loi': '79fc15503ff48080e633af182a48965f68721d9e894ba8bf4f75e0e7f20f586c',
+  'xa-kho-do-gia-dung-cuoi-nam': 'ebd443a009261ee801a47a14a5e51b7e38ca8bc6717cf565749b68f8f6698e9e',
+  'shop-giu-chan-khach-live-video-tang-52-phan-tram': 'e5dbca2b6c98c8cca8e76d8a55729296963af03aeca7c8ae6e5f63fd3387cb30',
+  'hai-phong-hoc-ban-tren-tiktok-shop': 'ffcae9c7271e843730e9f24ebfbff02fd751fe313d5581553558415f9f266aa0',
 };
 for (const [slug, h] of Object.entries(HTML_HASH))
   t('bai-viet/' + slug + '.html giong het v69-rebase (anh local + nut header dang-nhap) (sha256)', sha('bai-viet/' + slug + '.html') === h);

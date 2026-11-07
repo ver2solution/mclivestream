@@ -119,25 +119,25 @@ t('du lieu khong doi: 20 mau, 30 shop, 50 bai', DATA.models.length === 20 && DAT
   `mau=${DATA.models.length} shop=${DATA.shops.length} bai=${DATA.articles.length}`);
 
 // ---- (f) KHONG doi: 6 file noi dung + 10 trang (hash khoa theo v54-prep) ----
-t('js/data.js giong het v54 (sha256)', sha('js/data.js') === '642a8e3fdb09f0d23d363741692f3da7106586aff84dd47d1bc81613b514fc57');
-t('js/app.js giong het v54 (sha256)', sha('js/app.js') === 'e3f5c43293d2b71f2fd0b804a31ce4a4a88f47a83bfdab607eab5ee75467b072');
-t('js/auth-ui.js giong het v54 (sha256)', sha('js/auth-ui.js') === '5fec3b5f2f9ea100fe516565beef2ec6aeb63fe12ac0bac8403668da1da8fdfa');
+t('js/data.js giong het v54 (sha256)', sha('js/data.js') === '76009b20bc339501db3ab2f6e96993e5a6c6f84d9d50e45a623cde6882d85fdf');
+t('js/app.js giong het v54 (sha256)', sha('js/app.js') === 'ae11dfaf0e5383a7d2d2f1d8c33de31090f1a5fd39e0251edb0f8b69d4590a20');
+t('js/auth-ui.js giong het v54 (sha256)', sha('js/auth-ui.js') === '46d13e3b95dea2a9157d5668c3b4fca700279a1df8fe5c95ce0b416fa64f2f5c');
 t('js/themes.js giong het v54 (sha256, greeting v53 nguyen ven)', sha('js/themes.js') === 'fd8a49bccef9ec152d390d5cfff17e63614967b82707c302191b4a8ebdc15e57');
-t('mclivestream-supabase.js giong het v54 (sha256)', sha('mclivestream-supabase.js') === '34e9c41f46aed58e4561c527995ceaec467c13d5bd22531edf0a1ffa19abb1bc');
-t('sitemap.xml giong het v54 (sha256)', sha('sitemap.xml') === 'a5253c4d14a1de2e1095db28a6b9b75998ffaa3af5e3726d1b4f819485fd39f5');
-t('index.html giong het v60 (FAQ lo 60 ngay + ten nhom lo moi + nhan PR nhom 3 + 2 loai tai khoan) (sha256, dai logo 29 logo/nhom nguyen ven)', sha('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t('danh-sach-mau.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('danh-sach-mau.html') === 'fb683b9e12417dd60e1ff38791fbd03724b9005cae012b91b52c123ff10af35e');
-t('tin-tuc.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('tin-tuc.html') === 'bab4ccb320ff4cc89e30e02e457aa0813de36ef8a65355d29426259d97768575');
-t('chi-tiet-shop.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('chi-tiet-shop.html') === '69580141cd455e13a021c8b7e6ef1c9cf43d56048f2370ce86e144025ae4bc5b');
-t('ho-so.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('ho-so.html') === 'bafd57f6a0cb2917e1c7906ac8dd4f945afb5bd76cd557431c12f1822b18b601');
-t('dat-lai-mat-khau.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('dat-lai-mat-khau.html') === 'd7a9da0e4c26ec5d49182f97b232687fe74887732bdf396c58d44a8ad414c626');
-t('bai-viet-bop-reach.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('bai-viet-bop-reach.html') === '61f8a48e3883955091fbe25bd54ead8174b3011c92840465d11b364d3c186f93');
-t('quy-tac-diem-thuong.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('quy-tac-diem-thuong.html') === 'b2cd8176ec2392c8567416bceb5b06f9572720c8c1ead403b13e12d5d8b993c0');
-t('trang-cua-toi.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('trang-cua-toi.html') === '0b0903a7593558a327255d24bd23433af0e01a46b272d2befe7021028c241d04');
-t('vi-tien-ao.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('vi-tien-ao.html') === 'b1e2c18a0d9cbc350c1607b06fdf991749682fa6a6f40e2a7264c8208ed11555');
+t('mclivestream-supabase.js giong het v54 (sha256)', sha('mclivestream-supabase.js') === '28027730041e197b387fe8847255dd8c31bf1ec1dbbf0984427bb65d553dbd72');
+t('sitemap.xml giong het v54 (sha256)', sha('sitemap.xml') === 'c229a7061ef8b60b611648874a475aaf96e5cb0ea2b46aef112265e7f350459f');
+t('index.html giong het v60 (FAQ lo 60 ngay + ten nhom lo moi + nhan PR nhom 3 + 2 loai tai khoan) (sha256, dai logo 29 logo/nhom nguyen ven)', sha('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t('danh-sach-mau.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('danh-sach-mau.html') === '6e530e9407648b063ff96d6e1f19b2120a364a766004441ac991f3c096544159');
+t('tin-tuc.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('tin-tuc.html') === '0f462574e8c5afc7b09d179d4ec691f96fda11f1646c7aa6cc58eab136e529ac');
+t('chi-tiet-shop.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('chi-tiet-shop.html') === '83d3edc7a6b84c9143132cd53ec111a99f0bade80a86b6d01441c934413f4ceb');
+t('ho-so.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('ho-so.html') === 'a041d27c37686afbf3e37afca03306cb7ee7f5156eca31ab32214fcbcc5e72a0');
+t('dat-lai-mat-khau.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('dat-lai-mat-khau.html') === '98741663bbc8329a4c5e9303ea134860f86816178d146b9942be7c437252430d');
+t('bai-viet-bop-reach.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('bai-viet-bop-reach.html') === '65c246d3de68760bf4181d310604678ca357be81e253c0c941cebdca8e9f8456');
+t('quy-tac-diem-thuong.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('quy-tac-diem-thuong.html') === 'b264c326c5e1e35c4735aacc4975c00a639f8d1c05eca4e96f494450208c5ce5');
+t('trang-cua-toi.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('trang-cua-toi.html') === '7af0d6429423dd9757d52aa83c6d86bdfe96d998f72ab2fea7bf56ab93b83657');
+t('vi-tien-ao.html giong het v56 (chi them dong Powered by o footer) (sha256)', sha('vi-tien-ao.html') === '85b0fa7abc3352316f6a1d951cbb87f7a513cf2adeaef7c8ce2f8cd019546aa1');
 
 // ---- (g) sw.js: CACHE v55 + SHELL van du 29 icon doi tac ----
-t("sw.js CACHE = 'v84-shell-1'", swJs.includes("const CACHE = 'v84-shell-1';"));
+t("sw.js CACHE = 'v86-shell-1'", swJs.includes("const CACHE = 'v86-shell-1';"));
 t('sw.js: khong con CACHE v55-shell-1', !swJs.includes('v55-shell-1'));
 t("sw.js: ghi chu dau file doi sang v60", swJs.includes('/* v60 service worker'));
 t('sw.js: SHELL van precache du 29 file icon doi tac', ['google-icon.png', 'meta-icon.png', 'tiktok-icon.png', 'thaco-icon.png', 'tpbank-icon.png', 'coccoc-icon.png', 'dem-kim-cuong-icon.png', 'flamingo-icon.png', 'bao-kinh-te-do-thi-icon.png', 'cocoon-icon.png', 'co-mem-homelab-icon.png', 'sao-thai-duong-icon.png', 'thorakao-icon.png', 'moi-icon.png', 'lemonade-icon.png', 'emmie-icon.png', 'ofelia-icon.png', 'lagumi-icon.png', 'vedette-icon.png', 'coolmate-icon.png', 'canifa-icon.png', 'ivy-moda-icon.png', 'yody-icon.png', 'juno-icon.png', 'vascara-icon.png', 'ssstutter-icon.png', 'routine-icon.png', 'degrey-icon.png', 'couple-tx-icon.png'].every((f) => swJs.includes(`'images/partners/${f}'`)));

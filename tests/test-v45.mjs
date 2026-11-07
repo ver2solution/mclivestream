@@ -279,8 +279,8 @@ t('D1–D9 khong doi: sh-03 "80-100k/h", sh-05 "2K–2K6", sh-08 "150-170/h", sh
   && D.shops.find(s => s.id === 'sh-26').req.includes('training'));
 
 // ---- sw.js + du lieu ----
-t("sw.js CACHE = 'v84-shell-1' + ghi chu dau file v49 (v49 bump cache)",
-  swJs.includes("const CACHE = 'v84-shell-1';") && swJs.includes('/* v60 service worker'));
+t("sw.js CACHE = 'v86-shell-1' + ghi chu dau file v49 (v49 bump cache)",
+  swJs.includes("const CACHE = 'v86-shell-1';") && swJs.includes('/* v60 service worker'));
 t('du lieu khong doi: 20 mau, 30 shop, 50 bai',
   D.models.length === 20 && D.shops.length === 30 && D.articles.length === 50,
   'mau=' + D.models.length + ' shop=' + D.shops.length + ' bai=' + D.articles.length);

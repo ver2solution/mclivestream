@@ -22,9 +22,9 @@ t('Tin tuc: tieu de link nam trong section #lo-trinh, truoc danh sach homeNews',
   (() => { const s = indexHtml.indexOf('id="lo-trinh"'); const iA = indexHtml.indexOf('tieu-de-tin-tuc', s); const iNews = indexHtml.indexOf('id="homeNews"', s); return iA > s && iNews > iA; })());
 t('CSS: link trong h2 section-head dung mau brand (xanh), hover gach chan',
   css.includes('.section-head h2 a{color:var(--brand)}') && css.includes('.section-head h2 a:hover{text-decoration:underline}'));
-t("index.html giong het v66 (tieu de tin tuc thanh link) (sha256)", sha256('index.html') === '27ec4c15cc98c68650084b12de7f2b839a8f76d42f1933e01fc0981abbe47aa2');
-t("v20.css giong het v66 (them CSS link h2 section-head) (sha256)", sha256('v20.css') === 'c38c89a126a136fb3f99ea7d547884339c4e5b9899e48c90234f61f02a140538');
-t("sw.js CACHE = 'v84-shell-1'", sw.includes("const CACHE = 'v84-shell-1'"));
+t("index.html giong het v66 (tieu de tin tuc thanh link) (sha256)", sha256('index.html') === 'dc7ee7d6a43a904d4c63c8c85ed041e9e2c70853787062506340b061527e7e39');
+t("v20.css giong het v66 (them CSS link h2 section-head) (sha256)", sha256('v20.css') === '277d60ad92802afa8b68597fda4a2dd5f85c2c1edacd6fc44999b79dc3e47d87');
+t("sw.js CACHE = 'v86-shell-1'", sw.includes("const CACHE = 'v86-shell-1'"));
 
 console.log(`v66: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
