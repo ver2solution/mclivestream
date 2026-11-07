@@ -13,6 +13,10 @@
    - Thông báo lỗi được lọc trước khi gửi: email và số điện thoại Việt Nam
      trong chuỗi lỗi (nếu có) bị thay bằng [ẩn], chuỗi cắt tối đa 500 ký tự.
    - Trang giới thiệu (referrer) chỉ giữ origin + đường dẫn, bỏ query/hash.
+   - Từ v79: trường page ghi thêm các tham số utm_* (đo nguồn theo quy ước
+     UTM 07/11/2026 — xem hidden_files/utm-quy-uoc-2026-11-07.md); mọi query
+     param khác vẫn bị bỏ — không bao giờ ghi từ khóa tìm kiếm hay nội dung
+     người dùng nhập. Giá trị utm cũng qua sanitize() (bỏ email/SĐT nếu có).
    ---------------------------------------------------------------------------
    CÁCH GỬI: gom sự kiện theo lô (tối đa 10 sự kiện hoặc 10 giây), POST về
    bảng web_analytics_events qua client Supabase sẵn có của web (khóa anon
@@ -86,8 +90,34 @@
     }, null);
   }
 
+  /* Tu v79 — chi giu cac tham so UTM de do nguon (quy uoc UTM 07/11/2026).
+     Cac query param khac (page, tim kiem, loc...) KHONG duoc ghi — bao ve
+     an danh tuyet doi: khong bao gio ghi tu khoa nguoi dung go. Phan tich
+     bang tay bang String (khong dung API phan tich query co san cua trinh
+     duyet) de chay duoc ca trong moi truong han che. Gia tri utm cung qua
+     sanitize() de loai email/SĐT neu co. */
+  var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utmQuery() {
+    return safe(function () {
+      var search = window.location.search;
+      if (!search || search.charAt(0) !== '?') return '';
+      var parts = search.slice(1).split('&');
+      var kept = [];
+      for (var i = 0; i < UTM_KEYS.length; i++) {
+        var key = UTM_KEYS[i];
+        for (var j = 0; j < parts.length; j++) {
+          var eq = parts[j].indexOf('=');
+          var k = eq === -1 ? parts[j] : parts[j].slice(0, eq);
+          if (k === key) { kept.push(parts[j]); break; }
+        }
+      }
+      if (!kept.length) return '';
+      return sanitize('?' + kept.join('&'));
+    }, '');
+  }
+
   function pagePath() {
-    return safe(function () { return window.location.pathname; }, '/');
+    return safe(function () { return window.location.pathname + utmQuery(); }, '/');
   }
 
   function buildEvent(type, element, dwellSeconds, errorMessage, referrer) {
@@ -350,6 +380,8 @@
     flush: flush,
     sanitize: sanitize,
     cleanReferrer: cleanReferrer,
+    utmQuery: utmQuery,
+    pagePath: pagePath,
     buildEvent: buildEvent,
     wrapApi: wrapApi,
     sendDwell: sendDwell,

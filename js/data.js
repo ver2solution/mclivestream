@@ -21,6 +21,11 @@
    -> shifts = [] (chi hien khi loc "Tất cả giờ"). Shop fulltime hien trong
    MOI ca khi loc gio lam (fulltime lam ca ngay) + khi loc rieng "Fulltime".
  20 real profiles + 30 shops (public job posts) + 30 articles.
+   v80 adds 10 articles (07/11/2026): 1 keyword SEO article ("viec lam mau
+   livestream", kind:"keyword", pinned) + 9 news articles (TikTok Shop cart-limit,
+   3-san fee, TikTok Shop US AI live, Singles Day Syntun, China imports,
+   print-on-demand, IP commission freeze, VN consumer 11.11, 100-day roadmap).
+   Total 45 articles, 44 with their own bai-viet page (bop-reach links via url).
    v47 adds 5 articles (06/11/2026): 1 keyword SEO article ("tuyen mau
    livestream", kind:"keyword", pinned) + 4 news articles (Shopee Q3,
    11st AI hosts, EU Temu/Shein fee, Hai Phong TikTok Shop). Total 30
@@ -1520,6 +1525,123 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nong-san-livestream-ocop.jpg",
    "pinned": false,
    "takeaway": "Tây Ninh đặt mục tiêu 100 tỷ đồng/năm từ bán nông sản online với 25 phòng livestream (lên hơn 50 phòng trước 01/2027); cơm cháy Tây Ninh bán hàng ngàn đơn qua Shopee, TikTok Shop nhờ gói nhỏ dùng thử rồi combo lớn. Nhưng 4 phiên KOL bán 1.724 đơn, gấp gần 3 lần 20 phiên nông dân tự live (606 đơn) — shop nhỏ cần học kỹ năng kể chuyện và chốt đơn, chuẩn bị đủ hồ sơ chất lượng, và dùng gói thử nhỏ để khách tin rồi mới bán combo lớn."
+  },
+  {
+   "title": "Việc làm mẫu livestream 2026: lương bao nhiêu, tìm ở đâu?",
+   "cat": "Tin mới Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-07",
+   "url": null,
+   "page": "bai-viet/viec-lam-mau-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/viec-lam-mau-livestream.png",
+   "imgSelf": true,
+   "kind": "keyword",
+   "pinned": true,
+   "takeaway": "Việc làm mẫu livestream là việc thật, lương thật — nhưng chỉ thật khi bạn ứng tuyển qua tin tuyển ghi rõ shop, lương và ca làm, có hồ sơ đầy đủ 7 mục và thử live trước khi chốt. Đừng chạy theo tin tuyển hứa lương cao gấp 2–3 lần mặt bằng chung, và đừng bao giờ đóng phí trước khi làm việc. Bắt đầu bằng ca part-time, một clip live thử thật và mức lương khởi điểm đúng mặt bằng 80.000–120.000 đồng/giờ — đó là cách nhanh nhất để có việc làm mẫu livestream bền, thay vì việc làm một lần rồi mất."
+  },
+  {
+   "title": "TikTok Shop siết video gắn giỏ: 5 video vi phạm, chỉ còn 7 video/tuần",
+   "cat": "Tin mới Livestream",
+   "source": "BrandsVietnam",
+   "date": "2026-10-28",
+   "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
+   "page": "bai-viet/tiktok-shop-siet-video-gan-gio-hang.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-siet-video-gan-gio-hang.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Luật giới hạn video gắn giỏ không cấm KOC bán hàng — nó cấm cách bán hàng bằng video không có người thật, không có tương tác. KOC nào đổi kịp từ \"đăng nhiều\" sang \"đăng ít mà thật\" thì không những không bị giới hạn, mà còn được vào campaign hoa hồng cao nhất mùa sale. Shop nhỏ cũng vậy: thuê KOC có tài khoản sạch và video người thật, thay vì thuê KOC đăng hàng loạt slideshow, là cách rẻ nhất để giữ giỏ hàng của mình luôn bấm được trong cả mùa 11.11."
+  },
+  {
+   "title": "Ba sàn đồng loạt tăng phí: shop nhỏ tính lại lãi trước 11.11",
+   "cat": "Tin thị trường",
+   "source": "kinhtechungkhoan.vn",
+   "date": "2026-11-07",
+   "dateNote": "Bài gốc đăng 21/05/2026, cập nhật 07/11/2026",
+   "url": "https://kinhtechungkhoan.vn/ba-san-thuong-mai-dien-tu-lon-nhat-viet-nam-dong-loat-tang-phi-san-1447906.html",
+   "page": "bai-viet/ba-san-dong-loat-tang-phi-san.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ba-san-dong-loat-tang-phi-san.png",
+   "pinned": false,
+   "takeaway": "Tăng phí sàn không phải tin xấu với shop nào tính kỹ — nó chỉ là tin xấu với shop nào giảm giá theo cảm tính. Trước 11.11, shop nhỏ chỉ cần làm đúng một việc: tính lại lãi mỗi đơn với phí giao dịch 6%, hoa hồng 9%–17,8% và phí cố định 3.000 đồng, rồi mới chốt độ sâu giảm giá. Món nào lãi dưới 10% thì đừng giảm sâu; món nào lãi tốt thì dồn live và video vào đó. Doanh số sale tăng mà lãi mỗi đơn còn dương, đó mới là sale thành công."
+  },
+  {
+   "title": "TikTok Shop Mỹ mở AI live, siết live AI treo máy: shop nhỏ cần biết gì trước mùa sale",
+   "cat": "Tin mới Livestream",
+   "source": "TokenFFF",
+   "date": "2026-10-31",
+   "url": "https://www.tokenfff.com/tiktok-us-ai-live-dual-track-2026/",
+   "page": "bai-viet/tiktok-shop-my-mo-ai-live-siet-ai-treo-may.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-my-mo-ai-live-siet-ai-treo-may.jpg",
+   "pinned": false,
+   "takeaway": "AI được chào đón ở hậu trường, nhưng trước ống kính khách vẫn cần một con người thật. Giữ người thật nói chuyện, giữ điểm AHR trên 150 và có mặt đúng đợt Black Friday mới là cách kiếm tiền bền nhất mùa sale này."
+  },
+  {
+   "title": "Singles Day 2026: Trung Quốc bán hơn 1.026 tỷ NDT trước ngày 11.11, livestream vẫn dẫn sóng",
+   "cat": "Tin thị trường thế giới",
+   "source": "China Market Brief",
+   "date": "2026-11-05",
+   "url": "https://chinamarketbrief.com/en/insight/d11-syntun-singles-day-2026-first-round-sales-categories/",
+   "page": "bai-viet/singles-day-2026-trung-quoc-ban-qua-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/singles-day-2026-trung-quoc-ban-qua-livestream.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Singles Day 2026 cho thấy kỷ nguyên “giảm giá là thắng” đang qua đi — thị trường nghìn tỷ NDT vẫn tăng, nhưng chỉ còn 2,4% và người mua chọn hàng có giá trị thật. Shop nhỏ không cần bắt chước quy mô Tmall hay JD.com, chỉ cần mở bán sớm theo nhiều đợt, livestream demo thật để tạo niềm tin, và bán bằng cam kết rõ ràng thay vì đua giá rẻ."
+  },
+  {
+   "title": "Nhập hàng Trung Quốc cuối năm 2026: phí ship, thời gian vận chuyển và cách về kịp sale 11.11, 12.12",
+   "cat": "Tin thị trường thế giới",
+   "source": "China Daily",
+   "date": "2026-11-04",
+   "url": "https://www.chinadaily.com.cn/a/202611/04/WS6aea85e4e4b06d4aa0566e7e.html",
+   "page": "bai-viet/nhap-hang-trung-quoc-cuoi-nam-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-2026.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "hàng cho 11.11 giờ chỉ còn kịp nếu đã ở kho Việt Nam, hàng cho 12.12 phải chốt trước 25/11 và trừ hao ít nhất 7–10 ngày. Tính đủ phí ship vào giá và luôn có phương án dự phòng — đó là cách shop nhỏ giữ được lời và không lỡ mùa sale lớn nhất năm."
+  },
+  {
+   "title": "Bán hàng không cần kho: mô hình in theo yêu cầu giúp một shop TikTok đạt 100.000 USD/tháng",
+   "cat": "Tin thị trường thế giới",
+   "source": "TechFinancials",
+   "date": "2026-11-01",
+   "url": "https://techfinancials.co.za/2026/11/01/printify-publishes-story-of-online-seller-who-built-a-100k-a-month-tiktok-shop-on-print-on-demand/",
+   "page": "bai-viet/ban-hang-khong-ton-kho-in-theo-yeu-cau.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ban-hang-khong-ton-kho-in-theo-yeu-cau.jpg",
+   "pinned": false,
+   "takeaway": "In theo yêu cầu không phải “kinh doanh không vốn”, mà là đổi vốn ôm hàng thành vốn làm nội dung: làm mẫu theo nhu cầu thật, để affiliate và livestream kéo đơn."
+  },
+  {
+   "title": "TikTok Shop đóng băng hoa hồng tới 90 ngày khi vi phạm sở hữu trí tuệ: KOC và shop nhỏ cần biết",
+   "cat": "Tin mới Livestream",
+   "source": "BrandsVietnam",
+   "date": "2026-10-28",
+   "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
+   "page": "bai-viet/tiktok-shop-dong-bang-hoa-hong-90-ngay-vi-pham-so-huu-tri-tue.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-dong-bang-hoa-hong-90-ngay-vi-pham-so-huu-tri-tue.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Đừng để một video dùng nhạc không phép làm mất 90 ngày hoa hồng. Trước 11.11, hãy rà soát toàn bộ tư liệu, gỡ video rủi ro và chỉ dùng nhạc, hình ảnh có quyền."
+  },
+  {
+   "title": "Người tiêu dùng Việt Nam mua sắm 11.11/2026: chi nhiều hơn mỗi đơn, đỉnh doanh thu rơi vào ngày hôm sau",
+   "cat": "Tin thị trường thế giới",
+   "source": "BrandsVietnam",
+   "date": "2026-11-06",
+   "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
+   "page": "bai-viet/nguoi-tieu-dung-viet-nam-mua-sam-11-11-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nguoi-tieu-dung-viet-nam-mua-sam-11-11-2026.png",
+   "pinned": false,
+   "takeaway": "11.11 không còn là cuộc đua của một ngày mà là của cả một cửa sổ 7–10 ngày, với đỉnh doanh thu rơi vào ngày hôm sau. Shop nhỏ thắng không phải nhờ giảm giá sâu nhất mà nhờ chuẩn bị combo tốt, livestream dài hơi và giữ hàng đủ cho đợt cao điểm sau sale."
+  },
+  {
+   "title": "Lộ trình 100 ngày TikTok Shop từ 11.11 tới Tết 2027: 3 chặng KOC và shop nhỏ cần đi đúng",
+   "cat": "Tin mới Livestream",
+   "source": "BrandsVietnam",
+   "date": "2026-10-28",
+   "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
+   "page": "bai-viet/lo-trinh-100-ngay-tiktok-shop-toi-tet-2027.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/lo-trinh-100-ngay-tiktok-shop-toi-tet-2027.jpg",
+   "pinned": false,
+   "takeaway": "100 ngày từ 11.11 tới Tết không dài nếu chia đúng 3 chặng: dọn tài khoản trước 11.11, tăng tốc bằng livestream và campaign tới 12.12, rồi bán cảm xúc và giỏ quà tới Tết. Làm đúng nhịp này, shop và KOC sẽ đón trọn cả ba đợt cao điểm."
   }
  ],
  "lots": [
