@@ -303,6 +303,10 @@
         if (/insufficient_balance/i.test(m2)) return { ok: false, code: 'insufficient_balance', error: 'Bạn đã hết điểm.' };
         return { ok: false, code: 'spend_failed', error: m2 || 'Trừ điểm chưa thành công.' };
       }
+      // v90: tru diem xong -> lam moi NGAY ca 2 noi hien diem (khong doi tai
+      // lai trang, khong doi chu ky 60s): pill header + dong diem popup online.
+      try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e2) {}
+      try { if (typeof window !== 'undefined' && typeof window.V20RefreshPopupPoints === 'function') window.V20RefreshPopupPoints(); } catch (e2) {}
       return { ok: true };
     } catch (e) {
       if (typeof console !== 'undefined' && console.error) console.error('[reward v2] spend_points lỗi:', e);

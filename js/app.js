@@ -921,7 +921,45 @@ function initHome(){
     var cat=document.getElementById('heroCat').value;
     var dest='danh-sach-mau.html'; var qs=[];
     if(q) qs.push('q='+encodeURIComponent(q)); if(prov) qs.push('prov='+encodeURIComponent(prov)); if(cat) qs.push('cat='+encodeURIComponent(cat));
-    location.href=dest+(qs.length?'?'+qs.join('&'):'');
+    var href=dest+(qs.length?'?'+qs.join('&'):'');
+    function go(){ location.href=href; }
+    // v90: dung bo loc THAT (chon tinh/linh vuc) thi tru 1 diem nhu o trang
+    // danh sach (gateFilterApply, category 'model' — dich la danh-sach-mau.html);
+    // chi go tu khoa (q) thi mien phi, di thang. Doi trong 10s sau lan tru
+    // truoc thi mien phi (bucket 10s, chung voi bo loc trang danh sach).
+    if(!prov && !cat){ go(); return; }
+    loadPointsScripts().then(function(){
+      return pointsSessionUser().then(function(user){
+        var msgEl=filterMsgEl(form);
+        function say(html){ if(msgEl) msgEl.innerHTML=html; }
+        if(!user){
+          say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 điểm thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+          return;
+        }
+        var R2=window.Ver2Reward;
+        if(!R2 || typeof R2.spendPoints !== 'function'){ say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return; }
+        var now=Date.now();
+        if(typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge('model'), now)){ go(); return; }
+        var bucket=(typeof R2.filterChargeBucket === 'function') ? R2.filterChargeBucket(now) : Math.floor(now/10000);
+        var key='filter:'+user.id+':model:'+bucket;
+        return R2.spendPoints('filter',1,'model','index.html',key).then(function(res){
+          if(res && res.ok){ filterNoteCharge('model', now); go(); return; }
+          if(res && res.code === 'insufficient_balance'){
+            say('Bạn đã hết điểm để lọc. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>');
+            return;
+          }
+          // Loi he thong/RPC: khong chan nguoi dung, van chuyen + ghi log.
+          try { if(typeof console !== 'undefined' && console.error) console.error('[v90] heroSearch tru diem loi, van chuyen:', (res && (res.code || res.error)) || 'unknown'); } catch(e2){}
+          go();
+        }).catch(function(err){
+          try { if(typeof console !== 'undefined' && console.error) console.error('[v90] heroSearch tru diem loi, van chuyen:', err); } catch(e2){}
+          go();
+        });
+      });
+    }).catch(function(err){
+      try { if(typeof console !== 'undefined' && console.error) console.error('[v90] heroSearch tru diem loi, van chuyen:', err); } catch(e2){}
+      go();
+    });
   });
 }
 /* Shop page (v22): all public job posts, newest first, rendered from D.shops */
@@ -1325,17 +1363,29 @@ function headerDisplayName(user){
 }
 function initHeaderAuth(){
   if(typeof document === 'undefined' || !document.querySelector) return;
-  var btn = document.querySelector('.site-head .btn[href^="dang-nhap.html"]');
+  // v90 (F): [href*="dang-nhap.html"] de khop ca trang bai-viet (href
+  // "../dang-nhap.html?next=...") — truoc day chi khop trang goc.
+  var btn = document.querySelector('.site-head .btn[href*="dang-nhap.html"]');
   if(!btn) return;
   if(!btn._loginLabel) btn._loginLabel = btn.textContent;
   if(!btn._loginHref) btn._loginHref = btn.getAttribute('href');
+  // Tien to thu muc ('' o trang goc, '../' o trang bai-viet) de link
+  // Trang cua toi / Trang chu khong tro thanh 404 o trang bai-viet.
+  var pathPrefix = (btn._loginHref && btn._loginHref.indexOf('../') === 0) ? '../' : '';
   // Điểm v2 (GĐ2, 20:22 07/11): khi đã đăng nhập, header hiện số dư điểm
   // cạnh tên người dùng, dạng "Tên · 250 điểm". Lỗi/mất mạng/RPC chưa có
   // thì KHÔNG hiện số dư (không vỡ header, không hiện 0 giả).
   var headerName = null, headerBalance = null;
+  var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
   function renderHeaderLabel(){
     if(headerName === null) return;
     btn.textContent = headerName + (headerBalance === null ? '' : ' · ' + headerBalance + ' điểm');
+    // v90 (F): dong bo ten + diem vao dropdown dang xuat.
+    if(menuNameEl) menuNameEl.textContent = headerName;
+    if(menuPointsEl){
+      if(headerBalance === null){ menuPointsEl.hidden = true; }
+      else { menuPointsEl.hidden = false; menuPointsEl.textContent = 'Còn lại: ' + headerBalance + ' điểm'; }
+    }
   }
   function loadHeaderBalance(){
     try {
@@ -1348,10 +1398,83 @@ function initHeaderAuth(){
       });
     } catch (e) { /* bo qua — header giu ten khong so du */ }
   }
+  // v90: cho phep lam moi so du header sau khi tru diem (reward.js goi
+  // window.V20HeaderRefresh() moi khi spendPoints() thanh cong).
+  if(typeof window !== 'undefined') window.V20HeaderRefresh = loadHeaderBalance;
+  // v90 (F): dropdown dang xuat duoi vien diem header. Bam vien diem mo
+  // dropdown (ten nick + 'Con lai: X diem' + nut Dang xuat); dong khi bam
+  // ra ngoai / nhan Escape / sau khi dang xuat. Vien diem do initHeaderAuth
+  // tao, dung chung moi trang (goc + bai-viet).
+  function toggleMenu(){
+    if(!menuEl) return;
+    menuEl.hidden = !menuEl.hidden;
+  }
+  function closeMenu(){
+    if(menuEl) menuEl.hidden = true;
+  }
+  function doSignOut(){
+    closeMenu();
+    // Cap nhat UI NGAY (giong luong signOut hien co o auth-ui.js:443-462),
+    // roi moi doi api().signOut() xong; sau do ve trang chu.
+    headerName = null; headerBalance = null;
+    try { btn.textContent = btn._loginLabel; btn.setAttribute('href', btn._loginHref); } catch (e) {}
+    function goHome(){
+      try { if(typeof window !== 'undefined' && window.location) window.location.href = pathPrefix + 'index.html'; } catch (e) {}
+    }
+    try {
+      var M = window.McLivestreamAPI;
+      if(M && typeof M.signOut === 'function'){
+        var p = M.signOut();
+        if(p && typeof p.then === 'function'){ p.then(goHome, goHome); return; }
+        goHome(); return;
+      }
+    } catch (e) {}
+    goHome();
+  }
+  function buildUserMenu(){
+    if(menuEl || typeof document === 'undefined' || !document.createElement) return;
+    var parent = btn.parentNode;
+    if(!parent) return;
+    menuWrap = document.createElement('span');
+    menuWrap.className = 'user-menu-wrap';
+    try { parent.insertBefore(menuWrap, btn); menuWrap.appendChild(btn); } catch (e) { return; }
+    menuEl = document.createElement('div');
+    menuEl.className = 'user-menu';
+    menuEl.hidden = true;
+    menuNameEl = document.createElement('a');
+    menuNameEl.className = 'user-menu-name';
+    menuNameEl.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
+    menuEl.appendChild(menuNameEl);
+    menuPointsEl = document.createElement('p');
+    menuPointsEl.className = 'user-menu-points';
+    menuPointsEl.hidden = true;
+    menuEl.appendChild(menuPointsEl);
+    var out = document.createElement('button');
+    out.setAttribute('type', 'button');
+    out.className = 'user-menu-logout';
+    out.textContent = 'Đăng xuất';
+    out.addEventListener('click', function(){ doSignOut(); });
+    menuEl.appendChild(out);
+    menuWrap.appendChild(menuEl);
+    btn.addEventListener('click', function (e){
+      if(headerName === null) return; // chua dang nhap: de link dang-nhap chay binh thuong
+      if(e && typeof e.preventDefault === 'function') e.preventDefault();
+      toggleMenu();
+    });
+    document.addEventListener('click', function (e){
+      if(!menuEl || menuEl.hidden) return;
+      try { if(menuWrap && menuWrap.contains(e.target)) return; } catch (err) {}
+      closeMenu();
+    });
+    document.addEventListener('keydown', function (e){
+      if(e && e.key === 'Escape') closeMenu();
+    });
+  }
+  buildUserMenu();
   function apply(user){
     if(user){
       headerName = headerDisplayName(user) || 'Trang của tôi';
-      btn.setAttribute('href', 'trang-cua-toi.html');
+      btn.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
       renderHeaderLabel();
       loadHeaderBalance();
       if(!headerMetaName(user)){
@@ -1365,7 +1488,7 @@ function initHeaderAuth(){
           if(M && typeof M.fetchMyProfile === 'function'){
             M.fetchMyProfile().then(function (p) {
               if(p && p.full_name && String(p.full_name).trim()
-                 && btn.getAttribute('href') === 'trang-cua-toi.html'){
+                 && btn.getAttribute('href') === pathPrefix + 'trang-cua-toi.html'){
                 headerName = String(p.full_name).trim();
                 renderHeaderLabel();
               }
@@ -1375,6 +1498,7 @@ function initHeaderAuth(){
       }
     } else {
       headerName = null; headerBalance = null;
+      closeMenu(); // v90 (F): dang xuat tu noi khac cung dong dropdown
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);
     }
@@ -1481,6 +1605,23 @@ function filterMsgEl(anchorEl){
   anchorEl.parentNode.insertBefore(p, anchorEl.nextSibling);
   return p;
 }
+// v90 (3): sau khi loc ap dung thanh cong, cuon trang toi dau khu vuc ket
+// qua (trang danh sach mau/shop — doApply() o day chi render, khong cuon).
+// Lo/xuong KHONG cuon o day: apply() cua section da cuon toi the khop dau
+// tien (v72); cuon them se ghi de vi tri do. Chi cuon khi loc ap dung
+// thanh cong — gate chan (chua dang nhap / het diem / loi) thi khong cuon.
+function scrollToResults(category){
+  try {
+    if (typeof document === 'undefined') return;
+    var sel = null;
+    if (category === 'model') sel = '#listGrid, #hubResults';
+    else if (category === 'shop') sel = '#publicShopsList';
+    else return; // 'lot'/'factory': apply() cua section da cuon (v72)
+    var el = document.querySelector(sel);
+    if (!el || typeof el.scrollIntoView !== 'function') return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (e) { /* loi cuon khong bao gio lam vo loc */ }
+}
 function gateFilterApply(category, page, doApply, msgAnchor){
   var R = window.Ver2Reward;
   return loadPointsScripts().then(function(){
@@ -1496,6 +1637,7 @@ function gateFilterApply(category, page, doApply, msgAnchor){
       var now = Date.now();
       if (typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge(category), now)) {
         try { doApply(); } catch (e) {}
+        scrollToResults(category); // v90 (3): mien phi trong 10s van cuon toi ket qua
         return true; // đổi trong 10s sau lần trừ trước: miễn phí lần này
       }
       var bucket = (typeof R2.filterChargeBucket === 'function') ? R2.filterChargeBucket(now) : Math.floor(now / 10000);
@@ -1503,8 +1645,25 @@ function gateFilterApply(category, page, doApply, msgAnchor){
       return R2.spendPoints('filter', 1, category, page || pointsPageName(), key).then(function (res){
         if (res && res.ok) {
           filterNoteCharge(category, now);
-          try { doApply(); } catch (e) {}
-          return true;
+          // v90: hien NGAY "Da tru 1 diem • Con lai: X diem" trong khung thong
+          // bao cua bo loc, roi moi ap dung bo loc. X = so du moi (uu tien
+          // ket qua spend neu co, neu khong goi RPC so du; loi thi van ap
+          // dung bo loc, chi hien "Da tru 1 diem.").
+          var bal = (res && typeof res.balance === 'number') ? res.balance : null;
+          function showCharged(){
+            say(bal !== null ? ('Đã trừ 1 điểm • Còn lại: ' + bal + ' điểm') : 'Đã trừ 1 điểm.');
+            try { doApply(); } catch (e) {}
+            scrollToResults(category); // v90 (3): tru diem xong cuon toi ket qua
+            return true;
+          }
+          if (bal !== null) return showCharged();
+          if (R2 && typeof R2.getMyPointsBalanceResult === 'function') {
+            return R2.getMyPointsBalanceResult().then(function (r){
+              if (r && r.ok) bal = Number(r.balance) || 0;
+              return showCharged();
+            }).catch(function(){ return showCharged(); });
+          }
+          return showCharged();
         }
         if (res && res.code === 'insufficient_balance') {
           say('Bạn đã hết điểm để lọc. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>');

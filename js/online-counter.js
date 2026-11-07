@@ -374,9 +374,13 @@
     tickTimesMs: tickTimesMs, applyTick: applyTick, tickDelta: tickDelta,
     displayForPage: displayForPage, displayTotal: displayTotal,
     valueForKey: valueForKey, shouldShowPopup: shouldShowPopup,
+    fetchPoints: fetchPoints,
     init: init
   };
   if (typeof window !== 'undefined') window.Ver2OnlineCounter = API;
+  // v90: lam moi ngay dong diem popup sau moi lan tru diem thanh cong
+  // (reward.js goi window.V20RefreshPopupPoints() trong spendPoints()).
+  if (typeof window !== 'undefined') window.V20RefreshPopupPoints = fetchPoints;
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   if (typeof document !== 'undefined') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
