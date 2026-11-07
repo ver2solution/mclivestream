@@ -67,6 +67,24 @@ a:hover{text-decoration:underline}
 .tags{display:flex;gap:7px;flex-wrap:wrap}
 .tag{background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:800;white-space:nowrap}
 .tag.soft{background:#f1f4f2;color:var(--ink)}
+/* v87 — badge đếm online (số ẢO minh hoạ + số thật đang online, gộp 1 số).
+   Pill gọn, chấm xanh lá = đang online; đặt đầu trang, dưới header. */
+.online-badge{display:inline-flex;align-items:center;gap:7px;background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;margin:0 0 10px}
+.online-dot{width:9px;height:9px;border-radius:50%;background:#1faa59;display:inline-block;flex:none}
+/* POPUP ONLINE (v87 bổ sung 20:51–20:52 ngày 07/11): popup nổi góc phải dưới,
+   biểu tượng sạp hàng (SVG inline, không emoji), hiện luôn số người đang
+   online (cùng số với badge) + dòng điểm khi đã đăng nhập. Góc phải dưới
+   không che nút nào quan trọng: nút góp ý 💬 chỉ có trên trang bài viết
+   (giữa-phải), nút đổi theme ở góc trái dưới. */
+.online-popup{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(320px,calc(100vw - 28px))}
+.online-popup[hidden]{display:none}
+.online-popup-stall{width:52px;height:48px;flex:none}
+.online-popup-body{min-width:0}
+.online-popup-line{margin:0;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.online-popup-points{margin:2px 0 0;font-size:12px;color:var(--mut)}
+.online-popup-close{flex:none;border:0;background:transparent;color:var(--mut);font-size:20px;line-height:1;cursor:pointer;padding:4px}
+.online-popup-close:hover{color:var(--ink)}
+@media(max-width:480px){.online-popup{padding:8px 10px;gap:8px}.online-popup-stall{width:42px;height:40px}.online-popup-line{font-size:12px}}
 .facts{margin:0;display:grid;gap:6px;font-size:14px}
 .facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
 .facts b{font-weight:800}
@@ -632,3 +650,26 @@ th{background:#f4f8f6}
    444px @360/390 vi <b> chua URL khong nga dong duoc). Luat tap trung o day
    thay vi sua inline <style> tung file bai-viet (34 file deu nap v20.css). */
 .share-box b{overflow-wrap:anywhere;word-break:break-all}
+/* v87 diem thuong v2 (GĐ2): nut thich/chia se/ghim + hop ghim + muc binh luan. */
+.v2s-points-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.v2s-points-msg{font-size:13px;color:#0b5d4e}
+.v2s-pin-form{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.v2s-pin-form input{width:80px;padding:4px 6px}
+.v2s-pin-box{border:1px solid #cfe3dc;border-radius:12px;padding:14px;margin:16px 0;background:#f4faf7}
+.v2s-pin-box input{width:90px;padding:6px;margin-left:6px}
+.v2s-pin-msg{font-size:14px;color:#0b5d4e}
+.v2s-comments{margin:16px 0}
+.v2s-comments-list{list-style:none;padding:0}
+.v2s-comments-list li{border-top:1px solid #e3e3e3;padding:10px 0}
+.v2s-comments-list p{margin:4px 0 0}
+.v2s-comments-date{font-size:12px;color:#666}
+.v2s-comment-form label{display:block;margin:8px 0}
+.v2s-comment-form textarea,.v2s-comment-form input{width:100%;box-sizing:border-box;padding:8px}
+.v2s-comment-msg{font-size:14px;color:#0b5d4e}
+.v2s-note{font-size:14px;color:#444}
+/* v87 diem thuong v2 (bo sung 20:22): cong thu diem cho loc + xem lien he + chuyen diem. */
+.v2s-filter-msg{font-size:14px;color:#0b5d4e;margin:8px 0}
+.v2s-contacts-gated{margin:8px 0}
+.v2s-contact-msg{font-size:13px;color:#0b5d4e}
+.v2s-transfer-history{list-style:none;padding:0}
+.v2s-transfer-history li{border-top:1px solid #e3e3e3;padding:8px 0}
