@@ -258,9 +258,25 @@
     if (typeClose) typeClose.addEventListener('click', closeAuthType);
 
     // Hiển thị trạng thái đăng nhập (hộp "Đã đăng nhập" / các view).
+    // v2 (GĐ2, 07/11/2026): khi có user thì ghi hoạt động ngày (chuỗi 30
+    // ngày online để chuyển điểm) — fire-and-forget, tối đa 1 lần/ngày/
+    // phiên tải trang, lỗi thì nuốt lặng, không vỡ trang.
+    var activityRecordedKey = '';
+    function recordActivityOnce(user) {
+      try {
+        if (!user || !user.id) return;
+        var R = (typeof window !== 'undefined') ? window.Ver2Reward : null;
+        if (!R || typeof R.recordDailyActivity !== 'function' || typeof R.dayKeySaigon !== 'function') return;
+        var key = user.id + ':' + R.dayKeySaigon(new Date());
+        if (activityRecordedKey === key) return;
+        activityRecordedKey = key;
+        R.recordDailyActivity().catch(function () {});
+      } catch (e) { /* bỏ qua */ }
+    }
     function refreshAuthUI(user) {
       var box = $(cfg.boxId);
       if (user) {
+        recordActivityOnce(user);
         if (box) {
           box.style.display = '';
           var em = $(cfg.boxEmailId);
@@ -340,6 +356,20 @@
           });
           if (res && res.session) {
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
+            // v2 (GĐ2, 07/11/2026): cộng điểm đăng ký qua RPC
+            // award_registration_points() — fire-and-forget, KHÔNG chặn
+            // showUser()/chuyển trang khi RPC lỗi hay M7 chưa chạy. Chỉ
+            // hiện dòng điểm khi RPC thực sự trả về điểm > 0.
+            try {
+              var R = (typeof window !== 'undefined') ? window.Ver2Reward : null;
+              if (R && typeof R.awardRegistration === 'function') {
+                R.awardRegistration().then(function (r) {
+                  if (r && r.ok && Number(r.points || 0) > 0) {
+                    msg('Đăng ký thành công! Bạn nhận được ' + Number(r.points) + ' điểm thưởng!', 'ok');
+                  }
+                }).catch(function () { /* bỏ qua — đăng ký đã thành công */ });
+              }
+            } catch (e) { /* bỏ qua — đăng ký đã thành công */ }
             await showUser();
             return;
           }

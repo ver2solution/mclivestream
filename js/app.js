@@ -94,6 +94,23 @@ function ownerNoteHTML(kind){
   var loginHref = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
   return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
 }
+/* ---- Điểm thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
+   Xem goals/.../diem-thuong-v2-2026-11-07.md. Client chỉ gọi RPC M7 qua
+   window.Ver2Reward (awardInteraction / pinPost / getMyPointsBalance);
+   RPC chưa có thì nút báo "chưa bật", không vỡ trang. Khách vãng lai: 0 điểm,
+   bấm nút chỉ thấy ghi chú đăng nhập. */
+function pointsButtonsHTML(targetType, targetId){
+  return '<span class="v2s-points-row" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
+  + '<button class="btn btn-ghost btn-sm" type="button" data-v2s-like>👍 Thích · +10</button>'
+  + '<button class="btn btn-ghost btn-sm" type="button" data-v2s-share>↗ Chia sẻ · +20</button>'
+  + '<button class="btn btn-ghost btn-sm" type="button" data-v2s-pin>📌 Ghim lên top</button>'
+  + '<span class="v2s-points-msg" role="status"></span></span>';
+}
+function articleRef(a){
+  var h = articleHref(a) || '';
+  var parts = String(h).split('/');
+  return parts[parts.length - 1] || h;
+}
 function cardHTML(m, opts){
   // v63: opts tuy chon (khong doi dau ra mac dinh) — opts.zaloHref doi link nut
   // "Nhan Zalo" (khoi hub 11.11 dung tin nhan soan san), opts.demoUrl them link
@@ -106,7 +123,7 @@ function cardHTML(m, opts){
   // gender is unknown, so the placeholder string never enters the rendered DOM
   // at all (design AC #2). No code reads data-gender (filtering uses the data
   // object), so this changes no behaviour — only the invisible attribute value.
-  return '<article class="card" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(hasReal(m.gender)?m.gender:'')+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
+  return '<article class="card" data-v2s-id="'+esc(m.id)+'" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(hasReal(m.gender)?m.gender:'')+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
   + '<div class="card-photo">'+photoHTML(m)+'<span class="status"><i></i>'+esc(m.status)+'</span><span class="ph-note">'+photoNote(m)+'</span></div>'
   + '<div class="card-body"><h3><a href="ho-so.html?id='+esc(m.id)+'">'+esc(m.province)+' — '+esc(m.name)+'</a></h3>'
   + '<p class="card-title">'+esc(m.title)+'</p>'
@@ -115,7 +132,8 @@ function cardHTML(m, opts){
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế. <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-ho-so" href="ho-so.html?id='+esc(m.id)+'">Xem hồ sơ →</a>'
   + demoLink
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="'+esc(zaloHref)+'" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-mau" href="'+esc(zaloHref)+'" target="_blank" rel="noopener">Nhắn Zalo</a>'
+  + pointsButtonsHTML('model_profile', m.id)+'</div>'
   + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model')+'</div></article>';
 }
 function miniHTML(m){
@@ -150,6 +168,18 @@ function contactItemHTML(c){
 function contactsBlockHTML(contacts){
   if(!contacts || !contacts.length) return '';
   return '<ul class="contact-list">'+contacts.map(contactItemHTML).join('')+'</ul>';
+}
+/* Điểm v2 (GĐ2, 20:22 07/11): xem liên hệ 1 hồ sơ = 5 điểm/lần bấm (1 lần/
+   ngày/hồ sơ). contactsBlockHTML() giữ nguyên (render danh sách đầy đủ,
+   dùng sau khi đã trả điểm + test cũ); hàm này bọc nó trong khối ẩn + nút
+   "Xem liên hệ (5 điểm)". LƯU Ý: số liên hệ vẫn nằm trong js/data.js công
+   khai nên đây là cửa thu điểm ở giao diện, không phải kiểm soát truy cập
+   thật — xem spec §12. Nút bấm được xử lý tập trung trong initPointsUI. */
+function gatedContactsHTML(targetType, targetId, contacts){
+  if(!contacts || !contacts.length) return '';
+  return '<div class="v2s-contacts-gated" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
+  + '<div class="v2s-contacts-hidden" hidden>'+contactsBlockHTML(contacts)+contactNoteHTML()+'</div>'
+  + '<p><button class="btn btn-ghost btn-sm" type="button" data-v2s-view-contact>👁 Xem liên hệ (5 điểm)</button> <span class="v2s-contact-msg" role="status"></span></p></div>';
 }
 function contactNoteHTML(){ return '<p class="contact-note">'+CONTACT_NOTE+'</p>'; }
 /* Shops (v22): tin tuyển công khai thu thập từ bài tuyển shop tự đăng.
@@ -200,20 +230,20 @@ function shopCardHTML(s){
   var name = '<a href="'+url+'">'+esc(s.name)+'</a>';
   var negotiable = hasReal(s.salary) && s.salary.indexOf('Thỏa thuận') === 0;
   var posterTag = s.shopNameKnown ? '' : '<span class="tag soft">người đăng tin tuyển</span>';
-  return '<article class="shop-card">'
+  return '<article class="shop-card" data-v2s-id="'+esc(s.id)+'">'
   + '<div class="shop-head">'+shopLogoHTML(s)+'<div><h3>'+name+'</h3>'
   + '<p class="shop-sub">📍 '+loc+(hasReal(s.product) ? ' · '+esc(s.product) : '')+'</p></div></div>'
   + '<div class="tags"><span class="tag">📍 '+esc(s.province)+'</span>'+(negotiable ? '<span class="tag tag-negotiable">Lương thỏa thuận</span>' : '')+posterTag+'</div>'
   + shopDecisionHTML(s)
   + '<div class="shop-foot">'
   + (hasReal(s.date) ? '<p class="shop-meta">Ngày đăng tin: '+esc(s.date)+'</p>' : '')
-  + contactsBlockHTML(s.contacts)
-  + contactNoteHTML()
+  + gatedContactsHTML('shop_profile', s.id, s.contacts)
   + '<p class="shop-src">Tin tuyển công khai — <a data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Bài tuyển gốc →</a></p>'
   + '</div>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" href="'+url+'">Xem chi tiết →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a></div>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-shop" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo</a>'
+  + pointsButtonsHTML('shop_profile', s.id)+'</div>'
   + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('shop')+'</article>';
   /* v37: (a) .card-actions moved to the END (after .shop-src + .warn) so
      margin-top:auto pins the buttons to the very bottom of the card and they
@@ -470,12 +500,12 @@ function initSectionFilter(opts){
     if(emptyEl) emptyEl.hidden = true;
     setExpanded(false);
   }
-  applyBtn.addEventListener('click', apply);
+  applyBtn.addEventListener('click', function(){ return gateFilterApply(opts.pointsCategory || 'lot', pointsPageName(), apply, applyBtn); });
   resetBtn.addEventListener('click', reset);
 }
 function initLotFilter(){
   initSectionFilter({
-    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'lotFilter',
+    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'lotFilter', pointsCategory: 'lot',
     applyId: 'lotApplyBtn', resetId: 'lotResetBtn',
     countId: 'lotCount', emptyId: 'lotEmpty', label: 'lô',
     readForm: function(){
@@ -490,7 +520,7 @@ function initLotFilter(){
 }
 function initFactoryFilter(){
   initSectionFilter({
-    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'factoryFilter',
+    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'factoryFilter', pointsCategory: 'factory',
     applyId: 'factoryApplyBtn', resetId: 'factoryResetBtn',
     countId: 'factoryCount', emptyId: 'factoryEmpty', label: 'xưởng',
     readForm: function(){
@@ -768,10 +798,10 @@ function lotFactoryStats(lots, factories, ref){
 /* v76: the lo/xuong render tu data.js — phai GIONG HET the tinh cu (cung
    class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu. */
 function lotCardHTML(l){
-  return '<article class="lot-card" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '"><h4>' + esc(l.title) + '</h4><p class="lot-price">' + esc(l.price) + '</p><p class="lot-meta">' + esc(l.meta) + '</p><p class="lot-date">' + esc(l.dateLabel) + ': ' + esc(l.date) + '</p><p class="lot-label">' + esc(l.label) + '</p><p><a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.linkText) + '</a></p></article>';
+  return '<article class="lot-card" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-v2s-id="'+esc(l.id)+'"><h4>' + esc(l.title) + '</h4><p class="lot-price">' + esc(l.price) + '</p><p class="lot-meta">' + esc(l.meta) + '</p><p class="lot-date">' + esc(l.dateLabel) + ': ' + esc(l.date) + '</p><p class="lot-label">' + esc(l.label) + '</p><p><a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.linkText) + '</a></p></article>';
 }
 function factoryCardHTML(f){
-  return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p></article>';
+  return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '" data-v2s-id="'+esc(f.id)+'"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p></article>';
 }
 /* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
    (.lot-sub) + o loc tinh xuong (fFacProv) theo so lieu thuc te. Goi TRUOC
@@ -975,7 +1005,7 @@ function initShops(){
   var fPayTypeEl=document.getElementById('fPayType');
   if(fPayTypeEl) fPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
-  document.getElementById('applyShopBtn').addEventListener('click',function(){render(1); closeFilterOf(document.getElementById('applyShopBtn'));});
+  document.getElementById('applyShopBtn').addEventListener('click',function(){ var b=document.getElementById('applyShopBtn'); return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b); });
   document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
 }
@@ -1010,7 +1040,7 @@ function initList(){
   if(p.revmin){ var rv=document.getElementById('fRevMin'); if(rv) rv.value=p.revmin; }
   if(p.wagemin){ var wm=document.getElementById('fWageMin'); if(wm) wm.value=p.wagemin; }
   if(p.q) document.getElementById('fQ').value=p.q;
-  document.getElementById('applyBtn').addEventListener('click',function(){render(1); closeFilterOf(document.getElementById('applyBtn'));});
+  document.getElementById('applyBtn').addEventListener('click',function(){ var b=document.getElementById('applyBtn'); return gateFilterApply('model', 'danh-sach-mau.html', function(){ render(1); closeFilterOf(b); }, b); });
   document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
   render(page);
 }
@@ -1095,8 +1125,8 @@ function initHub(){
     box.innerHTML = list.slice(0, 3).map(hubCardHTML).join('');
     if(countEl) countEl.innerHTML = 'Có ' + list.length + ' mẫu phù hợp. <a href="' + hubAllLink(prov, cat) + '">Xem tất cả ' + list.length + ' mẫu →</a>';
   }
-  if(provSel) provSel.addEventListener('change', render);
-  if(catSel) catSel.addEventListener('change', render);
+  if(provSel) provSel.addEventListener('change', function(){ return gateFilterApply('model', pointsPageName(), render, provSel); });
+  if(catSel) catSel.addEventListener('change', function(){ return gateFilterApply('model', pointsPageName(), render, catSel); });
   render();
 }
 /* News page: newest first by default, category filter, oldest sort option.
@@ -1125,8 +1155,8 @@ function initNews(){
         : (a.imgSelf ? 'Infographic do Ver2Solution tự làm từ số liệu bài gốc' : 'Ảnh gốc từ bài của ' + esc(a.source));
       var img = a.img ? '<a href="' + esc(href) + '"' + imgTarget + '><img src="' + esc(a.img) + '" alt="' + imgAlt + '" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">' + imgCap + '</div>' : '';
       var tw = a.takeaway ? '<p><b>Theo Ver2Solution:</b> '+esc(a.takeaway)+'</p>' : '';
-      return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
-      + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+'</div>';
+      return '<div class="news-item" data-v2s-id="'+esc(articleRef(a))+'"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
+      + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+pointsButtonsHTML('article', articleRef(a))+'</div>';
     }).join('');
     var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
@@ -1158,8 +1188,7 @@ function initDetail(){
   + '<h2>Kinh nghiệm</h2><p>'+esc(m.exp)+'</p>'
   + '<p class="warn">⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế.</p></div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
-  + contactsBlockHTML(m.contacts)
-  + contactNoteHTML()
+  + gatedContactsHTML('model_profile', m.id, m.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
   + '<a class="btn btn-light" data-track="xem-bai-goc-mau" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a>'
@@ -1168,6 +1197,7 @@ function initDetail(){
   var others=document.getElementById('otherGrid');
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
+  mountPointsDetail('model_profile', m.id);
 }
 /* Shop detail (v32): company-page layout after the big job sites
    (VietnamWorks company page: header with big logo + name, key facts,
@@ -1217,12 +1247,12 @@ function initShopDetail(){
   + '</article>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p></div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
-  + contactsBlockHTML(s.contacts)
-  + contactNoteHTML()
+  + gatedContactsHTML('shop_profile', s.id, s.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a></div></div></div>';
   var others=document.getElementById('otherShops');
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
+  mountPointsDetail('shop_profile', s.id);
 }
 /* v85: thong bao man hinh ban mobile — dung 2 dong (yeu cau nguoi dung
    13:33 + 13:36 ngay 07/11). Chi hien tren mobile (CSS .mobile-notice
@@ -1299,11 +1329,31 @@ function initHeaderAuth(){
   if(!btn) return;
   if(!btn._loginLabel) btn._loginLabel = btn.textContent;
   if(!btn._loginHref) btn._loginHref = btn.getAttribute('href');
+  // Điểm v2 (GĐ2, 20:22 07/11): khi đã đăng nhập, header hiện số dư điểm
+  // cạnh tên người dùng, dạng "Tên · 250 điểm". Lỗi/mất mạng/RPC chưa có
+  // thì KHÔNG hiện số dư (không vỡ header, không hiện 0 giả).
+  var headerName = null, headerBalance = null;
+  function renderHeaderLabel(){
+    if(headerName === null) return;
+    btn.textContent = headerName + (headerBalance === null ? '' : ' · ' + headerBalance + ' điểm');
+  }
+  function loadHeaderBalance(){
+    try {
+      loadPointsScripts().then(function(){
+        var R = window.Ver2Reward;
+        if(!R || typeof R.getMyPointsBalanceResult !== 'function') return;
+        R.getMyPointsBalanceResult().then(function (r){
+          if(r && r.ok){ headerBalance = Number(r.balance) || 0; renderHeaderLabel(); }
+        }).catch(function () {});
+      });
+    } catch (e) { /* bo qua — header giu ten khong so du */ }
+  }
   function apply(user){
     if(user){
-      var name = headerDisplayName(user);
-      btn.textContent = name || 'Trang của tôi';
+      headerName = headerDisplayName(user) || 'Trang của tôi';
       btn.setAttribute('href', 'trang-cua-toi.html');
+      renderHeaderLabel();
+      loadHeaderBalance();
       if(!headerMetaName(user)){
         /* Chua co ten that trong metadata (dang hien phan truoc @ cua email
            hoac "Trang của tôi") — hoi them bang profiles.full_name; co ten
@@ -1316,13 +1366,15 @@ function initHeaderAuth(){
             M.fetchMyProfile().then(function (p) {
               if(p && p.full_name && String(p.full_name).trim()
                  && btn.getAttribute('href') === 'trang-cua-toi.html'){
-                btn.textContent = String(p.full_name).trim();
+                headerName = String(p.full_name).trim();
+                renderHeaderLabel();
               }
             }).catch(function () {});
           }
         } catch (e) { /* bo qua — giu "Trang của tôi" */ }
       }
     } else {
+      headerName = null; headerBalance = null;
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);
     }
@@ -1334,9 +1386,449 @@ function initHeaderAuth(){
     if(typeof A.onSessionChange === 'function') A.onSessionChange(function (user) { apply(user); });
   } catch (e) { /* bo qua — header giu nut Dang Nhap mac dinh */ }
 }
+/* ---- Điểm thưởng v2: UI chạy lúc tải trang (nút, ghim, bình luận) ---- */
+function pointsScriptBase(){
+  try { return String(location.pathname || '').indexOf('/bai-viet/') !== -1 ? '../js/' : 'js/'; }
+  catch (e) { return 'js/'; }
+}
+function loadPointsScripts(){
+  if (typeof window !== 'undefined' && window.Ver2Reward && window.Ver2Comments) return Promise.resolve(true);
+  if (typeof document === 'undefined' || typeof document.createElement !== 'function') return Promise.resolve(false);
+  var base = pointsScriptBase();
+  function load(src){
+    return new Promise(function (resolve){
+      if (src.indexOf('reward') !== -1 && window.Ver2Reward) return resolve(true);
+      if (src.indexOf('comments') !== -1 && window.Ver2Comments) return resolve(true);
+      // Môi trường test (document giả) không có document.head — bỏ qua.
+      if (!document.head || typeof document.head.appendChild !== 'function') return resolve(false);
+      var s = document.createElement('script'); s.src = src; s.async = false;
+      s.onload = function(){ resolve(true); }; s.onerror = function(){ resolve(false); };
+      document.head.appendChild(s);
+    });
+  }
+  return load(base + 'reward.js').then(function(){ return load(base + 'comments.js'); });
+}
+function pointsLoggedIn(){
+  try {
+    if (window.V2SAuthUI && typeof window.V2SAuthUI.getSession === 'function') {
+      return window.V2SAuthUI.getSession().then(function (s){ return !!(s && s.user); }).catch(function(){ return false; });
+    }
+  } catch (e) {}
+  try {
+    if (window.McLivestreamAPI && typeof window.McLivestreamAPI.getSession === 'function') {
+      return window.McLivestreamAPI.getSession().then(function (s){ return !!(s && s.user); }).catch(function(){ return false; });
+    }
+  } catch (e) {}
+  return Promise.resolve(false);
+}
+function pointsGuestNoteHTML(){
+  return 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng điểm thưởng, đổi quà. <a href="dang-ky.html">Đăng ký</a> · <a href="dang-nhap.html">Đăng nhập</a>';
+}
+function pointsSessionUser(){
+  try {
+    if (window.V2SAuthUI && typeof window.V2SAuthUI.getSession === 'function') {
+      return window.V2SAuthUI.getSession().then(function (s){ return (s && s.user) ? s.user : null; }).catch(function(){ return null; });
+    }
+  } catch (e) {}
+  try {
+    if (window.McLivestreamAPI && typeof window.McLivestreamAPI.getSession === 'function') {
+      return window.McLivestreamAPI.getSession().then(function (s){ return (s && s.user) ? s.user : null; }).catch(function(){ return null; });
+    }
+  } catch (e) {}
+  return Promise.resolve(null);
+}
+function pointsPageName(){
+  try { var parts = String(location.pathname || '').split('/'); return parts[parts.length - 1] || 'index.html'; }
+  catch (e) { return 'index.html'; }
+}
+// ---- Điểm v2: cổng thu điểm cho bộ lọc (1 điểm/lần, chốt 20:22 07/11) ----
+// gateFilterApply(category, page, doApply, msgAnchor): chỉ chạy doApply()
+// khi đã trừ được 1 điểm (hoặc lần đổi trong 10s sau lần trừ trước —
+// dedup phía client, RPC cũng chống trừ lặp bằng key theo bucket 10s).
+// Khách chưa đăng nhập → hiện lời mời đăng ký thay vì lọc. Hết điểm →
+// hiện thông báo + link hướng dẫn, KHÔNG áp dụng bộ lọc mới. RPC spend_points
+// chưa có (M7 chưa chạy phần này) → báo rõ "chưa bật", KHÔNG lọc khống.
+var lastFilterCharge = {};
+function filterLastCharge(category){
+  var ts = lastFilterCharge[category] || 0;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      var raw = JSON.parse(localStorage.getItem('v20_filter_charge_v1') || '{}');
+      if (raw[category] && Number(raw[category]) > ts) ts = Number(raw[category]);
+    }
+  } catch (e) {}
+  return ts;
+}
+function filterNoteCharge(category, ts){
+  lastFilterCharge[category] = ts;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      var raw = JSON.parse(localStorage.getItem('v20_filter_charge_v1') || '{}');
+      raw[category] = ts;
+      localStorage.setItem('v20_filter_charge_v1', JSON.stringify(raw));
+    }
+  } catch (e) {}
+}
+function filterMsgEl(anchorEl){
+  if (!anchorEl || !anchorEl.parentNode || typeof document === 'undefined') return null;
+  var next = anchorEl.nextSibling;
+  while (next && next.nodeType !== 1) next = next.nextSibling;
+  if (next && next.className && String(next.className).indexOf('v2s-filter-msg') !== -1) return next;
+  if (typeof document.createElement !== 'function') return null;
+  var p = document.createElement('p');
+  p.className = 'v2s-filter-msg';
+  p.setAttribute('role', 'status');
+  anchorEl.parentNode.insertBefore(p, anchorEl.nextSibling);
+  return p;
+}
+function gateFilterApply(category, page, doApply, msgAnchor){
+  var R = window.Ver2Reward;
+  return loadPointsScripts().then(function(){
+    return pointsSessionUser().then(function (user){
+      var msgEl = msgAnchor ? filterMsgEl(msgAnchor) : null;
+      function say(html){ if (msgEl) msgEl.innerHTML = html; }
+      if (!user) {
+        say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 điểm thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+        return false;
+      }
+      var R2 = window.Ver2Reward;
+      if (!R2 || typeof R2.spendPoints !== 'function') { say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return false; }
+      var now = Date.now();
+      if (typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge(category), now)) {
+        try { doApply(); } catch (e) {}
+        return true; // đổi trong 10s sau lần trừ trước: miễn phí lần này
+      }
+      var bucket = (typeof R2.filterChargeBucket === 'function') ? R2.filterChargeBucket(now) : Math.floor(now / 10000);
+      var key = 'filter:' + user.id + ':' + category + ':' + bucket;
+      return R2.spendPoints('filter', 1, category, page || pointsPageName(), key).then(function (res){
+        if (res && res.ok) {
+          filterNoteCharge(category, now);
+          try { doApply(); } catch (e) {}
+          return true;
+        }
+        if (res && res.code === 'insufficient_balance') {
+          say('Bạn đã hết điểm để lọc. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>');
+          return false;
+        }
+        say('Chưa lọc được: ' + esc((res && res.error) || 'hệ thống điểm chưa bật.') + ' <a href="huong-dan-diem.html">Hướng dẫn kiếm điểm</a>');
+        return false;
+      });
+    });
+  });
+}
+/* Đọc pin đang chạy qua RPC get_active_pins(p_category) — KHÔNG SELECT
+   trực tiếp bảng pinned_posts (RLS owner-only, client không đọc được pin
+   của người khác). RPC là SECURITY DEFINER, chỉ trả pin đang active
+   (is_active và pinned_until > now()), không trả user_id/points_spent.
+   Category dùng đúng enum M7.2: mau/shop/lo/xuong/bai-viet/kiot.
+   RPC lỗi/không có dữ liệu → [] → danh sách giữ thứ tự thường, không lỗi. */
+function fetchActivePins(category){
+  try {
+    var A = window.McLivestreamAPI;
+    if (!A || !A.client) return Promise.resolve([]);
+    return A.client.rpc('get_active_pins', { p_category: category })
+      .then(function (res){ if (res.error) return []; return res.data || []; })
+      .catch(function(){ return []; });
+  } catch (e) { return Promise.resolve([]); }
+}
+// Xếp lại các thẻ ĐANG HIỂN THỊ trong 1 container: bài được ghim (còn hạn)
+// lên trước theo pinned_until giảm dần, còn lại giữ nguyên thứ tự.
+// M7/policy SELECT chưa có → pins rỗng → giữ nguyên thứ tự, không báo lỗi.
+function applyPinnedOrder(container, pins){
+  if (!container || !pins || !pins.length) return;
+  var R = window.Ver2Reward;
+  var now = new Date();
+  var active = pins.filter(function (p){ return R && typeof R.isPinActive === 'function' ? R.isPinActive(p, now) : new Date(p.pinned_until) > now; });
+  if (!active.length) return;
+  active.sort(function (a, b){ return new Date(b.pinned_until) - new Date(a.pinned_until); });
+  var order = {};
+  active.forEach(function (p, i){ order[String(p.target_id)] = i; });
+  var kids = Array.prototype.slice.call(container.children);
+  var has = kids.some(function (el){ return order[String(el.getAttribute('data-v2s-id'))] !== undefined; });
+  if (!has) return;
+  kids.sort(function (a, b){
+    var ra = order[String(a.getAttribute('data-v2s-id'))];
+    var rb = order[String(b.getAttribute('data-v2s-id'))];
+    if (ra === undefined) ra = Infinity;
+    if (rb === undefined) rb = Infinity;
+    return ra - rb;
+  });
+  kids.forEach(function (el){ container.appendChild(el); });
+}
+function applyPinnedOrderToLists(){
+  // Category = enum M7.2 (trang danh sách): mau/shop/lo/xuong/bai-viet/kiot.
+  var jobs = [
+    ['listGrid', 'mau'], ['publicShopsList', 'shop'],
+    ['newsMain', 'bai-viet'], ['lotGrid1', 'lo'], ['lotGrid2', 'lo'],
+    ['lotGrid3', 'lo'], ['factoryGrid', 'xuong']
+  ];
+  jobs.forEach(function (job){
+    var el = document.getElementById(job[0]);
+    if (!el) return;
+    fetchActivePins(job[1]).then(function (pins){ applyPinnedOrder(el, pins); });
+  });
+  // Kiot (thanh-ly-kiot.html) dùng chung lưới lô — xếp theo category 'kiot'.
+  ['lotGrid1', 'lotGrid2', 'lotGrid3'].forEach(function (id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    fetchActivePins('kiot').then(function (pins){ applyPinnedOrder(el, pins); });
+  });
+}
+// Hộp ghim + mục bình luận trên trang chi tiết (ho-so / chi-tiet-shop) và
+// trang bài báo. Gọi sau khi trang chi tiết đã render xong.
+function mountPointsDetail(targetType, targetId){
+  if (typeof document === 'undefined' || typeof document.createElement !== 'function') return;
+  var anchor = document.getElementById('detailRoot') || document.getElementById('shopDetailRoot');
+  var articleEl = null;
+  if (!anchor) {
+    // Trang bài báo tĩnh: chỉ gắn khi document hỗ trợ querySelector
+    // (bộ test vm dùng document giả không có querySelector — bỏ qua).
+    if (typeof document.querySelector !== 'function') return;
+    articleEl = document.querySelector('.form-card.article article[itemtype], article[itemtype*="NewsArticle"]');
+    if (!articleEl) return;
+    targetType = 'article';
+    try { var parts = String(location.pathname || '').split('/'); targetId = parts[parts.length - 1] || targetId; } catch (e) {}
+  }
+  if (!targetId) return;
+  if (document.getElementById('v2sPinBox')) return; // chỉ gắn 1 lần
+  var wrap = document.createElement('div');
+  wrap.innerHTML = '<section class="v2s-pin-box" id="v2sPinBox" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
+    + '<h2>📌 Ghim lên top bằng điểm</h2>'
+    + '<p class="v2s-pin-balance">Số dư điểm của bạn: <b>…</b></p>'
+    + '<p>1 điểm = 1 giờ ghim. Sau khi hết hạn ghim, bài trở về thứ tự thường.</p>'
+    + '<label>Số giờ ghim (1–720)<input type="number" class="v2s-pin-hours" min="1" max="720" value="24"></label> '
+    + '<button class="btn btn-primary btn-sm" type="button" data-v2s-pin-confirm>Ghim lên top</button>'
+    + '<p class="v2s-pin-msg" role="status"></p></section>'
+    + '<div class="v2s-comments-mount" id="v2sCommentsMount"></div>';
+  if (anchor && typeof anchor.insertAdjacentElement === 'function') anchor.insertAdjacentElement('afterend', wrap);
+  else if (articleEl && typeof articleEl.insertAdjacentElement === 'function') articleEl.insertAdjacentElement('afterend', wrap);
+  else return;
+  loadPointsScripts().then(function(){
+    var R = window.Ver2Reward, C = window.Ver2Comments;
+    var box = document.getElementById('v2sPinBox');
+    if (!box) return;
+    pointsLoggedIn().then(function (loggedIn){
+      var bal = box.querySelector('.v2s-pin-balance');
+      var msg = box.querySelector('.v2s-pin-msg');
+      var btn = box.querySelector('[data-v2s-pin-confirm]');
+      if (!loggedIn) {
+        if (bal) bal.innerHTML = pointsGuestNoteHTML();
+        if (btn) btn.disabled = true;
+        if (msg) msg.textContent = '';
+        return;
+      }
+      if (R && typeof R.getMyPointsBalance === 'function') {
+        R.getMyPointsBalance().then(function (b){ if (bal) bal.innerHTML = 'Số dư điểm của bạn: <b>' + b + ' điểm</b>'; });
+      } else if (bal) { bal.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; }
+    });
+    var mount = document.getElementById('v2sCommentsMount');
+    if (mount && C && typeof C.renderComments === 'function') C.renderComments(targetType, targetId, mount);
+  });
+}
+function initPointsUI(){
+  if (typeof document === 'undefined') return;
+  // Nút thích/chia sẻ/ghim trên mọi thẻ (ủy quyền click — thẻ render lại
+  // khi lọc/phân trang vẫn chạy).
+  document.addEventListener('click', function (e){
+    // Xem liên hệ 1 hồ sơ (5 điểm/lần bấm, 1 lần/ngày/hồ sơ).
+    var vc = e.target && e.target.closest ? e.target.closest('[data-v2s-view-contact]') : null;
+    if (vc) {
+      var wrap = vc.closest ? vc.closest('.v2s-contacts-gated') : null;
+      if (!wrap) return;
+      e.preventDefault();
+      var tt = wrap.getAttribute('data-v2s-target-type'), ti = wrap.getAttribute('data-v2s-target-id');
+      var hidden = wrap.querySelector('.v2s-contacts-hidden');
+      var cmsg = wrap.querySelector('.v2s-contact-msg');
+      var reveal = function(){ if (hidden) hidden.hidden = false; vc.style.display = 'none'; if (cmsg) cmsg.textContent = ''; };
+      loadPointsScripts().then(function(){
+        return pointsSessionUser().then(function (user){
+          if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 250 điểm! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
+          var R = window.Ver2Reward;
+          if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { reveal(); return; }
+          if (!R || typeof R.spendPoints !== 'function') { if (cmsg) cmsg.textContent = 'Hệ thống điểm chưa bật (đang chờ migration M7), chưa xem được liên hệ.'; return; }
+          var day = (typeof R.dayKeySaigon === 'function') ? R.dayKeySaigon(new Date()) : '';
+          var key = (typeof R.contactViewKey === 'function') ? R.contactViewKey(tt, ti, day) : '';
+          R.spendPoints('contact_view', 5, tt, ti, key).then(function (res){
+            if (res && res.ok) { if (typeof R.markContactViewed === 'function') R.markContactViewed(tt, ti, day); reveal(); }
+            else if (res && res.code === 'insufficient_balance') { if (cmsg) cmsg.innerHTML = 'Bạn đã hết điểm để xem liên hệ. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>'; }
+            else { if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((res && res.error) || 'hệ thống điểm chưa bật.'); }
+          });
+        });
+      });
+      return;
+    }
+    // Nút "Ghim lên top" trong hộp ghim trang chi tiết.
+    var pc = e.target && e.target.closest ? e.target.closest('[data-v2s-pin-confirm]') : null;
+    if (pc) {
+      var box = pc.closest ? pc.closest('.v2s-pin-box') : null;
+      if (!box) return;
+      e.preventDefault();
+      var hoursInput = box.querySelector('.v2s-pin-hours');
+      var pinMsg = box.querySelector('.v2s-pin-msg');
+      var hours = hoursInput ? Number(hoursInput.value) : 0;
+      loadPointsScripts().then(function(){
+        var R = window.Ver2Reward;
+        if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; return; }
+        R.pinPost(box.getAttribute('data-v2s-target-type'), box.getAttribute('data-v2s-target-id'), box.getAttribute('data-v2s-target-type'), hours).then(function (r){
+          if (!pinMsg) return;
+          if (r && r.ok) {
+            var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
+            pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + String(until) : '') + ' (' + hours + ' điểm).';
+          } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống điểm chưa bật.'); }
+        });
+      });
+      return;
+    }
+    var t = e.target && e.target.closest ? e.target.closest('[data-v2s-like],[data-v2s-share],[data-v2s-pin]') : null;
+    if (!t) return;
+    var row = t.closest ? t.closest('.v2s-points-row') : null;
+    if (!row) return;
+    var type = t.hasAttribute('data-v2s-like') ? 'like' : (t.hasAttribute('data-v2s-share') ? 'share' : 'pin');
+    var targetType = row.getAttribute('data-v2s-target-type');
+    var targetId = row.getAttribute('data-v2s-target-id');
+    var msg = row.querySelector('.v2s-points-msg');
+    function say(html){ if (msg) msg.innerHTML = html; }
+    e.preventDefault();
+    loadPointsScripts().then(function(){
+      return pointsLoggedIn().then(function (loggedIn){
+        if (!loggedIn) { say(pointsGuestNoteHTML()); return; }
+        var R = window.Ver2Reward;
+        if (!R) { say('Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'); return; }
+        if (type === 'pin') {
+          // Form ghim inline trên thẻ: nhập giờ + xác nhận, hiện số dư.
+          if (row.querySelector('.v2s-pin-form')) return;
+          var form = document.createElement('span');
+          form.className = 'v2s-pin-form';
+          form.innerHTML = '<input type="number" min="1" max="720" value="24" aria-label="Số giờ ghim"> giờ · <button class="btn btn-primary btn-sm" type="button">Ghim</button> <span class="v2s-pin-balance">…</span>';
+          row.appendChild(form);
+          var inp = form.querySelector('input');
+          var bal = form.querySelector('.v2s-pin-balance');
+          if (typeof R.getMyPointsBalance === 'function') R.getMyPointsBalance().then(function (b){ if (bal) bal.textContent = 'Số dư: ' + b + ' điểm'; });
+          form.querySelector('button').addEventListener('click', function(){
+            var hours = Number(inp.value);
+            R.pinPost(targetType, targetId, targetType, hours).then(function (r){
+              if (r && r.ok) {
+                var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
+                say('Đã ghim lên top' + (until ? ' đến ' + esc(String(until)) : '') + ' (' + hours + ' điểm).');
+                form.remove();
+              } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.')); }
+            });
+          });
+          return;
+        }
+        R.awardInteraction(type, targetType, targetId).then(function (r){
+          if (r && r.ok && Number(r.points) > 0) say('+' + Number(r.points) + ' điểm (1 lần/ngày)');
+          else if (r && r.ok) say(type === 'like' ? 'Đã tính điểm thích hôm nay' : 'Đã tính điểm chia sẻ hôm nay');
+          else say('Chưa tính được điểm: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.'));
+        });
+      });
+    });
+  });
+  // Trang bài báo tĩnh (bai-viet/*.html): gắn hộp ghim + bình luận sau bài.
+  if (typeof document.querySelector === 'function'
+    && document.querySelector('.form-card.article article[itemtype], article[itemtype*="NewsArticle"]')) {
+    mountPointsDetail('article', '');
+  }
+  // Xếp lại danh sách theo ghim đang hoạt động (lỗi/lưới vắng → giữ nguyên).
+  loadPointsScripts().then(function(){ applyPinnedOrderToLists(); });
+}
+/* ---- Chuyển điểm trên trang ví (vi-tien-ao.html, chốt 20:23 + 20:25) ---- */
+function initTransferForm(){
+  if (typeof document === 'undefined') return;
+  var form = document.getElementById('transferForm');
+  if (!form) return;
+  var streakEl = document.getElementById('transferStreak');
+  var msgEl = document.getElementById('transferMsg');
+  var histEl = document.getElementById('transferHistory');
+  var submitBtn = document.getElementById('transferSubmit');
+  var emailEl = document.getElementById('transferEmail');
+  var amountEl = document.getElementById('transferAmount');
+  var noteEl = document.getElementById('transferNote');
+  var balEl = document.getElementById('transferBalance');
+  function say(t){ if (msgEl) msgEl.textContent = t || ''; }
+  function streakText(st){
+    if (!st || !st.ok) return 'Chưa tải được chuỗi online (hệ thống điểm chưa bật hoặc mất mạng).';
+    if (st.eligible) return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — bạn đã đủ điều kiện chuyển điểm.';
+    return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — còn ' + st.days_remaining + ' ngày nữa mới được chuyển điểm.';
+  }
+  function histHTML(items){
+    if (!items || !items.length) return '<p>Chưa có lần chuyển điểm nào.</p>';
+    return '<ul class="v2s-transfer-history">' + items.map(function (it){
+      // get_my_transfer_history() trả direction 'sent'/'received', amount âm
+      // khi gửi (-delta), dương khi nhận; counterparty_email là email bên kia.
+      var dir = (it.direction === 'received' || it.direction === 'in' || it.type === 'transfer_in') ? 'Nhận' : 'Gửi';
+      var other = esc(it.counterparty_email || it.other_email || it.recipient_email || it.sender_email || '');
+      var amt = Math.abs(Number(it.amount || it.points || 0));
+      var when = '';
+      try { when = it.created_at ? new Date(it.created_at).toLocaleDateString('vi-VN') : ''; } catch (e) {}
+      return '<li><b>' + dir + ' ' + amt + ' điểm</b>' + (other ? ' — ' + other : '') + (when ? ' · ' + esc(when) : '') + (it.note ? '<br><span>' + esc(it.note) + '</span>' : '') + '</li>';
+    }).join('') + '</ul>';
+  }
+  loadPointsScripts().then(function(){
+    return pointsSessionUser().then(function (user){
+      var R = window.Ver2Reward;
+      if (!user) {
+        if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển điểm. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 250 điểm</a>.';
+        if (submitBtn) submitBtn.disabled = true;
+        return;
+      }
+      if (!R) { if (streakEl) streakEl.textContent = 'Hệ thống điểm chưa bật (đang chờ migration M7).'; return; }
+      if (typeof R.getMyPointsBalanceResult === 'function') {
+        R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) balEl.textContent = 'Số dư điểm của bạn: ' + (Number(r.balance) || 0) + ' điểm.'; });
+      }
+      var streak = null, balance = 0;
+      var jobs = [];
+      if (typeof R.getMyTransferStreak === 'function') {
+        jobs.push(R.getMyTransferStreak().then(function (st){ streak = st; if (streakEl) streakEl.textContent = streakText(st); if (submitBtn && st && !st.eligible) submitBtn.disabled = true; }));
+      }
+      if (typeof R.getMyTransferHistory === 'function') {
+        jobs.push(R.getMyTransferHistory(20).then(function (h){ if (histEl && h && h.ok) histEl.innerHTML = histHTML(h.items); }));
+      }
+      if (typeof R.getMyPointsBalanceResult === 'function') {
+        jobs.push(R.getMyPointsBalanceResult().then(function (r){ if (r && r.ok) balance = Number(r.balance) || 0; }));
+      }
+      Promise.all(jobs).catch(function () {});
+      form.addEventListener('submit', function (e){
+        e.preventDefault();
+        say('');
+        var err = (typeof R.validateTransfer === 'function') ? R.validateTransfer({
+          recipientEmail: emailEl ? emailEl.value : '',
+          amount: amountEl ? Number(amountEl.value) : 0,
+          balance: balance, myEmail: user.email || ''
+        }) : null;
+        if (err) { say(err); return; }
+        if (streak && !streak.eligible) { say('Chưa đủ 30 ngày online liên tiếp nên chưa chuyển được điểm (còn ' + streak.days_remaining + ' ngày nữa).'); return; }
+        if (submitBtn) submitBtn.disabled = true;
+        R.transferPoints(emailEl.value, Number(amountEl.value), noteEl ? noteEl.value : '').then(function (res){
+          if (submitBtn) submitBtn.disabled = !(streak && streak.eligible);
+          if (res && res.ok) {
+            say('Đã chuyển ' + Number(amountEl.value) + ' điểm cho ' + emailEl.value.trim() + '.');
+            if (typeof R.getMyTransferHistory === 'function') R.getMyTransferHistory(20).then(function (h){ if (histEl && h && h.ok) histEl.innerHTML = histHTML(h.items); });
+            if (typeof R.getMyPointsBalanceResult === 'function') R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) { balance = Number(r.balance) || 0; balEl.textContent = 'Số dư điểm của bạn: ' + balance + ' điểm.'; } });
+            form.reset();
+          } else if (res && res.code === 'not_eligible') {
+            say('Chưa đủ 30 ngày online liên tiếp (đã ' + (res.current_streak || 0) + '/30 ngày — còn ' + (res.days_remaining || 0) + ' ngày nữa).');
+          } else if (res && res.code === 'recipient_not_found') {
+            say('Không tìm thấy tài khoản có email này.');
+          } else if (res && res.code === 'cannot_transfer_to_self') {
+            say('Không chuyển điểm cho chính mình.');
+          } else if (res && res.code === 'amount_below_minimum') {
+            say('Chuyển điểm tối thiểu 10 điểm/lần.');
+          } else if (res && res.code === 'insufficient_balance') {
+            say('Số dư điểm của bạn không đủ để chuyển.');
+          } else if (res && res.code === 'rpc_missing') {
+            say('Hệ thống chuyển điểm chưa bật (đang chờ migration M7).');
+          } else {
+            say('Chưa chuyển được điểm: ' + ((res && (res.message || res.error)) || 'hệ thống điểm chưa bật.'));
+          }
+        });
+      });
+    });
+  });
+}
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
   initMobileNotice(); initHeaderAuth();
-  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle();
+  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -1355,6 +1847,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
