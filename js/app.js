@@ -37,6 +37,24 @@ function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đạ
    0/0). Trang chi tiết GIỮ NGUYÊN bảng đầy đủ 4 hàng kể cả "Chưa cập nhật"
    (initDetail không chạm tới đây) — chỉ dọn mặt thẻ, không giấu thông tin. */
 function hasReal(v){ var s = String(v==null?'':v).trim(); return s !== '' && s !== 'Chưa cập nhật'; }
+/* v85 (M1 đã chạy 13:57 07/11, 3 cột highest_revenue_*): doanh thu chỉ
+   tính/hiển thị khi đã xác minh (highest_revenue_verified = true) và có
+   số (highest_revenue_amount > 0). Số tự khai chưa xác minh, số trong
+   chuỗi topRevenue cũ và "Chưa cập nhật" đều không tính — không bịa số,
+   không hiện số tự khai như số đã xác minh. Dữ liệu tĩnh data.js chưa có
+   hồ sơ nào có số đã xác minh nên hiện tại mọi nơi vẫn hiện "Chưa cập
+   nhật" như trước; khi mẫu tự đăng ký nhập số + admin xác minh thì số tự
+   hiện, không cần sửa code. */
+function verifiedRevenue(m){
+  if(m && m.highest_revenue_verified === true && typeof m.highest_revenue_amount === 'number' && m.highest_revenue_amount > 0) return m.highest_revenue_amount;
+  return null;
+}
+function revenueText(m){
+  var v = verifiedRevenue(m);
+  if(v === null) return 'Chưa cập nhật';
+  var note = hasReal(m.highest_revenue_note) ? ' (' + String(m.highest_revenue_note).trim() + ')' : '';
+  return fmtVnd(v) + 'đ' + note;
+}
 function isNegotiableSalary(m){ return String(m.salary||'').trim() === 'Thỏa thuận'; }
 /* v37: ALWAYS render all decision boxes, even when a value is missing
    (shown muted as "Chưa cập nhật"). Hiding empty values made the inner blocks
@@ -45,7 +63,7 @@ function isNegotiableSalary(m){ return String(m.salary||'').trim() === 'Thỏa t
 function decisionHTML(m){
   var sal = (hasReal(m.salary) && !isNegotiableSalary(m)) ? esc(m.salary) : (isNegotiableSalary(m) ? 'Thỏa thuận' : 'Chưa cập nhật');
   var sch = hasReal(m.schedule) ? esc(m.schedule) : 'Chưa cập nhật';
-  var rev = hasReal(m.topRevenue) ? esc(m.topRevenue) : 'Chưa cập nhật';
+  var rev = esc(revenueText(m));
   var exp = hasReal(m.exp) ? esc(m.exp) : 'Chưa cập nhật';
   var miss = function(v){ return v === 'Chưa cập nhật' ? ' muted' : ''; };
   return '<div class="decision">'
@@ -67,10 +85,14 @@ var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp 
    (dang ky/dang nhap) hoac go (lien he Zalo). Link dang ky/dang nhap dung loai:
    the mau -> danh-sach-mau.html#dang-nhap-mau, the shop ->
    danh-sach-shop.html#dang-nhap-shop (duong dan tuong doi day du de link dung
-   tu moi trang: trang chu, trang danh sach, trang chi tiet). */
+   tu moi trang: trang chu, trang danh sach, trang chi tiet).
+   v85: link "Đăng ký" tro dung trang dang ky RIENG dang-ky.html (kem
+   ?type= theo loai the); link "Đăng nhập" giu neo muc dang nhap tren
+   trang danh sach (form dang nhap nhanh tai cho, van hoat dong). */
 function ownerNoteHTML(kind){
-  var href = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
-  return '<p class="owner-note"><a href="'+href+'">Đăng ký</a> &gt; <a href="'+href+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
+  var type = kind === 'shop' ? 'shop' : 'model';
+  var loginHref = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
+  return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
 }
 function cardHTML(m, opts){
   // v63: opts tuy chon (khong doi dau ra mac dinh) — opts.zaloHref doi link nut
@@ -502,11 +524,11 @@ function filterModels(list, f){
        Mau khong co fulltime nen khong ap quyet dinh fulltime-hien-trong-moi-ca
        nhu shop. */
     if(f.shift){ var sh = m.shifts || []; if(sh.indexOf(f.shift) === -1) return false; }
-    /* v45: loc theo gia tri. revMin tinh theo trieu (topRevenue parse ra VND);
-       mau chua co doanh thu that (topRevenue null) bi loai khi co nhap — hien
-       0/20 mau co doanh thu that nen loc nay chua ra ket qua cho toi khi co
-       du lieu, dung thiet ke, khong bia du lieu. */
-    if(f.revMin != null){ var r = parseRevenue(m.topRevenue); if(r === null || r < f.revMin * 1000000) return false; }
+    /* v45: loc theo gia tri. revMin tinh theo trieu (doanh thu DA XAC
+       MINH, v85 M1); mau chua co doanh thu da xac minh bi loai khi co
+       nhap — hien 0/20 mau co doanh thu that nen loc nay chua ra ket qua
+       cho toi khi co du lieu, dung thiet ke, khong bia du lieu. */
+    if(f.revMin != null){ var r = verifiedRevenue(m); if(r === null || r < f.revMin * 1000000) return false; }
     if(f.wageMin != null){ var w = (typeof m.salaryNum === 'number' ? m.salaryNum : null); if(w === null || w < f.wageMin) return false; }
     if(f.q){var hay=(m.name+' '+m.title+' '+m.province+' '+m.cat+' '+m.form+' '+m.exp).toLowerCase(); if(hay.indexOf(f.q.toLowerCase())===-1) return false;}
     return true;
@@ -583,10 +605,11 @@ function pinCardHTML(a, n){
 }
 /* v41 trust strip: so lieu tinh DONG tu data.js (khong ghi so cung vao HTML).
    Quy tac luong/doanh thu cua mau (user-directed 06/11): doanh thu cao nhat
-   (topRevenue) la tieu de khi co du lieu da kiem chung; hien tai ca 20 mau
-   deu "Chua cap nhat" nen fallback la luong de xuat THAP NHAT (min salaryNum)
-   kem ghi chu doanh thu chua co du lieu. Khi 1 mau co topRevenue that thi
-   code tu chuyen sang hien thi doanh thu, khong can sua tay.
+   (highest_revenue_amount DA XAC MINH, v85 M1) la tieu de khi co du lieu da
+   kiem chung; hien tai ca 20 mau deu "Chua cap nhat" nen fallback la luong
+   de xuat THAP NHAT (min salaryNum) kem ghi chu doanh thu chua co du lieu.
+   Khi 1 mau co doanh thu da xac minh thi code tu chuyen sang hien thi
+   doanh thu, khong can sua tay. So tu khai/chuoi topRevenue cu khong tinh.
    Luong shop cao nhat: chi xet luong thang — parse cac so TRUOC cum
    "trieu/thang" (khoang "16–36" -> 36; "Tu 15" -> 15; "8–18" -> 18; phan
    tram hoa hong sau cum do khong tinh). 400+ la hang so cong dong do nguoi
@@ -675,7 +698,8 @@ function parseHourlyMin(s){
 }
 /* v42: sap xep. null (khong co gia tri) LUON xep cuoi cung o ca 2 chieu.
    sortModelsBy: 'wage-asc'/'wage-desc' dung salaryNum; 'revenue-asc'/
-   'revenue-desc' dung parseRevenue(topRevenue) — hien ca 20 mau deu
+   'revenue-desc' dung verifiedRevenue (v85 M1 — chi so DA XAC MINH, so
+   tu khai/chuoi topRevenue cu khong tinh) — hien ca 20 mau deu
    "Chưa cập nhật" nen sap xep doanh thu khong doi thu tu (tat ca bang nhau).
    sortShopsBy: 'hourly-asc'/'hourly-desc' dung parseHourlyMin; 'monthly-asc'/
    'monthly-desc' dung parseMonthlyMax (v41). Mac dinh ('') tra ve ban sao
@@ -692,8 +716,8 @@ function sortByVal(list, get, dir){
 function sortModelsBy(list, sort){
   if(sort === 'wage-asc') return sortByVal(list, function(m){ return (typeof m.salaryNum === 'number' ? m.salaryNum : null); }, 1);
   if(sort === 'wage-desc') return sortByVal(list, function(m){ return (typeof m.salaryNum === 'number' ? m.salaryNum : null); }, -1);
-  if(sort === 'revenue-asc') return sortByVal(list, function(m){ return parseRevenue(m.topRevenue); }, 1);
-  if(sort === 'revenue-desc') return sortByVal(list, function(m){ return parseRevenue(m.topRevenue); }, -1);
+  if(sort === 'revenue-asc') return sortByVal(list, function(m){ return verifiedRevenue(m); }, 1);
+  if(sort === 'revenue-desc') return sortByVal(list, function(m){ return verifiedRevenue(m); }, -1);
   return list.slice();
 }
 function sortShopsBy(list, sort){
@@ -796,7 +820,7 @@ function trustStats(models, shops, lots, factories, ref){
     if(m.province === 'Toàn quốc / Live online'){ online = true; }
     else if(m.province){ provs[m.province] = true; }
     if(typeof m.salaryNum === 'number' && m.salaryNum > 0 && (minWage === null || m.salaryNum < minWage)) minWage = m.salaryNum;
-    var r = parseRevenue(m.topRevenue);
+    var r = verifiedRevenue(m);
     if(r !== null && (maxRev === null || r > maxRev)) maxRev = r;
   });
   var shopProvs = {}, maxMonthly = null;
@@ -1127,7 +1151,7 @@ function initDetail(){
   + '<div class="fact"><b>Giỏi livestream nhất</b><span>'+esc(m.cat)+'</span></div>'
   + '<div class="fact"><b>Lương mong muốn</b><span>'+esc(m.salary)+'</span></div>'
   + '<div class="fact"><b>Lịch làm việc</b><span>'+esc(m.schedule)+'</span></div>'
-  + '<div class="fact"><b>Doanh thu cao nhất</b><span>'+esc(m.topRevenue)+'</span></div>'
+  + '<div class="fact"><b>Doanh thu cao nhất</b><span>'+esc(revenueText(m))+'</span></div>'
   + '<div class="fact"><b>Chiều cao / cân nặng</b><span>'+esc(m.height)+'</span></div>'
   + '<div class="fact"><b>Đánh giá</b><span>'+esc(m.rating)+'</span></div>'
   + '<div class="fact"><b>Ngày bài gốc</b><span>'+esc(m.date)+'</span></div></div>'
@@ -1200,7 +1224,118 @@ function initShopDetail(){
   var others=document.getElementById('otherShops');
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
 }
+/* v85: thong bao man hinh ban mobile — dung 2 dong (yeu cau nguoi dung
+   13:33 + 13:36 ngay 07/11). Chi hien tren mobile (CSS .mobile-notice
+   an mac dinh, chi hien <=768px); thanh nho tren cung, tren header,
+   tren MOI trang (chen qua js/app.js — script chung chay moi trang).
+   Co nut X de tat; sau khi tat thi khong hien lai trong cung phien
+   (sessionStorage 'v2s-mobile-notice' = 'off'); phien moi hien lai.
+   Khong chan noi dung, khong che nut Dang nhap/Menu, khong tran ngang
+   o 390px (static flow, khong fixed). */
+var MOBILE_NOTICE_KEY = 'v2s-mobile-notice';
+var MOBILE_NOTICE_LINES = ['Mở web PC để xem chi tiết thông tin hay hữu ích', 'Bản thử nghiệm mọi tính năng hoàn toàn miễn phí'];
+function initMobileNotice(){
+  if(typeof document === 'undefined' || !document.body || !document.createElement) return;
+  if(document.getElementById('mobileNotice')) return;
+  try {
+    if(typeof sessionStorage !== 'undefined' && sessionStorage.getItem(MOBILE_NOTICE_KEY) === 'off') return;
+  } catch (e) { /* sessionStorage khong dung duoc thi van hien banner */ }
+  var bar = document.createElement('div');
+  bar.className = 'mobile-notice';
+  bar.id = 'mobileNotice';
+  bar.setAttribute('role', 'note');
+  var text = document.createElement('div');
+  text.className = 'mobile-notice-text';
+  MOBILE_NOTICE_LINES.forEach(function (line) {
+    var s = document.createElement('span');
+    s.textContent = line;
+    text.appendChild(s);
+  });
+  var close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'mobile-notice-close';
+  close.setAttribute('aria-label', 'Đóng thông báo');
+  close.textContent = '✕';
+  close.addEventListener('click', function () {
+    try { if(typeof sessionStorage !== 'undefined') sessionStorage.setItem(MOBILE_NOTICE_KEY, 'off'); } catch (e) {}
+    if(bar.parentNode) bar.parentNode.removeChild(bar);
+  });
+  bar.appendChild(text);
+  bar.appendChild(close);
+  document.body.insertBefore(bar, document.body.firstChild);
+}
+/* v85: header phan anh trang thai dang nhap (loi 3, phat hien qua kiem
+   chung E2E 13:48 07/11 — truoc day header trang chu van hien nut
+   "Đăng Nhập" du da dang nhap). Cap nhat theo yeu cau nguoi dung 15:52
+   07/11 (test tren dien thoai that): sau dang nhap nut "Đăng Nhập" BIEN
+   MAT, thay bang TEN nguoi dung da dang nhap — bat buoc, moi trang, ca
+   mobile lan desktop. Ten lay theo thu tu: user_metadata.full_name/name
+   (tai khoan OAuth) -> profiles.full_name (ho so da dien o Trang cua toi)
+   -> phan truoc @ cua email (theo bo sung spec 15:52 07/11); chi khi ca 3
+   deu khong co moi du phong "Trang của tôi". Nut van tro toi
+   trang-cua-toi.html; chua dang nhap thi giu nut "Đăng Nhập" nhu cu. Dung
+   chung trang thai phien tu js/auth-ui.js (getSession/onSessionChange);
+   khong co auth-ui.js hoac chua ket noi Supabase thi bo qua lang le,
+   khong lam vo header. */
+function headerMetaName(user){
+  if(!user) return null;
+  var md = user.user_metadata || {};
+  var n = md.full_name || md.name || '';
+  if(typeof n === 'string' && n.trim()) return n.trim();
+  return null;
+}
+function headerDisplayName(user){
+  if(!user) return null;
+  var n = headerMetaName(user);
+  if(n) return n;
+  var em = user.email || '';
+  var at = em.indexOf('@');
+  if(at > 0) return em.slice(0, at);
+  return null;
+}
+function initHeaderAuth(){
+  if(typeof document === 'undefined' || !document.querySelector) return;
+  var btn = document.querySelector('.site-head .btn[href^="dang-nhap.html"]');
+  if(!btn) return;
+  if(!btn._loginLabel) btn._loginLabel = btn.textContent;
+  if(!btn._loginHref) btn._loginHref = btn.getAttribute('href');
+  function apply(user){
+    if(user){
+      var name = headerDisplayName(user);
+      btn.textContent = name || 'Trang của tôi';
+      btn.setAttribute('href', 'trang-cua-toi.html');
+      if(!headerMetaName(user)){
+        /* Chua co ten that trong metadata (dang hien phan truoc @ cua email
+           hoac "Trang của tôi") — hoi them bang profiles.full_name; co ten
+           that thi doi ten (uu tien hon phan truoc @ cua email). Chi doi ten
+           neu nut van dang o trang thai da dang nhap (tranh truong hop nguoi
+           dung dang xuat trong luc cho ket qua). */
+        try {
+          var M = window.McLivestreamAPI;
+          if(M && typeof M.fetchMyProfile === 'function'){
+            M.fetchMyProfile().then(function (p) {
+              if(p && p.full_name && String(p.full_name).trim()
+                 && btn.getAttribute('href') === 'trang-cua-toi.html'){
+                btn.textContent = String(p.full_name).trim();
+              }
+            }).catch(function () {});
+          }
+        } catch (e) { /* bo qua — giu "Trang của tôi" */ }
+      }
+    } else {
+      btn.textContent = btn._loginLabel;
+      btn.setAttribute('href', btn._loginHref);
+    }
+  }
+  try {
+    var A = window.V2SAuthUI;
+    if(!A || typeof A.getSession !== 'function') return;
+    A.getSession().then(function (s) { apply(s && s.user ? s.user : null); }).catch(function () {});
+    if(typeof A.onSessionChange === 'function') A.onSessionChange(function (user) { apply(user); });
+  } catch (e) { /* bo qua — header giu nut Dang Nhap mac dinh */ }
+}
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
+  initMobileNotice(); initHeaderAuth();
   initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
@@ -1220,6 +1355,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

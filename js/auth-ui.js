@@ -12,6 +12,15 @@
    đầu (F-05), chuyển view đăng nhập/đăng ký/quên mật khẩu + popup chọn
    loại tài khoản (kế thừa từ v45 phần 4), xử lý tham số ?auth=register /
    ?auth=forgot (kế thừa từ v45 phần 4).
+   v85: phản hồi form rõ ràng — thông báo có 2 trạng thái màu (xanh =
+   thành công, đỏ = lỗi) đặt ngay trên nút submit; lỗi từng trường hiện
+   đỏ dưới đúng trường sai + tô đỏ viền ô đó; đăng ký thành công có
+   session thì đăng nhập thẳng (xác minh email đã tắt 15:26 07/11), không
+   có session thì sang trang đăng nhập (cfg.signupSuccessUrl) hoặc về
+   view đăng nhập + thông báo xanh; email đã đăng ký thì báo rõ kèm link
+   lấy lại mật khẩu. Tùy chọn cfg mới (đều tùy chọn, trang cũ không
+   truyền vẫn chạy như trước): initialView, initialMessage,
+   signupSuccessUrl.
    Trạng thái đăng nhập là 1 nguồn đúng duy nhất: sessionCache +
    onAuthStateChange; trang Trang của tôi dùng chung qua getSession() /
    ensureSessionListener() thay vì đọc session riêng.
@@ -136,23 +145,78 @@
     currentCfg = cfg;
     ensureSessionListener();
     var msgEl = $(cfg.msgId);
-    function msg(t) { if (msgEl) msgEl.textContent = t; }
+    // v85: thông báo có 2 trạng thái màu — kind 'ok' = xanh (thành công),
+    // 'err' = đỏ (lỗi), không truyền = trung tính. msgHtml dùng riêng cho
+    // thông báo chứa link (vd email đã đăng ký kèm link lấy lại mật khẩu).
+    function msg(t, kind) {
+      if (!msgEl) return;
+      msgEl.textContent = t || '';
+      msgEl.className = 'auth-msg' + (kind === 'ok' ? ' ok' : kind === 'err' ? ' err' : '');
+    }
+    function msgHtml(html, kind) {
+      if (!msgEl) return;
+      msgEl.innerHTML = html || '';
+      msgEl.className = 'auth-msg' + (kind === 'ok' ? ' ok' : kind === 'err' ? ' err' : '');
+    }
+    // v85: lỗi từng trường — hiện dòng đỏ dưới đúng trường sai + tô đỏ
+    // viền ô đó. Trang chưa có phần tử <p class="field-err"
+    // id="err-<inputId>"> thì trả false để caller rơi về msg() chung.
+    function setFieldError(inputId, text) {
+      var errEl = $('err-' + inputId);
+      if (!errEl) return false;
+      errEl.textContent = text || '';
+      var inp = $(inputId);
+      if (inp) {
+        if (text) inp.classList.add('invalid');
+        else inp.classList.remove('invalid');
+      }
+      return true;
+    }
+    function clearAllFieldErrors(form) {
+      if (!form || !form.querySelectorAll) return;
+      form.querySelectorAll('.field-err').forEach(function (el) { el.textContent = ''; });
+      form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    }
+    function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || '')); }
+    function isAlreadyRegistered(err) {
+      var raw = String((err && (err.message || err.code)) || err || '').toLowerCase();
+      return raw.indexOf('user already registered') !== -1;
+    }
 
     var AUTH_VIEWS = ['login', 'register', 'forgot'];
     function viewEl(v) { return $(cfg.views[v]); }
+    // v85: chuyển view thì xóa thông báo cũ + lỗi từng trường, để thông
+    // báo của view trước không lọt sang view sau.
+    var card = cfg.cardId ? $(cfg.cardId) : document;
     function showAuthView(v) {
       if (AUTH_VIEWS.indexOf(v) === -1) v = 'login';
       AUTH_VIEWS.forEach(function (x) { var el = viewEl(x); if (el) el.hidden = (x !== v); });
+      msg('');
+      if (card && card.querySelectorAll) {
+        card.querySelectorAll('.field-err').forEach(function (el) { el.textContent = ''; });
+        card.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+      }
     }
-    var initialAuthView = (function () {
-      try {
-        var a = new URLSearchParams(location.search).get('auth');
-        return (a === 'register' || a === 'forgot') ? a : 'login';
-      } catch (e) { return 'login'; }
-    })();
+    // v85: trang đăng ký riêng (dang-ky.html) truyền initialView 'register'
+    // để view đăng ký hiện ngay từ đầu; trang khác giữ logic ?auth= cũ.
+    var initialAuthView = (cfg.initialView && AUTH_VIEWS.indexOf(cfg.initialView) !== -1)
+      ? cfg.initialView
+      : (function () {
+        try {
+          var a = new URLSearchParams(location.search).get('auth');
+          return (a === 'register' || a === 'forgot') ? a : 'login';
+        } catch (e) { return 'login'; }
+      })();
+    // v85: thông báo mở đầu (vd dang-nhap.html?registered=1 sau khi đăng ký
+    // xong) — chỉ hiện 1 lần khi chưa đăng nhập.
+    var initialMessageShown = false;
+    function showInitialMessage() {
+      if (initialMessageShown || !cfg.initialMessage) return;
+      initialMessageShown = true;
+      msg(cfg.initialMessage.text || '', cfg.initialMessage.kind || '');
+    }
 
     // Link chuyển view trong thẻ auth.
-    var card = cfg.cardId ? $(cfg.cardId) : document;
     if (card && card.querySelectorAll) {
       card.querySelectorAll('[data-auth-view]').forEach(function (a) {
         a.addEventListener('click', function (e) {
@@ -206,6 +270,7 @@
       } else {
         if (box) box.style.display = 'none';
         showAuthView(initialAuthView);
+        showInitialMessage();
       }
       if (typeof cfg.onSessionChange === 'function') {
         try { cfg.onSessionChange(user); } catch (e) {}
@@ -223,63 +288,125 @@
         if (user) syncMarketingConsent(user);
       } catch (err) {
         if (typeof console !== 'undefined' && console.error) console.error('[auth-ui] getSession lỗi:', err);
-        msg('Không kiểm tra được trạng thái đăng nhập, hãy tải lại trang.');
+        msg('Không kiểm tra được trạng thái đăng nhập, hãy tải lại trang.', 'err');
       }
     }
     onSessionChange(function (user) { refreshAuthUI(user); });
 
     // Handler đăng ký (F-08: mật khẩu tối thiểu 8 ký tự, kiểm tra ở
     // client trước khi gửi; F-07: guardSubmit; F-09: friendlyError).
+    // v85: kiểm tra từng trường ở client trước khi gửi — lỗi hiện đỏ dưới
+    // đúng trường sai (+ tô đỏ viền ô); đăng ký thành công có session thì
+    // đăng nhập thẳng (xác minh email đã tắt 15:26 07/11); không có
+    // session thì sang trang đăng nhập (cfg.signupSuccessUrl, trang đăng
+    // ký riêng) hoặc về view đăng nhập + thông báo xanh (trang danh sách);
+    // email đã đăng ký thì báo rõ kèm link lấy lại mật khẩu.
     var su = $(cfg.forms.signup);
     if (su) su.addEventListener('submit', function (e) {
       e.preventDefault();
       guardSubmit(su, async function () {
+        msg('');
+        clearAllFieldErrors(su);
+        var email = $(cfg.inputs.signupEmail).value.trim();
+        var phone = $(cfg.inputs.signupPhone).value.trim();
         var p1 = $(cfg.inputs.signupPass).value;
         var p2 = $(cfg.inputs.signupPass2).value;
-        if (p1 !== p2) { msg('Mật khẩu nhập lại chưa khớp.'); return; }
-        if (p1.length < MIN_PASSWORD_LEN) { msg('Mật khẩu cần ít nhất 8 ký tự.'); return; }
-        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.'); return; }
+        var bad = false;
+        if (!email || !isValidEmail(email)) {
+          if (!setFieldError(cfg.inputs.signupEmail, !email ? 'Hãy nhập email.' : 'Email chưa đúng định dạng.')) msg('Hãy nhập email đúng định dạng.', 'err');
+          bad = true;
+        }
+        if (!phone) {
+          if (!setFieldError(cfg.inputs.signupPhone, 'Hãy nhập số điện thoại chính dùng Zalo.')) msg('Hãy nhập số điện thoại chính dùng Zalo.', 'err');
+          bad = true;
+        }
+        if (p1.length < MIN_PASSWORD_LEN) {
+          if (!setFieldError(cfg.inputs.signupPass, 'Mật khẩu cần ít nhất 8 ký tự.')) msg('Mật khẩu cần ít nhất 8 ký tự.', 'err');
+          bad = true;
+        }
+        if (p1 !== p2) {
+          if (!setFieldError(cfg.inputs.signupPass2, 'Mật khẩu nhập lại chưa khớp.')) msg('Mật khẩu nhập lại chưa khớp.', 'err');
+          bad = true;
+        }
+        if (bad) return;
+        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
-          await api().signUp({
-            email: $(cfg.inputs.signupEmail).value.trim(),
+          var res = await api().signUp({
+            email: email,
             password: p1,
-            phoneZalo: $(cfg.inputs.signupPhone).value.trim(),
+            phoneZalo: phone,
             marketingOptIn: !!$(cfg.inputs.signupMarketing).checked,
             accountType: cfg.accountType
           });
-          msg('Đã gửi đăng ký. Nếu project bật xác nhận email, hãy kiểm tra email để xác nhận trước khi đăng nhập.');
-        } catch (err) { msg('Đăng ký chưa thành công: ' + friendly(err)); }
+          if (res && res.session) {
+            msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
+            await showUser();
+            return;
+          }
+          if (cfg.signupSuccessUrl) { location.href = cfg.signupSuccessUrl; return; }
+          showAuthView('login');
+          msg('Đã gửi đăng ký — kiểm tra email để xác nhận rồi đăng nhập.', 'ok');
+        } catch (err) {
+          if (isAlreadyRegistered(err)) {
+            msgHtml('Email này đã được đăng ký. Bạn có muốn lấy lại mật khẩu không? <a href="dat-lai-mat-khau.html?email=' + encodeURIComponent(email) + '">Lấy lại mật khẩu →</a>', 'err');
+            return;
+          }
+          msg('Đăng ký chưa thành công: ' + friendly(err), 'err');
+        }
       });
     });
 
-    // Handler đăng nhập (F-07 + F-09).
+    // Handler đăng nhập (F-07 + F-09). v85: kiểm tra từng trường ở client
+    // + báo đỏ rõ lý do khi đăng nhập sai, như form đăng ký.
     var si = $(cfg.forms.signin);
     if (si) si.addEventListener('submit', function (e) {
       e.preventDefault();
       guardSubmit(si, async function () {
-        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.'); return; }
+        msg('');
+        clearAllFieldErrors(si);
+        var email = $(cfg.inputs.signinEmail).value.trim();
+        var pass = $(cfg.inputs.signinPass).value;
+        var bad = false;
+        if (!email || !isValidEmail(email)) {
+          if (!setFieldError(cfg.inputs.signinEmail, !email ? 'Hãy nhập email.' : 'Email chưa đúng định dạng.')) msg('Hãy nhập email đúng định dạng.', 'err');
+          bad = true;
+        }
+        if (!pass) {
+          if (!setFieldError(cfg.inputs.signinPass, 'Hãy nhập mật khẩu.')) msg('Hãy nhập mật khẩu.', 'err');
+          bad = true;
+        }
+        if (bad) return;
+        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
           await api().signIn({
-            email: $(cfg.inputs.signinEmail).value.trim(),
-            password: $(cfg.inputs.signinPass).value
+            email: email,
+            password: pass
           });
-          msg('Đăng nhập thành công.');
+          msg('Đăng nhập thành công.', 'ok');
           await showUser();
-        } catch (err) { msg('Đăng nhập chưa thành công: ' + friendly(err)); }
+        } catch (err) { msg('Đăng nhập chưa thành công: ' + friendly(err), 'err'); }
       });
     });
 
     // Handler quên mật khẩu (F-07 + F-09). resetPassword dùng
     // redirectTo mặc định mới (trang dat-lai-mat-khau.html) — xem F-03.
+    // v85: kiểm tra email ở client + thông báo xanh/đỏ như 2 form trên.
     var fp = $(cfg.forms.forgot);
     if (fp) fp.addEventListener('submit', function (e) {
       e.preventDefault();
       guardSubmit(fp, async function () {
-        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.'); return; }
+        msg('');
+        clearAllFieldErrors(fp);
+        var email = $(cfg.inputs.forgotEmail).value.trim();
+        if (!email || !isValidEmail(email)) {
+          if (!setFieldError(cfg.inputs.forgotEmail, !email ? 'Hãy nhập email đã đăng ký.' : 'Email chưa đúng định dạng.')) msg('Hãy nhập email đúng định dạng.', 'err');
+          return;
+        }
+        if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
-          await api().resetPassword($(cfg.inputs.forgotEmail).value.trim());
-          msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.');
-        } catch (err) { msg('Gửi link chưa thành công: ' + friendly(err)); }
+          await api().resetPassword(email);
+          msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.', 'ok');
+        } catch (err) { msg('Gửi link chưa thành công: ' + friendly(err), 'err'); }
       });
     });
 
@@ -302,8 +429,8 @@
       so.disabled = false;
       await showUser();
       var box2 = $(cfg.boxId);
-      if (box2 && box2.style.display !== 'none') { msg('Đăng xuất chưa thành công, hãy thử lại.'); }
-      else { msg('Đã đăng xuất.'); }
+      if (box2 && box2.style.display !== 'none') { msg('Đăng xuất chưa thành công, hãy thử lại.', 'err'); }
+      else { msg('Đã đăng xuất.', 'ok'); }
       if (typeof cfg.onSessionChange === 'function') {
         try { cfg.onSessionChange(null); } catch (e) {}
       }
