@@ -38,6 +38,7 @@
 
 <section class="form-card"><h2>2. Bảng điểm</h2>
 <p>Điểm tính theo nơi bạn tương tác, không tính theo loại tài khoản của bạn.</p>
+<div class="table-scroll">
 <table>
 <thead><tr><th>Hoạt động</th><th>Điểm</th><th>Giới hạn mỗi ngày</th><th>Điều kiện</th></tr></thead>
 <tbody>
@@ -49,6 +50,7 @@
 <tr><td>Chia sẻ hồ sơ mẫu (đã xác minh)</td><td><strong>10 điểm</strong></td><td>Tối đa 2 lượt tính điểm/ngày</td><td>Chia sẻ phải được hệ thống xác minh; chia sẻ Zalo cá nhân hiện chưa kiểm chứng được nên chưa tính điểm</td></tr>
 </tbody>
 </table>
+</div>
 <p style="font-size:13px">Trần điểm mỗi ngày: tối đa 50 điểm/ngày cho tài khoản shop, 30 điểm/ngày cho tài khoản mẫu. Bình luận ngắn hơn 20 ký tự vẫn được gửi và duyệt bình thường, chỉ không được cộng điểm. Bình luận bị từ chối duyệt thì không được điểm, suất tính điểm trong ngày được nhả lại cho lượt khác.</p></section>
 
 <section class="form-card"><h2>3. Quy tắc chung</h2>
@@ -68,6 +70,14 @@
 <p style="font-size:13px;color:#666">Ver2Solution.com — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · Zalo 032 998 3699.</p></section>
 </main>
 <footer class="site-foot"><div class="wrap"><p>Ver2Solution.com — Tư duy đúng, giá trị thật.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
+<p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
+<form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
+<label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
+<label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="js/auth-ui.js"></script>
 <script src="js/themes.js"></script><script src="js/app.js"></script>
 <script src="js/analytics.js"></script>
