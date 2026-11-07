@@ -23,10 +23,13 @@
   var client = window.supabase.createClient(cfg.url, cfg.anonKey);
 
   // Các cột chủ hồ sơ KHÔNG được gửi khi lưu — trigger trong schema.sql
-  // sẽ chặn nếu client cố đổi chúng.
+  // sẽ chặn nếu client cố đổi chúng. v85 (M1 đã chạy 13:57 07/11):
+  // highest_revenue_verified cũng strip ở client — chỉ admin xác minh
+  // mới được đặt true, client gửi kèm true sẽ bị policy INSERT chặn 42501.
   var PROTECTED_FIELDS = [
     'moderation_status', 'consent_status', 'is_pinned',
-    'view_count', 'is_demo', 'achievement_label'
+    'view_count', 'is_demo', 'achievement_label',
+    'highest_revenue_verified'
   ];
 
   function stripProtected(data) {
