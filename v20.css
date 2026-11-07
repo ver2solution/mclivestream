@@ -170,7 +170,7 @@ a:hover{text-decoration:underline}
 .pin-noimg{display:grid;place-items:center;background:var(--brand);color:#fff}
 .pin-noimg b{font-size:40px;font-weight:900}
 .pin-card h3{margin:8px 10px 2px;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pin-cat{margin:0 10px 10px;color:var(--mut);font-size:12px}
+.pin-cat{margin:0 10px 10px;padding-left:44px;color:var(--mut);font-size:12px}/* v85 LỖI 1: huy hiệu .pin-num (28px, left:8px) đè 2–4 ký tự đầu dòng nguồn tin ở desktop — chừa đệm trái đủ chỗ cho huy hiệu (28 + 8 + 8) */
 .gopy-fab{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:90;background:var(--red);color:#fff;border:0;border-radius:50%;width:56px;height:56px;font-size:22px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .gopy-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px}
 .gopy-overlay.open{display:flex}
@@ -232,7 +232,7 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .pin-card:not(:has(>a)){display:grid;grid-template-columns:120px 1fr;grid-template-areas:"img title" "img cat";column-gap:10px;align-items:start;padding:10px}
 .pin-img,.pin-noimg{grid-area:img;width:120px;aspect-ratio:4/3}
 .pin-card h3{grid-area:title;margin:0}
-.pin-cat{grid-area:cat;margin:0}
+.pin-cat{grid-area:cat;margin:0;padding-left:0}/* v85: mobile — huy hiệu nằm trên góc ảnh, không đè dòng nguồn nên bỏ đệm trái */
 .pin-num{top:auto;bottom:16px;left:16px}}/* v78 B3: goc duoi-trai (mobile) */
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* MÀN HÌNH RẤT NHỎ (điện thoại nhỏ, đồng hồ ~200–320px): không tràn ngang,
@@ -416,7 +416,9 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-intro{color:var(--mut);margin:0 0 4px}
 .lot-sub{color:var(--mut);font-size:14px;margin:0 0 12px}
 .lot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.lot-card{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff}
+.lot-card{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff;min-width:0;overflow-wrap:break-word}/* v85: the xuong tran vien phai tren mobile — grid item mac dinh min-width:auto nen chuoi dai (URL Facebook trong .lot-meta) day track rong hon viewport; min-width:0 + be dong */
+.lot-card .lot-meta,.lot-card .lot-price{overflow-wrap:break-word}
+.lot-card a{overflow-wrap:anywhere}
 .lot-card h4{margin:0 0 6px;font-size:16px;line-height:1.4}
 .lot-price{margin:0 0 6px;font-size:17px;font-weight:900;color:var(--brand)}
 .lot-meta{margin:0 0 4px;font-size:14px;color:var(--ink)}
@@ -450,6 +452,29 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .auth-note{font-size:13px;color:var(--mut)}
 .coming{display:inline-block;background:#fff3cd;border:1px solid #e6c87a;color:#7a5b00;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:800;vertical-align:middle}
 .auth-type-btn.sel{border-color:var(--brand);background:#eef7f2}
+/* v85: phan hoi form dang ky/dang nhap ro rang — thong bao co 2 trang thai
+   mau (xanh = thanh cong, do = loi), dat ngay tren nut submit de nhin thay
+   khong can cuon; loi tung truong hien do duoi dung truong sai + to do
+   vien o do. .field-err rong thi an (khong chiem cho). */
+.auth-msg{margin:12px 0;font-size:14px;font-weight:700}
+.auth-msg:empty{display:none}
+.auth-msg.ok{color:#0b6b3a;background:#e7f6ec;border:1px solid #bfe6c9;border-radius:12px;padding:10px 12px}
+.auth-msg.err{color:#b42318;background:#fdecea;border:1px solid #f5c6c0;border-radius:12px;padding:10px 12px}
+.auth-msg.err a{color:#b42318;text-decoration:underline}
+.field-err{margin:4px 0 0;font-size:13px;font-weight:700;color:#b42318}
+.field-err:empty{display:none}
+.form-card input.invalid,.form-card select.invalid,.form-card textarea.invalid{border-color:#d92b1f;box-shadow:0 0 0 1px #d92b1f}
+/* v85: thong bao man hinh ban mobile — dung 2 dong, chi hien <=768px
+   (tren desktop/tablet lon an han). Thanh nho tren cung, tren header;
+   chu nguyen van, khong link; nut X tat (luu sessionStorage, xem app.js). */
+.mobile-notice{display:none}
+@media(max-width:768px){
+  .mobile-notice{display:flex;align-items:flex-start;gap:10px;background:var(--brandsoft);border-bottom:1px solid var(--line);padding:8px 12px;font-size:13px;line-height:1.45;color:var(--ink)}
+  .mobile-notice-text{flex:1 1 auto;min-width:0}
+  .mobile-notice-text span{display:block}
+  .mobile-notice-close{flex:0 0 auto;width:28px;height:28px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:13px;line-height:1;cursor:pointer}
+  .mobile-notice-close:hover{border-color:var(--brand);color:var(--brand)}
+}
 @media(max-width:900px){.auth-layout{grid-template-columns:1fr}}
 
 /* v70: SUA LOI MOBILE/TABLET (kiem tra tinh 06/11/2026 — KHONG chup duoc man
@@ -582,7 +607,7 @@ th{background:#f4f8f6}
 
 /* v73: sua vo mobile 360px (nguoi dung bao bang anh chup dien thoai that 19:22/19:34 ngay 06/11 — may 360px CSS, khong phai 390px nhu test v72). Hoc Shopee (luoi 2 cot minmax, pill cat gon) — giu nhan dien Ver2Solution. */
 .trust-num span.trust-note{display:none}/* G4: .trust-num span (0,1,1) de mat .trust-note (0,1,0) — ghi chu noi bo "(doanh thu cao nhat chua co du lieu...)" lot ra giao dien; an han bang specificity 0,2,1. */
-@media(max-width:380px){
+@media(max-width:400px){/* v85: mo rong quy tac thu nho header tu <=380px len <=400px — o 390px header van rot 2 hang (quy tac cu khong ap dung) */
   .head-in{gap:6px}/* G5: o 360px logo 177 + Menu 57 + Dang Nhap 93 + 2 gap 8px = 343px > 336px — nut Dang Nhap rot hang 2 (cao 88px). Giam gap + co chu + bot padding de vua 1 hang (~322px). */
   .logo{font-size:14px}
   .menu-btn{padding:8px 8px}

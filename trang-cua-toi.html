@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=trang-cua-toi.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Trang của tôi</h1>
@@ -42,7 +42,8 @@
 <p><label>Địa điểm mong muốn<br><input id="myPlace" placeholder="VD: Làm tại Hà Nội, hoặc live online"></label></p>
 <p><label>Loại sản phẩm muốn livestream<br><input id="myProductTypes" placeholder="VD: Thời trang, mỹ phẩm"></label></p>
 <p><label>Thời gian mong muốn<br><input id="myDuration" placeholder="VD: Dài hạn, hoặc theo chiến dịch 11.11"></label></p>
-<p><label>Doanh thu cao nhất (tự khai, chỉ ghi số đã kiểm chứng được)<br><input id="myTopRevenue" placeholder="VD: Chưa cập nhật, hoặc 120 triệu/tháng"></label></p>
+<p><label>Doanh thu cao nhất (đồng/tháng, chỉ ghi số đã kiểm chứng được)<br><input id="myTopRevenueAmount" type="number" min="0" step="1" inputmode="numeric" placeholder="VD: 120000000"></label></p>
+<p><label>Ghi chú về doanh thu cao nhất<br><input id="myTopRevenueNote" placeholder="VD: Doanh thu cao nhất tháng 10/2026, đã có sao kê"></label></p>
 <p><label>Giới tính<br><select id="myGender"><option value="">Chưa cập nhật</option><option>Nam</option><option>Nữ</option></select></label></p>
 <h2>3. Liên hệ và media</h2>
 <p><label>Facebook<br><input id="myFacebook" placeholder="Link Facebook công khai"></label></p>
@@ -102,7 +103,11 @@
         set('myDesiredField',existing.desired_field); set('myPhoneZalo',existing.phone_zalo); set('myEmail',existing.contact_email);
         set('mySalary',existing.desired_salary); set('mySchedule',existing.desired_schedule); set('myPlace',existing.desired_place);
         set('myProductTypes',existing.desired_product_types); set('myDuration',existing.desired_duration);
-        set('myTopRevenue',existing.top_revenue); set('myGender',existing.gender||'');
+        /* v85 M1: 2 truong doanh thu moi (so + ghi chu); KHONG gui
+           highest_revenue_verified (client strip — xem
+           mclivestream-supabase.js PROTECTED_FIELDS). */
+        set('myTopRevenueAmount',existing.highest_revenue_amount!=null?String(existing.highest_revenue_amount):'');
+        set('myTopRevenueNote',existing.highest_revenue_note); set('myGender',existing.gender||'');
         set('myFacebook',existing.contact_facebook); set('myInstagram',existing.contact_instagram); set('myTiktok',existing.contact_tiktok); set('myZalo',existing.contact_zalo);
         status.textContent='Đã đăng nhập: '+session.user.email+' · Trạng thái hồ sơ hiện tại: '+(existing.moderation_status||'pending');
       }
@@ -119,6 +124,15 @@
       var demo = existing?existing.demo_video_url:null;
       var demoFiles=document.getElementById('myDemo').files;
       if(demoFiles.length){ demo = await McLivestreamAPI.uploadDemoVideo(demoFiles[0]); }
+      /* v85 M1: gui highest_revenue_amount (so, parse tu o nhap) +
+         highest_revenue_note; KHONG gui highest_revenue_verified (chi
+         admin xac minh moi duoc dat true — client strip o
+         saveMyProfile). Bo doan retry cu "gap loi top_revenue thi gui
+         lai khong kem truong do" — sau M1 retry do thanh code chet lang
+         le bo du lieu nguoi dung da nhap; loi luu that bai nay bao ro. */
+      var revRaw = val('myTopRevenueAmount');
+      var revNum = revRaw === '' ? null : parseFloat(String(revRaw).replace(/[^\d.]/g, ''));
+      if (revNum !== null && (isNaN(revNum) || revNum < 0)) revNum = null;
       var data={
         full_name:val('myFullName'), date_of_birth:val('myDob'), hometown:val('myHometown'),
         work_location:val('myWorkLocation'), education:val('myEducation'), experience:val('myExperience'),
@@ -126,20 +140,11 @@
         desired_salary:val('mySalary')||null, desired_schedule:val('mySchedule')||null, desired_place:val('myPlace')||null,
         desired_product_types:val('myProductTypes')||null, desired_duration:val('myDuration')||null,
         contact_facebook:val('myFacebook')||null, contact_instagram:val('myInstagram')||null, contact_tiktok:val('myTiktok')||null,
-        contact_zalo:val('myZalo')||null, gender:val('myGender')||null, top_revenue:val('myTopRevenue')||null,
+        contact_zalo:val('myZalo')||null, gender:val('myGender')||null,
+        highest_revenue_amount:revNum, highest_revenue_note:val('myTopRevenueNote')||null,
         album_images:album, demo_video_url:demo
       };
-      var saved;
-      try{ saved=await McLivestreamAPI.saveMyProfile(data); }
-      catch(err){
-        if(/top_revenue/i.test(err.message||'')){
-          var retry=Object.assign({},data); delete retry.top_revenue;
-          saved=await McLivestreamAPI.saveMyProfile(retry);
-          msg.textContent='Đã lưu hồ sơ, nhưng riêng Doanh thu cao nhất chưa lưu được vì hệ thống chưa sẵn sàng. Vui lòng thử lại sau hoặc liên hệ Zalo 032 998 3699. Trạng thái: '+(saved.moderation_status||'pending');
-          existing=saved; return;
-        }
-        throw err;
-      }
+      var saved = await McLivestreamAPI.saveMyProfile(data);
       existing=saved;
       if(saved.moderation_status==='approved') msg.textContent='Đã lưu hồ sơ. Hồ sơ vẫn hiện công khai theo trạng thái đã duyệt.';
       else msg.textContent='Đã lưu hồ sơ. Hồ sơ mới ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.';

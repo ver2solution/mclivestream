@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://ver2solution.github.io/mclivestream/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=dat-lai-mat-khau.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="form-card" id="dat-lai-mat-khau" aria-label="Đặt lại mật khẩu"><h1>Đặt lại mật khẩu</h1>
@@ -27,13 +27,13 @@
 <form id="resetForm" data-track="form-dat-lai-mat-khau" hidden>
 <p><label>Mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass" data-track="hien-mat-khau-moi" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
 <p><label>Nhập lại mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass2" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass2" data-track="hien-mat-khau-moi-2" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
-<p id="resetMsg"></p>
+<p id="resetMsg" class="auth-msg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-dat-lai-mat-khau">Đặt lại mật khẩu</button>
 </form>
 <p id="resetLinks" hidden>Chưa nhận được link? Nhập email bên dưới để gửi lại, hoặc <a href="dang-nhap.html">quay lại trang Đăng nhập</a>.</p>
 <form id="requestResetForm" data-track="form-gui-lai-link-dat-lai-mat-khau" hidden>
 <p><label>Email đã đăng ký *<br><input id="requestResetEmail" type="email" required></label></p>
-<p id="requestResetMsg"></p>
+<p id="requestResetMsg" class="auth-msg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-gui-lai-link-dat-lai-mat-khau">Gửi link đặt lại về email</button>
 </form>
 <p><a href="dang-nhap.html">← Quay lại đăng nhập</a></p>
@@ -80,6 +80,12 @@
   });
   /* Nut Menu do js/app.js wire (giong moi trang khac); khong wire lai o day. */
   async function init(){
+    /* v85: dien san email tu ?email= (link "Lay lai mat khau" o thong bao
+       email da dang ky tren form dang ky) de nguoi dung chi can bam Gui. */
+    try {
+      var em0 = new URLSearchParams(location.search).get('email');
+      if (em0) { var emEl = document.getElementById('requestResetEmail'); if (emEl) emEl.value = em0; }
+    } catch (e) {}
     if(!window.McLivestreamAPI){ status.textContent='Chưa kết nối Supabase, chưa đặt lại được mật khẩu.'; links.hidden=false; return; }
     var session=null;
     try{ session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession(); }
@@ -97,14 +103,15 @@
     e.preventDefault();
     var run = async function(){
       var p1=document.getElementById('resetPass').value, p2=document.getElementById('resetPass2').value;
-      if(p1!==p2){ msg.textContent='Mật khẩu nhập lại chưa khớp.'; return; }
-      if(p1.length<8){ msg.textContent='Mật khẩu cần ít nhất 8 ký tự.'; return; }
+      if(p1!==p2){ msg.textContent='Mật khẩu nhập lại chưa khớp.'; msg.className='auth-msg err'; return; }
+      if(p1.length<8){ msg.textContent='Mật khẩu cần ít nhất 8 ký tự.'; msg.className='auth-msg err'; return; }
       try{
         await McLivestreamAPI.updatePassword(p1);
         try{ await McLivestreamAPI.signOut(); }catch(_){}
         msg.textContent='Đã đổi mật khẩu thành công. Đang chuyển về trang đăng nhập…';
+        msg.className='auth-msg ok';
         setTimeout(function(){ location.href='dang-nhap.html'; }, 2000);
-      }catch(err){ msg.textContent='Chưa đổi được mật khẩu: '+ferr(err); }
+      }catch(err){ msg.textContent='Chưa đổi được mật khẩu: '+ferr(err); msg.className='auth-msg err'; }
     };
     if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();
   });
@@ -117,11 +124,12 @@
     var run = async function(){
       var em = document.getElementById('requestResetEmail').value.trim();
       var m = document.getElementById('requestResetMsg');
-      if (!em) { m.textContent='Hãy nhập email đã đăng ký.'; return; }
+      if (!em) { m.textContent='Hãy nhập email đã đăng ký.'; m.className='auth-msg err'; return; }
       try{
         await McLivestreamAPI.resetPassword(em);
         m.textContent='Đã gửi link đặt lại mật khẩu về email đã đăng ký (nếu email đã đăng ký tài khoản). Hãy kiểm tra hộp thư (cả mục Spam).';
-      }catch(err){ m.textContent='Gửi link chưa thành công: '+ferr(err); }
+        m.className='auth-msg ok';
+      }catch(err){ m.textContent='Gửi link chưa thành công: '+ferr(err); m.className='auth-msg err'; }
     };
     if (window.V2SAuthUI) V2SAuthUI.guardSubmit(reqForm, run); else run();
   });
