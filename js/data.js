@@ -1429,7 +1429,7 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tuyen-mau-livestream.png",
    "imgSelf": true,
    "kind": "keyword",
-   "pinned": true,
+   "pinned": false,
    "takeaway": "Thuê mẫu livestream không phải là mua một gương mặt, mà là thuê một người bán hàng đứng trước ống kính. Shop nhỏ chỉ cần làm đủ 3 việc: viết tin tuyển ghi rõ lương và ca làm để mẫu giỏi không bỏ qua; thử live 15–20 phút với sản phẩm thật trước khi chốt; và chốt lương, hoa hồng, lịch làm bằng tin nhắn. Làm đủ 3 việc này, shop sẽ thuê được mẫu hợp mà không mất tiền oan cho những buổi live không ra đơn — và mẫu cũng yên tâm gắn bó vì biết rõ mình được trả bao nhiêu, làm ca nào."
   },
   {
@@ -1451,8 +1451,7 @@ window.V20_DATA = {
    "page": "bai-viet/san-11st-mc-ai-live-sale-11-11.html",
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/san-11st-mc-ai-live-sale-11-11.png",
    "imgSelf": true,
-   "pinned": true,
-   "pinOrder": 1,
+   "pinned": false,
    "takeaway": "11st không dùng MC AI để thay người, mà dùng AI để live đều hơn, chia live theo ngành hàng và biến người xem thành người chơi. Shop nhỏ học được 3 điều ngay mà không cần mua công nghệ AI: live theo món chủ lực và mẫu đúng ngành hàng; cho khách bình chọn trong phiên để giữ họ ở lại; và dùng điểm thưởng hay quà nhỏ mỗi ngày để khách quay lại, thay vì giảm giá sâu một lần rồi hết chuyện. AI live là công cụ giữ nhịp, còn người bán mới là người giữ khách."
   },
   {
@@ -1542,7 +1541,7 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/viec-lam-mau-livestream.png",
    "imgSelf": true,
    "kind": "keyword",
-   "pinned": true,
+   "pinned": false,
    "takeaway": "Việc làm mẫu livestream là việc thật, lương thật — nhưng chỉ thật khi bạn ứng tuyển qua tin tuyển ghi rõ shop, lương và ca làm, có hồ sơ đầy đủ 7 mục và thử live trước khi chốt. Đừng chạy theo tin tuyển hứa lương cao gấp 2–3 lần mặt bằng chung, và đừng bao giờ đóng phí trước khi làm việc. Bắt đầu bằng ca part-time, một clip live thử thật và mức lương khởi điểm đúng mặt bằng 80.000–120.000 đồng/giờ — đó là cách nhanh nhất để có việc làm mẫu livestream bền, thay vì việc làm một lần rồi mất."
   },
   {

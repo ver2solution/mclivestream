@@ -550,11 +550,13 @@ function articleMediaHTML(a, cls){
   if(a.img) return '<img class="'+cls+'" src="'+esc(a.img)+'" alt="'+esc(a.title)+'" loading="lazy">';
   return '<span class="'+cls+' pin-noimg" aria-hidden="true"><b>2</b></span>';
 }
-/* Hang ghim: toi da 4 bai co pinned:true. Bai co pinOrder (so, nho = len truoc)
-   xep truoc theo pinOrder tang dan; bai ghim khong co pinOrder xep sau theo
-   ngay giam dan (giu thu tu cu). Chua du 4 thi lap bang bai moi nhat (khong
-   trung lap). Cron bai bao 08:21 quan ly ghim (toi da 4 bai, ghim bai quan
-   trong nhat moi ngay, go ghim bai qua 7 ngay). */
+/* Hang ghim (v84): toi da 4 o — bai ghim (pinned:true) len truoc, xep theo
+   pinOrder tang dan roi ngay giam dan. Chua du 4 o thi LAP BANG BAI MOI
+   THEM VAO WEB GAN NHAT (thu tu them vao = thu tu trong mang articles,
+   bai them sau nam CUOI mang nen dao nguoc mang) — KHONG xep theo truong
+   date (date la ngay cua bai GOC, bai moi them ve su kien cu van phai len).
+   Chi nguoi dung ghim tay (hien chi bai bop-reach); cron bai bao 08:21
+   KHONG tu ghim bai moi nua (bai moi pinned:false), de hang tu day. */
 function getPinnedRow(list){
   var pinned = (list||[]).filter(function(a){ return !!a.pinned; });
   pinned.sort(function(a, b){
@@ -563,7 +565,7 @@ function getPinnedRow(list){
     if(ao !== bo) return ao - bo;
     return (a.date||'') > (b.date||'') ? -1 : ((a.date||'') < (b.date||'') ? 1 : 0);
   });
-  var newest = sortByDateDesc(list||[]);
+  var newest = (list||[]).slice().reverse(); // v84: moi them vao web = cuoi mang -> dao nguoc (khong xep theo date bai goc)
   var picked = pinned.slice(0, 4);
   for(var i=0; i<newest.length && picked.length<4; i++){
     if(picked.indexOf(newest[i]) === -1) picked.push(newest[i]);
