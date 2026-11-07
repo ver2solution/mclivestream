@@ -16,13 +16,22 @@ a:hover{text-decoration:underline}
 /* HEADER MỚI: sticky, nền trắng mờ, logo pill + nav pill, không còn header 64px tối màu kiểu cũ */
 .site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .head-in{display:flex;align-items:center;gap:18px;min-height:72px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--ink);white-space:nowrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
 .logo:hover{text-decoration:none}
 .logo-badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--brand);color:#fff;font-size:22px}
 .logo small{display:block;font-size:11px;letter-spacing:.12em;color:var(--mut);font-weight:700}
-.main-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:nowrap}
-.main-nav a{color:var(--ink);font-weight:700;padding:9px 14px;border-radius:999px}
+.main-nav{margin-left:auto;display:flex;gap:4px;flex-wrap:nowrap;flex-shrink:0}
+.main-nav a{color:var(--ink);font-weight:700;padding:9px 10px;border-radius:999px;white-space:nowrap}
 .main-nav a:hover,.main-nav a.active{background:var(--brandsoft);color:var(--brand);text-decoration:none}
+/* v90: link Dang ky chi hien trong menu mo mobile (an tren desktop de khoi chat header). */
+.nav-register{display:none}
+/* v90: nut header (Dang Nhap / "Ten · 250 diem" sau dang nhap) khong rot chu,
+   khong bi ep nho; ten dai qua thi cat bang dau ... chu khong tran header. */
+.site-head .btn{white-space:nowrap;flex-shrink:0;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+/* v90: hamburger hien som tu <=1200px (truoc la <=1000px) — o 1000-1200px
+   6 link nav + pill diem khong du cho, chu rot 2 dong (anh nguoi dung 23:11).
+   Do rong that do duoc: logo 230 + nav 675 (padding 10px) + pill 196 + gap = 1129px
+   vua khung .wrap 1140px; khong giam padding thi thieu ~55px. */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;cursor:pointer;font-size:15px}
 .btn-primary{background:var(--brand);color:#fff}
 .btn-primary:hover{background:var(--brand2);text-decoration:none}
@@ -31,6 +40,19 @@ a:hover{text-decoration:underline}
 .btn-light{background:#fff;color:var(--ink)}
 .btn-sm{padding:9px 15px;font-size:14px;min-height:44px}/* v81: nut nho van du 44px de bam (mobile) */
 .menu-btn{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font-weight:800;min-height:44px}/* v81: nut Menu du 44px de bam (mobile) */
+@media(max-width:1200px){.main-nav{display:none}.menu-btn{display:block}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.main-nav.open a{padding:12px 14px}.main-nav.open .nav-register{display:block}}
+/* v90 (F): dropdown dang xuat duoi vien diem header — absolute duoi vien,
+   can phai, khong lam vo header (di cung fix nowrap muc A). */
+.user-menu-wrap{position:relative;display:flex;flex-shrink:0}
+.user-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:80;min-width:220px;max-width:calc(100vw - 16px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:8px}
+.user-menu[hidden]{display:none}
+.user-menu-name{display:block;padding:10px 12px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.user-menu-points{margin:0;padding:2px 12px 10px;color:var(--mut);font-size:14px;white-space:nowrap}
+.user-menu-logout{display:block;width:100%;padding:10px 12px;border:0;border-radius:10px;background:#fff1f0;color:var(--red);font:inherit;font-weight:800;cursor:pointer;text-align:left}
+.user-menu-logout:hover{background:#ffe4e1}
+/* v90 (3): cuon toi ket qua (scrollIntoView block:'start') khong bi header
+   sticky (72px) che mat hang dau — grid/section dung cach dinh 84px. */
+#listGrid,#publicShopsList,#hubResults,#lo-hang-xa-kho,#xuong-may-gia-cong{scroll-margin-top:84px}
 /* HERO MỚI: khối gradient xanh đậm, bo 28, tìm kiếm là thẻ trắng nổi lên */
 .hero{margin:22px 0 8px;background:linear-gradient(135deg,#083f34,#0b5d4e 55%,#0e8a6d);color:#fff;border-radius:28px;padding:34px 32px 40px;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.10)}
@@ -241,7 +263,7 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .site-foot .foot-legal a:hover{color:var(--ink)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
-@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card,.hub-filters{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}
+@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card,.hub-filters{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}.head-in{position:relative}.user-menu-wrap{position:static}.user-menu{left:auto;right:16px;top:calc(100% + 8px)}/* v90 (F-fix): mobile vien diem xuong dong 2 ben trai — dropdown can phai theo .head-in (thay vi theo vien) de khong tran trai man hinh; right:16px vi .head-in CHINH LA .wrap (padding nam TRONG border-box) nen right:0 se sat mep viewport; KHOI NAY VAN MO (dong o .pin-num dong 279) — dung dong them dau ngoac o day. */
 /* v28: mobile — Lương 1 dòng, Lịch 1 dòng, Kinh nghiệm tối đa 2 dòng, xếp dọc. */
 .decision-row{flex-direction:column}.decision-item{flex:1 1 auto}
 /* v39: nut Gop y xuong goc duoi phai (khong che noi dung giua man hinh). */
@@ -533,10 +555,15 @@ th{background:#f4f8f6}
    dai bi hep; xuong 2 cot o <=1000px (<=600px van 1 cot nhu cu).
    (5) Nav mo o tablet: link cao ~47px de bam bang ngon tay (>=44px). */
 @media(max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.main-nav.open a{padding:12px 14px}}
-/* (6) iOS tu zoom khi bam o nhap neu font <16px: giu o nhap 16px o <=320px
-   (body o muc nay la 15px). */
+/* (6) iOS tu zoom khi bam o nhap neu font <16px.
+   v90: o nhap FORM (dang ky/dang nhap) giu 16px o MOI co man hinh (audit
+   mobile #4: o 390px o nhap chi 14px nen iPhone tu zoom); o nhap
+   search/filter van chi can 16px o <=320px (body o muc nay la 15px). */
+.form-card input,.form-card select,.form-card textarea{font-size:16px}
+/* v90: nut submit form dang ky full-width, cao toi thieu 48px (audit #4). */
+#authSignUp button[type="submit"]{width:100%;min-height:48px}
 @media(max-width:320px){
-  .search-card input,.search-card select,.filter-card input,.filter-card select,.form-card input,.form-card select,.form-card textarea{font-size:16px}
+  .search-card input,.search-card select,.filter-card input,.filter-card select{font-size:16px}
 }
 
 /* v72: SUA GIAO DIEN MOBILE — kiem chung bang anh chup that 390px (Playwright
