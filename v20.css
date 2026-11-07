@@ -70,13 +70,17 @@ a:hover{text-decoration:underline}
 /* v87 — badge đếm online (số ẢO minh hoạ + số thật đang online, gộp 1 số).
    Pill gọn, chấm xanh lá = đang online; đặt đầu trang, dưới header. */
 .online-badge{display:inline-flex;align-items:center;gap:7px;background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;margin:0 0 10px}
+.online-badge[hidden]{display:none}/* v89 22:47 07/11: display:inline-flex o tren thang [hidden] cua UA nen badge van hien du da hidden tu v88 — buoc phai co quy tac nay. Badge CHI duoc an bang CSS, KHONG xoa khoi DOM vi js/online-counter.js suy pageKey tu [data-online]. */
 .online-dot{width:9px;height:9px;border-radius:50%;background:#1faa59;display:inline-block;flex:none}
-/* POPUP ONLINE (v87 bổ sung 20:51–20:52 ngày 07/11): popup nổi góc phải dưới,
-   biểu tượng sạp hàng (SVG inline, không emoji), hiện luôn số người đang
-   online (cùng số với badge) + dòng điểm khi đã đăng nhập. Góc phải dưới
-   không che nút nào quan trọng: nút góp ý 💬 chỉ có trên trang bài viết
-   (giữa-phải), nút đổi theme ở góc trái dưới. */
-.online-popup{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(320px,calc(100vw - 28px))}
+/* POPUP ONLINE (v87 bo sung 20:51–20:52 ngay 07/11; v89 doi len giua mep
+   phai 22:47 ngay 07/11 theo yeu cau nguoi dung): popup noi giua mep phai
+   (right:0, top:50%), bieu tuong sap hang (SVG inline, khong emoji), hien
+   luon so nguoi dang online (cung so voi badge) + dong diem khi da dang
+   nhap. Hien tren MOI trang (ke ca dang ky/dang nhap/bai viet). Nut gop y
+   do da an tren moi trang tu v89 (trung vi tri giua-phai voi popup — theo
+   quy tac nguoi dung chot 22:28 ngay 07/11: co bo dem ben phai thi bo nut
+   gop y do). */
+.online-popup{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(320px,calc(100vw - 28px))}
 .online-popup[hidden]{display:none}
 .online-popup-stall{width:52px;height:48px;flex:none}
 .online-popup-body{min-width:0}

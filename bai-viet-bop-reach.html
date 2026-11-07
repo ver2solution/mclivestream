@@ -37,6 +37,8 @@
 .tags-line{display:block;word-break:break-word}.faq details summary{cursor:pointer;font-weight:700}
 .share-btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:9px}
 </style></head><body>
+<p class="online-badge" hidden data-online="tintuc"><span class="online-dot" aria-hidden="true"></span><span class="online-num">500</span>&nbsp;người đang online</p>
+<div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">500</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> điểm • Còn lại: <b class="online-popup-left">0</b> điểm</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="active">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=bai-viet-bop-reach.html">Đăng Nhập</a></div></header>
@@ -177,7 +179,7 @@
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
-<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" hidden data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
@@ -189,5 +191,5 @@
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
 <script src="js/auth-ui.js"></script>
-<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
+<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
