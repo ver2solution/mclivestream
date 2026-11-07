@@ -25,7 +25,11 @@
    livestream", kind:"keyword", pinned) + 9 news articles (TikTok Shop cart-limit,
    3-san fee, TikTok Shop US AI live, Singles Day Syntun, China imports,
    print-on-demand, IP commission freeze, VN consumer 11.11, 100-day roadmap).
-   Total 45 articles, 44 with their own bai-viet page (bop-reach links via url).
+   v82 adds 5 news articles (07/11/2026, supplementary batch for Zalo 16:00/21:00):
+   TikTok Shop fee 9-17.8% + Shopee fee cut, Jia Nailiang 570M CNY live,
+   Shopee Live/Video Tet 16B views, Cho 4.0 livestream, Hang Viet storytelling.
+   Total 50 articles, 49 with their own bai-viet page (bop-reach links via url).
+   v80 total was 45 articles, 44 with their own bai-viet page.
    v47 adds 5 articles (06/11/2026): 1 keyword SEO article ("tuyen mau
    livestream", kind:"keyword", pinned) + 4 news articles (Shopee Q3,
    11st AI hosts, EU Temu/Shein fee, Hai Phong TikTok Shop). Total 30
@@ -1642,6 +1646,64 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/lo-trinh-100-ngay-tiktok-shop-toi-tet-2027.jpg",
    "pinned": false,
    "takeaway": "100 ngày từ 11.11 tới Tết không dài nếu chia đúng 3 chặng: dọn tài khoản trước 11.11, tăng tốc bằng livestream và campaign tới 12.12, rồi bán cảm xúc và giỏ quà tới Tết. Làm đúng nhịp này, shop và KOC sẽ đón trọn cả ba đợt cao điểm."
+  },
+  {
+   "title": "Phí hoa hồng TikTok Shop 9–17,8%: Shopee giảm phí, shop nhỏ tính lại lãi",
+   "cat": "Tin thị trường",
+   "source": "Doanh nhân & Pháp luật",
+   "date": "2026-11-07",
+   "url": "https://doanhnhan.baophapluat.vn/cuoc-dua-thuong-mai-dien-tu-nong-len-shopee-giam-phi-ho-tro-nha-ban-tiktok-shop-tang-hoa-hong.html",
+   "page": "bai-viet/shopee-giam-phi-tiktok-shop-tang-hoa-hong-bang-phi-theo-nganh.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/shopee-giam-phi-tiktok-shop-tang-hoa-hong-bang-phi-theo-nganh.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Hai sàn đi ngược nhau không có nghĩa shop nhỏ phải chọn một bên — mà phải biết ngành của mình đang chịu mức phí nào, rồi tính lại lãi từng món trước 11.11. Món nào lãi dưới 10% thì đừng giảm sâu; kênh nào phí rẻ thì dồn hàng qua đó, đồng thời kéo khách về Zalo để lần sau không phải trả phí sàn nữa."
+  },
+  {
+   "title": "Giả Nãi Lượng livestream 13 tiếng thu 570 triệu NDT: shop nhỏ học được gì?",
+   "cat": "Tin thị trường thế giới",
+   "source": "VnExpress",
+   "date": "2026-10-23",
+   "url": "https://vnexpress.net/gia-nai-luong-livestream-tu-sang-toi-toi-thu-85-trieu-usd-5136070.html",
+   "page": "bai-viet/gia-nai-luong-livestream-570-trieu-ndt-13-tieng.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/gia-nai-luong-livestream-570-trieu-ndt-13-tieng.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "570 triệu NDT là doanh thu của cả một hệ thống — người dẫn, đội ngũ, thương hiệu và niềm tin tích lũy 3 năm — chứ không phải tiền một người bỏ túi sau một đêm. Bài học thật cho shop nhỏ là tỷ lệ hoàn hàng 3%: khách quay lại và không trả hàng vì họ tin người bán, và niềm tin đó xây bằng hàng thật, giá thật và người thật đứng live từ đầu tới cuối."
+  },
+  {
+   "title": "Livestream và video ngắn hút 16 tỷ lượt xem dịp Tết: shop nhỏ học gì?",
+   "cat": "Tin thị trường",
+   "source": "Doanh nhân & Pháp luật",
+   "date": "2026-11-07",
+   "url": "https://doanhnhan.baophapluat.vn/hut-16-ty-luot-xem-dip-tet-2026-livestream-va-video-ngan-thuc-day-doanh-so-doanh-nghiep-viet-tang-truong-dot-pha.html",
+   "page": "bai-viet/shopee-live-video-tet-2026-16-ty-luot-xem.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/shopee-live-video-tet-2026-16-ty-luot-xem.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "16 tỷ lượt xem không đến từ giảm giá sâu nhất — mà từ shop nào cho khách thấy sản phẩm thật, nghe tư vấn trực tiếp và tin tưởng rồi mới mua. Trước 11.11, shop nhỏ không cần live 10 tiếng như Message Coffee — chỉ cần mỗi phiên live có người thật, sản phẩm thật và một câu chuyện thật."
+  },
+  {
+   "title": "Chợ 4.0: tiểu thương học livestream TikTok bán đặc sản — bài học 2–3 người xem",
+   "cat": "Tin mới Livestream",
+   "source": "Báo Vĩnh Long",
+   "date": "2026-11-04",
+   "url": "https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/phat-trien-cho-40-tu-cho-truyen-thong-4157935/",
+   "page": "bai-viet/cho-40-tieu-thuong-hoc-livestream-tiktok.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/cho-40-tieu-thuong-hoc-livestream-tiktok.jpg",
+   "pinned": false,
+   "takeaway": "Live đầu tiên chỉ có 2–3 người xem không phải là thất bại — đó là khởi đầu bình thường của mọi kênh bán hàng mới. Chợ 4.0 không biến tiểu thương thành hot TikToker sau một đêm; nó cho họ một sạp hàng thứ hai trên điện thoại, và sạp đó chỉ đông khách khi người bán kiên trì đứng live, kể đúng câu chuyện món hàng mình làm ra."
+  },
+  {
+   "title": "Đặc sản địa phương bán chạy trên TikTok nhờ kể chuyện: shop nhỏ bắt đầu từ đâu?",
+   "cat": "Tin mới Livestream",
+   "source": "kinhtechungkhoan.vn",
+   "date": "2026-11-07",
+   "url": "https://kinhtechungkhoan.vn/mo-hinh-hang-viet-ke-chuyen-vi-sao-dac-san-dia-phuong-ban-chay-tren-tiktok",
+   "page": "bai-viet/hang-viet-ke-chuyen-dac-san-ban-chay-tiktok.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/hang-viet-ke-chuyen-dac-san-ban-chay-tiktok.jpg",
+   "pinned": false,
+   "takeaway": "Một câu chuyện hay kéo người xem tới sản phẩm, nhưng chứng nhận, đánh giá khách hàng, chất lượng ổn định và trải nghiệm giao nhận mới quyết định họ có quay lại hay không. Hàng Việt kể chuyện là câu chuyện, sản phẩm, creator, sàn và logistics vận hành cùng nhau."
   }
  ],
  "lots": [
