@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản trị — Ver2Solution</title>
+<meta name="description" content="Trang quản trị nội bộ Ver2Solution — chỉ chủ web đăng nhập mới xem được.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://ver2solution.github.io/mclivestream/quan-tri.html">
+<meta name="theme-color" content="#0b5d4e">
+<link rel="icon" href="favicon.png"><link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="v20.css"></head><body>
+<!-- Trang quản trị: KHÔNG có link trong nav công khai — chỉ vào bằng đường
+     dẫn trực tiếp + đăng nhập bằng tài khoản chủ. Quyền được kiểm tra ở
+     phía SERVER (hàm get_online_breakdown() trong migration M8 chỉ trả dữ
+     liệu khi email đăng nhập là email chủ); trang này chỉ ẩn/hiện giao
+     diện, không tự quyết quyền. Xem đặc tả trang quản trị GĐ1
+     (hidden_files/trang-quan-tri-spec-2026-11-06.md §2.3). -->
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a></nav>
+<a class="btn btn-primary btn-sm" href="dang-nhap.html?next=quan-tri.html">Đăng Nhập</a></div></header>
+<main class="wrap">
+<section class="section"><h1>Quản trị — Người đang online</h1>
+<p>Chỉ chủ web mới xem được trang này. Số thật tách riêng chỉ hiện ở đây; khách chỉ thấy số gộp trên các trang công khai.</p></section>
+
+<section class="section" id="qtLogin" hidden>
+<div class="form-card"><h2>Chưa đăng nhập</h2>
+<p>Đăng nhập bằng tài khoản chủ để vào trang quản trị.</p>
+<p><a class="btn btn-primary" href="dang-nhap.html?next=quan-tri.html">Đăng nhập →</a></p></div>
+</section>
+
+<section class="section" id="qtDenied" hidden>
+<div class="form-card"><h2>Không có quyền quản trị</h2>
+<p>Tài khoản <b id="qtDeniedEmail"></b> không có quyền xem trang này. Chỉ tài khoản chủ web mới vào được.</p>
+<p><a class="btn btn-ghost" href="index.html">← Về trang chủ</a></p></div>
+</section>
+
+<section class="section" id="qtError" hidden>
+<div class="form-card"><h2>Chưa có dữ liệu</h2>
+<p id="qtErrorMsg">Chưa tải được số liệu — có thể migration trực tuyến chưa chạy, hoặc mất kết nối. Thử tải lại trang.</p></div>
+</section>
+
+<section class="section" id="qtMain" hidden>
+<p>Đang đăng nhập: <b id="qtEmail"></b> · <button class="btn btn-ghost btn-sm" id="qtSignOut" type="button">Đăng xuất</button></p>
+<table class="qt-table" id="qtTable" style="width:100%;border-collapse:collapse">
+<thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Trang</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Người thật đang online</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Số ảo gốc</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Số hiển thị (gộp)</th></tr></thead>
+<tbody id="qtBody"></tbody>
+</table>
+<p style="font-size:13px;color:#666">Số thật = số mã phiên ẩn danh khác nhau có heartbeat trong 5 phút gần nhất. Số hiển thị (gộp) = số ảo gốc + số thật — chưa tính phần tăng tick riêng của từng trình duyệt khách (mỗi trình duyệt tự +1 sau mỗi 3s/5s nên số khách thấy có thể cao hơn số gộp ở đây một chút). Trang chủ = tổng 5 trang con + người thật đang ở trang chủ.</p>
+<div class="form-card"><h2>Lượt xem thật</h2>
+<p id="qtViews">Đang tải…</p>
+<p style="font-size:13px;color:#666">Nguồn: bảng web_analytics_events (hàm get_analytics_summary) — số lượt xem trang (pageview) trong 24 giờ qua. Nếu hiện “chưa có dữ liệu” thì migration analytics chưa chạy.</p></div>
+<div class="form-card"><h2>Lịch sử chuyển điểm (toàn bộ tài khoản)</h2>
+<p id="qtTransfers">Đang tải…</p>
+<div id="qtTransfersWrap" hidden><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người nhận</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Điểm</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ghi chú</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Thời gian</th></tr></thead><tbody id="qtTransfersBody"></tbody></table></div>
+<p style="font-size:13px;color:#666">Nguồn: sổ cái points_ledger (type transfer_out/transfer_in). Chỉ admin xem được; khách chỉ thấy lịch sử của mình trên trang ví.</p></div>
+<p><a href="index.html">← Quay lại trang chủ</a></p>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap"><p>Ver2Solution.com — Tư duy đúng, giá trị thật.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="mclivestream-supabase.js"></script>
+<script src="js/auth-ui.js"></script><script src="js/reward.js"></script>
+<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
+<script>
+(function () {
+  'use strict';
+  var LABELS = {
+    mau: 'Mẫu livestream (danh-sach-mau.html)',
+    shop: 'Shop tuyển mẫu (danh-sach-shop.html)',
+    kiot: 'Thanh lý Kiot (thanh-ly-kiot.html)',
+    hoidap: 'Hỏi đáp (hoi-dap.html)',
+    tintuc: 'Tin tức (tin-tuc.html)',
+    home: 'Trang chủ (index.html)',
+    total: 'TỔNG (5 trang con + trang chủ)'
+  };
+  var ORDER = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc', 'home', 'total'];
+  function show(id) { var el = document.getElementById(id); if (el) el.hidden = false; }
+  function fmt(n) {
+    var v = Math.max(0, Math.floor(Number(n) || 0));
+    try { return v.toLocaleString('vi-VN'); } catch (e) { return String(v); }
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  async function getSession() {
+    if (window.V2SAuthUI && typeof window.V2SAuthUI.getSession === 'function') return window.V2SAuthUI.getSession();
+    if (window.McLivestreamAPI && typeof window.McLivestreamAPI.getSession === 'function') return window.McLivestreamAPI.getSession();
+    return null;
+  }
+  async function main() {
+    var session = null;
+    try { session = await getSession(); } catch (e) { session = null; }
+    var user = session && session.user ? session.user : null;
+    if (!user) { show('qtLogin'); return; }
+    var email = user.email || '';
+    var emEl = document.getElementById('qtEmail');
+    if (emEl) emEl.textContent = email;
+    var client = (window.McLivestreamAPI && window.McLivestreamAPI.client) || null;
+    if (!client || typeof client.rpc !== 'function') {
+      var m = document.getElementById('qtErrorMsg');
+      if (m) m.textContent = 'Chưa kết nối được Supabase, hãy tải lại trang.';
+      show('qtError'); return;
+    }
+    // Quyền do SERVER kiểm tra trong get_online_breakdown(): không phải
+    // email chủ thì hàm ném lỗi → hiện khung từ chối, không thấy số liệu.
+    var res = await client.rpc('get_online_breakdown');
+    if (res.error) {
+      var d = document.getElementById('qtDeniedEmail');
+      if (d) d.textContent = email;
+      show('qtDenied'); return;
+    }
+    var rows = Array.isArray(res.data) ? res.data : [];
+    if (!rows.length) { show('qtError'); return; }
+    var byPage = {};
+    rows.forEach(function (r) { byPage[r.page] = r; });
+    var body = document.getElementById('qtBody');
+    var html = '';
+    ORDER.forEach(function (k) {
+      var r = byPage[k];
+      if (!r) return;
+      var strong = (k === 'total') ? ' style="font-weight:800;border-top:2px solid #ddd"' : '';
+      html += '<tr' + strong + '><td style="padding:8px;border-bottom:1px solid #eee">' + esc(LABELS[k] || k) + '</td>'
+        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.real_count) + '</td>'
+        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.base_count) + '</td>'
+        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.display_count) + '</td></tr>';
+    });
+    body.innerHTML = html;
+    show('qtMain');
+    // Lượt xem thật 24 giờ qua (không bắt buộc — lỗi thì hiện "chưa có dữ liệu").
+    try {
+      var sum = await client.rpc('get_analytics_summary', { p_days: 1 });
+      var viewsEl = document.getElementById('qtViews');
+      if (sum.error || !Array.isArray(sum.data)) { if (viewsEl) viewsEl.textContent = 'Chưa có dữ liệu.'; }
+      else {
+        var total = 0;
+        sum.data.forEach(function (r) { if (r && r.event_type === 'pageview') total += Number(r.event_count) || 0; });
+        if (viewsEl) viewsEl.textContent = 'Lượt xem thật 24 giờ qua: ' + fmt(total) + ' lượt xem trang (pageview).';
+      }
+    } catch (e) {
+      var v2 = document.getElementById('qtViews');
+      if (v2) v2.textContent = 'Chưa có dữ liệu.';
+    }
+    // Lịch sử chuyển điểm toàn bộ tài khoản (không bắt buộc — lỗi thì hiện
+    // "chưa có dữ liệu", vd M7 chưa chạy).
+    try {
+      var tr = await client.rpc('get_all_transfer_history_admin', { p_limit: 100 });
+      var trEl = document.getElementById('qtTransfers');
+      if (tr.error || !Array.isArray(tr.data) || !tr.data.length) { if (trEl) trEl.textContent = 'Chưa có dữ liệu chuyển điểm.'; return; }
+      var rows = '';
+      tr.data.forEach(function (r) {
+        var when = '';
+        try { when = new Date(r.created_at).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }); } catch (e2) { when = String(r.created_at || ''); }
+        rows += '<tr><td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.sender_email) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.recipient_email) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.amount) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.note) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + esc(when) + '</td></tr>';
+      });
+      document.getElementById('qtTransfersBody').innerHTML = rows;
+      if (trEl) trEl.hidden = true;
+      var wrap = document.getElementById('qtTransfersWrap');
+      if (wrap) wrap.hidden = false;
+    } catch (e3) {
+      var trEl2 = document.getElementById('qtTransfers');
+      if (trEl2) trEl2.textContent = 'Chưa có dữ liệu chuyển điểm.';
+    }
+  }
+  var so = document.getElementById('qtSignOut');
+  if (so) so.addEventListener('click', async function () {
+    try { if (window.McLivestreamAPI) await window.McLivestreamAPI.signOut(); } catch (e) { /* bỏ qua */ }
+    location.href = 'index.html';
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', main);
+  else main();
+})();
+</script>
+</body></html>

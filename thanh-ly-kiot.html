@@ -22,13 +22,25 @@
 <link rel="icon" href="favicon.png"><link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="active">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="index.html#faq" class="">Hỏi đáp</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="active">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=thanh-ly-kiot.html">Đăng Nhập</a></div></header>
 <main class="wrap">
+<p class="online-badge" data-online="kiot"><span class="online-dot" aria-hidden="true"></span><span class="online-num">100</span>&nbsp;người đang online</p>
+<div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">100</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> điểm • Còn lại: <b class="online-popup-left">0</b> điểm</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <section class="section"><h1>Chợ thanh lý cửa hàng, Kiot</h1>
 <p>Bạn đóng cửa hàng, chuyển mặt bằng hay đổi ngành? Đăng kiot lên chợ thanh lý của Ver2Solution để người mua tìm thấy: sang mặt bằng, thanh lý đồ đạc, thiết bị và hàng tồn kho — tất cả trong một tin đăng. Người mới mở shop cũng tìm được kiot có sẵn đồ, khỏi sắm từ đầu. Giai đoạn thử nghiệm, niêm yết và liên hệ hoàn toàn miễn phí.</p></section>
 
 <section class="section"><h2>Kiot đang thanh lý</h2>
+<div class="kiot-filters" id="kiotFilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+<label style="font-size:14px">Tỉnh/Thành phố
+<select id="kiotProv" style="margin-left:6px;padding:6px 8px"><option value="">Tất cả tỉnh/thành</option></select></label>
+<label style="font-size:14px">Loại mặt hàng
+<select id="kiotCat" style="margin-left:6px;padding:6px 8px"><option value="">Tất cả loại mặt hàng</option>
+<option value="sang-mat-bang">Sang mặt bằng</option>
+<option value="do-dac-thiet-bi">Đồ đạc, thiết bị</option>
+<option value="hang-ton-kho">Hàng tồn kho</option>
+<option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></label>
+</div>
 <div id="kiotList"></div>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p></section>
 
@@ -58,21 +70,41 @@
 <label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
 <p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
-<script src="js/auth-ui.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script>
-<script src="js/analytics.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="mclivestream-supabase.js"></script><script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script>
+<script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
 <script>
 (function(){
   // v86: render kiot tu window.V20_DATA.kiots, tai dung lotCardHTML da kiem
-  // chung cua lo xa kho (khong sua js/app.js). Chua co du lieu thu thap thi
-  // hien trang thai trong + nut dang ky.
+  // chung cua lo xa kho (khong sua js/app.js). Bo loc Tinh/Thanh pho (truong
+  // prov) + Loai mat hang (truong cat, 1 trong 4 loai). Chua co du lieu thu
+  // thap thi hien trang thai trong + nut dang ky.
   var list = document.getElementById('kiotList');
   if (!list) return;
   var kiots = (window.V20_DATA && window.V20_DATA.kiots) || [];
-  if (!kiots.length) {
-    list.innerHTML = '<p>Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.</p>';
-    return;
+  var provSel = document.getElementById('kiotProv');
+  var catSel = document.getElementById('kiotCat');
+  var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
+  function render(){
+    var pv = provSel ? provSel.value : '';
+    var cv = catSel ? catSel.value : '';
+    var show = kiots.filter(function(k){
+      return (!pv || k.prov === pv) && (!cv || k.cat === cv);
+    });
+    if (!kiots.length) { list.innerHTML = '<p>' + emptyMsg + '</p>'; return; }
+    if (!show.length) { list.innerHTML = '<p>Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; return; }
+    list.innerHTML = show.map(function(k){ return window.V20.lotCardHTML(k); }).join('');
   }
-  list.innerHTML = kiots.map(function(k){ return window.V20.lotCardHTML(k); }).join('');
+  // Nap option tinh/thanh tu du lieu (chi tinh nao co kiot), sap xep A-Z.
+  if (provSel) {
+    var provs = [];
+    kiots.forEach(function(k){ if (k.prov && provs.indexOf(k.prov) < 0) provs.push(k.prov); });
+    provs.sort().forEach(function(p){
+      var o = document.createElement('option'); o.value = p; o.textContent = p; provSel.appendChild(o);
+    });
+    provSel.addEventListener('change', render);
+  }
+  if (catSel) catSel.addEventListener('change', render);
+  render();
 })();
 </script>
 </body></html>

@@ -22,7 +22,7 @@
 <link rel="icon" href="favicon.png"><link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
-<nav class="main-nav" id="mainNav"><a href="index.html">Trang chủ</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="danh-sach-shop.html">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html">Tin tức</a><a href="index.html#faq">Hỏi đáp</a></nav>
+<nav class="main-nav" id="mainNav"><a href="index.html">Trang chủ</a><a href="danh-sach-mau.html">Dành cho Mẫu</a><a href="danh-sach-shop.html">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html">Tin tức</a><a href="hoi-dap.html">Hỏi đáp</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=vi-tien-ao.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Ví tiền ảo và email marketing</h1>
@@ -76,12 +76,25 @@
 
 <section class="form-card"><h2>5. Chống gian lận và game hóa thật</h2>
 <p>Không có nhân vật ảo tạo lượt xem, bình luận hay tương tác giả. Lượt xem và bình luận chỉ tính từ người dùng thật. Điểm thưởng (nếu có) chỉ tính từ hoạt động thật đã kiểm chứng được, ví dụ hồ sơ được duyệt, tin tuyển mẫu được duyệt, và chỉ do admin hoặc hệ thống tự động ghi nhận, không do người dùng tự cộng. Một đối tượng, một dịch vụ, chỉ tối đa 1 đơn đang chạy tại 1 thời điểm. Bạn không thể tự cộng hoặc trừ số dư, cũng không thể tự kích hoạt up top.</p></section>
+<section class="form-card"><h2>6. Chuyển điểm</h2>
+<p id="transferBalance">Cần đăng nhập để xem số dư điểm.</p>
+<p id="transferStreak">Cần đăng nhập để xem chuỗi online và chuyển điểm.</p>
+<p>Chuyển điểm cho tài khoản khác bằng email người nhận — tối thiểu <strong>10 điểm/lần</strong>, không phí, chuyển ngay không cần người nhận xác nhận. Cần đủ <strong>30 ngày online liên tiếp</strong> mới được chuyển (mỗi ngày mở web khi đã đăng nhập thì tính 1 ngày; chuỗi chỉ tính từ khi hệ thống điểm v87 chạy, không hồi tố).</p>
+<form id="transferForm">
+<p><label>Email người nhận *<br><input id="transferEmail" type="email" required placeholder="VD: ban@example.com"></label></p>
+<p><label>Số điểm chuyển (tối thiểu 10) *<br><input id="transferAmount" type="number" min="10" step="1" required placeholder="10"></label></p>
+<p><label>Ghi chú (tùy chọn)<br><input id="transferNote" maxlength="200" placeholder="VD: Cảm ơn bạn đã hỗ trợ livestream"></label></p>
+<button class="btn btn-primary" id="transferSubmit" type="submit">Chuyển điểm</button><p id="transferMsg" role="status"></p></form>
+<h3>Lịch sử chuyển điểm</h3>
+<div id="transferHistory"><p>Chưa tải được lịch sử chuyển điểm.</p></div></section>
+
+
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>Ver2Solution.com</b> — Kênh cập nhật tin tức thị trường và xu hướng kinh doanh online · 032 998 3699 (Zalo) Tư vấn tăng doanh thu Livestream - Dùng thử dịch vụ miễn phí</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
-<script src="js/auth-ui.js"></script>
+<script src="js/auth-ui.js"></script><script src="js/reward.js"></script>
 <script src="js/wallet.js"></script>
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
 <script>
