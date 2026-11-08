@@ -1,0 +1,37 @@
+name: Deploy v111
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v111.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v111:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v111 deploy package
+        run: |
+          unzip -o mclivestream-v111-deploy.zip
+          ls -l sw.js js/share.js
+          sha256sum sw.js
+          grep -q "v111-shell-1" sw.js && echo "sw.js CACHE OK: v111-shell-1"
+          grep -q "share" js/share.js && echo "share.js OK"
+          grep -q "faq-ask" hoi-dap.html || echo "hoi-dap.html not in zip (already live v110) - OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v111: sua 24 loi QA v108 (header 0 xu, NEW-06, tab Lo/Xuong, CTA shop, N1, NEW-T1/T2/T4, nut Chia se, NEW-P2/P6, NEW-P3, phan trang Kiot, SW chi cache response.ok, nhan 37/76)"
+            git push
+          fi
