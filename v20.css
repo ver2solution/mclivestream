@@ -74,7 +74,7 @@ a:hover{text-decoration:underline}
 .section-head p{margin:4px 0 0;color:var(--mut)}
 .section-foot{display:flex;justify-content:flex-end;margin:12px 0 0}/* v75: nut "Xem tất cả tin →" chuyen xuong duoi hang tin, can phai */
 /* THẺ MỚI: ảnh 4/5 chiếm ưu thế, tên lớn, tag pill, 2 nút ngay trên thẻ */
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 4px 16px rgba(11,93,78,.06);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--sh)}
@@ -209,7 +209,7 @@ a:hover{text-decoration:underline}
 .contact-card p{color:#d7ece6}
 .contact-card .btn{display:flex;width:100%;margin:8px 0}
 .side-card{padding:20px;margin-top:18px}
-.mini-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.mini-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .mini{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
 .mini-photo{aspect-ratio:4/3;position:relative;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
 .mini-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -354,7 +354,7 @@ img{max-width:100%}
 
 /* SHOP TUYỂN MẪU (v22): thẻ tin tuyển công khai. v101: shop không logo
    hiện tên sản phẩm bán trong ô ảnh thay cho chữ cái đầu. */
-.shop-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.shop-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .shop-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 16px rgba(11,93,78,.06)}
 .shop-head{display:flex;gap:12px;align-items:center;background:linear-gradient(160deg,#d9eae4,#eef3f1);border-radius:16px;padding:14px;min-height:100px}
 .shop-initial{flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:900}
@@ -498,7 +498,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-section h3{margin:20px 0 8px;font-size:18px}
 .lot-intro{color:var(--mut);margin:0 0 4px}
 .lot-sub{color:var(--mut);font-size:14px;margin:0 0 12px}
-.lot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.lot-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .lot-card{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff;min-width:0;overflow-wrap:break-word}/* v85: the xuong tran vien phai tren mobile — grid item mac dinh min-width:auto nen chuoi dai (URL Facebook trong .lot-meta) day track rong hon viewport; min-width:0 + be dong */
 .lot-card .lot-meta,.lot-card .lot-price{overflow-wrap:break-word}
 .lot-card a{overflow-wrap:anywhere}
@@ -516,7 +516,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
    desktop 3 cot -> 6 the, tablet 2 cot -> 4 the, mobile 1 cot -> 2 the. */
 .lot-section.collapsed .lot-extra{display:none}
 #faq.collapsed .faq-extra{display:none}/* v75: FAQ trang chu chi hien 3 cau dau, cac cau sau an sau nut Xem them */
-.lot-section.collapsed .lot-grid .lot-card:nth-child(n+11){display:none}
+.lot-section.collapsed .lot-grid .lot-card:nth-child(n+13){display:none}
 /* v64: loc lo/xuong — the khong khop bo loc luon an, ke ca khi mo rong */
 .lot-card.lot-filtered-out{display:none}
 .filter-count{margin:6px 0 0;color:var(--mut);font-size:13px}
@@ -790,9 +790,9 @@ th{background:#f4f8f6}
 .card-compact-photo{position:relative;display:block;aspect-ratio:46/51;overflow:hidden;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
 .card-compact-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .card-compact-photo .ph-holder{font-size:64px}
-.card-compact-name{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:800;font-size:15px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-compact-name{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:800;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-compact-lines{padding:12px 14px 14px;display:grid;gap:4px}
-.card-compact-line{margin:0;font-size:13px;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-compact-line{margin:0;font-size:12px;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-compact-line:first-child{font-weight:700}
 .card-line-link{font-weight:700;color:var(--brand)}
 /* Nut sao: goc phai tren cua anh (the danh sach); o trang chi tiet
@@ -819,7 +819,7 @@ th{background:#f4f8f6}
    dam doc duoc tren nen gradient/trang; padding-bottom chua cho ten
    overlay o cuoi anh. The CO anh/logo that khong doi gi. */
 .card-compact-noimg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:14px 14px 64px}
-.card-compact-noimg span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:17px;font-weight:800;line-height:1.35;color:var(--ink)}
+.card-compact-noimg span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:16px;font-weight:800;line-height:1.35;color:var(--ink)}
 /* The shop/lot dang rut gon: bo padding goc de anh tran vien; nut binh
    luan (v92 C2) nam duoi 2 dong. */
 .shop-card.card-compact,.lot-card.card-compact{padding:0;gap:0;overflow:hidden}
