@@ -1,0 +1,39 @@
+name: Deploy v100
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v100.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v100:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v100 deploy package
+        run: |
+          unzip -o mclivestream-v100-deploy.zip
+          ls -l js/app.js js/data.js v20.css sw.js danh-sach-mau.html sitemap.xml
+          sha256sum js/app.js js/data.js v20.css sw.js danh-sach-mau.html sitemap.xml
+          grep -q "v100-shell-1" sw.js && echo "sw.js CACHE OK: v100-shell-1"
+          grep -q "news-card" v20.css && echo "css news-card OK"
+          grep -q "newsCardHTML" js/app.js && echo "app.js newsCardHTML OK"
+          grep -q "modelNewsRow" danh-sach-mau.html && echo "danh-sach-mau modelNewsRow OK"
+          grep -q "quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong" js/data.js && echo "data.js 4 bai moi OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.html bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.html bai-viet/cac-dia-diem-phai-di-trong-doi.html bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.html danh-sach-mau.html images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.jpg images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong-og.jpg images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.jpg images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do-og.jpg images/bai-viet/cac-dia-diem-phai-di-trong-doi.jpg images/bai-viet/cac-dia-diem-phai-di-trong-doi-og.jpg images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.jpg images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam-og.jpg js/app.js js/data.js sitemap.xml sw.js v20.css
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v100: 9 chuyen muc tin tuc + 4 bai moi dong tien/doi song + the tin rut gon, cache v100-shell-1"
+            git push
+          fi
