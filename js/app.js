@@ -22,6 +22,10 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return
 function clean(s){return String(s||'').replace(/\s*·\s*$/,'').trim() || 'Chưa cập nhật';}
 function photoHTML(m, cls){
   if(m.photoUrl) return '<img src="'+esc(m.photoUrl)+'" alt="'+(m.photoSrc==='profile' ? 'Ảnh đại diện công khai của ' : 'Ảnh thật từ bài gốc của ')+esc(m.name)+'" loading="lazy" decoding="async">';
+  // v101: the rut gon 5 cot — mau khong anh hien tinh tim viec trong o anh
+  // thay cho icon 👤 (chi khi goi voi cls='compact', tuc the danh sach;
+  // the mini o trang chi tiet + anh lon o trang chi tiet giu 👤).
+  if(cls === 'compact' && hasReal(m.province)) return '<span class="card-compact-noimg" aria-hidden="true"><span>📍 '+esc(m.province)+'</span></span>';
   return '<span class="ph-holder" aria-hidden="true">👤</span>';
 }
 function photoNote(m){return m.photoUrl ? (m.photoSrc==='profile' ? 'Ảnh đại diện công khai' : 'Ảnh thật từ bài gốc') : (m.photoHas ? 'Có ảnh trong bài gốc' : 'Ảnh minh họa tạm — chưa phải ảnh thật');}
@@ -365,7 +369,7 @@ function cardHTML(m, opts){
   // tinh (v28) — chu placeholder khong bao gio vao DOM.
   opts = opts || {};
   return '<article class="card card-compact" data-v2s-id="'+esc(m.id)+'" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(hasReal(m.gender)?m.gender:'')+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
-  + '<a class="card-compact-photo" href="ho-so.html?id='+esc(m.id)+'">'+photoHTML(m)+'<span class="card-compact-name">'+esc(m.name)+'</span></a>'
+  + '<a class="card-compact-photo" href="ho-so.html?id='+esc(m.id)+'">'+photoHTML(m, 'compact')+'<span class="card-compact-name">'+esc(m.name)+'</span></a>'
   + starButtonHTML('model_profile', m.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">'+modelLocationLine(m)+'</p><p class="card-compact-line">'+modelFieldLine(m)+'</p></div>'
   + '</article>';
@@ -431,8 +435,15 @@ function contactNoteHTML(){ return '<p class="contact-note">'+CONTACT_NOTE+'</p>
    number/email shows no Zalo/phone/email line at all. No private phone/Zalo/
    address, no fabricated fanpage link, no Thế Giới Giấy content for Mylan. */
 function shopInitial(s){ return (String(s.name||'?').trim().charAt(0)||'?').toUpperCase(); }
-function shopLogoHTML(s){
-  if(!s.logo) return '<span class="shop-initial" aria-hidden="true">'+esc(shopInitial(s))+'</span>';
+function shopLogoHTML(s, compact){
+  // v101: the rut gon 5 cot — shop khong logo hien ten san pham ban trong
+  // o anh thay cho chu cai dau (chi khi goi voi compact=true, tuc the danh
+  // sach; trang chi tiet shop + fallback anh loi giu chu cai dau). Truong
+  // product trong hoac 'Chưa cập nhật' thi giu chu cai dau.
+  if(!s.logo){
+    if(compact && hasReal(s.product)) return '<span class="card-compact-noimg" aria-hidden="true"><span>🛍️ '+esc(s.product)+'</span></span>';
+    return '<span class="shop-initial" aria-hidden="true">'+esc(shopInitial(s))+'</span>';
+  }
   var fit = s.logoFit==='contain' ? 'shop-logo--contain' : 'shop-logo--cover';
   var init = esc(shopInitial(s));
   return '<img class="shop-logo '+fit+'" src="'+esc(s.logo)+'" alt="Logo '+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<span class=shop-initial>'+init+'</span>\'">';
@@ -471,7 +482,7 @@ function shopCardHTML(s){
   // "Thoa thuan") + nut sao. Chi tiet day du chi con o trang chi tiet.
   var url='chi-tiet-shop.html?id='+s.id;
   return '<article class="shop-card card-compact" data-v2s-id="'+esc(s.id)+'">'
-  + '<a class="card-compact-photo card-compact-photo--shop" href="'+url+'">'+shopLogoHTML(s)+'<span class="card-compact-name">'+esc(s.name)+'</span></a>'
+  + '<a class="card-compact-photo card-compact-photo--shop" href="'+url+'">'+shopLogoHTML(s, true)+'<span class="card-compact-name">'+esc(s.name)+'</span></a>'
   + starButtonHTML('shop_profile', s.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">'+shopLocationLine(s)+'</p><p class="card-compact-line">'+shopSalaryLine(s)+'</p></div>'
   + '</article>';
@@ -1069,13 +1080,23 @@ function lotCardHTML(l, withComments){
   // 2 dong (dia diem; tong gia tri -> loai mat hang -> so luong) + nut
   // sao. Nut binh luan (v92 C2) giu nguyen duoi 2 dong. data-price/
   // data-qty/data-cat giu nguyen de bo loc lo (lotMatches) chay y cu.
+  // v101: o anh khong con chi la icon — lo nhom 2 hien "Thu mua: <loai>",
+  // lo nhom 1 + nhom 3 hien "Xa kho: <loai>", kiot hien loai hinh (nhan
+  // tieng Viet tu cat); lo/kiot khong co cat thi giu icon cu.
   var targetType = (l && l.id && String(l.id).indexOf('kiot-') === 0) ? 'kiot' : 'lot';
-  var ph = targetType === 'kiot' ? '🏪' : '📦';
+  var photoContent;
+  if(targetType === 'kiot'){
+    photoContent = hasReal(l.cat) ? '<span class="card-compact-noimg" aria-hidden="true"><span>🏪 '+esc(catLabel(l.cat))+'</span></span>' : '<span class="card-compact-ph" aria-hidden="true">🏪</span>';
+  } else if(l && l.group === 2){
+    photoContent = hasReal(l.cat) ? '<span class="card-compact-noimg" aria-hidden="true"><span>📦 Thu mua: '+esc(catLabel(l.cat))+'</span></span>' : '<span class="card-compact-ph" aria-hidden="true">📦</span>';
+  } else {
+    photoContent = hasReal(l.cat) ? '<span class="card-compact-noimg" aria-hidden="true"><span>📦 Xả kho: '+esc(catLabel(l.cat))+'</span></span>' : '<span class="card-compact-ph" aria-hidden="true">📦</span>';
+  }
   // Kiot co truong prov rieng (dung luon); lo phai quet tinh trong tieu de/meta.
   var line1 = targetType === 'kiot' ? kiotLocationLine(l) : lotLocationLine(l);
   var line2 = targetType === 'kiot' ? kiotTypeLine(l) : lotValueLine(l);
   return '<article class="lot-card card-compact" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-v2s-id="'+esc(l.id)+'">'
-  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener"><span class="card-compact-ph" aria-hidden="true">' + ph + '</span><span class="card-compact-name">' + esc(l.title) + '</span></a>'
+  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + photoContent + '<span class="card-compact-name">' + esc(l.title) + '</span></a>'
   + starButtonHTML(targetType, l.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">' + line1 + '</p><p class="card-compact-line">' + line2 + '</p></div>'
   + (withComments ? commentToggleHTML(targetType, l.id) : '') + '</article>';
