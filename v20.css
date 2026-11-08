@@ -147,6 +147,15 @@ a:hover{text-decoration:underline}
 /* LỌC + PHÂN TRANG */
 .filter-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:9px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .filter-card.cols-3{grid-template-columns:repeat(3,1fr)}
+/* v98: bo loc chung trang Shop thu gon 2 hang x 6 o (theo yeu cau 19:22 ngay 08/11):
+   hang 1 = 6 o loc mau, hang 2 = 4 o loc lo/xuong + 2 nut (Ap dung / Dat lai) nam
+   dung 2 o cuoi. Nut can duoi cung cua o de thang hang voi cac select. */
+.filter-card.cols-6{grid-template-columns:repeat(6,1fr)}
+.filter-card .uni-actions{display:flex;align-items:flex-end}
+.filter-card .uni-actions .btn{width:100%}
+.filter-card .filter-count,.filter-card .filter-empty{grid-column:1/-1}
+@media(max-width:1000px){.filter-card.cols-6{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.filter-card.cols-6{grid-template-columns:1fr}}
 .filter-card label{font-size:12px;font-weight:800;color:var(--mut)}
 .filter-card input,.filter-card select{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
 .filter-card .full{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
