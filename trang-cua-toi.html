@@ -117,6 +117,11 @@
     if(!val('myWorkLocation') && prefs.workLocation) set('myWorkLocation', prefs.workLocation);
     if(!val('myDesiredField') && prefs.desiredField) set('myDesiredField', prefs.desiredField);
     if(!val('myPriorityField') && prefs.priorityField) set('myPriorityField', prefs.priorityField);
+    /* v111 (N1, tiep): dien san ca SDT + email lien he tu luc dang ky
+       (auth-ui.js da luu prefs.phoneZalo/prefs.contactEmail vao
+       'v2s_signup_prefs'); chi dien khi o dang trong, khong ghi de. */
+    if(!val('myPhoneZalo') && prefs.phoneZalo) set('myPhoneZalo', prefs.phoneZalo);
+    if(!val('myEmail') && prefs.contactEmail) set('myEmail', prefs.contactEmail);
   }
   var initialized=false;
   async function init(){

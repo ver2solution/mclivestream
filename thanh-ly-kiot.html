@@ -45,6 +45,7 @@
 <option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></label>
 </div>
 <div id="kiotList" class="lot-grid"></div>
+<p><button class="btn btn-primary" id="kiotMoreBtn" type="button" hidden>Xem thêm ↓</button></p>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p></section>
 
 <section class="form-card"><h2>Thanh lý kiot gồm những gì?</h2>
@@ -89,7 +90,12 @@
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
   // v91 (7): tối đa 10 hàng — chỉ hiện 10 tin mới nhất (sắp theo ngày đăng
   // giảm dần); lọc thì cũng tối đa 10 tin khớp mới nhất. Ngày dạng DD/MM/YYYY.
+  // v111 (muc 4): phan trang bang nut "Xem them" (12 tin/lan, giong nut
+  // Xem them lo/xuong) — truoc day chi hien 12 tin dau, 8 tin con lai
+  // khong xem duoc vi khong co phan trang/xem them.
   var KIOT_MAX_ROWS = 12;
+  var kiotShown = KIOT_MAX_ROWS;
+  var moreBtn = document.getElementById('kiotMoreBtn');
   function kiotTime(k){
     var p = String(k.date || '').split('/');
     if (p.length !== 3) return 0;
@@ -101,16 +107,23 @@
     var show = kiots.filter(function(k){
       return (!pv || k.prov === pv) && (!cv || k.cat === cv);
     }).sort(function(a, b){ return kiotTime(b) - kiotTime(a); });
-    if (!kiots.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> ' + emptyMsg + '</p>'; return; }
-    if (!show.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; return; }
+    if (!kiots.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> ' + emptyMsg + '</p>'; if (moreBtn) moreBtn.hidden = true; return; }
+    if (!show.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; if (moreBtn) moreBtn.hidden = true; return; }
     var total = show.length;
-    var rows = show.slice(0, KIOT_MAX_ROWS);
+    var rows = show.slice(0, kiotShown);
     list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join('') // v92 (C2): nut Binh luan duoi moi the kiot
-      + (total > KIOT_MAX_ROWS ? '<p class="filter-count">Đang hiện 12 tin mới nhất trong ' + total + ' tin khớp.</p>' : '');
+      + (total > rows.length ? '<p class="filter-count">Đang hiện ' + rows.length + ' trong ' + total + ' tin khớp.</p>' : '');
+    if (moreBtn) moreBtn.hidden = !(total > rows.length);
   }
+  if (moreBtn) moreBtn.addEventListener('click', function(){
+    kiotShown += KIOT_MAX_ROWS;
+    render();
+    if (list && typeof list.scrollIntoView === 'function') list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   // v91 (9): đổi bộ lọc thì hướng ngay tới dòng kết quả / bảng "Chưa có
   // dữ liệu" (cuộn tới #kiotList, có scroll-margin để header không che).
   function onFilterChange(){
+    kiotShown = KIOT_MAX_ROWS; // v111: loc moi thi ve trang 1
     render();
     if (list && typeof list.scrollIntoView === 'function') list.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

@@ -7,7 +7,7 @@
    that changes data.js/app.js/v20.css. v55: danh-sach-shop.html + v20.css
    doi (them muc "Lo hang xa kho" o khu vuc top trang shop: 13 muc tu
    bao cao nghien cuu 06/11/2026, khong doi data.js/app.js). */
-const CACHE = 'v110-shell-2';
+const CACHE = 'v111-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
@@ -38,12 +38,19 @@ self.addEventListener('fetch', (e) => {
   }
   if (url.pathname.endsWith('js/data.js')) {
     // Content data: always fresh from network; cache only as offline fallback.
+    // v111: CHI dua vao cache khi response.ok — khong cache ban loi 404/500
+    // (v110: js/faq-ask.js 404 bi ket trong cache v110-shell-1, tai lai cung
+    // khong het). Giu nguyen network-first cho data.js.
     e.respondWith(fetch(e.request).then((res) => {
-      const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); return res;
+      if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); }
+      return res;
     }).catch(() => caches.match(e.request)));
     return;
   }
+  // v111: cache-first cho tai nguyen NHUNG chi cache khi response.ok.
+  // Loi 404/500 khong duoc dua vao cache (xem ghi chu o tren).
   e.respondWith(caches.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
-    const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); return res;
+    if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); }
+    return res;
   }).catch(() => hit)));
 });

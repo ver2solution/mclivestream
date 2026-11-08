@@ -28,6 +28,15 @@ a:hover{text-decoration:underline}
 /* v90: nut header (Dang Nhap / "Ten · 250 diem" sau dang nhap) khong rot chu,
    khong bi ep nho; ten dai qua thi cat bang dau ... chu khong tran header. */
 .site-head .btn{white-space:nowrap;flex-shrink:0;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+/* v111 NEW-T4: vien ten dai bi cat CA 2 DAU — .btn la inline-flex + justify-content:center
+   nen text dai hon hop se can giua va tran deu 2 ben, ellipsis khong co tac dung
+   (ellipsis chi chay tren block container). Vien trong .user-menu-wrap ve inline-block
+   de cat dung 1 dau phai co dau ...; min-width:0 de flex item co lai duoi min-content
+   (QA v108: .user-menu-wrap min-width:auto day vo cap 240px). Dropdown khong doi:
+   nut van la con truc tiep cua .user-menu-wrap (position:relative), JS toggleMenu
+   tren nut giu nguyen. */
+.site-head .user-menu-wrap{min-width:0}
+.site-head .user-menu-wrap>.btn{display:inline-block;min-width:0;text-align:left}
 /* v90: hamburger hien som tu <=1200px (truoc la <=1000px) — o 1000-1200px
    6 link nav + pill diem khong du cho, chu rot 2 dong (anh nguoi dung 23:11).
    Do rong that do duoc: logo 230 + nav 675 (padding 10px) + pill 196 + gap = 1129px
@@ -104,12 +113,12 @@ a:hover{text-decoration:underline}
    do da an tren moi trang tu v89 (trung vi tri giua-phai voi popup — theo
    quy tac nguoi dung chot 22:28 ngay 07/11: co bo dem ben phai thi bo nut
    gop y do). */
-.online-popup{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(320px,calc(100vw - 28px))}
+.online-popup{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(340px,calc(100vw - 28px))}/* v111 NEW-T2: rong 320->340px de dong diem nowrap vua (than popup ~216px o desktop, ~246px o 390px) */
 .online-popup[hidden]{display:none}
 .online-popup-stall{width:52px;height:48px;flex:none}
 .online-popup-body{min-width:0}
 .online-popup-line{margin:0;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
-.online-popup-points{margin:2px 0 0;font-size:12px;color:var(--mut)}
+.online-popup-points{margin:2px 0 0;font-size:12px;color:var(--mut);white-space:nowrap}/* v111 NEW-T2: dong "Da tieu: 0 xu • Con lai: 230 xu" khong ngat giua chung nua */
 .online-popup-close{flex:none;border:0;background:transparent;color:var(--mut);font-size:20px;line-height:1;cursor:pointer;padding:4px}
 .online-popup-close:hover{color:var(--ink)}
 @media(max-width:480px){.online-popup{padding:8px 10px;gap:8px}.online-popup-stall{width:42px;height:40px}.online-popup-line{font-size:12px}}
@@ -150,7 +159,13 @@ a:hover{text-decoration:underline}
 /* v98: bo loc chung trang Shop thu gon 2 hang x 6 o (theo yeu cau 19:22 ngay 08/11):
    hang 1 = 6 o loc mau, hang 2 = 4 o loc lo/xuong + 2 nut (Ap dung / Dat lai) nam
    dung 2 o cuoi. Nut can duoi cung cua o de thang hang voi cac select. */
-.filter-card.cols-6{grid-template-columns:repeat(6,1fr)}
+.filter-card.cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}/* v111 NEW-P5: minmax(0,1fr) thay 1fr (=minmax(auto,1fr)) — cot dai nhat khong day cac cot khac hep lai, 6 cot chia deu 182px */
+/* v111 NEW-P5: o loc 6 cot desktop — chu 13px + padding gon de nhan select hien du:
+   "Mac dinh (moi nhat)" ~131px va "Chon loai luong truoc" ~139px vua o text ~149px
+   (truoc: 16px + padding 12px, chi ~138px nen cat "Mac dinh (moi nh"). Chi ap
+   dung >1000px (o 601-1000px luoi 3 cot, <=600px 1 cot, nhan thua cho o 16px). */
+.filter-card.cols-6 .uni-field{min-width:0}
+@media(min-width:1001px){.filter-card.cols-6 select,.filter-card.cols-6 input{font-size:13px;padding:9px 20px 9px 10px}}
 .filter-card .uni-actions{display:flex;align-items:flex-end}
 .filter-card .uni-actions .btn{width:100%}
 .filter-card .filter-count,.filter-card .filter-empty{grid-column:1/-1}
@@ -241,11 +256,19 @@ a:hover{text-decoration:underline}
    tin-tuc, trang chu (homeNews + homePinned) va hang tin trang Mau. */
 .news-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
 .news-card a{display:block;color:inherit;text-decoration:none}
-.news-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.news-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:right center}/* v111 NEW-P9: anh og 1200x630 (1.9) rong hon khung 16/9 nen cover crop 2 ben, logo "2" o mep phai bi cat — giu mep phai, chi crop ben trai */
 .news-card .pin-noimg{display:grid;place-items:center;width:100%;aspect-ratio:16/9;background:var(--brand);color:#fff}
 .news-card .pin-noimg b{font-size:40px;font-weight:900}
 .news-card h3{margin:8px 10px 2px;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .news-card-meta{margin:0 10px 10px;color:var(--mut);font-size:12px}
+/* v111 NEW-T1: huy hieu .pin-num (28px, bottom:8px;left:8px) de len dong meta o
+   day the — ".pin-cat{padding-left:44px}" cua v85 la code chet (khong cho nao
+   render .pin-cat tu v100, meta render bang .news-card-meta). The nao co huy
+   hieu thi dem trai meta 44px (28 + 8 + 8) de chu bat dau ben phai huy hieu.
+   Mobile huy hieu o left:16px nen dem 52px. Trang Mau + Tin tuc khong danh so
+   nen khong bi anh huong (khong co .pin-num). */
+.news-card:has(.pin-num) .news-card-meta{padding-left:44px}
+@media(max-width:600px){.news-card:has(.pin-num) .news-card-meta{padding-left:52px}}
 .news-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .gopy-fab{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:90;background:var(--red);color:#fff;border:0;border-radius:50%;width:56px;height:56px;font-size:22px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .gopy-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px}

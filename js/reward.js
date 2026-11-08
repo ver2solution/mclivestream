@@ -256,10 +256,22 @@
       return { ok: false, error: String((e && e.message) || e), points: 0 };
     }
   }
+  // v111 (NEW-04/05): lam moi so du header + popup diem sau moi thao
+  // tac doi xu thanh cong (ghim/like/share), giong spendPoints() da lam
+  // tu v90 — truoc day chi spendPoints() goi V20HeaderRefresh() nen
+  // header khong cap nhat sau ghim/like cho toi khi tai lai trang.
+  function refreshPointsUI() {
+    try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
+    try { if (typeof window !== 'undefined' && typeof window.V20RefreshPopupPoints === 'function') window.V20RefreshPopupPoints(); } catch (e) {}
+  }
   // Cộng xu tương tác (comment +10 / like +10 / share +20, mỗi loại tối đa
   // 1 lần/ngày toàn site). Trả {ok, points}: points = 0 khi đã tính loại đó
   // trong ngày hôm nay. targetType: 'model_profile' | 'shop_profile' |
   // 'article'; targetId: id data.js (th-…/sh-…) hoặc tên file bài báo.
+  // v111 (NEW-06): 'comment' KHONG con duoc goi tu client luc gui binh
+  // luan (js/comments.js da bo) — xu binh luan chi cong sau khi duyet.
+  // Ham nay van dung cho like/share; neu noi khac goi 'comment' thi van
+  // chay nhu cu (khong chan o day de khong vo code cu).
   async function awardInteraction(type, targetType, targetId) {
     if (INTERACTION_TYPES.indexOf(type) === -1) return { ok: false, error: 'Loại tương tác không hợp lệ.', points: 0 };
     if (!targetType || !targetId) return { ok: false, error: 'Thiếu mục tương tác.', points: 0 };
@@ -269,6 +281,7 @@
         p_type: type, p_target_type: String(targetType), p_target_id: String(targetId)
       });
       if (res.error) return { ok: false, error: rpcErrorText(res), points: 0 };
+      refreshPointsUI(); // v111 (NEW-05): header cap nhat ngay sau like/share
       return { ok: true, points: extractPoints(res.data), data: res.data };
     } catch (e) {
       if (typeof console !== 'undefined' && console.error) console.error('[reward v2] award_interaction_points lỗi:', e);
@@ -519,6 +532,7 @@
         p_category: pinCategoryForTargetType(category || targetType), p_hours: Math.floor(Number(hours))
       });
       if (res.error) return { ok: false, error: rpcErrorText(res), points: 0 };
+      refreshPointsUI(); // v111 (NEW-04): header cap nhat ngay sau ghim
       return { ok: true, pin: res.data, cost: pinCostHours(hours) };
     } catch (e) {
       if (typeof console !== 'undefined' && console.error) console.error('[reward v2] pin_post lỗi:', e);

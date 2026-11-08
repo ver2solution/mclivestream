@@ -127,6 +127,33 @@
     return s;
   }
 
+  // v97: doc session ben vung cho trang can dang nhap
+  // (trang-cua-toi.html). getSession() thuong chi doc 1 lan; neu GoTrue
+  // client chua khoi phuc xong session tu bo nho cuc bo (lock dang ban /
+  // khoi tao cham) thi co the tra null hoac nem loi du phien van con
+  // trong localStorage — dung luc do trang se hien "Can dang nhap" va
+  // luu ho so se bao "Can dang nhap moi luu duoc ho so" du nguoi dung
+  // vua dang nhap xong o form inline (loi 15:58 ngay 08/11/2026).
+  // Ham nay thu lai sau khoang nghi ngan, chi ket luan null sau ~3
+  // giay. Trang khong can dang nhap van dung getSession() cu de khong
+  // cham header.
+  function getSessionRobust(timeoutMs) {
+    var deadline = Date.now() + (timeoutMs || 3000);
+    function attempt() {
+      var p;
+      try { p = getSession(); } catch (e) { p = Promise.reject(e); }
+      return Promise.resolve(p).then(function (s) {
+        if (s) return s;
+        if (Date.now() >= deadline) return null;
+        return new Promise(function (resolve) { setTimeout(function () { resolve(attempt()); }, 150); });
+      }, function () {
+        if (Date.now() >= deadline) return null;
+        return new Promise(function (resolve) { setTimeout(function () { resolve(attempt()); }, 150); });
+      });
+    }
+    return attempt();
+  }
+
   // ---- F-05: đồng bộ đồng ý marketing sau đăng nhập lần đầu ----
   // Chạy khi onAuthStateChange / showUser thấy session mới và
   // user_metadata.marketing_opt_in đã đặt mà marketing_synced chưa đặt.
@@ -410,34 +437,83 @@
         }
         if (bad) return;
         if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
+        // v111 (N1): 3 o ho so thu thap ngay khi dang ky — signUp() o
+        // mclivestream-supabase.js da map 3 truong nay vao user_metadata
+        // tu v99, nhung handler nay chua truyen. Doc theo id co dinh cua
+        // dang-ky.html; trang khong co 3 o nay (form inline danh sach)
+        // thi gui ''.
+        function signupField(id) {
+          try { var el = $(id); return el ? String(el.value || '').trim() : ''; } catch (e) { return ''; }
+        }
+        var workLocation = signupField('authSuWorkLocation');
+        var desiredField = signupField('authSuDesiredField');
+        var priorityField = signupField('authSuPriorityField');
         try {
           var res = await api().signUp({
             email: email,
             password: p1,
             phoneZalo: normalizePhone(phone),
-            marketingOptIn: !!$(cfg.inputs.signupMarketing).checked,
-            accountType: cfg.accountType
+            marketingOptIn: !!($(cfg.inputs.signupMarketing) && $(cfg.inputs.signupMarketing).checked),
+            accountType: cfg.accountType,
+            workLocation: workLocation,
+            desiredField: desiredField,
+            priorityField: priorityField
           });
           if (res && res.session) {
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
-            // v2 (GĐ2, 07/11/2026): cộng xu đăng ký qua RPC
-            // award_registration_points() — fire-and-forget, KHÔNG chặn
-            // showUser()/chuyển trang khi RPC lỗi hay M7 chưa chạy. Chỉ
-            // hiện dòng xu khi RPC thực sự trả về xu > 0.
+            // v111 (N1, tiep): luu lien he + 3 o ho so vao localStorage
+            // 'v2s_signup_prefs' (gop voi ban dang-ky.html da luu) de
+            // trang-cua-toi dien san ca SDT + email lien he khi tao ho so.
+            try {
+              var prefs = {};
+              try { prefs = JSON.parse(localStorage.getItem('v2s_signup_prefs') || '{}') || {}; } catch (e2) { prefs = {}; }
+              prefs.workLocation = workLocation || prefs.workLocation || '';
+              prefs.desiredField = desiredField || prefs.desiredField || '';
+              prefs.priorityField = priorityField || prefs.priorityField || '';
+              prefs.phoneZalo = normalizePhone(phone);
+              prefs.contactEmail = email;
+              localStorage.setItem('v2s_signup_prefs', JSON.stringify(prefs));
+            } catch (e) { /* bo qua — chi la prefill, dang ky van xong */ }
+            // v111 (header "0 xu"): DOI awardRegistration() tra ve TRUOC
+            // khi showUser(), thay vi fire-and-forget nhu cu. showUser()
+            // kich loadHeaderBalance() doc so du — neu chay truoc khi RPC
+            // cong xu xong thi header hien "0 xu" cho toi khi tai lai
+            // trang. Cho RPC toi da 8s; RPC loi/cham thi dang ky van
+            // thanh cong binh thuong (khong chan showUser).
+            // v111 (muc 4): KHONG tu chuyen trang 800ms o day — thiet ke
+            // v96 (dang-ky.html): tai khoan chua co ho so thi O LAI xem
+            // panel kich hoat (doc duoc trong 5 giay sau dang ky); chi
+            // tai khoan da co ho so moi chuyen sau 800ms (luong
+            // onSessionChange o dang-ky.html tu quyet). Dong xu trong
+            // panel hien qua showPointsLine() duoi day — do la "toast"
+            // bao nhan xu theo thiet ke hien tai, khong phai msg() trong
+            // form (form bi an khi showUser chay).
+            var awardPoints = 0;
             try {
               var R = (typeof window !== 'undefined') ? window.Ver2Reward : null;
               if (R && typeof R.awardRegistration === 'function') {
-                R.awardRegistration().then(function (r) {
-                  if (r && r.ok && Number(r.points || 0) > 0) {
-                    msg('Đăng ký thành công! Bạn nhận được ' + Number(r.points) + ' xu thưởng!', 'ok');
-                    /* v96: dong diem nay cung hien trong panel kich hoat
-                       (neu trang co panel) — so diem do server tra. */
-                    try { var AV = (typeof window !== 'undefined') ? window.V2SActivation : null; if (AV && typeof AV.showPointsLine === 'function') AV.showPointsLine(Number(r.points)); } catch (e) {}
-                  }
-                }).catch(function () { /* bỏ qua — đăng ký đã thành công */ });
+                var awardP = R.awardRegistration();
+                var awardTimeout = new Promise(function (resolve) { setTimeout(function () { resolve(null); }, 8000); });
+                var r = await Promise.race([awardP, awardTimeout]);
+                if (r && r.ok && Number(r.points || 0) > 0) {
+                  awardPoints = Number(r.points);
+                  msg('Đăng ký thành công! Bạn nhận được ' + awardPoints + ' xu thưởng!', 'ok');
+                  /* v96: dong diem nay cung hien trong panel kich hoat
+                     (neu trang co panel) — so diem do server tra. */
+                  try { var AV = (typeof window !== 'undefined') ? window.V2SActivation : null; if (AV && typeof AV.showPointsLine === 'function') AV.showPointsLine(awardPoints); } catch (e) {}
+                }
               }
             } catch (e) { /* bỏ qua — đăng ký đã thành công */ }
             await showUser();
+            // v111 (header "0 xu", tiep): lam moi so du header + popup
+            // diem NGAY sau khi RPC cong xu xong, khong doi tai lai
+            // trang. Luu y: su kien SIGNED_IN co the kich
+            // loadHeaderBalance() som hon (truoc khi RPC xong) nen
+            // header van co the thoang "0 xu" — lan refresh nay sua
+            // thanh so dung ngay sau do. Sua triet de can them o
+            // js/app.js (khong thuoc pham vi v111 nhom nay).
+            try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
+            try { if (typeof window !== 'undefined' && typeof window.V20RefreshPopupPoints === 'function') window.V20RefreshPopupPoints(); } catch (e) {}
             return;
           }
           if (cfg.signupSuccessUrl) { location.href = cfg.signupSuccessUrl; return; }
@@ -541,6 +617,7 @@
       initAuthUI: initAuthUI,
       guardSubmit: guardSubmit,
       getSession: getSession,
+      getSessionRobust: getSessionRobust,
       ensureSessionListener: ensureSessionListener,
       onSessionChange: onSessionChange,
       friendlyError: friendly,

@@ -106,6 +106,9 @@
 (function(){
   function txt(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]});}
+  // v111 NEW-03: lich su vi xu format gio VN nhu lich su diem (R.formatVnDateTime
+  // "HH:MM ngay DD/MM/YYYY"); khong co Ver2Reward thi giu nguyen chuoi goc, khong nem loi.
+  function fmtWhen(s){try{var R=window.Ver2Reward;if(R&&typeof R.formatVnDateTime==='function')return R.formatVnDateTime(s,true);}catch(e){}return s;}
   async function refresh(){
     try{
       var c=await window.Ver2Wallet.getMarketingConsent();
@@ -116,7 +119,7 @@
       txt('walletStatus','');
       document.getElementById('walletBox').innerHTML='<p>Số dư: <b>'+w.balance_coins+' xu</b> · Đã nạp: '+w.total_topped_coins+' xu · Đã dùng: '+w.total_spent_coins+' xu · Trạng thái: '+w.status+'</p>';
       var tx=await window.Ver2Wallet.fetchMyWalletTransactions(20);
-      document.getElementById('txBox').innerHTML='<h3>Lịch sử ví</h3>'+(tx.length?tx.map(function(x){return '<p>'+x.created_at+' · '+x.type+' · '+x.amount_coins+' xu · '+x.status+' · '+(x.note||'')+'</p>';}).join(''):'<p>Chưa có giao dịch nào.</p>');
+      document.getElementById('txBox').innerHTML='<h3>Lịch sử ví</h3>'+(tx.length?tx.map(function(x){return '<p>'+fmtWhen(x.created_at)+' · '+x.type+' · '+x.amount_coins+' xu · '+x.status+' · '+(x.note||'')+'</p>';}).join(''):'<p>Chưa có giao dịch nào.</p>');
       var b=await window.Ver2Wallet.fetchMyBoostOrders();
       document.getElementById('boostBox').innerHTML='<h3>Đơn up top của bạn</h3>'+(b.length?b.map(function(x){return '<p>'+x.service+' · '+x.target_type+' '+x.target_id+' · '+x.coins_cost+' xu · '+x.status+'</p>';}).join(''):'<p>Chưa có đơn up top nào.</p>');
       // v91 (BUG-05): lịch sử xu — đọc sổ cái points_ledger (mới nhất lên

@@ -72,9 +72,13 @@
         // v99 (§1b): 3 o ho so thu thap ngay khi dang ky (dang-ky.html)
         // de the hien dung ngay sau khi dang ky; auth-ui.js truyen qua
         // opts khi co, thieu thi de trong (trang-cua-toi dien sau).
+        // v111 (N1): auth-ui.js da truyen du 3 truong tu v111.
         work_location: opts.workLocation || '',
         desired_field: opts.desiredField || '',
-        priority_field: opts.priorityField || ''
+        priority_field: opts.priorityField || '',
+        // v111 (N1): email lien he de trang-cua-toi dien san o Email khi
+        // tao ho so (cung cap voi phone_zalo o tren).
+        contact_email: opts.email || ''
       },
       // v49: redirect xac nhan email ve trang chu /mclivestream/ (xem SITE_URL).
       emailRedirectTo: SITE_URL }
@@ -235,6 +239,14 @@
     clean.auth_user_id = session.user.id;
     // Email hồ sơ mặc định lấy từ tài khoản Auth nếu mẫu để trống.
     if (!clean.contact_email) clean.contact_email = session.user.email;
+    // v111 (N1): SDT Zalo mac dinh lay tu user_metadata.phone_zalo
+    // (da gui len luc dang ky) neu ho so de trong — cung cap voi
+    // contact_email o tren. Trang-cua-toi van can them prefill hien
+    // thi o mo form (HTML, ngoai pham vi v111 nhom nay); day la luoi
+    // an toan de ho so LUU xong van co dung SDT lien he.
+    if (!clean.phone_zalo && session.user.user_metadata && session.user.user_metadata.phone_zalo) {
+      clean.phone_zalo = session.user.user_metadata.phone_zalo;
+    }
     requireFields(clean, REQUIRED_PROFILE_FIELDS);
     if (clean.album_images && clean.album_images.length > 5) {
       throw new Error('Album tối đa 5 ảnh.');

@@ -11,9 +11,11 @@
    mới mới INSERT được; client đã chấp nhận trước để không chặn UI.
    - Bình luận mới LUÔN ở trạng thái chờ duyệt (moderation_status='pending'),
      KHÔNG tự duyệt, KHÔNG tự cộng xu lúc gửi (points 0 ở phía client).
-   - Xu bình luận v2 (+10, tối đa 1 lần/ngày toàn site) được cộng qua RPC
-     award_interaction_points() của js/reward.js — chỉ hiện "+10 xu" khi
-     RPC thực sự trả 10; trả 0 nghĩa là đã tính loại này hôm nay.
+   - Xu bình luận v2 (+10, tối đa 1 lần/ngày toàn site) CHỈ được cộng
+     SAU KHI DUYỆT (quyết định 18:49 ngày 08/11, sửa NEW-06 ở v111):
+     client KHÔNG gọi award_interaction_points() lúc gửi — việc cộng do
+     luồng duyệt phía server lo; message lúc gửi nói rõ "sau khi được
+     duyệt sẽ được cộng 10 xu".
    - v95: khách vãng lai bình luận ĐƠN GIẢN — chỉ 1 ô bình luận, không cần
      tên, không luật 20 ký tự (chỉ cần ≥2 ký tự, khớp CHECK của bảng
      comments), ghi chú rõ không cần đăng nhập; tên mặc định "Khách Vãng
@@ -76,12 +78,16 @@
   }
 
   // Gửi 1 bình luận: gọi RPC submit_comment (SECURITY DEFINER, bypass RLS
-  // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501), rồi (nếu đã đăng
-  // nhập) gọi RPC tính xu. Validate: đã đăng nhập → ≥20 ký tự
-  // (validateComment của js/reward.js, để tính xu +10); khách vãng lai
-  // → chỉ cần viết gì đó (≥2 ký tự, v95 — khớp CHECK của bảng comments;
-  // chặn link + chống spam do RPC lo). Trả {ok, points, message} — KHÔNG
-  // ném lỗi.
+  // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501). Validate: đã đăng
+  // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu +10
+  // SAU KHI DUYỆT); khách vãng lai → chỉ cần viết gì đó (≥2 ký tự, v95 —
+  // khớp CHECK của bảng comments; chặn link + chống spam do RPC lo).
+  // Trả {ok, points, message} — KHÔNG ném lỗi.
+  // v111 (NEW-06, quyet dinh 18:49 ngay 08/11): KHONG cong xu luc gui.
+  // Xu binh luan +10 chi cong SAU KHI DUYET — viec cong do luong duyet
+  // phia server lo; client khong goi awardInteraction('comment') o day
+  // nua (ban cu goi ngay sau RPC submit_comment nen xu cong truoc khi
+  // duyet, trai quy tac cong bo). points luon 0 o day.
   async function submitComment(targetType, targetRef, text, displayName) {
     if (VALID_TYPES.indexOf(targetType) === -1) return { ok: false, points: 0, message: 'Loại mục bình luận không hợp lệ.' };
     if (!targetRef) return { ok: false, points: 0, message: 'Thiếu mục bình luận.' };
@@ -113,16 +119,10 @@
     } catch (e) {
       return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String((e && e.message) || e) };
     }
-    // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt — gọi
-    // RPC ngay để hệ thống ghi nhận lượt trong ngày; RPC/M7 là nơi quyết
-    // định có cộng hay không (0 = đã tính loại này hôm nay).
-    var points = 0, pointsMsg = '';
-    if (user && R && typeof R.awardInteraction === 'function') {
-      var r = await R.awardInteraction('comment', targetType, targetRef);
-      if (r && r.ok && Number(r.points) > 0) { points = Number(r.points); pointsMsg = ' +' + points + ' xu (1 lần/ngày)'; }
-      else if (r && r.ok) { pointsMsg = 'Đã tính xu bình luận hôm nay'; }
-    }
-    return { ok: true, points: points, message: 'Bình luận đã gửi, đang chờ duyệt.' + (pointsMsg ? ' ' + pointsMsg : '') };
+    // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt —
+    // KHÔNG gọi awardInteraction ở đây (v111 NEW-06). Trả message nói rõ
+    // xu cộng sau khi duyệt để người dùng không tưởng đã cộng ngay.
+    return { ok: true, points: 0, message: 'Bình luận đã gửi, đang chờ duyệt. Sau khi được duyệt sẽ được cộng 10 xu (tối đa 1 lần/ngày).' };
   }
 
   // Vẽ mục bình luận (form + danh sách) vào 1 phần tử. container: element
