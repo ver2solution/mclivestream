@@ -1,0 +1,41 @@
+name: Deploy v103
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v103.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v103:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v103 deploy package
+        run: |
+          unzip -o mclivestream-v103-deploy.zip
+          ls -l index.html js/app.js sw.js thanh-ly-kiot.html danh-sach-mau.html images/bai-viet/cac-dia-diem-phai-di-trong-doi.jpg images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.jpg images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.jpg images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.jpg
+          sha256sum index.html js/app.js sw.js thanh-ly-kiot.html danh-sach-mau.html
+          grep -q "v103-shell-1" sw.js && echo "sw.js CACHE OK: v103-shell-1"
+          grep -q "Mẫu tìm việc Livestream" index.html && echo "index title OK"
+          grep -q "homeModels12" js/app.js && echo "app.js homeModels12 OK"
+          grep -q "Xu hướng sống mới" js/app.js && echo "app.js news title OK"
+          grep -q "countLabel" js/app.js && echo "app.js option counts OK"
+          grep -q "KIOT_MAX_ROWS = 12" thanh-ly-kiot.html && echo "kiot 12 OK"
+          grep -q "lot-grid" thanh-ly-kiot.html && echo "kiot lot-grid OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html js/app.js sw.js thanh-ly-kiot.html danh-sach-mau.html images/bai-viet/cac-dia-diem-phai-di-trong-doi.jpg images/bai-viet/cac-dia-diem-phai-di-trong-doi-og.jpg images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.jpg images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam-og.jpg images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.jpg images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do-og.jpg images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.jpg images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong-og.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v103: Mau len tren Shop 2 hang, Kiot 12 + luoi lot-grid, tieu de Xu huong song moi, so luong that trong moi option loc, 4 anh tin that"
+            git push
+          fi
