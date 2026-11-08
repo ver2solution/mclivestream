@@ -14,13 +14,20 @@
    - Điểm bình luận v2 (+10, tối đa 1 lần/ngày toàn site) được cộng qua RPC
      award_interaction_points() của js/reward.js — chỉ hiện "+10 điểm" khi
      RPC thực sự trả 10; trả 0 nghĩa là đã tính loại này hôm nay.
-   - Khách vãng lai vẫn bình luận được (tên "Khách Vãng Lai", 0 điểm) nhưng
-     thấy ghi chú mời đăng ký/đăng nhập; người đã đăng nhập thấy ghi chú ngắn.
+   - v95: khách vãng lai bình luận ĐƠN GIẢN — chỉ 1 ô bình luận, không cần
+     tên, không luật 20 ký tự (chỉ cần ≥2 ký tự, khớp CHECK của bảng
+     comments), ghi chú rõ không cần đăng nhập; tên mặc định "Khách Vãng
+     Lai", 0 điểm. Người đã đăng nhập giữ form đầy đủ + luật ≥20 ký tự
+     để tính điểm +10.
    - Client không bao giờ đọc/ghi points_ledger hay wallet_balances.
    RPC/bảng chưa có (M6/M7 chưa chạy) thì form báo lỗi rõ, không vỡ trang. */
 (function () {
   'use strict';
   var GUEST_NOTE = 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng điểm thưởng, đổi quà.';
+  // v95: ghi chú cho form khách đơn giản — rõ ràng là KHÔNG cần đăng nhập.
+  // GUEST_NOTE cũ giữ lại (đã export) để không vỡ code khác, nhưng form
+  // khách không dùng nữa.
+  var GUEST_SIMPLE_NOTE = 'Bình luận với tên Khách Vãng Lai — không cần đăng nhập.';
   var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 10 điểm (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
@@ -68,19 +75,26 @@
     }).join('') + '</ul>';
   }
 
-  // Gửi 1 bình luận: validate ≥20 ký tự, gọi RPC submit_comment (SECURITY
-  // DEFINER, bypass RLS — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501),
-  // rồi (nếu đã đăng nhập) gọi RPC tính điểm. Trả {ok, points, message} —
-  // KHÔNG ném lỗi.
+  // Gửi 1 bình luận: gọi RPC submit_comment (SECURITY DEFINER, bypass RLS
+  // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501), rồi (nếu đã đăng
+  // nhập) gọi RPC tính điểm. Validate: đã đăng nhập → ≥20 ký tự
+  // (validateComment của js/reward.js, để tính điểm +10); khách vãng lai
+  // → chỉ cần viết gì đó (≥2 ký tự, v95 — khớp CHECK của bảng comments;
+  // chặn link + chống spam do RPC lo). Trả {ok, points, message} — KHÔNG
+  // ném lỗi.
   async function submitComment(targetType, targetRef, text, displayName) {
     if (VALID_TYPES.indexOf(targetType) === -1) return { ok: false, points: 0, message: 'Loại mục bình luận không hợp lệ.' };
     if (!targetRef) return { ok: false, points: 0, message: 'Thiếu mục bình luận.' };
-    var R = reward();
-    var err = R && typeof R.validateComment === 'function' ? R.validateComment(text) : null;
-    if (err) return { ok: false, points: 0, message: err };
     var a = api();
     if (!a || !a.client) return { ok: false, points: 0, message: 'Chưa kết nối được Supabase, hãy thử lại sau.' };
     var user = await currentUser();
+    var R = reward();
+    if (user) {
+      var err = R && typeof R.validateComment === 'function' ? R.validateComment(text) : null;
+      if (err) return { ok: false, points: 0, message: err };
+    } else if (String(text || '').trim().length < 2) {
+      return { ok: false, points: 0, message: 'Hãy viết nội dung bình luận.' };
+    }
     var name = String(displayName || '').trim()
       || (user && user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name))
       || (user ? user.email : '') || 'Khách Vãng Lai';
@@ -117,14 +131,24 @@
     var el = typeof container === 'string' ? document.getElementById(container) : container;
     if (!el) return false;
     var user = await currentUser();
-    var note = user
-      ? '<p class="v2s-note">' + esc(LOGGED_IN_NOTE) + '</p>'
-      : '<p class="v2s-note">' + esc(GUEST_NOTE) + ' <a href="dang-ky.html">Đăng ký</a> · <a href="' + esc(loginHref()) + '">Đăng nhập</a></p>';
-    el.innerHTML = '<section class="v2s-comments"><h2>Bình luận</h2>' + note
-      + '<form class="v2s-comment-form"><label>Tên hiển thị<input name="v2sName" maxlength="100" placeholder="Khách Vãng Lai" value=""></label>'
-      + '<label>Bình luận *<textarea name="v2sText" rows="3" required minlength="20" placeholder="Viết bình luận từ 20 ký tự trở lên…"></textarea></label>'
-      + '<p class="v2s-comment-msg" role="status"></p>'
-      + '<button class="btn btn-primary btn-sm" type="submit">Gửi bình luận</button></form>'
+    // v95: khách vãng lai thấy form ĐƠN GIẢN — chỉ 1 ô bình luận, không ô
+    // tên, không minlength, ghi chú rõ không cần đăng nhập. Người đã đăng
+    // nhập giữ form đầy đủ (ô tên + minlength=20 để tính điểm).
+    var note, formHTML;
+    if (user) {
+      note = '<p class="v2s-note">' + esc(LOGGED_IN_NOTE) + '</p>';
+      formHTML = '<form class="v2s-comment-form"><label>Tên hiển thị<input name="v2sName" maxlength="100" placeholder="Khách Vãng Lai" value=""></label>'
+        + '<label>Bình luận *<textarea name="v2sText" rows="3" required minlength="20" placeholder="Viết bình luận từ 20 ký tự trở lên…"></textarea></label>'
+        + '<p class="v2s-comment-msg" role="status"></p>'
+        + '<button class="btn btn-primary btn-sm" type="submit">Gửi bình luận</button></form>';
+    } else {
+      note = '<p class="v2s-note">' + esc(GUEST_SIMPLE_NOTE) + '</p>';
+      formHTML = '<form class="v2s-comment-form">'
+        + '<label>Bình luận *<textarea name="v2sText" rows="3" required placeholder="Viết bình luận…"></textarea></label>'
+        + '<p class="v2s-comment-msg" role="status"></p>'
+        + '<button class="btn btn-primary btn-sm" type="submit">Gửi bình luận</button></form>';
+    }
+    el.innerHTML = '<section class="v2s-comments"><h2>Bình luận</h2>' + note + formHTML
       + '<div class="v2s-comments-list-wrap"><p>Đang tải bình luận…</p></div></section>';
     var form = el.querySelector('.v2s-comment-form');
     var msgEl = el.querySelector('.v2s-comment-msg');
@@ -138,7 +162,7 @@
       var btn = form.querySelector('button[type="submit"]');
       if (btn) btn.disabled = true;
       var text = form.v2sText.value;
-      var name = form.v2sName.value;
+      var name = form.v2sName ? form.v2sName.value : ''; // form khách v95 không có ô tên
       var out = await submitComment(targetType, targetRef, text, name);
       if (msgEl) msgEl.textContent = out.message;
       if (out.ok) { form.v2sText.value = ''; }
@@ -243,7 +267,7 @@
   }
 
   var API = {
-    GUEST_NOTE: GUEST_NOTE, LOGGED_IN_NOTE: LOGGED_IN_NOTE,
+    GUEST_NOTE: GUEST_NOTE, GUEST_SIMPLE_NOTE: GUEST_SIMPLE_NOTE, LOGGED_IN_NOTE: LOGGED_IN_NOTE,
     loadComments: loadComments, submitComment: submitComment,
     renderComments: renderComments, commentsListHTML: commentsListHTML,
     getCommentCounts: getCommentCounts, refreshCommentCounts: refreshCommentCounts,
