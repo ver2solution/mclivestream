@@ -430,6 +430,9 @@
                 R.awardRegistration().then(function (r) {
                   if (r && r.ok && Number(r.points || 0) > 0) {
                     msg('Đăng ký thành công! Bạn nhận được ' + Number(r.points) + ' điểm thưởng!', 'ok');
+                    /* v96: dong diem nay cung hien trong panel kich hoat
+                       (neu trang co panel) — so diem do server tra. */
+                    try { var AV = (typeof window !== 'undefined') ? window.V2SActivation : null; if (AV && typeof AV.showPointsLine === 'function') AV.showPointsLine(Number(r.points)); } catch (e) {}
                   }
                 }).catch(function () { /* bỏ qua — đăng ký đã thành công */ });
               }

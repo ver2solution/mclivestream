@@ -152,6 +152,16 @@ a:hover{text-decoration:underline}
 .filter-card .full{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
 .filter-title{margin:14px 0 6px;font-size:15px}
 .filter-area .filter-title:first-child{margin-top:6px}
+/* v96: khung loc chung trang Shop — thanh truot chon hang muc (segmented
+   control 3 nut) + truong bi khoa (mo + khong bam duoc). */
+.uni-cat-switch{display:flex;gap:6px;background:#e7efec;border:1px solid var(--line);border-radius:999px;padding:5px;margin:0 0 10px}
+.uni-cat-switch .uni-cat-btn{flex:1;min-width:0;border:0;background:transparent;border-radius:999px;padding:11px 6px;font:inherit;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uni-cat-switch .uni-cat-btn.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(11,93,78,.28)}
+.uni-cat-switch .uni-cat-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.filter-card .uni-field.locked{opacity:.55}
+.filter-card .uni-field.locked label{color:#9aa8a2}
+.filter-card select:disabled,.filter-card input:disabled{background:#f1f4f2;color:#8a9a94;cursor:not-allowed}
+@media(max-width:600px){.uni-cat-switch{flex-direction:column;border-radius:16px}.uni-cat-switch .uni-cat-btn{white-space:normal}}
 /* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
    2026-11-06). 1 the noi bat ngay duoi tieu de trang, truoc the loc tin tuyen
    shop; vung ket qua tai dung .grid.grid-3 (3 cot desktop, 2 cot <=1000px,
@@ -719,3 +729,36 @@ th{background:#f4f8f6}
 .v2s-contact-msg{font-size:13px;color:#0b5d4e}
 .v2s-transfer-history{list-style:none;padding:0}
 .v2s-transfer-history li{border-top:1px solid #e3e3e3;padding:8px 0}
+/* v96 kich hoat ho so (thiet ke 08/11/2026): panel sau dang ky (dang-ky.html)
+   + dai trang chu (index.html). Chi hien khi da dang nhap ma chua co ho so. */
+.activation-panel{border:1px solid #cfe3dc;border-radius:12px;padding:16px;margin:16px 0;background:#f4faf7}
+.activation-panel[hidden]{display:none}
+.activation-panel h2{margin:0 0 8px;font-size:20px}
+.activation-panel p{margin:8px 0}
+.activation-panel-grid{display:grid;grid-template-columns:1fr;gap:4px 20px}
+.activation-prep{list-style:none;padding:0;margin:12px 0}
+.activation-prep li{margin:6px 0}
+.activation-panel .btn-primary{min-height:48px}
+.activation-points{font-size:14px;color:#0b5d4e;font-weight:700}
+.activation-account{font-size:14px;color:#444}
+.activation-strip{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border:1px solid #cfe3dc;border-radius:12px;padding:14px 16px;margin:16px 0;background:#f4faf7}
+.activation-strip[hidden]{display:none}
+.activation-strip-text{flex:1 1 260px}
+.activation-strip-text h2{margin:0 0 4px;font-size:18px}
+.activation-strip-text p{margin:0}
+.activation-strip .btn{min-height:48px}
+.activation-strip-close{flex:0 0 auto;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:20px;line-height:1;cursor:pointer}
+@media(min-width:600px){
+  .activation-panel-grid{grid-template-columns:1fr 1fr}
+  .activation-strip{flex-wrap:nowrap}
+}
+@media(max-width:600px){
+  .activation-panel .btn-primary{width:100%}
+  .activation-strip .btn{width:100%}
+}
+@media(max-width:360px){
+  .activation-panel{padding:12px}
+  .activation-panel h2{font-size:18px}
+  .activation-strip{padding:12px}
+  .activation-strip-text h2{font-size:17px}
+}

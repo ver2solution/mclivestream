@@ -159,20 +159,20 @@ function miniHTML(m){
    `contacts`, so they are never rendered and never shown as "Chưa cập nhật". */
 var CONTACT_NOTE = 'Các bên chủ động liên hệ trao đổi, thông tin là công khai.';
 function defaultContactLabel(p){
-  return {facebook:'Facebook', zalo:'Zalo', phone:'Số điện thoại', email:'Email', tiktok:'TikTok', shopee:'Shopee'}[p] || 'Liên hệ';
+  return {facebook:'Facebook', zalo:'Zalo', phone:'Số điện thoại', email:'Email', tiktok:'TikTok', shopee:'Shopee', threads:'Threads'}[p] || 'Liên hệ';
 }
 function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
 function contactHref(c){
   if(c.provider==='zalo') return 'https://zalo.me/'+digitsOnly(c.value);
   if(c.provider==='phone') return 'tel:'+digitsOnly(c.value);
   if(c.provider==='email') return 'mailto:'+c.value;
-  return c.value; // facebook / tiktok / shopee: full public URL
+  return c.value; // facebook / tiktok / shopee / threads: full public URL
 }
 function contactItemHTML(c){
   var label = esc(c.label || defaultContactLabel(c.provider));
   var href = esc(contactHref(c));
-  var ext = (c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee') ? ' target="_blank" rel="noopener"' : '';
-  if(c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee'){
+  var ext = (c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee'||c.provider==='threads') ? ' target="_blank" rel="noopener"' : '';
+  if(c.provider==='facebook'||c.provider==='tiktok'||c.provider==='shopee'||c.provider==='threads'){
     return '<li><a href="'+href+'"'+ext+'>'+label+'</a></li>';
   }
   return '<li>'+label+': <a href="'+href+'"'+ext+'>'+esc(c.value)+'</a></li>';
@@ -463,10 +463,12 @@ function emptyResultsHTML(guidance){
 }
 function initSectionFilter(opts){
   var section = document.getElementById(opts.sectionId);
-  if(!section) return;
-  var applyBtn = document.getElementById(opts.applyId);
-  var resetBtn = document.getElementById(opts.resetId);
-  if(!applyBtn || !resetBtn) return;
+  if(!section) return null;
+  /* v96: nut Ap dung / Dat lai la tuy chon — trang Shop dung 1 nut chung
+     (uniApplyBtn/uniResetBtn) dieu phoi ca lo + xuong nen khong gan nut
+     rieng o day; tra ve {apply, reset} de khung chung goi. */
+  var applyBtn = opts.applyId ? document.getElementById(opts.applyId) : null;
+  var resetBtn = opts.resetId ? document.getElementById(opts.resetId) : null;
   var grids = [];
   var gEls = section.querySelectorAll('.lot-grid');
   for(var gi = 0; gi < gEls.length; gi++){
@@ -525,35 +527,39 @@ function initSectionFilter(opts){
     if(emptyEl) emptyEl.hidden = true;
     setExpanded(false);
   }
-  applyBtn.addEventListener('click', function(){ return gateFilterApply(opts.pointsCategory || 'lot', pointsPageName(), apply, applyBtn); });
-  resetBtn.addEventListener('click', reset);
+  if(applyBtn) applyBtn.addEventListener('click', function(){ return gateFilterApply(opts.pointsCategory || 'lot', pointsPageName(), apply, applyBtn); });
+  if(resetBtn) resetBtn.addEventListener('click', reset);
+  return {apply: apply, reset: reset};
 }
 function initLotFilter(){
-  initSectionFilter({
-    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'lotFilter', pointsCategory: 'lot',
-    applyId: 'lotApplyBtn', resetId: 'lotResetBtn',
-    countId: 'lotCount', emptyId: 'lotEmpty', label: 'lô',
+  /* v96: doc tu khung loc chung (fUni*); dem + thong bao dung chung
+     (uniCount/uniEmpty); khong gan nut rieng — khung chung dieu phoi. */
+  return initSectionFilter({
+    sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'uniFilter', pointsCategory: 'lot',
+    countId: 'uniCount', emptyId: 'uniEmpty', label: 'lô',
     readForm: function(){
+      var cat = uniCatToLotFac(document.getElementById('fUniCat').value);
       return {
-        price: document.getElementById('fLotPrice').value,
-        qty: document.getElementById('fLotQty').value,
-        cat: document.getElementById('fLotCat').value
+        price: document.getElementById('fUniLotPrice').value,
+        qty: document.getElementById('fUniLotQty').value,
+        cat: cat === null ? '__none__' : cat
       };
     },
     matches: lotMatches
   });
 }
 function initFactoryFilter(){
-  initSectionFilter({
-    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'factoryFilter', pointsCategory: 'factory',
-    applyId: 'factoryApplyBtn', resetId: 'factoryResetBtn',
-    countId: 'factoryCount', emptyId: 'factoryEmpty', label: 'xưởng',
+  /* v96: nhu tren; tinh doi 'TP. Hồ Chí Minh' -> 'TP.HCM' cho data-prov. */
+  return initSectionFilter({
+    sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'uniFilter', pointsCategory: 'factory',
+    countId: 'uniCount', emptyId: 'uniEmpty', label: 'xưởng',
     readForm: function(){
+      var cat = uniCatToLotFac(document.getElementById('fUniCat').value);
       return {
-        prov: document.getElementById('fFacProv').value,
-        value: document.getElementById('fFacValue').value,
-        moq: document.getElementById('fFacMoq').value,
-        cat: document.getElementById('fFacCat').value
+        prov: uniProvToFactory(document.getElementById('fUniProv').value),
+        value: document.getElementById('fUniFacValue').value,
+        moq: document.getElementById('fUniFacMoq').value,
+        cat: cat === null ? '__none__' : cat
       };
     },
     matches: facMatches
@@ -839,7 +845,7 @@ function factoryCardHTML(f, withComments){
   return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '" data-v2s-id="'+esc(f.id)+'"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p>' + (withComments ? commentToggleHTML('factory', f.id) : '') + '</article>';
 }
 /* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
-   (.lot-sub) + o loc tinh xuong (fFacProv) theo so lieu thuc te. Goi TRUOC
+   (.lot-sub) + o loc tinh dung chung (fUniProv) theo so lieu thuc te. Goi TRUOC
    initLotFilter/initFactoryFilter vi cac ham do chup lai danh sach the trong
    grid luc khoi tao. Tren trang khac (khong co section lo/xuong) thi khong lam gi. */
 function renderLotSections(ref){
@@ -861,8 +867,11 @@ function renderLotSections(ref){
   if(s3) s3.textContent = 'Chương trình xả kho theo đợt của chợ, sàn, trung tâm thương mại và tổ chức — bán lẻ từng món, không phải lô sỉ. Đang có ' + byGroup.g3.length + ' chương trình.';
   var fs = document.getElementById('factorySub');
   if(fs) fs.textContent = 'Xưởng và nhà máy may nhận gia công quần áo cho shop và thương hiệu — đang có ' + factories.length + ' xưởng/nhà máy.';
-  /* o loc tinh xuong: dung lua chon theo so xuong thuc te tung tinh */
-  var sel = document.getElementById('fFacProv');
+  /* v96: o loc tinh dung chung (fUniProv): dung lua chon theo so xuong
+     thuc te tung tinh. Gia tri 'TP. Hồ Chí Minh' dung chung cho shop/mau;
+     khi loc xuong, JS doi ve 'TP.HCM' (xem uniProvToFactory). Them lua chon
+     'Toàn quốc / Live online' cho mau (khong co xuong nao o muc nay). */
+  var sel = document.getElementById('fUniProv');
   if(sel){
     var counts = {}, order = [];
     factories.forEach(function(f){
@@ -872,9 +881,10 @@ function renderLotSections(ref){
     });
     var html = '<option value="">Tất cả tỉnh</option>';
     order.forEach(function(p){
-      var label = (p === 'TP.HCM') ? 'TP. Hồ Chí Minh' : p;
-      html += '<option value="' + esc(p) + '">' + esc(label) + ' (' + counts[p] + ')</option>';
+      var val = (p === 'TP.HCM') ? 'TP. Hồ Chí Minh' : p;
+      html += '<option value="' + esc(val) + '">' + esc(val) + '</option>';
     });
+    html += '<option value="Toàn quốc / Live online">Toàn quốc / Live online</option>';
     sel.innerHTML = html;
   }
 }
@@ -954,12 +964,13 @@ function initHome(){
     var q=document.getElementById('heroQ').value.trim();
     var prov=document.getElementById('heroProv').value;
     var cat=document.getElementById('heroCat').value;
-    var dest='danh-sach-mau.html'; var qs=[];
+    var dest='danh-sach-shop.html'; var qs=[];
     if(q) qs.push('q='+encodeURIComponent(q)); if(prov) qs.push('prov='+encodeURIComponent(prov)); if(cat) qs.push('cat='+encodeURIComponent(cat));
     var href=dest+(qs.length?'?'+qs.join('&'):'');
     function go(){ location.href=href; }
     // v90: dung bo loc THAT (chon tinh/linh vuc) thi tru 1 diem nhu o trang
-    // danh sach (gateFilterApply, category 'model' — dich la danh-sach-mau.html);
+    // danh sach (gateFilterApply, category 'model' — dich la danh-sach-shop.html,
+    // v96-swap: grid mau gio o trang Shop);
     // chi go tu khoa (q) thi mien phi, di thang. Doi trong 10s sau lan tru
     // truoc thi mien phi (bucket 10s, chung voi bo loc trang danh sach).
     if(!prov && !cat){ go(); return; }
@@ -1013,6 +1024,41 @@ function shopCatGroup(p){
   if(p.indexOf('công nghệ')!==-1) return 'Công nghệ';
   return 'Khác';
 }
+/* v96: bo loc chung trang Shop — anh xa gia tri "Linh vuc / Mat hang" dung
+   chung (fUniCat) ve tung he rieng: nhom shop (filterShops), linh vuc mau
+   (hub/filterModels), ma lo/xuong (data-cat). Gia tri khong co tuong duong
+   o lo/xuong (gia dung, idol, cong nghe, khac) tra ve null -> khong khop
+   the nao (hien "Chua co du lieu"), khong bia du lieu. Gia tri da la ten
+   nhom (vd tu URL cu ?cat=Thời trang) duoc giu nguyen. */
+var UNI_CAT_TO_SHOP = {'quan-ao':'Thời trang','nam':'Thời trang','nu':'Thời trang','tre-em':'Thời trang','giay-dep':'Thời trang','my-pham':'Mỹ phẩm & Làm đẹp','phu-kien':'Khác','tpcn':'Mỹ phẩm & Làm đẹp','gia-dung':'Gia dụng & Đời sống','idol':'Idol / Streamer','cong-nghe':'Công nghệ','khac':'Khác'};
+var UNI_CAT_TO_MODEL = {'quan-ao':'Thời trang','nam':'Thời trang','nu':'Thời trang','tre-em':'Thời trang','giay-dep':'Thời trang','my-pham':'Mỹ phẩm','phu-kien':'Chung / Đa ngành','tpcn':'Chung / Đa ngành','gia-dung':'Gia dụng','idol':'Chung / Đa ngành','cong-nghe':'Chung / Đa ngành','khac':'Chung / Đa ngành'};
+var UNI_CAT_TO_LOTFAC = {'quan-ao':'quan-ao','nam':'nam','nu':'nu','tre-em':'tre-em','giay-dep':'giay-dep','my-pham':'my-pham','phu-kien':'phu-kien','tpcn':'tpcn'};
+var SHOP_TO_UNI_CAT = {'Thời trang':'quan-ao','Mỹ phẩm & Làm đẹp':'my-pham','Gia dụng & Đời sống':'gia-dung','Idol / Streamer':'idol','Công nghệ':'cong-nghe','Khác':'khac'};
+function uniCatToShop(v){ return v ? (UNI_CAT_TO_SHOP[v] || v) : ''; }
+function uniCatToModel(v){ return v ? (UNI_CAT_TO_MODEL[v] || v) : ''; }
+function uniCatToLotFac(v){ return v ? (UNI_CAT_TO_LOTFAC[v] || null) : ''; }
+function shopCatToUni(v){ return v ? (SHOP_TO_UNI_CAT[v] || v) : ''; }
+/* v96-swap (08/11): doi noi dung 2 trang — trang Shop hien DANH SACH MAU,
+   trang Mau hien DANH SACH SHOP. Anh xa nguoc ten linh vuc mau -> ma dung
+   chung, de dien san dropdown fUniCat tu URL ?cat= ten linh vuc mau (tu
+   hero search / chip trang chu / hub). "Thực phẩm" khong co ma dung chung
+   tuong duong nen khong co trong bang nay; truong hop do initList dung
+   bien rieng uniModelCat de loc truc tiep theo ten linh vuc mau. */
+var MODEL_CAT_TO_UNI = {'Thời trang':'quan-ao','Mỹ phẩm':'my-pham','Gia dụng':'gia-dung','Chung / Đa ngành':'khac'};
+/* v96-swap: kieu sap xep cua bo loc chung (luong gio / luong thang) dich
+   sang sap xep mau — luong gio = luong yeu cau theo gio cua mau
+   (salaryNum); luong thang khong co truong tuong duong o mau nen dich
+   sang doanh thu da xac minh (proxy thu nhap thang cua mau). */
+function uniSortToModelSort(v){
+  if(v==='hourly-asc') return 'wage-asc';
+  if(v==='hourly-desc') return 'wage-desc';
+  if(v==='monthly-asc') return 'revenue-asc';
+  if(v==='monthly-desc') return 'revenue-desc';
+  return '';
+}
+/* v96: tinh dung chung — gia tri 'TP. Hồ Chí Minh' dung cho shop/mau; du
+   lieu xuong dung 'TP.HCM' (data-prov) nen doi khi loc xuong. */
+function uniProvToFactory(prov){ return prov === 'TP. Hồ Chí Minh' ? 'TP.HCM' : prov; }
 function filterShops(list, f){
   return list.filter(function(s){
     if(f.prov && s.province!==f.prov) return false;
@@ -1036,51 +1082,169 @@ function filterShops(list, f){
     return true;
   });
 }
-/* Trang shop: grid + bo loc (tinh / linh vuc livestream) + phan trang
-   9/trang, dong bo URL — cung khung bo cuc nhu trang Mau (section-head gon,
-   filter-card, grid, pager) nhung truong loc la nhu cau rieng cua shop
-   (khong co Gioi tinh). */
+/* v96: thanh truot chon hang muc cho bo loc chung trang Shop (danh-sach-shop.html).
+   1 khung loc dung chung cho 3 hang muc; truong khong ap dung cho hang muc
+   dang chon bi khoa (disabled + mo) va xoa gia tri. Nut Ap dung chay dung bo
+   loc cua hang muc dang chon; nut Dat lai xoa toan bo + ve hang muc mac dinh.
+   Quy tac khoa: Tinh + Linh vuc dung chung (khong khoa); Sap xep + Gio lam +
+   Loai luong + Muc luong toi thieu chi cho Tim Mau; Gia tri lo + So luong lo
+   chi cho Lo xa kho; Gia tri don + So luong toi thieu chi cho Xuong may.
+   v96-swap (08/11): hang muc Tim Mau render GRID MAU (#listGrid) tren
+   chinh trang Shop (doi noi dung 2 trang) — modelRender la ham render
+   grid mau cua initList; cong diem dung category 'model'. */
+var UNI_LOCKABLE = {
+  model: ['fUniSort','fUniShift','fUniPayType','fUniPayMin'],
+  lot: ['fUniLotPrice','fUniLotQty'],
+  factory: ['fUniFacValue','fUniFacMoq']
+};
+var UNI_LOCKABLE_ALL = ['fUniSort','fUniShift','fUniPayType','fUniPayMin','fUniLotPrice','fUniLotQty','fUniFacValue','fUniFacMoq'];
+function getUniCat(){
+  var b = document.querySelector('.uni-cat-btn.active');
+  return b ? b.getAttribute('data-uni-cat') : 'model';
+}
+function setUniCatFieldStates(cat){
+  UNI_LOCKABLE_ALL.forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var allowed = UNI_LOCKABLE[cat] && UNI_LOCKABLE[cat].indexOf(id) !== -1;
+    var wrap = el.closest ? el.closest('.uni-field') : null;
+    if(id === 'fUniPayMin'){
+      /* rieng o luong toi thieu: do mo/khoa theo loai luong (syncPayMin);
+         o day chi xu ly khi roi khoi hang muc Tim Mau. */
+      if(cat !== 'model'){ el.disabled = true; el.value = ''; if(wrap) wrap.classList.add('locked'); }
+      else if(wrap) wrap.classList.remove('locked');
+      return;
+    }
+    if(allowed){ el.disabled = false; if(wrap) wrap.classList.remove('locked'); }
+    else { el.disabled = true; el.value = ''; if(wrap) wrap.classList.add('locked'); }
+  });
+}
+/* v96: dong bo khoi hub "Tim mau cho 11.11" theo o Tinh + Linh vuc dung chung
+   khi ap dung hang muc Tim Mau — goi truc tiep ham render cua hub (khong qua
+   cong diem, vi nut Ap dung da qua cong 'shop'). */
+function syncHubFromUni(){
+  var hubProv = document.getElementById('hubProv');
+  var hubCat = document.getElementById('hubCat');
+  var box = document.getElementById('hubResults');
+  if(!hubProv || !hubCat || !box) return;
+  hubProv.value = document.getElementById('fUniProv').value;
+  var mc = uniCatToModel(document.getElementById('fUniCat').value);
+  var ok = false;
+  for(var i = 0; i < hubCat.options.length; i++){ if(hubCat.options[i].value === mc){ ok = true; break; } }
+  hubCat.value = ok ? mc : '';
+  if(typeof box._hubRender === 'function'){ box._hubRender(); }
+}
+function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
+  var btns = document.querySelectorAll('.uni-cat-btn');
+  if(!btns.length) return;
+  var applyBtn = document.getElementById('uniApplyBtn');
+  var resetBtn = document.getElementById('uniResetBtn');
+  function collapseSection(id, moreId){
+    var s = document.getElementById(id);
+    if(s) s.classList.add('collapsed');
+    var b = moreId ? document.getElementById(moreId) : null;
+    if(b){ b.setAttribute('aria-expanded','false'); b.textContent='Xem thêm ↓'; }
+  }
+  function clearUniCount(){
+    var c = document.getElementById('uniCount'); if(c) c.textContent = '';
+    var e = document.getElementById('uniEmpty'); if(e) e.hidden = true;
+  }
+  function setCat(cat){
+    btns.forEach(function(b){
+      var on = b.getAttribute('data-uni-cat') === cat;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    setUniCatFieldStates(cat);
+    if(typeof syncPayMinFn === 'function') syncPayMinFn();
+    clearUniCount();
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ setCat(b.getAttribute('data-uni-cat')); });
+  });
+  setUniCatFieldStates(getUniCat());
+  if(typeof syncPayMinFn === 'function') syncPayMinFn();
+  if(applyBtn){
+    applyBtn.addEventListener('click', function(){
+      var cat = getUniCat();
+      var b = applyBtn;
+      if(cat === 'lot'){
+        if(lotCtl && lotCtl.apply) return gateFilterApply('lot', 'danh-sach-shop.html', function(){ lotCtl.apply(); closeFilterOf(b); }, b);
+      } else if(cat === 'factory'){
+        if(facCtl && facCtl.apply) return gateFilterApply('factory', 'danh-sach-shop.html', function(){ facCtl.apply(); closeFilterOf(b); }, b);
+      }
+      return gateFilterApply('model', 'danh-sach-shop.html', function(){
+        if(typeof modelRender === 'function') modelRender(1);
+        syncHubFromUni();
+        collapseSection('lo-hang-xa-kho', 'lotMoreBtn');
+        collapseSection('xuong-may-gia-cong', 'factoryMoreBtn');
+        closeFilterOf(b);
+      }, b);
+    });
+  }
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      var card = document.getElementById('uniFilter');
+      if(card){ card.querySelectorAll('select, input').forEach(function(el){ el.value = ''; }); }
+      if(lotCtl && lotCtl.reset) lotCtl.reset();
+      if(facCtl && facCtl.reset) facCtl.reset();
+      if(typeof onResetFn === 'function') onResetFn();
+      if(typeof modelRender === 'function') modelRender(1);
+      setCat('model');
+    });
+  }
+}
+/* v96-swap (08/11): doi noi dung 2 trang — grid MAU (#listGrid) do initList
+   render tu khung loc chung; initShopPage goi ham render do qua 2 bien
+   nay khi bam Ap dung / Dat lai. uniModelCat/uniModelQ giu bo loc tu URL
+   (?cat= ten linh vuc mau khong co ma chung, ?q= tu khoa hero search). */
+var uniModelCat = null;
+var uniModelQ = '';
+var modelGridRender = null;
+var modelGridClearQ = null;
+/* v96-swap (08/11): doi noi dung 2 trang — trang Mau (danh-sach-mau.html)
+   hien DANH SACH SHOP + bo loc shop rieng (fSh*). Ham nay chi render grid
+   shop (9/trang + phan trang, dong bo URL); phan lo/xuong + khung loc chung
+   chuyen sang initShopPage (trang Shop). */
 function initShops(){
-  renderLotSections(); /* v76: render the lo/xuong TRUOC khi bo loc chup danh sach the */
-  rotateStaticGrids();
-  initLotFilter();
-  initFactoryFilter();
   initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
   var perPage=9;
-  function readForm(){return {prov:document.getElementById('fShopProv').value,cat:document.getElementById('fShopCat').value,sort:document.getElementById('fShopSort').value,shift:document.getElementById('fShopShift').value,payType:elVal('fPayType'),payMin:parseMoneyInput(elVal('fPayMin'))};}
+  /* bo loc shop trang Mau — cung truong + cung gia tri nhu bo loc chung
+     (fUni*) nhung id rieng fSh* (khong co thanh truot chon hang muc). */
+  function readForm(){return {prov:elVal('fShProv'),cat:uniCatToShop(elVal('fShCat')),sort:elVal('fShSort'),shift:elVal('fShShift'),payType:elVal('fShPayType'),payMin:parseMoneyInput(elVal('fShPayMin'))};}
   function render(pg){
     var f=readForm();
-    // v42: mac dinh (sort='') giu sortShopsNewest; chon sap xep thi dung sortShopsBy (bo qua thu tu ngay).
     var list=filterShops(f.sort ? sortShopsBy(D.shops||[],f.sort) : defaultShopOrder(D.shops||[]),f);
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):emptyResultsHTML('Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.');
-    renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); el.scrollIntoView();},perPage,'tin tuyển');
+    renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); el.scrollIntoView();},perPage,'tin tuyển');
     setParams(Object.assign({},f,{page:String(pg)}));
   }
-  // prefill from URL keys
-  if(p.prov) document.getElementById('fShopProv').value=p.prov;
-  if(p.cat) document.getElementById('fShopCat').value=p.cat;
-  if(p.sort) document.getElementById('fShopSort').value=p.sort;
-  if(p.shift) document.getElementById('fShopShift').value=p.shift;
-  if(p.paytype){ var pt=document.getElementById('fPayType'); if(pt) pt.value=p.paytype; }
-  if(p.paymin){ var pm=document.getElementById('fPayMin'); if(pm) pm.value=p.paymin; }
+  if(p.prov) document.getElementById('fShProv').value=p.prov;
+  if(p.cat) document.getElementById('fShCat').value=shopCatToUni(p.cat);
+  if(p.sort) document.getElementById('fShSort').value=p.sort;
+  if(p.shift) document.getElementById('fShShift').value=p.shift;
+  if(p.paytype){ var pt=document.getElementById('fShPayType'); if(pt) pt.value=p.paytype; }
+  if(p.paymin){ var pm=document.getElementById('fShPayMin'); if(pm) pm.value=p.paymin; }
   /* v45: o "Muc luong toi thieu" chi nhap duoc sau khi chon loai luong;
      nhan/placeholder doi theo loai; bo chon loai thi khoa + xoa gia tri. */
   function syncPayMin(){
-    var pt=elVal('fPayType');
-    var inp=document.getElementById('fPayMin'), lab=document.getElementById('fPayMinLabel');
+    var pt=elVal('fShPayType');
+    var inp=document.getElementById('fShPayMin'), lab=document.getElementById('fShPayMinLabel');
     if(!inp||!lab) return;
     if(pt==='hourly'){ lab.textContent='Lương giờ tối thiểu (đ/giờ)'; inp.placeholder='VD: 100000'; inp.disabled=false; }
     else if(pt==='monthly'){ lab.textContent='Lương tháng tối thiểu (triệu/tháng)'; inp.placeholder='VD: 15'; inp.disabled=false; }
     else { lab.textContent='Mức lương tối thiểu'; inp.placeholder='Chọn loại lương trước'; inp.disabled=true; inp.value=''; }
   }
-  var fPayTypeEl=document.getElementById('fPayType');
-  if(fPayTypeEl) fPayTypeEl.addEventListener('change',syncPayMin);
+  var fShPayTypeEl=document.getElementById('fShPayType');
+  if(fShPayTypeEl) fShPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
-  document.getElementById('applyShopBtn').addEventListener('click',function(){ var b=document.getElementById('applyShopBtn'); return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b); });
-  document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
+  var applyBtn=document.getElementById('shopApplyBtn');
+  if(applyBtn) applyBtn.addEventListener('click',function(){ var b=applyBtn; return gateFilterApply('shop', 'danh-sach-mau.html', function(){ render(1); closeFilterOf(b); }, b); });
+  var resetBtn=document.getElementById('shopResetBtn');
+  if(resetBtn) resetBtn.addEventListener('click',function(){['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
   // v91 (9): vào từ link đã lọc sẵn thì hướng ngay tới dòng kết quả /
   // bảng "Chưa có dữ liệu" (như trang Mẫu).
@@ -1089,45 +1253,109 @@ function initShops(){
       && el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'auto', block: 'start' });
   } catch (e) {}
 }
+/* v96-swap (08/11): khoi tao rieng cho trang Shop (danh-sach-shop.html) —
+   render the lo/xuong, xoay the, bo loc lo/xuong, khung loc chung
+   (uni switch). Grid mau (#listGrid) do initList render; nut Ap dung /
+   Dat lai o khung chung goi modelGridRender qua initUniCatSwitch. */
+function initShopPage(){
+  var uni=document.getElementById('uniFilter'); if(!uni) return;
+  renderLotSections(); /* v76: render the lo/xuong TRUOC khi bo loc chup danh sach the */
+  rotateStaticGrids();
+  var lotCtl = initLotFilter();
+  var facCtl = initFactoryFilter();
+  initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
+  /* v45: o "Muc luong toi thieu" chi nhap duoc sau khi chon loai luong;
+     nhan/placeholder doi theo loai; bo chon loai thi khoa + xoa gia tri.
+     v96: chi mo khi dang o hang muc Tim Mau (truong bi khoa o Lo/Xuong). */
+  function syncPayMin(){
+    var pt=elVal('fUniPayType');
+    var inp=document.getElementById('fUniPayMin'), lab=document.getElementById('fUniPayMinLabel');
+    if(!inp||!lab) return;
+    if(getUniCat()!=='model'){ lab.textContent='Mức lương tối thiểu'; inp.placeholder='Chọn loại lương trước'; inp.disabled=true; inp.value=''; return; }
+    if(pt==='hourly'){ lab.textContent='Lương giờ tối thiểu (đ/giờ)'; inp.placeholder='VD: 100000'; inp.disabled=false; }
+    else if(pt==='monthly'){ lab.textContent='Lương tháng tối thiểu (triệu/tháng)'; inp.placeholder='VD: 15'; inp.disabled=false; }
+    else { lab.textContent='Mức lương tối thiểu'; inp.placeholder='Chọn loại lương trước'; inp.disabled=true; inp.value=''; }
+  }
+  var fUniPayTypeEl=document.getElementById('fUniPayType');
+  if(fUniPayTypeEl) fUniPayTypeEl.addEventListener('change',syncPayMin);
+  syncPayMin();
+  /* v96: thanh truot chon hang muc + khoa/mo truong + nut Ap dung / Dat lai
+     dung chung cho ca 3 hang muc; hang muc Tim Mau render grid mau. */
+  initUniCatSwitch(lotCtl, facCtl, function(pg){ if(typeof modelGridRender==='function') modelGridRender(pg); }, syncPayMin, function(){ if(typeof modelGridClearQ==='function') modelGridClearQ(); });
+}
 /* List page: grid + filters + pagination 12/page, URL-synced */
+/* v96-swap (08/11): grid MAU gio o trang Shop (danh-sach-shop.html), loc
+   bang KHUNG LOC CHUNG (#uniFilter, hang muc Tim Mau) thay cho bo loc mau
+   cu (fProv...fQ da bo khoi trang Mau). Anh xa truong chung -> mau: tinh
+   truc tiep; linh vuc qua uniCatToModel (tru khi URL ?cat= la ten linh vuc
+   mau khong co ma chung, vd "Thực phẩm", thi giu bien rieng uniModelCat);
+   sap xep qua uniSortToModelSort; gio lam 'fulltime' bo qua (mau khong co
+   fulltime); luong gio -> wageMin, luong thang -> revMin (cung don vi
+   trieu). Tu khoa ?q= tu hero search duoc giu den khi bam Dat lai. Gioi
+   tinh + o tim kiem rieng cua bo loc cu khong con (khung chung khong co
+   2 truong nay). */
 function initList(){
   var grid=document.getElementById('listGrid'); if(!grid) return;
   initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  function readForm(){return {prov:document.getElementById('fProv').value,cat:document.getElementById('fCat').value,gender:document.getElementById('fGender').value,sort:document.getElementById('fSort').value,shift:document.getElementById('fShift').value,revMin:parseMoneyInput(elVal('fRevMin')),wageMin:parseMoneyInput(elVal('fWageMin')),q:document.getElementById('fQ').value.trim()};}
+  /* prefill tu URL: ?cat= co the la ten linh vuc mau (hero/chip/hub) hoac
+     ma dung chung (link cu); ?q= la tu khoa hero search. */
+  if(p.cat){
+    var mc = p.cat;
+    var uniCode = MODEL_CAT_TO_UNI[mc];
+    if(uniCode){ var fc=document.getElementById('fUniCat'); if(fc) fc.value=uniCode; uniModelCat=null; }
+    else if(UNI_CAT_TO_MODEL[mc]){ var fc2=document.getElementById('fUniCat'); if(fc2) fc2.value=mc; uniModelCat=null; }
+    else { uniModelCat=mc; }
+  }
+  if(p.q) uniModelQ=p.q;
+  if(p.prov){ var fp=document.getElementById('fUniProv'); if(fp) fp.value=p.prov; }
+  if(p.sort){ var fs=document.getElementById('fUniSort'); if(fs) fs.value=p.sort; }
+  if(p.shift){ var fh=document.getElementById('fUniShift'); if(fh) fh.value=p.shift; }
+  if(p.paytype){ var pt=document.getElementById('fUniPayType'); if(pt) pt.value=p.paytype; }
+  if(p.paymin){ var pm=document.getElementById('fUniPayMin'); if(pm) pm.value=p.paymin; }
+  /* doi dropdown Linh vuc -> xoa bien rieng (de dropdown quyet dinh). */
+  var fUniCatEl=document.getElementById('fUniCat');
+  if(fUniCatEl) fUniCatEl.addEventListener('change',function(){ uniModelCat=null; });
+  function readForm(){
+    var shift=elVal('fUniShift'); if(shift==='fulltime') shift='';
+    var payType=elVal('fUniPayType');
+    var payMin=parseMoneyInput(elVal('fUniPayMin'));
+    return {
+      prov:elVal('fUniProv'),
+      cat:(uniModelCat!==null ? uniModelCat : uniCatToModel(elVal('fUniCat'))),
+      gender:'',
+      sort:uniSortToModelSort(elVal('fUniSort')),
+      shift:shift,
+      revMin:(payType==='monthly' ? payMin : null),
+      wageMin:(payType==='hourly' ? payMin : null),
+      q:uniModelQ
+    };
+  }
   function render(pg){
     var f=readForm(); var list=filterModels(D.models,f);
     if(f.sort){
-      // v42: chon sap xep thi dung sortModelsBy (bo qua pipeline mac dinh:
-      // sap theo luot xem + xoay theo ngay se pha thu tu luong/doanh thu).
       list=sortModelsBy(list,f.sort);
     } else {
-    // v63: tach ra defaultModelOrder de khoi hub 11.11 dung DUNG thu tu nay.
-    list=defaultModelOrder(list);
+      list=defaultModelOrder(list);
     }
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
-    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();},12,'hồ sơ');
-    setParams(Object.assign({},f,{page:String(pg)}));
+    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); grid.scrollIntoView();},12,'hồ sơ');
+    /* URL giu dang ?cat= ten linh vuc mau (nhu hero/chip/hub) + cac khoa
+       cua bo loc chung; q chi ghi khi co tu khoa. */
+    var sp={prov:f.prov,cat:f.cat,sort:elVal('fUniSort'),shift:elVal('fUniShift'),paytype:elVal('fUniPayType'),paymin:elVal('fUniPayMin'),q:f.q,page:String(pg)};
+    setParams(sp);
   }
-  ['fProv','fCat','fGender','fQ'].forEach(function(id){var el=document.getElementById(id); if(el&&p[id==='fProv'?'prov':id==='fCat'?'cat':id==='fGender'?'gender':'q']) el.value=p[id==='fProv'?'prov':id==='fCat'?'cat':id==='fGender'?'gender':'q'];});
-  // prefill from URL keys
-  if(p.prov) document.getElementById('fProv').value=p.prov;
-  if(p.cat) document.getElementById('fCat').value=p.cat;
-  if(p.gender) document.getElementById('fGender').value=p.gender;
-  if(p.sort) document.getElementById('fSort').value=p.sort;
-  if(p.shift) document.getElementById('fShift').value=p.shift;
-  if(p.revmin){ var rv=document.getElementById('fRevMin'); if(rv) rv.value=p.revmin; }
-  if(p.wagemin){ var wm=document.getElementById('fWageMin'); if(wm) wm.value=p.wagemin; }
-  if(p.q) document.getElementById('fQ').value=p.q;
-  document.getElementById('applyBtn').addEventListener('click',function(){ var b=document.getElementById('applyBtn'); return gateFilterApply('model', 'danh-sach-mau.html', function(){ render(1); closeFilterOf(b); }, b); });
-  document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
+  modelGridRender=render;
+  modelGridClearQ=function(){ uniModelQ=''; uniModelCat=null; };
+  grid._modelRender=render;
+  grid._modelClearQ=modelGridClearQ;
   render(page);
   // v91 (9): vào từ link đã lọc sẵn (vd tìm kiếm hero trang chủ) thì hướng
   // ngay tới dòng kết quả / bảng "Chưa có dữ liệu", không để người dùng ở
   // đầu trang phải tự cuộn xuống.
   try {
-    if ((p.prov || p.cat || p.gender || p.sort || p.shift || p.revmin || p.wagemin || p.q)
+    if ((p.prov || p.cat || p.sort || p.shift || p.paytype || p.paymin || p.q)
       && grid && typeof grid.scrollIntoView === 'function') grid.scrollIntoView({ behavior: 'auto', block: 'start' });
   } catch (e) {}
 }
@@ -1172,22 +1400,23 @@ function hubCardHTML(m){ return cardHTML(m, {zaloHref: hubZaloHref(m), demoUrl: 
 function hubResults(prov, cat, date){
   return defaultModelOrder(filterModels(D.models, {prov: prov || '', cat: cat || ''}), date);
 }
-/* v63: link sang trang Mau dung tham so prov/cat ma initList da doc + dien
-   san vao bo loc khi tai trang (da kiem chung trong code v52). Ca 2 rong thi
-   ve trang Mau khong tham so. */
+/* v63: link sang trang danh sach mau (v96-swap: grid mau gio o trang Shop)
+   dung tham so prov/cat ma initList da doc + dien san vao bo loc khi tai
+   trang (da kiem chung trong code v52). Ca 2 rong thi ve trang Shop khong
+   tham so. */
 function hubAllLink(prov, cat){
   var qs = [];
   if(prov) qs.push('prov=' + encodeURIComponent(prov));
   if(cat) qs.push('cat=' + encodeURIComponent(cat));
-  return 'danh-sach-mau.html' + (qs.length ? '?' + qs.join('&') : '');
+  return 'danh-sach-shop.html' + (qs.length ? '?' + qs.join('&') : '');
 }
 /* v63: dong trang thai khi to hop 0 mau — chi noi dung su that + duong doi
    lua chon, khong goi y mau sai tinh/linh vuc, khong hien the trong. */
 function hubEmptyHTML(prov, cat){
   var total = (D.models || []).length;
   if(prov && cat) return 'Chưa có mẫu ' + esc(cat) + ' ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="' + hubAllLink('', cat) + '">xem tất cả mẫu ' + esc(cat) + ' →</a>';
-  if(prov) return 'Chưa có mẫu ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
-  if(cat) return 'Chưa có mẫu ' + esc(cat) + '. <a href="danh-sach-mau.html">Xem tất cả ' + total + ' mẫu →</a>';
+  if(prov) return 'Chưa có mẫu ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="danh-sach-shop.html">xem tất cả ' + total + ' mẫu →</a>';
+  if(cat) return 'Chưa có mẫu ' + esc(cat) + '. <a href="danh-sach-shop.html">Xem tất cả ' + total + ' mẫu →</a>';
   return '';
 }
 function initHub(){
@@ -1200,7 +1429,7 @@ function initHub(){
     var prov = provSel ? provSel.value : '', cat = catSel ? catSel.value : '';
     if(!prov && !cat){
       box.innerHTML = '';
-      if(countEl) countEl.innerHTML = 'Chọn tỉnh và lĩnh vực ở trên để xem mẫu phù hợp — hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
+      if(countEl) countEl.innerHTML = 'Chọn tỉnh và lĩnh vực ở trên để xem mẫu phù hợp — hoặc <a href="danh-sach-shop.html">xem tất cả ' + total + ' mẫu →</a>';
       return;
     }
     var list = hubResults(prov, cat);
@@ -1214,6 +1443,9 @@ function initHub(){
   }
   if(provSel) provSel.addEventListener('change', function(){ return gateFilterApply('model', pointsPageName(), render, provSel); });
   if(catSel) catSel.addEventListener('change', function(){ return gateFilterApply('model', pointsPageName(), render, catSel); });
+  /* v96: khung loc chung trang Shop dong bo hub khi ap dung hang muc Tim Mau
+     (goi truc tiep, khong qua cong diem). */
+  box._hubRender = render;
   render();
 }
 /* News page: newest first by default, category filter, oldest sort option.
@@ -1558,6 +1790,16 @@ function initHeaderAuth(){
     A.getSession().then(function (s) { apply(s && s.user ? s.user : null); }).catch(function () {});
     if(typeof A.onSessionChange === 'function') A.onSessionChange(function (user) { apply(user); });
   } catch (e) { /* bo qua — header giu nut Dang Nhap mac dinh */ }
+}
+/* v96: dai kich hoat ho so tren trang chu (chi index.html co phan tu
+   #kich-hoat-ho-so; trang khac khong co thi bo qua lang le). */
+function initActivationStrip(){
+  if(typeof document === 'undefined' || !document.getElementById) return;
+  if(!document.getElementById('kich-hoat-ho-so')) return;
+  try {
+    var A = (typeof window !== 'undefined') ? window.V2SActivation : null;
+    if(A && typeof A.initHomeStrip === 'function') A.initHomeStrip();
+  } catch (e) { /* bo qua — dai an mac dinh */ }
 }
 /* ---- Điểm thưởng v2: UI chạy lúc tải trang (nút, ghim, bình luận) ---- */
 function pointsScriptBase(){
@@ -2088,8 +2330,11 @@ function initTransferForm(){
   } catch (e) { /* bỏ qua — vẫn tải 1 lần lúc mở trang */ }
 }
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
-  initMobileNotice(); initHeaderAuth();
-  initHome(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm();
+  initMobileNotice(); initHeaderAuth(); initActivationStrip();
+  /* v96-swap: initShopPage TRUOC initList — renderLotSections dung lai
+     option cua #fUniProv theo tinh co xuong that; prefill URL cua initList
+     phai chay sau thi gia tri moi giu duoc. */
+  initHome(); initShopPage(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm();
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -2108,6 +2353,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, commentToggleHTML:commentToggleHTML};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

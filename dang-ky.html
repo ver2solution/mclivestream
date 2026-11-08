@@ -41,6 +41,22 @@
 <p class="auth-links"><a href="dang-nhap.html" id="goLoginLink" data-track="ve-dang-nhap">Đã có tài khoản? Đăng nhập</a></p></div>
 <div id="authUserBox" style="display:none"><p>Đã đăng nhập: <span id="authUserEmail"></span></p><p><a class="btn btn-primary" href="trang-cua-toi.html">Vào Trang của tôi →</a> <button class="btn btn-ghost btn-sm" id="authSignOut" data-track="nut-dang-xuat" type="button">Đăng xuất</button></p>
 <p class="notice">Sau khi đăng nhập, mẫu bấm vào <a href="trang-cua-toi.html">Trang của tôi</a> để tạo và sửa hồ sơ riêng. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p></div>
+<div id="activationPanel" class="activation-panel" hidden>
+<div class="activation-panel-grid">
+<div class="activation-panel-main">
+<h2 id="activationTitle">Tài khoản đã xong — tạo hồ sơ trong 2 phút</h2>
+<p id="activationSub">Shop chỉ liên hệ được với mẫu có hồ sơ. Hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.</p>
+<p id="activationPoints" class="activation-points" hidden></p>
+<p><a class="btn btn-primary" id="activationCta" href="trang-cua-toi.html" data-track="tao-ho-so-mau-sau-dang-ky">Tạo hồ sơ mẫu của tôi →</a></p>
+<p><a id="activationLater" href="danh-sach-mau.html">Để sau — xem mẫu đang được tuyển →</a></p>
+</div>
+<div class="activation-panel-prep">
+<ul class="activation-prep" id="activationPrep"><li>✓ Thông tin của bạn: họ tên, ngày sinh, quê quán</li><li>✓ Việc bạn muốn làm: nơi làm việc, lĩnh vực, kinh nghiệm, học vấn</li><li>✓ Liên hệ: số Zalo, email</li></ul>
+<p id="activationOptional">Điền thêm nếu muốn được tìm thấy nhanh hơn: lương mong muốn, lịch làm việc, ảnh, video demo.</p>
+</div>
+</div>
+<p class="activation-account">Đã đăng nhập: <span id="activationEmail"></span> · <button class="btn btn-ghost btn-sm" id="activationSignOut" type="button">Đăng xuất</button></p>
+</div>
 </section>
 <aside class="form-card auth-side" aria-label="Giới thiệu Ver2Solution">
 <h2>Vì sao tạo tài khoản Ver2Solution?</h2>
@@ -70,7 +86,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
-<script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
+<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/themes.js"></script><script src="js/app.js"></script>
 <script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
 <script>
@@ -117,7 +133,24 @@
     onSessionChange: function (user) {
       if (user && signedInNow && !redirected) {
         redirected = true;
-        setTimeout(function () { location.href = nextUrl; }, 800);
+        /* v96: tai khoan chua co ho so thi O LAI xem panel kich hoat
+           thay vi chuyen trang sau 800ms (thiet ke 08/11 — panel phai
+           doc duoc trong 5 giay sau dang ky); da co ho so hoac khong
+           xac dinh duoc thi chuyen nhu cu. Cho quyet dinh toi da 3s,
+           qua han thi chuyen nhu cu (dai trang chu se nhac lai). */
+        var went = false;
+        function go() { if (!went) { went = true; setTimeout(function () { location.href = nextUrl; }, 800); } }
+        var dec = null;
+        try { dec = (window.V2SActivation && typeof window.V2SActivation.decidePostSignup === 'function') ? window.V2SActivation.decidePostSignup(user) : null; } catch (e) { dec = null; }
+        if (dec && typeof dec.then === 'function') {
+          var settled = false;
+          var timer = setTimeout(function () { if (!settled) { settled = true; go(); } }, 3000);
+          dec.then(function (d) {
+            if (settled) return; settled = true; clearTimeout(timer);
+            if (d === 'panel') { redirected = false; /* o lai, panel se hien */ }
+            else go();
+          }, function () { if (!settled) { settled = true; clearTimeout(timer); go(); } });
+        } else { go(); }
       }
     }
   };
@@ -144,6 +177,11 @@
     chooser.hidden = false;
   });
   V2SAuthUI.initAuthUI(authCfg);
+  /* v96: panel kich hoat ho so (thiet ke 08/11) — nguoi da dang nhap
+     mo lai trang nay ma chua co ho so thi thay panel thay hop cu. */
+  if (window.V2SActivation && typeof window.V2SActivation.initRegisterPanel === 'function') {
+    window.V2SActivation.initRegisterPanel();
+  }
   /* Danh dau "vua dang ky trong luot nay" khi submit form dang ky — chi
      dung khi dang ky tra session ngay thi moi chuyen trang (that bai thi
      khong co session nen khong chuyen). */
