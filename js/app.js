@@ -1825,20 +1825,38 @@ function initNews(){
       return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">Lượt đọc: chưa kiểm chứng (tạm ghi 0) · '+(a.date||'Chưa có ngày')+'</span></span></li>';
     }).join('');
   }
-  /* v105: 2 hang tin tren muc loc (user chot 22:28 08/11) — hang 1 Tin ghim
-     (getPinnedRow: bai pinned:true + lap bang bai moi them vao web gan
-     nhat; khong co bai ghim thi hien 4 bai moi nhat), hang 2 Tin moi nhat
-     tiep theo (moi nhat theo date, loai tru bai da hien o hang 1 — khong
-     trung bai giua 2 hang). Doc lap voi bo loc ben duoi: chi render 1 lan
-     o day, render() cua loc (newsCat/newsSort) khong cham toi 2 hang nay.
-     The dung newsCardHTML khong danh so (tranh loi NEW-T1: huy hieu
-     'Tin 1–4' che nhan chuyen muc o hang ghim trang chu). */
+  /* v105: 2 hang tin tren muc loc (user chot 22:28 08/11) — hang 1 Tin ghim,
+     hang 2 Tin moi nhat tiep theo (moi nhat theo date, loai tru bai da hien
+     o hang 1 — khong trung bai giua 2 hang). Doc lap voi bo loc ben duoi:
+     chi render 1 lan o day, render() cua loc (newsCat/newsSort) khong cham
+     toi 2 hang nay. The dung newsCardHTML khong danh so (tranh loi NEW-T1:
+     huy hieu 'Tin 1–4' che nhan chuyen muc o hang ghim trang chu).
+     v106: hang 1 KHONG dung getPinnedRow() nua — getPinnedRow (v84, dung
+     chung cho hang ghim trang chu) lap cho trong bang bai moi THEM VAO WEB
+     gan nhat (dao nguoc mang, khong theo date), nen 3 bai lap lech khoi
+     thu tu ngay cua trang va bo sot bai moi thu 5, 6 (loi live v105).
+     Hang tin tuc nay lap bang BAI MOI NHAT THEO DATE (sortByDateDesc):
+     bai ghim (xep pinOrder tang dan roi date giam dan, nhu getPinnedRow)
+     len truoc, thieu thi lap bang bai moi nhat theo date; khong co bai
+     ghim thi 4 bai moi nhat theo date. getPinnedRow + hang ghim trang chu
+     GIU NGUYEN quy tac v84, khong doi. */
   function renderTopRows(){
     var pinRow=document.getElementById('newsPinnedRow');
     var newRow=document.getElementById('newsNewRow');
     if(!pinRow && !newRow) return;
-    var top1=getPinnedRow(D.articles||[]);
-    var rest=sortByDateDesc(D.articles||[]).filter(function(a){ return top1.indexOf(a)===-1; });
+    var pinned=(D.articles||[]).filter(function(a){ return !!a.pinned; });
+    pinned.sort(function(a, b){
+      var ao=(typeof a.pinOrder==='number')?a.pinOrder:Infinity;
+      var bo=(typeof b.pinOrder==='number')?b.pinOrder:Infinity;
+      if(ao!==bo) return ao-bo;
+      return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0);
+    });
+    var newest=sortByDateDesc(D.articles||[]);
+    var top1=pinned.slice(0,4);
+    for(var i=0;i<newest.length && top1.length<4;i++){
+      if(top1.indexOf(newest[i])===-1) top1.push(newest[i]);
+    }
+    var rest=newest.filter(function(a){ return top1.indexOf(a)===-1; });
     var top2=rest.slice(0,4);
     if(pinRow) pinRow.innerHTML=top1.map(function(a){ return newsCardHTML(a); }).join('');
     if(newRow) newRow.innerHTML=top2.map(function(a){ return newsCardHTML(a); }).join('');
