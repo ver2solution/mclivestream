@@ -1,0 +1,29 @@
+name: Deploy data-only (js/data.js)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dataonly:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data-only package
+        run: |
+          unzip -o mclivestream-dataonly-2026-11-08.zip -d /tmp/dataonly
+          ls -la /tmp/dataonly
+      - name: Copy data.js to js/data.js (checksum)
+        run: |
+          rsync --checksum /tmp/dataonly/data.js js/data.js
+          git status --short
+      - name: Commit js/data.js
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git add js/data.js
+          git diff --cached --quiet || git commit -m "Deploy data-only 2026-11-08: js/data.js (20 mau, 30 shop, 60 bai, 20 lo, 60 xuong, 20 kiot; fix BUG-16)"
+          git push
