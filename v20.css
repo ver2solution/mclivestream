@@ -265,6 +265,20 @@ a:hover{text-decoration:underline}
 .form-card fieldset label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:4px 12px 4px 0}
 .form-card fieldset label input{width:auto}
 .form-card fieldset input[type=text]{width:100%}
+/* v110: form Đặt câu hỏi trên trang Hỏi đáp — select 1/3 trái, textarea
+   2/3 phải (gap 12px theo chuẩn đã siết ở v108); mobile ≤600px xếp dọc,
+   ô nhập 16px để iOS không tự zoom (như .form-card v91). */
+.faq-ask{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;margin:16px 0}
+.faq-ask h2{margin:0 0 6px}
+.faq-ask p{margin:0 0 12px}
+.faq-ask-grid{display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:start}
+.faq-ask label{display:block;font-weight:800;font-size:14px}
+.faq-ask select,.faq-ask textarea{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff}
+.faq-ask textarea{min-height:110px;resize:vertical}
+.faq-ask-msg{margin:12px 0 0;font-size:14px;min-height:1.2em}
+.faq-ask-msg.ok{color:#0b7a4b}
+.faq-ask-msg.err{color:#d92b1f}
+@media(max-width:600px){.faq-ask-grid{grid-template-columns:1fr}.faq-ask select,.faq-ask textarea{font-size:16px}.faq-ask .btn{min-height:48px}}
 /* v45 auth: 1 the, 1 view hien tai 1 thoi diem (mau chuan login/signup) */
 .auth-view[hidden]{display:none}
 .auth-links{margin:14px 0 0;font-size:14px}

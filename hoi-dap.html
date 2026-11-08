@@ -33,6 +33,40 @@
 <section class="section"><h1>Hỏi đáp nhanh</h1>
 <p>Những câu hỏi thường gặp về sàn việc làm MC Livestream Ver2Solution. Chưa thấy câu trả lời mình cần? Nhắn Zalo Ver2Solution 032 998 3699.</p></section>
 
+<!-- v110: form Đặt câu hỏi — thu thập thắc mắc/trải nghiệm người dùng để
+     Ryan sửa code ngay khi có người hỏi. Select mục tính năng 1/3 trái,
+     textarea 2/3 phải; mobile ≤600px xếp dọc (CSS .faq-ask v20.css).
+     Gửi vào bảng Supabase faq_questions (xem js/faq-ask.js); KHÔNG cộng xu. -->
+<section class="section faq-ask" id="faqAsk" aria-label="Đặt câu hỏi cho Ver2Solution">
+<h2>Đặt câu hỏi cho Ver2Solution</h2>
+<p>Chưa thấy câu trả lời mình cần? Ghi câu hỏi của bạn ở đây — Ver2Solution đọc từng câu và sửa web ngay khi có người hỏi.</p>
+<form id="faqAskForm" class="faq-ask-form" novalidate>
+<div class="faq-ask-grid">
+<label class="faq-ask-cat">Mục tính năng
+<select id="faqAskCategory" name="faqAskCategory" required>
+<option value="">— Chọn mục tính năng —</option>
+<option value="dang_ky">Đăng ký tài khoản</option>
+<option value="dang_nhap">Đăng nhập</option>
+<option value="tim_mau">Tìm mẫu livestream</option>
+<option value="tim_shop">Tìm shop tuyển mẫu</option>
+<option value="thanh_ly_kiot">Thanh lý kiot</option>
+<option value="lo_xuong">Lô / Xưởng</option>
+<option value="xu">Xu (điểm thưởng)</option>
+<option value="ghim_top">Ghim / Lên top</option>
+<option value="binh_luan">Bình luận</option>
+<option value="loi_hien_thi">Lỗi hiển thị</option>
+<option value="khac">Khác</option>
+</select>
+</label>
+<label class="faq-ask-text">Câu hỏi của bạn
+<textarea id="faqAskText" name="faqAskText" rows="4" minlength="10" maxlength="2000" required placeholder="Ví dụ: Tôi bấm nút Đăng ký mà trang không chuyển, phải làm sao?"></textarea>
+</label>
+</div>
+<p class="faq-ask-msg" id="faqAskMsg" role="status"></p>
+<button class="btn btn-primary" type="submit" id="faqAskSubmit">Gửi câu hỏi</button>
+</form>
+</section>
+
 <section class="section"><div class="steps">
 <div class="step"><h3>Xem hồ sơ có cần đăng nhập không?</h3><p>Không. Khách xem đủ hồ sơ không cần đăng nhập. Chỉ mẫu tự đăng hoặc sửa hồ sơ mới cần đăng nhập.</p></div>
 <div class="step"><h3>Số riêng của mẫu có hiện trên web không?</h3><p>Web hiện thông tin liên hệ mà mẫu/shop tự công khai trong bài đăng hoặc trên fanpage (số điện thoại, Zalo, email, link mạng xã hội). Số riêng tư chưa công khai thì không hiện. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Mẫu muốn gỡ hồ sơ bấm “Yêu cầu gỡ hồ sơ”.</p></div>
@@ -52,5 +86,6 @@
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script>
+<script src="js/faq-ask.js"></script>
 <script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
 </body></html>
