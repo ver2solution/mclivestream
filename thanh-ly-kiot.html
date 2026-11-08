@@ -44,7 +44,7 @@
 <option value="hang-ton-kho">Hàng tồn kho</option>
 <option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></label>
 </div>
-<div id="kiotList"></div>
+<div id="kiotList" class="lot-grid"></div>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p></section>
 
 <section class="form-card"><h2>Thanh lý kiot gồm những gì?</h2>
@@ -89,7 +89,7 @@
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
   // v91 (7): tối đa 10 hàng — chỉ hiện 10 tin mới nhất (sắp theo ngày đăng
   // giảm dần); lọc thì cũng tối đa 10 tin khớp mới nhất. Ngày dạng DD/MM/YYYY.
-  var KIOT_MAX_ROWS = 10;
+  var KIOT_MAX_ROWS = 12;
   function kiotTime(k){
     var p = String(k.date || '').split('/');
     if (p.length !== 3) return 0;
@@ -106,7 +106,7 @@
     var total = show.length;
     var rows = show.slice(0, KIOT_MAX_ROWS);
     list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join('') // v92 (C2): nut Binh luan duoi moi the kiot
-      + (total > KIOT_MAX_ROWS ? '<p class="filter-count">Đang hiện 10 tin mới nhất trong ' + total + ' tin khớp.</p>' : '');
+      + (total > KIOT_MAX_ROWS ? '<p class="filter-count">Đang hiện 12 tin mới nhất trong ' + total + ' tin khớp.</p>' : '');
   }
   // v91 (9): đổi bộ lọc thì hướng ngay tới dòng kết quả / bảng "Chưa có
   // dữ liệu" (cuộn tới #kiotList, có scroll-margin để header không che).
