@@ -1,0 +1,35 @@
+name: Deploy v96
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v96.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v96:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v96 deploy package
+        run: |
+          unzip -o mclivestream-v96-deploy.zip
+          ls -l index.html danh-sach-shop.html danh-sach-mau.html dang-ky.html v20.css sw.js js/app.js js/auth-ui.js js/activation.js
+          sha256sum index.html danh-sach-shop.html danh-sach-mau.html dang-ky.html v20.css sw.js js/app.js js/auth-ui.js js/activation.js
+          grep -q "v96-shell-1" sw.js && echo "sw.js CACHE OK: v96-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html danh-sach-shop.html danh-sach-mau.html dang-ky.html v20.css sw.js js/app.js js/auth-ui.js js/activation.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v96: gop bo loc, doi trang Mau/Shop, kich hoat ho so 2 phut, cache v96-shell-1"
+            git push
+          fi
