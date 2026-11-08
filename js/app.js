@@ -1285,7 +1285,7 @@ function initHome(){
   });
 }
 /* Shop page (v22): all public job posts, newest first, rendered from D.shops */
-/* v38: trang danh sach shop phan trang 9/trang (3 hang x 3 cot), dong bo
+/* v38: trang danh sach shop phan trang 12/trang (2 hang x 6 cot), dong bo
    URL ?page= nhu trang mau; dong dem hien theo trang hien tai. */
 /* v38c: nhom linh vuc rong cho bo loc shop — truong product cua shop la
    chu tu do (vd "Thời trang nữ size S–M", "Idol Livestream") nen gom ve
@@ -1541,13 +1541,13 @@ var modelGridRender = null;
 var modelGridClearQ = null;
 /* v96-swap (08/11): doi noi dung 2 trang — trang Mau (danh-sach-mau.html)
    hien DANH SACH SHOP + bo loc shop rieng (fSh*). Ham nay chi render grid
-   shop (9/trang + phan trang, dong bo URL); phan lo/xuong + khung loc chung
+   shop (12/trang + phan trang, dong bo URL); phan lo/xuong + khung loc chung
    chuyen sang initShopPage (trang Shop). */
 function initShops(){
   initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var el=document.getElementById('publicShopsList'); if(!el) return;
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  var perPage=9;
+  var perPage=12;
   /* bo loc shop trang Mau — cung truong + cung gia tri nhu bo loc chung
      (fUni*) nhung id rieng fSh* (khong co thanh truot chon hang muc). */
   function readForm(){return {prov:elVal('fShProv'),cat:uniCatToShop(elVal('fShCat')),sort:elVal('fShSort'),shift:elVal('fShShift'),payType:elVal('fShPayType'),payMin:parseMoneyInput(elVal('fShPayMin'))};}
