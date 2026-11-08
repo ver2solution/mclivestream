@@ -1,5 +1,7 @@
 /* v76 data: them 2 mang "lots" (13 lo: 8 nhom 1 + 3 nhom 2 + 2 nhom 3) va "factories" (20 xuong) —
    v83 them lot-14 (Si Shoes 1996, giay si 99K-199K, 24/10/2026, nhom 1): 14 lo (9 nhom 1 + 3 nhom 2 + 2 nhom 3).
+   v92 them 3 lo (lot-15 OTOFUN balo/tui 330K-770K 06/11/2026; lot-16 giay si 680K 24/10/2026; lot-17 giay si chau Au 750K 14/10/2026, nhom 1): 17 lo (12 nhom 1 + 3 nhom 2 + 2 nhom 3).
+   v92 them 3 lo (lot-18/19/20 Thanh Loan Hang Thung, YouTube 16-22/10/2026, nhom 3 — ban le tung chiec): 20 lo (12 nhom 1 + 3 nhom 2 + 5 nhom 3).
    v83 them 20 xuong may (fac-21..fac-40, cron xuong may 07/11/2026): 40 xuong (TP.HCM 16, Ha Noi 11, Da Nang 3, Binh Duong 5, Nam Dinh 3, Hung Yen 1, Dong Nai 1).
    chuyen NGUYEN VEN tu the HTML tinh trong danh-sach-shop.html (v75) sang data.js; trang Shop render the tu
    data.js, trang chu tinh so PR tu data.js (khong con so ghi cung can cap nhat tay). Quy tac 60 ngay: chi ap
@@ -2048,6 +2050,96 @@ window.V20_DATA = {
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
      "url": "https://www.youtube.com/watch?v=4byznxwITAU",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-15",
+     "group": 1,
+     "title": "Balo, túi xách, túi đeo chéo Nike/Adidas/Puma — nguyend8x (OTOFUN, Hoàng Văn Thái, Thanh Xuân)",
+     "price": "330.000đ–770.000đ/món",
+     "priceNum": 330000,
+     "qty": null,
+     "cat": "phu-kien",
+     "meta": "Balo Nike Utility Elite 2.0 770K · Utility Power 2.0 730K · Utility Speed 27L 600K · Túi trống Nike Duffle 31L 450K · Túi Jordan Rise 330K · Hàng chính hãng có sẵn · Kênh: OTOFUN · Zalo 0913022888 · Hoàng Văn Thái, Thanh Xuân, Hà Nội",
+     "date": "06/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.otofun.net.vn/threads/balo-tui-xach-tui-deo-cheo-nike-adidas-puma-columbia-lululemon.1970621/",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-16",
+     "group": 1,
+     "title": "Lô giày si tuyển chọn nước 1, mới 99% — 680K/đôi (Zalo 0969448688)",
+     "price": "680.000đ/đôi",
+     "priceNum": 680000,
+     "qty": null,
+     "cat": "giay-dep",
+     "meta": "Giày si tuyển chọn nước 1, mới 99% · Kênh: YouTube · Zalo 0969448688",
+     "date": "24/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=Y4-huVxYk38",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-17",
+     "group": 1,
+     "title": "Lô giày si tây châu Âu tuyển đẹp — 750K/đôi, bao ship (Zalo 0969448688)",
+     "price": "750.000đ/đôi",
+     "priceNum": 750000,
+     "qty": null,
+     "cat": "giay-dep",
+     "meta": "Giày si tây châu Âu đã qua sử dụng, tuyển đẹp · Bao ship toàn quốc · Kênh: YouTube · Zalo 0969448688",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=cONEo9cqxqo",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-18",
+     "group": 3,
+     "title": "Áo ba lỗ Nhật tổng hợp — 30K–180K/chiếc, bao ship (Thanh Loan Hàng Thùng)",
+     "price": "30.000đ–180.000đ/chiếc",
+     "priceNum": 30000,
+     "qty": null,
+     "cat": "nam",
+     "meta": "Áo ba lỗ nam Nhật, hàng thùng tổng hợp · Các hãng Nike, Adidas, Uniqlo, GU (hàng si) · Giá 30K–180K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "date": "19/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=eFY4SxbS53M",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-19",
+     "group": 3,
+     "title": "Áo thun không cổ ngắn tay Nhật — 50K–200K/chiếc, bao ship (Thanh Loan Hàng Thùng)",
+     "price": "50.000đ–200.000đ/chiếc",
+     "priceNum": 50000,
+     "qty": null,
+     "cat": "nam",
+     "meta": "Áo thun không cổ ngắn tay nam, hàng Nhật tổng hợp · Giá 50K–200K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=i1o9U28A5kI",
+     "linkText": "Xem bài đăng gốc →"
+   },
+   {
+     "id": "lot-20",
+     "group": 3,
+     "title": "Quần sooc nam Nhật bãi — 60K–150K/chiếc, bao ship (Thanh Loan Hàng Thùng)",
+     "price": "60.000đ–150.000đ/chiếc",
+     "priceNum": 60000,
+     "qty": null,
+     "cat": "nam",
+     "meta": "Quần sooc/short nam Nhật bãi tuyển chọn · Giá 60K–150K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "date": "22/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=OG-pBoxCF5o",
      "linkText": "Xem bài đăng gốc →"
    }
  ],
