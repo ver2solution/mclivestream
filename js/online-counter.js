@@ -46,8 +46,8 @@
      chỉ đọc + hiển thị lại (qua sự kiện storage + timer của chính nó),
      nên mở 3 tab cũng chỉ tăng đúng nhịp 1 tab. Heartbeat presence thì
      KHÔNG gộp — mỗi tab là 1 người xem thật nên vẫn gửi riêng.
-   - v91 (BUG-06): popup đăng ký lại dòng điểm qua onSessionChange của
-     auth-ui.js (đăng xuất → ẩn dòng điểm ngay, không đợi chu kỳ 60s).
+   - v91 (BUG-06): popup đăng ký lại dòng xu qua onSessionChange của
+     auth-ui.js (đăng xuất → ẩn dòng xu ngay, không đợi chu kỳ 60s).
    - Fallback: không gọi được server (chưa chạy migration M8 / mất mạng)
      thì chỉ hiện số ảo (mức gốc + tick local). Mọi lỗi đều nuốt lặng —
      bộ đếm không bao giờ làm vỡ trang.
@@ -63,8 +63,8 @@
    còn có 1 popup nổi (.online-popup, fixed góc phải dưới) với biểu tượng
    sạp hàng vẽ bằng SVG inline (không emoji) — hiện LUÔN số người đang
    online, dùng đúng số gộp như badge (không tính lại logic đếm). Đã đăng
-   nhập thì hiện thêm dòng "Đã tiêu: Y điểm • Còn lại: Z điểm" (lấy qua
-   Ver2Reward.getMyPointsSummary(); chưa đăng nhập / lỗi thì ẩn dòng điểm).
+   nhập thì hiện thêm dòng "Đã tiêu: Y xu • Còn lại: Z xu" (lấy qua
+   Ver2Reward.getMyPointsSummary(); chưa đăng nhập / lỗi thì ẩn dòng xu).
    Nút đóng (×) ẩn popup trong phiên hiện tại (sessionStorage
    v20_online_popup_closed). Popup KHÔNG chứa mục góp ý; nút góp ý 💬 trên
    các trang bài viết là tính năng riêng, không đụng tới. */
@@ -406,8 +406,8 @@
     return el ? el.getAttribute('data-online') : null;
   }
 
-  // Dòng điểm trong popup: chỉ hiện khi đã đăng nhập và RPC trả về.
-  // Chưa đăng nhập / RPC lỗi / M7 chưa chạy → ẩn dòng điểm, KHÔNG hiện 0
+  // Dòng xu trong popup: chỉ hiện khi đã đăng nhập và RPC trả về.
+  // Chưa đăng nhập / RPC lỗi / M7 chưa chạy → ẩn dòng xu, KHÔNG hiện 0
   // gây hiểu nhầm. Mọi lỗi nuốt lặng — popup không bao giờ làm vỡ trang.
   function fetchPoints() {
     var line = null;
@@ -461,7 +461,7 @@
     render();
     initPopup();
     // v91 (BUG-06): phiên đổi (đăng nhập/đăng xuất) thì làm mới NGAY dòng
-    // điểm popup — đăng xuất không còn giữ dòng điểm cũ tới chu kỳ 60s.
+    // xu popup — đăng xuất không còn giữ dòng xu cũ tới chu kỳ 60s.
     try {
       var A = window.V2SAuthUI;
       if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function () { fetchPoints(); });

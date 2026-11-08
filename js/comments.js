@@ -10,25 +10,25 @@
    target_type của bảng comments (file riêng, CHƯA chạy live) thì 3 loại
    mới mới INSERT được; client đã chấp nhận trước để không chặn UI.
    - Bình luận mới LUÔN ở trạng thái chờ duyệt (moderation_status='pending'),
-     KHÔNG tự duyệt, KHÔNG tự cộng điểm lúc gửi (points 0 ở phía client).
-   - Điểm bình luận v2 (+10, tối đa 1 lần/ngày toàn site) được cộng qua RPC
-     award_interaction_points() của js/reward.js — chỉ hiện "+10 điểm" khi
+     KHÔNG tự duyệt, KHÔNG tự cộng xu lúc gửi (points 0 ở phía client).
+   - Xu bình luận v2 (+10, tối đa 1 lần/ngày toàn site) được cộng qua RPC
+     award_interaction_points() của js/reward.js — chỉ hiện "+10 xu" khi
      RPC thực sự trả 10; trả 0 nghĩa là đã tính loại này hôm nay.
    - v95: khách vãng lai bình luận ĐƠN GIẢN — chỉ 1 ô bình luận, không cần
      tên, không luật 20 ký tự (chỉ cần ≥2 ký tự, khớp CHECK của bảng
      comments), ghi chú rõ không cần đăng nhập; tên mặc định "Khách Vãng
-     Lai", 0 điểm. Người đã đăng nhập giữ form đầy đủ + luật ≥20 ký tự
-     để tính điểm +10.
+     Lai", 0 xu. Người đã đăng nhập giữ form đầy đủ + luật ≥20 ký tự
+     để tính xu +10.
    - Client không bao giờ đọc/ghi points_ledger hay wallet_balances.
    RPC/bảng chưa có (M6/M7 chưa chạy) thì form báo lỗi rõ, không vỡ trang. */
 (function () {
   'use strict';
-  var GUEST_NOTE = 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng điểm thưởng, đổi quà.';
+  var GUEST_NOTE = 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng xu thưởng, đổi quà.';
   // v95: ghi chú cho form khách đơn giản — rõ ràng là KHÔNG cần đăng nhập.
   // GUEST_NOTE cũ giữ lại (đã export) để không vỡ code khác, nhưng form
   // khách không dùng nữa.
   var GUEST_SIMPLE_NOTE = 'Bình luận với tên Khách Vãng Lai — không cần đăng nhập.';
-  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 10 điểm (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
+  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 10 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
@@ -77,8 +77,8 @@
 
   // Gửi 1 bình luận: gọi RPC submit_comment (SECURITY DEFINER, bypass RLS
   // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501), rồi (nếu đã đăng
-  // nhập) gọi RPC tính điểm. Validate: đã đăng nhập → ≥20 ký tự
-  // (validateComment của js/reward.js, để tính điểm +10); khách vãng lai
+  // nhập) gọi RPC tính xu. Validate: đã đăng nhập → ≥20 ký tự
+  // (validateComment của js/reward.js, để tính xu +10); khách vãng lai
   // → chỉ cần viết gì đó (≥2 ký tự, v95 — khớp CHECK của bảng comments;
   // chặn link + chống spam do RPC lo). Trả {ok, points, message} — KHÔNG
   // ném lỗi.
@@ -101,7 +101,7 @@
     // NEW-01 (08/11): INSERT trực tiếp bị RLS chặn (42501) dù policy cho
     // phép — gửi bình luận qua RPC SECURITY DEFINER submit_comment() thay
     // cho INSERT trực tiếp. RPC tự validate + chống spam (luật M7.9b) và
-    // luôn tạo bình luận ở trạng thái pending; điểm chỉ cộng sau khi duyệt.
+    // luôn tạo bình luận ở trạng thái pending; xu chỉ cộng sau khi duyệt.
     // p_auth_user_id: uid của tài khoản đang đăng nhập, null khi khách vãng lai.
     try {
       var res = await a.client.rpc('submit_comment', {
@@ -113,14 +113,14 @@
     } catch (e) {
       return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String((e && e.message) || e) };
     }
-    // Bình luận đã gửi (đang chờ duyệt). Điểm chỉ tính sau khi duyệt — gọi
+    // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt — gọi
     // RPC ngay để hệ thống ghi nhận lượt trong ngày; RPC/M7 là nơi quyết
     // định có cộng hay không (0 = đã tính loại này hôm nay).
     var points = 0, pointsMsg = '';
     if (user && R && typeof R.awardInteraction === 'function') {
       var r = await R.awardInteraction('comment', targetType, targetRef);
-      if (r && r.ok && Number(r.points) > 0) { points = Number(r.points); pointsMsg = ' +' + points + ' điểm (1 lần/ngày)'; }
-      else if (r && r.ok) { pointsMsg = 'Đã tính điểm bình luận hôm nay'; }
+      if (r && r.ok && Number(r.points) > 0) { points = Number(r.points); pointsMsg = ' +' + points + ' xu (1 lần/ngày)'; }
+      else if (r && r.ok) { pointsMsg = 'Đã tính xu bình luận hôm nay'; }
     }
     return { ok: true, points: points, message: 'Bình luận đã gửi, đang chờ duyệt.' + (pointsMsg ? ' ' + pointsMsg : '') };
   }
@@ -133,7 +133,7 @@
     var user = await currentUser();
     // v95: khách vãng lai thấy form ĐƠN GIẢN — chỉ 1 ô bình luận, không ô
     // tên, không minlength, ghi chú rõ không cần đăng nhập. Người đã đăng
-    // nhập giữ form đầy đủ (ô tên + minlength=20 để tính điểm).
+    // nhập giữ form đầy đủ (ô tên + minlength=20 để tính xu).
     var note, formHTML;
     if (user) {
       note = '<p class="v2s-note">' + esc(LOGGED_IN_NOTE) + '</p>';

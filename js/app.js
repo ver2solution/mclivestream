@@ -180,10 +180,10 @@ function ownerNoteHTML(kind){
   var loginHref = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
   return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
 }
-/* ---- Điểm thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
+/* ---- Xu thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
    Xem goals/.../diem-thuong-v2-2026-11-07.md. Client chỉ gọi RPC M7 qua
    window.Ver2Reward (awardInteraction / pinPost / getMyPointsBalance);
-   RPC chưa có thì nút báo "chưa bật", không vỡ trang. Khách vãng lai: 0 điểm,
+   RPC chưa có thì nút báo "chưa bật", không vỡ trang. Khách vãng lai: 0 xu,
    bấm nút chỉ thấy ghi chú đăng nhập. */
 function pointsButtonsHTML(targetType, targetId){
   return '<span class="v2s-points-row" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
@@ -410,15 +410,15 @@ function contactsBlockHTML(contacts, trackAttr){
   if(!contacts || !contacts.length) return '';
   return '<ul class="contact-list">'+contacts.map(function(c){ return contactItemHTML(c, trackAttr); }).join('')+'</ul>';
 }
-/* Điểm v2 (GĐ2, 20:22 07/11): xem liên hệ 1 hồ sơ = 5 điểm/lần bấm (1 lần/
+/* Xu v2 (GĐ2, 20:22 07/11): xem liên hệ 1 hồ sơ = 5 xu/lần bấm (1 lần/
    ngày/hồ sơ). contactsBlockHTML() giữ nguyên (render danh sách đầy đủ,
-   dùng sau khi đã trả điểm + test cũ); hàm này bọc nó trong khối ẩn + nút
+   dùng sau khi đã trả xu + test cũ); hàm này bọc nó trong khối ẩn + nút
    "Xem liên hệ". LƯU Ý: số liên hệ vẫn nằm trong js/data.js công
-   khai nên đây là cửa thu điểm ở giao diện, không phải kiểm soát truy cập
+   khai nên đây là cửa thu xu ở giao diện, không phải kiểm soát truy cập
    thật — xem spec §12. Nút bấm được xử lý tập trung trong initPointsUI.
    v92 (08/11/2026): xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES ở
-   js/reward.js) — nhãn nút bỏ "(5 điểm)", bấm hiện ngay không trừ điểm;
-   code trừ điểm giữ nguyên để mở lại chỉ bằng 1 cờ. */
+   js/reward.js) — nhãn nút bỏ "(5 xu)", bấm hiện ngay không trừ xu;
+   code trừ xu giữ nguyên để mở lại chỉ bằng 1 cờ. */
 function gatedContactsHTML(targetType, targetId, contacts){
   if(!contacts || !contacts.length) return '';
   var trackAttr = targetType==='model_profile' ? 'data-track="nhan-zalo-mau"' : 'data-track="nhan-zalo-shop"';
@@ -1254,12 +1254,12 @@ function initHome(){
         var msgEl=filterMsgEl(form);
         function say(html){ if(msgEl) msgEl.innerHTML=html; }
         if(!user){
-          say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 điểm thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+          say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
           return;
         }
         var R2=window.Ver2Reward;
-        if(R2 && R2.FREE_SERVICES===true){ go(); return; } // v92: lọc tạm miễn phí, không trừ điểm
-        if(!R2 || typeof R2.spendPoints !== 'function'){ say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return; }
+        if(R2 && R2.FREE_SERVICES===true){ go(); return; } // v92: lọc tạm miễn phí, không trừ xu
+        if(!R2 || typeof R2.spendPoints !== 'function'){ say('Hệ thống xu chưa bật (đang chờ migration M7), chưa lọc được.'); return; }
         var now=Date.now();
         if(typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge('model'), now)){ go(); return; }
         var bucket=(typeof R2.filterChargeBucket === 'function') ? R2.filterChargeBucket(now) : Math.floor(now/10000);
@@ -1267,7 +1267,7 @@ function initHome(){
         return R2.spendPoints('filter',1,'model','index.html',key).then(function(res){
           if(res && res.ok){ filterNoteCharge('model', now); go(); return; }
           if(res && res.code === 'insufficient_balance'){
-            say('Bạn đã hết điểm để lọc. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>');
+            say('Bạn đã hết xu để lọc. <a href="huong-dan-diem.html">Xem cách kiếm xu →</a>');
             return;
           }
           // Loi he thong/RPC: khong chan nguoi dung, van chuyen + ghi log.
@@ -2039,19 +2039,19 @@ function initHeaderAuth(){
   // Tien to thu muc ('' o trang goc, '../' o trang bai-viet) de link
   // Trang cua toi / Trang chu khong tro thanh 404 o trang bai-viet.
   var pathPrefix = (btn._loginHref && btn._loginHref.indexOf('../') === 0) ? '../' : '';
-  // Điểm v2 (GĐ2, 20:22 07/11): khi đã đăng nhập, header hiện số dư điểm
-  // cạnh tên người dùng, dạng "Tên · 250 điểm". Lỗi/mất mạng/RPC chưa có
+  // Xu v2 (GĐ2, 20:22 07/11): khi đã đăng nhập, header hiện số dư xu
+  // cạnh tên người dùng, dạng "Tên · 250 xu". Lỗi/mất mạng/RPC chưa có
   // thì KHÔNG hiện số dư (không vỡ header, không hiện 0 giả).
   var headerName = null, headerBalance = null;
   var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
   function renderHeaderLabel(){
     if(headerName === null) return;
-    btn.textContent = headerName + (headerBalance === null ? '' : ' · ' + headerBalance + ' điểm');
+    btn.textContent = headerName + (headerBalance === null ? '' : ' · ' + headerBalance + ' xu');
     // v90 (F): dong bo ten + diem vao dropdown dang xuat.
     if(menuNameEl) menuNameEl.textContent = headerName;
     if(menuPointsEl){
       if(headerBalance === null){ menuPointsEl.hidden = true; }
-      else { menuPointsEl.hidden = false; menuPointsEl.textContent = 'Còn lại: ' + headerBalance + ' điểm'; }
+      else { menuPointsEl.hidden = false; menuPointsEl.textContent = 'Còn lại: ' + headerBalance + ' xu'; }
     }
   }
   function loadHeaderBalance(){
@@ -2187,7 +2187,7 @@ function initActivationStrip(){
     if(A && typeof A.initHomeStrip === 'function') A.initHomeStrip();
   } catch (e) { /* bo qua — dai an mac dinh */ }
 }
-/* ---- Điểm thưởng v2: UI chạy lúc tải trang (nút, ghim, bình luận) ---- */
+/* ---- Xu thưởng v2: UI chạy lúc tải trang (nút, ghim, bình luận) ---- */
 function pointsScriptBase(){
   try { return String(location.pathname || '').indexOf('/bai-viet/') !== -1 ? '../js/' : 'js/'; }
   catch (e) { return 'js/'; }
@@ -2223,7 +2223,7 @@ function pointsLoggedIn(){
   return Promise.resolve(false);
 }
 function pointsGuestNoteHTML(){
-  return 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng điểm thưởng, đổi quà. <a href="dang-ky.html">Đăng ký</a> · <a href="dang-nhap.html">Đăng nhập</a>';
+  return 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng xu thưởng, đổi quà. <a href="dang-ky.html">Đăng ký</a> · <a href="dang-nhap.html">Đăng nhập</a>';
 }
 function pointsSessionUser(){
   try {
@@ -2242,11 +2242,11 @@ function pointsPageName(){
   try { var parts = String(location.pathname || '').split('/'); return parts[parts.length - 1] || 'index.html'; }
   catch (e) { return 'index.html'; }
 }
-// ---- Điểm v2: cổng thu điểm cho bộ lọc (1 điểm/lần, chốt 20:22 07/11) ----
+// ---- Xu v2: cổng thu xu cho bộ lọc (1 xu/lần, chốt 20:22 07/11) ----
 // gateFilterApply(category, page, doApply, msgAnchor): chỉ chạy doApply()
-// khi đã trừ được 1 điểm (hoặc lần đổi trong 10s sau lần trừ trước —
+// khi đã trừ được 1 xu (hoặc lần đổi trong 10s sau lần trừ trước —
 // dedup phía client, RPC cũng chống trừ lặp bằng key theo bucket 10s).
-// Khách chưa đăng nhập → hiện lời mời đăng ký thay vì lọc. Hết điểm →
+// Khách chưa đăng nhập → hiện lời mời đăng ký thay vì lọc. Hết xu →
 // hiện thông báo + link hướng dẫn, KHÔNG áp dụng bộ lọc mới. RPC spend_points
 // chưa có (M7 chưa chạy phần này) → báo rõ "chưa bật", KHÔNG lọc khống.
 var lastFilterCharge = {};
@@ -2306,21 +2306,21 @@ function gateFilterApply(category, page, doApply, msgAnchor){
       var msgEl = msgAnchor ? filterMsgEl(msgAnchor) : null;
       function say(html){ if (msgEl) msgEl.innerHTML = html; }
       if (!user) {
-        say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 điểm thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+        say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
         return false;
       }
       var R2 = window.Ver2Reward;
       // v92: lọc tạm miễn phí (cờ V20_FREE_SERVICES ở js/reward.js) — áp
-      // dụng ngay, không trừ điểm, không hiện thông báo hết điểm. Cửa đăng
+      // dụng ngay, không trừ xu, không hiện thông báo hết xu. Cửa đăng
       // nhập cho khách vãng lai đã kiểm tra ở trên, giữ nguyên. R2 không có
       // cờ FREE_SERVICES (bản reward.js cũ / mock test) thì đi đường trừ
-      // điểm như cũ.
+      // xu như cũ.
       if (R2 && R2.FREE_SERVICES === true) {
         try { doApply(); } catch (e) {}
         scrollToResults(category);
         return true;
       }
-      if (!R2 || typeof R2.spendPoints !== 'function') { say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return false; }
+      if (!R2 || typeof R2.spendPoints !== 'function') { say('Hệ thống xu chưa bật (đang chờ migration M7), chưa lọc được.'); return false; }
       var now = Date.now();
       if (typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge(category), now)) {
         try { doApply(); } catch (e) {}
@@ -2338,7 +2338,7 @@ function gateFilterApply(category, page, doApply, msgAnchor){
           // dung bo loc, chi hien "Da tru 1 diem.").
           var bal = (res && typeof res.balance === 'number') ? res.balance : null;
           function showCharged(){
-            say(bal !== null ? ('Đã trừ 1 điểm • Còn lại: ' + bal + ' điểm') : 'Đã trừ 1 điểm.');
+            say(bal !== null ? ('Đã trừ 1 xu • Còn lại: ' + bal + ' xu') : 'Đã trừ 1 xu.');
             try { doApply(); } catch (e) {}
             scrollToResults(category); // v90 (3): tru diem xong cuon toi ket qua
             return true;
@@ -2353,10 +2353,10 @@ function gateFilterApply(category, page, doApply, msgAnchor){
           return showCharged();
         }
         if (res && res.code === 'insufficient_balance') {
-          say('Bạn đã hết điểm để lọc. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>');
+          say('Bạn đã hết xu để lọc. <a href="huong-dan-diem.html">Xem cách kiếm xu →</a>');
           return false;
         }
-        say('Chưa lọc được: ' + esc((res && res.error) || 'hệ thống điểm chưa bật.') + ' <a href="huong-dan-diem.html">Hướng dẫn kiếm điểm</a>');
+        say('Chưa lọc được: ' + esc((res && res.error) || 'hệ thống xu chưa bật.') + ' <a href="huong-dan-diem.html">Hướng dẫn kiếm xu</a>');
         return false;
       });
     });
@@ -2447,9 +2447,9 @@ function mountPointsDetail(targetType, targetId){
   if (document.getElementById('v2sPinBox')) return; // chỉ gắn 1 lần
   var wrap = document.createElement('div');
   wrap.innerHTML = '<section class="v2s-pin-box" id="v2sPinBox" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
-    + '<h2>📌 Ghim lên top bằng điểm</h2>'
-    + '<p class="v2s-pin-balance">Số dư điểm của bạn: <b>…</b></p>'
-    + '<p>1 điểm = 1 giờ ghim. Sau khi hết hạn ghim, bài trở về thứ tự thường.</p>'
+    + '<h2>📌 Ghim lên top bằng xu</h2>'
+    + '<p class="v2s-pin-balance">Số dư xu của bạn: <b>…</b></p>'
+    + '<p>1 xu = 1 giờ ghim. Sau khi hết hạn ghim, bài trở về thứ tự thường.</p>'
     + '<label>Số giờ ghim (1–720)<input type="number" class="v2s-pin-hours" min="1" max="720" value="24"></label> '
     + '<button class="btn btn-primary btn-sm" type="button" data-v2s-pin-confirm>Ghim lên top</button>'
     + '<p class="v2s-pin-msg" role="status"></p></section>'
@@ -2468,14 +2468,14 @@ function mountPointsDetail(targetType, targetId){
       if (!loggedIn) {
         if (bal) bal.innerHTML = pointsGuestNoteHTML();
         // Khách vãng lai: KHÔNG disable nút Ghim — bấm nút sẽ hiện ghi chú
-        // "Bạn cần đăng nhập tài khoản để lấy điểm ghim" (handler
+        // "Bạn cần đăng nhập tài khoản để lấy xu ghim" (handler
         // data-v2s-pin-confirm dưới đây kiểm tra đăng nhập trước khi gọi RPC).
         if (msg) msg.textContent = '';
         return;
       }
       if (R && typeof R.getMyPointsBalance === 'function') {
-        R.getMyPointsBalance().then(function (b){ if (bal) bal.innerHTML = 'Số dư điểm của bạn: <b>' + b + ' điểm</b>'; });
-      } else if (bal) { bal.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; }
+        R.getMyPointsBalance().then(function (b){ if (bal) bal.innerHTML = 'Số dư xu của bạn: <b>' + b + ' xu</b>'; });
+      } else if (bal) { bal.textContent = 'Hệ thống xu thưởng chưa bật (đang chờ migration M7).'; }
     });
     var mount = document.getElementById('v2sCommentsMount');
     if (mount && C && typeof C.renderComments === 'function') C.renderComments(targetType, targetId, mount);
@@ -2487,9 +2487,9 @@ function initPointsUI(){
   // khi lọc/phân trang vẫn chạy).
   document.addEventListener('click', function (e){
     // Xem liên hệ 1 hồ sơ — v92: TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES ở
-    // js/reward.js): đã đăng nhập thì hiện ngay, không trừ điểm, không kiểm
+    // js/reward.js): đã đăng nhập thì hiện ngay, không trừ xu, không kiểm
     // tra v20_contact_viewed_v1 nữa. Khách vãng lai vẫn thấy lời mời đăng
-    // ký (cửa đăng nhập giữ nguyên). Code trừ điểm giữ nguyên để mở lại
+    // ký (cửa đăng nhập giữ nguyên). Code trừ xu giữ nguyên để mở lại
     // chỉ bằng 1 cờ.
     var vc = e.target && e.target.closest ? e.target.closest('[data-v2s-view-contact]') : null;
     if (vc) {
@@ -2502,17 +2502,17 @@ function initPointsUI(){
       var reveal = function(){ if (hidden) hidden.hidden = false; vc.style.display = 'none'; if (cmsg) cmsg.textContent = ''; };
       loadPointsScripts().then(function(){
         return pointsSessionUser().then(function (user){
-          if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 250 điểm! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
+          if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 250 xu! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
           var R = window.Ver2Reward;
           if (R && R.FREE_SERVICES === true) { reveal(); return; } // v92: miễn phí
           if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { reveal(); return; }
-          if (!R || typeof R.spendPoints !== 'function') { if (cmsg) cmsg.textContent = 'Hệ thống điểm chưa bật (đang chờ migration M7), chưa xem được liên hệ.'; return; }
+          if (!R || typeof R.spendPoints !== 'function') { if (cmsg) cmsg.textContent = 'Hệ thống xu chưa bật (đang chờ migration M7), chưa xem được liên hệ.'; return; }
           var day = (typeof R.dayKeySaigon === 'function') ? R.dayKeySaigon(new Date()) : '';
           var key = (typeof R.contactViewKey === 'function') ? R.contactViewKey(tt, ti, day) : '';
           R.spendPoints('contact_view', 5, tt, ti, key).then(function (res){
             if (res && res.ok) { if (typeof R.markContactViewed === 'function') R.markContactViewed(tt, ti, day); reveal(); }
-            else if (res && res.code === 'insufficient_balance') { if (cmsg) cmsg.innerHTML = 'Bạn đã hết điểm để xem liên hệ. <a href="huong-dan-diem.html">Xem cách kiếm điểm →</a>'; }
-            else { if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((res && res.error) || 'hệ thống điểm chưa bật.'); }
+            else if (res && res.code === 'insufficient_balance') { if (cmsg) cmsg.innerHTML = 'Bạn đã hết xu để xem liên hệ. <a href="huong-dan-diem.html">Xem cách kiếm xu →</a>'; }
+            else { if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((res && res.error) || 'hệ thống xu chưa bật.'); }
           });
         });
       });
@@ -2529,15 +2529,15 @@ function initPointsUI(){
       var hours = hoursInput ? Number(hoursInput.value) : 0;
       loadPointsScripts().then(function(){
         return pointsLoggedIn().then(function (loggedIn){
-          if (!loggedIn) { if (pinMsg) pinMsg.textContent = 'Bạn cần đăng nhập tài khoản để lấy điểm ghim'; return; }
+          if (!loggedIn) { if (pinMsg) pinMsg.textContent = 'Bạn cần đăng nhập tài khoản để lấy xu ghim'; return; }
           var R = window.Ver2Reward;
-          if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; return; }
+          if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống xu thưởng chưa bật (đang chờ migration M7).'; return; }
           R.pinPost(box.getAttribute('data-v2s-target-type'), box.getAttribute('data-v2s-target-id'), box.getAttribute('data-v2s-target-type'), hours).then(function (r){
             if (!pinMsg) return;
             if (r && r.ok) {
               var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ' (' + hours + ' điểm).';
-            } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống điểm chưa bật.'); }
+              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ' (' + hours + ' xu).';
+            } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống xu chưa bật.'); }
           });
         });
       });
@@ -2555,9 +2555,9 @@ function initPointsUI(){
     e.preventDefault();
     loadPointsScripts().then(function(){
       return pointsLoggedIn().then(function (loggedIn){
-        if (!loggedIn) { say(type === 'pin' ? 'Bạn cần đăng nhập tài khoản để lấy điểm ghim' : pointsGuestNoteHTML()); return; }
+        if (!loggedIn) { say(type === 'pin' ? 'Bạn cần đăng nhập tài khoản để lấy xu ghim' : pointsGuestNoteHTML()); return; }
         var R = window.Ver2Reward;
-        if (!R) { say('Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'); return; }
+        if (!R) { say('Hệ thống xu thưởng chưa bật (đang chờ migration M7).'); return; }
         if (type === 'pin') {
           // Form ghim inline trên thẻ: nhập giờ + xác nhận, hiện số dư.
           if (row.querySelector('.v2s-pin-form')) return;
@@ -2567,23 +2567,23 @@ function initPointsUI(){
           row.appendChild(form);
           var inp = form.querySelector('input');
           var bal = form.querySelector('.v2s-pin-balance');
-          if (typeof R.getMyPointsBalance === 'function') R.getMyPointsBalance().then(function (b){ if (bal) bal.textContent = 'Số dư: ' + b + ' điểm'; });
+          if (typeof R.getMyPointsBalance === 'function') R.getMyPointsBalance().then(function (b){ if (bal) bal.textContent = 'Số dư: ' + b + ' xu'; });
           form.querySelector('button').addEventListener('click', function(){
             var hours = Number(inp.value);
             R.pinPost(targetType, targetId, targetType, hours).then(function (r){
               if (r && r.ok) {
                 var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ' (' + hours + ' điểm).');
+                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ' (' + hours + ' xu).');
                 form.remove();
-              } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.')); }
+              } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống xu chưa bật.')); }
             });
           });
           return;
         }
         R.awardInteraction(type, targetType, targetId).then(function (r){
-          if (r && r.ok && Number(r.points) > 0) { if (type === 'like') markLiked(t); say('+' + Number(r.points) + ' điểm (1 lần/ngày)'); }
-          else if (r && r.ok) { if (type === 'like') markLiked(t); say(type === 'like' ? 'Đã tính điểm thích hôm nay' : 'Đã tính điểm chia sẻ hôm nay'); }
-          else say('Chưa tính được điểm: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.'));
+          if (r && r.ok && Number(r.points) > 0) { if (type === 'like') markLiked(t); say('+' + Number(r.points) + ' xu (1 lần/ngày)'); }
+          else if (r && r.ok) { if (type === 'like') markLiked(t); say(type === 'like' ? 'Đã tính xu thích hôm nay' : 'Đã tính xu chia sẻ hôm nay'); }
+          else say('Chưa tính được xu: ' + esc((r && r.error) || 'hệ thống xu chưa bật.'));
         });
       });
     });
@@ -2602,7 +2602,7 @@ function initPointsUI(){
     if (C && typeof C.initCardComments === 'function') C.initCardComments();
   });
 }
-/* ---- Chuyển điểm trên trang ví (vi-tien-ao.html, chốt 20:23 + 20:25) ---- */
+/* ---- Chuyển xu trên trang ví (vi-tien-ao.html, chốt 20:23 + 20:25) ---- */
 function initTransferForm(){
   if (typeof document === 'undefined') return;
   var form = document.getElementById('transferForm');
@@ -2620,12 +2620,12 @@ function initTransferForm(){
   var streak = null, balance = 0, currentUser = null, submitWired = false;
   function say(t){ if (msgEl) msgEl.textContent = t || ''; }
   function streakText(st){
-    if (!st || !st.ok) return 'Chưa tải được chuỗi online (hệ thống điểm chưa bật hoặc mất mạng).';
-    if (st.eligible) return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — bạn đã đủ điều kiện chuyển điểm.';
-    return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — còn ' + st.days_remaining + ' ngày nữa mới được chuyển điểm.';
+    if (!st || !st.ok) return 'Chưa tải được chuỗi online (hệ thống xu chưa bật hoặc mất mạng).';
+    if (st.eligible) return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — bạn đã đủ điều kiện chuyển xu.';
+    return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — còn ' + st.days_remaining + ' ngày nữa mới được chuyển xu.';
   }
   function histHTML(items){
-    if (!items || !items.length) return '<p>Chưa có lần chuyển điểm nào.</p>';
+    if (!items || !items.length) return '<p>Chưa có lần chuyển xu nào.</p>';
     return '<ul class="v2s-transfer-history">' + items.map(function (it){
       // get_my_transfer_history() trả direction 'sent'/'received', amount âm
       // khi gửi (-delta), dương khi nhận; counterparty_email là email bên kia.
@@ -2634,10 +2634,10 @@ function initTransferForm(){
       var amt = Math.abs(Number(it.amount || it.points || 0));
       var when = '';
       try { when = it.created_at ? new Date(it.created_at).toLocaleDateString('vi-VN') : ''; } catch (e) {}
-      return '<li><b>' + dir + ' ' + amt + ' điểm</b>' + (other ? ' — ' + other : '') + (when ? ' · ' + esc(when) : '') + (it.note ? '<br><span>' + esc(it.note) + '</span>' : '') + '</li>';
+      return '<li><b>' + dir + ' ' + amt + ' xu</b>' + (other ? ' — ' + other : '') + (when ? ' · ' + esc(when) : '') + (it.note ? '<br><span>' + esc(it.note) + '</span>' : '') + '</li>';
     }).join('') + '</ul>';
   }
-  // v91 (BUG-08): tải lại số dư/chuỗi/lịch sử chuyển điểm mỗi khi phiên đổi
+  // v91 (BUG-08): tải lại số dư/chuỗi/lịch sử chuyển xu mỗi khi phiên đổi
   // (đăng nhập/đăng xuất) thay vì chỉ tải 1 lần lúc mở trang — dòng "Cần
   // đăng nhập..." phải biến mất ngay khi đã đăng nhập và hiện lại khi đăng
   // xuất, không cần tải lại trang.
@@ -2648,15 +2648,15 @@ function initTransferForm(){
       var R = window.Ver2Reward;
       if (!user) {
         streak = null; balance = 0;
-        if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển điểm. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 250 điểm</a>.';
-        if (balEl) balEl.textContent = 'Cần đăng nhập để xem số dư điểm.';
-        if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển điểm.</p>';
+        if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển xu. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 250 xu</a>.';
+        if (balEl) balEl.textContent = 'Cần đăng nhập để xem số dư xu.';
+        if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển xu.</p>';
         if (submitBtn) submitBtn.disabled = true;
         return;
       }
-      if (!R) { if (streakEl) streakEl.textContent = 'Hệ thống điểm chưa bật (đang chờ migration M7).'; return; }
+      if (!R) { if (streakEl) streakEl.textContent = 'Hệ thống xu chưa bật (đang chờ migration M7).'; return; }
       if (typeof R.getMyPointsBalanceResult === 'function') {
-        R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) balEl.textContent = 'Số dư điểm của bạn: ' + (Number(r.balance) || 0) + ' điểm.'; });
+        R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) balEl.textContent = 'Số dư xu của bạn: ' + (Number(r.balance) || 0) + ' xu.'; });
       }
       var jobs = [];
       if (typeof R.getMyTransferStreak === 'function') {
@@ -2680,29 +2680,29 @@ function initTransferForm(){
           balance: balance, myEmail: (currentUser && currentUser.email) || ''
         }) : null;
         if (err) { say(err); return; }
-        if (streak && !streak.eligible) { say('Chưa đủ 30 ngày online liên tiếp nên chưa chuyển được điểm (còn ' + streak.days_remaining + ' ngày nữa).'); return; }
+        if (streak && !streak.eligible) { say('Chưa đủ 30 ngày online liên tiếp nên chưa chuyển được xu (còn ' + streak.days_remaining + ' ngày nữa).'); return; }
         if (submitBtn) submitBtn.disabled = true;
         R.transferPoints(emailEl.value, Number(amountEl.value), noteEl ? noteEl.value : '').then(function (res){
           if (submitBtn) submitBtn.disabled = !(streak && streak.eligible);
           if (res && res.ok) {
-            say('Đã chuyển ' + Number(amountEl.value) + ' điểm cho ' + emailEl.value.trim() + '.');
+            say('Đã chuyển ' + Number(amountEl.value) + ' xu cho ' + emailEl.value.trim() + '.');
             if (typeof R.getMyTransferHistory === 'function') R.getMyTransferHistory(20).then(function (h){ if (histEl && h && h.ok) histEl.innerHTML = histHTML(h.items); });
-            if (typeof R.getMyPointsBalanceResult === 'function') R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) { balance = Number(r.balance) || 0; balEl.textContent = 'Số dư điểm của bạn: ' + balance + ' điểm.'; } });
+            if (typeof R.getMyPointsBalanceResult === 'function') R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) { balance = Number(r.balance) || 0; balEl.textContent = 'Số dư xu của bạn: ' + balance + ' xu.'; } });
             form.reset();
           } else if (res && res.code === 'not_eligible') {
             say('Chưa đủ 30 ngày online liên tiếp (đã ' + (res.current_streak || 0) + '/30 ngày — còn ' + (res.days_remaining || 0) + ' ngày nữa).');
           } else if (res && res.code === 'recipient_not_found') {
             say('Không tìm thấy tài khoản có email này.');
           } else if (res && res.code === 'cannot_transfer_to_self') {
-            say('Không chuyển điểm cho chính mình.');
+            say('Không chuyển xu cho chính mình.');
           } else if (res && res.code === 'amount_below_minimum') {
-            say('Chuyển điểm tối thiểu 10 điểm/lần.');
+            say('Chuyển xu tối thiểu 10 xu/lần.');
           } else if (res && res.code === 'insufficient_balance') {
-            say('Số dư điểm của bạn không đủ để chuyển.');
+            say('Số dư xu của bạn không đủ để chuyển.');
           } else if (res && res.code === 'rpc_missing') {
-            say('Hệ thống chuyển điểm chưa bật (đang chờ migration M7).');
+            say('Hệ thống chuyển xu chưa bật (đang chờ migration M7).');
           } else {
-            say('Chưa chuyển được điểm: ' + ((res && (res.message || res.error)) || 'hệ thống điểm chưa bật.'));
+            say('Chưa chuyển được xu: ' + ((res && (res.message || res.error)) || 'hệ thống xu chưa bật.'));
           }
         });
       });

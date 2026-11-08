@@ -1,60 +1,60 @@
-/* v2 — Điểm thưởng GĐ2 (07/11/2026, thay thế bảng D2 ngày 06/11).
+/* v2 — Xu thưởng GĐ2 (07/11/2026, thay thế bảng D2 ngày 06/11).
    Xem goals/mc-livestream-job-board/hidden_files/diem-thuong-v2-2026-11-07.md
-   (nguồn đúng duy nhất cho bảng điểm v2).
-   Bảng điểm v2 — MỘT bảng duy nhất cho mọi tài khoản đã đăng nhập:
+   (nguồn đúng duy nhất cho bảng xu v2).
+   Bảng xu v2 — MỘT bảng duy nhất cho mọi tài khoản đã đăng nhập:
    - Đăng ký: mỗi trường điền đúng +30 (5 trường = 150); tạo tài khoản +100.
      Tổng 250 nếu tick đồng ý marketing, 220 nếu không tick (trường marketing
-     chỉ +30 khi tick). Khách vãng lai 0 điểm.
+     chỉ +30 khi tick). Khách vãng lai 0 xu.
    - Tương tác, mỗi loại tối đa 1 lần/ngày TOÀN SITE: bình luận +10, thích +10,
-     chia sẻ lên tường +20. Tối đa 40 điểm/ngày từ tương tác.
-   - Ghim bài lên top danh mục: 1 điểm = 1 giờ, chọn 1..720 giờ, trừ điểm
+     chia sẻ lên tường +20. Tối đa 40 xu/ngày từ tương tác.
+   - Ghim bài lên top danh mục: 1 xu = 1 giờ, chọn 1..720 giờ, trừ xu
      ngay khi ghim; hết pinned_until thì bài về thứ tự thường.
-   - Trần ngày D2 (shop 50 / mẫu 30) ĐÃ HỦY. Không hết hạn điểm. Không mua
-     điểm. (Chuyển điểm: người dùng chốt lại 20:23 ngày 07/11 là ĐƯỢC PHÉP —
-     tối thiểu 10 điểm/lần, bằng email người nhận, không phí; xem spec §1b.)
-   Bổ sung 20:22 ngày 07/11 (bảng giá tiêu điểm): lọc 1 điểm/lần (đổi 2 ô
-   trong 10s chỉ tính 1 lần); xem liên hệ 1 hồ sơ 5 điểm/lần bấm (1 lần/
-   ngày/hồ sơ); ghim 1 điểm/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc,
-   máy tính lãi sau phí sàn: MIỄN PHÍ. Mọi lần trừ điểm qua RPC spend_points()
-   (M7, SECURITY DEFINER); client không tự trừ số dư. Chuyển điểm qua RPC
+   - Trần ngày D2 (shop 50 / mẫu 30) ĐÃ HỦY. Không hết hạn xu. Không mua
+     xu. (Chuyển xu: người dùng chốt lại 20:23 ngày 07/11 là ĐƯỢC PHÉP —
+     tối thiểu 10 xu/lần, bằng email người nhận, không phí; xem spec §1b.)
+   Bổ sung 20:22 ngày 07/11 (bảng giá tiêu xu): lọc 1 xu/lần (đổi 2 ô
+   trong 10s chỉ tính 1 lần); xem liên hệ 1 hồ sơ 5 xu/lần bấm (1 lần/
+   ngày/hồ sơ); ghim 1 xu/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc,
+   máy tính lãi sau phí sàn: MIỄN PHÍ. Mọi lần trừ xu qua RPC spend_points()
+   (M7, SECURITY DEFINER); client không tự trừ số dư. Chuyển xu qua RPC
    transfer_points() — cần đủ 30 ngày online liên tiếp (chốt 20:25 ngày
    07/11, áp dụng mọi tài khoản, không hồi tố, không ngoại lệ admin).
    Nguyên tắc an toàn (giữ từ M5, xem docs-diem-thuong-tuong-tac-m5.md):
    - Client KHÔNG cộng/trừ số dư, KHÔNG duyệt sự kiện, KHÔNG tự active liên
-     kết, KHÔNG tự trừ điểm khi đổi dịch vụ hay chuyển/tặng, KHÔNG ghi trực
+     kết, KHÔNG tự trừ xu khi đổi dịch vụ hay chuyển/tặng, KHÔNG ghi trực
      tiếp vào points_ledger / wallet_balances.
    - Client chỉ tạo: yêu cầu liên kết pending, sự kiện pending với points=0,
      đơn đổi dịch vụ pending, giao dịch chuyển/tặng pending, bình luận pending.
-   - Điểm thật chỉ cộng/trừ qua 4 RPC M7 (xem awardRegistration,
+   - Xu thật chỉ cộng/trừ qua 4 RPC M7 (xem awardRegistration,
      awardInteraction, getMyPointsBalance, pinPost). RPC chưa chạy (M7 chưa
      deploy) thì các hàm này trả {ok:false} / 0, KHÔNG ném lỗi ra ngoài,
      KHÔNG làm vỡ trang.
    - Đọc cho popup online: getMyPointsSummary() qua RPC get_my_points_summary()
-     (M7.8b) — chỉ đọc số dư + điểm đã tiêu, không cộng/trừ.
+     (M7.8b) — chỉ đọc số dư + xu đã tiêu, không cộng/trừ.
    - Bán lấy tiền thật chỉ qua trung gian nền tảng khi có cổng thanh toán +
      chính sách phí/tranh chấp; file này KHÔNG tạo đơn bán thật, chỉ giữ
      kind='sale_platform' ở dạng khung chờ trong SQL, và hàm client dưới đây
      từ chối tạo đơn bán cho tới khi khung đó được bật. */
 (function () {
   'use strict';
-  // v92 (08/11/2026, người dùng chốt 11:32): TẠM KHÓA trừ điểm cho lọc +
+  // v92 (08/11/2026, người dùng chốt 11:32): TẠM KHÓA trừ xu cho lọc +
   // xem liên hệ + dịch vụ khác — tất cả MIỄN PHÍ, chỉ ghim bài vẫn tính
-  // điểm. Cờ này bypass việc gọi spend_points('filter'/'contact_view')
+  // xu. Cờ này bypass việc gọi spend_points('filter'/'contact_view')
   // ở js/app.js (gateFilterApply, hero search, xem liên hệ). KHÔNG xóa
-  // code trừ điểm (spendPoints/filterChargeBucket/shouldChargeFilter +
+  // code trừ xu (spendPoints/filterChargeBucket/shouldChargeFilter +
   // RPC phía server giữ nguyên) — mở lại thu phí chỉ bằng cách đổi cờ
   // này thành false rồi kiểm tra lại. Cửa đăng nhập cho khách vãng lai
-  // vẫn giữ nguyên ở js/app.js (chỉ khóa việc TRẢ điểm, không khóa cửa
-  // đăng ký). Ghim bài KHÔNG đi qua cờ này (luôn tính điểm).
+  // vẫn giữ nguyên ở js/app.js (chỉ khóa việc TRẢ xu, không khóa cửa
+  // đăng ký). Ghim bài KHÔNG đi qua cờ này (luôn tính xu).
   var V20_FREE_SERVICES = true;
-  // ---- Bảng điểm v2 (CHỐT 07/11/2026, thay thế D2) ----
+  // ---- Bảng xu v2 (CHỐT 07/11/2026, thay thế D2) ----
   var INTERACTION_POINTS = { comment: 10, like: 10, share: 20 };
-  var MAX_PER_TYPE_PER_DAY = 1; // mỗi loại tối đa 1 lần tính điểm/ngày/site-wide
+  var MAX_PER_TYPE_PER_DAY = 1; // mỗi loại tối đa 1 lần tính xu/ngày/site-wide
   var MAX_INTERACTION_POINTS_PER_DAY = 40; // 10 + 10 + 20
   var REGISTRATION_FIELD_POINTS = 30;
   var REGISTRATION_FIELD_COUNT = 5;
   var REGISTRATION_ACCOUNT_POINTS = 100;
-  var PIN_POINT_PER_HOUR = 1; // 1 điểm = 1 giờ ghim
+  var PIN_POINT_PER_HOUR = 1; // 1 xu = 1 giờ ghim
   var PIN_MIN_HOURS = 1;
   var PIN_MAX_HOURS = 720; // 30 ngày
   // Giữ tên POINTS để code cũ đọc được bảng v2 (không còn chia shop/model).
@@ -69,7 +69,7 @@
     pinMinHours: PIN_MIN_HOURS,
     pinMaxHours: PIN_MAX_HOURS
   };
-  // Trần chuyển/tặng ĐỀ XUẤT cũ (M5). Quy tắc chuyển điểm mới chốt 20:23
+  // Trần chuyển/tặng ĐỀ XUẤT cũ (M5). Quy tắc chuyển xu mới chốt 20:23
   // ngày 07/11 (xem spec §1b) chưa có RPC nên submitGift() bên dưới chỉ
   // còn là hàm legacy pending, không nối UI mới.
   var TRANSFER_LIMITS = { maxRewardPointsPerDay: 200, maxRecipientsPerDay: 3, minHoldingDays: 7 };
@@ -78,7 +78,7 @@
 
   // v91 (BUG-10): timestamp ISO UTC → giờ Việt Nam dễ đọc, vd "00:41 ngày
   // 08/11" (withYear=true: "00:41 ngày 08/11/2026"). ISO hỏng thì trả lại
-  // chuỗi gốc, không ném lỗi. Dùng cho thông báo ghim + lịch sử điểm.
+  // chuỗi gốc, không ném lỗi. Dùng cho thông báo ghim + lịch sử xu.
   function formatVnDateTime(iso, withYear) {
     try {
       var d = new Date(iso);
@@ -94,18 +94,18 @@
       return timePart + ' ngày ' + datePart;
     } catch (e) { return String(iso || ''); }
   }
-  // v91 (BUG-05): nhãn tiếng Việt cho 15 loại giao dịch điểm trong sổ cái
-  // points_ledger (M7). Loại lạ → 'Điểm thưởng'.
+  // v91 (BUG-05): nhãn tiếng Việt cho 15 loại giao dịch xu trong sổ cái
+  // points_ledger (M7). Loại lạ → 'Xu thưởng'.
   var POINTS_HISTORY_LABELS = {
     comment: 'Bình luận', like: 'Thích', share: 'Chia sẻ',
-    redemption: 'Đổi dịch vụ', gift: 'Tặng điểm', transfer: 'Chuyển điểm',
-    transfer_out: 'Chuyển điểm đi', transfer_in: 'Nhận điểm',
-    reclaim: 'Thu hồi điểm', adjust: 'Điều chỉnh điểm',
+    redemption: 'Đổi dịch vụ', gift: 'Tặng xu', transfer: 'Chuyển xu',
+    transfer_out: 'Chuyển xu đi', transfer_in: 'Nhận xu',
+    reclaim: 'Thu hồi xu', adjust: 'Điều chỉnh xu',
     registration_field: 'Đăng ký: điền trường', account_created: 'Tạo tài khoản',
     pin: 'Ghim bài', filter: 'Lọc danh sách', contact_view: 'Xem liên hệ'
   };
-  function pointsHistoryLabel(type) { return POINTS_HISTORY_LABELS[String(type || '')] || 'Điểm thưởng'; }
-  // v91 (BUG-05): lịch sử giao dịch điểm — đọc TRỰC TIẾP bảng points_ledger
+  function pointsHistoryLabel(type) { return POINTS_HISTORY_LABELS[String(type || '')] || 'Xu thưởng'; }
+  // v91 (BUG-05): lịch sử giao dịch xu — đọc TRỰC TIẾP bảng points_ledger
   // (policy M5 points_ledger_owner_read cho chủ tài khoản SELECT dòng của
   // mình: auth.uid() = auth_user_id), mới nhất lên đầu. CHỈ ĐỌC, không ghi.
   // Lỗi / chưa đăng nhập / policy chưa có → {ok:false, items:[]}, KHÔNG ném.
@@ -128,7 +128,7 @@
   }
   function validateComment(text) {
     var t = String(text || '').trim();
-    if (t.length < 20) return 'Bình luận tính điểm cần từ 20 ký tự trở lên.';
+    if (t.length < 20) return 'Bình luận tính xu cần từ 20 ký tự trở lên.';
     if (/^(.)\1{19,}$/.test(t)) return 'Bình luận không được là 1 ký tự lặp lại.';
     return null;
   }
@@ -140,7 +140,7 @@
     return u.replace(/\/+$/, '');
   }
   // ---- Hàm thuần v2 ----
-  // Điểm cho 1 loại tương tác (comment/like/share). Loại lạ = 0.
+  // Xu cho 1 loại tương tác (comment/like/share). Loại lạ = 0.
   function pointsForInteraction(type) {
     return INTERACTION_POINTS[type] || 0;
   }
@@ -148,7 +148,7 @@
   function pointsFor(a, b) {
     return pointsForInteraction(b || a);
   }
-  // Chi phí ghim = số giờ (1 điểm = 1 giờ). Giờ ngoài 1..720 trả về -1.
+  // Chi phí ghim = số giờ (1 xu = 1 giờ). Giờ ngoài 1..720 trả về -1.
   function pinCostHours(hours) {
     var h = Math.floor(Number(hours));
     if (!h || h < PIN_MIN_HOURS || h > PIN_MAX_HOURS) return -1;
@@ -161,16 +161,16 @@
     if (h > PIN_MAX_HOURS) return 'Ghim tối đa 720 giờ (30 ngày).';
     return null;
   }
-  // Loại này hôm nay đã được tính điểm chưa? true = đã tính → lượt này +0.
+  // Loại này hôm nay đã được tính xu chưa? true = đã tính → lượt này +0.
   function canEarnInteractionToday(alreadyEarnedToday) {
     return !alreadyEarnedToday;
   }
   // Wrapper cũ (D2: trần ngày theo loại tài khoản) — v2 chỉ còn trần chung
-  // 40 điểm/ngày từ tương tác, không chia shop/model. Giữ để code cũ không vỡ.
+  // 40 xu/ngày từ tương tác, không chia shop/model. Giữ để code cũ không vỡ.
   function canEarnToday(alreadyApprovedToday, newPoints) {
     return (Number(alreadyApprovedToday || 0) + Number(newPoints || 0)) <= MAX_INTERACTION_POINTS_PER_DAY;
   }
-  // Điểm đăng ký: fieldsCompleted = số trường đã điền đúng (0..5, trong đó
+  // Xu đăng ký: fieldsCompleted = số trường đã điền đúng (0..5, trong đó
   // trường marketing chỉ tính khi người dùng tick). Cộng +100 tạo tài khoản.
   // Nhận số, hoặc object {email,phone,password,password2,marketing} (truthy).
   function registrationPoints(fieldsCompleted) {
@@ -214,7 +214,7 @@
     var e = res.error || res;
     return String((e && (e.message || e.code)) || e || 'Không rõ lỗi.');
   }
-  // Trích số điểm từ kết quả RPC (M7 có thể trả số, hoặc object
+  // Trích số xu từ kết quả RPC (M7 có thể trả số, hoặc object
   // {points_awarded|points|awarded|total_awarded}).
   function extractPoints(data) {
     if (typeof data === 'number') return data;
@@ -229,7 +229,7 @@
   }
   async function sessionUser() {
     var a = api(); if (!a) throw errMissing();
-    var session = await a.getSession(); if (!session) throw new Error('Cần đăng nhập mới dùng được điểm thưởng.');
+    var session = await a.getSession(); if (!session) throw new Error('Cần đăng nhập mới dùng được xu thưởng.');
     return { api: a, user: session.user };
   }
   async function ensureWalletRow() {
@@ -243,7 +243,7 @@
   }
 
   // ---- RPC M7 (v2): không bao giờ ném lỗi ra ngoài ----
-  // Cộng điểm đăng ký (250 nếu tick marketing, 220 nếu không). Gọi 1 lần
+  // Cộng xu đăng ký (250 nếu tick marketing, 220 nếu không). Gọi 1 lần
   // sau khi đăng ký thành công CÓ session. RPC chưa có → {ok:false}.
   async function awardRegistration() {
     try {
@@ -256,7 +256,7 @@
       return { ok: false, error: String((e && e.message) || e), points: 0 };
     }
   }
-  // Cộng điểm tương tác (comment +10 / like +10 / share +20, mỗi loại tối đa
+  // Cộng xu tương tác (comment +10 / like +10 / share +20, mỗi loại tối đa
   // 1 lần/ngày toàn site). Trả {ok, points}: points = 0 khi đã tính loại đó
   // trong ngày hôm nay. targetType: 'model_profile' | 'shop_profile' |
   // 'article'; targetId: id data.js (th-…/sh-…) hoặc tên file bài báo.
@@ -275,7 +275,7 @@
       return { ok: false, error: String((e && e.message) || e), points: 0 };
     }
   }
-  // Số dư điểm của tài khoản đang đăng nhập. Lỗi / chưa đăng nhập / M7 chưa
+  // Số dư xu của tài khoản đang đăng nhập. Lỗi / chưa đăng nhập / M7 chưa
   // chạy → 0 (không ném lỗi).
   async function getMyPointsBalance() {
     var r = await getMyPointsBalanceResult();
@@ -294,8 +294,8 @@
     } catch (e) { return { ok: false, balance: 0 }; }
   }
 
-  // Số dư + điểm đã tiêu của tài khoản đang đăng nhập (popup online:
-  // "Đã tiêu: Y điểm • Còn lại: Z điểm"). Chỉ đọc qua RPC
+  // Số dư + xu đã tiêu của tài khoản đang đăng nhập (popup online:
+  // "Đã tiêu: Y xu • Còn lại: Z xu"). Chỉ đọc qua RPC
   // get_my_points_summary() (M7.8b, SECURITY DEFINER); spent =
   // total_reward_spent trên wallet_accounts. Lỗi / chưa đăng nhập /
   // M7 chưa chạy → {ok:false, balance:0, spent:0}, KHÔNG ném lỗi.
@@ -314,9 +314,9 @@
     } catch (e) { return { ok: false, balance: 0, spent: 0 }; }
   }
 
-  // ---- Bảng giá tiêu điểm v2 (chốt 20:22 ngày 07/11) ----
-  // Lọc 1 điểm/lần; xem liên hệ 5 điểm/lần bấm (mỗi hồ sơ 1 lần/ngày);
-  // ghim 1 điểm/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính
+  // ---- Bảng giá tiêu xu v2 (chốt 20:22 ngày 07/11) ----
+  // Lọc 1 xu/lần; xem liên hệ 5 xu/lần bấm (mỗi hồ sơ 1 lần/ngày);
+  // ghim 1 xu/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính
   // lãi sau phí sàn: MIỄN PHÍ (không qua hàm này).
   // v92 (08/11/2026): lọc + xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES
   // ở đầu file) — PRICES dưới đây GIỮ NGUYÊN để mở lại thu phí chỉ bằng
@@ -325,22 +325,22 @@
   var FILTER_DEDUP_MS = 10000; // đổi 2 ô lọc trong 10s chỉ tính 1 lần
   var TRANSFER_MIN_POINTS = 10;
 
-  // Trừ điểm qua RPC spend_points() (M7, SECURITY DEFINER, kiểm tra số dư
+  // Trừ xu qua RPC spend_points() (M7, SECURITY DEFINER, kiểm tra số dư
   // phía server, không cho âm). Client KHÔNG tự trừ số dư.
   // HợP ĐỒNG M7.11 — spend_points(p_type, p_amount, p_ref_type, p_ref_id,
-  // p_idempotency_key) → số điểm ĐÃ TRỪ (số dương; 0 nếu khóa đã tồn tại).
+  // p_idempotency_key) → số xu ĐÃ TRỪ (số dương; 0 nếu khóa đã tồn tại).
   // kind: 'filter' | 'contact_view'; category: 'model'|'shop'|'lot'|
   // 'factory'|'kiot' (lọc) hoặc target_type (xem liên hệ) → p_ref_type;
   // targetRef: trang lọc (vd 'danh-sach-mau.html') hoặc target_id → p_ref_id.
   // idempotencyKey do client tạo theo quy tắc trong spec (filter:<user>:
   // <category>:<bucket 10s>, contact:<user>:<type>:<id>:<YYYY-MM-DD>).
   // Trả {ok:true} khi trừ xong, {ok:false, code, error} khi lỗi.
-  // code='insufficient_balance' khi hết điểm; code='rpc_missing' khi RPC
+  // code='insufficient_balance' khi hết xu; code='rpc_missing' khi RPC
   // spend_points chưa có (M7 chưa chạy phần này) — caller KHÔNG được trừ
   // khống hay cho dùng miễn phí lặng lẽ, phải báo rõ cho người dùng.
   async function spendPoints(kind, amount, category, targetRef, idempotencyKey) {
-    if (['filter', 'contact_view'].indexOf(kind) === -1) return { ok: false, code: 'invalid_kind', error: 'Loại trừ điểm không hợp lệ.' };
-    if (!amount || Number(amount) <= 0) return { ok: false, code: 'invalid_amount', error: 'Số điểm trừ phải lớn hơn 0.' };
+    if (['filter', 'contact_view'].indexOf(kind) === -1) return { ok: false, code: 'invalid_kind', error: 'Loại trừ xu không hợp lệ.' };
+    if (!amount || Number(amount) <= 0) return { ok: false, code: 'invalid_amount', error: 'Số xu trừ phải lớn hơn 0.' };
     try {
       var s = await sessionUser();
       var res = await s.api.client.rpc('spend_points', {
@@ -350,16 +350,16 @@
       });
       if (res.error) {
         var msg = rpcErrorText(res);
-        if (/insufficient_balance/i.test(msg)) return { ok: false, code: 'insufficient_balance', error: 'Bạn đã hết điểm.' };
+        if (/insufficient_balance/i.test(msg)) return { ok: false, code: 'insufficient_balance', error: 'Bạn đã hết xu.' };
         if (/spend_price_mismatch/i.test(msg)) return { ok: false, code: 'spend_price_mismatch', error: msg };
-        if (/PGRST202/i.test(msg) || /Could not find the function/i.test(msg) || res.error.code === 'PGRST202') return { ok: false, code: 'rpc_missing', error: 'Hệ thống điểm chưa bật (đang chờ migration M7).' };
+        if (/PGRST202/i.test(msg) || /Could not find the function/i.test(msg) || res.error.code === 'PGRST202') return { ok: false, code: 'rpc_missing', error: 'Hệ thống xu chưa bật (đang chờ migration M7).' };
         return { ok: false, code: 'spend_failed', error: msg };
       }
       var d = res.data;
       if (d && typeof d === 'object' && d.ok === false) {
         var m2 = String(d.message || d.error || '');
-        if (/insufficient_balance/i.test(m2)) return { ok: false, code: 'insufficient_balance', error: 'Bạn đã hết điểm.' };
-        return { ok: false, code: 'spend_failed', error: m2 || 'Trừ điểm chưa thành công.' };
+        if (/insufficient_balance/i.test(m2)) return { ok: false, code: 'insufficient_balance', error: 'Bạn đã hết xu.' };
+        return { ok: false, code: 'spend_failed', error: m2 || 'Trừ xu chưa thành công.' };
       }
       // v90: tru diem xong -> lam moi NGAY ca 2 noi hien diem (khong doi tai
       // lai trang, khong doi chu ky 60s): pill header + dong diem popup online.
@@ -406,7 +406,7 @@
     } catch (e) { /* bỏ qua — lần sau trừ lại theo RPC */ }
   }
 
-  // ---- Chuyển điểm (chốt 20:23 + điều kiện 30 ngày 20:25 ngày 07/11) ----
+  // ---- Chuyển xu (chốt 20:23 + điều kiện 30 ngày 20:25 ngày 07/11) ----
   // Kiểm tra phía client trước khi gọi RPC: đủ số dư, ≥10, số nguyên,
   // không phải email của mình. Trả chuỗi lỗi tiếng Việt hoặc null.
   function validateTransfer(input) {
@@ -415,10 +415,10 @@
     var myEmail = String(o.myEmail || '').trim().toLowerCase();
     var amount = Number(o.amount);
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Hãy nhập email người nhận đúng định dạng.';
-    if (myEmail && email === myEmail) return 'Không chuyển điểm cho chính mình.';
-    if (!amount || isNaN(amount) || Math.floor(amount) !== amount) return 'Số điểm chuyển phải là số nguyên.';
-    if (amount < TRANSFER_MIN_POINTS) return 'Chuyển điểm tối thiểu 10 điểm/lần.';
-    if (Number(o.balance) < amount) return 'Số dư điểm của bạn không đủ để chuyển.';
+    if (myEmail && email === myEmail) return 'Không chuyển xu cho chính mình.';
+    if (!amount || isNaN(amount) || Math.floor(amount) !== amount) return 'Số xu chuyển phải là số nguyên.';
+    if (amount < TRANSFER_MIN_POINTS) return 'Chuyển xu tối thiểu 10 xu/lần.';
+    if (Number(o.balance) < amount) return 'Số dư xu của bạn không đủ để chuyển.';
     return null;
   }
   // Gọi RPC transfer_points(p_recipient_email, p_amount, p_note).
@@ -448,7 +448,7 @@
       return {
         ok: row.ok !== false,
         code: row.ok === false ? String(row.message || 'transfer_failed') : 'ok',
-        message: String(row.message || (row.ok === false ? 'Chưa chuyển được điểm.' : 'Đã chuyển điểm.')),
+        message: String(row.message || (row.ok === false ? 'Chưa chuyển được xu.' : 'Đã chuyển xu.')),
         current_streak: Number(row.current_streak || 0),
         days_remaining: Number(row.days_remaining || 0)
       };
@@ -457,7 +457,7 @@
       return { ok: false, code: 'transfer_failed', message: String((e && e.message) || e), current_streak: 0, days_remaining: 30 };
     }
   }
-  // Chuỗi online liên tiếp để chuyển điểm: RPC get_my_transfer_streak()
+  // Chuỗi online liên tiếp để chuyển xu: RPC get_my_transfer_streak()
   // trả TABLE (current_streak, days_remaining, eligible).
   async function getMyTransferStreak() {
     try {
@@ -473,7 +473,7 @@
       };
     } catch (e) { return { ok: false, current_streak: 0, days_remaining: 30, eligible: false }; }
   }
-  // Lịch sử chuyển điểm (cả gửi + nhận): RPC get_my_transfer_history(p_limit).
+  // Lịch sử chuyển xu (cả gửi + nhận): RPC get_my_transfer_history(p_limit).
   async function getMyTransferHistory(limit) {
     try {
       var s = await sessionUser();
@@ -498,9 +498,9 @@
       return true;
     } catch (e) { return false; }
   }
-  // Ghim bài lên top danh mục: 1 điểm = 1 giờ. hours 1..720, trừ điểm ngay
+  // Ghim bài lên top danh mục: 1 xu = 1 giờ. hours 1..720, trừ xu ngay
   // khi ghim. Trả {ok:true, pin} khi thành công, {ok:false, error} khi lỗi
-  // (sai số giờ, không đủ điểm, RPC chưa có).
+  // (sai số giờ, không đủ xu, RPC chưa có).
   // Ánh xạ target_type → category theo enum M7.2 (cố định): model_profile→
   // mau, shop_profile→shop, lot→lo, factory→xuong, article→bai-viet,
   // kiot→kiot. pin_post() từ chối category sai cặp nên client luôn map ở đây.
@@ -541,8 +541,8 @@
     return res.data;
   }
 
-  // Sự kiện tính điểm: CHỈ tạo pending, points=0. Admin/Edge Function duyệt
-  // mới cộng điểm. Bình luận ngoài web vẫn phải qua kiểm chứng ở mục 4 của docs.
+  // Sự kiện tính xu: CHỈ tạo pending, points=0. Admin/Edge Function duyệt
+  // mới cộng xu. Bình luận ngoài web vẫn phải qua kiểm chứng ở mục 4 của docs.
   async function submitEngagement(actorType, articleSlug, action, platform, evidenceUrl) {
     if (['model', 'shop'].indexOf(actorType) === -1) throw new Error('Loại tài khoản không hợp lệ.');
     if (['like', 'comment', 'share'].indexOf(action) === -1) throw new Error('Hành động không hợp lệ.');
@@ -559,12 +559,12 @@
     return res.data;
   }
 
-  // Đổi dịch vụ: CHỈ tạo pending, KHÔNG trừ điểm/xu. Giá đổi CHƯA CHỐT nên
-  // hàm này nhận số điểm/xu người dùng muốn dùng, admin kiểm tra số dư và
+  // Đổi dịch vụ: CHỈ tạo pending, KHÔNG trừ xu/xu. Giá đổi CHƯA CHỐT nên
+  // hàm này nhận số xu/xu người dùng muốn dùng, admin kiểm tra số dư và
   // giá chốt rồi mới duyệt. Không có giá mặc định trong code.
   async function submitRewardRedemption(pointsUsed, coinsUsed) {
     var p = Number(pointsUsed || 0), c = Number(coinsUsed || 0);
-    if (p + c <= 0) throw new Error('Cần chọn số điểm hoặc xu muốn dùng để đổi dịch vụ.');
+    if (p + c <= 0) throw new Error('Cần chọn số xu hoặc xu muốn dùng để đổi dịch vụ.');
     var w = await ensureWalletRow();
     var res = await w.api.client.from('reward_redemptions').insert({
       wallet_id: w.wallet.id, auth_user_id: w.user.id,
@@ -575,8 +575,8 @@
     return res.data;
   }
 
-  // Chuyển/tặng (legacy M5, pending-only): quy tắc chuyển điểm mới chốt
-  // 20:23 ngày 07/11 (tối thiểu 10 điểm/lần, bằng email người nhận, không
+  // Chuyển/tặng (legacy M5, pending-only): quy tắc chuyển xu mới chốt
+  // 20:23 ngày 07/11 (tối thiểu 10 xu/lần, bằng email người nhận, không
   // phí, ghi 2 dòng ledger transfer_out/transfer_in) CHƯA có RPC nên hàm
   // này chưa nối với quy tắc mới; giữ lại để code cũ không vỡ. Bán qua
   // nền tảng là khung chờ, hàm submitSale dưới đây từ chối tạo đơn bán cho
@@ -584,7 +584,7 @@
   async function submitGift(toWalletId, toAuthUserId, amount, message) {
     var amt = Number(amount || 0);
     if (!toWalletId || !toAuthUserId) throw new Error('Thiếu tài khoản nhận.');
-    if (!amt || amt <= 0) throw new Error('Số điểm tặng phải lớn hơn 0.');
+    if (!amt || amt <= 0) throw new Error('Số xu tặng phải lớn hơn 0.');
     if (amt > TRANSFER_LIMITS.maxRewardPointsPerDay) throw new Error('Vượt trần tặng đề xuất trong ngày.');
     var w = await ensureWalletRow();
     if (String(toWalletId) === String(w.wallet.id)) throw new Error('Không tặng cho chính mình.');
@@ -602,7 +602,7 @@
   }
 
   var API = {
-    FREE_SERVICES: V20_FREE_SERVICES, // v92: true = lọc + xem liên hệ tạm miễn phí (chỉ ghim tính điểm); đổi cờ V20_FREE_SERVICES ở đầu file để mở lại thu phí
+    FREE_SERVICES: V20_FREE_SERVICES, // v92: true = lọc + xem liên hệ tạm miễn phí (chỉ ghim tính xu); đổi cờ V20_FREE_SERVICES ở đầu file để mở lại thu phí
     POINTS: POINTS, INTERACTION_POINTS: INTERACTION_POINTS,
     MAX_PER_TYPE_PER_DAY: MAX_PER_TYPE_PER_DAY,
     MAX_INTERACTION_POINTS_PER_DAY: MAX_INTERACTION_POINTS_PER_DAY,

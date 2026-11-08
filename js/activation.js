@@ -261,7 +261,7 @@
     if (!el) return;
     var n = Number(points || 0);
     if (!(n > 0)) return;
-    el.textContent = 'Bạn nhận được ' + n + ' điểm thưởng!';
+    el.textContent = 'Bạn nhận được ' + n + ' xu thưởng!';
     el.hidden = false;
   }
 

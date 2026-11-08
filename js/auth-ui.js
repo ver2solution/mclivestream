@@ -320,7 +320,7 @@
 
     // Hiển thị trạng thái đăng nhập (hộp "Đã đăng nhập" / các view).
     // v2 (GĐ2, 07/11/2026): khi có user thì ghi hoạt động ngày (chuỗi 30
-    // ngày online để chuyển điểm) — fire-and-forget, tối đa 1 lần/ngày/
+    // ngày online để chuyển xu) — fire-and-forget, tối đa 1 lần/ngày/
     // phiên tải trang, lỗi thì nuốt lặng, không vỡ trang.
     var activityRecordedKey = '';
     function recordActivityOnce(user) {
@@ -420,16 +420,16 @@
           });
           if (res && res.session) {
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
-            // v2 (GĐ2, 07/11/2026): cộng điểm đăng ký qua RPC
+            // v2 (GĐ2, 07/11/2026): cộng xu đăng ký qua RPC
             // award_registration_points() — fire-and-forget, KHÔNG chặn
             // showUser()/chuyển trang khi RPC lỗi hay M7 chưa chạy. Chỉ
-            // hiện dòng điểm khi RPC thực sự trả về điểm > 0.
+            // hiện dòng xu khi RPC thực sự trả về xu > 0.
             try {
               var R = (typeof window !== 'undefined') ? window.Ver2Reward : null;
               if (R && typeof R.awardRegistration === 'function') {
                 R.awardRegistration().then(function (r) {
                   if (r && r.ok && Number(r.points || 0) > 0) {
-                    msg('Đăng ký thành công! Bạn nhận được ' + Number(r.points) + ' điểm thưởng!', 'ok');
+                    msg('Đăng ký thành công! Bạn nhận được ' + Number(r.points) + ' xu thưởng!', 'ok');
                     /* v96: dong diem nay cung hien trong panel kich hoat
                        (neu trang co panel) — so diem do server tra. */
                     try { var AV = (typeof window !== 'undefined') ? window.V2SActivation : null; if (AV && typeof AV.showPointsLine === 'function') AV.showPointsLine(Number(r.points)); } catch (e) {}

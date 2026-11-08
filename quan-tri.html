@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="v20.css"></head><body>
 <p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">1.440</span>&nbsp;người đang online</p>
-<div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">1.440</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> điểm • Còn lại: <b class="online-popup-left">0</b> điểm</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
+<div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">1.440</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <!-- Trang quản trị: KHÔNG có link trong nav công khai — chỉ vào bằng đường
      dẫn trực tiếp + đăng nhập bằng tài khoản chủ. Quyền được kiểm tra ở
      phía SERVER (hàm get_online_breakdown() trong migration M8 chỉ trả dữ
@@ -51,9 +51,9 @@
 <div class="form-card"><h2>Lượt xem thật</h2>
 <p id="qtViews">Đang tải…</p>
 <p style="font-size:13px;color:#666">Nguồn: bảng web_analytics_events (hàm get_analytics_summary) — số lượt xem trang (pageview) trong 24 giờ qua. Nếu hiện “chưa có dữ liệu” thì migration analytics chưa chạy.</p></div>
-<div class="form-card"><h2>Lịch sử chuyển điểm (toàn bộ tài khoản)</h2>
+<div class="form-card"><h2>Lịch sử chuyển xu (toàn bộ tài khoản)</h2>
 <p id="qtTransfers">Đang tải…</p>
-<div id="qtTransfersWrap" hidden><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người nhận</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Điểm</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ghi chú</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Thời gian</th></tr></thead><tbody id="qtTransfersBody"></tbody></table></div>
+<div id="qtTransfersWrap" hidden><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người nhận</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Xu</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ghi chú</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Thời gian</th></tr></thead><tbody id="qtTransfersBody"></tbody></table></div>
 <p style="font-size:13px;color:#666">Nguồn: sổ cái points_ledger (type transfer_out/transfer_in). Chỉ admin xem được; khách chỉ thấy lịch sử của mình trên trang ví.</p></div>
 <p><a href="index.html">← Quay lại trang chủ</a></p>
 </section>
@@ -141,12 +141,12 @@
       var v2 = document.getElementById('qtViews');
       if (v2) v2.textContent = 'Chưa có dữ liệu.';
     }
-    // Lịch sử chuyển điểm toàn bộ tài khoản (không bắt buộc — lỗi thì hiện
+    // Lịch sử chuyển xu toàn bộ tài khoản (không bắt buộc — lỗi thì hiện
     // "chưa có dữ liệu", vd M7 chưa chạy).
     try {
       var tr = await client.rpc('get_all_transfer_history_admin', { p_limit: 100 });
       var trEl = document.getElementById('qtTransfers');
-      if (tr.error || !Array.isArray(tr.data) || !tr.data.length) { if (trEl) trEl.textContent = 'Chưa có dữ liệu chuyển điểm.'; return; }
+      if (tr.error || !Array.isArray(tr.data) || !tr.data.length) { if (trEl) trEl.textContent = 'Chưa có dữ liệu chuyển xu.'; return; }
       var rows = '';
       tr.data.forEach(function (r) {
         var when = '';
@@ -163,7 +163,7 @@
       if (wrap) wrap.hidden = false;
     } catch (e3) {
       var trEl2 = document.getElementById('qtTransfers');
-      if (trEl2) trEl2.textContent = 'Chưa có dữ liệu chuyển điểm.';
+      if (trEl2) trEl2.textContent = 'Chưa có dữ liệu chuyển xu.';
     }
   }
   var so = document.getElementById('qtSignOut');
