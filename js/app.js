@@ -1825,7 +1825,25 @@ function initNews(){
       return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">Lượt đọc: chưa kiểm chứng (tạm ghi 0) · '+(a.date||'Chưa có ngày')+'</span></span></li>';
     }).join('');
   }
-  catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render();
+  /* v105: 2 hang tin tren muc loc (user chot 22:28 08/11) — hang 1 Tin ghim
+     (getPinnedRow: bai pinned:true + lap bang bai moi them vao web gan
+     nhat; khong co bai ghim thi hien 4 bai moi nhat), hang 2 Tin moi nhat
+     tiep theo (moi nhat theo date, loai tru bai da hien o hang 1 — khong
+     trung bai giua 2 hang). Doc lap voi bo loc ben duoi: chi render 1 lan
+     o day, render() cua loc (newsCat/newsSort) khong cham toi 2 hang nay.
+     The dung newsCardHTML khong danh so (tranh loi NEW-T1: huy hieu
+     'Tin 1–4' che nhan chuyen muc o hang ghim trang chu). */
+  function renderTopRows(){
+    var pinRow=document.getElementById('newsPinnedRow');
+    var newRow=document.getElementById('newsNewRow');
+    if(!pinRow && !newRow) return;
+    var top1=getPinnedRow(D.articles||[]);
+    var rest=sortByDateDesc(D.articles||[]).filter(function(a){ return top1.indexOf(a)===-1; });
+    var top2=rest.slice(0,4);
+    if(pinRow) pinRow.innerHTML=top1.map(function(a){ return newsCardHTML(a); }).join('');
+    if(newRow) newRow.innerHTML=top2.map(function(a){ return newsCardHTML(a); }).join('');
+  }
+  catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render(); renderTopRows();
 }
 /* Detail: 2-column layout + mini-card list of the other 19 (names, never ids) */
 function initDetail(){
