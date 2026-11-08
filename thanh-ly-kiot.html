@@ -87,15 +87,32 @@
   var provSel = document.getElementById('kiotProv');
   var catSel = document.getElementById('kiotCat');
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
+  // v91 (7): tối đa 10 hàng — chỉ hiện 10 tin mới nhất (sắp theo ngày đăng
+  // giảm dần); lọc thì cũng tối đa 10 tin khớp mới nhất. Ngày dạng DD/MM/YYYY.
+  var KIOT_MAX_ROWS = 10;
+  function kiotTime(k){
+    var p = String(k.date || '').split('/');
+    if (p.length !== 3) return 0;
+    return Date.UTC(+p[2], +p[1] - 1, +p[0]);
+  }
   function render(){
     var pv = provSel ? provSel.value : '';
     var cv = catSel ? catSel.value : '';
     var show = kiots.filter(function(k){
       return (!pv || k.prov === pv) && (!cv || k.cat === cv);
-    });
-    if (!kiots.length) { list.innerHTML = '<p>' + emptyMsg + '</p>'; return; }
-    if (!show.length) { list.innerHTML = '<p>Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; return; }
-    list.innerHTML = show.map(function(k){ return window.V20.lotCardHTML(k); }).join('');
+    }).sort(function(a, b){ return kiotTime(b) - kiotTime(a); });
+    if (!kiots.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> ' + emptyMsg + '</p>'; return; }
+    if (!show.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; return; }
+    var total = show.length;
+    var rows = show.slice(0, KIOT_MAX_ROWS);
+    list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join('') // v92 (C2): nut Binh luan duoi moi the kiot
+      + (total > KIOT_MAX_ROWS ? '<p class="filter-count">Đang hiện 10 tin mới nhất trong ' + total + ' tin khớp.</p>' : '');
+  }
+  // v91 (9): đổi bộ lọc thì hướng ngay tới dòng kết quả / bảng "Chưa có
+  // dữ liệu" (cuộn tới #kiotList, có scroll-margin để header không che).
+  function onFilterChange(){
+    render();
+    if (list && typeof list.scrollIntoView === 'function') list.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   // Nap option tinh/thanh tu du lieu (chi tinh nao co kiot), sap xep A-Z.
   if (provSel) {
@@ -104,9 +121,9 @@
     provs.sort().forEach(function(p){
       var o = document.createElement('option'); o.value = p; o.textContent = p; provSel.appendChild(o);
     });
-    provSel.addEventListener('change', render);
+    provSel.addEventListener('change', onFilterChange);
   }
-  if (catSel) catSel.addEventListener('change', render);
+  if (catSel) catSel.addEventListener('change', onFilterChange);
   render();
 })();
 </script>

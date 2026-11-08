@@ -26,11 +26,21 @@
    ensureSessionListener() thay vì đọc session riêng.
    Nạp sau mclivestream-supabase.js, trước js/app.js. Không làm gì khi
    tải trang nếu chưa gọi initAuthUI — an toàn khi nạp ở mọi trang chỉ
-   để dùng guardSubmit (form Góp ý trong js/app.js). */
+   để dùng guardSubmit (form Góp ý trong js/app.js).
+   v91 (BUG-01/11/12 + BUG-07): validation SĐT Việt Nam 10 chữ số;
+   lỗi từng trường tự xóa khi sửa đúng (live-clear); bubble email tiếng
+   Việt qua setCustomValidity; getSession không khóa cache null (tránh
+   header kẹt nút "Đăng Nhập" dù phiên vẫn đăng nhập). */
 (function () {
   'use strict';
 
   var MIN_PASSWORD_LEN = 8;
+
+  // v91 (BUG-01): SĐT Việt Nam — 10 chữ số, bắt đầu bằng 0, đầu số
+  // 03/05/07/08/09. normalizePhone bỏ khoảng trắng/dấu chấm/gạch nối để
+  // "032 998 3699" vẫn hợp lệ và lưu dạng 10 chữ số liền.
+  function normalizePhone(v) { return String(v || '').replace(/[\s.\-()]/g, ''); }
+  function isValidVnPhone(v) { return /^0[35789]\d{8}$/.test(normalizePhone(v)); }
 
   function $(id) { return document.getElementById(id); }
   function api() { return (typeof window !== 'undefined' && window.McLivestreamAPI) || null; }
@@ -100,13 +110,20 @@
   }
 
   async function getSession() {
-    if (sessionCacheReady) return sessionCache;
+    // v91 (BUG-07): session null KHÔNG được khóa cache — lần đọc đầu có thể
+    // chạy trước khi Supabase khôi phục xong session từ bộ nhớ cục bộ; khóa
+    // null lại thì mọi lần gọi sau đều trả null (header giữ nút "Đăng Nhập"
+    // dù phiên vẫn đang đăng nhập, trong khi mục ghim đọc trực tiếp qua
+    // McLivestreamAPI lại thấy số dư). Chỉ tin cache khi có session thật;
+    // null thì đọc lại mỗi lần. Đăng ký onAuthStateChange TRƯỚC khi đợi để
+    // sự kiện INITIAL_SESSION/SIGNED_IN cập nhật cache kịp thời.
+    if (sessionCacheReady && sessionCache) return sessionCache;
     var a = api();
     if (!a) return null;
+    ensureSessionListener();
     var s = await a.getSession();
     sessionCache = s;
     sessionCacheReady = true;
-    ensureSessionListener();
     return s;
   }
 
@@ -177,6 +194,50 @@
       form.querySelectorAll('.field-err').forEach(function (el) { el.textContent = ''; });
       form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
     }
+    // v91 (BUG-11): lỗi từng trường phải biến mất NGAY khi người dùng sửa
+    // đúng — không đợi tới lần submit sau. Chỉ xóa lỗi khi giá trị hiện tại
+    // đã hợp lệ; giá trị vẫn sai thì giữ nguyên lỗi đang hiện (không nhảy
+    // lỗi mới khi đang gõ).
+    function wireLiveClear(inputId, isValid, errText) {
+      var inp = $(inputId);
+      if (!inp || typeof inp.addEventListener !== 'function') return;
+      inp.addEventListener('input', function () {
+        if (isValid(inp.value)) setFieldError(inputId, '');
+        else {
+          var errEl = $('err-' + inputId);
+          if (errEl && errEl.textContent) setFieldError(inputId, errText);
+        }
+      });
+    }
+    // v91 (BUG-12): bubble mặc định của trình duyệt cho input type=email
+    // hiện tiếng Anh ("Please include an '@'..."). Đặt customValidity tiếng
+    // Việt để dù form nào quên novalidate thì bubble vẫn tiếng Việt; form
+    // đã có novalidate thì JS tự báo lỗi tiếng Việt như cũ.
+    function wireEmailValidity(inputId) {
+      var inp = $(inputId);
+      if (!inp || typeof inp.addEventListener !== 'function' || typeof inp.setCustomValidity !== 'function') return;
+      inp.addEventListener('input', function () {
+        var v = inp.value.trim();
+        inp.setCustomValidity(!v || isValidEmail(v) ? '' : 'Email chưa đúng định dạng.');
+      });
+      inp.addEventListener('invalid', function () {
+        var v = inp.value.trim();
+        inp.setCustomValidity(!v ? 'Hãy nhập email.' : 'Email chưa đúng định dạng.');
+      });
+    }
+    // v91: nối live-clear + customValidity cho các ô có trong cfg.
+    (function () {
+      var inp = cfg.inputs || {};
+      var emailErr = 'Email chưa đúng định dạng.';
+      var phoneErr = 'Số điện thoại chưa đúng định dạng (10 chữ số, bắt đầu bằng 03, 05, 07, 08 hoặc 09).';
+      if (inp.signupEmail) { wireLiveClear(inp.signupEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.signupEmail); }
+      if (inp.signupPhone) wireLiveClear(inp.signupPhone, isValidVnPhone, phoneErr);
+      if (inp.signupPass) wireLiveClear(inp.signupPass, function (v) { return String(v || '').length >= MIN_PASSWORD_LEN; }, 'Mật khẩu cần ít nhất 8 ký tự.');
+      if (inp.signupPass2) wireLiveClear(inp.signupPass2, function (v) { var p1 = $(inp.signupPass); return !!p1 && v === p1.value; }, 'Mật khẩu nhập lại chưa khớp.');
+      if (inp.signinEmail) { wireLiveClear(inp.signinEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.signinEmail); }
+      if (inp.signinPass) wireLiveClear(inp.signinPass, function (v) { return !!String(v || ''); }, 'Hãy nhập mật khẩu.');
+      if (inp.forgotEmail) { wireLiveClear(inp.forgotEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.forgotEmail); }
+    })();
     function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || '')); }
     function isAlreadyRegistered(err) {
       var raw = String((err && (err.message || err.code)) || err || '').toLowerCase();
@@ -332,8 +393,11 @@
           if (!setFieldError(cfg.inputs.signupEmail, !email ? 'Hãy nhập email.' : 'Email chưa đúng định dạng.')) msg('Hãy nhập email đúng định dạng.', 'err');
           bad = true;
         }
-        if (!phone) {
-          if (!setFieldError(cfg.inputs.signupPhone, 'Hãy nhập số điện thoại chính dùng Zalo.')) msg('Hãy nhập số điện thoại chính dùng Zalo.', 'err');
+        // v91 (BUG-01): SĐT phải đúng định dạng Việt Nam 10 chữ số
+        // (đầu số 03/05/07/08/09) mới tạo tài khoản — trước đây chỉ kiểm
+        // tra không rỗng nên "03299" cũng đăng ký được.
+        if (!isValidVnPhone(phone)) {
+          if (!setFieldError(cfg.inputs.signupPhone, !phone ? 'Hãy nhập số điện thoại chính dùng Zalo.' : 'Số điện thoại chưa đúng định dạng (10 chữ số, bắt đầu bằng 03, 05, 07, 08 hoặc 09).')) msg('Hãy nhập số điện thoại đúng định dạng.', 'err');
           bad = true;
         }
         if (p1.length < MIN_PASSWORD_LEN) {
@@ -350,7 +414,7 @@
           var res = await api().signUp({
             email: email,
             password: p1,
-            phoneZalo: phone,
+            phoneZalo: normalizePhone(phone),
             marketingOptIn: !!$(cfg.inputs.signupMarketing).checked,
             accountType: cfg.accountType
           });
@@ -476,7 +540,9 @@
       getSession: getSession,
       ensureSessionListener: ensureSessionListener,
       onSessionChange: onSessionChange,
-      friendlyError: friendly
+      friendlyError: friendly,
+      isValidVnPhone: isValidVnPhone,
+      normalizePhone: normalizePhone
     };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = window.V2SAuthUI;

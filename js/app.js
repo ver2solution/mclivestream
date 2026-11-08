@@ -111,6 +111,18 @@ function articleRef(a){
   var parts = String(h).split('/');
   return parts[parts.length - 1] || h;
 }
+// v92 (BUG-14): nút Thích phải đổi trạng thái NGAY sau khi bấm — đổi nhãn
+// thành "👍 Đã thích", thêm class v2s-liked, vô hiệu nút (không bấm lặp
+// trong cùng lượt render). Chỉ gọi khi RPC awardInteraction đã trả ok.
+function markLiked(btn){
+  try {
+    if (!btn) return;
+    if (btn.classList && btn.classList.add) btn.classList.add('v2s-liked');
+    btn.textContent = '👍 Đã thích';
+    btn.disabled = true;
+    if (btn.setAttribute) btn.setAttribute('aria-pressed', 'true');
+  } catch (e) {}
+}
 function cardHTML(m, opts){
   // v63: opts tuy chon (khong doi dau ra mac dinh) — opts.zaloHref doi link nut
   // "Nhan Zalo" (khoi hub 11.11 dung tin nhan soan san), opts.demoUrl them link
@@ -172,14 +184,17 @@ function contactsBlockHTML(contacts){
 /* Điểm v2 (GĐ2, 20:22 07/11): xem liên hệ 1 hồ sơ = 5 điểm/lần bấm (1 lần/
    ngày/hồ sơ). contactsBlockHTML() giữ nguyên (render danh sách đầy đủ,
    dùng sau khi đã trả điểm + test cũ); hàm này bọc nó trong khối ẩn + nút
-   "Xem liên hệ (5 điểm)". LƯU Ý: số liên hệ vẫn nằm trong js/data.js công
+   "Xem liên hệ". LƯU Ý: số liên hệ vẫn nằm trong js/data.js công
    khai nên đây là cửa thu điểm ở giao diện, không phải kiểm soát truy cập
-   thật — xem spec §12. Nút bấm được xử lý tập trung trong initPointsUI. */
+   thật — xem spec §12. Nút bấm được xử lý tập trung trong initPointsUI.
+   v92 (08/11/2026): xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES ở
+   js/reward.js) — nhãn nút bỏ "(5 điểm)", bấm hiện ngay không trừ điểm;
+   code trừ điểm giữ nguyên để mở lại chỉ bằng 1 cờ. */
 function gatedContactsHTML(targetType, targetId, contacts){
   if(!contacts || !contacts.length) return '';
   return '<div class="v2s-contacts-gated" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
   + '<div class="v2s-contacts-hidden" hidden>'+contactsBlockHTML(contacts)+contactNoteHTML()+'</div>'
-  + '<p><button class="btn btn-ghost btn-sm" type="button" data-v2s-view-contact>👁 Xem liên hệ (5 điểm)</button> <span class="v2s-contact-msg" role="status"></span></p></div>';
+  + '<p><button class="btn btn-ghost btn-sm" type="button" data-v2s-view-contact>👁 Xem liên hệ</button> <span class="v2s-contact-msg" role="status"></span></p></div>';
 }
 function contactNoteHTML(){ return '<p class="contact-note">'+CONTACT_NOTE+'</p>'; }
 /* Shops (v22): tin tuyển công khai thu thập từ bài tuyển shop tự đăng.
@@ -439,6 +454,13 @@ function initFaqToggle(){
     btn.textContent = open ? 'Thu gọn ↑' : 'Xem thêm câu hỏi ↓';
   });
 }
+// v91 (9): bảng "Chưa có dữ liệu" thống nhất cho mọi bộ lọc — banner rõ
+// ràng (class .empty-state) + hướng dẫn nới bộ lọc, thay cho các dòng chữ
+// thường rời rạc trước đây. Người dùng dặn: lọc 0 kết quả thì phải nhảy
+// bảng thông báo "Chưa có dữ liệu" + cuộn tới khu vực kết quả.
+function emptyResultsHTML(guidance){
+  return '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> ' + (guidance || 'Hãy nới bộ lọc hoặc bấm Đặt lại.') + '</p>';
+}
 function initSectionFilter(opts){
   var section = document.getElementById(opts.sectionId);
   if(!section) return;
@@ -483,6 +505,9 @@ function initSectionFilter(opts){
     /* v72: mobile — gap bo loc sau khi ap dung de thay ket qua ngay. */
     closeFilterOf(applyBtn);
     var target = first || section;
+    // v91 (9): 0 kết quả → cuộn tới đúng bảng "Chưa có dữ liệu" (có
+    // scroll-margin để header sticky không che).
+    if (!first && emptyEl && !emptyEl.hidden) target = emptyEl;
     if(target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   }
   function reset(){
@@ -796,12 +821,22 @@ function lotFactoryStats(lots, factories, ref){
   return {lotCount: byGroup.g1.length, buyerCount: byGroup.g2.length, batchCount: byGroup.g3.length, factoryCount: (factories || []).length, factoryProvinceCount: Object.keys(provs).length};
 }
 /* v76: the lo/xuong render tu data.js — phai GIONG HET the tinh cu (cung
-   class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu. */
-function lotCardHTML(l){
-  return '<article class="lot-card" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-v2s-id="'+esc(l.id)+'"><h4>' + esc(l.title) + '</h4><p class="lot-price">' + esc(l.price) + '</p><p class="lot-meta">' + esc(l.meta) + '</p><p class="lot-date">' + esc(l.dateLabel) + ': ' + esc(l.date) + '</p><p class="lot-label">' + esc(l.label) + '</p><p><a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.linkText) + '</a></p></article>';
+   class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu.
+   v92 (C2): withComments=true thi them nut "Bình luận (N)" + khung mount
+   an duoi moi the — bam moi mo form + tai danh sach (lazy-load, xu ly
+   tap trung trong Ver2Comments.initCardComments). lotCardHTML dung chung
+   cho ca kiot (trang thanh-ly-kiot goi voi doi tuong kiot): phan biet
+   target_type theo tien to id ('kiot-' -> 'kiot', con lai -> 'lot'). */
+function commentToggleHTML(targetType, targetId){
+  return '<p><button class="btn btn-ghost btn-sm v2s-comment-toggle" type="button" data-v2s-comment-toggle data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">💬 Bình luận</button></p>'
+  + '<div class="v2s-comments-inline" data-v2s-comments-for="'+esc(targetType)+':'+esc(targetId)+'" hidden></div>';
 }
-function factoryCardHTML(f){
-  return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '" data-v2s-id="'+esc(f.id)+'"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p></article>';
+function lotCardHTML(l, withComments){
+  var targetType = (l && l.id && String(l.id).indexOf('kiot-') === 0) ? 'kiot' : 'lot';
+  return '<article class="lot-card" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-v2s-id="'+esc(l.id)+'"><h4>' + esc(l.title) + '</h4><p class="lot-price">' + esc(l.price) + '</p><p class="lot-meta">' + esc(l.meta) + '</p><p class="lot-date">' + esc(l.dateLabel) + ': ' + esc(l.date) + '</p><p class="lot-label">' + esc(l.label) + '</p><p><a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.linkText) + '</a></p>' + (withComments ? commentToggleHTML(targetType, l.id) : '') + '</article>';
+}
+function factoryCardHTML(f, withComments){
+  return '<article class="lot-card" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '" data-v2s-id="'+esc(f.id)+'"><h4>' + esc(f.name) + '</h4><p class="lot-price">' + esc(f.items) + '</p><p class="lot-meta">' + esc(f.meta) + '</p><p class="lot-date">' + esc(f.dateLabel) + ': ' + esc(f.date) + '</p><p class="lot-label">' + esc(f.label) + '</p><p><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.linkText) + '</a></p>' + (withComments ? commentToggleHTML('factory', f.id) : '') + '</article>';
 }
 /* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
    (.lot-sub) + o loc tinh xuong (fFacProv) theo so lieu thuc te. Goi TRUOC
@@ -811,13 +846,13 @@ function renderLotSections(ref){
   var lots = D.lots || [], factories = D.factories || [];
   var byGroup = lotsByGroup(lots, ref);
   var g1 = document.getElementById('lotGrid1');
-  if(g1) g1.innerHTML = byGroup.g1.map(lotCardHTML).join('');
+  if(g1) g1.innerHTML = byGroup.g1.map(function(l){ return lotCardHTML(l, true); }).join(''); // v92 (C2): nut Binh luan duoi moi the lo
   var g2 = document.getElementById('lotGrid2');
-  if(g2) g2.innerHTML = byGroup.g2.map(lotCardHTML).join('');
+  if(g2) g2.innerHTML = byGroup.g2.map(function(l){ return lotCardHTML(l, true); }).join('');
   var g3 = document.getElementById('lotGrid3');
-  if(g3) g3.innerHTML = byGroup.g3.map(lotCardHTML).join('');
+  if(g3) g3.innerHTML = byGroup.g3.map(function(l){ return lotCardHTML(l, true); }).join('');
   var fg = document.getElementById('factoryGrid');
-  if(fg) fg.innerHTML = factories.map(factoryCardHTML).join('');
+  if(fg) fg.innerHTML = factories.map(function(f){ return factoryCardHTML(f, true); }).join(''); // v92 (C2): nut Binh luan duoi moi the xuong
   var s1 = document.getElementById('lotSub1');
   if(s1) s1.textContent = 'Doanh nghiệp và shop xả hàng tồn kho theo lô sỉ — đang có ' + byGroup.g1.length + ' lô.';
   var s2 = document.getElementById('lotSub2');
@@ -937,6 +972,7 @@ function initHome(){
           return;
         }
         var R2=window.Ver2Reward;
+        if(R2 && R2.FREE_SERVICES===true){ go(); return; } // v92: lọc tạm miễn phí, không trừ điểm
         if(!R2 || typeof R2.spendPoints !== 'function'){ say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return; }
         var now=Date.now();
         if(typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge('model'), now)){ go(); return; }
@@ -1019,7 +1055,7 @@ function initShops(){
     // v42: mac dinh (sort='') giu sortShopsNewest; chon sap xep thi dung sortShopsBy (bo qua thu tu ngay).
     var list=filterShops(f.sort ? sortShopsBy(D.shops||[],f.sort) : defaultShopOrder(D.shops||[]),f);
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
-    el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):'<p>Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.</p>';
+    el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):emptyResultsHTML('Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); el.scrollIntoView();},perPage,'tin tuyển');
     setParams(Object.assign({},f,{page:String(pg)}));
   }
@@ -1046,6 +1082,12 @@ function initShops(){
   document.getElementById('applyShopBtn').addEventListener('click',function(){ var b=document.getElementById('applyShopBtn'); return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b); });
   document.getElementById('resetShopBtn').addEventListener('click',function(){['fShopProv','fShopCat','fShopSort','fShopShift','fPayType','fPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   render(page);
+  // v91 (9): vào từ link đã lọc sẵn thì hướng ngay tới dòng kết quả /
+  // bảng "Chưa có dữ liệu" (như trang Mẫu).
+  try {
+    if ((p.prov || p.cat || p.sort || p.shift || p.paytype || p.paymin)
+      && el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'auto', block: 'start' });
+  } catch (e) {}
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
 function initList(){
@@ -1064,7 +1106,7 @@ function initList(){
     list=defaultModelOrder(list);
     }
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
-    grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):'<p>Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.</p>';
+    grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); setParams(Object.assign({},readForm(),{page:String(np)})); grid.scrollIntoView();},12,'hồ sơ');
     setParams(Object.assign({},f,{page:String(pg)}));
   }
@@ -1081,6 +1123,13 @@ function initList(){
   document.getElementById('applyBtn').addEventListener('click',function(){ var b=document.getElementById('applyBtn'); return gateFilterApply('model', 'danh-sach-mau.html', function(){ render(1); closeFilterOf(b); }, b); });
   document.getElementById('resetBtn').addEventListener('click',function(){['fProv','fCat','fGender','fSort','fShift','fRevMin','fWageMin','fQ'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); render(1);});
   render(page);
+  // v91 (9): vào từ link đã lọc sẵn (vd tìm kiếm hero trang chủ) thì hướng
+  // ngay tới dòng kết quả / bảng "Chưa có dữ liệu", không để người dùng ở
+  // đầu trang phải tự cuộn xuống.
+  try {
+    if ((p.prov || p.cat || p.gender || p.sort || p.shift || p.revmin || p.wagemin || p.q)
+      && grid && typeof grid.scrollIntoView === 'function') grid.scrollIntoView({ behavior: 'auto', block: 'start' });
+  } catch (e) {}
 }
 /* v63: thu tu mac dinh cua trang Mau (initList): luot xem giam dan, binh luan
    giam dan, anh that truoc (photoTier), roi xoay trong tung nhom. v64: xoay
@@ -1156,7 +1205,7 @@ function initHub(){
     }
     var list = hubResults(prov, cat);
     if(!list.length){
-      box.innerHTML = '';
+      box.innerHTML = emptyResultsHTML(hubEmptyHTML(prov, cat));
       if(countEl) countEl.innerHTML = hubEmptyHTML(prov, cat);
       return;
     }
@@ -1195,7 +1244,7 @@ function initNews(){
       var tw = a.takeaway ? '<p><b>Theo Ver2Solution:</b> '+esc(a.takeaway)+'</p>' : '';
       return '<div class="news-item" data-v2s-id="'+esc(articleRef(a))+'"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
       + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+pointsButtonsHTML('article', articleRef(a))+'</div>';
-    }).join('');
+    }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc. Hãy chọn chuyên mục khác.');
     var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
@@ -1633,6 +1682,16 @@ function gateFilterApply(category, page, doApply, msgAnchor){
         return false;
       }
       var R2 = window.Ver2Reward;
+      // v92: lọc tạm miễn phí (cờ V20_FREE_SERVICES ở js/reward.js) — áp
+      // dụng ngay, không trừ điểm, không hiện thông báo hết điểm. Cửa đăng
+      // nhập cho khách vãng lai đã kiểm tra ở trên, giữ nguyên. R2 không có
+      // cờ FREE_SERVICES (bản reward.js cũ / mock test) thì đi đường trừ
+      // điểm như cũ.
+      if (R2 && R2.FREE_SERVICES === true) {
+        try { doApply(); } catch (e) {}
+        scrollToResults(category);
+        return true;
+      }
       if (!R2 || typeof R2.spendPoints !== 'function') { say('Hệ thống điểm chưa bật (đang chờ migration M7), chưa lọc được.'); return false; }
       var now = Date.now();
       if (typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge(category), now)) {
@@ -1735,6 +1794,14 @@ function applyPinnedOrderToLists(){
 }
 // Hộp ghim + mục bình luận trên trang chi tiết (ho-so / chi-tiet-shop) và
 // trang bài báo. Gọi sau khi trang chi tiết đã render xong.
+// v91 (BUG-10): giờ hết hạn ghim hiện giờ Việt Nam dễ đọc ("00:41 ngày
+// 08/11") thay vì timestamp ISO UTC thô. R.formatVnDateTime (reward.js)
+// chưa có thì rơi về chuỗi gốc.
+function pinUntilText(until, R) {
+  if (!until) return '';
+  try { if (R && typeof R.formatVnDateTime === 'function') return R.formatVnDateTime(until); } catch (e) {}
+  return String(until);
+}
 function mountPointsDetail(targetType, targetId){
   if (typeof document === 'undefined' || typeof document.createElement !== 'function') return;
   var anchor = document.getElementById('detailRoot') || document.getElementById('shopDetailRoot');
@@ -1772,7 +1839,9 @@ function mountPointsDetail(targetType, targetId){
       var btn = box.querySelector('[data-v2s-pin-confirm]');
       if (!loggedIn) {
         if (bal) bal.innerHTML = pointsGuestNoteHTML();
-        if (btn) btn.disabled = true;
+        // Khách vãng lai: KHÔNG disable nút Ghim — bấm nút sẽ hiện ghi chú
+        // "Bạn cần đăng nhập tài khoản để lấy điểm ghim" (handler
+        // data-v2s-pin-confirm dưới đây kiểm tra đăng nhập trước khi gọi RPC).
         if (msg) msg.textContent = '';
         return;
       }
@@ -1789,7 +1858,11 @@ function initPointsUI(){
   // Nút thích/chia sẻ/ghim trên mọi thẻ (ủy quyền click — thẻ render lại
   // khi lọc/phân trang vẫn chạy).
   document.addEventListener('click', function (e){
-    // Xem liên hệ 1 hồ sơ (5 điểm/lần bấm, 1 lần/ngày/hồ sơ).
+    // Xem liên hệ 1 hồ sơ — v92: TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES ở
+    // js/reward.js): đã đăng nhập thì hiện ngay, không trừ điểm, không kiểm
+    // tra v20_contact_viewed_v1 nữa. Khách vãng lai vẫn thấy lời mời đăng
+    // ký (cửa đăng nhập giữ nguyên). Code trừ điểm giữ nguyên để mở lại
+    // chỉ bằng 1 cờ.
     var vc = e.target && e.target.closest ? e.target.closest('[data-v2s-view-contact]') : null;
     if (vc) {
       var wrap = vc.closest ? vc.closest('.v2s-contacts-gated') : null;
@@ -1803,6 +1876,7 @@ function initPointsUI(){
         return pointsSessionUser().then(function (user){
           if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 250 điểm! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
           var R = window.Ver2Reward;
+          if (R && R.FREE_SERVICES === true) { reveal(); return; } // v92: miễn phí
           if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { reveal(); return; }
           if (!R || typeof R.spendPoints !== 'function') { if (cmsg) cmsg.textContent = 'Hệ thống điểm chưa bật (đang chờ migration M7), chưa xem được liên hệ.'; return; }
           var day = (typeof R.dayKeySaigon === 'function') ? R.dayKeySaigon(new Date()) : '';
@@ -1826,14 +1900,17 @@ function initPointsUI(){
       var pinMsg = box.querySelector('.v2s-pin-msg');
       var hours = hoursInput ? Number(hoursInput.value) : 0;
       loadPointsScripts().then(function(){
-        var R = window.Ver2Reward;
-        if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; return; }
-        R.pinPost(box.getAttribute('data-v2s-target-type'), box.getAttribute('data-v2s-target-id'), box.getAttribute('data-v2s-target-type'), hours).then(function (r){
-          if (!pinMsg) return;
-          if (r && r.ok) {
-            var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-            pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + String(until) : '') + ' (' + hours + ' điểm).';
-          } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống điểm chưa bật.'); }
+        return pointsLoggedIn().then(function (loggedIn){
+          if (!loggedIn) { if (pinMsg) pinMsg.textContent = 'Bạn cần đăng nhập tài khoản để lấy điểm ghim'; return; }
+          var R = window.Ver2Reward;
+          if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'; return; }
+          R.pinPost(box.getAttribute('data-v2s-target-type'), box.getAttribute('data-v2s-target-id'), box.getAttribute('data-v2s-target-type'), hours).then(function (r){
+            if (!pinMsg) return;
+            if (r && r.ok) {
+              var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
+              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ' (' + hours + ' điểm).';
+            } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống điểm chưa bật.'); }
+          });
         });
       });
       return;
@@ -1850,7 +1927,7 @@ function initPointsUI(){
     e.preventDefault();
     loadPointsScripts().then(function(){
       return pointsLoggedIn().then(function (loggedIn){
-        if (!loggedIn) { say(pointsGuestNoteHTML()); return; }
+        if (!loggedIn) { say(type === 'pin' ? 'Bạn cần đăng nhập tài khoản để lấy điểm ghim' : pointsGuestNoteHTML()); return; }
         var R = window.Ver2Reward;
         if (!R) { say('Hệ thống điểm thưởng chưa bật (đang chờ migration M7).'); return; }
         if (type === 'pin') {
@@ -1868,7 +1945,7 @@ function initPointsUI(){
             R.pinPost(targetType, targetId, targetType, hours).then(function (r){
               if (r && r.ok) {
                 var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-                say('Đã ghim lên top' + (until ? ' đến ' + esc(String(until)) : '') + ' (' + hours + ' điểm).');
+                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ' (' + hours + ' điểm).');
                 form.remove();
               } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.')); }
             });
@@ -1876,8 +1953,8 @@ function initPointsUI(){
           return;
         }
         R.awardInteraction(type, targetType, targetId).then(function (r){
-          if (r && r.ok && Number(r.points) > 0) say('+' + Number(r.points) + ' điểm (1 lần/ngày)');
-          else if (r && r.ok) say(type === 'like' ? 'Đã tính điểm thích hôm nay' : 'Đã tính điểm chia sẻ hôm nay');
+          if (r && r.ok && Number(r.points) > 0) { if (type === 'like') markLiked(t); say('+' + Number(r.points) + ' điểm (1 lần/ngày)'); }
+          else if (r && r.ok) { if (type === 'like') markLiked(t); say(type === 'like' ? 'Đã tính điểm thích hôm nay' : 'Đã tính điểm chia sẻ hôm nay'); }
           else say('Chưa tính được điểm: ' + esc((r && r.error) || 'hệ thống điểm chưa bật.'));
         });
       });
@@ -1889,7 +1966,13 @@ function initPointsUI(){
     mountPointsDetail('article', '');
   }
   // Xếp lại danh sách theo ghim đang hoạt động (lỗi/lưới vắng → giữ nguyên).
-  loadPointsScripts().then(function(){ applyPinnedOrderToLists(); });
+  // v92 (C2): bình luận dưới mỗi thẻ lô/xưởng/kiot — gắn listener nút toggle
+  // + đếm số bình luận đã duyệt (Ver2Comments.initCardComments).
+  loadPointsScripts().then(function(){
+    applyPinnedOrderToLists();
+    var C = window.Ver2Comments;
+    if (C && typeof C.initCardComments === 'function') C.initCardComments();
+  });
 }
 /* ---- Chuyển điểm trên trang ví (vi-tien-ao.html, chốt 20:23 + 20:25) ---- */
 function initTransferForm(){
@@ -1904,6 +1987,9 @@ function initTransferForm(){
   var amountEl = document.getElementById('transferAmount');
   var noteEl = document.getElementById('transferNote');
   var balEl = document.getElementById('transferBalance');
+  // v91 (BUG-08): trạng thái phiên hiện tại + cờ đã gắn submit (gắn 1 lần
+  // duy nhất dù refreshTransfer chạy nhiều lần khi phiên đổi).
+  var streak = null, balance = 0, currentUser = null, submitWired = false;
   function say(t){ if (msgEl) msgEl.textContent = t || ''; }
   function streakText(st){
     if (!st || !st.ok) return 'Chưa tải được chuỗi online (hệ thống điểm chưa bật hoặc mất mạng).';
@@ -1923,11 +2009,20 @@ function initTransferForm(){
       return '<li><b>' + dir + ' ' + amt + ' điểm</b>' + (other ? ' — ' + other : '') + (when ? ' · ' + esc(when) : '') + (it.note ? '<br><span>' + esc(it.note) + '</span>' : '') + '</li>';
     }).join('') + '</ul>';
   }
+  // v91 (BUG-08): tải lại số dư/chuỗi/lịch sử chuyển điểm mỗi khi phiên đổi
+  // (đăng nhập/đăng xuất) thay vì chỉ tải 1 lần lúc mở trang — dòng "Cần
+  // đăng nhập..." phải biến mất ngay khi đã đăng nhập và hiện lại khi đăng
+  // xuất, không cần tải lại trang.
+  function refreshTransfer(){
   loadPointsScripts().then(function(){
     return pointsSessionUser().then(function (user){
+      currentUser = user || null;
       var R = window.Ver2Reward;
       if (!user) {
+        streak = null; balance = 0;
         if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển điểm. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 250 điểm</a>.';
+        if (balEl) balEl.textContent = 'Cần đăng nhập để xem số dư điểm.';
+        if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển điểm.</p>';
         if (submitBtn) submitBtn.disabled = true;
         return;
       }
@@ -1935,7 +2030,6 @@ function initTransferForm(){
       if (typeof R.getMyPointsBalanceResult === 'function') {
         R.getMyPointsBalanceResult().then(function (r){ if (balEl && r && r.ok) balEl.textContent = 'Số dư điểm của bạn: ' + (Number(r.balance) || 0) + ' điểm.'; });
       }
-      var streak = null, balance = 0;
       var jobs = [];
       if (typeof R.getMyTransferStreak === 'function') {
         jobs.push(R.getMyTransferStreak().then(function (st){ streak = st; if (streakEl) streakEl.textContent = streakText(st); if (submitBtn && st && !st.eligible) submitBtn.disabled = true; }));
@@ -1947,13 +2041,15 @@ function initTransferForm(){
         jobs.push(R.getMyPointsBalanceResult().then(function (r){ if (r && r.ok) balance = Number(r.balance) || 0; }));
       }
       Promise.all(jobs).catch(function () {});
+      if (submitWired) return;
+      submitWired = true;
       form.addEventListener('submit', function (e){
         e.preventDefault();
         say('');
         var err = (typeof R.validateTransfer === 'function') ? R.validateTransfer({
           recipientEmail: emailEl ? emailEl.value : '',
           amount: amountEl ? Number(amountEl.value) : 0,
-          balance: balance, myEmail: user.email || ''
+          balance: balance, myEmail: (currentUser && currentUser.email) || ''
         }) : null;
         if (err) { say(err); return; }
         if (streak && !streak.eligible) { say('Chưa đủ 30 ngày online liên tiếp nên chưa chuyển được điểm (còn ' + streak.days_remaining + ' ngày nữa).'); return; }
@@ -1984,6 +2080,12 @@ function initTransferForm(){
       });
     });
   });
+  }
+  refreshTransfer();
+  try {
+    var A = window.V2SAuthUI;
+    if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function () { refreshTransfer(); });
+  } catch (e) { /* bỏ qua — vẫn tải 1 lần lúc mở trang */ }
 }
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
   initMobileNotice(); initHeaderAuth();
@@ -2006,6 +2108,6 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm};
+window.V20 = {esc:esc, cardHTML:cardHTML, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, commentToggleHTML:commentToggleHTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();

@@ -3,6 +3,12 @@
    (chi-tiet-shop.html) và trang bài báo (bai-viet/*.html, tin-tuc.html).
    Bảng `comments` (M6): target_type IN ('model_profile','shop_profile',
    'article'), target_ref = id data.js (th-…/sh-…) hoặc tên file bài báo.
+   v92 (08/11/2026): mở rộng thêm 3 loại mục — 'lot' (lô xả kho),
+   'factory' (xưởng may), 'kiot' (thanh lý kiot) — cho các thẻ trên
+   trang thanh-ly-kiot (kiot) + mục lô/xưởng trên danh-sach-shop (lô/
+   xưởng không có trang chi tiết riêng). Cần migration M10 nới CHECK
+   target_type của bảng comments (file riêng, CHƯA chạy live) thì 3 loại
+   mới mới INSERT được; client đã chấp nhận trước để không chặn UI.
    - Bình luận mới LUÔN ở trạng thái chờ duyệt (moderation_status='pending'),
      KHÔNG tự duyệt, KHÔNG tự cộng điểm lúc gửi (points 0 ở phía client).
    - Điểm bình luận v2 (+10, tối đa 1 lần/ngày toàn site) được cộng qua RPC
@@ -16,7 +22,8 @@
   'use strict';
   var GUEST_NOTE = 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng điểm thưởng, đổi quà.';
   var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 10 điểm (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
-  var VALID_TYPES = ['model_profile', 'shop_profile', 'article'];
+  var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
+  var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -134,10 +141,106 @@
     return true;
   }
 
+  // ---- v92 (C2): bình luận dưới mỗi thẻ lô/xưởng/kiot ----
+  // Số bình luận ĐÃ DUYỆT theo từng mục (target_type:target_ref), đếm bằng
+  // 1 query duy nhất cho cả 3 loại mới, cache theo phiên (sessionStorage)
+  // để không truy vấn lại khi cuộn/lọc render lại thẻ. Lỗi mạng → {} (nút
+  // vẫn hiện "Bình luận" không số, bấm vẫn mở form bình thường).
+  function readCountCache() {
+    try {
+      if (typeof sessionStorage === 'undefined') return null;
+      var raw = sessionStorage.getItem(COUNT_CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function writeCountCache(counts) {
+    try {
+      if (typeof sessionStorage === 'undefined') return;
+      sessionStorage.setItem(COUNT_CACHE_KEY, JSON.stringify({ at: Date.now(), counts: counts || {} }));
+    } catch (e) { /* bỏ qua — lần sau đếm lại */ }
+  }
+  async function getCommentCounts(types) {
+    var wanted = (types && types.length ? types : ['lot', 'factory', 'kiot']);
+    var cached = readCountCache();
+    if (cached && cached.counts) return cached.counts;
+    var a = api();
+    if (!a || !a.client) return {};
+    try {
+      var res = await a.client.from('comments').select('target_type,target_ref')
+        .in('target_type', wanted).eq('moderation_status', 'approved').is('deleted_at', null).limit(1000);
+      if (res.error) return {};
+      var counts = {};
+      (res.data || []).forEach(function (row) {
+        var k = String(row.target_type) + ':' + String(row.target_ref);
+        counts[k] = (counts[k] || 0) + 1;
+      });
+      writeCountCache(counts);
+      return counts;
+    } catch (e) { return {}; }
+  }
+  // Cập nhật nhãn "Bình luận (N)" cho mọi nút toggle trong root (mặc định
+  // document). Nút nào chưa có số thì giữ nhãn "Bình luận".
+  function countLabel(n) { return n > 0 ? '💬 Bình luận (' + n + ')' : '💬 Bình luận'; }
+  async function refreshCommentCounts(root) {
+    var doc = root || (typeof document !== 'undefined' ? document : null);
+    if (!doc || typeof doc.querySelectorAll !== 'function') return {};
+    var counts = await getCommentCounts();
+    var btns = doc.querySelectorAll('[data-v2s-comment-toggle]');
+    for (var i = 0; i < btns.length; i++) {
+      var b = btns[i];
+      if (b.getAttribute('data-v2s-comments-open') === '1') continue; // đang mở: giữ nhãn "Đóng bình luận"
+      var k = b.getAttribute('data-v2s-target-type') + ':' + b.getAttribute('data-v2s-target-id');
+      var n = counts[k] || 0;
+      b.setAttribute('data-v2s-comments-count', String(n)); // để đóng/mở lại vẫn giữ số
+      b.textContent = countLabel(n);
+    }
+    return counts;
+  }
+  // Gắn 1 lần listener ủy quyền cho nút toggle bình luận dưới thẻ lô/xưởng/
+  // kiot (gọi từ js/app.js initPointsUI sau khi trang render xong). Bấm lần
+  // đầu: mở khung + renderComments (lazy-load); bấm lại: đóng/mở, không tải
+  // lại. 2 thẻ khác nhau không lẫn nhau (mỗi khung gắn đúng target_ref).
+  var cardCommentsWired = false;
+  function initCardComments(root) {
+    var doc = root || (typeof document !== 'undefined' ? document : null);
+    if (!doc || cardCommentsWired) return false;
+    if (typeof doc.addEventListener !== 'function') return false;
+    cardCommentsWired = true;
+    doc.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('[data-v2s-comment-toggle]') : null;
+      if (!btn) return;
+      e.preventDefault();
+      var card = btn.closest ? btn.closest('article') : null;
+      var mount = null;
+      if (card && typeof card.querySelector === 'function') {
+        mount = card.querySelector('[data-v2s-comments-for="' + btn.getAttribute('data-v2s-target-type') + ':' + btn.getAttribute('data-v2s-target-id') + '"]');
+      }
+      if (!mount) return;
+      var open = btn.getAttribute('data-v2s-comments-open') === '1';
+      if (open) {
+        mount.hidden = true;
+        btn.setAttribute('data-v2s-comments-open', '0');
+        btn.textContent = countLabel(Number(btn.getAttribute('data-v2s-comments-count') || 0));
+        return;
+      }
+      mount.hidden = false;
+      btn.setAttribute('data-v2s-comments-open', '1');
+      btn.textContent = '💬 Đóng bình luận';
+      if (mount.getAttribute('data-v2s-loaded') !== '1') {
+        mount.setAttribute('data-v2s-loaded', '1');
+        renderComments(btn.getAttribute('data-v2s-target-type'), btn.getAttribute('data-v2s-target-id'), mount);
+      }
+    });
+    refreshCommentCounts(doc);
+    return true;
+  }
+
   var API = {
     GUEST_NOTE: GUEST_NOTE, LOGGED_IN_NOTE: LOGGED_IN_NOTE,
     loadComments: loadComments, submitComment: submitComment,
-    renderComments: renderComments, commentsListHTML: commentsListHTML
+    renderComments: renderComments, commentsListHTML: commentsListHTML,
+    getCommentCounts: getCommentCounts, refreshCommentCounts: refreshCommentCounts,
+    initCardComments: initCardComments, VALID_TYPES: VALID_TYPES
   };
   if (typeof window !== 'undefined') window.Ver2Comments = API;
   if (typeof module !== 'undefined' && module.exports) module.exports = API;

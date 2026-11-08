@@ -35,9 +35,16 @@
      KHÔNG reset, KHÔNG cộng bù thời gian vắng. Thoát ≥4 tiếng
      (now − lastSeen >= 4h): reset tick và count về 0.
      Cập nhật lastSeen mỗi tick + khi visibilitychange/beforeunload.
-     Đa tab: đồng bộ hiển thị qua sự kiện storage (best-effort — 2 tab
-     cùng tick thì lần ghi cuối thắng, số có thể lệch nhẹ, chấp nhận được
-     vì đây là số hiển thị minh hoạ).
+   - v91 (BUG-02): tick mỗi bộ đếm bị CHẶN trong band [0, 50] (MAX_TICK)
+     nên tổng trang chủ không bao giờ vượt 1.440 + 5×50 = 1.690 — dữ liệu
+     cũ đã trôi (tick hàng nghìn) được kẹp về 50 ngay khi loadState đọc
+     lại. Đa tab: CHỈ 1 tab "leader" được tick (khóa leader chung trong
+     localStorage 'v20_online_counters_leader', TTL 10s); các tab còn lại
+     chỉ đọc + hiển thị lại (qua sự kiện storage + timer của chính nó),
+     nên mở 3 tab cũng chỉ tăng đúng nhịp 1 tab. Heartbeat presence thì
+     KHÔNG gộp — mỗi tab là 1 người xem thật nên vẫn gửi riêng.
+   - v91 (BUG-06): popup đăng ký lại dòng điểm qua onSessionChange của
+     auth-ui.js (đăng xuất → ẩn dòng điểm ngay, không đợi chu kỳ 60s).
    - Fallback: không gọi được server (chưa chạy migration M8 / mất mạng)
      thì chỉ hiện số ảo (mức gốc + tick local). Mọi lỗi đều nuốt lặng —
      bộ đếm không bao giờ làm vỡ trang.
@@ -74,6 +81,15 @@
   var MERGED_REFRESH_MS = 60000; // lấy lại số gộp từ server mỗi 60s
   var TOTAL_BASE = 1440; // 300 + 500 + 100 + 40 + 500
   var POPUP_CLOSED_KEY = 'v20_online_popup_closed'; // đóng popup → ẩn trong phiên hiện tại (sessionStorage)
+  // v91 (BUG-02): band chặn tick mỗi bộ đếm — tổng trang chủ tối đa
+  // 1.440 + 5×50 = 1.690, không trôi vô hạn. = 50 để test cũ (loadState giữ
+  // tick {10,20,30,40,50}) vẫn đúng.
+  var MAX_TICK = 50;
+  // v91 (BUG-02): khóa leader chống cộng dồn nhiều tab — tab nào giữ khóa
+  // (mới hơn LEADER_TTL) thì tick, tab khác chỉ hiển thị lại.
+  var LEADER_KEY = 'v20_online_counters_leader';
+  var LEADER_TTL = 10000; // 10s: leader tick mỗi ~0,8s nên khóa luôn tươi
+  var TAB_ID = 'tab_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
 
   function formatVi(n) {
     var v = Math.max(0, Math.floor(Number(n) || 0));
@@ -95,6 +111,8 @@
   // Pure: từ object đã parse trong localStorage (hoặc null) →
   // {tick, count, lastSeen}. Không cộng bù thời gian vắng: vào lại chỉ
   // tiếp tục tick cũ. count thiếu (dữ liệu cũ chưa có) → 0.
+  // v91 (BUG-02): kẹp tick về band [0, MAX_TICK] — dữ liệu cũ đã trôi xa
+  // (tick hàng nghìn sau nhiều buổi mở tab) về lại band ngay khi đọc.
   function loadState(stored, now) {
     if (!stored || typeof stored !== 'object' || shouldReset(stored.lastSeen, now)) {
       return { tick: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, count: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, lastSeen: now };
@@ -103,11 +121,28 @@
     var count = {};
     KEYS.forEach(function (k) {
       var v = Math.floor(Number(stored.tick && stored.tick[k]));
-      tick[k] = (isFinite(v) && v >= 0) ? v : 0;
+      tick[k] = (isFinite(v) && v >= 0) ? Math.min(v, MAX_TICK) : 0;
       var c = Math.floor(Number(stored.count && stored.count[k]));
       count[k] = (isFinite(c) && c >= 0) ? c : 0;
     });
     return { tick: tick, count: count, lastSeen: stored.lastSeen };
+  }
+
+  // v91 (BUG-02): bầu leader chống cộng dồn nhiều tab — pure, test được.
+  // stored: {tab, at} đọc từ localStorage (hoặc null); now: ms hiện tại;
+  // tabId: mã tab của tab đang hỏi. Trả {leader, save}: leader=true thì
+  // tab này được tick và phải ghi save xuống localStorage; leader=false
+  // thì chỉ hiển thị lại, không ghi state. Khóa hết hạn (≥ LEADER_TTL)
+  // hoặc chưa có thì tab hỏi giành quyền; khóa còn tươi của tab khác thì
+  // nhường; khóa của chính tab này thì làm mới thời gian.
+  function leaderState(stored, now, tabId) {
+    var n = Number(now);
+    if (!stored || typeof stored !== 'object' || !stored.tab || !isFinite(Number(stored.at))
+      || (n - Number(stored.at)) >= LEADER_TTL) {
+      return { leader: true, save: { tab: tabId, at: n } };
+    }
+    if (stored.tab === tabId) return { leader: true, save: { tab: tabId, at: n } };
+    return { leader: false, save: null };
   }
 
   function nextIntervalMs(step) { return INTERVALS_MS[((step % 2) + 2) % 2]; }
@@ -134,7 +169,10 @@
     var out = {};
     KEYS.forEach(function (k) { out[k] = tick[k]; });
     var cur = Math.floor(Number(tick[key]) || 0);
-    out[key] = Math.max(0, cur + tickDelta(count));
+    // v91 (BUG-02): kẹp bão hòa ở band [0, MAX_TICK] — tới trần thì bước
+    // +1 giữ nguyên, bước −1 vẫn kéo xuống nên số dao động quanh trần band
+    // thay vì trôi vô hạn; nhịp 3 tăng 1 giảm giữ nguyên giữa band.
+    out[key] = Math.max(0, Math.min(MAX_TICK, cur + tickDelta(count)));
     return out;
   }
 
@@ -189,6 +227,25 @@
       var out = { tick: state.tick, count: state.count, lastSeen: Date.now() };
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(out));
     }, null);
+  }
+
+  // v91 (BUG-02): khóa leader chung trong localStorage — tab nào giữ khóa
+  // thì tick, tab khác chỉ đọc + hiển thị lại.
+  function readLeader() {
+    return safe(function () {
+      var raw = window.localStorage.getItem(LEADER_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    }, null);
+  }
+  function saveLeader(obj) {
+    if (!obj) return;
+    safe(function () { window.localStorage.setItem(LEADER_KEY, JSON.stringify(obj)); }, null);
+  }
+  function amLeader() {
+    var stored = readLeader();
+    if (!stored || stored.tab !== TAB_ID || !isFinite(Number(stored.at))) return false;
+    return (Date.now() - Number(stored.at)) < LEADER_TTL;
   }
 
   // Mã phiên ẩn danh: tái dùng đúng key của js/analytics.js (1 tab = 1 mã).
@@ -273,9 +330,27 @@
     render();
   }
 
+  // v91 (BUG-02): 1 nhịp tick có điều kiện leader — tab không phải leader
+  // thì đọc lại state mới nhất từ tab leader rồi chỉ hiển thị lại (không
+  // ghi đè state cũ lên state mới của leader). Nhờ vậy N tab mở cùng lúc
+  // cũng chỉ tăng đúng nhịp 1 tab.
+  function maybeTick(key) {
+    if (!state) return;
+    var now = Date.now();
+    var lead = leaderState(readLeader(), now, TAB_ID);
+    if (!lead.leader) {
+      state = loadState(readStored(), now);
+      render();
+      return;
+    }
+    saveLeader(lead.save);
+    state = loadState(readStored(), now);
+    tick(key);
+  }
+
   function schedule(key, delay, nextStep) {
     setTimeout(function () {
-      tick(key);
+      maybeTick(key);
       schedule(key, nextIntervalMs(nextStep), nextStep + 1);
     }, delay);
   }
@@ -334,21 +409,29 @@
     if (!pageKey) return; // trang không có badge thì module không làm gì
     mergedKey = pageKey; // 'total' cũng là tham số hợp lệ của get_online_display
     state = loadState(readStored(), Date.now());
-    save(); // ghi lastSeen ngay lúc mở trang
+    // v91 (BUG-02): chỉ leader mới ghi lastSeen lúc mở trang — tab follower
+    // ghi đè state cũ của nó lên state mới của leader sẽ làm mất tick.
+    var lead0 = leaderState(readLeader(), Date.now(), TAB_ID);
+    if (lead0.leader) { saveLeader(lead0.save); save(); }
     render();
     initPopup();
+    // v91 (BUG-06): phiên đổi (đăng nhập/đăng xuất) thì làm mới NGAY dòng
+    // điểm popup — đăng xuất không còn giữ dòng điểm cũ tới chu kỳ 60s.
+    try {
+      var A = window.V2SAuthUI;
+      if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function () { fetchPoints(); });
+    } catch (e) { /* bỏ qua — popup vẫn làm mới theo chu kỳ 60s */ }
     KEYS.forEach(function (k) { schedule(k, (STAGGER_MS[k] || 0) + INTERVALS_MS[0], 1); });
     fetchMerged();
     mergedTimer = setInterval(function () { fetchMerged(); fetchPoints(); }, MERGED_REFRESH_MS);
     sendHeartbeat();
     heartbeatTimer = setInterval(sendHeartbeat, HEARTBEAT_MS);
     document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { if (state) state.lastSeen = Date.now(); save(); }
+      if (document.hidden) { if (state && amLeader()) { state.lastSeen = Date.now(); save(); } }
       else { fetchMerged(); sendHeartbeat(); fetchPoints(); }
     });
     window.addEventListener('beforeunload', function () {
-      if (state) state.lastSeen = Date.now();
-      save();
+      if (state && amLeader()) { state.lastSeen = Date.now(); save(); }
     });
     window.addEventListener('storage', function (e) {
       if (!e || e.key !== STORAGE_KEY || !e.newValue) return;
@@ -369,6 +452,8 @@
     INTERVALS_MS: INTERVALS_MS, STAGGER_MS: STAGGER_MS,
     HEARTBEAT_MS: HEARTBEAT_MS, MERGED_REFRESH_MS: MERGED_REFRESH_MS,
     TOTAL_BASE: TOTAL_BASE,
+    MAX_TICK: MAX_TICK, LEADER_KEY: LEADER_KEY, LEADER_TTL: LEADER_TTL,
+    leaderState: leaderState,
     formatVi: formatVi, sumTick: sumTick, shouldReset: shouldReset,
     loadState: loadState, nextIntervalMs: nextIntervalMs,
     tickTimesMs: tickTimesMs, applyTick: applyTick, tickDelta: tickDelta,

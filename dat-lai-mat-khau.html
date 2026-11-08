@@ -29,14 +29,14 @@
 <main class="wrap">
 <section class="form-card" id="dat-lai-mat-khau" aria-label="Đặt lại mật khẩu"><h1>Đặt lại mật khẩu</h1>
 <p id="resetStatus">Đang kiểm tra link đặt lại mật khẩu…</p>
-<form id="resetForm" data-track="form-dat-lai-mat-khau" hidden>
+<form id="resetForm" data-track="form-dat-lai-mat-khau" novalidate hidden>
 <p><label>Mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass" data-track="hien-mat-khau-moi" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
 <p><label>Nhập lại mật khẩu mới *<br><span class="pw-wrap"><input id="resetPass2" type="password" required><button class="pw-toggle" type="button" data-pw-for="resetPass2" data-track="hien-mat-khau-moi-2" aria-label="Hiện mật khẩu">Hiện</button></span></label></p>
 <p id="resetMsg" class="auth-msg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-dat-lai-mat-khau">Đặt lại mật khẩu</button>
 </form>
 <p id="resetLinks" hidden>Chưa nhận được link? Nhập email bên dưới để gửi lại, hoặc <a href="dang-nhap.html">quay lại trang Đăng nhập</a>.</p>
-<form id="requestResetForm" data-track="form-gui-lai-link-dat-lai-mat-khau" hidden>
+<form id="requestResetForm" data-track="form-gui-lai-link-dat-lai-mat-khau" novalidate hidden>
 <p><label>Email đã đăng ký *<br><input id="requestResetEmail" type="email" required></label></p>
 <p id="requestResetMsg" class="auth-msg"></p>
 <button class="btn btn-primary" type="submit" data-track="nut-gui-lai-link-dat-lai-mat-khau">Gửi link đặt lại về email</button>
@@ -130,6 +130,9 @@
       var em = document.getElementById('requestResetEmail').value.trim();
       var m = document.getElementById('requestResetMsg');
       if (!em) { m.textContent='Hãy nhập email đã đăng ký.'; m.className='auth-msg err'; return; }
+      // v91 (BUG-12): form đã novalidate nên tự kiểm tra định dạng bằng
+      // tiếng Việt thay vì bubble tiếng Anh của trình duyệt.
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { m.textContent='Email chưa đúng định dạng.'; m.className='auth-msg err'; return; }
       try{
         await McLivestreamAPI.resetPassword(em);
         m.textContent='Đã gửi link đặt lại mật khẩu về email đã đăng ký (nếu email đã đăng ký tài khoản). Hãy kiểm tra hộp thư (cả mục Spam).';

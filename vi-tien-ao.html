@@ -46,7 +46,7 @@
 <section class="form-card"><h2>2. Ví của bạn</h2>
 <p id="walletStatus">Cần đăng nhập để xem ví.</p>
 <p><button class="btn btn-primary" id="loadWallet" type="button">Xem ví và lịch sử</button></p>
-<div id="walletBox"></div><div id="txBox"></div></section>
+<div id="walletBox"></div><div id="txBox"></div><h3>Lịch sử điểm</h3><div id="pointsHistoryBox"><p>Cần đăng nhập để xem lịch sử điểm.</p></div></section>
 
 <section class="form-card"><h2>3. Yêu cầu nạp tiền (chờ xác nhận, chưa cộng xu)</h2>
 <p>Quy đổi đề xuất: 1.000 VNĐ = 1 xu. Nạp tối thiểu 50.000 VNĐ = 50 xu. Đây là đề xuất trong khung, chưa phải giá bán đã bật.</p>
@@ -105,16 +105,39 @@
 <script>
 (function(){
   function txt(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]});}
   async function refresh(){
     try{
       var c=await window.Ver2Wallet.getMarketingConsent();
       if(c){txt('consentStatus','Đồng ý marketing hiện tại: '+(c.marketing_opt_in?'ĐANG NHẬN email marketing':'KHÔNG nhận email marketing')+(c.alert_province?' · Tỉnh: '+c.alert_province:'')+(c.alert_field?' · Lĩnh vực: '+c.alert_field:''));document.getElementById('consentOptIn').checked=!!c.marketing_opt_in;document.getElementById('consentProvince').value=c.alert_province||'';document.getElementById('consentField').value=c.alert_field||'';}
       var w=await window.Ver2Wallet.ensureWallet();
+      // v91 (BUG-08): đã đăng nhập + tải được ví thì xóa dòng mời đăng nhập
+      // (trước đây dòng "Cần đăng nhập để xem ví." còn nguyên dù đã đăng nhập).
+      txt('walletStatus','');
       document.getElementById('walletBox').innerHTML='<p>Số dư: <b>'+w.balance_coins+' xu</b> · Đã nạp: '+w.total_topped_coins+' xu · Đã dùng: '+w.total_spent_coins+' xu · Trạng thái: '+w.status+'</p>';
       var tx=await window.Ver2Wallet.fetchMyWalletTransactions(20);
       document.getElementById('txBox').innerHTML='<h3>Lịch sử ví</h3>'+(tx.length?tx.map(function(x){return '<p>'+x.created_at+' · '+x.type+' · '+x.amount_coins+' xu · '+x.status+' · '+(x.note||'')+'</p>';}).join(''):'<p>Chưa có giao dịch nào.</p>');
       var b=await window.Ver2Wallet.fetchMyBoostOrders();
       document.getElementById('boostBox').innerHTML='<h3>Đơn up top của bạn</h3>'+(b.length?b.map(function(x){return '<p>'+x.service+' · '+x.target_type+' '+x.target_id+' · '+x.coins_cost+' xu · '+x.status+'</p>';}).join(''):'<p>Chưa có đơn up top nào.</p>');
+      // v91 (BUG-05): lịch sử điểm — đọc sổ cái points_ledger (mới nhất lên
+      // đầu). Lỗi riêng thì chỉ trống mục này, không làm hỏng phần ví trên.
+      try{
+        var R=window.Ver2Reward;
+        var ph=document.getElementById('pointsHistoryBox');
+        if(R && typeof R.getMyPointsHistory==='function' && ph){
+          var h=await R.getMyPointsHistory(20);
+          if(h && h.ok && h.items.length){
+            ph.innerHTML='<ul class="v2s-transfer-history">'+h.items.map(function(it){
+              var d=Number(it.delta)||0;
+              var label=(typeof R.pointsHistoryLabel==='function')?R.pointsHistoryLabel(it.type):(it.type||'Điểm thưởng');
+              var when=(typeof R.formatVnDateTime==='function')?R.formatVnDateTime(it.created_at,true):(it.created_at||'');
+              var bal=(it.balance_after!==undefined && it.balance_after!==null)?(' · Còn lại: '+it.balance_after+' điểm'):'';
+              return '<li><b>'+(d>0?'+':'')+d+' điểm</b> — '+esc(label)+(it.reason?' · '+esc(it.reason):'')+(when?' · '+esc(when):'')+esc(bal)+'</li>';
+            }).join('')+'</ul>';
+          } else if(h && h.ok){ ph.innerHTML='<p>Chưa có giao dịch điểm nào.</p>'; }
+          else { ph.innerHTML='<p>Chưa tải được lịch sử điểm.</p>'; }
+        }
+      }catch(err2){ var ph2=document.getElementById('pointsHistoryBox'); if(ph2) ph2.innerHTML='<p>Chưa tải được lịch sử điểm.</p>'; }
     }catch(err){txt('walletStatus','Chưa xem được ví: '+(err.message||err)+'. Nếu bảng ví chưa có, hãy chạy migration M4 trên Supabase Dashboard trước.');}
   }
   document.getElementById('loadWallet').addEventListener('click',refresh);
@@ -122,5 +145,21 @@
   document.getElementById('topupForm').addEventListener('submit',async function(e){e.preventDefault();try{var r=await window.Ver2Wallet.requestTopUp(document.getElementById('topupVnd').value);txt('topupMsg','Đã gửi yêu cầu nạp '+r.amount_coins+' xu, trạng thái chờ xác nhận thanh toán, chưa cộng xu.');refresh();}catch(err){txt('topupMsg','Chưa gửi được: '+(err.message||err));}});
   document.getElementById('boostForm').addEventListener('submit',async function(e){e.preventDefault();try{var r=await window.Ver2Wallet.createBoostRequest(document.getElementById('boostTargetType').value,document.getElementById('boostTargetId').value.trim(),document.getElementById('boostService').value);txt('boostMsg','Đã gửi đơn up top, trạng thái chờ duyệt, chưa trừ xu và chưa kích hoạt.');refresh();}catch(err){txt('boostMsg','Chưa gửi được: '+(err.message||err));}});
   refresh();
+  // v91 (BUG-08): phiên đổi thì tải lại ví ngay (đăng nhập → dòng "Cần đăng
+  // nhập..." biến mất; đăng xuất → hiện lại), không cần tải lại trang.
+  // initTransferForm (app.js) cũng đăng ký riêng cho mục Chuyển điểm.
+  try {
+    var A = window.V2SAuthUI;
+    if (A && typeof A.ensureSessionListener === 'function') A.ensureSessionListener();
+    if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function (user) {
+      if (user) { refresh(); return; }
+      txt('walletStatus', 'Cần đăng nhập để xem ví.');
+      txt('consentStatus', 'Cần đăng nhập để xem và đổi đồng ý marketing.');
+      var wb = document.getElementById('walletBox'); if (wb) wb.innerHTML = '';
+      var tb = document.getElementById('txBox'); if (tb) tb.innerHTML = '';
+      var bb = document.getElementById('boostBox'); if (bb) bb.innerHTML = '';
+      var ph = document.getElementById('pointsHistoryBox'); if (ph) ph.innerHTML = '<p>Cần đăng nhập để xem lịch sử điểm.</p>';
+    });
+  } catch (e) { /* bỏ qua — ví vẫn tải 1 lần lúc mở trang */ }
 })();
 </script></body></html>

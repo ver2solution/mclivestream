@@ -51,8 +51,10 @@ a:hover{text-decoration:underline}
 .user-menu-logout{display:block;width:100%;padding:10px 12px;border:0;border-radius:10px;background:#fff1f0;color:var(--red);font:inherit;font-weight:800;cursor:pointer;text-align:left}
 .user-menu-logout:hover{background:#ffe4e1}
 /* v90 (3): cuon toi ket qua (scrollIntoView block:'start') khong bi header
-   sticky (72px) che mat hang dau — grid/section dung cach dinh 84px. */
-#listGrid,#publicShopsList,#hubResults,#lo-hang-xa-kho,#xuong-may-gia-cong{scroll-margin-top:84px}
+   sticky (72px) che mat hang dau — grid/section dung cach dinh 84px.
+   v91 (9): them #kiotList + .filter-empty (bang "Chưa có dữ liệu" cua
+   lo/xuong) de cuon toi dung bang thong bao khi loc 0 ket qua. */
+#listGrid,#publicShopsList,#hubResults,#lo-hang-xa-kho,#xuong-may-gia-cong,#kiotList,.filter-empty{scroll-margin-top:84px}
 /* HERO MỚI: khối gradient xanh đậm, bo 28, tìm kiếm là thẻ trắng nổi lên */
 .hero{margin:22px 0 8px;background:linear-gradient(135deg,#083f34,#0b5d4e 55%,#0e8a6d);color:#fff;border-radius:28px;padding:34px 32px 40px;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.10)}
@@ -270,6 +272,13 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .gopy-fab{top:auto;bottom:20px;right:14px;transform:none}
 /* v39: nut phan trang du lon de bam bang ngon tay. */
 .pager button{min-height:44px;padding:10px 16px}
+/* v91 (8): mobile 390px — nut hanh dong chinh >=48px (nut hero "Tìm mẫu" chi
+   41px vi rule 48px cu chi ap trong @media 360px); o nhap form Gop y
+   (#gopyForm, co tren moi trang) + 2 select loc Kiot 16px de iOS khong tu
+   zoom khi bam vao (truoc day 14px / 13.33px). */
+.search-card .btn,.filter-card .btn,.form-card .btn,.card-actions .btn{min-height:48px}
+#gopyForm input,#gopyForm select,#gopyForm textarea{font-size:16px}
+#kiotProv,#kiotCat{font-size:16px}
 /* v39: o tin dang ngang — anh 120px ben trai, tieu de + chuyen muc ben phai
    (4 o xep doc 1 cot se rat dai neu giu anh 16:9 day chieu rong). */
 .pin-card a{display:grid;grid-template-columns:120px 1fr;grid-template-areas:"img title" "img cat";column-gap:10px;align-items:start;padding:10px}
@@ -560,8 +569,10 @@ th{background:#f4f8f6}
    mobile #4: o 390px o nhap chi 14px nen iPhone tu zoom); o nhap
    search/filter van chi can 16px o <=320px (body o muc nay la 15px). */
 .form-card input,.form-card select,.form-card textarea{font-size:16px}
-/* v90: nut submit form dang ky full-width, cao toi thieu 48px (audit #4). */
-#authSignUp button[type="submit"]{width:100%;min-height:48px}
+/* v90: nut submit form dang ky full-width, cao toi thieu 48px (audit #4).
+   v91: mo rong sang ca 2 trang auth rieng + 2 trang danh sach co form auth
+   nhung (dang nhap + dang ky mau/shop) — cung chuan 48px tren mobile. */
+#authSignUp button[type="submit"],#authSignIn button[type="submit"],#mauSignUp button[type="submit"],#mauSignIn button[type="submit"],#shopSignUp button[type="submit"],#shopSignIn button[type="submit"]{width:100%;min-height:48px}
 @media(max-width:320px){
   .search-card input,.search-card select,.filter-card input,.filter-card select{font-size:16px}
 }
@@ -698,6 +709,10 @@ th{background:#f4f8f6}
 .v2s-comment-form textarea,.v2s-comment-form input{width:100%;box-sizing:border-box;padding:8px}
 .v2s-comment-msg{font-size:14px;color:#0b5d4e}
 .v2s-note{font-size:14px;color:#444}
+.v2s-liked{background:#0b5d4e !important;color:#fff !important;border-color:#0b5d4e !important} /* v92 (BUG-14): nút Thích đã bấm — đổi trạng thái rõ ngay */
+.v2s-comment-toggle{min-height:44px} /* v92 (C2): nút bình luận dưới thẻ lô/xưởng/kiot, đủ 44px theo chuẩn v91, không tràn mobile 390px */
+.v2s-comments-inline{margin:10px 0}
+.v2s-comments-inline .v2s-comments{margin:0}
 /* v87 diem thuong v2 (bo sung 20:22): cong thu diem cho loc + xem lien he + chuyen diem. */
 .v2s-filter-msg{font-size:14px;color:#0b5d4e;margin:8px 0}
 .v2s-contacts-gated{margin:8px 0}

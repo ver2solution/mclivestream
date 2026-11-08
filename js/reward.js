@@ -37,6 +37,16 @@
      từ chối tạo đơn bán cho tới khi khung đó được bật. */
 (function () {
   'use strict';
+  // v92 (08/11/2026, người dùng chốt 11:32): TẠM KHÓA trừ điểm cho lọc +
+  // xem liên hệ + dịch vụ khác — tất cả MIỄN PHÍ, chỉ ghim bài vẫn tính
+  // điểm. Cờ này bypass việc gọi spend_points('filter'/'contact_view')
+  // ở js/app.js (gateFilterApply, hero search, xem liên hệ). KHÔNG xóa
+  // code trừ điểm (spendPoints/filterChargeBucket/shouldChargeFilter +
+  // RPC phía server giữ nguyên) — mở lại thu phí chỉ bằng cách đổi cờ
+  // này thành false rồi kiểm tra lại. Cửa đăng nhập cho khách vãng lai
+  // vẫn giữ nguyên ở js/app.js (chỉ khóa việc TRẢ điểm, không khóa cửa
+  // đăng ký). Ghim bài KHÔNG đi qua cờ này (luôn tính điểm).
+  var V20_FREE_SERVICES = true;
   // ---- Bảng điểm v2 (CHỐT 07/11/2026, thay thế D2) ----
   var INTERACTION_POINTS = { comment: 10, like: 10, share: 20 };
   var MAX_PER_TYPE_PER_DAY = 1; // mỗi loại tối đa 1 lần tính điểm/ngày/site-wide
@@ -66,6 +76,51 @@
   var PROVIDERS = ['facebook', 'tiktok', 'instagram', 'zalo', 'threads'];
   var INTERACTION_TYPES = ['comment', 'like', 'share'];
 
+  // v91 (BUG-10): timestamp ISO UTC → giờ Việt Nam dễ đọc, vd "00:41 ngày
+  // 08/11" (withYear=true: "00:41 ngày 08/11/2026"). ISO hỏng thì trả lại
+  // chuỗi gốc, không ném lỗi. Dùng cho thông báo ghim + lịch sử điểm.
+  function formatVnDateTime(iso, withYear) {
+    try {
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return String(iso || '');
+      var timePart = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+      // v91 fix: Intl 'vi-VN' khong nam tra '08-11' (gach noi), khong phai
+      // '08/11' nhu BUG-10 yeu cau — dung formatToParts de ghep chac chan
+      // DD/MM (hoac DD/MM/YYYY khi withYear).
+      var parts = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' }).formatToParts(d);
+      var dd = '', mm = '', yyyy = '';
+      parts.forEach(function (p) { if (p.type === 'day') dd = p.value; else if (p.type === 'month') mm = p.value; else if (p.type === 'year') yyyy = p.value; });
+      var datePart = withYear ? dd + '/' + mm + '/' + yyyy : dd + '/' + mm;
+      return timePart + ' ngày ' + datePart;
+    } catch (e) { return String(iso || ''); }
+  }
+  // v91 (BUG-05): nhãn tiếng Việt cho 15 loại giao dịch điểm trong sổ cái
+  // points_ledger (M7). Loại lạ → 'Điểm thưởng'.
+  var POINTS_HISTORY_LABELS = {
+    comment: 'Bình luận', like: 'Thích', share: 'Chia sẻ',
+    redemption: 'Đổi dịch vụ', gift: 'Tặng điểm', transfer: 'Chuyển điểm',
+    transfer_out: 'Chuyển điểm đi', transfer_in: 'Nhận điểm',
+    reclaim: 'Thu hồi điểm', adjust: 'Điều chỉnh điểm',
+    registration_field: 'Đăng ký: điền trường', account_created: 'Tạo tài khoản',
+    pin: 'Ghim bài', filter: 'Lọc danh sách', contact_view: 'Xem liên hệ'
+  };
+  function pointsHistoryLabel(type) { return POINTS_HISTORY_LABELS[String(type || '')] || 'Điểm thưởng'; }
+  // v91 (BUG-05): lịch sử giao dịch điểm — đọc TRỰC TIẾP bảng points_ledger
+  // (policy M5 points_ledger_owner_read cho chủ tài khoản SELECT dòng của
+  // mình: auth.uid() = auth_user_id), mới nhất lên đầu. CHỈ ĐỌC, không ghi.
+  // Lỗi / chưa đăng nhập / policy chưa có → {ok:false, items:[]}, KHÔNG ném.
+  async function getMyPointsHistory(limit) {
+    try {
+      var s = await sessionUser();
+      var res = await s.api.client.from('points_ledger')
+        .select('id,delta,balance_after,type,reason,created_at')
+        .eq('auth_user_id', s.user.id)
+        .order('created_at', { ascending: false })
+        .limit(Math.max(1, Math.min(100, Number(limit) || 20)));
+      if (res.error) return { ok: false, items: [] };
+      return { ok: true, items: Array.isArray(res.data) ? res.data : [] };
+    } catch (e) { return { ok: false, items: [] }; }
+  }
   function dayKeySaigon(date) {
     var d = date || new Date();
     // en-CA cho ra YYYY-MM-DD, múi giờ Asia/Ho_Chi_Minh = giờ Việt Nam.
@@ -263,6 +318,9 @@
   // Lọc 1 điểm/lần; xem liên hệ 5 điểm/lần bấm (mỗi hồ sơ 1 lần/ngày);
   // ghim 1 điểm/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính
   // lãi sau phí sàn: MIỄN PHÍ (không qua hàm này).
+  // v92 (08/11/2026): lọc + xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES
+  // ở đầu file) — PRICES dưới đây GIỮ NGUYÊN để mở lại thu phí chỉ bằng
+  // 1 cờ; spendPoints() vẫn trừ đúng giá này khi cờ tắt.
   var PRICES = { filter: 1, contact_view: 5, pin_per_hour: 1 };
   var FILTER_DEDUP_MS = 10000; // đổi 2 ô lọc trong 10s chỉ tính 1 lần
   var TRANSFER_MIN_POINTS = 10;
@@ -314,10 +372,12 @@
     }
   }
   // Nhóm 10 giây cho key chống trừ lặp khi lọc: floor(nowMs / 10000).
-  function filterChargeBucket(nowMs) { return Math.floor(Number(nowMs || Date.now()) / FILTER_DEDUP_MS); }
+  // v91 fix: dung kiem tra null/undefined thay cho `||` — nowMs = 0 la moc
+  // hop le (khong phai "thieu"), `0 || Date.now()` se tra bucket sai.
+  function filterChargeBucket(nowMs) { var n = (nowMs === undefined || nowMs === null) ? Date.now() : Number(nowMs); return Math.floor(n / FILTER_DEDUP_MS); }
   // Đổi lọc lần này có tính phí không? true = đã qua 10s từ lần trừ trước.
   function shouldChargeFilter(lastChargeTs, nowMs) {
-    var now = Number(nowMs || Date.now());
+    var now = (nowMs === undefined || nowMs === null) ? Date.now() : Number(nowMs);
     var last = Number(lastChargeTs || 0);
     if (!last) return true;
     return (now - last) >= FILTER_DEDUP_MS;
@@ -542,6 +602,7 @@
   }
 
   var API = {
+    FREE_SERVICES: V20_FREE_SERVICES, // v92: true = lọc + xem liên hệ tạm miễn phí (chỉ ghim tính điểm); đổi cờ V20_FREE_SERVICES ở đầu file để mở lại thu phí
     POINTS: POINTS, INTERACTION_POINTS: INTERACTION_POINTS,
     MAX_PER_TYPE_PER_DAY: MAX_PER_TYPE_PER_DAY,
     MAX_INTERACTION_POINTS_PER_DAY: MAX_INTERACTION_POINTS_PER_DAY,
@@ -560,6 +621,9 @@
     getMyPointsBalance: getMyPointsBalance, pinPost: pinPost,
     getMyPointsBalanceResult: getMyPointsBalanceResult,
     getMyPointsSummary: getMyPointsSummary,
+    formatVnDateTime: formatVnDateTime,
+    POINTS_HISTORY_LABELS: POINTS_HISTORY_LABELS, pointsHistoryLabel: pointsHistoryLabel,
+    getMyPointsHistory: getMyPointsHistory,
     PRICES: PRICES, FILTER_DEDUP_MS: FILTER_DEDUP_MS, TRANSFER_MIN_POINTS: TRANSFER_MIN_POINTS,
     spendPoints: spendPoints, filterChargeBucket: filterChargeBucket,
     shouldChargeFilter: shouldChargeFilter, contactViewKey: contactViewKey,
