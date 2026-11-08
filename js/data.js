@@ -23,6 +23,14 @@
    -> shifts = [] (chi hien khi loc "Tất cả giờ"). Shop fulltime hien trong
    MOI ca khi loc gio lam (fulltime lam ca ngay) + khi loc rieng "Fulltime".
  20 real profiles + 30 shops (public job posts) + 30 articles.
+   v92 adds 10 articles (08/11/2026): 1 keyword SEO article ("mau livestream",
+   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 07/11:
+   1 model, 30 shops, 0 groups) + 8 news articles (gold 08/11, China-import potential,
+   11.11 60-min live script, Alice storytelling case, AI live x28, 5 AI prompts,
+   Facebook Live Video Ads, 100k-token live session = rotating topic #1, LAST).
+   Total 60 articles, 59 with their own bai-viet page (bop-reach links via url).
+   Articles-only deploy: sw.js NOT touched (CACHE stays v91-shell-1 in prep, v90-shell-1
+   live); v91 code still waits for the user to finish testing v90.
    v80 adds 10 articles (07/11/2026): 1 keyword SEO article ("viec lam mau
    livestream", kind:"keyword", pinned) + 9 news articles (TikTok Shop cart-limit,
    3-san fee, TikTok Shop US AI live, Singles Day Syntun, China imports,
@@ -1705,6 +1713,130 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/hang-viet-ke-chuyen-dac-san-ban-chay-tiktok.jpg",
    "pinned": false,
    "takeaway": "Một câu chuyện hay kéo người xem tới sản phẩm, nhưng chứng nhận, đánh giá khách hàng, chất lượng ổn định và trải nghiệm giao nhận mới quyết định họ có quay lại hay không. Hàng Việt kể chuyện là câu chuyện, sản phẩm, creator, sàn và logistics vận hành cùng nhau."
+  },
+  {
+   "title": "Mẫu livestream là gì? Thuê mẫu live ở đâu, giá bao nhiêu?",
+   "cat": "Tin mới Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "url": null,
+   "page": "bai-viet/mau-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/mau-livestream.png",
+   "imgSelf": true,
+   "kind": "keyword",
+   "pinned": false,
+   "takeaway": "Mẫu livestream không phải là người đẹp nhất, mà là người bán được hàng cho đúng mặt hàng của shop. Trước khi thuê, shop hãy xem clip live thật, thử live 15–20 phút với sản phẩm thật và thỏa thuận rõ lương, ca, hoa hồng bằng tin nhắn. Người mới làm mẫu thì bắt đầu bằng ca part-time 50.000–80.000 đồng/giờ, tích đủ 5–10 ca live thật rồi mới đòi mức cao hơn. Xem hồ sơ mẫu có clip live thử tại danh sách mẫu của Ver2Solution để chọn đúng người ngay hôm nay."
+  },
+  {
+   "title": "Hôm qua (07/11): 30 shop tuyển mẫu livestream mới, 1 mẫu mới lên sàn",
+   "cat": "Tin mới Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "dateNote": "Số liệu thu thập ngày 07/11/2026",
+   "url": null,
+   "page": "bai-viet/thong-ke-ho-so-moi-07-11-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/thong-ke-ho-so-moi-07-11-2026.png",
+   "imgSelf": true,
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Ngày 07/11 có 30 shop chờ người live nhưng chỉ 1 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút với sản phẩm thật và nộp vào ca part-time trước. Shop hãy đăng tin ghi rõ lương, ca và địa điểm, rồi thử live ngắn trước khi ký dài hạn. Xem hồ sơ mẫu và shop mới nhất tại danh sách mẫu và danh sách shop của Ver2Solution."
+  },
+  {
+   "title": "Giá vàng hôm nay 8/11/2026: SJC 138–141 triệu, tiền của khách đang chảy đi đâu?",
+   "cat": "Tin thị trường",
+   "source": "Báo Công Thương",
+   "date": "2026-11-08",
+   "url": "https://congthuong.vn/gia-vang-hom-nay-8-11-on-dinh-phien-cuoi-tuan-479656.html",
+   "page": "bai-viet/gia-vang-hom-nay-08-11-2026-tien-chay-di-dau.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/gia-vang-hom-nay-08-11-2026-tien-chay-di-dau.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Vàng đứng giá 138–141 triệu đồng một lượng ngay trước 11.11 nghĩa là khách đang giữ tiền chờ sale, không phải hết tiền. Shop nhỏ nên live đều khung 19–22h từ tối nay, chốt giá cố định trong live, đẩy combo gộp đơn và nhắc đúng khung voucher 21h của sàn. Đừng đoán giá vàng — hãy đoán đúng giờ khách mở ví."
+  },
+  {
+   "title": "Nhập hàng Trung Quốc cuối năm: mặt hàng nào chạy, tỉnh nào đang cần hàng nhất?",
+   "cat": "Tin thị trường",
+   "source": "Tạp chí Kinh tế Tài chính",
+   "date": "2026-10-23",
+   "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/thuong-mai-viet-nam-trung-quoc-huong-toi-moc-300-ty-usd-170429.html",
+   "page": "bai-viet/nhap-hang-trung-quoc-cuoi-nam-mat-hang-nao-chay-tinh-nao-can.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-mat-hang-nao-chay-tinh-nao-can.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Cuối năm nay, ưu tiên nhập điện tử nhỏ và phụ kiện AI, thời trang thu đông và mỹ phẩm nội địa Trung – Hàn — đúng 3 nhóm đang tăng mạnh cả ở Singles Day lẫn số liệu nhập khẩu. Nhập thử lô nhỏ 20–30 chiếc, test live 2–3 phiên rồi mới nhập lớn, chỉ lấy hàng chính ngạch có hóa đơn rõ ràng."
+  },
+  {
+   "title": "Khung giờ vàng live 11.11: kịch bản 60 phút chốt đơn từ 19h đến 22h",
+   "cat": "Tin mới Livestream",
+   "source": "MaGiamGiaShopee",
+   "date": "2026-10-31",
+   "url": "https://www.magiamgiashope.io.vn/tin-khuyen-mai/shopee-11-11-sieu-sale-lon-nhat-nam",
+   "page": "bai-viet/khung-gio-vang-live-11-11-kich-ban-60-phut.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/khung-gio-vang-live-11-11-kich-ban-60-phut.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Khung 19–22h tối 11.11 là trận đánh lớn nhất năm vì voucher 21h của cả Shopee và TikTok Shop cùng mở, đúng lúc khách tan làm và mở app. Hãy live đúng kịch bản 60 phút 6 chặng: mở deal lớn nhất trong 60 giây đầu, chốt combo gộp đơn ở phút 20–30, và kết live bằng cái hẹn 19h ngày 12/11 — vì GMV ngày sau sale cao gấp 1,67 lần ngày thường."
+  },
+  {
+   "title": "Bóc mẽ shop nữ Alice: 1 video hơn 100 triệu view, nửa năm bán 111 triệu NDT",
+   "cat": "Tin thị trường",
+   "source": "36Kr",
+   "date": "2026-11-08",
+   "url": "https://www.36kr.com/p/3292118482221448",
+   "page": "bai-viet/boc-me-shop-nu-alice-ke-chuyen-ban-111-trieu-ndt.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/boc-me-shop-nu-alice-ke-chuyen-ban-111-trieu-ndt.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Đừng chạy theo số lượng mẫu — hãy chọn 1 mẫu chủ lực gắn với một dịp cụ thể trong tuần này (11.11, ăn cưới, đi làm), quay 3 video kể chuyện thật trong shop rồi live theo chu kỳ 1 giờ: mẫu mới – giá tốt – mẫu chủ lực. Làm đúng 3 việc này trước 11.11, shop nhỏ vẫn kịp kéo khách mà không cần tốn tiền quảng cáo."
+  },
+  {
+   "title": "Livestream AI tăng 28 lần quý 3/2026: shop nhỏ có nên thử thay người live 100–150k/giờ?",
+   "cat": "Tin mới Livestream",
+   "source": "Vietnam.vn",
+   "date": "2026-10-30",
+   "url": "https://www.vietnam.vn/ai-va-content-commerce-dan-song-thuong-mai-dien-tu",
+   "page": "bai-viet/livestream-ai-tang-28-lan-shop-nho-co-nen-thu.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/livestream-ai-tang-28-lan-shop-nho-co-nen-thu.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Đừng thay người live bằng AI trong mùa 11.11 — hãy để AI live ca khuya và giờ thấp điểm, còn khung 19h–22h vẫn để người thật chốt đơn. Thử 7 ngày với 3–5 mẫu bán chạy, đo đủ 4 chỉ số (lượt xem, thời gian ở lại, số đơn, tỷ lệ trả hàng) rồi mới quyết định giữ hay bỏ. AI rẻ, nhưng niềm tin của khách mới là thứ đắt nhất."
+  },
+  {
+   "title": "5 prompt AI viết mô tả, kịch bản live và trả lời khách cho shop nhỏ: dùng ChatGPT, Gemini miễn phí",
+   "cat": "Tin mới Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "url": null,
+   "page": "bai-viet/5-prompt-ai-viet-mo-ta-kich-ban-live-tra-loi-khach.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/5-prompt-ai-viet-mo-ta-kich-ban-live-tra-loi-khach.png",
+   "imgSelf": true,
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Khách của bạn đã hỏi AI trước khi mua hàng — 58% người dùng AI dùng nó để tìm hiểu sản phẩm trước khi quyết định. Hãy bắt đầu ngay tối nay: chép 5 prompt trong bài, điền đúng sản phẩm – khách – kênh – giọng của shop mình, và luôn kiểm tra lại giá, số liệu trước khi đăng. AI viết nháp trong 1 phút, nhưng uy tín của shop thì bạn phải tự giữ."
+  },
+  {
+   "title": "Facebook Live 11.11: Meta mở phân phối mới, shop nhỏ cần biết trước sale 2026",
+   "cat": "Tin mới Livestream",
+   "source": "AnyMind Group",
+   "date": "2026-10-27",
+   "url": "https://anymindgroup.com/news/press-release/anymind-meta-partnership-2026",
+   "page": "bai-viet/facebook-live-11-11-phan-phoi-moi-shop-nho-can-biet.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/facebook-live-11-11-phan-phoi-moi-shop-nho-can-biet.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Đừng chờ tới 11.11 mới thử tính năng mới — hãy chạy 1 phiên live thử trong 2 ngày tới, đo xem 100 người vào live thì bao nhiêu người bấm link chốt đơn. Nếu tỷ lệ dưới 2%, hãy sửa đường chốt đơn trước, rồi mới tính chuyện chạy quảng cáo video live. Mùa sale này, shop nào chốt đơn nhanh hơn sẽ thắng, không phải shop nào live lâu hơn."
+  },
+  {
+   "title": "Phiên live nghìn đơn 11.11: Lý Giai Kỳ bán 100.000 thẻ AI trong 30 phút, shop Việt học được gì",
+   "cat": "Tin mới Livestream",
+   "source": "GenK",
+   "date": "2026-11-07",
+   "url": "https://genk.vn/vua-son-moi-trung-quoc-livestream-ban-2000-ty-token-ai-trong-30-phut-mo-man-cho-ky-nguyen-mua-tai-nguyen-tinh-toan-nhu-nap-the-dien-thoai-165261107081120351.chn",
+   "page": "bai-viet/phien-live-nghin-don-11-11-shop-viet-lam-the-nao.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/phien-live-nghin-don-11-11-shop-viet-lam-the-nao.jpg",
+   "kind": "news",
+   "pinned": false,
+   "takeaway": "Đừng đặt mục tiêu nghìn đơn bằng cảm tính — hãy tính ngược: muốn 1.000 đơn trong phiên live 5 tiếng thì mỗi giờ cần 200 đơn, tức khoảng 3–4 đơn mỗi phút. Từ đó tính ra cần bao nhiêu mắt xem, bao nhiêu món mồi và mấy người lo chốt đơn trước 11.11."
   }
  ],
  "lots": [
