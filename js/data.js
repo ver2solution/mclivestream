@@ -1279,7 +1279,7 @@ window.V20_DATA = {
    "date": "2026-05-01",
    "url": "https://kinhtechungkhoan.vn/bo-cong-thuong-ra-soat-chinh-sach-tang-phi-cua-shopee-tiktok-shop-1447988.html",
    "page": "bai-viet/phi-san-tang-thang-05-2026.html",
-   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/phi-san-tang-thang-05-2026.png",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/phi-san-tang-thang-05-2026.jpg",
    "takeaway": "Trước mỗi đợt sale, làm một bảng tính một dòng cho mỗi món chủ lực: giá bán trừ giá vốn, trừ phí sàn theo ngành, trừ quảng cáo và tiếp thị liên kết, trừ vận chuyển và hoàn hàng — còn lại mới là lời thật mỗi đơn. Nếu lời thật đã mỏng, đừng giảm sâu thêm để đua đơn; hãy giảm ít hơn, bán kèm combo, hoặc chọn món khác có biên tốt hơn làm chủ lực. Phí sàn tăng là chuyện của sàn, nhưng giá bán là quyết định của shop."
   },
   {
@@ -1402,6 +1402,8 @@ window.V20_DATA = {
    "title": "Xả kho đồ gia dụng cuối năm: giảm theo đợt, bán theo combo, ký gửi khi chọn sai khách",
    "cat": "Bán hàng Online hiệu quả",
    "source": "Gia Dụng Nhanh",
+   "date": "2026-11-07",
+   "dateNote": "Bài gốc không ghi rõ ngày đăng; ngày đăng trên Ver2Solution",
    "url": "https://giadungnhanh.com/cach-xu-ly-amp-xa-hang-ton-kho-do-gia-dung-hieu-qua-cuoi-nam-n165660.html",
    "page": "bai-viet/xa-kho-do-gia-dung-cuoi-nam.html",
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/xa-kho-do-gia-dung-cuoi-nam.jpg",
@@ -1574,7 +1576,7 @@ window.V20_DATA = {
    "dateNote": "Bài gốc đăng 21/05/2026, cập nhật 07/11/2026",
    "url": "https://kinhtechungkhoan.vn/ba-san-thuong-mai-dien-tu-lon-nhat-viet-nam-dong-loat-tang-phi-san-1447906.html",
    "page": "bai-viet/ba-san-dong-loat-tang-phi-san.html",
-   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ba-san-dong-loat-tang-phi-san.png",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/ba-san-dong-loat-tang-phi-san.jpg",
    "pinned": false,
    "takeaway": "Tăng phí sàn không phải tin xấu với shop nào tính kỹ — nó chỉ là tin xấu với shop nào giảm giá theo cảm tính. Trước 11.11, shop nhỏ chỉ cần làm đúng một việc: tính lại lãi mỗi đơn với phí giao dịch 6%, hoa hồng 9%–17,8% và phí cố định 3.000 đồng, rồi mới chốt độ sâu giảm giá. Món nào lãi dưới 10% thì đừng giảm sâu; món nào lãi tốt thì dồn live và video vào đó. Doanh số sale tăng mà lãi mỗi đơn còn dương, đó mới là sale thành công."
   },
@@ -1643,7 +1645,7 @@ window.V20_DATA = {
    "date": "2026-11-06",
    "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
    "page": "bai-viet/nguoi-tieu-dung-viet-nam-mua-sam-11-11-2026.html",
-   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nguoi-tieu-dung-viet-nam-mua-sam-11-11-2026.png",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/nguoi-tieu-dung-viet-nam-mua-sam-11-11-2026.jpg",
    "pinned": false,
    "takeaway": "11.11 không còn là cuộc đua của một ngày mà là của cả một cửa sổ 7–10 ngày, với đỉnh doanh thu rơi vào ngày hôm sau. Shop nhỏ thắng không phải nhờ giảm giá sâu nhất mà nhờ chuẩn bị combo tốt, livestream dài hơi và giữ hàng đủ cho đợt cao điểm sau sale."
   },
@@ -2105,7 +2107,7 @@ window.V20_DATA = {
      "priceNum": 30000,
      "qty": null,
      "cat": "nam",
-     "meta": "Áo ba lỗ nam Nhật, hàng thùng tổng hợp · Các hãng Nike, Adidas, Uniqlo, GU (hàng si) · Giá 30K–180K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "meta": "Áo ba lỗ nam Nhật, hàng thùng tổng hợp · Các hãng Nike, Adidas, Uniqlo, GU (hàng si) · Giá 30K–180K theo mẫu · Bao ship · Kênh: YouTube · Số điện thoại/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
      "date": "19/10/2026",
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
@@ -2120,7 +2122,7 @@ window.V20_DATA = {
      "priceNum": 50000,
      "qty": null,
      "cat": "nam",
-     "meta": "Áo thun không cổ ngắn tay nam, hàng Nhật tổng hợp · Giá 50K–200K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "meta": "Áo thun không cổ ngắn tay nam, hàng Nhật tổng hợp · Giá 50K–200K theo mẫu · Bao ship · Kênh: YouTube · Số điện thoại/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
      "date": "16/10/2026",
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
@@ -2135,7 +2137,7 @@ window.V20_DATA = {
      "priceNum": 60000,
      "qty": null,
      "cat": "nam",
-     "meta": "Quần sooc/short nam Nhật bãi tuyển chọn · Giá 60K–150K theo mẫu · Bao ship · Kênh: YouTube · SĐT/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
+     "meta": "Quần sooc/short nam Nhật bãi tuyển chọn · Giá 60K–150K theo mẫu · Bao ship · Kênh: YouTube · Số điện thoại/Zalo 0911880828 · Thanh Loan Hàng Thùng — Vũ Thị Thanh Loan",
      "date": "22/10/2026",
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
@@ -2146,9 +2148,59 @@ window.V20_DATA = {
  // v86: kiot thanh ly — cung dinh dang truong nhu lots de lotCardHTML dung
  // truc tiep; rong luc ra mat, cron thu thap se them sau.
  // v88 (07/11/2026): 10 tin dau tien thu tay tu bai dang cong khai, 8 tinh.
+ // v92 (08/11/2026, cron kiot 11:31): them 10 tin moi (TP.HCM 5, Ha Noi 4, Hai Phong 1),
+ // ngay dang 12/10–07/11/2026 (trong 60 ngay); xep moi nhat len dau, danh lai id kiot-01..20.
  "kiots": [
    {
      "id": "kiot-01",
+     "group": 1,
+     "title": "Sang nhượng quán cafe căn góc khu Bàu Cát 180m² — Trương Công Định, Tân Bình, TP.HCM",
+     "price": "400 triệu",
+     "priceNum": 400000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán cafe căn góc, nhượng quyền thương hiệu, đã mở 6 năm, lượng khách đông · Diện tích 180m² (6,5 x 30m), 1 trệt + 1 lầu · Thuê 21,6 triệu/tháng, cọc 100 triệu, hợp đồng mới 5 năm · TP.HCM",
+     "date": "07/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://batdongsan.com.vn/cho-thue-sang-nhuong-cua-hang-ki-ot-duong-truong-cong-dinh-phuong-14-10/-quan-cafe-can-goc-khu-bau-cat-tan-binh-quan-mo-6-nam-doanh-thu-cao-va-loi-nhuan-on-inh-pr46277757",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM"
+   },
+   {
+     "id": "kiot-02",
+     "group": 1,
+     "title": "Sang nhượng quán bún cá đang kinh doanh tốt 80m² — phố Xốm, Hà Đông, Hà Nội",
+     "price": "150 triệu",
+     "priceNum": 150000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán bún cá đang hoạt động bình thường, tệp khách quen ổn định, gần 2 trường đại học + 2 trường cấp 3 · Diện tích 80m² · Thuê 8 triệu/tháng · Số điện thoại 0976.058.961 · Hà Nội",
+     "date": "07/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Ha-Noi/Gia-tot-dau-tu-sang-nhuong-quan-bun-ca-dang-kinh-doanh-tot-pho-xom-ha-dong-ha-noi-vao-lam-c15-raovat-34611518.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội"
+   },
+   {
+     "id": "kiot-03",
+     "group": 1,
+     "title": "Sang nhượng MBKD đồ uống 30m² — 135 Lương Thế Vinh, Trung Văn, Hà Nội",
+     "price": "80 triệu",
+     "priceNum": 80000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán Matcha Memecha, sang toàn bộ đồ dùng + trang thiết bị, bàn giao công thức pha chế · Diện tích 30m² · Số điện thoại 0947141305 – 0334960924 · Hà Nội",
+     "date": "07/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Ha-Noi/Sang-nhuong-mbkd-do-uong-tai-trung-van-nam-tu-liem-ha-noi-canh-dai-hoc-ha-noi-c15-raovat-34611570.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội"
+   },
+   {
+     "id": "kiot-04",
      "group": 1,
      "title": "Sang nhượng quán cafe mặt tiền đường 30/4 — Cần Thơ",
      "price": "300 triệu",
@@ -2164,7 +2216,23 @@ window.V20_DATA = {
      "prov": "Cần Thơ"
    },
    {
-     "id": "kiot-02",
+     "id": "kiot-05",
+     "group": 1,
+     "title": "Sang nhượng quán cafe căn góc 2 mặt tiền 200m² — Lũy Bán Bích, Tân Phú, TP.HCM",
+     "price": "300 triệu",
+     "priceNum": 300000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán cafe căn góc 2 mặt tiền, đang bán 24/24, doanh thu 120–140 triệu/tháng · Diện tích 200m² (8 x 25m) · Thuê 42 triệu/tháng, cọc 84 triệu · TP.HCM",
+     "date": "05/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://batdongsan.com.vn/cho-thue-sang-nhuong-cua-hang-ki-ot-duong-luy-ban-bich-phuong-hiep-tan/-quan-cafe-8x25-can-goc-2-mat-tien-phu-doanh-thu-cao-loi-nhuan-on-inh-pr45978893",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM"
+   },
+   {
+     "id": "kiot-06",
      "group": 1,
      "title": "Sang nhượng quán cafe LEILA 200m² — Thủ Dầu Một, Bình Dương",
      "price": "500 triệu",
@@ -2180,7 +2248,7 @@ window.V20_DATA = {
      "prov": "Bình Dương"
    },
    {
-     "id": "kiot-03",
+     "id": "kiot-07",
      "group": 1,
      "title": "Sang nhượng mặt bằng 360 MARKET — Tô Hiến Thành, Quận 10",
      "price": "Thỏa thuận",
@@ -2196,7 +2264,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-04",
+     "id": "kiot-08",
      "group": 1,
      "title": "Sang nhượng quán cafe Eighteeng — kiệt Bà Triệu, TP Huế",
      "price": "80 triệu",
@@ -2212,7 +2280,71 @@ window.V20_DATA = {
      "prov": "Huế"
    },
    {
-     "id": "kiot-05",
+     "id": "kiot-09",
+     "group": 1,
+     "title": "Sang nhượng quán Thái đang hoạt động ổn định 3 năm 200m² — đường 17, Linh Trung, TP.HCM",
+     "price": "350 triệu",
+     "priceNum": 350000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán Thái đang hoạt động ổn định 3 năm, doanh thu 200–300 triệu/tháng, kèm công thức món Thái · Diện tích 200m², 20 bàn · Thuê 16 triệu/tháng · TP.HCM",
+     "date": "29/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://batdongsan.com.vn/cho-thue-sang-nhuong-cua-hang-ki-ot-duong-17-4-phuong-linh-trung/ve-thai-can-lai-quan-thai-ang-hoat-ong-on-inh-3-nam-doanh-thu-on-inh-200-300-tr-thang-pr46436811",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM"
+   },
+   {
+     "id": "kiot-10",
+     "group": 1,
+     "title": "Sang nhượng quán 2 mặt tiền 384m² đã hoạt động 10 năm — Lê Hồng Phong, Hải An, Hải Phòng",
+     "price": "300 triệu",
+     "priceNum": 300000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán 2 mặt tiền đã hoạt động 10 năm, lượng khách ổn định · Diện tích 384m² (ngang 12m x dài 32m) · Thuê 35 triệu/tháng, hợp đồng 4–8 năm · Số điện thoại 0917026655 (Mr Cường) · Hải Phòng",
+     "date": "26/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Hai-Phong/Chinh-chu-chuyen-mo-hinh-kinh-doanh-can-sang-nhuong-quan-hai-mat-tien-da-hoat-dong-10-nam-tai-hai-c15-raovat-34605477.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hải Phòng"
+   },
+   {
+     "id": "kiot-11",
+     "group": 1,
+     "title": "Sang nhượng MBKD quán ăn + nhậu 100m² — Xuân La, Xuân Đỉnh, Hà Nội",
+     "price": "80 triệu",
+     "priceNum": 80000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Sang nhượng toàn bộ đồ đạc quán ăn + nhậu · Diện tích 100m², mặt tiền 8m, có tầng hầm làm bếp, 2 phòng ở lại · Đường Xuân La, phường Xuân Đỉnh · Hà Nội",
+     "date": "19/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://alonhadat.com.vn/sang-nhuong-mbkd-quan-an-nhau-tai-khu-vuc-xuan-la-xuan-dinh-ha-noi-chi-80tr-19157637.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội"
+   },
+   {
+     "id": "kiot-12",
+     "group": 1,
+     "title": "Sang nhượng tiệm nail – mi – spa 40m² — Phan Thanh Giản, Lái Thiêu, TP.HCM",
+     "price": "45 triệu",
+     "priceNum": 45000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Tiệm nail – mi – spa đang hoạt động ổn định · Diện tích 40m² (4 x 10m), có gác xép · Thuê 4 triệu/tháng, cọc 1 tháng · C281 đường Phan Thanh Giản, KP. Bình Đức 1, phường Lái Thiêu (Bình Dương cũ) · TP.HCM",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://alonhadat.com.vn/sang-nhuong-tiem-nail-mi-spa-dang-hoat-dong-on-dinh-lai-thieu-tp-hcm-19152108.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM"
+   },
+   {
+     "id": "kiot-13",
      "group": 1,
      "title": "Sang nhượng quán mặt tiền đường Liên Hương — Tuy Phong, Bình Thuận",
      "price": "250 triệu (thương lượng)",
@@ -2228,7 +2360,23 @@ window.V20_DATA = {
      "prov": "Bình Thuận"
    },
    {
-     "id": "kiot-06",
+     "id": "kiot-14",
+     "group": 1,
+     "title": "Sang nhượng quán ăn tại KĐT An Hưng — Dương Nội, Hà Đông, Hà Nội",
+     "price": "Thỏa thuận",
+     "priceNum": null,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán ăn hoạt động ổn định 3 năm, lượng khách quen đều đặn, bàn giao toàn bộ trang thiết bị + công thức chế biến · V4A02 Khu Đô Thị An Hưng, phường Dương Nội, Hà Đông · Hà Nội",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-an-tai-kdt-an-hung-duong-noi-ha-dong-748.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội"
+   },
+   {
+     "id": "kiot-15",
      "group": 1,
      "title": "Sang nhượng salon tóc 2 tầng 200m² — KĐT Tân Tây Đô, Hà Nội",
      "price": "100 triệu",
@@ -2244,7 +2392,23 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-07",
+     "id": "kiot-16",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng spa 600m², 3 tầng — An Phú, Quận 2, TP.HCM",
+     "price": "360 triệu",
+     "priceNum": 360000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Mặt bằng spa đang hoạt động, chuyển địa điểm nên sang nhượng · Diện tích 600m², 3 tầng · Phí sang nhượng 360 triệu (gồm nội thất cố định + máy lạnh, không gồm thiết bị rời) · Thuê 65 triệu/tháng, cọc 3 tháng · TP.HCM",
+     "date": "12/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://batdongsan.com.vn/cho-thue-sang-nhuong-cua-hang-ki-ot-phuong-an-phu/chung-toi-dg-cho-1-c-nha-co-the-lam-v-phong-conng-ty-kinh-doh-g-qu-2-pr44960079",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM"
+   },
+   {
+     "id": "kiot-17",
      "group": 1,
      "title": "Sang nhượng quán cafe Take a Break full setup — Thành Công, Hà Nội",
      "price": "Thỏa thuận",
@@ -2260,7 +2424,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-08",
+     "id": "kiot-18",
      "group": 1,
      "title": "Sang nhượng quán cafe SUNSHINE — phố Ngọc Lân, Từ Sơn, Bắc Ninh",
      "price": "Thỏa thuận",
@@ -2276,7 +2440,7 @@ window.V20_DATA = {
      "prov": "Bắc Ninh"
    },
    {
-     "id": "kiot-09",
+     "id": "kiot-19",
      "group": 1,
      "title": "Sang nhượng tiệm nail/mi/gội đầu 4x9m — Quận 1, TP.HCM",
      "price": "45 triệu (thương lượng)",
@@ -2292,7 +2456,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-10",
+     "id": "kiot-20",
      "group": 1,
      "title": "Thanh lý toàn bộ cửa hàng đồ gia dụng — Hòa Thành, Tây Ninh",
      "price": "Thỏa thuận",
