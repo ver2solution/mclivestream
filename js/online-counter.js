@@ -20,14 +20,17 @@
      ở đây nghĩa là API/UI không trả/hiện số thật tách riêng; không phải
      là bảo mật mật mã. Số thật tách riêng chỉ hiện trong trang quản trị
      (quan-tri.html, chỉ chủ web đăng nhập mới xem được).
-   - Tick local (quy ước người dùng chốt 22:09 ngày 07/11/2026): mỗi bộ
-     đếm tăng 3 lần rồi giảm 1 lần; số giảm = số tăng = 1. Chu kỳ 4 tick:
-     +1, +1, +1, −1 (tăng ròng +2/4 tick). Mỗi tick vẫn sau mỗi khoảng
-     xen kẽ 3s rồi 5s ([3000, 5000] lặp lại). Timer 5 bộ đếm lệch nhau
-     (stagger) để tổng trang chủ đổi mượt, không nhảy +5 cùng lúc:
-     stagger 0 / 1,6s / 3,2s / 4,8s / 6,4s → trong mỗi chu kỳ 8s có đúng
-     10 tick, mỗi tick cách nhau 0,8s, không có 2 tick nào trùng thời điểm
-     (xem tickTimesMs + test).
+   - Tick local (v93 — người dùng chốt 12:19 ngày 08/11/2026, thay quy ước
+     3 tăng 1 giảm ±1 cũ vì số giật lên xuống): mỗi tick LÊN hẳn +3 hoặc
+     +5 (xen kẽ theo pha), chỉ 1 tick trong chu kỳ 6 là XUỐNG −5 để số
+     không kẹt ở trần band. Chu kỳ 6 tick: +3, +5, +3, +5, +3, −5
+     (tăng ròng +14/6 tick). Mỗi tick sau mỗi khoảng xen kẽ 16s rồi 20s
+     ([16000, 20000] lặp lại, trung bình 18s/tick/bộ đếm). Timer 5 bộ đếm
+     lệch nhau (stagger) để tổng trang chủ đổi đều, không nhảy dồn:
+     stagger 0 / 3,6s / 7,2s / 10,8s / 14,4s → trong mỗi chu kỳ 36s có
+     đúng 10 tick, mỗi tick cách nhau ~3,6s, không có 2 tick nào trùng
+     thời điểm (xem tickTimesMs + test). Tốc độ leo tổng ~+39/phút,
+     ngang v91 (+41/phút) — chỉ đổi bước nhảy + nhịp, không đổi tốc độ.
    - Lưu trữ (localStorage 'v20_online_counters_v2'): CHỈ lưu phần tăng
      tick {tick: {mau, shop, kiot, hoidap, tintuc}, count: {...}, lastSeen}
      (count = số tick đã chạy của từng bộ đếm, để giữ đúng pha 3 tăng
@@ -73,10 +76,12 @@
   var RESET_AFTER_MS = 4 * 60 * 60 * 1000; // 4 giờ
   var BASE = { mau: 300, shop: 500, kiot: 100, hoidap: 40, tintuc: 500 };
   var KEYS = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc'];
-  var INTERVALS_MS = [3000, 5000]; // xen kẽ 3s rồi 5s
-  // Stagger: lệch nhau 1,6s trong chu kỳ 8s (3+5) → 10 tick/chu kỳ, mỗi
-  // tick cách nhau 0,8s, không trùng nhau (xem tickTimesMs).
-  var STAGGER_MS = { mau: 0, shop: 1600, kiot: 3200, hoidap: 4800, tintuc: 6400 };
+  var INTERVALS_MS = [16000, 20000]; // v93: xen kẽ 16s rồi 20s (trung bình 18s/tick)
+  // v93: Stagger lệch nhau 3,6s trong chu kỳ 36s (16+20) → 10 tick/chu kỳ,
+  // mỗi tick cách nhau ~3,6s, không trùng nhau (xem tickTimesMs). Nhịp chậm
+  // + bước nhảy lớn (+3/+5) thay cho nhịp 0,8s ±1 cũ — số lên từng bước rõ,
+  // không giật lên xuống.
+  var STAGGER_MS = { mau: 0, shop: 3600, kiot: 7200, hoidap: 10800, tintuc: 14400 };
   var HEARTBEAT_MS = 30000; // heartbeat presence mỗi 30s, chỉ khi tab hiển thị
   var MERGED_REFRESH_MS = 60000; // lấy lại số gộp từ server mỗi 60s
   var TOTAL_BASE = 1440; // 300 + 500 + 100 + 40 + 500
@@ -148,7 +153,7 @@
   function nextIntervalMs(step) { return INTERVALS_MS[((step % 2) + 2) % 2]; }
 
   // Pure: các mốc tick (ms từ lúc tải trang) của 1 bộ đếm — dùng để test
-  // stagger (không có 2 tick nào trùng thời điểm trong 1 chu kỳ 8s).
+  // stagger (không có 2 tick nào trùng thời điểm trong 1 chu kỳ 36s).
   function tickTimesMs(key, n) {
     var times = [];
     var t = STAGGER_MS[key] || 0;
@@ -157,12 +162,15 @@
     return times;
   }
 
-  // Quy ước 3 tăng 1 giảm (người dùng chốt 22:09 ngày 07/11/2026):
-  // count = số tick đã chạy của bộ đếm; tick thứ 4, 8, 12... (count % 4
-  // === 3) thì GIẢM 1, các tick còn lại TĂNG 1. Số giảm = số tăng = 1.
+  // v93 (người dùng chốt 12:19 ngày 08/11/2026): chu kỳ 6 tick —
+  // +3, +5, +3, +5, +3, −5 (tăng ròng +14/6 tick). Lên thì lên hẳn +3
+  // hoặc +5; chỉ tick thứ 6 (count % 6 === 5) xuống −5 để số không kẹt
+  // ở trần band MAX_TICK, rồi lại leo tiếp. count = số tick đã chạy.
   function tickDelta(count) {
     var c = Math.floor(Number(count) || 0);
-    return ((((c % 4) + 4) % 4) === 3) ? -1 : 1;
+    var r = (((c % 6) + 6) % 6);
+    if (r === 5) return -5;
+    return (r % 2 === 0) ? 3 : 5;
   }
 
   function applyTick(tick, key, count) {
@@ -170,8 +178,9 @@
     KEYS.forEach(function (k) { out[k] = tick[k]; });
     var cur = Math.floor(Number(tick[key]) || 0);
     // v91 (BUG-02): kẹp bão hòa ở band [0, MAX_TICK] — tới trần thì bước
-    // +1 giữ nguyên, bước −1 vẫn kéo xuống nên số dao động quanh trần band
-    // thay vì trôi vô hạn; nhịp 3 tăng 1 giảm giữ nguyên giữa band.
+    // +3/+5 giữ nguyên (không vượt trần), bước −5 vẫn kéo xuống nên số
+    // dao động quanh trần band thay vì trôi vô hạn; chu kỳ 6 tick v93
+    // giữ nguyên giữa band.
     out[key] = Math.max(0, Math.min(MAX_TICK, cur + tickDelta(count)));
     return out;
   }
