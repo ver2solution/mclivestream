@@ -1,0 +1,39 @@
+name: Deploy v99
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v99.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v99:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v99 deploy package
+        run: |
+          unzip -o mclivestream-v99-deploy.zip
+          ls -l js/app.js js/online-counter.js mclivestream-supabase.js v20.css sw.js dang-ky.html dang-nhap.html trang-cua-toi.html
+          sha256sum js/app.js js/online-counter.js mclivestream-supabase.js v20.css sw.js dang-ky.html dang-nhap.html trang-cua-toi.html
+          grep -q "v99-shell-1" sw.js && echo "sw.js CACHE OK: v99-shell-1"
+          grep -q "card-compact" v20.css && echo "css card-compact OK"
+          grep -q "star_profile" mclivestream-supabase.js && echo "supabase star_profile OK"
+          grep -q "priority_field" trang-cua-toi.html && echo "trang-cua-toi priority_field OK"
+          grep -q "Cách lên top" dang-ky.html && echo "dang-ky cach-len-top OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/app.js js/online-counter.js mclivestream-supabase.js v20.css sw.js dang-ky.html dang-nhap.html trang-cua-toi.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v99: the rut gon + sao len top 60 phut, online counter random walk, cache v99-shell-1"
+            git push
+          fi
