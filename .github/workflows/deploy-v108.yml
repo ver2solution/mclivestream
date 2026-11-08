@@ -1,0 +1,41 @@
+name: Deploy v108
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v108:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v108 deploy package
+        run: |
+          unzip -o mclivestream-v108-deploy.zip
+          ls -l tin-tuc.html v20.css sw.js
+          sha256sum tin-tuc.html v20.css sw.js
+          grep -q "v108-shell-1" sw.js && echo "sw.js CACHE OK: v108-shell-1"
+          if grep -q "Tin tức thị trường</h1>" tin-tuc.html; then echo "FAIL: H1 van con"; exit 1; else echo "tin-tuc H1 removed OK"; fi
+          if grep -q "<h2>Tin ghim</h2>" tin-tuc.html; then echo "FAIL: h2 ghim van con"; exit 1; else echo "tin-tuc h2 ghim removed OK"; fi
+          if grep -q "<h2>Tin mới nhất</h2>" tin-tuc.html; then echo "FAIL: h2 moi van con"; exit 1; else echo "tin-tuc h2 moi removed OK"; fi
+          grep -q "newsPinnedRow" tin-tuc.html && echo "tin-tuc pinned row container OK"
+          grep -q "newsNewRow" tin-tuc.html && echo "tin-tuc new row container OK"
+          grep -q "gap:12px" v20.css && echo "v20.css gaps tightened OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tin-tuc.html v20.css sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v108: bo 3 heading trang tin tuc + siet gap luoi toan site"
+            git push
+          fi
