@@ -68,8 +68,10 @@
     }).join('') + '</ul>';
   }
 
-  // Gửi 1 bình luận: validate ≥20 ký tự, insert pending, rồi (nếu đã đăng
-  // nhập) gọi RPC tính điểm. Trả {ok, points, message} — KHÔNG ném lỗi.
+  // Gửi 1 bình luận: validate ≥20 ký tự, gọi RPC submit_comment (SECURITY
+  // DEFINER, bypass RLS — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501),
+  // rồi (nếu đã đăng nhập) gọi RPC tính điểm. Trả {ok, points, message} —
+  // KHÔNG ném lỗi.
   async function submitComment(targetType, targetRef, text, displayName) {
     if (VALID_TYPES.indexOf(targetType) === -1) return { ok: false, points: 0, message: 'Loại mục bình luận không hợp lệ.' };
     if (!targetRef) return { ok: false, points: 0, message: 'Thiếu mục bình luận.' };
@@ -82,12 +84,17 @@
     var name = String(displayName || '').trim()
       || (user && user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name))
       || (user ? user.email : '') || 'Khách Vãng Lai';
+    // NEW-01 (08/11): INSERT trực tiếp bị RLS chặn (42501) dù policy cho
+    // phép — gửi bình luận qua RPC SECURITY DEFINER submit_comment() thay
+    // cho INSERT trực tiếp. RPC tự validate + chống spam (luật M7.9b) và
+    // luôn tạo bình luận ở trạng thái pending; điểm chỉ cộng sau khi duyệt.
+    // p_auth_user_id: uid của tài khoản đang đăng nhập, null khi khách vãng lai.
     try {
-      var res = await a.client.from('comments').insert({
-        target_type: targetType, target_ref: String(targetRef),
-        comment: String(text).trim(), commenter_name: name.slice(0, 100),
-        moderation_status: 'pending'
-      }).select('id').single();
+      var res = await a.client.rpc('submit_comment', {
+        p_target_type: targetType, p_target_ref: String(targetRef),
+        p_comment: String(text).trim(), p_commenter_name: name.slice(0, 100),
+        p_auth_user_id: user ? user.id : null
+      });
       if (res.error) return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String(res.error.message || res.error) };
     } catch (e) {
       return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String((e && e.message) || e) };
