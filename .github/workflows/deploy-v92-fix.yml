@@ -21,7 +21,7 @@ jobs:
           ls mclivestream-final-v88-prep | head -n 20
           test -f mclivestream-final-v88-prep/sw.js
           grep -q 'v92-shell-1' mclivestream-final-v88-prep/sw.js
-          rsync -a \
+          rsync -a --checksum \
             --exclude='android/' \
             --exclude='tools/' \
             --exclude='.well-known/' \
@@ -33,6 +33,7 @@ jobs:
             --exclude='supabase-config.example.js' \
             --exclude='js/data.js' \
             mclivestream-final-v88-prep/ ./
+          diff -q mclivestream-final-v88-prep/sw.js sw.js
           rm -rf mclivestream-final-v88-prep
           ls -la
           test ! -e mclivestream-final-v88-prep
@@ -51,13 +52,13 @@ jobs:
             git push
           fi
 
-      - name: Remove this workflow
+      - name: Remove temp files and this workflow
         run: |
-          rm -f .github/workflows/deploy-v92-fix.yml
+          rm -f mclivestream-v92-deploy.zip .github/workflows/deploy-v92-fix.yml
           git add -A
           if git diff --cached --quiet; then
             echo "Nothing to clean up."
           else
-            git commit -m "v92: remove temp fix workflow"
+            git commit -m "v92: remove temp fix workflow and deploy zip"
             git push
           fi
