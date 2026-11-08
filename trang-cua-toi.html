@@ -38,7 +38,7 @@
 <p><label>Nơi muốn làm việc *<br><select id="myWorkLocation" required><option value="">Chọn tỉnh / thành phố</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc / Live online</option></select></label></p>
 <p><label>Học vấn *<br><input id="myEducation" required></label></p>
 <p><label>Kinh nghiệm *<br><textarea id="myExperience" required placeholder="VD: 3 tháng livestream gia dụng, 1 năm livestream thời trang"></textarea></label></p>
-<p><label>Lĩnh vực mong muốn *<br><select id="myDesiredField" required><option value="">Chọn lĩnh vực</option><option>Chung / Đa ngành</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Thời trang</option></select></label></p>
+<p><label>Lĩnh vực mong muốn *<br><select id="myDesiredField" required><option value="">Chọn lĩnh vực</option><option>Chung / Đa ngành</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Thời trang</option></select></label></p><p><label>Lĩnh vực ưu tiên<br><select id="myPriorityField"><option value="">Không có lĩnh vực ưu tiên</option><option>Chung / Đa ngành</option><option>Gia dụng</option><option>Mỹ phẩm</option><option>Thời trang</option></select></label></p><p style="font-size:13px">Lĩnh vực ưu tiên hiện ngoài thẻ hồ sơ (dòng "Live ngành hàng nào") thay cho số lượng khi bạn live được nhiều lĩnh vực.</p>
 <p><label>Số điện thoại chính dùng Zalo *<br><input id="myPhoneZalo" type="tel" required></label></p>
 <p><label>Email liên hệ *<br><input id="myEmail" type="email" required></label></p>
 <h2>2. Mong muốn công việc (tự điền)</h2>
@@ -86,37 +86,83 @@
   var existing=null;
   function val(id){var el=document.getElementById(id); return el?el.value.trim():'';}
   function set(id,v){var el=document.getElementById(id); if(el&&v!=null) el.value=v;}
+  /* v97: dien lai form tu doi tuong ho so (dung chung cho init() va sau
+     khi luu) — sau khi luu, form hien dung du lieu server vua tra ve
+     (ke ca chuan hoa phia server), khong de form trong; o file (album/
+     video) khong dien lai duoc theo quy dinh trinh duyet, gia tri cu
+     van giu trong `existing` de lan luu sau dung lai. */
+  function fillForm(p){
+    if(!p) return;
+    set('myFullName',p.full_name); set('myDob',p.date_of_birth); set('myHometown',p.hometown);
+    set('myWorkLocation',p.work_location); set('myEducation',p.education); set('myExperience',p.experience);
+    set('myDesiredField',p.desired_field); set('myPhoneZalo',p.phone_zalo); set('myEmail',p.contact_email);
+    set('myPriorityField',p.priority_field);
+    set('mySalary',p.desired_salary); set('mySchedule',p.desired_schedule); set('myPlace',p.desired_place);
+    set('myProductTypes',p.desired_product_types); set('myDuration',p.desired_duration);
+    /* v85 M1: 2 truong doanh thu moi (so + ghi chu); KHONG gui
+       highest_revenue_verified (client strip — xem
+       mclivestream-supabase.js PROTECTED_FIELDS). */
+    set('myTopRevenueAmount',p.highest_revenue_amount!=null?String(p.highest_revenue_amount):'');
+    set('myTopRevenueNote',p.highest_revenue_note); set('myGender',p.gender||'');
+    set('myFacebook',p.contact_facebook); set('myInstagram',p.contact_instagram); set('myTiktok',p.contact_tiktok); set('myZalo',p.contact_zalo);
+    prefillFromSignup();
+  }
+  /* v99 (§1b): dien san 3 o ho so tu thong tin dang ky (localStorage
+     'v2s_signup_prefs') khi ho so server chua co gia tri — dang ky chi
+     dien truoc, sua ho so ghi de sau; khong bao gio ghi de du lieu server. */
+  function prefillFromSignup(){
+    var prefs = null;
+    try { prefs = JSON.parse(localStorage.getItem('v2s_signup_prefs') || 'null'); } catch (e) { prefs = null; }
+    if(!prefs) return;
+    if(!val('myWorkLocation') && prefs.workLocation) set('myWorkLocation', prefs.workLocation);
+    if(!val('myDesiredField') && prefs.desiredField) set('myDesiredField', prefs.desiredField);
+    if(!val('myPriorityField') && prefs.priorityField) set('myPriorityField', prefs.priorityField);
+  }
+  var initialized=false;
   async function init(){
+    if(initialized) return;
     if(!window.McLivestreamAPI){status.textContent='Chưa kết nối Supabase, chưa lưu được hồ sơ.'; return;}
     // v46: dung chung trang thai dang nhap tu js/auth-ui.js (1 nguon dung
     // duy nhat) thay vi doc session rieng.
+    // v97: doc ben vung getSessionRobust (~3s) — phien dang nhap qua form
+    // inline o danh-sach-mau.html phai duoc nhan dien dung ke ca khi
+    // GoTrue client chua khoi phuc xong luc trang vua tai (loi 15:58
+    // ngay 08/11/2026).
     var session=null;
     try{
-      session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession();
+      if (window.V2SAuthUI && typeof window.V2SAuthUI.getSessionRobust === 'function') {
+        session = await window.V2SAuthUI.getSessionRobust(3000);
+      } else if (window.V2SAuthUI) {
+        session = await window.V2SAuthUI.getSession();
+      } else {
+        session = await McLivestreamAPI.getSession();
+      }
     }catch(err){
       status.textContent='Không kiểm tra được trạng thái đăng nhập, hãy tải lại trang.';
       return;
     }
-    if(!session){status.innerHTML='Bạn cần đăng nhập để xem / sửa hồ sơ của mình. Hãy <a href="danh-sach-mau.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.'; return;}
+    if(!session){
+      status.innerHTML='Bạn cần đăng nhập để xem / sửa hồ sơ của mình. Hãy <a href="danh-sach-mau.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.';
+      // v97: phien co the ve muon (INITIAL_SESSION) sau khi da ket luan
+      // chua dang nhap — dang ky lang nghe de tu mo form khi phien ve.
+      try {
+        if (window.V2SAuthUI && typeof window.V2SAuthUI.onSessionChange === 'function') {
+          window.V2SAuthUI.onSessionChange(function (user) { if (user && !initialized) init(); });
+        }
+      } catch (e) {}
+      return;
+    }
+    initialized=true;
     status.textContent='Đã đăng nhập: '+session.user.email;
     form.style.display='block';
     try{
       existing=await McLivestreamAPI.fetchMyProfile();
       if(existing){
-        set('myFullName',existing.full_name); set('myDob',existing.date_of_birth); set('myHometown',existing.hometown);
-        set('myWorkLocation',existing.work_location); set('myEducation',existing.education); set('myExperience',existing.experience);
-        set('myDesiredField',existing.desired_field); set('myPhoneZalo',existing.phone_zalo); set('myEmail',existing.contact_email);
-        set('mySalary',existing.desired_salary); set('mySchedule',existing.desired_schedule); set('myPlace',existing.desired_place);
-        set('myProductTypes',existing.desired_product_types); set('myDuration',existing.desired_duration);
-        /* v85 M1: 2 truong doanh thu moi (so + ghi chu); KHONG gui
-           highest_revenue_verified (client strip — xem
-           mclivestream-supabase.js PROTECTED_FIELDS). */
-        set('myTopRevenueAmount',existing.highest_revenue_amount!=null?String(existing.highest_revenue_amount):'');
-        set('myTopRevenueNote',existing.highest_revenue_note); set('myGender',existing.gender||'');
-        set('myFacebook',existing.contact_facebook); set('myInstagram',existing.contact_instagram); set('myTiktok',existing.contact_tiktok); set('myZalo',existing.contact_zalo);
+        fillForm(existing);
         status.textContent='Đã đăng nhập: '+session.user.email+' · Trạng thái hồ sơ hiện tại: '+(existing.moderation_status||'pending');
       }
     }catch(e){status.textContent='Đã đăng nhập: '+session.user.email+' · Chưa có hồ sơ, hãy điền form dưới đây. ('+ferr(e)+')';}
+    prefillFromSignup();
   }
   form.addEventListener('submit', function(e){
     e.preventDefault(); msg.textContent='Đang lưu…';
@@ -142,6 +188,7 @@
         full_name:val('myFullName'), date_of_birth:val('myDob'), hometown:val('myHometown'),
         work_location:val('myWorkLocation'), education:val('myEducation'), experience:val('myExperience'),
         desired_field:val('myDesiredField'), phone_zalo:val('myPhoneZalo'), contact_email:val('myEmail'),
+        priority_field:val('myPriorityField')||null,
         desired_salary:val('mySalary')||null, desired_schedule:val('mySchedule')||null, desired_place:val('myPlace')||null,
         desired_product_types:val('myProductTypes')||null, desired_duration:val('myDuration')||null,
         contact_facebook:val('myFacebook')||null, contact_instagram:val('myInstagram')||null, contact_tiktok:val('myTiktok')||null,
@@ -149,10 +196,23 @@
         highest_revenue_amount:revNum, highest_revenue_note:val('myTopRevenueNote')||null,
         album_images:album, demo_video_url:demo
       };
-      var saved = await McLivestreamAPI.saveMyProfile(data);
+      var saved, priorityFallback = false;
+      try {
+        saved = await McLivestreamAPI.saveMyProfile(data);
+      } catch (saveErr) {
+        // v99: migration them cot priority_field chua chay thi thu lai
+        // khong kem truong do (gia tri van giu trong form + bao ro).
+        if (String((saveErr && saveErr.message) || saveErr || '').indexOf('priority_field') >= 0) {
+          delete data.priority_field;
+          saved = await McLivestreamAPI.saveMyProfile(data);
+          priorityFallback = true;
+        } else { throw saveErr; }
+      }
       existing=saved;
+      fillForm(saved); // v97: dien lai form tu du lieu server vua tra ve
       if(saved.moderation_status==='approved') msg.textContent='Đã lưu hồ sơ. Hồ sơ vẫn hiện công khai theo trạng thái đã duyệt.';
       else msg.textContent='Đã lưu hồ sơ. Hồ sơ mới ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt và xác nhận đồng ý.';
+      if(priorityFallback) msg.textContent += ' (Chưa lưu được Lĩnh vực ưu tiên — hệ thống đang cập nhật, bạn lưu lại sau nhé.)';
     }catch(err){ msg.textContent='Chưa lưu được: '+ferr(err); }
     };
     if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();

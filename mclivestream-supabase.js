@@ -68,7 +68,13 @@
         phone_zalo: opts.phoneZalo || '',
         account_type: opts.accountType || '',
         marketing_opt_in: !!opts.marketingOptIn,
-        marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution'
+        marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution',
+        // v99 (§1b): 3 o ho so thu thap ngay khi dang ky (dang-ky.html)
+        // de the hien dung ngay sau khi dang ky; auth-ui.js truyen qua
+        // opts khi co, thieu thi de trong (trang-cua-toi dien sau).
+        work_location: opts.workLocation || '',
+        desired_field: opts.desiredField || '',
+        priority_field: opts.priorityField || ''
       },
       // v49: redirect xac nhan email ve trang chu /mclivestream/ (xem SITE_URL).
       emailRedirectTo: SITE_URL }
@@ -92,6 +98,32 @@
   async function getSession() {
     var res = await client.auth.getSession();
     return res.data.session || null;
+  }
+
+  // v97: doc session ben vung cho cac tac vu can dang nhap (luu ho so).
+  // Uu tien cache dung chung cua js/auth-ui.js — 1 nguon dung duy nhat
+  // ma trang-cua-toi.html da xac nhan — roi moi doc truc tiep tu client;
+  // thu lai 1 lan sau khoang nghi ngan neu ca 2 deu null (phien co the
+  // dang duoc khoi phuc). Nhờ vậy trang hien "Da dang nhap" thi luu ho
+  // so khong bao loi "Can dang nhap" nua (loi 15:58 ngay 08/11/2026:
+  // init() thay session nhung saveMyProfile() doc lai truc tiep thi
+  // gap null nhat thoi). Trang chua nap auth-ui.js thi di thang vao
+  // doc truc tiep, khong doi hanh vi.
+  async function getSessionRobust() {
+    try {
+      var A = (typeof window !== 'undefined') ? window.V2SAuthUI : null;
+      if (A && typeof A.getSessionRobust === 'function') {
+        var s = await A.getSessionRobust(3000);
+        if (s) return s;
+      } else if (A && typeof A.getSession === 'function') {
+        var s2 = await A.getSession();
+        if (s2) return s2;
+      }
+    } catch (e) { /* roi xuong doc truc tiep */ }
+    var direct = await getSession();
+    if (direct) return direct;
+    await new Promise(function (r) { setTimeout(r, 600); });
+    return await getSession();
   }
 
   // Quên mật khẩu: gửi link đặt lại về email đã đăng ký.
@@ -186,7 +218,7 @@
   }
 
   async function fetchMyProfile() {
-    var session = await getSession();
+    var session = await getSessionRobust();
     if (!session) return null;
     var res = await client.from('profiles')
       .select('*')
@@ -197,7 +229,7 @@
   }
 
   async function saveMyProfile(data) {
-    var session = await getSession();
+    var session = await getSessionRobust();
     if (!session) throw new Error('Cần đăng nhập mới lưu được hồ sơ.');
     var clean = stripProtected(data);
     clean.auth_user_id = session.user.id;
@@ -227,6 +259,31 @@
       if (!hash) return;
       await client.rpc('increment_profile_view', { p_profile_id: profileId, p_session_hash: hash });
     } catch (e) { /* bỏ qua lặng lẽ */ }
+  }
+
+  // v99 (§5 đặc tả sao lên top): ấn sao lên top 60 phút. Khách vãng lai
+  // cũng ấn được (không cần đăng nhập); giới hạn 1 sao/hồ sơ/ngày do RPC
+  // star_profile kiểm tra (theo session_hash + theo auth_user_id nếu có).
+  // Trả về số sao mới; lỗi 'already_starred_today' khi đã sao hôm nay.
+  async function starProfile(targetType, profileId) {
+    var hash = null;
+    if (typeof window !== 'undefined' && window.V2SAnalytics && typeof window.V2SAnalytics.getSessionId === 'function') {
+      hash = window.V2SAnalytics.getSessionId();
+    }
+    if (!hash) throw new Error('Không xác định được phiên ẩn danh.');
+    var res = await client.rpc('star_profile', { p_profile_id: profileId, p_session_hash: hash, p_target_type: targetType || 'model_profile' });
+    if (res.error) throw res.error;
+    return Number(res.data);
+  }
+
+  // v99: lấy bảng đếm sao công khai (profile_star_stats) để hiện số sao +
+  // sắp xếp tầng sao 60 phút. Lỗi thì trả [] — không bao giờ làm vỡ trang.
+  async function fetchStarStats() {
+    try {
+      var res = await client.from('profile_star_stats').select('profile_id,target_type,star_count,last_starred_at');
+      if (res.error) return [];
+      return res.data || [];
+    } catch (e) { return []; }
   }
 
   // ---------- Đánh giá (không cần đăng nhập) ----------
@@ -325,7 +382,7 @@
   }
 
   async function uploadAlbumImages(files) {
-    var session = await getSession();
+    var session = await getSessionRobust();
     if (!session) throw new Error('Cần đăng nhập mới tải ảnh lên được.');
     var list = Array.prototype.slice.call(files || []);
     if (list.length < 1 || list.length > 5) throw new Error('Album cần 1 đến 5 ảnh.');
@@ -341,7 +398,7 @@
   }
 
   async function uploadDemoVideo(file) {
-    var session = await getSession();
+    var session = await getSessionRobust();
     if (!session) throw new Error('Cần đăng nhập mới tải video lên được.');
     if (!file) throw new Error('Cần 1 video demo.');
     checkUploadFile(file, VIDEO_TYPES, VIDEO_EXTS, 'video demo');
@@ -466,6 +523,7 @@
     fetchPublicProfiles: fetchPublicProfiles, fetchTopProfiles: fetchTopProfiles,
     fetchMyProfile: fetchMyProfile, saveMyProfile: saveMyProfile,
     incrementView: incrementView,
+    starProfile: starProfile, fetchStarStats: fetchStarStats,
     fetchApprovedReviews: fetchApprovedReviews, submitReview: submitReview, submitFeedback: submitFeedback,
     uploadAlbumImages: uploadAlbumImages, uploadDemoVideo: uploadDemoVideo,
     isTableMissingError: isTableMissingError,

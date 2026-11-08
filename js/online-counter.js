@@ -162,26 +162,62 @@
     return times;
   }
 
-  // v93 (người dùng chốt 12:19 ngày 08/11/2026): chu kỳ 6 tick —
-  // +3, +5, +3, +5, +3, −5 (tăng ròng +14/6 tick). Lên thì lên hẳn +3
-  // hoặc +5; chỉ tick thứ 6 (count % 6 === 5) xuống −5 để số không kẹt
-  // ở trần band MAX_TICK, rồi lại leo tiếp. count = số tick đã chạy.
-  function tickDelta(count) {
+  // v99 (§8 dac ta sao len top): RANDOM WALK co kiem soat, seed theo
+  // cua so 8 gio (window8h, cung co che rotateWindow). Moi tick:
+  // delta -12..+15 (co tang co giam ro), hiem (~8%) tut manh -20..-30
+  // nhu nguoi that roi trang; keo ve muc tam cua so (15..35, khac nhau
+  // moi khung 8h) de so khong troi xuong hay dinh tran. Cung
+  // (win, key, count) cho cung delta — on dinh trong cua so, doi mau
+  // khi sang khung 8h moi. count = so tick da chay cua bo dem do.
+  function counterWindow8h(now){
+    var t = (now instanceof Date) ? now.getTime() : Number(now);
+    if(!isFinite(t)) t = Date.now();
+    return Math.floor((t + 7*3600*1000) / (8*3600*1000));
+  }
+  function hash01(seed, n){
+    var h = ((seed >>> 0) ^ Math.imul((Math.floor(Number(n)) || 0) + 1, 0x9E3779B1)) >>> 0;
+    h = Math.imul(h ^ (h >>> 16), 0x45D9F3B) >>> 0;
+    h = Math.imul(h ^ (h >>> 16), 0x45D9F3B) >>> 0;
+    h ^= h >>> 16;
+    return (h >>> 0) / 4294967296;
+  }
+  function seedForWindow(win, keyIdx){
+    var h = (Math.floor(Number(win) || 0) ^ 0x9E3779B9) >>> 0;
+    h = Math.imul(h ^ Math.imul(Math.floor(Number(keyIdx) || 0) + 1, 0x85EBCA6B), 0xC2B2AE35) >>> 0;
+    h ^= h >>> 13;
+    h = Math.imul(h, 0x27D4EB2D) >>> 0;
+    h ^= h >>> 15;
+    return h >>> 0;
+  }
+  // Muc tam cua tick trong 1 khung 8h (15..35) — moi khung, moi bo dem
+  // co muc tam khac nhau nen so hien thi khong lap y het ngay nay qua
+  // ngay khac.
+  function windowCenter(win, keyIdx){
+    return 15 + Math.floor(hash01(seedForWindow(win, keyIdx), 0x43454E54) * 21);
+  }
+  function tickDelta(count, win, keyIdx, cur){
+    var w = (win == null) ? counterWindow8h(Date.now()) : win;
+    var k = Math.floor(Number(keyIdx) || 0);
     var c = Math.floor(Number(count) || 0);
-    var r = (((c % 6) + 6) % 6);
-    if (r === 5) return -5;
-    return (r % 2 === 0) ? 3 : 5;
+    var curV = (cur == null) ? MAX_TICK / 2 : Math.floor(Number(cur) || 0);
+    var u = hash01(seedForWindow(w, k), c);
+    if(u < 0.05) return -(20 + Math.floor((u / 0.05) * 11)); // -20..-30, hiem (~5%)
+    var v = (u - 0.05) / 0.95;
+    var base = -10 + Math.floor(v * 27); // -10..+16, trung binh +3
+    var pull = (windowCenter(w, k) - curV) / 25; // -1..+1, keo ve muc tam
+    var d = base + Math.round(pull * 6);
+    if(d > 18) d = 18;
+    if(d < -15) d = -15;
+    return d;
   }
 
-  function applyTick(tick, key, count) {
+  function applyTick(tick, key, count, win){
     var out = {};
     KEYS.forEach(function (k) { out[k] = tick[k]; });
     var cur = Math.floor(Number(tick[key]) || 0);
-    // v91 (BUG-02): kẹp bão hòa ở band [0, MAX_TICK] — tới trần thì bước
-    // +3/+5 giữ nguyên (không vượt trần), bước −5 vẫn kéo xuống nên số
-    // dao động quanh trần band thay vì trôi vô hạn; chu kỳ 6 tick v93
-    // giữ nguyên giữa band.
-    out[key] = Math.max(0, Math.min(MAX_TICK, cur + tickDelta(count)));
+    // v91 (BUG-02): kẹp bão hòa ở band [0, MAX_TICK] — random walk chi
+    // dao dong quanh muc tam cua so, khong troi vo han.
+    out[key] = Math.max(0, Math.min(MAX_TICK, cur + tickDelta(count, win, KEYS.indexOf(key), cur)));
     return out;
   }
 
@@ -466,6 +502,8 @@
     formatVi: formatVi, sumTick: sumTick, shouldReset: shouldReset,
     loadState: loadState, nextIntervalMs: nextIntervalMs,
     tickTimesMs: tickTimesMs, applyTick: applyTick, tickDelta: tickDelta,
+    counterWindow8h: counterWindow8h, hash01: hash01, seedForWindow: seedForWindow,
+    windowCenter: windowCenter,
     displayForPage: displayForPage, displayTotal: displayTotal,
     valueForKey: valueForKey, shouldShowPopup: shouldShowPopup,
     fetchPoints: fetchPoints,
