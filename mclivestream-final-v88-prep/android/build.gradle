@@ -1,0 +1,2 @@
+// Top-level build file for the Ver2Solution TWA package.
+plugins { id 'com.android.application' version '8.5.2' apply false }

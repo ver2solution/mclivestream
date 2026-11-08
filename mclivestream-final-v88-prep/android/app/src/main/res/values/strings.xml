@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ver2Solution</string>
+    <!-- Digital Asset Links statement for the TWA origin. The web side must
+         publish the matching assetlinks.json (see ../../.well-known). -->
+    <string name="asset_statements">[{"relation": ["delegate_permission/common.handle_all_urls"], "target": {"namespace": "web", "site": "https://ver2solution.github.io/mclivestream"}}]</string>
+</resources>
