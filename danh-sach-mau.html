@@ -27,6 +27,10 @@
 <p class="online-badge" hidden data-online="mau"><span class="online-dot" aria-hidden="true"></span><span class="online-num">300</span>&nbsp;người đang online</p>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">300</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> điểm • Còn lại: <b class="online-popup-left">0</b> điểm</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <section class="section filter-section"><div class="section-head"><div><h1>Tìm shop tuyển mẫu livestream</h1></div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0 16px">
+<a class="btn btn-primary" id="btnTaoHoSoMau" href="trang-cua-toi.html" data-track="nut-tao-ho-so-mau">✏️ Tạo hồ sơ mẫu</a>
+<span style="font-size:13px">Chưa có tài khoản? <a href="dang-ky.html?type=model">Đăng ký làm mẫu</a> — chỉ mất 2 phút.</span>
+</div>
 <button class="filter-toggle" id="filterToggleShop" type="button" aria-expanded="false" data-track="mo-bo-loc-shop">🔍 Bộ lọc tìm shop</button>
 <div class="filter-card cols-3" id="shopFilter"><div><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực / mặt hàng</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -35,6 +39,8 @@
 <div><label for="fShPayType">Loại lương</label><select id="fShPayType" data-track="loc-loai-luong-shop"><option value="">Tất cả loại lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
 <div><label id="fShPayMinLabel" for="fShPayMin">Mức lương tối thiểu</label><input id="fShPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled></div>
 <div class="full"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div></div>
+<!-- v100: hang 4 o tin doi song & dong tien cho mau (render boi initModelNewsRow) -->
+<div class="section" id="modelNewsRow" aria-label="Tin đời sống và dòng tiền cho mẫu"></div>
 <h2 id="shop-list-title">Danh sách shop tuyển mẫu livestream</h2>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
@@ -44,7 +50,7 @@
 <div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với shop về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang tin tuyển để đánh giá, không cần đăng nhập.</p></div></div>
 <div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-shop.html">Xem hồ sơ mẫu →</a> <a class="btn btn-ghost" href="danh-sach-shop.html#dang-nhap-shop">Đăng Nhập shop ↓</a> <a class="btn btn-ghost" href="danh-sach-shop.html#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
 <p>Hồ sơ mẫu thật hiện có trên trang Dành cho Shop, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
-<section class="form-card" id="dang-nhap-mau" aria-label="Đăng nhập mẫu"><h2>Đăng nhập mẫu</h2><p>Mẫu đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây. Sau khi đăng nhập, mẫu liên hệ Ver2Solution để tạo và sửa hồ sơ riêng; hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p>
+<section class="form-card" id="dang-nhap-mau" aria-label="Đăng nhập mẫu"><h2>Đăng nhập mẫu</h2><p>Mẫu đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây. Sau khi đăng nhập, mẫu bấm nút Tạo hồ sơ mẫu để tạo và sửa hồ sơ riêng; hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p>
 <div class="auth-view" id="mauViewLogin"><h3>Đăng nhập</h3><form id="mauSignIn" data-track="form-dang-nhap-mau" novalidate><p><label>Email *<br><input id="maSiEmail" type="email" required></label></p><p class="field-err" id="err-maSiEmail"></p><p><label>Mật khẩu *<br><span class="pw-wrap"><input id="maSiPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="maSiPass" data-track="hien-mat-khau-mau" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p class="field-err" id="err-maSiPass"></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-mau">Đăng nhập</button></form>
 <p class="auth-links"><a href="#" data-auth-view="register" data-auth-popup="1" data-track="mo-dang-ky-mau">Chưa có tài khoản? Đăng ký</a><a href="#" data-auth-view="forgot" data-track="mo-quen-mat-khau-mau">Quên mật khẩu?</a></p></div>
 <div class="auth-view" id="mauViewRegister" hidden><h3>Đăng ký tài khoản mẫu</h3><form id="mauSignUp" data-track="form-dang-ky-mau" novalidate><p><label>Email *<br><input id="maSuEmail" type="email" required></label></p><p class="field-err" id="err-maSuEmail"></p><p><label>Số điện thoại chính dùng Zalo *<br><input id="maSuPhone" type="tel" inputmode="tel" autocomplete="tel" required></label></p><p class="field-err" id="err-maSuPhone"></p><p><label>Mật khẩu *<br><span class="pw-wrap"><input id="maSuPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="maSuPass" data-track="hien-mat-khau-mau" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p class="field-err" id="err-maSuPass"></p><p><label>Nhập lại mật khẩu *<br><span class="pw-wrap"><input id="maSuPass2" type="password" required><button class="pw-toggle" type="button" data-pw-for="maSuPass2" data-track="hien-mat-khau-mau" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p class="field-err" id="err-maSuPass2"></p><p><label><input id="maSuMarketing" type="checkbox"> Tôi đồng ý nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution qua email.</label></p><p style="font-size:13px">Ô này mặc định KHÔNG tick sẵn. Nếu bạn không tick, bạn chỉ nhận email hệ thống (xác nhận tài khoản, đặt lại mật khẩu, thông báo hồ sơ được duyệt) và không nhận email marketing. Bạn có thể rút đồng ý bất cứ lúc nào trên trang Ví và marketing hoặc nhắn Zalo 032 998 3699, sau khi rút sẽ không nhận email marketing nữa.</p><button class="btn btn-primary" type="submit" data-track="nut-dang-ky-mau">Đăng ký</button></form>
@@ -52,7 +58,7 @@
 <div class="auth-view" id="mauViewForgot" hidden><h3>Quên mật khẩu</h3><form id="mauForgot" data-track="form-quen-mat-khau-mau" novalidate><p><label>Email đã đăng ký *<br><input id="maFpEmail" type="email" required></label></p><p class="field-err" id="err-maFpEmail"></p><button class="btn btn-ghost" type="submit">Gửi link đặt lại về email</button></form>
 <p class="auth-links"><a href="#" data-auth-view="login" data-track="ve-dang-nhap-mau">← Quay lại đăng nhập</a></p></div>
 <p id="mauAuthMsg" class="auth-msg"></p>
-<div id="mauAuthUserBox" style="display:none"><p>Đã đăng nhập: <span id="mauAuthUserEmail"></span></p><p><a class="btn btn-primary" href="trang-cua-toi.html">Vào Trang của tôi →</a> <button class="btn btn-ghost btn-sm" id="mauSignOut" data-track="nut-dang-xuat-mau" type="button">Đăng xuất</button></p>
+<div id="mauAuthUserBox" style="display:none"><p>Đã đăng nhập: <span id="mauAuthUserEmail"></span></p><p><a class="btn btn-primary" href="trang-cua-toi.html" data-track="nut-tao-ho-so-mau">✏️ Tạo hồ sơ mẫu</a> <a class="btn btn-ghost" href="trang-cua-toi.html">Vào Trang của tôi →</a> <button class="btn btn-ghost btn-sm" id="mauSignOut" data-track="nut-dang-xuat-mau" type="button">Đăng xuất</button></p>
 <p class="notice">Sau khi đăng nhập, mẫu bấm vào <a href="trang-cua-toi.html">Trang của tôi</a> để tạo và sửa hồ sơ riêng. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p></div></section>
 <div class="gopy-overlay" id="mauAuthTypeOverlay"><div class="gopy-box" role="dialog" aria-label="Chọn loại tài khoản"><h2 style="margin:0">Đăng ký tài khoản nào?</h2>
 <p>Chọn loại tài khoản phù hợp với bạn. Sau khi chọn sẽ hiện form đăng ký riêng của loại đó.</p>
@@ -103,6 +109,30 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
+<script>
+  // v97: nut "Tao ho so mau" — da dang nhap thi toi thang form tao ho
+  // so (trang-cua-toi.html); chua dang nhap thi cuon toi form dang nhap
+  // inline o cuoi trang (#dang-nhap-mau) de dang nhap xong bam lai.
+  (function () {
+    var btn = document.getElementById('btnTaoHoSoMau');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      var A = window.V2SAuthUI;
+      if (!A || typeof A.getSession !== 'function') return; // khong JS: theo href
+      e.preventDefault();
+      A.getSession().then(function (s) {
+        if (s && s.user) { location.href = 'trang-cua-toi.html'; return; }
+        var anchor = document.getElementById('dang-nhap-mau');
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var em = document.getElementById('maSiEmail');
+        if (em) em.focus();
+      }).catch(function () {
+        var anchor2 = document.getElementById('dang-nhap-mau');
+        if (anchor2) anchor2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
+</script>
 <script>
 /* v46: the auth dung module chung js/auth-ui.js (gop code trung lap 2 trang).
    Cau hinh rieng trang Mau: id ma*, loai tai khoan 'model'. */

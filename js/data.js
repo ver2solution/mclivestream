@@ -1913,7 +1913,7 @@ window.V20_DATA = {
  "articles": [
   {
    "title": "Vì sao 90% Page bị bóp reach khi đi share group? 3 tín hiệu Facebook chấm spam",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Phân tích",
    "source": "Ver2Solution",
    "date": "2026-11-03",
    "url": "bai-viet-bop-reach.html",
@@ -1923,7 +1923,7 @@ window.V20_DATA = {
   },
   {
    "title": "Gen Z và Gen Y tăng chi tiêu cuối năm: chất lượng lên ngôi, giá rẻ không còn đủ",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Xu hướng",
    "source": "Tuổi Trẻ Online",
    "date": "2026-10-01",
    "url": "https://tuoitre.vn/cho-mang-tang-truong-27-trong-quy-3-gen-z-va-gen-y-tang-chi-tieu-100261015202516071.htm",
@@ -1933,7 +1933,7 @@ window.V20_DATA = {
   },
   {
    "title": "Người tiêu dùng bớt “săn sale”: sale quanh năm khiến sale mất giá",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Xu hướng",
    "source": "VnExpress",
    "date": "2026-10-23",
    "url": "https://vnexpress.net/nguoi-tieu-dung-bot-san-sale-online-5135054.html",
@@ -1943,7 +1943,7 @@ window.V20_DATA = {
   },
   {
    "title": "Bán đa kênh để mở đầu ra cho hàng Việt: thị trường lớn, nhưng rào cản lớn nhất là vận hành",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Thị trường",
    "source": "VnEconomy",
    "date": "2026-10-01",
    "url": "https://vneconomy.vn/thuc-day-phat-trien-thi-truong-da-kenh-mo-rong-dau-ra-ben-vung-cho-hang-hoa-viet.htm",
@@ -1953,7 +1953,7 @@ window.V20_DATA = {
   },
   {
    "title": "Livestream cùng KOL mở thêm đầu ra cho hộ kinh doanh nhỏ: đơn tăng gấp chục lần, nhưng phải tính lãi",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "VnExpress",
    "date": "2026-10-26",
    "url": "https://vnexpress.net/livestream-cung-kol-mo-them-dau-ra-cho-ho-kinh-doanh-nho-5136414.html",
@@ -1963,7 +1963,7 @@ window.V20_DATA = {
   },
   {
    "title": "Bí thư phường livestream bán tôm, cua, hàu: 500 đơn trong 90 phút và bài học về niềm tin địa phương",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "VnExpress",
    "date": "2026-10-22",
    "url": "https://vnexpress.net/bi-thu-phuong-livestream-ban-tom-cua-hau-giup-dan-5135260.html",
@@ -1973,7 +1973,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hết thời bán hàng online vô danh: livestream từ 01/07/2026 phải định danh và chịu trách nhiệm về lời nói",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Thanh Niên",
    "date": "2026-06-27",
    "url": "https://thanhnien.vn/het-thoi-ban-hang-online-vo-danh-185260626171225509.htm",
@@ -1983,7 +1983,7 @@ window.V20_DATA = {
   },
   {
    "title": "Cảnh báo lừa đảo qua livestream ngọc trai: giá rẻ, trúng thưởng lớn và những lần chuyển tiền tiếp theo",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Thanh Niên",
    "date": "2026-10-10",
    "url": "https://thanhnien.vn/cong-an-tphcm-canh-bao-thu-doan-lua-dao-mua-ngoc-trai-qua-livestream-185261009164623044.htm",
@@ -1993,7 +1993,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop thu hẹp khoảng cách với Shopee: shop nhỏ nên đặt cửa nào trước?",
-   "cat": "Tin ngành hàng",
+   "cat": "Thị trường",
    "source": "Znews",
    "date": "2026-10-14",
    "url": "https://znews.vn/znews-post1689621.html",
@@ -2003,7 +2003,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hàng Việt lên livestream ở Mỹ và Trung Quốc: cơ hội lớn, nhưng chỉ dành cho shop kể được câu chuyện thật",
-   "cat": "Tin ngành hàng",
+   "cat": "Thị trường",
    "source": "Tuổi Trẻ Online",
    "date": "2026-09-03",
    "url": "https://tuoitre.vn/khi-pho-goi-nong-san-viet-len-livestream-trieu-usd-tai-my-trung-quoc-100260903152632609.htm",
@@ -2013,7 +2013,7 @@ window.V20_DATA = {
   },
   {
    "title": "Phí sàn tăng từ tháng 05/2026: Bộ Công Thương rà soát, shop nhỏ phải tính lại giá trước khi chạy sale",
-   "cat": "Tin ngành hàng",
+   "cat": "Dòng tiền",
    "source": "Kinh tế Chứng khoán và Công nghiệp Tiêu dùng",
    "date": "2026-05-01",
    "url": "https://kinhtechungkhoan.vn/bo-cong-thuong-ra-soat-chinh-sach-tang-phi-cua-shopee-tiktok-shop-1447988.html",
@@ -2023,7 +2023,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hồ sơ MC livestream: 7 mục bắt buộc giúp mẫu được shop tìm thấy nhanh hơn",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Bài demo nội bộ — Ver2Solution",
    "date": "2026-11-05",
    "url": null,
@@ -2034,7 +2034,7 @@ window.V20_DATA = {
   },
   {
    "title": "Lương MC livestream theo buổi: Mặt bằng giá ở thời trang, mỹ phẩm và gia dụng",
-   "cat": "Tin ngành hàng",
+   "cat": "Dòng tiền",
    "source": "Bài demo nội bộ — Ver2Solution",
    "date": "2026-11-05",
    "url": null,
@@ -2045,7 +2045,7 @@ window.V20_DATA = {
   },
   {
    "title": "Livestream bán hàng ở Mỹ tăng gần 50%: shop nhỏ học gì từ tỷ lệ chốt tới 30%?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Thị trường",
    "source": "DesignRush",
    "date": "2026",
    "url": "https://www.designrush.com/agency/ecommerce/trends/ecommerce-trends",
@@ -2055,7 +2055,7 @@ window.V20_DATA = {
   },
   {
    "title": "AI làm thay phần tìm hàng: shop nhỏ làm sao để AI còn “thấy” sản phẩm của mình?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Công nghệ",
    "source": "McKinsey & Company",
    "date": "2026",
    "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/who-wins-when-ai-does-the-shopping-new-evidence-on-agentic-commerce",
@@ -2066,7 +2066,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hàng đã qua sử dụng lên ngôi toàn cầu: shop nhỏ bán hàng tồn kho học được gì?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Xu hướng",
    "source": "eBay Inc.",
    "date": "2026-10-07",
    "url": "https://www.ebayinc.com/stories/news/ebay-recommerce-report-secondhand-shopping-rises-worldwide-as-consumers-seek-value-and-stretch-budgets/",
@@ -2076,7 +2076,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop tiến tới 100 tỷ USD: shop nhỏ nên bán bằng video hay bằng gian hàng?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Thị trường",
    "source": "For You",
    "date": "2026-10-27",
    "url": "https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f",
@@ -2086,7 +2086,7 @@ window.V20_DATA = {
   },
   {
    "title": "Lễ 11/11 Trung Quốc bán cả gói AI qua livestream: shop nhỏ học gì từ cơn sốt mới này?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Đang hot",
    "source": "Reuters",
    "date": "2026-11-03",
    "url": "https://www.reuters.com/business/retail-consumer/chinas-lipstick-king-touts-ai-tokens-first-singles-day-festival-2026-11-03/",
@@ -2097,7 +2097,7 @@ window.V20_DATA = {
   },
   {
    "title": "Người tiêu dùng 2026 muốn vừa thoải mái vừa thật: shop nhỏ bán hàng theo cảm xúc hay theo bằng chứng?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Xu hướng",
    "source": "Euromonitor International, qua BusinessWire",
    "date": "2025-11-05",
    "url": "http://www.businesswire.com/news/home/20251105486775/en/Euromonitor-International-unveils-Global-Consumer-Trends-for-2026",
@@ -2108,7 +2108,7 @@ window.V20_DATA = {
   },
   {
    "title": "Mùa lễ 2026 ở Mỹ: điện thoại chiếm gần 3/4 số tiền tăng thêm, shop nhỏ cần sửa gì trước?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Thị trường",
    "source": "DesignRush News, dẫn dự báo eMarketer",
    "date": "2026-10-14",
    "url": "https://news.designrush.com/mobile-holiday-ecommerce-checkout",
@@ -2118,7 +2118,7 @@ window.V20_DATA = {
   },
   {
    "title": "Xả kho thời trang cuối năm: 12 chiêu dọn kho mà vẫn giữ thương hiệu, không bán lỗ",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Hàng hoá",
    "source": "POS365",
    "date": "2026-09-25",
    "dateNote": "Đăng lần đầu 30/03/2025, cập nhật 25/09/2026",
@@ -2129,7 +2129,7 @@ window.V20_DATA = {
   },
   {
    "title": "11.11 trên TikTok Shop: tính lời trước khi giảm giá — giảm 20%, lời mỗi đơn có thể tụt gần 5 lần",
-   "cat": "Tin mới Livestream",
+   "cat": "Đang hot",
    "source": "LaPage",
    "date": "2026-10-27",
    "url": "https://lapage.vn/vi/blog/post/tiktok-shop-1111-prep-plan",
@@ -2139,7 +2139,7 @@ window.V20_DATA = {
   },
   {
    "title": "Xả kho đồ gia dụng cuối năm: giảm theo đợt, bán theo combo, ký gửi khi chọn sai khách",
-   "cat": "Bán hàng Online hiệu quả",
+   "cat": "Hàng hoá",
    "source": "Gia Dụng Nhanh",
    "date": "2026-11-07",
    "dateNote": "Bài gốc không ghi rõ ngày đăng; ngày đăng trên Ver2Solution",
@@ -2150,7 +2150,7 @@ window.V20_DATA = {
   },
   {
    "title": "Shopee AI cho người bán: sàn lo phần đăng và chăm khách, video ngắn vẫn là việc của shop",
-   "cat": "Tin mới Livestream",
+   "cat": "Công nghệ",
    "source": "CoMaker",
    "date": "2026-10-30",
    "url": "https://comaker.me/blog/2026-10-30-shopee-ai-cho-nguoi-ban",
@@ -2161,7 +2161,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop Mỹ chạy Black Friday từ 11/11: live là trung tâm, hàng độc quyền mới là thứ giữ khách",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Đang hot",
    "source": "Modern Retail",
    "date": "2026-10-20",
    "url": "https://www.modernretail.co/marketing/brands-briefing-how-brands-are-gearing-up-for-tiktok-shops-biggest-holiday-season-yet/",
@@ -2172,7 +2172,7 @@ window.V20_DATA = {
   },
   {
    "title": "Tuyển mẫu livestream cho shop nhỏ: 7 bước thuê đúng người",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Ver2Solution",
    "date": "2026-11-06",
    "url": null,
@@ -2185,7 +2185,7 @@ window.V20_DATA = {
   },
   {
    "title": "Shop nhỏ giữ chân khách bằng live và video: đơn qua live, video, affiliate tăng 52%",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "vietnam.vn",
    "date": "2026-11-03",
    "url": "https://www.vietnam.vn/en/chu-shop-online-tim-cach-giu-chan-nguoi-mua",
@@ -2195,7 +2195,7 @@ window.V20_DATA = {
   },
   {
    "title": "Sàn Hàn Quốc 11st dùng MC AI dẫn live sale 11/11: shop nhỏ học gì?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Công nghệ",
    "source": "Aju Press",
    "date": "2026-10-30",
    "url": "https://m.ajupress.com/view/20261030180870483",
@@ -2207,7 +2207,7 @@ window.V20_DATA = {
   },
   {
    "title": "EU thu thêm phí với hàng Temu, Shein từ 01/11: shop nhập hàng Trung Quốc cần biết",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Dòng tiền",
    "source": "Continental Brief",
    "date": "2026-10-30",
    "dateNote": "Bài gốc đăng 30/10/2026, cập nhật 05/11/2026",
@@ -2219,7 +2219,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hơn 120 doanh nghiệp Hải Phòng học bán trên TikTok Shop: shop nhỏ bắt đầu từ đâu?",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "vietnam.vn",
    "date": "2026-11-05",
    "url": "https://www.vietnam.vn/en/hon-120-doanh-nghiep-hai-phong-hoc-cach-tang-doanh-so-tren-tiktok-shop",
@@ -2229,7 +2229,7 @@ window.V20_DATA = {
   },
   {
    "title": "WeChat Channels: kênh livestream bán hàng tăng 74% ở Trung Quốc, shop nhỏ học gì?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Thị trường",
    "source": "Marketing China",
    "date": "2026-09-30",
    "url": "https://marketingtochina.com/wechat-channels-ecommerce-2026/",
@@ -2240,7 +2240,7 @@ window.V20_DATA = {
   },
   {
    "title": "Mỹ bãi bỏ miễn thuế de minimis: hàng Temu, Shein đội giá, shop nhập hàng Trung Quốc tính lại",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Dòng tiền",
    "source": "GP Fulfillment",
    "date": "2026-08-21",
    "url": "https://www.gp-fulfillment.com/blog/de-minimis-ends-aug-14-cross-border-sellers-cut-costs.html",
@@ -2251,7 +2251,7 @@ window.V20_DATA = {
   },
   {
    "title": "YouTube Shopping tăng 13 lần trong 2 năm: shop nhỏ bán bằng video và live thế nào?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Thị trường",
    "source": "ValueYourNetwork",
    "date": "2026-10-19",
    "url": "https://www.valueyournetwork.com/en/youtube-shopping-2026-figures/",
@@ -2262,7 +2262,7 @@ window.V20_DATA = {
   },
   {
    "title": "Bán hàng livestream 2026: bỏ thuế khoán, sàn khấu trừ thuế, doanh thu trên 1 tỷ phải xuất hóa đơn điện tử",
-   "cat": "Tin mới Livestream",
+   "cat": "Dòng tiền",
    "source": "Thanh Niên",
    "date": "2026-08-19",
    "url": "https://thanhnien.vn/rui-ro-phap-ly-khi-kinh-doanh-tren-mang-185260818202210556.htm",
@@ -2273,7 +2273,7 @@ window.V20_DATA = {
   },
   {
    "title": "Livestream bán nông sản OCOP: Tây Ninh đặt mục tiêu 100 tỷ/năm, KOL bán gấp 3 lần nông dân tự live",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Nông Thôn Việt",
    "date": "2026-10-22",
    "url": "https://nongthonviet.vn/tay-ninh-dat-muc-tieu-ban-nong-san-qua-mang-thu-100-ti-dong-moi-nam-46443.html",
@@ -2284,7 +2284,7 @@ window.V20_DATA = {
   },
   {
    "title": "Việc làm mẫu livestream 2026: lương bao nhiêu, tìm ở đâu?",
-   "cat": "Tin mới Livestream",
+   "cat": "Dòng tiền",
    "source": "Ver2Solution",
    "date": "2026-11-07",
    "url": null,
@@ -2297,7 +2297,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop siết video gắn giỏ: 5 video vi phạm, chỉ còn 7 video/tuần",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "BrandsVietnam",
    "date": "2026-10-28",
    "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
@@ -2309,7 +2309,7 @@ window.V20_DATA = {
   },
   {
    "title": "Ba sàn đồng loạt tăng phí: shop nhỏ tính lại lãi trước 11.11",
-   "cat": "Tin thị trường",
+   "cat": "Dòng tiền",
    "source": "kinhtechungkhoan.vn",
    "date": "2026-11-07",
    "dateNote": "Bài gốc đăng 21/05/2026, cập nhật 07/11/2026",
@@ -2321,7 +2321,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop Mỹ mở AI live, siết live AI treo máy: shop nhỏ cần biết gì trước mùa sale",
-   "cat": "Tin mới Livestream",
+   "cat": "Công nghệ",
    "source": "TokenFFF",
    "date": "2026-10-31",
    "url": "https://www.tokenfff.com/tiktok-us-ai-live-dual-track-2026/",
@@ -2332,7 +2332,7 @@ window.V20_DATA = {
   },
   {
    "title": "Singles Day 2026: Trung Quốc bán hơn 1.026 tỷ NDT trước ngày 11.11, livestream vẫn dẫn sóng",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Đang hot",
    "source": "China Market Brief",
    "date": "2026-11-05",
    "url": "https://chinamarketbrief.com/en/insight/d11-syntun-singles-day-2026-first-round-sales-categories/",
@@ -2344,7 +2344,7 @@ window.V20_DATA = {
   },
   {
    "title": "Nhập hàng Trung Quốc cuối năm 2026: phí ship, thời gian vận chuyển và cách về kịp sale 11.11, 12.12",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Hàng hoá",
    "source": "China Daily",
    "date": "2026-11-04",
    "url": "https://www.chinadaily.com.cn/a/202611/04/WS6aea85e4e4b06d4aa0566e7e.html",
@@ -2356,7 +2356,7 @@ window.V20_DATA = {
   },
   {
    "title": "Bán hàng không cần kho: mô hình in theo yêu cầu giúp một shop TikTok đạt 100.000 USD/tháng",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Phân tích",
    "source": "TechFinancials",
    "date": "2026-11-01",
    "url": "https://techfinancials.co.za/2026/11/01/printify-publishes-story-of-online-seller-who-built-a-100k-a-month-tiktok-shop-on-print-on-demand/",
@@ -2367,7 +2367,7 @@ window.V20_DATA = {
   },
   {
    "title": "TikTok Shop đóng băng hoa hồng tới 90 ngày khi vi phạm sở hữu trí tuệ: KOC và shop nhỏ cần biết",
-   "cat": "Tin mới Livestream",
+   "cat": "Dòng tiền",
    "source": "BrandsVietnam",
    "date": "2026-10-28",
    "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
@@ -2379,7 +2379,7 @@ window.V20_DATA = {
   },
   {
    "title": "Người tiêu dùng Việt Nam mua sắm 11.11/2026: chi nhiều hơn mỗi đơn, đỉnh doanh thu rơi vào ngày hôm sau",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Đang hot",
    "source": "BrandsVietnam",
    "date": "2026-11-06",
    "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
@@ -2390,7 +2390,7 @@ window.V20_DATA = {
   },
   {
    "title": "Lộ trình 100 ngày TikTok Shop từ 11.11 tới Tết 2027: 3 chặng KOC và shop nhỏ cần đi đúng",
-   "cat": "Tin mới Livestream",
+   "cat": "Đang hot",
    "source": "BrandsVietnam",
    "date": "2026-10-28",
    "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
@@ -2401,7 +2401,7 @@ window.V20_DATA = {
   },
   {
    "title": "Phí hoa hồng TikTok Shop 9–17,8%: Shopee giảm phí, shop nhỏ tính lại lãi",
-   "cat": "Tin thị trường",
+   "cat": "Dòng tiền",
    "source": "Doanh nhân & Pháp luật",
    "date": "2026-11-07",
    "url": "https://doanhnhan.baophapluat.vn/cuoc-dua-thuong-mai-dien-tu-nong-len-shopee-giam-phi-ho-tro-nha-ban-tiktok-shop-tang-hoa-hong.html",
@@ -2413,7 +2413,7 @@ window.V20_DATA = {
   },
   {
    "title": "Giả Nãi Lượng livestream 13 tiếng thu 570 triệu NDT: shop nhỏ học được gì?",
-   "cat": "Tin thị trường thế giới",
+   "cat": "Phân tích",
    "source": "VnExpress",
    "date": "2026-10-23",
    "url": "https://vnexpress.net/gia-nai-luong-livestream-tu-sang-toi-toi-thu-85-trieu-usd-5136070.html",
@@ -2425,7 +2425,7 @@ window.V20_DATA = {
   },
   {
    "title": "Livestream và video ngắn hút 16 tỷ lượt xem dịp Tết: shop nhỏ học gì?",
-   "cat": "Tin thị trường",
+   "cat": "Thị trường",
    "source": "Doanh nhân & Pháp luật",
    "date": "2026-11-07",
    "url": "https://doanhnhan.baophapluat.vn/hut-16-ty-luot-xem-dip-tet-2026-livestream-va-video-ngan-thuc-day-doanh-so-doanh-nghiep-viet-tang-truong-dot-pha.html",
@@ -2437,7 +2437,7 @@ window.V20_DATA = {
   },
   {
    "title": "Chợ 4.0: tiểu thương học livestream TikTok bán đặc sản — bài học 2–3 người xem",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Báo Vĩnh Long",
    "date": "2026-11-04",
    "url": "https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/phat-trien-cho-40-tu-cho-truyen-thong-4157935/",
@@ -2448,7 +2448,7 @@ window.V20_DATA = {
   },
   {
    "title": "Đặc sản địa phương bán chạy trên TikTok nhờ kể chuyện: shop nhỏ bắt đầu từ đâu?",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "kinhtechungkhoan.vn",
    "date": "2026-11-07",
    "url": "https://kinhtechungkhoan.vn/mo-hinh-hang-viet-ke-chuyen-vi-sao-dac-san-dia-phuong-ban-chay-tren-tiktok",
@@ -2459,7 +2459,7 @@ window.V20_DATA = {
   },
   {
    "title": "Mẫu livestream là gì? Thuê mẫu live ở đâu, giá bao nhiêu?",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Ver2Solution",
    "date": "2026-11-08",
    "url": null,
@@ -2472,7 +2472,7 @@ window.V20_DATA = {
   },
   {
    "title": "Hôm qua (07/11): 30 shop tuyển mẫu livestream mới, 1 mẫu mới lên sàn",
-   "cat": "Tin mới Livestream",
+   "cat": "Livestream",
    "source": "Ver2Solution",
    "date": "2026-11-08",
    "dateNote": "Số liệu thu thập ngày 07/11/2026",
@@ -2486,7 +2486,7 @@ window.V20_DATA = {
   },
   {
    "title": "Giá vàng hôm nay 8/11/2026: SJC 138–141 triệu, tiền của khách đang chảy đi đâu?",
-   "cat": "Tin thị trường",
+   "cat": "Dòng tiền",
    "source": "Báo Công Thương",
    "date": "2026-11-08",
    "url": "https://congthuong.vn/gia-vang-hom-nay-8-11-on-dinh-phien-cuoi-tuan-479656.html",
@@ -2498,7 +2498,7 @@ window.V20_DATA = {
   },
   {
    "title": "Nhập hàng Trung Quốc cuối năm: mặt hàng nào chạy, tỉnh nào đang cần hàng nhất?",
-   "cat": "Tin thị trường",
+   "cat": "Hàng hoá",
    "source": "Tạp chí Kinh tế Tài chính",
    "date": "2026-10-23",
    "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/thuong-mai-viet-nam-trung-quoc-huong-toi-moc-300-ty-usd-170429.html",
@@ -2510,7 +2510,7 @@ window.V20_DATA = {
   },
   {
    "title": "Khung giờ vàng live 11.11: kịch bản 60 phút chốt đơn từ 19h đến 22h",
-   "cat": "Tin mới Livestream",
+   "cat": "Đang hot",
    "source": "MaGiamGiaShopee",
    "date": "2026-10-31",
    "url": "https://www.magiamgiashope.io.vn/tin-khuyen-mai/shopee-11-11-sieu-sale-lon-nhat-nam",
@@ -2522,7 +2522,7 @@ window.V20_DATA = {
   },
   {
    "title": "Bóc mẽ shop nữ Alice: 1 video hơn 100 triệu view, nửa năm bán 111 triệu NDT",
-   "cat": "Tin thị trường",
+   "cat": "Phân tích",
    "source": "36Kr",
    "date": "2026-11-08",
    "url": "https://www.36kr.com/p/3292118482221448",
@@ -2534,7 +2534,7 @@ window.V20_DATA = {
   },
   {
    "title": "Livestream AI tăng 28 lần quý 3/2026: shop nhỏ có nên thử thay người live 100–150k/giờ?",
-   "cat": "Tin mới Livestream",
+   "cat": "Công nghệ",
    "source": "Vietnam.vn",
    "date": "2026-10-30",
    "url": "https://www.vietnam.vn/ai-va-content-commerce-dan-song-thuong-mai-dien-tu",
@@ -2546,7 +2546,7 @@ window.V20_DATA = {
   },
   {
    "title": "5 prompt AI viết mô tả, kịch bản live và trả lời khách cho shop nhỏ: dùng ChatGPT, Gemini miễn phí",
-   "cat": "Tin mới Livestream",
+   "cat": "Công nghệ",
    "source": "Ver2Solution",
    "date": "2026-11-08",
    "url": null,
@@ -2559,7 +2559,7 @@ window.V20_DATA = {
   },
   {
    "title": "Facebook Live 11.11: Meta mở phân phối mới, shop nhỏ cần biết trước sale 2026",
-   "cat": "Tin mới Livestream",
+   "cat": "Đang hot",
    "source": "AnyMind Group",
    "date": "2026-10-27",
    "url": "https://anymindgroup.com/news/press-release/anymind-meta-partnership-2026",
@@ -2571,7 +2571,7 @@ window.V20_DATA = {
   },
   {
    "title": "Phiên live nghìn đơn 11.11: Lý Giai Kỳ bán 100.000 thẻ AI trong 30 phút, shop Việt học được gì",
-   "cat": "Tin mới Livestream",
+   "cat": "Đang hot",
    "source": "GenK",
    "date": "2026-11-07",
    "url": "https://genk.vn/vua-son-moi-trung-quoc-livestream-ban-2000-ty-token-ai-trong-30-phut-mo-man-cho-ky-nguyen-mua-tai-nguyen-tinh-toan-nhu-nap-the-dien-thoai-165261107081120351.chn",
@@ -2580,8 +2580,52 @@ window.V20_DATA = {
    "kind": "news",
    "pinned": false,
    "takeaway": "Đừng đặt mục tiêu nghìn đơn bằng cảm tính — hãy tính ngược: muốn 1.000 đơn trong phiên live 5 tiếng thì mỗi giờ cần 200 đơn, tức khoảng 3–4 đơn mỗi phút. Từ đó tính ra cần bao nhiêu mắt xem, bao nhiêu món mồi và mấy người lo chốt đơn trước 11.11."
+  },
+  {
+   "title": "Quản trị dòng tiền cho người làm nghề tự do: lãi kép là gì và cách tạo dòng tiền tự động",
+   "cat": "Dòng tiền",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "page": "bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.jpg",
+   "imgSelf": true,
+   "takeaway": "Thu nhập nghề tự do bấp bênh là bình thường — dòng tiền ổn định mới là kỹ năng. Chia tiền thành 3 hũ ngay khi tiền về, xây hũ dự phòng đủ 3 tháng trước, rồi để lãi kép làm việc với số tiền nhỏ đều đặn. Dòng tiền tự động bắt đầu từ việc xếp chồng thêm nguồn thu ít tốn công duy trì, như affiliate từ video cũ.",
+   "pinned": false
+  },
+  {
+   "title": "Tự do tài chính tuổi 30: nghỉ hưu sớm và thế nào là sống tự do?",
+   "cat": "Dòng tiền",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "page": "bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.jpg",
+   "imgSelf": true,
+   "takeaway": "Tự do tài chính tuổi 30 không phải phép màu — nó là một con số cụ thể (quy tắc 25 lần chi tiêu năm) và một lộ trình dài: tăng thu, giữ chi, đầu tư đều. Sống tự do nghĩa là được chọn việc mình làm, không phải không làm gì. Và hãy nhớ rủi ro: lạm phát, thu nhập gián đoạn, sức khỏe — cùng với việc tránh xa mọi lời hứa làm giàu nhanh.",
+   "pinned": false
+  },
+  {
+   "title": "Các địa điểm phải đi trong đời: 10 điểm đến trong nước và quốc tế đáng đi nhất",
+   "cat": "Đời Sống",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "page": "bai-viet/cac-dia-diem-phai-di-trong-doi.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/cac-dia-diem-phai-di-trong-doi.jpg",
+   "imgSelf": true,
+   "takeaway": "Đi du lịch không cần giàu — cần chọn đúng nơi, đúng mùa và đi đủ sâu. Bắt đầu từ 7 điểm trong nước: Hà Giang mùa lúa chín, Sa Pa mùa mây, Hạ Long mùa khô, Huế mùa xuân, Hội An lúc đèn lên, Đà Lạt mùa hoa, Phú Quốc mùa nắng. Khi đã đi hết, Kyoto mùa anh đào, Bangkok mùa Songkran và Paris mùa thu đang chờ.",
+   "pinned": false
+  },
+  {
+   "title": "Phân tích các tháng trong năm đi du lịch đâu là đẹp nhất: mùa hoa, mùa quả, lễ hội",
+   "cat": "Đời Sống",
+   "source": "Ver2Solution",
+   "date": "2026-11-08",
+   "page": "bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.jpg",
+   "imgSelf": true,
+   "takeaway": "Mỗi tháng đều có một mùa đẹp: tháng 1 hoa đào, tháng 3 hoa ban, tháng 5 vải thiều, tháng 9 lúa chín, tháng 11 hoa tam giác mạch, tháng 12 Festival hoa. Đi theo mùa, tránh 3 dịp lễ lớn nhất, đặt vé trước 4–6 tuần — và nhớ rằng với nghề livestream, chuyến đi đúng mùa còn là content hay nhất của bạn.",
+   "pinned": false
   }
- ],
+],
  "lots": [
    {
      "id": "lot-01",

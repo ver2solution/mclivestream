@@ -855,14 +855,41 @@ function getPinnedRow(list){
   }
   return picked;
 }
-function pinCardHTML(a, n){
+/* v100: quy chuan the tin rut gon — 1 anh dai dien nho 16:9 + dung 2 dong
+   (dong 1: tieu de, toi da 2 dong co cat ...; dong 2: chuyen muc · ngay).
+   Dung CHUNG cho tin-tuc, trang chu (homeNews + homePinned) va hang tin
+   trang Mau. Noi dung day du van o trang bai-viet; chi rut gon phan hien
+   thi danh sach. So thu tu (neu co) nam goc duoi-trai cua anh, khong them
+   dong. */
+/* v100: the tin rut gon — 1 anh dai dien + 2 dong thong tin (tieu de + chuyen muc · ngay).
+   - withPoints=true (chi danh sach tin-tuc.html): them hang nut diem/ghim v92
+     (Thich +10 / Chia se +20 / Ghim len top) NGOAI link bai — day la hang
+     hanh dong, khong phai dong thong tin; trang chu + hang tin trang Mau
+     khong co hang nut nay (nhu truoc v100). */
+function newsCardHTML(a, n, withPoints){
   var tg = articleTarget(a);
   var num = (typeof n === 'number') ? '<span class="pin-num" aria-label="Tin ' + n + '">' + n + '</span>' : '';
-  var inner = num + articleMediaHTML(a, 'pin-img')
+  var inner = num + articleMediaHTML(a, 'news-card-img')
     + '<h3>'+esc(a.title)+'</h3>'
-    + '<p class="pin-cat">'+esc(a.cat)+' · '+esc(a.source)+'</p>';
-  if(!tg.href) return '<article class="pin-card">'+inner+'</article>';
-  return '<article class="pin-card"><a href="'+esc(tg.href)+'"'+(tg.blank?' target="_blank" rel="noopener"':'')+'>'+inner+'</a></article>';
+    + '<p class="news-card-meta">'+esc(a.cat)+' · '+(a.date?esc(a.date):'Chưa có ngày')+'</p>';
+  var points = withPoints ? pointsButtonsHTML('article', articleRef(a)) : '';
+  if(!tg.href) return '<article class="news-card">'+inner+points+'</article>';
+  return '<article class="news-card"><a href="'+esc(tg.href)+'"'+(tg.blank?' target="_blank" rel="noopener"':'')+'>'+inner+'</a>'+points+'</article>';
+}
+/* pinCardHTML giu lai lam bi danh (test cu + code khac goi) — cung mau the rut gon v100. */
+function pinCardHTML(a, n){ return newsCardHTML(a, n); }
+/* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc #shopFilter):
+   4 bai moi nhat thuoc 2 chuyen muc "Đời Sống" + "Dòng tiền" (ban dau
+   dung 4 bai A1–A4 moi viet; co bai moi cung chuyen muc thi tu cap nhat). */
+function initModelNewsRow(){
+  var row=document.getElementById('modelNewsRow'); if(!row) return;
+  var list=(D.articles||[]).map(function(a,i){ return {a:a, i:i}; })
+    .filter(function(x){ return x.a.cat==='Đời Sống' || x.a.cat==='Dòng tiền'; })
+    .sort(function(p,q){ var d=(p.a.date||'')<(q.a.date||'')?1:((p.a.date||'')>(q.a.date||'')?-1:0); return d!==0?d:(q.i-p.i); })
+    .slice(0,4).map(function(x){ return x.a; });
+  row.innerHTML='<h2><a href="tin-tuc.html" data-track="tieu-de-tin-doi-song-mau">Đời sống &amp; dòng tiền cho mẫu livestream</a></h2>'
+    + '<div class="news-row-4">' + list.map(function(a){ return newsCardHTML(a); }).join('') + '</div>'
+    + '<p style="margin:10px 0 0"><a href="tin-tuc.html">Xem tất cả tin →</a></p>';
 }
 /* v41 trust strip: so lieu tinh DONG tu data.js (khong ghi so cung vao HTML).
    Quy tac luong/doanh thu cua mau (user-directed 06/11): doanh thu cao nhat
@@ -1172,12 +1199,9 @@ function initHome(){
   var pinned=document.getElementById('homePinned');
   if(pinned) pinned.innerHTML=getPinnedRow(D.articles||[]).map(function(a,i){return pinCardHTML(a,i+1);}).join('');
   var news=document.getElementById('homeNews');
+  /* v100: muc Tin moi dung chung the tin rut gon (1 anh + 2 dong). */
   if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
-    // Relative .html URLs are internal v20 pages (bai-viet-bop-reach.html now exists).
-    var link = articleLink(a);
-    return '<div class="news-item"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'
-    + link
-    + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)):'Chưa có ngày báo gốc')+'</div></div>';
+    return newsCardHTML(a);
   }).join('');
   var homeShops=document.getElementById('homeShops');
   if(homeShops) homeShops.innerHTML=defaultShopOrder(D.shops||[]).slice(0,6).map(shopCardHTML).join('');
@@ -1700,18 +1724,10 @@ function initNews(){
     var list=D.articles.slice();
     if(catSel.value) list=list.filter(function(a){return a.cat===catSel.value;});
     list.sort(function(x,y){var dx=x.date||'',dy=y.date||''; return sortSel.value==='oldest' ? (dx<dy?-1:dx>dy?1:0) : (dx>dy?-1:dx<dy?1:0);});
-    main.innerHTML=list.map(function(a){
-      var href = articleHref(a);
-      var imgTarget = a.page ? '' : ' target="_blank" rel="noopener"';
-      var imgCap = a.kind === 'keyword' ? 'Infographic: Ver2Solution tự làm từ số liệu tin tuyển thật trên sàn.'
-        : (a.imgSelf ? 'Infographic: Ver2Solution tự làm từ số liệu bài gốc.' : 'Ảnh gốc: ' + esc(a.source) + ' — không phải ảnh của Ver2Solution.');
-      var imgAlt = a.kind === 'keyword' ? 'Infographic do Ver2Solution tự làm từ số liệu tin tuyển thật trên sàn'
-        : (a.imgSelf ? 'Infographic do Ver2Solution tự làm từ số liệu bài gốc' : 'Ảnh gốc từ bài của ' + esc(a.source));
-      var img = a.img ? '<a href="' + esc(href) + '"' + imgTarget + '><img src="' + esc(a.img) + '" alt="' + imgAlt + '" loading="lazy" style="width:100%;border-radius:12px;margin:10px 0 4px"></a><div class="meta">' + imgCap + '</div>' : '';
-      var tw = a.takeaway ? '<p><b>Theo Ver2Solution:</b> '+esc(a.takeaway)+'</p>' : '';
-      return '<div class="news-item" data-v2s-id="'+esc(articleRef(a))+'"><div class="cat">'+esc(a.cat)+' · '+esc(a.source)+'</div>'+linkHTML(a)
-      + '<div class="meta">'+(a.date?('Ngày: '+esc(a.date)+(a.dateNote?' ('+esc(a.dateNote)+')':'')):'Chưa có ngày báo gốc')+'</div>'+img+tw+pointsButtonsHTML('article', articleRef(a))+'</div>';
-    }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc. Hãy chọn chuyên mục khác.');
+    /* v100: danh sach tin dung chung the tin rut gon (1 anh + 2 dong).
+       Anh goc / takeaway / nut diem chi con o trang chi tiet bai-viet,
+       khong hien trong danh sach nua. Bo loc + sap xep + dem + sidebar giu nguyen. */
+    main.innerHTML=list.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
     var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
@@ -2577,7 +2593,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
   /* v96-swap: initShopPage TRUOC initList — renderLotSections dung lai
      option cua #fUniProv theo tinh co xuong that; prefill URL cua initList
      phai chay sau thi gia tri moi giu duoc. */
-  initHome(); initShopPage(); initList(); initNews(); initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm(); initStars(); /* v99: nap so sao + uy thac click nut sao */
+  initHome(); initShopPage(); initList(); initNews(); initModelNewsRow(); /* v100: hang tin trang Mau */ initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm(); initStars(); /* v99: nap so sao + uy thac click nut sao */
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -2596,7 +2612,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, initModelNewsRow:initModelNewsRow, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeTop8:homeTop8, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;

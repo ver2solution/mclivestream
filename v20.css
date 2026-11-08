@@ -236,6 +236,17 @@ a:hover{text-decoration:underline}
 .pin-noimg b{font-size:40px;font-weight:900}
 .pin-card h3{margin:8px 10px 2px;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pin-cat{margin:0 10px 10px;padding-left:44px;color:var(--mut);font-size:12px}/* v85 LỖI 1: huy hiệu .pin-num (28px, left:8px) đè 2–4 ký tự đầu dòng nguồn tin ở desktop — chừa đệm trái đủ chỗ cho huy hiệu (28 + 8 + 8) */
+/* v100: the tin rut gon — 1 anh dai dien nho 16/9 + dung 2 dong (tieu de toi
+   da 2 dong co cat ..., dong meta chuyen muc · ngay). Dung chung cho
+   tin-tuc, trang chu (homeNews + homePinned) va hang tin trang Mau. */
+.news-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
+.news-card a{display:block;color:inherit;text-decoration:none}
+.news-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.news-card .pin-noimg{display:grid;place-items:center;width:100%;aspect-ratio:16/9;background:var(--brand);color:#fff}
+.news-card .pin-noimg b{font-size:40px;font-weight:900}
+.news-card h3{margin:8px 10px 2px;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-card-meta{margin:0 10px 10px;color:var(--mut);font-size:12px}
+.news-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .gopy-fab{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:90;background:var(--red);color:#fff;border:0;border-radius:50%;width:56px;height:56px;font-size:22px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .gopy-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px}
 .gopy-overlay.open{display:flex}
@@ -283,8 +294,8 @@ footer.site-foot{margin-top:44px;border-top:1px solid var(--line);background:#ff
 .site-foot .foot-legal a{color:var(--mut);text-decoration:underline;text-underline-offset:2px}
 .site-foot .foot-legal a:hover{color:var(--ink)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
-@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.search-card,.filter-card,.hub-filters{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}.head-in{position:relative}.user-menu-wrap{position:static}.user-menu{left:auto;right:16px;top:calc(100% + 8px)}/* v90 (F-fix): mobile vien diem xuong dong 2 ben trai — dropdown can phai theo .head-in (thay vi theo vien) de khong tran trai man hinh; right:16px vi .head-in CHINH LA .wrap (padding nam TRONG border-box) nen right:0 se sat mep viewport; KHOI NAY VAN MO (dong o .pin-num dong 279) — dung dong them dau ngoac o day. */
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.pinned-row{grid-template-columns:repeat(2,1fr)}.news-row-4{grid-template-columns:repeat(2,1fr)}.grid-3,.mini-grid{grid-template-columns:repeat(2,1fr)}.search-card{grid-template-columns:1fr 1fr}.detail-layout{grid-template-columns:1fr}.contact-card{position:static}.head-in{flex-wrap:wrap}.main-nav{display:none}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.menu-btn{display:block}}
+@media(max-width:600px){.grid,.grid-3,.mini-grid,.news-list,.steps{grid-template-columns:1fr}.pinned-row{grid-template-columns:1fr}.news-row-4{grid-template-columns:1fr}.search-card,.filter-card,.hub-filters{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.head-in{flex-wrap:wrap}.main-nav{margin-left:0}.head-in{position:relative}.user-menu-wrap{position:static}.user-menu{left:auto;right:16px;top:calc(100% + 8px)}/* v90 (F-fix): mobile vien diem xuong dong 2 ben trai — dropdown can phai theo .head-in (thay vi theo vien) de khong tran trai man hinh; right:16px vi .head-in CHINH LA .wrap (padding nam TRONG border-box) nen right:0 se sat mep viewport; KHOI NAY VAN MO (dong o .pin-num dong 279) — dung dong them dau ngoac o day. */
 /* v28: mobile — Lương 1 dòng, Lịch 1 dòng, Kinh nghiệm tối đa 2 dòng, xếp dọc. */
 .decision-row{flex-direction:column}.decision-item{flex:1 1 auto}
 /* v39: nut Gop y xuong goc duoi phai (khong che noi dung giua man hinh). */
