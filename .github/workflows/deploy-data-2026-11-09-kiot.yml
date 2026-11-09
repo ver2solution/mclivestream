@@ -1,0 +1,39 @@
+name: Deploy data 2026-11-09 kiot
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-09-kiot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-09-kiot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-09 kiot package
+        run: |
+          unzip -o mclivestream-data-2026-11-09-kiot-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          echo "models: $(grep -c '\"id\": \"th-' js/data.js)"
+          echo "shops: $(grep -c '\"id\": \"sh-' js/data.js)"
+          echo "lots: $(grep -c '\"id\": \"lot-' js/data.js)"
+          echo "kiots: $(grep -c '\"id\": \"kiot-' js/data.js)"
+          ls -l images/kiot/kiot-05.jpg images/kiot/kiot-06.jpg images/kiot/kiot-12.jpg images/kiot/kiot-14.jpg images/kiot/kiot-15.jpg images/kiot/kiot-19.jpg images/kiot/kiot-20.jpg images/kiot/kiot-23.jpg images/kiot/kiot-25.jpg images/kiot/kiot-30.jpg
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/kiot/kiot-05.jpg images/kiot/kiot-06.jpg images/kiot/kiot-12.jpg images/kiot/kiot-14.jpg images/kiot/kiot-15.jpg images/kiot/kiot-19.jpg images/kiot/kiot-20.jpg images/kiot/kiot-23.jpg images/kiot/kiot-25.jpg images/kiot/kiot-30.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-09 kiot: 30 kiot (10 kiot moi kiot-05/06/12/14/15/19/20/23/25/30, 10 anh moi), 57 mau / 96 shop / 24 lo"
+            git push
+          fi
