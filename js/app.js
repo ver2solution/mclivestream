@@ -1763,6 +1763,8 @@ function initShops(){
     var base=f.sort ? sortShopsBy(D.shops||[],f.sort) : defaultShopOrder(D.shops||[]);
     if(!f.sort) base=applyStarOrder(base, STAR_STATS, Date.now()); // v99 (§2): tang sao 60 phut len truoc
     var list=filterShops(base,f);
+    /* v115: dong dem theo cong thuc bo loc chung (uniCount) — chi hien khi co tieu chi dang chon. */
+    var sc=document.getElementById('shopCount'); if(sc){ var active=!!(f.prov||f.cat||f.sort||f.shift||f.payType||f.payMin); sc.textContent=active?(list.length+' tin tuyển khớp bộ lọc'):''; }
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):emptyResultsHTML('Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){

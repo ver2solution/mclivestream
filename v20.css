@@ -304,7 +304,7 @@ a:hover{text-decoration:underline}
 .faq-ask-receipt{margin:12px 0 0;padding:12px 14px;border:1px solid #bfe3d2;background:#eefaf4;border-radius:12px;font-size:14px}/* v114 (P3-8): bien nhan sau khi gui cau hoi */
 .faq-ask-receipt p{margin:0 0 6px}
 .faq-ask-receipt p:last-child{margin-bottom:0}
-.filter-hint{font-size:13px;color:var(--mut);margin:8px 0 0}/* v114 (P2-3): goi y canh nut Ap dung — loc can dang nhap, chon 1 hoac ca 2 tieu chi deu loc duoc */
+.filter-hint,.filter-count,.filter-empty{font-size:13px;color:var(--mut);margin:8px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}/* v115: tat ca dong giai thich/huong dan trong bo loc chung 1 form font, chi 1 dong (khong xuong dong) de tiet kiem khong gian */
 .wallet-balance{font-size:44px;font-weight:800;margin:6px 0;color:#0b5d4e}/* v114 (P1-1): so du lon trang Vi cua toi */
 @media(max-width:600px){.faq-ask-grid{grid-template-columns:1fr}.faq-ask select,.faq-ask textarea{font-size:16px}.faq-ask .btn{min-height:48px}}
 /* v45 auth: 1 the, 1 view hien tai 1 thoi diem (mau chuan login/signup) */
