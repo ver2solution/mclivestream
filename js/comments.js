@@ -34,6 +34,33 @@
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
+  // v118 (09/11/2026, anh giao 22:55): ẩn từ khoá nhạy cảm thành *** khi
+  // HIỂN THỊ bình luận. Chỉ khớp từ/phrase đứng riêng (có ranh giới từ 2
+  // đầu) để không ẩn nhầm từ lành chứa chuỗi con trùng (vd "các", "đi",
+  // "dù", "buổi", "lớn", "cắt") — vì vậy KHÔNG liệt kê các dạng không dấu
+  // ngắn dễ nhầm (cac/di/du/buoi/lon/cut). Chỉ giữ dạng có dấu + dạng
+  // không dấu dài, không gây nhầm. Thêm/bớt từ thì sửa mảng này.
+  var SENSITIVE_WORDS = [
+    'địt', 'dit', 'đéo', 'deo', 'lồn', 'cặc', 'buồi', 'đĩ', 'cứt', 'đụ',
+    'mẹ kiếp', 'khốn nạn', 'chó chết'
+  ];
+  function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function maskSensitive(text) {
+    var out = String(text == null ? '' : text);
+    for (var i = 0; i < SENSITIVE_WORDS.length; i++) {
+      var w = SENSITIVE_WORDS[i];
+      if (!w) continue;
+      var re;
+      try {
+        re = new RegExp('(^|[^\\p{L}\\p{N}])(' + escapeRegExp(w) + ')(?=[^\\p{L}\\p{N}]|$)', 'giu');
+      } catch (e) {
+        re = new RegExp('(^|[^A-Za-z0-9À-ỹ])(' + escapeRegExp(w) + ')(?=[^A-Za-z0-9À-ỹ]|$)', 'gi');
+      }
+      out = out.replace(re, function (m, pre) { return pre + '***'; });
+    }
+    return out;
+  }
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
@@ -73,7 +100,7 @@
       try { when = c.created_at ? new Date(c.created_at).toLocaleDateString('vi-VN') : ''; } catch (e) {}
       return '<li><b>' + esc(c.commenter_name || 'Khách Vãng Lai') + '</b>'
         + (when ? ' <span class="v2s-comments-date">' + esc(when) + '</span>' : '')
-        + '<p>' + esc(c.comment) + '</p></li>';
+        + '<p>' + esc(maskSensitive(c.comment)) + '</p></li>';
     }).join('') + '</ul>';
   }
 
@@ -271,7 +298,8 @@
     loadComments: loadComments, submitComment: submitComment,
     renderComments: renderComments, commentsListHTML: commentsListHTML,
     getCommentCounts: getCommentCounts, refreshCommentCounts: refreshCommentCounts,
-    initCardComments: initCardComments, VALID_TYPES: VALID_TYPES
+    initCardComments: initCardComments, VALID_TYPES: VALID_TYPES,
+    maskSensitive: maskSensitive, SENSITIVE_WORDS: SENSITIVE_WORDS
   };
   if (typeof window !== 'undefined') window.Ver2Comments = API;
   if (typeof module !== 'undefined' && module.exports) module.exports = API;

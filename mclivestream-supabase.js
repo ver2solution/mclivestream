@@ -141,8 +141,8 @@
   // Dashboard da dung (kiem tra 2 lan, 11:23) — thu xac nhan 11:21 van sai
   // — nen truyen tuong minh qua emailRedirectTo trong signUp. Doi cung luc
   // voi RESET_PASSWORD_URL khi domain chinh ver2solution.com dung duoc.
-  var SITE_URL = 'https://ver2solution.github.io/mclivestream/';
-  var RESET_PASSWORD_URL = 'https://ver2solution.github.io/mclivestream/dat-lai-mat-khau.html';
+  var SITE_URL = 'https://vieclamlivestream.online/';
+  var RESET_PASSWORD_URL = 'https://vieclamlivestream.online/dat-lai-mat-khau.html';
   async function resetPassword(email, redirectTo) {
     var res = await client.auth.resetPasswordForEmail(email, {
       redirectTo: redirectTo || RESET_PASSWORD_URL

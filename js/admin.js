@@ -73,6 +73,11 @@
     if (!el) return;
     el.textContent = text || '';
     el.style.color = isErr ? '#b3261e' : '#0b5d4e';
+    // Sửa lỗi nút Đăng bài 23:57 ngày 09/11 (phần 2): thông báo lỗi nằm
+    // ở đầu panel trong khi nút bấm ở cuối form dài — user đang cuộn
+    // ở cuối sẽ không thấy lỗi (tưởng nút không phản hồi). Cuộn tới
+    // thông báo khi có lỗi; 'nearest' nên không cuộn nếu đã thấy.
+    if (isErr) { try { if (typeof el.scrollIntoView === 'function') el.scrollIntoView({ block: 'nearest' }); } catch (e) { /* cuộn không bắt buộc */ } }
   }
 
   /* ---------- phân trang (P2): 20 dòng/trang, nút Trước/Sau + số trang ----------
@@ -858,7 +863,15 @@
     var v = articleFormValues();
     var errs = validateArticleDraft(v);
     if (errs.length) { setMsg(msg, errs[0], true); return; }
-    if (!window.confirm('Đăng bài "' + v.title + '" (chuyên mục ' + v.category + ')? Bài sẽ lưu vào bản thảo để publisher sinh file + deploy sau.')) return;
+    // Sửa lỗi nút Đăng bài 23:57 ngày 09/11 (nguyên nhân chính): KHÔNG
+    // dùng hộp thoại xác nhận native ở đây nữa. Hộp thoại native bị
+    // trình duyệt tự động/tự động hóa chặn hoặc tự tắt thì trả false
+    // (hoặc ném lỗi nếu hàm confirm không tồn tại) — hàm thoát im lặng
+    // TRƯỚC khi gọi RPC: không thông báo, không gọi RPC, form còn
+    // nguyên, đúng triệu chứng Zalo báo (bấm nhiều lần + Enter vẫn
+    // "không phản hồi"). Bản thảo chỉ lưu status 'ready' (chưa đăng lên
+    // web — còn bước publisher + deploy), xóa được trong danh sách nên
+    // không cần xác nhận thêm.
     if (btn) btn.disabled = true;
     try {
       var out = await rpc('admin_submit_article', {

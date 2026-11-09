@@ -10,8 +10,11 @@
    v117: P1-1 tao 3 trang danh-sach-lo/xuong/kiot.html + them vao sitemap
    (sua 3 URL 404); P1-2 them game/three.core.js (Three.js r186) + CSS
    .online-popup cho game/noi-duong-tam.html; GĐ4 tab Viet bai (js/admin.js)
-   + sua pheu dang ky (js/app.js/js/auth-ui.js) da co trong prep. */
-const CACHE = 'v117-shell-1';
+   + sua pheu dang ky (js/app.js/js/auth-ui.js) da co trong prep.
+   v118: chuyen domain sang vieclamlivestream.online (them CNAME + doi
+   link tuyet doi ver2solution.github.io/mclivestream -> https://
+   vieclamlivestream.online + site.config.json origin/basePath). */
+const CACHE = 'v118-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
