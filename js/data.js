@@ -3,6 +3,8 @@
    v92 them 3 lo (lot-15 OTOFUN balo/tui 330K-770K 06/11/2026; lot-16 giay si 680K 24/10/2026; lot-17 giay si chau Au 750K 14/10/2026, nhom 1): 17 lo (12 nhom 1 + 3 nhom 2 + 2 nhom 3).
    v92 them 3 lo (lot-18/19/20 Thanh Loan Hang Thung, YouTube 16-22/10/2026, nhom 3 — ban le tung chiec): 20 lo (12 nhom 1 + 3 nhom 2 + 5 nhom 3).
    v83 them 20 xuong may (fac-21..fac-40, cron xuong may 07/11/2026): 40 xuong (TP.HCM 16, Ha Noi 11, Da Nang 3, Binh Duong 5, Nam Dinh 3, Hung Yen 1, Dong Nai 1).
+   v83 them 20 xuong may (fac-41..fac-60, cron xuong may 08/11/2026): 60 xuong.
+   cron xuong may 09/11/2026 them 10 xuong (fac-61..fac-70, uu tien tinh <5 data): 70 xuong, 24 tinh (Quang Ninh, Thai Nguyen, Bac Ninh, Lang Son, Hue, Quang Tri, Ha Tinh, Khanh Hoa, Can Tho, Thanh Hoa moi +1).
    chuyen NGUYEN VEN tu the HTML tinh trong danh-sach-shop.html (v75) sang data.js; trang Shop render the tu
    data.js, trang chu tinh so PR tu data.js (khong con so ghi cung can cap nhat tay). Quy tac 60 ngay: chi ap
    dung nhom 1 (lo si) khi render — lo qua 60 ngay tinh tu ngay dang (ngay dang goc trong bai goc; khong co
@@ -5906,6 +5908,154 @@ window.V20_DATA = {
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
      "url": "https://tripi.vn/blog/vi/doi-song/top-9-dia-chi-may-dong-phuc-dep-gia-mem-tai-can-tho-tripi",
+     "linkText": "Xem trang gốc →"
+   },
+   {
+     "id": "fac-61",
+     "name": "Đồng Phục Quảng Ninh 35 Long Tiên",
+     "items": "Đồng phục công ty, trường học, lớp học, nhóm nhảy, đội bóng; áo thun, đồ dạ hội, trang phục công sở",
+     "meta": "Quảng Ninh — 35 Long Tiên, P. Bạch Đằng, TP. Hạ Long · MOQ: Không công khai · Số điện thoại 0979 999 380 & 0964 144 564",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Quảng Ninh",
+     "date": "04/06/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/doi-song/top-3-dia-chi-may-dong-phuc-uy-tin-nhat-tai-quang-ninh-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-61.jpg"
+   },
+   {
+     "id": "fac-62",
+     "name": "Xưởng may Ogo",
+     "items": "Đồng phục công ty; có xưởng may, xưởng thêu, xưởng in, thùa khuyết (quy trình khép kín)",
+     "meta": "Thái Nguyên — 414A Đường Thống Nhất, P. Tân Thịnh, TP. Thái Nguyên · MOQ: Không công khai",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Thái Nguyên",
+     "date": "27/05/2022",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://dongphucnhattam.com/?p=17887",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-62.jpg"
+   },
+   {
+     "id": "fac-63",
+     "name": "Công ty may Vina Hanhee",
+     "items": "Đồng phục công ty, doanh nghiệp (may đo theo yêu cầu)",
+     "meta": "Bắc Ninh — Thôn Mào Gà, X. Phượng Sơn, H. Lục Ngạn · MOQ: Không công khai · Số điện thoại 0204 369 6345",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Bắc Ninh",
+     "date": "01/07/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/xep-hang/kham-pha-5-dia-chi-may-dong-phuc-uy-tin-va-chat-luong-tai-bac-giang-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-63.jpg"
+   },
+   {
+     "id": "fac-64",
+     "name": "Xưởng may Hoa Hồi",
+     "items": "Đồng phục (may theo yêu cầu)",
+     "meta": "Lạng Sơn — TT Nông Trường Thái Bình, H. Đình Lập · MOQ: Không công khai",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Lạng Sơn",
+     "date": "25/06/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://dreamate.vn/dia-chi-may-dong-phuc-lang-son",
+     "linkText": "Xem trang gốc →"
+   },
+   {
+     "id": "fac-65",
+     "name": "Đồng Phục Thiên Việt",
+     "items": "Đồng phục học sinh – sinh viên, áo lớp/nhóm, đồng phục doanh nghiệp, tạp dề",
+     "meta": "Huế — 15B Kiệt 36 Phạm Thị Liên, P. Kim Long, TP. Huế · MOQ: Không công khai · Số điện thoại 0986 993 300 & 0935 089 933 · dongphucthienviet.com",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Huế",
+     "date": "03/06/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/doi-song/top-8-dia-chi-may-dong-phuc-dep-va-uy-tin-nhat-tai-hue-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-65.jpg"
+   },
+   {
+     "id": "fac-66",
+     "name": "Đồng Phục Khánh Mơ",
+     "items": "May và in đồng phục lớp, nhóm, công ty, áo quảng cáo, áo sự kiện, áo thu đông, áo khoác nỉ; đồng phục mầm non, nhà hàng, câu lạc bộ",
+     "meta": "Quảng Trị — 169 Đường Hai Bà Trưng, TP. Đồng Hới · MOQ: Không công khai · Số điện thoại 0911 757 574 & 0911 636 611",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Quảng Trị",
+     "date": "11/06/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/xep-hang/top-4-dia-chi-may-in-dong-phuc-uy-tin-chat-luong-tai-quang-binh-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-66.jpg"
+   },
+   {
+     "id": "fac-67",
+     "name": "Công ty May Đồng Phục, Bảo Hộ Lao Động JIBI Việt Nam",
+     "items": "Đồng phục công sở, đồng phục công nhân, bảo hộ lao động",
+     "meta": "Hà Tĩnh — 166 Nguyễn Du, TP. Hà Tĩnh · MOQ: Không công khai · Số điện thoại 0842 984 999 · jibi.vn",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Hà Tĩnh",
+     "date": "16/05/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/doi-song/top-9-dia-chi-may-dong-phuc-uy-tin-va-chat-luong-tai-tinh-ha-tinh-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-67.jpg"
+   },
+   {
+     "id": "fac-68",
+     "name": "Xưởng May Đồng Phục Katy",
+     "items": "Đồng phục y tế (áo blouse), đồng phục bảo vệ, tạp vụ, công nhân nhà xưởng; áo thun polo công sở, áo bóng đá đội nhóm, trang phục bảo hộ lao động; nhận in ấn logo, thiết kế riêng theo yêu cầu",
+     "meta": "Khánh Hòa — 89 Điện Biên Phủ, P. Vĩnh Hoà, TP. Nha Trang · MOQ: Không công khai · Số điện thoại 0706 188 252",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Khánh Hòa",
+     "date": "07/07/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/xep-hang/kham-pha-4-dia-chi-may-dong-phuc-chat-luong-nhat-nha-trang-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-68.jpg"
+   },
+   {
+     "id": "fac-69",
+     "name": "Đồng phục EROS",
+     "items": "Áo thun đồng phục, áo nhóm, áo đội, áo câu lạc bộ; thiết kế miễn phí, in/thêu logo",
+     "meta": "Cần Thơ — Số 12, Đường số 1, KV4, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ · MOQ: Không công khai · Số điện thoại 0932 802 118",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Cần Thơ",
+     "date": "31/05/2025",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/doi-song/top-9-dia-chi-may-dong-phuc-dep-gia-mem-tai-can-tho-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-69.jpg"
+   },
+   {
+     "id": "fac-70",
+     "name": "Xưởng sản xuất Hà Trung — Đồng phục Hải Anh",
+     "items": "Đồng phục công ty, áo thun đồng phục (xưởng >10.000 m², quy trình khép kín, có phòng dệt, xưởng thêu – in)",
+     "meta": "Thanh Hóa — Hà Trung · MOQ: Không công khai · Số điện thoại 0886 268 268 · dongphuchaianh.vn",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Thanh Hóa",
+     "date": "27/01/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://vietstock.vn/2026/01/xuong-san-xuat-ha-trung-noi-dong-phuc-hai-anh-kien-tao-gia-tri-ben-vung-4511-1395449.htm",
      "linkText": "Xem trang gốc →"
    }
  ],
