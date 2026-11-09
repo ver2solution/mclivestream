@@ -1,0 +1,44 @@
+name: Deploy v113
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v113.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v113:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v113 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v113-deploy.zip
+          echo "--- verify v113 payload ---"
+          grep -m1 "v113-shell-1" sw.js
+          grep -m1 "TOTAL_BASE = 611" js/online-counter.js
+          grep -m1 "mau: 127, shop: 213, kiot: 43, hoidap: 17, tintuc: 211" js/online-counter.js
+          echo "html files: $(find . -maxdepth 1 -name '*.html' | wc -l) root + $(ls bai-viet/*.html | wc -l) bai-viet"
+          echo "js files (excluding data.js): $(ls js/*.js | grep -vc data.js)"
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js js/online-counter.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v113-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v113: bo dem online 611 (mau 127, shop 213, kiot 43, hoidap 17, tintuc 211), sw.js v113-shell-1"
+            git push
+          fi
