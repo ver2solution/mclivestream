@@ -326,16 +326,6 @@
 
   function onJsError(msg, source, lineno, colno) {
     try {
-      // v116 P1 (M_ID, 09/11): window.onerror bat ca loi cua script do
-      // EXTENSION trinh duyet chen vao trang (password manager...), dac
-      // biet tren trang dang nhap — loi do KHONG phai loi cua web, khong
-      // lam vo form dang nhap, nhung lam nhieu analytics + gay bao dong
-      // P1 gia. Bo qua loi co nguon la extension (chrome-extension://,
-      // moz-extension://, safari-extension://, ...). Van ghi loi tu
-      // script cua web (ke ca CDN Supabase) va loi khong ro nguon
-      // (inline script — source rong).
-      var src = source ? String(source) : '';
-      if (/^(chrome-extension|moz-extension|safari-extension|ms-browser-extension|extension):\/\//i.test(src)) return;
       var file = null;
       if (source) {
         var parts = String(source).split('/');

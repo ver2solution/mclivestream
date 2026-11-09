@@ -87,7 +87,7 @@
       + '<button class="btn btn-ghost btn-sm" data-adm-page="' + key + '" data-adm-dir="1" type="button"'
       + (hasMore ? '' : ' disabled') + '>Trang sau →</button></div>';
   }
-  var PAGE_FIELDS = { comments: 'commentsPage', moderation: 'modPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage' };
+  var PAGE_FIELDS = { comments: 'commentsPage', moderation: 'modPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage', write: 'writePage' };
   var PAGE_LOADERS = null; // gán sau khi các hàm load* đã định nghĩa (xem trước § chuyển tab)
   function onPagerClick(e) {
     var btn = e.target && e.target.closest ? e.target.closest('[data-adm-page]') : null;
@@ -112,9 +112,10 @@
     badgeTimer: null, // tự làm mới badge tin chưa đọc mỗi 60 giây khi không ở tab Trao đổi
     chatUnread: 0, // số tin chưa đọc (tính từ lần xem tab Trao đổi gần nhất)
     chatMessages: [], // danh sách tin đã tải gần nhất (mới nhất trước)
-    usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0,
+    usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
-    testData: null // kết quả get_admin_test_data gần nhất (để phân trang client-side)
+    testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
+    articleDrafts: [] // bản thảo bài viết đã tải gần nhất (tab Viết bài, để tải JSON theo id)
   };
 
   /* ---------- cổng vào ---------- */
@@ -763,6 +764,157 @@
     btn.disabled = false;
   }
 
+  /* ---------- TAB: Viết bài (GĐ4) — đăng bài Tin tức, tự đăng không duyệt ----------
+     Form gửi bản thảo qua RPC admin_submit_article (GĐ4, SECURITY DEFINER +
+     audit log). Bài lưu status 'ready' — script publisher
+     (tools/publish-article-drafts.mjs) sinh file bai-viet/<slug>.html +
+     mục data.js + sitemap rồi đi cùng deploy sau; sau đó gọi
+     admin_mark_article_published để tránh đăng trùng.
+     Chuyên mục: đúng 1 trong 9 chuyên mục Tin tức đã chốt (mỗi bài mới
+     gắn đúng 1 mục). Nội dung bài dùng định dạng đơn giản: dòng '## '
+     = tiêu đề mục (h2), dòng trống ngăn đoạn, '- ' = liệt kê, '> ' =
+     khối nhấn mạnh; publisher chuyển thành HTML. */
+  var ARTICLE_CATS = ['Công nghệ', 'Livestream', 'Phân tích', 'Xu hướng', 'Dòng tiền', 'Thị trường', 'Hàng hoá', 'Đang hot', 'Đời Sống'];
+  var ARTICLE_STATUS_LABEL = { ready: 'Chờ đăng', published: 'Đã đăng', deleted: 'Đã xóa' };
+  function slugify(s) {
+    var v = String(s || '').toLowerCase();
+    // Bỏ dấu tiếng Việt → chữ không dấu, chỉ giữ a-z0-9, đổi khoảng trắng/dấu khác thành '-'.
+    var map = { 'à': 'a', 'á': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a', 'ă': 'a', 'ắ': 'a', 'ằ': 'a', 'ẳ': 'a', 'ẵ': 'a', 'ặ': 'a', 'â': 'a', 'ấ': 'a', 'ầ': 'a', 'ẩ': 'a', 'ẫ': 'a', 'ậ': 'a', 'đ': 'd', 'è': 'e', 'é': 'e', 'ẻ': 'e', 'ẽ': 'e', 'ẹ': 'e', 'ê': 'e', 'ế': 'e', 'ề': 'e', 'ể': 'e', 'ễ': 'e', 'ệ': 'e', 'ì': 'i', 'í': 'i', 'ỉ': 'i', 'ĩ': 'i', 'ị': 'i', 'ò': 'o', 'ó': 'o', 'ỏ': 'o', 'õ': 'o', 'ọ': 'o', 'ô': 'o', 'ố': 'o', 'ồ': 'o', 'ổ': 'o', 'ỗ': 'o', 'ộ': 'o', 'ơ': 'o', 'ớ': 'o', 'ờ': 'o', 'ở': 'o', 'ỡ': 'o', 'ợ': 'o', 'ù': 'u', 'ú': 'u', 'ủ': 'u', 'ũ': 'u', 'ụ': 'u', 'ư': 'u', 'ứ': 'u', 'ừ': 'u', 'ử': 'u', 'ữ': 'u', 'ự': 'u', 'ỳ': 'y', 'ý': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y' };
+    v = v.split('').map(function (ch) { return map[ch] || ch; }).join('');
+    v = v.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').replace(/-+/g, '-');
+    return v.slice(0, 100);
+  }
+  function validateArticleDraft(d) {
+    var errs = [];
+    var title = String((d && d.title) || '').trim();
+    var slug = String((d && d.slug) || '').trim().toLowerCase();
+    var cat = String((d && d.category) || '').trim();
+    var summary = String((d && d.summary) || '').trim();
+    var body = String((d && d.body) || '').trim();
+    var img = String((d && d.image_url) || '').trim();
+    var src = String((d && d.source_url) || '').trim();
+    var srcName = String((d && d.source_name) || '').trim();
+    if (title.length < 1 || title.length > 150) errs.push('Tiêu đề phải từ 1 tới 150 ký tự.');
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug.length > 100) errs.push('Slug chỉ gồm chữ thường, số và dấu gạch ngang, tối đa 100 ký tự.');
+    if (ARTICLE_CATS.indexOf(cat) === -1) errs.push('Chuyên mục phải là 1 trong 9 chuyên mục Tin tức đã chốt.');
+    if (summary.length < 20 || summary.length > 500) errs.push('Mô tả ngắn phải từ 20 tới 500 ký tự.');
+    if (body.length < 200 || body.length > 30000) errs.push('Nội dung bài phải từ 200 tới 30000 ký tự.');
+    if (!(/^https?:\/\//.test(img) || /^images\//.test(img) || /^\//.test(img))) errs.push('Ảnh đại diện phải là link http(s) hoặc đường dẫn images/...');
+    if (src && !/^https?:\/\//.test(src)) errs.push('Link bài gốc phải bắt đầu bằng http:// hoặc https://.');
+    if (srcName.length > 100) errs.push('Tên nguồn tối đa 100 ký tự.');
+    return errs;
+  }
+  function articleFormValues() {
+    return {
+      title: $('admArtTitle') ? String($('admArtTitle').value || '').trim() : '',
+      slug: $('admArtSlug') ? String($('admArtSlug').value || '').trim().toLowerCase() : '',
+      category: $('admArtCat') ? String($('admArtCat').value || '').trim() : '',
+      summary: $('admArtSummary') ? String($('admArtSummary').value || '').trim() : '',
+      image_url: $('admArtImg') ? String($('admArtImg').value || '').trim() : '',
+      source_url: $('admArtSourceUrl') ? String($('admArtSourceUrl').value || '').trim() : '',
+      source_name: $('admArtSourceName') ? String($('admArtSourceName').value || '').trim() : '',
+      publish_date: $('admArtDate') ? String($('admArtDate').value || '') : '',
+      body: $('admArtBody') ? String($('admArtBody').value || '').trim() : ''
+    };
+  }
+  function draftToJson(d) {
+    return JSON.stringify({
+      title: d.title, slug: d.slug, category: d.category, summary: d.summary,
+      body: d.body, image_url: d.image_url, source_url: d.source_url || null,
+      source_name: d.source_name || null, publish_date: d.publish_date || null,
+      author_email: d.author_email || state.email || null
+    }, null, 2);
+  }
+  function downloadDraftJson(d) {
+    try {
+      var blob = new Blob([draftToJson(d)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'article-draft-' + (d.slug || 'bai-viet') + '.json';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    } catch (e) { /* tải JSON không bắt buộc — bản thảo đã lưu trên server */ }
+  }
+  function todayISO() {
+    try {
+      var d = new Date();
+      var m = String(d.getMonth() + 1).padStart(2, '0');
+      var day = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + m + '-' + day;
+    } catch (e) { return ''; }
+  }
+  function clearArticleForm() {
+    var ids = ['admArtTitle', 'admArtSlug', 'admArtSummary', 'admArtImg', 'admArtSourceUrl', 'admArtSourceName', 'admArtBody'];
+    ids.forEach(function (id) { var el = $(id); if (el) el.value = ''; });
+    var cat = $('admArtCat'); if (cat) cat.value = '';
+    var dt = $('admArtDate'); if (dt) dt.value = todayISO();
+    var slugEl = $('admArtSlug'); if (slugEl && slugEl.dataset) delete slugEl.dataset.touched;
+  }
+  async function onSubmitArticle() {
+    var msg = $('admArtMsg');
+    var btn = $('admArtSubmit');
+    if (state.legacyGate) { setMsg(msg, 'Chưa chạy migration GĐ1/GĐ4 — tab Viết bài chưa mở được.', true); return; }
+    var v = articleFormValues();
+    var errs = validateArticleDraft(v);
+    if (errs.length) { setMsg(msg, errs[0], true); return; }
+    if (!window.confirm('Đăng bài "' + v.title + '" (chuyên mục ' + v.category + ')? Bài sẽ lưu vào bản thảo để publisher sinh file + deploy sau.')) return;
+    if (btn) btn.disabled = true;
+    try {
+      var out = await rpc('admin_submit_article', {
+        p_title: v.title, p_slug: v.slug, p_category: v.category,
+        p_summary: v.summary, p_body: v.body, p_image_url: v.image_url,
+        p_source_url: v.source_url || null, p_source_name: v.source_name || null,
+        p_publish_date: v.publish_date || null
+      });
+      setMsg(msg, 'Đã đăng bài (lưu bản thảo). Slug: ' + (out && out.slug ? out.slug : v.slug) + ' — đã tải JSON bản thảo để đưa cho publisher.');
+      if (out) downloadDraftJson(out);
+      clearArticleForm();
+      await loadArticleDrafts();
+    } catch (err) { setMsg(msg, friendlyErr(err), true); }
+    if (btn) btn.disabled = false;
+  }
+  async function loadArticleDrafts() {
+    var wrap = $('admArtList');
+    if (!wrap) return;
+    wrap.innerHTML = '<p>Đang tải…</p>';
+    try {
+      var rows = await rpc('get_admin_article_drafts', { p_status: null, p_limit: PAGE_SIZE + 1, p_offset: state.writePage * PAGE_SIZE });
+      var hasMore = Array.isArray(rows) && rows.length > PAGE_SIZE;
+      var list = hasMore ? rows.slice(0, PAGE_SIZE) : rows;
+      state.articleDrafts = list;
+      if (!Array.isArray(list) || !list.length) {
+        wrap.innerHTML = '<p>Chưa có bản thảo nào — viết bài đầu tiên ở form trên.</p>' + pagerHtml('write', state.writePage, false);
+        return;
+      }
+      var html = '<table class="qt-table" style="width:100%;border-collapse:collapse"><thead><tr>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Tiêu đề</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Chuyên mục</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Trạng thái</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ngày gửi</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Thao tác</th></tr></thead><tbody>';
+      list.forEach(function (d) {
+        html += '<tr data-did="' + esc(d.id) + '"><td style="padding:8px;border-bottom:1px solid #eee">' + esc(d.title)
+          + '<br><small>bai-viet/' + esc(d.slug) + '.html' + (d.page ? ' → ' + esc(d.page) : '') + '</small></td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(d.category) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(ARTICLE_STATUS_LABEL[d.status] || d.status) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(d.author_email || '') + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(vnDate(d.created_at)) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap">'
+          + '<button class="btn btn-ghost btn-sm" data-adm-act="download-draft" data-id="' + esc(d.id) + '" type="button">Tải JSON</button> '
+          + (d.status === 'ready'
+            ? '<button class="btn btn-ghost btn-sm" data-adm-act="delete-draft" data-id="' + esc(d.id) + '" type="button">Xóa</button>'
+            : '')
+          + '</td></tr>';
+      });
+      html += '</tbody></table><p style="font-size:13px;color:#666">Bài "Chờ đăng" sẽ được publisher sinh file + đưa vào deploy sau. Nút "Tải JSON" tải bản thảo về máy để đưa cho publisher.</p>' + pagerHtml('write', state.writePage, hasMore);
+      wrap.innerHTML = html;
+    } catch (e) {
+      wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ4 chưa chạy (hàm get_admin_article_drafts chưa có).' : friendlyErr(e)) + '</p>';
+    }
+  }
+
   /* ---------- điều phối nút bấm (ủy quyền 1 listener) ---------- */
   var MOD_RPC = { profile: ['approve_profile', 'reject_profile'], shop_profile: ['approve_shop_profile', 'reject_shop_profile'], job_post: ['approve_job_post', 'reject_job_post'] };
   async function onActionClick(e) {
@@ -841,6 +993,15 @@
         setMsg(msg, 'Đã gửi email đặt lại mật khẩu tới ' + email + '.');
       } else if (act === 'view-user') {
         await viewUser(id, btn.getAttribute('data-email') || '');
+      } else if (act === 'delete-draft') {
+        if (!window.confirm('Xóa bản thảo này? (chỉ xóa được bản chưa đăng)')) return;
+        await rpc('admin_delete_article_draft', { p_id: id, p_reason: null });
+        setMsg(msg, 'Đã xóa bản thảo.');
+        await loadArticleDrafts();
+      } else if (act === 'download-draft') {
+        var dd = (state.articleDrafts || []).filter(function (x) { return String(x.id) === String(id); })[0];
+        if (dd) { downloadDraftJson(dd); setMsg(msg, 'Đã tải JSON bản thảo ' + (dd.slug || '') + '.'); }
+        else setMsg(msg, 'Không tìm thấy bản thảo để tải.', true);
       }
     } catch (err) {
       setMsg(msg, friendlyErr(err), true);
@@ -858,9 +1019,10 @@
     users: { label: 'Người dùng & xu', load: loadUsers },
     testdata: { label: 'Dữ liệu test', load: loadTestData },
     audit: { label: 'Nhật ký', load: loadAudit },
-    chat: { label: 'Trao đổi', load: loadChat }
+    chat: { label: 'Trao đổi', load: loadChat },
+    write: { label: 'Viết bài', load: loadArticleDrafts }
   };
-  var PAGE_LOADERS = { comments: loadComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData };
+  var PAGE_LOADERS = { comments: loadComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
   function switchTab(key) {
     state.activeTab = key;
     Object.keys(TABS).forEach(function (k) {
@@ -990,6 +1152,19 @@
     if (cr) cr.addEventListener('click', function () { loadChat(); });
     var ci = $('admChatInput');
     if (ci) ci.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') onSendChat(); });
+    // Tab Viết bài (GĐ4): gửi bài + xóa form + tự sinh slug từ tiêu đề.
+    var asub = $('admArtSubmit');
+    if (asub) asub.addEventListener('click', onSubmitArticle);
+    var aclr = $('admArtClear');
+    if (aclr) aclr.addEventListener('click', function () { clearArticleForm(); var m = $('admArtMsg'); if (m) setMsg(m, ''); });
+    var atitle = $('admArtTitle');
+    var aslug = $('admArtSlug');
+    if (atitle && aslug) atitle.addEventListener('input', function () {
+      if (!aslug.dataset.touched) aslug.value = slugify(atitle.value);
+    });
+    if (aslug) aslug.addEventListener('input', function () { aslug.dataset.touched = '1'; });
+    var adate = $('admArtDate');
+    if (adate && !adate.value) adate.value = todayISO();
     var so = $('qtSignOut');
     if (so) so.addEventListener('click', async function () {
       stopChatTimer(); stopBadgeTimer(); stopChatLive();
@@ -1011,6 +1186,6 @@
   else main();
 
   if (typeof window !== 'undefined') {
-    window.Ver2Admin = { init: main, switchTab: switchTab, state: state };
+    window.Ver2Admin = { init: main, switchTab: switchTab, state: state, validateArticleDraft: validateArticleDraft, slugify: slugify, ARTICLE_CATS: ARTICLE_CATS };
   }
 })();

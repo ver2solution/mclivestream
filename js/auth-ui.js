@@ -501,9 +501,28 @@
                   /* v96: dong diem nay cung hien trong panel kich hoat
                      (neu trang co panel) — so diem do server tra. */
                   try { var AV = (typeof window !== 'undefined') ? window.V2SActivation : null; if (AV && typeof AV.showPointsLine === 'function') AV.showPointsLine(awardPoints); } catch (e) {}
+                  /* v117 (pheu dang ky): msg() tren chi ghi vao form —
+                     form bi an ngay sau showUser() nen nguoi dung khong
+                     bao gio thay dong nay. Hien toast co dinh (cung kieu
+                     starToast) + dat truc tiep so du header = so xu vua
+                     cong (tai khoan moi bat dau 0) + luu toast cho vao
+                     sessionStorage de trang dich (sau chuyen 800ms) hien
+                     lai — app.js doc lai luc tai trang. */
+                  var toastText = 'Đăng ký thành công! Bạn nhận được ' + awardPoints + ' xu thưởng!';
+                  try { if (typeof window !== 'undefined' && typeof window.V2SToast === 'function') window.V2SToast(toastText); } catch (e) {}
+                  try { if (typeof window !== 'undefined' && typeof window.V20HeaderSetBalance === 'function') window.V20HeaderSetBalance(awardPoints); } catch (e) {}
+                  try { if (typeof window !== 'undefined' && window.sessionStorage) window.sessionStorage.setItem('v2s_pending_toast', JSON.stringify({ text: toastText, ts: Date.now() })); } catch (e) {}
                 }
               }
             } catch (e) { /* bỏ qua — đăng ký đã thành công */ }
+            /* v117: RPC cong xu loi/cham (awardPoints = 0) — dang ky van
+               xong, chi khong xac nhan duoc so xu. Hien toast chung chung
+               (khong ghi so ao) de nguoi dung van thay phan hoi; so du
+               header doc lai tu server qua V20HeaderRefresh ben duoi. */
+            if (awardPoints <= 0) {
+              try { if (typeof window !== 'undefined' && typeof window.V2SToast === 'function') window.V2SToast('Đăng ký thành công!'); } catch (e) {}
+              try { if (typeof window !== 'undefined' && window.sessionStorage) window.sessionStorage.setItem('v2s_pending_toast', JSON.stringify({ text: 'Đăng ký thành công!', ts: Date.now() })); } catch (e) {}
+            }
             await showUser();
             // v111 (header "0 xu", tiep): lam moi so du header + popup
             // diem NGAY sau khi RPC cong xu xong, khong doi tai lai

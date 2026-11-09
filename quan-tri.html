@@ -111,6 +111,25 @@
 <button class="btn btn-ghost btn-sm" id="admChatRefresh" type="button">Làm mới</button></p>
 </div>
 </div>
+<div id="admTab-write" class="adm-panel" hidden>
+<h2>Viết bài</h2>
+<p class="filter-hint">Tự đăng bài Tin tức lên web — không cần duyệt. Bài gửi xong lưu vào bản thảo (trạng thái "ready"), script publisher sẽ sinh file bai-viet/ + mục data.js + sitemap rồi đi cùng deploy sau. Mỗi bài gắn đúng 1 chuyên mục.</p>
+<p id="admArtMsg" role="status" style="font-weight:700"></p>
+<div class="form-card">
+<p><label>Tiêu đề *<br><input id="admArtTitle" type="text" maxlength="150" placeholder="VD: Giá vàng hôm nay 9/11: ..." style="width:100%"></label></p>
+<p><label>Slug (tên file bai-viet/...) *<br><input id="admArtSlug" type="text" maxlength="100" placeholder="vd gia-vang-hom-nay-09-11-2026" style="width:100%"></label><br><small style="color:#666">Chỉ chữ thường, số và dấu gạch ngang. Tự sinh từ tiêu đề, sửa được.</small></p>
+<p><label>Chuyên mục *<br><select id="admArtCat"><option value="">— Chọn 1 chuyên mục —</option><option>Công nghệ</option><option>Livestream</option><option>Phân tích</option><option>Xu hướng</option><option>Dòng tiền</option><option>Thị trường</option><option>Hàng hoá</option><option>Đang hot</option><option>Đời Sống</option></select></label></p>
+<p><label>Mô tả ngắn (takeaway) *<br><textarea id="admArtSummary" maxlength="500" placeholder="Tóm tắt 1-2 câu — dùng làm mô tả SEO + dòng tóm tắt trên trang Tin tức." style="width:100%;min-height:64px"></textarea></label></p>
+<p><label>Ảnh đại diện *<br><input id="admArtImg" type="text" placeholder="https://... hoặc images/bai-viet/ten-anh.jpg" style="width:100%"></label></p>
+<p><label>Link bài gốc<br><input id="admArtSourceUrl" type="text" placeholder="https://... (để trống nếu bài tự viết)" style="width:100%"></label></p>
+<p><label>Tên nguồn<br><input id="admArtSourceName" type="text" maxlength="100" placeholder="vd Báo Công Thương (để trống = Ver2Solution)" style="width:100%"></label></p>
+<p><label>Ngày đăng<br><input id="admArtDate" type="date"></label></p>
+<p><label>Nội dung bài *<br><textarea id="admArtBody" placeholder="Viết nội dung bài. Định dạng: dòng bắt đầu bằng '## ' là tiêu đề mục; dòng trống ngăn cách đoạn; dòng bắt đầu bằng '- ' là mục liệt kê; dòng bắt đầu bằng '> ' là khối nhấn mạnh. Tối thiểu 200 ký tự." style="width:100%;min-height:220px"></textarea></label></p>
+<p><button class="btn btn-primary btn-sm" id="admArtSubmit" type="button">Đăng bài</button> <button class="btn btn-ghost btn-sm" id="admArtClear" type="button">Xóa form</button></p>
+</div>
+<h3>Bản thảo đã gửi</h3>
+<div id="admArtList"><p>Chưa tải.</p></div>
+</div>
 <p><a href="index.html">← Quay lại trang chủ</a></p>
 </section>
 </main>

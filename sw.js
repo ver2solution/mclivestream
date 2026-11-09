@@ -7,9 +7,11 @@
    that changes data.js/app.js/v20.css. v55: danh-sach-shop.html + v20.css
    doi (them muc "Lo hang xa kho" o khu vuc top trang shop: 13 muc tu
    bao cao nghien cuu 06/11/2026, khong doi data.js/app.js).
-   v116: index.html + v20.css doi (dai Gio vang 11.11) + js/golden-hour.js
-   moi; gio-vang-1111.html da co trong prep (rebase tu prep chinh). */
-const CACHE = 'v116-shell-1';
+   v117: P1-1 tao 3 trang danh-sach-lo/xuong/kiot.html + them vao sitemap
+   (sua 3 URL 404); P1-2 them game/three.core.js (Three.js r186) + CSS
+   .online-popup cho game/noi-duong-tam.html; GĐ4 tab Viet bai (js/admin.js)
+   + sua pheu dang ky (js/app.js/js/auth-ui.js) da co trong prep. */
+const CACHE = 'v117-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
