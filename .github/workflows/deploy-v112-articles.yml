@@ -1,0 +1,38 @@
+name: Deploy v112 articles
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v112-articles.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v112-articles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v112 articles package
+        run: |
+          unzip -o mclivestream-v112-articles-deploy.zip
+          ls -l bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026.html bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.html js/data.js sitemap.xml
+          grep -q "11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt" js/data.js && echo "data.js has 11.11 article OK"
+          grep -q "tuyen-idol-livestream" js/data.js && echo "data.js has keyword article OK"
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml) (expect 90)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "90" || (echo "FAIL: sitemap not 90"; exit 1)
+          python3 -c "import re; s=open('js/data.js',encoding='utf-8').read(); n=s.count('\"page\": \"bai-viet/'); print('paged articles:', n); assert n==73, n"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js sitemap.xml bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026.html bai-viet/facebook-bo-reach-thay-viewers-31-10-shop-nho-can-biet.html bai-viet/gioi-thieu-ver2solution.html bai-viet/tuyen-idol-livestream.html bai-viet/thong-ke-ho-so-moi-08-11-2026.html bai-viet/tiktok-shop-tang-phi-tu-3-8-hoa-hong-lam-dep-198-phan-tram.html bai-viet/gia-vang-hom-nay-09-11-2026.html bai-viet/tam-ly-hoc-tieu-dung-vi-sao-khach-mua-ngay-trong-live.html bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat.html bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.html images/bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026.jpg images/bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026-og.jpg images/bai-viet/facebook-bo-reach-thay-viewers-31-10-shop-nho-can-biet.png images/bai-viet/facebook-bo-reach-thay-viewers-31-10-shop-nho-can-biet-og.jpg images/bai-viet/gioi-thieu-ver2solution.png images/bai-viet/gioi-thieu-ver2solution-og.jpg images/bai-viet/tuyen-idol-livestream.png images/bai-viet/tuyen-idol-livestream-og.jpg images/bai-viet/thong-ke-ho-so-moi-08-11-2026.png images/bai-viet/thong-ke-ho-so-moi-08-11-2026-og.jpg images/bai-viet/tiktok-shop-tang-phi-tu-3-8-hoa-hong-lam-dep-198-phan-tram.jpg images/bai-viet/tiktok-shop-tang-phi-tu-3-8-hoa-hong-lam-dep-198-phan-tram-og.jpg images/bai-viet/gia-vang-hom-nay-09-11-2026.jpg images/bai-viet/gia-vang-hom-nay-09-11-2026-og.jpg images/bai-viet/tam-ly-hoc-tieu-dung-vi-sao-khach-mua-ngay-trong-live.png images/bai-viet/tam-ly-hoc-tieu-dung-vi-sao-khach-mua-ngay-trong-live-og.jpg images/bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat.png images/bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat-og.jpg images/bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.jpg images/bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt-og.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v112 articles: 10 bai bao moi 09/11 (3 bai dau tuan + tu khoa idol live + thong ke 08/11 + 5 tin, chu de xoay vong #2 cuoi)"
+            git push
+          fi
