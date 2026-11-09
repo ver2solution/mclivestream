@@ -827,7 +827,13 @@ th{background:#f4f8f6}
 .card-compact-photo{position:relative;display:block;aspect-ratio:46/51;overflow:hidden;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
 .card-compact-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .card-compact-photo .ph-holder{font-size:64px}
-.card-compact-name{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:800;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-compact-name{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:800;font-size:14px;line-height:1.3}
+/* v112 (NEW-T3): clamp phai dat tren span TRONG (khong padding) — clamp
+   tren chinh .card-compact-name bi padding-bottom:10px mo cua so 10px
+   duoi 2 dong, lam dong 3 hien nua chu o mep duoi anh (da kiem chung
+   bang headless Chromium: dong 3 hien 10px, dong 1-2 du; sau sua chi
+   con 1px do lam tron line-height, khong thay chu). */
+.card-compact-name>span{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:break-word}
 .card-compact-lines{padding:12px 14px 14px;display:grid;gap:4px}
 .card-compact-line{margin:0;font-size:12px;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-compact-line:first-child{font-weight:700}

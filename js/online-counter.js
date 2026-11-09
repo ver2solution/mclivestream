@@ -5,8 +5,8 @@
      thật đang online) + phần tăng tick local của chính trình duyệt này.
      Trang chủ hiển thị TỔNG 5 trang con (mẫu + shop + kiot + hỏi đáp +
      tin tức).
-   - Mức ảo gốc (chốt 20:09 + 20:16 ngày 07/11/2026): mẫu 300, shop 500,
-     kiot 100, hỏi đáp 40, tin tức 500 → tổng trang chủ 1.440.
+   - Mức ảo gốc (chốt 20:09 + 20:16 ngày 07/11/2026): mẫu 127, shop 213, kiot 43, hỏi đáp 17, tin tức 211 → tổng trang chủ 611.
+     (v113 ngày 09/11/2026: giảm tổng 1.440 → 611, chia lẻ các trang con cho giống thật.)
    - Số người thật được đếm ẩn danh tuyệt đối: mỗi tab đang mở web gửi
      heartbeat mỗi 30 giây (chỉ khi tab đang hiển thị) với mã phiên ngẫu
      nhiên đã có của tracker (sessionStorage 'v2s_analytics_session' —
@@ -39,7 +39,7 @@
      (now − lastSeen >= 4h): reset tick và count về 0.
      Cập nhật lastSeen mỗi tick + khi visibilitychange/beforeunload.
    - v91 (BUG-02): tick mỗi bộ đếm bị CHẶN trong band [0, 50] (MAX_TICK)
-     nên tổng trang chủ không bao giờ vượt 1.440 + 5×50 = 1.690 — dữ liệu
+     nên tổng trang chủ không bao giờ vượt 611 + 5×50 = 861 — dữ liệu
      cũ đã trôi (tick hàng nghìn) được kẹp về 50 ngay khi loadState đọc
      lại. Đa tab: CHỈ 1 tab "leader" được tick (khóa leader chung trong
      localStorage 'v20_online_counters_leader', TTL 10s); các tab còn lại
@@ -55,10 +55,10 @@
    Cách dùng: mỗi trang gắn 1 badge
      <p class="online-badge" data-online="mau|shop|kiot|hoidap|tintuc|total">
        <span class="online-dot" aria-hidden="true"></span>
-       <span class="online-num">300</span>&nbsp;người đang online</p>
+       <span class="online-num">127</span>&nbsp;người đang online</p>
    và nạp file này SAU js/analytics.js (để mã phiên đã có sẵn). Trang chủ
    dùng data-online="total". Số trong .online-num lúc đầu phải khớp mức
-   gốc (trang chủ 1.440) để trang hiện đúng số ngay cả khi JS chưa chạy.
+   gốc (trang chủ 611) để trang hiện đúng số ngay cả khi JS chưa chạy.
    Popup online (bổ sung 20:51–20:52 ngày 07/11/2026): mỗi trang có badge
    còn có 1 popup nổi (.online-popup, fixed góc phải dưới) với biểu tượng
    sạp hàng vẽ bằng SVG inline (không emoji) — hiện LUÔN số người đang
@@ -74,7 +74,7 @@
   var STORAGE_KEY = 'v20_online_counters_v2';
   var SESSION_KEY = 'v2s_analytics_session'; // tái dùng mã phiên của js/analytics.js
   var RESET_AFTER_MS = 4 * 60 * 60 * 1000; // 4 giờ
-  var BASE = { mau: 300, shop: 500, kiot: 100, hoidap: 40, tintuc: 500 };
+  var BASE = { mau: 127, shop: 213, kiot: 43, hoidap: 17, tintuc: 211 };
   var KEYS = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc'];
   var INTERVALS_MS = [16000, 20000]; // v93: xen kẽ 16s rồi 20s (trung bình 18s/tick)
   // v93: Stagger lệch nhau 3,6s trong chu kỳ 36s (16+20) → 10 tick/chu kỳ,
@@ -84,10 +84,10 @@
   var STAGGER_MS = { mau: 0, shop: 3600, kiot: 7200, hoidap: 10800, tintuc: 14400 };
   var HEARTBEAT_MS = 30000; // heartbeat presence mỗi 30s, chỉ khi tab hiển thị
   var MERGED_REFRESH_MS = 60000; // lấy lại số gộp từ server mỗi 60s
-  var TOTAL_BASE = 1440; // 300 + 500 + 100 + 40 + 500
+  var TOTAL_BASE = 611; // 127 + 213 + 43 + 17 + 211
   var POPUP_CLOSED_KEY = 'v20_online_popup_closed'; // đóng popup → ẩn trong phiên hiện tại (sessionStorage)
   // v91 (BUG-02): band chặn tick mỗi bộ đếm — tổng trang chủ tối đa
-  // 1.440 + 5×50 = 1.690, không trôi vô hạn. = 50 để test cũ (loadState giữ
+  // 611 + 5×50 = 861, không trôi vô hạn. = 50 để test cũ (loadState giữ
   // tick {10,20,30,40,50}) vẫn đúng.
   var MAX_TICK = 50;
   // v91 (BUG-02): khóa leader chống cộng dồn nhiều tab — tab nào giữ khóa
@@ -229,7 +229,7 @@
     return Math.max(0, Math.floor(Number(base) || 0)) + Math.max(0, Math.floor(Number(tick[key]) || 0));
   }
 
-  // Số hiển thị trang chủ = số gộp tổng từ server (hoặc 1.440 khi mất
+  // Số hiển thị trang chủ = số gộp tổng từ server (hoặc 611 khi mất
   // server) + tổng tick local 5 trang con.
   function displayTotal(mergedTotal, tick) {
     var base = (mergedTotal !== null && mergedTotal !== undefined && isFinite(mergedTotal))
