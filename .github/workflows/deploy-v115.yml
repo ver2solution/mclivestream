@@ -1,0 +1,48 @@
+name: Deploy v115
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v115.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v115:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v115 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v115-deploy.zip
+          echo "--- verify v115 payload ---"
+          grep -m1 "v115-shell-1" sw.js
+          grep -m1 "TOTAL_BASE = 611" js/online-counter.js
+          grep -m1 'filter-card cols-6' danh-sach-mau.html
+          grep -m1 'Cần đăng nhập — chọn tiêu chí, bấm Áp dụng' danh-sach-mau.html
+          grep -m1 'Cần đăng nhập — chọn tiêu chí, bấm Áp dụng' danh-sach-shop.html
+          grep -m1 "tin tuyển khớp bộ lọc" js/app.js
+          grep -m1 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis' v20.css
+          echo "html files: $(find . -maxdepth 1 -name '*.html' | wc -l) root + $(ls bai-viet/*.html | wc -l) bai-viet"
+          echo "js files (excluding data.js): $(ls js/*.js | grep -vc data.js)"
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js js/app.js v20.css danh-sach-mau.html danh-sach-shop.html
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v115-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v115: bo loc Shop/Mau thong nhat (cols-6 + uni-field) + hint 1 dong chung 1 font, sw.js v115-shell-1"
+            git push
+          fi
