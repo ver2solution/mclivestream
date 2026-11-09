@@ -2522,16 +2522,38 @@ function filterNoteCharge(category, ts){
     }
   } catch (e) {}
 }
+// v116 (M15): thông báo lọc hiện dạng menu thả xuống (overlay), KHÔNG
+// chèn inline vào lưới lọc — quy tắc đã chốt: mọi thông báo/lỗi trong bộ
+// lọc PHẢI hiện dạng menu thả xuống. Phần tử .v2s-filter-msg được gắn vào
+// .filter-area gần nhất (hoặc phần tử cha của anchor nếu không có
+// .filter-area, vd form tìm kiếm ở trang chủ — cha nó là section.hero đã
+// position:relative sẵn) và định vị absolute qua CSS; :empty thì ẩn.
 function filterMsgEl(anchorEl){
-  if (!anchorEl || !anchorEl.parentNode || typeof document === 'undefined') return null;
-  var next = anchorEl.nextSibling;
-  while (next && next.nodeType !== 1) next = next.nextSibling;
-  if (next && next.className && String(next.className).indexOf('v2s-filter-msg') !== -1) return next;
+  if (!anchorEl || typeof document === 'undefined') return null;
+  var container = null;
+  if (typeof anchorEl.closest === 'function') {
+    try { container = anchorEl.closest('.filter-area'); } catch (e) { container = null; }
+  }
+  if (!container) container = anchorEl.parentNode;
+  if (!container) return null;
+  var existing = null;
+  if (typeof container.querySelector === 'function') {
+    try { existing = container.querySelector('.v2s-filter-msg'); } catch (e) { existing = null; }
+  }
+  if (!existing && container.children && typeof container.children.length === 'number') {
+    for (var i = 0; i < container.children.length; i++) {
+      var c = container.children[i];
+      if (c && c.className && String(c.className).indexOf('v2s-filter-msg') !== -1) { existing = c; break; }
+    }
+  }
+  if (existing) return existing;
   if (typeof document.createElement !== 'function') return null;
   var p = document.createElement('p');
   p.className = 'v2s-filter-msg';
   p.setAttribute('role', 'status');
-  anchorEl.parentNode.insertBefore(p, anchorEl.nextSibling);
+  if (typeof container.appendChild === 'function') container.appendChild(p);
+  else if (typeof container.insertBefore === 'function') container.insertBefore(p, null);
+  else return null;
   return p;
 }
 // v90 (3): sau khi loc ap dung thanh cong, cuon trang toi dau khu vuc ket
@@ -2710,9 +2732,9 @@ function mountPointsDetail(targetType, targetId){
   if (document.getElementById('v2sPinBox')) return; // chỉ gắn 1 lần
   var wrap = document.createElement('div');
   wrap.innerHTML = '<section class="v2s-pin-box" id="v2sPinBox" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
-    + '<h2>📌 Ghim lên top bằng xu</h2>'
+    + '<h2>📌 Ghim lên top</h2>'
     + '<p class="v2s-pin-balance">Số dư xu của bạn: <b>…</b></p>'
-    + '<p>1 xu = 1 giờ ghim. Sau khi hết hạn ghim, bài trở về thứ tự thường.</p>'
+    + '<p>Ghim đang <b>tạm thời miễn phí</b> (giá thường 1 xu = 1 giờ). Sau khi hết hạn ghim, bài trở về thứ tự thường.</p>'
     + '<label>Số giờ ghim (1–720)<input type="number" class="v2s-pin-hours" min="1" max="720" value="24"></label> '
     + '<button class="btn btn-primary btn-sm" type="button" data-v2s-pin-confirm>Ghim lên top</button>'
     + '<p class="v2s-pin-msg" role="status"></p></section>'
@@ -2731,7 +2753,7 @@ function mountPointsDetail(targetType, targetId){
       if (!loggedIn) {
         if (bal) bal.innerHTML = pointsGuestNoteHTML();
         // Khách vãng lai: KHÔNG disable nút Ghim — bấm nút sẽ hiện ghi chú
-        // "Bạn cần đăng nhập tài khoản để lấy xu ghim" (handler
+        // "Bạn cần đăng nhập tài khoản để ghim bài" (handler
         // data-v2s-pin-confirm dưới đây kiểm tra đăng nhập trước khi gọi RPC).
         if (msg) msg.textContent = '';
         return;
@@ -2795,14 +2817,14 @@ function initPointsUI(){
       var hours = hoursInput ? Number(hoursInput.value) : 0;
       loadPointsScripts().then(function(){
         return pointsLoggedIn().then(function (loggedIn){
-          if (!loggedIn) { if (pinMsg) pinMsg.textContent = 'Bạn cần đăng nhập tài khoản để lấy xu ghim'; return; }
+          if (!loggedIn) { if (pinMsg) pinMsg.textContent = 'Bạn cần đăng nhập tài khoản để ghim bài'; return; }
           var R = window.Ver2Reward;
           if (!R) { if (pinMsg) pinMsg.textContent = 'Hệ thống xu thưởng chưa bật (đang chờ migration M7).'; return; }
           R.pinPost(box.getAttribute('data-v2s-target-type'), box.getAttribute('data-v2s-target-id'), box.getAttribute('data-v2s-target-type'), hours).then(function (r){
             if (!pinMsg) return;
             if (r && r.ok) {
               var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ' (' + hours + ' xu).';
+              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + hours + ' xu).');
             } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống xu chưa bật.'); }
           });
         });
@@ -2821,7 +2843,7 @@ function initPointsUI(){
     e.preventDefault();
     loadPointsScripts().then(function(){
       return pointsLoggedIn().then(function (loggedIn){
-        if (!loggedIn) { say(type === 'pin' ? 'Bạn cần đăng nhập tài khoản để lấy xu ghim' : pointsGuestNoteHTML()); return; }
+        if (!loggedIn) { say(type === 'pin' ? 'Bạn cần đăng nhập tài khoản để ghim bài' : pointsGuestNoteHTML()); return; }
         var R = window.Ver2Reward;
         if (!R) { say('Hệ thống xu thưởng chưa bật (đang chờ migration M7).'); return; }
         if (type === 'pin') {
@@ -2839,7 +2861,7 @@ function initPointsUI(){
             R.pinPost(targetType, targetId, targetType, hours).then(function (r){
               if (r && r.ok) {
                 var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ' (' + hours + ' xu).');
+                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + hours + ' xu).'));
                 form.remove();
               } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống xu chưa bật.')); }
             });

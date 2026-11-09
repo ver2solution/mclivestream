@@ -115,6 +115,7 @@ a:hover{text-decoration:underline}
    gop y do). */
 .online-popup{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(11,93,78,.16);padding:10px 12px;max-width:min(340px,calc(100vw - 28px))}/* v111 NEW-T2: rong 320->340px de dong diem nowrap vua (than popup ~216px o desktop, ~246px o 390px) */
 .online-popup[hidden]{display:none}
+.btn[hidden]{display:none}/* v116 (P3): .btn{display:inline-flex} thang [hidden] cua UA nen nut "Xem them" Kiot van hien du da hidden — buoc phai co quy tac nay (giong .online-badge[hidden] v89) */
 .online-popup-stall{width:52px;height:48px;flex:none}
 .online-popup-body{min-width:0}
 .online-popup-line{margin:0;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
@@ -175,6 +176,7 @@ a:hover{text-decoration:underline}
 .filter-card input,.filter-card select{width:100%;margin-top:5px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
 .filter-card .full{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
 .filter-title{margin:14px 0 6px;font-size:15px}
+.filter-area{position:relative}/* v116 (M15): neo overlay .v2s-filter-msg */
 .filter-area .filter-title:first-child{margin-top:6px}
 /* v96: khung loc chung trang Shop — thanh truot chon hang muc (segmented
    control 3 nut) + truong bi khoa (mo + khong bam duoc). */
@@ -787,7 +789,11 @@ th{background:#f4f8f6}
 .v2s-comments-inline{margin:10px 0}
 .v2s-comments-inline .v2s-comments{margin:0}
 /* v87 diem thuong v2 (bo sung 20:22): cong thu diem cho loc + xem lien he + chuyen diem. */
-.v2s-filter-msg{font-size:14px;color:#0b5d4e;margin:8px 0}
+/* v116 (M15): thông báo lọc dạng menu thả xuống (overlay) — KHÔNG chèn
+   inline vào lưới lọc. Gắn absolute trong .filter-area (position:relative)
+   hoặc section.hero (đã relative sẵn); :empty thì ẩn hẳn. */
+.v2s-filter-msg{position:absolute;top:8px;left:12px;right:12px;z-index:30;margin:0;padding:10px 12px;font-size:14px;color:#0b5d4e;background:#fff;border:1px solid #cfe3dc;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.14)}
+.v2s-filter-msg:empty{display:none}
 .v2s-contacts-gated{margin:8px 0}
 .v2s-contact-msg{font-size:13px;color:#0b5d4e}
 .v2s-transfer-history{list-style:none;padding:0}
@@ -811,19 +817,45 @@ th{background:#f4f8f6}
 .activation-strip-text p{margin:0}
 .activation-strip .btn{min-height:48px}
 .activation-strip-close{flex:0 0 auto;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:20px;line-height:1;cursor:pointer}
+/* v116 (dai dem nguoc Gio vang 11.11, thiet ke 09/11/2026): dung mau bo cuc
+   cua .activation-strip, doi mau phan biet chien dich (nen vang nhat
+   #fff8e1, vien #e8b93c, dem nguoc #b45309). Mac dinh hidden, JS mo khi du
+   dieu kien; tu an sau 21h 11/11; nut × 44x44, margin-left:auto de luon
+   nam goc phai, khong de len tieu de. Dem nguoc dung tabular-nums de so
+   giay doi khong nhay layout. */
+.golden-hour-strip{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:12px;border:1px solid #e8b93c;border-radius:12px;padding:14px 16px;margin:16px 0;background:#fff8e1}
+.golden-hour-strip[hidden]{display:none}
+.golden-hour-text{flex:1 1 260px}
+.golden-hour-eyebrow{margin:0 0 4px;font-size:13px;font-weight:800;letter-spacing:.02em;color:#93392a}
+.golden-hour-line{margin:0;font-size:16px;font-weight:700;line-height:1.4}
+.golden-hour-note{margin:6px 0 0;font-size:13px;color:var(--mut)}
+.golden-hour-side{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.golden-hour-count{margin:0;font-size:22px;font-weight:800;color:#b45309;font-variant-numeric:tabular-nums;white-space:nowrap}
+.golden-hour-strip.soon .golden-hour-count{color:#d92b1f}
+.golden-hour-soon{margin:0;font-size:13px;font-weight:700;color:#d92b1f}
+.golden-hour-soon[hidden]{display:none}
+.golden-hour-strip .btn{min-height:48px}
+.golden-hour-close{flex:0 0 auto;min-width:44px;min-height:44px;margin-left:auto;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:20px;line-height:1;cursor:pointer}
 @media(min-width:600px){
   .activation-panel-grid{grid-template-columns:1fr 1fr}
   .activation-strip{flex-wrap:nowrap}
+  .golden-hour-strip{flex-wrap:nowrap}
+  .golden-hour-side{flex-wrap:nowrap}
 }
 @media(max-width:600px){
   .activation-panel .btn-primary{width:100%}
   .activation-strip .btn{width:100%}
+  .golden-hour-strip .btn{width:100%}
+  .golden-hour-side{width:100%}
 }
 @media(max-width:360px){
   .activation-panel{padding:12px}
   .activation-panel h2{font-size:18px}
   .activation-strip{padding:12px}
   .activation-strip-text h2{font-size:17px}
+  .golden-hour-strip{padding:12px}
+  .golden-hour-line{font-size:15px}
+  .golden-hour-count{font-size:19px}
 }
 
 /* v99 (dac ta the rut gon + sao len top): the danh sach rut gon —

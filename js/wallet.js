@@ -131,12 +131,30 @@
     return res.data;
   }
 
+  // M16 (xu chung, 09/11/2026): số dư ví tách xu kiếm / xu nạp.
+  // Đọc qua js/xu-chung.js (Ver2XuChung.getBalances → RPC
+  // xu_get_balances). Chưa nạp js/xu-chung.js thì đọc số dư gộp cũ
+  // từ ensureWallet() (coi toàn bộ là xu kiếm, xu nạp = 0). Client
+  // KHÔNG tự cộng/trừ — mọi cộng/trừ qua RPC. Tiền cúng dường KHÔNG
+  // đi qua cầu nối, module này không chạm tới.
+  async function getSplitBalances() {
+    var xc = (typeof window !== 'undefined') ? window.Ver2XuChung : null;
+    if (xc && typeof xc.getBalances === 'function') {
+      var b = await xc.getBalances();
+      if (b && b.ok) return { ok: true, earn: b.mc_earn, topup: b.mc_topup, debt: b.debt, total: b.total_usable };
+      return { ok: false, earn: 0, topup: 0, debt: 0, total: 0 };
+    }
+    var w = await ensureWallet();
+    var total = Number((w && w.reward_points) || 0);
+    return { ok: true, earn: total, topup: 0, debt: 0, total: total };
+  }
+
   window.Ver2Wallet = {
     SERVICES: SERVICES, PACKAGES: PACKAGES, COIN_RATE_VND: COIN_RATE_VND, MIN_TOPUP_VND: MIN_TOPUP_VND,
     saveMarketingConsent: saveMarketingConsent, getMarketingConsent: getMarketingConsent,
     ensureWallet: ensureWallet, fetchMyWalletTransactions: fetchMyWalletTransactions,
     fetchMyBoostOrders: fetchMyBoostOrders, requestTopUp: requestTopUp,
-    createBoostRequest: createBoostRequest
+    createBoostRequest: createBoostRequest, getSplitBalances: getSplitBalances
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = window.Ver2Wallet;
 })();

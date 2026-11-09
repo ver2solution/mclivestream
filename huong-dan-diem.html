@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hướng dẫn kiếm xu và dùng xu — Ver2Solution</title>
-<meta name="description" content="Hướng dẫn kiếm xu thưởng Ver2Solution: đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); dùng xu để lọc, xem liên hệ, ghim bài lên top và chuyển xu cho tài khoản khác.">
+<meta name="description" content="Hướng dẫn kiếm xu thưởng Ver2Solution: đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); lọc, xem liên hệ và ghim bài đang tạm thời miễn phí.">
 <link rel="canonical" href="https://ver2solution.github.io/mclivestream/huong-dan-diem.html">
 <meta property="og:title" content="Hướng dẫn kiếm xu và dùng xu — Ver2Solution">
-<meta property="og:description" content="Đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); dùng xu để lọc, xem liên hệ, ghim bài lên top và chuyển xu.">
+<meta property="og:description" content="Đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); lọc, xem liên hệ và ghim bài đang tạm thời miễn phí.">
 <meta property="og:image" content="https://ver2solution.github.io/mclivestream/images/og-brand.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -14,9 +14,9 @@
 <meta property="og:url" content="https://ver2solution.github.io/mclivestream/huong-dan-diem.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hướng dẫn kiếm xu và dùng xu — Ver2Solution">
-<meta name="twitter:description" content="Đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); dùng xu để lọc, xem liên hệ, ghim bài lên top và chuyển xu.">
+<meta name="twitter:description" content="Đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); lọc, xem liên hệ và ghim bài đang tạm thời miễn phí.">
 <meta name="twitter:image" content="https://ver2solution.github.io/mclivestream/images/og-brand.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Hướng dẫn kiếm xu và dùng xu — Ver2Solution","description":"Hướng dẫn kiếm xu thưởng Ver2Solution: đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); dùng xu để lọc, xem liên hệ, ghim bài lên top và chuyển xu.","url":"https://ver2solution.github.io/mclivestream/huong-dan-diem.html","isPartOf":{"@type":"WebSite","name":"Ver2Solution","url":"https://ver2solution.github.io/mclivestream/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Hướng dẫn kiếm xu và dùng xu — Ver2Solution","description":"Hướng dẫn kiếm xu thưởng Ver2Solution: đăng ký nhận 10 xu, bình luận +1, thích +1, chia sẻ +2 (mỗi loại 1 lần/ngày); lọc, xem liên hệ và ghim bài đang tạm thời miễn phí.","url":"https://ver2solution.github.io/mclivestream/huong-dan-diem.html","isPartOf":{"@type":"WebSite","name":"Ver2Solution","url":"https://ver2solution.github.io/mclivestream/"}}</script>
 <meta property="og:site_name" content="Ver2Solution.com">
 <meta name="theme-color" content="#0b5d4e">
 <link rel="icon" href="favicon.png"><link rel="manifest" href="manifest.webmanifest">
@@ -25,13 +25,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="v20.css"></head><body>
 <p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">611</span>&nbsp;người đang online</p>
+<style>
+/* v116-game-entry (09/11/2026): loi vao game Noi duong tam — xep chong NGAY TREN popup online, cung cot mep phai.
+   Popup (.online-popup, v20.css:116): fixed right:0; top:50%; translateY(-50%); cao ~68-70px → mep tren ≈ 50%+35px tinh tu day viewport.
+   .game-entry neo bang bottom:calc(50% + 48px) → cach mep tren popup ~13px, KHONG de popup, KHONG dung nut ×.
+   Neo bang bottom (khong neo top) nen nut co cao them (xuong dong o mobile) cung chi moc len tren, khong bao gio tran xuong popup.
+   z-index:79 (duoi popup 80) de neu co chong lan thi popup van bam duoc. Khi dong popup, entry van o nguyen vi tri (phan tu rieng, ngoai #onlinePopup). */
+.game-entry{position:fixed;right:0;bottom:calc(50% + 48px);z-index:79;display:flex;align-items:center;gap:8px;max-width:min(300px,calc(100vw - 28px));min-height:44px;padding:10px 14px;background:#fff8e6;border:1px solid #e8c97a;border-right:0;border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(60,42,16,.16);color:#6b4e00;text-decoration:none;font-size:14px;font-weight:800;line-height:1.35}
+.game-entry:hover{border-color:#a97f24;color:#93392a}
+.game-entry .game-entry-ic{font-size:20px;line-height:1;flex:none}
+.game-entry small{display:block;font-size:12px;font-weight:600;color:#5d4c36}
+@media (max-width:480px){.game-entry{max-width:min(260px,calc(100vw - 28px));padding:8px 12px;font-size:13px}}
+</style>
+<a class="game-entry" id="gameEntry" href="game/noi-duong-tam.html" data-track="game-noi-duong-tam"><span class="game-entry-ic" aria-hidden="true">🪷</span><span>Nơi dưỡng tâm<small>Chơi game kiếm Xu · thiền, tưới sen, thắp hương</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">611</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=huong-dan-diem.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Hướng dẫn kiếm xu và dùng xu</h1>
-<p>Xu thưởng là xu bạn nhận được khi hoạt động trên sàn Ver2Solution. Xu dùng để dùng các dịch vụ trên sàn: lọc hồ sơ, xem liên hệ, ghim bài lên top và chuyển xu cho tài khoản khác. Khách vãng lai (chưa đăng nhập) có <strong>0 xu</strong> và không dùng được dịch vụ tính xu — hãy <a href="dang-ky.html">đăng ký tài khoản</a> để bắt đầu.</p>
+<p>Xu thưởng là xu bạn nhận được khi hoạt động trên sàn Ver2Solution. Xu dùng để dùng các dịch vụ trên sàn: lọc hồ sơ, xem liên hệ, ghim bài lên top và chuyển xu cho tài khoản khác. Hiện tại lọc, xem liên hệ và ghim bài đang tạm thời miễn phí — không trừ xu. Khách vãng lai (chưa đăng nhập) có <strong>0 xu</strong> và không dùng được dịch vụ tính xu — hãy <a href="dang-ky.html">đăng ký tài khoản</a> để bắt đầu.</p>
 <p class="notice"><strong>Xem số dư ở đâu:</strong> sau khi đăng nhập, số dư xu hiện ngay trên nút header, cạnh tên của bạn (dạng "Tên · 10 xu"). Bạn cũng xem được số dư và lịch sử trên <a href="vi-tien-ao.html">trang Ví</a>.</p></section>
 
 <section class="form-card"><h2>1. Cách kiếm xu</h2>
@@ -55,12 +68,12 @@
 <tbody>
 <tr><td>Lọc hồ sơ (mẫu / shop / lô xả kho / xưởng may / kiot)</td><td><strong>Miễn phí (tạm thời)</strong></td><td>Từ 08/11/2026, lọc tạm thời miễn phí để mọi người dùng thử thoải mái; vẫn cần đăng nhập mới dùng được bộ lọc</td></tr>
 <tr><td>Xem thông tin liên hệ (SĐT Zalo) của 1 hồ sơ</td><td><strong>Miễn phí (tạm thời)</strong></td><td>Từ 08/11/2026, xem liên hệ tạm thời miễn phí; vẫn cần đăng nhập mới xem được</td></tr>
-<tr><td>Ghim bài lên top danh mục</td><td><strong>1 xu = 1 giờ</strong></td><td>Chọn 1–720 giờ, trừ xu ngay khi ghim; hết hạn ghim thì bài về thứ tự thường</td></tr>
+<tr><td>Ghim bài lên top danh mục</td><td><strong>Tạm thời miễn phí</strong> (giá thường 1 xu = 1 giờ)</td><td>Chọn 1–720 giờ, không trừ xu; hết hạn ghim thì bài về thứ tự thường</td></tr>
 <tr><td>Chuyển xu cho tài khoản khác</td><td><strong>Không phí</strong></td><td>Tối thiểu 10 xu/lần, chuyển bằng email người nhận, chuyển ngay không cần xác nhận — nhưng cần đủ 30 ngày online liên tiếp (xem mục 3)</td></tr>
 </tbody>
 </table>
 </div>
-<p><strong>Miễn phí, không thu xu:</strong> xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính lãi sau phí sàn (<a href="tinh-lai-1111.html">Tính lãi 11.11</a>). Từ 08/11/2026, lọc và xem liên hệ tạm thời miễn phí để mọi người dùng thử thoải mái. Ghim bài vẫn tính xu như cũ. Mọi lần trừ xu đều do hệ thống kiểm tra số dư phía server — số dư không bao giờ âm, và bạn không thể tự cộng/trừ số dư.</p></section>
+<p><strong>Miễn phí, không thu xu:</strong> xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính lãi sau phí sàn (<a href="tinh-lai-1111.html">Tính lãi 11.11</a>). Từ 08/11/2026, lọc và xem liên hệ tạm thời miễn phí để mọi người dùng thử thoải mái. Từ 09/11/2026 (M15), ghim bài cũng tạm thời miễn phí — không trừ xu. Mọi lần trừ xu (khi mở lại thu phí) đều do hệ thống kiểm tra số dư phía server — số dư không bao giờ âm, và bạn không thể tự cộng/trừ số dư.</p></section>
 
 <section class="form-card"><h2>3. Chuyển xu — cần đủ 30 ngày online liên tiếp</h2>
 <p>Để chuyển xu cho tài khoản khác, tài khoản của bạn phải có <strong>lịch sử online liên tiếp đủ 30 ngày</strong>. Mỗi ngày bạn mở web khi đã đăng nhập thì hệ thống ghi 1 ngày online. Chuỗi chỉ tính từ khi hệ thống xu v87 chạy (không hồi tố được vì dữ liệu cũ không gắn tài khoản). Luật này áp dụng cho <strong>mọi tài khoản, chưa có ngoại lệ cho admin</strong>.</p>
@@ -76,7 +89,7 @@
 <ul>
 <li><strong>Hết xu thì làm sao?</strong> Bình luận, thích và chia sẻ mỗi ngày để kiếm thêm (tối đa 5 xu/ngày từ tương tác), hoặc chờ hệ thống nạp xu bằng chuyển khoản (dự kiến tháng 12/2026: 1.000đ = 1 xu, nạp tối thiểu 20 xu/lần).</li>
 <li><strong>Xu có hết hạn không?</strong> Không. Xu không hết hạn, không mua bán thành tiền mặt.</li>
-<li><strong>Khách chưa đăng nhập dùng được gì?</strong> Xem/đọc bài viết, duyệt danh sách chưa lọc và dùng máy tính lãi vẫn miễn phí. Bộ lọc và xem liên hệ cần đăng nhập (nhưng đang tạm thời miễn phí từ 08/11/2026); ghim bài và chuyển xu cần đăng nhập và đủ xu.</li>
+<li><strong>Khách chưa đăng nhập dùng được gì?</strong> Xem/đọc bài viết, duyệt danh sách chưa lọc và dùng máy tính lãi vẫn miễn phí. Bộ lọc và xem liên hệ cần đăng nhập (nhưng đang tạm thời miễn phí từ 08/11/2026); ghim bài cần đăng nhập (đang tạm thời miễn phí, không cần đủ xu); chuyển xu cần đăng nhập và đủ xu.</li>
 <li><strong>Lọc có bị trừ xu nhiều lần không?</strong> Không. Từ 08/11/2026, lọc tạm thời miễn phí hoàn toàn — không trừ xu lần nào; bấm "Đặt lại" để bỏ lọc thì miễn phí.</li>
 </ul></section>
 

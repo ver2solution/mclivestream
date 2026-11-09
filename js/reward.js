@@ -8,8 +8,9 @@
      GIỮ NGUYÊN, không hồi tố.
    - Tương tác, mỗi loại tối đa 1 lần/ngày TOÀN SITE: bình luận +1, thích +1,
      chia sẻ lên tường +2. Tối đa 5 xu/ngày từ tương tác.
-   - Ghim bài lên top danh mục: 1 xu = 1 giờ, chọn 1..720 giờ, trừ xu
-     ngay khi ghim; hết pinned_until thì bài về thứ tự thường.
+   - Ghim bài lên top danh mục: 1 xu = 1 giờ, chọn 1..720 giờ (giá
+     thường; M15 09/11/2026: đang tạm miễn phí — xem cờ V20_FREE_SERVICES
+     dưới đây); hết pinned_until thì bài về thứ tự thường.
    - Trần ngày D2 (shop 50 / mẫu 30) ĐÃ HỦY. Không hết hạn xu. Không mua
      xu. (Chuyển xu: người dùng chốt lại 20:23 ngày 07/11 là ĐƯỢC PHÉP —
      tối thiểu 10 xu/lần, bằng email người nhận, không phí; xem spec §1b.)
@@ -41,15 +42,17 @@
      từ chối tạo đơn bán cho tới khi khung đó được bật. */
 (function () {
   'use strict';
-  // v92 (08/11/2026, người dùng chốt 11:32): TẠM KHÓA trừ xu cho lọc +
-  // xem liên hệ + dịch vụ khác — tất cả MIỄN PHÍ, chỉ ghim bài vẫn tính
-  // xu. Cờ này bypass việc gọi spend_points('filter'/'contact_view')
-  // ở js/app.js (gateFilterApply, hero search, xem liên hệ). KHÔNG xóa
-  // code trừ xu (spendPoints/filterChargeBucket/shouldChargeFilter +
+  // v92 (08/11/2026, người dùng chốt 11:32) + M15 (09/11/2026, người dùng
+  // chốt 14:13): TẠM KHÓA trừ xu cho lọc + xem liên hệ + GHIM — tất cả
+  // MIỄN PHÍ. Cờ này bypass việc gọi spend_points('filter'/'contact_view')
+  // ở js/app.js (gateFilterApply, hero search, xem liên hệ); ghim thì
+  // pin_post phía server đọc cờ free_services (site_settings, M15) để bỏ
+  // qua trừ xu, còn pinPost() dưới đây trả cost 0 khi cờ này bật. KHÔNG
+  // xóa code trừ xu (spendPoints/filterChargeBucket/shouldChargeFilter +
   // RPC phía server giữ nguyên) — mở lại thu phí chỉ bằng cách đổi cờ
-  // này thành false rồi kiểm tra lại. Cửa đăng nhập cho khách vãng lai
-  // vẫn giữ nguyên ở js/app.js (chỉ khóa việc TRẢ xu, không khóa cửa
-  // đăng ký). Ghim bài KHÔNG đi qua cờ này (luôn tính xu).
+  // này thành false + UPDATE site_settings SET value='false', rồi kiểm
+  // tra lại. Cửa đăng nhập cho khách vãng lai vẫn giữ nguyên ở js/app.js
+  // (chỉ khóa việc TRẢ xu, không khóa cửa đăng ký); ghim vẫn cần đăng nhập.
   var V20_FREE_SERVICES = true;
   // ---- Bảng xu M12 (09/11/2026, thay số v2 cũ — xem header file) ----
   var INTERACTION_POINTS = { comment: 1, like: 1, share: 2 };
@@ -106,7 +109,12 @@
     transfer_out: 'Chuyển xu đi', transfer_in: 'Nhận xu',
     reclaim: 'Thu hồi xu', adjust: 'Điều chỉnh xu',
     registration_field: 'Đăng ký: điền trường', account_created: 'Tạo tài khoản',
-    pin: 'Ghim bài', filter: 'Lọc danh sách', contact_view: 'Xem liên hệ'
+    pin: 'Ghim bài', filter: 'Lọc danh sách', contact_view: 'Xem liên hệ',
+    // M16 (xu chung Ver2Solution ↔ Phật Pháp): nhãn cho các type mới.
+    game_earn: 'Xu game', xfer_out_hold: 'Chuyển liên web (đang khóa)',
+    xfer_in: 'Nhận xu liên web', xfer_out_refund: 'Hoàn xu chuyển liên web',
+    offline_spend: 'Tiêu ngoại tuyến', offline_spend_settle: 'Đồng bộ tiêu ngoại tuyến',
+    debt_repay: 'Bù số âm', debt_cleared: 'Đã bù xong số âm'
   };
   function pointsHistoryLabel(type) { return POINTS_HISTORY_LABELS[String(type || '')] || 'Xu thưởng'; }
   // v91 (BUG-05): lịch sử giao dịch xu — đọc TRỰC TIẾP bảng points_ledger
@@ -152,7 +160,9 @@
   function pointsFor(a, b) {
     return pointsForInteraction(b || a);
   }
-  // Chi phí ghim = số giờ (1 xu = 1 giờ). Giờ ngoài 1..720 trả về -1.
+  // Chi phí ghim THƯỜNG = số giờ (1 xu = 1 giờ). M15: đang miễn phí nên
+  // pinPost() trả cost 0; hàm này giữ nguyên để mở lại thu phí.
+  // Giờ ngoài 1..720 trả về -1.
   function pinCostHours(hours) {
     var h = Math.floor(Number(hours));
     if (!h || h < PIN_MIN_HOURS || h > PIN_MAX_HOURS) return -1;
@@ -332,13 +342,32 @@
     } catch (e) { return { ok: false, balance: 0, spent: 0 }; }
   }
 
+  // M16 (xu chung, 09/11/2026): số dư tách xu kiếm / xu nạp qua RPC
+  // xu_get_balances() trong js/xu-chung.js (Ver2XuChung). Chưa nạp
+  // js/xu-chung.js thì trả về số dư gộp cũ (coi toàn bộ là xu kiếm)
+  // để header/popup cũ không vỡ. KHÔNG tự tính lại số dư — chỉ đọc
+  // số server trả. Cờ V20_FREE_SERVICES + logic ghim giữ nguyên.
+  async function getMySplitBalances() {
+    try {
+      var xc = (typeof window !== 'undefined') ? window.Ver2XuChung : null;
+      if (xc && typeof xc.getBalances === 'function') {
+        var b = await xc.getBalances();
+        if (b && b.ok) return { ok: true, earn: b.mc_earn, topup: b.mc_topup, debt: b.debt, total: b.total_usable };
+        return { ok: false, earn: 0, topup: 0, debt: 0, total: 0 };
+      }
+      var total = await getMyPointsBalance();
+      return { ok: true, earn: total, topup: 0, debt: 0, total: total };
+    } catch (e) { return { ok: false, earn: 0, topup: 0, debt: 0, total: 0 }; }
+  }
+
   // ---- Bảng giá tiêu xu v2 (chốt 20:22 ngày 07/11) ----
   // Lọc 1 xu/lần; xem liên hệ 5 xu/lần bấm (mỗi hồ sơ 1 lần/ngày);
   // ghim 1 xu/giờ. Xem/đọc bài viết, duyệt danh sách chưa lọc, máy tính
   // lãi sau phí sàn: MIỄN PHÍ (không qua hàm này).
-  // v92 (08/11/2026): lọc + xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES
-  // ở đầu file) — PRICES dưới đây GIỮ NGUYÊN để mở lại thu phí chỉ bằng
-  // 1 cờ; spendPoints() vẫn trừ đúng giá này khi cờ tắt.
+  // v92 (08/11/2026) + M15 (09/11/2026): lọc + xem liên hệ + ghim TẠM
+  // MIỄN PHÍ (cờ V20_FREE_SERVICES ở đầu file) — PRICES dưới đây GIỮ
+  // NGUYÊN để mở lại thu phí chỉ bằng 1 cờ; spendPoints() vẫn trừ đúng
+  // giá này khi cờ tắt; pinPost() trả cost 0 khi cờ bật.
   var PRICES = { filter: 1, contact_view: 5, pin_per_hour: 1 };
   var FILTER_DEDUP_MS = 10000; // đổi 2 ô lọc trong 10s chỉ tính 1 lần
   var TRANSFER_MIN_POINTS = 10;
@@ -515,8 +544,9 @@
       return true;
     } catch (e) { return false; }
   }
-  // Ghim bài lên top danh mục: 1 xu = 1 giờ. hours 1..720, trừ xu ngay
-  // khi ghim. Trả {ok:true, pin} khi thành công, {ok:false, error} khi lỗi
+  // Ghim bài lên top danh mục: giá thường 1 xu = 1 giờ; M15: đang tạm
+  // miễn phí (server không trừ xu, pinPost trả cost 0). hours 1..720.
+  // Trả {ok:true, pin} khi thành công, {ok:false, error} khi lỗi
   // (sai số giờ, không đủ xu, RPC chưa có).
   // Ánh xạ target_type → category theo enum M7.2 (cố định): model_profile→
   // mau, shop_profile→shop, lot→lo, factory→xuong, article→bai-viet,
@@ -537,7 +567,7 @@
       });
       if (res.error) return { ok: false, error: rpcErrorText(res), points: 0 };
       refreshPointsUI(); // v111 (NEW-04): header cap nhat ngay sau ghim
-      return { ok: true, pin: res.data, cost: pinCostHours(hours) };
+      return { ok: true, pin: res.data, cost: V20_FREE_SERVICES ? 0 : pinCostHours(hours) }; // M15: ghim tạm miễn phí → cost 0 (server cũng không trừ xu)
     } catch (e) {
       if (typeof console !== 'undefined' && console.error) console.error('[reward v2] pin_post lỗi:', e);
       return { ok: false, error: String((e && e.message) || e), points: 0 };
@@ -620,7 +650,7 @@
   }
 
   var API = {
-    FREE_SERVICES: V20_FREE_SERVICES, // v92: true = lọc + xem liên hệ tạm miễn phí (chỉ ghim tính xu); đổi cờ V20_FREE_SERVICES ở đầu file để mở lại thu phí
+    FREE_SERVICES: V20_FREE_SERVICES, // M15: true = lọc + xem liên hệ + ghim đều tạm miễn phí (ghim: server bỏ qua trừ xu, pinPost trả cost 0); đổi cờ V20_FREE_SERVICES ở đầu file để mở lại thu phí
     POINTS: POINTS, INTERACTION_POINTS: INTERACTION_POINTS,
     MAX_PER_TYPE_PER_DAY: MAX_PER_TYPE_PER_DAY,
     MAX_INTERACTION_POINTS_PER_DAY: MAX_INTERACTION_POINTS_PER_DAY,
@@ -639,6 +669,7 @@
     getMyPointsBalance: getMyPointsBalance, pinPost: pinPost,
     getMyPointsBalanceResult: getMyPointsBalanceResult,
     getMyPointsSummary: getMyPointsSummary,
+    getMySplitBalances: getMySplitBalances,
     formatVnDateTime: formatVnDateTime,
     POINTS_HISTORY_LABELS: POINTS_HISTORY_LABELS, pointsHistoryLabel: pointsHistoryLabel,
     getMyPointsHistory: getMyPointsHistory,

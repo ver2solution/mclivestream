@@ -6,8 +6,10 @@
    bai-viet pages. The CACHE name must be bumped on EVERY web deploy
    that changes data.js/app.js/v20.css. v55: danh-sach-shop.html + v20.css
    doi (them muc "Lo hang xa kho" o khu vuc top trang shop: 13 muc tu
-   bao cao nghien cuu 06/11/2026, khong doi data.js/app.js). */
-const CACHE = 'v116-admin-shell-1'; // admin console deploy 09/11 — doi sau khi deploy chinh v116
+   bao cao nghien cuu 06/11/2026, khong doi data.js/app.js).
+   v116: index.html + v20.css doi (dai Gio vang 11.11) + js/golden-hour.js
+   moi; gio-vang-1111.html da co trong prep (rebase tu prep chinh). */
+const CACHE = 'v116-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
