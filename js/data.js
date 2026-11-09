@@ -25,6 +25,15 @@
    -> shifts = [] (chi hien khi loc "Tất cả giờ"). Shop fulltime hien trong
    MOI ca khi loc gio lam (fulltime lam ca ngay) + khi loc rieng "Fulltime".
  20 real profiles + 30 shops (public job posts) + 30 articles.
+   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
+   Facebook Reach->Viewers 31/10, Ver2Solution intro) + 1 keyword SEO article ("tuyển idol
+   livestream", kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected
+   08/11: 11 models, 26 shops, 20 groups unverified) + 4 news (TikTok Shop fee hike 3/8,
+   gold 09/11 SJC 138-141tr, consumer-psychology MDPI study, clearance-lot potential
+   assessment) + rotating topic #2 (11.11 Singles Day, LAST). Total 74 articles, 73 with
+   their own bai-viet page (bop-reach links via url). Articles-only deploy: sw.js NOT
+   touched (CACHE stays v111-shell-1); v112 code prep (lot/xuong/kiot photos, NEW-T3)
+   deploys separately when ready.
    v92 adds 10 articles (08/11/2026): 1 keyword SEO article ("mau livestream",
    kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 07/11:
    1 model, 30 shops, 0 groups) + 8 news articles (gold 08/11, China-import potential,
@@ -3147,6 +3156,124 @@ window.V20_DATA = {
    "imgSelf": true,
    "takeaway": "Mỗi tháng đều có một mùa đẹp: tháng 1 hoa đào, tháng 3 hoa ban, tháng 5 vải thiều, tháng 9 lúa chín, tháng 11 hoa tam giác mạch, tháng 12 Festival hoa. Đi theo mùa, tránh 3 dịp lễ lớn nhất, đặt vé trước 4–6 tuần — và nhớ rằng với nghề livestream, chuyến đi đúng mùa còn là content hay nhất của bạn.",
    "pinned": false
+  },
+  {
+   "title": "TMĐT Việt Nam 9 tháng 2026: bán 2,6 tỷ sản phẩm, GMV 411,7 nghìn tỷ — shop nhỏ bị 'sàng lọc'",
+   "cat": "Thị trường",
+   "source": "vietnam.vn",
+   "date": "2026-10-20",
+   "url": "https://www.vietnam.vn/cs/2-6-ty-san-pham-ban-ra-tren-san-thuong-mai-dien-tu-viet-nam-trong-9-thang",
+   "page": "bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/thi-truong-tmdt-viet-nam-9-thang-2026.jpg",
+   "pinned": false,
+   "takeaway": "TMĐT Việt Nam 9 tháng 2026: GMV 411,7 nghìn tỷ đồng (+22%), 2,6 tỷ sản phẩm bán ra — nhưng số shop có doanh thu giảm từ gần 600.000 xuống khoảng 436.000, TikTok Shop bám sát Shopee (45% so với 53%). Tiền đang tập trung vào shop chuyên nghiệp: shop nhỏ muốn sống sót qua đợt sàng lọc thì live đều, làm đúng luật định danh và tính lãi từng món trước khi giảm giá 11.11."
+  },
+  {
+   "title": "Facebook bỏ chỉ số Reach từ 31/10: shop nhỏ đọc số Viewers mới thế nào?",
+   "cat": "Công nghệ",
+   "source": "Vantr",
+   "date": "2026-10-23",
+   "url": "https://vantr.app/guides/business/facebook-replaces-reach-with-viewers-guide",
+   "page": "bai-viet/facebook-bo-reach-thay-viewers-31-10-shop-nho-can-biet.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/facebook-bo-reach-thay-viewers-31-10-shop-nho-can-biet.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Facebook bỏ chỉ số Reach từ 31/10/2026, thay bằng Viewers — số tài khoản duy nhất đã xem nội dung thật sự. Vì Viewers đếm chặt hơn nên số liệu shop có thể giảm 15–35% trên giấy, dù nội dung vẫn hiển thị như cũ. Shop cần xuất dữ liệu Reach cũ ngay, từ nay chỉ so Viewers với Viewers, và chuyển sang nội dung gốc đáng chia sẻ trước 11.11."
+  },
+  {
+   "title": "Ver2Solution là gì? Sàn tuyển mẫu livestream và hệ sinh thái cho shop nhỏ bán online",
+   "cat": "Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-09",
+   "url": null,
+   "page": "bai-viet/gioi-thieu-ver2solution.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/gioi-thieu-ver2solution.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Ver2Solution là hệ sinh thái cho shop nhỏ bán online và livestream: sàn tuyển mẫu livestream toàn quốc với 37 mẫu, 76 shop đang tuyển, 20 lô xả kho, 60 xưởng may và 20 kiot — hồ sơ thật từ bài đăng công khai, liên hệ trực tiếp, giai đoạn 1 miễn phí. Mẫu tìm việc tại danh sách mẫu, shop đăng tin tuyển tại danh sách shop."
+  },
+  {
+   "title": "Tuyển idol livestream 2026: lương 15–36 triệu, ở đâu tuyển?",
+   "cat": "Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-09",
+   "url": null,
+   "page": "bai-viet/tuyen-idol-livestream.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tuyen-idol-livestream.png",
+   "imgSelf": true,
+   "kind": "keyword",
+   "pinned": false,
+   "takeaway": "Tuyển idol livestream 2026: lương cứng 15–36 triệu đồng/tháng tại TP. Hồ Chí Minh (59K Entertainment, KOSS 5, Anh Mai), streamer game 8–18 triệu/tháng (GAMETOK LIVE, Qingxiang Nexplay), tin tuyển tỉnh tại Tuyên Quang và Điện Biên. Đa số không yêu cầu kinh nghiệm, đào tạo từ đầu — ứng viên cần clip 2–3 phút và live thử 15–20 phút, hỏi rõ lương cứng và KPI, không đóng phí trước."
+  },
+  {
+   "title": "Hôm qua (08/11): 11 mẫu mới, 26 shop mới lên sàn — host live thị trường Mỹ 300–500k/giờ",
+   "cat": "Livestream",
+   "source": "Ver2Solution",
+   "date": "2026-11-09",
+   "url": null,
+   "page": "bai-viet/thong-ke-ho-so-moi-08-11-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/thong-ke-ho-so-moi-08-11-2026.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Ngày 08/11 có 26 shop chờ người live nhưng chỉ 11 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Nổi bật: host live thị trường Mỹ 300.000–500.000 đồng/giờ, mẫu thời trang Hà Nội 120.000–150.000 đồng/giờ, host live mẹ & bé 17–25 triệu/tháng. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút và nộp vào ca part-time trước. Doanh thu livestream cao nhất đợt này đang xác minh, chưa ghi số."
+  },
+  {
+   "title": "TikTok Shop tăng phí từ 3/8: hoa hồng làm đẹp lên 19,8%, đơn 100k mất 33,8%",
+   "cat": "Dòng tiền",
+   "source": "Vietnambiz",
+   "date": "2026-07-09",
+   "dateNote": "Bài gốc không ghi rõ ngày đăng — ngày 09/07/2026 suy từ đường dẫn ảnh trong bài",
+   "url": "https://vietnambiz.vn/shopee-tiktok-shop-lien-tiep-tang-phi-con-bi-cuc-khong-thay-hoi-thai-lai-cua-cac-nha-ban-hang-2026798754912.htm",
+   "page": "bai-viet/tiktok-shop-tang-phi-tu-3-8-hoa-hong-lam-dep-198-phan-tram.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tiktok-shop-tang-phi-tu-3-8-hoa-hong-lam-dep-198-phan-tram.jpg",
+   "pinned": false,
+   "takeaway": "TikTok Shop tăng phí từ 3/8/2026: hoa hồng ngành làm đẹp tăng từ 17,8% lên 19,8%, phí giao dịch 6%, phí Voucher Xtra 5% — đơn 100.000 đồng mất tới 33,8% cho sàn. Đính chính: '9–17,8%' không phải một dải phí — 9% là phí tại Anh, 17,8% là mức cũ của ngành làm đẹp Việt Nam trước 3/8. Tổng chi phí sàn tiến sát 35%, cộng marketing lên 50–65%; shop nhỏ phải tính lãi từng món trước khi giảm giá 11.11."
+  },
+  {
+   "title": "Giá vàng hôm nay 9/11: SJC đứng yên ở 141 triệu, tiền của khách chưa chảy vào vàng",
+   "cat": "Dòng tiền",
+   "source": "Báo Công Thương",
+   "date": "2026-11-09",
+   "url": "https://congthuong.vn/gia-vang-hom-nay-9-11-dung-truoc-phep-thu-moi-479709.html",
+   "page": "bai-viet/gia-vang-hom-nay-09-11-2026.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/gia-vang-hom-nay-09-11-2026.jpg",
+   "pinned": false,
+   "takeaway": "Giá vàng hôm nay 9/11: SJC đứng yên ở mua vào 138 triệu, bán ra 141 triệu đồng/lượng, không đổi so với sáng 08/11; vàng nhẫn 9999 ở 136,5–140,5 triệu; vàng thế giới 4.070 USD/ounce. Vàng đứng yên ngay trước đêm 11.11 nghĩa là tiền của khách vẫn ở lại tiêu dùng — shop nhỏ nên live đều từ đêm 10/11, báo giá rõ ràng và có món chỉ bán trong live."
+  },
+  {
+   "title": "Tâm lý học tiêu dùng: vì sao khách chốt đơn trong vài giây khi xem live?",
+   "cat": "Xu hướng",
+   "source": "MDPI",
+   "date": "2026-02-20",
+   "url": "https://www.mdpi.com/0718-1876/21/2/68",
+   "page": "bai-viet/tam-ly-hoc-tieu-dung-vi-sao-khach-mua-ngay-trong-live.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tam-ly-hoc-tieu-dung-vi-sao-khach-mua-ngay-trong-live.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Tâm lý học tiêu dùng: nghiên cứu 2026 trên 481 người mua qua livestream cho thấy 3 công tắc khiến khách mua bốc đồng — tương tác trực tiếp, tính mới lạ và sức hút của streamer — đều hoạt động qua trải nghiệm đắm chìm; sự cô đơn khuếch đại tác động này. Shop nhỏ bật 3 công tắc bằng cách gọi tên khách thật, chuẩn bị một điểm mới lạ cho phiên 11.11, chọn mẫu live mà khách tin và dùng khan hiếm thật."
+  },
+  {
+   "title": "Tỉnh nào đang cần lô xả kho thời trang nhất? Đánh giá tiềm năng từ số liệu thật",
+   "cat": "Phân tích",
+   "source": "Ver2Solution",
+   "date": "2026-11-09",
+   "url": null,
+   "page": "bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat.png",
+   "imgSelf": true,
+   "pinned": false,
+   "takeaway": "Đánh giá tiềm năng cuối năm 2026: thời trang là mặt hàng xả kho tiềm năng nhất (13,5% doanh số 11.11 Trung Quốc; GMV quý III Việt Nam 39,3 nghìn tỷ đồng, +29%); tỉnh nhu cầu cao nhất là các tỉnh đang thiếu hồ sơ trên sàn — miền Trung và miền núi phía Bắc; nhóm khách cần nhất là shop thời trang nhỏ ở tỉnh và shop xả kho. Shop có lô thời trang tồn hãy đăng lô kèm tỉnh thành và thuê mẫu live đúng ngành ngay trước 11.11."
+  },
+  {
+   "title": "11.11 ngày mai: Trung Quốc đã bán 1.026 tỷ NDT, livestream Douyin tăng 96%",
+   "cat": "Đang hot",
+   "source": "China Market Brief",
+   "date": "2026-11-05",
+   "url": "https://chinamarketbrief.com/en/insight/d11-syntun-singles-day-2026-first-round-sales-categories/",
+   "page": "bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.html",
+   "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.jpg",
+   "pinned": false,
+   "takeaway": "11.11 ngày mai: Trung Quốc đã bán 1.026,3 tỷ nhân dân tệ trước giờ G (07–31/10, Syntun); livestream là kênh tăng nhanh nhất — Douyin tăng 96% số merchant live vượt 10 triệu NDT, 14 phòng Taobao Live vượt 100 triệu NDT trong 4 giờ. Xu hướng mua hàng mới: khách vào live xem rồi mới mua. Shop Việt cần live đúng khung giờ vàng từ 20h đêm 10/11, chọn 1 món chủ lực và tính lãi trước khi giảm giá."
   }
 ],
  "lots": [
