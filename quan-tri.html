@@ -8,15 +8,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="v20.css"></head><body>
+<link rel="stylesheet" href="v20.css"><style>.adm-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}.adm-tab-btn{padding:9px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-weight:700;cursor:pointer}.adm-tab-btn.sel{background:#0b5d4e;color:#fff;border-color:#0b5d4e}.adm-tab-btn:disabled{opacity:.45;cursor:not-allowed}.adm-panel h2{margin-top:0}.adm-chat-list{display:flex;flex-direction:column;gap:10px;margin:12px 0}.adm-chat-item{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}.adm-chat-meta{font-size:13px;color:#666;margin:0 0 4px}.adm-chat-body{white-space:pre-wrap;word-break:break-word}.adm-chat-form textarea{width:100%;min-height:72px;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;box-sizing:border-box}#admChatList{max-height:480px;overflow-y:auto;-webkit-overflow-scrolling:touch}.adm-live-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#999;vertical-align:middle}.adm-tab-badge{display:inline-block;min-width:20px;padding:1px 6px;margin-left:6px;border-radius:999px;background:#b3261e;color:#fff;font-size:12px;font-weight:800;line-height:1.5;text-align:center;vertical-align:middle}.adm-tab-badge[hidden]{display:none}.adm-pager .btn:disabled{opacity:.45;cursor:not-allowed}</style></head><body>
 <p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">611</span>&nbsp;người đang online</p>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">611</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
-<!-- Trang quản trị: KHÔNG có link trong nav công khai — chỉ vào bằng đường
-     dẫn trực tiếp + đăng nhập bằng tài khoản chủ. Quyền được kiểm tra ở
-     phía SERVER (hàm get_online_breakdown() trong migration M8 chỉ trả dữ
-     liệu khi email đăng nhập là email chủ); trang này chỉ ẩn/hiện giao
-     diện, không tự quyết quyền. Xem đặc tả trang quản trị GĐ1
-     (hidden_files/trang-quan-tri-spec-2026-11-06.md §2.3). -->
+<!-- Trang quản trị GĐ2: KHÔNG có link trong nav công khai — chỉ vào bằng
+     đường dẫn trực tiếp + đăng nhập bằng tài khoản admin. Quyền kiểm tra ở
+     phía SERVER: cổng chính là RPC is_admin() (migration ADMIN GĐ1, bảng
+     admins); nếu GĐ1 chưa chạy thì lùi về cổng cũ get_online_breakdown()
+     (chỉ trả dữ liệu khi email đăng nhập là email chủ) và chỉ mở mục Tổng
+     quan. Trang này chỉ ẩn/hiện giao diện, không tự quyết quyền. Mọi thao
+     tác ghi qua RPC admin_* (GĐ1/GĐ2, SECURITY DEFINER + audit log).
+     Xem js/admin.js + hidden_files/supabase-migration-admin-g2-draft.sql. -->
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=quan-tri.html">Đăng Nhập</a></div></header>
@@ -43,6 +45,10 @@
 
 <section class="section" id="qtMain" hidden>
 <p>Đang đăng nhập: <b id="qtEmail"></b> · <button class="btn btn-ghost btn-sm" id="qtSignOut" type="button">Đăng xuất</button></p>
+<p id="admLegacyBanner" hidden style="background:#fff8e1;border:1px solid #e6c87a;border-radius:12px;padding:10px 12px">Migration ADMIN GĐ1/GĐ2 chưa chạy trên server — trang hiện chỉ mở được mục Tổng quan (số online theo cổng cũ). Các tab khác sẽ mở sau khi chạy migration.</p>
+<div id="admTabs" class="adm-tabs" role="tablist"></div>
+<p id="admActionMsg" role="status" style="font-weight:700"></p>
+<div id="admTab-overview" class="adm-panel">
 <table class="qt-table" id="qtTable" style="width:100%;border-collapse:collapse">
 <thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Trang</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Người thật đang online</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Số ảo gốc</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Số hiển thị (gộp)</th></tr></thead>
 <tbody id="qtBody"></tbody>
@@ -55,6 +61,56 @@
 <p id="qtTransfers">Đang tải…</p>
 <div id="qtTransfersWrap" hidden><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người nhận</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Xu</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ghi chú</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Thời gian</th></tr></thead><tbody id="qtTransfersBody"></tbody></table></div>
 <p style="font-size:13px;color:#666">Nguồn: sổ cái points_ledger (type transfer_out/transfer_in). Chỉ admin xem được; khách chỉ thấy lịch sử của mình trên trang ví.</p></div>
+<p id="qtOverviewCounts" hidden style="font-size:14px"></p>
+<p id="qtAdminCounts" hidden style="font-size:14px"></p>
+</div>
+<div id="admTab-comments" class="adm-panel" hidden>
+<h2>Duyệt bình luận</h2>
+<p class="filter-hint">Duyệt xong mới cộng +1 xu (luật M11/M12). Bình luận khách vãng lai 0 xu.</p>
+<p id="admCommentsMsg" role="status" style="font-weight:700"></p>
+<div id="admCommentsList"><p>Chưa tải.</p></div>
+</div>
+<div id="admTab-moderation" class="adm-panel" hidden>
+<h2>Duyệt hồ sơ / tin tuyển</h2>
+<p class="filter-hint">Hồ sơ mẫu, hồ sơ shop, tin tuyển đang chờ duyệt (mới nhất trước).</p>
+<div id="admModList"><p>Chưa tải.</p></div>
+</div>
+<div id="admTab-faq" class="adm-panel" hidden>
+<h2>Hỏi đáp</h2>
+<p><label>Lọc theo trạng thái <select id="admFaqFilter"><option value="">Tất cả</option><option value="moi">Mới</option><option value="dang_xem">Đang xem</option><option value="dang_sua">Đang sửa</option><option value="da_sua">Đã sửa</option><option value="da_tra_loi">Đã trả lời</option><option value="tu_choi">Từ chối</option></select></label></p>
+<div id="admFaqList"><p>Chưa tải.</p></div>
+</div>
+<div id="admTab-users" class="adm-panel" hidden>
+<h2>Người dùng &amp; xu</h2>
+<p class="filter-hint">Bấm “Xem xu” để xem số dư + lịch sử xu của 1 tài khoản; khóa/mở, gửi email đặt lại mật khẩu, điều chỉnh xu, cấp quyền admin.</p>
+<p><label>Tìm theo email <input id="admUserSearch" type="search" placeholder="vd ten@congty.vn" style="width:260px" autocomplete="off"></label> <button class="btn btn-ghost btn-sm" id="admUserSearchBtn" type="button">Tìm</button> <button class="btn btn-ghost btn-sm" id="admUserSearchClear" type="button">Xóa lọc</button></p>
+<p id="admUsersMsg" role="status" style="font-weight:700"></p>
+<div id="admUsersList"><p>Chưa tải.</p></div>
+<div id="admUserDetail" hidden></div>
+</div>
+<div id="admTab-testdata" class="adm-panel" hidden>
+<h2>Dữ liệu test</h2>
+<div id="admTestList"><p>Chưa tải.</p></div>
+</div>
+<div id="admTab-audit" class="adm-panel" hidden>
+<h2>Nhật ký quản trị</h2>
+<p><label>Khoảng <select id="admAuditDays"><option value="7">7 ngày qua</option><option value="30">30 ngày qua</option><option value="90">90 ngày qua</option></select></label></p>
+<div id="admAuditList"><p>Chưa tải.</p></div>
+</div>
+<div id="admTab-chat" class="adm-panel" hidden>
+<h2>Trao đổi</h2>
+<p class="filter-hint">Nơi Ryan, Rion và Muse BĐS trao đổi trực tiếp — feedback lỗi + yêu cầu công việc chung. Nhiệm vụ chi tiết vẫn tổng hợp qua Google Sheet.</p>
+<p id="admChatLive" style="font-size:13px"><span id="admChatLiveDot" class="adm-live-dot"></span> <span id="admChatLiveText">Đang kết nối…</span></p>
+<p id="admChatPresence" style="font-size:13px">Đang online: —</p>
+<p id="admChatMsg" role="status" style="font-weight:700"></p>
+<div id="admChatList"><p>Chưa tải.</p></div>
+<div class="adm-chat-form">
+<label for="admChatInput">Tin nhắn mới (tối đa 2000 ký tự, Ctrl+Enter để gửi)</label>
+<textarea id="admChatInput" maxlength="2000" placeholder="Viết feedback lỗi hoặc yêu cầu công việc chung…"></textarea>
+<p style="margin:8px 0"><button class="btn btn-primary btn-sm" id="admChatSend" type="button">Gửi</button>
+<button class="btn btn-ghost btn-sm" id="admChatRefresh" type="button">Làm mới</button></p>
+</div>
+</div>
 <p><a href="index.html">← Quay lại trang chủ</a></p>
 </section>
 </main>
@@ -64,115 +120,5 @@
 <script src="mclivestream-supabase.js"></script>
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script>
 <script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<script>
-(function () {
-  'use strict';
-  var LABELS = {
-    mau: 'Mẫu livestream (danh-sach-mau.html)',
-    shop: 'Shop tuyển mẫu (danh-sach-shop.html)',
-    kiot: 'Thanh lý Kiot (thanh-ly-kiot.html)',
-    hoidap: 'Hỏi đáp (hoi-dap.html)',
-    tintuc: 'Tin tức (tin-tuc.html)',
-    home: 'Trang chủ (index.html)',
-    total: 'TỔNG (5 trang con + trang chủ)'
-  };
-  var ORDER = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc', 'home', 'total'];
-  function show(id) { var el = document.getElementById(id); if (el) el.hidden = false; }
-  function fmt(n) {
-    var v = Math.max(0, Math.floor(Number(n) || 0));
-    try { return v.toLocaleString('vi-VN'); } catch (e) { return String(v); }
-  }
-  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  async function getSession() {
-    if (window.V2SAuthUI && typeof window.V2SAuthUI.getSession === 'function') return window.V2SAuthUI.getSession();
-    if (window.McLivestreamAPI && typeof window.McLivestreamAPI.getSession === 'function') return window.McLivestreamAPI.getSession();
-    return null;
-  }
-  async function main() {
-    var session = null;
-    try { session = await getSession(); } catch (e) { session = null; }
-    var user = session && session.user ? session.user : null;
-    if (!user) { show('qtLogin'); return; }
-    var email = user.email || '';
-    var emEl = document.getElementById('qtEmail');
-    if (emEl) emEl.textContent = email;
-    var client = (window.McLivestreamAPI && window.McLivestreamAPI.client) || null;
-    if (!client || typeof client.rpc !== 'function') {
-      var m = document.getElementById('qtErrorMsg');
-      if (m) m.textContent = 'Chưa kết nối được Supabase, hãy tải lại trang.';
-      show('qtError'); return;
-    }
-    // Quyền do SERVER kiểm tra trong get_online_breakdown(): không phải
-    // email chủ thì hàm ném lỗi → hiện khung từ chối, không thấy số liệu.
-    var res = await client.rpc('get_online_breakdown');
-    if (res.error) {
-      var d = document.getElementById('qtDeniedEmail');
-      if (d) d.textContent = email;
-      show('qtDenied'); return;
-    }
-    var rows = Array.isArray(res.data) ? res.data : [];
-    if (!rows.length) { show('qtError'); return; }
-    var byPage = {};
-    rows.forEach(function (r) { byPage[r.page] = r; });
-    var body = document.getElementById('qtBody');
-    var html = '';
-    ORDER.forEach(function (k) {
-      var r = byPage[k];
-      if (!r) return;
-      var strong = (k === 'total') ? ' style="font-weight:800;border-top:2px solid #ddd"' : '';
-      html += '<tr' + strong + '><td style="padding:8px;border-bottom:1px solid #eee">' + esc(LABELS[k] || k) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.real_count) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.base_count) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.display_count) + '</td></tr>';
-    });
-    body.innerHTML = html;
-    show('qtMain');
-    // Lượt xem thật 24 giờ qua (không bắt buộc — lỗi thì hiện "chưa có dữ liệu").
-    try {
-      var sum = await client.rpc('get_analytics_summary', { p_days: 1 });
-      var viewsEl = document.getElementById('qtViews');
-      if (sum.error || !Array.isArray(sum.data)) { if (viewsEl) viewsEl.textContent = 'Chưa có dữ liệu.'; }
-      else {
-        var total = 0;
-        sum.data.forEach(function (r) { if (r && r.event_type === 'pageview') total += Number(r.event_count) || 0; });
-        if (viewsEl) viewsEl.textContent = 'Lượt xem thật 24 giờ qua: ' + fmt(total) + ' lượt xem trang (pageview).';
-      }
-    } catch (e) {
-      var v2 = document.getElementById('qtViews');
-      if (v2) v2.textContent = 'Chưa có dữ liệu.';
-    }
-    // Lịch sử chuyển xu toàn bộ tài khoản (không bắt buộc — lỗi thì hiện
-    // "chưa có dữ liệu", vd M7 chưa chạy).
-    try {
-      var tr = await client.rpc('get_all_transfer_history_admin', { p_limit: 100 });
-      var trEl = document.getElementById('qtTransfers');
-      if (tr.error || !Array.isArray(tr.data) || !tr.data.length) { if (trEl) trEl.textContent = 'Chưa có dữ liệu chuyển xu.'; return; }
-      var rows = '';
-      tr.data.forEach(function (r) {
-        var when = '';
-        try { when = new Date(r.created_at).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }); } catch (e2) { when = String(r.created_at || ''); }
-        rows += '<tr><td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.sender_email) + '</td>'
-          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.recipient_email) + '</td>'
-          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.amount) + '</td>'
-          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(r.note) + '</td>'
-          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + esc(when) + '</td></tr>';
-      });
-      document.getElementById('qtTransfersBody').innerHTML = rows;
-      if (trEl) trEl.hidden = true;
-      var wrap = document.getElementById('qtTransfersWrap');
-      if (wrap) wrap.hidden = false;
-    } catch (e3) {
-      var trEl2 = document.getElementById('qtTransfers');
-      if (trEl2) trEl2.textContent = 'Chưa có dữ liệu chuyển xu.';
-    }
-  }
-  var so = document.getElementById('qtSignOut');
-  if (so) so.addEventListener('click', async function () {
-    try { if (window.McLivestreamAPI) await window.McLivestreamAPI.signOut(); } catch (e) { /* bỏ qua */ }
-    location.href = 'index.html';
-  });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', main);
-  else main();
-})();
-</script>
+<script src="js/admin.js"></script>
 </body></html>
