@@ -1,12 +1,13 @@
 /* v2 — Xu thưởng GĐ2 (07/11/2026, thay thế bảng D2 ngày 06/11).
    Xem goals/mc-livestream-job-board/hidden_files/diem-thuong-v2-2026-11-07.md
    (nguồn đúng duy nhất cho bảng xu v2).
-   Bảng xu v2 — MỘT bảng duy nhất cho mọi tài khoản đã đăng nhập:
-   - Đăng ký: mỗi trường điền đúng +30 (5 trường = 150); tạo tài khoản +100.
-     Tổng 250 nếu tick đồng ý marketing, 220 nếu không tick (trường marketing
-     chỉ +30 khi tick). Khách vãng lai 0 xu.
-   - Tương tác, mỗi loại tối đa 1 lần/ngày TOÀN SITE: bình luận +10, thích +10,
-     chia sẻ lên tường +20. Tối đa 40 xu/ngày từ tương tác.
+   Bảng xu M12 (cập nhật 09/11/2026, migration M12 — thay số v2 cũ):
+   - Đăng ký: tạo tài khoản thành công +10 xu, một lần duy nhất, không
+     tính theo trường (5 trường cũ 30 xu/trường → 0), không phân biệt
+     có tick đồng ý marketing hay không. Số dư đã cấp cũ (250/220)
+     GIỮ NGUYÊN, không hồi tố.
+   - Tương tác, mỗi loại tối đa 1 lần/ngày TOÀN SITE: bình luận +1, thích +1,
+     chia sẻ lên tường +2. Tối đa 5 xu/ngày từ tương tác.
    - Ghim bài lên top danh mục: 1 xu = 1 giờ, chọn 1..720 giờ, trừ xu
      ngay khi ghim; hết pinned_until thì bài về thứ tự thường.
    - Trần ngày D2 (shop 50 / mẫu 30) ĐÃ HỦY. Không hết hạn xu. Không mua
@@ -19,6 +20,9 @@
    (M7, SECURITY DEFINER); client không tự trừ số dư. Chuyển xu qua RPC
    transfer_points() — cần đủ 30 ngày online liên tiếp (chốt 20:25 ngày
    07/11, áp dụng mọi tài khoản, không hồi tố, không ngoại lệ admin).
+   M12 KHÔNG đổi: giá ghim, chuyển tối thiểu 10 xu + 30 ngày, giá lọc/xem
+   liên hệ trong spend_points() (1/5 — hiện tạm miễn phí ở client), giá
+   nạp 1.000đ = 1 xu, giá đổi dịch vụ (Q-R2).
    Nguyên tắc an toàn (giữ từ M5, xem docs-diem-thuong-tuong-tac-m5.md):
    - Client KHÔNG cộng/trừ số dư, KHÔNG duyệt sự kiện, KHÔNG tự active liên
      kết, KHÔNG tự trừ xu khi đổi dịch vụ hay chuyển/tặng, KHÔNG ghi trực
@@ -47,13 +51,13 @@
   // vẫn giữ nguyên ở js/app.js (chỉ khóa việc TRẢ xu, không khóa cửa
   // đăng ký). Ghim bài KHÔNG đi qua cờ này (luôn tính xu).
   var V20_FREE_SERVICES = true;
-  // ---- Bảng xu v2 (CHỐT 07/11/2026, thay thế D2) ----
-  var INTERACTION_POINTS = { comment: 10, like: 10, share: 20 };
+  // ---- Bảng xu M12 (09/11/2026, thay số v2 cũ — xem header file) ----
+  var INTERACTION_POINTS = { comment: 1, like: 1, share: 2 };
   var MAX_PER_TYPE_PER_DAY = 1; // mỗi loại tối đa 1 lần tính xu/ngày/site-wide
-  var MAX_INTERACTION_POINTS_PER_DAY = 40; // 10 + 10 + 20
-  var REGISTRATION_FIELD_POINTS = 30;
+  var MAX_INTERACTION_POINTS_PER_DAY = 5; // 1 + 1 + 2 (+1 du phong tran ngay)
+  var REGISTRATION_FIELD_POINTS = 0; // M12: truong dang ky khong con cong xu rieng
   var REGISTRATION_FIELD_COUNT = 5;
-  var REGISTRATION_ACCOUNT_POINTS = 100;
+  var REGISTRATION_ACCOUNT_POINTS = 10; // M12: tao tai khoan thanh cong +10 xu
   var PIN_POINT_PER_HOUR = 1; // 1 xu = 1 giờ ghim
   var PIN_MIN_HOURS = 1;
   var PIN_MAX_HOURS = 720; // 30 ngày
@@ -166,13 +170,14 @@
     return !alreadyEarnedToday;
   }
   // Wrapper cũ (D2: trần ngày theo loại tài khoản) — v2 chỉ còn trần chung
-  // 40 xu/ngày từ tương tác, không chia shop/model. Giữ để code cũ không vỡ.
+  // 5 xu/ngày từ tương tác (M12), không chia shop/model. Giữ để code cũ không vỡ.
   function canEarnToday(alreadyApprovedToday, newPoints) {
     return (Number(alreadyApprovedToday || 0) + Number(newPoints || 0)) <= MAX_INTERACTION_POINTS_PER_DAY;
   }
-  // Xu đăng ký: fieldsCompleted = số trường đã điền đúng (0..5, trong đó
-  // trường marketing chỉ tính khi người dùng tick). Cộng +100 tạo tài khoản.
-  // Nhận số, hoặc object {email,phone,password,password2,marketing} (truthy).
+  // Xu đăng ký (M12): tạo tài khoản thành công +10 xu, một lần duy nhất,
+  // không tính theo trường (truong 0 xu). Nhận số, hoặc object
+  // {email,phone,password,password2,marketing} (truthy) — giu chu ky cu
+  // de code cu khong vo, ket qua luon 10.
   function registrationPoints(fieldsCompleted) {
     var n = 0;
     if (typeof fieldsCompleted === 'number') n = Math.floor(fieldsCompleted);
@@ -243,7 +248,7 @@
   }
 
   // ---- RPC M7 (v2): không bao giờ ném lỗi ra ngoài ----
-  // Cộng xu đăng ký (250 nếu tick marketing, 220 nếu không). Gọi 1 lần
+  // Cộng xu đăng ký (M12: 10 xu, một lần duy nhất). Gọi 1 lần
   // sau khi đăng ký thành công CÓ session. RPC chưa có → {ok:false}.
   async function awardRegistration() {
     try {
@@ -264,7 +269,7 @@
     try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
     try { if (typeof window !== 'undefined' && typeof window.V20RefreshPopupPoints === 'function') window.V20RefreshPopupPoints(); } catch (e) {}
   }
-  // Cộng xu tương tác (comment +10 / like +10 / share +20, mỗi loại tối đa
+  // Cộng xu tương tác (comment +1 / like +1 / share +2, mỗi loại tối đa
   // 1 lần/ngày toàn site). Trả {ok, points}: points = 0 khi đã tính loại đó
   // trong ngày hôm nay. targetType: 'model_profile' | 'shop_profile' |
   // 'article'; targetId: id data.js (th-…/sh-…) hoặc tên file bài báo.
@@ -496,17 +501,16 @@
       return { ok: true, items: items };
     } catch (e) { return { ok: false, items: [] }; }
   }
-  // Ghi hoạt động ngày (để chuỗi 30 ngày online chạy được): upsert 1 dòng
-  // vào user_daily_activity (user_id, activity_date = ngày Asia/Saigon hôm
-  // nay). Lỗi thì nuốt lặng, không vỡ trang. Khách vãng lai không ghi
-  // (không có session). KHÔNG BAO GIỜ ném lỗi.
+  // Ghi hoạt động ngày (để chuỗi 30 ngày online chạy được): RPC
+  // record_daily_activity (M14, SECURITY DEFINER) — thay upsert truc
+  // tiep bang user_daily_activity (RLS chan anon upsert, NEW-02: streak
+  // 30 ngay khong dat). Server tu suy user_id + activity_date (ngay
+  // Asia/Saigon). Loi thi nuot lang, khong vo trang. Khach vang lai
+  // khong ghi (khong co session). KHONG BAO GIO nem loi.
   async function recordDailyActivity() {
     try {
       var s = await sessionUser();
-      var res = await s.api.client.from('user_daily_activity').upsert(
-        { user_id: s.user.id, activity_date: dayKeySaigon(new Date()) },
-        { onConflict: 'user_id,activity_date' }
-      );
+      var res = await s.api.client.rpc('record_daily_activity', {});
       if (res.error) return false;
       return true;
     } catch (e) { return false; }

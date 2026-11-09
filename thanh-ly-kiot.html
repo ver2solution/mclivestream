@@ -112,7 +112,7 @@
     var total = show.length;
     var rows = show.slice(0, kiotShown);
     list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join('') // v92 (C2): nut Binh luan duoi moi the kiot
-      + (total > rows.length ? '<p class="filter-count">Đang hiện ' + rows.length + ' trong ' + total + ' tin khớp.</p>' : '');
+      + '<p class="filter-count">Đang hiển thị ' + rows.length + '/' + total + ' tin.</p>';
     if (moreBtn) moreBtn.hidden = !(total > rows.length);
   }
   if (moreBtn) moreBtn.addEventListener('click', function(){

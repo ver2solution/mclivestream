@@ -315,6 +315,18 @@
     return (a && a.client) ? a.client : null;
   }
 
+  // v114 (P2-5): ham thuan — goc server co doi so voi goc local dang
+  // dung khong? Dung khi lech vuot qua bien do tick toi da co the
+  // (MAX_TICK x so bo dem) — luc do tick local cu la di tich cua goc
+  // cu (vd goc 1440 doi thanh 611 o M8: chip hien 1.613 truoc khi
+  // fetch ve, popup hien 785 sau fetch), phai reset tick ve 0 de so
+  // hien bat dau o goc moi thay vi cong don len goc moi.
+  function serverBaseChanged(merged, localBase, isTotal) {
+    if (!isFinite(Number(merged)) || !isFinite(Number(localBase))) return false;
+    var maxTick = isTotal ? MAX_TICK * KEYS.length : MAX_TICK;
+    return Math.abs(Number(merged) - Number(localBase)) > maxTick;
+  }
+
   // Lấy số gộp từ server qua RPC get_online_display(p_page). Chỉ trả về 1
   // số nguyên (ảo + thật); phía khách không bao giờ biết số thật riêng.
   function fetchMerged() {
@@ -322,27 +334,34 @@
     if (!client || typeof client.rpc !== 'function' || !mergedKey) return;
     client.rpc('get_online_display', { p_page: mergedKey }).then(function (res) {
       if (res && !res.error && isFinite(Number(res.data))) {
-        mergedValue = Math.floor(Number(res.data));
+        var next = Math.floor(Number(res.data));
+        var localBase = (mergedKey === 'total') ? TOTAL_BASE : BASE[mergedKey];
+        if (state && serverBaseChanged(next, localBase, mergedKey === 'total')) {
+          KEYS.forEach(function (k) { state.tick[k] = 0; });
+          save();
+        }
+        mergedValue = next;
         render();
       }
       // Lỗi (vd M8 chưa chạy): giữ mergedValue cũ/null → fallback số ảo.
     }, function () { /* nuốt lặng — fallback số ảo */ });
   }
 
-  // Heartbeat presence: upsert (anon_key, page, last_seen). Chỉ gửi khi tab
-  // đang hiển thị. Không gửi gì khác ngoài 3 trường này.
+  // Heartbeat presence qua RPC record_presence (M14, SECURITY DEFINER) —
+  // thay upsert truc tiep bang online_presence (RLS chan anon upsert,
+  // NEW-02: so online that luon 0). Server tu ghi last_seen. Chi gui khi
+  // tab dang hien thi. Loi (RPC chua co) nuot lang — heartbeat tam dung,
+  // khong vo trang. Khong gui gi khac ngoai 2 truong nay.
   function sendHeartbeat() {
     if (typeof document === 'undefined' || document.visibilityState !== 'visible') return;
     var client = apiClient();
-    if (!client || typeof client.from !== 'function') return;
+    if (!client || typeof client.rpc !== 'function') return;
     var anonKey = getAnonKey();
     var page = (pageKey === 'total') ? 'home' : pageKey;
     if (!anonKey || !page) return;
     safe(function () {
-      client.from('online_presence').upsert(
-        { anon_key: anonKey, page: page, last_seen: new Date().toISOString() },
-        { onConflict: 'anon_key,page' }
-      ).then(function () { /* xong — không log gì */ }, function () { /* nuốt lặng */ });
+      client.rpc('record_presence', { p_anon_key: anonKey, p_page: page })
+        .then(function () { /* xong — không log gì */ }, function () { /* nuốt lặng */ });
     }, null);
   }
 
@@ -505,7 +524,7 @@
     counterWindow8h: counterWindow8h, hash01: hash01, seedForWindow: seedForWindow,
     windowCenter: windowCenter,
     displayForPage: displayForPage, displayTotal: displayTotal,
-    valueForKey: valueForKey, shouldShowPopup: shouldShowPopup,
+    valueForKey: valueForKey, serverBaseChanged: serverBaseChanged, shouldShowPopup: shouldShowPopup,
     fetchPoints: fetchPoints,
     init: init
   };

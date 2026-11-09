@@ -11,16 +11,16 @@
    mới mới INSERT được; client đã chấp nhận trước để không chặn UI.
    - Bình luận mới LUÔN ở trạng thái chờ duyệt (moderation_status='pending'),
      KHÔNG tự duyệt, KHÔNG tự cộng xu lúc gửi (points 0 ở phía client).
-   - Xu bình luận v2 (+10, tối đa 1 lần/ngày toàn site) CHỈ được cộng
+   - Xu bình luận M12 (+1, tối đa 1 lần/ngày toàn site) CHỈ được cộng
      SAU KHI DUYỆT (quyết định 18:49 ngày 08/11, sửa NEW-06 ở v111):
      client KHÔNG gọi award_interaction_points() lúc gửi — việc cộng do
      luồng duyệt phía server lo; message lúc gửi nói rõ "sau khi được
-     duyệt sẽ được cộng 10 xu".
+     duyệt sẽ được cộng 1 xu".
    - v95: khách vãng lai bình luận ĐƠN GIẢN — chỉ 1 ô bình luận, không cần
      tên, không luật 20 ký tự (chỉ cần ≥2 ký tự, khớp CHECK của bảng
      comments), ghi chú rõ không cần đăng nhập; tên mặc định "Khách Vãng
      Lai", 0 xu. Người đã đăng nhập giữ form đầy đủ + luật ≥20 ký tự
-     để tính xu +10.
+     để tính xu +1.
    - Client không bao giờ đọc/ghi points_ledger hay wallet_balances.
    RPC/bảng chưa có (M6/M7 chưa chạy) thì form báo lỗi rõ, không vỡ trang. */
 (function () {
@@ -30,7 +30,7 @@
   // GUEST_NOTE cũ giữ lại (đã export) để không vỡ code khác, nhưng form
   // khách không dùng nữa.
   var GUEST_SIMPLE_NOTE = 'Bình luận với tên Khách Vãng Lai — không cần đăng nhập.';
-  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 10 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
+  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
@@ -79,12 +79,12 @@
 
   // Gửi 1 bình luận: gọi RPC submit_comment (SECURITY DEFINER, bypass RLS
   // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501). Validate: đã đăng
-  // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu +10
+  // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu +1
   // SAU KHI DUYỆT); khách vãng lai → chỉ cần viết gì đó (≥2 ký tự, v95 —
   // khớp CHECK của bảng comments; chặn link + chống spam do RPC lo).
   // Trả {ok, points, message} — KHÔNG ném lỗi.
   // v111 (NEW-06, quyet dinh 18:49 ngay 08/11): KHONG cong xu luc gui.
-  // Xu binh luan +10 chi cong SAU KHI DUYET — viec cong do luong duyet
+  // Xu binh luan +1 chi cong SAU KHI DUYET — viec cong do luong duyet
   // phia server lo; client khong goi awardInteraction('comment') o day
   // nua (ban cu goi ngay sau RPC submit_comment nen xu cong truoc khi
   // duyet, trai quy tac cong bo). points luon 0 o day.
@@ -122,7 +122,7 @@
     // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt —
     // KHÔNG gọi awardInteraction ở đây (v111 NEW-06). Trả message nói rõ
     // xu cộng sau khi duyệt để người dùng không tưởng đã cộng ngay.
-    return { ok: true, points: 0, message: 'Bình luận đã gửi, đang chờ duyệt. Sau khi được duyệt sẽ được cộng 10 xu (tối đa 1 lần/ngày).' };
+    return { ok: true, points: 0, message: 'Bình luận đã gửi, đang chờ duyệt. Sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày).' };
   }
 
   // Vẽ mục bình luận (form + danh sách) vào 1 phần tử. container: element

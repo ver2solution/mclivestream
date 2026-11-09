@@ -69,6 +69,7 @@
     var cat = d.getElementById('faqAskCategory');
     var text = d.getElementById('faqAskText');
     var msg = d.getElementById('faqAskMsg');
+    var receipt = d.getElementById('faqAskReceipt');
     var btn = d.getElementById('faqAskSubmit');
     var inFlight = false;
     form.addEventListener('submit', async function (e) {
@@ -82,6 +83,15 @@
           msg.textContent = out.message;
           msg.className = 'faq-ask-msg' + (out.ok ? ' ok' : ' err');
         }
+        // v114 (P3-8): bien nhan sau khi gui — cau hoi, muc, gio VN,
+        // ma tham chieu HĐ-YYYYMMDD-HHMM-XXX (xem makeFaqReceipt).
+        if (out.ok && receipt) {
+          var r = makeFaqReceipt(cat ? cat.value : '', text ? text.value : '');
+          var catLabel = '';
+          try { if (cat && cat.options && cat.selectedIndex >= 0) catLabel = cat.options[cat.selectedIndex].textContent || cat.options[cat.selectedIndex].text || ''; } catch (e2) {}
+          receipt.innerHTML = receiptHTML(r, catLabel);
+          receipt.hidden = false;
+        }
         if (out.ok && typeof form.reset === 'function') form.reset();
       } finally {
         inFlight = false;
@@ -89,6 +99,31 @@
       }
     });
     return true;
+  }
+
+  // v114 (P3-8): bien nhan sau khi gui — ham thuan de test duoc qua
+  // Node. now: Date hoac ms (mac dinh bay gio, gio dia phuong cua
+  // trinh duyet = gio VN cua nguoi dung). Ma tham chieu dang
+  // HĐ-YYYYMMDD-HHMM-XXX (XXX = 3 chu so ngau nhien).
+  function pad2(n) { return ('0' + n).slice(-2); }
+  function makeFaqReceipt(category, question, now) {
+    var d = (now instanceof Date) ? now : new Date(now == null ? Date.now() : now);
+    var y = d.getFullYear(), mo = pad2(d.getMonth() + 1), dd = pad2(d.getDate());
+    var hh = pad2(d.getHours()), mm = pad2(d.getMinutes());
+    var rand = String(Math.floor(Math.random() * 1000) + 1000).slice(1);
+    return {
+      ref: 'HĐ-' + y + mo + dd + '-' + hh + mm + '-' + rand,
+      category: category, question: question,
+      time: dd + '/' + mo + '/' + y + ' ' + hh + ':' + mm
+    };
+  }
+  function escHtml(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function receiptHTML(r, catLabel) {
+    return '<p><b>Đã nhận câu hỏi của bạn.</b></p>'
+      + '<p>Mã tham chiếu: <b>' + escHtml(r.ref) + '</b> · Gửi lúc ' + escHtml(r.time) + ' (giờ Việt Nam)</p>'
+      + '<p>Mục: ' + escHtml(catLabel || r.category) + '</p>'
+      + '<p>Câu hỏi: ' + escHtml(r.question) + '</p>'
+      + '<p>Ver2Solution sẽ xem và sửa sớm — câu trả lời sẽ xuất hiện ở mục Hỏi đáp.</p>';
   }
 
   // Tự gắn khi trang tải xong (script đặt cuối body nên DOM đã sẵn;
@@ -106,7 +141,8 @@
   var API = {
     TABLE: TABLE, MIN_LEN: MIN_LEN, MAX_LEN: MAX_LEN, SUCCESS_MSG: SUCCESS_MSG,
     CATEGORIES: CATEGORIES, validateQuestion: validateQuestion,
-    submitQuestion: submitQuestion, initFaqAsk: initFaqAsk
+    submitQuestion: submitQuestion, initFaqAsk: initFaqAsk,
+    makeFaqReceipt: makeFaqReceipt, receiptHTML: receiptHTML
   };
   if (typeof window !== 'undefined') window.Ver2FaqAsk = API;
   if (typeof module !== 'undefined' && module.exports) module.exports = API;

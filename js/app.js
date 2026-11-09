@@ -196,10 +196,12 @@ function ownerNoteHTML(kind){
 function pointsButtonsHTML(targetType, targetId){
   // v111 (NEW-07): khoi phuc trang thai "Da thich" khi render lai (doc tu
   // localStorage v2s_likes_v1, giong co che sao v2s_stars_v1).
+  // v114 (P3-6): khoi phuc ca "Da chia se" (v2s_shares_v1).
   var liked = likedToday(targetType, targetId);
+  var shared = sharedToday(targetType, targetId);
   return '<span class="v2s-points-row" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
-  + '<button class="btn btn-ghost btn-sm' + (liked ? ' v2s-liked' : '') + '" type="button" data-v2s-like' + (liked ? ' disabled aria-pressed="true"' : '') + '>' + (liked ? '👍 Đã thích' : '👍 Thích · +10') + '</button>'
-  + '<button class="btn btn-ghost btn-sm" type="button" data-v2s-share>↗ Chia sẻ · +20</button>'
+  + '<button class="btn btn-ghost btn-sm' + (liked ? ' v2s-liked' : '') + '" type="button" data-v2s-like' + (liked ? ' disabled aria-pressed="true"' : '') + '>' + (liked ? '👍 Đã thích' : '👍 Thích · +1') + '</button>'
+  + '<button class="btn btn-ghost btn-sm' + (shared ? ' v2s-shared' : '') + '" type="button" data-v2s-share' + (shared ? ' disabled aria-pressed="true"' : '') + '>' + (shared ? '↗ Đã chia sẻ' : '↗ Chia sẻ · +2') + '</button>'
   + '<button class="btn btn-ghost btn-sm" type="button" data-v2s-pin>📌 Ghim lên top</button>'
   + '<span class="v2s-points-msg" role="status"></span></span>';
 }
@@ -246,8 +248,44 @@ function markLikedToday(type, id){
   if (!type || !id) return;
   var map = likeStoreRead(); map[likeKey(type, id)] = starTodayStr(); likeStoreWrite(map);
 }
+/* v114 (P3-6): trang thai Chia se luu localStorage theo ngay (giong Thich).
+   Gioi han server la 1 lan/ngay/loai (awardInteraction) nen 1 nut chi
+   hien "Da chia se" trong ngay da bam; sang ngay moi duoc chia se lai. */
+var SHARE_STORE_KEY = 'v2s_shares_v1';
+function shareStoreRead(){
+  try { var raw = (typeof localStorage !== 'undefined') ? localStorage.getItem(SHARE_STORE_KEY) : null; return raw ? JSON.parse(raw) : {}; } catch (e) { return {}; }
+}
+function shareStoreWrite(map){
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(SHARE_STORE_KEY, JSON.stringify(map)); } catch (e) {}
+}
+function shareKey(type, id){ return String(type || '') + ':' + String(id || ''); }
+function sharedToday(type, id, today){
+  if (!type || !id) return false;
+  var map = shareStoreRead();
+  return map[shareKey(type, id)] === (today || starTodayStr());
+}
+function markSharedToday(type, id){
+  if (!type || !id) return;
+  var map = shareStoreRead(); map[shareKey(type, id)] = starTodayStr(); shareStoreWrite(map);
+}
+// v114 (P3-6): nut Chia se doi trang thai NGAY sau khi bam — doi nhan
+// thanh "↗ Da chia se", them class v2s-shared, vo hieu nut (khong bam lap
+// trong cung luot render). Chi goi khi RPC awardInteraction da tra ok.
+function markShared(btn){
+  try {
+    if (!btn) return;
+    if (btn.classList && btn.classList.add) btn.classList.add('v2s-shared');
+    btn.textContent = '↗ Đã chia sẻ';
+    btn.disabled = true;
+    if (btn.setAttribute) btn.setAttribute('aria-pressed', 'true');
+    try {
+      var row = (btn.closest) ? btn.closest('.v2s-points-row') : null;
+      if (row && row.getAttribute) markSharedToday(row.getAttribute('data-v2s-target-type'), row.getAttribute('data-v2s-target-id'));
+    } catch (e2) {}
+  } catch (e) {}
+}
 /* v99 (§2 dac ta sao len top): sao = xep hang cong khai, KHONG cong
-   diem, ai cung an duoc (khac nut Thich +10 diem, chi tai khoan).
+   diem, ai cung an duoc (khac nut Thich +1 diem, chi tai khoan).
    - Gioi han 1 sao / 1 ho so / 1 phien an danh / 1 ngay (khach) hoac
      1 sao / 1 tai khoan / 1 ngay (da dang nhap): server kiem tra qua
      RPC star_profile; client them lop chan dia phuong (localStorage)
@@ -260,6 +298,7 @@ function markLikedToday(type, id){
      chung duoc bo loc chup lai luc khoi tao nen khong render lai). */
 var STAR_STORE_KEY = 'v2s_stars_v1';
 var STAR_STATS = {}; // id -> {count, last} (nap tu profile_star_stats)
+var STAR_STATS_LOADED = false; // v114 (P3-4): sao hien "…" truoc khi nap xong, khong hien 0 gia.
 var STAR_WINDOW_MS = 60 * 60 * 1000;
 function starStoreRead(){
   try { var raw = (typeof localStorage !== 'undefined') ? localStorage.getItem(STAR_STORE_KEY) : null; return raw ? JSON.parse(raw) : {}; } catch (e) { return {}; }
@@ -278,7 +317,8 @@ function markStarredToday(type, id){
 }
 function starCountOf(id){ var s = STAR_STATS[id]; return (s && typeof s.count === 'number') ? s.count : 0; }
 function starButtonHTML(targetType, targetId){
-  var count = starCountOf(targetId);
+  // v114 (P3-4): chua nap xong bang sao thi hien "…" — khong hien 0 gia.
+  var count = STAR_STATS_LOADED ? starCountOf(targetId) : '…';
   var done = starredToday(targetType, targetId);
   return '<button class="v2s-star-btn' + (done ? ' starred' : '') + '" type="button" data-star-type="' + esc(targetType) + '" data-star-id="' + esc(targetId) + '" data-star-count="' + count + '"' + (done ? ' disabled' : '') + ' aria-label="Ấn sao để đưa hồ sơ này lên top 60 phút">★ <span class="v2s-star-count">' + count + '</span></button>';
 }
@@ -317,13 +357,14 @@ function refreshStarCounts(){
 function fetchStarStats(){
   // Nap bang dem sao cong khai; loi (migration chua chay) -> {} im lang.
   var M = (typeof window !== 'undefined') ? window.McLivestreamAPI : null;
-  if(!M || typeof M.fetchStarStats !== 'function') return Promise.resolve({});
+  if(!M || typeof M.fetchStarStats !== 'function'){ STAR_STATS_LOADED = true; return Promise.resolve({}); }
   return M.fetchStarStats().then(function(rows){
     var map = {};
     (rows || []).forEach(function(r){ if(r && r.profile_id) map[r.profile_id] = {count: Number(r.star_count) || 0, last: r.last_starred_at || null}; });
     STAR_STATS = map;
+    STAR_STATS_LOADED = true;
     return map;
-  }, function(){ return {}; });
+  }, function(){ STAR_STATS_LOADED = true; return {}; });
 }
 /* v111 (NEW-S1): toast phan hoi khi bam sao — dung style inline de khong
    phu thuoc file CSS (chi sua app.js trong nhom nay). Tu bien mat sau 3s. */
@@ -956,7 +997,7 @@ function getPinnedRow(list){
    dong. */
 /* v100: the tin rut gon — 1 anh dai dien + 2 dong thong tin (tieu de + chuyen muc · ngay).
    - withPoints=true (chi danh sach tin-tuc.html): them hang nut diem/ghim v92
-     (Thich +10 / Chia se +20 / Ghim len top) NGOAI link bai — day la hang
+     (Thich +1 / Chia se +2 / Ghim len top) NGOAI link bai — day la hang
      hanh dong, khong phai dong thong tin; trang chu + hang tin trang Mau
      khong co hang nut nay (nhu truoc v100). */
 /* v111 (muc 5): ngay bai hien du ngay/thang/nam. Du lieu hien dung ISO
@@ -1350,7 +1391,7 @@ function initHome(){
         var msgEl=filterMsgEl(form);
         function say(html){ if(msgEl) msgEl.innerHTML=html; }
         if(!user){
-          say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+          say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 10 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
           return;
         }
         var R2=window.Ver2Reward;
@@ -1480,6 +1521,13 @@ function applyOptionCounts(sel, counts, total){
     if(o.setAttribute) o.setAttribute('value', val);
     o.value = val;
     o.textContent = countLabel(label, n);
+    // v114 (P3-9): an muc 0 ket qua — tru "Tat ca" (value '') va muc
+    // dang duoc chon (de nguoi dung van thay lua chon hien tai cua minh).
+    var isAll = (val === '');
+    var isSelected = (o.selected === true);
+    var hideZero = (!isAll && !isSelected && n === 0);
+    if (o.hidden !== undefined) o.hidden = hideZero;
+    o.disabled = hideZero;
   }
 }
 function initOptionCounts(){
@@ -1705,14 +1753,22 @@ function initShops(){
   /* bo loc shop trang Mau — cung truong + cung gia tri nhu bo loc chung
      (fUni*) nhung id rieng fSh* (khong co thanh truot chon hang muc). */
   function readForm(){return {prov:elVal('fShProv'),cat:uniCatToShop(elVal('fShCat')),sort:elVal('fShSort'),shift:elVal('fShShift'),payType:elVal('fShPayType'),payMin:parseMoneyInput(elVal('fShPayMin'))};}
+  // v114 (P2-2): ghi lai bo loc luc render — phan trang chi ap dung
+  // thang khi bo loc tren form chua doi; doi roi thi phai qua cong
+  // dang nhap (gateFilterApply) nhu nut Ap dung.
+  var lastFilterKey = null;
   function render(pg){
     var f=readForm();
+    lastFilterKey = JSON.stringify(f);
     var base=f.sort ? sortShopsBy(D.shops||[],f.sort) : defaultShopOrder(D.shops||[]);
     if(!f.sort) base=applyStarOrder(base, STAR_STATS, Date.now()); // v99 (§2): tang sao 60 phut len truoc
     var list=filterShops(base,f);
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):emptyResultsHTML('Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.');
-    renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){render(np); el.scrollIntoView();},perPage,'tin tuyển');
+    renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){
+      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('shop', 'danh-sach-mau.html', function(){ render(np); el.scrollIntoView(); }, document.getElementById('shopApplyBtn')); }
+      else { render(np); el.scrollIntoView(); }
+    },perPage,'tin tuyển');
     setParams(Object.assign({},f,{page:String(pg)}));
   }
   if(p.prov) document.getElementById('fShProv').value=p.prov;
@@ -1830,8 +1886,10 @@ function initList(){
       q:uniModelQ
     };
   }
+  // v114 (P2-2): nhu initShops — phan trang chi ap thang khi bo loc chua doi.
+  var lastFilterKey = null;
   function render(pg){
-    var f=readForm(); var list=filterModels(D.models,f);
+    var f=readForm(); lastFilterKey = JSON.stringify(f); var list=filterModels(D.models,f);
     if(f.sort){
       list=sortModelsBy(list,f.sort);
     } else {
@@ -1840,7 +1898,10 @@ function initList(){
     }
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
-    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){render(np); grid.scrollIntoView();},12,'hồ sơ');
+    renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){
+      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('model', 'danh-sach-shop.html', function(){ render(np); grid.scrollIntoView(); }, document.getElementById('uniApplyBtn')); }
+      else { render(np); grid.scrollIntoView(); }
+    },12,'hồ sơ');
     /* URL giu dang ?cat= ten linh vuc mau (nhu hero/chip/hub) + cac khoa
        cua bo loc chung; q chi ghi khi co tu khoa. */
     var sp={prov:f.prov,cat:f.cat,sort:elVal('fUniSort'),shift:elVal('fUniShift'),paytype:elVal('fUniPayType'),paymin:elVal('fUniPayMin'),q:f.q,page:String(pg)};
@@ -1981,11 +2042,16 @@ function initNews(){
     /* v100: danh sach tin dung chung the tin rut gon (1 anh + 2 dong).
        Anh goc / takeaway / nut diem chi con o trang chi tiet bai-viet,
        khong hien trong danh sach nua. Bo loc + sap xep + dem + sidebar giu nguyen. */
-    main.innerHTML=list.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
+    // v114 (P3-3): hang ghim + hang moi nhat cung theo bo loc; bai da
+    // hien o hang ghim khong lap lai o danh sach chinh. So dem giu
+    // nguyen = tong so bai khop bo loc.
+    var topIds = renderTopRows(list);
+    var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
+    main.innerHTML=mainList.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
     var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
-      return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">Lượt đọc: chưa kiểm chứng (tạm ghi 0) · '+esc(formatArticleDate(a.date))+'</span></span></li>';
+      return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">'+esc(formatArticleDate(a.date))+'</span></span></li>';
     }).join('');
   }
   /* v105: 2 hang tin tren muc loc (user chot 22:28 08/11) — hang 1 Tin ghim,
@@ -2002,19 +2068,24 @@ function initNews(){
      bai ghim (xep pinOrder tang dan roi date giam dan, nhu getPinnedRow)
      len truoc, thieu thi lap bang bai moi nhat theo date; khong co bai
      ghim thi 4 bai moi nhat theo date. getPinnedRow + hang ghim trang chu
-     GIU NGUYEN quy tac v84, khong doi. */
-  function renderTopRows(){
+     GIU NGUYEN quy tac v84, khong doi.
+     v114 (P3-3): 2 hang nay TINH THEO BO LOC — render() goi
+     renderTopRows(list) moi lan loc/sap xep doi, va tra ve top1 de
+     render() loai khoi danh sach chinh (khong lap bai giua hang ghim
+     va Tin moi nhat). */
+  function renderTopRows(source){
     var pinRow=document.getElementById('newsPinnedRow');
     var newRow=document.getElementById('newsNewRow');
-    if(!pinRow && !newRow) return;
-    var pinned=(D.articles||[]).filter(function(a){ return !!a.pinned; });
+    if(!pinRow && !newRow) return null;
+    var src = source || D.articles || [];
+    var pinned=src.filter(function(a){ return !!a.pinned; });
     pinned.sort(function(a, b){
       var ao=(typeof a.pinOrder==='number')?a.pinOrder:Infinity;
       var bo=(typeof b.pinOrder==='number')?b.pinOrder:Infinity;
       if(ao!==bo) return ao-bo;
       return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0);
     });
-    var newest=sortByDateDesc(D.articles||[]);
+    var newest=sortByDateDesc(src);
     var top1=pinned.slice(0,4);
     for(var i=0;i<newest.length && top1.length<4;i++){
       if(top1.indexOf(newest[i])===-1) top1.push(newest[i]);
@@ -2023,6 +2094,7 @@ function initNews(){
     var top2=rest.slice(0,4);
     if(pinRow) pinRow.innerHTML=top1.map(function(a){ return newsCardHTML(a); }).join('');
     if(newRow) newRow.innerHTML=top2.map(function(a){ return newsCardHTML(a); }).join('');
+    return top1;
   }
   // v111 (NEW-P6): prefill o loc tu ?cat= khi mo truc tiep (vd
   // tin-tuc.html?cat=Dòng tiền) — truoc day initNews khong doc params
@@ -2032,7 +2104,7 @@ function initNews(){
   if(qp.cat){
     for(var ci = 0; ci < cats.length; ci++){ if(cats[ci] === qp.cat){ catSel.value = qp.cat; break; } }
   }
-  catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render(); renderTopRows();
+  catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render(); // v114 (P3-3): render() da goi renderTopRows(list) o trong
 }
 /* Detail: 2-column layout + mini-card list of the other 19 (names, never ids) */
 function initDetail(){
@@ -2203,7 +2275,10 @@ function initHeaderAuth(){
   if(typeof document === 'undefined' || !document.querySelector) return;
   // v90 (F): [href*="dang-nhap.html"] de khop ca trang bai-viet (href
   // "../dang-nhap.html?next=...") — truoc day chi khop trang goc.
-  var btn = document.querySelector('.site-head .btn[href*="dang-nhap.html"]');
+  // v114 (P2-8): nut header trang Gioi thieu gio la dang-ky.html — khop
+  // ca hai, de header khi da dang nhap van doi thanh chip ten + xu.
+  var btn = document.querySelector('.site-head .btn[href*="dang-nhap.html"]')
+    || document.querySelector('.site-head .btn[href*="dang-ky.html"]');
   if(!btn) return;
   if(!btn._loginLabel) btn._loginLabel = btn.textContent;
   if(!btn._loginHref) btn._loginHref = btn.getAttribute('href');
@@ -2211,13 +2286,14 @@ function initHeaderAuth(){
   // Trang cua toi / Trang chu khong tro thanh 404 o trang bai-viet.
   var pathPrefix = (btn._loginHref && btn._loginHref.indexOf('../') === 0) ? '../' : '';
   // Xu v2 (GĐ2, 20:22 07/11): khi đã đăng nhập, header hiện số dư xu
-  // cạnh tên người dùng, dạng "Tên · 250 xu". Lỗi/mất mạng/RPC chưa có
+  // cạnh tên người dùng, dạng "Tên · 10 xu". Lỗi/mất mạng/RPC chưa có
   // thì KHÔNG hiện số dư (không vỡ header, không hiện 0 giả).
   var headerName = null, headerBalance = null;
+  var headerBalanceLoading = false; // v114 (P3-4): dang tai so du -> "Ten · …", khong hien 0 gia.
   var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
   function renderHeaderLabel(){
     if(headerName === null) return;
-    btn.textContent = headerName + (headerBalance === null ? '' : ' · ' + headerBalance + ' xu');
+    btn.textContent = headerName + (headerBalanceLoading ? ' · …' : (headerBalance === null ? '' : ' · ' + headerBalance + ' xu'));
     // v90 (F): dong bo ten + diem vao dropdown dang xuat.
     if(menuNameEl) menuNameEl.textContent = headerName;
     if(menuPointsEl){
@@ -2227,14 +2303,17 @@ function initHeaderAuth(){
   }
   function loadHeaderBalance(){
     try {
+      headerBalanceLoading = true; renderHeaderLabel();
       loadPointsScripts().then(function(){
         var R = window.Ver2Reward;
-        if(!R || typeof R.getMyPointsBalanceResult !== 'function') return;
+        if(!R || typeof R.getMyPointsBalanceResult !== 'function'){ headerBalanceLoading = false; renderHeaderLabel(); return; }
         R.getMyPointsBalanceResult().then(function (r){
-          if(r && r.ok){ headerBalance = Number(r.balance) || 0; renderHeaderLabel(); }
-        }).catch(function () {});
-      });
-    } catch (e) { /* bo qua — header giu ten khong so du */ }
+          headerBalanceLoading = false;
+          if(r && r.ok){ headerBalance = Number(r.balance) || 0; }
+          renderHeaderLabel();
+        }).catch(function () { headerBalanceLoading = false; renderHeaderLabel(); });
+      }).catch(function () { headerBalanceLoading = false; renderHeaderLabel(); });
+    } catch (e) { headerBalanceLoading = false; /* bo qua — header giu ten khong so du */ }
   }
   // v90: cho phep lam moi so du header sau khi tru diem (reward.js goi
   // window.V20HeaderRefresh() moi khi spendPoints() thanh cong).
@@ -2472,12 +2551,17 @@ function scrollToResults(category){
 }
 function gateFilterApply(category, page, doApply, msgAnchor){
   var R = window.Ver2Reward;
+  // v114 (P2-1): phan hoi DONG BO ngay khi bam — truoc day chuoi async
+  // loadPointsScripts -> pointsSessionUser khong co .catch nen khach
+  // vang lai bam "Ap dung loc" thay nhu chet (khong loc, khong bao).
+  var msgEl0 = msgAnchor ? filterMsgEl(msgAnchor) : null;
+  if (msgEl0) msgEl0.textContent = 'Đang kiểm tra đăng nhập…';
   return loadPointsScripts().then(function(){
     return pointsSessionUser().then(function (user){
       var msgEl = msgAnchor ? filterMsgEl(msgAnchor) : null;
       function say(html){ if (msgEl) msgEl.innerHTML = html; }
       if (!user) {
-        say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 250 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
+        say('Hãy <a href="dang-ky.html">đăng ký</a> để dùng bộ lọc — đăng ký đủ nhận 10 xu thưởng! Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a>');
         return false;
       }
       var R2 = window.Ver2Reward;
@@ -2487,6 +2571,7 @@ function gateFilterApply(category, page, doApply, msgAnchor){
       // cờ FREE_SERVICES (bản reward.js cũ / mock test) thì đi đường trừ
       // xu như cũ.
       if (R2 && R2.FREE_SERVICES === true) {
+        say(''); // v114 (P2-1): xoa thong bao "Dang kiem tra…" khi loc da ap dung
         try { doApply(); } catch (e) {}
         scrollToResults(category);
         return true;
@@ -2494,6 +2579,7 @@ function gateFilterApply(category, page, doApply, msgAnchor){
       if (!R2 || typeof R2.spendPoints !== 'function') { say('Hệ thống xu chưa bật (đang chờ migration M7), chưa lọc được.'); return false; }
       var now = Date.now();
       if (typeof R2.shouldChargeFilter === 'function' && !R2.shouldChargeFilter(filterLastCharge(category), now)) {
+        say(''); // v114 (P2-1): xoa thong bao "Dang kiem tra…" khi loc da ap dung
         try { doApply(); } catch (e) {}
         scrollToResults(category); // v90 (3): mien phi trong 10s van cuon toi ket qua
         return true; // đổi trong 10s sau lần trừ trước: miễn phí lần này
@@ -2531,6 +2617,10 @@ function gateFilterApply(category, page, doApply, msgAnchor){
         return false;
       });
     });
+  }).catch(function (){
+    var msgEl = msgAnchor ? filterMsgEl(msgAnchor) : null;
+    if (msgEl) msgEl.textContent = 'Không kiểm tra được đăng nhập, thử tải lại trang rồi bấm lại.';
+    return false;
   });
 }
 /* Đọc pin đang chạy qua RPC get_active_pins(p_category) — KHÔNG SELECT
@@ -2670,10 +2760,13 @@ function initPointsUI(){
       var tt = wrap.getAttribute('data-v2s-target-type'), ti = wrap.getAttribute('data-v2s-target-id');
       var hidden = wrap.querySelector('.v2s-contacts-hidden');
       var cmsg = wrap.querySelector('.v2s-contact-msg');
+      // v114 (P2-6): phan hoi DONG BO ngay khi bam — truoc day chuoi async
+      // khong co .catch nen khach bam "Xem lien he" thay nhu chet.
+      if (cmsg) cmsg.textContent = 'Đang kiểm tra đăng nhập…';
       var reveal = function(){ if (hidden) hidden.hidden = false; vc.style.display = 'none'; if (cmsg) cmsg.textContent = ''; };
       loadPointsScripts().then(function(){
         return pointsSessionUser().then(function (user){
-          if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 250 xu! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
+          if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 10 xu! <a href="dang-nhap.html">Đăng nhập</a>'; return; }
           var R = window.Ver2Reward;
           if (R && R.FREE_SERVICES === true) { reveal(); return; } // v92: miễn phí
           if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { reveal(); return; }
@@ -2684,9 +2777,9 @@ function initPointsUI(){
             if (res && res.ok) { if (typeof R.markContactViewed === 'function') R.markContactViewed(tt, ti, day); reveal(); }
             else if (res && res.code === 'insufficient_balance') { if (cmsg) cmsg.innerHTML = 'Bạn đã hết xu để xem liên hệ. <a href="huong-dan-diem.html">Xem cách kiếm xu →</a>'; }
             else { if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((res && res.error) || 'hệ thống xu chưa bật.'); }
-          });
+          }).catch(function(){ if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: lỗi mạng, thử lại sau.'; });
         });
-      });
+      }).catch(function(){ if (cmsg) cmsg.textContent = 'Không kiểm tra được đăng nhập, thử tải lại trang rồi bấm lại.'; });
       return;
     }
     // Nút "Ghim lên top" trong hộp ghim trang chi tiết.
@@ -2752,8 +2845,10 @@ function initPointsUI(){
           return;
         }
         R.awardInteraction(type, targetType, targetId).then(function (r){
-          if (r && r.ok && Number(r.points) > 0) { if (type === 'like') markLiked(t); say('+' + Number(r.points) + ' xu (1 lần/ngày)'); }
-          else if (r && r.ok) { if (type === 'like') markLiked(t); say(type === 'like' ? 'Đã tính xu thích hôm nay' : 'Đã tính xu chia sẻ hôm nay'); }
+          // v114 (P3-6): nut Chia se vo hieu hoa ngay sau khi RPC tra ok,
+          // giong nut Thich (markLiked) — truoc day chi doi trang thai Like.
+          if (r && r.ok && Number(r.points) > 0) { if (type === 'like') markLiked(t); else if (type === 'share') markShared(t); say('+' + Number(r.points) + ' xu (1 lần/ngày)'); }
+          else if (r && r.ok) { if (type === 'like') markLiked(t); else if (type === 'share') markShared(t); say(type === 'like' ? 'Đã tính xu thích hôm nay' : 'Đã tính xu chia sẻ hôm nay'); }
           else say('Chưa tính được xu: ' + esc((r && r.error) || 'hệ thống xu chưa bật.'));
         });
       });
@@ -2819,7 +2914,7 @@ function initTransferForm(){
       var R = window.Ver2Reward;
       if (!user) {
         streak = null; balance = 0;
-        if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển xu. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 250 xu</a>.';
+        if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển xu. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 10 xu</a>.';
         if (balEl) balEl.textContent = 'Cần đăng nhập để xem số dư xu.';
         if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển xu.</p>';
         if (submitBtn) submitBtn.disabled = true;
@@ -2910,7 +3005,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, filterMsgEl:filterMsgEl, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;

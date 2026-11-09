@@ -256,7 +256,7 @@ a:hover{text-decoration:underline}
    tin-tuc, trang chu (homeNews + homePinned) va hang tin trang Mau. */
 .news-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
 .news-card a{display:block;color:inherit;text-decoration:none}
-.news-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:right center}/* v111 NEW-P9: anh og 1200x630 (1.9) rong hon khung 16/9 nen cover crop 2 ben, logo "2" o mep phai bi cat — giu mep phai, chi crop ben trai */
+.news-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;object-position:center;background:#0b5d4e}/* v114 (P3-2): contain thay cover — anh og 1200x630 khong bi crop 2 ben nua, chu "Ver2Solution" khong mat mep trai; dai trong ~2% tren/duoi lay nen xanh thuong hieu */
 .news-card .pin-noimg{display:grid;place-items:center;width:100%;aspect-ratio:16/9;background:var(--brand);color:#fff}
 .news-card .pin-noimg b{font-size:40px;font-weight:900}
 .news-card h3{margin:8px 10px 2px;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -301,6 +301,11 @@ a:hover{text-decoration:underline}
 .faq-ask-msg{margin:12px 0 0;font-size:14px;min-height:1.2em}
 .faq-ask-msg.ok{color:#0b7a4b}
 .faq-ask-msg.err{color:#d92b1f}
+.faq-ask-receipt{margin:12px 0 0;padding:12px 14px;border:1px solid #bfe3d2;background:#eefaf4;border-radius:12px;font-size:14px}/* v114 (P3-8): bien nhan sau khi gui cau hoi */
+.faq-ask-receipt p{margin:0 0 6px}
+.faq-ask-receipt p:last-child{margin-bottom:0}
+.filter-hint{font-size:13px;color:var(--mut);margin:8px 0 0}/* v114 (P2-3): goi y canh nut Ap dung — loc can dang nhap, chon 1 hoac ca 2 tieu chi deu loc duoc */
+.wallet-balance{font-size:44px;font-weight:800;margin:6px 0;color:#0b5d4e}/* v114 (P1-1): so du lon trang Vi cua toi */
 @media(max-width:600px){.faq-ask-grid{grid-template-columns:1fr}.faq-ask select,.faq-ask textarea{font-size:16px}.faq-ask .btn{min-height:48px}}
 /* v45 auth: 1 the, 1 view hien tai 1 thoi diem (mau chuan login/signup) */
 .auth-view[hidden]{display:none}
@@ -777,6 +782,7 @@ th{background:#f4f8f6}
 .v2s-comment-msg{font-size:14px;color:#0b5d4e}
 .v2s-note{font-size:14px;color:#444}
 .v2s-liked{background:#0b5d4e !important;color:#fff !important;border-color:#0b5d4e !important} /* v92 (BUG-14): nút Thích đã bấm — đổi trạng thái rõ ngay */
+.v2s-shared{background:#0b5d4e !important;color:#fff !important;border-color:#0b5d4e !important} /* v114 (P3-6): nút Chia sẻ đã bấm — đổi trạng thái rõ ngay, giống Thích */
 .v2s-comment-toggle{min-height:44px} /* v92 (C2): nút bình luận dưới thẻ lô/xưởng/kiot, đủ 44px theo chuẩn v91, không tràn mobile 390px */
 .v2s-comments-inline{margin:10px 0}
 .v2s-comments-inline .v2s-comments{margin:0}
