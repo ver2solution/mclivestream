@@ -50,7 +50,7 @@ function hasReal(v){ var s = String(v==null?'':v).trim(); return s !== '' && s !
    KHONG esc them. Diem chung: thieu dia diem thi dong 1 gan link nguon
    kem chu "Chi tiet" (khong ghi chung chung); fallback "Thoa thuan"
    chi cho dong 2 (luong shop, mat hang xuong). */
-var CAT_LABELS = {'quan-ao':'Quần áo','nam':'Nam','nu':'Nữ','tre-em':'Trẻ em','giay-dep':'Giày dép','my-pham':'Mỹ phẩm','phu-kien':'Phụ kiện','tpcn':'TPCN','gia-dung':'Gia dụng & Đời sống','idol':'Idol / Streamer','cong-nghe':'Công nghệ','khac':'Khác','toan-bo-cua-hang':'Toàn bộ cửa hàng','sang-mat-bang':'Sang mặt bằng','hang-ton-kho':'Hàng tồn kho'};
+var CAT_LABELS = {'quan-ao':'Quần áo','nam':'Nam','nu':'Nữ','tre-em':'Trẻ em','giay-dep':'Giày dép','my-pham':'Mỹ phẩm','phu-kien':'Phụ kiện','tpcn':'TPCN','gia-dung':'Gia dụng & Đời sống','idol':'Idol / Streamer','cong-nghe':'Công nghệ','khac':'Khác','toan-bo-cua-hang':'Toàn bộ cửa hàng','sang-mat-bang':'Sang mặt bằng','hang-ton-kho':'Hàng tồn kho','do-dac-thiet-bi':'Đồ đạc, thiết bị'};
 function catLabel(code){ var s = String(code==null?'':code).trim(); return CAT_LABELS[s] || s; }
 function sourceDetailLink(url){ var u = String(url||'').trim(); if(!u) return 'Chi tiết'; return '<a class="card-line-link" href="'+esc(u)+'" target="_blank" rel="noopener">Chi tiết</a>'; }
 // v99: tim tinh/thanh trong chuoi tu do (tieu de/meta lo) — khop ten dai
@@ -910,7 +910,17 @@ function initSectionFilter(opts){
   }
   if(applyBtn) applyBtn.addEventListener('click', function(){ return gateFilterApply(opts.pointsCategory || 'lot', pointsPageName(), apply, applyBtn); });
   if(resetBtn) resetBtn.addEventListener('click', reset);
-  return {apply: apply, reset: reset};
+  // v124: chụp lại danh sách thẻ trong lưới (dùng khi tin user tải xong
+  // mới chen vào lưới sau khi bộ lọc đã khởi tạo — nếu không, tin user
+  // không lọt vào `orig` nên bộ lọc không lọc được chúng).
+  function refresh(){
+    grids.forEach(function(g){
+      var cards = [];
+      for(var ci = 0; ci < g.el.children.length; ci++){ cards.push(g.el.children[ci]); }
+      g.orig = cards.slice();
+    });
+  }
+  return {apply: apply, reset: reset, refresh: refresh};
 }
 function initLotFilter(){
   /* v96: doc tu khung loc chung (fUni*); dem + thong bao dung chung
@@ -1086,46 +1096,104 @@ function newsCardHTML(a, n, withPoints){
 }
 /* pinCardHTML giu lai lam bi danh (test cu + code khac goi) — cung mau the rut gon v100. */
 function pinCardHTML(a, n){ return newsCardHTML(a, n); }
-/* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc #shopFilter):
-   4 bai moi nhat thuoc 2 chuyen muc "Đời Sống" + "Dòng tiền" (ban dau
-   dung 4 bai A1–A4 moi viet; co bai moi cung chuyen muc thi tu cap nhat).
-   v103: tieu de hang doi thanh "Xu hướng sống mới" (user chot 21:40 08/11);
-   logic chon 4 bai khong doi. */
-function initModelNewsRow(){
-  var row=document.getElementById('modelNewsRow'); if(!row) return;
-  var list=(D.articles||[]).map(function(a,i){ return {a:a, i:i}; })
-    .filter(function(x){ return x.a.cat==='Đời Sống' || x.a.cat==='Dòng tiền'; })
+/* v124: hang tin — o 1 = bai duoc xem nhieu nhat (analytics 30 ngay),
+   3 o con lai = 3 bai moi nhat. Hang render 4 bai moi nhat truoc
+   (dong bo, khong doi fetch), roi nang cap o 1 len bai xem nhieu nhat
+   khi analytics ve (bat dong bo, khong lam cham trang). Neu khong co
+   bai nao co luot xem trong 2 chuyen muc cua hang thi giu nguyen 4 bai
+   moi nhat. Chuyen muc theo chi dao cua anh 10/11: Shop = Livestream +
+   Xu hướng; Mau = Đời Sống + Dòng tiền; Kiot = Đang hot + Livestream. */
+function newsRowNewest(cats,n){
+  return (D.articles||[]).map(function(a,i){ return {a:a,i:i}; })
+    .filter(function(x){ return cats.indexOf(x.a.cat)!==-1; })
     .sort(function(p,q){ var d=(p.a.date||'')<(q.a.date||'')?1:((p.a.date||'')>(q.a.date||'')?-1:0); return d!==0?d:(q.i-p.i); })
-    .slice(0,4).map(function(x){ return x.a; });
-  row.innerHTML='<h2><a href="tin-tuc.html" data-track="tieu-de-tin-doi-song-mau">Xu hướng sống mới</a></h2>'
-    + '<div class="news-row-4">' + list.map(function(a){ return newsCardHTML(a); }).join('') + '</div>'
+    .slice(0,n).map(function(x){ return x.a; });
+}
+/* Ham thuan (test duoc): chon bai co luot xem cao nhat trong cats.
+   pageviews: map page (khong dau '/') -> so luot xem. Tra null neu
+   khong bai nao co luot xem > 0. */
+function pickMostViewedArticle(articles,pageviews,cats){
+  var best=null,bestN=0;
+  (articles||[]).forEach(function(a){
+    if(cats.indexOf(a.cat)===-1) return;
+    var n=(pageviews&&a.page)?(pageviews[a.page]||0):0;
+    if(n>bestN){ bestN=n; best=a; }
+  });
+  return bestN>0?best:null;
+}
+var _mostViewedPromise=null;
+function fetchMostViewedInCats(cats){
+  if(_mostViewedPromise) return _mostViewedPromise;
+  _mostViewedPromise=(function(){
+    try{
+      var cfg=(typeof window!=='undefined'?window.MCLIVESTREAM_SUPABASE_CONFIG:null)||{};
+      if(!cfg.url||!cfg.anonKey||typeof fetch==='undefined') return Promise.resolve(null);
+      return fetch(cfg.url+'/rest/v1/rpc/get_analytics_summary',{
+        method:'POST',
+        headers:{'apikey':cfg.anonKey,'Authorization':'Bearer '+cfg.anonKey,'Content-Type':'application/json'},
+        body:JSON.stringify({p_days:30})
+      }).then(function(res){ return res.ok?res.json():null; }).then(function(rows){
+        if(!rows||!rows.length) return null;
+        var pv={};
+        rows.forEach(function(r){
+          if(r&&r.event_type==='pageview'&&r.page&&r.page.indexOf('/bai-viet/')===0){
+            var p=r.page.slice(1);
+            pv[p]=(pv[p]||0)+(r.event_count||0);
+          }
+        });
+        return pickMostViewedArticle(D.articles,pv,cats);
+      }).catch(function(){ return null; });
+    }catch(e){ return Promise.resolve(null); }
+  })();
+  return _mostViewedPromise;
+}
+function renderNewsRow(row,titleHtml,list){
+  row.innerHTML=titleHtml
+    + '<div class="news-row-4">'+list.map(function(a){ return newsCardHTML(a); }).join('')+'</div>'
     + '<p style="margin:10px 0 0"><a href="tin-tuc.html">Xem tất cả tin →</a></p>';
 }
-/* v123: hang 4 o tin "Dòng tiền & hàng hoá" tren trang Danh cho Shop
-   (danh-sach-shop.html, #shopNewsRow) — 4 bai moi nhat thuoc 2 chuyen muc
-   "Dòng tiền" + "Hàng hoá", cung mau initModelNewsRow (trang Mau). */
+/* Ham thuan (test duoc): ghep danh sach cuoi — o 1 = bai xem nhieu nhat,
+   3 o con lai = 3 bai moi nhat (loai bai xem nhieu nhat neu trung).
+   Neu khong co bai xem nhieu nhat thi giu nguyen 4 bai moi nhat. */
+function newsRowFinalList(newest,mostViewed){
+  if(!mostViewed) return newest.slice(0,4);
+  if(newest.length&&newest[0]===mostViewed) return newest.slice(0,4);
+  var rest=newest.filter(function(a){ return a!==mostViewed; }).slice(0,3);
+  return [mostViewed].concat(rest);
+}
+function initNewsRow(rowId,cats,titleHtml){
+  var row=document.getElementById(rowId); if(!row) return;
+  var newest=newsRowNewest(cats,4);
+  renderNewsRow(row,titleHtml,newest);
+  fetchMostViewedInCats(cats).then(function(mv){
+    if(!mv) return;
+    renderNewsRow(row,titleHtml,newsRowFinalList(newest,mv));
+  }).catch(function(){ /* giu 4 bai moi nhat */ });
+}
+/* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc #shopFilter):
+   2 chuyen muc "Đời Sống" + "Dòng tiền". v103: tieu de "Xu hướng sống mới"
+   (user chot 21:40 08/11). v124: o 1 = bai xem nhieu nhat, 3 o con lai =
+   3 bai moi nhat (xem initNewsRow). */
+function initModelNewsRow(){
+  initNewsRow('modelNewsRow',['Đời Sống','Dòng tiền'],
+    '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-doi-song-mau">Xu hướng sống mới</a></h2>');
+}
+/* v124: hang 4 o tin tren trang Danh cho Shop (danh-sach-shop.html,
+   #shopNewsRow) — 2 chuyen muc "Livestream" + "Xu hướng" (anh chot
+   15:00 10/11, thay cho "Dòng tiền + Hàng hoá" cua v123). Tieu de
+   "Livestream & xu hướng". O 1 = bai xem nhieu nhat, 3 o con lai =
+   3 bai moi nhat (xem initNewsRow). */
 function initShopNewsRow(){
-  var row=document.getElementById('shopNewsRow'); if(!row) return;
-  var list=(D.articles||[]).map(function(a,i){ return {a:a, i:i}; })
-    .filter(function(x){ return x.a.cat==='Dòng tiền' || x.a.cat==='Hàng hoá'; })
-    .sort(function(p,q){ var d=(p.a.date||'')<(q.a.date||'')?1:((p.a.date||'')>(q.a.date||'')?-1:0); return d!==0?d:(q.i-p.i); })
-    .slice(0,4).map(function(x){ return x.a; });
-  row.innerHTML='<h2><a href="tin-tuc.html" data-track="tieu-de-tin-dong-tien-shop">Dòng tiền &amp; hàng hoá</a></h2>'
-    + '<div class="news-row-4">' + list.map(function(a){ return newsCardHTML(a); }).join('') + '</div>'
-    + '<p style="margin:10px 0 0"><a href="tin-tuc.html">Xem tất cả tin →</a></p>';
+  initNewsRow('shopNewsRow',['Livestream','Xu hướng'],
+    '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-livestream-shop">Livestream &amp; xu hướng</a></h2>');
 }
 /* v123: hang 4 o tin "Đang hot & livestream" tren trang Thanh ly Kiot
-   (thanh-ly-kiot.html, #kiotNewsRow) — 4 bai moi nhat thuoc 2 chuyen muc
-   "Đang hot" + "Livestream", cung mau initModelNewsRow (trang Mau). */
+   (thanh-ly-kiot.html, #kiotNewsRow) — 2 chuyen muc "Đang hot" +
+   "Livestream". v124: o 1 = bai xem nhieu nhat, 3 o con lai = 3 bai
+   moi nhat (xem initNewsRow). */
 function initKiotNewsRow(){
-  var row=document.getElementById('kiotNewsRow'); if(!row) return;
-  var list=(D.articles||[]).map(function(a,i){ return {a:a, i:i}; })
-    .filter(function(x){ return x.a.cat==='Đang hot' || x.a.cat==='Livestream'; })
-    .sort(function(p,q){ var d=(p.a.date||'')<(q.a.date||'')?1:((p.a.date||'')>(q.a.date||'')?-1:0); return d!==0?d:(q.i-p.i); })
-    .slice(0,4).map(function(x){ return x.a; });
-  row.innerHTML='<h2><a href="tin-tuc.html" data-track="tieu-de-tin-hot-kiot">Đang hot &amp; livestream</a></h2>'
-    + '<div class="news-row-4">' + list.map(function(a){ return newsCardHTML(a); }).join('') + '</div>'
-    + '<p style="margin:10px 0 0"><a href="tin-tuc.html">Xem tất cả tin →</a></p>';
+  initNewsRow('kiotNewsRow',['Đang hot','Livestream'],
+    '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-hot-kiot">Đang hot &amp; livestream</a></h2>');
 }
 /* v41 trust strip: so lieu tinh DONG tu data.js (khong ghi so cung vao HTML).
    Quy tac luong/doanh thu cua mau (user-directed 06/11): doanh thu cao nhat
@@ -1312,6 +1380,17 @@ function lotFactoryPhotoHTML(item, label){
   if(!item || !hasReal(item.img)) return '';
   return '<img src="'+esc(item.img)+'" alt="Ảnh thật từ bài gốc của '+esc(label)+'" loading="lazy" decoding="async" onerror="this.remove()">';
 }
+/* v124: huy hiệu "✓ Thành viên đăng" (góc trên-trái ảnh) + dòng tên shop
+   dưới 2 dòng của thẻ lô/xưởng/kiot do thành viên đăng. Chỉ hiện khi
+   item có cờ _userListing (tin user); tin thu thập giữ nguyên. */
+function userListingBadgeHTML(item){
+  if(!item || !item._userListing) return '';
+  return '<span style="position:absolute;top:8px;left:8px;z-index:2;background:#137333;color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px">✓ Thành viên đăng</span>';
+}
+function userListingShopLineHTML(item){
+  if(!item || !item._userListing || !item._shopName) return '';
+  return '<p class="card-compact-line" style="color:#137333;font-weight:700">Shop: ' + esc(item._shopName) + '</p>';
+}
 function lotCardHTML(l, withComments){
   // v99 (§1c): the lo/kiot rut gon — khoi mau 46/51 + ten overlay + dung
   // 2 dong (dia diem; tong gia tri -> loai mat hang -> so luong) + nut
@@ -1337,9 +1416,9 @@ function lotCardHTML(l, withComments){
   // tu tieu de/meta (lotProvOf), ca hai quy ve ten sau sap nhap.
   var cardProv = targetType === 'kiot' ? normProv(l.prov) : lotProvOf(l);
   return '<article class="lot-card card-compact" data-prov="' + esc(cardProv) + '" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-v2s-id="'+esc(l.id)+'">'
-  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + photoContent + lotFactoryPhotoHTML(l, l.title) + '<span class="card-compact-name"><span>' + esc(l.title) + '</span></span></a>'
+  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(l) + photoContent + lotFactoryPhotoHTML(l, l.title) + '<span class="card-compact-name"><span>' + esc(l.title) + '</span></span></a>'
   + starButtonHTML(targetType, l.id)
-  + '<div class="card-compact-lines"><p class="card-compact-line">' + line1 + '</p><p class="card-compact-line">' + line2 + '</p></div>'
+  + '<div class="card-compact-lines"><p class="card-compact-line">' + line1 + '</p><p class="card-compact-line">' + line2 + '</p>' + userListingShopLineHTML(l) + '</div>'
   + (withComments ? commentToggleHTML(targetType, l.id) : '') + '</article>';
 }
 function factoryCardHTML(f, withComments){
@@ -1348,9 +1427,9 @@ function factoryCardHTML(f, withComments){
   // chinh, thieu thi "Thoa thuan") + nut sao. Nut binh luan (v92 C2)
   // giu nguyen. data-moq/data-cat/data-prov giu nguyen cho facMatches.
   return '<article class="lot-card card-compact" data-moq="' + (f.moq == null ? '' : f.moq) + '" data-cat="' + esc(f.cat) + '" data-prov="' + esc(f.prov) + '" data-v2s-id="'+esc(f.id)+'">'
-  + '<a class="card-compact-photo card-compact-photo--factory" href="' + esc(f.url) + '" target="_blank" rel="noopener"><span class="card-compact-ph" aria-hidden="true">🏭</span>' + lotFactoryPhotoHTML(f, f.name) + '<span class="card-compact-name"><span>' + esc(f.name) + '</span></span></a>'
+  + '<a class="card-compact-photo card-compact-photo--factory" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(f) + '<span class="card-compact-ph" aria-hidden="true">🏭</span>' + lotFactoryPhotoHTML(f, f.name) + '<span class="card-compact-name"><span>' + esc(f.name) + '</span></span></a>'
   + starButtonHTML('factory', f.id)
-  + '<div class="card-compact-lines"><p class="card-compact-line">' + factoryLocationLine(f) + '</p><p class="card-compact-line">' + factoryItemsLine(f) + '</p></div>'
+  + '<div class="card-compact-lines"><p class="card-compact-line">' + factoryLocationLine(f) + '</p><p class="card-compact-line">' + factoryItemsLine(f) + '</p>' + userListingShopLineHTML(f) + '</div>'
   + (withComments ? commentToggleHTML('factory', f.id) : '') + '</article>';
 }
 /* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
@@ -1391,6 +1470,168 @@ function renderLotSections(ref){
     });
     sel.innerHTML = html;
   }
+}
+/* ---------- v124: Tin lô / xưởng / kiot do thành viên đăng ---------- */
+/* Chuyển 1 dòng từ public view (Supabase) sang đúng shape data.js để tái
+   dùng lotCardHTML / factoryCardHTML. Tin user có id tiền tố 'user-lot-'
+   / 'user-factory-' / 'user-kiot-' + uuid, cờ _userListing và _shopName
+   để thẻ hiện huy hiệu + tên shop, bấm mở panel chi tiết (không có trang
+   chi tiết riêng ở v1). Tin user KHÔNG ghi vào data.js — chỉ fetch runtime
+   rồi gộp vào lưới; lỗi mạng/supabase thì im lặng, chỉ hiện tin thu thập. */
+var userListingByCardId = {};
+function userListingDateStr(iso){
+  try{
+    var d = new Date(iso);
+    if(isNaN(d.getTime())) return '';
+    var dd = String(d.getDate()).padStart(2, '0');
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    return dd + '/' + mm + '/' + d.getFullYear();
+  }catch(e){ return ''; }
+}
+function userListingToLot(r){
+  return {
+    id: 'user-lot-' + r.id, title: r.title, meta: r.province || '',
+    cat: r.cat, priceNum: r.price_num, qty: r.qty, unit: r.unit,
+    retailPriceNum: r.retail_price_num, url: r.source_url || '',
+    date: userListingDateStr(r.created_at), group: 1,
+    _userListing: true, _kind: 'lot', _rowId: r.id, _shopName: r.shop_name || '',
+    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
+    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+  };
+}
+function userListingToFactory(r){
+  return {
+    id: 'user-factory-' + r.id, name: r.name, items: r.items, cat: r.cat,
+    prov: r.province, moq: r.min_qty, priceNum: r.price_num,
+    workerCount: r.worker_count, url: r.source_url || '',
+    date: userListingDateStr(r.created_at),
+    _userListing: true, _kind: 'factory', _rowId: r.id, _shopName: r.shop_name || '',
+    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
+    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+  };
+}
+function userListingToKiot(r){
+  // cat của kiot data.js là LOẠI kiot (toan-bo-cua-hang / sang-mat-bang /
+  // hang-ton-kho / do-dac-thiet-bi), trùng với trường kind của user_kiots.
+  return {
+    id: 'user-kiot-' + r.id, title: r.title, cat: r.kind, prov: r.province,
+    priceNum: r.price_num, areaSqm: r.area_sqm, rentNum: r.rent_num,
+    url: r.source_url || '', date: userListingDateStr(r.created_at),
+    _userListing: true, _kind: 'kiot', _rowId: r.id, _shopName: r.shop_name || '',
+    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
+    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+  };
+}
+function registerUserListing(item){
+  if(item && item.id) userListingByCardId[item.id] = item;
+  return item;
+}
+/* Panel chi tiết tin user — tái dùng .gopy-overlay/.gopy-box của v20.css.
+   Nội dung: tiêu đề + huy hiệu + tên shop, mô tả, album ảnh, chi tiết
+   (giá/số lượng/tỉnh/địa chỉ...), liên hệ (tên shop + email + bài gốc). */
+function openUserListingPanel(item){
+  if(!item) return;
+  var overlay = document.getElementById('userListingOverlay');
+  if(!overlay){
+    overlay = document.createElement('div');
+    overlay.id = 'userListingOverlay';
+    overlay.className = 'gopy-overlay';
+    overlay.innerHTML = '<div class="gopy-box" role="dialog" aria-label="Chi tiết tin đăng"><div id="userListingPanelBody"></div><div style="display:flex;gap:10px;margin-top:12px"><button class="btn btn-ghost" type="button" id="userListingCloseBtn">Đóng</button></div></div>';
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('open'); });
+    document.getElementById('userListingCloseBtn').addEventListener('click', function(){ overlay.classList.remove('open'); });
+  }
+  var body = document.getElementById('userListingPanelBody');
+  if(!body) return;
+  var title = item.title || item.name || '(không tiêu đề)';
+  var imgs = item._images || [];
+  var albumHtml = '';
+  if(imgs.length){
+    albumHtml = '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">' + imgs.map(function(u){
+      return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="" style="width:96px;height:96px;object-fit:cover;border-radius:8px"></a>';
+    }).join('') + '</div>';
+  }
+  var details = [];
+  if(item._kind === 'lot'){
+    if(item.priceNum != null) details.push('Giá bán lô: <b>' + fmtVnd(item.priceNum) + 'đ</b>');
+    if(item.qty != null) details.push('Số lượng: <b>' + fmtVnd(item.qty) + (item.unit ? ' ' + esc(item.unit) : '') + '</b>');
+    if(item.retailPriceNum != null) details.push('Giá bán lẻ: ' + fmtVnd(item.retailPriceNum) + 'đ');
+  } else if(item._kind === 'factory'){
+    if(item.items) details.push('Mặt hàng: <b>' + esc(item.items) + '</b>');
+    if(item.moq != null) details.push('Số lượng tối thiểu: <b>' + fmtVnd(item.moq) + '</b>');
+    if(item.priceNum != null) details.push('Giá gia công từ: ' + fmtVnd(item.priceNum) + 'đ/cái');
+    if(item.workerCount != null) details.push('Số công nhân: ' + fmtVnd(item.workerCount));
+  } else {
+    if(item.priceNum != null) details.push('Giá sang nhượng: <b>' + fmtVnd(item.priceNum) + 'đ</b>');
+    if(item.areaSqm != null) details.push('Diện tích: ' + fmtVnd(item.areaSqm) + ' m²');
+    if(item.rentNum != null) details.push('Giá thuê: ' + fmtVnd(item.rentNum) + 'đ/tháng');
+  }
+  if(item.cat) details.push('Danh mục: ' + esc(catLabel(item.cat)));
+  var prov = item._kind === 'lot' ? lotProvOf(item) : (item.prov || '');
+  if(prov) details.push('Tỉnh / Thành phố: ' + esc(prov));
+  if(item._address) details.push('Địa chỉ: ' + esc(item._address));
+  body.innerHTML = '<h2 style="margin:0 0 6px">' + esc(title) + '</h2>'
+    + '<p style="margin:0 0 8px"><span style="background:#e6f4ea;color:#137333;font-weight:800;padding:2px 8px;border-radius:999px;font-size:12px">✓ Thành viên đăng</span> <span style="font-size:13px;color:#666">Shop: ' + esc(item._shopName || '') + '</span></p>'
+    + (item._description ? '<p style="white-space:pre-wrap;word-break:break-word">' + esc(item._description) + '</p>' : '')
+    + albumHtml
+    + (details.length ? '<ul style="margin:8px 0;padding-left:18px">' + details.map(function(d){ return '<li>' + d + '</li>'; }).join('') + '</ul>' : '')
+    + '<p style="font-size:13px;color:#666">Liên hệ: ' + esc(item._shopName || '') + (item._shopEmail ? ' · <a href="mailto:' + esc(item._shopEmail) + '">' + esc(item._shopEmail) + '</a>' : '') + (item._sourceUrl ? ' · <a href="' + esc(item._sourceUrl) + '" target="_blank" rel="noopener">Bài gốc</a>' : '') + '</p>'
+    + '<p style="font-size:12px;color:#999">Tin do thành viên đăng, đã qua admin duyệt. Ver2Solution không chịu trách nhiệm về giao dịch giữa hai bên.</p>';
+  overlay.classList.add('open');
+}
+/* Bấm thẻ tin user → mở panel chi tiết thay vì đi theo link ảnh.
+   Nút sao / bình luận trong thẻ vẫn hoạt động bình thường (bỏ qua click
+   xuất phát từ <button>). Đăng ký 1 lần ở cấp document (ủy quyền). */
+if(typeof document !== 'undefined' && !document._v2sUserListingClickBound){
+  document._v2sUserListingClickBound = true;
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest) return;
+    if(t.closest('button')) return;
+    var card = t.closest('[data-v2s-id]');
+    if(!card) return;
+    var id = card.getAttribute('data-v2s-id');
+    if(!id || id.indexOf('user-') !== 0) return;
+    var item = userListingByCardId[id];
+    if(!item) return;
+    e.preventDefault();
+    openUserListingPanel(item);
+  });
+}
+/* Tải tin user đã duyệt rồi chen lên ĐẦU lưới lô (nhóm 1) + lưới xưởng.
+   Gọi sau khi bộ lọc đã khởi tạo (initShopPage) thì truyền lotCtl/facCtl
+   để làm mới snapshot bộ lọc; trang lô/xưởng riêng không có bộ lọc thì
+   gọi không tham số. Chạy nền, không chặn render tin thu thập. */
+async function loadUserListings(lotCtl, facCtl){
+  try{
+    if(!window.McLivestreamAPI) return;
+    var lots = await window.McLivestreamAPI.fetchApprovedUserLots();
+    var facs = await window.McLivestreamAPI.fetchApprovedUserFactories();
+    var userLots = (lots || []).map(userListingToLot);
+    var userFacs = (facs || []).map(userListingToFactory);
+    userLots.forEach(registerUserListing);
+    userFacs.forEach(registerUserListing);
+    var g1 = document.getElementById('lotGrid1');
+    if(g1 && userLots.length){
+      g1.insertAdjacentHTML('afterbegin', userLots.map(function(l){ return lotCardHTML(l, true); }).join(''));
+      var s1 = document.getElementById('lotSub1');
+      if(s1){
+        var n1 = g1.querySelectorAll('.lot-card').length;
+        s1.textContent = s1.textContent.replace(/đang có \d+ lô/, 'đang có ' + n1 + ' lô');
+      }
+    }
+    var fg = document.getElementById('factoryGrid');
+    if(fg && userFacs.length){
+      fg.insertAdjacentHTML('afterbegin', userFacs.map(function(f){ return factoryCardHTML(f, true); }).join(''));
+      var fs = document.getElementById('factorySub');
+      if(fs){
+        var nf = fg.querySelectorAll('.lot-card').length;
+        fs.textContent = fs.textContent.replace(/đang có \d+ xưởng/, 'đang có ' + nf + ' xưởng');
+      }
+    }
+    if(lotCtl && typeof lotCtl.refresh === 'function') lotCtl.refresh();
+    if(facCtl && typeof facCtl.refresh === 'function') facCtl.refresh();
+  }catch(e){ /* im lặng — tin thu thập vẫn hiện */ }
 }
 function trustStats(models, shops, lots, factories, ref){
   models = models || []; shops = shops || [];
@@ -2033,6 +2274,10 @@ function initShopPage(){
   /* v96: thanh truot chon hang muc + khoa/mo truong + nut Ap dung / Dat lai
      dung chung cho ca 3 hang muc; hang muc Tim Mau render grid mau. */
   initUniCatSwitch(lotCtl, facCtl, function(pg){ if(typeof modelGridRender==='function') modelGridRender(pg); }, syncPayMin, function(){ if(typeof modelGridClearQ==='function') modelGridClearQ(); });
+  /* v124: tải tin lô/xưởng do thành viên đăng rồi chen lên đầu lưới.
+     Truyền lotCtl/facCtl để làm mới snapshot bộ lọc (xem loadUserListings);
+     chạy nền, không chặn render tin thu thập. */
+  loadUserListings(lotCtl, facCtl);
   // v118 (P2-9): luc mo trang, o linh vuc phai hien dung nhom cua tab
   // mac dinh (Tim Mau) + so dem dung — refreshUniCounts vua doi option
   // vua gan so theo tab.
@@ -3294,7 +3539,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, openUserListingPanel:openUserListingPanel, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;

@@ -5135,9 +5135,20 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "url": "https://ver2solution.com",
    "page": "bai-viet/dich-vu-comment-seeding-livestream.html",
-   "img": "https://ver2solution.com/wp-content/uploads/2025/12/livestream-nghe-11-17661158643061964932389-1766121404871-1766121405244126540319-1000x600.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dich-vu-comment-livestream-hero.jpg",
    "pinned": false,
    "takeaway": "Comment Seeding giúp livestream đông bình luận, khơi gợi nhu cầu, ăn theo đề xuất để Ads live rẻ hơn. 6 năm phục vụ hàng nghìn shop livestream toàn quốc — đăng ký 4 buổi dùng thử miễn phí."
+  },
+  {
+   "title": "Cách xả hàng tồn kho nhanh: đăng lô, xưởng, kiot miễn phí",
+   "cat": "Thị trường",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html",
+   "page": "bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-hero.jpg",
+   "pinned": false,
+   "takeaway": "Ver2Solution mở tính năng tự đăng tin lô xả kho, xưởng may và kiot thanh lý cho tài khoản Doanh nghiệp: đăng tin miễn phí trong giai đoạn thử nghiệm, admin duyệt trong 24 giờ, tin đã duyệt hiện trước tin thu thập kèm huy hiệu Thành viên đăng. Chỉ cần đăng ký tài khoản Doanh nghiệp, tạo hồ sơ shop đã duyệt rồi vào Trang của tôi đăng tin — tối đa 5 ảnh/tin, 5 tin/ngày, lô và kiot hết hạn sau 60 ngày."
   },
 ],
  "lots": [
