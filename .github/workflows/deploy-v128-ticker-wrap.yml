@@ -1,0 +1,40 @@
+name: Deploy v128-ticker-wrap
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v128-ticker-wrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v128-ticker-wrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v128-ticker-wrap package
+        run: |
+          unzip -o mclivestream-v128-ticker-wrap.zip
+          echo "--- verify v128-ticker-wrap payload (5 files) ---"
+          echo "files in zip: $(unzip -l mclivestream-v128-ticker-wrap.zip | tail -1)"
+          grep -q "const CACHE = 'v128-shell-1';" sw.js && echo "sw.js CACHE v128-shell-1 OK"
+          grep -q '<div class="wrap"><div class="ticker"' index.html && echo "index ticker in .wrap OK"
+          grep -q '<div class="wrap"><div class="ticker"' danh-sach-mau.html && echo "mau ticker in .wrap OK"
+          grep -q '<div class="wrap"><div class="ticker"' danh-sach-shop.html && echo "shop ticker in .wrap OK"
+          grep -q '<div class="wrap"><div class="ticker"' thanh-ly-kiot.html && echo "kiot ticker in .wrap OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v128-ticker-wrap.zip
+          git add -A
+          git status --short | head -60
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v128: gioi han ticker trong le trang (.wrap) 4 trang + bump CACHE v128"
+            git push
+          fi
