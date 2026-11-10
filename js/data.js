@@ -5150,6 +5150,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Ver2Solution mở tính năng tự đăng tin lô xả kho, xưởng may và kiot thanh lý cho tài khoản Doanh nghiệp: đăng tin miễn phí trong giai đoạn thử nghiệm, admin duyệt trong 24 giờ, tin đã duyệt hiện trước tin thu thập kèm huy hiệu Thành viên đăng. Chỉ cần đăng ký tài khoản Doanh nghiệp, tạo hồ sơ shop đã duyệt rồi vào Trang của tôi đăng tin — tối đa 5 ảnh/tin, 5 tin/ngày, lô và kiot hết hạn sau 60 ngày."
   },
+  {
+   "title": "800.000 đơn trong 1 đêm livestream: Khăn vệ sinh Đóa Vi bán 40 triệu NDT — 7 bài học cho shop Việt",
+   "cat": "Hàng hoá",
+   "source": "36Kr",
+   "date": "2026-11-10",
+   "url": "https://www.36kr.com/p/3345917871741828",
+   "page": "bai-viet/khan-ve-sinh-doa-vi-800000-don-mot-dem-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khan-ve-sinh-doa-vi-800000-don-mot-dem-livestream.jpg",
+   "pinned": false,
+   "takeaway": "Khăn vệ sinh Đóa Vi của Hoàng Tử Thao bán hơn 800.000 đơn, 40 triệu NDT chỉ trong 1 đêm livestream 18/5/2025 — 15 phút bán 195.000 miếng, 30 phút hết 450.000 miếng. Sau 1 năm, thương hiệu đạt hơn 700 triệu NDT GMV, tỷ lệ mua lại 58,57%. Phân tích vì sao một sản phẩm nhạy cảm lại bán nghìn đơn và 7 bài học shop Việt áp dụng được ngay."
+  },
 ],
  "lots": [
    {
