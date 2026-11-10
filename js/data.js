@@ -5475,6 +5475,40 @@ window.V20_DATA = {
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
      "img": "images/lo/lot-24.jpg"
+   },
+   {
+     "id": "lot-25",
+     "group": 3,
+     "title": "Thanh lý đồ gia dụng cũ: tủ lạnh 2TR, máy giặt 2TR, tivi 1TR5 — Đồ cũ chị Kiều",
+     "price": "1.500.000đ–2.000.000đ/món",
+     "priceNum": 1500000,
+     "qty": null,
+     "cat": "gia-dung",
+     "meta": "Tủ lạnh, máy giặt, tivi, salon, bàn ghế đã qua sử dụng · Salon 1.000.000đ · Bàn ghế vài chục ngàn · Hàng về lại rồi · 191 Nguyễn Trọng Cát, Hiệp Ninh, Tây Ninh · Số điện thoại 0989720820 · Kênh: YouTube",
+     "date": "05/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=ipHwNSudgF4",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Tây Ninh",
+     "img": "images/lo/lot-25.jpg"
+   },
+   {
+     "id": "lot-26",
+     "group": 3,
+     "title": "Thanh lý đồ gia dụng, tivi, tủ lạnh, máy lạnh, loa hát chỉ 2tr5 — Đồ cũ Đức Lai",
+     "price": "Loa hát chỉ 2.500.000đ",
+     "priceNum": 2500000,
+     "qty": null,
+     "cat": "gia-dung",
+     "meta": "Đồ gia dụng, tivi, tủ lạnh, máy lạnh, loa hát, đồng hồ cổ, bàn ghế các loại · Đồ cũ đã qua sử dụng · Ấp Long Bình, xã Long Thành Nam, Thị xã Hòa Thành, Tây Ninh · Số điện thoại 0799 077 371 – 0868 727 688 · Kênh: YouTube",
+     "date": "24/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=C6yo7Whg9tY",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Tây Ninh",
+     "img": "images/lo/lot-26.jpg"
    }
  ],
  // v86: kiot thanh ly — cung dinh dang truong nhu lots de lotCardHTML dung
