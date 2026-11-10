@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://vieclamlivestream.online/sitemap.xml
+
+# trigger fresh Pages build 2026-11-10 19:54 — re-run #499 stuck on deploy timeout
