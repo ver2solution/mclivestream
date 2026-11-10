@@ -1,0 +1,42 @@
+name: Deploy v127-combined
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v127-combined.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v127-combined:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v127-combined package
+        run: |
+          unzip -o mclivestream-v127-combined-deploy.zip
+          echo "--- verify v127-combined payload (122 files) ---"
+          echo "files in zip: $(unzip -l mclivestream-v127-combined-deploy.zip | tail -1)"
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "9a1899ac248667458eba8647f7f8336806222dc8a374625a4c857ff4b624c1ba" && echo "data.js sha OK (prep 9a1899ac)"
+          grep -q "const CACHE = 'v127-shell-1';" sw.js && echo "sw.js CACHE v127-shell-1 OK"
+          ls js/ticker.js js/app.js js/analytics.js js/activation.js v20.css
+          ls images/bai-viet/boc-me-vo-ha-linh-237-ty-mot-phien-live-cong-thuc-chot-don-hero.jpg images/bai-viet/boc-me-vo-ha-linh-237-ty-mot-phien-live-cong-thuc-chot-don-hero-og.jpg images/bai-viet/meo-tang-follower-hoc-dong-vu-huy-hero.jpg images/bai-viet/meo-tang-follower-hoc-dong-vu-huy-hero-og.jpg images/bai-viet/ngay-mai-11-11-tiktok-shop-viet-nam-ban-913-ty-trong-1-ngay-du-lieu-double-day-hero.jpg images/bai-viet/ngay-mai-11-11-tiktok-shop-viet-nam-ban-913-ty-trong-1-ngay-du-lieu-double-day-hero-og.jpg images/bai-viet/quyen-leo-daily-100-ty-17-gio-livestream-hero.jpg images/bai-viet/quyen-leo-daily-100-ty-17-gio-livestream-hero-og.jpg
+          echo "OG images 8/8 OK"
+          grep -q "modelNewsRow" danh-sach-mau.html && grep -q "shopNewsRow" danh-sach-shop.html && echo "A3 containers OK"
+          grep -q "homeTicker" index.html && grep -q "ticker.js" index.html && echo "ticker OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v127-combined-deploy.zip
+          git add -A
+          git status --short | head -60
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v127: OG fix 4 bai + domain vieclamlivestream.online + ticker + hang tin Mau + A3"
+            git push
+          fi
