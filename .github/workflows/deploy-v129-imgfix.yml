@@ -1,0 +1,41 @@
+name: Deploy v129-imgfix
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v129-imgfix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v129-imgfix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v129-imgfix package
+        run: |
+          unzip -o mclivestream-v129-imgfix.zip
+          echo "--- verify v129-imgfix payload (5 files) ---"
+          echo "files in zip: $(unzip -l mclivestream-v129-imgfix.zip | tail -1)"
+          grep -q "const CACHE = 'v129-shell-1';" sw.js && echo "sw.js CACHE v129-shell-1 OK"
+          grep -q 'hero-img" src="../images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero.jpg"' bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the.html && echo "HTML hero local OK"
+          grep -q 'og:image" content="https://vieclamlivestream.online/images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero-og.jpg"' bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the.html && echo "HTML og local OK"
+          grep -q '"img": "https://vieclamlivestream.online/images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero.jpg"' js/data.js && echo "data.js img local OK"
+          test -s images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero.jpg && echo "hero jpg OK"
+          test -s images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero-og.jpg && echo "og jpg OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v129-imgfix.zip
+          git add -A
+          git status --short | head -60
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v129: sua anh vo bai Dong Vu Huy (hotlink cnbeta 403) sang anh local + bump CACHE v129"
+            git push
+          fi
