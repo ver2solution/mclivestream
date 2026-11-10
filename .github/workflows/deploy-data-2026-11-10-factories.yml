@@ -1,0 +1,40 @@
+name: Deploy data factories 2026-11-10
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-10-factories.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-10-factories:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data factories 2026-11-10 package
+        run: |
+          unzip -o mclivestream-data-2026-11-10-factories-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          echo "models: $(grep -c '\"id\": \"th-' js/data.js)"
+          echo "shops: $(grep -c '\"id\": \"sh-' js/data.js)"
+          echo "lots: $(grep -c '\"id\": \"lot-' js/data.js)"
+          echo "factories: $(grep -c '\"id\": \"fac-' js/data.js)"
+          echo "kiots: $(grep -c '\"id\": \"kiot-' js/data.js)"
+          ls -l images/xuong/fac-71.jpg images/xuong/fac-72.jpg images/xuong/fac-73.jpg images/xuong/fac-74.jpg images/xuong/fac-75.jpg images/xuong/fac-76.jpg images/xuong/fac-77.jpg images/xuong/fac-78.jpg images/xuong/fac-79.jpg images/xuong/fac-80.jpg
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/xuong/fac-71.jpg images/xuong/fac-72.jpg images/xuong/fac-73.jpg images/xuong/fac-74.jpg images/xuong/fac-75.jpg images/xuong/fac-76.jpg images/xuong/fac-77.jpg images/xuong/fac-78.jpg images/xuong/fac-79.jpg images/xuong/fac-80.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "factories 10/11: them fac-71..fac-80 (10 xuong moi, tong 80 xuong, 27 tinh) + 10 anh xuong"
+            git push
+          fi
