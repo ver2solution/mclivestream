@@ -1,0 +1,38 @@
+name: Deploy v141
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v141.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v141:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v141 package
+        run: |
+          unzip -o mclivestream-v141.zip
+          echo "--- verify v141 payload (2 files) ---"
+          grep -q "const CACHE = 'v141-shell-1';" sw.js && echo "sw.js CACHE v141-shell-1 OK"
+          grep -q 'pickLowestModel' js/ticker.js && echo "js/ticker.js co pickLowestModel OK"
+          grep -q 'pickMostExperiencedModel' js/ticker.js && echo "js/ticker.js co pickMostExperiencedModel OK"
+          grep -q 'pickHighestShop' js/ticker.js && echo "js/ticker.js co pickHighestShop OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v141.zip
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v141: ticker moi trang mo dau bang dung phia cua minh (bo quang cao cheo)"
+            git push
+          fi
