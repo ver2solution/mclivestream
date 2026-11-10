@@ -5105,7 +5105,18 @@ window.V20_DATA = {
    "img": "https://ver2solution.github.io/mclivestream/images/bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.jpg",
    "pinned": false,
    "takeaway": "11.11 ngày mai: Trung Quốc đã bán 1.026,3 tỷ nhân dân tệ trước giờ G (07–31/10, Syntun); livestream là kênh tăng nhanh nhất — Douyin tăng 96% số merchant live vượt 10 triệu NDT, 14 phòng Taobao Live vượt 100 triệu NDT trong 4 giờ. Xu hướng mua hàng mới: khách vào live xem rồi mới mua. Shop Việt cần live đúng khung giờ vàng từ 20h đêm 10/11, chọn 1 món chủ lực và tính lãi trước khi giảm giá."
-  }
+  },
+  {
+   "title": "Bóc mẽ Võ Hà Linh: 237 tỷ trong 1 phiên live — công thức chốt đơn của 'chiến thần review' và 5 bài học cho shop Việt",
+   "cat": "Phân tích",
+   "source": "Kinh Doanh Net",
+   "date": "2026-11-09",
+   "url": "https://kinhdoanhnet.vn/livestream-ban-hang-ai-kiem-nhieu-tien-nhat-viet-nam-nam-2024-a73897.html",
+   "page": "bai-viet/boc-me-vo-ha-linh-237-ty-mot-phien-live-cong-thuc-chot-don.html",
+   "img": "https://cdn.eva.vn/upload/2-2023/images/2023-04-05/chien-than-review-vo-ha-linh-xo-do-moi-ky-luc-livestream-ban-hang-tren-tiktok-so-huu-tai-san-khung-o-2-1680669756-411-width599height587.jpg",
+   "pinned": false,
+   "takeaway": "Võ Hà Linh bán 237 tỷ đồng trong 1 phiên livestream ngày 6/6/2024, 316.000 người xem cùng lúc, gần 1,4 triệu đơn hàng. Bóc mẽ công thức review thẳng thắn, deal sâu và chuẩn bị trước live — 5 bài học shop Việt áp dụng được ngay."
+  },
 ],
  "lots": [
    {
