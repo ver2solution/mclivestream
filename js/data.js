@@ -5161,6 +5161,149 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Khăn vệ sinh Đóa Vi của Hoàng Tử Thao bán hơn 800.000 đơn, 40 triệu NDT chỉ trong 1 đêm livestream 18/5/2025 — 15 phút bán 195.000 miếng, 30 phút hết 450.000 miếng. Sau 1 năm, thương hiệu đạt hơn 700 triệu NDT GMV, tỷ lệ mua lại 58,57%. Phân tích vì sao một sản phẩm nhạy cảm lại bán nghìn đơn và 7 bài học shop Việt áp dụng được ngay."
   },
+  {
+   "title": "Nghề livestream Trung Quốc: 15 triệu người, lương ra sao?",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/nghe-livestream-trung-quoc-15-trieu-nguoi-luong-ra-sao.html",
+   "page": "bai-viet/nghe-livestream-trung-quoc-15-trieu-nguoi-luong-ra-sao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nghe-livestream-trung-quoc-15-trieu-nguoi-luong-ra-sao-hero.jpg",
+   "pinned": false,
+   "takeaway": "Trung Quốc có hơn 15 triệu streamer chuyên nghiệp và 833 triệu người xem live; thu nhập host bán hàng cao hơn hẳn host giải trí, vị trí tốt nhất là host cho thương hiệu tự live."
+  },
+  {
+   "title": "Việc làm livestream Trung Quốc: tuyển host Douyin lương cao",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-trung-quoc-tuyen-host-douyin-luong-cao.html",
+   "page": "bai-viet/viec-lam-livestream-trung-quoc-tuyen-host-douyin-luong-cao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-trung-quoc-tuyen-host-douyin-luong-cao-hero.jpg",
+   "pinned": false,
+   "takeaway": "Host Douyin, Taobao Live được tuyển nhiều nhất cho thương hiệu, lương 7.000–34.000 NDT/tháng; nhà tuyển dụng yêu cầu tiếng Trung lưu loát và video live thử 10 phút."
+  },
+  {
+   "title": "Việc làm livestream Đông Nam Á: host Indonesia, Thái Lan",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-dong-nam-a-host-indonesia-thai-lan.html",
+   "page": "bai-viet/viec-lam-livestream-dong-nam-a-host-indonesia-thai-lan.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-dong-nam-a-host-indonesia-thai-lan-hero.jpg",
+   "pinned": false,
+   "takeaway": "TikTok Shop Đông Nam Á tăng gấp đôi trong một năm lên 45,6 tỷ USD; Indonesia tuyển host live nhiều nhất, Thái Lan làm live giỏi nhất, lương cứng host khoảng 6–24 triệu đồng/tháng."
+  },
+  {
+   "title": "Việc làm TikTok Shop Đông Nam Á: thu nhập, hoa hồng, kỹ năng",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang.html",
+   "page": "bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang-hero.jpg",
+   "pinned": false,
+   "takeaway": "Hoa hồng TikTok Affiliate 5–20% mỗi đơn, live chiếm 20% doanh số TikTok Shop khu vực; tiền thật đến từ bán hàng qua live chứ không phải lượt xem video."
+  },
+  {
+   "title": "Nghề creator livestream: 250 tỷ USD, ai kiếm được tiền?",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/nghe-creator-livestream-250-ty-usd-ai-kiem-duoc-tien.html",
+   "page": "bai-viet/nghe-creator-livestream-250-ty-usd-ai-kiem-duoc-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nghe-creator-livestream-250-ty-usd-ai-kiem-duoc-tien-hero.jpg",
+   "pinned": false,
+   "takeaway": "Kinh tế creator toàn cầu đạt 250 tỷ USD với hơn 50 triệu creator, nhưng hơn một nửa kiếm chưa tới 15.000 USD/năm; thu nhập tập trung vào brand deal và live commerce."
+  },
+  {
+   "title": "Việc làm livestream tại nhà: cần gì, thu nhập bao nhiêu?",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-tai-nha.html",
+   "page": "bai-viet/viec-lam-livestream-tai-nha.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-tai-nha-hero.jpg",
+   "pinned": false,
+   "takeaway": "Việc làm livestream tại nhà gồm cộng tác viên theo ca, nhân viên làm từ xa và tự bán trên kênh riêng, với thu nhập khoảng 5–20 triệu đồng/tháng; chỉ cần điện thoại, đèn, mạng ổn định và một góc live gọn gàng là có thể bắt đầu."
+  },
+  {
+   "title": "Lương mẫu livestream 2026: mặt bằng thu nhập theo từng cấp",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/luong-mau-livestream-2026.html",
+   "page": "bai-viet/luong-mau-livestream-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mau-livestream-2026-hero.jpg",
+   "pinned": false,
+   "takeaway": "Lương mẫu livestream 2026 dao động từ 7–15 triệu đồng/tháng với nhân viên toàn thời gian, lương giờ 30.000–100.000 đồng, và có thể lên tới 40 triệu đồng trở lên với idol live có kênh phát triển mạnh."
+  },
+  {
+   "title": "Mẫu livestream không cần kinh nghiệm: lương, cách ứng tuyển",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/mau-livestream-khong-can-kinh-nghiem.html",
+   "page": "bai-viet/mau-livestream-khong-can-kinh-nghiem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-khong-can-kinh-nghiem-hero.jpg",
+   "pinned": false,
+   "takeaway": "Mẫu livestream không cần kinh nghiệm vẫn được nhiều công ty tuyển và đào tạo từ đầu, với lương khởi điểm 30.000–100.000 đồng/giờ tùy năng lực, thu nhập tháng đầu khoảng 5–8 triệu đồng nếu live đều."
+  },
+  {
+   "title": "Mẫu livestream lương theo giờ: giá theo ngành và nền tảng",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/mau-livestream-luong-theo-gio.html",
+   "page": "bai-viet/mau-livestream-luong-theo-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-luong-theo-gio-hero.jpg",
+   "pinned": false,
+   "takeaway": "Mẫu livestream lương theo giờ dao động 30.000–150.000 đồng/giờ với nhân viên làm thuê, cao nhất ở nhóm chốt đơn tốt; giá thuê ngoài theo buổi của Sapo từ 250.000 đến 1.500.000 đồng/giờ tùy kinh nghiệm."
+  },
+  {
+   "title": "Việc làm MC livestream 2026: thị trường, kỹ năng, thu nhập",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-10",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-mc-livestream-2026.html",
+   "page": "bai-viet/viec-lam-mc-livestream-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-mc-livestream-2026-hero.jpg",
+   "pinned": false,
+   "takeaway": "Việc làm MC livestream đang mở với 164 tin tuyển trên CareerViet; host và MC bán hàng có khung lương 7,7–12,3 triệu đồng/tháng, và từ 1/7/2026 người live bán hàng phải xác thực danh tính điện tử trước khi lên sóng."
+  },
+  {
+   "title": "1 giờ tăng 1,05 triệu follower, 4 giờ bán 163 triệu NDT: 7 mẹo xây kênh livestream từ con số 0 của Đổng Vũ Huy",
+   "cat": "Livestream",
+   "source": "Dao Insights",
+   "date": "2026-11-10",
+   "url": "https://daoinsights.com/news/oriental-selections-dong-yuhui-rakes-in-163m-at-own-channel-debut/",
+   "page": "bai-viet/meo-tang-follower-hoc-dong-vu-huy.html",
+   "img": "https://dayu-img.uc.cn/columbus/img/oc/1002/bb577e5e96efa7c0f7e87c06e3299908.jpg",
+   "pinned": false,
+   "takeaway": "Đổng Vũ Huy bán 163 triệu NDT trong 4 giờ live đầu tiên và tăng 1,05 triệu follower chỉ trong 1 giờ. 7 mẹo xây kênh livestream từ con số 0 shop Việt áp dụng được ngay."
+  },
+  {
+   "title": "Quyền Leo Daily: 100 tỷ đồng trong 17 giờ livestream — kỷ lục mega live Việt Nam và 5 bài học cho shop",
+   "cat": "Phân tích",
+   "source": "VietNamNet",
+   "date": "2026-11-10",
+   "url": "https://vietnamnet.vn/livestream-ban-hang-quyen-leo-thu-100-ty-vo-ha-linh-khien-tiktok-shop-sap-2283006.html",
+   "page": "bai-viet/quyen-leo-daily-100-ty-17-gio-livestream.html",
+   "img": "https://i.ex-cdn.com/taichinhdoanhnghiep.net.vn/files/content/2024/08/21/livestream-ban-hang-3306-2968-0944.jpg",
+   "pinned": false,
+   "takeaway": "Quyền Leo Daily bán 100 tỷ đồng trong 17 giờ livestream ngày 5/5/2024 — kỷ lục mega live Việt Nam. Phân tích công thức 4 bên, voucher 1 triệu USD của TikTok Shop và 5 bài học shop Việt áp dụng được ngay."
+  },
+  {
+   "title": "Ngày mai 11.11: TikTok Shop Việt Nam bán 913,4 tỷ trong 1 ngày — dữ liệu Double Day và 5 điều shop Việt phải biết",
+   "cat": "Xu hướng",
+   "source": "BrandsVietnam — Ecomobi x Kalodata",
+   "date": "2026-11-10",
+   "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
+   "page": "bai-viet/ngay-mai-11-11-tiktok-shop-viet-nam-ban-913-ty-trong-1-ngay-du-lieu-double-day.html",
+   "img": "https://htv.mediacdn.vn/155334506109014016/2025/11/30/16-17644871351611822471401.jpg",
+   "pinned": false,
+   "takeaway": "Ngày 12/11/2025, TikTok Shop Việt Nam đạt 913,4 tỷ đồng GMV chỉ trong một ngày — gấp 1,67 lần ngày thường. Báo cáo \"Giải mã Double Day 2026\" của Ecomobi x Kalodata chỉ ra: tháng 11 và 12 chiếm 23,2% GMV cả năm, ngày sau sale mới là ngày bán chạy nhất, và khách đang chi nhiều hơn mỗi đơn. 5 điều shop Việt phải làm trước 11.11 ngày mai."
+  },
 ],
  "lots": [
    {
