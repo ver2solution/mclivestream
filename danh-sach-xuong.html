@@ -41,6 +41,29 @@
 <section class="section"><h1>Xưởng / Nhà máy may nhận gia công</h1>
 <p>Xưởng và nhà máy may nhận gia công quần áo cho shop và thương hiệu — áo thun, đồ công sở, hoodie, áo khoác và nhiều mặt hàng khác. Liên hệ trực tiếp với xưởng qua thông tin trong tin đăng — Ver2Solution không thu phí dịch vụ, đây chỉ là trang cộng đồng kết nối.</p></section>
 
+<!-- v135: bo loc xuong rieng (chuan v98) — khung 2 hang x 6 o + 3 nut chon doi tuong. -->
+<section class="section filter-section" id="facFilterSection">
+<button class="filter-toggle" id="filterToggleFac" type="button" aria-expanded="false" data-track="mo-bo-loc-xuong">🔍 Bộ lọc xưởng gia công</button>
+<div class="filter-area">
+<div class="uni-cat-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
+<a class="uni-cat-btn" href="danh-sach-mau.html" data-track="chon-tim-mau">Tìm Mẫu Livestream</a>
+<a class="uni-cat-btn" href="danh-sach-lo.html" data-track="chon-tim-lo">Tìm lô hàng xả kho</a>
+<a class="uni-cat-btn active" href="danh-sach-xuong.html" aria-current="page" data-track="chon-tim-xuong">Tìm xưởng may sản xuất</a>
+</div>
+<div class="filter-card cols-6" id="facFilter">
+<div class="uni-field"><label for="fFacProv">Tỉnh / Thành phố</label><select id="fFacProv" data-track="loc-tinh-xuong"><option value="">Tất cả tỉnh</option><option value="Hà Nội">Hà Nội</option><option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option><option value="Hưng Yên">Hưng Yên</option><option value="Đồng Nai">Đồng Nai</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Huế">Huế</option><option value="Nghệ An">Nghệ An</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Cần Thơ">Cần Thơ</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Gia Lai">Gia Lai</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Toàn quốc / Live online">Toàn quốc / Live online</option></select></div>
+<div class="uni-field"><label for="fFacCat">Loại mặt hàng gia công</label><select id="fFacCat" data-track="loc-loai-xuong"><option value="">Tất cả loại</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
+<div class="uni-field"><label for="fFacMoq">Số lượng tối thiểu (MOQ)</label><select id="fFacMoq" data-track="loc-moq-xuong"><option value="">Tất cả</option><option value="10">Nhận đơn từ 10 sản phẩm</option><option value="30">Nhận đơn từ 30 sản phẩm</option><option value="100">Nhận đơn từ 100 sản phẩm</option><option value="300">Nhận đơn từ 300 sản phẩm</option></select></div>
+<div class="uni-field"><label for="fFacSort">Sắp xếp</label><select id="fFacSort" data-track="sap-xep-xuong"><option value="">Mặc định (mới nhất)</option><option value="moq-asc">MOQ: thấp → cao</option><option value="moq-desc">MOQ: cao → thấp</option></select></div>
+<div class="uni-field uni-actions"><button class="btn btn-primary" id="facApplyBtn" data-track="ap-dung-loc-xuong" type="button">Áp dụng lọc</button></div>
+<div class="uni-field uni-actions"><button class="btn btn-ghost" id="facResetBtn" data-track="dat-lai-loc-xuong" type="button">Đặt lại toàn bộ</button></div>
+<p class="filter-hint" hidden>Cần đăng nhập — chọn tiêu chí, bấm Áp dụng.</p>
+<p class="filter-count" id="facCount"></p>
+<p class="filter-empty" id="facEmpty" hidden><b>Chưa có dữ liệu.</b> Không có xưởng nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại toàn bộ.</p>
+</div>
+</div>
+</section>
+
 <section class="lot-section collapsed" id="xuong-may-gia-cong" aria-labelledby="factory-title">
 <h2 id="factory-title">Xưởng / Nhà máy may nhận gia công</h2>
 <!-- v124: nút đăng tin xưởng cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
@@ -72,14 +95,19 @@
 /* v117-P1-1: trang xuong rieng — render xưởng bằng renderLotSections()
    (window.V20, đã kiểm chứng ở danh-sach-shop.html). Trang này không có
    #uniFilter nên initShopPage() của app.js không tự render; gọi trực tiếp.
-   v124: sau đó tải tin xưởng do thành viên đăng rồi chen lên đầu lưới
-   (loadUserListings — trang này không có bộ lọc nên không cần refresh). */
+   v135: khoi tao bo loc xuong rieng (initFactoryPageFilter) sau render, roi
+   truyen controller vao loadUserListings de tin user chen vao duoc refresh
+   dung snapshot bo loc. */
 (function(){
   if (window.V20 && typeof window.V20.renderLotSections === 'function') {
     window.V20.renderLotSections();
   }
+  var facCtl = null;
+  if (window.V20 && typeof window.V20.initFactoryPageFilter === 'function') {
+    facCtl = window.V20.initFactoryPageFilter();
+  }
   if (window.V20 && typeof window.V20.loadUserListings === 'function') {
-    window.V20.loadUserListings();
+    window.V20.loadUserListings(null, facCtl);
   }
 })();
 </script>

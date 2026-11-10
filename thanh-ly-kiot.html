@@ -27,7 +27,6 @@
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>ver2solution.com<small>MC LIVESTREAM</small></span></a>
 <button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Shop</a><a href="danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="thanh-ly-kiot.html" class="active">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=thanh-ly-kiot.html">Đăng Nhập</a></div></header>
-
 <main class="wrap">
 <p class="online-badge" hidden data-online="kiot"><span class="online-dot" aria-hidden="true"></span><span class="online-num">43</span>&nbsp;người đang online</p>
 <style>
@@ -50,21 +49,32 @@
 <section class="section"><h2>Kiot đang thanh lý</h2>
 <!-- v124: nút đăng tin kiot cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
 <p><a class="btn btn-primary" href="trang-cua-toi.html#myListingsSection">+ Đăng tin thanh lý kiot của bạn</a> <span style="font-size:13px;color:#666">Miễn phí — chỉ tài khoản Doanh nghiệp có hồ sơ shop đã duyệt.</span></p>
-<div class="kiot-filters" id="kiotFilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-<label style="font-size:14px">Tỉnh/Thành phố
-<select id="kiotProv" style="margin-left:6px;padding:6px 8px"><option value="">Tất cả tỉnh/thành</option></select></label>
-<label style="font-size:14px">Loại mặt hàng
-<select id="kiotCat" style="margin-left:6px;padding:6px 8px"><option value="">Tất cả loại mặt hàng</option>
+</section>
+<!-- v135: bo loc kiot (chuan v98) — thay hang inline cu (.kiot-filters). Kiot
+     co trang rieng nen khong co 3 nut chon doi tuong; giu id kiotFilters
+     de thu tu kiotFilters -> kiotNewsRow -> kiotList khong doi. -->
+<section class="section filter-section" id="kiotFilters">
+<button class="filter-toggle" id="filterToggleKiot" type="button" aria-expanded="false" data-track="mo-bo-loc-kiot">🔍 Bộ lọc kiot thanh lý</button>
+<div class="filter-area">
+<div class="filter-card cols-6" id="kiotFilter">
+<div class="uni-field"><label for="kiotProv">Tỉnh / Thành phố</label><select id="kiotProv" data-track="loc-tinh-kiot"><option value="">Tất cả tỉnh/thành</option></select></div>
+<div class="uni-field"><label for="kiotCat">Loại hình kinh doanh</label><select id="kiotCat" data-track="loc-loai-kiot"><option value="">Tất cả loại hình</option>
 <option value="sang-mat-bang">Sang mặt bằng</option>
 <option value="do-dac-thiet-bi">Đồ đạc, thiết bị</option>
 <option value="hang-ton-kho">Hàng tồn kho</option>
-<option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></label>
+<option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></div>
+<div class="uni-field"><label for="kiotSort">Sắp xếp</label><select id="kiotSort" data-track="sap-xep-kiot"><option value="">Mới nhất</option><option value="oldest">Cũ nhất</option></select></div>
+<div class="uni-field uni-actions"><button class="btn btn-primary" id="kiotApplyBtn" data-track="ap-dung-loc-kiot" type="button">Áp dụng lọc</button></div>
+<div class="uni-field uni-actions"><button class="btn btn-ghost" id="kiotResetBtn" data-track="dat-lai-loc-kiot" type="button">Đặt lại toàn bộ</button></div>
+<p class="filter-count" id="kiotCount"></p>
 </div>
+</div>
+</section>
 <!-- v123: hang 4 o tin dang hot & livestream cho kiot (render boi initKiotNewsRow) -->
 <div class="section" id="kiotNewsRow" aria-label="Tin đang hot và livestream cho kiot"></div>
 <div id="kiotList" class="lot-grid"></div>
 <p><button class="btn btn-primary" id="kiotMoreBtn" type="button" hidden>Xem thêm ↓</button></p>
-<p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p></section>
+<p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p>
 
 <section class="form-card"><h2>Thanh lý kiot gồm những gì?</h2>
 <p><strong>1. Sang mặt bằng.</strong> Bạn đang thuê mặt bằng đẹp nhưng không kinh doanh nữa? Sang lại mặt bằng kèm thời hạn thuê còn lại cho người muốn mở shop tại đúng vị trí đó.</p>
@@ -105,7 +115,13 @@
   var kiots = (window.V20_DATA && window.V20_DATA.kiots) || [];
   // v124: tải tin kiot do thành viên đăng rồi chen lên đầu danh sách.
   // Chạy nền, không chặn render tin thu thập; lỗi thì im lặng.
-  if (window.McLivestreamAPI && window.V20 && typeof window.V20.userListingToKiot === 'function') {
+  // v135 (fix loi C — trang trong hoan toan): kiem tra ham ton tai truoc
+  // khi goi — file mclivestream-supabase.js LIVE van la ban truoc v124,
+  // chua co fetchApprovedUserKiots; goi thang se nem TypeError dong bo
+  // TRUOC khi render() chay (catch chi bat loi async) nen #kiotList
+  // khong bao gio render. Co guard thi trang hien tin thu thap binh
+  // thuong; tin user chi hien khi file API moi duoc deploy (v125).
+  if (window.McLivestreamAPI && typeof window.McLivestreamAPI.fetchApprovedUserKiots === 'function' && window.V20 && typeof window.V20.userListingToKiot === 'function') {
     window.McLivestreamAPI.fetchApprovedUserKiots().then(function(rows){
       var userKiots = (rows || []).map(window.V20.userListingToKiot);
       userKiots.forEach(function(k){ window.V20.registerUserListing(k); });
@@ -128,6 +144,8 @@
   }
   var provSel = document.getElementById('kiotProv');
   var catSel = document.getElementById('kiotCat');
+  var sortSel = document.getElementById('kiotSort');
+  var countEl = document.getElementById('kiotCount');
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
   // v91 (7): tối đa 10 hàng — chỉ hiện 10 tin mới nhất (sắp theo ngày đăng
   // giảm dần); lọc thì cũng tối đa 10 tin khớp mới nhất. Ngày dạng DD/MM/YYYY.
@@ -149,17 +167,19 @@
       return (!pv || k.prov === pv) && (!cv || k.cat === cv);
     }).sort(function(a, b){
       // v124: tin do thành viên đăng hiện trước tin thu thập, mỗi nhóm
-      // xếp theo ngày đăng giảm dần.
+      // xếp theo ngày đăng giảm dần (v135: 'oldest' thi cu nhat truoc).
       var au = a.source === 'user' ? 0 : 1, bu = b.source === 'user' ? 0 : 1;
       if(au !== bu) return au - bu;
-      return kiotTime(b) - kiotTime(a);
+      var d = kiotTime(b) - kiotTime(a);
+      return (sortSel && sortSel.value === 'oldest') ? -d : d;
     });
+    if (countEl) countEl.textContent = '';
     if (!kiots.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> ' + emptyMsg + '</p>'; if (moreBtn) moreBtn.hidden = true; return; }
-    if (!show.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại mặt hàng khác.</p>'; if (moreBtn) moreBtn.hidden = true; return; }
+    if (!show.length) { list.innerHTML = '<p class="empty-state" role="status"><b>Chưa có dữ liệu.</b> Không có kiot nào khớp bộ lọc. Thử chọn tỉnh hoặc loại hình khác.</p>'; if (moreBtn) moreBtn.hidden = true; return; }
     var total = show.length;
     var rows = show.slice(0, kiotShown);
-    list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join('') // v92 (C2): nut Binh luan duoi moi the kiot
-      + '<p class="filter-count">Đang hiển thị ' + rows.length + '/' + total + ' tin.</p>';
+    list.innerHTML = rows.map(function(k){ return window.V20.lotCardHTML(k, true); }).join(''); // v92 (C2): nut Binh luan duoi moi the kiot
+    if (countEl) countEl.textContent = 'Đang hiển thị ' + rows.length + '/' + total + ' tin.';
     if (moreBtn) moreBtn.hidden = !(total > rows.length);
   }
   if (moreBtn) moreBtn.addEventListener('click', function(){
@@ -184,6 +204,20 @@
     provSel.addEventListener('change', onFilterChange);
   }
   if (catSel) catSel.addEventListener('change', onFilterChange);
+  if (sortSel) sortSel.addEventListener('change', onFilterChange);
+  /* v135: nut Ap dung / Dat lai (khung v98) + nut mo/dong bo loc mobile
+     (initFilterToggle khong duoc goi tren trang nay vi initShopPage /
+     initList deu return som — goi truc tiep o day). */
+  var kiotApplyBtn = document.getElementById('kiotApplyBtn');
+  if (kiotApplyBtn) kiotApplyBtn.addEventListener('click', onFilterChange);
+  var kiotResetBtn = document.getElementById('kiotResetBtn');
+  if (kiotResetBtn) kiotResetBtn.addEventListener('click', function(){
+    if (provSel) provSel.value = '';
+    if (catSel) catSel.value = '';
+    if (sortSel) sortSel.value = '';
+    onFilterChange();
+  });
+  if (window.V20 && typeof window.V20.initFilterToggle === 'function') window.V20.initFilterToggle();
   render();
 })();
 </script>

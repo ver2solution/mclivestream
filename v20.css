@@ -894,12 +894,18 @@ th{background:#f4f8f6}
   .card-compact-line{font-size:13px}
 }
 
-/* ===== Hàng chữ chạy (ticker) — js/ticker.js ===== */
-.ticker{background:#fff;color:#000;overflow:hidden;white-space:nowrap;border-bottom:1px solid #e5e5e5;line-height:1.4}
-.ticker-track{display:inline-block;white-space:nowrap;animation:ticker-scroll linear infinite;will-change:transform}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-item{display:inline-block;color:#000;text-decoration:none;font-size:14px;padding:8px 0}
-.ticker-item:hover{text-decoration:underline}
-.ticker-sep{color:#999;padding:0 12px}
-@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+/* ===== v135: khung xem chi tiet lo/xuong/kiot (modal) + nut chon doi tuong dang <a> ===== */
+.detail-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px}
+.detail-overlay.open{display:flex}
+.detail-box{background:#fff;border-radius:20px;padding:22px;max-width:860px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.detail-close{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:#fff;border-radius:50%;width:36px;height:36px;font-size:16px;cursor:pointer;z-index:2}
+.detail-modal-photo{aspect-ratio:16/9;background:linear-gradient(160deg,#d9eae4,#eef3f1);position:relative;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.detail-modal-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.detail-modal-icon{font-size:72px}
+.detail-modal-label{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-weight:800;font-size:14px;padding:8px 12px;z-index:1}
+.detail-box h2{font-size:22px;margin:16px 0 8px}
+.detail-box .detail-meta{color:#555;font-size:14px;margin:0 0 8px}
+.detail-box .detail-note{font-size:13px;color:#666;margin:12px 0 0}
+.detail-box .detail-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 0}
+.uni-cat-switch a.uni-cat-btn{text-decoration:none;text-align:center}
+@media(max-width:600px){.detail-box{padding:16px}.detail-box h2{font-size:19px}.detail-modal-icon{font-size:52px}}
