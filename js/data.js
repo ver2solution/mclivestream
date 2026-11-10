@@ -5311,7 +5311,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "url": "https://daoinsights.com/news/oriental-selections-dong-yuhui-rakes-in-163m-at-own-channel-debut/",
    "page": "bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the.html",
-   "img": "https://static.cnbetacdn.com/article/2024/0110/99880358ddb23cc.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the-hero.jpg",
    "pinned": false,
    "takeaway": "590 tỷ đồng trong 4 giờ ở kênh mới, đối đầu 2,55 triệu NDT trong 16 giờ ở kênh cũ: bóc mẽ mô hình 'siêu cá thể' của Đổng Vũ Huy — từ thầy giáo kể chuyện bán nông sản tới đế chế 21 tỷ NDT/năm."
   },
