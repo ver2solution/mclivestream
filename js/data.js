@@ -5304,6 +5304,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Ngày 12/11/2025, TikTok Shop Việt Nam đạt 913,4 tỷ đồng GMV chỉ trong một ngày — gấp 1,67 lần ngày thường. Báo cáo \"Giải mã Double Day 2026\" của Ecomobi x Kalodata chỉ ra: tháng 11 và 12 chiếm 23,2% GMV cả năm, ngày sau sale mới là ngày bán chạy nhất, và khách đang chi nhiều hơn mỗi đơn. 5 điều shop Việt phải làm trước 11.11 ngày mai."
   },
+  {
+   "title": "Bóc mẽ Đổng Vũ Huy: 163 triệu NDT trong 4 giờ — thầy giáo kể chuyện bán nông sản và mô hình 'siêu cá thể' 21 tỷ NDT/năm",
+   "cat": "Phân tích",
+   "source": "Dao Insights",
+   "date": "2026-11-10",
+   "url": "https://daoinsights.com/news/oriental-selections-dong-yuhui-rakes-in-163m-at-own-channel-debut/",
+   "page": "bai-viet/boc-me-dong-vu-huy-163-trieu-ndt-4-gio-mo-hinh-sieu-ca-the.html",
+   "img": "https://static.cnbetacdn.com/article/2024/0110/99880358ddb23cc.png",
+   "pinned": false,
+   "takeaway": "590 tỷ đồng trong 4 giờ ở kênh mới, đối đầu 2,55 triệu NDT trong 16 giờ ở kênh cũ: bóc mẽ mô hình 'siêu cá thể' của Đổng Vũ Huy — từ thầy giáo kể chuyện bán nông sản tới đế chế 21 tỷ NDT/năm."
+  },
 ],
  "lots": [
    {
