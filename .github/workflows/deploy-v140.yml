@@ -1,0 +1,40 @@
+name: Deploy v140
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v140.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v140:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v140 package
+        run: |
+          unzip -o mclivestream-v140.zip
+          echo "--- verify v140 payload (3 files) ---"
+          grep -q "const CACHE = 'v140-shell-1';" sw.js && echo "sw.js CACHE v140-shell-1 OK"
+          grep -q 'function findDetailItem' js/app.js && echo "js/app.js co findDetailItem OK"
+          grep -q 'Xem hồ sơ đầy đủ' js/app.js && echo "js/app.js co modal mau OK"
+          grep -q 'Xem shop đầy đủ' js/app.js && echo "js/app.js co modal shop OK"
+          grep -q 'mark-published' js/admin.js && echo "js/admin.js co nut Danh dau da dang OK"
+          grep -q 'admin_mark_article_published' js/admin.js && echo "js/admin.js co RPC mark-published OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v140.zip
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v140: khung chi tiet 1 modal chung 5 loai + bo loc khong can dang nhap + nut Danh dau da dang"
+            git push
+          fi
