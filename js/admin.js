@@ -120,6 +120,7 @@
     tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
     usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
+    usersList: [], // tài khoản đã tải gần nhất ở tab Người dùng (để form chi tiết lấy notes prefill)
     testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
     articleDrafts: [] // bản thảo bài viết đã tải gần nhất (tab Viết bài, để tải JSON theo id)
   };
@@ -352,7 +353,11 @@
 
   /* ---------- TAB: Người dùng & xu (GĐ1 + GĐ2) ---------- */
   function userRowHtml(u) {
-    return '<tr data-uid="' + esc(u.user_id) + '"><td style="padding:8px;border-bottom:1px solid #eee">' + esc(u.email || '')
+    // v121 (notes admin): badge 🧪 test khi notes = 'Muse test' — nhìn là
+    // biết ngay tài khoản nào là test (chỉ admin thấy; user không thấy notes).
+    var testBadge = (u.is_test || u.notes === 'Muse test')
+      ? ' <span style="display:inline-block;background:#fff3cd;border:1px solid #e8c97a;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:700;color:#6b4e00;white-space:nowrap" title="Tài khoản test — ghi chú: Muse test">🧪 test</span>' : '';
+    return '<tr data-uid="' + esc(u.user_id) + '"><td style="padding:8px;border-bottom:1px solid #eee">' + esc(u.email || '') + testBadge
       + '</td><td style="padding:8px;border-bottom:1px solid #eee">' + esc(vnDate(u.created_at)) + '</td>'
       + '<td style="padding:8px;border-bottom:1px solid #eee">' + (u.last_sign_in_at ? esc(vnDate(u.last_sign_in_at)) : '—') + '</td>'
       + '<td style="padding:8px;border-bottom:1px solid #eee">' + (u.has_model_profile ? 'Mẫu ' : '') + (u.has_shop_profile ? 'Shop' : '') + '</td>'
@@ -392,6 +397,7 @@
         var filtered = (Array.isArray(all) ? all : []).filter(function (u) {
           return String(u.email || '').toLowerCase().indexOf(q) !== -1;
         });
+        state.usersList = filtered; // v121: giữ danh sách để form chi tiết lấy notes prefill
         var pageRows = filtered.slice(state.usersPage * PAGE_SIZE, state.usersPage * PAGE_SIZE + PAGE_SIZE);
         var hasMore = (state.usersPage + 1) * PAGE_SIZE < filtered.length;
         if (!pageRows.length) {
@@ -408,6 +414,7 @@
       var rows = await rpc('get_admin_users', { p_limit: PAGE_SIZE + 1, p_offset: state.usersPage * PAGE_SIZE });
       var hasMore2 = Array.isArray(rows) && rows.length > PAGE_SIZE;
       var list = hasMore2 ? rows.slice(0, PAGE_SIZE) : rows;
+      state.usersList = list; // v121: giữ danh sách để form chi tiết lấy notes prefill
       if (!Array.isArray(list) || !list.length) { wrap.innerHTML = '<p>Chưa có tài khoản nào.</p>' + pagerHtml('users', state.usersPage, false); return; }
       wrap.innerHTML = usersTableHtml(list) + pagerHtml('users', state.usersPage, hasMore2);
     } catch (e) {
@@ -429,6 +436,14 @@
           + '<td style="padding:6px;border-bottom:1px solid #eee">' + esc(r.reason || '') + '</td>'
           + '<td style="padding:6px;border-bottom:1px solid #eee">' + esc(vnTime(r.created_at)) + '</td></tr>';
       }).join('');
+      // v121 (notes admin): lấy ghi chú hiện tại của tài khoản này từ danh
+      // sách vừa tải (get_admin_users trả notes + is_test) để prefill ô
+      // Ghi chú ở cuối form chi tiết; không có trong danh sách thì để trống.
+      var notesVal = '';
+      try {
+        var foundUser = (state.usersList || []).filter(function (x) { return String(x.user_id) === String(uid); })[0];
+        if (foundUser) notesVal = foundUser.notes || '';
+      } catch (e) { notesVal = ''; }
       box.innerHTML = '<h3>' + esc(email || uid) + '</h3>'
         + '<p><b>Số dư:</b> ' + fmt(d.balance) + ' xu · <b>Đã nhận tổng:</b> ' + fmt(d.earned_total)
         + ' xu · <b>Đã dùng/thu hồi:</b> ' + fmt(d.spent_total) + ' xu</p>'
@@ -443,11 +458,17 @@
         + '<label>Lý do * <input id="admAdjustReason" type="text" style="width:220px" placeholder="vd Thu hồi xu gian lận"></label> '
         + '<button class="btn btn-primary btn-sm" id="admAdjustBtn" data-uid="' + esc(uid) + '" type="button">Áp dụng điều chỉnh</button> '
         + '<button class="btn btn-ghost btn-sm" id="admGrantAdminBtn" data-uid="' + esc(uid) + '" type="button">Cấp quyền admin</button></div>'
-        + '<p style="font-size:13px;color:#666">Điều chỉnh âm chỉ trừ tới số dư 0 — phần thiếu ghi thành nợ xu (trừ dần khi user có hoạt động tạo xu sau này). Admin không được tự điều chỉnh xu của chính mình.</p>';
+        + '<p style="font-size:13px;color:#666">Điều chỉnh âm chỉ trừ tới số dư 0 — phần thiếu ghi thành nợ xu (trừ dần khi user có hoạt động tạo xu sau này). Admin không được tự điều chỉnh xu của chính mình.</p>'
+        + '<div style="margin-top:16px;border-top:1px solid #eee;padding-top:12px"><h4 style="margin:0 0 6px">Ghi chú (chỉ admin thấy)</h4>'
+        + '<p style="font-size:13px;color:#666;margin:0 0 6px">Ghi chú nội bộ về tài khoản này — người dùng không thấy, không tự xóa được. Ghi “Muse test” để đánh dấu tài khoản test (hiện badge 🧪 test ở danh sách). Tối đa 200 ký tự; để trống để xóa ghi chú.</p>'
+        + '<textarea id="admUserNotes" rows="2" maxlength="200" style="width:100%;max-width:520px" placeholder="vd Muse test">' + esc(notesVal) + '</textarea> '
+        + '<button class="btn btn-primary btn-sm" id="admSaveNotesBtn" data-uid="' + esc(uid) + '" type="button">Lưu ghi chú</button></div>';
       var ab = $('admAdjustBtn');
       if (ab) ab.addEventListener('click', onAdjustPoints);
       var gb = $('admGrantAdminBtn');
       if (gb) gb.addEventListener('click', onGrantAdmin);
+      var nb = $('admSaveNotesBtn');
+      if (nb) nb.addEventListener('click', onSaveNotes);
       if (msg) setMsg(msg, '');
     } catch (e) {
       box.innerHTML = '<h3>' + esc(email || uid) + '</h3><p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ2 chưa chạy (hàm get_admin_user_points chưa có).' : friendlyErr(e)) + '</p>';
@@ -482,6 +503,26 @@
     try {
       await rpc('admin_grant_admin', { p_user_id: uid, p_note: 'Cấp từ trang quản trị' });
       setMsg(msg, 'Đã cấp quyền admin.');
+    } catch (err) { setMsg(msg, friendlyErr(err), true); }
+    btn.disabled = false;
+  }
+  // v121 (notes admin): lưu ghi chú cho tài khoản (chỉ admin; RPC
+  // admin_set_profile_notes kiểm tra quyền + ghi audit log). Lưu xong
+  // tải lại danh sách để badge 🧪 test cập nhật + mở lại chi tiết.
+  async function onSaveNotes(e) {
+    var btn = e.currentTarget;
+    var uid = btn.getAttribute('data-uid');
+    var msg = $('admUsersMsg');
+    var ta = $('admUserNotes');
+    var val = ta ? String(ta.value || '').trim() : '';
+    if (val.length > 200) { setMsg(msg, 'Ghi chú tối đa 200 ký tự.', true); return; }
+    if (!window.confirm(val ? 'Lưu ghi chú "' + val + '" cho tài khoản này?' : 'Xóa ghi chú của tài khoản này?')) return;
+    btn.disabled = true;
+    try {
+      await rpc('admin_set_profile_notes', { p_user_id: uid, p_notes: val });
+      setMsg(msg, 'Đã lưu ghi chú.');
+      await loadUsers();
+      await viewUser(uid, '');
     } catch (err) { setMsg(msg, friendlyErr(err), true); }
     btn.disabled = false;
   }

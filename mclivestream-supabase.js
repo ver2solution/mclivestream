@@ -29,7 +29,11 @@
   var PROTECTED_FIELDS = [
     'moderation_status', 'consent_status', 'is_pinned',
     'view_count', 'is_demo', 'achievement_label',
-    'highest_revenue_verified'
+    'highest_revenue_verified',
+    // v121 (notes admin): ghi chú chỉ admin đặt qua RPC
+    // admin_set_profile_notes; user không được gửi kèm khi lưu hồ sơ
+    // (form user không có ô notes; trigger DB cũng chặn nếu cố đổi).
+    'notes'
   ];
 
   function stripProtected(data) {
