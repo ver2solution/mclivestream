@@ -1,0 +1,45 @@
+name: Deploy v137-filters-modal-noticker
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v137-filters-modal-noticker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v137-filters-modal-noticker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v137 package
+        run: |
+          unzip -o mclivestream-v137-filters-modal-noticker.zip
+          echo "--- verify v137 payload (9 files) ---"
+          grep -q "const CACHE = 'v137-shell-1';" sw.js && echo "sw.js CACHE v137-shell-1 OK"
+          for f in js/app.js v20.css sw.js danh-sach-lo.html danh-sach-xuong.html thanh-ly-kiot.html index.html danh-sach-mau.html danh-sach-shop.html; do
+            if grep -qi 'ticker' "$f"; then echo "LOI: $f van con ticker"; exit 1; fi
+          done
+          echo "khong con ticker trong 9 file OK"
+          grep -q "typeof window.McLivestreamAPI.fetchApprovedUserKiots === 'function'" thanh-ly-kiot.html && echo "Kiot guard OK"
+          grep -q 'filter-section' danh-sach-lo.html && echo "Lo co filter-section OK"
+          grep -q 'filter-section' danh-sach-xuong.html && echo "Xuong co filter-section OK"
+          grep -q 'filter-section' thanh-ly-kiot.html && echo "Kiot co filter-section OK"
+          grep -q 'href="danh-sach-mau.html" class="">Dành cho Shop' index.html && echo "index nav Mau->Shop label OK"
+          grep -q 'href="danh-sach-shop.html" class="">Dành cho Mẫu' index.html && echo "index nav Shop->Mau label OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v137-filters-modal-noticker.zip
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v137: bo loc Lo/Xuong/Kiot + modal chi tiet + sua Kiot mat du lieu + go ticker + bump CACHE v137"
+            git push
+          fi
