@@ -15,12 +15,15 @@
  *   data-ticker: home | model | shop | kiot.
  * - Nội dung theo trang (tin mới 3 ngày gần đây, mới nhất trước):
  *   home : tất cả bài 3 ngày.
- *   model: (1) shop deal lương tháng cao nhất (tên + mức lương) → (2) bài Việc Làm
- *          và Livestream xen kẽ nhau tới hết tin 3 ngày.
- *   shop : (1) mẫu deal lương thấp nhất (tên + mức lương cần) → (2) mẫu kinh nghiệm
+ *   model: (1) mẫu deal lương thấp nhất (tên + mức lương cần) → (2) mẫu kinh nghiệm
  *          nhiều nhất (doanh thu livestream chưa có số liệu nên dùng kinh nghiệm)
- *          → (3) bài Hàng hoá ("Hàng mới trend") và Dòng tiền xen kẽ.
+ *          → (3) bài Việc Làm và Livestream xen kẽ nhau tới hết tin 3 ngày.
+ *   shop : (1) shop deal lương tháng cao nhất (tên + mức lương) → (2) bài Hàng hoá
+ *          ("Hàng mới trend") và Dòng tiền xen kẽ.
  *   kiot : bài Hàng hoá → Livestream → Dòng tiền, xen kẽ vòng tròn tới hết tin 3 ngày.
+ * - v141 (anh chốt 01:06 ngày 11/11): bỏ quảng cáo chéo — mỗi trang mở đầu bằng
+ *   đúng phía của mình (trang Mẫu → mẫu, trang Shop → shop). Trước v141, trang Mẫu
+ *   mở đầu bằng shop lương cao nhất và trang Shop mở đầu bằng mẫu.
  * - Quy ước cần anh xác nhận: "Hàng mới trend" = mục "Hàng hoá"; tốc độ 2 giây/từ.
  */
 (function () {
@@ -243,14 +246,16 @@
     if (page === 'home') {
       items = recent.map(articleItem);
     } else if (page === 'model') {
-      var shop = pickHighestShop();
-      if (shop) items.push({ text: shop.shop.name + ' — lương cao nhất ' + shop.mm + ' triệu/tháng', href: 'danh-sach-shop.html' });
-      items = items.concat(alternateLists([cats['Việc Làm'] || [], cats['Livestream'] || []]).map(articleItem));
-    } else if (page === 'shop') {
+      // v141: trang Mẫu mở đầu bằng mẫu (đúng phía của mình), không còn shop lead.
       var low = pickLowestModel();
       if (low) items.push({ text: low.model.name + ' — cần ' + fmtVnd(low.model.salaryNum) + 'đ/giờ', href: 'danh-sach-mau.html' });
       var exp = pickMostExperiencedModel();
       if (exp) items.push({ text: exp.model.name + ' — ' + expLabel(exp.expMonths), href: 'danh-sach-mau.html' });
+      items = items.concat(alternateLists([cats['Việc Làm'] || [], cats['Livestream'] || []]).map(articleItem));
+    } else if (page === 'shop') {
+      // v141: trang Shop mở đầu bằng shop (đúng phía của mình), không còn mẫu lead.
+      var shop = pickHighestShop();
+      if (shop) items.push({ text: shop.shop.name + ' — lương cao nhất ' + shop.mm + ' triệu/tháng', href: 'danh-sach-shop.html' });
       items = items.concat(alternateLists([cats['Hàng hoá'] || [], cats['Dòng tiền'] || []]).map(articleItem));
     } else if (page === 'kiot') {
       items = alternateLists([cats['Hàng hoá'] || [], cats['Livestream'] || [], cats['Dòng tiền'] || []]).map(articleItem);
