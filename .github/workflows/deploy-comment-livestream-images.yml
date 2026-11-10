@@ -1,0 +1,36 @@
+name: Deploy comment livestream images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-comment-livestream-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-comment-livestream-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip comment livestream package
+        run: |
+          unzip -o mclivestream-comment-livestream-new-images.zip
+          echo "--- verify payload ---"
+          ls -la bai-viet/dich-vu-comment-livestream-tang-don-ban-hang.html js/data.js || find . -name 'dich-vu-comment-livestream-tang-don-ban-hang*' | sort
+          find . -name 'dich-vu-comment-livestream-tang-don-ban-hang-*.jpg' | sort
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-comment-livestream-new-images.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy anh moi bai Dich vu Comment Livestream (10 anh moi, khong trung bai Comment Seeding)"
+            git push
+          fi
