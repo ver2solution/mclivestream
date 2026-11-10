@@ -1,0 +1,39 @@
+name: Deploy v123 (news rows Shop + Kiot)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v123.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v123:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v123 package
+        run: |
+          unzip -o mclivestream-v123-deploy.zip
+          echo "--- verify v123 (news rows Shop + Kiot) ---"
+          grep -q 'id="shopNewsRow"' danh-sach-shop.html || (echo "THIEU shopNewsRow"; exit 1)
+          grep -q 'id="kiotNewsRow"' thanh-ly-kiot.html || (echo "THIEU kiotNewsRow"; exit 1)
+          grep -q 'initShopNewsRow' js/app.js || (echo "THIEU initShopNewsRow"; exit 1)
+          grep -q 'initKiotNewsRow' js/app.js || (echo "THIEU initKiotNewsRow"; exit 1)
+          grep -q "const CACHE = 'v123-shell-1';" sw.js || (echo "THIEU CACHE v123-shell-1"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f --ignore-unmatch mclivestream-v123-deploy.zip
+          git add danh-sach-shop.html thanh-ly-kiot.html js/app.js sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v123: 2 hang tin duoi bo loc (Shop: Dong tien & Hang hoa; Kiot: Dang hot & Livestream)"
+            git push
+          fi
