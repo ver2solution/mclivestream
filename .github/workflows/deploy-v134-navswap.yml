@@ -1,0 +1,42 @@
+name: Deploy v134-navswap
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v134-navswap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v134-navswap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v134-navswap package
+        run: |
+          unzip -o mclivestream-v134-navswap.zip
+          echo "--- verify v134-navswap payload (121 files) ---"
+          grep -q "const CACHE = 'v134-shell-1';" sw.js && echo "sw.js CACHE v134-shell-1 OK"
+          grep -q 'href="danh-sach-mau.html" class="">Dành cho Shop' index.html && echo "index nav Mau->Shop label OK"
+          grep -q 'href="danh-sach-shop.html" class="">Dành cho Mẫu' index.html && echo "index nav Shop->Mau label OK"
+          grep -q 'id="shopNewsRow"' danh-sach-mau.html && echo "mau.html co shopNewsRow OK"
+          grep -q 'id="modelNewsRow"' danh-sach-shop.html && echo "shop.html co modelNewsRow OK"
+          NAV=$(grep -o '<nav class="main-nav"[^>]*>.*</nav>' index.html)
+          echo "$NAV" | grep -q 'Lô xả kho' && echo "LOI: nav van con Lo xa kho" || echo "nav khong con Lo xa kho OK"
+          echo "$NAV" | grep -q 'Xưởng gia công' && echo "LOI: nav van con Xuong gia cong" || echo "nav khong con Xuong gia cong OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v134-navswap.zip
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v134: doi ten menu Danh cho Mau<->Shop (giu href) + doi hang tin theo tieu de + bump CACHE v134"
+            git push
+          fi
