@@ -1,0 +1,46 @@
+name: Deploy v142
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v142.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v142:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v142 package
+        run: |
+          unzip -o mclivestream-v142.zip
+          echo "--- verify v142 payload ---"
+          grep -q "const CACHE = 'v142-shell-1';" sw.js && echo "sw.js CACHE v142-shell-1 OK"
+          grep -q 'href="https://phatphaponline.pages.dev/noi-duong-tam.html"' index.html && echo "index.html game-entry -> Rion OK"
+          grep -q 'href="https://phatphaponline.pages.dev/noi-duong-tam.html"' bai-viet/doanh-thu-11-11-viet-nam-shopee-lazada-tiktok-shop.html && echo "bai-viet game-entry -> Rion OK"
+          grep -q 'src="https://vieclamlivestream.online/images/noi-duong-tam-icon.png"' index.html && echo "index.html game-entry img Rion OK"
+          test -f images/noi-duong-tam-icon.png && echo "image noi-duong-tam-icon.png OK"
+          echo "changed HTML files: $(grep -rl 'phatphaponline.pages.dev/noi-duong-tam.html' --include='*.html' . | wc -l)"
+      - name: Remove local game files (no longer used — game now links to Rion)
+        run: |
+          git rm -r --cached game 2>/dev/null || true
+          git rm --cached js/game-duong-tam.js 2>/dev/null || true
+          rm -rf game js/game-duong-tam.js
+          echo "local game removed from repo"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v142.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v142: nut game-entry link sang game Rion (phatphaponline.pages.dev), go game local"
+            git push
+          fi
