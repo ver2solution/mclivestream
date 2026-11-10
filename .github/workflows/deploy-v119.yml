@@ -1,0 +1,44 @@
+name: Deploy v119
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v119.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v119:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v119 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v119-deploy.zip
+          echo "--- verify v119 payload ---"
+          grep -m1 "v119-shell-1" sw.js
+          grep -m1 "MID_MSG_RE" js/analytics.js
+          grep -m1 "EXT_SRC_RE" js/analytics.js
+          echo "html files: $(find . -maxdepth 1 -name '*.html' | wc -l) root + $(ls bai-viet/*.html | wc -l) bai-viet"
+          echo "js files (excluding data.js): $(ls js/*.js | grep -vc data.js)"
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js js/analytics.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v119-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v119: bo qua loi JS M_ID cua extension o dang-nhap.html + ghi JSON ly do reject dang object (analytics.js), sw.js v119-shell-1"
+            git push
+          fi
