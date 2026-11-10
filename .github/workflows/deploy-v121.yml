@@ -1,0 +1,46 @@
+name: Deploy v121
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v121.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v121:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v121 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v121-deploy.zip
+          echo "--- verify v121 payload (notes admin) ---"
+          grep -m1 "v121-shell-1" sw.js
+          grep -m1 "🧪 test" js/admin.js
+          grep -m1 "admUserNotes" js/admin.js
+          grep -m1 "admin_set_profile_notes" js/admin.js
+          grep -m1 "'notes'" mclivestream-supabase.js
+          echo "html files: $(find . -maxdepth 1 -name '*.html' | wc -l) root + $(ls bai-viet/*.html | wc -l) bai-viet"
+          echo "js files (excluding data.js): $(ls js/*.js | grep -vc data.js)"
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js js/admin.js mclivestream-supabase.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v121-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v121: ghi chu admin cho tai khoan (notes) — badge test o danh sach + o Ghi chu o cuoi form chi tiet ho so trong trang quan tri, sw.js v121-shell-1"
+            git push
+          fi
