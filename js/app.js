@@ -71,7 +71,9 @@ function findProvinceInText(text){
    'Ninh Binh (3)'. */
 var MERGED_PROV = {'TP.HCM':'TP. Hồ Chí Minh','Bình Dương':'TP. Hồ Chí Minh','Nam Định':'Ninh Bình','Hải Dương':'Hải Phòng','Bắc Giang':'Bắc Ninh'};
 function normProv(p){ var s = String(p == null ? '' : p).trim(); return MERGED_PROV[s] || s; }
-function lotProvOf(l){ return normProv(findProvinceInText(((l && l.title) ? l.title + ' ' : '') + ((l && l.meta) || ''))); }
+/* v124: tin user LUÔN có trường prov (đặc tả §6.2) nên ưu tiên prov riêng
+   trước khi quét tỉnh trong tiêu đề/meta như lô thu thập cũ. */
+function lotProvOf(l){ if(l && hasReal(l.prov)) return normProv(l.prov); return normProv(findProvinceInText(((l && l.title) ? l.title + ' ' : '') + ((l && l.meta) || ''))); }
 function modelFields(m){
   // Cac linh vuc cua ho so: uu tien mang fields (neu co), roi cat don,
   // roi chuoi tu do desired_product_types (ho so tu dang ky).
@@ -106,6 +108,7 @@ function shopSalaryLine(s){
   return 'Thoả thuận';
 }
 function lotLocationLine(l){
+  if(l && hasReal(l.prov)) return esc(l.prov);
   var p = findProvinceInText((l && l.title ? l.title + ' ' : '') + (l && l.meta ? l.meta : ''));
   if(p) return esc(p);
   return sourceDetailLink(l && l.url);
@@ -118,8 +121,10 @@ function lotValueLine(l){
   // (truoc day roi ve catLabel, the hien "Quần áo"/"Mỹ phẩm" dung vi tri
   // cua gia). Ten nganh van hien trong o anh ("Xả kho: Quần áo" /
   // "Thu mua: Quần áo") nen khong mat thong tin.
+  // v124: tin user có price_unit riêng (cái/kg/bộ/thùng/lô) nên đơn giá
+  // hiện đúng đơn vị đó; lô thu thập không có priceUnit thì giữ 'cái'.
   if(l && typeof l.priceNum === 'number' && typeof l.qty === 'number' && l.qty > 0) return fmtVnd(l.priceNum * l.qty) + 'đ';
-  if(l && typeof l.priceNum === 'number' && l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ/cái';
+  if(l && typeof l.priceNum === 'number' && l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ/' + (l.priceUnit || 'cái');
   return 'Chưa cập nhật';
 }
 function factoryLocationLine(f){
@@ -186,15 +191,15 @@ var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp 
    so chot 05/11/2026 23:38: chi chu ho so dang ky tai khoan, khop thong tin
    lien he moi duoc sua/huy ho so — dong nay huong dan chu ho so cach sua
    (dang ky/dang nhap) hoac go (lien he Zalo). Link dang ky/dang nhap dung loai:
-   the mau -> danh-sach-mau.html#dang-nhap-mau, the shop ->
-   danh-sach-shop.html#dang-nhap-shop (duong dan tuong doi day du de link dung
+   the mau -> danh-sach-shop.html#dang-nhap-mau, the shop ->
+   danh-sach-mau.html#dang-nhap-shop (duong dan tuong doi day du de link dung
    tu moi trang: trang chu, trang danh sach, trang chi tiet).
    v85: link "Đăng ký" tro dung trang dang ky RIENG dang-ky.html (kem
    ?type= theo loai the); link "Đăng nhập" giu neo muc dang nhap tren
    trang danh sach (form dang nhap nhanh tai cho, van hoat dong). */
 function ownerNoteHTML(kind){
   var type = kind === 'shop' ? 'shop' : 'model';
-  var loginHref = kind === 'shop' ? 'danh-sach-shop.html#dang-nhap-shop' : 'danh-sach-mau.html#dang-nhap-mau';
+  var loginHref = kind === 'shop' ? 'danh-sach-mau.html#dang-nhap-shop' : 'danh-sach-shop.html#dang-nhap-mau'; // A3 10/11 un-swap v96
   return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
 }
 /* ---- Xu thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
@@ -1102,7 +1107,7 @@ function pinCardHTML(a, n){ return newsCardHTML(a, n); }
    khi analytics ve (bat dong bo, khong lam cham trang). Neu khong co
    bai nao co luot xem trong 2 chuyen muc cua hang thi giu nguyen 4 bai
    moi nhat. Chuyen muc theo chi dao cua anh 10/11: Shop = Livestream +
-   Xu hướng; Mau = Đời Sống + Dòng tiền; Kiot = Đang hot + Livestream. */
+   Xu hướng; Mau = Đời Sống + Việc Làm; Kiot = Đang hot + Livestream. */
 function newsRowNewest(cats,n){
   return (D.articles||[]).map(function(a,i){ return {a:a,i:i}; })
     .filter(function(x){ return cats.indexOf(x.a.cat)!==-1; })
@@ -1170,16 +1175,17 @@ function initNewsRow(rowId,cats,titleHtml){
     renderNewsRow(row,titleHtml,newsRowFinalList(newest,mv));
   }).catch(function(){ /* giu 4 bai moi nhat */ });
 }
-/* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc #shopFilter):
-   2 chuyen muc "Đời Sống" + "Dòng tiền". v103: tieu de "Xu hướng sống mới"
-   (user chot 21:40 08/11). v124: o 1 = bai xem nhieu nhat, 3 o con lai =
-   3 bai moi nhat (xem initNewsRow). */
+/* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc, #modelNewsRow
+   trong danh-sach-mau.html — vong 2 A3 10/11 dua container ve dung trang Mau).
+   2 chuyen muc "Đời Sống" + "Việc Làm" (anh chot 10/11, thay "Dòng tiền").
+   v103: tieu de "Xu hướng sống mới" (user chot 21:40 08/11, giu nguyen).
+   v124: o 1 = bai xem nhieu nhat, 3 o con lai = 3 bai moi nhat (xem initNewsRow). */
 function initModelNewsRow(){
-  initNewsRow('modelNewsRow',['Đời Sống','Dòng tiền'],
+  initNewsRow('modelNewsRow',['Đời Sống','Việc Làm'],
     '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-doi-song-mau">Xu hướng sống mới</a></h2>');
 }
-/* v124: hang 4 o tin tren trang Danh cho Shop (danh-sach-shop.html,
-   #shopNewsRow) — 2 chuyen muc "Livestream" + "Xu hướng" (anh chot
+/* v124: hang 4 o tin danh cho Shop (o danh-sach-mau.html sau A3 un-swap
+   10/11, #shopNewsRow) — 2 chuyen muc "Livestream" + "Xu hướng" (anh chot
    15:00 10/11, thay cho "Dòng tiền + Hàng hoá" cua v123). Tieu de
    "Livestream & xu hướng". O 1 = bai xem nhieu nhat, 3 o con lai =
    3 bai moi nhat (xem initNewsRow). */
@@ -1382,14 +1388,20 @@ function lotFactoryPhotoHTML(item, label){
 }
 /* v124: huy hiệu "✓ Thành viên đăng" (góc trên-trái ảnh) + dòng tên shop
    dưới 2 dòng của thẻ lô/xưởng/kiot do thành viên đăng. Chỉ hiện khi
-   item có cờ _userListing (tin user); tin thu thập giữ nguyên. */
+   item có source === 'user' (đặc tả §6.2/§6.3); tin thu thập giữ nguyên. */
 function userListingBadgeHTML(item){
-  if(!item || !item._userListing) return '';
+  if(!item || item.source !== 'user') return '';
   return '<span style="position:absolute;top:8px;left:8px;z-index:2;background:#137333;color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px">✓ Thành viên đăng</span>';
 }
 function userListingShopLineHTML(item){
-  if(!item || !item._userListing || !item._shopName) return '';
-  return '<p class="card-compact-line" style="color:#137333;font-weight:700">Shop: ' + esc(item._shopName) + '</p>';
+  if(!item || item.source !== 'user' || !item.shop_name) return '';
+  return '<p class="card-compact-line" style="color:#137333;font-weight:700">Đăng bởi: ' + esc(item.shop_name) + '</p>';
+}
+/* v124: định danh bình luận của tin user = UUID gốc (đặc tả §6.3:
+   target_ref = UUID của tin), không phải id thẻ 'user-<uuid>'; tin thu
+   thập giữ nguyên id data.js. */
+function userListingCommentTargetId(item){
+  return (item && item.source === 'user' && item._dbId) ? item._dbId : (item && item.id);
 }
 function lotCardHTML(l, withComments){
   // v99 (§1c): the lo/kiot rut gon — khoi mau 46/51 + ten overlay + dung
@@ -1399,7 +1411,10 @@ function lotCardHTML(l, withComments){
   // v101: o anh khong con chi la icon — lo nhom 2 hien "Thu mua: <loai>",
   // lo nhom 1 + nhom 3 hien "Xa kho: <loai>", kiot hien loai hinh (nhan
   // tieng Viet tu cat); lo/kiot khong co cat thi giu icon cu.
-  var targetType = (l && l.id && String(l.id).indexOf('kiot-') === 0) ? 'kiot' : 'lot';
+  // v124: tin user có trường kind ('lot'/'factory'/'kiot', đặc tả §6.2)
+  // nên nhận diện kiot qua kind trước; lô thu thập cũ giữ logic tiền tố
+  // id ('kiot-…') như trước.
+  var targetType = (l && (l.kind === 'kiot' || (l.id && String(l.id).indexOf('kiot-') === 0))) ? 'kiot' : 'lot';
   var photoContent;
   if(targetType === 'kiot'){
     photoContent = hasReal(l.cat) ? '<span class="card-compact-noimg" aria-hidden="true"><span>🏪 '+esc(catLabel(l.cat))+'</span></span>' : '<span class="card-compact-ph" aria-hidden="true">🏪</span>';
@@ -1419,7 +1434,7 @@ function lotCardHTML(l, withComments){
   + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(l) + photoContent + lotFactoryPhotoHTML(l, l.title) + '<span class="card-compact-name"><span>' + esc(l.title) + '</span></span></a>'
   + starButtonHTML(targetType, l.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">' + line1 + '</p><p class="card-compact-line">' + line2 + '</p>' + userListingShopLineHTML(l) + '</div>'
-  + (withComments ? commentToggleHTML(targetType, l.id) : '') + '</article>';
+  + (withComments ? commentToggleHTML(targetType, userListingCommentTargetId(l)) : '') + '</article>';
 }
 function factoryCardHTML(f, withComments){
   // v99 (§1c): the xuong rut gon — khoi mau 46/51 + ten overlay + dung
@@ -1430,7 +1445,7 @@ function factoryCardHTML(f, withComments){
   + '<a class="card-compact-photo card-compact-photo--factory" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(f) + '<span class="card-compact-ph" aria-hidden="true">🏭</span>' + lotFactoryPhotoHTML(f, f.name) + '<span class="card-compact-name"><span>' + esc(f.name) + '</span></span></a>'
   + starButtonHTML('factory', f.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">' + factoryLocationLine(f) + '</p><p class="card-compact-line">' + factoryItemsLine(f) + '</p>' + userListingShopLineHTML(f) + '</div>'
-  + (withComments ? commentToggleHTML('factory', f.id) : '') + '</article>';
+  + (withComments ? commentToggleHTML('factory', userListingCommentTargetId(f)) : '') + '</article>';
 }
 /* v76: render the lo/xuong tu data.js vao trang Shop + cap nhat dong dem
    (.lot-sub) + o loc tinh dung chung (fUniProv) theo so lieu thuc te. Goi TRUOC
@@ -1472,12 +1487,17 @@ function renderLotSections(ref){
   }
 }
 /* ---------- v124: Tin lô / xưởng / kiot do thành viên đăng ---------- */
-/* Chuyển 1 dòng từ public view (Supabase) sang đúng shape data.js để tái
-   dùng lotCardHTML / factoryCardHTML. Tin user có id tiền tố 'user-lot-'
-   / 'user-factory-' / 'user-kiot-' + uuid, cờ _userListing và _shopName
-   để thẻ hiện huy hiệu + tên shop, bấm mở panel chi tiết (không có trang
-   chi tiết riêng ở v1). Tin user KHÔNG ghi vào data.js — chỉ fetch runtime
-   rồi gộp vào lưới; lỗi mạng/supabase thì im lặng, chỉ hiện tin thu thập. */
+/* Chuyển 1 dòng từ public view (Supabase) sang đúng shape data.js (đặc tả
+   §6.2) để tái dùng lotCardHTML / factoryCardHTML:
+   - id: 'user-' + uuid; source: 'user'; kind: 'lot'/'factory'/'kiot';
+     _dbId giữ UUID gốc (dùng cho RPC/bình luận — target_ref = UUID).
+   - prov: province (tin user LUÔN có tỉnh); meta: description (+ xưởng:
+     địa chỉ/MOQ/điện thoại/website; kiot: diện tích/tiền thuê).
+   - url: NULL — thẻ tin user KHÔNG phải link ngoài (§6.4); img:
+     images[0] (ảnh bìa); images: toàn bộ mảng; shop_name từ view.
+   - group: lô user luôn 1 (xả kho). Tin user KHÔNG ghi vào data.js —
+     chỉ fetch runtime rồi gộp vào lưới; lỗi mạng/supabase thì im lặng,
+     chỉ hiện tin thu thập. */
 var userListingByCardId = {};
 function userListingDateStr(iso){
   try{
@@ -1490,112 +1510,204 @@ function userListingDateStr(iso){
 }
 function userListingToLot(r){
   return {
-    id: 'user-lot-' + r.id, title: r.title, meta: r.province || '',
-    cat: r.cat, priceNum: r.price_num, qty: r.qty, unit: r.unit,
-    retailPriceNum: r.retail_price_num, url: r.source_url || '',
-    date: userListingDateStr(r.created_at), group: 1,
-    _userListing: true, _kind: 'lot', _rowId: r.id, _shopName: r.shop_name || '',
-    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
-    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+    id: 'user-' + r.id, source: 'user', kind: 'lot', _dbId: r.id,
+    title: r.title, prov: r.province, meta: r.description || '',
+    cat: r.cat, priceNum: r.price_num, priceUnit: r.price_unit || 'cái',
+    qty: r.qty, img: (r.images && r.images[0]) || null, images: r.images || [],
+    shop_name: r.shop_name || '', contact_zalo: r.contact_zalo || '',
+    contact_phone: r.contact_phone || '', source_url: r.source_url || '',
+    url: null, date: userListingDateStr(r.created_at), group: 1,
+    label: 'Đã duyệt bởi Ver2Solution'
   };
 }
 function userListingToFactory(r){
+  var metaParts = [];
+  if(r.description) metaParts.push(r.description);
+  if(r.address) metaParts.push(r.address);
+  if(r.moq != null) metaParts.push('MOQ: ' + r.moq);
+  if(r.phone) metaParts.push(r.phone);
+  if(r.website) metaParts.push(r.website);
   return {
-    id: 'user-factory-' + r.id, name: r.name, items: r.items, cat: r.cat,
-    prov: r.province, moq: r.min_qty, priceNum: r.price_num,
-    workerCount: r.worker_count, url: r.source_url || '',
-    date: userListingDateStr(r.created_at),
-    _userListing: true, _kind: 'factory', _rowId: r.id, _shopName: r.shop_name || '',
-    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
-    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+    id: 'user-' + r.id, source: 'user', kind: 'factory', _dbId: r.id,
+    name: r.name, items: r.items, cat: r.cat, prov: r.province,
+    meta: metaParts.join(' · '), moq: r.moq, phone: r.phone || '',
+    website: r.website || '', address: r.address || '',
+    img: (r.images && r.images[0]) || null, images: r.images || [],
+    shop_name: r.shop_name || '', contact_zalo: r.contact_zalo || '',
+    url: null, date: userListingDateStr(r.created_at),
+    label: 'Đã duyệt bởi Ver2Solution'
   };
 }
 function userListingToKiot(r){
-  // cat của kiot data.js là LOẠI kiot (toan-bo-cua-hang / sang-mat-bang /
-  // hang-ton-kho / do-dac-thiet-bi), trùng với trường kind của user_kiots.
+  var metaParts = [];
+  if(r.description) metaParts.push(r.description);
+  if(r.area_sqm != null) metaParts.push(r.area_sqm + ' m²');
+  if(r.rent_monthly != null) metaParts.push('Thuê ' + fmtVnd(r.rent_monthly) + 'đ/tháng');
   return {
-    id: 'user-kiot-' + r.id, title: r.title, cat: r.kind, prov: r.province,
-    priceNum: r.price_num, areaSqm: r.area_sqm, rentNum: r.rent_num,
-    url: r.source_url || '', date: userListingDateStr(r.created_at),
-    _userListing: true, _kind: 'kiot', _rowId: r.id, _shopName: r.shop_name || '',
-    _shopEmail: r.shop_contact_email || '', _description: r.description || '',
-    _images: r.images || [], _address: r.address || '', _sourceUrl: r.source_url || ''
+    id: 'user-' + r.id, source: 'user', kind: 'kiot', _dbId: r.id,
+    title: r.title, cat: r.kind, prov: r.province,
+    priceNum: r.price_num, areaSqm: r.area_sqm, rentMonthly: r.rent_monthly,
+    meta: metaParts.join(' · '), img: (r.images && r.images[0]) || null,
+    images: r.images || [], shop_name: r.shop_name || '',
+    contact_zalo: r.contact_zalo || '', contact_phone: r.contact_phone || '',
+    source_url: r.source_url || '', url: null,
+    date: userListingDateStr(r.created_at),
+    label: 'Đã duyệt bởi Ver2Solution'
   };
 }
 function registerUserListing(item){
   if(item && item.id) userListingByCardId[item.id] = item;
   return item;
 }
-/* Panel chi tiết tin user — tái dùng .gopy-overlay/.gopy-box của v20.css.
-   Nội dung: tiêu đề + huy hiệu + tên shop, mô tả, album ảnh, chi tiết
-   (giá/số lượng/tỉnh/địa chỉ...), liên hệ (tên shop + email + bài gốc). */
-function openUserListingPanel(item){
-  if(!item) return;
-  var overlay = document.getElementById('userListingOverlay');
-  if(!overlay){
-    overlay = document.createElement('div');
-    overlay.id = 'userListingOverlay';
-    overlay.className = 'gopy-overlay';
-    overlay.innerHTML = '<div class="gopy-box" role="dialog" aria-label="Chi tiết tin đăng"><div id="userListingPanelBody"></div><div style="display:flex;gap:10px;margin-top:12px"><button class="btn btn-ghost" type="button" id="userListingCloseBtn">Đóng</button></div></div>';
-    document.body.appendChild(overlay);
-    overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('open'); });
-    document.getElementById('userListingCloseBtn').addEventListener('click', function(){ overlay.classList.remove('open'); });
+/* Panel chi tiết tin user — INLINE ngay dưới thẻ (đặc tả §6.4, v1).
+   Bấm thẻ tin user → chèn panel mở rộng ngay dưới thẻ đó (grid-column
+   1/-1 để span hết lưới): mô tả đầy đủ, album ảnh (ảnh bìa lớn + ảnh
+   nhỏ bấm để đổi), tên shop + nút liên hệ (Zalo / gọi điện), và — nếu
+   người xem là admin đang đăng nhập — nút "Đóng tin". Bấm lại thẻ hoặc
+   nút × để đóng. Chỉ mở 1 panel tại 1 thời điểm. */
+var userListingOpenPanel = null; // {cardId, el}
+var userListingViewerIsAdmin = null; // cache kết quả is_admin()
+async function checkViewerIsAdmin(){
+  if(userListingViewerIsAdmin !== null) return userListingViewerIsAdmin;
+  userListingViewerIsAdmin = false;
+  try{
+    if(window.McLivestreamAPI && window.McLivestreamAPI.client){
+      var r = await window.McLivestreamAPI.client.rpc('is_admin');
+      userListingViewerIsAdmin = !!(r && r.data === true);
+    }
+  }catch(e){ userListingViewerIsAdmin = false; }
+  return userListingViewerIsAdmin;
+}
+function closeUserListingPanel(){
+  if(userListingOpenPanel && userListingOpenPanel.el && userListingOpenPanel.el.parentNode){
+    userListingOpenPanel.el.parentNode.removeChild(userListingOpenPanel.el);
   }
-  var body = document.getElementById('userListingPanelBody');
-  if(!body) return;
+  userListingOpenPanel = null;
+}
+function userListingPanelHTML(item){
   var title = item.title || item.name || '(không tiêu đề)';
-  var imgs = item._images || [];
-  var albumHtml = '';
-  if(imgs.length){
-    albumHtml = '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">' + imgs.map(function(u){
-      return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="" style="width:96px;height:96px;object-fit:cover;border-radius:8px"></a>';
-    }).join('') + '</div>';
-  }
+  var imgs = item.images || [];
+  var mainImg = imgs[0] ? '<img data-user-panel-main-img src="' + esc(imgs[0]) + '" alt="" style="width:100%;max-height:320px;object-fit:cover;border-radius:12px;display:block">' : '';
+  var thumbs = imgs.length > 1 ? '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">' + imgs.map(function(u){
+    return '<img data-user-panel-thumb="' + esc(u) + '" src="' + esc(u) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer">';
+  }).join('') + '</div>' : '';
   var details = [];
-  if(item._kind === 'lot'){
-    if(item.priceNum != null) details.push('Giá bán lô: <b>' + fmtVnd(item.priceNum) + 'đ</b>');
-    if(item.qty != null) details.push('Số lượng: <b>' + fmtVnd(item.qty) + (item.unit ? ' ' + esc(item.unit) : '') + '</b>');
-    if(item.retailPriceNum != null) details.push('Giá bán lẻ: ' + fmtVnd(item.retailPriceNum) + 'đ');
-  } else if(item._kind === 'factory'){
+  if(item.kind === 'lot'){
+    if(item.priceNum != null) details.push('Giá bán lô: <b>' + fmtVnd(item.priceNum) + 'đ/' + esc(item.priceUnit || 'cái') + '</b>');
+    if(item.qty != null) details.push('Số lượng: <b>' + fmtVnd(item.qty) + '</b>');
+  } else if(item.kind === 'factory'){
     if(item.items) details.push('Mặt hàng: <b>' + esc(item.items) + '</b>');
     if(item.moq != null) details.push('Số lượng tối thiểu: <b>' + fmtVnd(item.moq) + '</b>');
-    if(item.priceNum != null) details.push('Giá gia công từ: ' + fmtVnd(item.priceNum) + 'đ/cái');
-    if(item.workerCount != null) details.push('Số công nhân: ' + fmtVnd(item.workerCount));
+    if(item.phone) details.push('Điện thoại xưởng: ' + esc(item.phone));
+    if(item.website) details.push('Website: <a href="' + esc(item.website) + '" target="_blank" rel="noopener">' + esc(item.website) + '</a>');
+    if(item.address) details.push('Địa chỉ: ' + esc(item.address));
   } else {
     if(item.priceNum != null) details.push('Giá sang nhượng: <b>' + fmtVnd(item.priceNum) + 'đ</b>');
     if(item.areaSqm != null) details.push('Diện tích: ' + fmtVnd(item.areaSqm) + ' m²');
-    if(item.rentNum != null) details.push('Giá thuê: ' + fmtVnd(item.rentNum) + 'đ/tháng');
+    if(item.rentMonthly != null) details.push('Tiền thuê: ' + fmtVnd(item.rentMonthly) + 'đ/tháng');
   }
   if(item.cat) details.push('Danh mục: ' + esc(catLabel(item.cat)));
-  var prov = item._kind === 'lot' ? lotProvOf(item) : (item.prov || '');
-  if(prov) details.push('Tỉnh / Thành phố: ' + esc(prov));
-  if(item._address) details.push('Địa chỉ: ' + esc(item._address));
-  body.innerHTML = '<h2 style="margin:0 0 6px">' + esc(title) + '</h2>'
-    + '<p style="margin:0 0 8px"><span style="background:#e6f4ea;color:#137333;font-weight:800;padding:2px 8px;border-radius:999px;font-size:12px">✓ Thành viên đăng</span> <span style="font-size:13px;color:#666">Shop: ' + esc(item._shopName || '') + '</span></p>'
-    + (item._description ? '<p style="white-space:pre-wrap;word-break:break-word">' + esc(item._description) + '</p>' : '')
-    + albumHtml
-    + (details.length ? '<ul style="margin:8px 0;padding-left:18px">' + details.map(function(d){ return '<li>' + d + '</li>'; }).join('') + '</ul>' : '')
-    + '<p style="font-size:13px;color:#666">Liên hệ: ' + esc(item._shopName || '') + (item._shopEmail ? ' · <a href="mailto:' + esc(item._shopEmail) + '">' + esc(item._shopEmail) + '</a>' : '') + (item._sourceUrl ? ' · <a href="' + esc(item._sourceUrl) + '" target="_blank" rel="noopener">Bài gốc</a>' : '') + '</p>'
-    + '<p style="font-size:12px;color:#999">Tin do thành viên đăng, đã qua admin duyệt. Ver2Solution không chịu trách nhiệm về giao dịch giữa hai bên.</p>';
-  overlay.classList.add('open');
+  if(item.prov) details.push('Tỉnh / Thành phố: ' + esc(item.prov));
+  var zaloVal = item.contact_zalo || '';
+  var phoneVal = item.contact_phone || item.phone || '';
+  var contact = [];
+  if(zaloVal){
+    var zaloHref = /^https?:\/\//i.test(zaloVal) ? zaloVal : 'https://zalo.me/' + zaloVal.replace(/[^0-9]/g, '');
+    contact.push('<a class="btn btn-primary btn-sm" href="' + esc(zaloHref) + '" target="_blank" rel="noopener">Nhắn Zalo</a>');
+  }
+  if(phoneVal){
+    contact.push('<a class="btn btn-ghost btn-sm" href="tel:' + esc(phoneVal.replace(/[^0-9+]/g, '')) + '">Gọi ' + esc(phoneVal) + '</a>');
+  }
+  return '<div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3 style="margin:0">' + esc(title) + '</h3><button type="button" class="btn btn-ghost btn-sm" data-user-panel-close aria-label="Đóng">×</button></div>'
+    + '<p style="margin:6px 0"><span style="background:#e6f4ea;color:#137333;font-weight:800;padding:2px 8px;border-radius:999px;font-size:12px">✓ Thành viên đăng</span> <span style="font-size:13px;color:#666">Đăng bởi: ' + esc(item.shop_name || '') + '</span></p>'
+    + (item.meta ? '<p style="white-space:pre-wrap;word-break:break-word">' + esc(item.meta) + '</p>' : '')
+    + mainImg + thumbs
+    + (details.length ? '<ul style="margin:10px 0;padding-left:18px">' + details.map(function(d){ return '<li>' + d + '</li>'; }).join('') + '</ul>' : '')
+    + (contact.length ? '<p style="display:flex;gap:8px;flex-wrap:wrap">' + contact.join('') + '</p>' : '')
+    + (item.source_url ? '<p style="font-size:13px"><a href="' + esc(item.source_url) + '" target="_blank" rel="noopener">Bài gốc</a></p>' : '')
+    + '<p style="font-size:12px;color:#999">Tin do thành viên đăng, đã qua admin duyệt. Ver2Solution không chịu trách nhiệm về giao dịch giữa hai bên.</p>'
+    + '<p><button type="button" class="btn btn-ghost btn-sm" data-user-panel-admin-close hidden>Đóng tin (admin)</button></p>';
 }
-/* Bấm thẻ tin user → mở panel chi tiết thay vì đi theo link ảnh.
+async function toggleUserListingPanel(cardEl, item){
+  if(!cardEl || !item) return;
+  // Bấm lại thẻ đang mở → đóng.
+  if(userListingOpenPanel && userListingOpenPanel.cardId === item.id){
+    closeUserListingPanel();
+    return;
+  }
+  closeUserListingPanel();
+  var panel = document.createElement('div');
+  panel.className = 'user-listing-panel';
+  panel.setAttribute('style', 'grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;');
+  panel.innerHTML = userListingPanelHTML(item);
+  if(cardEl.parentNode) cardEl.parentNode.insertBefore(panel, cardEl.nextSibling);
+  userListingOpenPanel = {cardId: item.id, el: panel};
+  panel.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest) return;
+    var thumb = t.closest('[data-user-panel-thumb]');
+    if(thumb){
+      var main = panel.querySelector('[data-user-panel-main-img]');
+      var src = thumb.getAttribute('data-user-panel-thumb');
+      if(main && src) main.src = src;
+      return;
+    }
+    if(t.closest('[data-user-panel-close]')){ closeUserListingPanel(); return; }
+    var adminClose = t.closest('[data-user-panel-admin-close]');
+    if(adminClose){
+      var reason = window.prompt('Lý do đóng tin (hiện cho chủ tin):', '');
+      if(reason === null || !String(reason).trim()) return;
+      closeUserListingByAdmin(item, String(reason).trim(), panel);
+    }
+  });
+  // Nếu là admin thì hiện nút Đóng tin (đặc tả §5.3/§6.4).
+  var isAdmin = await checkViewerIsAdmin();
+  if(isAdmin){
+    var adminBtn = panel.querySelector('[data-user-panel-admin-close]');
+    if(adminBtn) adminBtn.hidden = false;
+  }
+  if(panel.scrollIntoView) panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+async function closeUserListingByAdmin(item, reason, panel){
+  try{
+    if(!window.McLivestreamAPI || !window.McLivestreamAPI.client) throw new Error('Chưa kết nối Supabase.');
+    var r = await window.McLivestreamAPI.client.rpc('admin_close_user_listing', {p_kind: item.kind, p_listing_id: item._dbId, p_reason: reason});
+    if(r.error) throw r.error;
+    closeUserListingPanel();
+    var card = document.querySelector('[data-v2s-id="' + item.id + '"]');
+    if(card && card.parentNode) card.parentNode.removeChild(card);
+  }catch(e){
+    if(panel){
+      var msg = panel.querySelector('[data-user-panel-admin-msg]');
+      if(!msg){
+        msg = document.createElement('p');
+        msg.setAttribute('data-user-panel-admin-msg', '');
+        msg.style.cssText = 'color:#a50e0e;font-size:13px';
+        panel.appendChild(msg);
+      }
+      msg.textContent = 'Chưa đóng được tin: ' + (e && e.message ? e.message : e);
+    }
+  }
+}
+/* Bấm thẻ tin user → mở panel inline ngay dưới thẻ thay vì đi theo link.
    Nút sao / bình luận trong thẻ vẫn hoạt động bình thường (bỏ qua click
-   xuất phát từ <button>). Đăng ký 1 lần ở cấp document (ủy quyền). */
+   xuất phát từ <button>); không mở panel khi bấm vào panel đang mở.
+   Đăng ký 1 lần ở cấp document (ủy quyền). */
 if(typeof document !== 'undefined' && !document._v2sUserListingClickBound){
   document._v2sUserListingClickBound = true;
   document.addEventListener('click', function(e){
     var t = e.target;
     if(!t || !t.closest) return;
     if(t.closest('button')) return;
+    if(t.closest('.user-listing-panel')) return;
     var card = t.closest('[data-v2s-id]');
     if(!card) return;
     var id = card.getAttribute('data-v2s-id');
-    if(!id || id.indexOf('user-') !== 0) return;
+    if(!id) return;
     var item = userListingByCardId[id];
-    if(!item) return;
+    if(!item || item.source !== 'user') return;
     e.preventDefault();
-    openUserListingPanel(item);
+    toggleUserListingPanel(card, item);
   });
 }
 /* Tải tin user đã duyệt rồi chen lên ĐẦU lưới lô (nhóm 1) + lưới xưởng.
@@ -1707,13 +1819,13 @@ function initHome(){
     var q=document.getElementById('heroQ').value.trim();
     var prov=document.getElementById('heroProv').value;
     var cat=document.getElementById('heroCat').value;
-    var dest='danh-sach-shop.html'; var qs=[];
+    var dest='danh-sach-mau.html'; var qs=[]; // A3 10/11 un-swap v96
     if(q) qs.push('q='+encodeURIComponent(q)); if(prov) qs.push('prov='+encodeURIComponent(prov)); if(cat) qs.push('cat='+encodeURIComponent(cat));
     var href=dest+(qs.length?'?'+qs.join('&'):'');
     function go(){ location.href=href; }
     // v90: dung bo loc THAT (chon tinh/linh vuc) thi tru 1 diem nhu o trang
-    // danh sach (gateFilterApply, category 'model' — dich la danh-sach-shop.html,
-    // v96-swap: grid mau gio o trang Shop);
+    // danh sach (gateFilterApply, category 'model' — dich la danh-sach-mau.html,
+    // A3 10/11 un-swap v96: grid mau gio o trang Mau);
     // chi go tu khoa (q) thi mien phi, di thang. Doi trong 10s sau lan tru
     // truoc thi mien phi (bucket 10s, chung voi bo loc trang danh sach).
     if(!prov && !cat){ go(); return; }
@@ -2022,7 +2134,7 @@ function rebuildShopCatOptions(){
   if(!sel) return false;
   return setSelectOptions(sel, shopGroupOptions());
 }
-/* v96: thanh truot chon hang muc cho bo loc chung trang Shop (danh-sach-shop.html).
+/* v96: thanh truot chon hang muc cho bo loc chung trang Mau (danh-sach-mau.html). A3 10/11 un-swap v96.
    1 khung loc dung chung cho 3 hang muc; truong khong ap dung cho hang muc
    dang chon bi khoa (disabled + mo) va xoa gia tri. Nut Ap dung chay dung bo
    loc cua hang muc dang chon; nut Dat lai xoa toan bo + ve hang muc mac dinh.
@@ -2140,11 +2252,11 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       var cat = getUniCat();
       var b = applyBtn;
       if(cat === 'lot'){
-        if(lotCtl && lotCtl.apply) return gateFilterApply('lot', 'danh-sach-shop.html', function(){ lotCtl.apply(); closeFilterOf(b); }, b);
+        if(lotCtl && lotCtl.apply) return gateFilterApply('lot', 'danh-sach-mau.html', function(){ lotCtl.apply(); closeFilterOf(b); }, b);
       } else if(cat === 'factory'){
-        if(facCtl && facCtl.apply) return gateFilterApply('factory', 'danh-sach-shop.html', function(){ facCtl.apply(); closeFilterOf(b); }, b);
+        if(facCtl && facCtl.apply) return gateFilterApply('factory', 'danh-sach-mau.html', function(){ facCtl.apply(); closeFilterOf(b); }, b);
       }
-      return gateFilterApply('model', 'danh-sach-shop.html', function(){
+      return gateFilterApply('model', 'danh-sach-mau.html', function(){
         if(typeof modelRender === 'function') modelRender(1);
         syncHubFromUni();
         collapseSection('lo-hang-xa-kho', 'lotMoreBtn');
@@ -2173,10 +2285,10 @@ var uniModelCat = null;
 var uniModelQ = '';
 var modelGridRender = null;
 var modelGridClearQ = null;
-/* v96-swap (08/11): doi noi dung 2 trang — trang Mau (danh-sach-mau.html)
-   hien DANH SACH SHOP + bo loc shop rieng (fSh*). Ham nay chi render grid
-   shop (12/trang + phan trang, dong bo URL); phan lo/xuong + khung loc chung
-   chuyen sang initShopPage (trang Shop). */
+/* v96-swap (08/11) + A3 un-swap (10/11): doi noi dung 2 trang — trang Shop
+   (danh-sach-shop.html) hien DANH SACH SHOP + bo loc shop rieng (fSh*).
+   Ham nay chi render grid shop (12/trang + phan trang, dong bo URL);
+   phan lo/xuong + khung loc chung chuyen sang initShopPage (trang Mau). */
 function initShops(){
   initFilterToggle(); /* v72: nut mo/dong bo loc tren mobile */
   var el=document.getElementById('publicShopsList'); if(!el) return;
@@ -2203,7 +2315,7 @@ function initShops(){
     var totalPages=Math.max(1,Math.ceil(list.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     el.innerHTML=list.length?list.slice((pg-1)*perPage,pg*perPage).map(shopCardHTML).join(''):emptyResultsHTML('Chưa có tin tuyển khớp bộ lọc. Hãy chọn tỉnh khác, chọn lĩnh vực khác, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('shopPager'),pg,totalPages,list.length,function(np){
-      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('shop', 'danh-sach-mau.html', function(){ render(np); el.scrollIntoView(); }, document.getElementById('shopApplyBtn')); }
+      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(np); el.scrollIntoView(); }, document.getElementById('shopApplyBtn')); }
       else { render(np); el.scrollIntoView(); }
     },perPage,'tin tuyển');
     setParams(Object.assign({},f,{page:String(pg)}));
@@ -2233,7 +2345,7 @@ function initShops(){
   if(fShPayTypeEl) fShPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
   var applyBtn=document.getElementById('shopApplyBtn');
-  if(applyBtn) applyBtn.addEventListener('click',function(){ var b=applyBtn; return gateFilterApply('shop', 'danh-sach-mau.html', function(){ render(1); closeFilterOf(b); }, b); });
+  if(applyBtn) applyBtn.addEventListener('click',function(){ var b=applyBtn; return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b); });
   var resetBtn=document.getElementById('shopResetBtn');
   if(resetBtn) resetBtn.addEventListener('click',function(){['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';}); syncPayMin(); render(1);});
   el._shopRender=render; /* v99: initStars goi lai khi nap xong so sao */
@@ -2245,10 +2357,11 @@ function initShops(){
       && el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'auto', block: 'start' });
   } catch (e) {}
 }
-/* v96-swap (08/11): khoi tao rieng cho trang Shop (danh-sach-shop.html) —
-   render the lo/xuong, xoay the, bo loc lo/xuong, khung loc chung
-   (uni switch). Grid mau (#listGrid) do initList render; nut Ap dung /
-   Dat lai o khung chung goi modelGridRender qua initUniCatSwitch. */
+/* v96-swap (08/11) + A3 un-swap (10/11): khoi tao rieng cho trang Mau
+   (danh-sach-mau.html) — render the lo/xuong, xoay the, bo loc lo/xuong,
+   khung loc chung (uni switch). Grid mau (#listGrid) do initList render;
+   nut Ap dung / Dat lai o khung chung goi modelGridRender qua
+   initUniCatSwitch. */
 function initShopPage(){
   var uni=document.getElementById('uniFilter'); if(!uni) return;
   renderLotSections(); /* v76: render the lo/xuong TRUOC khi bo loc chup danh sach the */
@@ -2284,7 +2397,7 @@ function initShopPage(){
   refreshUniCounts(getUniCat());
 }
 /* List page: grid + filters + pagination 12/page, URL-synced */
-/* v96-swap (08/11): grid MAU gio o trang Shop (danh-sach-shop.html), loc
+/* A3 un-swap (10/11, dao v96-swap 08/11): grid MAU gio o trang Mau (danh-sach-mau.html), loc
    bang KHUNG LOC CHUNG (#uniFilter, hang muc Tim Mau) thay cho bo loc mau
    cu (fProv...fQ da bo khoi trang Mau). Anh xa truong chung -> mau: tinh
    truc tiep; linh vuc qua uniCatToModel (tru khi URL ?cat= la ten linh vuc
@@ -2354,7 +2467,7 @@ function initList(){
     var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){
-      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('model', 'danh-sach-shop.html', function(){ render(np); grid.scrollIntoView(); }, document.getElementById('uniApplyBtn')); }
+      if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('model', 'danh-sach-mau.html', function(){ render(np); grid.scrollIntoView(); }, document.getElementById('uniApplyBtn')); }
       else { render(np); grid.scrollIntoView(); }
     },12,'hồ sơ');
     /* URL giu dang ?cat= ten linh vuc mau (nhu hero/chip/hub) + cac khoa
@@ -2386,7 +2499,8 @@ function defaultModelOrder(list, date){
 }
 /* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
    2026-11-06, design-2026-11-06-tim-mau-nhanh-cho-shop-11-11.md). Chi 1 khoi
-   moi tren danh-sach-shop.html + ham render rieng o day + CSS .hub-card
+   moi tren danh-sach-mau.html + ham render rieng o day + CSS .hub-card
+   (A3 10/11: khoi hub hien chua gan tren trang nao — kiem tra 10/11.)
    trong v20.css. Khong doi du lieu js/data.js, bo loc tin tuyen shop, phan
    trang, form ho so shop / dang tin, trang chu, trang mau hay trang chi tiet.
    Khong hua "Con trong"/"San sang 11.11", khong hien luot xem/binh luan (0/0),
@@ -2433,15 +2547,15 @@ function hubAllLink(prov, cat){
   var qs = [];
   if(prov) qs.push('prov=' + encodeURIComponent(prov));
   if(cat) qs.push('cat=' + encodeURIComponent(cat));
-  return 'danh-sach-shop.html' + (qs.length ? '?' + qs.join('&') : '');
+  return 'danh-sach-mau.html' + (qs.length ? '?' + qs.join('&') : ''); // A3 10/11 un-swap v96
 }
 /* v63: dong trang thai khi to hop 0 mau — chi noi dung su that + duong doi
    lua chon, khong goi y mau sai tinh/linh vuc, khong hien the trong. */
 function hubEmptyHTML(prov, cat){
   var total = (D.models || []).length;
   if(prov && cat) return 'Chưa có mẫu ' + esc(cat) + ' ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="' + hubAllLink('', cat) + '">xem tất cả mẫu ' + esc(cat) + ' →</a>';
-  if(prov) return 'Chưa có mẫu ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="danh-sach-shop.html">xem tất cả ' + total + ' mẫu →</a>';
-  if(cat) return 'Chưa có mẫu ' + esc(cat) + '. <a href="danh-sach-shop.html">Xem tất cả ' + total + ' mẫu →</a>';
+  if(prov) return 'Chưa có mẫu ở ' + esc(prov) + '. Thử chọn Toàn quốc / Live online, hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
+  if(cat) return 'Chưa có mẫu ' + esc(cat) + '. <a href="danh-sach-mau.html">Xem tất cả ' + total + ' mẫu →</a>';
   return '';
 }
 function initHub(){
@@ -2454,7 +2568,7 @@ function initHub(){
     var prov = provSel ? provSel.value : '', cat = catSel ? catSel.value : '';
     if(!prov && !cat){
       box.innerHTML = '';
-      if(countEl) countEl.innerHTML = 'Chọn tỉnh và lĩnh vực ở trên để xem mẫu phù hợp — hoặc <a href="danh-sach-shop.html">xem tất cả ' + total + ' mẫu →</a>';
+      if(countEl) countEl.innerHTML = 'Chọn tỉnh và lĩnh vực ở trên để xem mẫu phù hợp — hoặc <a href="danh-sach-mau.html">xem tất cả ' + total + ' mẫu →</a>';
       return;
     }
     var list = hubResults(prov, cat);
@@ -3539,8 +3653,9 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, openUserListingPanel:openUserListingPanel, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
+

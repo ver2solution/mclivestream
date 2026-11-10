@@ -247,17 +247,17 @@
   /* Kết quả form: bọc các hàm của McLivestreamAPI. Chỉ ghi form nào + thành
      công hay lỗi (thông báo lỗi đã lọc); KHÔNG đọc nội dung các trường. */
   var FORM_BY_METHOD = {
-    signUp: { 'danh-sach-mau.html': 'mauSignUp', 'danh-sach-shop.html': 'shopSignUp' },
-    signIn: { 'danh-sach-mau.html': 'mauSignIn', 'danh-sach-shop.html': 'shopSignIn' },
-    resetPassword: { 'danh-sach-mau.html': 'mauForgot', 'danh-sach-shop.html': 'shopForgot' },
-    saveMyShopProfile: { 'danh-sach-shop.html': 'shopProfileForm' },
-    submitJobPost: { 'danh-sach-shop.html': 'jobForm' },
+    signUp: { 'danh-sach-mau.html': 'shopSignUp', 'danh-sach-shop.html': 'mauSignUp' }, // A3 10/11 un-swap v96
+    signIn: { 'danh-sach-mau.html': 'shopSignIn', 'danh-sach-shop.html': 'mauSignIn' }, // A3 10/11 un-swap v96
+    resetPassword: { 'danh-sach-mau.html': 'shopForgot', 'danh-sach-shop.html': 'mauForgot' }, // A3 10/11 un-swap v96
+    saveMyShopProfile: { 'danh-sach-mau.html': 'shopProfileForm' }, // A3 10/11 un-swap v96
+    submitJobPost: { 'danh-sach-mau.html': 'jobForm' }, // A3 10/11 un-swap v96
     saveMyProfile: { 'trang-cua-toi.html': 'myProfileForm' },
     submitFeedback: { '*': 'gopyForm' },
     submitReview: { 'ho-so.html': 'reviewForm' },
     uploadAlbumImages: { 'trang-cua-toi.html': 'myProfileForm' },
     uploadDemoVideo: { 'trang-cua-toi.html': 'myProfileForm' },
-    uploadShopLogo: { 'danh-sach-shop.html': 'shopProfileForm' }
+    uploadShopLogo: { 'danh-sach-mau.html': 'shopProfileForm' } // A3 10/11 un-swap v96
   };
 
   function formIdFor(method) {

@@ -893,3 +893,13 @@ th{background:#f4f8f6}
   .card-compact-name{font-size:15px}
   .card-compact-line{font-size:13px}
 }
+
+/* ===== Hàng chữ chạy (ticker) — js/ticker.js ===== */
+.ticker{background:#fff;color:#000;overflow:hidden;white-space:nowrap;border-bottom:1px solid #e5e5e5;line-height:1.4}
+.ticker-track{display:inline-block;white-space:nowrap;animation:ticker-scroll linear infinite;will-change:transform}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{display:inline-block;color:#000;text-decoration:none;font-size:14px;padding:8px 0}
+.ticker-item:hover{text-decoration:underline}
+.ticker-sep{color:#999;padding:0 12px}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}

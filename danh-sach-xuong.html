@@ -43,6 +43,8 @@
 
 <section class="lot-section collapsed" id="xuong-may-gia-cong" aria-labelledby="factory-title">
 <h2 id="factory-title">Xưởng / Nhà máy may nhận gia công</h2>
+<!-- v124: nút đăng tin xưởng cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
+<p><a class="btn btn-primary" href="trang-cua-toi.html#myListingsSection">+ Đăng tin xưởng của bạn</a> <span style="font-size:13px;color:#666">Miễn phí — chỉ tài khoản Doanh nghiệp có hồ sơ shop đã duyệt.</span></p>
 <p class="lot-sub" id="factorySub">Xưởng và nhà máy may nhận gia công quần áo cho shop và thương hiệu — đang có 20 xưởng/nhà máy.</p>
 
 <div class="lot-grid" id="factoryGrid"></div>
@@ -69,10 +71,15 @@
 <script>
 /* v117-P1-1: trang xuong rieng — render xưởng bằng renderLotSections()
    (window.V20, đã kiểm chứng ở danh-sach-shop.html). Trang này không có
-   #uniFilter nên initShopPage() của app.js không tự render; gọi trực tiếp. */
+   #uniFilter nên initShopPage() của app.js không tự render; gọi trực tiếp.
+   v124: sau đó tải tin xưởng do thành viên đăng rồi chen lên đầu lưới
+   (loadUserListings — trang này không có bộ lọc nên không cần refresh). */
 (function(){
   if (window.V20 && typeof window.V20.renderLotSections === 'function') {
     window.V20.renderLotSections();
+  }
+  if (window.V20 && typeof window.V20.loadUserListings === 'function') {
+    window.V20.loadUserListings();
   }
 })();
 </script>

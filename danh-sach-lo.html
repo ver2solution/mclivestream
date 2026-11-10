@@ -43,6 +43,8 @@
 
 <section class="lot-section collapsed" id="lo-hang-xa-kho" aria-labelledby="lot-title">
 <h2 id="lot-title">Lô hàng xả kho</h2>
+<!-- v124: nút đăng tin lô cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
+<p><a class="btn btn-primary" href="trang-cua-toi.html#myListingsSection">+ Đăng tin xả kho của bạn</a> <span style="font-size:13px;color:#666">Miễn phí — chỉ tài khoản Doanh nghiệp có hồ sơ shop đã duyệt.</span></p>
 
 <h3>Doanh nghiệp/ Shop xả hàng tồn kho</h3>
 <p class="lot-sub" id="lotSub1">Doanh nghiệp và shop xả hàng tồn kho theo lô sỉ — đang có 8 lô.</p>
@@ -78,11 +80,17 @@
 <script>
 /* v117-P1-1: trang lo rieng — render 3 nhom lo bang renderLotSections()
    (window.V20, da kiem chung o danh-sach-shop.html). Trang nay khong co
-   #uniFilter nen initShopPage() cua app.js khong tu render; goi truc tiep. */
+   #uniFilter nen initShopPage() cua app.js khong tu render; goi truc tiep.
+   v124: sau do tai tin lo do thanh vien dang roi chen len dau luoi
+   (loadUserListings — trang nay khong co bo loc nen khong can refresh). */
 (function(){
   if (window.V20 && typeof window.V20.renderLotSections === 'function') {
     window.V20.renderLotSections();
   }
+  if (window.V20 && typeof window.V20.loadUserListings === 'function') {
+    window.V20.loadUserListings();
+  }
 })();
+
 </script>
 </body></html>

@@ -16,7 +16,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ver2Solution">
 <link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://ver2solution.com","logo":"https://vieclamlivestream.online/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://vieclamlivestream.online","logo":"https://vieclamlivestream.online/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,6 +33,23 @@
 .game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
 .game-entry small{display:none}
 @media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
+/* v124 (10/11/2026): Tin đăng của tôi — lô / xưởng / kiot tự đăng.
+   Tab chọn loại tin + huy hiệu trạng thái + danh sách tin của tôi. */
+.listing-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.listing-tab{padding:9px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-weight:700;cursor:pointer}
+.listing-tab.sel{background:#0b5d4e;color:#fff;border-color:#0b5d4e}
+.listing-tab:disabled{opacity:.45;cursor:not-allowed}
+.listing-badge{display:inline-block;background:#eef2ff;color:#1a3a8a;border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700}
+.listing-badge.st-approved{background:#e6f4ea;color:#137333}
+.listing-badge.st-rejected{background:#fce8e6;color:#a50e0e}
+.listing-badge.st-closed{background:#f1f3f4;color:#5f6368}
+.my-listing{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff}
+.my-listing .my-listing-main{flex:1;min-width:0}
+.my-listing-actions{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;flex:none}
+.listing-kept-imgs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.listing-kept-imgs .kept-img{position:relative}
+.listing-kept-imgs img{width:72px;height:72px;object-fit:cover;border-radius:6px}
+.listing-kept-imgs .kept-rm{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;border:0;background:#d92b1f;color:#fff;cursor:pointer;font-size:12px;line-height:1}
 </style>
 <a class="game-entry" id="gameEntry" href="game/noi-duong-tam.html" data-track="game-noi-duong-tam"><span class="game-entry-ic" aria-hidden="true">🪷</span><span>Nơi dưỡng tâm<small>Chơi game kiếm Xu · thiền, tưới sen, thắp hương</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">611</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -74,6 +91,74 @@
 <button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-mau">Lưu hồ sơ</button>
 <p style="font-size:13px">Bấm Lưu là gửi hồ sơ về hệ thống để admin duyệt. Hồ sơ chưa duyệt sẽ không hiện ở danh sách công khai.</p>
 </form>
+<!-- v124 (10/11/2026): Tin đăng của tôi — lô / xưởng / kiot tự đăng.
+     Chỉ tài khoản Doanh nghiệp / Tổ chức có hồ sơ shop đã duyệt mới
+     đăng được (cổng kiểm tra ở JS initListings bên dưới). -->
+<section class="form-card" id="myListingsSection" style="display:none;margin-top:24px">
+<h2>Tin đăng của tôi — Lô / Xưởng / Kiot</h2>
+<p id="myListingsGate" style="display:none"></p>
+<div id="myListingsBody" style="display:none">
+<p style="font-size:13px">Đăng tin xả kho, xưởng, kiot thanh lý để mẫu và shop khác thấy. Tin mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt. Mỗi ngày tối đa 5 tin mới. Ảnh: tối đa 5 ảnh, mỗi ảnh ≤5 MB. Tin đã duyệt mà sửa nội dung sẽ tự về chờ duyệt lại.</p>
+<p id="myListingsCount" style="font-size:13px"></p>
+<div class="listing-tabs" role="tablist" aria-label="Chọn loại tin">
+<button type="button" class="listing-tab sel" data-listing-kind="lot">📦 Lô hàng</button>
+<button type="button" class="listing-tab" data-listing-kind="factory">🏭 Xưởng</button>
+<button type="button" class="listing-tab" data-listing-kind="kiot">🏪 Kiot</button>
+</div>
+<form id="listingForm" data-track="form-tin-lo-xuong-kiot">
+<input type="hidden" id="lstKind" value="lot">
+<input type="hidden" id="lstId" value="">
+<div class="listing-fields" id="lstFields-lot">
+<p><label>Tiêu đề *<br><input id="lstLotTitle" placeholder="VD: Lô áo thun cotton 500 cái, giá sỉ"></label></p>
+<p><label>Tỉnh / Thành phố *<br><select id="lstLotProvince"><option value="">Chọn tỉnh / thành phố</option></select></label></p>
+<p><label>Danh mục *<br><select id="lstLotCat"><option value="">Chọn danh mục</option></select></label></p>
+<p><label>Giá bán lô (đồng) *<br><input id="lstLotPrice" type="number" min="0" step="1" inputmode="numeric" placeholder="VD: 15000000"></label></p>
+<p><label>Đơn vị tính *<br><select id="lstLotUnit"><option value="cái">cái</option><option value="kg">kg</option><option value="bộ">bộ</option><option value="thùng">thùng</option><option value="lô">lô</option></select></label></p>
+<p><label>Số lượng *<br><input id="lstLotQty" type="number" min="1" step="1" inputmode="numeric" placeholder="VD: 500"></label></p>
+<p><label>Mô tả *<br><textarea id="lstLotDesc" placeholder="Mô tả lô hàng: chất liệu, size, tình trạng, điều kiện lấy hàng… (20–2000 ký tự, không ghi link)"></textarea></label></p>
+<p><label>Zalo liên hệ<br><input id="lstLotZalo" placeholder="VD: 0329983699 (điền sẵn từ hồ sơ shop)"></label></p>
+<p><label>Số điện thoại liên hệ<br><input id="lstLotPhone" type="tel" placeholder="VD: 0329983699"></label></p>
+<p><label>Link bài gốc<br><input id="lstLotSource" placeholder="Link bài gốc công khai (nếu có)"></label></p>
+<p><label>Ảnh lô hàng (1–5 ảnh) *<br><input id="lstLotImages" type="file" accept="image/*" multiple></label></p>
+<div id="lstLotKeptImgs" class="listing-kept-imgs"></div>
+</div>
+<div class="listing-fields" id="lstFields-factory" style="display:none">
+<p><label>Tên xưởng *<br><input id="lstFacName" placeholder="VD: Xưởng may Minh Anh"></label></p>
+<p><label>Mặt hàng nhận gia công *<br><input id="lstFacItems" placeholder="VD: Áo thun, quần jeans"></label></p>
+<p><label>Danh mục *<br><select id="lstFacCat"><option value="">Chọn danh mục</option></select></label></p>
+<p><label>Tỉnh / Thành phố *<br><select id="lstFacProvince"><option value="">Chọn tỉnh / thành phố</option></select></label></p>
+<p><label>Số lượng tối thiểu (cái/lô)<br><input id="lstFacMoq" type="number" min="1" step="1" inputmode="numeric" placeholder="VD: 100"></label></p>
+<p><label>Số điện thoại xưởng<br><input id="lstFacPhone" type="tel" placeholder="VD: 0329983699"></label></p>
+<p><label>Website xưởng<br><input id="lstFacWebsite" placeholder="VD: https://xuongmay.vn"></label></p>
+<p><label>Mô tả<br><textarea id="lstFacDesc" placeholder="Mô tả xưởng: máy móc, năng lực, thời gian giao hàng…"></textarea></label></p>
+<p><label>Địa chỉ xưởng<br><input id="lstFacAddress" placeholder="VD: KCN Tân Bình, TP. Hồ Chí Minh"></label></p>
+<p><label>Zalo liên hệ<br><input id="lstFacZalo" placeholder="VD: 0329983699 (điền sẵn từ hồ sơ shop)"></label></p>
+<p><label>Ảnh xưởng (1–5 ảnh, không bắt buộc)<br><input id="lstFacImages" type="file" accept="image/*" multiple></label></p>
+<div id="lstFacKeptImgs" class="listing-kept-imgs"></div>
+</div>
+<div class="listing-fields" id="lstFields-kiot" style="display:none">
+<p><label>Tiêu đề *<br><input id="lstKiotTitle" placeholder="VD: Sang kiot chợ Đồng Xuân, mặt tiền 4m"></label></p>
+<p><label>Loại kiot *<br><select id="lstKiotKind"><option value="">Chọn loại</option><option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option><option value="sang-mat-bang">Sang mặt bằng</option><option value="hang-ton-kho">Hàng tồn kho</option><option value="do-dac-thiet-bi">Đồ đạc, thiết bị</option></select></label></p>
+<p><label>Tỉnh / Thành phố *<br><select id="lstKiotProvince"><option value="">Chọn tỉnh / thành phố</option></select></label></p>
+<p><label>Giá sang nhượng (đồng) *<br><input id="lstKiotPrice" type="number" min="0" step="1" inputmode="numeric" placeholder="VD: 120000000"></label></p>
+<p><label>Diện tích (m²)<br><input id="lstKiotArea" type="number" min="0" step="0.1" inputmode="decimal" placeholder="VD: 25"></label></p>
+<p><label>Giá thuê (đồng/tháng)<br><input id="lstKiotRent" type="number" min="0" step="1" inputmode="numeric" placeholder="VD: 8000000"></label></p>
+<p><label>Mô tả *<br><textarea id="lstKiotDesc" placeholder="Mô tả kiot: vị trí, diện tích, tình trạng, điều kiện sang nhượng… (20–2000 ký tự, không ghi link)"></textarea></label></p>
+<p><label>Zalo liên hệ<br><input id="lstKiotZalo" placeholder="VD: 0329983699 (điền sẵn từ hồ sơ shop)"></label></p>
+<p><label>Số điện thoại liên hệ<br><input id="lstKiotPhone" type="tel" placeholder="VD: 0329983699"></label></p>
+<p><label>Link bài gốc<br><input id="lstKiotSource" placeholder="Link bài gốc công khai (nếu có)"></label></p>
+<p><label>Ảnh kiot (1–5 ảnh) *<br><input id="lstKiotImages" type="file" accept="image/*" multiple></label></p>
+<div id="lstKiotKeptImgs" class="listing-kept-imgs"></div>
+</div>
+<p id="listingFormMsg"></p>
+<button class="btn btn-primary" type="submit" id="listingSubmitBtn" data-track="nut-gui-tin-lo-xuong-kiot">Đăng tin</button>
+<button class="btn btn-ghost" type="button" id="listingCancelBtn" style="display:none">Hủy sửa</button>
+<p style="font-size:13px" id="listingFormNote">Bấm Đăng tin là gửi tin về hệ thống để admin duyệt. Tin chưa duyệt sẽ không hiện ở danh sách công khai.</p>
+</form>
+<h3 style="margin-top:20px">Tin đã đăng của tôi</h3>
+<div id="myListingsList"><p>Đang tải…</p></div>
+</div>
+</section>
 <p><a href="danh-sach-mau.html">← Quay lại danh sách mẫu</a></p>
 </section>
 </main>
@@ -173,6 +258,9 @@
     initialized=true;
     status.textContent='Đã đăng nhập: '+session.user.email;
     form.style.display='block';
+    // v124: mục Tin đăng của tôi (lô/xưởng/kiot) — chạy song song, không
+    // chặn form hồ sơ mẫu (tự xử lý lỗi bên trong).
+    initListings(session);
     try{
       existing=await McLivestreamAPI.fetchMyProfile();
       if(existing){
@@ -235,6 +323,336 @@
     };
     if (window.V2SAuthUI) V2SAuthUI.guardSubmit(form, run); else run();
   });
+  /* ---------- v124: Tin đăng của tôi (lô / xưởng / kiot tự đăng) ---------- */
+  /* Danh sách tỉnh dùng chung với form hồ sơ mẫu, trừ "Toàn quốc / Live
+     online" vì tin lô/xưởng/kiot có địa điểm thực tế. */
+  var LISTING_PROVINCES=['Hà Nội','Huế','Lai Châu','Điện Biên','Sơn La','Lạng Sơn','Quảng Ninh','Thanh Hóa','Nghệ An','Hà Tĩnh','Cao Bằng','Tuyên Quang','Lào Cai','Thái Nguyên','Phú Thọ','Bắc Ninh','Hưng Yên','Hải Phòng','Ninh Bình','Quảng Trị','Đà Nẵng','Quảng Ngãi','Gia Lai','Khánh Hòa','Lâm Đồng','Đắk Lắk','TP. Hồ Chí Minh','Đồng Nai','Tây Ninh','Cần Thơ','Vĩnh Long','Đồng Tháp','Cà Mau','An Giang'];
+  var LISTING_CATS=[['quan-ao','Quần áo'],['nam','Nam'],['nu','Nữ'],['tre-em','Trẻ em'],['giay-dep','Giày dép'],['my-pham','Mỹ phẩm'],['phu-kien','Phụ kiện'],['tpcn','TPCN'],['gia-dung','Gia dụng & Đời sống'],['idol','Idol / Streamer'],['cong-nghe','Công nghệ'],['khac','Khác']];
+  var lstSection=document.getElementById('myListingsSection'),
+      lstGate=document.getElementById('myListingsGate'),
+      lstBody=document.getElementById('myListingsBody'),
+      lstCount=document.getElementById('myListingsCount'),
+      lstForm=document.getElementById('listingForm'),
+      lstMsg=document.getElementById('listingFormMsg'),
+      lstList=document.getElementById('myListingsList'),
+      lstSubmitBtn=document.getElementById('listingSubmitBtn'),
+      lstCancelBtn=document.getElementById('listingCancelBtn');
+  var lstKind='lot', lstEditingId=null, lstKeptImages=[], lstOriginalImages=[], lstTodayCount=0, lstRows={}, lstShop=null;
+  var KIND_LABEL={lot:'Lô hàng',factory:'Xưởng',kiot:'Kiot'};
+  var STATUS_LABEL={pending:'Chờ duyệt',approved:'Đã đăng',rejected:'Bị từ chối',closed:'Đã đóng'};
+  function lstEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function lstVal(id){var el=document.getElementById(id); return el?el.value.trim():'';}
+  function lstNum(id){var v=lstVal(id); if(v==='') return null; var n=parseFloat(String(v).replace(/[^\d.]/g,'')); return (isNaN(n)||n<0)?null:n;}
+  function lstSet(id,v){var el=document.getElementById(id); if(el&&v!=null) el.value=v;}
+  function lstFmtDate(s){try{return new Date(s).toLocaleString('vi-VN');}catch(e){return String(s||'');}}
+  function lstFillSelect(id, items){
+    var el=document.getElementById(id); if(!el) return;
+    items.forEach(function(it){
+      var o=document.createElement('option');
+      o.value=it[0]; o.textContent=it[1]; el.appendChild(o);
+    });
+  }
+  ['lstLotProvince','lstFacProvince','lstKiotProvince'].forEach(function(id){
+    lstFillSelect(id, LISTING_PROVINCES.map(function(p){return [p,p];}));
+  });
+  ['lstLotCat','lstFacCat'].forEach(function(id){ lstFillSelect(id, LISTING_CATS); });
+  var lstTabBtns=Array.prototype.slice.call(document.querySelectorAll('.listing-tab'));
+  function switchListingKind(kind){
+    lstKind=kind;
+    var hk=document.getElementById('lstKind'); if(hk) hk.value=kind;
+    lstTabBtns.forEach(function(b){ b.classList.toggle('sel', b.getAttribute('data-listing-kind')===kind); });
+    ['lot','factory','kiot'].forEach(function(k){
+      var g=document.getElementById('lstFields-'+k);
+      if(g) g.style.display=(k===kind)?'block':'none';
+    });
+  }
+  lstTabBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      if(lstEditingId) return; // đang sửa thì loại tin cố định theo tin đó
+      switchListingKind(b.getAttribute('data-listing-kind'));
+    });
+  });
+  function lstSetTabsEnabled(enabled){
+    lstTabBtns.forEach(function(b){ b.disabled=!enabled; });
+  }
+  /* Điền sẵn Zalo / SĐT liên hệ từ hồ sơ shop (đặc tả §2: contact_* điền
+     sẵn từ hồ sơ shop, cho sửa riêng từng tin) — chỉ điền ô đang trống,
+     không ghi đè khi đang sửa tin (form đã nạp dữ liệu tin cũ). */
+  function prefillListingContacts(){
+    if(!lstShop) return;
+    var zalo = lstShop.contact_zalo || '', phone = lstShop.phone || '';
+    [['lstLotZalo', zalo], ['lstLotPhone', phone], ['lstFacPhone', phone], ['lstFacZalo', zalo], ['lstKiotZalo', zalo], ['lstKiotPhone', phone]].forEach(function(pair){
+      var el = document.getElementById(pair[0]);
+      if(el && !el.value.trim() && pair[1]) el.value = pair[1];
+    });
+  }
+  function renderKeptImages(){
+    var boxId=lstKind==='lot'?'lstLotKeptImgs':lstKind==='factory'?'lstFacKeptImgs':'lstKiotKeptImgs';
+    var box=document.getElementById(boxId);
+    ['lstLotKeptImgs','lstFacKeptImgs','lstKiotKeptImgs'].forEach(function(id){
+      var b=document.getElementById(id); if(b && b!==box) b.innerHTML='';
+    });
+    if(!box) return;
+    if(!lstKeptImages.length){ box.innerHTML=''; return; }
+    var html='<p style="font-size:13px;margin:4px 0">Ảnh đã có (bấm × để gỡ):</p>';
+    lstKeptImages.forEach(function(u, i){
+      html+='<span class="kept-img"><img src="'+lstEsc(u)+'" alt=""><button type="button" class="kept-rm" data-idx="'+i+'" aria-label="Gỡ ảnh">×</button></span>';
+    });
+    box.innerHTML=html;
+  }
+  function fillListingForm(kind, row){
+    lstEditingId=row.id;
+    lstKeptImages=(row.images||[]).slice();
+    lstOriginalImages=(row.images||[]).slice();
+    switchListingKind(kind);
+    lstSetTabsEnabled(false);
+    if(kind==='lot'){
+      lstSet('lstLotTitle',row.title); lstSet('lstLotProvince',row.province); lstSet('lstLotCat',row.cat);
+      lstSet('lstLotPrice',row.price_num!=null?String(row.price_num):'');
+      lstSet('lstLotUnit',row.price_unit||'cái');
+      lstSet('lstLotQty',row.qty!=null?String(row.qty):'');
+      lstSet('lstLotDesc',row.description);
+      lstSet('lstLotZalo',row.contact_zalo); lstSet('lstLotPhone',row.contact_phone);
+      lstSet('lstLotSource',row.source_url);
+    } else if(kind==='factory'){
+      lstSet('lstFacName',row.name); lstSet('lstFacItems',row.items); lstSet('lstFacCat',row.cat);
+      lstSet('lstFacProvince',row.province);
+      lstSet('lstFacMoq',row.moq!=null?String(row.moq):'');
+      lstSet('lstFacPhone',row.phone); lstSet('lstFacWebsite',row.website);
+      lstSet('lstFacDesc',row.description); lstSet('lstFacAddress',row.address);
+      lstSet('lstFacZalo',row.contact_zalo);
+    } else {
+      lstSet('lstKiotTitle',row.title); lstSet('lstKiotKind',row.kind); lstSet('lstKiotProvince',row.province);
+      lstSet('lstKiotPrice',row.price_num!=null?String(row.price_num):'');
+      lstSet('lstKiotArea',row.area_sqm!=null?String(row.area_sqm):'');
+      lstSet('lstKiotRent',row.rent_monthly!=null?String(row.rent_monthly):'');
+      lstSet('lstKiotDesc',row.description);
+      lstSet('lstKiotZalo',row.contact_zalo); lstSet('lstKiotPhone',row.contact_phone);
+      lstSet('lstKiotSource',row.source_url);
+    }
+    renderKeptImages();
+    lstSubmitBtn.textContent='Lưu bản sửa';
+    lstCancelBtn.style.display='';
+    lstMsg.textContent='Đang sửa tin "'+(row.title||row.name||'')+'". Lưu xong, tin đã duyệt sẽ về chờ duyệt lại.';
+    if(lstForm && lstForm.scrollIntoView) lstForm.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function resetListingForm(){
+    lstEditingId=null; lstKeptImages=[]; lstOriginalImages=[];
+    if(lstForm) lstForm.reset();
+    switchListingKind('lot');
+    lstSetTabsEnabled(true);
+    renderKeptImages();
+    lstSubmitBtn.textContent='Đăng tin';
+    lstCancelBtn.style.display='none';
+  }
+  if(lstCancelBtn) lstCancelBtn.addEventListener('click', function(){ resetListingForm(); lstMsg.textContent=''; });
+  async function lstRowAction(act, kind, id){
+    var row=lstRows[kind+':'+id];
+    if(!row) return;
+    if(act==='edit'){ fillListingForm(kind, row); return; }
+    if(act==='repost'){
+      // Đăng lại tin đã hết hạn: tạo BẢN MỚI, copy nội dung + ảnh cũ
+      // (đặc tả §2.3). Nạp vào form như tin mới (không phải sửa) để user
+      // kiểm tra lại rồi bấm Đăng tin; ảnh cũ giữ trong lstKeptImages.
+      fillListingForm(kind, row);
+      lstEditingId=null;
+      lstSubmitBtn.textContent='Đăng tin';
+      lstCancelBtn.style.display='';
+      lstSetTabsEnabled(true);
+      lstMsg.textContent='Đang đăng lại tin đã hết hạn — kiểm tra lại nội dung rồi bấm Đăng tin (tin mới sẽ chờ duyệt lại).';
+      return;
+    }
+    if(act==='close'){
+      if(!confirm('Đóng tin này? Tin sẽ không còn hiện công khai.')) return;
+      try{ await McLivestreamAPI.closeUserListing(kind, id); lstMsg.textContent='Đã đóng tin.'; await refreshMyListings(); }
+      catch(err){ lstMsg.textContent='Chưa đóng được: '+ferr(err); }
+      return;
+    }
+    if(act==='delete'){
+      if(!confirm('Xóa tin này? Không khôi phục được.')) return;
+      try{ await McLivestreamAPI.deleteUserListing(kind, id); lstMsg.textContent='Đã xóa tin.'; await refreshMyListings(); }
+      catch(err){ lstMsg.textContent='Chưa xóa được: '+ferr(err); }
+      return;
+    }
+  }
+  if(lstSection) lstSection.addEventListener('click', function(e){
+    var t=e.target||{};
+    var rm=t.closest?t.closest('.kept-rm'):null;
+    if(rm){
+      var idx=parseInt(rm.getAttribute('data-idx'),10);
+      if(!isNaN(idx)) lstKeptImages.splice(idx,1);
+      renderKeptImages();
+      return;
+    }
+    var actBtn=t.closest?t.closest('[data-lst-act]'):null;
+    if(actBtn){
+      var rowEl=actBtn.closest?actBtn.closest('[data-lst-id]'):null;
+      if(rowEl) lstRowAction(actBtn.getAttribute('data-lst-act'), rowEl.getAttribute('data-lst-kind'), rowEl.getAttribute('data-lst-id'));
+    }
+  });
+  async function refreshMyListings(){
+    if(!lstList) return;
+    lstList.innerHTML='<p>Đang tải…</p>';
+    try{
+      var all=[]; lstRows={};
+      var kinds=['lot','factory','kiot'];
+      for(var i=0;i<kinds.length;i++){
+        var rows=await McLivestreamAPI.fetchMyListings(kinds[i]);
+        rows.forEach(function(r){ r._kind=kinds[i]; all.push(r); lstRows[kinds[i]+':'+r.id]=r; });
+      }
+      all.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
+      // Đếm tin mới hôm nay (theo ngày ở máy người dùng — chỉ để hiển
+      // thị; giới hạn 5/ngày thật do trigger DB kiểm tra theo giờ VN).
+      var todayStr=new Date().toDateString();
+      lstTodayCount=all.filter(function(r){ return new Date(r.created_at).toDateString()===todayStr; }).length;
+      lstCount.textContent='Hôm nay bạn đã đăng '+lstTodayCount+'/5 tin mới.';
+      if(!all.length){ lstList.innerHTML='<p>Bạn chưa có tin nào. Hãy đăng tin đầu tiên ở form trên.</p>'; return; }
+      var html='';
+      all.forEach(function(r){
+        var title=r.title||r.name||'(không tiêu đề)';
+        // Hết hạn: lô/kiot có expires_at đã qua (xưởng expires_at NULL nên
+        // không bao giờ hết hạn); tin hết hạn không hiện công khai nữa.
+        var isExpired = !!(r.expires_at && new Date(r.expires_at).getTime() <= Date.now());
+        var st=isExpired?'Hết hạn':(STATUS_LABEL[r.moderation_status]||r.moderation_status);
+        var img=(r.images&&r.images[0])?'<img src="'+lstEsc(r.images[0])+'" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:6px;flex:none">':'';
+        html+='<div class="my-listing" data-lst-kind="'+r._kind+'" data-lst-id="'+r.id+'">'
+          +img
+          +'<div class="my-listing-main"><b>'+lstEsc(title)+'</b> <span class="listing-badge st-'+lstEsc(isExpired?'closed':r.moderation_status)+'">'+lstEsc(KIND_LABEL[r._kind])+' · '+lstEsc(st)+'</span>'
+          +'<br><span style="font-size:13px;color:#666">'+lstEsc(lstFmtDate(r.created_at))+(isExpired?' · hết hạn '+lstEsc(lstFmtDate(r.expires_at)):'')+'</span></div>'
+          +'<div class="my-listing-actions">'
+          +'<button type="button" class="btn btn-ghost" data-lst-act="edit">Sửa</button>'
+          +(isExpired?'<button type="button" class="btn btn-ghost" data-lst-act="repost">Đăng lại</button>':'')
+          +(r.moderation_status==='approved'&&!isExpired?'<button type="button" class="btn btn-ghost" data-lst-act="close">Đóng tin</button>':'')
+          +(r.moderation_status!=='approved'?'<button type="button" class="btn btn-ghost" data-lst-act="delete">Xóa</button>':'')
+          +'</div></div>';
+      });
+      lstList.innerHTML=html;
+    }catch(e){
+      lstList.innerHTML='<p>Chưa tải được tin của bạn: '+lstEsc(ferr(e))+'</p>';
+    }
+  }
+  async function initListings(session){
+    if(!window.McLivestreamAPI || !lstSection) return;
+    lstSection.style.display='block';
+    var md=(session.user && session.user.user_metadata)||{};
+    var isShop = md.account_type==='shop';
+    var shop=null, shopErr=null;
+    try{ shop=await McLivestreamAPI.fetchMyShopProfile(); }
+    catch(e){ shopErr=e; shop=null; }
+    if(shopErr){
+      lstGate.style.display='block';
+      lstGate.innerHTML='Chưa kiểm tra được hồ sơ shop ('+lstEsc(ferr(shopErr))+'), hãy tải lại trang.';
+      return;
+    }
+    if(!isShop && !shop){
+      lstGate.style.display='block';
+      lstGate.innerHTML='Tính năng này chỉ dành cho tài khoản <b>Doanh nghiệp / Tổ chức</b>. Tài khoản của bạn là tài khoản Cá nhân tìm việc. Nếu bạn là shop/doanh nghiệp, hãy <a href="dang-ky.html?type=shop">đăng ký tài khoản Doanh nghiệp</a>.';
+      return;
+    }
+    if(!shop){
+      lstGate.style.display='block';
+      lstGate.innerHTML='Bạn cần có <b>hồ sơ shop</b> trước khi đăng tin. Hãy lưu hồ sơ shop tại <a href="danh-sach-shop.html#dang-nhap-shop">trang Dành cho Shop</a>.';
+      return;
+    }
+    if(shop.moderation_status!=='approved'){
+      lstGate.style.display='block';
+      lstGate.innerHTML='Hồ sơ shop của bạn đang <b>'+lstEsc(STATUS_LABEL[shop.moderation_status]||shop.moderation_status)+'</b>. Tin lô/xưởng/kiot chỉ đăng được sau khi hồ sơ shop đã duyệt.';
+      return;
+    }
+    lstBody.style.display='block';
+    lstShop = shop;
+    prefillListingContacts();
+    await refreshMyListings();
+    // v124: mở từ nút CTA "Đăng tin" ở trang danh sách (hash
+    // #myListingsSection) thì cuộn tới mục sau khi đã hiện.
+    try{
+      if(location.hash === '#myListingsSection' && lstSection.scrollIntoView) lstSection.scrollIntoView({behavior:'smooth', block:'start'});
+    }catch(e){}
+  }
+  if(lstForm) lstForm.addEventListener('submit', function(e){
+    e.preventDefault(); lstMsg.textContent='Đang gửi…';
+    var run = async function(){
+      try{
+        var kind=lstKind, isEdit=!!lstEditingId;
+        var data={}, imgFiles=[];
+        if(kind==='lot'){
+          data={ title:lstVal('lstLotTitle'), province:lstVal('lstLotProvince'), cat:lstVal('lstLotCat'),
+            price_num:lstNum('lstLotPrice'), price_unit:lstVal('lstLotUnit')||'cái',
+            qty:lstNum('lstLotQty'), description:lstVal('lstLotDesc'),
+            contact_zalo:lstVal('lstLotZalo')||null, contact_phone:lstVal('lstLotPhone')||null,
+            source_url:lstVal('lstLotSource')||null };
+          imgFiles=document.getElementById('lstLotImages').files;
+          if(!data.title) throw new Error('Chưa nhập tiêu đề.');
+          if(!data.province) throw new Error('Chưa chọn tỉnh / thành phố.');
+          if(!data.cat) throw new Error('Chưa chọn danh mục.');
+          if(data.price_num==null) throw new Error('Chưa nhập giá bán lô.');
+          if(data.qty==null) throw new Error('Chưa nhập số lượng.');
+          if(!data.description) throw new Error('Chưa nhập mô tả.');
+        } else if(kind==='factory'){
+          data={ name:lstVal('lstFacName'), items:lstVal('lstFacItems'), cat:lstVal('lstFacCat'),
+            province:lstVal('lstFacProvince'), address:lstVal('lstFacAddress')||null,
+            moq:lstNum('lstFacMoq'), phone:lstVal('lstFacPhone')||null, website:lstVal('lstFacWebsite')||null,
+            description:lstVal('lstFacDesc')||null, contact_zalo:lstVal('lstFacZalo')||null };
+          imgFiles=document.getElementById('lstFacImages').files;
+          if(!data.name) throw new Error('Chưa nhập tên xưởng.');
+          if(!data.items) throw new Error('Chưa nhập mặt hàng nhận gia công.');
+          if(!data.cat) throw new Error('Chưa chọn danh mục.');
+          if(!data.province) throw new Error('Chưa chọn tỉnh / thành phố.');
+        } else {
+          data={ title:lstVal('lstKiotTitle'), kind:lstVal('lstKiotKind'), province:lstVal('lstKiotProvince'),
+            price_num:lstNum('lstKiotPrice'), area_sqm:lstNum('lstKiotArea'), rent_monthly:lstNum('lstKiotRent'),
+            description:lstVal('lstKiotDesc'),
+            contact_zalo:lstVal('lstKiotZalo')||null, contact_phone:lstVal('lstKiotPhone')||null,
+            source_url:lstVal('lstKiotSource')||null };
+          imgFiles=document.getElementById('lstKiotImages').files;
+          if(!data.title) throw new Error('Chưa nhập tiêu đề.');
+          if(!data.kind) throw new Error('Chưa chọn loại kiot.');
+          if(!data.province) throw new Error('Chưa chọn tỉnh / thành phố.');
+          if(data.price_num==null) throw new Error('Chưa nhập giá sang nhượng.');
+          if(!data.description) throw new Error('Chưa nhập mô tả.');
+        }
+        // Ảnh: lô/kiot bắt buộc ≥1; xưởng không bắt buộc; tối đa 5.
+        // kept = ảnh đang giữ (sửa: ảnh cũ còn giữ; đăng lại: ảnh tin cũ).
+        var kept=lstKeptImages.slice();
+        var newFiles=Array.prototype.slice.call(imgFiles||[]);
+        if(kind!=='factory' && kept.length+newFiles.length<1) throw new Error('Lô hàng / Kiot cần ít nhất 1 ảnh.');
+        if(kept.length+newFiles.length>5) throw new Error('Album tối đa 5 ảnh.');
+        if(!isEdit && lstTodayCount>=5) throw new Error('Hôm nay bạn đã đăng đủ 5 tin mới. Hãy quay lại vào ngày mai.');
+        var saved;
+        if(isEdit){
+          // Tải ảnh mới trước (đã có id tin), rồi cập nhật 1 lần duy nhất
+          // cả nội dung + ảnh — tránh lưu dở khi tải ảnh lỗi.
+          if(newFiles.length){
+            var upUrls=await McLivestreamAPI.uploadListingImages(newFiles, kind, lstEditingId);
+            data.images=kept.concat(upUrls);
+          } else if(kept.length!==lstOriginalImages.length){
+            data.images=kept;
+          }
+          saved=await McLivestreamAPI.updateUserListing(kind, lstEditingId, data);
+          resetListingForm();
+          lstMsg.textContent='Đã lưu bản sửa. Tin đã duyệt sẽ về trạng thái chờ duyệt lại.';
+        } else {
+          saved=kind==='lot'?await McLivestreamAPI.submitUserLot(data)
+            :kind==='factory'?await McLivestreamAPI.submitUserFactory(data)
+            :await McLivestreamAPI.submitUserKiot(data);
+          // Tin mới: gắn ảnh (ảnh cũ khi đăng lại + ảnh mới vừa tải).
+          var finalImgs=kept.slice();
+          if(newFiles.length){
+            var urls=await McLivestreamAPI.uploadListingImages(newFiles, kind, saved.id);
+            finalImgs=kept.concat(urls);
+          }
+          if(finalImgs.length){
+            saved=await McLivestreamAPI.updateUserListing(kind, saved.id, { images:finalImgs });
+          }
+          resetListingForm();
+          lstMsg.textContent='Đã gửi tin. Tin mới ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt.';
+        }
+        await refreshMyListings();
+      }catch(err){ lstMsg.textContent='Chưa gửi được: '+ferr(err); }
+    };
+    if(window.V2SAuthUI) V2SAuthUI.guardSubmit(lstForm, run); else run();
+  });
+
   init();
 })();
 </script>

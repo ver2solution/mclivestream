@@ -21,7 +21,7 @@
   /* Copy theo dung thiet ke 08/11. Nhom chuan bi khop dung nhan cac
      truong BAT BUOC (*) cua form that: mau = 9 truong cua
      trang-cua-toi.html#myProfileForm; shop = 3 truong cua
-     danh-sach-shop.html#shopProfileForm. Khong ghi so diem co dinh
+     danh-sach-mau.html#shopProfileForm. Khong ghi so diem co dinh
      (diem chi hien khi RPC tra ve > 0, xem showPointsLine). */
   var CONTENT = {
     model: {
@@ -53,14 +53,14 @@
       ],
       optional: 'Điền thêm nếu muốn được tìm thấy nhanh hơn: địa chỉ, số điện thoại, email, mặt hàng kinh doanh, giờ livestream, kênh livestream.',
       ctaText: 'Tạo hồ sơ shop →',
-      ctaHref: 'danh-sach-shop.html#ho-so-shop',
+      ctaHref: 'danh-sach-mau.html#ho-so-shop', // A3 10/11 un-swap v96
       ctaTrack: 'tao-ho-so-shop-sau-dang-ky',
       laterText: 'Để sau — xem mẫu trước →',
       laterHref: 'danh-sach-mau.html',
       stripTitle: 'Chưa có hồ sơ shop — mẫu chưa ứng tuyển được',
       stripSub: 'Tạo trong 2 phút: tên, tỉnh, lĩnh vực, lương, lịch làm — hồ sơ chờ duyệt rồi mới hiện công khai.',
       stripCtaText: 'Tạo hồ sơ ngay →',
-      stripCtaHref: 'danh-sach-shop.html#ho-so-shop'
+      stripCtaHref: 'danh-sach-mau.html#ho-so-shop' // A3 10/11 un-swap v96
     }
   };
 
