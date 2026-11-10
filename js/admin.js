@@ -117,6 +117,7 @@
     badgeTimer: null, // tự làm mới badge tin chưa đọc mỗi 60 giây khi không ở tab Trao đổi
     chatUnread: 0, // số tin chưa đọc (tính từ lần xem tab Trao đổi gần nhất)
     chatMessages: [], // danh sách tin đã tải gần nhất (mới nhất trước)
+    tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
     usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
     testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
@@ -707,8 +708,12 @@
         .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'admin_comments' }, function (payload) {
           setChatLiveStatus('live');
           if (payload && payload.new) {
-            if (state.activeTab === 'chat') appendChatMessage(payload.new);
-            else if (payload.new.author_id !== state.userId
+            if (state.activeTab === 'chat') {
+              appendChatMessage(payload.new);
+              // Tin mới có thể đã sinh task tự động (trigger) → tải lại
+              // danh sách công việc.
+              loadTasks().catch(function () { /* lần sau thử lại */ });
+            } else if (payload.new.author_id !== state.userId
               && (Date.parse(payload.new.created_at || '') || 0) > (Date.parse(getChatLastSeen()) || 0)) {
               // Đang ở tab khác: không chen tin, chỉ tăng badge chưa đọc.
               state.chatUnread = (state.chatUnread || 0) + 1;
@@ -744,7 +749,10 @@
   }
   function startChatTimer() {
     stopChatTimer();
-    state.chatTimer = setInterval(function () { loadChat().catch(function () { /* lần sau thử lại */ }); }, 60000);
+    state.chatTimer = setInterval(function () {
+      loadChat().catch(function () { /* lần sau thử lại */ });
+      loadTasks().catch(function () { /* lần sau thử lại */ });
+    }, 60000);
   }
   function stopChatTimer() {
     if (state.chatTimer) { clearInterval(state.chatTimer); state.chatTimer = null; }
@@ -767,6 +775,125 @@
       markChatSeen();
     } catch (err) { setMsg(msg, friendlyErr(err), true); }
     btn.disabled = false;
+  }
+
+  /* ---------- TAB: Trao đổi — Danh sách tổng hợp công việc (v118) ----------
+     Task tự thêm bằng trigger trên admin_comments (SQL v118): tin mới chứa
+     từ khóa chỉ vấn đề (lỗi, cần sửa, thiếu, hỏng...) thì sinh 1 dòng
+     admin_tasks (title = câu chứa từ khóa, location trích nếu có tên hệ
+     thống/trang). Task thêm tay qua RPC admin_create_task.
+     Trạng thái: chua_xu_ly → dang_xu_ly → da_xong → chua_xu_ly (bấm vào
+     trạng thái để đổi; admin nào cũng đổi được — người sửa lỗi cần đánh
+     dấu tiến độ trên task do bên khác nêu). 'khong_phai_van_de' là trạng
+     thái riêng để loại task tự thêm sai mà vẫn giữ dấu vết: không tính
+     vào danh sách việc đang làm (mặc định), xem lại bằng bộ lọc.
+     QUYỀN (anh Thọ chốt 00:59 ngày 10/11): sửa nội dung (tiêu đề/vị trí/
+     mô tả), xóa, và đánh dấu/khôi phục "Không phải vấn đề" CHỈ tác giả
+     (author_email trùng email đăng nhập) hoặc owner (ver2solution@gmail.com).
+     UI chỉ hiện nút Sửa/Xóa/"Không phải vấn đề" trên task của mình (owner
+     thấy hết). Server (RPC + RLS policy) kiểm tra lại — client chỉ ẩn nút.
+     Không dùng window.confirm cho xóa (hộp thoại native bị tự tắt trên
+     trình duyệt tự động, gây thoát im lặng — xem lỗi nút Đăng bài 09/11);
+     xóa xác nhận 2 bước ngay trên nút. */
+  var TASK_STATUS = {
+    chua_xu_ly: { label: 'Chưa xử lý', next: 'dang_xu_ly', cls: 'st-todo' },
+    dang_xu_ly: { label: 'Đang xử lý', next: 'da_xong', cls: 'st-doing' },
+    da_xong: { label: 'Đã xong', next: 'chua_xu_ly', cls: 'st-done' },
+    khong_phai_van_de: { label: 'Không phải vấn đề', next: 'chua_xu_ly', cls: 'st-notissue' }
+  };
+  var TASK_OWNER_EMAIL = 'ver2solution@gmail.com';
+  var TASK_AUTHOR_NAMES = {
+    'ver2solution@gmail.com': 'Ryan',
+    'thondads@gmail.com': 'Rion',
+    'thond.bds@gmail.com': 'Muse BĐS'
+  };
+  function taskAuthorName(email) {
+    if (TASK_AUTHOR_NAMES[email]) return TASK_AUTHOR_NAMES[email];
+    var e = String(email || '');
+    return e ? e.split('@')[0] : 'Admin';
+  }
+  function taskCanEdit(t) {
+    return !!t && (t.author_email === state.email || state.email === TASK_OWNER_EMAIL);
+  }
+  function taskItemHtml(t) {
+    var st = TASK_STATUS[t.status] || TASK_STATUS.chua_xu_ly;
+    var canEdit = taskCanEdit(t);
+    var html = '<div class="adm-task-item" data-tid="' + esc(t.id) + '">'
+      + '<p class="adm-task-title">' + esc(t.title) + '</p>'
+      + '<p class="adm-task-meta">' + esc(taskAuthorName(t.author_email)) + ' · '
+      + esc(t.location || 'Chưa rõ vị trí') + ' · ' + esc(vnDate(t.created_at)) + '</p>';
+    if (t.body) html += '<p class="adm-task-body">' + esc(t.body) + '</p>';
+    html += '<p style="margin:6px 0 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
+    // Task "Không phải vấn đề" chỉ tác giả/owner mới khôi phục được
+    // (server chặn) nên với bên khác hiển thị nhãn tĩnh, không bấm được.
+    if (t.status === 'khong_phai_van_de' && !canEdit) {
+      html += '<span class="adm-task-st ' + st.cls + '">' + esc(st.label) + '</span>';
+    } else {
+      html += '<button class="adm-task-st ' + st.cls + '" data-adm-act="cycle-task" data-id="' + esc(t.id) + '" data-status="' + esc(t.status) + '" type="button" title="Bấm để đổi trạng thái">' + esc(st.label) + '</button>';
+    }
+    if (canEdit) {
+      html += '<button class="btn btn-ghost btn-sm" data-adm-act="edit-task" data-id="' + esc(t.id) + '" type="button">Sửa</button>';
+      if (t.status !== 'khong_phai_van_de') {
+        html += '<button class="btn btn-ghost btn-sm" data-adm-act="notissue-task" data-id="' + esc(t.id) + '" type="button">Không phải vấn đề</button>';
+      }
+      html += '<button class="btn btn-ghost btn-sm" data-adm-act="delete-task" data-id="' + esc(t.id) + '" type="button">Xóa</button>';
+    }
+    html += '</p>';
+    // Form sửa nội tuyến (ẩn mặc định, chỉ hiện khi bấm Sửa).
+    if (canEdit) {
+      html += '<div class="adm-task-edit" data-edit-for="' + esc(t.id) + '" hidden>'
+        + '<p style="margin:8px 0 4px"><label>Vấn đề *<br><input type="text" maxlength="200" value="' + esc(t.title) + '" data-edit-field="title" style="width:100%"></label></p>'
+        + '<p style="margin:4px 0"><label>Ở đâu<br><input type="text" maxlength="100" value="' + esc(t.location || '') + '" data-edit-field="location" style="width:100%"></label></p>'
+        + '<p style="margin:4px 0"><label>Mô tả<br><textarea maxlength="500" data-edit-field="body" style="width:100%;min-height:56px">' + esc(t.body || '') + '</textarea></label></p>'
+        + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="save-task" data-id="' + esc(t.id) + '" type="button">Lưu</button> '
+        + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
+    }
+    return html + '</div>';
+  }
+  function taskFilters() {
+    var sf = $('admTaskStatusFilter');
+    var af = $('admTaskAuthorFilter');
+    return {
+      status: sf ? String(sf.value || '') : '',
+      author: af ? String(af.value || '') : ''
+    };
+  }
+  async function loadTasks() {
+    var wrap = $('admTaskList');
+    if (!wrap) return;
+    var f = taskFilters();
+    try {
+      var list = await rpc('get_admin_tasks', {
+        p_status: f.status === 'all' ? 'all' : (f.status || null),
+        p_author_email: f.author || null,
+        p_limit: 50, p_offset: 0
+      });
+      state.tasks = Array.isArray(list) ? list : [];
+      if (!state.tasks.length) {
+        wrap.innerHTML = '<p>Chưa có công việc nào — vấn đề nêu trong chat sẽ tự thêm vào đây.</p>';
+        return;
+      }
+      wrap.innerHTML = '<div class="adm-task-list">' + state.tasks.map(taskItemHtml).join('') + '</div>';
+    } catch (e) {
+      wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration v118 (bảng admin_tasks) chưa chạy.' : friendlyErr(e)) + '</p>';
+    }
+  }
+  async function onAddTask() {
+    var titleEl = $('admTaskTitle');
+    var locEl = $('admTaskLocation');
+    var msg = $('admTaskMsg');
+    if (!titleEl) return;
+    var title = String(titleEl.value || '').trim();
+    var loc = locEl ? String(locEl.value || '').trim() : '';
+    if (!title) { setMsg(msg, 'Nhập vấn đề trước khi thêm.', true); return; }
+    if (title.length > 200) { setMsg(msg, 'Vấn đề tối đa 200 ký tự.', true); return; }
+    try {
+      await rpc('admin_create_task', { p_title: title, p_location: loc || null, p_body: null });
+      titleEl.value = '';
+      if (locEl) locEl.value = '';
+      setMsg(msg, 'Đã thêm công việc.');
+      await loadTasks();
+    } catch (err) { setMsg(msg, friendlyErr(err), true); }
   }
 
   /* ---------- TAB: Viết bài (GĐ4) — đăng bài Tin tức, tự đăng không duyệt ----------
@@ -963,6 +1090,54 @@
         await rpc('admin_delete_admin_comment', { p_id: id, p_reason: null });
         setMsg(msg, 'Đã xóa tin nhắn.');
         await loadChat();
+      } else if (act === 'cycle-task') {
+        // Đổi trạng thái workflow: admin nào cũng được (người sửa lỗi cần
+        // đánh dấu tiến độ trên task do bên khác nêu). Server chặn khôi
+        // phục từ 'khong_phai_van_de' nếu không phải tác giả/owner.
+        var cur = btn.getAttribute('data-status') || 'chua_xu_ly';
+        var next = (TASK_STATUS[cur] || TASK_STATUS.chua_xu_ly).next;
+        await rpc('admin_set_task_status', { p_id: id, p_status: next });
+        setMsg(msg, 'Đã đổi trạng thái: ' + TASK_STATUS[next].label + '.');
+        await loadTasks();
+      } else if (act === 'edit-task') {
+        var itemEl = btn.closest ? btn.closest('.adm-task-item') : null;
+        var editEl = itemEl ? itemEl.querySelector('.adm-task-edit') : null;
+        if (editEl) editEl.hidden = false;
+      } else if (act === 'cancel-task') {
+        var itemEl2 = btn.closest ? btn.closest('.adm-task-item') : null;
+        var editEl2 = itemEl2 ? itemEl2.querySelector('.adm-task-edit') : null;
+        if (editEl2) editEl2.hidden = true;
+      } else if (act === 'save-task') {
+        var itemEl3 = btn.closest ? btn.closest('.adm-task-item') : null;
+        if (!itemEl3) { setMsg(msg, 'Không tìm thấy form sửa.', true); return; }
+        var fTitle = itemEl3.querySelector('[data-edit-field="title"]');
+        var fLoc = itemEl3.querySelector('[data-edit-field="location"]');
+        var fBody = itemEl3.querySelector('[data-edit-field="body"]');
+        var nt = fTitle ? String(fTitle.value || '').trim() : '';
+        var nl = fLoc ? String(fLoc.value || '').trim() : '';
+        var nb = fBody ? String(fBody.value || '').trim() : '';
+        if (!nt) { setMsg(msg, 'Vấn đề không được để trống.', true); return; }
+        await rpc('admin_update_task', { p_id: id, p_title: nt, p_location: nl || null, p_body: nb || null });
+        setMsg(msg, 'Đã lưu sửa đổi.');
+        await loadTasks();
+      } else if (act === 'notissue-task') {
+        // Chỉ tác giả/owner (server chặn bên khác); có thể khôi phục lại
+        // bằng cách bấm vào trạng thái "Không phải vấn đề".
+        await rpc('admin_set_task_status', { p_id: id, p_status: 'khong_phai_van_de' });
+        setMsg(msg, 'Đã đánh dấu "Không phải vấn đề" (vẫn giữ dấu vết, xem lại bằng bộ lọc).');
+        await loadTasks();
+      } else if (act === 'delete-task') {
+        // Xác nhận 2 bước ngay trên nút (không dùng window.confirm — hộp
+        // thoại native bị tự tắt trên trình duyệt tự động). Chỉ tác giả/
+        // owner (server chặn bên khác).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn xóa?';
+          return;
+        }
+        await rpc('admin_delete_task', { p_id: id });
+        setMsg(msg, 'Đã xóa công việc.');
+        await loadTasks();
       } else if (act === 'approve-mod' || act === 'reject-mod') {
         var kind = btn.getAttribute('data-kind');
         var pair = MOD_RPC[kind];
@@ -1051,6 +1226,7 @@
     if (key === 'chat') {
       state.loaded.chat = true;
       loadChat().then(function () { markChatSeen(); }).catch(function (e) { /* tab tự hiện lỗi */ });
+      loadTasks().catch(function (e) { /* tab tự hiện lỗi */ });
       startChatTimer();
       return;
     }
@@ -1162,9 +1338,18 @@
     var cs = $('admChatSend');
     if (cs) cs.addEventListener('click', onSendChat);
     var cr = $('admChatRefresh');
-    if (cr) cr.addEventListener('click', function () { loadChat(); });
+    if (cr) cr.addEventListener('click', function () { loadChat(); loadTasks(); });
     var ci = $('admChatInput');
     if (ci) ci.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') onSendChat(); });
+    // Danh sách tổng hợp công việc (v118): bộ lọc + thêm tay.
+    var tsf = $('admTaskStatusFilter');
+    if (tsf) tsf.addEventListener('change', function () { loadTasks(); });
+    var taf = $('admTaskAuthorFilter');
+    if (taf) taf.addEventListener('change', function () { loadTasks(); });
+    var trf = $('admTaskRefresh');
+    if (trf) trf.addEventListener('click', function () { loadChat(); loadTasks(); });
+    var tad = $('admTaskAdd');
+    if (tad) tad.addEventListener('click', onAddTask);
     // Tab Viết bài (GĐ4): gửi bài + xóa form + tự sinh slug từ tiêu đề.
     var asub = $('admArtSubmit');
     if (asub) asub.addEventListener('click', onSubmitArticle);

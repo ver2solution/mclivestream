@@ -120,7 +120,16 @@
   // (tick hàng nghìn sau nhiều buổi mở tab) về lại band ngay khi đọc.
   function loadState(stored, now) {
     if (!stored || typeof stored !== 'object' || shouldReset(stored.lastSeen, now)) {
-      return { tick: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, count: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, lastSeen: now };
+      // v118 (P2-5): trang thai moi khoi tao tick o MUC TAM cua so 8h hien
+      // tai (khong phai 0) — so hien thi bat dau o muc tu nhien (~736 tong)
+      // thay vi leo nhanh tu 611 len ~800 trong vai phut dau (QA 09/11 ghi
+      // 636 -> 798 -> 841 trong 20 phut: leo roi dung yen o tran band).
+      // count van 0 de pha random walk bat dau moi; muc tam doi theo khung
+      // 8h nen mau dao dong khac nhau moi khung.
+      var win0 = counterWindow8h(now);
+      var tick0 = {};
+      KEYS.forEach(function (k, i) { tick0[k] = windowCenter(win0, i); });
+      return { tick: tick0, count: { mau: 0, shop: 0, kiot: 0, hoidap: 0, tintuc: 0 }, lastSeen: now };
     }
     var tick = {};
     var count = {};
@@ -164,11 +173,15 @@
 
   // v99 (§8 dac ta sao len top): RANDOM WALK co kiem soat, seed theo
   // cua so 8 gio (window8h, cung co che rotateWindow). Moi tick:
-  // delta -12..+15 (co tang co giam ro), hiem (~8%) tut manh -20..-30
-  // nhu nguoi that roi trang; keo ve muc tam cua so (15..35, khac nhau
-  // moi khung 8h) de so khong troi xuong hay dinh tran. Cung
+  // delta -13..+13 (trung binh ~0 — v118 P2-5 doi tu -10..+16/trung binh
+  // +3 vi so leo nhanh ve tran band roi dung yen), hiem (~5%) tut manh
+  // -20..-30 nhu nguoi that roi trang; keo ve muc tam cua so (15..35,
+  // khac nhau moi khung 8h) de so khong troi xuong hay dinh tran. Cung
   // (win, key, count) cho cung delta — on dinh trong cua so, doi mau
   // khi sang khung 8h moi. count = so tick da chay cua bo dem do.
+  // v118 (P2-5): trang thai moi (loadState) khoi tao tick o muc tam cua
+  // so thay vi 0, nen so hien thi bat dau o muc tu nhien thay vi leo
+  // nhanh tu 611 trong vai phut dau.
   function counterWindow8h(now){
     var t = (now instanceof Date) ? now.getTime() : Number(now);
     if(!isFinite(t)) t = Date.now();
@@ -203,7 +216,7 @@
     var u = hash01(seedForWindow(w, k), c);
     if(u < 0.05) return -(20 + Math.floor((u / 0.05) * 11)); // -20..-30, hiem (~5%)
     var v = (u - 0.05) / 0.95;
-    var base = -10 + Math.floor(v * 27); // -10..+16, trung binh +3
+    var base = -13 + Math.floor(v * 27); // -13..+13, trung binh ~0 (v118 P2-5: truoc day -10..+16, trung binh +3, lam so leo nhanh ve tran band roi dung yen o ~800 thay vi dao dong quanh muc tam)
     var pull = (windowCenter(w, k) - curV) / 25; // -1..+1, keo ve muc tam
     var d = base + Math.round(pull * 6);
     if(d > 18) d = 18;

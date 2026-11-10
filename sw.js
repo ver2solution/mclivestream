@@ -14,7 +14,7 @@
    v118: chuyen domain sang vieclamlivestream.online (them CNAME + doi
    link tuyet doi ver2solution.github.io/mclivestream -> https://
    vieclamlivestream.online + site.config.json origin/basePath). */
-const CACHE = 'v118-shell-1';
+const CACHE = 'v119-shell-1';
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

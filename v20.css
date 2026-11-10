@@ -168,7 +168,7 @@ a:hover{text-decoration:underline}
 @media(min-width:1001px){.filter-card.cols-6 select,.filter-card.cols-6 input{font-size:13px;padding:9px 20px 9px 10px}}
 .filter-card .uni-actions{display:flex;align-items:flex-end}
 .filter-card .uni-actions .btn{width:100%}
-.filter-card .filter-count,.filter-card .filter-empty{grid-column:1/-1}
+.filter-card .filter-hint,.filter-card .filter-count,.filter-card .filter-empty{grid-column:1/-1}
 @media(max-width:1000px){.filter-card.cols-6{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.filter-card.cols-6{grid-template-columns:1fr}}
 .filter-card label{font-size:12px;font-weight:800;color:var(--mut)}
@@ -795,6 +795,11 @@ th{background:#f4f8f6}
 .v2s-filter-msg:empty{display:none}
 .v2s-contacts-gated{margin:8px 0}
 .v2s-contact-msg{font-size:13px;color:#0b5d4e}
+/* v118 (P2-6): khoi lien he trang chi tiet co nen xanh dam (.contact-card)
+   nen dong thong bao phai dung chu sang, khong dung mau #0b5d4e (trung nen,
+   gan nhu khong doc duoc). Link trong thong bao cung mau trang + gach chan. */
+.contact-card .v2s-contact-msg{color:#d7ece6}
+.contact-card .v2s-contact-msg a{color:#fff;text-decoration:underline}
 .v2s-transfer-history{list-style:none;padding:0}
 .v2s-transfer-history li{border-top:1px solid #e3e3e3;padding:8px 0}
 /* v96 kich hoat ho so (thiet ke 08/11/2026): panel sau dang ky (dang-ky.html)
@@ -832,10 +837,11 @@ th{background:#f4f8f6}
 }
 
 /* v99 (dac ta the rut gon + sao len top): the danh sach rut gon —
-   anh 46/51 + ten overlay cuoi anh + dung 2 dong duoi anh + nut sao.
+   anh 4/5 (v118 P2-3: doi tu 46/51 cho dung chuan 4/5) + ten overlay
+   cuoi anh + dung 2 dong duoi anh + nut sao.
    Ap dung cho ca 5 loai the (mau/shop/lo/xuong/kiot). */
 .card-compact{position:relative}
-.card-compact-photo{position:relative;display:block;aspect-ratio:46/51;overflow:hidden;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
+.card-compact-photo{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
 .card-compact-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .card-compact-photo .ph-holder{font-size:64px}
 .card-compact-name{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:800;font-size:14px;line-height:1.3}
@@ -868,8 +874,8 @@ th{background:#f4f8f6}
 .card-compact-photo--kiot{background:linear-gradient(160deg,#fce7f3,#f9a8d4)}
 .card-compact-ph{position:absolute;inset:0;display:grid;place-items:center;font-size:56px}
 /* v101: khoi chu thay anh khi the khong co logo/anh that — shop: ten san
-   pham; mau: tinh tim viec; lo: Thu mua/Xa kho + loai mat hang; kiot:
-   loai hinh. Can giua trong o anh 46/51, toi da 3 dong (ellipsis), chu
+   pham; lo: Thu mua/Xa kho + loai mat hang; kiot:
+   loai hinh. Can giua trong o anh 4/5, toi da 3 dong (ellipsis), chu
    dam doc duoc tren nen gradient/trang; padding-bottom chua cho ten
    overlay o cuoi anh. The CO anh/logo that khong doi gi. */
 .card-compact-noimg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:14px 14px 64px}

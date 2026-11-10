@@ -324,11 +324,35 @@
     } catch (err) { /* bỏ qua */ }
   }
 
+  // v119 (E-62, M_ID, 09/11): bo qua loi KHONG phai cua web.
+  // - "Cannot read properties of undefined (reading 'M_ID')" o
+  //   dang-nhap.html: khong co file nao cua web (html/js, ke ca
+  //   js/data.js) chua 'M_ID' (grep toan bo repo: 0 ket qua) nen loi nay
+  //   khong the do code web gay ra.
+  // - Analytics 09/11: ca 67 lan deu o dang-nhap.html, element = null
+  //   (window.onerror nhan filename rong) — dac trung loi cua script
+  //   EXTENSION trinh duyet (password manager/autofill) chen vao trang
+  //   dang nhap, chi kich hoat o trang co o mat khau; 0 lan ngay 08/11.
+  // - Form dang nhap KHONG vo vi loi nay: ngay 09/11 van co 8 dang nhap
+  //   thanh cong + 6 sai mat khau (form gui va nhan phan hoi auth that);
+  //   ti le bam/gui 70/14 giong 08/11 (15/3) vi bam tinh ca bam vao o nhap.
+  // Quy tac bo qua (chi 2 truong hop, de khong giau loi that):
+  // (a) nguon la extension (chrome-extension://, moz-extension://, ...);
+  // (b) thong bao doc thuoc tinh 'M_ID' ma nguon KHONG phai script cua
+  //     web (rong hoac extension). Loi M_ID tu script web (neu sau nay
+  //     web co doc M_ID) van ghi — test (6d) khang dinh.
+  var EXT_SRC_RE = /^(chrome-extension|moz-extension|safari-extension|ms-browser-extension|extension):\/\//i;
+  var MID_MSG_RE = /reading 'M_ID'/;
+
   function onJsError(msg, source, lineno, colno) {
     try {
+      var src = source ? String(source) : '';
+      var msgStr = msg == null ? '' : String(msg);
+      if (EXT_SRC_RE.test(src)) return;
+      if (MID_MSG_RE.test(msgStr) && !src) return;
       var file = null;
-      if (source) {
-        var parts = String(source).split('/');
+      if (src) {
+        var parts = src.split('/');
         file = parts[parts.length - 1].split('?')[0] || null;
       }
       record('js_error', file, null, msg, null);
@@ -338,7 +362,16 @@
   function onUnhandledRejection(e) {
     try {
       var r = e && e.reason;
-      var msg = r && r.message ? r.message : String(r);
+      var msg;
+      if (r && r.message) msg = r.message;
+      else if (r && typeof r === 'object') {
+        // v119: ly do reject dang object (vd {code, ...}) truoc day ghi
+        // thanh "[object Object]" (103 lan ngay 09/11) — khong doc duoc.
+        // Ghi JSON de analytics ngay sau doc duoc loi that gi.
+        try { msg = JSON.stringify(r); } catch (err2) { msg = String(r); }
+      } else msg = String(r);
+      // Cung bo qua nhieu M_ID nhu onJsError: khong code web nao doc M_ID.
+      if (MID_MSG_RE.test(msg)) return;
       record('js_error', null, null, msg, null);
     } catch (err) { /* bỏ qua */ }
   }
