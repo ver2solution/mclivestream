@@ -5520,9 +5520,100 @@ window.V20_DATA = {
  // Thanh Hoa 1, TP.HCM 4, Ha Noi 3), ngay dang 17/09–06/11/2026 (trong 60
  // ngay); xep moi nhat len dau, danh lai id kiot-01..30; 10 anh dai dien
  // moi images/kiot/ (kiot-05/06/12/14/15/19/20/23/25/30).
+ // 10/11/2026 (cron kiot 11:31): them 10 tin moi (TP.HCM 6, Dong Nai 1,
+ // Hai Phong 1, Lam Dong 1, Binh Duong 1), ngay dang 12/10–10/11/2026 (trong 60
+ // ngay); xep moi nhat len dau, danh lai id kiot-01..40; 10 anh dai dien
+ // moi images/kiot/ (kiot-01/02/03/04/05/09/15/22/23/34); anh cu doi ten
+ // theo id moi (kiot-05->11, 06->12, 12->19, 14->21, 15->24, 19->28,
+ // 20->29, 23->32, 25->35, 30->40).
   "kiots": [
    {
      "id": "kiot-01",
+     "group": 1,
+     "title": "Sang nhượng spa - nail Aeon Mall Bình Tân 30m² — Bình Trị Đông B, TP.HCM",
+     "price": "200 triệu",
+     "priceNum": 200000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Spa - nail tại tầng G, TTTM Aeon Mall Bình Tân, khu mỹ phẩm, cạnh siêu thị · Diện tích 30m², 4 giường spa (2 phòng) + quầy nail 2 ghế, thuộc hệ thống Tokyo Relax, hơn 200 đánh giá 4,9 sao · Thuê 12 triệu/tháng, miễn phí điện nước · TP.HCM",
+     "date": "10/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/TP-HCM/Ha-gia-sang-nhuong-nhanh-spa-nail-aeon-mall-binh-tan-dang-hoat-dong-doanh-thu-tang-truong-tot-c15-raovat-34612682.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-01.jpg"
+   },
+   {
+     "id": "kiot-02",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng 2 mặt tiền 32m² — Quảng Tiến, Trảng Bom, Đồng Nai",
+     "price": "15 triệu",
+     "priceNum": 15000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Mặt bằng 2 mặt tiền ngay ngã tư, gần chợ, gần trường học · Diện tích 32m² (4m x 8m) · Thuê 6,6 triệu/tháng, sang cọc 15 triệu · 79 Đường Quảng Tiến 14, Ấp Quảng Biên, Trảng Bom · Đồng Nai",
+     "date": "10/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Dong-Nai/Sang-nhuong-mat-bang-2-mat-tien-ngay-nga-tu-gan-cho-gan-truong-hoc-trang-bom-dong-nai-c15-raovat-34612678.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đồng Nai",
+     "img": "images/kiot/kiot-02.jpg"
+   },
+   {
+     "id": "kiot-03",
+     "group": 1,
+     "title": "Sang nhượng quán cafe 3 tầng 60m² — Trần Phú, Ngô Quyền, Hải Phòng",
+     "price": "250 triệu",
+     "priceNum": 250000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Quán cafe 3 tầng, mỗi tầng 60m², đang hoạt động, lượng khách quen ổn định · Giá sang đã bao gồm tiền cọc · Thuê 35 triệu/tháng · 136 Trần Phú, phường Gia Viên, TP Hải Phòng · Hải Phòng",
+     "date": "09/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Hai-Phong/Sang-nhuong-quan-cafe-3-tang-tai-ngo-quyen-hai-phong-dang-kinh-doanh-on-dinh-luong-khach-san-co-c15-raovat-34612546.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hải Phòng",
+     "img": "images/kiot/kiot-03.jpg"
+   },
+   {
+     "id": "kiot-04",
+     "group": 1,
+     "title": "Sang nhượng tiệm nail - mi - gội 24m² — Nguyễn Đình Chi, Quận 6, TP.HCM",
+     "price": "30 triệu",
+     "priceNum": 30000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Tiệm nail - nối mi - gội đang hoạt động, có sẵn khách, đầy đủ kệ, bàn ghế, đồ nghề · Diện tích 24m², có thể ở lại · Thuê 5,5 triệu/tháng, giá sang đã gồm 2 tháng cọc · 40 Nguyễn Đình Chi, Phường 9, Quận 6 · TP.HCM",
+     "date": "09/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/TP-HCM/Chinh-chu-can-sang-nhuong-tiem-nail-mi-goi-gan-cho-cay-go-quan-6-tphcm-c15-raovat-34612532.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-04.jpg"
+   },
+   {
+     "id": "kiot-05",
+     "group": 1,
+     "title": "Sang nhượng gấp spa massage khỏe 80m² — Song Hành, Hóc Môn, TP.HCM",
+     "price": "45 triệu",
+     "priceNum": 45000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Spa massage khỏe mặt tiền đường Song Hành, gần chợ đầu mối Hóc Môn · Diện tích 80m² (4m x 20m), 2 phòng kín + 1 gác lửng, có sẵn 1 nhân viên · Thuê 12 triệu/tháng, giá sang chưa gồm cọc nhà · 45/2P Ấp Mỹ Hòa 1, Trung Chánh, Hóc Môn · TP.HCM",
+     "date": "09/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/TP-HCM/Sang-nhuong-gap-spa-massage-khoe-mat-tien-song-hanh-hoc-mon-c15-raovat-34612004.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-05.jpg"
+   },
+   {
+     "id": "kiot-06",
      "group": 1,
      "title": "Sang nhượng quán cafe căn góc khu Bàu Cát 180m² — Trương Công Định, Tân Bình, TP.HCM",
      "price": "400 triệu",
@@ -5538,7 +5629,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-02",
+     "id": "kiot-07",
      "group": 1,
      "title": "Sang nhượng quán bún cá đang kinh doanh tốt 80m² — phố Xốm, Hà Đông, Hà Nội",
      "price": "150 triệu",
@@ -5554,7 +5645,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-03",
+     "id": "kiot-08",
      "group": 1,
      "title": "Sang nhượng MBKD đồ uống 30m² — 135 Lương Thế Vinh, Trung Văn, Hà Nội",
      "price": "80 triệu",
@@ -5570,7 +5661,24 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-04",
+     "id": "kiot-09",
+     "group": 1,
+     "title": "Sang nhượng gấp tiệm massage khiếm thị 100m² — Nguyễn Oanh, Gò Vấp, TP.HCM",
+     "price": "140 triệu",
+     "priceNum": 140000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Tiệm massage 1 trệt 2 lầu, 4 phòng ngủ, 3 WC, có phòng xông hơi, gần công viên · Diện tích 100m² (5m x 20m) · Giá sang đã gồm 25 triệu tiền cọc mặt bằng · 192/53 Nguyễn Oanh, Phường 17, Gò Vấp · TP.HCM",
+     "date": "07/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/TP-HCM/Sang-nhuong-gap-tiem-massage-khiem-thi-192-53nguyen-oanh-go-vap-gia-140-trieu-c15-raovat-34611581.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-09.jpg"
+   },
+   {
+     "id": "kiot-10",
      "group": 1,
      "title": "Sang nhượng quán cafe mặt tiền đường 30/4 — Cần Thơ",
      "price": "300 triệu",
@@ -5586,7 +5694,7 @@ window.V20_DATA = {
      "prov": "Cần Thơ"
    },
    {
-     "id": "kiot-05",
+     "id": "kiot-11",
      "group": 1,
      "title": "Sang nhượng tiệm nail 15m² — 108 Trần Phú, Hà Đông, Hà Nội",
      "price": "35 triệu",
@@ -5600,10 +5708,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Gap-sang-nhuong-tiem-nail-tai-108-tran-phu-ha-noi-gia-chi-35-trieu-tron-goi-c15-raovat-34611001.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-05.jpg"
+     "img": "images/kiot/kiot-11.jpg"
    },
    {
-     "id": "kiot-06",
+     "id": "kiot-12",
      "group": 1,
      "title": "Sang nhượng tiệm giặt là đang hoạt động tốt 156m² — 87 Võ Thị Sáu, TP. Vinh, Nghệ An",
      "price": "270 triệu",
@@ -5617,10 +5725,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Nghe-An/Sang-nhuong-tiem-giat-la-dang-hoat-dong-tot-87-vo-thi-sau-phuong-truong-thi-tp-vinh-c15-raovat-34611162.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Nghệ An",
-     "img": "images/kiot/kiot-06.jpg"
+     "img": "images/kiot/kiot-12.jpg"
    },
    {
-     "id": "kiot-07",
+     "id": "kiot-13",
      "group": 1,
      "title": "Sang nhượng quán cafe căn góc 2 mặt tiền 200m² — Lũy Bán Bích, Tân Phú, TP.HCM",
      "price": "300 triệu",
@@ -5636,7 +5744,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-08",
+     "id": "kiot-14",
      "group": 1,
      "title": "Sang nhượng quán cafe LEILA 200m² — Thủ Dầu Một, Bình Dương",
      "price": "500 triệu",
@@ -5652,7 +5760,24 @@ window.V20_DATA = {
      "prov": "Bình Dương"
    },
    {
-     "id": "kiot-09",
+     "id": "kiot-15",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng kinh doanh 600m² — Ngô Quyền, Đà Lạt, Lâm Đồng",
+     "price": "120 triệu",
+     "priceNum": 120000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Mặt bằng mặt tiền ngay nhà thờ Domaine de Marie, gần trường học, bệnh viện · 1 trệt 2 lầu, tổng 600m², mỗi sàn 200m², điện 3 pha, phù hợp quán ăn, quán nhậu, cafe, trung tâm dạy học · Thuê 30 triệu/tháng · 6 Ngô Quyền, phường 6, Đà Lạt · Lâm Đồng",
+     "date": "02/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Lam-Dong/Ca-n-sang-ma-t-ba-ng-kinh-doanh-ma-t-tie-n-vi-tri-de-p-ta-i-ngo-quye-n-da-la-t-c15-raovat-34608880.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Lâm Đồng",
+     "img": "images/kiot/kiot-15.jpg"
+   },
+   {
+     "id": "kiot-16",
      "group": 1,
      "title": "Sang nhượng mặt bằng 360 MARKET — Tô Hiến Thành, Quận 10",
      "price": "Thỏa thuận",
@@ -5668,7 +5793,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-10",
+     "id": "kiot-17",
      "group": 1,
      "title": "Sang nhượng quán cafe Eighteeng — kiệt Bà Triệu, TP Huế",
      "price": "80 triệu",
@@ -5684,7 +5809,7 @@ window.V20_DATA = {
      "prov": "Huế"
    },
    {
-     "id": "kiot-11",
+     "id": "kiot-18",
      "group": 1,
      "title": "Sang nhượng quán Thái đang hoạt động ổn định 3 năm 200m² — đường 17, Linh Trung, TP.HCM",
      "price": "350 triệu",
@@ -5700,7 +5825,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-12",
+     "id": "kiot-19",
      "group": 1,
      "title": "Chuyển nhượng kiot hàng ăn hai mặt tiền 25m² — Nguyễn Văn Cừ, Long Biên, Hà Nội",
      "price": "65 triệu",
@@ -5714,10 +5839,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Em-can-chuyen-nhuong-kiot-hang-an-hai-mat-tien-nguyen-van-cu-ha-noi-c15-raovat-34606233.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-12.jpg"
+     "img": "images/kiot/kiot-19.jpg"
    },
    {
-     "id": "kiot-13",
+     "id": "kiot-20",
      "group": 1,
      "title": "Sang nhượng quán 2 mặt tiền 384m² đã hoạt động 10 năm — Lê Hồng Phong, Hải An, Hải Phòng",
      "price": "300 triệu",
@@ -5733,7 +5858,7 @@ window.V20_DATA = {
      "prov": "Hải Phòng"
    },
    {
-     "id": "kiot-14",
+     "id": "kiot-21",
      "group": 1,
      "title": "Sang nhượng quán ăn 180m² — Thái Hà, Đống Đa, Hà Nội",
      "price": "220 triệu",
@@ -5747,10 +5872,44 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Chinh-chu-can-sang-nhuong-quan-an-tai-thai-ha-ha-noi-gan-rap-chieu-phim-quoc-gia-c15-raovat-34604962.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-14.jpg"
+     "img": "images/kiot/kiot-21.jpg"
    },
    {
-     "id": "kiot-15",
+     "id": "kiot-22",
+     "group": 1,
+     "title": "Sang nhượng tiệm bánh mì 15m² — Võ Văn Tần, Quận 3, TP.HCM",
+     "price": "150 triệu",
+     "priceNum": 150000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Tiệm bánh mì đã hoạt động 6 năm, mặt tiền đường Võ Văn Tần, khu ẩm thực sầm uất, gần Quận 1 và Bệnh viện Từ Dũ · Diện tích 15m², nhà 3 tầng, có chỗ ở lại · Thuê 18,5 triệu/tháng, giá sang thương lượng · Võ Văn Tần, Phường 5, Quận 3 · TP.HCM",
+     "date": "25/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/TP-HCM/Sang-nhuong-tiem-banh-mi-da-hoat-dong-6-nam-mat-tien-vo-van-tan-quan-3-c15-raovat-34604965.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-22.jpg"
+   },
+   {
+     "id": "kiot-23",
+     "group": 1,
+     "title": "Sang nhượng nhà hàng cao cấp 800m² — Hoàng Văn Thụ, Thủ Dầu Một, Bình Dương",
+     "price": "2,6 tỷ",
+     "priceNum": 2600000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Nhà hàng cao cấp, sảnh to + 5 phòng, toàn bộ nội thất cao cấp, vào buôn bán liền · Diện tích xây dựng 320m², tổng 800m² · Hợp đồng 5 năm (còn 4 năm), giá sang còn thương lượng · 259 Hoàng Văn Thụ, Chánh Nghĩa, Thủ Dầu Một · Bình Dương",
+     "date": "24/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/Binh-Duong/Sang-nha-hang-cao-cap-chinh-chu-tai-khu-dan-cu-chanh-nghia-binh-duong-c15-raovat-34604509.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Bình Dương",
+     "img": "images/kiot/kiot-23.jpg"
+   },
+   {
+     "id": "kiot-24",
      "group": 1,
      "title": "Sang nhượng quán cafe ăn vặt 200m² — Cầu Gòng, Hoằng Hóa, Thanh Hóa",
      "price": "Thỏa thuận",
@@ -5764,10 +5923,10 @@ window.V20_DATA = {
      "url": "https://nhadatchinhchu24h.com.vn/bat-dong-san/chinh-chu-can-sang-nhuong-quan-cafe-an-vat-ngay-cau-gong-gan-tt-hanh-chinh-gan-truong-cap-1-23/",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Thanh Hóa",
-     "img": "images/kiot/kiot-15.jpg"
+     "img": "images/kiot/kiot-24.jpg"
    },
    {
-     "id": "kiot-16",
+     "id": "kiot-25",
      "group": 1,
      "title": "Sang nhượng MBKD quán ăn + nhậu 100m² — Xuân La, Xuân Đỉnh, Hà Nội",
      "price": "80 triệu",
@@ -5783,7 +5942,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-17",
+     "id": "kiot-26",
      "group": 1,
      "title": "Sang nhượng tiệm nail – mi – spa 40m² — Phan Thanh Giản, Lái Thiêu, TP.HCM",
      "price": "45 triệu",
@@ -5799,7 +5958,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-18",
+     "id": "kiot-27",
      "group": 1,
      "title": "Sang nhượng quán mặt tiền đường Liên Hương — Tuy Phong, Bình Thuận",
      "price": "250 triệu (thương lượng)",
@@ -5815,7 +5974,7 @@ window.V20_DATA = {
      "prov": "Bình Thuận"
    },
    {
-     "id": "kiot-19",
+     "id": "kiot-28",
      "group": 1,
      "title": "Sang nhượng quán cafe 2 mặt tiền 250m² — Làng Đại Học, Thủ Đức, TP.HCM",
      "price": "480 triệu",
@@ -5829,10 +5988,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-2-mat-tien-tai-lang-dai-hoc-thu-duc-786.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-19.jpg"
+     "img": "images/kiot/kiot-28.jpg"
    },
    {
-     "id": "kiot-20",
+     "id": "kiot-29",
      "group": 1,
      "title": "Sang gấp quán cafe mặt tiền 113m² — đường 79, Phước Long, Thủ Đức, TP.HCM",
      "price": "69 triệu",
@@ -5846,10 +6005,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-quan-cafe-mat-tien-duong-79-phuoc-long-thu-duc-787.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-20.jpg"
+     "img": "images/kiot/kiot-29.jpg"
    },
    {
-     "id": "kiot-21",
+     "id": "kiot-30",
      "group": 1,
      "title": "Sang nhượng quán ăn tại KĐT An Hưng — Dương Nội, Hà Đông, Hà Nội",
      "price": "Thỏa thuận",
@@ -5865,7 +6024,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-22",
+     "id": "kiot-31",
      "group": 1,
      "title": "Sang nhượng salon tóc 2 tầng 200m² — KĐT Tân Tây Đô, Hà Nội",
      "price": "100 triệu",
@@ -5881,7 +6040,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-23",
+     "id": "kiot-32",
      "group": 1,
      "title": "Sang nhượng spa 120m² — Đinh Tiên Hoàng, Cam Lâm, Khánh Hòa",
      "price": "390 triệu",
@@ -5895,10 +6054,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-120m2-tai-dinh-tien-hoang-cam-lam-khanh-hoa-761.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Khánh Hòa",
-     "img": "images/kiot/kiot-23.jpg"
+     "img": "images/kiot/kiot-32.jpg"
    },
    {
-     "id": "kiot-24",
+     "id": "kiot-33",
      "group": 1,
      "title": "Sang nhượng mặt bằng spa 600m², 3 tầng — An Phú, Quận 2, TP.HCM",
      "price": "360 triệu",
@@ -5914,7 +6073,24 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-25",
+     "id": "kiot-34",
+     "group": 1,
+     "title": "Sang nhượng spa phong cách Trung Hoa 48m² — Quang Trung, Gò Vấp, TP.HCM",
+     "price": "150 triệu",
+     "priceNum": 150000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Spa phong cách Trung Hoa, 1 phòng gội, 1 phòng body, 1 khu lễ tân, 1 bếp, 2 WC + 1 phòng trống · Diện tích 48m² (4m x 12m, nở hậu) · Thuê 15,5 triệu/tháng, giá sang đã gồm 30 triệu tiền cọc · Đường Quang Trung, Gò Vấp · TP.HCM",
+     "date": "12/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-spa-phong-cach-trung-hoa-tai-quang-trung-go-vap-671.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP.HCM",
+     "img": "images/kiot/kiot-34.jpg"
+   },
+   {
+     "id": "kiot-35",
      "group": 1,
      "title": "Sang nhượng quán ăn 45m² — Phường Phước Long, Thủ Đức, TP.HCM",
      "price": "65 triệu",
@@ -5928,10 +6104,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-an-tai-phuong-phuoc-long-tp-hcm-gia-65-trieu-552.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-25.jpg"
+     "img": "images/kiot/kiot-35.jpg"
    },
    {
-     "id": "kiot-26",
+     "id": "kiot-36",
      "group": 1,
      "title": "Sang nhượng quán cafe Take a Break full setup — Thành Công, Hà Nội",
      "price": "Thỏa thuận",
@@ -5947,7 +6123,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-27",
+     "id": "kiot-37",
      "group": 1,
      "title": "Sang nhượng quán cafe SUNSHINE — phố Ngọc Lân, Từ Sơn, Bắc Ninh",
      "price": "Thỏa thuận",
@@ -5963,7 +6139,7 @@ window.V20_DATA = {
      "prov": "Bắc Ninh"
    },
    {
-     "id": "kiot-28",
+     "id": "kiot-38",
      "group": 1,
      "title": "Sang nhượng tiệm nail/mi/gội đầu 4x9m — Quận 1, TP.HCM",
      "price": "45 triệu (thương lượng)",
@@ -5979,7 +6155,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-29",
+     "id": "kiot-39",
      "group": 1,
      "title": "Thanh lý toàn bộ cửa hàng đồ gia dụng — Hòa Thành, Tây Ninh",
      "price": "Thỏa thuận",
@@ -5995,7 +6171,7 @@ window.V20_DATA = {
      "prov": "Tây Ninh"
    },
    {
-     "id": "kiot-30",
+     "id": "kiot-40",
      "group": 1,
      "title": "Sang mặt bằng 24m² hẻm xe tải — 489A/21/3 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM",
      "price": "25 triệu",
@@ -6009,7 +6185,7 @@ window.V20_DATA = {
      "url": "https://thegioisangnhuong.vn/chi-tiet/sang-mat-bang-tai-phu-nhuan-hem-xe-tai-489a-21-3-huynh-van-banhid-3384",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-30.jpg"
+     "img": "images/kiot/kiot-40.jpg"
    }
  ],
  "factories": [
