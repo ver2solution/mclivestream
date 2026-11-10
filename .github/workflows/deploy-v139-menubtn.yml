@@ -1,0 +1,39 @@
+name: Deploy v139-menubtn
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v139-menubtn.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v139-menubtn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v139 package
+        run: |
+          unzip -o mclivestream-v139-menubtn.zip
+          echo "--- verify v139 payload (7 files) ---"
+          grep -q "const CACHE = 'v139-shell-1';" sw.js && echo "sw.js CACHE v139-shell-1 OK"
+          for f in vi.html chinh-sach-bao-mat.html dieu-khoan-su-dung.html gioi-thieu.html lien-he.html vi-tien-ao.html; do
+            grep -q 'id="menuBtn"' "$f" || { echo "LOI: $f thieu nut Menu"; exit 1; }
+          done
+          echo "6 trang co nut Menu OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v139-menubtn.zip
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v139: them nut Menu mobile cho vi.html + 5 trang (loi B)"
+            git push
+          fi
