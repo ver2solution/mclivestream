@@ -1,0 +1,46 @@
+name: Deploy v153 (xoay 6h, bo uu tien anh)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v153.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v153:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify and unzip v153 package
+        run: |
+          unzip -l mclivestream-v153-xoay-6h-deploy.zip
+          rm -rf /tmp/v153 && mkdir -p /tmp/v153
+          unzip -o mclivestream-v153-xoay-6h-deploy.zip -d /tmp/v153
+          echo "--- verify v153 (xoay 6h, bo uu tien anh) ---"
+          test -f /tmp/v153/js/app.js || (echo "THIEU js/app.js"; exit 1)
+          test -f /tmp/v153/sw.js || (echo "THIEU sw.js"; exit 1)
+          grep -q "window6h" /tmp/v153/js/app.js || (echo "THIEU window6h trong js/app.js"; exit 1)
+          if grep -q "window8h" /tmp/v153/js/app.js; then echo "ERROR: con window8h trong js/app.js"; exit 1; fi
+          grep -q "const CACHE = 'v153-shell-1'" /tmp/v153/sw.js || (echo "THIEU CACHE v153-shell-1 trong sw.js"; exit 1)
+          cp /tmp/v153/js/app.js js/app.js
+          cp /tmp/v153/sw.js sw.js
+          echo "--- deployed ---"
+          grep -o "const CACHE = 'v153-shell-1'" sw.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v153-xoay-6h-deploy.zip
+          rm -f .github/workflows/deploy-v153.yml
+          git add -A
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v153: xoay ho so 6h, bo uu tien anh"
+            git push
+          fi
