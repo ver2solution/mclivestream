@@ -27,7 +27,7 @@
    -> shifts = [] (chi hien khi loc "Tất cả giờ"). Shop fulltime hien trong
    MOI ca khi loc gio lam (fulltime lam ca ngay) + khi loc rieng "Fulltime".
  20 real profiles + 30 shops (public job posts) + 30 articles.
-   v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
+   v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v145 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Đổng Vũ Huy 30 phút 100.000 đơn,\n   3 ngày 6,79 tỷ NDT, 5 mẹo chốt đơn (5.689 từ, 17 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi nên\n   Ryan tạo file + deploy giúp). Total 135 articles. Articles-only deploy:\n   sw.js bumped to v145-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
    Facebook Reach->Viewers 31/10, Ver2Solution intro) + 1 keyword SEO article ("tuyển idol
    livestream", kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected
    08/11: 11 models, 26 shops, 20 groups unverified) + 4 news (TikTok Shop fee hike 3/8,
@@ -7501,6 +7501,17 @@ window.V20_DATA = {
    "img": "https://vieclamlivestream.online/images/bai-viet/double-11-2025-1695-nghin-ty-ndt-livestream-chiem-bao-nhieu-hero.jpg",
    "pinned": false,
    "takeaway": "Double 11/2025 đạt 1.695 nghìn tỷ NDT (+14,2%); livestream có thể đã vượt 1/4 tổng GMV — Douyin 120 tỷ NDT, shop tự live vượt 50% GMV livestream Douyin; 5 bài học cho shop Việt."
+  },
+  {
+   "title": "30 phút bán 100.000 đơn, 3 ngày bán 6,79 tỷ NDT: 5 mẹo chốt đơn ngày sale lớn học từ Đổng Vũ Huy",
+   "cat": "Phân tích",
+   "source": "The Paper (澎湃新闻)",
+   "date": "2026-11-11",
+   "url": "https://www.thepaper.cn/newsDetail_forward_34259781",
+   "page": "bai-viet/meo-chot-don-ngay-sale-lon-hoc-dong-vu-huy-30-phut-100000-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-chot-don-ngay-sale-lon-hoc-dong-vu-huy-30-phut-100000-don-hero.jpg",
+   "pinned": false,
+   "takeaway": "Đổng Vũ Huy bán 100.000 đơn trong 30 phút, 3 ngày 6,79 tỷ NDT — mà không có mặt trong phòng live. 5 mẹo chốt đơn ngày sale lớn: sản phẩm đặt riêng, chia đợt sóng, kể chuyện, live qua 0h, chuẩn bị kho như cả tháng."
   }
 ],
  "lots": [
