@@ -983,6 +983,20 @@
     v = v.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').replace(/-+/g, '-');
     return v.slice(0, 100);
   }
+  // v146-fix (11/11/2026): đo độ dài NỘI DUNG (text thật), không tính mã HTML.
+  // Lỗi gốc: body là HTML do editor v122 đồng bộ (thẻ <p>/<h2>/<a href="...">),
+  // validateArticleDraft cũ đo body.length trực tiếp nên bài 27.000–30.000 ký tự
+  // text bị chặn oan vì HTML dài hơn 30.000 (đo thực: text 27.000 → HTML 31.901).
+  // Chỉ dùng để kiểm tra độ dài — body gửi lên server vẫn giữ nguyên HTML.
+  function articleTextLength(body) {
+    var t = String(body || '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&quot;/gi, '"')
+      .replace(/&#0?39;/g, "'").replace(/&#x27;/gi, "'").replace(/&amp;/gi, '&')
+      .replace(/\s+/g, ' ').trim();
+    return t.length;
+  }
   function validateArticleDraft(d) {
     var errs = [];
     var title = String((d && d.title) || '').trim();
@@ -997,7 +1011,8 @@
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug.length > 100) errs.push('Slug chỉ gồm chữ thường, số và dấu gạch ngang, tối đa 100 ký tự.');
     if (ARTICLE_CATS.indexOf(cat) === -1) errs.push('Chuyên mục phải là 1 trong 10 chuyên mục Tin tức đã chốt.');
     if (summary.length < 20 || summary.length > 500) errs.push('Mô tả ngắn phải từ 20 tới 500 ký tự.');
-    if (body.length < 200 || body.length > 30000) errs.push('Nội dung bài phải từ 200 tới 30000 ký tự.');
+    var bodyLen = articleTextLength(body);
+    if (bodyLen < 200 || bodyLen > 30000) errs.push('Nội dung bài (không tính mã HTML) phải từ 200 tới 30000 ký tự (đang ' + bodyLen + ').');
     if (!(/^https?:\/\//.test(img) || /^images\//.test(img) || /^\//.test(img))) errs.push('Ảnh đại diện phải là link http(s) hoặc đường dẫn images/...');
     if (src && !/^https?:\/\//.test(src)) errs.push('Link bài gốc phải bắt đầu bằng http:// hoặc https://.');
     if (srcName.length > 100) errs.push('Tên nguồn tối đa 100 ký tự.');
@@ -1645,6 +1660,6 @@
   else main();
 
   if (typeof window !== 'undefined') {
-    window.Ver2Admin = { init: main, switchTab: switchTab, state: state, validateArticleDraft: validateArticleDraft, slugify: slugify, ARTICLE_CATS: ARTICLE_CATS, ARTICLE_STATUS_LABEL: ARTICLE_STATUS_LABEL, draftCanEdit: draftCanEdit, loadDraftIntoForm: loadDraftIntoForm, updateArticleSeo: updateArticleSeo };
+    window.Ver2Admin = { init: main, switchTab: switchTab, state: state, validateArticleDraft: validateArticleDraft, articleTextLength: articleTextLength, slugify: slugify, ARTICLE_CATS: ARTICLE_CATS, ARTICLE_STATUS_LABEL: ARTICLE_STATUS_LABEL, draftCanEdit: draftCanEdit, loadDraftIntoForm: loadDraftIntoForm, updateArticleSeo: updateArticleSeo };
   }
 })();
