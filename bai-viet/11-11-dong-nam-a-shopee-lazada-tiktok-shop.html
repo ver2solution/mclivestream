@@ -40,6 +40,16 @@ h1{font-size:28px;line-height:1.35;margin:6px 0 8px}.meta-line{font-size:13px;co
 .back-link{display:block;margin:18px 0;font-size:14px}
 footer{margin-top:32px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:13px;color:#6b7280;text-align:center}
 @media(max-width:640px){h1{font-size:23px}.article-body h2{font-size:19px}}
+/* v116-game-entry (09/11/2026): loi vao game Noi duong tam — xep chong NGAY TREN popup online, cung cot mep phai.
+   Popup (.online-popup, v20.css:116): fixed right:0; top:50%; translateY(-50%); cao ~110px khi da dang nhap (~84px khi chua) → mep tren ≈ 50%+55px tinh tu day viewport.
+   .game-entry neo bang bottom:calc(50% + 62px) → cach mep tren popup ~7px, KHONG de popup, KHONG dung nut ×.
+   Neo bang bottom (khong neo top) nen nut co cao them (xuong dong o mobile) cung chi moc len tren, khong bao gio tran xuong popup.
+   z-index:79 (duoi popup 80) de neu co chong lan thi popup van bam duoc. Khi dong popup, entry van o nguyen vi tri (phan tu rieng, ngoai #onlinePopup). */
+.game-entry{position:fixed;right:0;bottom:calc(50% + 62px);z-index:79;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:96px;min-height:96px;padding:8px 6px;background:#fff8e6;border:1px solid #e8c97a;border-right:0;border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(60,42,16,.16);color:#6b4e00;text-decoration:none;font-size:12px;font-weight:800;line-height:1.3;text-align:center}
+.game-entry:hover{border-color:#a97f24;color:#93392a}
+.game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
+.game-entry small{display:none}
+@media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
 </style>
 </head>
 <body>
