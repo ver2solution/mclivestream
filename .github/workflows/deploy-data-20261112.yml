@@ -1,0 +1,39 @@
+name: Deploy data 20261112
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-20261112.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-20261112:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data package
+        run: |
+          unzip -o mclivestream-data-2026-11-12-v2.zip
+          ls -l js/data.js
+          ls -l images/th-21.jpg images/th-22.jpg images/th-23.jpg images/th-24.jpg images/th-25.jpg images/th-26.jpg images/th-27.jpg images/th-28.jpg images/th-29.jpg images/th-30.jpg images/th-31.jpg images/th-46.jpg
+      - name: Verify data.js
+        run: |
+          if grep -q 'th-53' js/data.js; then echo "ERROR: th-53 still present in js/data.js" >&2; exit 1; fi
+          grep -q 'images/th-46.jpg' js/data.js || { echo "ERROR: images/th-46.jpg not found in js/data.js" >&2; exit 1; }
+          echo "Verified: no th-53, has images/th-46.jpg"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "data: 108 models (remove 8 dead TikTok nicks) + 12 profile photos"
+            git push
+          fi
