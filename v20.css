@@ -59,6 +59,9 @@ a:hover{text-decoration:underline}
 .user-menu-points{margin:0;padding:2px 12px 10px;color:var(--mut);font-size:14px;white-space:nowrap}
 .user-menu-logout{display:block;width:100%;padding:10px 12px;border:0;border-radius:10px;background:#fff1f0;color:var(--red);font:inherit;font-weight:800;cursor:pointer;text-align:left}
 .user-menu-logout:hover{background:#ffe4e1}
+/* v161 (Rion 9b): link Vi diem / Quy tac diem trong menu tai khoan */
+.user-menu-link{display:block;padding:10px 12px;font-weight:700;color:var(--ink);text-decoration:none;border-radius:10px;white-space:nowrap}
+.user-menu-link:hover{background:#f2f7f5}
 /* v90 (3): cuon toi ket qua (scrollIntoView block:'start') khong bi header
    sticky (72px) che mat hang dau — grid/section dung cach dinh 84px.
    v91 (9): them #kiotList + .filter-empty (bang "Chưa có dữ liệu" cua

@@ -33,7 +33,11 @@
     // v121 (notes admin): ghi chú chỉ admin đặt qua RPC
     // admin_set_profile_notes; user không được gửi kèm khi lưu hồ sơ
     // (form user không có ô notes; trigger DB cũng chặn nếu cố đổi).
-    'notes'
+    'notes',
+    // v124 (tin lô/xưởng/kiot tự đăng): expires_at + shop_id do server
+    // quản lý — client không được gửi kèm (hàm submit tự gắn shop_id sau
+    // khi strip; trigger DB chặn đổi 2 trường này từ client).
+    'expires_at', 'shop_id'
   ];
 
   function stripProtected(data) {
@@ -100,7 +104,20 @@
   }
 
   async function signOut() {
-    await client.auth.signOut();
+    /* v161 (Rion — loi phien nghiem trong 11/11): signOut() mac dinh chi
+       xoa token o may nay (scope 'local') ma KHONG thu hoi refresh token
+       tren server. Tab/cua so khac (hoac client Supabase thu hai trong
+       cung trang — js/analytics.js) van giu refresh token trong bo nho,
+       timer tu refresh se ghi token moi lai localStorage -> phien da dang
+       xuat "tu khoi phuc" (admin 22:46 + 22:49). Dung scope 'global' de
+       thu hoi refresh token tren server; neu goi mang loi thi roi ve
+       signOut local de may nay van dang xuat. LUU Y hanh vi doi: dang
+       xuat se dang xuat tren MOI thiet bi (dien thoai + PC). */
+    try {
+      await client.auth.signOut({ scope: 'global' });
+    } catch (e) {
+      await client.auth.signOut();
+    }
   }
 
   async function getSession() {
@@ -524,6 +541,139 @@
     return res.data;
   }
 
+  // ---------- Tin lô / xưởng / kiot tự đăng (v124) ----------
+  // Yêu cầu đã chạy supabase-migration-user-listings-v124.sql.
+  // User ghi trực tiếp qua RLS (giống submitJobPost); duyệt qua RPC admin.
+  var LISTING_TABLES = { lot: 'user_lots', factory: 'user_factories', kiot: 'user_kiots' };
+  var LISTING_VIEWS = { lot: 'public_user_lots', factory: 'public_user_factories', kiot: 'public_user_kiots' };
+  function listingTable(kind) {
+    var t = LISTING_TABLES[kind];
+    if (!t) throw new Error('Loại tin không hợp lệ: ' + kind);
+    return t;
+  }
+  function listingView(kind) {
+    var v = LISTING_VIEWS[kind];
+    if (!v) throw new Error('Loại tin không hợp lệ: ' + kind);
+    return v;
+  }
+  // Hồ sơ shop đã duyệt là điều kiện bắt buộc để đăng tin (theo đặc tả §2).
+  async function requireApprovedShop() {
+    var shop = await fetchMyShopProfile();
+    if (!shop) throw new Error('Chưa có hồ sơ shop. Hãy lưu hồ sơ shop trước, rồi mới đăng tin.');
+    if (shop.moderation_status !== 'approved') throw new Error('Hồ sơ shop đang chờ duyệt. Tin chỉ đăng được sau khi hồ sơ shop đã duyệt.');
+    return shop;
+  }
+  // Tin của chính mình (mọi trạng thái), mới nhất trước.
+  async function fetchMyListings(kind) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới xem được tin của mình.');
+    var res = await client.from(listingTable(kind)).select('*')
+      .eq('auth_user_id', session.user.id).order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+  // Hàm chung cho 3 loại tin: gắn shop_id + auth_user_id + khóa chống
+  // gửi trùng; fallback 42703 khi cột client_idempotency_key chưa có
+  // (migration v124 chưa chạy) — giống mẫu submitJobPost.
+  async function submitUserListing(kind, data, requiredFields) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới đăng tin được.');
+    var shop = await requireApprovedShop();
+    var clean = stripProtected(data);
+    clean.shop_id = shop.id;
+    clean.auth_user_id = session.user.id;
+    clean.client_idempotency_key = newIdempotencyKey();
+    requireFields(clean, requiredFields);
+    var res = await client.from(listingTable(kind)).insert(clean).select().single();
+    if (res.error && (res.error.code === '42703' || String(res.error.message || '').indexOf('42703') !== -1)) {
+      delete clean.client_idempotency_key;
+      res = await client.from(listingTable(kind)).insert(clean).select().single();
+    }
+    if (res.error) throw res.error;
+    return res.data;
+  }
+  async function submitUserLot(data) {
+    // Theo schema user_lots (§2 đặc tả): price_unit (cái/kg/bộ/thùng/lô),
+    // contact_zalo/contact_phone; KHÔNG có unit / retail_price_num / address.
+    return submitUserListing('lot', data, ['title', 'province', 'cat', 'price_num', 'qty', 'description']);
+  }
+  async function submitUserFactory(data) {
+    // Theo schema user_factories: moq (số lượng tối thiểu), phone, website;
+    // KHÔNG có price_num / worker_count (xưởng không có giá).
+    return submitUserListing('factory', data, ['name', 'items', 'cat', 'province']);
+  }
+  async function submitUserKiot(data) {
+    // Theo schema user_kiots: rent_monthly (tiền thuê/tháng); KHÔNG có
+    // rent_num / address.
+    return submitUserListing('kiot', data, ['title', 'kind', 'province', 'price_num', 'description']);
+  }
+  // Sửa tin của mình — client không được đổi trạng thái/xuất xứ
+  // (stripProtected); trigger DB tự đưa tin đã duyệt về pending.
+  async function updateUserListing(kind, id, data) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới sửa được tin.');
+    var clean = stripProtected(data);
+    var res = await client.from(listingTable(kind)).update(clean)
+      .eq('id', id).eq('auth_user_id', session.user.id).select().single();
+    if (res.error) throw res.error;
+    return res.data;
+  }
+  // Đóng tin: đặt moderation_status='closed' trực tiếp (không qua
+  // stripProtected); trigger cho phép pending/approved → closed.
+  async function closeUserListing(kind, id) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới đóng được tin.');
+    var res = await client.from(listingTable(kind)).update({ moderation_status: 'closed' })
+      .eq('id', id).eq('auth_user_id', session.user.id).select().single();
+    if (res.error) throw res.error;
+    return res.data;
+  }
+  // Xóa tin của mình — chỉ xóa được khi chưa đăng (pending/rejected/
+  // closed); tin đã duyệt thì bấm Đóng tin thay vì Xóa.
+  async function deleteUserListing(kind, id) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới xóa được tin.');
+    var cur = await client.from(listingTable(kind)).select('moderation_status')
+      .eq('id', id).eq('auth_user_id', session.user.id).maybeSingle();
+    if (cur.error) throw cur.error;
+    if (!cur.data) throw new Error('Không tìm thấy tin.');
+    if (cur.data.moderation_status === 'approved') throw new Error('Tin đang đăng thì bấm Đóng tin thay vì Xóa.');
+    var res = await client.from(listingTable(kind)).delete()
+      .eq('id', id).eq('auth_user_id', session.user.id);
+    if (res.error) throw res.error;
+    return true;
+  }
+  // Ảnh tin: bucket profile-media, prefix listings/<uid>/<kind>/<listingId>/,
+  // tối đa 5 ảnh ≤5 MB (checkUploadFile), không video ở v1.
+  // Quy trình form: tạo tin trước (lấy id) → tải ảnh → update tin với
+  // mảng images — vì đường dẫn ảnh cần id của tin.
+  async function uploadListingImages(files, kind, listingId) {
+    var session = await getSessionRobust();
+    if (!session) throw new Error('Cần đăng nhập mới tải ảnh lên được.');
+    if (!listingId) throw new Error('Thiếu mã tin để tải ảnh.');
+    var list = Array.prototype.slice.call(files || []);
+    if (list.length < 1 || list.length > 5) throw new Error('Album cần 1 đến 5 ảnh.');
+    var urls = [];
+    for (var i = 0; i < list.length; i++) {
+      checkUploadFile(list[i], IMAGE_TYPES, IMAGE_EXTS, 'ảnh');
+      var path = 'listings/' + session.user.id + '/' + kind + '/' + listingId + '/' + safeUploadName(list[i], IMAGE_EXTS);
+      var up = await client.storage.from('profile-media').upload(path, list[i]);
+      if (up.error) throw up.error;
+      urls.push(publicUrl(path));
+    }
+    return urls;
+  }
+  // Tin đã duyệt của mọi thành viên (view public, không cần đăng nhập).
+  async function fetchApprovedUserListings(kind) {
+    var res = await client.from(listingView(kind)).select('*')
+      .order('created_at', { ascending: false }).limit(50);
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+  async function fetchApprovedUserLots() { return fetchApprovedUserListings('lot'); }
+  async function fetchApprovedUserFactories() { return fetchApprovedUserListings('factory'); }
+  async function fetchApprovedUserKiots() { return fetchApprovedUserListings('kiot'); }
+
   function newIdempotencyKey() {
     try {
       if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
@@ -546,6 +696,13 @@
     fetchApprovedShops: fetchApprovedShops, fetchMyShopProfile: fetchMyShopProfile,
     saveMyShopProfile: saveMyShopProfile, uploadShopLogo: uploadShopLogo,
     fetchApprovedJobPosts: fetchApprovedJobPosts, fetchMyJobPosts: fetchMyJobPosts,
-    submitJobPost: submitJobPost
+    submitJobPost: submitJobPost,
+    // v124: tin lô / xưởng / kiot tự đăng
+    fetchMyListings: fetchMyListings,
+    submitUserLot: submitUserLot, submitUserFactory: submitUserFactory, submitUserKiot: submitUserKiot,
+    updateUserListing: updateUserListing, closeUserListing: closeUserListing, deleteUserListing: deleteUserListing,
+    uploadListingImages: uploadListingImages,
+    fetchApprovedUserLots: fetchApprovedUserLots, fetchApprovedUserFactories: fetchApprovedUserFactories,
+    fetchApprovedUserKiots: fetchApprovedUserKiots
   };
 })();

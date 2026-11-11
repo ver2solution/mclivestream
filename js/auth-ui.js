@@ -260,7 +260,7 @@
       if (inp.signupEmail) { wireLiveClear(inp.signupEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.signupEmail); }
       if (inp.signupPhone) wireLiveClear(inp.signupPhone, isValidVnPhone, phoneErr);
       if (inp.signupPass) wireLiveClear(inp.signupPass, function (v) { return String(v || '').length >= MIN_PASSWORD_LEN; }, 'Mật khẩu cần ít nhất 8 ký tự.');
-      if (inp.signupPass2) wireLiveClear(inp.signupPass2, function (v) { var p1 = $(inp.signupPass); return !!p1 && v === p1.value; }, 'Mật khẩu nhập lại chưa khớp.');
+      if (inp.signupPass2) wireLiveClear(inp.signupPass2, function (v) { var p1 = $(inp.signupPass); return !!v && !!p1 && v === p1.value; }, 'Mật khẩu nhập lại chưa khớp.'); /* v161 (Rion S3-1): truoc day o trong ('' === '') duoc coi la hop le nen xoa mat thong bao loi */
       if (inp.signinEmail) { wireLiveClear(inp.signinEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.signinEmail); }
       if (inp.signinPass) wireLiveClear(inp.signinPass, function (v) { return !!String(v || ''); }, 'Hãy nhập mật khẩu.');
       if (inp.forgotEmail) { wireLiveClear(inp.forgotEmail, function (v) { return !!v && isValidEmail(v); }, emailErr); wireEmailValidity(inp.forgotEmail); }
@@ -431,7 +431,13 @@
           if (!setFieldError(cfg.inputs.signupPass, 'Mật khẩu cần ít nhất 8 ký tự.')) msg('Mật khẩu cần ít nhất 8 ký tự.', 'err');
           bad = true;
         }
-        if (p1 !== p2) {
+        /* v161 (Rion S3-1): truoc day chi kiem p1 !== p2 — khi ca 2 o trong
+           thi '' === '' nen o "Nhap lai mat khau" khong bao loi rieng (loi
+           chi hien o o mat khau dau tien). */
+        if (!p2) {
+          if (!setFieldError(cfg.inputs.signupPass2, 'Hãy nhập lại mật khẩu.')) msg('Hãy nhập lại mật khẩu.', 'err');
+          bad = true;
+        } else if (p1 !== p2) {
           if (!setFieldError(cfg.inputs.signupPass2, 'Mật khẩu nhập lại chưa khớp.')) msg('Mật khẩu nhập lại chưa khớp.', 'err');
           bad = true;
         }

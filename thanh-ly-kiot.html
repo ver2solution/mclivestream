@@ -118,6 +118,11 @@
   var list = document.getElementById('kiotList');
   if (!list) return;
   var kiots = (window.V20_DATA && window.V20_DATA.kiots) || [];
+  /* v161 (Rion 9e): chuan hoa nhan tinh qua V20.normProv (TP.HCM /
+     Binh Duong -> TP. Ho Chi Minh...) — truoc day option lay tu k.prov
+     tho nen bo loc hien 2 muc trung ("TP. Ho Chi Minh" va "TP.HCM") va
+     loc theo ten sau sap nhap khong khop tin dung ten cu. */
+  var norm = (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
   // v124: tải tin kiot do thành viên đăng rồi chen lên đầu danh sách.
   // Chạy nền, không chặn render tin thu thập; lỗi thì im lặng.
   // v135 (fix loi C — trang trong hoan toan): kiem tra ham ton tai truoc
@@ -138,9 +143,10 @@
         var hasProv = {};
         for (var i = 0; i < provSel2.options.length; i++) hasProv[provSel2.options[i].value] = true;
         userKiots.forEach(function(k){
-          if (k.prov && !hasProv[k.prov]) {
-            hasProv[k.prov] = true;
-            var o = document.createElement('option'); o.value = k.prov; o.textContent = k.prov; provSel2.appendChild(o);
+          var np = k.prov ? norm(k.prov) : '';
+          if (np && !hasProv[np]) {
+            hasProv[np] = true;
+            var o = document.createElement('option'); o.value = np; o.textContent = np; provSel2.appendChild(o);
           }
         });
       }
@@ -169,7 +175,7 @@
     var pv = provSel ? provSel.value : '';
     var cv = catSel ? catSel.value : '';
     var show = kiots.filter(function(k){
-      return (!pv || k.prov === pv) && (!cv || k.cat === cv);
+      return (!pv || norm(k.prov) === pv) && (!cv || k.cat === cv);
     }).sort(function(a, b){
       // v124: tin do thành viên đăng hiện trước tin thu thập, mỗi nhóm
       // xếp theo ngày đăng giảm dần (v135: 'oldest' thi cu nhat truoc).
@@ -202,7 +208,7 @@
   // Nap option tinh/thanh tu du lieu (chi tinh nao co kiot), sap xep A-Z.
   if (provSel) {
     var provs = [];
-    kiots.forEach(function(k){ if (k.prov && provs.indexOf(k.prov) < 0) provs.push(k.prov); });
+    kiots.forEach(function(k){ var np = k.prov ? norm(k.prov) : ''; if (np && provs.indexOf(np) < 0) provs.push(np); });
     provs.sort().forEach(function(p){
       var o = document.createElement('option'); o.value = p; o.textContent = p; provSel.appendChild(o);
     });

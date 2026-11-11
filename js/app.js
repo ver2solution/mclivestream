@@ -3236,6 +3236,19 @@ function initHeaderAuth(){
     menuPointsEl.className = 'user-menu-points';
     menuPointsEl.hidden = true;
     menuEl.appendChild(menuPointsEl);
+    /* v161 (Rion 9b): menu tai khoan chi co ten + so xu + Dang xuat — them
+       2 link tinh Vi diem / Quy tac diem (link tinh nen khong nhap nhay
+       theo trang thai tai so du); Rion bao "chua vao duoc Vi diem" cung duoc sua. */
+    var walletLink = document.createElement('a');
+    walletLink.className = 'user-menu-link';
+    walletLink.setAttribute('href', pathPrefix + 'vi.html');
+    walletLink.textContent = 'Ví điểm';
+    menuEl.appendChild(walletLink);
+    var rulesLink = document.createElement('a');
+    rulesLink.className = 'user-menu-link';
+    rulesLink.setAttribute('href', pathPrefix + 'quy-tac-diem-thuong.html');
+    rulesLink.textContent = 'Quy tắc điểm';
+    menuEl.appendChild(rulesLink);
     var out = document.createElement('button');
     out.setAttribute('type', 'button');
     out.className = 'user-menu-logout';
@@ -3848,7 +3861,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
-  if(fab) fab.addEventListener('click',function(){document.getElementById('gopyOverlay').classList.add('open');});
+  if(fab){ fab.hidden=false; /* v161 (Rion S1-3): nut Gop y bi hidden vinh vien vi khong JS nao go; duong gui code da dung (submitFeedback), chi con RLS chan o server — xem SQL supabase-fix-feedback-rls-2026-11-12.sql */ fab.addEventListener('click',function(){document.getElementById('gopyOverlay').classList.add('open');}); }
   var ov=document.getElementById('gopyOverlay');
   if(ov) ov.addEventListener('click',function(e){if(e.target===ov) ov.classList.remove('open');});
   var gf=document.getElementById('gopyForm');
@@ -3859,7 +3872,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     try{
       var API=window.McLivestreamAPI;
       if(API && API.submitFeedback){ await API.submitFeedback(data); if(msg) msg.textContent='Cảm ơn bạn! Góp ý đã gửi về Ver2Solution để tổng hợp.'; gf.reset(); return; }
-    }catch(err){ if(msg) msg.textContent='Chưa gửi được: '+((window.McLivestreamAPI&&McLivestreamAPI.friendlyError)?McLivestreamAPI.friendlyError(err):'Đã có lỗi xảy ra, hãy thử lại sau.')+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
+    }catch(err){ var fe=((window.McLivestreamAPI&&McLivestreamAPI.friendlyError)?McLivestreamAPI.friendlyError(err):'Đã có lỗi xảy ra, hãy thử lại sau.'); fe=String(fe||'').replace(/[.]+$/,''); /* v161 (Rion S3-2): friendlyError tra ve cau ket thuc bang '.' roi code cong them '.' -> '..' */ if(msg) msg.textContent='Chưa gửi được: '+fe+'. Góp ý đã lưu tạm, bạn gửi thêm qua Zalo giúp mình nhé.'; }
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });

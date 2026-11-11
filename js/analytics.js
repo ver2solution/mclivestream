@@ -191,7 +191,16 @@
         var cfg = window.MCLIVESTREAM_SUPABASE_CONFIG || {};
         if (!window.supabase || !cfg.url || !cfg.anonKey) return null;
         if (String(cfg.url).indexOf('YOUR-PROJECT-REF') !== -1) return null;
-        return window.supabase.createClient(cfg.url, cfg.anonKey);
+        /* v161 (Rion — loi phien nghiem trong 11/11): client nay CHI dung
+           de flush analytics bang fetch voi anon key, khong bao gio can
+           auth — nhung createClient mac dinh (persistSession +
+           autoRefreshToken) tao ra GoTrue client THU HAI chung 1 storage
+           key 'sb-...-auth-token' voi client chinh: no doc session tu
+           localStorage va chay timer tu refresh token. Dang xuat o client
+           chinh (xoa token local) nhung client nay van giu session trong
+           bo nho -> refresh thanh cong -> ghi token moi lai localStorage
+           -> phien "tu khoi phuc". Tat han auth o client nay. */
+        return window.supabase.createClient(cfg.url, cfg.anonKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
       } catch (e) {
         return null;
       }

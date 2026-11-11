@@ -282,6 +282,23 @@
       f.shopName.value=my.shop_name||''; f.address.value=my.address||''; f.phone.value=my.phone||''; f.email.value=my.email||'';
       f.shopProvince.value=my.province||'';
       f.liveHours.value=my.live_hours||''; f.storeCount.value=my.store_count||''; f.storeAddresses.value=my.store_addresses||'';
+      /* v161 (Rion 9c): truoc day prefill chi khoi phuc truong text/select —
+         checkbox businessItems / liveChannels va radio hasStore (kem o
+         "Khac" + mo #storeDetails) khong duoc khoi phuc, tai lai trang
+         trong nhu chua nhap. */
+      var FIXED_ITEMS=['Thời trang','Mỹ phẩm','Mẹ và bé','Gia dụng','Thực phẩm','Điện tử','Phụ kiện','Thể thao','Khác'];
+      var FIXED_CHANS=['TikTok','Shopee','Facebook','Lazada','YouTube','Khác'];
+      function restoreChecks(name, values, otherEl, fixed){
+        var vals=values||[];
+        f.querySelectorAll('input[name="'+name+'"]').forEach(function(c){ c.checked=vals.indexOf(c.value)!==-1; });
+        var extra=vals.filter(function(v){ return fixed.indexOf(v)===-1; });
+        if(extra.length){ var kb=f.querySelector('input[name="'+name+'"][value="Khác"]'); if(kb) kb.checked=true; if(otherEl) otherEl.value=extra.join(', '); }
+      }
+      restoreChecks('businessItems', my.business_items, f.businessItemsOther, FIXED_ITEMS);
+      restoreChecks('liveChannels', my.live_channels, f.liveChannelsOther, FIXED_CHANS);
+      var hs=f.querySelector('input[name="hasStore"][value="'+(my.has_store?'Có':'Không')+'"]');
+      if(hs) hs.checked=true;
+      toggle(); /* mo/dong #storeDetails theo radio vua khoi phuc */
     }catch(e){}
   })();
   document.getElementById('shopProfileForm').addEventListener('submit', function(e){
