@@ -636,7 +636,7 @@
      (localStorage admin_last_seen_chat:<uid>), xóa khi mở tab Trao đổi. */
   function chatItemHtml(m) {
     var mine = m.author_id && m.author_id === state.userId;
-    return '<div class="adm-chat-item" data-mid="' + esc(m.id) + '"><p class="adm-chat-meta"><b>' + esc(m.author_email || 'Admin')
+    return '<div class="adm-chat-item" data-mid="' + esc(m.id) + '"><p class="adm-chat-meta"><b>' + esc(taskAuthorName(m.author_email))
       + '</b> · ' + esc(chatTime(m.created_at)) + (mine ? ' · (bạn)' : '') + '</p>'
       + '<div class="adm-chat-body">' + esc(m.body) + '</div>'
       + '<p style="margin:6px 0 0"><button class="btn btn-ghost btn-sm" data-adm-act="delete-chat" data-id="' + esc(m.id) + '" type="button">Xóa</button></p></div>';
@@ -827,7 +827,7 @@
     if (state.legacyGate) { setMsg(msg, 'Chưa chạy migration GĐ1/GĐ3 — tab Trao đổi chưa mở được.', true); return; }
     var body = String(input.value || '').trim();
     if (!body) { setMsg(msg, 'Nhập nội dung tin nhắn trước khi gửi.', true); return; }
-    if (body.length > 2000) { setMsg(msg, 'Tin nhắn tối đa 2000 ký tự.', true); return; }
+    if (body.length > 10000) { setMsg(msg, 'Tin nhắn tối đa 10000 ký tự.', true); return; } /* v164: nang tu 2000 (SQL supabase-fix-chat-length-10000-2026-11-12.sql doi CHECK + RPC theo) */
     btn.disabled = true;
     try {
       await rpc('admin_post_comment', { p_body: body });
@@ -867,7 +867,7 @@
   var TASK_AUTHOR_NAMES = {
     'ver2solution@gmail.com': 'Ryan',
     'thondads@gmail.com': 'Rion',
-    'thond.bds@gmail.com': 'Muse BĐS'
+    'thond.bds@gmail.com': 'Thọ Zalo'
   };
   function taskAuthorName(email) {
     if (TASK_AUTHOR_NAMES[email]) return TASK_AUTHOR_NAMES[email];

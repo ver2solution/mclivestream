@@ -101,14 +101,14 @@
 </div>
 <div id="admTab-chat" class="adm-panel" hidden>
 <h2>Trao đổi</h2>
-<p class="filter-hint">Nơi Ryan, Rion và Muse BĐS trao đổi trực tiếp — feedback lỗi + yêu cầu công việc chung. Nhiệm vụ chi tiết vẫn tổng hợp qua Google Sheet.</p>
+<p class="filter-hint">Nơi Ryan, Rion và Thọ Zalo trao đổi trực tiếp — feedback lỗi + yêu cầu công việc chung. Nhiệm vụ chi tiết vẫn tổng hợp qua Google Sheet.</p>
 <p id="admChatLive" style="font-size:13px"><span id="admChatLiveDot" class="adm-live-dot"></span> <span id="admChatLiveText">Đang kết nối…</span></p>
 <p id="admChatPresence" style="font-size:13px">Đang online: —</p>
 <p id="admChatMsg" role="status" style="font-weight:700"></p>
 <div id="admChatList"><p>Chưa tải.</p></div>
 <div class="adm-chat-form">
-<label for="admChatInput">Tin nhắn mới (tối đa 2000 ký tự, Ctrl+Enter để gửi)</label>
-<textarea id="admChatInput" maxlength="2000" placeholder="Viết feedback lỗi hoặc yêu cầu công việc chung…"></textarea>
+<label for="admChatInput">Tin nhắn mới (tối đa 10000 ký tự, Ctrl+Enter để gửi)</label>
+<textarea id="admChatInput" maxlength="10000" placeholder="Viết feedback lỗi hoặc yêu cầu công việc chung…"></textarea>
 <p style="margin:8px 0"><button class="btn btn-primary btn-sm" id="admChatSend" type="button">Gửi</button>
 <button class="btn btn-ghost btn-sm" id="admChatRefresh" type="button">Làm mới</button></p>
 </div>
@@ -116,7 +116,7 @@
 <h3>Tổng hợp công việc</h3>
 <p class="filter-hint">Các vấn đề được nêu trong khung chat sẽ tự thêm vào đây (khi tin nhắn chứa từ khóa như lỗi, cần sửa, thiếu, hỏng…). Bấm vào trạng thái để đổi: Chưa xử lý → Đang xử lý → Đã xong → Chưa xử lý. Chỉ bên nêu vấn đề (hoặc owner) mới được Sửa/Xóa task hoặc đánh dấu "Không phải vấn đề".</p>
 <p><label>Trạng thái <select id="admTaskStatusFilter"><option value="">Việc đang làm</option><option value="chua_xu_ly">Chưa xử lý</option><option value="dang_xu_ly">Đang xử lý</option><option value="da_xong">Đã xong</option><option value="khong_phai_van_de">Không phải vấn đề</option><option value="all">Tất cả</option></select></label>
-<label>Bên nêu <select id="admTaskAuthorFilter"><option value="">Tất cả</option><option value="ver2solution@gmail.com">Ryan</option><option value="thondads@gmail.com">Rion</option><option value="thond.bds@gmail.com">Muse BĐS</option></select></label>
+<label>Bên nêu <select id="admTaskAuthorFilter"><option value="">Tất cả</option><option value="ver2solution@gmail.com">Ryan</option><option value="thondads@gmail.com">Rion</option><option value="thond.bds@gmail.com">Thọ Zalo</option></select></label>
 <button class="btn btn-ghost btn-sm" id="admTaskRefresh" type="button">Làm mới</button></p>
 <p id="admTaskMsg" role="status" style="font-weight:700"></p>
 <div id="admTaskList"><p>Chưa tải.</p></div>
