@@ -1,0 +1,51 @@
+name: Deploy v155
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/deploy-v155.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v155:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip and deploy v155 files
+        run: |
+          set -e
+          unzip -o mclivestream-v155-form-fallback-deploy.zip -d /tmp/v155
+          echo "--- extracted files ---"
+          find /tmp/v155 -type f | sort
+          ADMIN_SRC=$(find /tmp/v155 -type f -name admin.js | head -n 1)
+          SW_SRC=$(find /tmp/v155 -type f -name sw.js | head -n 1)
+          test -n "$ADMIN_SRC"
+          test -n "$SW_SRC"
+          mkdir -p js
+          cp "$ADMIN_SRC" js/admin.js
+          cp "$SW_SRC" sw.js
+          echo "--- verify markers ---"
+          grep -E "articleEditorFailed|enableArticleBodyFallback" js/admin.js
+          grep -F "v155-shell-1" sw.js
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          rm -f mclivestream-v155-form-fallback-deploy.zip
+          git add -A
+          git status --short
+          git commit -m "Deploy v155: js/admin.js + sw.js (form fallback)"
+          git push origin main
+      - name: Remove temp workflow
+        run: |
+          set -e
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git pull --rebase origin main || true
+          rm -f .github/workflows/deploy-v155.yml
+          git add -A
+          git status --short
+          git commit -m "Delete deploy-v155.yml" || echo "nothing to commit"
+          git push origin main
