@@ -1469,6 +1469,12 @@ function initKiotNewsRow(){
   initNewsRow('kiotNewsRow',['Đang hot','Livestream'],
     '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-hot-kiot">Đang hot &amp; livestream</a></h2>');
 }
+/* v157: khu tin 3 hang duoi danh sach (giong khu Tin moi trang chu:
+   .news-list 2 cot, 6 bai moi nhat theo chuyen muc rieng cua trang). */
+function initBottomNewsList(listId,cats){
+  var el=document.getElementById(listId); if(!el) return;
+  el.innerHTML=newsRowNewest(cats,6).map(function(a){ return newsCardHTML(a); }).join('');
+}
 /* v41 trust strip: so lieu tinh DONG tu data.js (khong ghi so cung vao HTML).
    Quy tac luong/doanh thu cua mau (user-directed 06/11): doanh thu cao nhat
    (highest_revenue_amount DA XAC MINH, v85 M1) la tieu de khi co du lieu da
@@ -2565,7 +2571,7 @@ function initShops(){
   // (thay cho 12 ma uni — 5 ma cung ve "Thời trang" nen so dem lap nhau).
   rebuildShopCatOptions();
   var p=params(); var page=parseInt(p.page||'1',10)||1;
-  var perPage=12;
+  var perPage=24; /* v157: 4 hang x 6 cot (user 21:06 11/11), truoc 12 = 2 hang */
   /* bo loc shop trang Mau — cung truong + cung gia tri nhu bo loc chung
      (fUni*) nhung id rieng fSh* (khong co thanh truot chon hang muc). */
   function readForm(){return {prov:elVal('fShProv'),cat:uniCatToShop(elVal('fShCat')),sort:elVal('fShSort'),shift:elVal('fShShift'),payType:elVal('fShPayType'),payMin:parseMoneyInput(elVal('fShPayMin'))};}
@@ -3838,7 +3844,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
   /* v96-swap: initShopPage TRUOC initList — renderLotSections dung lai
      option cua #fUniProv theo D.provinces (v111); prefill URL cua initList
      phai chay sau thi gia tri moi giu duoc. */
-  initHome(); initShopPage(); initList(); initNews(); initModelNewsRow(); /* v100: hang tin trang Mau */ initShopNewsRow(); /* v123: hang tin trang Shop */ initKiotNewsRow(); /* v123: hang tin trang Kiot */ initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm(); initStars(); /* v99: nap so sao + uy thac click nut sao */ initLotFactoryDetail(); /* v135: khung chi tiet lo/xuong/kiot tren trang (modal) */ initOptionCounts(); /* v103: so luong that trong () o moi option loc */ initFilterHint(); /* v118 (P2-4): an goi y "Can dang nhap" khi da dang nhap */
+  initHome(); initShopPage(); initList(); initNews(); initModelNewsRow(); /* v100: hang tin trang Mau */ initShopNewsRow(); /* v123: hang tin trang Shop */ initKiotNewsRow(); /* v123: hang tin trang Kiot */ initBottomNewsList('shopBottomNews',['Đời Sống','Việc Làm']); initBottomNewsList('kiotBottomNews',['Đang hot','Livestream']); /* v157: 3 hang tin duoi danh sach */ initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initPointsUI(); initTransferForm(); initStars(); /* v99: nap so sao + uy thac click nut sao */ initLotFactoryDetail(); /* v135: khung chi tiet lo/xuong/kiot tren trang (modal) */ initOptionCounts(); /* v103: so luong that trong () o moi option loc */ initFilterHint(); /* v118 (P2-4): an goi y "Can dang nhap" khi da dang nhap */
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');

@@ -76,6 +76,10 @@
 <div id="kiotList" class="lot-grid"></div>
 <p><button class="btn btn-primary" id="kiotMoreBtn" type="button" hidden>Xem thêm ↓</button></p>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p>
+<!-- v157: khu tin 3 hang duoi danh sach kiot (giong khu Tin moi trang chu: .news-list 2 cot, 6 bai moi nhat Đang hot + Livestream) -->
+<section class="section" id="tin-moi-cho-kiot"><div class="section-head"><div><h2><a href="tin-tuc.html">Tin mới cho người thanh lý kiot</a></h2></div></div>
+<div class="news-list" id="kiotBottomNews"></div>
+<div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
 
 <section class="form-card"><h2>Thanh lý kiot gồm những gì?</h2>
 <p><strong>1. Sang mặt bằng.</strong> Bạn đang thuê mặt bằng đẹp nhưng không kinh doanh nữa? Sang lại mặt bằng kèm thời hạn thuê còn lại cho người muốn mở shop tại đúng vị trí đó.</p>
@@ -150,10 +154,10 @@
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
   // v91 (7): tối đa 10 hàng — chỉ hiện 10 tin mới nhất (sắp theo ngày đăng
   // giảm dần); lọc thì cũng tối đa 10 tin khớp mới nhất. Ngày dạng DD/MM/YYYY.
-  // v111 (muc 4): phan trang bang nut "Xem them" (12 tin/lan, giong nut
+  // v111 (muc 4): phan trang bang nut "Xem them" (24 tin/lan tu v157, giong nut
   // Xem them lo/xuong) — truoc day chi hien 12 tin dau, 8 tin con lai
   // khong xem duoc vi khong co phan trang/xem them.
-  var KIOT_MAX_ROWS = 12;
+  var KIOT_MAX_ROWS = 24; /* v157: 4 hang x 6 cot (user 21:06 11/11), truoc 12 = 2 hang */
   var kiotShown = KIOT_MAX_ROWS;
   var moreBtn = document.getElementById('kiotMoreBtn');
   function kiotTime(k){
