@@ -655,70 +655,48 @@ function withPhotoFirst(list){
     .concat(list.filter(function(m){return !m.photoUrl && m.photoHas;}))
     .concat(list.filter(function(m){return !m.photoHas;}));
 }
-/* v64: xoay 3 lan/ngay, moi 8 tieng (cua so 00:00 / 08:00 / 16:00 gio VN).
-   Thay the xoay 1 lan/ngay theo day-of-year (v24) — nguoi dung chot 15:37
-   ngay 06/11: tat ca khung hien noi dung doi tuong o trang Shop + trang Mau
-   deu xoay random 3 lan/ngay. Xoay xay ra TRONG tung tier, nen quy tac
-   uu tien (anh that / logo ro) khong bao gio pha: muc van o trong tier cua
-   no, chi thu tu trong tier doi sau moi 8 tieng. On dinh trong cung cua so;
-   khong doi du lieu hay tieu de. */
+/* v152: xoay 4 lan/ngay, moi 6 tieng (cua so 00:00 / 06:00 / 12:00 / 18:00
+   gio VN). Thay the xoay 3 lan/ngay moi 8 tieng (v64) — nguoi dung chot
+   15:50 ngay 11/11: BO UU TIEN CO ANH — xoay random tu nhien toan bo danh
+   sach, khong nhom theo tier anh (photoTier) hay logo (logoTier). Thu tu
+   goc truoc khi xoay giu nguyen (mau: views|comments giam dan; shop: moi
+   nhat truoc). On dinh trong cung cua so; khong doi du lieu hay tieu de.
+   Bai ghim tra tien KHONG xoay: applyPinnedOrder chay sau khi render, dua
+   ghim len truoc theo pinned_until giam dan. */
 function dayOfYear(d){ d = d || new Date(); var start = new Date(d.getFullYear(), 0, 0); return Math.floor((d - start) / 86400000); }
-function window8h(d){ d = d || new Date(); return Math.floor((d.getTime() + 7*3600*1000) / (8*3600*1000)); }
+function window6h(d){ d = d || new Date(); return Math.floor((d.getTime() + 7*3600*1000) / (6*3600*1000)); }
 function rotateArr(list, offset){ var n = list.length; if(!n) return list.slice(); var k = ((offset % n) + n) % n; return list.slice(k).concat(list.slice(0, k)); }
 function photoTier(m){ return m.photoUrl ? 'a' : (m.photoHas ? 'b' : 'c'); }
-function rotateWindow(list, tierOf, date){
-  var win = window8h(date);
-  var tiers = {}, order = [];
-  list.forEach(function(m){ var k = tierOf(m); if(!(k in tiers)){ tiers[k] = []; order.push(k); } tiers[k].push(m); });
-  var out = [];
-  order.forEach(function(k){ out = out.concat(rotateArr(tiers[k], win)); });
-  return out;
+function rotateWindow(list, date){
+  return rotateArr(list || [], window6h(date));
 }
-function rotateDaily(list, tierOf, date){ return rotateWindow(list, tierOf, date); }
-/* v103 (quy tắc người dùng chốt 21:36 ngày 08/11 — quy tắc v25 "top 8 CHỈ
-   có ảnh thật" HẾT HIỆU LỰC từ v103): trang chủ hiện 12 mẫu = 2 hàng PC
-   (6 cột × 2). HÀNG 1 (6 thẻ): mẫu CÓ ảnh (photoUrl; photoHas nếu có).
-   HÀNG 2 (6 thẻ): mẫu KHÔNG có ảnh (không photoUrl và không photoHas).
-   Mỗi hàng xoay random RIÊNG trong nhóm của nó theo cửa sổ 8 tiếng
-   (00:00/08:00/16:00 giờ VN, window8h + rotateArr) — đúng cơ chế random
-   theo yêu cầu từ trước: quyết 05/11 đổi thứ tự hồ sơ mỗi ngày cho web
-   sống + quyết 06/11 15:37 xoay 3 lần/ngày trong từng tier. Trang danh
-   sách vẫn hiện đủ hồ sơ, không đổi.
-   v118 (P2-3, QA 09/11): ĐẢO thứ tự v103 — trước đây hàng 1 là mẫu KHÔNG
-   ảnh nên 6 thẻ đầu trang chủ chỉ có nền gradient + tên tỉnh, trông như
-   lỗi thiếu ảnh. Hàng 1 giờ là mẫu CÓ ảnh; mẫu không ảnh vẫn được hiện
-   ở hàng 2 (không mất lượt hiển thị). */
+function rotateDaily(list, date){ return rotateWindow(list, date); }
+/* v152 (quy tắc người dùng chốt 15:50 ngày 11/11 — BO UU TIEN CO ANH):
+   trang chủ hiện 12 mẫu = 12 mẫu đầu của TOÀN BỘ danh sách đã xoay ngẫu
+   nhiên theo cửa sổ 6 tiếng (00:00/06:00/12:00/18:00 giờ VN, window6h +
+   rotateArr), không phân biệt có ảnh hay không — mẫu không ảnh có thể
+   đứng trước mẫu có ảnh. Thay quy tắc v103/v118 (hàng 1 có ảnh / hàng 2
+   không ảnh). Trang danh sách vẫn hiện đủ hồ sơ, không đổi. */
 function homeModels12(models, date){
-  var noPhoto = (models||[]).filter(function(m){ return !m.photoUrl && !m.photoHas; });
-  var withPhoto = (models||[]).filter(function(m){ return !!m.photoUrl || !!m.photoHas; });
-  return rotateArr(withPhoto, window8h(date)).slice(0, 6)
-    .concat(rotateArr(noPhoto, window8h(date)).slice(0, 6));
+  return rotateArr(models || [], window6h(date)).slice(0, 12);
 }
-/* v64: thu tu mac dinh cua trang Shop: moi nhat truoc, roi xoay 3 lan/ngay
-   theo cua so 8 tieng trong tung nhom — shop CO logo that luon len truoc,
-   shop chua co logo xoay sau. Khi nguoi dung chon sap xep (luong/gio) thi
-   KHONG xoay, giu dung thu tu sap xep.
-   v117: rotateWindow ghi thu tu tier theo lan XUAT HIEN DAU TIEN trong
-   danh sach dau vao — neu shop moi nhat khong co logo thi tier '1' len
-   truoc va shop co logo bi day xuong (loi phat hien khi chay full suite
-   v117: test-v64 rot vi shop moi nhat hien khong co logo). Sap xep on
-   dinh theo logoTier TRUOC khi xoay (Array.sort on dinh tu ES2019 nen
-   thu tu moi nhat trong tung tier duoc giu) de tier '0' luon xuat hien
-   truoc. Khong sua rotateWindow vi no dung chung cho homeModels12 (tier
-   la chuoi tong hop views|comments|photoTier, sap xep tier se sai). */
+/* v152: thu tu mac dinh cua trang Shop: moi nhat truoc, roi xoay 4 lan/ngay
+   theo cua so 6 tieng (00:00/06:00/12:00/18:00 gio VN) — xoay deu TOAN BO
+   danh sach, KHONG uu tien shop co logo (bo logoTier, quyet cua user 15:50
+   ngay 11/11). Khi nguoi dung chon sap xep (luong/gio) thi KHONG xoay, giu
+   dung thu tu sap xep. */
 function logoTier(s){ return s.logo ? '0' : '1'; }
 function defaultShopOrder(list, date){
   var sorted = sortShopsNewest(list.slice());
-  sorted.sort(function(a, b){ var ta = logoTier(a), tb = logoTier(b); return ta < tb ? -1 : ta > tb ? 1 : 0; });
-  return rotateWindow(sorted, logoTier, date);
+  return rotateWindow(sorted, date);
 }
-/* v64: xoay the tinh (lo / xuong may) tren trang Shop — the la HTML tinh,
-   khong qua JS render. Xoay vong trong tung .lot-grid theo cua so 8 tieng
-   (gio VN): 6 the dau (2 hang mac dinh) doi sau moi 8 tieng, nhom lo van
-   giu nguyen (khong tron nhom). An toan vi the chi la link, khong co
-   listener. Khong lam gi neu trang khong co .lot-grid. */
+/* v152: xoay the tinh (lo / xuong may) tren trang Shop — the la HTML tinh,
+   khong qua JS render. Xoay vong trong tung .lot-grid theo cua so 6 tieng
+   (00:00/06:00/12:00/18:00 gio VN): 6 the dau (2 hang mac dinh) doi sau
+   moi 6 tieng, nhom lo van giu nguyen (khong tron nhom). An toan vi the chi
+   la link, khong co listener. Khong lam gi neu trang khong co .lot-grid. */
 function rotateStaticGrids(date){
-  var win = window8h(date);
+  var win = window6h(date);
   var grids = document.querySelectorAll ? document.querySelectorAll('.lot-grid') : [];
   for(var gi = 0; gi < grids.length; gi++){
     var grid = grids[gi];
@@ -2098,9 +2076,9 @@ function initHome(){
   // v41 trust strip: so lieu tinh dong tu data.js; so tinh trong index.html
   // (20 / 30) chi la du phong neu JS loi — dai khong bao gio trong.
   renderTrustStats();
-  // v103: trang chu 12 mau = 2 hang (hang 1: 6 mau KHONG anh; hang 2: 6 mau
-  // CO anh — moi hang xoay rieng theo cua so 8 tieng). Quy tac v25 (top 8
-  // chi co anh that) HET HIEU LUC tu v103 theo quyet cua user 21:36 08/11.
+  // v152: trang chu 12 mau = 12 mau dau cua toan bo danh sach da xoay theo
+  // cua so 6 tieng, khong phan biet co anh hay khong (quyet cua user 15:50
+  // 11/11 — bo uu tien co anh; thay quy tac v103/v118 hang 1 co anh).
   var shown=homeModels12(D.models);
   grid.innerHTML=shown.map(cardHTML).join('');
   // v38: hang tin ghim (4 khung) duoi hero search. Muc Tin moi (#homeNews)
@@ -2760,13 +2738,14 @@ function initList(){
   } catch (e) {}
 }
 /* v63: thu tu mac dinh cua trang Mau (initList): luot xem giam dan, binh luan
-   giam dan, anh that truoc (photoTier), roi xoay trong tung nhom. v64: xoay
-   3 lan/ngay theo cua so 8 tieng (gio VN), on dinh trong cua so. Tach ra ham
-   rieng de khoi hub 11.11 dung DUNG thu tu do — shop khong thay hai thu tu
-   khac nhau cho cung mot bo loc. */
+   giam dan, roi xoay deu TOAN BO danh sach. v152: xoay 4 lan/ngay theo cua
+   so 6 tieng (00:00/06:00/12:00/18:00 gio VN), on dinh trong cua so; BO
+   photoTier khoi thu tu (quyet cua user 15:50 11/11 — khong uu tien anh).
+   Tach ra ham rieng de khoi hub 11.11 dung DUNG thu tu do — shop khong thay
+   hai thu tu khac nhau cho cung mot bo loc. */
 function defaultModelOrder(list, date){
-  var out=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments)||((b.photoUrl?1:0)-(a.photoUrl?1:0));});
-  return rotateWindow(out, function(m){ return m.views+'|'+m.comments+'|'+photoTier(m); }, date);
+  var out=list.slice().sort(function(a,b){return (b.views-a.views)||(b.comments-a.comments);});
+  return rotateWindow(out, date);
 }
 /* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
    2026-11-06, design-2026-11-06-tim-mau-nhanh-cho-shop-11-11.md). Chi 1 khoi
@@ -3858,7 +3837,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Góp ý đã lưu tạm trên máy của bạn, bạn có thể gửi thêm qua Zalo để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window8h:window8h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
