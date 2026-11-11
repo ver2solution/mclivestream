@@ -199,11 +199,17 @@ var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp 
    tu moi trang: trang chu, trang danh sach, trang chi tiet).
    v85: link "Đăng ký" tro dung trang dang ky RIENG dang-ky.html (kem
    ?type= theo loai the); link "Đăng nhập" giu neo muc dang nhap tren
-   trang danh sach (form dang nhap nhanh tai cho, van hoat dong). */
-function ownerNoteHTML(kind){
+   trang danh sach (form dang nhap nhanh tai cho, van hoat dong).
+   v165 (claim V1, 12/11/2026): them tham so profileId (tuy chon) —
+   khi co id thi render them <span class="claim-slot"> de js/claim.js
+   dien nut "Day la ho so cua ban? Nhan so huu" khi SDT cua user dang
+   dang nhap trung lien he cua ho so dang xem. Khong co id (the danh
+   sach khong goi ham nay) thi chi hien dong chu nhu cu. */
+function ownerNoteHTML(kind, profileId){
   var type = kind === 'shop' ? 'shop' : 'model';
   var loginHref = kind === 'shop' ? 'danh-sach-mau.html#dang-nhap-shop' : 'danh-sach-shop.html#dang-nhap-mau'; // A3 10/11 un-swap v96
-  return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>';
+  var slot = profileId ? ' <span class="claim-slot" data-claim-profile="'+esc(profileId)+'" data-claim-kind="'+type+'"></span>' : '';
+  return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>' + slot;
 }
 /* ---- Xu thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
    Xem goals/.../diem-thuong-v2-2026-11-07.md. Client chỉ gọi RPC M7 qua
@@ -2975,7 +2981,7 @@ function initDetail(){
   // v99 (§3): sao dong bo voi the danh sach + mien tru + goi y dang ky/
   // dang nhap de sua ho so va ghim top (nut ghim o hop mountPointsDetail).
   + '<p class="detail-star">Ấn sao để đưa hồ sơ này lên top 60 phút: ' + starButtonHTML('model_profile', m.id) + '</p>'
-  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model')+'</div></div>'
+  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model', m.id)+'</div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
   + gatedContactsHTML('model_profile', m.id, m.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
@@ -3038,7 +3044,7 @@ function initShopDetail(){
   // v99 (§3): sao dong bo voi the danh sach + mien tru + goi y dang ky/
   // dang nhap de sua tin va ghim top (nut ghim o hop mountPointsDetail).
   + '<p class="detail-star">Ấn sao để đưa shop này lên top 60 phút: ' + starButtonHTML('shop_profile', s.id) + '</p>'
-  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('shop')+'</div></div>'
+  + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('shop', s.id)+'</div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
   + gatedContactsHTML('shop_profile', s.id, s.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'

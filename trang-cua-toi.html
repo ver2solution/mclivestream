@@ -59,6 +59,7 @@
 <main class="wrap">
 <section class="section"><h1>Trang của tôi</h1>
 <p id="myStatus">Đang kiểm tra đăng nhập…</p>
+<div id="claimBanner"></div><!-- v165 (claim V1): banner de xuat nhan so huu khi SDT/email trung ho so thu thap -->
 <p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-mau.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b> và không lưu mật khẩu của bạn.</p>
 <form class="form-card" id="myProfileForm" data-track="form-ho-so-mau" style="display:none">
 <h2>1. Thông tin bắt buộc</h2>
@@ -177,6 +178,8 @@
 <script src="mclivestream-supabase.js"></script>
 <script src="js/auth-ui.js"></script>
 <script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
+<script src="js/data.js" defer></script><!-- v165 (claim V1): data.js chi can o trang-cua-toi SAU dang nhap, defer de khong chan render form -->
+<script src="js/claim.js"></script><!-- v165 (claim V1): banner nhan so huu + kiem tra trung -->
 <script>
 (function(){
   var form=document.getElementById('myProfileForm'), status=document.getElementById('myStatus'), msg=document.getElementById('myFormMsg');
@@ -269,6 +272,41 @@
       }
     }catch(e){status.textContent='Đã đăng nhập: '+session.user.email+' · Chưa có hồ sơ, hãy điền form dưới đây. ('+ferr(e)+')';}
     prefillFromSignup();
+    // v165 (claim V1, 12/11/2026): kiem tra trung ho so thu thap SAU
+    // dang nhap (SDT tu user_metadata) — hien banner de xuat nhan so
+    // huu neu trung. Dat buoc kiem tra o day (SAU dang nhap) de tranh
+    // tai data.js ~598KB luc dang ky (goi y cua Rion).
+    try { if (window.V2SClaim && typeof window.V2SClaim.initMyPageClaim === 'function') window.V2SClaim.initMyPageClaim(session, existing ? existing.full_name : ''); } catch (e) {}
+    // v165 (claim V1): go ten vao o Ho ten thi kiem tra lai trung TEN
+    // (chi canh bao nhe, khong hien nut nhan).
+    try {
+      var nameInput = document.getElementById('myFullName');
+      if (nameInput && !nameInput._v2sClaimWired) {
+        nameInput._v2sClaimWired = true;
+        nameInput.addEventListener('change', function () {
+          try { if (window.V2SClaim && typeof window.V2SClaim.checkNameMatch === 'function') window.V2SClaim.checkNameMatch(session.user, nameInput.value); } catch (e2) {}
+        });
+      }
+    } catch (e) {}
+    // v165 (sua loi Rion (b) 12/11): dong bo lai dong trang thai + ho
+    // so khi phien doi (dang nhap o tab khac) — truoc day dong "Da dang
+    // nhap" chi ghi 1 lan luc init nen giu email cu trong khi header
+    // da hien tai khoan moi.
+    try {
+      if (window.V2SAuthUI && typeof window.V2SAuthUI.onSessionChange === 'function') {
+        window.V2SAuthUI.onSessionChange(function (user) {
+          if (!user || user.id === session.user.id) return;
+          session = { user: user };
+          status.textContent = 'Đã đăng nhập: ' + user.email;
+          McLivestreamAPI.fetchMyProfile().then(function (p) {
+            existing = p;
+            if (p) { fillForm(p); status.textContent = 'Đã đăng nhập: ' + user.email + ' · Trạng thái hồ sơ hiện tại: ' + (p.moderation_status || 'pending'); }
+            else { status.textContent = 'Đã đăng nhập: ' + user.email + ' · Chưa có hồ sơ, hãy điền form dưới đây.'; }
+            try { if (window.V2SClaim && typeof window.V2SClaim.initMyPageClaim === 'function') window.V2SClaim.initMyPageClaim(session, p ? p.full_name : ''); } catch (e2) {}
+          }, function () { status.textContent = 'Đã đăng nhập: ' + user.email; });
+        });
+      }
+    } catch (e) {}
   }
   form.addEventListener('submit', function(e){
     e.preventDefault(); msg.textContent='Đang lưu…';

@@ -139,6 +139,7 @@
      xong (co session ngay) trong luot truy cap nay. Mo trang khi da dang
      nhap san thi o lai trang de dung nut Dang xuat. */
   var signedInNow = false;
+  var lastAuthUserId = null; /* v165: theo doi user hien tai de dong bo panel khi phien doi */
   var TYPE_NAMES = { model: 'Cá nhân tìm việc (mẫu livestream)', shop: 'Doanh nghiệp / Tổ chức' };
   var TYPE_TITLES = { model: 'Đăng ký tài khoản Cá nhân tìm việc', shop: 'Đăng ký tài khoản Doanh nghiệp / Tổ chức' };
   var successQs = ['registered=1'];
@@ -153,6 +154,24 @@
     inputs: { signupEmail: 'authSuEmail', signupPhone: 'authSuPhone', signupPass: 'authSuPass', signupPass2: 'authSuPass2', signupMarketing: 'authSuMarketing' },
     msgId: 'authMsg', boxId: 'authUserBox', boxEmailId: 'authUserEmail', signOutId: 'authSignOut',
     onSessionChange: function (user) {
+      /* v165: dang xuat thi an panel kich hoat (truoc day panel "Tai khoan
+         da xong" + email van hien toi khi tai lai trang, vi panel do
+         V2SActivation quan ly rieng, handler dang xuat o auth-ui.js khong
+         cham toi no). */
+      if (!user) { var ap = document.getElementById('activationPanel'); if (ap) ap.hidden = true; lastAuthUserId = ''; return; }
+      /* v165 (tiep, sua loi Rion (a) 12/11): phien doi sang user khac
+         (dang ky xong / dang nhap o tab khac) thi dong bo lai panel —
+         panel truoc day chi render 1 lan luc tai trang nen email cu
+         con hien trong khi header da hien tai khoan moi. Luong chuyen
+         trang sau dang ky (signedInNow) tu goi decidePostSignup nen
+         bo qua o day de khoi kiem tra 2 lan. */
+      var uid = user.id || '';
+      if (uid !== lastAuthUserId) {
+        lastAuthUserId = uid;
+        if (!(signedInNow && !redirected)) {
+          try { if (window.V2SActivation && typeof window.V2SActivation.refreshRegisterPanel === 'function') window.V2SActivation.refreshRegisterPanel(user); } catch (e) {}
+        }
+      }
       if (user && signedInNow && !redirected) {
         redirected = true;
         /* v96: tai khoan chua co ho so thi O LAI xem panel kich hoat

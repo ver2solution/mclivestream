@@ -109,6 +109,21 @@
     } catch (e) { /* bỏ qua */ }
   }
 
+  // v165 (claim — sua loi Rion (a) 12/11): vo hieu cache phien cu sau
+  // signUp/signIn, TRUOC khi showUser() doc session. Cache cu co the
+  // con giu phien TRUOC khi dang ky/dang nhap (vd dang nhap san bang
+  // tk khac o tab nay): neu showUser() doc cache cu thi hop "Da dang
+  // nhap" hien email cu trong khi header da hien tai khoan moi — trang
+  // hien lan 2 dong dang nhap khac email nhau. Vo hieu (khong set truc
+  // tiep tu res.session) de showUser() van doc lai session moi qua
+  // api().getSession() — giu nguyen hop dong v111: awardRegistration
+  // xong TRUOC khi showUser doc session (test-v111-auth-points khoa
+  // thu tu nay).
+  function invalidateSessionCache() {
+    sessionCache = null;
+    sessionCacheReady = false;
+  }
+
   async function getSession() {
     // v91 (BUG-07): session null KHÔNG được khóa cache — lần đọc đầu có thể
     // chạy trước khi Supabase khôi phục xong session từ bộ nhớ cục bộ; khóa
@@ -466,6 +481,7 @@
             priorityField: priorityField
           });
           if (res && res.session) {
+            invalidateSessionCache(); // v165: vo hieu cache phien cu truoc khi showUser() doc
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
             // v111 (N1, tiep): luu lien he + 3 o ho so vao localStorage
             // 'v2s_signup_prefs' (gop voi ban dang-ky.html da luu) de
@@ -576,10 +592,11 @@
         if (bad) return;
         if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
-          await api().signIn({
+          var siRes = await api().signIn({
             email: email,
             password: pass
           });
+          if (siRes && siRes.session) invalidateSessionCache(); // v165: vo hieu cache phien cu truoc khi showUser() doc
           msg('Đăng nhập thành công.', 'ok');
           await showUser();
         } catch (err) { msg('Đăng nhập chưa thành công: ' + friendly(err), 'err'); }

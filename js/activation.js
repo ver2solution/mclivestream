@@ -202,6 +202,21 @@
     }, function () { return 'error'; });
   }
 
+  /* v165 (claim — sua loi Rion (a) 12/11): dong bo lai panel khi phien
+     doi (dang ky xong / dang nhap o tab khac). Panel truoc day chi
+     render 1 lan luc tai trang (initRegisterPanel) nen email cu van
+     hien trong khi header da hien tai khoan moi — trang hien lan 2
+     dong dang nhap khac email nhau. An panel truoc roi danh gia lai
+     cho user hien tai (checkActivation cache theo user.id nen user moi
+     duoc kiem tra moi, khong dung ket qua cu). */
+  function refreshRegisterPanel(user) {
+    var panel = $('activationPanel');
+    if (!panel) return Promise.resolve('none');
+    panel.hidden = true;
+    if (!user) return Promise.resolve('none');
+    return maybeShowRegisterPanel(user);
+  }
+
   function isDismissed() {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
@@ -271,6 +286,7 @@
     getAccountType: getAccountType,
     checkActivation: checkActivation,
     maybeShowRegisterPanel: maybeShowRegisterPanel,
+    refreshRegisterPanel: refreshRegisterPanel,
     decidePostSignup: maybeShowRegisterPanel,
     initRegisterPanel: initRegisterPanel,
     initHomeStrip: initHomeStrip,

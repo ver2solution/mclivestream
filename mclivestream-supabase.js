@@ -319,6 +319,55 @@
     } catch (e) { return []; }
   }
 
+  // ---------- Nhận sở hữu hồ sơ (claim V1, 12/11/2026) ----------
+  // Quy tac chot 05/11/2026 23:38 + dac ta §8: chi chu ho so dang ky
+  // tai khoan, khop thong tin lien he moi duoc sua/huy ho so. Phan chu
+  // dong (de xuat so huu) truoc day CHUA duoc code — Zalo + Rion test
+  // doc lap 12/11 deu khong thay de xuat o buoc nao.
+  // V1 (nhe, anh Tho chot theo toan quyen): trung SDT/email chi HIEN nut
+  // de xuat — user xac nhan SDT + tick cam ket -> yeu cau pending ->
+  // admin duyet tay (doi chieu bai goc Facebook) roi moi gan ho so.
+  // KHONG cho nhan chi vi trung SDT (SDT cong khai ai cung thay). V2
+  // (gui ma OTP ve SDT/Zalo) de sau — chua co ha tang gui ma.
+  // Can chay supabase-migration-profile-claims-2026-11-12.sql truoc;
+  // bang chua co thi nem loi 42P01/PGRST205 — UI (js/claim.js) bat loi
+  // do de bao nhan "chuc nang dang duoc kich hoat", khong crash.
+  async function submitProfileClaim(profileId, kind) {
+    var session = await getSessionRobust();
+    if (!session) throw new Error('Cần đăng nhập mới gửi yêu cầu nhận sở hữu.');
+    if (!profileId) throw new Error('Chưa rõ hồ sơ nào cần nhận sở hữu.');
+    var md = session.user.user_metadata || {};
+    var res = await client.from('profile_claims').insert({
+      profile_id: String(profileId),
+      profile_kind: kind === 'shop' ? 'shop' : 'model',
+      user_id: session.user.id,
+      phone: md.phone_zalo || '',
+      status: 'pending'
+    });
+    if (res.error) throw res.error;
+    return (res.data && res.data[0]) || null;
+  }
+
+  // Yeu cau nhan so huu moi nhat cua chinh user cho 1 ho so (de hien
+  // trang thai "dang cho duyet" / "da duyet" / "bi tu choi" thay vi hien
+  // lai nut nhan). Bang chua co thi tra null (khong nem loi).
+  async function fetchMyProfileClaim(profileId) {
+    var session = await getSessionRobust();
+    if (!session) return null;
+    var res = await client.from('profile_claims')
+      .select('id,profile_id,profile_kind,status,created_at')
+      .eq('user_id', session.user.id)
+      .eq('profile_id', String(profileId))
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (res.error) {
+      if (isTableMissingError(res.error)) return null;
+      throw res.error;
+    }
+    return res.data || null;
+  }
+
   // ---------- Đánh giá (không cần đăng nhập) ----------
   async function fetchApprovedReviews(profileId) {
     var res = await client.from('profile_reviews')
@@ -688,6 +737,7 @@
     friendlyError: friendlyError,
     fetchPublicProfiles: fetchPublicProfiles, fetchTopProfiles: fetchTopProfiles,
     fetchMyProfile: fetchMyProfile, saveMyProfile: saveMyProfile,
+    submitProfileClaim: submitProfileClaim, fetchMyProfileClaim: fetchMyProfileClaim,
     incrementView: incrementView,
     starProfile: starProfile, fetchStarStats: fetchStarStats,
     fetchApprovedReviews: fetchApprovedReviews, submitReview: submitReview, submitFeedback: submitFeedback,

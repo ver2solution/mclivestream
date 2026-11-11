@@ -921,3 +921,21 @@ th{background:#f4f8f6}
 .detail-box .detail-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 0}
 .uni-cat-switch a.uni-cat-btn{text-decoration:none;text-align:center}
 @media(max-width:600px){.detail-box{padding:16px}.detail-box h2{font-size:19px}.detail-modal-icon{font-size:52px}}
+
+/* ===== v165: Nhan so huu ho so (claim V1, 12/11/2026) — js/claim.js ===== */
+.claim-banner{border:1px solid #0b5d4e;background:#eef7f3;border-radius:12px;padding:14px 16px;margin:14px 0}
+.claim-banner.soft{border-color:#c9a227;background:#fffbe6}
+.claim-banner p{margin:6px 0}
+.claim-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.claim-row-status{color:#0b5d4e;font-weight:700}
+.claim-box{border:1px solid #0b5d4e;background:#eef7f3;border-radius:12px;padding:14px 16px;margin:12px 0}
+.claim-box p{margin:8px 0}
+.claim-commit{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.claim-commit input{margin-top:3px}
+.claim-msg.err{color:#b3261e;font-weight:700}
+.claim-note{font-size:13px;color:#555}
+.claim-done{color:#0b5d4e;font-weight:700}
+.claim-status{margin:8px 0;font-weight:700}
+.claim-status.ok{color:#0b5d4e}
+.claim-status.err{color:#b3261e}
+.claim-slot .claim-open{margin:8px 0}
