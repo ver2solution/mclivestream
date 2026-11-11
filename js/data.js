@@ -7512,6 +7512,19 @@ window.V20_DATA = {
    "img": "https://vieclamlivestream.online/images/bai-viet/meo-chot-don-ngay-sale-lon-hoc-dong-vu-huy-30-phut-100000-don-hero.jpg",
    "pinned": false,
    "takeaway": "Đổng Vũ Huy bán 100.000 đơn trong 30 phút, 3 ngày 6,79 tỷ NDT — mà không có mặt trong phòng live. 5 mẹo chốt đơn ngày sale lớn: sản phẩm đặt riêng, chia đợt sóng, kể chuyện, live qua 0h, chuẩn bị kho như cả tháng."
+  },
+  {
+   "title": "Quy định Facebook 2026: tài khoản bị khóa và cách kháng cáo",
+   "cat": "Phân tích",
+   "source": "Ver2Solution",
+   "date": "2026-11-11",
+   "url": null,
+   "page": "bai-viet/quy-dinh-facebook-2026-khoa-tai-khoan-cam-dang-thuat-toan-uu-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quy-dinh-facebook-2026-khoa-tai-khoan-cam-dang-thuat-toan-uu-tien-hero.jpg",
+   "imgSelf": true,
+   "kind": "keyword",
+   "pinned": false,
+   "takeaway": "Quy định Facebook 2026: tài khoản vi phạm nhiều lần có thể bị hạn chế 30 ngày hoặc bị gỡ ngay từ sau 5 strike; kháng cáo trong 180 ngày; Trang mất kiếm tiền 90 ngày vì nội dung không gốc; shop nhỏ sống sót bằng nội dung tự quay, tự chụp, tự viết."
   }
 ],
  "lots": [
