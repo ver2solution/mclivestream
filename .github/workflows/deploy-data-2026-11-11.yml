@@ -1,0 +1,37 @@
+name: Deploy data 2026-11-11
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-11.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-11:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-11 package
+        run: |
+          unzip -o mclivestream-data-2026-11-11-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          ls images/th-88.jpg images/th-126.jpg
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-11: 116 mau / 152 shop (39 mau + 36 shop moi, 36 anh)"
+            git push
+          fi
