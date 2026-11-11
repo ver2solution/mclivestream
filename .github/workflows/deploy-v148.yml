@@ -1,0 +1,40 @@
+name: Deploy v148 GSC verify
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v148.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v148:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Unzip v148 GSC verify package
+        run: |
+          unzip -o mclivestream-v148-gsc-verify-deploy.zip
+          echo "--- verify v148 ---"
+          test -f google396f0df43c4b52b9.html
+          [ "$(wc -c < google396f0df43c4b52b9.html)" = "53" ]
+          grep -qx "google-site-verification: google396f0df43c4b52b9.html" google396f0df43c4b52b9.html
+          cat google396f0df43c4b52b9.html; echo
+
+      - name: Commit v148 GSC verify file
+        run: |
+          rm -f mclivestream-v148-gsc-verify-deploy.zip
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v148: add Google Search Console verification file google396f0df43c4b52b9.html"
+            git push
+          fi
