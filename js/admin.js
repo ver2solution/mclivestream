@@ -124,7 +124,8 @@
     testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
     articleDrafts: [], // bản thảo bài viết đã tải gần nhất (tab Viết bài, để tải JSON theo id)
     editingDraftId: null, // id bản thảo đang sửa (GĐ4b) — null = đang viết bài mới
-    editingDraftStatus: null // trạng thái bản thảo đang sửa trước khi sửa (để báo "sẽ đăng lại" nếu đã đăng)
+    editingDraftStatus: null, // trạng thái bản thảo đang sửa trước khi sửa (để báo "sẽ đăng lại" nếu đã đăng)
+    articleEditorFailed: false // v155: trình soạn thảo rich text init thất bại → đang dùng ô nhập dự phòng (#admArtBody)
   };
 
   /* ---------- cổng vào ---------- */
@@ -1020,7 +1021,12 @@
   }
   function articleFormValues() {
     // v122: đồng bộ editor rich text vào textarea ẩn trước khi đọc form.
-    try { if (window.V2SArticleEditor && window.V2SArticleEditor.syncToTextarea) window.V2SArticleEditor.syncToTextarea(); } catch (e) {}
+    // v155: CHỈ đồng bộ khi editor đang sống. Khi editor đã lỗi, syncToTextarea
+    // sẽ chép HTML (trống/cũ) của khung soạn đã chết đè lên ô dự phòng mà
+    // user vừa nhập — mất dữ liệu (đúng triệu chứng ngày 11/11).
+    if (!state.articleEditorFailed) {
+      try { if (window.V2SArticleEditor && window.V2SArticleEditor.syncToTextarea) window.V2SArticleEditor.syncToTextarea(); } catch (e) {}
+    }
     return {
       title: $('admArtTitle') ? String($('admArtTitle').value || '').trim() : '',
       slug: $('admArtSlug') ? String($('admArtSlug').value || '').trim().toLowerCase() : '',
@@ -1129,9 +1135,14 @@
     set('admArtDate', d.publish_date);
     var slugEl = $('admArtSlug'); if (slugEl && slugEl.dataset) slugEl.dataset.touched = '1';
     set('admArtBody', d.body || '');
-    try {
-      if (window.V2SArticleEditor && window.V2SArticleEditor.setFromBody) window.V2SArticleEditor.setFromBody(d.body || '');
-    } catch (e) {}
+    // v155: khi editor đã lỗi thì KHÔNG gọi setFromBody — bản thảo đã nạp
+    // thẳng vào ô dự phòng ở trên; gọi thêm sẽ đồng bộ từ khung soạn đã chết
+    // đè lên nội dung vừa nạp.
+    if (!state.articleEditorFailed) {
+      try {
+        if (window.V2SArticleEditor && window.V2SArticleEditor.setFromBody) window.V2SArticleEditor.setFromBody(d.body || '');
+      } catch (e) {}
+    }
     updateArticleSeo();
     var msg = $('admArtMsg');
     if (forEdit) {
@@ -1167,11 +1178,27 @@
         });
       }
     } catch (e) { /* datalist chỉ hỗ trợ gõ nhanh, thiếu cũng không chặn form */ }
+    // v155: trình soạn thảo rich text (js/article-editor.js). KHÔNG nuốt lặng
+    // lỗi: nếu init ném lỗi / trả false / script chưa nạp thì KHÔNG listener
+    // nào được gắn (paste/input/keyup → syncToTextarea) nên ô "Xem mã HTML"
+    // không bao giờ được điền — đúng triệu chứng ngày 11/11 (dán 28.067 ký
+    // tự mà form trống, không báo gì). Khi đó phải: (1) log lỗi ra console,
+    // (2) hiện lỗi rõ ràng trong form, (3) bật ô nhập body dự phòng.
+    var editorOk = false, editorErr = null;
     try {
-      if (window.V2SArticleEditor && window.V2SArticleEditor.init) {
-        window.V2SArticleEditor.init({ onChange: function () { updateArticleSeo(); } });
+      if (window.V2SArticleEditor && typeof window.V2SArticleEditor.init === 'function') {
+        editorOk = window.V2SArticleEditor.init({ onChange: function () { updateArticleSeo(); } }) !== false;
+        if (!editorOk) editorErr = new Error('V2SArticleEditor.init trả về false (thiếu khung soạn thảo hoặc ô mã HTML).');
+      } else {
+        editorErr = new Error('Không nạp được js/article-editor.js (window.V2SArticleEditor chưa có).');
       }
-    } catch (e) { /* editor lỗi thì form textarea cũ vẫn dùng được */ }
+    } catch (e) { editorOk = false; editorErr = e; }
+    if (editorOk) {
+      state.articleEditorFailed = false;
+    } else {
+      if (typeof console !== 'undefined' && console && typeof console.error === 'function') console.error('[Viết bài] Không khởi tạo được trình soạn thảo:', editorErr);
+      enableArticleBodyFallback(editorErr);
+    }
     try {
       if (window.V2SArticleMedia && window.V2SArticleMedia.init) window.V2SArticleMedia.init();
     } catch (e) { /* kho media lỗi thì form vẫn gửi được (nhập link ảnh tay) */ }
@@ -1180,6 +1207,41 @@
       if (el) el.addEventListener('input', updateArticleSeo);
     });
     updateArticleSeo();
+  }
+  // v155: bật ô nhập body dự phòng khi trình soạn thảo init thất bại.
+  // - Tắt khung soạn đã chết (contenteditable) + toolbar để user không gõ/dán
+  //   vào chỗ không bao giờ được đọc.
+  // - Mở khóa textarea #admArtBody (bỏ readonly) + mở <details> chứa nó + đổi
+  //   nhãn, để user nhập/dán trực tiếp — articleFormValues() đọc chính ô này.
+  // - Gắn lại kiểm tra SEO live trên ô dự phòng (bình thường onChange của
+  //   editor làm việc này).
+  // Khi init thành công thì hàm này KHÔNG chạy — giao diện/luồng chính giữ nguyên.
+  function enableArticleBodyFallback(err) {
+    state.articleEditorFailed = true;
+    var reason = (err && (err.message || err)) || 'không rõ nguyên nhân';
+    var msg = $('admArtMsg');
+    if (msg) setMsg(msg, 'Trình soạn thảo gặp lỗi, đã chuyển sang ô nhập văn bản dự phòng bên dưới — hãy nhập/dán nội dung vào ô đó (khung soạn phía trên đã tắt). Lỗi: ' + reason, true);
+    var ed = $('admArtBodyEditor');
+    if (ed) {
+      try { ed.contentEditable = 'false'; } catch (e) { /* không bắt buộc */ }
+      ed.style.display = 'none';
+    }
+    var tb = $('admArtToolbar');
+    if (tb) tb.style.display = 'none';
+    var ta = $('admArtBody');
+    if (ta) {
+      ta.readOnly = false;
+      try { ta.removeAttribute('readonly'); } catch (e) { /* không bắt buộc */ }
+      ta.placeholder = 'Nhập nội dung bài viết vào đây (trình soạn thảo lỗi, đang dùng ô dự phòng). Tối thiểu 200 ký tự.';
+      try { ta.style.minHeight = '320px'; ta.style.display = 'block'; ta.style.width = '100%'; } catch (e) { /* không bắt buộc */ }
+      var det = (ta.closest && typeof ta.closest === 'function') ? ta.closest('details') : null;
+      if (det) {
+        det.open = true;
+        var sum = (det.querySelector && typeof det.querySelector === 'function') ? det.querySelector('summary') : null;
+        if (sum) sum.textContent = 'Nội dung bài viết (ô nhập dự phòng — trình soạn thảo đang lỗi)';
+      }
+      try { ta.addEventListener('input', function () { updateArticleSeo(); }); } catch (e) { /* không bắt buộc */ }
+    }
   }
   async function onSubmitArticle() {
     var msg = $('admArtMsg');
@@ -1660,6 +1722,6 @@
   else main();
 
   if (typeof window !== 'undefined') {
-    window.Ver2Admin = { init: main, switchTab: switchTab, state: state, validateArticleDraft: validateArticleDraft, articleTextLength: articleTextLength, slugify: slugify, ARTICLE_CATS: ARTICLE_CATS, ARTICLE_STATUS_LABEL: ARTICLE_STATUS_LABEL, draftCanEdit: draftCanEdit, loadDraftIntoForm: loadDraftIntoForm, updateArticleSeo: updateArticleSeo };
+    window.Ver2Admin = { init: main, switchTab: switchTab, state: state, validateArticleDraft: validateArticleDraft, articleTextLength: articleTextLength, slugify: slugify, ARTICLE_CATS: ARTICLE_CATS, ARTICLE_STATUS_LABEL: ARTICLE_STATUS_LABEL, draftCanEdit: draftCanEdit, loadDraftIntoForm: loadDraftIntoForm, updateArticleSeo: updateArticleSeo, initArticleEditor: initArticleEditor, enableArticleBodyFallback: enableArticleBodyFallback, articleFormValues: articleFormValues };
   }
 })();
