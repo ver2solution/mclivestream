@@ -1414,13 +1414,29 @@ function newsRowFinalList(newest,mostViewed){
   var rest=newest.filter(function(a){ return a!==mostViewed; }).slice(0,3);
   return [mostViewed].concat(rest);
 }
-function initNewsRow(rowId,cats,titleHtml){
+/* v154: initNewsRow them opts tuy chon {pinnedKey} — khi co, cac bai co
+   co do (vd pinnedShop) duoc dat len dau hang theo shopPinOrder tang dan
+   roi date giam dan; cac o con lai lap bang newsRowFinalList(newest loai
+   bai ghim, mostViewed) va loc trung, tong toi da 4 o. Khong co opts thi
+   hanh vi Y HET nhu cu (hang Mau/Kiot khong doi). */
+function initNewsRow(rowId,cats,titleHtml,opts){
   var row=document.getElementById(rowId); if(!row) return;
-  var newest=newsRowNewest(cats,4);
-  renderNewsRow(row,titleHtml,newest);
+  var pinnedFirst=[];
+  if(opts&&opts.pinnedKey){
+    pinnedFirst=(D.articles||[]).filter(function(a){ return !!a[opts.pinnedKey]; });
+    pinnedFirst.sort(function(a,b){
+      var ao=(typeof a.shopPinOrder==='number')?a.shopPinOrder:Infinity;
+      var bo=(typeof b.shopPinOrder==='number')?b.shopPinOrder:Infinity;
+      if(ao!==bo) return ao-bo;
+      return (a.date||'')>(b.date||'')?-1:((a.date||'')<(b.date||'')?1:0);
+    });
+  }
+  var newest=newsRowNewest(cats,4).filter(function(a){ return pinnedFirst.indexOf(a)===-1; });
+  renderNewsRow(row,titleHtml,pinnedFirst.concat(newest).slice(0,4));
   fetchMostViewedInCats(cats).then(function(mv){
     if(!mv) return;
-    renderNewsRow(row,titleHtml,newsRowFinalList(newest,mv));
+    var rest=newsRowFinalList(newest,mv).filter(function(a){ return pinnedFirst.indexOf(a)===-1; });
+    renderNewsRow(row,titleHtml,pinnedFirst.concat(rest).slice(0,4));
   }).catch(function(){ /* giu 4 bai moi nhat */ });
 }
 /* v100: hang 4 o tin tuc tren trang Danh cho Mau (duoi bo loc, #modelNewsRow
@@ -1432,14 +1448,18 @@ function initModelNewsRow(){
   initNewsRow('modelNewsRow',['Đời Sống','Việc Làm'],
     '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-doi-song-mau">Xu hướng sống mới</a></h2>');
 }
-/* v124: hang 4 o tin danh cho Shop (o danh-sach-mau.html sau A3 un-swap
-   10/11, #shopNewsRow) — 2 chuyen muc "Livestream" + "Xu hướng" (anh chot
-   15:00 10/11, thay cho "Dòng tiền + Hàng hoá" cua v123). Tieu de
-   "Livestream & xu hướng". O 1 = bai xem nhieu nhat, 3 o con lai =
-   3 bai moi nhat (xem initNewsRow). */
+/* v154 (anh chot 11/11/2026): hang 4 o tin danh cho Shop (#shopNewsRow
+   trong danh-sach-mau.html sau A3 un-swap 10/11) — 2 o dau la 2 bai ghim
+   rieng cho Shop (pinnedShop, shopPinOrder): (1) "Quy định Facebook 2026:
+   tài khoản bị khóa và cách kháng cáo", (2) "Vì sao 90% Page bị bóp reach
+   khi đi share group?...". 2 o sau van la tin Livestream/Xu hướng moi
+   nhat (bai xem nhieu nhat len truoc trong phan khong ghim, xem
+   initNewsRow). Bai bop-reach dong thoi duoc bo ghim toan cuc
+   (pinned:false) nen khong con trong hang ghim trang chu/tin-tuc. */
 function initShopNewsRow(){
   initNewsRow('shopNewsRow',['Livestream','Xu hướng'],
-    '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-livestream-shop">Livestream &amp; xu hướng</a></h2>');
+    '<h2><a href="tin-tuc.html" data-track="tieu-de-tin-livestream-shop">Livestream &amp; xu hướng</a></h2>',
+    {pinnedKey:'pinnedShop'});
 }
 /* v123: hang 4 o tin "Đang hot & livestream" tren trang Thanh ly Kiot
    (thanh-ly-kiot.html, #kiotNewsRow) — 2 chuyen muc "Đang hot" +

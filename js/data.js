@@ -5996,7 +5996,9 @@ window.V20_DATA = {
    "url": "bai-viet-bop-reach.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/bop-reach.webp",
    "imgSelf": true,
-   "pinned": true
+   "pinned": false,
+   "pinnedShop": true,
+   "shopPinOrder": 2
   },
   {
    "title": "Gen Z và Gen Y tăng chi tiêu cuối năm: chất lượng lên ngôi, giá rẻ không còn đủ",
@@ -7524,6 +7526,8 @@ window.V20_DATA = {
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
+   "pinnedShop": true,
+   "shopPinOrder": 1,
    "takeaway": "Quy định Facebook 2026: tài khoản vi phạm nhiều lần có thể bị hạn chế 30 ngày hoặc bị gỡ ngay từ sau 5 strike; kháng cáo trong 180 ngày; Trang mất kiếm tiền 90 ngày vì nội dung không gốc; shop nhỏ sống sót bằng nội dung tự quay, tự chụp, tự viết."
   }
 ],
