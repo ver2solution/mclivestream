@@ -1,0 +1,26 @@
+name: Deploy hero count 20261112
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip hero count package
+        run: unzip -o mclivestream-hero-count-2026-11-12.zip
+      - name: Verify hero count
+        run: |
+          grep -q '108 hồ sơ' index.html
+          if grep -q '116 hồ sơ' index.html; then echo 'ERROR: 116 ho so still present'; exit 1; fi
+      - name: Commit and push
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git add -A
+          git commit -m 'index: hero count 116 -> 108 (data now 108 models)'
+          git push
