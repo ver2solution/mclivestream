@@ -1,0 +1,42 @@
+name: Deploy v152 (game nong trai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v152.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v152:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v152 package
+        run: |
+          unzip -o mclivestream-v152-game-nong-trai-deploy.zip
+          echo "--- verify v152 (game nong trai) ---"
+          grep -q "nong-trai.html" index.html || (echo "THIEU nong-trai.html trong index.html"; exit 1)
+          grep -q "game-nong-trai" index.html || (echo "THIEU data-track game-nong-trai trong index.html"; exit 1)
+          grep -q "Game Nông Trại" index.html || (echo "THIEU nhan Game Nong Trai trong index.html"; exit 1)
+          grep -q "v147-shell-1" sw.js || (echo "CACHE sw.js khong phai v147-shell-1"; exit 1)
+          echo "files in zip:"
+          unzip -l mclivestream-v152-game-nong-trai-deploy.zip | tail -5
+          echo "changed files:"
+          git status --short | head -200
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v152-game-nong-trai-deploy.zip
+          git add -A
+          git status --short | head -200
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v152: nut game doi thanh Game Nong Trai (link game Nong Trai phatphaponline.pages.dev/nong-trai.html, icon lua), CACHE giu v147-shell-1"
+            git push
+          fi
