@@ -9,7 +9,7 @@
    bao cao nghien cuu 06/11/2026, khong doi data.js/app.js).
    v117: P1-1 tao 3 trang danh-sach-lo/xuong/kiot.html + them vao sitemap
    (sua 3 URL 404); P1-2 them game/three.core.js (Three.js r186) + CSS
-   .online-popup cho game/noi-duong-tam.html; GĐ4 tab Viet bai (js/admin.js)
+   .online-popup cho game/nong-trai.html; GĐ4 tab Viet bai (js/admin.js)
    + sua pheu dang ky (js/app.js/js/auth-ui.js) da co trong prep.
    v118: chuyen domain sang vieclamlivestream.online (them CNAME + doi
    link tuyet doi ver2solution.github.io/mclivestream -> https://
