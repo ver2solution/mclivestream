@@ -24,9 +24,12 @@ jobs:
           test "$(unzip -l mclivestream-v189-2026-11-13-deploy.zip | grep -c ' sw.js$')" -eq 1 || (echo "SAI: goi v189 phai co dung 1 sw.js"; exit 1)
           if unzip -l mclivestream-v189-2026-11-13-deploy.zip | grep -q ' js/\| tests/\| tools/\| android/'; then echo "SAI: goi v189 KHONG duoc chua js/tests/tools/android"; exit 1; fi
           # Moi file .html trong goi phai co cap nhan MOI, khong con cap nhan cu.
-          NEWOK=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -q 'danh-sach-mau.html" class="">Dành cho Mẫu' "$f" && grep -q 'danh-sach-shop.html" class="">Dành cho Shop' "$f" && echo ok; done | wc -l)
+          # (v189b: kiem nhan KHONG phu thuoc class — 9 file co class="active"
+          # (trang dang xem) hoac khong co class (vi.html, vi-tien-ao.html) nen
+          # grep 'class=""' cu bi sai 195/204; dung [^>]* nhu nav-sync chuan hoa.)
+          NEWOK=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -q 'danh-sach-mau.html"[^>]*>Dành cho Mẫu' "$f" && grep -q 'danh-sach-shop.html"[^>]*>Dành cho Shop' "$f" && echo ok; done | wc -l)
           test "$NEWOK" -eq 204 || (echo "SAI: chi $NEWOK/204 file co cap nhan moi"; exit 1)
-          OLD=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -l 'danh-sach-mau.html" class="">Dành cho Shop' "$f" 2>/dev/null; grep -l 'danh-sach-shop.html" class="">Dành cho Mẫu' "$f" 2>/dev/null; done | wc -l)
+          OLD=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -l 'danh-sach-mau.html"[^>]*>Dành cho Shop' "$f" 2>/dev/null; grep -l 'danh-sach-shop.html"[^>]*>Dành cho Mẫu' "$f" 2>/dev/null; done | wc -l)
           test "$OLD" -eq 0 || (echo "SAI: van con $OLD file mang cap nhan cu"; exit 1)
           # Du lieu + bo loc KHONG bi doi: lop hoc van o trang mau, su kien/logistics/cho thue van o trang shop.
           grep -q 'id="lop-livestream-mc"' danh-sach-mau.html || (echo "SAI: trang mau thieu section lop-livestream-mc"; exit 1)
