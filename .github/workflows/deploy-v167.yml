@@ -1,0 +1,19 @@
+name: deploy-v167
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip and commit v167
+        run: |
+          unzip -o mclivestream-v167-deploy.zip
+          rm mclivestream-v167-deploy.zip
+          git config user.name "Ryan"
+          git config user.email "ver2solution@gmail.com"
+          git add -A
+          git commit -m "v167: N9 tiep - cau bao loi so du xu lien web dung theo trang thai dang nhap" || echo "nothing to commit"
+          git push
