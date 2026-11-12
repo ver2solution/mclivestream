@@ -1,0 +1,41 @@
+---
+name: Deploy v181-ticker (chu chay xanh duong dam + in dam + phan cach do)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v181-ticker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v181-ticker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v181-ticker package
+        run: |
+          unzip -o mclivestream-v181-ticker-deploy.zip
+          echo "--- verify v181-ticker ---"
+          for f in sw.js v20.css; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
+          grep -q 'color:#003366' v20.css || (echo "THIEU mau xanh #003366 trong v20.css"; exit 1)
+          grep -q 'font-weight:700' v20.css || (echo "THIEU in dam trong v20.css"; exit 1)
+          grep -q 'ticker-sep{color:#ff0000' v20.css || (echo "THIEU phan cach do trong v20.css"; exit 1)
+          grep -q 'v181-shell-1' sw.js || (echo "THIEU CACHE v181-shell-1 trong sw.js"; exit 1)
+          echo "verify OK: 2 file v181-ticker, xanh #003366 + in dam + phan cach do + CACHE v181-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v181-ticker-deploy.zip
+          git add -A sw.js v20.css
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v181: chu chay top menu xanh duong dam + in dam, dau phan cach do"
+            git push
+          fi
