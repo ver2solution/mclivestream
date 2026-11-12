@@ -696,6 +696,9 @@
         (st[k] || []).forEach(function (p) { if (p && p.email) emails.push(p.email); });
       });
     } catch (e) { emails = []; }
+    /* v170: khử trùng email — 1 tài khoản mở nhiều tab/phiên thì presenceState()
+       trả 1 mục mỗi tab, trước đây hiện trùng ("thondads, thond.bds, thondads, thond.bds"). */
+    emails = emails.filter(function (a, i, arr) { return arr.indexOf(a) === i; });
     el.innerHTML = 'Đang online: ' + (emails.length ? emails.map(function (a) { return '<b>' + esc(a) + '</b>'; }).join(', ') : '—');
   }
   /* ---------- badge tin chưa đọc tab Trao đổi (P2) ----------
