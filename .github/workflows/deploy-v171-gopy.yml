@@ -21,8 +21,8 @@ jobs:
           echo "--- verify v171-gopy ---"
           grep -q 'id="gopyFab"' bai-viet/quyen-leo-daily-100-ty-17-gio-livestream.html || (echo "THIEU gopyFab trong bai Quyen Leo"; exit 1)
           grep -q 'id="gopyFab"' bai-viet/viec-lam-mc-livestream-2026.html || (echo "THIEU gopyFab trong bai viec-lam-mc-livestream-2026"; exit 1)
-          test "$(grep -l 'id="gopyFab"' bai-viet/*.html | wc -l)" -eq 135 || (echo "KHONG DU 135 file co gopyFab"; exit 1)
-          echo "verify OK: 135/135 bai-viet co markup nut Gop y (khong doi sw.js)"
+          test "$(grep -L 'id="gopyFab"' bai-viet/*.html | wc -l)" -eq 0 || (echo "CO file bai-viet THIEU gopyFab"; grep -L 'id="gopyFab"' bai-viet/*.html; exit 1)
+          echo "verify OK: tat ca file bai-viet deu co markup nut Gop y (khong doi sw.js)"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
