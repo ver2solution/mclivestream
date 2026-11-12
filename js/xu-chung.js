@@ -194,9 +194,16 @@
   }
   // 3 dòng số dư + trạng thái bên kia + số âm. balances: kết quả
   // getBalances(); health: kết quả getHealth() (tùy chọn).
-  function summaryHtml(balances, health) {
+  // v167 (N9, tiep): khi da dang nhap ma tai so du loi thi bao
+  // "Chua tai duoc..." chu khong bao "Can dang nhap..." — cau cu
+  // hien ca khi da dang nhap vi getBalances() tra {ok:false} cho
+  // MOI loi (chua dang nhap, RPC loi, M16 chua chay). loggedIn
+  // truyen tu refreshSummary (co session thi true).
+  function summaryHtml(balances, health, loggedIn) {
     if (!balances || !balances.ok) {
-      return '<p>Cần đăng nhập để xem số dư xu liên web.</p>';
+      return loggedIn
+        ? '<p>Chưa tải được số dư xu liên web, hãy tải lại trang.</p>'
+        : '<p>Cần đăng nhập để xem số dư xu liên web.</p>';
     }
     var mc = (balances.mc_earn || 0) + (balances.mc_topup || 0);
     var pp = (balances.pp_earn || 0) + (balances.pp_topup || 0);
@@ -210,16 +217,18 @@
     if ((balances.debt || 0) < 0) html += debtHtml(balances.debt);
     return html;
   }
-  function renderSummary(el, balances, health) {
+  function renderSummary(el, balances, health, loggedIn) {
     if (!el) return;
-    el.innerHTML = summaryHtml(balances, health);
+    el.innerHTML = summaryHtml(balances, health, loggedIn);
   }
   // Nạp + render toàn bộ khối tóm tắt (dùng cho vi.html + header sau này).
   async function refreshSummary(el) {
     if (!el) return { ok: false, error: 'Thiếu vị trí hiển thị.' };
     var b = await getBalances();
     var h = await getHealth();
-    renderSummary(el, b, h.ok ? h : null);
+    var loggedIn = false;
+    try { var s = await sessionUser(); loggedIn = !!(s && s.user); } catch (e) { loggedIn = false; }
+    renderSummary(el, b, h.ok ? h : null, loggedIn);
     return b;
   }
   // Lịch sử xu liên web — CHỈ ĐỌC points_ledger (policy M5 owner read),
