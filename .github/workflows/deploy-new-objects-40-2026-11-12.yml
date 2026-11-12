@@ -1,0 +1,41 @@
+name: Deploy new-objects-40 2026-11-12
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-new-objects-40-2026-11-12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-new-objects-40:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip new-objects-40 package
+        run: |
+          unzip -o mclivestream-new-objects-40-2026-11-12-deploy.zip
+          ls -l js/data.js images-new/
+          sha256sum js/data.js
+          echo "models: $(grep -o '\"id\": \"th-' js/data.js | wc -l)"
+          echo "shops: $(grep -o '\"id\": \"sh-' js/data.js | wc -l)"
+          echo "classesLive: $(grep -o '\"id\": \"cl-' js/data.js | wc -l)"
+          echo "classesMakeup: $(grep -o '\"id\": \"cm-' js/data.js | wc -l)"
+          echo "eventsMarketing: $(grep -o '\"id\": \"em-' js/data.js | wc -l)"
+          echo "logistics: $(grep -o '\"id\": \"lg-' js/data.js | wc -l)"
+          echo "rentals: $(grep -o '\"id\": \"rt-' js/data.js | wc -l)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images-new/
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy new-objects-40 2026-11-12: them 40 du lieu that moi (8 lop live, 8 makeup, 8 su kien, 8 logistics, 8 cho thue) -> du 10 that/muc, tong 50 that + anh that"
+            git push
+          fi
