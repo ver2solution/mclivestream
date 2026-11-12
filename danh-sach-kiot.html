@@ -92,9 +92,11 @@
   var list = document.getElementById('kiotList');
   if (!list) return;
   var kiots = (window.V20_DATA && window.V20_DATA.kiots) || [];
-  /* v161 (Rion 9e): nhu thanh-ly-kiot.html — chuan hoa nhan tinh qua
-     V20.normProv de bo loc khong hien 2 muc trung (TP.HCM / TP. Ho Chi Minh). */
-  var norm = (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
+  /* v169 (N8, theo Rion 10:01): kiot dung normProvKiot nhu thanh-ly-kiot.html —
+     chi gop 'TP.HCM', KHONG gop Binh Duong (truoc day dung normProv nen loc
+     TP.HCM tra 36 tin gom ca LEILA Binh Duong, trong khi dropdown dem 34
+     va khong co option Binh Duong). */
+  var norm = (window.V20 && typeof window.V20.normProvKiot === 'function') ? window.V20.normProvKiot : (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
   var provSel = document.getElementById('kiotProv');
   var catSel = document.getElementById('kiotCat');
   var emptyMsg = 'Chưa có kiot nào đang thanh lý. Bạn là chủ shop muốn thanh lý? <a href="dang-ky.html">Đăng ký tài khoản Doanh nghiệp</a> để niêm yết kiot của bạn — hoàn toàn miễn phí trong giai đoạn thử nghiệm.';
