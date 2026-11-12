@@ -65,6 +65,59 @@
 <section class="section" id="tin-moi-cho-mau"><div class="section-head"><div><h2><a href="tin-tuc.html">Tin mới cho mẫu livestream</a></h2></div></div>
 <div class="news-list" id="shopBottomNews"></div>
 <div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
+<!-- v179: 5 danh muc doi tuong moi — 3 muc cho shop (du lieu that tu cron thu thap 11:21; hien co 1 muc mau/muc de test giao dien) -->
+<section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
+<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức <span id="eventMarketingCountH2"></span></h2>
+<p class="lot-sub" id="eventMarketingSub">Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.</p>
+<button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc sự kiện Marketing ▾</button>
+<div class="filter-card cols-3" id="fEventFilter">
+<div class="uni-field"><label for="fEventProv">Tỉnh / thành phố</label><select id="fEventProv"><option value="">Tất cả tỉnh</option></select></div>
+<div class="uni-field"><label for="fEventSort">Sắp xếp</label><select id="fEventSort"><option value="">Mới nhất</option><option value="price-asc">Phí thấp → cao</option><option value="price-desc">Phí cao → thấp</option></select></div>
+<div class="uni-field uni-actions"><button class="btn btn-primary" id="eventMarketingApplyBtn" type="button">Áp dụng</button></div>
+<div class="uni-field uni-actions"><button class="btn btn-ghost" id="eventMarketingResetBtn" type="button">Đặt lại</button></div>
+<p class="filter-count" id="eventMarketingCount"></p>
+<p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
+</div>
+<div class="lot-grid" id="eventMarketingGrid"></div>
+<button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
+</section>
+<script>(function(){var s=document.getElementById("su-kien-marketing");if(!s)return;var b=document.getElementById("eventMarketingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed" id="logistics-trung-viet" aria-labelledby="logistics-title">
+<h2 id="logistics-title">Công ty logistics Trung – Việt <span id="logisticsCountH2"></span></h2>
+<p class="lot-sub" id="logisticsSub">Công ty logistics Trung – Việt: vận chuyển chính ngạch, trọn gói – tiểu ngạch và dịch vụ mua hàng hộ.</p>
+<button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc logistics ▾</button>
+<div class="filter-card cols-3" id="fLogisticsFilter">
+<div class="uni-field"><label for="fLogisticsProv">Tỉnh / thành phố</label><select id="fLogisticsProv"><option value="">Tất cả tỉnh</option></select></div>
+<div class="uni-field"><label for="fLogisticsOption">Hình thức vận chuyển</label><select id="fLogisticsOption"><option value="">Tất cả hình thức</option><option value="chinh-ngach">Vận chuyển chính ngạch</option><option value="tieu-ngach">Vận chuyển trọn gói – tiểu ngạch</option><option value="mua-ho">Dịch vụ mua hàng hộ</option></select></div>
+<div class="uni-field"><label for="fLogisticsSort">Sắp xếp</label><select id="fLogisticsSort"><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
+<div class="uni-field uni-actions"><button class="btn btn-primary" id="logisticsApplyBtn" type="button">Áp dụng</button></div>
+<div class="uni-field uni-actions"><button class="btn btn-ghost" id="logisticsResetBtn" type="button">Đặt lại</button></div>
+<p class="filter-count" id="logisticsCount"></p>
+<p class="filter-empty" id="logisticsEmpty" hidden>Chưa có đơn vị vận chuyển nào khớp bộ lọc.</p>
+</div>
+<div class="lot-grid" id="logisticsGrid"></div>
+<button class="lot-more" id="logisticsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
+</section>
+<script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed" id="cho-thue-cua-hang-kho" aria-labelledby="rentals-title">
+<h2 id="rentals-title">Cho thuê cửa hàng / kho hàng <span id="rentalsCountH2"></span></h2>
+<p class="lot-sub" id="rentalsSub">Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.</p>
+<button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc cho thuê ▾</button>
+<div class="filter-card cols-3" id="fRentalsFilter">
+<div class="uni-field"><label for="fRentalsProv">Tỉnh / thành phố</label><select id="fRentalsProv"><option value="">Tất cả tỉnh</option></select></div>
+<div class="uni-field"><label for="fRentalsSort">Sắp xếp</label><select id="fRentalsSort"><option value="">Mới nhất</option><option value="price-asc">Giá thuê thấp → cao</option><option value="price-desc">Giá thuê cao → thấp</option></select></div>
+<div class="uni-field uni-actions"><button class="btn btn-primary" id="rentalsApplyBtn" type="button">Áp dụng</button></div>
+<div class="uni-field uni-actions"><button class="btn btn-ghost" id="rentalsResetBtn" type="button">Đặt lại</button></div>
+<p class="filter-count" id="rentalsCount"></p>
+<p class="filter-empty" id="rentalsEmpty" hidden>Chưa có mặt bằng nào khớp bộ lọc.</p>
+</div>
+<div class="lot-grid" id="rentalsGrid"></div>
+<button class="lot-more" id="rentalsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.</p>
+</section>
+<script>(function(){var s=document.getElementById("cho-thue-cua-hang-kho");if(!s)return;var b=document.getElementById("rentalsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>

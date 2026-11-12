@@ -11405,6 +11405,30 @@ window.V20_DATA = {
   "Gia dụng",
   "Mỹ phẩm",
   "Thời trang"
+ ],
+ /* v179 (12/11/2026): 5 danh muc doi tuong moi — du lieu that do cron
+    ver2solution-daily-new-objects thu thap hang ngay (luot dau 13/11 11:21,
+    10/ngay toi 20/11 roi 3/ngay, xoa sau 30 ngay). Truong bat buoc:
+    id, type, name, provider, price, priceLabel, province, avatar, detail,
+    sourceUrl, dateAdded, expiresAt; logistics them logisticsOption
+    (chinh-ngach | tieu-ngach | mua-ho) + priceSuffix tuy chon (vd '/kg').
+    Avatar BAT BUOC — the khong co avatar thi khong render (xem
+    newObjCardHTML trong js/app.js). Duoi day la 1 muc MAU moi mang de
+    test giao dien; cron se ghi de/bo sung du lieu that. */
+ "classesLive": [
+  {"id": "class-live-01", "type": "classesLive", "name": "Khóa Livestream Bán Hàng Chuyên Nghiệp — Lên Sóng Tự Tin, Chốt Đơn Mỗi Ngày", "provider": "Học viện Livestream V2S", "price": 2900000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images/th-01.jpg", "detail": "Khóa học 8 buổi dành cho mẫu live và người mới bắt đầu: kỹ năng nói trước camera, xây kịch bản live bán hàng, xử lý tình huống khi đang live, chốt đơn và giữ chân khách. Học trực tiếp tại TP. Hồ Chí Minh, lớp tối đa 15 học viên, có buổi thực hành live thật trên kênh của học viên.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-mau.html#class-live-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
+ ],
+ "classesMakeup": [
+  {"id": "class-makeup-01", "type": "classesMakeup", "name": "Khóa Makeup Cá Nhân & Makeup Livestream — Lên Hình Sáng Da, Ăn Đèn Sân Khấu", "provider": "Studio Makeup Linh Anh", "price": 1800000, "priceLabel": "Học phí", "province": "Hà Nội", "avatar": "images/th-02.jpg", "detail": "Khóa học 6 buổi: makeup cá nhân hằng ngày, makeup lên hình livestream (ăn đèn, không bết nền), chọn tone phù hợp từng loại da và ánh sáng phòng live. Học viên được thực hành trên mẫu thật, tặng bộ cọ cơ bản khi đăng ký sớm.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-mau.html#class-makeup-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
+ ],
+ "eventsMarketing": [
+  {"id": "event-mkt-01", "type": "eventsMarketing", "name": "Workshop Marketing Cho Shop Online: Chạy Quảng Cáo TikTok & Shopee Hiệu Quả", "provider": "Cộng đồng Marketing Việt", "price": 299000, "priceLabel": "Phí tham dự", "province": "TP. Hồ Chí Minh", "avatar": "images/og-brand.jpg", "detail": "Buổi chia sẻ 3 giờ cho chủ shop online: cách chạy quảng cáo TikTok và Shopee không đốt tiền, đọc chỉ số quảng cáo, làm nội dung video bán hàng từ điện thoại. Diễn giả là chủ shop đã chạy quảng cáo 3 năm. Có phần hỏi đáp trực tiếp cuối buổi.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#event-mkt-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
+ ],
+ "logistics": [
+  {"id": "logistics-01", "type": "logistics", "name": "Vận Chuyển Trung – Việt Chính Ngạch — Hàng Về 3–5 Ngày, Có Bảo Hiểm", "provider": "Logistics Việt Trung Express", "price": 25000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images/lo/lot-21.jpg", "logisticsOption": "chinh-ngach", "detail": "Vận chuyển chính ngạch Trung Quốc – Việt Nam: hàng về kho Hà Nội trong 3–5 ngày, có bảo hiểm hàng hóa, hỗ trợ khai báo hải quan và xuất hóa đơn VAT. Giá 25.000đ/kg cho lô từ 50kg, giảm thêm cho lô trên 200kg. Nhận hàng tại kho Quảng Châu và kho Hà Nội.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#logistics-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
+ ],
+ "rentals": [
+  {"id": "rental-01", "type": "rentals", "name": "Cho Thuê Cửa Hàng Mặt Phố Kinh Doanh — Gần Chợ, Đông Người Qua Lại", "provider": "Chủ nhà Anh Tuấn", "price": 15000000, "priceLabel": "Giá thuê", "province": "TP. Hồ Chí Minh", "avatar": "images/kiot/kiot-01.jpg", "detail": "Cho thuê cửa hàng mặt phố 45m², mặt tiền 5m, gần chợ, đông người qua lại cả ngày, phù hợp bán quần áo, mỹ phẩm hoặc làm kho kết hợp cửa hàng. Giá thuê 15.000.000đ/tháng, cọc 2 tháng, hợp đồng tối thiểu 1 năm. Điện nước theo giá nhà nước.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#rental-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
  ]
 };
 window.V20_PHOTOS = {"th-01": "images/th-01.jpg", "th-02": "images/th-02.jpg", "th-03": "images/th-03.jpg", "th-05": "images/th-05.jpg", "th-06": "images/th-06.jpg", "th-07": "images/th-07.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-11": "images/th-11.jpg", "th-12": "images/th-12.jpg", "th-13": "images/th-13.jpg", "th-14": "images/th-14.jpg", "th-15": "images/th-15.jpg", "th-16": "images/th-16.jpg", "th-17": "images/th-17.jpg", "th-18": "images/th-18.jpg", "th-19": "images/th-19.jpg", "th-20": "images/th-20.jpg"};

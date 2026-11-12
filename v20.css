@@ -596,6 +596,18 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 @media(max-width:600px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+3){display:none}}
 .lot-more{display:block;margin:16px auto 0;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:#eef7f2;color:var(--brand);font-weight:800;font-size:15px;cursor:pointer}
 .lot-more:hover{background:#dff0ea}
+/* v179: 5 danh muc doi tuong moi — the co anh dai dien dau the (anh 16/10,
+   crop vua khung), dong 1 ten dam, dong 2 don vi to chuc/chu, them nhan
+   gia + gia + tinh/tp + nut Xem chi tiet. padding:0 de anh sat mep the;
+   .lot-card goc van giu padding cho lo/xuong/kiot. */
+.newobj-card{padding:0;overflow:hidden}
+.newobj-photo{display:block;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(160deg,#d9eae4,#eef3f1)}
+.newobj-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.newobj-lines{padding:12px 14px 14px;display:grid;gap:4px}
+.newobj-lines p{margin:0;font-size:13px;line-height:1.45;overflow-wrap:break-word}
+.newobj-lines .newobj-name{font-weight:800;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.newobj-lines .newobj-provider{color:var(--mut)}
+.newobj-lines .newobj-price b{color:var(--brand)}
 
 /* v68: trang dang nhap 2 cot (form trai, bang gioi thieu phai). */
 .auth-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start}

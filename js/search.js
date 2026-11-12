@@ -2,7 +2,7 @@
    (D1 chỉ dữ liệu web mình, D2 trang riêng tim-kiem.html, D3 khớp tên lên trước).
    Tính năng ĐỘC LẬP: chỉ ĐỌC window.V20_DATA (js/data.js), không ghi/sửa dữ liệu,
    không gọi server/Supabase, không log từ khóa (riêng tư — v1 không ghi lại từ khóa).
-   Chạy 100% trong trình duyệt: chuẩn hóa → quét 6 mảng → chấm điểm 0–100 → lọc → render.
+   Chạy 100% trong trình duyệt: chuẩn hóa → quét 11 mảng → chấm điểm 0–100 → lọc → render.
    Core (normalize/score/search/parseDeepLink/suggest) là hàm thuần — dùng chung cho
    trình duyệt (window.V2S_Search) và test Node (module.exports), 1 nguồn duy nhất.
    Lệch nhỏ so với thiết kế, có lý do (ghi rõ để QA biết):
@@ -48,8 +48,17 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo' };
-  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'bai'];
+  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng' };
+  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'bai'];
+  /* v179: 5 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
+  var NEWOBJ_META = {
+    'lop-live': {label: 'Lớp Livestream / MC / Thuyết trình', page: 'danh-sach-mau.html'},
+    'lop-makeup': {label: 'Lớp dạy Makeup', page: 'danh-sach-mau.html'},
+    'su-kien': {label: 'Sự kiện Marketing', page: 'danh-sach-shop.html'},
+    'logistics': {label: 'Logistics Trung – Việt', page: 'danh-sach-shop.html'},
+    'thue-mb': {label: 'Cho thuê cửa hàng / kho hàng', page: 'danh-sach-shop.html'}
+  };
+  var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'thue-mb': 'rentals'};
   var HOT_FALLBACK = ['mẫu livestream', 'tuyển mẫu livestream', 'Phạm Thoại', 'xả kho thời trang', 'xưởng may', 'thanh lý kiot', 'mẫu livestream Hà Nội', 'livestream bán hàng'];
 
   /* ---------- Xây chỉ mục 1 lần ---------- */
@@ -85,6 +94,16 @@
       e.field = raw.cat || ''; e.img = raw.img || ''; e.label = raw.label || '';
       e.url = 'thanh-ly-kiot.html#' + raw.id;
       e.chips = [raw.price, raw.prov, raw.date].filter(Boolean);
+    } else if (NEWOBJ_META[type]) {
+      /* v179: 5 danh muc moi — tieu de = ten, mo ta = noi dung chi tiet,
+         field = don vi to chuc + nhan danh muc (+ hinh thuc van chuyen),
+         anh = avatar (bat buoc), chip = tinh + nhan gia/gia + ngay dang. */
+      var nm = NEWOBJ_META[type];
+      e.title = raw.name || ''; e.desc = raw.detail || ''; e.cat = nm.label; e.prov = raw.province || '';
+      e.field = [raw.provider, nm.label, raw.logisticsOption || ''].join(' ');
+      e.img = raw.avatar || '';
+      e.url = nm.page + '#' + raw.id;
+      e.chips = [raw.province, (raw.priceLabel || '') + ': ' + (raw.price != null ? raw.price.toLocaleString('vi-VN') + 'đ' + (raw.priceSuffix || '') : 'Liên hệ'), raw.dateAdded || ''].filter(Boolean);
     }
     e.nTitle = normalize(e.title);
     e.nSlug = normalize(e.slug || '');
@@ -99,13 +118,15 @@
     data = data || {};
     var out = [];
     var map = { mau: data.models, shop: data.shops, bai: data.articles, lo: data.lots, xuong: data.factories, kiot: data.kiots };
+    /* v179: them 5 mang moi vao chi muc (khong doi logic xep hang). */
+    Object.keys(NEWOBJ_DATA_MAP).forEach(function (t) { map[t] = data[NEWOBJ_DATA_MAP[t]]; });
     Object.keys(map).forEach(function (t) {
       (map[t] || []).forEach(function (raw) { out.push(entryFor(t, raw)); });
     });
     return out;
   }
   function countByType(index) {
-    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, bai: 0 };
+    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0 };
     index.forEach(function (e) { if (c[e.type] != null) c[e.type]++; });
     return c;
   }
@@ -272,7 +293,7 @@
         (e.desc ? '<p>' + escHtml(e.desc) + '</p>' : '') +
         '<div class="sr-chips">' + chips + status + '</div>' + label +
         '<a class="sr-cta" href="' + escHtml(e.url) + '">' +
-        (e.type === 'bai' ? 'Đọc bài →' : e.type === 'shop' ? 'Xem shop →' : e.type === 'lo' ? 'Xem lô →' : e.type === 'xuong' ? 'Xem xưởng →' : e.type === 'kiot' ? 'Xem kiot →' : 'Xem hồ sơ →') + '</a>' +
+        (e.type === 'bai' ? 'Đọc bài →' : e.type === 'shop' ? 'Xem shop →' : e.type === 'lo' ? 'Xem lô →' : e.type === 'xuong' ? 'Xem xưởng →' : e.type === 'kiot' ? 'Xem kiot →' : NEWOBJ_META[e.type] ? 'Xem chi tiết →' : 'Xem hồ sơ →') + '</a>' +
         '</div>' +
         '<div class="sr-rail"><button type="button" class="sr-save' + saved + '" data-save="' + escHtml(itemKey(e)) + '" aria-label="Lưu">' + (isSaved(e) ? '♥ Đã lưu' : '♥ Lưu') + '</button>' +
         '<button type="button" class="sr-share" data-share="' + escHtml(e.url) + '" aria-label="Chia sẻ">↗ Chia sẻ</button></div>' +
