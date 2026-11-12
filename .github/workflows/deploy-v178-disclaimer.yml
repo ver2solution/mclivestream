@@ -1,0 +1,37 @@
+name: Deploy v178-disclaimer (dong bo mien tru moi v177 vao 7 file HTML tinh)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v178-disclaimer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v178-disclaimer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v178-disclaimer package
+        run: |
+          unzip -o mclivestream-v178-disclaimer-deploy.zip
+          echo "--- verify v178-disclaimer ---"
+          for f in danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
+          for f in danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html; do grep -q 'do chủ nội dung public công khai' "$f" || (echo "THIEU mien tru moi trong $f"; exit 1); done
+          echo "verify OK: 7 file HTML co mien tru moi v177, khong doi sw.js/CSS/JS"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v178-disclaimer-deploy.zip
+          git add -A danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v178: dong bo mien tru moi (v177) vao 7 file HTML tinh"
+            git push
+          fi
