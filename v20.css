@@ -176,6 +176,8 @@ a:hover{text-decoration:underline}
 .warn{font-size:13px;color:#7a5b00;background:#fff7dd;border-radius:12px;padding:10px 12px;margin:0}
 .warn a{font-weight:800}
 .disclaimer{font-size:12px;color:var(--mut);font-style:italic;border-top:1px solid var(--line);padding-top:8px;margin:8px 0 0}
+/* v180: nut "Dang ky de ghim lau hon" trong muc ghi chu — bo italic ke thua tu .disclaimer, cach dong chu 8px */
+.pin-longer-btn{font-style:normal;margin-top:8px}
 /* v42: dong huong dan chu so huu (duoi .disclaimer, cuoi the) — chu nho 12px
    nhu disclaimer; chu thuong mau muted, link mau xanh thuong hieu. */
 .owner-note{font-size:12px;color:var(--mut);margin:6px 0 0}
