@@ -50,6 +50,26 @@ a:hover{text-decoration:underline}
 .btn-sm{padding:9px 15px;font-size:14px;min-height:44px}/* v81: nut nho van du 44px de bam (mobile) */
 .menu-btn{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font-weight:800;min-height:44px}/* v81: nut Menu du 44px de bam (mobile) */
 @media(max-width:1200px){.main-nav{display:none}.menu-btn{display:block}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.main-nav.open a{padding:12px 14px}.main-nav.open .nav-register{display:block}}
+/* v175: dropdown "Tin tức" trên nav — 8 bài mới nhất (JS chèn vào mục Tin tức lúc chạy, nav HTML không đổi).
+   Panel nền tối xanh thương hiệu + viền vàng (khớp thumbnail/chữ vàng), chữ trắng, "Xem tất cả" vàng. */
+.nav-news-wrap{position:relative;display:flex}
+.nav-news-caret{margin-left:2px;font-size:11px}
+.nav-news-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:80;min-width:340px;max-width:calc(100vw - 32px);background:#0b5d4e;border:1px solid #0e8a6d;border-top:3px solid var(--amber);border-radius:14px;box-shadow:0 14px 34px rgba(11,93,78,.28);padding:8px}
+.nav-news-wrap:hover .nav-news-dropdown,.nav-news-wrap:focus-within .nav-news-dropdown,.nav-news-wrap.open .nav-news-dropdown{display:block}
+.main-nav .nav-news-dropdown a{display:block;padding:10px 12px;border-radius:10px;color:#fff;white-space:normal}
+.main-nav .nav-news-dropdown a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
+.nav-news-title{display:block;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:700;line-height:1.4}
+.nav-news-meta{display:block;font-size:13px;font-weight:600;color:#bfe3d8;margin-top:2px}
+.main-nav .nav-news-dropdown a.nav-news-all{margin-top:6px;border-top:1px solid rgba(255,255,255,.22);color:var(--amber);font-weight:800;text-align:center}
+.main-nav .nav-news-dropdown a.nav-news-all:hover{background:rgba(255,176,32,.14);color:var(--amber)}
+.nav-news-loading{display:block;padding:10px 12px;color:#bfe3d8;font-weight:700}
+@media(max-width:1200px){
+.main-nav.open .nav-news-wrap{display:block}
+.main-nav.open .nav-news-dropdown{position:static;min-width:0;max-width:none;box-shadow:none;border-radius:12px;margin:6px 0 8px}
+.main-nav.open .nav-news-dropdown a{padding:10px 12px}
+.main-nav.open .nav-news-wrap:hover .nav-news-dropdown,.main-nav.open .nav-news-wrap:focus-within .nav-news-dropdown{display:none}
+.main-nav.open .nav-news-wrap.open .nav-news-dropdown{display:block}
+}
 /* v90 (F): dropdown dang xuat duoi vien diem header — absolute duoi vien,
    can phai, khong lam vo header (di cung fix nowrap muc A). */
 .user-menu-wrap{position:relative;display:flex;flex-shrink:0}
