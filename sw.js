@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v165-shell-1'; /* v165: doi v20.css (.claim-*) + js/app.js (claim-slot) + them js/claim.js */
+const CACHE = 'v166-shell-1'; /* v166: doi js/auth-ui.js (C1/N1 storage watcher + BUOC 1 canh bao SDT + S3 tu chuyen) + js/app.js (header cho phien + N8 normProvKiot + N9 loi tai that + N10 binh luan bai viet) + js/comments.js (N11 nut binh luan dialog) + js/reward.js + js/xu-chung.js (doc session qua V2SAuthUI) + v20.css (.auth-phone-warn) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

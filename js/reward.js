@@ -242,9 +242,17 @@
     }
     return 0;
   }
+  // v166 (C1/N1): đọc session qua V2SAuthUI khi có (1 nguồn đúng duy
+  // nhất) — tránh UI hiện tài khoản A nhưng xu tính cho tài khoản B.
   async function sessionUser() {
     var a = api(); if (!a) throw errMissing();
-    var session = await a.getSession(); if (!session) throw new Error('Cần đăng nhập mới dùng được xu thưởng.');
+    var session = null;
+    try {
+      var A = (typeof window !== 'undefined') ? window.V2SAuthUI : null;
+      if (A && typeof A.getSession === 'function') session = await A.getSession();
+    } catch (e) { session = null; }
+    if (!session) session = await a.getSession();
+    if (!session) throw new Error('Cần đăng nhập mới dùng được xu thưởng.');
     return { api: a, user: session.user };
   }
   async function ensureWalletRow() {

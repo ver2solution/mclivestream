@@ -18,9 +18,16 @@
    session thì đăng nhập thẳng (xác minh email đã tắt 15:26 07/11), không
    có session thì sang trang đăng nhập (cfg.signupSuccessUrl) hoặc về
    view đăng nhập + thông báo xanh; email đã đăng ký thì báo rõ kèm link
-   lấy lại mật khẩu. Tùy chọn cfg mới (đều tùy chọn, trang cũ không
+   lấy lại mật khẩu. v166 (S3): đăng ký thành công có session thì TỰ
+   CHUYỂN về "trang của bạn" theo cfg.signupSessionUrl
+   (trang-cua-toi.html, hoặc ?next= nếu có; fallback signupSuccessUrl)
+   — trước đây chỉ `return` nên trang đứng yên dù ghi "Đang chuyển…";
+   v166 (BƯỚC 1): cảnh báo SĐT trùng hồ sơ đã có lúc đăng ký (chỉ cảnh
+   báo, không chặn); v166 (C1/N1):
+   lắng nghe 'storage' khóa auth + kiểm tra lại khi tab hiện lại để
+   header/panel luôn theo đúng session trong localStorage. Tùy chọn cfg mới (đều tùy chọn, trang cũ không
    truyền vẫn chạy như trước): initialView, initialMessage,
-   signupSuccessUrl.
+   signupSuccessUrl, signupSessionUrl.
    Trạng thái đăng nhập là 1 nguồn đúng duy nhất: sessionCache +
    onAuthStateChange; trang Trang của tôi dùng chung qua getSession() /
    ensureSessionListener() thay vì đọc session riêng.
@@ -122,6 +129,125 @@
   function invalidateSessionCache() {
     sessionCache = null;
     sessionCacheReady = false;
+  }
+
+  // v166 (C1/N1 — khôi phục phiên, 12/11/2026): trang phải theo ĐÚNG
+  // session trong localStorage, kể cả khi session đổi ở TAB KHÁC.
+  // Gốc: 1 browser profile chỉ có 1 session Supabase chung (khóa
+  // localStorage sb-<ref>-auth-token, GoTrue mặc định — đã đối chiếu
+  // @supabase/gotrue-js@2: __loadSession đọc storage mỗi lần, tick
+  // auto-refresh 30s cũng đọc storage, BroadcastChannel chỉ báo cho
+  // subscriber đã đăng ký). sessionCache của auth-ui.js chỉ cập nhật
+  // khi có sự kiện onAuthStateChange; sự kiện có thể tới TRƯỚC khi
+  // trang đăng ký listener (trang tải sau khi tab kia đăng nhập) nên
+  // trang giữ cache cũ và hiện tài khoản KHÁC tài khoản trong storage
+  // — đúng mẫu Zalo/Rion gặp 03:45–04:04 ngày 12/11 (hiện thond.bds
+  // trong khi vừa đăng nhập ybkcetx/paboo, lúc hiện nút Đăng Nhập).
+  // Sửa: lắng nghe 'storage' cho đúng khóa auth (sự kiện này chỉ bắn
+  // ở tab KHÔNG ghi — tức đúng tab cần cập nhật) + kiểm tra lại khi
+  // tab hiện lại/focus; mỗi lần đều vô hiệu cache, đọc lại session
+  // từ storage và báo cho mọi listener (header/panel theo kịp mà
+  // không cần tải lại trang). Hai tài khoản KHÁC NHAU cùng lúc trong
+  // 1 profile vẫn chỉ có 1 session (last writer wins — giới hạn của
+  // GoTrue, không sửa bằng code được): muốn dùng 2 tài khoản song
+  // song thì tách profile trình duyệt riêng (Rion + Zalo đã đồng ý).
+  function isAuthStorageKey(key) {
+    return typeof key === 'string' && key.indexOf('sb-') === 0 && key.slice(-11) === '-auth-token';
+  }
+  var storageWatchStarted = false;
+  var lastSessionRevalidate = 0;
+  function revalidateSessionFromStorage(force) {
+    var now = Date.now();
+    if (!force && now - lastSessionRevalidate < 10000) return; // chống spam khi focus liên tục
+    lastSessionRevalidate = now;
+    invalidateSessionCache();
+    try {
+      var p = getSession();
+      if (p && typeof p.then === 'function') {
+        p.then(function (s) { notifySession(s && s.user ? s.user : null); }).catch(function () {});
+      }
+    } catch (e) { /* bỏ qua — lần đọc sau sẽ thử lại */ }
+  }
+  function watchAuthStorage() {
+    if (storageWatchStarted) return;
+    if (typeof window === 'undefined' || !window.addEventListener) return;
+    storageWatchStarted = true;
+    try {
+      window.addEventListener('storage', function (e) {
+        if (!e || !isAuthStorageKey(e.key)) return;
+        revalidateSessionFromStorage(true); // sự kiện storage là nguồn tin cậy — không throttle
+      });
+      if (typeof document !== 'undefined' && document.addEventListener) {
+        document.addEventListener('visibilitychange', function () {
+          if (!document.hidden) revalidateSessionFromStorage(false);
+        });
+      }
+      window.addEventListener('focus', function () { revalidateSessionFromStorage(false); });
+    } catch (e) { /* bỏ qua — trang vẫn dùng cache + sự kiện GoTrue như cũ */ }
+  }
+
+  // v166 (BƯỚC 1 — cảnh báo SĐT đã đăng ký, 12/11/2026): 1 SĐT đã
+  // đăng ký im lặng 3 tài khoản (0969151680: paboo/riontest1205b/
+  // qgunavo) vì form đăng ký không kiểm tra trùng. Khi user nhập SĐT,
+  // nếu SĐT đó trùng liên hệ (zalo/phone) của hồ sơ đã có trong
+  // data.js thì hiện cảnh báo + link Đăng nhập/Quên mật khẩu — CHỈ
+  // CẢNH BÁO, KHÔNG CHẶN (SĐT có thể dùng chung; chặn cứng cần kiểm
+  // tra server-side, chưa có hạ tầng). data.js (~590KB) chỉ tải lười
+  // khi user nhập SĐT (không tải lúc mở trang — theo gợi ý của Rion
+  // ở js/claim.js). Thuật toán chuẩn hóa SĐT giống js/claim.js
+  // phoneKey (9 số cuối) — giữ đồng bộ 2 nơi khi đổi.
+  function phoneKeyLocal(v) {
+    var C = (typeof window !== 'undefined') ? window.V2SClaim : null;
+    if (C && typeof C.phoneKey === 'function') return C.phoneKey(v);
+    var d = String(v || '').replace(/\D/g, '');
+    if (d.length >= 11 && d.indexOf('84') === 0) d = d.slice(2);
+    if (d.length === 10 && d.charAt(0) === '0') d = d.slice(1);
+    if (d.length < 9) return '';
+    return d.slice(-9);
+  }
+  function findPhoneProfileMatches(phone) {
+    var key = phoneKeyLocal(phone);
+    if (!key) return [];
+    var D = (typeof window !== 'undefined') ? window.V20_DATA : null;
+    if (!D) return [];
+    var out = [];
+    function scan(list, kind) {
+      (list || []).forEach(function (it) {
+        var cs = (it && it.contacts) || [];
+        for (var i = 0; i < cs.length; i++) {
+          var c = cs[i] || {};
+          var p = String(c.provider || '').toLowerCase();
+          if ((p === 'zalo' || p === 'phone' || p === 'sdt' || p === 'tel') && phoneKeyLocal(c.value) === key) {
+            out.push({ kind: kind, id: it.id, name: it.name || it.title || it.id });
+            return;
+          }
+        }
+      });
+    }
+    scan(D.models, 'model');
+    scan(D.shops, 'shop');
+    return out.slice(0, 2);
+  }
+  var profileDataLoading = null;
+  function ensureProfileData() {
+    if (typeof window !== 'undefined' && window.V20_DATA) return Promise.resolve(true);
+    if (profileDataLoading) return profileDataLoading;
+    if (typeof document === 'undefined' || !document.createElement) return Promise.resolve(false);
+    profileDataLoading = new Promise(function (resolve) {
+      var base = '';
+      try { base = String(location.pathname || '').indexOf('/bai-viet/') !== -1 ? '../' : ''; } catch (e) { base = ''; }
+      var s = document.createElement('script');
+      s.src = base + 'js/data.js';
+      s.onload = function () { resolve(!!(typeof window !== 'undefined' && window.V20_DATA)); };
+      s.onerror = function () { profileDataLoading = null; resolve(false); };
+      try { (document.head || document.body).appendChild(s); } catch (e) { profileDataLoading = null; resolve(false); return; }
+      setTimeout(function () {
+        var ok = !!(typeof window !== 'undefined' && window.V20_DATA);
+        if (!ok) profileDataLoading = null; // hết hạn mà chưa tải xong: lần sau thử lại
+        resolve(ok);
+      }, 5000);
+    });
+    return profileDataLoading;
   }
 
   async function getSession() {
@@ -421,6 +547,47 @@
     // ký riêng) hoặc về view đăng nhập + thông báo xanh (trang danh sách);
     // email đã đăng ký thì báo rõ kèm link lấy lại mật khẩu.
     var su = $(cfg.forms.signup);
+    // v166 (BƯỚC 1): ô cảnh báo SĐT trùng — tạo 1 lần dưới ô SĐT, ẩn
+    // mặc định; chỉ cảnh báo, không chặn đăng ký.
+    var phoneWarnEl = null;
+    var authBase = '';
+    try { authBase = String(location.pathname || '').indexOf('/bai-viet/') !== -1 ? '../' : ''; } catch (e) { authBase = ''; }
+    function escHtml(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function showPhoneDupWarn(matches) {
+      if (!phoneWarnEl) return;
+      if (!matches || !matches.length) { phoneWarnEl.hidden = true; phoneWarnEl.innerHTML = ''; return; }
+      var names = matches.map(function (m) { return escHtml(m.name); }).join(', ');
+      phoneWarnEl.innerHTML = 'SĐT này đã có tài khoản — nếu đây là SĐT của bạn, hãy <a href="' + authBase + 'dang-nhap.html">đăng nhập</a> hay <a href="' + authBase + 'dat-lai-mat-khau.html">lấy lại mật khẩu</a> thay vì đăng ký mới.'
+        + (names ? ' (Hồ sơ khớp: ' + names + ')' : '');
+      phoneWarnEl.hidden = false;
+    }
+    function checkPhoneDup() {
+      var inp = $(cfg.inputs.signupPhone);
+      if (!inp || !isValidVnPhone(inp.value)) { showPhoneDupWarn(null); return Promise.resolve([]); }
+      return ensureProfileData().then(function () {
+        var m = findPhoneProfileMatches(inp.value);
+        showPhoneDupWarn(m);
+        return m;
+      }).catch(function () { return []; });
+    }
+    if (su) {
+      var phoneInp = $(cfg.inputs.signupPhone);
+      if (phoneInp && typeof phoneInp.addEventListener === 'function') {
+        try {
+          phoneWarnEl = document.createElement('p');
+          phoneWarnEl.id = 'authSuPhoneDupWarn';
+          phoneWarnEl.className = 'auth-phone-warn';
+          phoneWarnEl.hidden = true;
+          if (phoneInp.parentNode) phoneInp.parentNode.insertBefore(phoneWarnEl, phoneInp.nextSibling);
+        } catch (e) { phoneWarnEl = null; }
+        var phoneDupTimer = null;
+        phoneInp.addEventListener('input', function () {
+          if (phoneDupTimer) clearTimeout(phoneDupTimer);
+          phoneDupTimer = setTimeout(function () { checkPhoneDup(); }, 500);
+        });
+        phoneInp.addEventListener('change', function () { checkPhoneDup(); });
+      }
+    }
     if (su) su.addEventListener('submit', function (e) {
       e.preventDefault();
       guardSubmit(su, async function () {
@@ -458,6 +625,16 @@
         }
         if (bad) return;
         if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
+        // v166 (BƯỚC 1): kiểm tra trùng SĐT trước khi tạo tài khoản
+        // (chờ tối đa 2s để tải data.js lần đầu; lỗi/chậm thì vẫn đăng
+        // ký tiếp — chỉ cảnh báo, không chặn).
+        try {
+          var dupWait = ensureProfileData();
+          var dupTimeout = new Promise(function (resolve) { setTimeout(function () { resolve(false); }, 2000); });
+          await Promise.race([dupWait, dupTimeout]);
+          var dupMatches = findPhoneProfileMatches(phone);
+          if (dupMatches.length) showPhoneDupWarn(dupMatches);
+        } catch (e) { /* bỏ qua — đăng ký vẫn tiếp tục */ }
         // v111 (N1): 3 o ho so thu thap ngay khi dang ky — signUp() o
         // mclivestream-supabase.js da map 3 truong nay vao user_metadata
         // tu v99, nhung handler nay chua truyen. Doc theo id co dinh cua
@@ -502,14 +679,16 @@
             // cong xu xong thi header hien "0 xu" cho toi khi tai lai
             // trang. Cho RPC toi da 8s; RPC loi/cham thi dang ky van
             // thanh cong binh thuong (khong chan showUser).
-            // v111 (muc 4): KHONG tu chuyen trang 800ms o day — thiet ke
-            // v96 (dang-ky.html): tai khoan chua co ho so thi O LAI xem
-            // panel kich hoat (doc duoc trong 5 giay sau dang ky); chi
-            // tai khoan da co ho so moi chuyen sau 800ms (luong
-            // onSessionChange o dang-ky.html tu quyet). Dong xu trong
-            // panel hien qua showPointsLine() duoi day — do la "toast"
-            // bao nhan xu theo thiet ke hien tai, khong phai msg() trong
-            // form (form bi an khi showUser chay).
+            // v166 (S3, 12/11/2026): sau dang ky thanh cong (co session)
+            // TU CHUYEN ve "trang cua ban" theo cfg.signupSessionUrl
+            // (ben duoi, sau showUser + lam moi header). Truoc day chi
+            // nen trang hien "Dang chuyen toi trang cua ban…" mai ma
+            // khong chuyen (Rion S3) — thiet ke v96 (o lai xem panel
+            // kich hoat) chi ap dung khi user tu mo lai trang dang ky
+            // luc da dang nhap, khong ap dung cho luot dang ky vua xong.
+            // Dong xu trong panel hien qua showPointsLine() duoi day —
+            // do la "toast" bao nhan xu theo thiet ke hien tai, khong
+            // phai msg() trong form (form bi an khi showUser chay).
             var awardPoints = 0;
             try {
               var R = (typeof window !== 'undefined') ? window.Ver2Reward : null;
@@ -555,6 +734,16 @@
             // js/app.js (khong thuoc pham vi v111 nhom nay).
             try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
             try { if (typeof window !== 'undefined' && typeof window.V20RefreshPopupPoints === 'function') window.V20RefreshPopupPoints(); } catch (e) {}
+            // v166 (S3): tu chuyen sau dang ky thanh cong — dong redirect
+            // nay truoc day khong bao gio toi vi `return` ngay sau
+            // showUser() (nhanh co session). Dich la "trang cua ban":
+            // signupSessionUrl (trang-cua-toi.html, hoac ?next= neu co),
+            // fallback signupSuccessUrl cho trang khong dat rieng.
+            // Nhanh KHONG co session (xac minh email bat lai) giu nguyen
+            // ben duoi: sang dang-nhap.html theo signupSuccessUrl + bao
+            // "kiem tra email".
+            var dest = cfg.signupSessionUrl || cfg.signupSuccessUrl;
+            if (dest) { location.href = dest; return; }
             return;
           }
           if (cfg.signupSuccessUrl) { location.href = cfg.signupSuccessUrl; return; }
@@ -654,6 +843,11 @@
     showUser();
   }
 
+  // v166 (C1/N1): bật lắng nghe storage ngay khi module nạp (mọi trang
+  // nạp auth-ui.js đều được theo dõi, kể cả trang không gọi initAuthUI
+  // như trang bài viết — header ở đó cũng cần theo kịp session).
+  watchAuthStorage();
+
   if (typeof window !== 'undefined') {
     window.V2SAuthUI = {
       initAuthUI: initAuthUI,
@@ -664,7 +858,10 @@
       onSessionChange: onSessionChange,
       friendlyError: friendly,
       isValidVnPhone: isValidVnPhone,
-      normalizePhone: normalizePhone
+      normalizePhone: normalizePhone,
+      isAuthStorageKey: isAuthStorageKey,
+      phoneKey: phoneKeyLocal,
+      findPhoneProfileMatches: findPhoneProfileMatches
     };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = window.V2SAuthUI;

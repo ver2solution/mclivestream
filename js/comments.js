@@ -66,7 +66,18 @@
   }
   function api() { return (typeof window !== 'undefined' && window.McLivestreamAPI) ? window.McLivestreamAPI : null; }
   function reward() { return (typeof window !== 'undefined' && window.Ver2Reward) ? window.Ver2Reward : null; }
+  // v166 (C1/N1): đọc session qua V2SAuthUI (1 nguồn đúng duy nhất) khi
+  // có — tránh trường hợp UI hiện tài khoản A (cache) nhưng bình luận
+  // gửi dưới tài khoản B (đọc trực tiếp qua API). Không có auth-ui thì
+  // vẫn đọc trực tiếp như cũ.
   async function currentUser() {
+    try {
+      var A = (typeof window !== 'undefined') ? window.V2SAuthUI : null;
+      if (A && typeof A.getSession === 'function') {
+        var s2 = await A.getSession();
+        if (s2 && s2.user) return s2.user;
+      }
+    } catch (e) { /* rơi về đọc trực tiếp bên dưới */ }
     var a = api();
     if (!a || typeof a.getSession !== 'function') return null;
     try {
@@ -268,11 +279,21 @@
       var btn = e.target && e.target.closest ? e.target.closest('[data-v2s-comment-toggle]') : null;
       if (!btn) return;
       e.preventDefault();
-      var card = btn.closest ? btn.closest('article') : null;
+      // v166 (N11): nút Bình luận trong dialog lô/xưởng/kiot không nằm
+      // trong thẻ <article> (dialog là .detail-box) nên closest('article')
+      // trả null và nút chết lặng — trước đây chỉ tìm mount trong thẻ.
+      // Tìm lần lượt: thẻ chứa nút → hộp dialog → toàn document (theo
+      // đúng target type:id). Thứ tự này tránh nhầm mount của thẻ cùng
+      // id đang nằm sau dialog.
+      var sel = '[data-v2s-comments-for="' + btn.getAttribute('data-v2s-target-type') + ':' + btn.getAttribute('data-v2s-target-id') + '"]';
       var mount = null;
-      if (card && typeof card.querySelector === 'function') {
-        mount = card.querySelector('[data-v2s-comments-for="' + btn.getAttribute('data-v2s-target-type') + ':' + btn.getAttribute('data-v2s-target-id') + '"]');
+      var card = btn.closest ? btn.closest('article') : null;
+      if (card && typeof card.querySelector === 'function') mount = card.querySelector(sel);
+      if (!mount) {
+        var box = btn.closest ? btn.closest('.detail-box') : null;
+        if (box && typeof box.querySelector === 'function') mount = box.querySelector(sel);
       }
+      if (!mount && doc && typeof doc.querySelector === 'function') mount = doc.querySelector(sel);
       if (!mount) return;
       var open = btn.getAttribute('data-v2s-comments-open') === '1';
       if (open) {

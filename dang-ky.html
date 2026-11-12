@@ -149,6 +149,12 @@
     cardId: 'dang-ky',
     initialView: 'register',
     signupSuccessUrl: 'dang-nhap.html?' + successQs.join('&'),
+    /* v166 (S3, sua dich 12/11): co session thi ve "trang cua ban"
+       (trang-cua-toi.html, hoac ?next= neu co) — dang-nhap.html chi
+       con la dich cho nhanh KHONG co session (xac minh email bat lai),
+       vi dang-nhap khong tu chuyen khi mo len luc da dang nhap san
+       (v78 F-05: signedInNow chi bat khi submit form dang nhap). */
+    signupSessionUrl: params.get('next') ? nextUrl : 'trang-cua-toi.html',
     views: { login: 'authViewLogin', register: 'authViewRegister' },
     forms: { signup: 'authSignUp' },
     inputs: { signupEmail: 'authSuEmail', signupPhone: 'authSuPhone', signupPass: 'authSuPass', signupPass2: 'authSuPass2', signupMarketing: 'authSuMarketing' },
@@ -174,24 +180,16 @@
       }
       if (user && signedInNow && !redirected) {
         redirected = true;
-        /* v96: tai khoan chua co ho so thi O LAI xem panel kich hoat
-           thay vi chuyen trang sau 800ms (thiet ke 08/11 — panel phai
-           doc duoc trong 5 giay sau dang ky); da co ho so hoac khong
-           xac dinh duoc thi chuyen nhu cu. Cho quyet dinh toi da 3s,
-           qua han thi chuyen nhu cu (dai trang chu se nhac lai). */
-        var went = false;
-        function go() { if (!went) { went = true; setTimeout(function () { location.href = nextUrl; }, 800); } }
-        var dec = null;
-        try { dec = (window.V2SActivation && typeof window.V2SActivation.decidePostSignup === 'function') ? window.V2SActivation.decidePostSignup(user) : null; } catch (e) { dec = null; }
-        if (dec && typeof dec.then === 'function') {
-          var settled = false;
-          var timer = setTimeout(function () { if (!settled) { settled = true; go(); } }, 3000);
-          dec.then(function (d) {
-            if (settled) return; settled = true; clearTimeout(timer);
-            if (d === 'panel') { redirected = false; /* o lai, panel se hien */ }
-            else go();
-          }, function () { if (!settled) { settled = true; clearTimeout(timer); go(); } });
-        } else { go(); }
+        /* v166 (S3): auth-ui.js TU CHUYEN ve "trang cua ban" theo
+           signupSessionUrl (trang-cua-toi.html, hoac ?next= neu co)
+           ngay sau dang ky thanh cong — bo qua luong chuyen o day de
+           tranh 2 lan location.href dua nhau (go() chuyen nextUrl sau
+           800ms, auth-ui chuyen ngay sau showUser). Panel kich hoat
+           van duoc refresh o khoi tren (uid doi) nen user van thay
+           panel trong luc cho chuyen trang; panel chi co o trang nay
+           (trang-cua-toi khong co panel) nen mo lai dang-ky.html luc
+           da dang nhap van thay panel. */
+        return;
       }
     }
   };

@@ -136,7 +136,11 @@
     }
   };
   if (params.get('registered') === '1') {
-    authCfg.initialMessage = { text: 'Đăng ký thành công — kiểm tra email để xác nhận rồi đăng nhập.', kind: 'ok' };
+    // v166 (S3): tin này hiện khi đăng ký xong được chuyển tới đây —
+    // xác minh email đã TẮT (15:26 07/11) nên user đã đăng nhập sẵn;
+    // câu cũ "kiểm tra email để xác nhận rồi đăng nhập" là sai. Giữ
+    // câu trung lập để vẫn đúng nếu xác minh email bật lại sau này.
+    authCfg.initialMessage = { text: 'Đăng ký thành công!', kind: 'ok' };
   }
   V2SAuthUI.initAuthUI(authCfg);
   /* v78 F-05: danh dau "vua dang nhap trong luot nay" khi submit form dang

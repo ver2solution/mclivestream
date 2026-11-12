@@ -592,6 +592,11 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .auth-msg.ok{color:#0b6b3a;background:#e7f6ec;border:1px solid #bfe6c9;border-radius:12px;padding:10px 12px}
 .auth-msg.err{color:#b42318;background:#fdecea;border:1px solid #f5c6c0;border-radius:12px;padding:10px 12px}
 .auth-msg.err a{color:#b42318;text-decoration:underline}
+/* v166 (BƯỚC 1): ô cảnh báo SĐT đã có tài khoản dưới ô SĐT lúc đăng ký
+   — chỉ cảnh báo (vàng nhạt), không phải lỗi chặn (đỏ). */
+.auth-phone-warn{margin:6px 0 0;padding:8px 10px;border:1px solid #e8c97a;background:#fff8e6;border-radius:8px;font-size:13px;color:#6b4e00}
+.auth-phone-warn[hidden]{display:none}
+.auth-phone-warn a{color:#6b4e00;text-decoration:underline;font-weight:700}
 .field-err{margin:4px 0 0;font-size:13px;font-weight:700;color:#b42318}
 .field-err:empty{display:none}
 .form-card input.invalid,.form-card select.invalid,.form-card textarea.invalid{border-color:#d92b1f;box-shadow:0 0 0 1px #d92b1f}

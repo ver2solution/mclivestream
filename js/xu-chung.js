@@ -45,12 +45,18 @@
     var e = res.error || res;
     return String((e && (e.message || e.code)) || e || 'Không rõ lỗi.');
   }
-  function sessionUser() {
+  // v166 (C1/N1): đọc session qua V2SAuthUI khi có (1 nguồn đúng duy
+  // nhất) — xem ghi chú ở js/comments.js.
+  async function sessionUser() {
     var a = api(); if (!a) throw new Error('Chưa kết nối được Supabase, hãy thử lại sau.');
-    return a.getSession().then(function (session) {
-      if (!session) throw new Error('Cần đăng nhập mới dùng được xu liên web.');
-      return { api: a, user: session.user };
-    });
+    var session = null;
+    try {
+      var A = (typeof window !== 'undefined') ? window.V2SAuthUI : null;
+      if (A && typeof A.getSession === 'function') session = await A.getSession();
+    } catch (e) { session = null; }
+    if (!session) session = await a.getSession();
+    if (!session) throw new Error('Cần đăng nhập mới dùng được xu liên web.');
+    return { api: a, user: session.user };
   }
   function newUuid() {
     try {
@@ -256,8 +262,16 @@
   }
   async function refreshHistory(el) {
     if (!el) return { ok: false, items: [] };
+    // v166 (N9): phân biệt "chưa đăng nhập" với "tải lỗi" — trước đây
+    // cả hai đều giữ nguyên dòng mặc định "Chưa tải được lịch sử xu
+    // liên web" (hoặc render "Chưa có giao dịch" như thể đã tải xong).
+    var loggedIn = true;
+    try { await sessionUser(); } catch (e) { loggedIn = false; }
+    if (!loggedIn) { el.innerHTML = '<p>Cần đăng nhập để xem lịch sử xu liên web.</p>'; return { ok: false, items: [] }; }
     var r = await getCrossHistory(20);
-    var b = await getBalances();
+    var b = { ok: false, debt: 0 };
+    try { b = await getBalances(); } catch (e) { b = { ok: false, debt: 0 }; }
+    if (!r.ok) { el.innerHTML = '<p>Chưa tải được lịch sử xu liên web, hãy tải lại trang.</p>'; return r; }
     el.innerHTML = crossHistoryHtml(r.items, b.ok ? b.debt : 0);
     return r;
   }

@@ -121,8 +121,11 @@
   /* v161 (Rion 9e): chuan hoa nhan tinh qua V20.normProv (TP.HCM /
      Binh Duong -> TP. Ho Chi Minh...) — truoc day option lay tu k.prov
      tho nen bo loc hien 2 muc trung ("TP. Ho Chi Minh" va "TP.HCM") va
-     loc theo ten sau sap nhap khong khop tin dung ten cu. */
-  var norm = (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
+     loc theo ten sau sap nhap khong khop tin dung ten cu.
+     v166 (N8): doi sang normProvKiot — chi gop 'TP.HCM', KHONG gop
+     Binh Duong vao TP.HCM (LEILA Thu Dau Mot phai hien duoi muc
+     "Bình Dương" rieng, khong khop loc TP. Hồ Chí Minh). */
+  var norm = (window.V20 && typeof window.V20.normProvKiot === 'function') ? window.V20.normProvKiot : (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
   // v124: tải tin kiot do thành viên đăng rồi chen lên đầu danh sách.
   // Chạy nền, không chặn render tin thu thập; lỗi thì im lặng.
   // v135 (fix loi C — trang trong hoan toan): kiem tra ham ton tai truoc
