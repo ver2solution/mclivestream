@@ -1,4 +1,4 @@
-name: Deploy v187 (sua SEO bai 11-12/11: OG + Nguon + ngay so lieu)
+name: "Deploy v187 (sua SEO bai 11-12/11: OG + Nguon + ngay so lieu)"
 
 on:
   push:
