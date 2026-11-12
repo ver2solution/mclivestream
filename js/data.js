@@ -7795,6 +7795,16 @@ window.V20_DATA = {
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Dòng tiền 11/11 chảy mạnh nhất vào ngày D+1 12/11, đạt 1,67 lần ngày thường với 913,4 tỷ đồng trong ngày 11/11/2025 (số 2025, mốc so sánh) — shop nhỏ nên live tiếp ngày 12/11, tung mã D+1 cho khách đã xem mà chưa mua, và chuyển sang đồ gia dụng, quà tặng từ tháng 12."
+  },
+  {
+   "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
+   "cat": "Phân tích",
+   "source": "VTC News",
+   "date": "2024-11-09",
+   "url": "https://vtcnews.vn/hoa-hong-livestream-vai-ty-dong-pham-thoai-noi-khong-quan-tam-den-tien-ar906113.html",
+   "page": "bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live-hero.jpg",
+   "takeaway": "58 tỷ đồng trong 36 giờ không phải phép màu — nó đến sau nhiều tuần chuẩn bị: học thuộc và trải nghiệm 2.000 mã hàng trước giờ live, bán bằng giải trí thay vì đọc catalogue. Nhớ rằng doanh thu kết phiên chưa phải tiền thật: hoa hồng 10% (khoảng 5,8 tỷ đồng) còn phải trừ chi phí sản xuất, ekip và kho bãi; và minh bạch là 'bảo hiểm' duy nhất cho uy tín khi con số lớn gây ồn ào."
   }
 ],
  "lots": [
