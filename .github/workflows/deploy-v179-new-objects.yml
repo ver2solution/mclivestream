@@ -1,0 +1,48 @@
+name: Deploy v179-new-objects (5 danh muc doi tuong moi)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v179-new-objects.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v179-new-objects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v179-new-objects package
+        run: |
+          unzip -o mclivestream-v179-new-objects-deploy.zip
+          echo "--- verify v179-new-objects ---"
+          for f in sw.js danh-sach-mau.html danh-sach-shop.html v20.css js/data.js js/app.js js/search.js; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
+          grep -q 'classesLive' js/data.js || (echo "THIEU 5 mang moi trong js/data.js"; exit 1)
+          grep -q 'class-live-01' js/data.js || (echo "THIEU muc mau class-live-01"; exit 1)
+          grep -q 'logistics-01' js/data.js || (echo "THIEU muc mau logistics-01"; exit 1)
+          grep -q 'newobj' js/app.js || (echo "THIEU code v179 trong js/app.js"; exit 1)
+          grep -q 'lop-live' js/search.js || (echo "THIEU index moi trong js/search.js"; exit 1)
+          grep -q 'newobj-card' v20.css || (echo "THIEU CSS moi trong v20.css"; exit 1)
+          grep -q 'lop-livestream-mc' danh-sach-mau.html || (echo "THIEU section lop-livestream-mc"; exit 1)
+          grep -q 'lop-makeup' danh-sach-mau.html || (echo "THIEU section lop-makeup"; exit 1)
+          grep -q 'su-kien-marketing' danh-sach-shop.html || (echo "THIEU section su-kien-marketing"; exit 1)
+          grep -q 'logistics-trung-viet' danh-sach-shop.html || (echo "THIEU section logistics-trung-viet"; exit 1)
+          grep -q 'cho-thue-cua-hang-kho' danh-sach-shop.html || (echo "THIEU section cho-thue-cua-hang-kho"; exit 1)
+          grep -q 'v179-shell-1' sw.js || (echo "THIEU CACHE v179-shell-1 trong sw.js"; exit 1)
+          echo "verify OK: 7 file v179, 5 mang moi + 5 muc mau + CACHE v179-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v179-new-objects-deploy.zip
+          git add -A sw.js danh-sach-mau.html danh-sach-shop.html v20.css js/data.js js/app.js js/search.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v179: 5 danh muc doi tuong moi (lop livestream/makeup, su kien marketing, logistics Trung-Viet, cho thue cua hang/kho)"
+            git push
+          fi
