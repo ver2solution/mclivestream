@@ -20,7 +20,7 @@ jobs:
           unzip -o mclivestream-v182-deploy.zip
           echo "--- verify v182 ---"
           for f in danh-sach-mau.html danh-sach-shop.html v20.css sw.js js/app.js; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
-          test ! -f js/data.js || (echo "SAI: goi v182 KHONG duoc chua js/data.js (data do goi 40 muc deploy rieng)"; exit 1)
+          if unzip -l mclivestream-v182-deploy.zip | grep -q 'js/data.js'; then echo "SAI: goi v182 KHONG duoc chua js/data.js (data do goi 40 muc deploy rieng)"; exit 1; fi
           # Nhan menu da sua dung (go loi v134): 'Danh cho Mau' -> danh-sach-mau.html, 'Danh cho Shop' -> danh-sach-shop.html
           grep -q 'href="danh-sach-mau.html" class="active">Dành cho Mẫu' danh-sach-mau.html || (echo "THIEU nhan dung trang Mau"; exit 1)
           grep -q 'href="danh-sach-shop.html" class="active">Dành cho Shop' danh-sach-shop.html || (echo "THIEU nhan dung trang Shop"; exit 1)
