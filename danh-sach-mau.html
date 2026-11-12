@@ -57,6 +57,8 @@
 <div class="uni-field" id="uf-prov"><label for="fUniProv">Tỉnh / Thành phố</label><select id="fUniProv" data-track="loc-tinh-chung"><option value="">Tất cả tỉnh</option><option value="Hà Nội">Hà Nội</option><option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option><option value="Hưng Yên">Hưng Yên</option><option value="Đồng Nai">Đồng Nai</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Huế">Huế</option><option value="Nghệ An">Nghệ An</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Cần Thơ">Cần Thơ</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Gia Lai">Gia Lai</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Toàn quốc / Live online">Toàn quốc / Live online</option></select></div>
 <div class="uni-field" id="uf-cat"><label for="fUniCat">Lĩnh vực / Mặt hàng</label><select id="fUniCat" data-track="loc-linh-vuc-chung"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
 <div class="uni-field" id="uf-sort"><label for="fUniSort">Sắp xếp</label><select id="fUniSort" data-track="sap-xep-chung"><option value="">Mặc định (mới nhất)</option><option value="hourly-asc">Lương giờ: thấp → cao</option><option value="hourly-desc">Lương giờ: cao → thấp</option><option value="monthly-asc">Lương tháng: thấp → cao</option><option value="monthly-desc">Lương tháng: cao → thấp</option></select></div>
+<!-- v186: sap xep theo hoc phi cho 2 muc lop hoc — chi mo khi chon class-live/class-makeup tren switch (khoa mac dinh); loc lop hoc chi con o loc chung tren top. -->
+<div class="uni-field locked" id="uf-classsort"><label for="fUniClassSort">Sắp xếp theo học phí</label><select id="fUniClassSort" data-track="sap-xep-hoc-phi-chung" disabled><option value="">Mới nhất</option><option value="price-asc">Học phí thấp → cao</option><option value="price-desc">Học phí cao → thấp</option></select></div>
 <div class="uni-field" id="uf-shift"><label for="fUniShift">Giờ làm</label><select id="fUniShift" data-track="loc-gio-lam-chung"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
 <div class="uni-field" id="uf-paytype"><label for="fUniPayType">Loại lương</label><select id="fUniPayType" data-track="loc-loai-luong-chung"><option value="">Tất cả lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
 <div class="uni-field" id="uf-paymin"><label id="fUniPayMinLabel" for="fUniPayMin">Mức lương tối thiểu</label><input id="fUniPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-chung" placeholder="Chọn loại lương trước" disabled></div>
@@ -110,15 +112,9 @@
 <section class="lot-section filter-section collapsed rows-1" id="lop-livestream-mc" aria-labelledby="class-live-title">
 <h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
 <p class="lot-sub" id="classLiveSub">Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.</p>
-<button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc lớp Livestream ▾</button>
-<div class="filter-card cols-3" id="fClassLiveFilter">
-<div class="uni-field"><label for="fClassLiveProv">Tỉnh / thành phố</label><select id="fClassLiveProv"><option value="">Tất cả tỉnh</option></select></div>
-<div class="uni-field"><label for="fClassLiveSort">Sắp xếp</label><select id="fClassLiveSort"><option value="">Mới nhất</option><option value="price-asc">Học phí thấp → cao</option><option value="price-desc">Học phí cao → thấp</option></select></div>
-<div class="uni-field uni-actions"><button class="btn btn-primary" id="classLiveApplyBtn" type="button">Áp dụng</button></div>
-<div class="uni-field uni-actions"><button class="btn btn-ghost" id="classLiveResetBtn" type="button">Đặt lại</button></div>
+<!-- v186: bo loc lop Live da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
 <p class="filter-count" id="classLiveCount"></p>
 <p class="filter-empty" id="classLiveEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
-</div>
 <div class="lot-grid" id="classLiveGrid"></div>
 <button class="lot-more" id="classLiveMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
@@ -127,15 +123,9 @@
 <section class="lot-section filter-section collapsed rows-1" id="lop-makeup" aria-labelledby="class-makeup-title">
 <h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
 <p class="lot-sub" id="classMakeupSub">Lớp học dạy makeup cá nhân và makeup lên hình livestream.</p>
-<button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc lớp Makeup ▾</button>
-<div class="filter-card cols-3" id="fClassMakeupFilter">
-<div class="uni-field"><label for="fClassMakeupProv">Tỉnh / thành phố</label><select id="fClassMakeupProv"><option value="">Tất cả tỉnh</option></select></div>
-<div class="uni-field"><label for="fClassMakeupSort">Sắp xếp</label><select id="fClassMakeupSort"><option value="">Mới nhất</option><option value="price-asc">Học phí thấp → cao</option><option value="price-desc">Học phí cao → thấp</option></select></div>
-<div class="uni-field uni-actions"><button class="btn btn-primary" id="classMakeupApplyBtn" type="button">Áp dụng</button></div>
-<div class="uni-field uni-actions"><button class="btn btn-ghost" id="classMakeupResetBtn" type="button">Đặt lại</button></div>
+<!-- v186: bo loc lop Makeup da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
 <p class="filter-count" id="classMakeupCount"></p>
 <p class="filter-empty" id="classMakeupEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
-</div>
 <div class="lot-grid" id="classMakeupGrid"></div>
 <button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>

@@ -1846,15 +1846,16 @@ var NEWOBJ_TYPES = {
 var NEWOBJ_ARRAYS = ['classesLive', 'classesMakeup', 'eventsMarketing', 'logistics', 'rentals'];
 var NEWOBJ_LOGISTICS_OPTIONS = {'chinh-ngach': 'Vận chuyển chính ngạch', 'tieu-ngach': 'Vận chuyển trọn gói – tiểu ngạch', 'mua-ho': 'Dịch vụ mua hàng hộ'};
 /* v182: 5 danh muc moi lam MUC CON trong bo loc chung (uni-cat-switch).
-   Map gia tri data-uni-cat -> cau hinh section moi, de switch + nut Ap dung
-   loc chung dieu khien dung section (dong bo tinh tu loc chung sang loc
-   rieng cua section roi goi apply cua section). */
+   v186: loc cua 5 muc CHI CON o loc chung tren top cua trang con do
+   (tinh dung chung + sap xep theo gia/hoc phi + hinh thuc logistics);
+   section chi giu luoi + dem/trong, KHONG con loc rieng. Map nay tro
+   thang toi o loc tren top de nut Ap dung loc chung doc dung gia tri. */
 var NEWOBJ_UNI_CATS = {
-  'class-live': {type: 'classesLive', sectionId: 'lop-livestream-mc', provId: 'fClassLiveProv', moreBtnId: 'classLiveMoreBtn', countId: 'classLiveCount', label: 'Lớp học Livestream/MC/Thuyết trình'},
-  'class-makeup': {type: 'classesMakeup', sectionId: 'lop-makeup', provId: 'fClassMakeupProv', moreBtnId: 'classMakeupMoreBtn', countId: 'classMakeupCount', label: 'Lớp học dạy Makeup'},
-  'event-mkt': {type: 'eventsMarketing', sectionId: 'su-kien-marketing', provId: 'fEventProv', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', label: 'Sự kiện Marketing chia sẻ kiến thức'},
-  'logistics': {type: 'logistics', sectionId: 'logistics-trung-viet', provId: 'fLogisticsProv', optionId: 'fLogisticsOption', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', label: 'Công ty logistics Trung–Việt'},
-  'rentals': {type: 'rentals', sectionId: 'cho-thue-cua-hang-kho', provId: 'fRentalsProv', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', label: 'Cho thuê cửa hàng/kho hàng'}
+  'class-live': {type: 'classesLive', sectionId: 'lop-livestream-mc', provId: 'fUniProv', moreBtnId: 'classLiveMoreBtn', countId: 'classLiveCount', label: 'Lớp học Livestream/MC/Thuyết trình'},
+  'class-makeup': {type: 'classesMakeup', sectionId: 'lop-makeup', provId: 'fUniProv', moreBtnId: 'classMakeupMoreBtn', countId: 'classMakeupCount', label: 'Lớp học dạy Makeup'},
+  'event-mkt': {type: 'eventsMarketing', sectionId: 'su-kien-marketing', provId: 'fShProv', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', label: 'Sự kiện Marketing chia sẻ kiến thức'},
+  'logistics': {type: 'logistics', sectionId: 'logistics-trung-viet', provId: 'fShProv', optionId: 'fShopLogOpt', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', label: 'Công ty logistics Trung–Việt'},
+  'rentals': {type: 'rentals', sectionId: 'cho-thue-cua-hang-kho', provId: 'fShProv', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', label: 'Cho thuê cửa hàng/kho hàng'}
 };
 function newObjUniCatCfg(cat){ return NEWOBJ_UNI_CATS[cat] || null; }
 /* Dem that theo mang du lieu (chi tinh muc co avatar — giong render). */
@@ -1925,16 +1926,8 @@ function renderNewObjSections(){
     var h = document.getElementById(cfg.countH2Id);
     if(h) h.textContent = '(' + items.length + ')';
   });
-  /* O loc tinh cua 5 muc: build dong tu D.provinces (nhu fUniProv). */
-  ['fClassLiveProv', 'fClassMakeupProv', 'fEventProv', 'fLogisticsProv', 'fRentalsProv'].forEach(function(id){
-    var sel = document.getElementById(id);
-    if(!sel) return;
-    var html = '<option value="">Tất cả tỉnh</option>';
-    (D.provinces || []).forEach(function(p){
-      html += '<option value="' + esc(p) + '">' + esc(p) + '</option>';
-    });
-    sel.innerHTML = html;
-  });
+  /* v186: loc rieng cua 5 muc da xoa — o Tinh dung o loc chung tren top
+     (fUniProv/fShProv, option cung san trong HTML), khong build o day nua. */
   /* v182: so dem (N) tren cac nut muc con trong bo loc chung. */
   refreshNewObjCatCounts();
 }
@@ -1944,10 +1937,12 @@ function newObjMatches(card, f){
   return true;
 }
 /* Khoi tao 1 section moi: bo loc dung chung initSectionFilter (tinh/tp +
-   option logistics + sap xep theo gia). Nut Ap dung / Dat lai gan TRUC
-   TIEP (khong qua gateFilterApply: 5 loai moi chua co points category,
-   khong can gate diem); sau khi ap dung thi gap bo loc tren mobile
-   (closeFilterOf) de thay ket qua ngay nhu cac bo loc khac. */
+   option logistics + sap xep theo gia) — v186: form loc doc TU LOC
+   CHUNG TREN TOP (provId/sortId/optionId tro toi o tren top, khong con
+   loc rieng trong section). Nut Ap dung / Dat lai o loc chung goi
+   h.apply()/h.reset() (khong qua gateFilterApply: 5 loai moi chua co
+   points category, khong can gate diem); sau khi ap dung thi gap bo loc
+   tren mobile (closeFilterOf) de thay ket qua ngay nhu cac bo loc khac. */
 function initNewObjSection(cfg){
   var sectionId = cfg.sectionId;
   if(!document.getElementById(sectionId)) return null;
@@ -1967,19 +1962,18 @@ function initNewObjSection(cfg){
   if(!h) return null;
   /* v179: giu handle de test/debug (refresh sau khi them the moi) + goi lai tu console. */
   if(typeof window !== 'undefined'){ window.V2S_NEWOBJ_FILTERS = window.V2S_NEWOBJ_FILTERS || {}; window.V2S_NEWOBJ_FILTERS[sectionId] = h; }
-  var ab = document.getElementById(cfg.applyId);
-  if(ab) ab.addEventListener('click', function(){ h.apply(); closeFilterOf(ab); });
-  var rb = document.getElementById(cfg.resetId);
-  if(rb) rb.addEventListener('click', function(){ h.reset(); });
   return h;
 }
 function initNewObjSections(){
   renderNewObjSections();
-  initNewObjSection({sectionId: 'lop-livestream-mc', moreBtnId: 'classLiveMoreBtn', filterId: 'fClassLiveFilter', countId: 'classLiveCount', emptyId: 'classLiveEmpty', label: 'lớp học', provId: 'fClassLiveProv', sortId: 'fClassLiveSort', applyId: 'classLiveApplyBtn', resetId: 'classLiveResetBtn'});
-  initNewObjSection({sectionId: 'lop-makeup', moreBtnId: 'classMakeupMoreBtn', filterId: 'fClassMakeupFilter', countId: 'classMakeupCount', emptyId: 'classMakeupEmpty', label: 'lớp học', provId: 'fClassMakeupProv', sortId: 'fClassMakeupSort', applyId: 'classMakeupApplyBtn', resetId: 'classMakeupResetBtn'});
-  initNewObjSection({sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn', filterId: 'fEventFilter', countId: 'eventMarketingCount', emptyId: 'eventMarketingEmpty', label: 'sự kiện', provId: 'fEventProv', sortId: 'fEventSort', applyId: 'eventMarketingApplyBtn', resetId: 'eventMarketingResetBtn'});
-  initNewObjSection({sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn', filterId: 'fLogisticsFilter', countId: 'logisticsCount', emptyId: 'logisticsEmpty', label: 'đơn vị vận chuyển', provId: 'fLogisticsProv', sortId: 'fLogisticsSort', optionId: 'fLogisticsOption', applyId: 'logisticsApplyBtn', resetId: 'logisticsResetBtn'});
-  initNewObjSection({sectionId: 'cho-thue-cua-hang-kho', moreBtnId: 'rentalsMoreBtn', filterId: 'fRentalsFilter', countId: 'rentalsCount', emptyId: 'rentalsEmpty', label: 'mặt bằng', provId: 'fRentalsProv', sortId: 'fRentalsSort', applyId: 'rentalsApplyBtn', resetId: 'rentalsResetBtn'});
+  /* v186: form loc doc tu loc chung tren top — lop hoc: tinh fUniProv +
+     sap xep hoc phi fUniClassSort (trang Mau); 3 muc shop: tinh fShProv +
+     sap xep gia fShopPriceSort + hinh thuc fShopLogOpt (chi logistics). */
+  initNewObjSection({sectionId: 'lop-livestream-mc', moreBtnId: 'classLiveMoreBtn', countId: 'classLiveCount', emptyId: 'classLiveEmpty', label: 'lớp học', provId: 'fUniProv', sortId: 'fUniClassSort'});
+  initNewObjSection({sectionId: 'lop-makeup', moreBtnId: 'classMakeupMoreBtn', countId: 'classMakeupCount', emptyId: 'classMakeupEmpty', label: 'lớp học', provId: 'fUniProv', sortId: 'fUniClassSort'});
+  initNewObjSection({sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', emptyId: 'eventMarketingEmpty', label: 'sự kiện', provId: 'fShProv', sortId: 'fShopPriceSort'});
+  initNewObjSection({sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', emptyId: 'logisticsEmpty', label: 'đơn vị vận chuyển', provId: 'fShProv', sortId: 'fShopPriceSort', optionId: 'fShopLogOpt'});
+  initNewObjSection({sectionId: 'cho-thue-cua-hang-kho', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', emptyId: 'rentalsEmpty', label: 'mặt bằng', provId: 'fShProv', sortId: 'fShopPriceSort'});
   /* Bam anh hoac nut "Xem chi tiet" tren the moi -> mo modal dung chung.
      Gan 1 lan (guard) vi init chay moi lan DOMContentLoaded. */
   if(typeof document !== 'undefined' && !document._v2sNewObjDetailBound){
@@ -2755,12 +2749,14 @@ var UNI_LOCKABLE = {
   lot: ['fUniCat','fUniLotPrice','fUniLotQty'],
   factory: ['fUniCat','fUniFacValue','fUniFacMoq'],
   /* v182: 2 muc con moi — chi o Tinh dung chung co nghia (fUniProv khong
-     nam trong danh sach khoa nen luon mo); Linh vuc + Sap xep + Gio lam +
-     Luong + truong Lo/Xuong deu khoa. */
-  'class-live': [],
-  'class-makeup': []
+     nam trong danh sach khoa nen luon mo); Linh vuc + Sap xep luong + Gio
+     lam + Luong + truong Lo/Xuong deu khoa.
+     v186: them o Sap xep theo hoc phi (fUniClassSort) — mo cho 2 muc lop
+     hoc, khoa o cac muc khac; loc lop hoc chi con o loc chung tren top. */
+  'class-live': ['fUniClassSort'],
+  'class-makeup': ['fUniClassSort']
 };
-var UNI_LOCKABLE_ALL = ['fUniCat','fUniSort','fUniShift','fUniPayType','fUniPayMin','fUniLotPrice','fUniLotQty','fUniFacValue','fUniFacMoq'];
+var UNI_LOCKABLE_ALL = ['fUniCat','fUniSort','fUniShift','fUniPayType','fUniPayMin','fUniLotPrice','fUniLotQty','fUniFacValue','fUniFacMoq','fUniClassSort'];
 function getUniCat(){
   // v118 (P2-9): phong thu — moi truong test co the khong co
   // document.querySelector; luc do tab mac dinh la 'model' (nhu khi khong
@@ -2883,15 +2879,13 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       var cat = getUniCat();
       var b = applyBtn;
       /* v182: muc con moi — KHONG qua cong diem (5 loai moi chua co points
-         category, giong nut Ap dung rieng cua section). Dong bo tinh tu
-         loc chung sang loc rieng cua section roi goi apply cua section
-         (loc dung mang du lieu cua muc do, ket hop loc tinh); so dem
-         phan anh sang o dem chung. */
+         category, giong nut Ap dung rieng cua section).
+         v186: loc cua section doc TRUC TIEP tu loc chung tren top (tinh
+         fUniProv + sap xep hoc phi fUniClassSort) — khong con dong bo sang
+         loc rieng; goi apply cua section (loc dung mang du lieu cua muc
+         do, ket hop loc tinh); so dem phan anh sang o dem chung. */
       var ncfg = NEWOBJ_UNI_CATS[cat];
       if(ncfg){
-        var provSel = document.getElementById(ncfg.provId);
-        var uniProv = document.getElementById('fUniProv');
-        if(provSel && uniProv) provSel.value = uniProv.value;
         var h = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg.sectionId] : null;
         if(h && h.apply) h.apply();
         var c = document.getElementById('uniCount');
@@ -3001,9 +2995,10 @@ function initShops(){
   if(fShPayTypeEl) fShPayTypeEl.addEventListener('change',syncPayMin);
   syncPayMin();
   /* v182: switch chon hang muc cho bo loc shop — mac dinh 'shop' (danh sach
-     shop); 3 muc con moi loc dung section cua no (ket hop loc tinh + hinh
-     thuc logistics). Chi hien section cua muc dang chon (an cac section moi
-     con lai); ve 'shop' thi hien lai tat ca. */
+     shop); v186: loc 3 muc moi chi con o loc chung tren top (tinh + sap
+     xep gia + hinh thuc logistics), option shop khoa khi chon muc moi.
+     Chi hien section cua muc dang chon (an cac section moi con lai);
+     ve 'shop' thi hien lai tat ca. */
   var shopCatBtns = document.querySelectorAll('#shopFilterSwitch .uni-cat-btn');
   function setShopCat(cat){
     shopCatBtns.forEach(function(b){
@@ -3025,6 +3020,14 @@ function initShops(){
       var lw = lo.closest ? lo.closest('.uni-field') : null;
       if(cat === 'logistics'){ lo.disabled = false; if(lw) lw.classList.remove('locked'); refreshShopLogOptCounts(); }
       else { lo.disabled = true; lo.value = ''; if(lw) lw.classList.add('locked'); }
+    }
+    /* v186: o Sap xep theo gia chi mo khi dang chon 1 trong 3 muc moi
+       (event/logistics/rentals); chon 'shop' thi khoa + xoa gia tri. */
+    var ps = document.getElementById('fShopPriceSort');
+    if(ps){
+      var pw = ps.closest ? ps.closest('.uni-field') : null;
+      if(isNew){ ps.disabled = false; if(pw) pw.classList.remove('locked'); }
+      else { ps.disabled = true; ps.value = ''; if(pw) pw.classList.add('locked'); }
     }
     var sc = document.getElementById('shopCount'); if(sc) sc.textContent = '';
     var ncfg = NEWOBJ_UNI_CATS[cat];
@@ -3054,19 +3057,13 @@ function initShops(){
   var applyBtn=document.getElementById('shopApplyBtn');
   if(applyBtn) applyBtn.addEventListener('click',function(){
     var b=applyBtn;
-    /* v182: muc con moi — dong bo tinh (+ hinh thuc logistics) roi goi apply
-       cua section, khong qua cong diem (giong nut Ap dung rieng). */
+    /* v182: muc con moi — goi apply cua section, khong qua cong diem
+       (giong nut Ap dung rieng). v186: loc cua section doc TRUC TIEP tu
+       loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort +
+       hinh thuc fShopLogOpt) — khong con dong bo sang loc rieng. */
     var cat = getUniCat();
     var ncfg = NEWOBJ_UNI_CATS[cat];
     if(ncfg){
-      var provSel = document.getElementById(ncfg.provId);
-      var shProv = document.getElementById('fShProv');
-      if(provSel && shProv) provSel.value = shProv.value;
-      if(cat === 'logistics'){
-        var optSel = document.getElementById('fLogisticsOption');
-        var shOpt = document.getElementById('fShopLogOpt');
-        if(optSel && shOpt) optSel.value = shOpt.value;
-      }
       var h = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg.sectionId] : null;
       if(h && h.apply) h.apply();
       var c = document.getElementById('shopCount');
@@ -3079,7 +3076,7 @@ function initShops(){
   });
   var resetBtn=document.getElementById('shopResetBtn');
   if(resetBtn) resetBtn.addEventListener('click',function(){
-    ['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin','fShopLogOpt'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';});
+    ['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin','fShopLogOpt','fShopPriceSort'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';});
     syncPayMin();
     /* v182: dat lai loc 5 muc moi + ve hang muc mac dinh 'shop'. */
     Object.keys(NEWOBJ_UNI_CATS).forEach(function(k){
