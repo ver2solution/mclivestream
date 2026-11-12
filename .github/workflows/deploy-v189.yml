@@ -1,0 +1,53 @@
+name: "Deploy v189 (dao nhan menu: mau=Danh cho Mau, shop=Danh cho Shop)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v189.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v189:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v189 package
+        run: |
+          unzip -o mclivestream-v189-2026-11-13-deploy.zip
+          echo "--- verify v189 (TRONG ZIP) ---"
+          # Goi chi co 204 file .html + sw.js (KHONG co js/, tests/, tools/, android/).
+          test "$(unzip -l mclivestream-v189-2026-11-13-deploy.zip | grep -c '\.html$')" -eq 204 || (echo "SAI: goi v189 phai co dung 204 file .html"; exit 1)
+          test "$(unzip -l mclivestream-v189-2026-11-13-deploy.zip | grep -c ' sw.js$')" -eq 1 || (echo "SAI: goi v189 phai co dung 1 sw.js"; exit 1)
+          if unzip -l mclivestream-v189-2026-11-13-deploy.zip | grep -q ' js/\| tests/\| tools/\| android/'; then echo "SAI: goi v189 KHONG duoc chua js/tests/tools/android"; exit 1; fi
+          # Moi file .html trong goi phai co cap nhan MOI, khong con cap nhan cu.
+          NEWOK=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -q 'danh-sach-mau.html" class="">Dành cho Mẫu' "$f" && grep -q 'danh-sach-shop.html" class="">Dành cho Shop' "$f" && echo ok; done | wc -l)
+          test "$NEWOK" -eq 204 || (echo "SAI: chi $NEWOK/204 file co cap nhan moi"; exit 1)
+          OLD=$(for f in $(unzip -Z1 mclivestream-v189-2026-11-13-deploy.zip | grep '\.html$'); do grep -l 'danh-sach-mau.html" class="">Dành cho Shop' "$f" 2>/dev/null; grep -l 'danh-sach-shop.html" class="">Dành cho Mẫu' "$f" 2>/dev/null; done | wc -l)
+          test "$OLD" -eq 0 || (echo "SAI: van con $OLD file mang cap nhan cu"; exit 1)
+          # Du lieu + bo loc KHONG bi doi: lop hoc van o trang mau, su kien/logistics/cho thue van o trang shop.
+          grep -q 'id="lop-livestream-mc"' danh-sach-mau.html || (echo "SAI: trang mau thieu section lop-livestream-mc"; exit 1)
+          grep -q 'id="lop-makeup"' danh-sach-mau.html || (echo "SAI: trang mau thieu section lop-makeup"; exit 1)
+          grep -q 'id="su-kien-marketing"' danh-sach-shop.html || (echo "SAI: trang shop thieu section su-kien-marketing"; exit 1)
+          grep -q 'id="logistics-trung-viet"' danh-sach-shop.html || (echo "SAI: trang shop thieu section logistics"; exit 1)
+          grep -q 'id="cho-thue-cua-hang-kho"' danh-sach-shop.html || (echo "SAI: trang shop thieu section cho-thue"; exit 1)
+          # sw.js: CACHE v189 (doi HTML shell -> phai bump, SW cache-first)
+          grep -q "const CACHE = 'v189-shell-1';" sw.js || (echo "SAI: sw.js thieu CACHE v189-shell-1"; exit 1)
+          echo "verify OK: 204 file nhan moi (mau=Danh cho Mau, shop=Danh cho Shop) + du lieu/bo loc giu nguyen + sw.js (CACHE v189-shell-1)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v189-2026-11-13-deploy.zip
+          git add -A
+          git status --short | head -8
+          echo "changed files: $(git status --short | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v189: đảo nhãn menu — mau.html='Dành cho Mẫu', shop.html='Dành cho Shop' (lệnh anh 02:09 ngày 13/11) + CACHE v189-shell-1"
+            git push
+          fi
