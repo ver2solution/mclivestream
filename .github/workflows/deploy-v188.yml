@@ -1,0 +1,58 @@
+name: "Deploy v188 (pheu dang ky: CTA hero + tim-kiem + FAQ email)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v188.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v188:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v188 package
+        run: |
+          unzip -o mclivestream-v188-2026-11-13-deploy.zip
+          echo "--- verify v188 (TRONG ZIP) ---"
+          # Goi chi co dung 4 file: index.html, tim-kiem.html, v20.css, sw.js.
+          # KHONG co js/data.js, js/app.js, mclivestream-supabase.js, bai-viet/, danh-sach-*.html, thanh-ly-*.html
+          if unzip -l mclivestream-v188-2026-11-13-deploy.zip | grep -q 'js/data.js\|js/app.js\|mclivestream-supabase.js\|bai-viet/\|danh-sach-\|thanh-ly-\|sw.js.orig'; then echo "SAI: goi v188 KHONG duoc chua data.js/app.js/supabase/bai-viet/trang con"; exit 1; fi
+          test "$(unzip -l mclivestream-v188-2026-11-13-deploy.zip | grep -c ' index.html$')" -eq 1 || (echo "SAI: goi v188 phai co dung 1 index.html"; exit 1)
+          test "$(unzip -l mclivestream-v188-2026-11-13-deploy.zip | grep -c ' tim-kiem.html$')" -eq 1 || (echo "SAI: goi v188 phai co dung 1 tim-kiem.html"; exit 1)
+          test "$(unzip -l mclivestream-v188-2026-11-13-deploy.zip | grep -c ' v20.css$')" -eq 1 || (echo "SAI: goi v188 phai co dung 1 v20.css"; exit 1)
+          test "$(unzip -l mclivestream-v188-2026-11-13-deploy.zip | grep -c ' sw.js$')" -eq 1 || (echo "SAI: goi v188 phai co dung 1 sw.js"; exit 1)
+          # index.html: CTA hero dang ky (khong gan ?type=model) + FAQ da sua
+          grep -q 'data-track="dang-ky-hero"' index.html || (echo "SAI: index.html thieu CTA dang-ky-hero"; exit 1)
+          grep -q 'Đăng ký miễn phí — nhận 10 xu →' index.html || (echo "SAI: index.html thieu chu CTA 10 xu"; exit 1)
+          grep -q 'class="btn btn-light" href="dang-ky.html"' index.html || (echo "SAI: index.html CTA phai la nut trang btn-light, link dang-ky.html khong type"; exit 1)
+          if grep -q 'xác nhận email rồi mới dùng được' index.html; then echo "SAI: index.html van con FAQ sai ve xac nhan email"; exit 1; fi
+          if grep -q 'xác nhận email, rồi đăng nhập' index.html; then echo "SAI: index.html van con FAQ sai ve xac nhan email (2)"; exit 1; fi
+          grep -q 'không cần xác nhận email' index.html || (echo "SAI: index.html FAQ chua ghi khong can xac nhan email"; exit 1)
+          # tim-kiem.html: CTA dang ky sau form tim kiem
+          grep -q 'data-track="dang-ky-tim-kiem"' tim-kiem.html || (echo "SAI: tim-kiem.html thieu CTA dang-ky-tim-kiem"; exit 1)
+          grep -q 'Đăng ký miễn phí — nhận 10 xu →' tim-kiem.html || (echo "SAI: tim-kiem.html thieu chu CTA 10 xu"; exit 1)
+          # v20.css: class CTA moi
+          grep -q '\.hero-cta{display:flex' v20.css || (echo "SAI: v20.css thieu .hero-cta"; exit 1)
+          grep -q '\.search-cta{display:flex' v20.css || (echo "SAI: v20.css thieu .search-cta"; exit 1)
+          # sw.js: CACHE v188 (doi CSS/JS shell -> phai bump, SW cache-first)
+          grep -q "const CACHE = 'v188-shell-1';" sw.js || (echo "SAI: sw.js thieu CACHE v188-shell-1"; exit 1)
+          echo "verify OK: index.html (CTA hero + FAQ) + tim-kiem.html (CTA) + v20.css (.hero-cta/.search-cta) + sw.js (CACHE v188-shell-1)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v188-2026-11-13-deploy.zip
+          git add -A
+          git status --short | head -8
+          echo "changed files: $(git status --short | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v188: phễu đăng ký — CTA đăng ký hero trang chủ + trang tìm kiếm, sửa FAQ sai về xác nhận email + CACHE v188-shell-1"
+            git push
+          fi
