@@ -1,0 +1,22 @@
+name: deploy-v173
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List and unzip deploy package
+        run: |
+          unzip -l mclivestream-v173-tim-kiem-deploy.zip
+          unzip -o mclivestream-v173-tim-kiem-deploy.zip
+          rm mclivestream-v173-tim-kiem-deploy.zip
+      - name: Commit and push
+        run: |
+          git config user.name "Ryan"
+          git config user.email "ver2solution@gmail.com"
+          git add -A
+          git commit -m "v173: tim kiem (tim-kiem.html + js/search.js)" || echo "nothing to commit"
+          git push
