@@ -1,0 +1,40 @@
+name: Deploy v180-pin-longer (dong ghim lau hon + nut dang ky/dang nhap)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v180-pin-longer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v180-pin-longer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v180-pin-longer package
+        run: |
+          unzip -o mclivestream-v180-pin-longer-deploy.zip
+          echo "--- verify v180-pin-longer ---"
+          for f in sw.js danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html danh-sach-shop.html v20.css js/app.js; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
+          grep -q 'PIN_LONGER_HTML' js/app.js || (echo "THIEU PIN_LONGER_HTML trong js/app.js"; exit 1)
+          grep -q 'pin-longer-btn' v20.css || (echo "THIEU pin-longer-btn trong v20.css"; exit 1)
+          grep -q 'v180-shell-1' sw.js || (echo "THIEU CACHE v180-shell-1 trong sw.js"; exit 1)
+          for f in danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html danh-sach-shop.html; do grep -q 'ghim lâu hơn' "$f" || (echo "THIEU dong ghim lau hon trong $f"; exit 1); done
+          echo "verify OK: 11 file v180, PIN_LONGER_HTML + pin-longer-btn + 8 file HTML co dong ghim lau hon + CACHE v180-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v180-pin-longer-deploy.zip
+          git add -A sw.js danh-sach-mau.html danh-sach-lo.html danh-sach-xuong.html danh-sach-kiot.html dang-ky.html dang-nhap.html thanh-ly-kiot.html danh-sach-shop.html v20.css js/app.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v180: dong ghim lau hon + nut dang ky/dang nhap o cuoi muc ghi chu (chi tiet ho so)"
+            git push
+          fi
