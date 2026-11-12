@@ -199,8 +199,11 @@ function decisionHTML(m){
   + '</div>';
 }
 /* v40: dong mien tru trach nhiem o cuoi moi the mau/shop (yeu cau nguoi dung
-   toi 05/11/2026, ban viet lai da chot) — dat sau nut hanh dong, o day the. */
-var DISCLAIMER = 'Miễn trừ trách nhiệm: Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.';
+   toi 05/11/2026, ban viet lai da chot) — dat sau nut hanh dong, o day the.
+   v177 (12/11/2026, anh Thọ chốt): them cau ket noi cung cau do chu noi
+   dung public cong khai + cau ghim sao o cuoi; ap dung cho ca 5 loai ho so
+   (mau/shop chi tiet day du + modal dung chung lotFactoryKiotDetailHTML). */
+var DISCLAIMER = 'Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).';
 /* v42: dong huong dan chu so huu o cuoi moi the (yeu cau nguoi dung 06/11/2026),
    ngay DUOI .disclaimer, la phan tu cuoi cung cua the. Khop quy tac so huu ho
    so chot 05/11/2026 23:38: chi chu ho so dang ky tai khoan, khop thong tin
@@ -1182,6 +1185,10 @@ function lotFactoryKiotDetailHTML(kind, item){
   + '<div class="fact-grid">' + facts + '</div>'
   + '<div class="detail-actions">' + starButtonHTML(starKind, item.id) + fullLink + origin + '</div>'
   + '<p class="detail-note">' + note + '</p>'
+  /* v177: mien tru o cuoi thong tin chi tiet cho ca 5 loai (lo/xuong/kiot
+     truoc day chua co; mau/shop modal cung hien nhu trang chi tiet day du).
+     Dat sau note, truoc phan binh luan. */
+  + '<p class="disclaimer">'+DISCLAIMER+'</p>'
   + comments;
 }
 function openLotFactoryKiotDetail(id){
