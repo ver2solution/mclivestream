@@ -1,0 +1,55 @@
+name: Deploy v182 (sua nhan menu + 5 muc moi lam muc con trong bo loc)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v182.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v182:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v182 package
+        run: |
+          unzip -o mclivestream-v182-deploy.zip
+          echo "--- verify v182 ---"
+          for f in danh-sach-mau.html danh-sach-shop.html v20.css sw.js js/app.js; do test -f "$f" || (echo "THIEU file $f"; exit 1); done
+          test ! -f js/data.js || (echo "SAI: goi v182 KHONG duoc chua js/data.js (data do goi 40 muc deploy rieng)"; exit 1)
+          # Nhan menu da sua dung (go loi v134): 'Danh cho Mau' -> danh-sach-mau.html, 'Danh cho Shop' -> danh-sach-shop.html
+          grep -q 'href="danh-sach-mau.html" class="active">Dành cho Mẫu' danh-sach-mau.html || (echo "THIEU nhan dung trang Mau"; exit 1)
+          grep -q 'href="danh-sach-shop.html" class="active">Dành cho Shop' danh-sach-shop.html || (echo "THIEU nhan dung trang Shop"; exit 1)
+          # 5 muc con trong bo loc
+          grep -q 'data-uni-cat="class-live"' danh-sach-mau.html || (echo "THIEU muc con lop Livestream (Mau)"; exit 1)
+          grep -q 'data-uni-cat="class-makeup"' danh-sach-mau.html || (echo "THIEU muc con lop Makeup (Mau)"; exit 1)
+          grep -q 'id="shopFilterSwitch"' danh-sach-shop.html || (echo "THIEU switch loc Shop"; exit 1)
+          grep -q 'data-uni-cat="event-mkt"' danh-sach-shop.html || (echo "THIEU muc con su kien (Shop)"; exit 1)
+          grep -q 'data-uni-cat="logistics"' danh-sach-shop.html || (echo "THIEU muc con logistics (Shop)"; exit 1)
+          grep -q 'data-uni-cat="rentals"' danh-sach-shop.html || (echo "THIEU muc con cho thue (Shop)"; exit 1)
+          grep -q 'id="fShopLogOpt"' danh-sach-shop.html || (echo "THIEU o hinh thuc van chuyen logistics"; exit 1)
+          grep -q 'NEWOBJ_UNI_CATS' js/app.js || (echo "THIEU NEWOBJ_UNI_CATS trong js/app.js"; exit 1)
+          grep -q 'refreshNewObjCatCounts' js/app.js || (echo "THIEU refreshNewObjCatCounts trong js/app.js"; exit 1)
+          grep -q 'lot-section\[hidden\]{display:none}' v20.css || (echo "THIEU CSS lot-section[hidden]"; exit 1)
+          # Ticker v181 van nguyen (khong mat dong live)
+          grep -q 'color:#003366' v20.css || (echo "MAT mau xanh ticker #003366"; exit 1)
+          grep -q 'ticker-sep{color:#ff0000' v20.css || (echo "MAT phan cach do ticker"; exit 1)
+          grep -q 'v182-shell-1' sw.js || (echo "THIEU CACHE v182-shell-1 trong sw.js"; exit 1)
+          echo "verify OK: 5 file v182 — nhan menu dung + 5 muc con loc + ticker v181 nguyen + CACHE v182-shell-1, KHONG co js/data.js"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v182-deploy.zip
+          git add -A danh-sach-mau.html danh-sach-shop.html v20.css sw.js js/app.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v182: sua nhan menu (go loi v134) + 5 muc moi lam muc con trong bo loc"
+            git push
+          fi
