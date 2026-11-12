@@ -1,0 +1,20 @@
+name: deploy-v174
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip and commit
+        run: |
+          unzip -l mclivestream-v174-136-deploy.zip
+          unzip -o mclivestream-v174-136-deploy.zip
+          rm mclivestream-v174-136-deploy.zip
+          git add -A
+          git config user.name "Ryan"
+          git config user.email "ver2solution@gmail.com"
+          git commit -m "v174: moc online 136 (00:00 13/11)"
+          git push
