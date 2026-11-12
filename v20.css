@@ -208,11 +208,16 @@ a:hover{text-decoration:underline}
 .filter-area{position:relative}/* v116 (M15): neo overlay .v2s-filter-msg */
 .filter-area .filter-title:first-child{margin-top:6px}
 /* v96: khung loc chung trang Shop — thanh truot chon hang muc (segmented
-   control 3 nut) + truong bi khoa (mo + khong bam duoc). */
-.uni-cat-switch{display:flex;gap:6px;background:#e7efec;border:1px solid var(--line);border-radius:999px;padding:5px;margin:0 0 10px}
-.uni-cat-switch .uni-cat-btn{flex:1;min-width:0;border:0;background:transparent;border-radius:999px;padding:11px 6px;font:inherit;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+   control 3 nut) + truong bi khoa (mo + khong bam duoc).
+   v182: switch nay co them 5 muc con moi (2 nut trang Mau, 3 nut trang Shop)
+   nen cho phep xuong hang (flex-wrap) + nut co min-width de nhan + so dem
+   (N) khong bi cat; section moi bi an khi chon muc con khac thi display:none. */
+.uni-cat-switch{display:flex;flex-wrap:wrap;gap:6px;background:#e7efec;border:1px solid var(--line);border-radius:999px;padding:5px;margin:0 0 10px}
+.uni-cat-switch .uni-cat-btn{flex:1 1 140px;min-width:0;border:0;background:transparent;border-radius:999px;padding:11px 6px;font:inherit;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .uni-cat-switch .uni-cat-btn.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(11,93,78,.28)}
 .uni-cat-switch .uni-cat-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.uni-cat-switch .uni-cat-btn .uni-cat-count{white-space:nowrap}
+.lot-section[hidden]{display:none}
 .filter-card .uni-field.locked{opacity:.55}
 .filter-card .uni-field.locked label{color:#9aa8a2}
 .filter-card select:disabled,.filter-card input:disabled{background:#f1f4f2;color:#8a9a94;cursor:not-allowed}
@@ -590,12 +595,21 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-section.collapsed .lot-extra{display:none}
 #faq.collapsed .faq-extra{display:none}/* v75: FAQ trang chu chi hien 3 cau dau, cac cau sau an sau nut Xem them */
 .lot-section.collapsed .lot-grid .lot-card:nth-child(n+13){display:none}
+/* v181: muc lop hoc fix 1 hang khi thu gon (desktop 6 the = 1 hang x 6 cot,
+   tablet 2 the = 1 hang x 2 cot, mobile 1 the = 1 hang x 1 cot). */
+.lot-section.collapsed.rows-1 .lot-grid .lot-card:nth-child(n+7){display:none}
 /* v64: loc lo/xuong — the khong khop bo loc luon an, ke ca khi mo rong */
 .lot-card.lot-filtered-out{display:none}
 .filter-count{margin:6px 0 0;color:var(--mut);font-size:13px}
 .filter-empty{margin:6px 0 0;color:#8a5a00;font-size:13px}
 @media(max-width:1000px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+5){display:none}}
+@media(max-width:1000px){.lot-section.collapsed.rows-1 .lot-grid .lot-card:nth-child(n+3){display:none}}
 @media(max-width:600px){.lot-section.collapsed .lot-grid .lot-card:nth-child(n+3){display:none}}
+@media(max-width:600px){.lot-section.collapsed.rows-1 .lot-grid .lot-card:nth-child(n+2){display:none}}
+/* v181: khoi shop da duyet / tin tuyen da duyet (trang Mau) rut gon 2 hang
+   khi thu gon — moi danh sach chi hien 2 muc .news-item dau. */
+#shops-approved.collapsed #approvedShopsList .news-item:nth-child(n+3){display:none}
+#shops-approved.collapsed #approvedJobsList .news-item:nth-child(n+3){display:none}
 .lot-more{display:block;margin:16px auto 0;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:#eef7f2;color:var(--brand);font-weight:800;font-size:15px;cursor:pointer}
 .lot-more:hover{background:#dff0ea}
 /* v179: 5 danh muc doi tuong moi — the co anh dai dien dau the (anh 16/10,

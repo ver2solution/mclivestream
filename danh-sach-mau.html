@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Shop</a><a href="danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=danh-sach-mau.html">Đăng Nhập</a></div></header>
 <div class="wrap"><div class="ticker" id="modelTicker" data-ticker="model" aria-label="Tin shop và bài mới"><div class="ticker-track"></div></div></div>
 <main class="wrap">
@@ -47,6 +47,11 @@
 <button type="button" class="uni-cat-btn active" data-uni-cat="model" aria-pressed="true" data-track="chon-tim-mau">Tìm Mẫu Livestream</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">Tìm lô hàng xả kho</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">Tìm xưởng may sản xuất</button>
+<!-- v182: 5 danh muc moi lam MUC CON trong bo loc chung — chon muc nao thi
+     loc dung mang du lieu cua muc do (ket hop loc tinh); so dem trong () cap
+     nhat tu D boi refreshNewObjCatCounts (js/app.js). -->
+<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
 <div class="uni-field" id="uf-prov"><label for="fUniProv">Tỉnh / Thành phố</label><select id="fUniProv" data-track="loc-tinh-chung"><option value="">Tất cả tỉnh</option><option value="Hà Nội">Hà Nội</option><option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option><option value="Hưng Yên">Hưng Yên</option><option value="Đồng Nai">Đồng Nai</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Huế">Huế</option><option value="Nghệ An">Nghệ An</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Cần Thơ">Cần Thơ</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Gia Lai">Gia Lai</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Toàn quốc / Live online">Toàn quốc / Live online</option></select></div>
@@ -101,8 +106,8 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("xuong-may-gia-cong");if(!s)return;var b=document.getElementById("factoryMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<!-- v179: 5 danh muc doi tuong moi — 2 muc lop hoc (du lieu that tu cron thu thap 11:21; hien co 1 muc mau/muc de test giao dien) -->
-<section class="lot-section filter-section collapsed" id="lop-livestream-mc" aria-labelledby="class-live-title">
+<!-- v179: 5 danh muc doi tuong moi — 2 muc lop hoc (du lieu that tu cron thu thap 11:21; hien co 1 muc mau/muc de test giao dien). v181: 2 muc lop hoc fix 1 hang (class rows-1) -->
+<section class="lot-section filter-section collapsed rows-1" id="lop-livestream-mc" aria-labelledby="class-live-title">
 <h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
 <p class="lot-sub" id="classLiveSub">Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.</p>
 <button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc lớp Livestream ▾</button>
@@ -119,7 +124,7 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("lop-livestream-mc");if(!s)return;var b=document.getElementById("classLiveMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed" id="lop-makeup" aria-labelledby="class-makeup-title">
+<section class="lot-section filter-section collapsed rows-1" id="lop-makeup" aria-labelledby="class-makeup-title">
 <h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
 <p class="lot-sub" id="classMakeupSub">Lớp học dạy makeup cá nhân và makeup lên hình livestream.</p>
 <button class="filter-toggle" type="button" aria-expanded="false">Bộ lọc lớp Makeup ▾</button>
@@ -138,11 +143,14 @@
 <script>(function(){var s=document.getElementById("lop-makeup");if(!s)return;var b=document.getElementById("classMakeupMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 </section>
 
-<section class="form-card" aria-labelledby="shops-approved-title"><h2 id="shops-approved-title">Shop đã đăng ký hồ sơ trên sàn (đã duyệt)</h2>
+<!-- v181: khoi shop da duyet / tin tuyen da duyet rut gon 2 hang (class collapsed + nut Xem them) -->
+<section class="form-card collapsed" id="shops-approved" aria-labelledby="shops-approved-title"><h2 id="shops-approved-title">Shop đã đăng ký hồ sơ trên sàn (đã duyệt)</h2>
 <p id="shopBackendStatus">Đang tải danh sách shop đã duyệt…</p>
 <div id="approvedShopsList"><p class="empty-state">Hiện chưa có shop nào đăng ký hồ sơ trên sàn được duyệt. Shop đăng ký hồ sơ ở <a href="#ho-so-shop">form bên dưới</a> — sau khi Ver2Solution duyệt, hồ sơ sẽ hiện công khai tại đây.</p></div>
 <h3>Tin tuyển mẫu đã duyệt</h3><p id="approvedJobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
+<button class="lot-more" id="shopsApprovedMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p style="font-size:13px">Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop; thông tin chưa công khai không hiển thị. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Cần ứng tuyển mà shop không ghi liên hệ thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo Ver2Solution 032 998 3699</a> để được giới thiệu.</p></section>
+<script>(function(){var s=document.getElementById("shops-approved");if(!s)return;var b=document.getElementById("shopsApprovedMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
 <div id="shopProfileGate"><p>Bạn cần đăng nhập để tạo / sửa hồ sơ shop.</p><p><a class="btn btn-primary" href="#dang-nhap-shop">Đăng Nhập</a></p></div>
