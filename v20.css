@@ -95,6 +95,11 @@ a:hover{text-decoration:underline}
 .hero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.10)}
 .hero h1{font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin:6px 0 10px;max-width:760px}
 .hero p{color:#d7ece6;max-width:720px;margin:0 0 20px}
+/* v188 (phễu đăng ký, 13/11/2026): CTA đăng ký ở hero trang chủ + trang tìm kiếm — đầu phễu chết đói (16 lượt xem dang-ky.html/1.382 pv ngày 12/11). Nút hero dùng .btn-light (trắng) để nổi trên nền hero xanh đậm. */
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 20px}
+.hero-cta-note{color:#d7ece6;font-size:14px}
+.search-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 0}
+.search-cta span{font-size:14px;color:#555}
 .eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);border-radius:999px;padding:6px 12px;font-weight:800;font-size:13px}
 .live-dot{width:9px;height:9px;border-radius:50%;background:#ff5a4e;display:inline-block}
 .search-card{background:#fff;color:var(--ink);border-radius:18px;padding:14px;display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:10px;position:relative;z-index:1;box-shadow:var(--sh)}
@@ -920,6 +925,8 @@ th{background:#f4f8f6}
    thi hien inline theo dong chu. */
 .v2s-star-btn{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:14px;font-weight:800;color:#b7791f;cursor:pointer;display:inline-flex;gap:4px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
 .v2s-star-btn.starred{color:#d97706;background:#fef3c7;border-color:#f59e0b}
+@keyframes v2s-star-pop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.v2s-star-btn.v2s-star-pop .v2s-star-count{display:inline-block;animation:v2s-star-pop .6s ease} /* v185: hieu ung so nhay len khi an sao */
 .v2s-star-btn:disabled{cursor:default}
 .detail-star{margin:12px 0 0;font-size:14px}
 .detail-star .v2s-star-btn{position:static;box-shadow:none}

@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v187-shell-1'; /* v187: sua SEO bai 11-12/11: 8 bai them og:image:alt+og:locale, 1 bai them muc Nguon, 47 doan so lieu gan ngay (25 doan lo 12/11 + 22 doan lo 11/11) */
+const CACHE = 'v188-shell-1'; /* v188: phễu đăng ký — CTA đăng ký hero trang chủ + trang tìm kiếm, sửa FAQ sai về xác nhận email */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
