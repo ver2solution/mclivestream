@@ -1,0 +1,49 @@
+name: Deploy v184 (trang chu 5 muc moi + loc trung ho so)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v184.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v184:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v184 package
+        run: |
+          unzip -o mclivestream-v184-homepage-deploy.zip
+          echo "--- verify v184 (TRONG ZIP) ---"
+          if unzip -l mclivestream-v184-homepage-deploy.zip | grep -q 'js/data.js'; then echo "SAI: goi v184 KHONG duoc chua js/data.js"; exit 1; fi
+          test "$(unzip -l mclivestream-v184-homepage-deploy.zip | grep -c 'index.html\|js/app.js\|sw.js')" -eq 3 || (echo "SAI: goi v184 phai co dung 3 file (index.html, js/app.js, sw.js)"; exit 1)
+          for s in home-newobj-classesLive home-newobj-classesMakeup home-newobj-eventsMarketing home-newobj-logistics home-newobj-rentals; do
+            grep -q "id=\"$s\"" index.html || (echo "SAI: index.html thieu section $s"; exit 1)
+          done
+          grep -q 'href="danh-sach-mau.html" class="">Dành cho Shop' index.html || (echo "SAI: index.html thieu nhan 'Danh cho Shop' -> danh-sach-mau.html"; exit 1)
+          grep -q 'href="danh-sach-shop.html" class="">Dành cho Mẫu' index.html || (echo "SAI: index.html thieu nhan 'Danh cho Mau' -> danh-sach-shop.html"; exit 1)
+          grep -q 'function renderHomeNewObj' js/app.js || (echo "SAI: js/app.js thieu renderHomeNewObj"; exit 1)
+          grep -q 'function dedupeProfiles' js/app.js || (echo "SAI: js/app.js thieu dedupeProfiles"; exit 1)
+          grep -q 'HOME_NEWOBJ_SECTIONS' js/app.js || (echo "SAI: js/app.js thieu HOME_NEWOBJ_SECTIONS"; exit 1)
+          grep -q 'renderHomeNewObj(homeSeen)' js/app.js || (echo "SAI: js/app.js thieu noi renderHomeNewObj(homeSeen) trong initHome"; exit 1)
+          grep -q 'var homeSeen = {};' js/app.js || (echo "SAI: js/app.js thieu seen-set homeSeen"; exit 1)
+          grep -q "const CACHE = 'v184-shell-1';" sw.js || (echo "SAI: sw.js thieu CACHE v184-shell-1"; exit 1)
+          echo "verify OK: 3 file — index.html (5 muc moi) + js/app.js (renderHomeNewObj + dedupe) + sw.js (CACHE v184-shell-1), KHONG co js/data.js"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v184-homepage-deploy.zip
+          git add -A
+          git status --short | head -5
+          echo "changed files: $(git status --short | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v184: trang chu 5 muc moi (lop live/makeup, su kien, logistics, cho thue) + loc trung ho so (dedupeProfiles, seen-set dung chung) + CACHE v184-shell-1"
+            git push
+          fi
