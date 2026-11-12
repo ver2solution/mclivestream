@@ -2973,13 +2973,12 @@ function initNews(){
     return top1;
   }
   // v111 (NEW-P6): prefill o loc tu ?cat= khi mo truc tiep (vd
-  // tin-tuc.html?cat=Dòng tiền) — truoc day initNews khong doc params
-  // nen o loc van "Tat ca" va hien du 64 bai. Chi nhan gia tri co that
-  // trong danh sach chuyen muc.
+  // tin-tuc.html?cat=Dòng tiền) — chi nhan gia tri co that trong danh
+  // sach chuyen muc. v176: gon lai bang indexOf (tuong duong vong lap
+  // cu); params() tra ve doi tuong thuong (da giai ma), khong phai
+  // URLSearchParams, nen qp.cat doc truc tiep duoc.
   var qp = params();
-  if(qp.cat){
-    for(var ci = 0; ci < cats.length; ci++){ if(cats[ci] === qp.cat){ catSel.value = qp.cat; break; } }
-  }
+  if (qp.cat && cats.indexOf(qp.cat) !== -1) catSel.value = qp.cat;
   catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render(); // v114 (P3-3): render() da goi renderTopRows(list) o trong
 }
 /* Detail: 2-column layout + mini-card list of the other 19 (names, never ids) */
@@ -3928,43 +3927,45 @@ function initTransferForm(){
     if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function () { refreshTransfer(); });
   } catch (e) { /* bỏ qua — vẫn tải 1 lần lúc mở trang */ }
 }
-/* v175: dropdown "Tin tức" trên nav — 8 bài mới nhất + "Xem tất cả tin →".
+/* v176: dropdown "Tin tức" trên nav — 10 CHUYÊN MỤC + số bài + "Xem tất cả tin →".
+   Thay dropdown 8 bài mới nhất (v175) theo yêu cầu của anh Thọ 12/11:
+   overlay chuyên mục giống cách danh sách bộ lọc chuyên mục làm
+   (tên + số bài, vd "Việc Làm (16)"), hoàn thiện đẹp hơn.
    Markup nav trong HTML KHÔNG đổi (7 mục, byte-identical toàn site — quy tắc 9);
    JS tự chèn dropdown vào mục "Tin tức" lúc chạy, render từ data.js.
-   Trang đã có V20_DATA thì dựng ngay; trang chưa có (đa số bai-viet/*,
-   hoi-dap, dang-ky...) thì chỉ tải data.js khi người dùng chạm vào mục
-   Tin tức (hover/focus/click) để lần tải trang đầu không nặng thêm.
-   Desktop: hover/focus mở. Mobile/cảm ứng: chạm lần 1 mở, chạm lần 2 đi
-   tới tin-tuc.html; bấm ngoài hoặc Esc để đóng. */
-var NEWS_DROPDOWN_N = 8;
+   Tên 10 chuyên mục ghi cứng theo thứ tự cố định; SỐ BÀI tính lúc chạy
+   từ D.articles (như applyOptionCounts), không ghi cứng số đếm.
+   Mỗi dòng link tới tin-tuc.html?cat=<tên đã mã hoá URL>; initNews (v111)
+   đã đọc ?cat= để chọn sẵn bộ lọc. Trang đã có V20_DATA thì dựng ngay;
+   trang chưa có (đa số bai-viet/*, hoi-dap, dang-ky...) thì chỉ tải data.js
+   khi người dùng chạm vào mục Tin tức (hover/focus/click) để lần tải trang
+   đầu không nặng thêm. Desktop: hover/focus mở. Mobile/cảm ứng: chạm lần 1
+   mở, chạm lần 2 đi tới trang lọc; bấm ngoài hoặc Esc để đóng. */
+var NEWS_DROPDOWN_CATS = ['Việc Làm', 'Livestream', 'Phân tích', 'Thị trường', 'Công nghệ', 'Dòng tiền', 'Xu hướng', 'Hàng hoá', 'Đang hot', 'Đời Sống'];
 var _newsDropdownReady = false; /* khung DOM đã chèn xong */
-var _newsDropdownFilled = false; /* đã đổ đủ 8 bài vào panel */
+var _newsDropdownFilled = false; /* đã đổ đủ 10 chuyên mục vào panel */
 var _newsDataLoading = false; /* đang tải data.js (chỉ 1 lần) */
-function newsDropdownItems(articles, n){
-  var list = (articles || []).map(function(a, i){ return {a:a, i:i}; })
-    .filter(function(x){ return !!articleHref(x.a); })
-    .sort(function(p, q){
-      var d = (p.a.date || '') < (q.a.date || '') ? 1 : ((p.a.date || '') > (q.a.date || '') ? -1 : 0);
-      return d !== 0 ? d : (q.i - p.i); /* cùng ngày: bài thêm sau (cuối mảng) lên trước, như newsRowNewest */
-    })
-    .slice(0, n || NEWS_DROPDOWN_N)
-    .map(function(x){ return x.a; });
-  return list;
+function newsDropdownCounts(articles){
+  var counts = {};
+  NEWS_DROPDOWN_CATS.forEach(function(c){ counts[c] = 0; });
+  (articles || []).forEach(function(a){
+    if (a && a.cat && counts.hasOwnProperty(a.cat)) counts[a.cat]++;
+  });
+  return counts;
 }
 function newsDropdownRoot(newsLink){
   var h = newsLink ? (newsLink.getAttribute('href') || '') : '';
   return h.replace(/tin-tuc\.html$/, ''); /* '' ở trang gốc, '../' ở bai-viet/* — đúng cả khi deploy ở subpath */
 }
-function newsDropdownHTML(list, root){
-  var items = (list || []).map(function(a){
-    var tg = articleTarget(a);
-    var href = /^https?:\/\//.test(tg.href) ? tg.href : (root + tg.href);
-    var meta = (a.cat ? esc(a.cat) + ' · ' : '') + formatArticleDate(a.date);
-    return '<a class="nav-news-item" href="' + esc(href) + '"' + (tg.blank ? ' target="_blank" rel="noopener"' : '') + '>'
-      + '<span class="nav-news-title">' + esc(a.title) + '</span>'
-      + '<span class="nav-news-meta">' + meta + '</span></a>';
+function newsDropdownHTML(counts, root){
+  var items = NEWS_DROPDOWN_CATS.map(function(c){
+    var href = root + 'tin-tuc.html?cat=' + encodeURIComponent(c);
+    return '<a class="nav-news-item nav-news-cat" href="' + esc(href) + '">'
+      + '<span class="nav-news-cat-name">' + esc(c) + '</span>'
+      + '<span class="nav-news-cat-count">' + (counts[c] || 0) + '</span></a>';
   }).join('');
-  return items + '<a class="nav-news-item nav-news-all" href="' + esc(root + 'tin-tuc.html') + '">Xem tất cả tin →</a>';
+  return '<div class="nav-news-head">Chuyên mục tin tức</div>' + items
+    + '<a class="nav-news-item nav-news-all" href="' + esc(root + 'tin-tuc.html') + '">Xem tất cả tin →</a>';
 }
 function initNewsDropdown(){
   if (typeof document === 'undefined') return;
@@ -3975,6 +3976,9 @@ function initNewsDropdown(){
     if (/tin-tuc\.html$/.test(as[i].getAttribute('href') || '')){ link = as[i]; break; }
   }
   if (!link) return;
+  /* v176: idempotent — nếu nav đã được gắn dropdown (gọi 2 lần / tải lại)
+     thì không chèn thêm. */
+  if (link.getAttribute('aria-haspopup') === 'true') return;
   var root = newsDropdownRoot(link);
   var wrap = document.createElement('div');
   wrap.className = 'nav-news-wrap';
@@ -3989,13 +3993,13 @@ function initNewsDropdown(){
   link.setAttribute('aria-expanded', 'false');
   var panel = document.createElement('div');
   panel.className = 'nav-news-dropdown';
-  panel.innerHTML = '<span class="nav-news-loading">Đang tải tin mới…</span>';
+  panel.innerHTML = '<span class="nav-news-loading">Đang tải chuyên mục…</span>';
   wrap.appendChild(panel);
   _newsDropdownReady = true;
   function fill(){
     if (_newsDropdownFilled) return;
     var arts = (window.V20_DATA && window.V20_DATA.articles) || D.articles || [];
-    panel.innerHTML = newsDropdownHTML(newsDropdownItems(arts, NEWS_DROPDOWN_N), root);
+    panel.innerHTML = newsDropdownHTML(newsDropdownCounts(arts), root);
     _newsDropdownFilled = true;
   }
   function hasData(){
@@ -4009,7 +4013,7 @@ function initNewsDropdown(){
     var s = document.createElement('script');
     s.src = root + 'js/data.js';
     s.onload = function(){ fill(); };
-    s.onerror = function(){ panel.innerHTML = '<span class="nav-news-loading">Chưa tải được tin mới.</span>'; };
+    s.onerror = function(){ panel.innerHTML = '<span class="nav-news-loading">Chưa tải được chuyên mục.</span>'; };
     document.head.appendChild(s);
   }
   function closeDropdown(){
@@ -4055,12 +4059,20 @@ function initNewsDropdown(){
     if (nav.classList.contains('open')) closeDropdown();
   });
 }
+/* v176: bọc từng init trong try/catch — 1 init ném lỗi không được chặn
+   các init sau (nghi ngờ gây lỗi tải lạnh v175: dropdown nằm cuối chuỗi
+   init nên 1 lỗi trước đó làm nó không chạy, hover lần đầu không mở). */
+function safeInit(fn){
+  try { fn(); } catch (e) { try { console.error('[init]', e && e.stack ? e.stack : e); } catch (_) {} }
+}
 if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',function(){
-  initMobileNotice(); initHeaderAuth(); initActivationStrip(); showPendingToast(); /* v117: toast cho tu trang truoc (sau dang ky) */
+  /* v176: 4 init dau cung boc safeInit — truoc day goi tran, 1 loi o day
+     (vd initMobileNotice) lam CHET CA CHUOI, ke ca initNewsDropdown o cuoi. */
+  safeInit(initMobileNotice); safeInit(initHeaderAuth); safeInit(initActivationStrip); safeInit(showPendingToast); /* v117: toast cho tu trang truoc (sau dang ky) */
   /* v96-swap: initShopPage TRUOC initList — renderLotSections dung lai
      option cua #fUniProv theo D.provinces (v111); prefill URL cua initList
      phai chay sau thi gia tri moi giu duoc. */
-  initHome(); initShopPage(); initList(); initNews(); initModelNewsRow(); /* v100: hang tin trang Mau */ initShopNewsRow(); /* v123: hang tin trang Shop */ initKiotNewsRow(); /* v123: hang tin trang Kiot */ initBottomNewsList('shopBottomNews',['Đời Sống','Việc Làm']); initBottomNewsList('kiotBottomNews',['Đang hot','Livestream']); /* v157: 3 hang tin duoi danh sach */ initDetail(); initShopDetail(); initShops(); initHub(); initFaqToggle(); initArticleComments(); /* v166 (N10): form binh luan trang bai chi tiet */ initPointsUI(); initTransferForm(); initStars(); /* v99: nap so sao + uy thac click nut sao */ initLotFactoryDetail(); /* v135: khung chi tiet lo/xuong/kiot tren trang (modal) */ initOptionCounts(); /* v103: so luong that trong () o moi option loc */ initFilterHint(); /* v118 (P2-4): an goi y "Can dang nhap" khi da dang nhap */ initNewsDropdown(); /* v175: dropdown Tin tức (8 bài mới nhất) */
+  safeInit(initHome); safeInit(initShopPage); safeInit(initList); safeInit(initNews); safeInit(initModelNewsRow); /* v100: hang tin trang Mau */ safeInit(initShopNewsRow); /* v123: hang tin trang Shop */ safeInit(initKiotNewsRow); /* v123: hang tin trang Kiot */ safeInit(function(){ initBottomNewsList('shopBottomNews',['Đời Sống','Việc Làm']); }); safeInit(function(){ initBottomNewsList('kiotBottomNews',['Đang hot','Livestream']); }); /* v157: 3 hang tin duoi danh sach */ safeInit(initDetail); safeInit(initShopDetail); safeInit(initShops); safeInit(initHub); safeInit(initFaqToggle); safeInit(initArticleComments); /* v166 (N10): form binh luan trang bai chi tiet */ safeInit(initPointsUI); safeInit(initTransferForm); safeInit(initStars); /* v99: nap so sao + uy thac click nut sao */ safeInit(initLotFactoryDetail); /* v135: khung chi tiet lo/xuong/kiot tren trang (modal) */ safeInit(initOptionCounts); /* v103: so luong that trong () o moi option loc */ safeInit(initFilterHint); /* v118 (P2-4): an goi y "Can dang nhap" khi da dang nhap */ safeInit(initNewsDropdown); /* v176: dropdown Tin tức (10 chuyên mục) */
   var mb=document.getElementById('menuBtn');
   if(mb) mb.addEventListener('click',function(){var n=document.getElementById('mainNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');});
   var fab=document.getElementById('gopyFab');
@@ -4079,7 +4091,11 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Bạn gửi thêm qua Zalo giúp mình nhé để Ver2Solution tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownItems:newsDropdownItems, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_N:NEWS_DROPDOWN_N, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
+/* v176: lưới an toàn cho dropdown — nếu chuỗi DOMContentLoaded vì lý do
+   nào đó không gắn được dropdown, thử lại khi trang tải xong.
+   initNewsDropdown idempotent nên gọi 2 lần không chèn trùng. */
+if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
