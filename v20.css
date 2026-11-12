@@ -944,3 +944,101 @@ th{background:#f4f8f6}
 .claim-status.ok{color:#0b5d4e}
 .claim-status.err{color:#b3261e}
 .claim-slot .claim-open{margin:8px 0}
+
+/* ===== v173: Trang Tìm kiếm (tim-kiem.html + js/search.js, 12/11/2026) =====
+   Mobile: feed vuốt dọc kiểu TikTok (1 kết quả = 1 màn hình, scroll-snap).
+   PC: danh sách + sidebar lọc trái kiểu Facebook. Chỉ dùng biến màu sẵn có. */
+.search-page h1{font-size:28px;margin:18px 0 4px}
+.search-sub{color:var(--mut);margin:4px 0 14px}
+.search-hero{position:relative}
+.search-bar{display:flex;gap:10px}
+.search-bar input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:999px;padding:13px 18px;font:inherit;font-size:16px;background:#fff}
+.search-bar input:focus{outline:2px solid var(--brand2);border-color:var(--brand)}
+/* Gợi ý hiển thị THEO LUỒNG (position:static), không phủ lên bộ lọc/kết quả:
+   bản overlay absolute từng che nút lọc sidebar, bấm lọc bị gợi ý chặn (lỗi v173b). */
+.search-suggest{position:static;margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);max-height:320px;overflow-y:auto}
+.sg-group{padding:8px 16px 2px;font-size:12px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.sg-item{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;background:none;border:0;padding:10px 16px;font:inherit;font-size:15px;cursor:pointer;color:var(--ink)}
+.sg-item:hover{background:var(--brandsoft)}
+.sg-item span{color:var(--mut);font-size:13px;white-space:nowrap}
+.search-chips{margin:14px 0 4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search-chips b{font-size:14px}
+.sr-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font:inherit;font-size:14px;font-weight:700;color:var(--brand);cursor:pointer}
+.sr-chip:hover{background:var(--brandsoft)}
+.search-layout{display:grid;grid-template-columns:230px 1fr;gap:22px;margin-top:18px;align-items:start}
+.search-filters{border-right:1px solid var(--line);padding:6px 12px 6px 0;position:sticky;top:84px}
+.search-filters h5{margin:4px 10px 10px;font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sr-filter{display:flex;justify-content:space-between;padding:9px 12px;border-radius:10px;color:var(--ink);font-weight:700;font-size:14px}
+.sr-filter:hover,.sr-filter.on{background:var(--brandsoft);color:var(--brand);text-decoration:none}
+.sr-filter .n{background:#eef3f1;border-radius:999px;padding:1px 8px;font-size:12px;color:var(--mut)}
+.sr-filter.on .n{background:#fff;color:var(--brand)}
+.sr-filter.zero{opacity:.45}
+.search-type-chips{display:none}
+.search-meta{color:var(--mut);font-size:14px;margin:2px 0 14px}
+.search-meta b{color:var(--ink)}
+.sr-card{display:flex;gap:14px;border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px;background:#fff}
+.sr-media{width:104px;height:104px;border-radius:12px;flex:none;display:grid;place-items:center;overflow:hidden;background:linear-gradient(160deg,#0b5d4e,#0e8a6d 55%,#123f36);color:#fff;position:relative}
+.sr-media img{width:100%;height:100%;object-fit:cover;display:block}
+.sr-media-mau{background:linear-gradient(160deg,#0b5d4e,#0e8a6d 55%,#123f36)}
+.sr-media-shop{background:linear-gradient(160deg,#7a4d00,#b97e10 55%,#3d2c05)}
+.sr-media-bai{background:linear-gradient(160deg,#1d4e89,#2f6fb2 55%,#12263f)}
+.sr-media-lo{background:linear-gradient(160deg,#5c6f68,#12211d)}
+.sr-media-xuong{background:linear-gradient(160deg,#6b4e00,#8a6d1f 55%,#3d2c05)}
+.sr-media-kiot{background:linear-gradient(160deg,#0b5d4e,#2f6fb2 55%,#12263f)}
+.sr-initials{font-weight:900;font-size:26px;text-align:center;line-height:1.1}
+.sr-body{min-width:0;flex:1}
+.sr-body h3{margin:0 0 3px;font-size:16px}
+.sr-body h3 a{color:var(--ink)}
+.sr-body p{margin:3px 0;font-size:13px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sr-type{font-size:12px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.04em}
+.sr-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.sr-chips span{background:var(--brandsoft);color:var(--brand);border-radius:999px;padding:2px 9px;font-size:12px;font-weight:700}
+.sr-label{display:inline-block;margin-top:8px;background:#fff3d6;color:#8a5a00;border-radius:8px;padding:3px 9px;font-size:12px;font-weight:700}
+.sr-cta{display:inline-block;margin-top:8px;font-weight:800;font-size:14px}
+.sr-rail{display:none}
+.search-end{text-align:center;color:var(--mut);font-weight:700;padding:18px 0}
+#searchLoadMore{display:block;margin:6px auto 18px}
+.search-empty{text-align:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 18px}
+.search-empty .empty-big{font-size:34px}
+.search-empty p{margin:8px 0}
+.search-empty .small{color:var(--mut);font-size:13px}
+.search-results .skel{height:12px;border-radius:6px;background:linear-gradient(90deg,#e7efeb 25%,#f4f8f6 50%,#e7efeb 75%);background-size:200% 100%;animation:sh 1.2s infinite linear;margin:8px 0}
+.feed-status{display:none}
+@media (max-width:767px){
+  .search-page h1{font-size:24px;margin-top:12px}
+  .search-layout{display:block;margin-top:12px}
+  .search-filters{display:none}
+  .search-type-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+  .search-type-chips::-webkit-scrollbar{display:none}
+  .sr-chip-type{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer}
+  .sr-chip-type.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .sr-chip-type.zero{opacity:.45}
+  .search-meta{font-size:13px;margin-bottom:10px}
+  /* Feed vuốt dọc: khung cuộn riêng, 1 thẻ = 1 màn hình, thanh tìm kiếm ở trên giữ nguyên */
+  .search-results{height:calc(100dvh - 330px);min-height:400px;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;border-radius:18px}
+  .search-results::-webkit-scrollbar{display:none}
+  .sr-card{position:relative;display:flex;flex-direction:column;gap:0;padding:0;margin-bottom:0;min-height:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always;border-radius:18px;overflow:hidden;color:#fff;background:#12211d}
+  .sr-media{width:100%;height:52%;border-radius:0;flex:none}
+  .sr-media img{position:absolute;inset:0}
+  .sr-initials{font-size:56px;position:relative;z-index:1}
+  .sr-body{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 76px 18px 16px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.82) 100%);margin-top:-90px}
+  .sr-body h3{font-size:21px}
+  .sr-body h3 a{color:#fff}
+  .sr-body p{color:rgba(255,255,255,.92);font-size:14px;-webkit-line-clamp:3}
+  .sr-type{color:#ffe9a8}
+  .sr-chips span{background:rgba(255,255,255,.22);color:#fff}
+  .sr-label{background:rgba(255,255,255,.22);color:#fff}
+  .sr-cta{display:inline-block;background:var(--amber);color:#12211d;font-weight:800;border-radius:999px;padding:10px 18px;text-decoration:none;margin-top:10px;align-self:flex-start}
+  .sr-rail{display:flex;flex-direction:column;gap:12px;align-items:center;position:absolute;right:10px;bottom:120px;z-index:3}
+  .sr-rail button{width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.22);color:#fff;font:inherit;font-size:11px;font-weight:800;line-height:1.2;cursor:pointer;text-align:center}
+  .sr-rail button.saved{background:var(--amber);color:#12211d}
+  .feed-status{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;color:var(--mut);padding:10px 2px 0}
+  .feed-status .feed-dots{display:flex;gap:7px}
+  .feed-status .feed-dots i{width:7px;height:7px;border-radius:50%;background:#c9d8d1;display:block}
+  .feed-status .feed-dots i.on{background:var(--brand)}
+  .sr-end-card{min-height:60%;display:flex;align-items:center;justify-content:center;text-align:center;background:#fff;color:var(--ink)}
+  .sr-end-card .empty-big{font-size:34px}
+  .sr-end-card p{margin:6px 0;color:var(--ink)}
+  .sr-end-card .small{color:var(--mut);font-size:13px}
+  .search-end{padding:22px 0}
+}
