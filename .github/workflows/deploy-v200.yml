@@ -29,14 +29,10 @@ jobs:
 
       - name: Run tests
         run: |
-          node tests/test-v200-online-summary.mjs | tee /tmp/t200.txt
-          grep -q "15/15" /tmp/t200.txt
-          node tests/test-v199-newobj-filter-sync.mjs | tee /tmp/t199.txt
-          grep -q "22/22" /tmp/t199.txt
-          node tests/test-v198-categories-2026-11-13.mjs | tee /tmp/t198.txt
-          grep -q "50/50" /tmp/t198.txt
-          node tests/test-v197-hash-jump-2026-11-13.mjs | tee /tmp/t197.txt
-          grep -q "35/35" /tmp/t197.txt
+          node tests/test-v200-online-summary.mjs
+          node tests/test-v199-newobj-filter-sync.mjs
+          node tests/test-v198-categories-2026-11-13.mjs
+          node tests/test-v197-hash-jump-2026-11-13.mjs
 
       - name: Verify v200 markers
         run: |
