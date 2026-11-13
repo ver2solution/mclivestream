@@ -1,0 +1,21 @@
+name: Deploy v202
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip package
+        run: unzip -o v202.zip -d .
+      - name: Run v202 tests
+        run: node tests/test-v202-filter-newobj.mjs
+      - name: Commit deploy
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add -A
+          git commit -m "v202: bo loc hang muc moi — hien nut Lop + cuon xuong muc khi ?newobj=" || echo "nothing to commit"
+          git push
