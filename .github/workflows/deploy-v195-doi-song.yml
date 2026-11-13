@@ -1,0 +1,41 @@
+name: Deploy v195-doi-song (5 bai Doi Song 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v195-doi-song.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v195-doi-song:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v195-doi-song package
+        run: |
+          unzip -o mclivestream-v195-doi-song-deploy.zip
+          echo "--- verify v195-doi-song (5 bai) ---"
+          for slug in mau-livestream-kiem-tien-tet-5-cach-tang-thu-nhap thang-12-du-lich-dau-dep-nhat-5-diem-den quan-ly-tien-mau-livestream-thu-nhap-theo-buoi tra-sua-lam-tu-gi-su-that-trong-ly-tra-sua quan-cafe-check-in-dep-the-note-coffee-ha-noi; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"title":' js/data.js)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v195-doi-song-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v195-doi-song: 5 bai Doi Song 13/11/2026 (mau livestream kiem tien Tet keyword + du lich thang 12 + quan ly tien + tra sua + cafe The Note Coffee)"
+            git push
+          fi
