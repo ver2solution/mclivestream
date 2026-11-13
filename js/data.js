@@ -8081,6 +8081,54 @@ window.V20_DATA = {
    "takeaway": "Shopee Live: livestream chiếm 67% chi tiêu online Việt Nam 6 tháng đầu 2026 — shop thắng 12.12 bằng lịch live đều, voucher chỉ trong live và mẫu live đúng tệp."
   },
   {
+   "title": "Doanh thu shop online Tết: 73,7 nghìn tỷ chờ shop nhỏ",
+   "cat": "Dòng tiền",
+   "source": "Metric",
+   "date": "2026-11-13",
+   "url": "https://homepage-metric.muadee.vn/resource/blog/ban-tin-e-com-03-11-tmdt-dat-442-000-ty-dong-sau-9-thang-shop-mall-dong-gop-toi-368-doanh-so",
+   "page": "bai-viet/doanh-thu-shop-online-tet-737-nghin-ty-shop-nho-lam-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doanh-thu-shop-online-tet-737-nghin-ty-shop-nho-lam-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Người Việt chi 73,7 nghìn tỷ sắm Tết (+51%): shop nhỏ thắng bằng hàng giá trị cao, tính lãi trước khi giảm giá và live đều từ 12.12 tới Tết."
+  },
+  {
+   "title": "Fed họp tháng 12: 101 chuyên gia đồng thuận tăng 25 điểm",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua Kitco)",
+   "date": "2026-11-13",
+   "url": "https://www.kitco.com/news/off-the-wire/2026-11-10/fed-officials-open-door-half-percentage-point-rate-hike-inflation",
+   "page": "bai-viet/fed-hop-thang-12-101-chuyen-gia-dong-thuan-tang-25-diem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/fed-hop-thang-12-101-chuyen-gia-dong-thuan-tang-25-diem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cả 101 chuyên gia đều dự báo Fed tăng 25 điểm ngày 09/12: shop nhỏ tính lãi vay và tỷ giá vào giá vốn ngay, giữ tiền mặt đủ 2 tháng."
+  },
+  {
+   "title": "Đồng yên Nhật về 159: Nhật Bản đốt 97 tỷ USD cứu tiền",
+   "cat": "Dòng tiền",
+   "source": "Disruption Banking",
+   "date": "2026-11-13",
+   "url": "https://www.disruptionbanking.com/2026/11/10/why-japans-monetary-policy-is-failing-to-lift-the-yen/",
+   "page": "bai-viet/dong-yen-nhat-ve-159-nhat-ban-dot-97-ty-usd-cuu-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-yen-nhat-ve-159-nhat-ban-dot-97-ty-usd-cuu-tien.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nhật Bản đốt 97 tỷ USD mà yên vẫn về 159: shop nhập hàng Nhật tranh thủ giá rẻ nhưng chia nhỏ lô, chốt tỷ giá từng lô."
+  },
+  {
+   "title": "Giá vàng rơi khỏi 4.000 USD sau tuần tăng mạnh nhất 3 tháng",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua Kitco)",
+   "date": "2026-11-13",
+   "url": "https://www.kitco.com/news/off-the-wire/2026-11-12/gold-extends-losses-one-week-low-dollar-rallies-fed-hike-bets",
+   "page": "bai-viet/gia-vang-roi-khoi-4000-usd-sau-tuan-tang-manh-nhat-3-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-roi-khoi-4000-usd-sau-tuan-tang-manh-nhat-3-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng rơi khỏi 4.000 USD sau tuần tăng 5%: tiền cần dùng 2 tháng tới giữ bằng tiền mặt, đợi PPI 13/11 rồi mới quyết định mua bán vàng."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
