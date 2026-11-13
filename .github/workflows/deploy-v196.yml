@@ -1,0 +1,40 @@
+name: deploy-v196
+on:
+  push:
+    paths: ['cat2-v196.zip']
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip package
+        run: unzip -o cat2-v196.zip
+      - name: Verify package
+        run: |
+          grep -q "movingServices" js/data.js
+          grep -q "liveEquipment" js/data.js
+          grep -q "movingServices" js/app.js
+          grep -q "liveEquipment" js/app.js
+          grep -q "chuyen-nha" js/search.js
+          grep -q "dich-vu-chuyen-nha" thanh-ly-kiot.html
+          grep -q "thiet-bi-phong-live" thanh-ly-kiot.html
+          grep -q "v196-shell-1" sw.js
+          test $(ls images-new/mv-*.jpg images-new/le-*.jpg | wc -l) -eq 20
+          node -e "const fs=require('fs'),vm=require('vm');const sb={window:{}};vm.createContext(sb);vm.runInContext(fs.readFileSync('js/data.js','utf8'),sb);const D=sb.window.V20_DATA;if(D.movingServices.length!==11||D.liveEquipment.length!==11)throw new Error('count');console.log('data.js OK 11/11')"
+      - name: Commit extracted files
+        run: |
+          rm -f cat2-v196.zip
+          git config user.name "ver2solution-deploy"
+          git config user.email "deploy@ver2solution.online"
+          git add -A
+          git status --short
+          git commit -m "v196: 2 muc moi trang Kiot (chuyen nha + thiet bi live)" || echo "nothing to commit"
+          git push
+      - name: Remove workflow
+        run: |
+          rm -f .github/workflows/deploy-v196.yml
+          git add -A
+          git commit -m "chore: remove deploy-v196 workflow" || echo "nothing to commit"
+          git push
