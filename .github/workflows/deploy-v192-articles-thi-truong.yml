@@ -1,0 +1,54 @@
+name: Deploy v192-articles-thi-truong (4 bai Thi truong 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v192-articles-thi-truong.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v192-articles-thi-truong:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v192-thi-truong package
+        run: |
+          unzip -o mclivestream-v192-thi-truong-deploy.zip
+          echo "--- verify v192-thi-truong (4 bai) ---"
+          test "$(unzip -l mclivestream-v192-thi-truong-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 4 || (echo "SAI: goi v192 phai co dung 4 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-v192-thi-truong-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 8 || (echo "SAI: goi v192 phai co dung 8 anh"; exit 1)
+          if unzip -l mclivestream-v192-thi-truong-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v192 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in thi-truong-tet-2026-suc-mua-tang-51-phan-tram thi-truong-thuong-mai-dien-tu-viet-nam-32-ty-usd-2026 livestream-commerce-779-ty-usd-dong-nam-a-2026 thuong-mai-dien-tu-xuyen-bien-gioi-284-nghin-ty-ndt; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 215 || (echo "SAI: sitemap phai co 215 URL (211 truoc lo + 4 bai moi)"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" -eq 192 || (echo "SAI: data.js phai co 192 bai"; exit 1)
+          for slug in tuyen-mau-livestream-tet luong-mau-livestream-tin-tuyen-12-11-2026 mau-livestream-khong-can-kinh-nghiem-my-30-40-usd-gio thong-ke-ho-so-moi-12-11-2026 livestream-12-12-dinh-doanh-thu-roi-vao-d1-shop-chuan-bi-gi livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so livestream-shopee-thi-truong-live-viet-nam-488-ty-usd livestream-tiktok-ban-hang-12-12-voucher-80-phan-tram double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho kinh-doanh-handmade-online-etsy-26-ty-usd-quy-3-2026 mo-hinh-ban-hang-qua-koc-79-trieu-usd-30-ngay-my mo-hinh-kinh-doanh-doc-la-ao-chong-mo-hoi-700000-usd; do
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU bai cu $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU bai cu $slug trong sitemap"; exit 1)
+          done
+          test "$(grep -A9 'thi-truong-tet-2026-suc-mua-tang-51-phan-tram.html' js/data.js | grep -c '"pinned": false')" -eq 1 || (echo "SAI: bai Tet thieu pinned:false"; exit 1)
+          echo "verify OK: 4 bai + 8 anh + data.js (192 bai) + sitemap (215 URL) + 12 bai cu con nguyen"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v192-thi-truong-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v192-articles-thi-truong: 4 bai Thi truong 13/11/2026 (thi truong Tet 2026 73,7 nghin ty +51% DEEP 3.238 tu + danh gia tiem nang; TMDT VN 32 ty USD; livestream commerce 77,9 ty USD; XNK xuyen bien gioi 2,84 nghin ty NDT); sw.js NOT touched"
+            git push
+          fi
