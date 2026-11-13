@@ -8033,6 +8033,54 @@ window.V20_DATA = {
    "takeaway": "Sale 12–14/12/2026, đăng ký tới 25/11/2026: GMV Max tăng ngân sách 30–50%, 15–20 video, live gấp 3–8 lần video thường — giữ ngân sách cho ngày D+1 13/12/2026."
   },
   {
+   "title": "Xu hướng bán hàng online 2027: AI, social commerce lên ngôi",
+   "cat": "Xu hướng",
+   "source": "Coupler.io",
+   "date": "2026-11-13",
+   "url": "https://blog.coupler.io/social-commerce-statistics/",
+   "page": "bai-viet/xu-huong-ban-hang-online-2027-ai-social-commerce.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-ban-hang-online-2027-ai-social-commerce.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng bán hàng online 2027: TMĐT toàn cầu 8.000 tỷ USD, social commerce chạm 20%, mobile 62% đơn hàng — shop Việt live đều, video đều, tính lãi kỹ trước 12.12."
+  },
+  {
+   "title": "Xu hướng thương mại điện tử 2026: 4 thay đổi lớn nhất",
+   "cat": "Xu hướng",
+   "source": "Euromonitor International",
+   "date": "2026-11-13",
+   "url": "https://www.euromonitor.com/article/economies-and-consumers-in-2026-key-trends-to-watch",
+   "page": "bai-viet/xu-huong-thuong-mai-dien-tu-2026-euromonitor-4-xu-huong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-thuong-mai-dien-tu-2026-euromonitor-4-xu-huong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng thương mại điện tử 2026 (Euromonitor): 4 thay đổi lớn — Comfort Zone, Fiercely Unfiltered, Rewired Wellness, Next Asian Wave; shop nhỏ chọn 1 xu hướng hợp tệp khách và làm tới nơi."
+  },
+  {
+   "title": "Xu hướng mua sắm online Gen Z: 53% khám phá qua TikTok",
+   "cat": "Xu hướng",
+   "source": "Seel",
+   "date": "2026-11-13",
+   "url": "https://www.seel.com/blog/gen-z-shopping-report",
+   "page": "bai-viet/xu-huong-mua-sam-online-gen-z-tiktok-53-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-sam-online-gen-z-tiktok-53-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng mua sắm online Gen Z: TikTok 53% dẫn đầu khám phá, 84% từng mua món thấy trên mạng xã hội — shop cần video ngắn, creator đúng tệp và đổi trả trong 48 giờ."
+  },
+  {
+   "title": "Shopee Live: 67% chi tiêu online Việt qua livestream",
+   "cat": "Xu hướng",
+   "source": "Eurogroup Consulting MEA",
+   "date": "2026-11-13",
+   "url": "https://eurogroupconsultingmea.com/insights/article/shoppertainment-nation-inside-vietnams-livestream-commerce-rush-and-the-vietnam-livestream-e-commerce-boom",
+   "page": "bai-viet/shopee-live-67-phan-tram-chi-tieu-online-viet-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-live-67-phan-tram-chi-tieu-online-viet-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopee Live: livestream chiếm 67% chi tiêu online Việt Nam 6 tháng đầu 2026 — shop thắng 12.12 bằng lịch live đều, voucher chỉ trong live và mẫu live đúng tệp."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
