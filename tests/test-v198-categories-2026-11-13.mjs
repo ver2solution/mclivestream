@@ -102,20 +102,20 @@ t("search.js: count init có agency-ads: 0", searchJs.includes("'agency-ads': 0"
 t('shop: hết mọi tham chiếu cho-thue/rentals', !/cho-thue|rentals/i.test(shopHtml));
 t('shop: section agency-ads-livestream đủ id (grid/count/empty/moreBtn)', ['agencyAdsGrid', 'agencyAdsCount', 'agencyAdsEmpty', 'agencyAdsMoreBtn'].every(id => shopHtml.includes('id="' + id + '"')));
 t('shop: nút switch agency-ads (ẩn, display:none)', shopHtml.includes('data-uni-cat="agency-ads"') && shopHtml.includes('data-track="chon-agency-ads"'));
-t('shop: hash map có agency-ads-livestream, hết cho-thue', shopHtml.includes("'#agency-ads-livestream'") && !shopHtml.includes('#cho-thue-cua-hang-kho'));
+t('shop (v199): mở mục theo ?newobj=, hết hash #agency-ads', shopHtml.includes("get('newobj')") && !shopHtml.includes("'#agency-ads-livestream'") && !shopHtml.includes('#cho-thue-cua-hang-kho'));
 
 /* ---- 5. HTML: mau + index ---- */
 t('mau: XÓA hẳn nút link cho-thue khỏi switch bên Shop (v198b)', !mauHtml.includes('chon-cho-thue') && !mauHtml.includes('Cho thuê mặt bằng</a>'));
-t('mau: link agency-ads-livestream sang shop', mauHtml.includes('href="danh-sach-shop.html#agency-ads-livestream"'));
+t('mau (v199): link agency-ads sang shop dùng ?newobj=', mauHtml.includes('href="danh-sach-shop.html?newobj=agency-ads"'));
 t('mau: hết link shop#cho-thue', !mauHtml.includes('danh-sach-shop.html#cho-thue'));
-t('index: link home cho-thue sang thanh-ly-kiot.html', indexHtml.includes('href="thanh-ly-kiot.html#cho-thue-cua-hang-kho"'));
+t('index (v199): link home cho-thue dùng ?newobj=rentals', indexHtml.includes('href="thanh-ly-kiot.html?newobj=rentals"'));
 
 /* ---- 6. HTML: kiot ---- */
 t('kiot: KIOT_MAX_ROWS = 12 (2 hàng)', /var KIOT_MAX_ROWS = 12;/.test(kiotHtml));
 t('kiot: hết class rows-1 (mục con hiện 2 hàng khi thu gọn)', !kiotHtml.includes('rows-1'));
 t('kiot: section cho-thue-cua-hang-kho đủ id', ['rentalsGrid', 'rentalsCount', 'rentalsEmpty', 'rentalsMoreBtn'].every(id => kiotHtml.includes('id="' + id + '"')));
 t('kiot: nút switch rentals (hiện, không display:none)', kiotHtml.includes('data-uni-cat="rentals"'));
-t('kiot: inline map có rentals', kiotHtml.includes("'rentals': 'cho-thue-cua-hang-kho'") && kiotHtml.includes("'#cho-thue-cua-hang-kho': 'rentals'"));
+t('kiot (v199): mở mục theo ?newobj=rentals', kiotHtml.includes("get('newobj')") && kiotHtml.includes("cat === 'rentals'"));
 t('kiot: v197 card-hash ternary có rentals', kiotHtml.includes("sec.id === 'cho-thue-cua-hang-kho' ? 'rentals'"));
 t('kiot: reset list có cho-thue-cua-hang-kho', kiotHtml.includes("'dich-vu-chuyen-nha', 'thiet-bi-phong-live', 'cho-thue-cua-hang-kho'"));
 t('kiot B (anh chot 15:37): 3 section con KHÔNG có hidden — hiện luôn',
@@ -125,10 +125,10 @@ t('kiot B (anh chot 15:37): 3 section con KHÔNG có hidden — hiện luôn',
 t('kiot B: có showKiotDefault (hiện 3 mục + thu gọn 2 hàng)',
   kiotHtml.includes('function showKiotDefault()') && kiotHtml.includes("window.V20.showAllNewObjSections") && kiotHtml.includes("s.classList.add('collapsed')"));
 t('kiot B: setKiotCat(kiot) về mặc định, init gọi showKiotDefault',
-  kiotHtml.includes("if(!secId){ showKiotDefault(); return; }") && kiotHtml.includes("showKiotDefault();\n    var map = {'#dich-vu-chuyen-nha'"));
+  kiotHtml.includes("if(!secId){ showKiotDefault(); return; }") && kiotHtml.includes("showKiotDefault();\n    var cat = '';"));
 
 /* ---- 7. sw.js ---- */
-t('sw.js CACHE = v198-shell-1', swJs.includes("const CACHE = 'v198-shell-1'"));
+t('sw.js CACHE = v199-shell-1', swJs.includes("const CACHE = 'v199-shell-1'"));
 
 /* ---- 8. Không hồi quy v197 (STAR_LIMIT_MS chỉ kiểm ở workflow deploy trên
    staging live-base — prep còn code v185 chưa deploy nên vẫn chứa nó) ---- */

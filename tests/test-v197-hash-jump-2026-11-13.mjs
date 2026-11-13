@@ -103,10 +103,10 @@ t('scrollToHashedCard: không có hash → false', V.scrollToHashedCard() === fa
 t('thanh-ly-kiot.html có khối v197 hash thẻ', kiotHtml.includes('v197 (MỚI-MC-10)'));
 t('kiot: thẻ mục mới mở đúng mục trước khi cuộn', kiotHtml.includes("sec.id === 'dich-vu-chuyen-nha'"));
 t('kiot: mở rộng danh sách tới khi thẻ kiot xuất hiện', kiotHtml.includes('kiotShown += KIOT_MAX_ROWS; render();'));
-t('kiot: giữ nguyên mở mục theo hash section cũ', kiotHtml.includes("'#dich-vu-chuyen-nha': 'chuyen-nha'"));
+t('kiot (v199): mở mục theo ?newobj= thay hash section cũ', kiotHtml.includes("get('newobj')") && kiotHtml.includes("cat === 'chuyen-nha'") && !kiotHtml.includes("'#dich-vu-chuyen-nha': 'chuyen-nha'"));
 
 /* ---- 7. CACHE ---- */
-t('CACHE v197-shell-1', swJs.includes("const CACHE = 'v197-shell-1'") && !swJs.includes("v196-shell-1"));
+t('CACHE v199-shell-1', swJs.includes("const CACHE = 'v199-shell-1'") && !swJs.includes("v198-shell-1"));
 
 console.log(`\nv197: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

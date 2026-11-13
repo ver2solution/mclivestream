@@ -52,11 +52,11 @@
      3 muc moi (su kien/logistics/agency ads) la nhu cau cua SHOP nen nut doi
      thanh AN (chi de script mo theo hash khi sang tu trang Mau). -->
 <button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
-<a class="uni-cat-btn" href="danh-sach-mau.html#lop-livestream-mc" data-track="chon-lop-livestream">🎤 Lớp Livestream</a>
-<a class="uni-cat-btn" href="danh-sach-mau.html#lop-makeup" data-track="chon-lop-makeup">💄 Lớp Makeup</a>
-<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức" style="display:none">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt" style="display:none">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream" style="display:none">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
+<a class="uni-cat-btn" href="danh-sach-mau.html?newobj=class-live" data-track="chon-lop-livestream">🎤 Lớp Livestream</a>
+<a class="uni-cat-btn" href="danh-sach-mau.html?newobj=class-makeup" data-track="chon-lop-makeup">💄 Lớp Makeup</a>
+<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="shopFilter"><div class="uni-field"><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div class="uni-field"><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -181,27 +181,19 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v194: mo muc Su kien/Logistics/Agency Ads theo hash khi sang tu trang Mau (link tab
-     "Su kien Marketing" / "Logistics Trung–Viet" / "Agency Ads Livestream"). Bam nut AN
-     tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc + dat active
-     de nut Ap dung loc dung muc); dong thoi mo rong truc tiep + cuon toi muc de chac
-     chan hien ngay ca khi init chua chay xong. -->
+<!-- v199: mo muc Su kien/Logistics/Agency Ads theo ?newobj= khi sang tu trang Mau
+     (link tab "Su kien Marketing" / "Logistics Trung–Viet" / "Agency Ads Livestream").
+     Bam nut tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc +
+     dat active de nut Ap dung loc dung muc; setShopCat tu mo rong muc). KHONG cuon
+     toi muc — quy tac anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc
+     (nut Ap dung) moi cuon xuong ket qua. -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  var map = {
-    '#su-kien-marketing': {cat: 'event-mkt', sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn'},
-    '#logistics-trung-viet': {cat: 'logistics', sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn'},
-    '#agency-ads-livestream': {cat: 'agency-ads', sectionId: 'agency-ads-livestream', moreBtnId: 'agencyAdsMoreBtn'}
-  };
-  var cfg = map[location.hash || ''];
-  if(!cfg) return;
-  var btn = document.querySelector('#shopFilterSwitch .uni-cat-btn[data-uni-cat="' + cfg.cat + '"]');
+  var cat = '';
+  try { cat = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+  if(cat !== 'event-mkt' && cat !== 'logistics' && cat !== 'agency-ads') return;
+  var btn = document.querySelector('#shopFilterSwitch .uni-cat-btn[data-uni-cat="' + cat + '"]');
   if(btn) btn.click();
-  var s = document.getElementById(cfg.sectionId);
-  if(s) s.classList.remove('collapsed');
-  var b = document.getElementById(cfg.moreBtnId);
-  if(b){ b.setAttribute('aria-expanded', 'true'); b.textContent = 'Thu gọn ↑'; }
-  if(s) s.scrollIntoView();
 });
 </script>
 <script>

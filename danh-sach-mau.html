@@ -52,9 +52,9 @@
 <button type="button" class="uni-cat-btn active" data-uni-cat="model" aria-pressed="true" data-track="chon-tim-mau">👩 Tìm Mẫu Livestream</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
-<a class="uni-cat-btn" href="danh-sach-shop.html#logistics-trung-viet" data-track="chon-logistics">🚚 Logistics Trung–Việt</a>
-<a class="uni-cat-btn" href="danh-sach-shop.html#su-kien-marketing" data-track="chon-su-kien-marketing">📣 Sự kiện Marketing</a>
-<a class="uni-cat-btn" href="danh-sach-shop.html#agency-ads-livestream" data-track="chon-agency-ads">🎯 Agency Ads Livestream</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html?newobj=logistics" data-track="chon-logistics">🚚 Logistics Trung–Việt</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html?newobj=event-mkt" data-track="chon-su-kien-marketing">📣 Sự kiện Marketing</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html?newobj=agency-ads" data-track="chon-agency-ads">🎯 Agency Ads Livestream</a>
 <!-- v182: 5 danh muc moi lam MUC CON trong bo loc chung — chon muc nao thi
      loc dung mang du lieu cua muc do (ket hop loc tinh); so dem trong () cap
      nhat tu D boi refreshNewObjCatCounts (js/app.js). -->
@@ -265,19 +265,25 @@
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/wallet.js"></script>
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v194: mo muc Lo/Xuong/Lop hoc theo hash khi sang tu trang Shop (link tab
-     "Tim lo hang xa kho" / "Tim xuong may san xuat" / "Lop Livestream" /
-     "Lop Makeup"). Bam nut tuong ung de goi dung setCat(cat) trong js/app.js
-     (mo khoa o loc + dat active de nut Ap dung loc dung muc); dong thoi mo
-     rong truc tiep + cuon toi muc de chac chan hien ngay ca khi init chua
-     chay xong. Nut Lo/Xuong hien trong switch; nut Lop hoc AN (display:none). -->
+<!-- v199: mo muc Lo/Xuong/Lop hoc. Lop hoc mo theo ?newobj= khi sang tu trang Shop
+     (link tab "Lop Livestream" / "Lop Makeup") — bam nut tuong ung de goi dung
+     setCat(cat) trong js/app.js, KHONG cuon toi muc (quy tac anh chot: bam hang muc
+     chi doi bo loc, chi khi chon bo loc moi cuon xuong ket qua). Lo/Xuong giu mo
+     theo hash deep-link (#lo-hang-xa-kho / #xuong-may-gia-cong); bo lenh cuon trong
+     script vi trinh duyet tu nhay neo khi co hash. Nut Lo/Xuong hien trong switch;
+     nut Lop hoc AN (display:none). -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
+  var ncat = '';
+  try { ncat = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+  if(ncat === 'class-live' || ncat === 'class-makeup'){
+    var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
+    if(nbtn) nbtn.click();
+    return;
+  }
   var map = {
     '#lo-hang-xa-kho': {cat: 'lot', sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn'},
-    '#xuong-may-gia-cong': {cat: 'factory', sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn'},
-    '#lop-livestream-mc': {cat: 'class-live', sectionId: 'lop-livestream-mc', moreBtnId: 'classLiveMoreBtn'},
-    '#lop-makeup': {cat: 'class-makeup', sectionId: 'lop-makeup', moreBtnId: 'classMakeupMoreBtn'}
+    '#xuong-may-gia-cong': {cat: 'factory', sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn'}
   };
   var cfg = map[location.hash || ''];
   if(!cfg) return;
@@ -287,7 +293,6 @@ document.addEventListener('DOMContentLoaded', function(){
   if(s) s.classList.remove('collapsed');
   var b = document.getElementById(cfg.moreBtnId);
   if(b){ b.setAttribute('aria-expanded', 'true'); b.textContent = 'Thu gọn ↑'; }
-  if(s) s.scrollIntoView();
 });
 </script>
 <script>

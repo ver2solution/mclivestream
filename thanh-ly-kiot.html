@@ -345,17 +345,17 @@
   if (window.V20 && typeof window.V20.initFilterToggle === 'function') window.V20.initFilterToggle();
   render();
   /* v198-B: khoi tao trang thai mac dinh — danh sach chinh + 3 muc con deu
-     hien (moi muc thu gon 2 hang); mo theo hash #dich-vu-chuyen-nha /
-     #thiet-bi-phong-live / #cho-thue-cua-hang-kho thi vao che do tap trung.
+     hien (moi muc thu gon 2 hang); mo theo ?newobj= (chuyen-nha /
+     thiet-bi-live / rentals) thi vao che do tap trung, KHONG cuon toi muc
+     (quy tac anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc moi
+     cuon xuong ket qua).
      (app.js dang ky DOMContentLoaded truoc nen initNewObjSections da chay.) */
   document.addEventListener('DOMContentLoaded', function(){
     showKiotDefault();
-    var map = {'#dich-vu-chuyen-nha': 'chuyen-nha', '#thiet-bi-phong-live': 'thiet-bi-live', '#cho-thue-cua-hang-kho': 'rentals'};
-    var cat = map[location.hash || ''];
-    if(cat){
+    var cat = '';
+    try { cat = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+    if(cat === 'chuyen-nha' || cat === 'thiet-bi-live' || cat === 'rentals'){
       setKiotCat(cat);
-      var s = document.getElementById(newObjSectionCfg(cat));
-      if(s) s.scrollIntoView();
       return;
     }
     /* v197 (MỚI-MC-10): hash #<id thẻ> (từ tim-kiem.html) — thẻ ở mục mới
