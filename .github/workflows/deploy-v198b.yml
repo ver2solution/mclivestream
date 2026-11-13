@@ -1,0 +1,47 @@
+name: Deploy v198b
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Unzip v198b overlay
+        run: |
+          ls -la v198b.zip
+          unzip -o v198b.zip
+          if [ ! -f tests/test-v198-categories-2026-11-13.mjs ]; then
+            TOP=$(unzip -Z1 v198b.zip | head -n 1 | cut -d/ -f1)
+            echo "Overlay is inside top folder: $TOP"
+            cp -r "$TOP"/. .
+          fi
+          ls tests/ js/
+      - name: Run Node test on overlaid repo tree
+        run: node tests/test-v198-categories-2026-11-13.mjs
+      - name: Verify v198b markers
+        run: |
+          if grep -Fq 'chon-cho-thue' danh-sach-mau.html; then
+            echo 'ERROR: danh-sach-mau.html still contains chon-cho-thue'
+            exit 1
+          fi
+          if grep -Fq 'Cho thuê mặt bằng</a>' danh-sach-mau.html; then
+            echo 'ERROR: danh-sach-mau.html still contains Cho thuê mặt bằng link'
+            exit 1
+          fi
+          echo 'v198b markers OK: no chon-cho-thue, no Cho thuê mặt bằng link'
+      - name: Commit and push v198b
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git status --short
+          git add -A
+          git status --short
+          git commit -m "v198b: Xoa nut Cho thue mat bang khoi trang Danh cho Shop" || echo "nothing to commit"
+          git push origin main
