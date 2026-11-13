@@ -3170,8 +3170,9 @@ function initShops(){
      xep gia + hinh thuc logistics), option shop khoa khi chon muc moi.
      Chi hien section cua muc dang chon (an cac section moi con lai);
      ve 'shop' thi hien lai tat ca. */
-  /* v210: nut chon muc nam o 2 hang — switch chinh (#shopFilterSwitch) + hang rieng trong bo loc (#modelClassesSwitch) — bind ca 2. */
-  var shopCatBtns = document.querySelectorAll('#shopFilterSwitch .uni-cat-btn, #modelClassesSwitch .uni-cat-btn');
+  /* v211: nut chon muc chi con 1 hang — tat ca trong switch chinh (#shopFilterSwitch);
+     hang rieng #modelClassesSwitch cua v210 da bo. */
+  var shopCatBtns = document.querySelectorAll('#shopFilterSwitch .uni-cat-btn');
   function setShopCat(cat){
     shopCatBtns.forEach(function(b){
       var on = b.getAttribute('data-uni-cat') === cat;
@@ -3186,6 +3187,10 @@ function initShops(){
       if(isNew){ fEl.disabled = true; fEl.value = ''; if(wrap) wrap.classList.add('locked'); }
       else { fEl.disabled = false; if(wrap) wrap.classList.remove('locked'); }
     });
+    /* v211: dong bo o Muc luong toi thieu theo loai luong (nhu trang Shop):
+       vong lap tren mo het 5 o ke ca fShPayMin — goi syncPayMin() de khoa
+       lai khi chua chon loai luong (placeholder "Chon loai luong truoc"). */
+    if(typeof syncPayMin === 'function') syncPayMin();
     /* v210: 2 o fShopLogOpt/fShopPriceSort da chuyen sang trang Shop cung
        3 muc shop (khong con tren trang Mau) — khoi nay bo. Thay vao do:
        o Sap xep theo hoc phi (fUniClassSort, chuyen sang trang Mau cung

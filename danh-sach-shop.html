@@ -43,8 +43,6 @@
 .filter-actions .btn{width:auto;min-height:48px}
 .filter-area .filter-hint,.filter-area .filter-count,.filter-area .filter-empty{margin:8px 2px 0}
 @media(max-width:600px){.filter-actions .btn{flex:1}}
-/* v210: nhan hang nut danh muc tach rieng trong bo loc tim kiem. */
-.newobj-switch-label{margin:2px 2px 6px;font-weight:700}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">47</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -54,22 +52,12 @@
 <!-- v182: switch chon hang muc cho bo loc shop (nhu uni-cat-switch trang Mau)
      — mac dinh 'shop'; 3 muc con moi loc dung mang du lieu cua no. -->
 <div class="uni-cat-switch" id="shopFilterSwitch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
-<!-- v210 (13/11/2026, anh chot 22:03 + 22:15 — doi danh muc theo tieu de menu, tach nut):
-     switch chinh theo NHU CAU CUA MAU — chi tim viec lam (tin tuyen shop).
-     Trang nay (danh-sach-shop.html) la dich cua menu "Dành cho Mẫu".
-     2 muc lop hoc CHUYEN VE day tu trang Shop (truoc day la link nhay sang trang Shop + cuon xuong
-     content) va TACH RA hang nut rieng trong bo loc (co nhan "Lop hoc cho mau", khong tron vao
-     switch chinh) theo lenh anh 22:15 — cung cach tach nhu 3 muc dich vu ben trang Shop.
-     3 muc shop (su kien/logistics/agency ads) la nhu cau cua SHOP nen CHUYEN SANG trang Shop
-     (danh-sach-mau.html). -->
+<!-- v211 (13/11/2026, anh chot 22:54 + duyet 23:01 — giong ben Kiot):
+     MOT hang switch duy nhat chua TAT CA cac muc (nhu switch Kiot). 2 muc lop hoc
+     tu hang nut rieng trong bo loc (v210) CHUYEN VAO switch chinh; bo han nhan
+     "Lop hoc cho mau" va #modelClassesSwitch. Bam nut mo section ngay tai cho,
+     KHONG nhay trang, KHONG cuon. So dem (11) chi tren nut muc moi. -->
 <button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
-</div>
-<!-- v210 (anh chot 22:15 — tach nut chon bo loc ra khoi switch, them vao bo loc tim kiem):
-     2 muc lop hoc KHONG nam trong switch chinh (chi co Tim viec lam) ma co hang nut rieng
-     ngay trong bo loc, co nhan "Lop hoc cho mau". Bam nut mo section ngay tai cho,
-     KHONG nhay trang, KHONG cuon. (Cung cach tach nhu 3 muc dich vu ben trang Shop.) -->
-<p class="newobj-switch-label">Lớp học cho mẫu:</p>
-<div class="uni-cat-switch" id="modelClassesSwitch" role="group" aria-label="Chọn lớp học cho mẫu">
 <button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
 </div>
