@@ -13116,7 +13116,8 @@ window.V20_DATA = {
    "page": "bai-viet/cong-tac-vien-ver2solution-50-hoa-hong.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/cong-tac-vien-ver2solution-50-hoa-hong-hero.jpg",
    "takeaway": "Mẫu livestream giới thiệu shop dùng thử 4 buổi Comment miễn phí: khách đóng tiền thì nhận 50% hoa hồng tháng đầu, cao nhất 7.000.000 đồng/khách, không giới hạn số khách — chỉ cần hồ sơ mẫu đã được duyệt trên web."
-  }
+  },
+{"title":"1.995 tỷ đồng trong 1 ngày — Double 11/2026: shop tự live chiếm 62% GMV livestream, thời KOL siêu đầu đã qua","cat":"Xu hướng","source":"Syntun (qua PRNewswire)","date":"2026-11-13","url":"https://www.prnewswire.com/news-releases/syntun--2026-double-11-promotion-report-gmv-during-chinas-double-11-shopping-festival-reached-rmb-1-776-4-billion-approx-us264-4-billion-302937680.html","page": "bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html","img":"https://vieclamlivestream.online/images/bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream-hero.jpg","pinned":false,"takeaway":"Double 11/2026: shop tự live chiếm 62% GMV livestream Douyin, KOL chỉ còn dưới 40%; Giả Nãi Lượng bán 570 triệu NDT trong 1 ngày 21/10/2026; Syntun chốt sổ 1.776,4 tỷ NDT (+4,8%); trả hàng livestream tới 80–90% — 7 bài học cho shop Việt trước 12.12."}
 ],
  "lots": [
    {
@@ -19501,3 +19502,4 @@ window.V20_DATA = {
  ],
 };
 window.V20_PHOTOS = {"th-01": "images/th-01.jpg", "th-02": "images/th-02.jpg", "th-03": "images/th-03.jpg", "th-05": "images/th-05.jpg", "th-06": "images/th-06.jpg", "th-07": "images/th-07.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-11": "images/th-11.jpg", "th-12": "images/th-12.jpg", "th-13": "images/th-13.jpg", "th-14": "images/th-14.jpg", "th-15": "images/th-15.jpg", "th-16": "images/th-16.jpg", "th-17": "images/th-17.jpg", "th-18": "images/th-18.jpg", "th-19": "images/th-19.jpg", "th-20": "images/th-20.jpg"};
+
