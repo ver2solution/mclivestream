@@ -1,0 +1,43 @@
+name: Deploy articles-viec-lam-2026-11-13 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-viec-lam-1311.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-viec-lam-1311:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip viec-lam-1311 package
+        run: |
+          unzip -o mclivestream-viec-lam-1311-deploy.zip
+          echo "--- verify viec-lam-1311 (4 bai) ---"
+          for slug in luong-mau-livestream-tin-tuyen-12-11-2026 tuyen-mau-livestream-tet thong-ke-ho-so-moi-12-11-2026 mau-livestream-khong-can-kinh-nghiem-my-30-40-usd-gio; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-viec-lam-1311-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-viec-lam-2026-11-13: 4 bai (luong-mau-livestream tin tuyen 12/11, tuyen-mau-livestream-tet, thong-ke-ho-so-moi-12-11, mau-livestream-khong-can-kinh-nghiem)"
+            git push
+          fi
