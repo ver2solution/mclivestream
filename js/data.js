@@ -8129,6 +8129,54 @@ window.V20_DATA = {
    "takeaway": "Vàng rơi khỏi 4.000 USD sau tuần tăng 5%: tiền cần dùng 2 tháng tới giữ bằng tiền mặt, đợi PPI 13/11 rồi mới quyết định mua bán vàng."
   },
   {
+   "title": "Giỏ quà Tết 2026: giá 200.000–500.000đ, hàng Việt lên ngôi",
+   "cat": "Hàng hoá",
+   "source": "Thương hiệu & Sản phẩm",
+   "date": "2026-11-13",
+   "url": "https://thuonghieusanpham.vn/gio-qua-tet-2026-doi-truc-hang-viet-vuon-len-giu-the-chu-luc",
+   "page": "bai-viet/gio-qua-tet-2026-gia-200000-500000d-hang-viet-len-ngoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gio-qua-tet-2026-gia-200000-500000d-hang-viet-len-ngoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giỏ quà Tết 2026 giá phổ biến 200.000–500.000đ, hàng Việt và đặc sản vùng miền lên ngôi; shop nhỏ bán giỏ minh bạch, livestream gói quà trực tiếp, chuẩn bị từ 12.12 cho Tết 06/02/2027."
+  },
+  {
+   "title": "Đồ giữ ấm bán chạy: 300.000 áo phao một đêm Double 11",
+   "cat": "Hàng hoá",
+   "source": "The China Path",
+   "date": "2026-11-13",
+   "url": "https://www.thechinapath.com/insights/double-11-2026-results",
+   "page": "bai-viet/do-giu-am-ban-chay-300000-ao-phao-mot-dem-double-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/do-giu-am-ban-chay-300000-ao-phao-mot-dem-double-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đồ giữ ấm bán chạy nhất Double 11 2026: máy sưởi +400%, 300.000 áo phao một đêm 09/11; shop Việt nhập theo đợt lạnh, giao nhanh, quay video thử thật và tính trước tỉ lệ trả hàng."
+  },
+  {
+   "title": "Máy trốn họp Zoom: phát minh vô dụng Nhật Bản viral",
+   "cat": "Hàng hoá",
+   "source": "Core77",
+   "date": "2026-11-13",
+   "url": "https://www.core77.com/posts/98355/Zoom-Meeting-Escape-Gadget-Unflattering-Angle-Selfie-Stick-Painful-Lego-Soled-Sandals-and-Other-Wasted-Creations",
+   "page": "bai-viet/may-tron-hop-zoom-phat-minh-vo-dung-nhat-ban.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/may-tron-hop-zoom-phat-minh-vo-dung-nhat-ban.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Máy trốn họp Zoom: vòng tròn loading giả màn hình đơ của Marina Fujiwara, viral lại 27/04/2026; shop học cách quay video quá trình và mở đầu bằng nỗi bực của khách trong 5 giây."
+  },
+  {
+   "title": "Cách nhập hàng 1688: AI Accio mở cho 100 triệu người mua",
+   "cat": "Hàng hoá",
+   "source": "CNB2BGo",
+   "date": "2026-11-13",
+   "url": "https://www.cnb2bgo.com/2026/10/14/1688-opens-accio-ai-sourcing-to-all-buyers-and-factories/",
+   "page": "bai-viet/cach-nhap-hang-1688-ai-accio-mo-cho-100-trieu-nguoi-mua.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-nhap-hang-1688-ai-accio-mo-cho-100-trieu-nguoi-mua.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách nhập hàng 1688 đổi mới 13/10/2026: AI Accio mở cho 100 triệu+ người mua, tìm xưởng và so giá qua 128 quốc gia; vẫn cần lấy mẫu, kiểm hàng và chốt đơn trước tháng 12 cho 12.12 và Tết."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
