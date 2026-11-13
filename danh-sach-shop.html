@@ -78,8 +78,8 @@
 <h2 id="shop-list-title">Danh sách shop tuyển mẫu livestream</h2>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
-<!-- v210 (13/11/2026): 2 muc lop hoc CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo tieu de menu — lop hoc la nhu cau cua MAU. v181: 2 muc lop hoc fix 1 hang (class rows-1) -->
-<section class="lot-section filter-section collapsed rows-1" id="lop-livestream-mc" aria-labelledby="class-live-title">
+<!-- v210 (13/11/2026): 2 muc lop hoc CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo tieu de menu — lop hoc la nhu cau cua MAU. v213: 2 muc lop hoc hien 2 hang (bo class rows-1 cua v181 — mac dinh collapsed hien 2 hang); nut Xem them hien so luong do app.js refreshClassMoreBtn lam chu duy nhat (da bo 2 script inline rieng). -->
+<section class="lot-section filter-section collapsed" id="lop-livestream-mc" aria-labelledby="class-live-title">
 <h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
 <p class="lot-sub" id="classLiveSub">Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.</p>
 <!-- v186: bo loc lop Live da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
@@ -89,8 +89,7 @@
 <button class="lot-more" id="classLiveMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
-<script>(function(){var s=document.getElementById("lop-livestream-mc");if(!s)return;var b=document.getElementById("classLiveMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed rows-1" id="lop-makeup" aria-labelledby="class-makeup-title">
+<section class="lot-section filter-section collapsed" id="lop-makeup" aria-labelledby="class-makeup-title">
 <h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
 <p class="lot-sub" id="classMakeupSub">Lớp học dạy makeup cá nhân và makeup lên hình livestream.</p>
 <!-- v186: bo loc lop Makeup da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
@@ -100,7 +99,6 @@
 <button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
-<script>(function(){var s=document.getElementById("lop-makeup");if(!s)return;var b=document.getElementById("classMakeupMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>

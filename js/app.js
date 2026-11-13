@@ -964,12 +964,15 @@ function initSectionFilter(opts){
     var moreBtn = document.getElementById(opts.moreBtnId);
     if(open){ section.classList.remove('collapsed'); }
     else { section.classList.add('collapsed'); }
+    /* v213: 2 muc lop hoc do refreshClassMoreBtn lam chu nut (hien so luong
+       con lai / an nut khi het) — khong dat text don o day nua. */
+    if(CLASS_MORE[opts.sectionId]){ refreshClassMoreBtn(opts.sectionId); return; }
     if(moreBtn){
       moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       moreBtn.textContent = open ? 'Thu gọn ↑' : 'Xem thêm ↓';
     }
   }
-  function apply(){
+  function apply(doScroll){
     var f = opts.readForm();
     var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption); /* v179: + logisticsOption (5 danh muc moi) */
     var total = 0, first = null;
@@ -1001,10 +1004,13 @@ function initSectionFilter(opts){
     // v91 (9): 0 kết quả → cuộn tới đúng bảng "Chưa có dữ liệu" (có
     // scroll-margin để header sticky không che).
     if (!first && emptyEl && !emptyEl.hidden) target = emptyEl;
-    // v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho mọi
-    // mục mới): section mục mới (noScroll) KHÔNG cuộn tới kết quả; chỉ danh
-    // sách chính (lô/xưởng/kiot) giữ cuộn v91.
-    if(!opts.noScroll && target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+    // v213 (anh Thọ dặn 23:58 ngày 13/11 — TAT CA muc loc sau khi Ap dung
+    // ra ket qua thi TU CUON toi ket qua; ghi de phan cam cuon khi Ap dung
+    // cua v207): chi cuon khi apply() duoc goi TU NUT Ap dung (doScroll=true)
+    // hoac section khong phai muc moi. Bam hang muc/switch/?newobj=/Dat lai
+    // goi apply() khong truyen doScroll nen VAN KHONG cuon (giữ v207).
+    // Section muc moi (noScroll) KHONG cuon khi goi tu duong khac.
+    if((doScroll === true || !opts.noScroll) && target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   }
   function reset(){
     grids.forEach(function(g){
@@ -2064,6 +2070,40 @@ function newObjMatches(card, f){
   if(f.logisticsOption && card.getAttribute('data-logistics-option') !== f.logisticsOption) return false;
   return true;
 }
+/* v213: nut "Xem them" cua 2 muc lop hoc CHI hien khi con du lieu chua hien
+   (anh Thọ dặn 23:57 ngày 13/11 — 2 muc lop hoc hien 2 hang, neu nhieu hon thi
+   co nut xem tiep va hien tong so luong; theo mau v212 cua Kiot). Mo rong thi
+   nut la "Thu gọn"; thu gon thi "Xem thêm ↓ (còn N lớp học)" voi N = so the
+   khop bo loc dang bi CSS an (tu the #13 desktop / #5 tablet / #3 mobile);
+   khong con the an thi AN nut. Dem bang offsetParent (chinh xac theo
+   viewport) — loai the bi loc (lot-filtered-out) vi chung an do loc, khong
+   phai do thu gon. 1 chu duy nhat cho text/an-hien cua 2 nut (thay 2 script
+   inline rieng trong danh-sach-shop.html + cac cho dat text truc tiep). */
+var CLASS_MORE = {
+  'lop-livestream-mc': {moreBtnId: 'classLiveMoreBtn', gridId: 'classLiveGrid'},
+  'lop-makeup': {moreBtnId: 'classMakeupMoreBtn', gridId: 'classMakeupGrid'}
+};
+function refreshClassMoreBtn(secId){
+  var cfg = CLASS_MORE[secId];
+  if(!cfg) return;
+  var mb = document.getElementById(cfg.moreBtnId);
+  var s = document.getElementById(secId);
+  var grid = document.getElementById(cfg.gridId);
+  if(!mb || !s || !grid) return;
+  if(!s.classList.contains('collapsed')){
+    mb.hidden = false; mb.setAttribute('aria-expanded','true'); mb.textContent = 'Thu gọn ↑'; return;
+  }
+  var hidden = 0;
+  for(var i = 0; i < grid.children.length; i++){
+    var c = grid.children[i];
+    if(!c.classList.contains('lot-filtered-out') && c.offsetParent === null) hidden++;
+  }
+  mb.setAttribute('aria-expanded','false');
+  mb.hidden = hidden === 0;
+  mb.textContent = 'Xem thêm ↓ (còn ' + hidden + ' lớp học)';
+}
+/* v213: expose qua window.V20 o literal cuoi file (kieu v179/v212) — probe
+   dung de kiem duong dem so luong khi them the gia vao luoi. */
 /* Khoi tao 1 section moi: bo loc dung chung initSectionFilter (tinh/tp +
    option logistics + sap xep theo gia) — v186: form loc doc TU LOC
    CHUNG TREN TOP (provId/sortId/optionId tro toi o tren top, khong con
@@ -2077,8 +2117,9 @@ function initNewObjSection(cfg){
   var h = initSectionFilter({
     sectionId: sectionId, moreBtnId: cfg.moreBtnId, filterId: cfg.filterId,
     countId: cfg.countId, emptyId: cfg.emptyId, label: cfg.label,
-    /* v207: CẤM cuộn (trôi) cho mục mới — apply() của section mục mới không
-       gọi scrollIntoView (xem guard noScroll trong apply()). */
+    /* v207: CẤM cuộn (trôi) cho mục mới khi BAM HANG MUC/switch/?newobj= —
+       apply() của section mục mới chỉ cuộn khi được gọi TỪ NÚT Áp dụng
+       (doScroll=true, v213); xem guard trong apply(). */
     noScroll: true,
     readForm: function(){
       return {
@@ -2125,6 +2166,22 @@ function initNewObjSections(){
       if(openLotFactoryKiotDetail(t.getAttribute('data-detail-id'))) e.preventDefault();
     });
   }
+  /* v213: nut Xem them cua 2 muc lop hoc — 1 dang ky click duy nhat (thay
+     2 script inline rieng trong danh-sach-shop.html) + dat text/lan dau
+     theo so luong that (renderNewObjSections da render xong the o tren). */
+  Object.keys(CLASS_MORE).forEach(function(secId){
+    var b = document.getElementById(CLASS_MORE[secId].moreBtnId);
+    if(b && !b._v213Bound){
+      b._v213Bound = true;
+      b.addEventListener('click', function(){
+        var s = document.getElementById(secId);
+        if(!s) return;
+        s.classList.toggle('collapsed');
+        refreshClassMoreBtn(secId);
+      });
+    }
+    refreshClassMoreBtn(secId);
+  });
 }
 /* ---------- v124: Tin lô / xưởng / kiot do thành viên đăng ---------- */
 /* Chuyển 1 dòng từ public view (Supabase) sang đúng shape data.js (đặc tả
@@ -2956,6 +3013,8 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
   function collapseSection(id, moreId){
     var s = document.getElementById(id);
     if(s) s.classList.add('collapsed');
+    /* v213: 2 muc lop hoc do refreshClassMoreBtn lam chu nut (hien so luong). */
+    if(CLASS_MORE[id]){ refreshClassMoreBtn(id); return; }
     var b = moreId ? document.getElementById(moreId) : null;
     if(b){ b.setAttribute('aria-expanded','false'); b.textContent='Xem thêm ↓'; }
   }
@@ -2968,6 +3027,8 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
     if(s){
       s.classList.remove('collapsed');
     }
+    /* v213: 2 muc lop hoc do refreshClassMoreBtn lam chu nut (mo rong -> "Thu gọn ↑"). */
+    if(CLASS_MORE[id]){ refreshClassMoreBtn(id); return; }
     var b = moreId ? document.getElementById(moreId) : null;
     if(b){ b.setAttribute('aria-expanded','true'); b.textContent='Thu gọn ↑'; }
   }
@@ -3045,14 +3106,15 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       var ncfg = NEWOBJ_UNI_CATS[cat];
       if(ncfg){
         var h = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg.sectionId] : null;
-        if(h && h.apply) h.apply();
+        if(h && h.apply) h.apply(true);
         var c = document.getElementById('uniCount');
         var sc = document.getElementById(ncfg.countId);
         if(c && sc) c.textContent = sc.textContent;
         closeFilterOf(b);
-        /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
-           mọi mục mới): Áp dụng lọc mục mới KHÔNG cuộn tới section; trang
-           đứng yên, chỉ đổi nội dung hiển thị (ghi đè quy tắc v199). */
+        /* v213 (anh Thọ dặn 23:58 ngày 13/11 — TAT CA muc loc sau khi Ap dung
+           ra ket qua thi TU CUON toi ket qua): apply(true) da cuon toi the
+           khop dau tien / bang "Chua co du lieu" (ghi de phan cam cuon khi
+           Ap dung cua v207). Bam hang muc/switch/?newobj= van KHONG cuon. */
         return;
       }
       if(cat === 'lot'){
@@ -3211,13 +3273,19 @@ function initShops(){
       });
       var cs = document.getElementById(ncfg.sectionId);
       if(cs) cs.classList.remove('collapsed');
-      var mb = document.getElementById(ncfg.moreBtnId);
-      if(mb){ mb.setAttribute('aria-expanded','true'); mb.textContent = 'Thu gọn ↑'; }
+      /* v213: nut cua muc da chon (mo rong) + muc kia (thu gon) deu do
+         refreshClassMoreBtn lam chu — muc chon -> "Thu gọn ↑", muc kia ->
+         "Xem thêm ↓ (còn N lớp học)" hoac an khi het. */
+      refreshClassMoreBtn(ncfg.sectionId);
+      ['lop-livestream-mc','lop-makeup'].forEach(function(sid){
+        if(sid !== ncfg.sectionId) refreshClassMoreBtn(sid);
+      });
     } else {
       showAllNewObjSections();
       ['lop-livestream-mc','lop-makeup'].forEach(function(sid){
         var s = document.getElementById(sid);
         if(s) s.classList.add('collapsed');
+        refreshClassMoreBtn(sid);
       });
     }
     refreshShopProvCounts(cat);
@@ -3237,14 +3305,15 @@ function initShops(){
     var ncfg = NEWOBJ_UNI_CATS[cat];
     if(ncfg){
       var h = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg.sectionId] : null;
-      if(h && h.apply) h.apply();
+      if(h && h.apply) h.apply(true);
       var c = document.getElementById('shopCount');
       var sc2 = document.getElementById(ncfg.countId);
       if(c && sc2) c.textContent = sc2.textContent;
       closeFilterOf(b);
-      /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
-         mọi mục mới): Áp dụng lọc mục mới KHÔNG cuộn tới section; trang
-         đứng yên, chỉ đổi nội dung hiển thị (ghi đè quy tắc v199). */
+      /* v213 (anh Thọ dặn 23:58 ngày 13/11 — TAT CA muc loc sau khi Ap dung
+         ra ket qua thi TU CUON toi ket qua): apply(true) da cuon toi the
+         khop dau tien / bang "Chua co du lieu" (ghi de phan cam cuon khi
+         Ap dung cua v207). Bam hang muc/switch/?newobj= van KHONG cuon. */
       return;
     }
     return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b);
@@ -4717,7 +4786,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
    nào đó không gắn được dropdown, thử lại khi trang tải xong.
    initNewsDropdown idempotent nên gọi 2 lần không chèn trùng. */
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;

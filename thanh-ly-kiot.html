@@ -357,10 +357,11 @@
     var secId = newObjSectionCfg(cat);
     if(secId){
       var h = newObjSectionHandle(secId);
-      if(h && h.apply) h.apply();
-      /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
-         mọi mục mới): đổi bộ lọc mục mới KHÔNG cuộn tới section; trang đứng
-         yên, chỉ cập nhật dòng đếm trong thẻ lọc theo mục đang chọn. */
+      if(h && h.apply) h.apply(true);
+      /* v213 (anh Thọ dặn 23:58 ngày 13/11 — TAT CA muc loc sau khi Ap dung
+         ra ket qua thi TU CUON toi ket qua): apply(true) da cuon toi the
+         khop dau tien / bang "Chua co du lieu" (ghi de phan cam cuon khi
+         Ap dung cua v207). Bam hang muc/switch (setKiotCat) van KHONG cuon. */
       updateKiotCountForSub(secId);
       refreshKiotSubMoreBtn(secId);
       return;
