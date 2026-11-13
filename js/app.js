@@ -1832,7 +1832,7 @@ function renderLotSections(ref){
    (mo rong them 5 loai); bo loc dung chung initSectionFilter.
    Avatar BAT BUOC: the khong co avatar thi khong render — newObjCardHTML
    tra '' (anh dai dien la bat buoc theo yeu cau 20:05 ngay 12/11).
-   Khong co nut sao cho 5 loai moi: enum category cua RPC sao (M7.2)
+   Khong co nut sao cho 7 loai moi: enum category cua RPC sao (M7.2)
    chua co cac loai nay, bam sao se loi hoan tac — cho backend bo sung
    roi moi bat sao. Khong co binh luan inline (nhu mau/shop: binh luan
    o trang chi tiet day du; 5 loai moi chua co trang chi tiet rieng). */
@@ -1841,11 +1841,13 @@ var NEWOBJ_TYPES = {
   classesMakeup: {label: 'Lớp dạy Makeup', short: 'Lớp Makeup', icon: '💄', priceLabel: 'Học phí', page: 'danh-sach-mau.html'},
   eventsMarketing: {label: 'Sự kiện Marketing', short: 'Sự kiện Marketing', icon: '📣', priceLabel: 'Phí tham dự', page: 'danh-sach-shop.html'},
   logistics: {label: 'Logistics Trung – Việt', short: 'Logistics', icon: '🚚', priceLabel: 'Giá vận chuyển', page: 'danh-sach-shop.html'},
-  rentals: {label: 'Cho thuê cửa hàng / kho hàng', short: 'Cho thuê mặt bằng', icon: '🏬', priceLabel: 'Giá thuê', page: 'danh-sach-shop.html'}
+  rentals: {label: 'Cho thuê cửa hàng / kho hàng', short: 'Cho thuê mặt bằng', icon: '🏬', priceLabel: 'Giá thuê', page: 'danh-sach-shop.html'},
+  movingServices: {label: 'Dịch vụ chuyển nhà', short: 'Chuyển nhà', icon: '🏠', priceLabel: 'Giá dịch vụ', page: 'thanh-ly-kiot.html'},
+  liveEquipment: {label: 'Thiết bị Phòng Live', short: 'Thiết bị Live', icon: '🎙️', priceLabel: 'Giá bán', page: 'thanh-ly-kiot.html'}
 };
-var NEWOBJ_ARRAYS = ['classesLive', 'classesMakeup', 'eventsMarketing', 'logistics', 'rentals'];
+var NEWOBJ_ARRAYS = ['classesLive', 'classesMakeup', 'eventsMarketing', 'logistics', 'rentals', 'movingServices', 'liveEquipment'];
 var NEWOBJ_LOGISTICS_OPTIONS = {'chinh-ngach': 'Vận chuyển chính ngạch', 'tieu-ngach': 'Vận chuyển trọn gói – tiểu ngạch', 'mua-ho': 'Dịch vụ mua hàng hộ'};
-/* v182: 5 danh muc moi lam MUC CON trong bo loc chung (uni-cat-switch).
+/* v182 + v196: 7 danh muc moi lam MUC CON trong bo loc chung (uni-cat-switch).
    v186: loc cua 5 muc CHI CON o loc chung tren top cua trang con do
    (tinh dung chung + sap xep theo gia/hoc phi + hinh thuc logistics);
    section chi giu luoi + dem/trong, KHONG con loc rieng. Map nay tro
@@ -1855,13 +1857,15 @@ var NEWOBJ_UNI_CATS = {
   'class-makeup': {type: 'classesMakeup', sectionId: 'lop-makeup', provId: 'fUniProv', moreBtnId: 'classMakeupMoreBtn', countId: 'classMakeupCount', label: 'Lớp học dạy Makeup'},
   'event-mkt': {type: 'eventsMarketing', sectionId: 'su-kien-marketing', provId: 'fShProv', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', label: 'Sự kiện Marketing chia sẻ kiến thức'},
   'logistics': {type: 'logistics', sectionId: 'logistics-trung-viet', provId: 'fShProv', optionId: 'fShopLogOpt', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', label: 'Công ty logistics Trung–Việt'},
-  'rentals': {type: 'rentals', sectionId: 'cho-thue-cua-hang-kho', provId: 'fShProv', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', label: 'Cho thuê cửa hàng/kho hàng'}
+  'rentals': {type: 'rentals', sectionId: 'cho-thue-cua-hang-kho', provId: 'fShProv', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', label: 'Cho thuê cửa hàng/kho hàng'},
+  'chuyen-nha': {type: 'movingServices', sectionId: 'dich-vu-chuyen-nha', provId: 'kiotProv', moreBtnId: 'movingMoreBtn', countId: 'movingCount', label: 'Dịch vụ chuyển nhà'},
+  'thiet-bi-live': {type: 'liveEquipment', sectionId: 'thiet-bi-phong-live', provId: 'kiotProv', moreBtnId: 'liveEquipMoreBtn', countId: 'liveEquipCount', label: 'Thiết bị Phòng Live'}
 };
 function newObjUniCatCfg(cat){ return NEWOBJ_UNI_CATS[cat] || null; }
 /* Dem that theo mang du lieu (chi tinh muc co avatar — giong render). */
 function newObjCount(type){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar) n++; }); return n; }
 function newObjProvCount(type, prov){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar && normProv(x.province || '') === normProv(prov)) n++; }); return n; }
-/* Cap nhat so dem (N) tren cac nut muc con trong uni-cat-switch (ca 2 trang). */
+/* Cap nhat so dem (N) tren cac nut muc con trong uni-cat-switch (ca 3 trang). */
 function refreshNewObjCatCounts(){
   if(typeof document === 'undefined' || !document.querySelectorAll) return;
   var btns = document.querySelectorAll('.uni-cat-btn[data-uni-cat]');
@@ -1889,13 +1893,15 @@ function showAllNewObjSections(){
     if(s) s.hidden = false;
   });
 }
-/* Thu tu hien thi + id DOM cua 5 section (mau.html: 2 muc dau; shop.html: 3 muc sau). */
+/* Thu tu hien thi + id DOM cua 7 section (mau.html: 2 muc dau; shop.html: 3 muc giua; thanh-ly-kiot.html: 2 muc cuoi). */
 var NEWOBJ_SECTIONS = [
   {type: 'classesLive', gridId: 'classLiveGrid', subId: 'classLiveSub', countH2Id: 'classLiveCountH2', subText: 'Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.'},
   {type: 'classesMakeup', gridId: 'classMakeupGrid', subId: 'classMakeupSub', countH2Id: 'classMakeupCountH2', subText: 'Lớp học dạy makeup cá nhân và makeup lên hình livestream.'},
   {type: 'eventsMarketing', gridId: 'eventMarketingGrid', subId: 'eventMarketingSub', countH2Id: 'eventMarketingCountH2', subText: 'Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.'},
   {type: 'logistics', gridId: 'logisticsGrid', subId: 'logisticsSub', countH2Id: 'logisticsCountH2', subText: 'Công ty logistics Trung – Việt: vận chuyển chính ngạch, trọn gói – tiểu ngạch và dịch vụ mua hàng hộ.'},
-  {type: 'rentals', gridId: 'rentalsGrid', subId: 'rentalsSub', countH2Id: 'rentalsCountH2', subText: 'Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.'}
+  {type: 'rentals', gridId: 'rentalsGrid', subId: 'rentalsSub', countH2Id: 'rentalsCountH2', subText: 'Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.'},
+  {type: 'movingServices', gridId: 'movingGrid', subId: 'movingSub', countH2Id: 'movingCountH2', subText: 'Dịch vụ chuyển nhà, chuyển trọ, chở đồ ghép xe cho shop và hộ kinh doanh online.'},
+  {type: 'liveEquipment', gridId: 'liveEquipGrid', subId: 'liveEquipSub', countH2Id: 'liveEquipCountH2', subText: 'Thiết bị phòng live: đèn, mic, webcam, capture card cho livestream bán hàng.'}
 ];
 function newObjPriceText(item){
   if(!item || item.price == null) return 'Liên hệ';
@@ -1974,6 +1980,8 @@ function initNewObjSections(){
   initNewObjSection({sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', emptyId: 'eventMarketingEmpty', label: 'sự kiện', provId: 'fShProv', sortId: 'fShopPriceSort'});
   initNewObjSection({sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', emptyId: 'logisticsEmpty', label: 'đơn vị vận chuyển', provId: 'fShProv', sortId: 'fShopPriceSort', optionId: 'fShopLogOpt'});
   initNewObjSection({sectionId: 'cho-thue-cua-hang-kho', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', emptyId: 'rentalsEmpty', label: 'mặt bằng', provId: 'fShProv', sortId: 'fShopPriceSort'});
+  initNewObjSection({sectionId: 'dich-vu-chuyen-nha', moreBtnId: 'movingMoreBtn', countId: 'movingCount', emptyId: 'movingEmpty', label: 'dịch vụ chuyển nhà', provId: 'kiotProv', sortId: 'kiotSort'});
+  initNewObjSection({sectionId: 'thiet-bi-phong-live', moreBtnId: 'liveEquipMoreBtn', countId: 'liveEquipCount', emptyId: 'liveEquipEmpty', label: 'thiết bị phòng live', provId: 'kiotProv', sortId: 'kiotSort'});
   /* Bam anh hoac nut "Xem chi tiet" tren the moi -> mo modal dung chung.
      Gan 1 lan (guard) vi init chay moi lan DOMContentLoaded. */
   if(typeof document !== 'undefined' && !document._v2sNewObjDetailBound){

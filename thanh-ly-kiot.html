@@ -54,6 +54,12 @@
 <section class="section filter-section" id="kiotFilters">
 <button class="filter-toggle" id="filterToggleKiot" type="button" aria-expanded="false" data-track="mo-bo-loc-kiot">🔍 Bộ lọc kiot thanh lý</button>
 <div class="filter-area">
+<div class="uni-cat-switch" id="kiotFilterSwitch" role="group" aria-label="Chọn mục">
+<!-- v196 (13/11/2026): 2 muc con moi trong trang Thanh ly Kiot — chon muc nao thi chi hien section cua muc do (ket hop loc tinh); so dem trong () cap nhat tu D boi refreshNewObjCatCounts (js/app.js). Nav chinh giu nguyen 7 muc (v194 da khoa). -->
+<button type="button" class="uni-cat-btn active" data-uni-cat="kiot" aria-pressed="true" data-track="chon-kiot">🏪 Kiot thanh lý</button>
+<button type="button" class="uni-cat-btn" data-uni-cat="chuyen-nha" aria-pressed="false" data-track="chon-chuyen-nha" title="Dịch vụ chuyển nhà">🏠 Dịch vụ chuyển nhà <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="thiet-bi-live" aria-pressed="false" data-track="chon-thiet-bi-live" title="Thiết bị Phòng Live">🎙️ Thiết bị Phòng Live <span class="uni-cat-count"></span></button>
+</div>
 <div class="filter-card cols-6" id="kiotFilter">
 <div class="uni-field"><label for="kiotProv">Tỉnh / Thành phố</label><select id="kiotProv" data-track="loc-tinh-kiot"><option value="">Tất cả tỉnh/thành</option></select></div>
 <div class="uni-field"><label for="kiotCat">Loại hình kinh doanh</label><select id="kiotCat" data-track="loc-loai-kiot"><option value="">Tất cả loại hình</option>
@@ -70,9 +76,34 @@
 </section>
 <!-- v123: hang 4 o tin dang hot & livestream cho kiot (render boi initKiotNewsRow) -->
 <div class="section" id="kiotNewsRow" aria-label="Tin đang hot và livestream cho kiot"></div>
+<div id="kiotListWrap">
 <div id="kiotList" class="lot-grid"></div>
 <p><button class="btn btn-primary" id="kiotMoreBtn" type="button" hidden>Xem thêm ↓</button></p>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p>
+</div>
+<section class="lot-section filter-section collapsed rows-1" id="dich-vu-chuyen-nha" aria-labelledby="moving-title" hidden>
+<h2 id="moving-title">Dịch vụ chuyển nhà <span id="movingCountH2"></span></h2>
+<p class="lot-sub" id="movingSub">Dịch vụ chuyển nhà, chuyển trọ, chở đồ ghép xe cho shop và hộ kinh doanh online.</p>
+<!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
+<p class="filter-count" id="movingCount"></p>
+<p class="filter-empty" id="movingEmpty" hidden>Chưa có dịch vụ chuyển nhà nào khớp bộ lọc.</p>
+<div class="lot-grid" id="movingGrid"></div>
+<button class="lot-more" id="movingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
+<script>(function(){var s=document.getElementById("dich-vu-chuyen-nha");if(!s)return;var b=document.getElementById("movingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed rows-1" id="thiet-bi-phong-live" aria-labelledby="liveequip-title" hidden>
+<h2 id="liveequip-title">Thiết bị Phòng Live <span id="liveEquipCountH2"></span></h2>
+<p class="lot-sub" id="liveEquipSub">Thiết bị phòng live: đèn, mic, webcam, capture card cho livestream bán hàng.</p>
+<!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
+<p class="filter-count" id="liveEquipCount"></p>
+<p class="filter-empty" id="liveEquipEmpty" hidden>Chưa có thiết bị phòng live nào khớp bộ lọc.</p>
+<div class="lot-grid" id="liveEquipGrid"></div>
+<button class="lot-more" id="liveEquipMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
+<script>(function(){var s=document.getElementById("thiet-bi-phong-live");if(!s)return;var b=document.getElementById("liveEquipMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+
 <!-- v157: khu tin 3 hang duoi danh sach kiot (giong khu Tin moi trang chu: .news-list 2 cot, 6 bai moi nhat Đang hot + Livestream) -->
 <section class="section" id="tin-moi-cho-kiot"><div class="section-head"><div><h2><a href="tin-tuc.html">Tin mới cho người thanh lý kiot</a></h2></div></div>
 <div class="news-list" id="kiotBottomNews"></div>
@@ -200,7 +231,55 @@
   });
   // v91 (9): đổi bộ lọc thì hướng ngay tới dòng kết quả / bảng "Chưa có
   // dữ liệu" (cuộn tới #kiotList, có scroll-margin để header không che).
+  /* v196: 3 muc trong trang Kiot — 'kiot' (mac dinh) + 2 muc con moi.
+     Khi dang o muc con thi loc chung (tinh kiotProv + sap xep kiotSort)
+     ap dung cho section cua muc do (qua handle V2S_NEWOBJ_FILTERS cua
+     js/app.js), khong render lai danh sach kiot. */
+  function getKiotCat(){
+    var b = document.querySelector('#kiotFilterSwitch .uni-cat-btn.active');
+    return b ? b.getAttribute('data-uni-cat') : 'kiot';
+  }
+  function newObjSectionCfg(cat){
+    var map = {'chuyen-nha': 'dich-vu-chuyen-nha', 'thiet-bi-live': 'thiet-bi-phong-live'};
+    return map[cat] || null;
+  }
+  function newObjSectionHandle(secId){
+    return (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[secId] : null;
+  }
+  var kiotSwitchBtns = document.querySelectorAll('#kiotFilterSwitch .uni-cat-btn');
+  var kiotListWrap = document.getElementById('kiotListWrap');
+  function setKiotCat(cat){
+    kiotSwitchBtns.forEach(function(b){
+      var on = b.getAttribute('data-uni-cat') === cat;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    var secId = newObjSectionCfg(cat);
+    if(kiotListWrap) kiotListWrap.hidden = !!secId;
+    if(catSel) catSel.disabled = !!secId;
+    if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection(cat);
+    if(secId){
+      var s = document.getElementById(secId);
+      if(s) s.classList.remove('collapsed');
+      var mb = document.getElementById(secId === 'dich-vu-chuyen-nha' ? 'movingMoreBtn' : 'liveEquipMoreBtn');
+      if(mb){ mb.setAttribute('aria-expanded', 'true'); mb.textContent = 'Thu gọn ↑'; }
+      var h = newObjSectionHandle(secId);
+      if(h && h.apply) h.apply();
+    }
+  }
+  kiotSwitchBtns.forEach(function(b){
+    b.addEventListener('click', function(){ setKiotCat(b.getAttribute('data-uni-cat')); });
+  });
   function onFilterChange(){
+    var cat = getKiotCat();
+    var secId = newObjSectionCfg(cat);
+    if(secId){
+      var h = newObjSectionHandle(secId);
+      if(h && h.apply) h.apply();
+      var s = document.getElementById(secId);
+      if(s && typeof s.scrollIntoView === 'function') s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
     kiotShown = KIOT_MAX_ROWS; // v111: loc moi thi ve trang 1
     render();
     if (list && typeof list.scrollIntoView === 'function') list.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -226,10 +305,27 @@
     if (provSel) provSel.value = '';
     if (catSel) catSel.value = '';
     if (sortSel) sortSel.value = '';
+    ['dich-vu-chuyen-nha', 'thiet-bi-phong-live'].forEach(function(secId){
+      var h = newObjSectionHandle(secId);
+      if(h && h.reset) h.reset();
+    });
+    setKiotCat('kiot');
     onFilterChange();
   });
   if (window.V20 && typeof window.V20.initFilterToggle === 'function') window.V20.initFilterToggle();
   render();
+  /* v196: khoi tao trang thai mac dinh — an 2 section moi (chi hien khi
+     chon muc), mo theo hash #dich-vu-chuyen-nha / #thiet-bi-phong-live.
+     (app.js dang ky DOMContentLoaded truoc nen initNewObjSections da chay.) */
+  document.addEventListener('DOMContentLoaded', function(){
+    if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection('kiot');
+    var map = {'#dich-vu-chuyen-nha': 'chuyen-nha', '#thiet-bi-phong-live': 'thiet-bi-live'};
+    var cat = map[location.hash || ''];
+    if(!cat) return;
+    setKiotCat(cat);
+    var s = document.getElementById(newObjSectionCfg(cat));
+    if(s) s.scrollIntoView();
+  });
 })();
 </script>
 </body></html>
