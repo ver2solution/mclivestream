@@ -7797,6 +7797,54 @@ window.V20_DATA = {
    "takeaway": "Dòng tiền 11/11 chảy mạnh nhất vào ngày D+1 12/11, đạt 1,67 lần ngày thường với 913,4 tỷ đồng trong ngày 11/11/2025 (số 2025, mốc so sánh) — shop nhỏ nên live tiếp ngày 12/11, tung mã D+1 cho khách đã xem mà chưa mua, và chuyển sang đồ gia dụng, quà tặng từ tháng 12."
   },
   {
+   "title": "Lương mẫu livestream: 80.000–250.000đ/giờ, 40 tin 12/11",
+   "cat": "Việc Làm",
+   "source": "TopCV / CareerViet / JobsGO / TO Media",
+   "date": "2026-11-13",
+   "url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/2243424.html",
+   "page": "bai-viet/luong-mau-livestream-tin-tuyen-12-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mau-livestream-tin-tuyen-12-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương mẫu livestream từ 40 tin tuyển thật ngày 12/11/2026: lương giờ 30.000–250.000đ, lương tháng 3–50 triệu đồng; mức phổ biến 80.000–150.000đ/giờ và 10–18 triệu/tháng; luôn đọc kỹ lương cứng, hoa hồng và thưởng trước khi ứng tuyển."
+  },
+  {
+   "title": "Tuyển mẫu livestream Tết: lương 120.000đ/giờ, shop tuyển gấp",
+   "cat": "Việc Làm",
+   "source": "HR Forward Asia / Threads / VN Market Insights",
+   "date": "2026-11-13",
+   "url": "https://hrforwardasia.com/aeon-vietnam-plans-3000-hires-in-2026-as-it-opens-three-new-stores/",
+   "page": "bai-viet/tuyen-mau-livestream-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Tết 2027 đã bắt đầu: ca Tết 120.000đ/giờ + 1% hoa hồng, lương nhân đôi ca Tết, host 18–30 triệu/tháng; shop tuyển gấp trước 12.12, mẫu chuẩn bị áo dài và kịch bản Tết từ tháng 11/2026."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 12/11: 35 shop, 20 tài khoản",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-13",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-12-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-12-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới 12/11/2026: 20 tài khoản thời trang mới, 35 shop mới, 80 nhóm Facebook mới (khoảng 10,43 triệu thành viên, chưa kiểm chứng); sàn hiện 108 mẫu và 152 shop; lương cao nhất 50 triệu đồng/tháng (mức trần cần kiểm chứng lại)."
+  },
+  {
+   "title": "Mẫu livestream không cần kinh nghiệm: Mỹ trả 30–40 USD/giờ",
+   "cat": "Việc Làm",
+   "source": "Workable / The Geeky Greens",
+   "date": "2026-11-13",
+   "url": "https://jobs.workable.com/view/sLBSL285F9dDgwc77jMzFM/tiktok-shop-live-host%2C-cider-in-los-angeles-at-the-geeky-greens",
+   "page": "bai-viet/mau-livestream-khong-can-kinh-nghiem-my-30-40-usd-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-khong-can-kinh-nghiem-my-30-40-usd-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream không cần kinh nghiệm: Mỹ tuyển host live TikTok 30–40 USD/giờ, không cần kinh nghiệm (Workable, 30/10/2026); Indonesia trả 3–8 triệu rupiah/tháng (Jobstreet, 29/06/2026); Trung Quốc 95,2% streamer lương dưới 5.000 NDT/tháng (02/2026)."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
