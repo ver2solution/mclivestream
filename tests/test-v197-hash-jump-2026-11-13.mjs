@@ -106,7 +106,7 @@ t('kiot: mở rộng danh sách tới khi thẻ kiot xuất hiện', kiotHtml.in
 t('kiot (v199): mở mục theo ?newobj= thay hash section cũ', kiotHtml.includes("get('newobj')") && kiotHtml.includes("cat === 'chuyen-nha'") && !kiotHtml.includes("'#dich-vu-chuyen-nha': 'chuyen-nha'"));
 
 /* ---- 7. CACHE ---- */
-t('CACHE v200-shell-1', swJs.includes("const CACHE = 'v200-shell-1'") && !swJs.includes("v198-shell-1"));
+t('CACHE v205-shell-1', swJs.includes("const CACHE = 'v205-shell-1'") && !swJs.includes("v198-shell-1"));
 
 console.log(`\nv197: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

@@ -59,7 +59,7 @@ t('file không có game-entry chỉ là trang không popup (quan-tri + trang h�
 
 /* Hồi quy: nav + CACHE không đổi (gói HTML-only, không bump CACHE). */
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
-t("sw.js CACHE vẫn v200-shell-1 (KHÔNG bump vì chỉ đổi HTML)", sw.includes("const CACHE = 'v200-shell-1'") && !sw.includes('v201-shell'));
+t("sw.js CACHE = v205-shell-1 (v205 bump CACHE)", sw.includes("const CACHE = 'v205-shell-1'") && !sw.includes('v201-shell'));
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const navLabels = ['Trang chủ', 'Dành cho Mẫu', 'Dành cho Shop', 'Thanh lý Kiot', 'Tin tức', 'Hỏi đáp', 'Đăng ký'];
 t('index.html nav vẫn đủ 7 nhãn (không đụng menu)', navLabels.every((l) => index.includes(l)), navLabels.filter((l) => !index.includes(l)).join(', '));

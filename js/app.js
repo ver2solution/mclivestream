@@ -2418,6 +2418,8 @@ function renderTrustStats(){
   var tba = document.getElementById('trustBatch'); if(tba) tba.textContent = String(st.batchCount);
   var tf = document.getElementById('trustFactories'); if(tf) tf.textContent = String(st.factoryCount);
   var tfp = document.getElementById('trustFactoryProvinces'); if(tfp) tfp.textContent = String(st.factoryProvinceCount);
+  /* v205: 8 so lieu muc moi — lay tu data.js bang newObjCount (khop so tren switch + section). */
+  [['trustNewObjClassesLive','classesLive'],['trustNewObjClassesMakeup','classesMakeup'],['trustNewObjEventsMarketing','eventsMarketing'],['trustNewObjLogistics','logistics'],['trustNewObjRentals','rentals'],['trustNewObjAgencyAds','agencyAds'],['trustNewObjMovingServices','movingServices'],['trustNewObjLiveEquipment','liveEquipment']].forEach(function(p){ var el = document.getElementById(p[0]); if(el) el.textContent = String(newObjCount(p[1])); });
 }
 /* v130: sap xep lo/xuong/kiot theo ngay dd/mm/yyyy giam dan. Dung
    parseVnDate co san (khong dung new Date() truc tiep len chuoi

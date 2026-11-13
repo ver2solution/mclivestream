@@ -50,7 +50,7 @@ t('admin: vẫn gọi rpc get_online_breakdown', admin.includes("rpc('get_online
 t('web công khai: app.js + index.html không chứa qtOnlineSummary / get_online_breakdown', !app.includes('qtOnlineSummary') && !app.includes('get_online_breakdown') && !index.includes('qtOnlineSummary'));
 
 /* 5. CACHE bump (admin.js đổi nên phải bump). */
-t("sw.js CACHE = v200-shell-1 (admin.js đổi nên bump CACHE)", readPrep('sw.js').includes("const CACHE = 'v200-shell-1'") && !readPrep('sw.js').includes("v199-shell-1"));
+t("sw.js CACHE = v205-shell-1 (v205 bump CACHE)", readPrep('sw.js').includes("const CACHE = 'v205-shell-1'") && !readPrep('sw.js').includes("v199-shell-1"));
 
 console.log(`\n=== v200: ${pass} PASS / ${fail} FAIL ===`);
 process.exit(fail ? 1 : 0);
