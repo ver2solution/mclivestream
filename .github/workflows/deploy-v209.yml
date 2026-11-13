@@ -1,0 +1,42 @@
+name: Deploy v209 (trang Kiot them the H1)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v209:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Giai nen v209.zip
+        run: |
+          unzip -o v209.zip
+
+      - name: Kiem chung v209
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const s = fs.readFileSync('thanh-ly-kiot.html', 'utf8');
+          if ((s.match(/<h1/g) || []).length !== 1) throw new Error('so the h1 sai: ' + ((s.match(/<h1/g) || []).length) + ' (can 1)');
+          if (!s.includes('<h1>Kiot đang thanh lý</h1>')) throw new Error('thieu h1 Kiot dang thanh ly');
+          if (s.includes('<h2>Kiot đang thanh lý</h2>')) throw new Error('van con h2 cu');
+          console.log('KIEM CHUNG DAT: dung 1 h1 Kiot dang thanh ly');
+          EOF
+
+      - name: Commit file da deploy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add thanh-ly-kiot.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v209: trang Kiot them the H1 (SEO)"
+            git push
+          fi
