@@ -13106,6 +13106,16 @@ window.V20_DATA = {
    "page": "bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live-hero.jpg",
    "takeaway": "58 tỷ đồng trong 36 giờ không phải phép màu — nó đến sau nhiều tuần chuẩn bị: học thuộc và trải nghiệm 2.000 mã hàng trước giờ live, bán bằng giải trí thay vì đọc catalogue. Nhớ rằng doanh thu kết phiên chưa phải tiền thật: hoa hồng 10% (khoảng 5,8 tỷ đồng) còn phải trừ chi phí sản xuất, ekip và kho bãi; và minh bạch là 'bảo hiểm' duy nhất cho uy tín khi con số lớn gây ồn ào."
+  },
+  {
+   "title": "7.000.000 đồng/khách: mẫu live giới thiệu shop nhận 50%",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-13",
+   "url": null,
+   "page": "bai-viet/cong-tac-vien-ver2solution-50-hoa-hong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cong-tac-vien-ver2solution-50-hoa-hong-hero.jpg",
+   "takeaway": "Mẫu livestream giới thiệu shop dùng thử 4 buổi Comment miễn phí: khách đóng tiền thì nhận 50% hoa hồng tháng đầu, cao nhất 7.000.000 đồng/khách, không giới hạn số khách — chỉ cần hồ sơ mẫu đã được duyệt trên web."
   }
 ],
  "lots": [
