@@ -25,7 +25,7 @@ jobs:
           echo "lots: $(grep -c '"id": "lot-' js/data.js)"
           echo "factories: $(grep -c '"id": "fac-' js/data.js)"
           echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
-          echo "articles: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "articles (grep page): $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "model images new: $(ls images/th-15[7-9].jpg images/th-16[0-6].jpg 2>/dev/null | wc -l)"
           echo "kiot images new: $(ls images/kiot/kiot-8[1-9].jpg images/kiot/kiot-9[0-9].jpg images/kiot/kiot-1[01][0-9].jpg images/kiot/kiot-120.jpg 2>/dev/null | wc -l)"
           test "$(grep -c '"id": "th-' js/data.js)" = "128" || (echo "BAD models count"; exit 1)
@@ -33,7 +33,8 @@ jobs:
           test "$(grep -c '"id": "kiot-' js/data.js)" = "120" || (echo "BAD kiots count"; exit 1)
           test "$(grep -c '"id": "lot-' js/data.js)" = "29" || (echo "BAD lots count"; exit 1)
           test "$(grep -c '"id": "fac-' js/data.js)" = "120" || (echo "BAD factories count"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "218" || (echo "BAD articles count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "217" || (echo "BAD articles grep count"; exit 1)
+          test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.articles.length)")" = "218" || (echo "BAD articles parsed count"; exit 1)
           test "$(ls images/th-15[7-9].jpg images/th-16[0-6].jpg 2>/dev/null | wc -l)" = "10" || (echo "BAD model images"; exit 1)
           test "$(ls images/kiot/kiot-8[1-9].jpg images/kiot/kiot-9[0-9].jpg images/kiot/kiot-1[01][0-9].jpg images/kiot/kiot-120.jpg 2>/dev/null | wc -l)" = "39" || (echo "BAD kiot images"; exit 1)
       - name: Commit deployed files
