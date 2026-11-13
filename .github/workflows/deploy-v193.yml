@@ -1,0 +1,41 @@
+name: Deploy v193 (sua nut Xoa ban thao console admin)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v193.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v193:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v193 package
+        run: |
+          unzip -o mclivestream-v193-deploy.zip
+          echo "--- verify v193 (nut Xoa ban thao) ---"
+          test -f js/admin.js || (echo "THIEU js/admin.js"; exit 1)
+          test -f sw.js || (echo "THIEU sw.js"; exit 1)
+          grep -q "Chắc chắn xóa?" js/admin.js || (echo "THIEU xac nhan 2 buoc nut Xoa"; exit 1)
+          if grep -q "window.confirm('Xóa bản thảo này?" js/admin.js; then echo "CON window.confirm o delete-draft"; exit 1; fi
+          grep -q "const CACHE = 'v193-admin-shell-1';" sw.js || (echo "THIEU CACHE v193-admin-shell-1"; exit 1)
+          if grep -q "const CACHE = 'v190-shell-1';" sw.js; then echo "CON CACHE cu v190"; exit 1; fi
+          echo "verify OK: delete-draft 2 buoc, khong con window.confirm, CACHE v193-admin-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f mclivestream-v193-deploy.zip
+          git add js/admin.js sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v193: sua nut Xoa ban thao console admin — xac nhan 2 buoc thay window.confirm (chi js/admin.js + sw.js, CACHE v193-admin-shell-1)"
+            git push
+          fi
