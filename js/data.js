@@ -7845,6 +7845,54 @@ window.V20_DATA = {
    "takeaway": "Mẫu livestream không cần kinh nghiệm: Mỹ tuyển host live TikTok 30–40 USD/giờ, không cần kinh nghiệm (Workable, 30/10/2026); Indonesia trả 3–8 triệu rupiah/tháng (Jobstreet, 29/06/2026); Trung Quốc 95,2% streamer lương dưới 5.000 NDT/tháng (02/2026)."
   },
   {
+   "title": "Double 12 2026 phân tích: 5 bài học từ 11.11 cho shop nhỏ",
+   "cat": "Phân tích",
+   "source": "AdPlay.ai",
+   "date": "2026-11-13",
+   "url": "https://adplay.ai/blog/mega-sale-ad-playbook",
+   "page": "bai-viet/double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "12.12 là ngày thu hoạch: chuẩn bị từ hôm nay, tính lãi trước khi giảm giá, bán lại cho tệp khách đã mua ở 11.11."
+  },
+  {
+   "title": "Mô hình bán hàng qua KOC: 79,2 triệu USD trong 30 ngày",
+   "cat": "Phân tích",
+   "source": "Nexscope",
+   "date": "2026-11-13",
+   "url": "https://www.nexscope.ai/reports/tiktok/top-selling-creators/us/2026-11-04",
+   "page": "bai-viet/mo-hinh-ban-hang-qua-koc-79-trieu-usd-30-ngay-my.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-ban-hang-qua-koc-79-trieu-usd-30-ngay-my.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Video dẫn đầu 75% top KOC Mỹ — shop nhỏ nên xây đội KOC làm video trước, live sau, và đo GMV theo từng creator."
+  },
+  {
+   "title": "Kinh doanh handmade online: Etsy đạt 2,6 tỷ USD quý 3",
+   "cat": "Phân tích",
+   "source": "Chain Store Age",
+   "date": "2026-11-13",
+   "url": "https://ChainStoreage.com/etsy-starts-search-new-cfo-q3-revenue-jumps",
+   "page": "bai-viet/kinh-doanh-handmade-online-etsy-26-ty-usd-quy-3-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-doanh-handmade-online-etsy-26-ty-usd-quy-3-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Handmade thắng nhờ khác biệt và đúng dịp: Etsy tăng 3 quý liên tiếp, người mua quay lại lần đầu sau 2 năm."
+  },
+  {
+   "title": "Mô hình kinh doanh độc lạ: áo chống mồ hôi 700.000 USD",
+   "cat": "Phân tích",
+   "source": "GeekWire",
+   "date": "2026-11-13",
+   "url": "https://www.geekwire.com/2026/no-sweat-high-tech-t-shirt-brand-neat-survives-shark-tank-and-lands-400k-deal-with-lori-greiner/",
+   "page": "bai-viet/mo-hinh-kinh-doanh-doc-la-ao-chong-mo-hoi-700000-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-kinh-doanh-doc-la-ao-chong-mo-hoi-700000-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua lại thương hiệu nhỏ đang ế rồi làm lại bằng marketing tăng trưởng: Neat từ 9.000 USD/tháng lên 700.000 USD/năm."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
