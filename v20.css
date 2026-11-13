@@ -1100,3 +1100,6 @@ th{background:#f4f8f6}
   .sr-end-card .small{color:var(--mut);font-size:13px}
   .search-end{padding:22px 0}
 }
+
+/* v215-khoa-game (14/11/2026): TAM KHOA Popup Game theo lenh anh — an nut #gameEntry "Chuyen Sinh The Gioi Moi" toan site. CSS .game-entry goc nam inline trong tung trang HTML (sau link v20.css) nen phai dung !important moi thang. Mo lai: xoa khoi nay + bump CACHE. */
+.game-entry{display:none!important}

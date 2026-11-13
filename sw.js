@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v213-shell-1'; /* v213: lop hoc 2 hang + nut Xem them hien so luong + Ap dung loc muc moi cuon toi ket qua (js/app.js + danh-sach-shop.html + thanh-ly-kiot.html) */
+const CACHE = 'v215-shell-1'; /* v215: tam khoa Popup Game - an nut gameEntry toan site (v20.css) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
