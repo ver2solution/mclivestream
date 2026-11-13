@@ -49,14 +49,14 @@
 <!-- v194 (13/11/2026, anh chot 12:35): switch theo NHU CAU CUA MAU — tim viec
      lam (tin tuyen shop), hoc thuyet trinh (Lop Livestream), hoc makeup/nail
      (Lop Makeup). Trang nay (danh-sach-shop.html) la dich cua menu "Dành cho Mẫu".
-     3 muc moi (su kien/logistics/cho thue) la nhu cau cua SHOP nen nut doi
+     3 muc moi (su kien/logistics/agency ads) la nhu cau cua SHOP nen nut doi
      thanh AN (chi de script mo theo hash khi sang tu trang Mau). -->
 <button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
 <a class="uni-cat-btn" href="danh-sach-mau.html#lop-livestream-mc" data-track="chon-lop-livestream">🎤 Lớp Livestream</a>
 <a class="uni-cat-btn" href="danh-sach-mau.html#lop-makeup" data-track="chon-lop-makeup">💄 Lớp Makeup</a>
 <button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức" style="display:none">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt" style="display:none">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="rentals" aria-pressed="false" data-track="chon-cho-thue" title="Cho thuê cửa hàng/kho hàng" style="display:none">🏬 Cho thuê mặt bằng <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream" style="display:none">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="shopFilter"><div class="uni-field"><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div class="uni-field"><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -68,7 +68,7 @@
      tren switch (khoa mac dinh); loc 3 muc moi chi con o loc chung tren top
      (tinh fShProv + sap xep gia fShopPriceSort + hinh thuc fShopLogOpt). -->
 <div class="uni-field locked" id="uf-shop-logopt"><label for="fShopLogOpt">Hình thức vận chuyển</label><select id="fShopLogOpt" data-track="loc-hinh-thuc-van-chuyen-shop" disabled><option value="">Tất cả hình thức</option><option value="chinh-ngach">Vận chuyển chính ngạch</option><option value="tieu-ngach">Vận chuyển trọn gói – tiểu ngạch</option><option value="mua-ho">Dịch vụ mua hàng hộ</option></select></div>
-<!-- v186: sap xep theo gia cho 3 muc moi — chi mo khi chon event-mkt/logistics/rentals tren switch (khoa mac dinh). -->
+<!-- v186: sap xep theo gia cho 3 muc moi — chi mo khi chon event-mkt/logistics/agency-ads tren switch (khoa mac dinh). -->
 <div class="uni-field locked" id="uf-shop-pricesort"><label for="fShopPriceSort">Sắp xếp theo giá</label><select id="fShopPriceSort" data-track="sap-xep-gia-shop" disabled><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
 <div class="uni-field uni-actions"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button></div><div class="uni-field uni-actions"><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p><p class="filter-count" id="shopCount"></p></div>
@@ -101,17 +101,17 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed" id="cho-thue-cua-hang-kho" aria-labelledby="rentals-title">
-<h2 id="rentals-title">Cho thuê cửa hàng / kho hàng <span id="rentalsCountH2"></span></h2>
-<p class="lot-sub" id="rentalsSub">Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.</p>
-<!-- v186: bo loc cho thue da gop len loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="rentalsCount"></p>
-<p class="filter-empty" id="rentalsEmpty" hidden>Chưa có mặt bằng nào khớp bộ lọc.</p>
-<div class="lot-grid" id="rentalsGrid"></div>
-<button class="lot-more" id="rentalsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<section class="lot-section filter-section collapsed" id="agency-ads-livestream" aria-labelledby="agencyAds-title">
+<h2 id="agencyAds-title">Agency Ads Livestream <span id="agencyAdsCountH2"></span></h2>
+<p class="lot-sub" id="agencyAdsSub">Agency chạy quảng cáo livestream TikTok/Facebook, booking KOL livestream cho shop online.</p>
+<!-- v198: muc moi Agency Ads Livestream — loc doc tu loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
+<p class="filter-count" id="agencyAdsCount"></p>
+<p class="filter-empty" id="agencyAdsEmpty" hidden>Chưa có agency nào khớp bộ lọc.</p>
+<div class="lot-grid" id="agencyAdsGrid"></div>
+<button class="lot-more" id="agencyAdsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
-<script>(function(){var s=document.getElementById("cho-thue-cua-hang-kho");if(!s)return;var b=document.getElementById("rentalsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<script>(function(){var s=document.getElementById("agency-ads-livestream");if(!s)return;var b=document.getElementById("agencyAdsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
@@ -145,7 +145,7 @@
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
-<button class="gopy-fab" id="gopyFab" hidden data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý"><span class="gopy-fab-icon" aria-hidden="true">💬</span><span class="gopy-fab-text">Góp ý</span></button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
@@ -181,8 +181,8 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v194: mo muc Su kien/Logistics/Cho thue theo hash khi sang tu trang Mau (link tab
-     "Su kien Marketing" / "Logistics Trung–Viet" / "Cho thue mat bang"). Bam nut AN
+<!-- v194: mo muc Su kien/Logistics/Agency Ads theo hash khi sang tu trang Mau (link tab
+     "Su kien Marketing" / "Logistics Trung–Viet" / "Agency Ads Livestream"). Bam nut AN
      tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc + dat active
      de nut Ap dung loc dung muc); dong thoi mo rong truc tiep + cuon toi muc de chac
      chan hien ngay ca khi init chua chay xong. -->
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var map = {
     '#su-kien-marketing': {cat: 'event-mkt', sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn'},
     '#logistics-trung-viet': {cat: 'logistics', sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn'},
-    '#cho-thue-cua-hang-kho': {cat: 'rentals', sectionId: 'cho-thue-cua-hang-kho', moreBtnId: 'rentalsMoreBtn'}
+    '#agency-ads-livestream': {cat: 'agency-ads', sectionId: 'agency-ads-livestream', moreBtnId: 'agencyAdsMoreBtn'}
   };
   var cfg = map[location.hash || ''];
   if(!cfg) return;

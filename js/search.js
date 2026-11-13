@@ -48,19 +48,20 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
-  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'chuyen-nha', 'thiet-bi-live', 'bai'];
-  /* v179 + v196: 7 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
+  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
+  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
+  /* v179 + v196 + v198: 8 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
   var NEWOBJ_META = {
     'lop-live': {label: 'Lớp Livestream / MC / Thuyết trình', page: 'danh-sach-mau.html'},
     'lop-makeup': {label: 'Lớp dạy Makeup', page: 'danh-sach-mau.html'},
     'su-kien': {label: 'Sự kiện Marketing', page: 'danh-sach-shop.html'},
     'logistics': {label: 'Logistics Trung – Việt', page: 'danh-sach-shop.html'},
-    'thue-mb': {label: 'Cho thuê cửa hàng / kho hàng', page: 'danh-sach-shop.html'},
+    'thue-mb': {label: 'Cho thuê cửa hàng / kho hàng', page: 'thanh-ly-kiot.html'},
+    'agency-ads': {label: 'Agency Ads Livestream', page: 'danh-sach-shop.html'},
     'chuyen-nha': {label: 'Dịch vụ chuyển nhà', page: 'thanh-ly-kiot.html'},
     'thiet-bi-live': {label: 'Thiết bị Phòng Live', page: 'thanh-ly-kiot.html'}
   };
-  var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'thue-mb': 'rentals', 'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment'};
+  var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'thue-mb': 'rentals', 'agency-ads': 'agencyAds', 'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment'};
   var HOT_FALLBACK = ['mẫu livestream', 'tuyển mẫu livestream', 'Phạm Thoại', 'xả kho thời trang', 'xưởng may', 'thanh lý kiot', 'mẫu livestream Hà Nội', 'livestream bán hàng'];
 
   /* ---------- Xây chỉ mục 1 lần ---------- */
@@ -128,7 +129,7 @@
     return out;
   }
   function countByType(index) {
-    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
+    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0, 'agency-ads': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
     index.forEach(function (e) { if (c[e.type] != null) c[e.type]++; });
     return c;
   }

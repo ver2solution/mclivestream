@@ -59,6 +59,7 @@
 <button type="button" class="uni-cat-btn active" data-uni-cat="kiot" aria-pressed="true" data-track="chon-kiot">🏪 Kiot thanh lý</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="chuyen-nha" aria-pressed="false" data-track="chon-chuyen-nha" title="Dịch vụ chuyển nhà">🏠 Dịch vụ chuyển nhà <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="thiet-bi-live" aria-pressed="false" data-track="chon-thiet-bi-live" title="Thiết bị Phòng Live">🎙️ Thiết bị Phòng Live <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="rentals" aria-pressed="false" data-track="chon-cho-thue" title="Cho thuê cửa hàng/kho hàng">🏬 Cho thuê mặt bằng <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="kiotFilter">
 <div class="uni-field"><label for="kiotProv">Tỉnh / Thành phố</label><select id="kiotProv" data-track="loc-tinh-kiot"><option value="">Tất cả tỉnh/thành</option></select></div>
@@ -81,7 +82,7 @@
 <p><button class="btn btn-primary" id="kiotMoreBtn" type="button" hidden>Xem thêm ↓</button></p>
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p>
 </div>
-<section class="lot-section filter-section collapsed rows-1" id="dich-vu-chuyen-nha" aria-labelledby="moving-title" hidden>
+<section class="lot-section filter-section collapsed" id="dich-vu-chuyen-nha" aria-labelledby="moving-title">
 <h2 id="moving-title">Dịch vụ chuyển nhà <span id="movingCountH2"></span></h2>
 <p class="lot-sub" id="movingSub">Dịch vụ chuyển nhà, chuyển trọ, chở đồ ghép xe cho shop và hộ kinh doanh online.</p>
 <!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
@@ -92,7 +93,7 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("dich-vu-chuyen-nha");if(!s)return;var b=document.getElementById("movingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed rows-1" id="thiet-bi-phong-live" aria-labelledby="liveequip-title" hidden>
+<section class="lot-section filter-section collapsed" id="thiet-bi-phong-live" aria-labelledby="liveequip-title">
 <h2 id="liveequip-title">Thiết bị Phòng Live <span id="liveEquipCountH2"></span></h2>
 <p class="lot-sub" id="liveEquipSub">Thiết bị phòng live: đèn, mic, webcam, capture card cho livestream bán hàng.</p>
 <!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
@@ -103,6 +104,17 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("thiet-bi-phong-live");if(!s)return;var b=document.getElementById("liveEquipMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed" id="cho-thue-cua-hang-kho" aria-labelledby="rentals-title">
+<h2 id="rentals-title">Cho thuê cửa hàng / kho hàng <span id="rentalsCountH2"></span></h2>
+<p class="lot-sub" id="rentalsSub">Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.</p>
+<!-- v198: muc Cho thue chuyen tu trang Shop sang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
+<p class="filter-count" id="rentalsCount"></p>
+<p class="filter-empty" id="rentalsEmpty" hidden>Chưa có mặt bằng nào khớp bộ lọc.</p>
+<div class="lot-grid" id="rentalsGrid"></div>
+<button class="lot-more" id="rentalsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
+<script>(function(){var s=document.getElementById("cho-thue-cua-hang-kho");if(!s)return;var b=document.getElementById("rentalsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 
 <!-- v157: khu tin 3 hang duoi danh sach kiot (giong khu Tin moi trang chu: .news-list 2 cot, 6 bai moi nhat Đang hot + Livestream) -->
 <section class="section" id="tin-moi-cho-kiot"><div class="section-head"><div><h2><a href="tin-tuc.html">Tin mới cho người thanh lý kiot</a></h2></div></div>
@@ -127,7 +139,7 @@
 <p style="font-size:13px;color:#666">vieclamlivestream.online — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></section>
 </main>
 <footer class="site-foot"><div class="wrap"><p>vieclamlivestream.online — Tư duy đúng, giá trị thật.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
-<button class="gopy-fab" id="gopyFab" hidden data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý"><span class="gopy-fab-icon" aria-hidden="true">💬</span><span class="gopy-fab-text">Góp ý</span></button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
@@ -194,7 +206,7 @@
   // v111 (muc 4): phan trang bang nut "Xem them" (24 tin/lan tu v157, giong nut
   // Xem them lo/xuong) — truoc day chi hien 12 tin dau, 8 tin con lai
   // khong xem duoc vi khong co phan trang/xem them.
-  var KIOT_MAX_ROWS = 24; /* v157: 4 hang x 6 cot (user 21:06 11/11), truoc 12 = 2 hang */
+  var KIOT_MAX_ROWS = 12; /* v198: 2 hang x 6 cot (user 15:11 13/11), truoc 24 = 4 hang (v157) */
   var kiotShown = KIOT_MAX_ROWS;
   var moreBtn = document.getElementById('kiotMoreBtn');
   function kiotTime(k){
@@ -231,7 +243,8 @@
   });
   // v91 (9): đổi bộ lọc thì hướng ngay tới dòng kết quả / bảng "Chưa có
   // dữ liệu" (cuộn tới #kiotList, có scroll-margin để header không che).
-  /* v196: 3 muc trong trang Kiot — 'kiot' (mac dinh) + 2 muc con moi.
+  /* v198: 4 muc trong trang Kiot — 'kiot' (mac dinh) + 3 muc con
+     (chuyen-nha/thiet-bi-live/rentals; rentals chuyen tu trang Shop).
      Khi dang o muc con thi loc chung (tinh kiotProv + sap xep kiotSort)
      ap dung cho section cua muc do (qua handle V2S_NEWOBJ_FILTERS cua
      js/app.js), khong render lai danh sach kiot. */
@@ -240,7 +253,7 @@
     return b ? b.getAttribute('data-uni-cat') : 'kiot';
   }
   function newObjSectionCfg(cat){
-    var map = {'chuyen-nha': 'dich-vu-chuyen-nha', 'thiet-bi-live': 'thiet-bi-phong-live'};
+    var map = {'chuyen-nha': 'dich-vu-chuyen-nha', 'thiet-bi-live': 'thiet-bi-phong-live', 'rentals': 'cho-thue-cua-hang-kho'};
     return map[cat] || null;
   }
   function newObjSectionHandle(secId){
@@ -248,6 +261,22 @@
   }
   var kiotSwitchBtns = document.querySelectorAll('#kiotFilterSwitch .uni-cat-btn');
   var kiotListWrap = document.getElementById('kiotListWrap');
+  /* v198-B (anh chot 15:37 ngày 13/11 — "Hiện luôn 2 hàng"): trang thai mac
+     dinh — danh sach chinh 2 hang + 3 muc con deu hien, moi muc thu gon 2 hang
+     (class collapsed, CSS an the tu thu 13). Bam nut switch thi vao che do
+     tap trung (an danh sach chinh + 2 muc kia, mo rong muc da chon); bam lai
+     nut Kiot thi ve trang thai mac dinh nay. */
+  var KIOT_SUB_SECTIONS = ['dich-vu-chuyen-nha', 'thiet-bi-phong-live', 'cho-thue-cua-hang-kho'];
+  var KIOT_SUB_MOREBTNS = {'dich-vu-chuyen-nha': 'movingMoreBtn', 'thiet-bi-phong-live': 'liveEquipMoreBtn', 'cho-thue-cua-hang-kho': 'rentalsMoreBtn'};
+  function showKiotDefault(){
+    if(window.V20 && typeof window.V20.showAllNewObjSections === 'function') window.V20.showAllNewObjSections();
+    KIOT_SUB_SECTIONS.forEach(function(secId){
+      var s = document.getElementById(secId);
+      if(s){ s.hidden = false; s.classList.add('collapsed'); }
+      var mb = document.getElementById(KIOT_SUB_MOREBTNS[secId]);
+      if(mb){ mb.setAttribute('aria-expanded', 'false'); mb.textContent = 'Xem thêm ↓'; }
+    });
+  }
   function setKiotCat(cat){
     kiotSwitchBtns.forEach(function(b){
       var on = b.getAttribute('data-uni-cat') === cat;
@@ -257,11 +286,12 @@
     var secId = newObjSectionCfg(cat);
     if(kiotListWrap) kiotListWrap.hidden = !!secId;
     if(catSel) catSel.disabled = !!secId;
+    if(!secId){ showKiotDefault(); return; }
     if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection(cat);
     if(secId){
       var s = document.getElementById(secId);
       if(s) s.classList.remove('collapsed');
-      var mb = document.getElementById(secId === 'dich-vu-chuyen-nha' ? 'movingMoreBtn' : 'liveEquipMoreBtn');
+      var mb = document.getElementById(secId === 'dich-vu-chuyen-nha' ? 'movingMoreBtn' : (secId === 'thiet-bi-phong-live' ? 'liveEquipMoreBtn' : 'rentalsMoreBtn'));
       if(mb){ mb.setAttribute('aria-expanded', 'true'); mb.textContent = 'Thu gọn ↑'; }
       var h = newObjSectionHandle(secId);
       if(h && h.apply) h.apply();
@@ -305,7 +335,7 @@
     if (provSel) provSel.value = '';
     if (catSel) catSel.value = '';
     if (sortSel) sortSel.value = '';
-    ['dich-vu-chuyen-nha', 'thiet-bi-phong-live'].forEach(function(secId){
+    ['dich-vu-chuyen-nha', 'thiet-bi-phong-live', 'cho-thue-cua-hang-kho'].forEach(function(secId){
       var h = newObjSectionHandle(secId);
       if(h && h.reset) h.reset();
     });
@@ -314,12 +344,13 @@
   });
   if (window.V20 && typeof window.V20.initFilterToggle === 'function') window.V20.initFilterToggle();
   render();
-  /* v196: khoi tao trang thai mac dinh — an 2 section moi (chi hien khi
-     chon muc), mo theo hash #dich-vu-chuyen-nha / #thiet-bi-phong-live.
+  /* v198-B: khoi tao trang thai mac dinh — danh sach chinh + 3 muc con deu
+     hien (moi muc thu gon 2 hang); mo theo hash #dich-vu-chuyen-nha /
+     #thiet-bi-phong-live / #cho-thue-cua-hang-kho thi vao che do tap trung.
      (app.js dang ky DOMContentLoaded truoc nen initNewObjSections da chay.) */
   document.addEventListener('DOMContentLoaded', function(){
-    if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection('kiot');
-    var map = {'#dich-vu-chuyen-nha': 'chuyen-nha', '#thiet-bi-phong-live': 'thiet-bi-live'};
+    showKiotDefault();
+    var map = {'#dich-vu-chuyen-nha': 'chuyen-nha', '#thiet-bi-phong-live': 'thiet-bi-live', '#cho-thue-cua-hang-kho': 'rentals'};
     var cat = map[location.hash || ''];
     if(cat){
       setKiotCat(cat);
@@ -339,7 +370,7 @@
     }
     if(!card) return;
     var sec = card.closest ? card.closest('.lot-section') : null;
-    var secCat = sec && sec.id === 'dich-vu-chuyen-nha' ? 'chuyen-nha' : (sec && sec.id === 'thiet-bi-phong-live' ? 'thiet-bi-live' : null);
+    var secCat = sec && sec.id === 'dich-vu-chuyen-nha' ? 'chuyen-nha' : (sec && sec.id === 'thiet-bi-phong-live' ? 'thiet-bi-live' : (sec && sec.id === 'cho-thue-cua-hang-kho' ? 'rentals' : null));
     if(secCat) setKiotCat(secCat);
     if(typeof card.scrollIntoView === 'function') card.scrollIntoView();
   });

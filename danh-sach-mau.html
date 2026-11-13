@@ -54,7 +54,8 @@
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
 <a class="uni-cat-btn" href="danh-sach-shop.html#logistics-trung-viet" data-track="chon-logistics">🚚 Logistics Trung–Việt</a>
 <a class="uni-cat-btn" href="danh-sach-shop.html#su-kien-marketing" data-track="chon-su-kien-marketing">📣 Sự kiện Marketing</a>
-<a class="uni-cat-btn" href="danh-sach-shop.html#cho-thue-cua-hang-kho" data-track="chon-cho-thue">🏬 Cho thuê mặt bằng</a>
+<a class="uni-cat-btn" href="thanh-ly-kiot.html#cho-thue-cua-hang-kho" data-track="chon-cho-thue">🏬 Cho thuê mặt bằng</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html#agency-ads-livestream" data-track="chon-agency-ads">🎯 Agency Ads Livestream</a>
 <!-- v182: 5 danh muc moi lam MUC CON trong bo loc chung — chon muc nao thi
      loc dung mang du lieu cua muc do (ket hop loc tinh); so dem trong () cap
      nhat tu D boi refreshNewObjCatCounts (js/app.js). -->
@@ -251,7 +252,7 @@
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>
 <p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a></p></div></footer>
-<button class="gopy-fab" id="gopyFab" hidden data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<button class="gopy-fab" id="gopyFab" data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý"><span class="gopy-fab-icon" aria-hidden="true">💬</span><span class="gopy-fab-text">Góp ý</span></button>
 <div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
 <p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
 <form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
@@ -313,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   async function loadApproved(){
     var st=document.getElementById('shopBackendStatus');
-    if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 30 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
+    if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 250 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
     try{
       var shops=await McLivestreamAPI.fetchApprovedShops();
       var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
