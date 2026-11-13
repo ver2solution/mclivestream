@@ -1383,7 +1383,14 @@
     btn.disabled = true;
     try {
       if (act === 'approve-comment') {
-        if (!window.confirm('Duyệt bình luận này? Sẽ cộng +1 xu cho người bình luận (nếu đủ điều kiện ngày).')) return;
+        // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+        // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im
+        // lặng: bấm "Duyệt" không báo gì, mục vẫn còn sau tải lại).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn duyệt? (+1 xu)';
+          return;
+        }
         var c = await rpc('admin_approve_comment', { p_comment_id: id });
         setMsg(msg, 'Đã duyệt bình luận. Trạng thái điểm: ' + (c.points_status || '') + ' (+' + fmt(c.points_value) + ' xu).');
         await loadComments();
@@ -1403,7 +1410,13 @@
         setMsg(msg, 'Đã xóa bình luận (xóa mềm).');
         await loadComments(); await loadTestData();
       } else if (act === 'delete-chat') {
-        if (!window.confirm('Xóa tin nhắn này? (xóa mềm, còn lưu trong nhật ký)')) return;
+        // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+        // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn xóa?';
+          return;
+        }
         await rpc('admin_delete_admin_comment', { p_id: id, p_reason: null });
         setMsg(msg, 'Đã xóa tin nhắn.');
         await loadChat();
@@ -1460,7 +1473,15 @@
         var pair = MOD_RPC[kind];
         if (!pair) { setMsg(msg, 'Loại mục không hỗ trợ.', true); return; }
         if (act === 'approve-mod') {
-          if (!window.confirm('Duyệt mục này?')) return;
+          // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+          // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im
+          // lặng: bấm "Duyệt" không báo gì, mục vẫn còn sau tải lại — lỗi
+          // phát hiện 03:43 ngày 14/11/2026 khi duyệt 5 mục TEST).
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Chắc chắn duyệt?';
+            return;
+          }
           // v124: tin lô/xưởng/kiot nhận p_listing_id; 3 loại cũ giữ nguyên
           // tên tham số (p_profile_id / p_shop_id / p_post_id).
           var args = kind === 'profile' ? { p_profile_id: id } : kind === 'shop_profile' ? { p_shop_id: id } : kind === 'job_post' ? { p_post_id: id } : { p_listing_id: id };
@@ -1477,7 +1498,13 @@
         }
         await loadModeration(); await loadTestData();
       } else if (act === 'pin-profile') {
-        if (!window.confirm('Ghim hồ sơ này lên top?')) return;
+        // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+        // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn ghim?';
+          return;
+        }
         await rpc('admin_set_pinned', { p_profile_id: id, p_pinned: true });
         setMsg(msg, 'Đã ghim hồ sơ.');
         await loadModeration();
@@ -1494,7 +1521,13 @@
       } else if (act === 'reset-pw') {
         var email = btn.getAttribute('data-email') || '';
         if (!email) { setMsg(msg, 'Không có email để gửi.', true); return; }
-        if (!window.confirm('Gửi email đặt lại mật khẩu tới ' + email + '?')) return;
+        // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+        // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn gửi?';
+          return;
+        }
         var a = api();
         if (!a || typeof a.resetPassword !== 'function') { setMsg(msg, 'Không gửi được email (chưa có hàm reset).', true); return; }
         await a.resetPassword(email);
@@ -1522,7 +1555,13 @@
         if (!mp) { setMsg(msg, 'Không tìm thấy bản thảo để đánh dấu.', true); }
         else {
           var mpPage = (mp.page && String(mp.page).trim()) ? String(mp.page).trim() : ('bai-viet/' + (mp.slug || '') + '.html');
-          if (!window.confirm('Đánh dấu bản thảo này là ĐÃ ĐĂNG? (chỉ dùng khi bài đã live trên web)')) return;
+          // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
+          // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Chắc chắn đánh dấu?';
+            return;
+          }
           await rpc('admin_mark_article_published', { p_id: id, p_page: mpPage });
           setMsg(msg, 'Đã đánh dấu đã đăng.');
           await loadArticleDrafts();
