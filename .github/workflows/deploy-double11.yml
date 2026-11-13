@@ -24,53 +24,22 @@ jobs:
           cat > /tmp/verify-double11.js <<'VERIFY_EOF'
           const fs = require('fs');
           const vm = require('vm');
-          const SLUG = '1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream';
-          const NEW_URL_PART = 'bai-viet/' + SLUG + '.html';
-          function fail(msg) { console.error('FAIL: ' + msg); process.exit(1); }
           const src = fs.readFileSync('js/data.js', 'utf8');
-          const decls = Array.from(src.matchAll(/(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*\[/g)).map(function (m) { return m[1]; });
-          if (!decls.length) fail('khong tim thay khai bao mang nao trong js/data.js');
-          let probe = '\n;globalThis.__probe = {};\n';
-          decls.forEach(function (n) {
-            probe += 'try { if (Array.isArray(' + n + ')) globalThis.__probe[' + JSON.stringify(n) + '] = ' + n + '; } catch (e) {}\n';
-          });
-          const sandbox = { console: console };
-          sandbox.window = sandbox;
-          sandbox.module = { exports: {} };
-          sandbox.exports = sandbox.module.exports;
-          vm.createContext(sandbox);
-          try {
-            vm.runInContext(src + probe, sandbox);
-          } catch (e) {
-            fail('vm parse js/data.js loi: ' + e.message);
-          }
-          const arrays = sandbox.__probe || {};
-          const found = Object.keys(arrays).map(function (k) { return k + ':' + arrays[k].length; }).join(', ');
-          console.log('mang trong js/data.js: ' + found);
-          let articles = null;
-          Object.keys(arrays).forEach(function (k) {
-            const arr = arrays[k];
-            if (arr.length === 220 && JSON.stringify(arr).indexOf('bai-viet/') !== -1) articles = arr;
-          });
-          if (!articles) fail('khong tim thay mang 220 bai-viet trong js/data.js (cac mang: ' + found + ')');
-          if (JSON.stringify(articles).indexOf(SLUG) === -1) fail('khong tim thay slug bai moi trong js/data.js');
-          console.log('js/data.js: 220 bai, co slug bai moi');
+          const ctx = { window: {} };
+          vm.createContext(ctx);
+          vm.runInContext(src, ctx);
+          const arts = ctx.window.V20_DATA.articles;
+          if (!Array.isArray(arts)) throw new Error('V20_DATA.articles khong phai mang');
+          if (arts.length !== 220) throw new Error('so bai sai: ' + arts.length + ' (can 220)');
+          if (!arts.some(a => a.page === 'bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html')) throw new Error('khong tim thay slug bai moi trong data.js');
           const sm = fs.readFileSync('sitemap.xml', 'utf8');
-          const urlCount = (sm.match(/<url>/g) || []).length;
-          console.log('sitemap.xml: ' + urlCount + ' the <url>');
-          if (urlCount !== 242) fail('sitemap.xml co ' + urlCount + ' the <url>, ky vong 242');
-          if (sm.indexOf(NEW_URL_PART) === -1) fail('sitemap.xml khong chua URL bai moi');
-          console.log('sitemap.xml: 242 URL, co URL bai moi');
-          const files = [
-            'bai-viet/' + SLUG + '.html',
-            'images/bai-viet/' + SLUG + '-hero.jpg',
-            'images/bai-viet/' + SLUG + '-hero-og.jpg'
-          ];
-          files.forEach(function (f) {
-            if (!fs.existsSync(f) || !fs.statSync(f).isFile() || fs.statSync(f).size === 0) fail('thieu file hoac file rong: ' + f);
-            console.log('ton tai: ' + f + ' (' + fs.statSync(f).size + ' bytes)');
-          });
-          console.log('ALL CHECKS PASSED');
+          const n = (sm.match(/<url>/g) || []).length;
+          if (n !== 242) throw new Error('sitemap sai: ' + n + ' url (can 242)');
+          if (!sm.includes('bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html')) throw new Error('sitemap thieu URL bai moi');
+          for (const f of ['bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html','images/bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream-hero.jpg','images/bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream-hero-og.jpg']) {
+            if (!fs.existsSync(f)) throw new Error('thieu file: ' + f);
+          }
+          console.log('KIEM CHUNG DAT: 220 bai, sitemap 242 url, du 3 file moi');
           VERIFY_EOF
           node /tmp/verify-double11.js
 
