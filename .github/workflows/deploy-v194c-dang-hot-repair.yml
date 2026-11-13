@@ -1,0 +1,41 @@
+name: Deploy v194c-dang-hot-repair (khoi phuc 4 bai Dang hot 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v194c-dang-hot-repair.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v194c-dang-hot-repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v194c-dang-hot-repair package
+        run: |
+          unzip -o mclivestream-v194c-dang-hot-repair-deploy.zip
+          echo "--- verify v194c (khoi phuc 4 bai Dang hot) ---"
+          for slug in xa-kho-cuoi-nam-12-cach-thu-hoi-von-truoc-tet-2027 sale-12-12-shopee-lazada-tiktok-shop-voucher-50-phan-tram double-11-2026-chot-so-1776-ty-ndt-nganh-hang-thang-lon lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"title":' js/data.js)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v194c-dang-hot-repair-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v194c-dang-hot-repair: khoi phuc 4 bai Dang hot 13/11/2026 vao data.js + sitemap (bi deploy v195-doi-song ghi de mat)"
+            git push
+          fi
