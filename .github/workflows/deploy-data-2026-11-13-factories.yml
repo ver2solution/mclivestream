@@ -1,0 +1,49 @@
+name: Deploy data 2026-11-13 factories
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-13-factories.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-13-factories:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-13 factories package
+        run: |
+          unzip -o mclivestream-data-2026-11-13-factories-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "582278c9d4f0b40e97ccb3a2d2a9abadedd7bc0b2cd95e7d693fc52138406c0a" || (echo "BAD data.js sha256"; exit 1)
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          echo "lots: $(grep -c '"id": "lot-' js/data.js)"
+          echo "factories: $(grep -c '"id": "fac-' js/data.js)"
+          echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
+          echo "articles (grep page): $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '"id": "th-' js/data.js)" = "219" || (echo "BAD models count"; exit 1)
+          test "$(grep -c '"id": "sh-' js/data.js)" = "250" || (echo "BAD shops count"; exit 1)
+          test "$(grep -c '"id": "lot-' js/data.js)" = "36" || (echo "BAD lots count"; exit 1)
+          test "$(grep -c '"id": "fac-' js/data.js)" = "200" || (echo "BAD factories count"; exit 1)
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "120" || (echo "BAD kiots count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "217" || (echo "BAD articles grep count"; exit 1)
+          test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.articles.length)")" = "218" || (echo "BAD articles parsed count"; exit 1)
+          for f in images/xuong/fac-121.jpg images/xuong/fac-122.jpg images/xuong/fac-124.jpg images/xuong/fac-126.jpg images/xuong/fac-134.jpg images/xuong/fac-135.jpg images/xuong/fac-136.jpg images/xuong/fac-137.jpg images/xuong/fac-138.jpg images/xuong/fac-139.jpg images/xuong/fac-140.jpg images/xuong/fac-141.jpg images/xuong/fac-142.jpg images/xuong/fac-143.jpg images/xuong/fac-144.jpg images/xuong/fac-145.jpg images/xuong/fac-146.jpg images/xuong/fac-147.jpg images/xuong/fac-148.jpg images/xuong/fac-149.jpg images/xuong/fac-150.jpg images/xuong/fac-151.jpg images/xuong/fac-152.jpg images/xuong/fac-153.jpg images/xuong/fac-154.jpg images/xuong/fac-155.jpg images/xuong/fac-156.jpg images/xuong/fac-157.jpg images/xuong/fac-158.jpg images/xuong/fac-159.jpg images/xuong/fac-160.jpg images/xuong/fac-161.jpg images/xuong/fac-162.jpg images/xuong/fac-163.jpg images/xuong/fac-164.jpg images/xuong/fac-165.jpg images/xuong/fac-166.jpg images/xuong/fac-167.jpg images/xuong/fac-168.jpg images/xuong/fac-169.jpg images/xuong/fac-170.jpg images/xuong/fac-171.jpg images/xuong/fac-172.jpg images/xuong/fac-173.jpg images/xuong/fac-174.jpg images/xuong/fac-175.jpg images/xuong/fac-176.jpg images/xuong/fac-177.jpg images/xuong/fac-178.jpg images/xuong/fac-179.jpg images/xuong/fac-180.jpg images/xuong/fac-181.jpg images/xuong/fac-182.jpg images/xuong/fac-183.jpg images/xuong/fac-184.jpg images/xuong/fac-185.jpg images/xuong/fac-186.jpg images/xuong/fac-187.jpg images/xuong/fac-188.jpg images/xuong/fac-189.jpg images/xuong/fac-193.jpg images/xuong/fac-194.jpg images/xuong/fac-195.jpg images/xuong/fac-197.jpg images/xuong/fac-198.jpg images/xuong/fac-199.jpg images/xuong/fac-200.jpg; do test -f "$f" || (echo "MISSING $f"; exit 1); done
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/xuong/fac-121.jpg images/xuong/fac-122.jpg images/xuong/fac-124.jpg images/xuong/fac-126.jpg images/xuong/fac-134.jpg images/xuong/fac-135.jpg images/xuong/fac-136.jpg images/xuong/fac-137.jpg images/xuong/fac-138.jpg images/xuong/fac-139.jpg images/xuong/fac-140.jpg images/xuong/fac-141.jpg images/xuong/fac-142.jpg images/xuong/fac-143.jpg images/xuong/fac-144.jpg images/xuong/fac-145.jpg images/xuong/fac-146.jpg images/xuong/fac-147.jpg images/xuong/fac-148.jpg images/xuong/fac-149.jpg images/xuong/fac-150.jpg images/xuong/fac-151.jpg images/xuong/fac-152.jpg images/xuong/fac-153.jpg images/xuong/fac-154.jpg images/xuong/fac-155.jpg images/xuong/fac-156.jpg images/xuong/fac-157.jpg images/xuong/fac-158.jpg images/xuong/fac-159.jpg images/xuong/fac-160.jpg images/xuong/fac-161.jpg images/xuong/fac-162.jpg images/xuong/fac-163.jpg images/xuong/fac-164.jpg images/xuong/fac-165.jpg images/xuong/fac-166.jpg images/xuong/fac-167.jpg images/xuong/fac-168.jpg images/xuong/fac-169.jpg images/xuong/fac-170.jpg images/xuong/fac-171.jpg images/xuong/fac-172.jpg images/xuong/fac-173.jpg images/xuong/fac-174.jpg images/xuong/fac-175.jpg images/xuong/fac-176.jpg images/xuong/fac-177.jpg images/xuong/fac-178.jpg images/xuong/fac-179.jpg images/xuong/fac-180.jpg images/xuong/fac-181.jpg images/xuong/fac-182.jpg images/xuong/fac-183.jpg images/xuong/fac-184.jpg images/xuong/fac-185.jpg images/xuong/fac-186.jpg images/xuong/fac-187.jpg images/xuong/fac-188.jpg images/xuong/fac-189.jpg images/xuong/fac-193.jpg images/xuong/fac-194.jpg images/xuong/fac-195.jpg images/xuong/fac-197.jpg images/xuong/fac-198.jpg images/xuong/fac-199.jpg images/xuong/fac-200.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-13 factories: 200 xuong (80 moi fac-121..fac-200: 40 cua 12/11 deploy bu + 40 cua 13/11, 67 anh moi), 219 mau / 250 shop / 36 lo / 120 kiot / 218 bai viet"
+            git push
+          fi
