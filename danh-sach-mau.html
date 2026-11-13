@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="danh-sach-mau.html" class="active">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=danh-sach-mau.html">Đăng Nhập</a></div></header>
 <div class="wrap"><div class="ticker" id="modelTicker" data-ticker="model" aria-label="Tin shop và bài mới"><div class="ticker-track"></div></div></div>
 <main class="wrap">
@@ -44,25 +44,22 @@
 <button class="filter-toggle" id="filterToggleShop" type="button" aria-expanded="false" data-track="mo-bo-loc-shop">🔍 Bộ lọc tìm kiếm</button>
 <div class="filter-area">
 <div class="uni-cat-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
-<!-- v192 (13/11/2026, anh chot 11:59): switch theo NHU CAU CUA MAU — tim viec
-     lam, tim shop, hoc thuyet trinh (Lop Livestream), hoc makeup/nail (Lop
-     Makeup). 2 muc link sang trang Shop (viec lam + shop nam o trang Shop);
-     2 muc lop hoc doi trong trang. 3 muc cu (mau/lo/xuong) la nhu cau cua
-     SHOP nen chuyen sang switch trang Shop, khong con hien o day. -->
-<a class="uni-cat-btn" href="danh-sach-shop.html#tin-tuyen-da-duyet" data-track="chon-tim-viec">🔍 Tìm việc làm</a>
-<a class="uni-cat-btn" href="danh-sach-shop.html" data-track="chon-tim-shop">🏪 Tìm shop</a>
+<!-- v194 (13/11/2026, anh chot 12:35): switch theo NHU CAU CUA SHOP — tim mau,
+     tim lo xa kho, tim xuong may, logistics, su kien marketing, cho thue mat
+     bang. Trang nay (danh-sach-mau.html) la dich cua menu "Dành cho Shop".
+     2 muc lop hoc la nhu cau cua MAU nen nut doi thanh AN (chi de script mo
+     theo hash #lop-livestream-mc / #lop-makeup khi sang tu trang Shop). -->
+<button type="button" class="uni-cat-btn active" data-uni-cat="model" aria-pressed="true" data-track="chon-tim-mau">👩 Tìm Mẫu Livestream</button>
+<button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</button>
+<button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
+<a class="uni-cat-btn" href="danh-sach-shop.html#logistics-trung-viet" data-track="chon-logistics">🚚 Logistics Trung–Việt</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html#su-kien-marketing" data-track="chon-su-kien-marketing">📣 Sự kiện Marketing</a>
+<a class="uni-cat-btn" href="danh-sach-shop.html#cho-thue-cua-hang-kho" data-track="chon-cho-thue">🏬 Cho thuê mặt bằng</a>
 <!-- v182: 5 danh muc moi lam MUC CON trong bo loc chung — chon muc nao thi
      loc dung mang du lieu cua muc do (ket hop loc tinh); so dem trong () cap
      nhat tu D boi refreshNewObjCatCounts (js/app.js). -->
-<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
-<!-- v192: 2 nut AN (display:none) cho Lo/Xuong — chi de script mo muc theo
-     hash (#lo-hang-xa-kho / #xuong-may-gia-cong) khi sang tu trang Shop: bam
-     .click() de goi dung setCat('lot'/'factory') trong js/app.js (mo khoa o
-     loc + mo rong section + dat active de nut Ap dung loc dung muc). Khong
-     hien trong switch vi Lo/Xuong la nhu cau cua shop. -->
-<button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo" style="display:none">Tìm lô hàng xả kho</button>
-<button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong" style="display:none">Tìm xưởng may sản xuất</button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình" style="display:none">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup" style="display:none">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
 <div class="uni-field" id="uf-prov"><label for="fUniProv">Tỉnh / Thành phố</label><select id="fUniProv" data-track="loc-tinh-chung"><option value="">Tất cả tỉnh</option><option value="Hà Nội">Hà Nội</option><option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option><option value="Hưng Yên">Hưng Yên</option><option value="Đồng Nai">Đồng Nai</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Huế">Huế</option><option value="Nghệ An">Nghệ An</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Cần Thơ">Cần Thơ</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Gia Lai">Gia Lai</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Toàn quốc / Live online">Toàn quốc / Live online</option></select></div>
@@ -268,16 +265,19 @@
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/wallet.js"></script>
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v192: mo muc Lo/Xuong theo hash khi sang tu trang Shop (link tab "Tim lo
-     hang xa kho" / "Tim xuong may san xuat"). Bam nut AN tuong ung de goi
-     dung setCat('lot'/'factory') trong js/app.js (mo khoa o loc + dat active
-     de nut Ap dung loc dung muc); dong thoi mo rong truc tiep + cuon toi muc
-     de chac chan hien ngay ca khi init chua chay xong. -->
+<!-- v194: mo muc Lo/Xuong/Lop hoc theo hash khi sang tu trang Shop (link tab
+     "Tim lo hang xa kho" / "Tim xuong may san xuat" / "Lop Livestream" /
+     "Lop Makeup"). Bam nut tuong ung de goi dung setCat(cat) trong js/app.js
+     (mo khoa o loc + dat active de nut Ap dung loc dung muc); dong thoi mo
+     rong truc tiep + cuon toi muc de chac chan hien ngay ca khi init chua
+     chay xong. Nut Lo/Xuong hien trong switch; nut Lop hoc AN (display:none). -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   var map = {
     '#lo-hang-xa-kho': {cat: 'lot', sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn'},
-    '#xuong-may-gia-cong': {cat: 'factory', sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn'}
+    '#xuong-may-gia-cong': {cat: 'factory', sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn'},
+    '#lop-livestream-mc': {cat: 'class-live', sectionId: 'lop-livestream-mc', moreBtnId: 'classLiveMoreBtn'},
+    '#lop-makeup': {cat: 'class-makeup', sectionId: 'lop-makeup', moreBtnId: 'classMakeupMoreBtn'}
   };
   var cfg = map[location.hash || ''];
   if(!cfg) return;

@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="v20.css"></head><body>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="active">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-shop.html" class="active">Dành cho Mẫu</a><a href="danh-sach-mau.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=danh-sach-shop.html">Đăng Nhập</a></div></header>
 <div class="wrap"><div class="ticker" id="shopTicker" data-ticker="shop" aria-label="Tin mẫu và bài mới"><div class="ticker-track"></div></div></div>
 <main class="wrap">
@@ -46,17 +46,17 @@
 <!-- v182: switch chon hang muc cho bo loc shop (nhu uni-cat-switch trang Mau)
      — mac dinh 'shop'; 3 muc con moi loc dung mang du lieu cua no. -->
 <div class="uni-cat-switch" id="shopFilterSwitch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
-<button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-shop">Tìm Shop tuyển mẫu</button>
-<!-- v192 (13/11/2026, anh chot 11:59): 3 muc nhu cau cua SHOP nam o trang Mau
-     (danh sach mau / lo xa kho / xuong may) — link sang trang Mau, mo dung
-     muc (hash mo rong section). 3 muc moi (su kien/logistics/cho thue) van
-     doi trong trang. -->
-<a class="uni-cat-btn" href="danh-sach-mau.html" data-track="chon-tim-mau">👩 Tìm Mẫu Livestream</a>
-<a class="uni-cat-btn" href="danh-sach-mau.html#lo-hang-xa-kho" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</a>
-<a class="uni-cat-btn" href="danh-sach-mau.html#xuong-may-gia-cong" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</a>
-<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="rentals" aria-pressed="false" data-track="chon-cho-thue" title="Cho thuê cửa hàng/kho hàng">🏬 Cho thuê mặt bằng <span class="uni-cat-count"></span></button>
+<!-- v194 (13/11/2026, anh chot 12:35): switch theo NHU CAU CUA MAU — tim viec
+     lam (tin tuyen shop), hoc thuyet trinh (Lop Livestream), hoc makeup/nail
+     (Lop Makeup). Trang nay (danh-sach-shop.html) la dich cua menu "Dành cho Mẫu".
+     3 muc moi (su kien/logistics/cho thue) la nhu cau cua SHOP nen nut doi
+     thanh AN (chi de script mo theo hash khi sang tu trang Mau). -->
+<button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
+<a class="uni-cat-btn" href="danh-sach-mau.html#lop-livestream-mc" data-track="chon-lop-livestream">🎤 Lớp Livestream</a>
+<a class="uni-cat-btn" href="danh-sach-mau.html#lop-makeup" data-track="chon-lop-makeup">💄 Lớp Makeup</a>
+<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức" style="display:none">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt" style="display:none">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="rentals" aria-pressed="false" data-track="chon-cho-thue" title="Cho thuê cửa hàng/kho hàng" style="display:none">🏬 Cho thuê mặt bằng <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="shopFilter"><div class="uni-field"><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div class="uni-field"><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -117,7 +117,7 @@
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
 <div class="step"><b>3</b><h3>Chốt lịch</h3><p>Tự trao đổi với shop về sản phẩm, kịch bản, giờ live và thù lao, rồi chốt lịch trực tiếp. Sau buổi live, quay lại trang tin tuyển để đánh giá, không cần đăng nhập.</p></div></div>
 <div style="margin-top:16px"><a class="btn btn-primary" href="danh-sach-mau.html">Xem hồ sơ mẫu →</a> <a class="btn btn-ghost" href="danh-sach-mau.html#dang-nhap-shop">Đăng Nhập shop ↓</a> <a class="btn btn-ghost" href="danh-sach-mau.html#ho-so-shop">Tạo hồ sơ shop ↓</a></div>
-<p>Hồ sơ mẫu thật hiện có trên trang Dành cho Mẫu, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
+<p>Hồ sơ mẫu thật hiện có trên trang Dành cho Shop, kèm nhãn chưa xác nhận đồng ý đăng web và nút yêu cầu gỡ hồ sơ trên mỗi thẻ. Thông tin không có trong bài gốc được ghi Chưa cập nhật, lương không có được ghi Thỏa thuận, tỉnh chưa rõ được ghi Toàn quốc / Live online.</p></section>
 <section class="form-card" id="dang-nhap-mau" aria-label="Đăng nhập mẫu"><h2>Đăng nhập mẫu</h2><p>Mẫu đăng nhập, đăng ký tài khoản mới hoặc quên mật khẩu tại đây. Sau khi đăng nhập, mẫu bấm nút Tạo hồ sơ mẫu để tạo và sửa hồ sơ riêng; hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p>
 <div class="auth-view" id="mauViewLogin"><h3>Đăng nhập</h3><form id="mauSignIn" data-track="form-dang-nhap-mau" novalidate><p><label>Email *<br><input id="maSiEmail" type="email" required></label></p><p class="field-err" id="err-maSiEmail"></p><p><label>Mật khẩu *<br><span class="pw-wrap"><input id="maSiPass" type="password" required><button class="pw-toggle" type="button" data-pw-for="maSiPass" data-track="hien-mat-khau-mau" aria-label="Hiện mật khẩu">Hiện</button></span></label></p><p class="field-err" id="err-maSiPass"></p><button class="btn btn-primary" type="submit" data-track="nut-dang-nhap-mau">Đăng nhập</button></form>
 <p class="auth-links"><a href="#" data-auth-view="register" data-auth-popup="1" data-track="mo-dang-ky-mau">Chưa có tài khoản? Đăng ký</a><a href="#" data-auth-view="forgot" data-track="mo-quen-mat-khau-mau">Quên mật khẩu?</a></p></div>
@@ -181,6 +181,29 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
+<!-- v194: mo muc Su kien/Logistics/Cho thue theo hash khi sang tu trang Mau (link tab
+     "Su kien Marketing" / "Logistics Trung–Viet" / "Cho thue mat bang"). Bam nut AN
+     tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc + dat active
+     de nut Ap dung loc dung muc); dong thoi mo rong truc tiep + cuon toi muc de chac
+     chan hien ngay ca khi init chua chay xong. -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var map = {
+    '#su-kien-marketing': {cat: 'event-mkt', sectionId: 'su-kien-marketing', moreBtnId: 'eventMarketingMoreBtn'},
+    '#logistics-trung-viet': {cat: 'logistics', sectionId: 'logistics-trung-viet', moreBtnId: 'logisticsMoreBtn'},
+    '#cho-thue-cua-hang-kho': {cat: 'rentals', sectionId: 'cho-thue-cua-hang-kho', moreBtnId: 'rentalsMoreBtn'}
+  };
+  var cfg = map[location.hash || ''];
+  if(!cfg) return;
+  var btn = document.querySelector('#shopFilterSwitch .uni-cat-btn[data-uni-cat="' + cfg.cat + '"]');
+  if(btn) btn.click();
+  var s = document.getElementById(cfg.sectionId);
+  if(s) s.classList.remove('collapsed');
+  var b = document.getElementById(cfg.moreBtnId);
+  if(b){ b.setAttribute('aria-expanded', 'true'); b.textContent = 'Thu gọn ↑'; }
+  if(s) s.scrollIntoView();
+});
+</script>
 <script>
   // v97: nut "Tao ho so mau" — da dang nhap thi toi thang form tao ho
   // so (trang-cua-toi.html); chua dang nhap thi cuon toi form dang nhap

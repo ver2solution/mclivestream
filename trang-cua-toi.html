@@ -54,13 +54,13 @@
 <a class="game-entry" id="gameEntry" href="https://phatphaponline.pages.dev/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Game Nông Trại<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">136</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
 <header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
-<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-mau.html" class="active">Dành cho Mẫu</a><a href="danh-sach-shop.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-shop.html" class="active">Dành cho Mẫu</a><a href="danh-sach-mau.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
 <a class="btn btn-primary btn-sm" href="dang-nhap.html?next=trang-cua-toi.html">Đăng Nhập</a></div></header>
 <main class="wrap">
 <section class="section"><h1>Trang của tôi</h1>
 <p id="myStatus">Đang kiểm tra đăng nhập…</p>
 <div id="claimBanner"></div><!-- v165 (claim V1): banner de xuat nhan so huu khi SDT/email trung ho so thu thap -->
-<p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-mau.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b> và không lưu mật khẩu của bạn.</p>
+<p>Trang này chỉ hiện sau khi mẫu đăng nhập ở <a href="danh-sach-shop.html#dang-nhap-mau">Dành cho Mẫu</a>. Hồ sơ mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý. Web <b>không thu thập CCCD</b> và không lưu mật khẩu của bạn.</p>
 <form class="form-card" id="myProfileForm" data-track="form-ho-so-mau" style="display:none">
 <h2>1. Thông tin bắt buộc</h2>
 <p><label>Họ tên *<br><input id="myFullName" required></label></p>
@@ -248,7 +248,7 @@
       return;
     }
     if(!session){
-      status.innerHTML='Bạn cần đăng nhập để xem / sửa hồ sơ của mình. Hãy <a href="danh-sach-mau.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.';
+      status.innerHTML='Bạn cần đăng nhập để xem / sửa hồ sơ của mình. Hãy <a href="danh-sach-shop.html#dang-nhap-mau">đăng nhập tài khoản mẫu</a> rồi quay lại trang này.';
       // v97: phien co the ve muon (INITIAL_SESSION) sau khi da ket luan
       // chua dang nhap — dang ky lang nghe de tu mo form khi phien ve.
       try {
@@ -589,7 +589,7 @@
     }
     if(!shop){
       lstGate.style.display='block';
-      lstGate.innerHTML='Bạn cần có <b>hồ sơ shop</b> trước khi đăng tin. Hãy lưu hồ sơ shop tại <a href="danh-sach-shop.html#dang-nhap-shop">trang Dành cho Shop</a>.';
+      lstGate.innerHTML='Bạn cần có <b>hồ sơ shop</b> trước khi đăng tin. Hãy lưu hồ sơ shop tại <a href="danh-sach-mau.html#dang-nhap-shop">trang Dành cho Shop</a>.';
       return;
     }
     if(shop.moderation_status!=='approved'){
