@@ -1,0 +1,45 @@
+name: Deploy v194 (sua tab/noi dung theo nhu cau — menu Mau/Shop)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v194.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v194:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v194 package
+        run: |
+          test $(unzip -l mclivestream-v194-deploy.zip | grep -c '\.html$') -eq 208 || (echo "ZIP KHONG DU 208 FILE HTML"; exit 1)
+          if unzip -l mclivestream-v194-deploy.zip | grep -qE 'sw\.js|app\.js'; then echo "ZIP CHUA FILE CAM (sw.js/app.js)"; exit 1; fi
+          unzip -o mclivestream-v194-deploy.zip
+          echo "--- verify v194 (menu Mau/Shop theo nhu cau) ---"
+          test -f danh-sach-mau.html || (echo "THIEU danh-sach-mau.html"; exit 1)
+          test -f danh-sach-shop.html || (echo "THIEU danh-sach-shop.html"; exit 1)
+          test -f index.html || (echo "THIEU index.html"; exit 1)
+          test $(grep -r --include='*.html' -E 'href="[^"]*danh-sach-shop\.html"[^>]*>Dành cho Mẫu' . | wc -l) -eq 208 || (echo "SAI SO LUONG Mau->shop.html"; exit 1)
+          test $(grep -r --include='*.html' -E 'href="[^"]*danh-sach-mau\.html"[^>]*>Dành cho Shop' . | wc -l) -eq 208 || (echo "SAI SO LUONG Shop->mau.html"; exit 1)
+          test $(grep -r --include='*.html' -E 'href="[^"]*danh-sach-mau\.html"[^>]*>Dành cho Mẫu' . | wc -l) -eq 0 || (echo "CON cap cu Mau->mau.html"; exit 1)
+          test $(grep -r --include='*.html' -E 'href="[^"]*danh-sach-shop\.html"[^>]*>Dành cho Shop' . | wc -l) -eq 0 || (echo "CON cap cu Shop->shop.html"; exit 1)
+          test $(grep -c 'Tìm Mẫu Livestream' danh-sach-shop.html) -eq 0 || (echo "shop.html CON 'Tim Mau Livestream'"; exit 1)
+          grep -q 'Tìm lô hàng xả kho' danh-sach-mau.html || (echo "mau.html THIEU tab Tim lo"; exit 1)
+          grep -q 'Tìm việc làm' danh-sach-shop.html || (echo "shop.html THIEU tab Tim viec lam"; exit 1)
+          grep -q 'Tìm Mẫu Livestream' danh-sach-mau.html || (echo "mau.html THIEU tab Tim mau"; exit 1)
+          echo "verify OK: menu 208/208 moi, khong con cap cu, tab dung nhu cau, HTML-only (khong sw.js/app.js)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f mclivestream-v194-deploy.zip
+          git add -A
+          git status --short
+          test $(git diff --cached --name-only | wc -l) -eq 209 || (echo "SAI SO FILE STAGED (doi 209 = 208 HTML + 1 zip)"; exit 1)
+          git commit -m "Deploy v194: sua tab/noi dung theo nhu cau — menu Mau->tin tuyen shop, Shop->danh sach mau + Lo/Xuong (208 file HTML, khong bump CACHE)"
+          git push
