@@ -1494,7 +1494,15 @@
       } else if (act === 'view-user') {
         await viewUser(id, btn.getAttribute('data-email') || '');
       } else if (act === 'delete-draft') {
-        if (!window.confirm('Xóa bản thảo này? (chỉ xóa được bản chưa đăng)')) return;
+        // Xác nhận 2 bước ngay trên nút (không dùng window.confirm — hộp
+        // thoại native bị tự tắt trên trình duyệt tự động; lỗi 13/11/2026:
+        // bấm "Xóa" chỉ focus, không xác nhận, không lỗi, bản thảo vẫn còn
+        // sau reload). Chỉ xóa được bản chưa đăng (server chặn bản đã đăng).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn xóa?';
+          return;
+        }
         await rpc('admin_delete_article_draft', { p_id: id, p_reason: null });
         setMsg(msg, 'Đã xóa bản thảo.');
         await loadArticleDrafts();
