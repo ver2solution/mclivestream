@@ -8237,6 +8237,54 @@ window.V20_DATA = {
    "takeaway": "Quán cafe check-in đẹp The Note Coffee Hà Nội: 64 Lương Văn Can, Hoàn Kiếm, giá 30.000–59.000 đồng, tường giấy note phủ kín, góc cửa sổ tầng trên chụp đẹp nhất buổi sáng."
   },
   {
+   "title": "Xả kho cuối năm: 12 cách thu hồi vốn nhanh trước Tết",
+   "cat": "Đang hot",
+   "source": "Reuters",
+   "date": "2026-11-13",
+   "url": "https://hi99.com/2026/11/12/chinas-singles-day-sales-rise-4-8-to-1-78-trillion-ai-takes-larger-role/",
+   "page": "bai-viet/xa-kho-cuoi-nam-12-cach-thu-hoi-von-truoc-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xa-kho-cuoi-nam-12-cach-thu-hoi-von-truoc-tet-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xả kho cuối năm: 12 cách thu hồi vốn nhanh trước Tết 2027 — giảm giá theo đợt 15–40%, combo, live xả kho, ký gửi và bán lô, theo lộ trình từng tuần tới 06/02/2027."
+  },
+  {
+   "title": "Sale 12.12: Shopee, Lazada, TikTok Shop tung voucher lớn",
+   "cat": "Đang hot",
+   "source": "Shopee Singapore",
+   "date": "2026-11-13",
+   "url": "https://shopee.sg/m/12-12",
+   "page": "bai-viet/sale-12-12-shopee-lazada-tiktok-shop-voucher-50-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sale-12-12-shopee-lazada-tiktok-shop-voucher-50-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sale 12.12 thứ Bảy 12/12/2026: Shopee, Lazada, TikTok Shop tung voucher lớn — shop nhỏ còn 30 ngày để đăng ký, chốt giá và book mẫu live."
+  },
+  {
+   "title": "Double 11 2026 chốt sổ: 1.776 tỷ NDT, gia dụng thắng lớn",
+   "cat": "Đang hot",
+   "source": "Reuters",
+   "date": "2026-11-13",
+   "url": "https://hi99.com/2026/11/12/chinas-singles-day-sales-rise-4-8-to-1-78-trillion-ai-takes-larger-role/",
+   "page": "bai-viet/double-11-2026-chot-so-1776-ty-ndt-nganh-hang-thang-lon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/double-11-2026-chot-so-1776-ty-ndt-nganh-hang-thang-lon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double 11 2026 chốt sổ 1.776 tỷ NDT, tăng 4,8% — gia dụng 15,9%, điện thoại 14,3%, thời trang 13,8%; bán lẻ tức thì tăng 33%, AI dẫn dắt mua sắm."
+  },
+  {
+   "title": "Lịch sale cuối năm 2026: 12.12, Giáng sinh, Tết 2027",
+   "cat": "Đang hot",
+   "source": "VNMarketInsights",
+   "date": "2026-11-13",
+   "url": "https://vnmarketinsights.com/guides/vietnam-mega-sale-calendar/",
+   "page": "bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lịch sale cuối năm 2026: Black Friday 27/11, 12.12, Giáng sinh 25/12, 1.1 và Tết 2027 mùng 1 ngày 6/2 — shop nhỏ lên lịch live và chốt đơn đúng hạn."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
