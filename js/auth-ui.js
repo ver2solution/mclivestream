@@ -22,6 +22,9 @@
    CHUYỂN về "trang của bạn" theo cfg.signupSessionUrl
    (trang-cua-toi.html, hoặc ?next= nếu có; fallback signupSuccessUrl)
    — trước đây chỉ `return` nên trang đứng yên dù ghi "Đang chuyển…";
+   P1 (13/11/2026): đích mặc định theo loại TK khi không có ?next= —
+   shop → danh-sach-mau.html#ho-so-shop, mẫu → trang-cua-toi.html
+   (trước đây shop cũng về trang-cua-toi.html vốn chỉ có form mẫu).
    v166 (BƯỚC 1): cảnh báo SĐT trùng hồ sơ đã có lúc đăng ký (chỉ cảnh
    báo, không chặn); v166 (C1/N1):
    lắng nghe 'storage' khóa auth + kiểm tra lại khi tab hiện lại để
@@ -742,7 +745,24 @@
             // Nhanh KHONG co session (xac minh email bat lai) giu nguyen
             // ben duoi: sang dang-nhap.html theo signupSuccessUrl + bao
             // "kiem tra email".
+            // P1 (13/11/2026, QA 06:00): dich mac dinh theo loai TK —
+            // shop ve danh-sach-mau.html#ho-so-shop (form ho so shop),
+            // mau ve trang-cua-toi.html (form ho so mau). Truoc day shop
+            // cung ve trang-cua-toi.html — trang nay chi co form mau nen
+            // shop khong tao duoc ho so. Chi ap dung khi KHONG co ?next=
+            // (?next= la dich nguoi dung da chon, phai ton trong); loai
+            // TK lay tu user_metadata.account_type vua dang ky, fallback
+            // cfg.accountType luc submit. Panel kich hoat (activation.js)
+            // von da chia dich theo loai — redirect nay khop voi panel.
             var dest = cfg.signupSessionUrl || cfg.signupSuccessUrl;
+            var hasNext = false;
+            try { hasNext = !!(typeof location !== 'undefined' && new URLSearchParams(location.search).get('next')); } catch (e) { hasNext = false; }
+            if (!hasNext && cfg.signupSessionUrl === 'trang-cua-toi.html') {
+              var _acctType = '';
+              try { _acctType = (res && res.session && res.session.user && res.session.user.user_metadata && res.session.user.user_metadata.account_type) || ''; } catch (e) { _acctType = ''; }
+              if (!_acctType) { try { _acctType = cfg.accountType || ''; } catch (e) { _acctType = ''; } }
+              if (_acctType === 'shop') dest = 'danh-sach-mau.html#ho-so-shop';
+            }
             if (dest) { location.href = dest; return; }
             return;
           }
