@@ -1,0 +1,32 @@
+name: deploy-v217
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v217 package
+        run: unzip -o v217.zip
+      - name: Verify package contents
+        run: |
+          set -e
+          test -f js/admin.js
+          test -f sw.js
+          node --check js/admin.js
+          node --check sw.js
+          grep -Fq "v217-shell-1" sw.js
+          grep -Fq "Chắc chắn duyệt?" js/admin.js
+          grep -Fq "Chắc chắn ghim?" js/admin.js
+          grep -Fq "Chắc chắn đánh dấu?" js/admin.js
+          if grep -Fq "window.confirm('Duyệt mục này?')" js/admin.js; then echo "FAIL: approve-mod van dung window.confirm"; exit 1; fi
+          if grep -Fq "window.confirm('Ghim hồ sơ này lên top?')" js/admin.js; then echo "FAIL: pin-profile van dung window.confirm"; exit 1; fi
+      - name: Commit v217 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/admin.js sw.js
+          git commit -m "v217: nut Duyet/Ghim/Xoa trong console admin xac nhan 2 buoc ngay tren nut (bo window.confirm)"
+          git push
