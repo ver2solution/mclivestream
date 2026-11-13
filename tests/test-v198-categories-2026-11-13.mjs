@@ -8,7 +8,7 @@
    - search.js: NEWOBJ_META 'thue-mb'.page -> thanh-ly-kiot.html;
      'agency-ads' mới ở TYPE_LABELS/TYPE_ORDER/NEWOBJ_META/NEWOBJ_DATA_MAP/count.
    - danh-sach-shop.html: hết cho-thue/rentals; section Agency Ads mới.
-   - danh-sach-mau.html: link cho-thue -> thanh-ly-kiot.html + link agency mới.
+   - danh-sach-mau.html: XÓA nút link cho-thue khỏi switch bên Shop (v198b, lệnh anh 15:50) + link agency mới.
    - index.html: link home cho-thue -> thanh-ly-kiot.html.
    - thanh-ly-kiot.html: KIOT_MAX_ROWS 24->12; hết rows-1; section + nút
      Cho thuê mới; inline script (map/hash/reset/ternary) đủ rentals.
@@ -105,7 +105,7 @@ t('shop: nút switch agency-ads (ẩn, display:none)', shopHtml.includes('data-u
 t('shop: hash map có agency-ads-livestream, hết cho-thue', shopHtml.includes("'#agency-ads-livestream'") && !shopHtml.includes('#cho-thue-cua-hang-kho'));
 
 /* ---- 5. HTML: mau + index ---- */
-t('mau: link cho-thue sang thanh-ly-kiot.html', mauHtml.includes('href="thanh-ly-kiot.html#cho-thue-cua-hang-kho"'));
+t('mau: XÓA hẳn nút link cho-thue khỏi switch bên Shop (v198b)', !mauHtml.includes('chon-cho-thue') && !mauHtml.includes('Cho thuê mặt bằng</a>'));
 t('mau: link agency-ads-livestream sang shop', mauHtml.includes('href="danh-sach-shop.html#agency-ads-livestream"'));
 t('mau: hết link shop#cho-thue', !mauHtml.includes('danh-sach-shop.html#cho-thue'));
 t('index: link home cho-thue sang thanh-ly-kiot.html', indexHtml.includes('href="thanh-ly-kiot.html#cho-thue-cua-hang-kho"'));
