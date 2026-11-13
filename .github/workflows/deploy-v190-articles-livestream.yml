@@ -1,0 +1,51 @@
+name: Deploy v190-articles-livestream (4 bai Livestream 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v190-articles-livestream.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v190-articles-livestream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v190-livestream package
+        run: |
+          unzip -o mclivestream-v190-livestream-deploy.zip
+          echo "--- verify v190-livestream (4 bai) ---"
+          # Goi chi co 4 bai-viet HTML + 8 anh + js/data.js + sitemap.xml (KHONG co sw.js — bai HTML thuan, KHONG bump CACHE; v190-shell-1 dang danh cho goi P1 funnel shop, khong dung o day).
+          test "$(unzip -l mclivestream-v190-livestream-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 4 || (echo "SAI: goi v190 phai co dung 4 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-v190-livestream-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 8 || (echo "SAI: goi v190 phai co dung 8 anh"; exit 1)
+          if unzip -l mclivestream-v190-livestream-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v190 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in livestream-12-12-dinh-doanh-thu-roi-vao-d1-shop-chuan-bi-gi livestream-shopee-thi-truong-live-viet-nam-488-ty-usd livestream-tiktok-ban-hang-12-12-voucher-80-phan-tram livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"title":' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 207 || (echo "SAI: sitemap phai co 203 URL"; exit 1)
+          # Bai chu de xoay vong #1 (Double 11, livestream-ban-hang-hieu-qua) phai la bai CUOI trong data.js
+          test "$(grep -n 'livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so' js/data.js | tail -1 | cut -d: -f1)" -gt "$(grep -n 'livestream-tiktok-ban-hang-12-12-voucher-80-phan-tram' js/data.js | tail -1 | cut -d: -f1)" || (echo "SAI: bai xoay vong #1 phai dung sau bai TikTok trong data.js"; exit 1)
+          echo "verify OK: 4 bai + 8 anh + data.js (184 bai) + sitemap (207 URL)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v190-livestream-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v190-articles-livestream: 4 bai Livestream 13/11/2026 (seasonal livestream 12.12 + rotating #1 Double 11 1.776,4 ty NDT LAST + livestream Shopee 4,88 ty USD + livestream TikTok voucher 2,74x); sw.js NOT touched"
+            git push
+          fi
