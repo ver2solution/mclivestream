@@ -1,0 +1,41 @@
+name: Deploy v193-xu-huong (4 bai Xu huong 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v193-xu-huong.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v193-xu-huong:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v193-xu-huong package
+        run: |
+          unzip -o mclivestream-v193-xu-huong-deploy.zip
+          echo "--- verify v193-xu-huong (4 bai) ---"
+          for slug in xu-huong-ban-hang-online-2027-ai-social-commerce xu-huong-thuong-mai-dien-tu-2026-euromonitor-4-xu-huong xu-huong-mua-sam-online-gen-z-tiktok-53-phan-tram shopee-live-67-phan-tram-chi-tieu-online-viet-nam; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"title":' js/data.js)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v193-xu-huong-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v193-xu-huong: 4 bai Xu huong 13/11/2026 (ban hang online 2027 keyword + TMDT 2026 Euromonitor + Gen Z + Shopee Live)"
+            git push
+          fi
