@@ -36,10 +36,14 @@ jobs:
           grep -Fq 'v197-shell-1' "$PKG/sw.js" || { echo "SAI: sw.js thieu v197-shell-1"; exit 1; }
           test -f "$PKG/tests/test-v197-hash-jump-2026-11-13.mjs" || { echo "SAI: thieu test test-v197-hash-jump-2026-11-13.mjs"; exit 1; }
           echo "verify OK: pageOfId + scrollToHashedCard co, khong co STAR_LIMIT_MS, thanh-ly-kiot co v197 (MOI-MC-10), sw.js co v197-shell-1"
+      - name: Overlay package onto repo tree
+        run: |
+          cp -r "$PKG/." .
+          ls js/data.js js/app.js tests/test-v197-hash-jump-2026-11-13.mjs
       - name: Run v197 hash-jump test (must PASS)
         run: |
           node --version
-          cd "$PKG" && node tests/test-v197-hash-jump-2026-11-13.mjs
+          node tests/test-v197-hash-jump-2026-11-13.mjs
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
