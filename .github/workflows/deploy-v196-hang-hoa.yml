@@ -1,0 +1,58 @@
+name: Deploy v196-hang-hoa (4 bai Hang hoa 13/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v196-hang-hoa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v196-hang-hoa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard - repo must still be at v196 base (204 bai / 227 URL)
+        run: |
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" -eq 204 || (echo "SAI: repo data.js da doi (khong con 204 bai) - dung deploy, can rebase goi v196"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 227 || (echo "SAI: repo sitemap da doi (khong con 227 URL) - dung deploy, can rebase goi v196"; exit 1)
+          echo "guard OK: repo van o base 204 bai / 227 URL"
+      - name: Unzip v196-hang-hoa package
+        run: |
+          unzip -o mclivestream-v196-hang-hoa-deploy.zip
+          echo "--- verify v196-hang-hoa (4 bai) ---"
+          test "$(unzip -l mclivestream-v196-hang-hoa-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 4 || (echo "SAI: goi v196 phai co dung 4 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-v196-hang-hoa-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 8 || (echo "SAI: goi v196 phai co dung 8 anh"; exit 1)
+          if unzip -l mclivestream-v196-hang-hoa-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v196 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in gio-qua-tet-2026-gia-200000-500000d-hang-viet-len-ngoi do-giu-am-ban-chay-300000-ao-phao-mot-dem-double-11 may-tron-hop-zoom-phat-minh-vo-dung-nhat-ban cach-nhap-hang-1688-ai-accio-mo-cho-100-trieu-nguoi-mua; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+            test "$(grep -A9 "$slug.html" js/data.js | grep -c '"pinned": false')" -eq 1 || (echo "SAI: $slug thieu pinned:false"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 231 || (echo "SAI: sitemap phai co 231 URL (227 truoc lo + 4 bai moi)"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" -eq 208 || (echo "SAI: data.js phai co 208 bai (204 truoc lo + 4 bai moi)"; exit 1)
+          for slug in xu-huong-ban-hang-online-2027-ai-social-commerce xu-huong-thuong-mai-dien-tu-2026-euromonitor-4-xu-huong ai-livestream-ban-hang-tet-100000-goi-ai-30-phut livestream-commerce-779-ty-usd-dong-nam-a-2026 double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so luong-mau-livestream-tin-tuyen-12-11-2026; do
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "SAI: mat bai cu $slug trong data.js"; exit 1)
+          done
+          echo "verify OK: 4 bai + 8 anh + data.js (208 bai) + sitemap (231 URL) + 0 bai cu bi mat"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v196-hang-hoa-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v196-hang-hoa: 4 bai Hang hoa 13/11/2026 (gio qua Tet 2026 seasonal #1 2.482 tu + do giu am Double 11 300.000 ao phao + may tron hop Zoom + cach nhap hang 1688 Accio); sw.js NOT touched"
+            git push
+          fi
