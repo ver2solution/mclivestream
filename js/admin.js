@@ -165,6 +165,14 @@
         + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.display_count) + '</td></tr>';
     });
     if (body) body.innerHTML = html;
+    // v200: khối tóm tắt nổi bật Số ảo / Số thật (tổng) — chỉ trong console admin, không lộ ra web công khai.
+    var tot = byPage['total'];
+    var sumEl = $('qtOnlineSummary');
+    if (sumEl && tot) {
+      sumEl.textContent = 'Số ảo (tổng cơ số): ' + fmt(tot.base_count) + ' · Số người thật đang online: ' + fmt(tot.real_count) + ' · Số hiển thị (gộp): ' + fmt(tot.display_count);
+    } else if (sumEl) {
+      sumEl.textContent = 'Chưa có dữ liệu tổng.';
+    }
     // Lượt xem thật 24 giờ qua (không bắt buộc).
     try {
       var sum = await rpc('get_analytics_summary', { p_days: 1 });

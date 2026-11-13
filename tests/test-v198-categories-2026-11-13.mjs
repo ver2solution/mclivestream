@@ -128,7 +128,7 @@ t('kiot B: setKiotCat(kiot) về mặc định, init gọi showKiotDefault',
   kiotHtml.includes("if(!secId){ showKiotDefault(); return; }") && kiotHtml.includes("showKiotDefault();\n    var cat = '';"));
 
 /* ---- 7. sw.js ---- */
-t('sw.js CACHE = v199-shell-1', swJs.includes("const CACHE = 'v199-shell-1'"));
+t('sw.js CACHE = v200-shell-1', swJs.includes("const CACHE = 'v200-shell-1'"));
 
 /* ---- 8. Không hồi quy v197 (STAR_LIMIT_MS chỉ kiểm ở workflow deploy trên
    staging live-base — prep còn code v185 chưa deploy nên vẫn chứa nó) ---- */

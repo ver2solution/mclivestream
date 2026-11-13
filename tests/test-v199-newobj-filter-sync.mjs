@@ -56,7 +56,7 @@ t('kiot: onFilterChange vẫn cuộn tới section (giữ nguyên)', /onFilterCh
 t('mau: vẫn giữ hash #lo-hang-xa-kho / #xuong-may-gia-cong', mau.includes("'#lo-hang-xa-kho'") && mau.includes("'#xuong-may-gia-cong'"));
 t('kiot: vẫn giữ nhảy tới thẻ #<id thẻ> v197', kiot.includes("v197") && kiot.includes("card.scrollIntoView()"));
 t('shop: setShopCat vẫn mở rộng đúng mục được chọn', app.includes("cs.classList.remove('collapsed')"));
-t('sw.js CACHE = v199-shell-1 (app.js đổi nên bump CACHE)', readPrep('sw.js').includes("const CACHE = 'v199-shell-1'"));
+t('sw.js CACHE = v200-shell-1 (app.js đổi nên bump CACHE)', readPrep('sw.js').includes("const CACHE = 'v200-shell-1'"));
 
 /* 6. v199b: capture ?newobj= lúc parse (trước khi app.js init xóa khỏi URL).
    Gốc lỗi: app.js render() gọi setParams() viết lại URL thành ?page=1 (mất
