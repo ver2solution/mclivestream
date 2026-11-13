@@ -1,0 +1,58 @@
+name: Deploy v199b
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Unzip v199b overlay
+        run: |
+          ls -la v199b.zip
+          unzip -o v199b.zip
+          if [ ! -f tests/test-v199-newobj-filter-sync.mjs ]; then
+            TOP=$(unzip -Z1 v199b.zip | head -n 1 | cut -d/ -f1)
+            echo "Overlay is inside top folder: $TOP"
+            cp -r "$TOP"/. .
+          fi
+          ls tests/ js/
+      - name: Run Node tests on overlaid repo tree
+        run: |
+          node tests/test-v199-newobj-filter-sync.mjs
+          node tests/test-v198-categories-2026-11-13.mjs
+          node tests/test-v197-hash-jump-2026-11-13.mjs
+      - name: Verify v199b markers
+        run: |
+          grep -Fq "const CACHE = 'v199-shell-1'" sw.js
+          grep -Fq 'window.__v199_newobj' danh-sach-mau.html
+          grep -Fq 'window.__v199_newobj' danh-sach-shop.html
+          grep -Fq 'danh-sach-shop.html?newobj=agency-ads' danh-sach-mau.html
+          if grep -Fq 'chon-cho-thue' danh-sach-mau.html; then
+            echo 'ERROR: danh-sach-mau.html still contains chon-cho-thue'
+            exit 1
+          fi
+          grep -Fq "get('newobj')" danh-sach-shop.html
+          if grep -Fq "'#agency-ads-livestream'" danh-sach-shop.html; then
+            echo 'ERROR: danh-sach-shop.html still contains #agency-ads-livestream'
+            exit 1
+          fi
+          grep -Fq "get('newobj')" thanh-ly-kiot.html
+          grep -Fq 'thanh-ly-kiot.html?newobj=rentals' index.html
+          [ "$(grep -Fc 'v199: chon bo loc cua muc con moi thi cuon xuong ket qua' js/app.js)" = '2' ]
+          echo 'v199b markers OK'
+      - name: Commit and push v199b
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git status --short
+          git add -A
+          git status --short
+          git commit -m "v199b: Doc ?newobj= ngay khi parse script de tu chon muc tren trang Mau/Shop" || echo "nothing to commit"
+          git push origin main
