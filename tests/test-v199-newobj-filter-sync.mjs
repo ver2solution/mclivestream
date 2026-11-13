@@ -58,5 +58,33 @@ t('kiot: vẫn giữ nhảy tới thẻ #<id thẻ> v197', kiot.includes("v197")
 t('shop: setShopCat vẫn mở rộng đúng mục được chọn', app.includes("cs.classList.remove('collapsed')"));
 t('sw.js CACHE = v199-shell-1 (app.js đổi nên bump CACHE)', readPrep('sw.js').includes("const CACHE = 'v199-shell-1'"));
 
+/* 6. v199b: capture ?newobj= lúc parse (trước khi app.js init xóa khỏi URL).
+   Gốc lỗi: app.js render() gọi setParams() viết lại URL thành ?page=1 (mất
+   newobj) TRƯỚC khi script mở mục (DOMContentLoaded) đọc — nên đọc trong
+   DOMContentLoaded thì đã muộn, mục không được chọn. Sửa: đọc ngay khi script
+   được parse, lưu vào window.__v199_newobj, handler dùng giá trị đã lưu. */
+function landingBlock(html, marker) {
+  const i = html.indexOf(marker);
+  if (i < 0) return '';
+  return html.slice(i, html.indexOf('</script>', i));
+}
+function captureBeforeDOMContentLoaded(block) {
+  const cap = block.indexOf("window.__v199_newobj = new URLSearchParams(location.search).get('newobj')");
+  const dom = block.indexOf("document.addEventListener('DOMContentLoaded'");
+  return cap >= 0 && dom > 0 && cap < dom;
+}
+function handlerUsesCaptured(block) {
+  const dom = block.indexOf("document.addEventListener('DOMContentLoaded'");
+  if (dom < 0) return false;
+  const handler = block.slice(dom);
+  return handler.includes("window.__v199_newobj || ''") && !handler.includes("URLSearchParams(location.search).get('newobj')");
+}
+const mauLanding = landingBlock(mau, 'window.__v199_newobj');
+const shopLanding = landingBlock(shop, 'window.__v199_newobj');
+t('mau: capture ?newobj= lúc parse, TRƯỚC DOMContentLoaded', captureBeforeDOMContentLoaded(mauLanding));
+t('shop: capture ?newobj= lúc parse, TRƯỚC DOMContentLoaded', captureBeforeDOMContentLoaded(shopLanding));
+t('mau: handler dùng giá trị đã capture, không đọc lại location.search', handlerUsesCaptured(mauLanding));
+t('shop: handler dùng giá trị đã capture, không đọc lại location.search', handlerUsesCaptured(shopLanding));
+
 console.log(`\nv199: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

@@ -271,11 +271,15 @@
      chi doi bo loc, chi khi chon bo loc moi cuon xuong ket qua). Lo/Xuong giu mo
      theo hash deep-link (#lo-hang-xa-kho / #xuong-may-gia-cong); bo lenh cuon trong
      script vi trinh duyet tu nhay neo khi co hash. Nut Lo/Xuong hien trong switch;
-     nut Lop hoc AN (display:none). -->
+     nut Lop hoc AN (display:none).
+     v199b: doc ?newobj= NGAY khi script duoc parse (truoc khi app.js init goi
+     setParams() xoa no khoi URL thanh ?page=1) — luu vao window.__v199_newobj,
+     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon. -->
 <script>
+window.__v199_newobj = '';
+try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
 document.addEventListener('DOMContentLoaded', function(){
-  var ncat = '';
-  try { ncat = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+  var ncat = window.__v199_newobj || '';
   if(ncat === 'class-live' || ncat === 'class-makeup'){
     var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
     if(nbtn) nbtn.click();

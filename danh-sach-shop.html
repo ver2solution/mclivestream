@@ -186,11 +186,15 @@
      Bam nut tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc +
      dat active de nut Ap dung loc dung muc; setShopCat tu mo rong muc). KHONG cuon
      toi muc — quy tac anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc
-     (nut Ap dung) moi cuon xuong ket qua. -->
+     (nut Ap dung) moi cuon xuong ket qua.
+     v199b: doc ?newobj= NGAY khi script duoc parse (truoc khi app.js init goi
+     setParams() xoa no khoi URL thanh ?page=1) — luu vao window.__v199_newobj,
+     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon. -->
 <script>
+window.__v199_newobj = '';
+try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
 document.addEventListener('DOMContentLoaded', function(){
-  var cat = '';
-  try { cat = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+  var cat = window.__v199_newobj || '';
   if(cat !== 'event-mkt' && cat !== 'logistics' && cat !== 'agency-ads') return;
   var btn = document.querySelector('#shopFilterSwitch .uni-cat-btn[data-uni-cat="' + cat + '"]');
   if(btn) btn.click();
