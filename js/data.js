@@ -34,6 +34,7 @@
    rules, Facebook Live ads, AI live, Japan weird inventions, Geats News, Dòng tiền Battlecry, Đời sống, market-\
    potential evaluation) + rotating topic #5 (dong tien 11/11, LAST). Total 175 articles. Articles-only deploy:\
    sw.js NOT touched (data.js is NETWORK-FIRST). Title rule from 12/11: <title> WITHOUT " — Ver2Solution" suffix.\
+   v190 adds 4 Livestream articles (13/11/2026, Friday, first split-cron batch): 1 seasonal keyword "livestream 12.12" (3.144 words, D+1 peak 1.009,7 ty) + 1 rotating topic #1 (Double 11 final 1.776,4 ty NDT, LAST) + 2 news (livestream Shopee market 4,88 ty USD; livestream TikTok voucher 2,74x). Total 184 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v145 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Đổng Vũ Huy 30 phút 100.000 đơn,\n   3 ngày 6,79 tỷ NDT, 5 mẹo chốt đơn (5.689 từ, 17 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi nên\n   Ryan tạo file + deploy giúp). Total 135 articles. Articles-only deploy:\n   sw.js bumped to v145-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
    Facebook Reach->Viewers 31/10, Ver2Solution intro) + 1 keyword SEO article ("tuyển idol
    livestream", kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected
@@ -7845,54 +7846,6 @@ window.V20_DATA = {
    "takeaway": "Mẫu livestream không cần kinh nghiệm: Mỹ tuyển host live TikTok 30–40 USD/giờ, không cần kinh nghiệm (Workable, 30/10/2026); Indonesia trả 3–8 triệu rupiah/tháng (Jobstreet, 29/06/2026); Trung Quốc 95,2% streamer lương dưới 5.000 NDT/tháng (02/2026)."
   },
   {
-   "title": "Double 12 2026 phân tích: 5 bài học từ 11.11 cho shop nhỏ",
-   "cat": "Phân tích",
-   "source": "AdPlay.ai",
-   "date": "2026-11-13",
-   "url": "https://adplay.ai/blog/mega-sale-ad-playbook",
-   "page": "bai-viet/double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/double-12-2026-phan-tich-5-bai-hoc-tu-11-11-shop-nho.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "12.12 là ngày thu hoạch: chuẩn bị từ hôm nay, tính lãi trước khi giảm giá, bán lại cho tệp khách đã mua ở 11.11."
-  },
-  {
-   "title": "Mô hình bán hàng qua KOC: 79,2 triệu USD trong 30 ngày",
-   "cat": "Phân tích",
-   "source": "Nexscope",
-   "date": "2026-11-13",
-   "url": "https://www.nexscope.ai/reports/tiktok/top-selling-creators/us/2026-11-04",
-   "page": "bai-viet/mo-hinh-ban-hang-qua-koc-79-trieu-usd-30-ngay-my.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-ban-hang-qua-koc-79-trieu-usd-30-ngay-my.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Video dẫn đầu 75% top KOC Mỹ — shop nhỏ nên xây đội KOC làm video trước, live sau, và đo GMV theo từng creator."
-  },
-  {
-   "title": "Kinh doanh handmade online: Etsy đạt 2,6 tỷ USD quý 3",
-   "cat": "Phân tích",
-   "source": "Chain Store Age",
-   "date": "2026-11-13",
-   "url": "https://ChainStoreage.com/etsy-starts-search-new-cfo-q3-revenue-jumps",
-   "page": "bai-viet/kinh-doanh-handmade-online-etsy-26-ty-usd-quy-3-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-doanh-handmade-online-etsy-26-ty-usd-quy-3-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Handmade thắng nhờ khác biệt và đúng dịp: Etsy tăng 3 quý liên tiếp, người mua quay lại lần đầu sau 2 năm."
-  },
-  {
-   "title": "Mô hình kinh doanh độc lạ: áo chống mồ hôi 700.000 USD",
-   "cat": "Phân tích",
-   "source": "GeekWire",
-   "date": "2026-11-13",
-   "url": "https://www.geekwire.com/2026/no-sweat-high-tech-t-shirt-brand-neat-survives-shark-tank-and-lands-400k-deal-with-lori-greiner/",
-   "page": "bai-viet/mo-hinh-kinh-doanh-doc-la-ao-chong-mo-hoi-700000-usd.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-kinh-doanh-doc-la-ao-chong-mo-hoi-700000-usd.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Mua lại thương hiệu nhỏ đang ế rồi làm lại bằng marketing tăng trưởng: Neat từ 9.000 USD/tháng lên 700.000 USD/năm."
-  },
-  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
@@ -7901,6 +7854,50 @@ window.V20_DATA = {
    "page": "bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/y-tuong-ban-hang-online-pham-thoai-58-ty-36-gio-live-hero.jpg",
    "takeaway": "58 tỷ đồng trong 36 giờ không phải phép màu — nó đến sau nhiều tuần chuẩn bị: học thuộc và trải nghiệm 2.000 mã hàng trước giờ live, bán bằng giải trí thay vì đọc catalogue. Nhớ rằng doanh thu kết phiên chưa phải tiền thật: hoa hồng 10% (khoảng 5,8 tỷ đồng) còn phải trừ chi phí sản xuất, ekip và kho bãi; và minh bạch là 'bảo hiểm' duy nhất cho uy tín khi con số lớn gây ồn ào."
+  },
+  {
+   "title": "Livestream 12.12: đỉnh doanh thu rơi vào D+1",
+   "cat": "Livestream",
+   "source": "Advertising Vietnam",
+   "date": "2026-11-13",
+   "url": "https://advertisingvietnam.com/article/giai-ma-double-day-2026-ngay-sale-lon-nhat-chua-chac-la-ngay-ban-chay-nhat-tren-tiktok-shop",
+   "page": "bai-viet/livestream-12-12-dinh-doanh-thu-roi-vao-d1-shop-chuan-bi-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-12-12-dinh-doanh-thu-roi-vao-d1-shop-chuan-bi-gi.jpg",
+   "pinned": false,
+   "takeaway": "Livestream 12.12: đỉnh doanh thu rơi vào D+1 — ngày 13/12/2025 đạt 1.009,7 tỷ đồng GMV, gấp 1,67 lần ngày thường (Ecomobi/Kalodata 07/11/2026). Lịch vận hành 4 giai đoạn T-60 đến D+7; đăng ký TikTok Shop tới 25/11/2026; Shopee 12.12/2025 bán 50 triệu sản phẩm qua Live + Video."
+  },
+  {
+   "title": "Livestream Shopee: thị trường live Việt Nam 4,88 tỷ USD",
+   "cat": "Livestream",
+   "source": "Credence Research",
+   "date": "2026-11-13",
+   "url": "https://www.credenceresearch.com/report/vietnam-live-commerce-market",
+   "page": "bai-viet/livestream-shopee-thi-truong-live-viet-nam-488-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-shopee-thi-truong-live-viet-nam-488-ty-usd.jpg",
+   "pinned": false,
+   "takeaway": "Thị trường live Việt Nam 4,88 tỷ USD năm 2026, dự báo 24,74 tỷ USD năm 2035 (Credence Research); Shopee Live bán 50 triệu sản phẩm dịp 12.12/2025; TP.HCM chiếm 36%, tỉnh lẻ tăng nhanh nhất 20,7%/năm."
+  },
+  {
+   "title": "Livestream TikTok bán hàng: voucher cần gấp 2,74 lần đơn",
+   "cat": "Livestream",
+   "source": "DAMI",
+   "date": "2026-11-13",
+   "url": "https://www.dami.co.id/en/blog/vietnam-1111-80-percent-voucher-breakeven",
+   "page": "bai-viet/livestream-tiktok-ban-hang-12-12-voucher-80-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-tiktok-ban-hang-12-12-voucher-80-phan-tram.jpg",
+   "pinned": false,
+   "takeaway": "Voucher TikTok Shop: shop Việt gánh 80% phần giảm giá, đơn 200.000đ chỉ còn lãi 10.600đ (6,3%), cần gấp 2,74 lần đơn mới hòa vốn (DAMI 02/11/2026). Tính lại lãi trước khi đăng ký 12.12 (hạn 25/11/2026)."
+  },
+  {
+   "title": "Livestream bán hàng hiệu quả: 6,4 triệu tỷ đồng Double 11",
+   "cat": "Livestream",
+   "source": "TechNode",
+   "date": "2026-11-13",
+   "url": "https://technode.global/prnasia/syntun-2026-double-11-promotion-report-gmv-during-chinas-double-11-shopping-festival-reached-rmb-1776-4-billion-approx-us264-4-billion/",
+   "page": "bai-viet/livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-hieu-qua-1776-ty-ndt-double-11-chot-so.jpg",
+   "pinned": false,
+   "takeaway": "Double 11 2026 chốt sổ: GMV 1.776,4 tỷ NDT, khoảng 6,4 triệu tỷ đồng (Syntun 12/11/2026); livestream của chính shop tăng nhanh nhất — Douyin +96% số merchant live vượt 10 triệu NDT, 14 phòng Taobao Live vượt 100 triệu NDT trong 4 giờ."
   }
 ],
  "lots": [
