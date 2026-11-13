@@ -1001,7 +1001,10 @@ function initSectionFilter(opts){
     // v91 (9): 0 kết quả → cuộn tới đúng bảng "Chưa có dữ liệu" (có
     // scroll-margin để header sticky không che).
     if (!first && emptyEl && !emptyEl.hidden) target = emptyEl;
-    if(target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+    // v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho mọi
+    // mục mới): section mục mới (noScroll) KHÔNG cuộn tới kết quả; chỉ danh
+    // sách chính (lô/xưởng/kiot) giữ cuộn v91.
+    if(!opts.noScroll && target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   }
   function reset(){
     grids.forEach(function(g){
@@ -2074,6 +2077,9 @@ function initNewObjSection(cfg){
   var h = initSectionFilter({
     sectionId: sectionId, moreBtnId: cfg.moreBtnId, filterId: cfg.filterId,
     countId: cfg.countId, emptyId: cfg.emptyId, label: cfg.label,
+    /* v207: CẤM cuộn (trôi) cho mục mới — apply() của section mục mới không
+       gọi scrollIntoView (xem guard noScroll trong apply()). */
+    noScroll: true,
     readForm: function(){
       return {
         prov: elVal(cfg.provId),
@@ -2497,7 +2503,12 @@ var HOME_NEWOBJ_SECTIONS = [
   {type: 'classesMakeup', sectionId: 'home-newobj-classesMakeup', gridId: 'homeNewObjClassesMakeup', linkId: 'homeNewObjClassesMakeupAll', label: 'lớp học'},
   {type: 'eventsMarketing', sectionId: 'home-newobj-eventsMarketing', gridId: 'homeNewObjEventsMarketing', linkId: 'homeNewObjEventsMarketingAll', label: 'sự kiện'},
   {type: 'logistics', sectionId: 'home-newobj-logistics', gridId: 'homeNewObjLogistics', linkId: 'homeNewObjLogisticsAll', label: 'đơn vị vận chuyển'},
-  {type: 'rentals', sectionId: 'home-newobj-rentals', gridId: 'homeNewObjRentals', linkId: 'homeNewObjRentalsAll', label: 'mặt bằng'}
+  {type: 'rentals', sectionId: 'home-newobj-rentals', gridId: 'homeNewObjRentals', linkId: 'homeNewObjRentalsAll', label: 'mặt bằng'},
+  /* v207: 3 mục còn thiếu — trước đây chỉ có 5 mục nên thống kê hiện 11 nhưng
+     không có ô nội dung (Agency Ads / Chuyển nhà / Thiết bị Phòng Live). */
+  {type: 'agencyAds', sectionId: 'home-newobj-agencyAds', gridId: 'homeNewObjAgencyAds', linkId: 'homeNewObjAgencyAdsAll', label: 'agency'},
+  {type: 'movingServices', sectionId: 'home-newobj-movingServices', gridId: 'homeNewObjMovingServices', linkId: 'homeNewObjMovingServicesAll', label: 'dịch vụ chuyển nhà'},
+  {type: 'liveEquipment', sectionId: 'home-newobj-liveEquipment', gridId: 'homeNewObjLiveEquipment', linkId: 'homeNewObjLiveEquipmentAll', label: 'thiết bị phòng live'}
 ];
 function renderHomeNewObj(seen){
   seen = seen || {};
@@ -2508,7 +2519,9 @@ function renderHomeNewObj(seen){
     var items = (D[cfg.type] || []).filter(function(x){ return x && x.avatar; });
     var list = dedupeProfiles(sortNewObjByDateDesc(items), seen, 'newobj');
     if(!list.length){ sec.style.display = 'none'; return; }
-    grid.innerHTML = list.slice(0, 6).map(function(it){ return newObjCardHTML(it); }).join('');
+    /* v207: mỗi mục trang chủ dàn 2 hàng nội dung (tối đa 12 thẻ/mục, khớp
+       quy tắc "Hiện luôn 2 hàng" v198-B). */
+    grid.innerHTML = list.slice(0, 12).map(function(it){ return newObjCardHTML(it); }).join('');
     var link = document.getElementById(cfg.linkId);
     if(link) link.textContent = 'Xem tất cả ' + list.length + ' ' + cfg.label + ' →';
   });
@@ -3022,11 +3035,9 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
         var sc = document.getElementById(ncfg.countId);
         if(c && sc) c.textContent = sc.textContent;
         closeFilterOf(b);
-        /* v199: chon bo loc cua muc con moi thi cuon xuong ket qua (quy tac
-           anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc moi
-           cuon xuong). */
-        var msec = document.getElementById(ncfg.sectionId);
-        if(msec && typeof msec.scrollIntoView === 'function') msec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
+           mọi mục mới): Áp dụng lọc mục mới KHÔNG cuộn tới section; trang
+           đứng yên, chỉ đổi nội dung hiển thị (ghi đè quy tắc v199). */
         return;
       }
       if(cat === 'lot'){
@@ -3215,11 +3226,9 @@ function initShops(){
       var sc2 = document.getElementById(ncfg.countId);
       if(c && sc2) c.textContent = sc2.textContent;
       closeFilterOf(b);
-      /* v199: chon bo loc cua muc con moi thi cuon xuong ket qua (quy tac
-         anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc moi
-         cuon xuong). */
-      var ssec = document.getElementById(ncfg.sectionId);
-      if(ssec && typeof ssec.scrollIntoView === 'function') ssec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
+         mọi mục mới): Áp dụng lọc mục mới KHÔNG cuộn tới section; trang
+         đứng yên, chỉ đổi nội dung hiển thị (ghi đè quy tắc v199). */
       return;
     }
     return gateFilterApply('shop', 'danh-sach-shop.html', function(){ render(1); closeFilterOf(b); }, b);

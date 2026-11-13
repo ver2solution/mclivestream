@@ -259,6 +259,20 @@
   function newObjSectionHandle(secId){
     return (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[secId] : null;
   }
+  /* v207: dong dem trong the loc ("Đang hiển thị...") phai theo MUC DANG
+     CHON, khong de so cua danh sach kiot khi dang xem muc con (anh Thọ bao
+     20:23 ngày 13/11: "bo loc khong ap dung" — the loc van hien 12/160 tin
+     cua kiot trong khi dang xem muc con 11 muc). */
+  var KIOT_SUB_LABELS = {'dich-vu-chuyen-nha': 'dịch vụ chuyển nhà', 'thiet-bi-phong-live': 'thiết bị phòng live', 'cho-thue-cua-hang-kho': 'mặt bằng'};
+  var KIOT_SUB_GRIDS = {'dich-vu-chuyen-nha': 'movingGrid', 'thiet-bi-phong-live': 'liveEquipGrid', 'cho-thue-cua-hang-kho': 'rentalsGrid'};
+  function updateKiotCountForSub(secId){
+    var grid = document.getElementById(KIOT_SUB_GRIDS[secId] || '');
+    var countEl = document.getElementById('kiotCount');
+    if(!grid || !countEl) return;
+    var total = grid.children.length, vis = 0;
+    for(var i = 0; i < total; i++){ if(!grid.children[i].classList.contains('lot-filtered-out')) vis++; }
+    countEl.textContent = 'Đang hiển thị ' + vis + '/' + total + ' ' + (KIOT_SUB_LABELS[secId] || 'mục') + '.';
+  }
   var kiotSwitchBtns = document.querySelectorAll('#kiotFilterSwitch .uni-cat-btn');
   var kiotListWrap = document.getElementById('kiotListWrap');
   /* v198-B (anh chot 15:37 ngày 13/11 — "Hiện luôn 2 hàng"): trang thai mac
@@ -286,7 +300,7 @@
     var secId = newObjSectionCfg(cat);
     if(kiotListWrap) kiotListWrap.hidden = !!secId;
     if(catSel) catSel.disabled = !!secId;
-    if(!secId){ showKiotDefault(); return; }
+    if(!secId){ showKiotDefault(); render(); return; }
     if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection(cat);
     if(secId){
       var s = document.getElementById(secId);
@@ -295,6 +309,7 @@
       if(mb){ mb.setAttribute('aria-expanded', 'true'); mb.textContent = 'Thu gọn ↑'; }
       var h = newObjSectionHandle(secId);
       if(h && h.apply) h.apply();
+      updateKiotCountForSub(secId);
     }
   }
   kiotSwitchBtns.forEach(function(b){
@@ -306,8 +321,10 @@
     if(secId){
       var h = newObjSectionHandle(secId);
       if(h && h.apply) h.apply();
-      var s = document.getElementById(secId);
-      if(s && typeof s.scrollIntoView === 'function') s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho
+         mọi mục mới): đổi bộ lọc mục mới KHÔNG cuộn tới section; trang đứng
+         yên, chỉ cập nhật dòng đếm trong thẻ lọc theo mục đang chọn. */
+      updateKiotCountForSub(secId);
       return;
     }
     kiotShown = KIOT_MAX_ROWS; // v111: loc moi thi ve trang 1
@@ -346,9 +363,10 @@
   render();
   /* v198-B: khoi tao trang thai mac dinh — danh sach chinh + 3 muc con deu
      hien (moi muc thu gon 2 hang); mo theo ?newobj= (chuyen-nha /
-     thiet-bi-live / rentals) thi vao che do tap trung, KHONG cuon toi muc
-     (quy tac anh chot: bam hang muc chi doi bo loc, chi khi chon bo loc moi
-     cuon xuong ket qua).
+     thiet-bi-live / rentals) thi vao che do tap trung, KHONG cuon toi muc.
+     v207 (anh Thọ dặn 20:23 ngày 13/11 — CẤM hiệu ứng tự cuộn/trôi cho mọi
+     mục mới): bấm hạng mục, ?newobj=, Áp dụng hay đổi bộ lọc đều KHÔNG cuộn
+     (ghi đè quy tắc cũ "chỉ khi chọn bộ lọc mới cuộn xuống kết quả").
      (app.js dang ky DOMContentLoaded truoc nen initNewObjSections da chay.) */
   document.addEventListener('DOMContentLoaded', function(){
     showKiotDefault();
