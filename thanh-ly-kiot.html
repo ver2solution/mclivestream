@@ -41,6 +41,18 @@
 .game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
 .game-entry small{display:none}
 @media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
+/* v214 (diem 4, 14/11/2026): hang nut loc rieng can phai duoi khung loc (dong bo Mau/Shop, v205). */
+.filter-actions{display:flex;justify-content:flex-end;gap:10px;margin:10px 2px 0}
+.filter-actions .btn{width:auto;min-height:48px}
+.filter-area .filter-count{margin:8px 2px 0}
+@media(max-width:600px){.filter-actions .btn{flex:1}}
+/* v214 (diem 5): o gia dang overlay — panel tran xuong, KHONG day layout. */
+.kiot-price-field{position:relative}
+.kiot-price-btn{width:100%;text-align:left;background:#fff;border:1px solid #c9c9c9;border-radius:8px;padding:10px 12px;min-height:48px;cursor:pointer;font-size:15px}
+.kiot-price-panel{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:40;background:#fff;border:1px solid #d8d8d8;border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.18);padding:6px}
+.kiot-price-panel button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 12px;border-radius:6px;cursor:pointer;font-size:15px}
+.kiot-price-panel button:hover,.kiot-price-panel button[aria-selected="true"]{background:#f0f7f2}
+.kiot-price-field.locked .kiot-price-btn{opacity:.55;cursor:not-allowed}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">10</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -70,10 +82,12 @@
 <option value="hang-ton-kho">Hàng tồn kho</option>
 <option value="toan-bo-cua-hang">Toàn bộ cửa hàng</option></select></div>
 <div class="uni-field"><label for="kiotSort">Sắp xếp</label><select id="kiotSort" data-track="sap-xep-kiot"><option value="">Mới nhất</option><option value="oldest">Cũ nhất</option></select></div>
-<div class="uni-field uni-actions"><button class="btn btn-primary" id="kiotApplyBtn" data-track="ap-dung-loc-kiot" type="button">Áp dụng lọc</button></div>
-<div class="uni-field uni-actions"><button class="btn btn-ghost" id="kiotResetBtn" data-track="dat-lai-loc-kiot" type="button">Đặt lại toàn bộ</button></div>
-<p class="filter-count" id="kiotCount"></p>
+<!-- v214 (diem 2+5): o loc gia dang overlay tran xuong — nut hien muc gia dang chon, bam mo panel khoang gia theo muc (gia thue / gia van chuyen / gia ban / gia sang nhuong); panel position absolute, KHONG day layout. -->
+<div class="uni-field kiot-price-field" id="kiotPriceField"><label id="kiotPriceLabel" for="kiotPriceBtn">Giá sang nhượng</label><button type="button" class="kiot-price-btn" id="kiotPriceBtn" aria-haspopup="listbox" aria-expanded="false" data-track="loc-gia-kiot">Tất cả mức giá</button><div class="kiot-price-panel" id="kiotPricePanel" role="listbox" hidden></div></div>
 </div>
+<!-- v214 (diem 4): 2 nut Ap dung / Dat lai chuyen ra khoi luoi loc, thanh hang rieng can phai duoi khung loc (dong bo Mau/Shop, v205); dong dem #kiotCount giu duoi hang nut. -->
+<div class="filter-actions"><button class="btn btn-primary" id="kiotApplyBtn" data-track="ap-dung-loc-kiot" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="kiotResetBtn" data-track="dat-lai-loc-kiot" type="button">Đặt lại toàn bộ</button></div>
+<p class="filter-count" id="kiotCount"></p>
 </div>
 </section>
 <!-- v123: hang 4 o tin dang hot & livestream cho kiot (render boi initKiotNewsRow) -->
@@ -177,20 +191,8 @@
       var userKiots = (rows || []).map(window.V20.userListingToKiot);
       userKiots.forEach(function(k){ window.V20.registerUserListing(k); });
       kiots = userKiots.concat(kiots);
-      // Nạp thêm option tỉnh từ tin user (nếu có tỉnh mới chưa có trong
-      // danh sách tỉnh của tin thu thập).
-      var provSel2 = document.getElementById('kiotProv');
-      if (provSel2) {
-        var hasProv = {};
-        for (var i = 0; i < provSel2.options.length; i++) hasProv[provSel2.options[i].value] = true;
-        userKiots.forEach(function(k){
-          var np = k.prov ? norm(k.prov) : '';
-          if (np && !hasProv[np]) {
-            hasProv[np] = true;
-            var o = document.createElement('option'); o.value = np; o.textContent = np; provSel2.appendChild(o);
-          }
-        });
-      }
+      /* v214: tin user co the them tinh moi — nap lai o Tinh theo muc dang chon. */
+      refreshKiotProvOptions(getKiotCat());
       render();
     }).catch(function(){ /* im lặng — tin thu thập vẫn hiện */ });
   }
@@ -216,7 +218,18 @@
     var pv = provSel ? provSel.value : '';
     var cv = catSel ? catSel.value : '';
     var show = kiots.filter(function(k){
-      return (!pv || norm(k.prov) === pv) && (!cv || k.cat === cv);
+      if(pv && norm(k.prov) !== pv) return false;
+      if(cv && k.cat !== cv) return false;
+      /* v214: loc theo khoang gia overlay — ngu nghia theo nhan hien thi:
+         "Duoi X" la p < X; "A–B" la A <= p <= B; "Tren X" la p > X.
+         Tin khong co gia khong khop khoang nao. */
+      if(kiotPriceSel.min != null || kiotPriceSel.max != null){
+        if(k.priceNum == null) return false;
+        if(kiotPriceSel.min != null && kiotPriceSel.max != null){ if(k.priceNum < kiotPriceSel.min || k.priceNum > kiotPriceSel.max) return false; }
+        else if(kiotPriceSel.min != null){ if(k.priceNum <= kiotPriceSel.min) return false; }
+        else { if(k.priceNum >= kiotPriceSel.max) return false; }
+      }
+      return true;
     }).sort(function(a, b){
       // v124: tin do thành viên đăng hiện trước tin thu thập, mỗi nhóm
       // xếp theo ngày đăng giảm dần (v135: 'oldest' thi cu nhat truoc).
@@ -323,6 +336,11 @@
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
+    /* v214: doi muc thi o Tinh + o Gia doi theo muc (so dem theo muc,
+       khoang gia theo muc, chon lai tu "Tat ca"); an so cua nut vua chon. */
+    refreshKiotProvOptions(cat);
+    refreshKiotPriceOptions(cat);
+    if(window.V20 && typeof window.V20.refreshNewObjCatCounts === 'function') window.V20.refreshNewObjCatCounts();
     var secId = newObjSectionCfg(cat);
     if(kiotListWrap) kiotListWrap.hidden = !!secId;
     if(catSel) catSel.disabled = !!secId;
@@ -370,15 +388,96 @@
     render();
     if (list && typeof list.scrollIntoView === 'function') list.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  // Nap option tinh/thanh tu du lieu (chi tinh nao co kiot), sap xep A-Z.
-  if (provSel) {
-    var provs = [];
-    kiots.forEach(function(k){ var np = k.prov ? norm(k.prov) : ''; if (np && provs.indexOf(np) < 0) provs.push(np); });
-    provs.sort().forEach(function(p){
-      var o = document.createElement('option'); o.value = p; o.textContent = p; provSel.appendChild(o);
+  /* v214 (diem 3): o Tinh nap LAI theo muc dang chon — chi tinh co du lieu
+     cua muc + so dem that (khong giu so cua Kiot chinh khi dang xem muc
+     con). Kiot chinh dung normProvKiot; 3 muc con dung normProv (cung
+     ham loc newObjMatches). */
+  function kiotProvCounts(cat){
+    var counts = {}, total = 0;
+    var normFn = (cat === 'kiot') ? norm : ((window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : norm);
+    var typeMap = {'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment', 'rentals': 'rentals'};
+    var src = (cat === 'kiot') ? kiots : ((window.V20_DATA && window.V20_DATA[typeMap[cat]]) || []);
+    src.forEach(function(x){
+      if(!x) return;
+      if(cat !== 'kiot' && !x.avatar) return;
+      var np = x.prov ? normFn(x.prov) : (x.province ? normFn(x.province) : '');
+      if(!np) return;
+      counts[np] = (counts[np] || 0) + 1; total++;
     });
+    return {counts: counts, total: total};
+  }
+  function refreshKiotProvOptions(cat){
+    if(!provSel) return;
+    var cur = provSel.value;
+    var res = kiotProvCounts(cat);
+    var provs = Object.keys(res.counts).sort();
+    provSel.options.length = 0;
+    var o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'Tất cả tỉnh/thành (' + res.total + ')'; provSel.appendChild(o0);
+    provs.forEach(function(p){
+      var o = document.createElement('option'); o.value = p; o.textContent = p + ' (' + res.counts[p] + ')'; provSel.appendChild(o);
+    });
+    provSel.value = (cur && res.counts[cur]) ? cur : '';
+  }
+  // Nap option tinh/thanh theo muc dang chon (mac dinh: Kiot chinh), sap xep A-Z.
+  if (provSel) {
+    refreshKiotProvOptions('kiot');
     provSel.addEventListener('change', onFilterChange);
   }
+  /* v214 (diem 2+5): o loc gia dang OVERLAY tran xuong cho trang Kiot —
+     moi muc 1 khoang gia rieng theo phan bo that (xem NOTES-v214):
+     kiot chinh = gia sang nhuong; rentals = gia thue/thang; chuyen-nha =
+     gia van chuyen/chuyen; thiet-bi-live = gia ban. Panel position
+     absolute (CSS) nen mo panel KHONG day layout. Chon khoang thi loc
+     ngay (giong doi tinh). */
+  var KIOT_PRICE = {
+    'kiot': {label: 'Giá sang nhượng', ranges: [[null, 50000000, 'Dưới 50 triệu'], [50000000, 150000000, '50–150 triệu'], [150000000, 400000000, '150–400 triệu'], [400000000, 1000000000, '400 triệu–1 tỷ'], [1000000000, null, 'Trên 1 tỷ']]},
+    'rentals': {label: 'Giá thuê', ranges: [[null, 10000000, 'Dưới 10 triệu/tháng'], [10000000, 20000000, '10–20 triệu/tháng'], [20000000, 30000000, '20–30 triệu/tháng'], [30000000, null, 'Trên 30 triệu/tháng']]},
+    'chuyen-nha': {label: 'Giá vận chuyển', ranges: [[null, 300000, 'Dưới 300.000đ/chuyến'], [300000, 500000, '300.000–500.000đ/chuyến'], [500000, null, 'Trên 500.000đ/chuyến']]},
+    'thiet-bi-live': {label: 'Giá bán', ranges: [[null, 500000, 'Dưới 500.000đ'], [500000, 1000000, '500.000đ–1 triệu'], [1000000, 2000000, '1–2 triệu'], [2000000, null, 'Trên 2 triệu']]}
+  };
+  var kiotPriceSel = {min: null, max: null, label: 'Tất cả mức giá'};
+  var priceBtn = document.getElementById('kiotPriceBtn');
+  var pricePanel = document.getElementById('kiotPricePanel');
+  var priceLabel = document.getElementById('kiotPriceLabel');
+  function markPriceSelected(btn){
+    if(!pricePanel) return;
+    for(var i = 0; i < pricePanel.children.length; i++) pricePanel.children[i].setAttribute('aria-selected', pricePanel.children[i] === btn ? 'true' : 'false');
+  }
+  function kiotPriceApplyState(){
+    if(window.V20 && typeof window.V20.setKiotPriceRange === 'function') window.V20.setKiotPriceRange(kiotPriceSel.min, kiotPriceSel.max);
+    if(priceBtn) priceBtn.textContent = kiotPriceSel.label;
+  }
+  function closePricePanel(){ if(pricePanel) pricePanel.hidden = true; if(priceBtn) priceBtn.setAttribute('aria-expanded', 'false'); }
+  function refreshKiotPriceOptions(cat){
+    var cfg = KIOT_PRICE[cat] || KIOT_PRICE['kiot'];
+    if(priceLabel) priceLabel.textContent = cfg.label;
+    kiotPriceSel = {min: null, max: null, label: 'Tất cả mức giá'};
+    kiotPriceApplyState();
+    if(!pricePanel) return;
+    pricePanel.innerHTML = '';
+    var all = document.createElement('button'); all.type = 'button'; all.setAttribute('role', 'option'); all.setAttribute('aria-selected', 'true'); all.textContent = 'Tất cả mức giá';
+    all.addEventListener('click', function(){ kiotPriceSel = {min: null, max: null, label: 'Tất cả mức giá'}; kiotPriceApplyState(); markPriceSelected(all); closePricePanel(); onFilterChange(); });
+    pricePanel.appendChild(all);
+    cfg.ranges.forEach(function(r){
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'option'); b.setAttribute('aria-selected', 'false'); b.textContent = r[2];
+      b.addEventListener('click', function(){ kiotPriceSel = {min: r[0], max: r[1], label: r[2]}; kiotPriceApplyState(); markPriceSelected(b); closePricePanel(); onFilterChange(); });
+      pricePanel.appendChild(b);
+    });
+  }
+  if(priceBtn && pricePanel){
+    priceBtn.addEventListener('click', function(){
+      var open = pricePanel.hidden;
+      pricePanel.hidden = !open;
+      priceBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(e){
+      if(pricePanel.hidden) return;
+      if(e.target === priceBtn || pricePanel.contains(e.target)) return;
+      closePricePanel();
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePricePanel(); });
+  }
+  refreshKiotPriceOptions('kiot');
   if (catSel) catSel.addEventListener('change', onFilterChange);
   if (sortSel) sortSel.addEventListener('change', onFilterChange);
   /* v135: nut Ap dung / Dat lai (khung v98) + nut mo/dong bo loc mobile
@@ -391,6 +490,7 @@
     if (provSel) provSel.value = '';
     if (catSel) catSel.value = '';
     if (sortSel) sortSel.value = '';
+    closePricePanel();
     ['dich-vu-chuyen-nha', 'thiet-bi-phong-live', 'cho-thue-cua-hang-kho'].forEach(function(secId){
       var h = newObjSectionHandle(secId);
       if(h && h.reset) h.reset();

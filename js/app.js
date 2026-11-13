@@ -69,7 +69,13 @@ function findProvinceInText(text){
    ten moi trong D.provinces khi loc/dem de dropdown khong con ten cu ma
    van khop du lieu cu. Vi du: 3 xuong 'Nam Dinh' (gom TBC) dem ve
    'Ninh Binh (3)'. */
-var MERGED_PROV = {'TP.HCM':'TP. Hồ Chí Minh','Bình Dương':'TP. Hồ Chí Minh','Nam Định':'Ninh Bình','Hải Dương':'Hải Phòng','Bắc Giang':'Bắc Ninh'};
+var MERGED_PROV = {'TP.HCM':'TP. Hồ Chí Minh','Bình Dương':'TP. Hồ Chí Minh','Nam Định':'Ninh Bình','Hải Dương':'Hải Phòng','Bắc Giang':'Bắc Ninh',
+/* v214 (14/11/2026 — F1 test full: 2 cach viet lech khong khop option tinh):
+   'Thành phố Hồ Chí Minh' (3 tin agency) ve 'TP. Hồ Chí Minh'; 'Online'
+   (5 lop live + 4 su kien + 1 lop makeup) ve 'Toàn quốc / Live online'
+   (ten chuan trong D.provinces). Ca dem (newObjProvCount) va loc
+   (newObjMatches) deu di qua normProv nen 1 cho nay sua ca 2. */
+'Thành phố Hồ Chí Minh':'TP. Hồ Chí Minh','Online':'Toàn quốc / Live online'};
 function normProv(p){ var s = String(p == null ? '' : p).trim(); return MERGED_PROV[s] || s; }
 /* v166 (N8, 12/11/2026): chuẩn hóa tỉnh RIÊNG cho Kiot — chỉ gộp bí
    danh 'TP.HCM' → 'TP. Hồ Chí Minh', KHÔNG áp bản đồ sáp nhập
@@ -974,7 +980,11 @@ function initSectionFilter(opts){
   }
   function apply(doScroll){
     var f = opts.readForm();
-    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption); /* v179: + logisticsOption (5 danh muc moi) */
+    /* v214: + priceMin/priceMax — loc chi theo khoang gia (khong chon tinh
+       nao) van la loc dang hoat dong: hien dong dem + bang "Chua co du lieu"
+       khi 0 ket qua + mo rong section. Truoc day active khong tinh gia nen
+       dong dem rong khi chi loc gia. */
+    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption || f.priceMin != null || f.priceMax != null); /* v179: + logisticsOption (5 danh muc moi) */
     var total = 0, first = null;
     grids.forEach(function(g){
       var matched = [], rest = [];
@@ -1989,18 +1999,33 @@ var NEWOBJ_UNI_CATS = {
   'thiet-bi-live': {type: 'liveEquipment', sectionId: 'thiet-bi-phong-live', provId: 'kiotProv', moreBtnId: 'liveEquipMoreBtn', countId: 'liveEquipCount', label: 'Thiết bị Phòng Live'}
 };
 function newObjUniCatCfg(cat){ return NEWOBJ_UNI_CATS[cat] || null; }
+/* v214: khoang gia dang chon cua overlay gia trang Kiot (trang duy nhat co
+   overlay; khoang doi theo muc dang chon, mac dinh khong loc gia). Trang
+   Kiot dat qua setKiotPriceRange; readForm cua section moi doc o day. */
+var KIOT_PRICE_RANGE = {min: null, max: null};
+function setKiotPriceRange(min, max){ KIOT_PRICE_RANGE.min = (min == null ? null : min); KIOT_PRICE_RANGE.max = (max == null ? null : max); }
 /* Dem that theo mang du lieu (chi tinh muc co avatar — giong render). */
 function newObjCount(type){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar) n++; }); return n; }
 function newObjProvCount(type, prov){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar && normProv(x.province || '') === normProv(prov)) n++; }); return n; }
+/* v214 (anh Thọ dặn 01:08 ngày 14/11): BO so thong ke canh ten 7 muc moi
+   (5 muc KPI: lop livestream, lop makeup, su kien/marketing, logistics,
+   cho thue mat bang + 2 muc con Kiot: dich vu chuyen nha, thiet bi phong
+   live). LUAT CUNG: khong bao gio de so thong ke o canh ten muc DANG CHON
+   — nut switch dang active thi an .uni-cat-count cua nut do, het active
+   thi hien lai neu muc duoc phep hien so (agency-ads giu so khi chua chon). */
+var NEWOBJ_NO_COUNT = {'class-live': 1, 'class-makeup': 1, 'event-mkt': 1, 'logistics': 1, 'rentals': 1, 'chuyen-nha': 1, 'thiet-bi-live': 1};
 /* Cap nhat so dem (N) tren cac nut muc con trong uni-cat-switch (ca 3 trang). */
 function refreshNewObjCatCounts(){
   if(typeof document === 'undefined' || !document.querySelectorAll) return;
   var btns = document.querySelectorAll('.uni-cat-btn[data-uni-cat]');
   btns.forEach(function(b){
-    var cfg = NEWOBJ_UNI_CATS[b.getAttribute('data-uni-cat')];
+    var cat = b.getAttribute('data-uni-cat');
+    var cfg = NEWOBJ_UNI_CATS[cat];
     if(!cfg) return;
     var sp = b.querySelector('.uni-cat-count');
-    if(sp) sp.textContent = '(' + newObjCount(cfg.type) + ')';
+    if(!sp) return;
+    if(NEWOBJ_NO_COUNT[cat] || b.classList.contains('active')){ sp.textContent = ''; return; }
+    sp.textContent = '(' + newObjCount(cfg.type) + ')';
   });
 }
 /* v182: chi hien section cua hang muc moi dang chon; an cac section moi con
@@ -2068,6 +2093,19 @@ function renderNewObjSections(){
 function newObjMatches(card, f){
   if(f.prov && normProv(card.getAttribute('data-prov')) !== normProv(f.prov)) return false;
   if(f.logisticsOption && card.getAttribute('data-logistics-option') !== f.logisticsOption) return false;
+  /* v214: loc theo khoang gia Kiot (overlay tran xuong) — chi khi co khoang
+     duoc chon (f.priceMin/f.priceMax); the khong co gia (data-price '')
+     khong khop khoang nao. Ngu nghia theo nhan hien thi: "Duoi X" la p < X;
+     "A–B" la A <= p <= B (ca 2 dau, nhu cach doc cua nguoi dung — muc gia
+     dung o moc 500.000d phai hien trong khoang "300.000–500.000d"); "Tren X"
+     la p > X. */
+  if(f.priceMin != null || f.priceMax != null){
+    var p = parseFloat(card.getAttribute('data-price'));
+    if(isNaN(p)) return false;
+    if(f.priceMin != null && f.priceMax != null){ if(p < f.priceMin || p > f.priceMax) return false; }
+    else if(f.priceMin != null){ if(p <= f.priceMin) return false; }
+    else { if(p >= f.priceMax) return false; }
+  }
   return true;
 }
 /* v213: nut "Xem them" cua 2 muc lop hoc CHI hien khi con du lieu chua hien
@@ -2125,7 +2163,11 @@ function initNewObjSection(cfg){
       return {
         prov: elVal(cfg.provId),
         sort: elVal(cfg.sortId),
-        logisticsOption: cfg.optionId ? elVal(cfg.optionId) : ''
+        logisticsOption: cfg.optionId ? elVal(cfg.optionId) : '',
+        /* v214: khoang gia Kiot (overlay) — trang Kiot dat qua
+           window.V20.setKiotPriceRange; trang khac khong co nen null. */
+        priceMin: (typeof window !== 'undefined' && window.V20 && window.V20.kiotPriceRange) ? window.V20.kiotPriceRange.min : null,
+        priceMax: (typeof window !== 'undefined' && window.V20 && window.V20.kiotPriceRange) ? window.V20.kiotPriceRange.max : null
       };
     },
     matches: newObjMatches,
@@ -2829,8 +2871,11 @@ function refreshUniCounts(cat){
   // rebuildUniCatOptions) truoc khi gan so — o loc phai hien dung cac
   // nhom co that trong du lieu cua tab dang chon.
   rebuildUniCatOptions(cat);
-  var up = document.getElementById('fUniProv');
-  if(up) applyOptionCounts(up, function(v){ return uniProvCount(cat, v); }, uniTotal(cat));
+  /* v214: danh sach tinh DUNG THEO MUC (chi tinh co du lieu cua muc) thay
+     vi chi cap nhat so tren option cung san — truoc day tinh chi co trong
+     du lieu cua muc con (vd Thai Nguyen/Hai Phong cua agency, Son La cua
+     thiet bi) khong co trong danh sach cung nen khong loc duoc. */
+  rebuildProvOptions('fUniProv', cat, function(v){ return uniProvCount(cat, v); }, uniTotal(cat));
   var uc = document.getElementById('fUniCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount(cat, v); }, uniTotal(cat));
 }
@@ -2840,11 +2885,34 @@ function refreshShopProvCounts(cat){
   var sp = document.getElementById('fShProv');
   if(!sp) return;
   var ncfg = NEWOBJ_UNI_CATS[cat];
+  /* v214: nhu refreshUniCounts — danh sach tinh dung theo muc (chi tinh co
+     du lieu cua muc), khong chi cap nhat so tren option cung. */
   if(ncfg){
-    applyOptionCounts(sp, function(v){ return newObjProvCount(ncfg.type, v); }, newObjCount(ncfg.type));
+    rebuildProvOptions('fShProv', cat, function(v){ return newObjProvCount(ncfg.type, v); }, newObjCount(ncfg.type));
   } else {
-    applyOptionCounts(sp, function(v){ return filterShops(D.shops || [], {prov: v}).length; }, (D.shops || []).length);
+    rebuildProvOptions('fShProv', cat, function(v){ return filterShops(D.shops || [], {prov: v}).length; }, (D.shops || []).length);
   }
+}
+/* v214: danh sach tinh theo MUC DANG CHON — chi hien tinh co du lieu cua muc
+   (theo thu tu D.provinces) + so dem that; doi muc thi danh sach doi theo.
+   Dung setSelectOptions (mau v118) de giu gia tri dang chon neu van hop le.
+   countFn tra so luong theo dung ham loc THAT cua muc (newObjProvCount /
+   filterShops / filterModels qua uniProvCount) nen so trong () luon khop
+   so the loc ra. */
+function provEntriesForCat(cat, countFn){
+  var entries = [];
+  (D.provinces || []).forEach(function(p){
+    var n = countFn(p);
+    if(n > 0) entries.push({value: p, text: countLabel(p, n)});
+  });
+  return entries;
+}
+function rebuildProvOptions(selId, cat, countFn, total){
+  var sel = document.getElementById(selId);
+  if(!sel || !sel.options || !sel.options.length) return;
+  var allLabel = sel.options[0].textContent.replace(/ \(\d+\)$/, '');
+  var defs = [{value: '', text: countLabel(allLabel, total)}].concat(provEntriesForCat(cat, countFn));
+  setSelectOptions(sel, defs);
 }
 /* v182: so dem 3 option con cua muc logistics trong loc shop (fShopLogOpt). */
 function refreshShopLogOptCounts(){
@@ -3053,6 +3121,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
     // Lo/Xuong van collapsed (the khong hien) va #listGrid van la 12 the Mau.
     // v139: chon tab chi mo/dong muc, KHONG cuon man hinh.
     refreshUniCounts(cat);
+    refreshNewObjCatCounts(); /* v214: an so cua nut vua chon, hien lai so cua nut vua bo chon */
     /* v182: muc con moi — chi hien section cua muc do (an cac section moi
        con lai), mo rong no; thu gon Lo/Xuong + section moi con lai de khi
        quay lai trang thai mac dinh van dung 1 hang. */
@@ -3218,6 +3287,7 @@ function initShops(){
      nhan/placeholder doi theo loai; bo chon loai thi khoa + xoa gia tri. */
   function syncPayMin(){
     var pt=elVal('fShPayType');
+    fillPayDatalist('fShPayMinList', payLevels('shop', pt), pt); /* v214: goi y muc luong theo loai da chon */
     var inp=document.getElementById('fShPayMin'), lab=document.getElementById('fShPayMinLabel');
     if(!inp||!lab) return;
     if(pt==='hourly'){ lab.textContent='Lương giờ tối thiểu (đ/giờ)'; inp.placeholder='VD: 100000'; inp.disabled=false; }
@@ -3289,6 +3359,7 @@ function initShops(){
       });
     }
     refreshShopProvCounts(cat);
+    refreshNewObjCatCounts(); /* v214: luat an so cua muc dang chon */
   }
   shopCatBtns.forEach(function(b){
     b.addEventListener('click', function(){ setShopCat(b.getAttribute('data-uni-cat')); });
@@ -3341,6 +3412,44 @@ function initShops(){
       && el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'auto', block: 'start' });
   } catch (e) {}
 }
+/* v214 (diem 6): goi y muc luong theo loai luong da chon — datalist cho o
+   luong toi thieu (van go tay duoc). Muc lay TU DU LIEU THAT (data.js):
+   - Mau (fUniPayMin): luong gio = cac salaryNum that (hien 120.000,
+     250.000); luong thang = khong co muc nao (mau khong co doanh thu da
+     xac minh) nen datalist rong, van go tay duoc.
+   - Shop (fShPayMin): luong gio = cac parseHourlyMin that trong
+     [30.000, 300.000] (loc nhieu do parse quet so — vd "2 video 1 gio"
+     doc thanh 1.000); luong thang = cac parseMonthlyMax that (trieu). */
+function payLevels(source, payType){
+  var s = {}, out = [];
+  if(source === 'model'){
+    if(payType !== 'hourly') return [];
+    (D.models || []).forEach(function(m){ if(typeof m.salaryNum === 'number') s[m.salaryNum] = 1; });
+  } else {
+    if(payType === 'hourly'){
+      (D.shops || []).forEach(function(sh){ var v = parseHourlyMin(sh.salary); if(v != null && v >= 30000 && v <= 300000) s[v] = 1; });
+    } else if(payType === 'monthly'){
+      (D.shops || []).forEach(function(sh){ var v = parseMonthlyMax(sh.salary); if(v != null) s[v] = 1; });
+    } else return [];
+  }
+  Object.keys(s).forEach(function(k){ out.push(parseFloat(k)); });
+  out.sort(function(a, b){ return a - b; });
+  return out;
+}
+function fillPayDatalist(listId, levels, payType){
+  var dl = document.getElementById(listId);
+  if(!dl) return;
+  var html = '';
+  levels.forEach(function(v){
+    var val, lab;
+    if(payType === 'hourly'){ val = String(v); lab = fmtVnd(v) + 'đ/giờ'; }
+    /* luong thang nhap theo trieu, dung dau phay thap phan VN ("0,3") vi
+       parseMoneyInput hieu dau "." la phan cach hang nghin. */
+    else { val = String(v).replace('.', ','); lab = val + ' triệu/tháng'; }
+    html += '<option value="' + esc(val) + '">' + esc(lab) + '</option>';
+  });
+  dl.innerHTML = html;
+}
 /* v96-swap (08/11) + A3 un-swap (10/11): khoi tao rieng cho trang Mau
    (danh-sach-mau.html) — render the lo/xuong, xoay the, bo loc lo/xuong,
    khung loc chung (uni switch). Grid mau (#listGrid) do initList render;
@@ -3358,6 +3467,7 @@ function initShopPage(){
      v96: chi mo khi dang o hang muc Tim Mau (truong bi khoa o Lo/Xuong). */
   function syncPayMin(){
     var pt=elVal('fUniPayType');
+    fillPayDatalist('fUniPayMinList', payLevels('model', pt), pt); /* v214: goi y muc luong theo loai da chon */
     var inp=document.getElementById('fUniPayMin'), lab=document.getElementById('fUniPayMinLabel');
     if(!inp||!lab) return;
     if(getUniCat()!=='model'){ lab.textContent='Mức lương tối thiểu'; inp.placeholder='Chọn loại lương trước'; inp.disabled=true; inp.value=''; return; }
@@ -4786,7 +4896,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
    nào đó không gắn được dropdown, thử lại khi trang tải xong.
    initNewsDropdown idempotent nên gọi 2 lần không chèn trùng. */
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initMobileNotice:initMobileNotice, initHeaderAuth:initHeaderAuth, initActivationStrip:initActivationStrip, MOBILE_NOTICE_LINES:MOBILE_NOTICE_LINES, MOBILE_NOTICE_KEY:MOBILE_NOTICE_KEY, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
