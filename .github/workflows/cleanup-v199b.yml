@@ -1,0 +1,19 @@
+name: Cleanup v199b
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Remove v199b.zip and deploy workflow
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git rm -f v199b.zip .github/workflows/deploy-v199b.yml .github/workflows/cleanup-v199b.yml
+          git status --short
+          git commit -m "chore: remove deploy-v199b workflow"
+          git push origin main
