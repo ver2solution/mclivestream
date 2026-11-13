@@ -1,0 +1,69 @@
+name: Deploy v197 (link tim-kiem toi dung the MOI-MC-10)
+
+on:
+  push:
+    paths:
+      - 'v197.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v197:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Unzip package and verify
+        run: |
+          test -f v197.zip || { echo "SAI: khong co v197.zip"; exit 1; }
+          rm -rf v197-pkg
+          unzip -o v197.zip -d v197-pkg
+          APP=$(find v197-pkg -name app.js -path '*/js/*' | head -1)
+          test -n "$APP" || { echo "SAI: khong tim thay js/app.js trong goi"; exit 1; }
+          PKG=$(dirname "$(dirname "$APP")")
+          echo "PKG=$PKG" >> "$GITHUB_ENV"
+          echo "--- verify v197 (package root: $PKG) ---"
+          grep -q 'pageOfId' "$PKG/js/app.js" || { echo "SAI: js/app.js thieu pageOfId"; exit 1; }
+          grep -q 'scrollToHashedCard' "$PKG/js/app.js" || { echo "SAI: js/app.js thieu scrollToHashedCard"; exit 1; }
+          if grep -q 'STAR_LIMIT_MS' "$PKG/js/app.js"; then echo "SAI: goi v197 CHUA code v185 (STAR_LIMIT_MS) - DUNG deploy"; exit 1; fi
+          grep -Fq 'v197 (MỚI-MC-10)' "$PKG/thanh-ly-kiot.html" || { echo "SAI: thanh-ly-kiot.html thieu 'v197 (MOI-MC-10)'"; exit 1; }
+          grep -Fq 'v197-shell-1' "$PKG/sw.js" || { echo "SAI: sw.js thieu v197-shell-1"; exit 1; }
+          test -f "$PKG/tests/test-v197-hash-jump-2026-11-13.mjs" || { echo "SAI: thieu test test-v197-hash-jump-2026-11-13.mjs"; exit 1; }
+          echo "verify OK: pageOfId + scrollToHashedCard co, khong co STAR_LIMIT_MS, thanh-ly-kiot co v197 (MOI-MC-10), sw.js co v197-shell-1"
+      - name: Run v197 hash-jump test (must PASS)
+        run: |
+          node --version
+          cd "$PKG" && node tests/test-v197-hash-jump-2026-11-13.mjs
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp -r "$PKG/." .
+          rm -rf v197-pkg v197.zip
+          git status --short
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "v197: link tim-kiem toi dung the (MOI-MC-10)"
+            git push
+          fi
+      - name: Remove workflow itself
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
+          rm -f .github/workflows/deploy-v197.yml v197.zip
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to remove"
+          else
+            git commit -m "chore: remove deploy-v197 workflow"
+            git push
+          fi
