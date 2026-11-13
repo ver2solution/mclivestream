@@ -43,6 +43,8 @@
 .filter-actions .btn{width:auto;min-height:48px}
 .filter-area .filter-hint,.filter-area .filter-count,.filter-area .filter-empty{margin:8px 2px 0}
 @media(max-width:600px){.filter-actions .btn{flex:1}}
+/* v210: nhan hang nut danh muc tach rieng trong bo loc tim kiem. */
+.newobj-switch-label{margin:2px 2px 6px;font-weight:700}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">47</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -52,17 +54,24 @@
 <!-- v182: switch chon hang muc cho bo loc shop (nhu uni-cat-switch trang Mau)
      — mac dinh 'shop'; 3 muc con moi loc dung mang du lieu cua no. -->
 <div class="uni-cat-switch" id="shopFilterSwitch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
-<!-- v194 (13/11/2026, anh chot 12:35): switch theo NHU CAU CUA MAU — tim viec
-     lam (tin tuyen shop), hoc thuyet trinh (Lop Livestream), hoc makeup/nail
-     (Lop Makeup). Trang nay (danh-sach-shop.html) la dich cua menu "Dành cho Mẫu".
-     3 muc moi (su kien/logistics/agency ads) la nhu cau cua SHOP nen nut doi
-     thanh AN (chi de script mo theo hash khi sang tu trang Mau). -->
+<!-- v210 (13/11/2026, anh chot 22:03 + 22:15 — doi danh muc theo tieu de menu, tach nut):
+     switch chinh theo NHU CAU CUA MAU — chi tim viec lam (tin tuyen shop).
+     Trang nay (danh-sach-shop.html) la dich cua menu "Dành cho Mẫu".
+     2 muc lop hoc CHUYEN VE day tu trang Shop (truoc day la link nhay sang trang Shop + cuon xuong
+     content) va TACH RA hang nut rieng trong bo loc (co nhan "Lop hoc cho mau", khong tron vao
+     switch chinh) theo lenh anh 22:15 — cung cach tach nhu 3 muc dich vu ben trang Shop.
+     3 muc shop (su kien/logistics/agency ads) la nhu cau cua SHOP nen CHUYEN SANG trang Shop
+     (danh-sach-mau.html). -->
 <button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
-<a class="uni-cat-btn" href="danh-sach-mau.html?newobj=class-live" data-track="chon-lop-livestream">🎤 Lớp Livestream</a>
-<a class="uni-cat-btn" href="danh-sach-mau.html?newobj=class-makeup" data-track="chon-lop-makeup">💄 Lớp Makeup</a>
-<button type="button" class="uni-cat-btn" style="display:none" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" style="display:none" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" style="display:none" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
+</div>
+<!-- v210 (anh chot 22:15 — tach nut chon bo loc ra khoi switch, them vao bo loc tim kiem):
+     2 muc lop hoc KHONG nam trong switch chinh (chi co Tim viec lam) ma co hang nut rieng
+     ngay trong bo loc, co nhan "Lop hoc cho mau". Bam nut mo section ngay tai cho,
+     KHONG nhay trang, KHONG cuon. (Cung cach tach nhu 3 muc dich vu ben trang Shop.) -->
+<p class="newobj-switch-label">Lớp học cho mẫu:</p>
+<div class="uni-cat-switch" id="modelClassesSwitch" role="group" aria-label="Chọn lớp học cho mẫu">
+<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="shopFilter"><div class="uni-field"><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div class="uni-field"><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -70,12 +79,8 @@
 <div class="uni-field"><label for="fShShift">Giờ làm</label><select id="fShShift" data-track="loc-gio-lam-shop"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
 <div class="uni-field"><label for="fShPayType">Loại lương</label><select id="fShPayType" data-track="loc-loai-luong-shop"><option value="">Tất cả lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
 <div class="uni-field"><label id="fShPayMinLabel" for="fShPayMin">Mức lương tối thiểu</label><input id="fShPayMin" type="text" inputmode="decimal" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled></div>
-<!-- v186: 3 option con cua muc logistics — chi mo khi dang chon 'logistics'
-     tren switch (khoa mac dinh); loc 3 muc moi chi con o loc chung tren top
-     (tinh fShProv + sap xep gia fShopPriceSort + hinh thuc fShopLogOpt). -->
-<div class="uni-field locked" id="uf-shop-logopt"><label for="fShopLogOpt">Hình thức vận chuyển</label><select id="fShopLogOpt" data-track="loc-hinh-thuc-van-chuyen-shop" disabled><option value="">Tất cả hình thức</option><option value="chinh-ngach">Vận chuyển chính ngạch</option><option value="tieu-ngach">Vận chuyển trọn gói – tiểu ngạch</option><option value="mua-ho">Dịch vụ mua hàng hộ</option></select></div>
-<!-- v186: sap xep theo gia cho 3 muc moi — chi mo khi chon event-mkt/logistics/agency-ads tren switch (khoa mac dinh). -->
-<div class="uni-field locked" id="uf-shop-pricesort"><label for="fShopPriceSort">Sắp xếp theo giá</label><select id="fShopPriceSort" data-track="sap-xep-gia-shop" disabled><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
+<!-- v210: o sap xep theo hoc phi cua 2 muc lop hoc CHUYEN SANG day cung section — chi mo khi chon class-live/class-makeup tren switch (khoa mac dinh); loc lop hoc chi con o loc chung tren top (tinh fShProv + sap xep hoc phi fUniClassSort). -->
+<div class="uni-field locked" id="uf-classsort"><label for="fUniClassSort">Sắp xếp theo học phí</label><select id="fUniClassSort" data-track="sap-xep-hoc-phi-chung" disabled><option value="">Mới nhất</option><option value="price-asc">Học phí thấp → cao</option><option value="price-desc">Học phí cao → thấp</option></select></div>
 </div>
 <div class="filter-actions"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p><p class="filter-count" id="shopCount"></p>
@@ -85,40 +90,29 @@
 <h2 id="shop-list-title">Danh sách shop tuyển mẫu livestream</h2>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
-<!-- v179: 5 danh muc doi tuong moi — 3 muc cho shop (du lieu that tu cron thu thap 11:21; hien co 1 muc mau/muc de test giao dien) -->
-<section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
-<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức <span id="eventMarketingCountH2"></span></h2>
-<p class="lot-sub" id="eventMarketingSub">Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.</p>
-<!-- v186: bo loc su kien da gop len loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="eventMarketingCount"></p>
-<p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
-<div class="lot-grid" id="eventMarketingGrid"></div>
-<button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<!-- v210 (13/11/2026): 2 muc lop hoc CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo tieu de menu — lop hoc la nhu cau cua MAU. v181: 2 muc lop hoc fix 1 hang (class rows-1) -->
+<section class="lot-section filter-section collapsed rows-1" id="lop-livestream-mc" aria-labelledby="class-live-title">
+<h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
+<p class="lot-sub" id="classLiveSub">Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.</p>
+<!-- v186: bo loc lop Live da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
+<p class="filter-count" id="classLiveCount"></p>
+<p class="filter-empty" id="classLiveEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
+<div class="lot-grid" id="classLiveGrid"></div>
+<button class="lot-more" id="classLiveMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
-<script>(function(){var s=document.getElementById("su-kien-marketing");if(!s)return;var b=document.getElementById("eventMarketingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed" id="logistics-trung-viet" aria-labelledby="logistics-title">
-<h2 id="logistics-title">Công ty logistics Trung – Việt <span id="logisticsCountH2"></span></h2>
-<p class="lot-sub" id="logisticsSub">Công ty logistics Trung – Việt: vận chuyển chính ngạch, trọn gói – tiểu ngạch và dịch vụ mua hàng hộ.</p>
-<!-- v186: bo loc logistics da gop len loc chung tren top (tinh fShProv + hinh thuc fShopLogOpt + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="logisticsCount"></p>
-<p class="filter-empty" id="logisticsEmpty" hidden>Chưa có đơn vị vận chuyển nào khớp bộ lọc.</p>
-<div class="lot-grid" id="logisticsGrid"></div>
-<button class="lot-more" id="logisticsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<script>(function(){var s=document.getElementById("lop-livestream-mc");if(!s)return;var b=document.getElementById("classLiveMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed rows-1" id="lop-makeup" aria-labelledby="class-makeup-title">
+<h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
+<p class="lot-sub" id="classMakeupSub">Lớp học dạy makeup cá nhân và makeup lên hình livestream.</p>
+<!-- v186: bo loc lop Makeup da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
+<p class="filter-count" id="classMakeupCount"></p>
+<p class="filter-empty" id="classMakeupEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
+<div class="lot-grid" id="classMakeupGrid"></div>
+<button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
-<script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<section class="lot-section filter-section collapsed" id="agency-ads-livestream" aria-labelledby="agencyAds-title">
-<h2 id="agencyAds-title">Agency Ads Livestream <span id="agencyAdsCountH2"></span></h2>
-<p class="lot-sub" id="agencyAdsSub">Agency chạy quảng cáo livestream TikTok/Facebook, booking KOL livestream cho shop online.</p>
-<!-- v198: muc moi Agency Ads Livestream — loc doc tu loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="agencyAdsCount"></p>
-<p class="filter-empty" id="agencyAdsEmpty" hidden>Chưa có agency nào khớp bộ lọc.</p>
-<div class="lot-grid" id="agencyAdsGrid"></div>
-<button class="lot-more" id="agencyAdsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
-</section>
-<script>(function(){var s=document.getElementById("agency-ads-livestream");if(!s)return;var b=document.getElementById("agencyAdsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<script>(function(){var s=document.getElementById("lop-makeup");if(!s)return;var b=document.getElementById("classMakeupMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
@@ -188,40 +182,22 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v199: mo muc Su kien/Logistics/Agency Ads theo ?newobj= khi sang tu trang Mau
-     (link tab "Su kien Marketing" / "Logistics Trung–Viet" / "Agency Ads Livestream").
-     Bam nut tuong ung de goi dung setShopCat(cat) trong js/app.js (mo khoa o loc +
-     dat active de nut Ap dung loc dung muc; setShopCat tu mo rong muc). KHONG cuon
-     toi muc khi BAM NUT TREN TRANG — quy tac anh chot: bam hang muc chi doi bo loc,
-     chi khi chon bo loc (nut Ap dung) moi cuon xuong ket qua.
+<!-- v210: mo muc Lop hoc theo ?newobj= (link "Xem tat ca" tu trang chu).
+     2 muc lop hoc gio la nut that tren trang nay — bam nut tuong ung de goi dung
+     setShopCat(cat) trong js/app.js. KHONG cuon toi muc (v207 + anh bao 22:03:
+     "nhay sang ... va keo xuong content" la loi) — trang dung yen, section mo
+     ngay tai cho, nguoi dung tu cuon xuong xem.
      v199b: doc ?newobj= NGAY khi script duoc parse (truoc khi app.js init goi
      setParams() xoa no khoi URL thanh ?page=1) — luu vao window.__v199_newobj,
-     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon.
-     v202 (13/11/2026): sang trang bang LINK ?newobj= thi CUON XUONG dung muc —
-     truoc day chi chon muc ma khong cuon, trang dung o dau (chi thay danh sach
-     Shop), muc nam ~2300px duoi viewport nen anh tuong muc bi troi. Quy tac
-     "bam nut khong cuon" VAN GIU cho bam nut tren trang; chi truong hop sang
-     trang bang link moi cuon (giong deep-link #hash). -->
+     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon. -->
 <script>
 window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
-/* v202: cuon xuong muc moi khi sang trang bang ?newobj= (ly do xem ghi chu tren).
-   Chi cuon khi nguoi dung chua cuon (scrollY <= 10); doi 300ms cho luoi render. */
-function v202ScrollToNewObj(sectionId){
-  var s = document.getElementById(sectionId);
-  if(!s || typeof s.scrollIntoView !== 'function') return;
-  setTimeout(function(){
-    if(window.scrollY > 10) return;
-    s.scrollIntoView({ behavior: 'auto', block: 'start' });
-  }, 300);
-}
 document.addEventListener('DOMContentLoaded', function(){
   var cat = window.__v199_newobj || '';
-  if(cat !== 'event-mkt' && cat !== 'logistics' && cat !== 'agency-ads') return;
-  var btn = document.querySelector('#shopFilterSwitch .uni-cat-btn[data-uni-cat="' + cat + '"]');
+  if(cat !== 'class-live' && cat !== 'class-makeup') return;
+  var btn = document.querySelector('.uni-cat-btn[data-uni-cat="' + cat + '"]');
   if(btn) btn.click();
-  var secByCat = {'event-mkt': 'su-kien-marketing', 'logistics': 'logistics-trung-viet', 'agency-ads': 'agency-ads-livestream'};
-  v202ScrollToNewObj(secByCat[cat]);
 });
 </script>
 <script>

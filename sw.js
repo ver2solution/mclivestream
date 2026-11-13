@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v207-shell-1'; /* v207: bo hieu ung tu cuon (troi) cho muc moi (js/app.js) + them 3 section trang chu (index.html) + dong dem the loc theo muc dang chon (thanh-ly-kiot.html) */
+const CACHE = 'v210-shell-1'; /* v210: chuyen danh muc theo tieu de menu — 3 muc shop sang trang Shop, 2 muc lop hoc sang trang Mau (js/app.js + danh-sach-mau/shop.html + index.html); bo cuon ?newobj= (v202) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
