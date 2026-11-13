@@ -1,0 +1,40 @@
+name: Deploy v190-p1-funnel-shop (sua redirect sau dang ky theo loai TK)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v190-p1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v190-p1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v190-p1 package
+        run: |
+          unzip -o mclivestream-v190-p1-deploy.zip
+          echo "--- verify v190 P1 (redirect dang ky theo loai TK) ---"
+          test -f js/auth-ui.js || (echo "THIEU js/auth-ui.js"; exit 1)
+          test -f sw.js || (echo "THIEU sw.js"; exit 1)
+          grep -q "danh-sach-mau.html#ho-so-shop" js/auth-ui.js || (echo "THIEU logic redirect shop trong auth-ui.js"; exit 1)
+          grep -q "_acctType" js/auth-ui.js || (echo "THIEU bien _acctType trong auth-ui.js"; exit 1)
+          grep -q "v190-shell-1" sw.js || (echo "THIEU CACHE v190-shell-1 trong sw.js"; exit 1)
+          echo "verify OK: auth-ui.js co fix P1, sw.js CACHE v190-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v190-p1-deploy.zip
+          git add js/auth-ui.js sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v190 P1: redirect sau dang ky theo loai TK (shop -> danh-sach-mau.html#ho-so-shop, mau -> trang-cua-toi.html); bump CACHE v190-shell-1"
+            git push
+          fi
