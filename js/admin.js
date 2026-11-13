@@ -1635,8 +1635,11 @@
     state.isAdmin = true;
     show('qtMain');
     wireTabs(false);
-    await loadOverview();
-    state.loaded.overview = true;
+    // v195 (badge tab Trao đổi): Tổng quan lỗi (mất mạng/RPC) KHÔNG được
+    // giết cả khởi động — kênh Realtime + badge phải chạy dù Tổng quan lỗi.
+    // Không set loaded khi lỗi để mở tab Tổng quan sẽ thử tải lại.
+    try { await loadOverview(); state.loaded.overview = true; }
+    catch (e) { /* Tổng quan tự hiện lỗi khi mở tab; vẫn khởi động kênh chat + badge */ }
     // Kênh Realtime + badge tin chưa đọc: mở 1 lần khi đã xác nhận admin
     // (giữ kênh suốt phiên để badge nhận INSERT cả khi đang ở tab khác;
     // rời tab Trao đổi không hủy kênh nữa — xem § Trao đổi).

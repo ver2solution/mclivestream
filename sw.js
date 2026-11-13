@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v193-admin-shell-1'; /* v193: sua nut Xoa ban thao console admin — xac nhan 2 buoc ngay tren nut thay window.confirm (confirm tu tat tren trinh duyet tu dong, loi 13/11/2026); doi js/admin.js */
+const CACHE = 'v195-shell-1'; /* v195: badge tab Trao doi — main() boc loadOverview bang try/catch de kenh Realtime + badge luon khoi dong du Tong quan loi; doi js/admin.js */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
