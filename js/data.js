@@ -7985,6 +7985,54 @@ window.V20_DATA = {
    "takeaway": "Thương mại điện tử xuyên biên giới Trung Quốc đạt 2,84 nghìn tỷ NDT năm 2025, tăng 4,8%, với 140 triệu người mua nửa đầu 2026 — shop Việt bán ra nước ngoài nên bắt đầu từ lô nhỏ gửi kho nước ngoài, xây thương hiệu và live đa ngôn ngữ."
   },
   {
+   "title": "AI livestream bán hàng Tết: 100.000 gói AI hết trong 30 phút",
+   "cat": "Công nghệ",
+   "source": "Jing Daily",
+   "date": "2026-11-13",
+   "url": "https://jingdaily.com/posts/alibaba-enlists-lipstick-king-li-jiaqi-to-sell-ai-tokens-on-double-11-livestream",
+   "page": "bai-viet/ai-livestream-ban-hang-tet-100000-goi-ai-30-phut.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-livestream-ban-hang-tet-100000-goi-ai-30-phut.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "100.000 gói AI bán hết trong 30 phút tối 02/11/2026: AI đã thành mặt hàng — shop Việt bán cách dùng, chia ca đêm cho AI, thử ngay khi còn trợ giá tới 31/12/2026."
+  },
+  {
+   "title": "Livestream bán hàng bằng AI: 77 tỷ USD, rẻ bằng 1/10 MC thật",
+   "cat": "Công nghệ",
+   "source": "Marketing to China",
+   "date": "2026-11-13",
+   "url": "https://marketingtochina.com/ai-powered-virtual-hosts-are-taking-over-e-commerce-live-streaming/",
+   "page": "bai-viet/livestream-ban-hang-bang-ai-77-ty-usd-re-bang-1-10-mc-that.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-bang-ai-77-ty-usd-re-bang-1-10-mc-that.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường MC AI 77 tỷ USD năm 2026, rẻ bằng 1/10 MC thật nhưng mới chiếm 8,3% doanh thu — dùng AI cho ca đêm, MC thật giữ giờ vàng, luôn ghi nhãn và có người trực."
+  },
+  {
+   "title": "Video commerce Việt Nam: 32 tỷ USD, tăng 22% năm 2026",
+   "cat": "Công nghệ",
+   "source": "ASEAN Coverage",
+   "date": "2026-11-13",
+   "url": "https://finance.aseancoverage.com/news/vietnams-digital-economy-forecast-to-reach-us-49-billion-in-2026/n4209",
+   "page": "bai-viet/video-commerce-viet-nam-32-ty-usd-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/video-commerce-viet-nam-32-ty-usd-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kinh tế số Việt Nam 49 tỷ USD năm 2026, thương mại điện tử 32 tỷ USD (+22%): video commerce 1,3 tỷ giao dịch, 650.000 người bán — shop nhỏ phải có video gắn giỏ và mẫu live biết làm video."
+  },
+  {
+   "title": "Quảng cáo TikTok Shop 12.12: 50,3 tỷ USD GMV nửa đầu 2026",
+   "cat": "Công nghệ",
+   "source": "Z Media",
+   "date": "2026-11-13",
+   "url": "https://www.z.media/insights/tiktok-shop-mega-sales-calendar-2026",
+   "page": "bai-viet/quang-cao-tiktok-shop-12-12-gmv-max-dang-ky-den-25-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quang-cao-tiktok-shop-12-12-gmv-max-dang-ky-den-25-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sale 12–14/12/2026, đăng ký tới 25/11/2026: GMV Max tăng ngân sách 30–50%, 15–20 video, live gấp 3–8 lần video thường — giữ ngân sách cho ngày D+1 13/12/2026."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
