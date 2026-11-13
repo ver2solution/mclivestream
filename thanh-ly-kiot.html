@@ -321,10 +321,27 @@
     if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection('kiot');
     var map = {'#dich-vu-chuyen-nha': 'chuyen-nha', '#thiet-bi-phong-live': 'thiet-bi-live'};
     var cat = map[location.hash || ''];
-    if(!cat) return;
-    setKiotCat(cat);
-    var s = document.getElementById(newObjSectionCfg(cat));
-    if(s) s.scrollIntoView();
+    if(cat){
+      setKiotCat(cat);
+      var s = document.getElementById(newObjSectionCfg(cat));
+      if(s) s.scrollIntoView();
+      return;
+    }
+    /* v197 (MỚI-MC-10): hash #<id thẻ> (từ tim-kiem.html) — thẻ ở mục mới
+       thì mở đúng mục rồi cuộn tới thẻ; thẻ ở danh sách kiot thì mở rộng
+       danh sách tới khi thẻ xuất hiện rồi cuộn tới. */
+    var hid = (location.hash || '').replace(/^#/, '');
+    if(!hid) return;
+    var card = document.getElementById(hid);
+    if(!card && hid.indexOf('kiot-') === 0){
+      var guard = 0;
+      while(!card && guard++ < 20 && moreBtn && !moreBtn.hidden){ kiotShown += KIOT_MAX_ROWS; render(); card = document.getElementById(hid); }
+    }
+    if(!card) return;
+    var sec = card.closest ? card.closest('.lot-section') : null;
+    var secCat = sec && sec.id === 'dich-vu-chuyen-nha' ? 'chuyen-nha' : (sec && sec.id === 'thiet-bi-phong-live' ? 'thiet-bi-live' : null);
+    if(secCat) setKiotCat(secCat);
+    if(typeof card.scrollIntoView === 'function') card.scrollIntoView();
   });
 })();
 </script>
