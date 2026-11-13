@@ -58,8 +58,8 @@
 <!-- v182: 5 danh muc moi lam MUC CON trong bo loc chung — chon muc nao thi
      loc dung mang du lieu cua muc do (ket hop loc tinh); so dem trong () cap
      nhat tu D boi refreshNewObjCatCounts (js/app.js). -->
-<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình" style="display:none">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup" style="display:none">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
 <div class="uni-field" id="uf-prov"><label for="fUniProv">Tỉnh / Thành phố</label><select id="fUniProv" data-track="loc-tinh-chung"><option value="">Tất cả tỉnh</option><option value="Hà Nội">Hà Nội</option><option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option><option value="Hưng Yên">Hưng Yên</option><option value="Đồng Nai">Đồng Nai</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Huế">Huế</option><option value="Nghệ An">Nghệ An</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Cần Thơ">Cần Thơ</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Gia Lai">Gia Lai</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Toàn quốc / Live online">Toàn quốc / Live online</option></select></div>
@@ -271,18 +271,33 @@
      chi doi bo loc, chi khi chon bo loc moi cuon xuong ket qua). Lo/Xuong giu mo
      theo hash deep-link (#lo-hang-xa-kho / #xuong-may-gia-cong); bo lenh cuon trong
      script vi trinh duyet tu nhay neo khi co hash. Nut Lo/Xuong hien trong switch;
-     nut Lop hoc AN (display:none).
+     nut Lop hoc AN (display:none) — v202: DA BO AN, hien trong switch nhu cac nut khac.
      v199b: doc ?newobj= NGAY khi script duoc parse (truoc khi app.js init goi
      setParams() xoa no khoi URL thanh ?page=1) — luu vao window.__v199_newobj,
-     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon. -->
+     dung o DOMContentLoaded de bam nut. Doc trong DOMContentLoaded thi da muon.
+     v202 (13/11/2026): nut Lop hoc BO display:none (hien trong bo loc nhu 3 nut
+     Shop ben kia); sang trang bang ?newobj= thi CUON XUONG dung muc — truoc day
+     chi chon muc ma khong cuon, trang dung o dau nen anh tuong muc bi troi. -->
 <script>
 window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+/* v202: cuon xuong muc moi khi sang trang bang ?newobj=. Chi cuon khi nguoi
+   dung chua cuon (scrollY <= 10) de khong giat lai neu anh dang xem cho khac;
+   doi 300ms cho luoi the render xong roi moi cuon. */
+function v202ScrollToNewObj(sectionId){
+  var s = document.getElementById(sectionId);
+  if(!s || typeof s.scrollIntoView !== 'function') return;
+  setTimeout(function(){
+    if(window.scrollY > 10) return;
+    s.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }, 300);
+}
 document.addEventListener('DOMContentLoaded', function(){
   var ncat = window.__v199_newobj || '';
   if(ncat === 'class-live' || ncat === 'class-makeup'){
     var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
     if(nbtn) nbtn.click();
+    v202ScrollToNewObj(ncat === 'class-live' ? 'lop-livestream-mc' : 'lop-makeup');
     return;
   }
   var map = {
