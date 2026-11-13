@@ -1,0 +1,55 @@
+name: Deploy v200
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/deploy-v200.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Verify zip contents
+        run: |
+          unzip -l v200.zip
+          for f in quan-tri.html js/admin.js sw.js tests/test-v200-online-summary.mjs tests/test-v197-hash-jump-2026-11-13.mjs tests/test-v198-categories-2026-11-13.mjs tests/test-v199-newobj-filter-sync.mjs; do
+            unzip -l v200.zip | grep -q "$f" || { echo "Missing in zip: $f"; exit 1; }
+          done
+
+      - name: Unzip v200 package
+        run: unzip -o v200.zip
+
+      - name: Run tests
+        run: |
+          node tests/test-v200-online-summary.mjs | tee /tmp/t200.txt
+          grep -q "15/15" /tmp/t200.txt
+          node tests/test-v199-newobj-filter-sync.mjs | tee /tmp/t199.txt
+          grep -q "22/22" /tmp/t199.txt
+          node tests/test-v198-categories-2026-11-13.mjs | tee /tmp/t198.txt
+          grep -q "50/50" /tmp/t198.txt
+          node tests/test-v197-hash-jump-2026-11-13.mjs | tee /tmp/t197.txt
+          grep -q "35/35" /tmp/t197.txt
+
+      - name: Verify v200 markers
+        run: |
+          grep -Fq "const CACHE = 'v200-shell-1'" sw.js
+          if grep -q "v199-shell-1" sw.js; then echo "sw.js still contains v199-shell-1"; exit 1; fi
+          grep -Fq 'id="qtOnlineSummary"' quan-tri.html
+          grep -Fq "byPage['total']" js/admin.js
+          grep -Fq "qtOnlineSummary" js/admin.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "v200: console admin — khối tóm tắt Số ảo/Số thật (#qtOnlineSummary)" || echo "nothing to commit"
+          git push
