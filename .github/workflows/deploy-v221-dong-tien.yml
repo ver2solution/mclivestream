@@ -1,0 +1,54 @@
+name: Deploy v221-dong-tien (4 bai Dong tien 14/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v221-dong-tien.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v221-dong-tien:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v221-dong-tien package
+        run: |
+          unzip -o mclivestream-v221-dong-tien-deploy.zip
+          echo "--- verify v221-dong-tien (4 bai) ---"
+          test "$(unzip -l mclivestream-v221-dong-tien-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 4 || (echo "SAI: goi v221 phai co dung 4 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-v221-dong-tien-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 8 || (echo "SAI: goi v221 phai co dung 8 anh"; exit 1)
+          if unzip -l mclivestream-v221-dong-tien-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v221 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in cach-tinh-lai-lo-livestream-tet-5-buoc-tinh-dung-1-phien ppi-my-thang-10-tang-65-phan-tram-cao-nhat-4-nam gia-dau-brent-ve-96-usd-giam-tuan-thu-2 ecb-tang-lai-suat-thang-12-len-275-phan-tram; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "--- verify KHONG mat bai cua cac cron khac hom nay (chong ghi de v190/v191) ---"
+          for slug in thong-ke-ho-so-moi-13-11 mau-live-tiktok viec-lam-livestream-tet tuyen-mau-live-ha-noi cach-tang-mat-xem-livestream-tet-4-don-bay-giu-nguoi-xem cach-giu-chan-nguoi-xem-livestream-90-giay-dau-quyet-dinh minigame-livestream-ban-hang-quiz-giu-nguoi-xem-gap-doi livestream-ban-do-gia-dung-157-phan-tram-double-11 phan-tich-double-day-2026-1776-ty-ndt-12-12-shop-nho mo-hinh-livestream-ban-hang-my-20-ty-usd-tiktok-whatnot kinh-doanh-dropshipping-2026-my-xoa-mien-thue-800-usd ban-hang-tren-tiktok-shop-cho-nguoi-moi-malaysia-140-phan-tram thi-truong-livestream-viet-nam-2026-32-ty-usd shopee-quy-3-2026-gmv-39-7-ty-usd-lai-ky-luc ban-le-viet-nam-thang-10-2026-695-nghin-ty-tang-14-7-phan-tram luat-thuong-mai-dien-tu-2026-mau-live-xac-minh-danh-tinh; do
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "MAT BAI KHAC: $slug khong co trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "MAT BAI KHAC: $slug khong co trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 262 || (echo "SAI: sitemap phai co 262 URL (258 live + 4 bai moi)"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" -eq 239 || (echo "SAI: data.js phai co 239 bai (235 live + 4 bai moi)"; exit 1)
+          echo "verify OK: 4 bai + 8 anh + data.js (239 bai) + sitemap (262 URL), 0 bai hom nay bi mat"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v221-dong-tien-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v221-dong-tien: 4 bai Dong tien 14/11/2026 (cach tinh lai lo livestream Tet keyword theo mua #2 + PPI My thang 10 + gia dau Brent + ECB thang 12); data.js/sitemap rebase tren live 235 bai, 0 bai hom nay bi mat; sw.js NOT touched"
+            git push
+          fi
