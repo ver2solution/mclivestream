@@ -1,0 +1,34 @@
+name: deploy-v246
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v246:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v246 package
+        run: |
+          unzip -o v246.zip
+          ls -l js/app.js v20.css sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          grep -Fq "v246 (MC-71)" js/app.js
+          grep -Fq "v246 (MC-71)" v20.css
+          grep -Fq "CACHE = 'v246-shell-1'" sw.js
+          node --check js/app.js
+          node --check sw.js
+      - name: Commit v246 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/app.js v20.css sw.js
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v246 MC-71 an loi moi dang ky khi da dang nhap + sw.js v246-shell-1"
+            git push
+          fi
