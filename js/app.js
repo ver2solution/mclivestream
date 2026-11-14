@@ -862,14 +862,21 @@ function inRange(v, key){
   if(key === 'gt5000') return v > 5000;
   return true;
 }
+/* v254 (F-R2-08, 15/11/2026): gia tri dac biet cho option "Chưa ghi" —
+   loc ra cac ban ghi THIEU metadata (tinh lo / so luong lo / MOQ xuong)
+   thay vi de chung bien mat khoi moi bo loc (truoc day lo/xuong thieu
+   truong luon bi loai khi chon bat ky gia tri loc nao). */
+var MISSING_META = '__missing__';
 function lotMatches(card, f){
-  if(f.prov && normProv(card.getAttribute('data-prov')) !== normProv(f.prov)) return false;
+  if(f.prov === MISSING_META){ if(card.getAttribute('data-prov')) return false; }
+  else if(f.prov && normProv(card.getAttribute('data-prov')) !== normProv(f.prov)) return false;
   if(f.price){
     var p = card.getAttribute('data-price');
     if(p === null || p === '') return false;
     if(!inRange(parseInt(p, 10), f.price)) return false;
   }
-  if(f.qty){
+  if(f.qty === MISSING_META){ if(card.getAttribute('data-qty')) return false; }
+  else if(f.qty){
     var q = card.getAttribute('data-qty');
     if(q === null || q === '') return false;
     if(!inRange(parseInt(q, 10), f.qty)) return false;
@@ -883,7 +890,8 @@ function lotMatches(card, f){
 }
 function facMatches(card, f){
   if(f.prov && normProv(card.getAttribute('data-prov')) !== normProv(f.prov)) return false;
-  if(f.value){
+  if(f.value === MISSING_META){ var m0 = card.getAttribute('data-moq'); if(m0 !== null && m0 !== '') return false; }
+  else if(f.value){
     var m = card.getAttribute('data-moq');
     if(m === null || m === '') return false;
     var mv = parseInt(m, 10);
@@ -1139,13 +1147,13 @@ function facSortComparator(key){
 function initLotPageFilter(){
   if(typeof document === 'undefined' || !document.getElementById('lotFilter')) return null;
   var up = document.getElementById('fLotProv');
-  if(up) applyOptionCounts(up, function(v){ return uniProvCount('lot', v); }, uniTotal('lot'));
+  if(up) applyOptionCounts(up, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(!lotProvOf(l)) nm++; }); return nm; } return uniProvCount('lot', v); }, uniTotal('lot'));
   var uc = document.getElementById('fLotCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount('lot', v); }, uniTotal('lot'));
   var upr = document.getElementById('fLotPrice');
   if(upr) applyOptionCounts(upr, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, (D.lots || []).length);
   var uq = document.getElementById('fLotQty');
-  if(uq) applyOptionCounts(uq, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(l.qty != null && inRange(l.qty, v)) n++; }); return n; }, (D.lots || []).length);
+  if(uq) applyOptionCounts(uq, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(l.qty == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(l.qty != null && inRange(l.qty, v)) n++; }); return n; }, (D.lots || []).length);
   var ug = document.getElementById('fLotGroup');
   if(ug) applyOptionCounts(ug, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(String(l.group) === v) n++; }); return n; }, (D.lots || []).length);
   initFilterToggle();
@@ -3024,6 +3032,15 @@ function provEntriesForCat(cat, countFn){
     var n = countFn(p);
     if(n > 0) entries.push({value: p, text: countLabel(p, n)});
   });
+  /* v254 (F-R2-08): them muc "Chưa ghi tỉnh" cho tab Lo — 16/71 lo
+     khong co tinh trong data.js (khong co trong tieu de/meta) nen
+     khong bao gio khop bo loc tinh; muc nay cho nguoi dung thay duoc
+     dung nhung lo do. Chi hien khi con lo thieu tinh. */
+  if(cat === 'lot'){
+    var nm = 0;
+    (D.lots || []).forEach(function(l){ if(!lotProvOf(l)) nm++; });
+    if(nm > 0) entries.push({value: MISSING_META, text: countLabel('Chưa ghi tỉnh', nm)});
+  }
   return entries;
 }
 function rebuildProvOptions(selId, cat, countFn, total){

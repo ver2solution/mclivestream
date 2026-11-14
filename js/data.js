@@ -14142,7 +14142,8 @@ window.V20_DATA = {
      "dateLabel": "Cập nhật",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
      "url": "https://tongkhobuonsi.com/dia-chi-mua-hang-xa-kho-uy-tin-voi-gia-tot-tai-tphcm-n133480.html",
-     "linkText": "Xem trang gốc →"
+     "linkText": "Xem trang gốc →",
+     "prov": "TP. Hồ Chí Minh",
    },
    {
      "id": "lot-10",
@@ -14187,7 +14188,8 @@ window.V20_DATA = {
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
      "url": "https://www.facebook.com/maxxsport.com.vn/posts/pfbid0aq4EaJkuVF1ZjMqqxLZCwzSCpVRRVQ84Byy1BWkz83hMZam83jRgKvzbUHd59iUXl",
-     "linkText": "Xem bài đăng gốc →"
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
    },
    {
      "id": "lot-13",
@@ -14217,7 +14219,8 @@ window.V20_DATA = {
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
      "url": "https://www.youtube.com/watch?v=4byznxwITAU",
-     "linkText": "Xem bài đăng gốc →"
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Cần Thơ",
    },
    {
      "id": "lot-15",
@@ -14232,7 +14235,8 @@ window.V20_DATA = {
      "dateLabel": "Ngày đăng",
      "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
      "url": "https://www.otofun.net.vn/threads/balo-tui-xach-tui-deo-cheo-nike-adidas-puma-columbia-lululemon.1970621/",
-     "linkText": "Xem bài đăng gốc →"
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
    },
    {
      "id": "lot-16",
