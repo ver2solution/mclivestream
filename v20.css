@@ -931,6 +931,7 @@ th{background:#f4f8f6}
 .detail-star{margin:12px 0 0;font-size:14px}
 .detail-star .v2s-star-btn{position:static;box-shadow:none}
 .detail-box .detail-actions .v2s-star-btn{position:static;box-shadow:none} /* v245 (N13/N14): nut sao trong dialog chay theo hang nut hanh dong, khong absolute goc phai nua — truoc day che nut × dong dialog (do ★ 46x44 phu gan het × 36x36) */
+body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logged-in .pin-longer-btn{display:none} /* v246 (MC-71): an loi moi dang ky khi da dang nhap — chi an 3 khoi moi, khong an nut sao hay co che ghim */
 /* Shop: logo/chu cai dau lap day khung anh (nen trang cho logo contain). */
 .card-compact-photo--shop{background:#fff}
 .card-compact-photo .shop-logo{position:absolute;inset:0;width:100%;height:100%;border-radius:0;flex:none}

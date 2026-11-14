@@ -4237,6 +4237,10 @@ function initHeaderAuth(){
     if(user){
       headerNameUserId = (user && (user.id || user.email)) || null;
       btn.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
+      /* v246 (MC-71): danh dau da dang nhap len body de CSS an cac loi moi
+         dang ky (search-cta, pin-longer-*) — bao ca ban tinh trong HTML lan
+         ban JS chen sau (DISCLAIMER). */
+      try { if(document.body && document.body.classList) document.body.classList.add('v2s-logged-in'); } catch (e) {}
       if(headerMetaName(user)){
         headerName = headerDisplayName(user) || 'Trang của tôi';
         renderHeaderLabel();
@@ -4302,6 +4306,7 @@ function initHeaderAuth(){
       closeMenu(); // v90 (F): dang xuat tu noi khac cung dong dropdown
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);
+      try { if(document.body && document.body.classList) document.body.classList.remove('v2s-logged-in'); } catch (e) {}
     }
   }
   try {
