@@ -330,6 +330,20 @@
       refreshKiotSubMoreBtn(secId);
     });
   }
+  /* v237 (F-R2-10, cung ho bai hoc v207): o Loai hinh (kiotCat) bi khoa
+     khi xem muc con — so dem phai theo muc dang chon nhu o Tinh (v214),
+     khong giu so danh sach chinh (200). Muc con: "Tat ca" = tong so muc
+     cua muc con, moi option rieng = 0 (an theo luat v114). Ve muc chinh
+     thi khoi phuc so theo danh sach kiot nhu luc tai trang. */
+  function refreshKiotCatCounts(cat){
+    if(!catSel || !window.V20 || typeof window.V20.applyOptionCounts !== 'function') return;
+    var ncfg = window.V20.NEWOBJ_UNI_CATS ? window.V20.NEWOBJ_UNI_CATS[cat] : null;
+    if(ncfg && typeof window.V20.newObjCount === 'function'){
+      window.V20.applyOptionCounts(catSel, function(){ return 0; }, window.V20.newObjCount(ncfg.type));
+    } else {
+      window.V20.applyOptionCounts(catSel, function(v){ var n = 0; kiots.forEach(function(k){ if(k.cat === v) n++; }); return n; }, kiots.length);
+    }
+  }
   function setKiotCat(cat){
     kiotSwitchBtns.forEach(function(b){
       var on = b.getAttribute('data-uni-cat') === cat;
@@ -340,6 +354,7 @@
        khoang gia theo muc, chon lai tu "Tat ca"); an so cua nut vua chon. */
     refreshKiotProvOptions(cat);
     refreshKiotPriceOptions(cat);
+    refreshKiotCatCounts(cat); /* v237 (F-R2-10): so dem o Loai hinh theo muc dang chon */
     if(window.V20 && typeof window.V20.refreshNewObjCatCounts === 'function') window.V20.refreshNewObjCatCounts();
     var secId = newObjSectionCfg(cat);
     if(kiotListWrap) kiotListWrap.hidden = !!secId;

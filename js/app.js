@@ -2953,6 +2953,46 @@ function refreshShopProvCounts(cat){
     rebuildProvOptions('fShProv', cat, function(v){ return filterShops(D.shops || [], {prov: v}).length; }, (D.shops || []).length);
   }
 }
+/* v237 (F-R2-10, cung ho bai hoc v207): so dem trong cac o loc BI KHOA
+   phai theo MUC DANG CHON — o Tinh da dung theo muc tu v214 (F1 het),
+   nhung cac o con lai van giu so cua danh sach chinh (270/230/200) vi
+   initOptionCounts chi chay 1 lan luc tai trang, con refreshUniCounts /
+   refreshShopProvCounts chi cap nhat o Tinh. Khi xem muc con moi: cac o
+   bi khoa khong loc duoc theo muc do nen moi option rieng = 0 (an theo
+   luat v114), "Tat ca" = tong so muc cua muc con (newObjCount). Ve muc
+   chinh thi khoi phuc so theo danh sach chinh y nhu luc tai trang. */
+function refreshLockedCountsForCat(cat, page){
+  var ncfg = NEWOBJ_UNI_CATS[cat];
+  function zeroCounts(){ return 0; }
+  if(page === 'model'){
+    var us = document.getElementById('fUniShift');
+    var upt = document.getElementById('fUniPayType');
+    if(ncfg){
+      var totalM = newObjCount(ncfg.type);
+      if(us) applyOptionCounts(us, zeroCounts, totalM);
+      if(upt) applyOptionCounts(upt, zeroCounts, totalM);
+    } else {
+      var models = D.models || [];
+      if(us) applyOptionCounts(us, function(v){ return filterModels(models, {shift: v}).length; }, models.length);
+      if(upt) applyOptionCounts(upt, function(v){ return filterModels(models, {payType: v}).length; }, models.length);
+    }
+  } else if(page === 'shop'){
+    var sc = document.getElementById('fShCat');
+    var ss = document.getElementById('fShShift');
+    var spt = document.getElementById('fShPayType');
+    if(ncfg){
+      var totalS = newObjCount(ncfg.type);
+      if(sc) applyOptionCounts(sc, zeroCounts, totalS);
+      if(ss) applyOptionCounts(ss, zeroCounts, totalS);
+      if(spt) applyOptionCounts(spt, zeroCounts, totalS);
+    } else {
+      var shops = D.shops || [];
+      if(sc) applyOptionCounts(sc, function(v){ return filterShops(shops, {cat: uniCatToShop(v)}).length; }, shops.length);
+      if(ss) applyOptionCounts(ss, function(v){ return filterShops(shops, {shift: v}).length; }, shops.length);
+      if(spt) applyOptionCounts(spt, function(v){ return filterShops(shops, {payType: v}).length; }, shops.length);
+    }
+  }
+}
 /* v214: danh sach tinh theo MUC DANG CHON — chi hien tinh co du lieu cua muc
    (theo thu tu D.provinces) + so dem that; doi muc thi danh sach doi theo.
    Dung setSelectOptions (mau v118) de giu gia tri dang chon neu van hop le.
@@ -3182,6 +3222,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
     // v139: chon tab chi mo/dong muc, KHONG cuon man hinh.
     refreshUniCounts(cat);
     refreshNewObjCatCounts(); /* v214: an so cua nut vua chon, hien lai so cua nut vua bo chon */
+    refreshLockedCountsForCat(cat, 'model'); /* v237 (F-R2-10): so dem o loc bi khoa theo muc dang chon */
     /* v182: muc con moi — chi hien section cua muc do (an cac section moi
        con lai), mo rong no; thu gon Lo/Xuong + section moi con lai de khi
        quay lai trang thai mac dinh van dung 1 hang. */
@@ -3420,6 +3461,7 @@ function initShops(){
     }
     refreshShopProvCounts(cat);
     refreshNewObjCatCounts(); /* v214: luat an so cua muc dang chon */
+    refreshLockedCountsForCat(cat, 'shop'); /* v237 (F-R2-10): so dem o loc bi khoa theo muc dang chon */
   }
   shopCatBtns.forEach(function(b){
     b.addEventListener('click', function(){ setShopCat(b.getAttribute('data-uni-cat')); });
