@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tính lãi phiên live — Máy tính lợi nhuận cho shop livestream | Ver2Solution</title>
+<meta name="description" content="Tính lãi phiên live: nhập giá bán, giá vốn, phí sàn, phí vận chuyển, tiền mẫu, tiền quảng cáo — biết ngay doanh thu, tổng chi phí, lợi nhuận và điểm hòa vốn. Miễn phí, không cần đăng nhập.">
+<link rel="canonical" href="https://vieclamlivestream.online/tinh-lai.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="vieclamlivestream.online">
+<meta property="og:title" content="Tính lãi phiên live — Ver2Solution">
+<meta property="og:description" content="Nhập giá bán, giá vốn, phí sàn… biết ngay một phiên live lãi bao nhiêu — miễn phí, không cần đăng nhập."><meta property="og:url" content="https://vieclamlivestream.online/tinh-lai.html">
+<meta property="og:image" content="https://vieclamlivestream.online/images/og-brand.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Logo Ver2Solution và tên thương hiệu vieclamlivestream.online trên nền xanh">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tính lãi phiên live — Ver2Solution">
+<meta name="twitter:description" content="Nhập giá bán, giá vốn, phí sàn… biết ngay một phiên live lãi bao nhiêu."><meta name="twitter:image" content="https://vieclamlivestream.online/images/og-brand.jpg">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ver2Solution">
+<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ver2Solution","url":"https://vieclamlivestream.online","logo":"https://vieclamlivestream.online/logo.png","telephone":"0329983699","sameAs":["https://www.facebook.com/Ver2solutionAgency"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v20.css">
+<style>
+/* S1-3 Profit Calculator v1 (14/11/2026): style riêng trang tinh-lai, dùng token v20.css */
+.calc-page{padding-bottom:32px}
+.calc-hero h1{font-size:clamp(28px,4.5vw,40px);line-height:1.15;margin:18px 0 8px}
+.calc-sub{color:var(--mut);margin:0 0 4px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.calc-field label{display:block;font-weight:800;font-size:14px;margin:12px 0 4px}
+.calc-field input{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff}
+.calc-field input[aria-invalid="true"]{border-color:#d92b1f}
+.calc-hint{font-size:12px;color:var(--mut);margin:4px 0 0}
+.calc-err{font-size:13px;color:#d92b1f;margin:4px 0 0}
+.calc-err:empty{display:none}
+.calc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.calc-actions .btn{min-height:48px}
+.calc-msg{font-size:14px;margin:10px 0 0}
+.calc-msg:empty{display:none}
+.calc-result{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+.calc-profit-line{font-size:18px;margin:0 0 12px}
+.calc-profit{font-size:28px}
+.calc-profit.pos{color:#0b7a4b}
+.calc-profit.neg{color:#d92b1f}
+.calc-table{width:100%;border-collapse:collapse;font-size:15px}
+.calc-table td{padding:8px 4px;border-bottom:1px solid var(--line)}
+.calc-table td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.calc-table tr.total td{font-weight:800}
+.calc-disclaimer{font-size:13px;color:var(--mut)}
+.calc-saved{margin-top:20px}
+.calc-saved-list{list-style:none;margin:0;padding:0}
+.calc-saved-list li{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.calc-saved-name{font-weight:700}
+.calc-saved-profit{font-weight:800}
+.calc-saved-profit.pos{color:#0b7a4b}
+.calc-saved-profit.neg{color:#d92b1f}
+.calc-saved-list .btn{min-height:40px}
+@media (max-width:600px){.calc-grid{grid-template-columns:1fr}.calc-actions .btn{flex:1 1 100%}}
+</style>
+</head>
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="danh-sach-mau.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<a class="btn btn-primary btn-sm" data-track="nut-dang-tin-tuyen-mau" href="dang-nhap.html?next=index.html">Đăng Nhập</a></div></header>
+<main class="wrap calc-page">
+<p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">136</span>&nbsp;người đang online</p>
+<style>
+/* v116-game-entry (09/11/2026): loi vao game Nong Trai — xep chong NGAY TREN popup online, cung cot mep phai.
+   Popup (.online-popup, v20.css:116): fixed right:0; top:50%; translateY(-50%); cao ~110px khi da dang nhap (~84px khi chua) → mep tren ≈ 50%+55px tinh tu day viewport.
+   .game-entry neo bang bottom:calc(50% + 62px) → cach mep tren popup ~7px, KHONG de popup, KHONG dung nut ×.
+   Neo bang bottom (khong neo top) nen nut co cao them (xuong dong o mobile) cung chi moc len tren, khong bao gio tran xuong popup.
+   z-index:79 (duoi popup 80) de neu co chong lan thi popup van bam duoc. Khi dong popup, entry van o nguyen vi tri (phan tu rieng, ngoai #onlinePopup). */
+.game-entry{position:fixed;right:0;bottom:calc(50% + 62px);z-index:79;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:96px;min-height:96px;padding:8px 6px;background:#fff8e6;border:1px solid #e8c97a;border-right:0;border-radius:14px 0 0 14px;box-shadow:0 10px 30px rgba(60,42,16,.16);color:#6b4e00;text-decoration:none;font-size:12px;font-weight:800;line-height:1.3;text-align:center}
+.game-entry:hover{border-color:#a97f24;color:#93392a}
+.game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
+.game-entry small{display:none}
+@media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
+</style>
+<a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
+<div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">136</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
+<section class="calc-hero">
+<h1>Máy tính lãi phiên live</h1>
+<p class="calc-sub">Nhập giá bán, giá vốn, phí sàn… biết ngay một phiên live lãi bao nhiêu — miễn phí, không cần đăng nhập.</p>
+<p class="calc-sub">Tính trước khi bỏ tiền: live lô này có lãi không, bán bao nhiêu cái thì hòa vốn.</p>
+</section>
+<section class="form-card calc-card" aria-label="Máy tính lãi">
+<form id="calcForm" novalidate>
+<p id="calcLotNote" class="calc-msg" aria-live="polite"></p>
+<div class="calc-grid">
+<div class="calc-field"><label for="calcPrice">Giá bán (VNĐ/cái) *</label><input id="calcPrice" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 150000"><p class="calc-hint">Giá bạn bán cho khách trên live.</p><p class="calc-err" id="errPrice"></p></div>
+<div class="calc-field"><label for="calcCost">Giá vốn (VNĐ/cái) *</label><input id="calcCost" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 80000"><p class="calc-hint">Giá bạn nhập hàng, tính theo từng cái.</p><p class="calc-err" id="errCost"></p></div>
+<div class="calc-field"><label for="calcQty">Số lượng dự kiến bán (cái) *</label><input id="calcQty" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 100"><p class="calc-hint">Số cái bạn kỳ vọng bán hết trong phiên.</p><p class="calc-err" id="errQty"></p></div>
+<div class="calc-field"><label for="calcFee">Phí sàn (%)</label><input id="calcFee" type="text" inputmode="decimal" autocomplete="off" value="5"><p class="calc-hint">Phí nền tảng tính trên doanh thu (mặc định 5%).</p><p class="calc-err" id="errFee"></p></div>
+<div class="calc-field"><label for="calcShip">Phí vận chuyển (VNĐ/đơn)</label><input id="calcShip" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 15000"><p class="calc-hint">Phí ship bạn chịu cho mỗi đơn, để trống = 0.</p><p class="calc-err" id="errShip"></p></div>
+<div class="calc-field"><label for="calcModel">Tiền mẫu (VNĐ/phiên)</label><input id="calcModel" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 2000000"><p class="calc-hint">Tiền thuê mẫu/MC cho cả phiên, để trống = 0.</p><p class="calc-err" id="errModel"></p></div>
+<div class="calc-field"><label for="calcAds">Tiền quảng cáo (VNĐ/phiên)</label><input id="calcAds" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 1000000"><p class="calc-hint">Tiền chạy quảng cáo cho phiên, để trống = 0.</p><p class="calc-err" id="errAds"></p></div>
+<div class="calc-field"><label for="calcTitle">Tên phép tính (không bắt buộc)</label><input id="calcTitle" type="text" autocomplete="off" placeholder="VD: Lô áo khoác 8000 cái"><p class="calc-hint">Để dễ tìm lại khi đã lưu.</p></div>
+</div>
+<div class="calc-actions">
+<button class="btn btn-primary" type="submit" data-track="tinh-lai">Tính lãi</button>
+<button class="btn btn-ghost" type="button" id="calcReset">Xóa</button>
+<button class="btn btn-primary" type="button" id="calcSave" data-track="luu-phep-tinh-lai">Lưu phép tính</button>
+</div>
+<p id="calcSaveMsg" class="calc-msg" aria-live="polite"></p>
+</form>
+<div id="calcResult" class="calc-result" hidden>
+<p class="calc-profit-line">Lợi nhuận dự kiến: <b id="calcProfit" class="calc-profit"></b></p>
+<table class="calc-table">
+<tr><td>Doanh thu</td><td id="rRevenue"></td></tr>
+<tr><td>Giá vốn tổng</td><td id="rCost"></td></tr>
+<tr><td>Phí sàn</td><td id="rFee"></td></tr>
+<tr><td>Phí vận chuyển tổng</td><td id="rShip"></td></tr>
+<tr><td>Tiền mẫu</td><td id="rModel"></td></tr>
+<tr><td>Tiền quảng cáo</td><td id="rAds"></td></tr>
+<tr class="total"><td>Tổng chi phí</td><td id="rTotal"></td></tr>
+<tr class="total"><td>Lợi nhuận</td><td id="rProfit"></td></tr>
+<tr><td>Lợi nhuận/cái</td><td id="rPerUnit"></td></tr>
+<tr><td>Điểm hòa vốn</td><td id="rBreakeven"></td></tr>
+</table>
+<p class="calc-disclaimer">Số liệu chỉ mang tính tham khảo — kiểm tra lại phí sàn thực tế của nền tảng bạn bán.</p>
+</div>
+</section>
+<section class="form-card calc-saved" id="calcSavedWrap">
+<h2>Phép tính đã lưu trên máy này</h2>
+<p class="calc-sub">Phép tính được lưu trên trình duyệt này. Đăng nhập rồi bấm "Lưu phép tính" để lưu thêm vào tài khoản, xem lại trên mọi thiết bị.</p>
+<ul id="calcSavedList" class="calc-saved-list"></ul>
+<p id="calcSavedEmpty" class="calc-sub">Chưa có phép tính nào được lưu.</p>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>
+<p>Web chỉ đăng thông tin liên hệ mà mẫu/shop tự công khai. Các bên chủ động liên hệ trao đổi, thông tin là công khai.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a> · <a href="tuyen-bo-mien-tru.html">Tuyên bố miễn trừ</a> · <a href="chinh-sach-cookie.html">Chính sách cookie</a></p></div></footer>
+<button class="gopy-fab" id="gopyFab" hidden data-track="nut-gop-y" type="button" aria-label="Góp ý" title="Góp ý">💬</button>
+<div class="gopy-overlay" id="gopyOverlay"><div class="gopy-box" role="dialog" aria-label="Đóng góp ý kiến"><h2 style="margin:0">Đóng góp ý kiến</h2>
+<p>Bạn thấy web cần thêm tính năng gì, hay chất lượng web chỗ nào chưa tốt? Góp ý của bạn giúp Ver2Solution tổng hợp và cải thiện web, không cần đăng nhập.</p>
+<form id="gopyForm"><label>Tên của bạn (không bắt buộc)<input name="gopyName" placeholder="VD: Shop thời trang Hà Nội"></label>
+<label>Loại góp ý<select name="gopyKind"><option>Đề xuất tính năng mới</option><option>Đánh giá chất lượng web</option><option>Báo lỗi hiển thị</option><option>Ý tưởng nội dung</option><option>Khác</option></select></label>
+<label>Nội dung góp ý *<textarea name="gopyContent" required placeholder="VD: Nên thêm lọc theo ca làm việc buổi tối…"></textarea></label>
+<p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
+<p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="mclivestream-supabase.js"></script>
+<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
+<script>
+/* S1-3 Profit Calculator v1 (14/11/2026) — tính hoàn toàn ở trình duyệt.
+   Công thức (thiết kế §3): doanh thu = giá bán × SL; phí sàn = doanh thu × %;
+   tổng chi phí = giá vốn tổng + phí sàn + VC tổng + tiền mẫu + tiền QC;
+   lợi nhuận = doanh thu − tổng chi phí; hòa vốn = ceil((mẫu+QC) / đóng góp/cái). */
+(function () {
+  var LS_KEY = 'v2s_profit_calcs';
+  var lastCalc = null;
+  var lotSource = null;
+
+  function $(id) { return document.getElementById(id); }
+  function parseNum(v) {
+    if (v == null) return NaN;
+    var s = String(v).trim().replace(/[.\s ]/g, '').replace(',', '.');
+    if (s === '' || s === '-' || s === '.') return NaN;
+    return Number(s);
+  }
+  function fmt(n) {
+    var neg = n < 0;
+    var s = String(Math.abs(Math.round(n))).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return (neg ? '-' : '') + s + ' đ';
+  }
+  function calcProfit(inp) {
+    var revenue = inp.price * inp.qty;
+    var fee = revenue * inp.feePct / 100;
+    var ship = inp.ship * inp.qty;
+    var cost = inp.cost * inp.qty;
+    var total = cost + fee + ship + inp.model + inp.ads;
+    var profit = revenue - total;
+    var perUnit = profit / inp.qty;
+    var contrib = inp.price - inp.cost - inp.price * inp.feePct / 100 - inp.ship;
+    var fixed = inp.model + inp.ads;
+    var breakeven;
+    if (fixed === 0) breakeven = 'immediate';
+    else if (contrib > 0) breakeven = Math.ceil(fixed / contrib);
+    else breakeven = 'never';
+    return { revenue: revenue, fee: fee, ship: ship, cost: cost, total: total, profit: profit, perUnit: perUnit, breakeven: breakeven };
+  }
+  function setErr(id, msg) {
+    var el = $(id);
+    if (el) el.textContent = msg || '';
+  }
+  function markInvalid(inputId, bad) {
+    var el = $(inputId);
+    if (el) el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+  }
+  function readInputs() {
+    var errs = {};
+    var price = parseNum($('calcPrice').value);
+    if (isNaN(price)) errs.price = 'Nhập giá bán';
+    else if (price <= 0) errs.price = 'Giá bán phải lớn hơn 0';
+    var cost = parseNum($('calcCost').value);
+    if (isNaN(cost)) errs.cost = 'Nhập giá vốn';
+    else if (cost < 0) errs.cost = 'Giá vốn không được âm';
+    var qty = parseNum($('calcQty').value);
+    if (isNaN(qty)) errs.qty = 'Nhập số lượng';
+    else if (qty < 1 || Math.floor(qty) !== qty) errs.qty = 'Số lượng phải là số nguyên từ 1 trở lên';
+    var fee = parseNum($('calcFee').value); if (isNaN(fee)) fee = 0;
+    if (fee < 0) errs.fee = 'Phí sàn không được âm';
+    else if (fee > 100) errs.fee = 'Phí sàn tối đa 100%';
+    var ship = parseNum($('calcShip').value); if (isNaN(ship)) ship = 0;
+    if (ship < 0) errs.ship = 'Phí vận chuyển không được âm';
+    var model = parseNum($('calcModel').value); if (isNaN(model)) model = 0;
+    if (model < 0) errs.model = 'Tiền mẫu không được âm';
+    var ads = parseNum($('calcAds').value); if (isNaN(ads)) ads = 0;
+    if (ads < 0) errs.ads = 'Tiền quảng cáo không được âm';
+    return {
+      errs: errs,
+      inputs: {
+        price: price, cost: cost, qty: qty, feePct: fee, ship: ship, model: model, ads: ads,
+        title: $('calcTitle').value.trim()
+      }
+    };
+  }
+  function showResult(inputs, res) {
+    var p = $('calcProfit');
+    p.textContent = fmt(res.profit);
+    p.className = 'calc-profit ' + (res.profit >= 0 ? 'pos' : 'neg');
+    $('rRevenue').textContent = fmt(res.revenue);
+    $('rCost').textContent = fmt(res.cost);
+    $('rFee').textContent = fmt(res.fee);
+    $('rShip').textContent = fmt(res.ship);
+    $('rModel').textContent = fmt(inputs.model);
+    $('rAds').textContent = fmt(inputs.ads);
+    $('rTotal').textContent = fmt(res.total);
+    $('rProfit').textContent = fmt(res.profit);
+    $('rPerUnit').textContent = fmt(res.perUnit);
+    $('rBreakeven').textContent = res.breakeven === 'immediate'
+      ? 'Hòa vốn ngay từ đơn đầu tiên (không có chi phí cố định)'
+      : res.breakeven === 'never'
+        ? 'Không hòa vốn được với giá hiện tại'
+        : res.breakeven + ' cái';
+    $('calcResult').hidden = false;
+  }
+  function loadSaved() {
+    try { var a = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); return Array.isArray(a) ? a : []; }
+    catch (e) { return []; }
+  }
+  function persistSaved(a) {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(a.slice(0, 20))); } catch (e) {}
+  }
+  function renderSaved() {
+    var list = $('calcSavedList');
+    var saved = loadSaved();
+    list.innerHTML = '';
+    $('calcSavedEmpty').hidden = saved.length > 0;
+    saved.forEach(function (item) {
+      var li = document.createElement('li');
+      var left = document.createElement('div');
+      var name = document.createElement('span');
+      name.className = 'calc-saved-name';
+      name.textContent = item.title;
+      var meta = document.createElement('span');
+      meta.className = 'calc-sub';
+      meta.textContent = ' · ' + new Date(item.savedAt).toLocaleString('vi-VN');
+      var profit = document.createElement('span');
+      profit.className = 'calc-saved-profit ' + (item.results.profit >= 0 ? 'pos' : 'neg');
+      profit.textContent = fmt(item.results.profit);
+      left.appendChild(name); left.appendChild(meta); left.appendChild(document.createTextNode(' — ')); left.appendChild(profit);
+      var acts = document.createElement('div');
+      acts.style.display = 'flex'; acts.style.gap = '8px';
+      var loadBtn = document.createElement('button');
+      loadBtn.type = 'button'; loadBtn.className = 'btn btn-ghost'; loadBtn.textContent = 'Nạp lại';
+      loadBtn.addEventListener('click', function () { loadIntoForm(item); });
+      var delBtn = document.createElement('button');
+      delBtn.type = 'button'; delBtn.className = 'btn btn-ghost'; delBtn.textContent = 'Xóa';
+      delBtn.addEventListener('click', function () {
+        persistSaved(loadSaved().filter(function (x) { return x.id !== item.id; }));
+        renderSaved();
+      });
+      acts.appendChild(loadBtn); acts.appendChild(delBtn);
+      li.appendChild(left); li.appendChild(acts);
+      list.appendChild(li);
+    });
+  }
+  function loadIntoForm(item) {
+    var i = item.inputs;
+    $('calcPrice').value = i.price; $('calcCost').value = i.cost; $('calcQty').value = i.qty;
+    $('calcFee').value = i.feePct; $('calcShip').value = i.ship; $('calcModel').value = i.model;
+    $('calcAds').value = i.ads; $('calcTitle').value = i.title || '';
+    lotSource = item.source === 'lot' ? { source: 'lot', sourceId: item.sourceId } : null;
+    var res = calcProfit(i);
+    lastCalc = { inputs: i, results: res, source: item.source || 'manual', sourceId: item.sourceId || null };
+    showResult(i, res);
+    $('calcSaveMsg').textContent = '';
+    window.scrollTo({ top: $('calcForm').offsetTop - 20, behavior: 'smooth' });
+  }
+  function prefillFromLot() {
+    var q = null;
+    try { q = new URLSearchParams(location.search).get('lot'); } catch (e) {}
+    if (!q) return;
+    var D = window.V20_DATA;
+    var lots = D && D.lots;
+    if (!lots) return;
+    var lot = null;
+    for (var i = 0; i < lots.length; i++) { if (lots[i].id === q) { lot = lots[i]; break; } }
+    if (!lot) return;
+    lotSource = { source: 'lot', sourceId: lot.id };
+    var note = $('calcLotNote');
+    if (typeof lot.priceNum === 'number' && lot.priceNum > 0) {
+      $('calcCost').value = String(lot.priceNum);
+      note.textContent = 'Đã lấy giá vốn ' + fmt(lot.priceNum) + '/cái từ lô ' + lot.id + ' — chỉnh lại số lượng dự kiến bán theo kế hoạch của bạn.';
+    } else {
+      note.textContent = 'Lô ' + lot.id + ' chưa có giá theo cái — nhập giá vốn tay.';
+    }
+    if (typeof lot.qty === 'number' && lot.qty > 0) $('calcQty').value = String(lot.qty);
+    $('calcTitle').value = 'Lô ' + lot.id + ' — ' + (lot.title || '');
+  }
+  $('calcForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var r = readInputs();
+    setErr('errPrice', r.errs.price); markInvalid('calcPrice', !!r.errs.price);
+    setErr('errCost', r.errs.cost); markInvalid('calcCost', !!r.errs.cost);
+    setErr('errQty', r.errs.qty); markInvalid('calcQty', !!r.errs.qty);
+    setErr('errFee', r.errs.fee); markInvalid('calcFee', !!r.errs.fee);
+    setErr('errShip', r.errs.ship); markInvalid('calcShip', !!r.errs.ship);
+    setErr('errModel', r.errs.model); markInvalid('calcModel', !!r.errs.model);
+    setErr('errAds', r.errs.ads); markInvalid('calcAds', !!r.errs.ads);
+    if (Object.keys(r.errs).length) { $('calcResult').hidden = true; lastCalc = null; return; }
+    var res = calcProfit(r.inputs);
+    lastCalc = { inputs: r.inputs, results: res, source: lotSource ? lotSource.source : 'manual', sourceId: lotSource ? lotSource.sourceId : null };
+    showResult(r.inputs, res);
+    $('calcSaveMsg').textContent = '';
+  });
+  $('calcReset').addEventListener('click', function () {
+    $('calcForm').reset();
+    $('calcFee').value = '5';
+    ['errPrice', 'errCost', 'errQty', 'errFee', 'errShip', 'errModel', 'errAds'].forEach(function (id) { setErr(id, ''); });
+    ['calcPrice', 'calcCost', 'calcQty', 'calcFee', 'calcShip', 'calcModel', 'calcAds'].forEach(function (id) { markInvalid(id, false); });
+    $('calcResult').hidden = true;
+    $('calcSaveMsg').textContent = '';
+    $('calcLotNote').textContent = '';
+    lastCalc = null; lotSource = null;
+  });
+  $('calcSave').addEventListener('click', function () {
+    if (!lastCalc) { $('calcSaveMsg').textContent = 'Tính lãi trước rồi mới lưu.'; return; }
+    var item = {
+      id: 'c' + Date.now(),
+      title: lastCalc.inputs.title || ('Phép tính ' + new Date().toLocaleString('vi-VN')),
+      inputs: lastCalc.inputs, results: lastCalc.results,
+      savedAt: new Date().toISOString(),
+      source: lastCalc.source, sourceId: lastCalc.sourceId
+    };
+    var saved = loadSaved();
+    saved.unshift(item);
+    persistSaved(saved);
+    renderSaved();
+    var msg = $('calcSaveMsg');
+    msg.textContent = 'Đã lưu trên trình duyệt này.';
+    try {
+      var A = window.V2SAuthUI;
+      var api = window.McLivestreamAPI;
+      if (A && A.getSession && api && api.client) {
+        Promise.resolve(A.getSession()).then(function (s) {
+          if (!s || !s.user) {
+            msg.textContent = 'Đã lưu trên trình duyệt này. Đăng nhập để lưu vào tài khoản và xem lại trên mọi thiết bị.';
+            return;
+          }
+          return api.client.from('profit_calculations').insert({
+            user_id: s.user.id, title: item.title, inputs: item.inputs,
+            results: item.results, source_type: item.source, source_id: item.sourceId
+          }).then(function (res) {
+            if (!res.error) msg.textContent = 'Đã lưu vào tài khoản của bạn (xem lại trên mọi thiết bị).';
+          }, function () {});
+        }, function () {});
+      }
+    } catch (e) {}
+  });
+  prefillFromLot();
+  renderSaved();
+})();
+</script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
