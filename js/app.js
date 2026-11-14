@@ -4087,8 +4087,11 @@ function initHeaderAuth(){
   if(typeof document === 'undefined' || !document.querySelector) return;
   // v90 (F): [href*="dang-nhap.html"] de khop ca trang bai-viet (href
   // "../dang-nhap.html?next=...") — truoc day chi khop trang goc.
-  // v114 (P2-8): nut header trang Gioi thieu gio la dang-ky.html — khop
-  // ca hai, de header khi da dang nhap van doi thanh chip ten + xu.
+  // v114 (P2-8): truoc day nut header trang Gioi thieu la dang-ky.html
+  // nen khop ca hai href, de header khi da dang nhap van doi thanh chip
+  // ten + xu. v251 (F-R2-06): nut Gioi thieu doi ve dang-nhap.html nhu
+  // trang chu (khi chua dang nhap trang Gioi thieu khong co link Dang
+  // nhap nao); giu khop ca hai href lam luoi an toan cho trang khac.
   var btn = document.querySelector('.site-head .btn[href*="dang-nhap.html"]')
     || document.querySelector('.site-head .btn[href*="dang-ky.html"]');
   if(!btn) return;
