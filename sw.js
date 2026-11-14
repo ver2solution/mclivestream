@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v218-shell-1'; /* v218: C1/N1 (console theo doi doi phien, doi tai khoan thi tai lai trang) + P3 (khung chat chong luot loadChat) */
+const CACHE = 'v219-shell-1'; /* v219: N23 (popup online hien xu cu sau doi phien — doc xu co danh so thu tu, ket qua cu khong ghi de so moi) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

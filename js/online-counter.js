@@ -465,21 +465,28 @@
   // Dòng xu trong popup: chỉ hiện khi đã đăng nhập và RPC trả về.
   // Chưa đăng nhập / RPC lỗi / M7 chưa chạy → ẩn dòng xu, KHÔNG hiện 0
   // gây hiểu nhầm. Mọi lỗi nuốt lặng — popup không bao giờ làm vỡ trang.
+  // N23 (14/11): so thu tu lan doc xu popup — chi lan moi nhat duoc ghi len DOM.
+  var pointsSeq = 0;
   function fetchPoints() {
     var line = null;
     try { line = document.getElementById('onlinePopupPoints'); } catch (e) { line = null; }
     if (!line) return;
+    // N23: 2 lan doc chong nhau (chu ky 60s + doi phien) thi ket qua CU ve
+    // SAU khong duoc ghi de so MOI — popup hien xu cua tai khoan cu sau khi
+    // doi phien. Cung ho voi v117 (header) + P3 (khung chat): danh so thu tu.
+    var seq = ++pointsSeq;
     try {
       var r = window.Ver2Reward;
       if (!r || typeof r.getMyPointsSummary !== 'function') { line.hidden = true; return; }
       r.getMyPointsSummary().then(function (s) {
+        if (seq !== pointsSeq) return; // ket qua cu — bo qua, khong ghi de so moi
         if (!s || s.ok !== true) { line.hidden = true; return; }
         var spentEl = line.querySelector('.online-popup-spent');
         var leftEl = line.querySelector('.online-popup-left');
         if (spentEl) spentEl.textContent = formatVi(s.spent);
         if (leftEl) leftEl.textContent = formatVi(s.balance);
         line.hidden = false;
-      }, function () { line.hidden = true; });
+      }, function () { if (seq !== pointsSeq) return; line.hidden = true; });
     } catch (e) { try { line.hidden = true; } catch (err) { /* bỏ qua */ } }
   }
 
