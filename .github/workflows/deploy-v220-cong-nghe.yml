@@ -17,10 +17,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Guard base counts (chong ghi de cron khac)
         run: |
-          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "239" || (echo "BASE DOI: data.js khong con 239 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "262" || (echo "BASE DOI: sitemap khong con 262 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "243" || (echo "BASE DOI: data.js khong con 243 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "266" || (echo "BASE DOI: sitemap khong con 266 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
           grep -o '"page": "bai-viet/[^"]*"' js/data.js | sort > /tmp/live-pages-before.txt
           grep -o '<loc>[^<]*</loc>' sitemap.xml | sort > /tmp/live-locs-before.txt
           echo "live article pages saved: $(wc -l < /tmp/live-pages-before.txt)"
@@ -38,13 +38,13 @@ jobs:
             grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
-          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "266" || (echo "SAI TONG sitemap, phai 266"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "243" || (echo "SAI TONG data.js, phai 243"; exit 1)
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "270" || (echo "SAI TONG sitemap, phai 270"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "247" || (echo "SAI TONG data.js, phai 247"; exit 1)
           echo "--- 0-missing guard: moi trang live truoc unzip phai con trong data.js/sitemap moi ---"
           while IFS= read -r p; do grep -Fq "$p" js/data.js || { echo "MAT TRANG trong data.js: $p"; exit 1; }; done < /tmp/live-pages-before.txt
           while IFS= read -r l; do grep -Fq "$l" sitemap.xml || { echo "MAT URL trong sitemap: $l"; exit 1; }; done < /tmp/live-locs-before.txt
-          echo "0-missing guard PASS: 239/239 trang + 262/262 URL live con nguyen"
+          echo "0-missing guard PASS: 243/243 trang + 266/266 URL live con nguyen"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
