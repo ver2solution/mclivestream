@@ -13147,6 +13147,54 @@ window.V20_DATA = {
    "takeaway": "Tuyển mẫu live Hà Nội ngày 13/11/2026: 21 shop mới, lương giờ 40.000–110.000đ (cao nhất HIỀN HƠI ĐIỆU 110.000đ/giờ), lương tháng 8–20 triệu đồng (cao nhất DROCOM 15–20 triệu); Hà Nội chiếm 1/3 shop mới trong ngày."
   },
   {
+   "title": "Phân tích Double Day 2026: 1.776 tỷ NDT, chờ 12.12",
+   "cat": "Phân tích",
+   "source": "Reuters",
+   "date": "2026-11-14",
+   "url": "https://947thebeast.com/2026/11/12/chinas-singles-day-sales-rise-4-8-to-1-78-trillion-ai-takes-larger-role/",
+   "page": "bai-viet/phan-tich-double-day-2026-1776-ty-ndt-12-12-shop-nho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-double-day-2026-1776-ty-ndt-12-12-shop-nho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double Day 2026 là mùa sale 36 ngày đạt 1.776,4 tỷ NDT: tăng chậm nhưng AI lên ngôi, và 12.12 là ngày thu hoạch cho shop chuẩn bị sớm."
+  },
+  {
+   "title": "Mô hình livestream bán hàng: Mỹ chạm 20 tỷ USD 2026",
+   "cat": "Phân tích",
+   "source": "TechEchelon",
+   "date": "2026-11-14",
+   "url": "https://www.techechelon.com/post/u-s-livestream-shopping-market-forecast-to-hit-20-billion-in-2026-as-tiktok-and-whatnot-drive-growth",
+   "page": "bai-viet/mo-hinh-livestream-ban-hang-my-20-ty-usd-tiktok-whatnot.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-livestream-ban-hang-my-20-ty-usd-tiktok-whatnot.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Live commerce Mỹ chạm gần 20 tỷ USD năm 2026 với 3 kiểu mô hình cùng thắng — shop Việt nên bắt đầu bằng tự live kết hợp KOC."
+  },
+  {
+   "title": "Kinh doanh dropshipping 2026: Mỹ xóa miễn thuế 800 USD",
+   "cat": "Phân tích",
+   "source": "Importify",
+   "date": "2026-11-14",
+   "url": "https://www.importify.com/blog/de-minimis-era-is-over/",
+   "page": "bai-viet/kinh-doanh-dropshipping-2026-my-xoa-mien-thue-800-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-doanh-dropshipping-2026-my-xoa-mien-thue-800-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mỹ xóa miễn thuế 800 USD: dropshipping giá rẻ sang Mỹ đã hết thời — sống sót bằng hàng giá cao, kho tại Mỹ, hoặc bán cho khách Việt qua live."
+  },
+  {
+   "title": "Bán hàng trên TikTok Shop cho người mới: Malaysia +140%",
+   "cat": "Phân tích",
+   "source": "TikTok Newsroom",
+   "date": "2026-11-14",
+   "url": "https://newsroom.tiktok.com/tiktok-shop-deepens-support-for-local-businesses-as-discovery-commerce-emerges-as-growth-engine-for-malaysian-businesses?lang=en-MY",
+   "page": "bai-viet/ban-hang-tren-tiktok-shop-cho-nguoi-moi-malaysia-140-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-hang-tren-tiktok-shop-cho-nguoi-moi-malaysia-140-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shop nhỏ Malaysia tăng 140% nhờ #JomLokal và LIVE — người mới Việt Nam nên live đều, hợp tác creator và ra mắt trước 12.12."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
