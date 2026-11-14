@@ -3444,6 +3444,13 @@ function initShops(){
       if(cat === 'class-live' || cat === 'class-makeup'){ cs.disabled = false; if(cw) cw.classList.remove('locked'); }
       else { cs.disabled = true; cs.value = ''; if(cw) cw.classList.add('locked'); }
     }
+    /* v247: o Sap xep theo gia (fShopPriceSort, chuyen sang trang Mau cung muc Su kien Marketing) chi mo khi dang chon event-mkt. */
+    var ps = document.getElementById('fShopPriceSort');
+    if(ps){
+      var pw = ps.closest ? ps.closest('.uni-field') : null;
+      if(cat === 'event-mkt'){ ps.disabled = false; if(pw) pw.classList.remove('locked'); }
+      else { ps.disabled = true; ps.value = ''; if(pw) pw.classList.add('locked'); }
+    }
     var sc = document.getElementById('shopCount'); if(sc) sc.textContent = '';
     var ncfg = NEWOBJ_UNI_CATS[cat];
     if(ncfg){
@@ -3463,7 +3470,7 @@ function initShops(){
       });
     } else {
       showAllNewObjSections();
-      ['lop-livestream-mc','lop-makeup'].forEach(function(sid){
+      ['lop-livestream-mc','lop-makeup','su-kien-marketing'].forEach(function(sid){
         var s = document.getElementById(sid);
         if(s) s.classList.add('collapsed');
         refreshClassMoreBtn(sid);
@@ -3503,7 +3510,7 @@ function initShops(){
   });
   var resetBtn=document.getElementById('shopResetBtn');
   if(resetBtn) resetBtn.addEventListener('click',function(){
-    ['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin','fUniClassSort'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';});
+    ['fShProv','fShCat','fShSort','fShShift','fShPayType','fShPayMin','fUniClassSort','fShopPriceSort'].forEach(function(id){var el=document.getElementById(id); if(el) el.value='';});
     syncPayMin();
     /* v182: dat lai loc 5 muc moi + ve hang muc mac dinh 'shop'. */
     Object.keys(NEWOBJ_UNI_CATS).forEach(function(k){

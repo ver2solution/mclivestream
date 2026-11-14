@@ -52,7 +52,7 @@
 <div class="uni-cat-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
 <!-- v211 (13/11/2026, anh chot 22:54 + duyet 23:01 — giong ben Kiot):
      MOT hang switch duy nhat chua TAT CA cac muc (nhu switch Kiot: Kiot thanh ly +
-     3 muc moi tren 1 hang). 3 muc dich vu (logistics/su kien/agency) tu hang nut
+     3 muc moi tren 1 hang). 2 muc dich vu (logistics/agency) tu hang nut
      rieng trong bo loc (v210) CHUYEN VAO switch chinh; bo han nhan "Dich vu cho shop"
      va #shopServicesSwitch. Bam nut mo section ngay tai cho, KHONG nhay trang,
      KHONG cuon. So dem (11) chi tren nut muc moi; nut chinh khong co so dem. -->
@@ -60,7 +60,6 @@
 <button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
@@ -118,18 +117,6 @@
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("xuong-may-gia-cong");if(!s)return;var b=document.getElementById("factoryMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
-<!-- v210 (13/11/2026): 3 muc shop CHUYEN TU trang Mau (danh-sach-shop.html) SANG trang Shop (danh-sach-mau.html) theo tieu de menu — logistics/su kien/agency la nhu cau cua SHOP. -->
-<section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
-<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức <span id="eventMarketingCountH2"></span></h2>
-<p class="lot-sub" id="eventMarketingSub">Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.</p>
-<!-- v186: bo loc su kien da gop len loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="eventMarketingCount"></p>
-<p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
-<div class="lot-grid" id="eventMarketingGrid"></div>
-<button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
-</section>
-<script>(function(){var s=document.getElementById("su-kien-marketing");if(!s)return;var b=document.getElementById("eventMarketingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="logistics-trung-viet" aria-labelledby="logistics-title">
 <h2 id="logistics-title">Công ty logistics Trung – Việt <span id="logisticsCountH2"></span></h2>
 <p class="lot-sub" id="logisticsSub">Công ty logistics Trung – Việt: vận chuyển chính ngạch, trọn gói – tiểu ngạch và dịch vụ mua hàng hộ.</p>
@@ -278,8 +265,8 @@
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/wallet.js"></script>
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v210: mo muc Lo/Xuong/3 muc shop theo ?newobj= (link "Xem tat ca" tu trang chu).
-     3 muc shop gio la nut that tren trang nay — bam nut tuong ung de goi dung
+<!-- v210: mo muc Lo/Xuong/2 muc shop theo ?newobj= (link "Xem tat ca" tu trang chu).
+     2 muc shop gio la nut that tren trang nay — bam nut tuong ung de goi dung
      setCat(cat) trong js/app.js. KHONG cuon toi muc (v207 + anh bao 22:03:
      "nhay sang ... va keo xuong content" la loi) — trang dung yen, section mo
      ngay tai cho, nguoi dung tu cuon xuong xem. Lo/Xuong giu mo theo hash
@@ -292,7 +279,7 @@ window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
 document.addEventListener('DOMContentLoaded', function(){
   var ncat = window.__v199_newobj || '';
-  if(ncat === 'logistics' || ncat === 'event-mkt' || ncat === 'agency-ads'){
+  if(ncat === 'logistics' || ncat === 'agency-ads'){
     var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
     if(nbtn) nbtn.click();
     return;

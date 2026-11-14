@@ -60,6 +60,8 @@
 <button type="button" class="uni-cat-btn active" data-uni-cat="shop" aria-pressed="true" data-track="chon-tim-viec">🔍 Tìm việc làm</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="class-live" aria-pressed="false" data-track="chon-lop-livestream" title="Lớp học Livestream/MC/Thuyết trình">🎤 Lớp Livestream <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="class-makeup" aria-pressed="false" data-track="chon-lop-makeup" title="Lớp học dạy Makeup">💄 Lớp Makeup <span class="uni-cat-count"></span></button>
+<!-- v247 (15/11/2026): muc Su kien Marketing CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo lenh anh 01:06 — nut + section + bo loc (tinh fShProv + sap xep gia fShopPriceSort) di cung. -->
+<button type="button" class="uni-cat-btn" data-uni-cat="event-mkt" aria-pressed="false" data-track="chon-su-kien-marketing" title="Sự kiện Marketing chia sẻ kiến thức">📣 Sự kiện Marketing <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="shopFilter"><div class="uni-field"><label for="fShProv">Tỉnh / Thành phố</label><select id="fShProv" data-track="loc-tinh-shop"><option value="">Tất cả tỉnh</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc</option><option>Toàn quốc / Live online</option></select></div>
 <div class="uni-field"><label for="fShCat">Lĩnh vực / Mặt hàng</label><select id="fShCat" data-track="loc-linh-vuc-shop"><option value="">Tất cả lĩnh vực</option><option value="quan-ao">Quần áo</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="tre-em">Trẻ em</option><option value="giay-dep">Giày dép</option><option value="my-pham">Mỹ phẩm</option><option value="phu-kien">Phụ kiện</option><option value="tpcn">TPCN</option><option value="gia-dung">Gia dụng &amp; Đời sống</option><option value="idol">Idol / Streamer</option><option value="cong-nghe">Công nghệ</option><option value="khac">Khác</option></select></div>
@@ -69,6 +71,8 @@
 <div class="uni-field"><label id="fShPayMinLabel" for="fShPayMin">Mức lương tối thiểu</label><input id="fShPayMin" type="text" inputmode="decimal" list="fShPayMinList" data-track="loc-muc-luong-toi-thieu-shop" placeholder="Chọn loại lương trước" disabled><datalist id="fShPayMinList"></datalist></div>
 <!-- v210: o sap xep theo hoc phi cua 2 muc lop hoc CHUYEN SANG day cung section — chi mo khi chon class-live/class-makeup tren switch (khoa mac dinh); loc lop hoc chi con o loc chung tren top (tinh fShProv + sap xep hoc phi fUniClassSort). -->
 <div class="uni-field locked" id="uf-classsort"><label for="fUniClassSort">Sắp xếp theo học phí</label><select id="fUniClassSort" data-track="sap-xep-hoc-phi-chung" disabled><option value="">Mới nhất</option><option value="price-asc">Học phí thấp → cao</option><option value="price-desc">Học phí cao → thấp</option></select></div>
+<!-- v247 (15/11/2026): o sap xep theo gia cua muc Su kien Marketing CHUYEN SANG day cung section — chi mo khi chon event-mkt tren switch (khoa mac dinh). -->
+<div class="uni-field locked" id="uf-shop-pricesort"><label for="fShopPriceSort">Sắp xếp theo giá</label><select id="fShopPriceSort" data-track="sap-xep-gia-shop" disabled><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
 </div>
 <div class="filter-actions"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p><p class="filter-count" id="shopCount"></p>
@@ -99,6 +103,18 @@
 <button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
+<!-- v247 (15/11/2026): muc Su kien Marketing CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo lenh anh 01:06 — du lieu + bo loc (tinh fShProv + sap xep gia fShopPriceSort) di cung. -->
+<section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
+<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức <span id="eventMarketingCountH2"></span></h2>
+<p class="lot-sub" id="eventMarketingSub">Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.</p>
+<!-- v186: bo loc su kien da gop len loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
+<p class="filter-count" id="eventMarketingCount"></p>
+<p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
+<div class="lot-grid" id="eventMarketingGrid"></div>
+<button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
+<script>(function(){var s=document.getElementById("su-kien-marketing");if(!s)return;var b=document.getElementById("eventMarketingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo Ver2Solution.</p></div>
@@ -168,8 +184,8 @@
 </script>
 
 <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
-<!-- v210: mo muc Lop hoc theo ?newobj= (link "Xem tat ca" tu trang chu).
-     2 muc lop hoc gio la nut that tren trang nay — bam nut tuong ung de goi dung
+<!-- v210: mo muc Lop hoc/Su kien theo ?newobj= (link "Xem tat ca" tu trang chu).
+     2 muc lop hoc + muc Su kien gio la nut that tren trang nay — bam nut tuong ung de goi dung
      setShopCat(cat) trong js/app.js. KHONG cuon toi muc (v207 + anh bao 22:03:
      "nhay sang ... va keo xuong content" la loi) — trang dung yen, section mo
      ngay tai cho, nguoi dung tu cuon xuong xem.
@@ -181,7 +197,7 @@ window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
 document.addEventListener('DOMContentLoaded', function(){
   var cat = window.__v199_newobj || '';
-  if(cat !== 'class-live' && cat !== 'class-makeup') return;
+  if(cat !== 'class-live' && cat !== 'class-makeup' && cat !== 'event-mkt') return;
   var btn = document.querySelector('.uni-cat-btn[data-uni-cat="' + cat + '"]');
   if(btn) btn.click();
 });
