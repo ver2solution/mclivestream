@@ -1271,6 +1271,10 @@ function lotFactoryKiotDetailHTML(kind, item){
   } else if(kind === 'lot'){
     facts += '<div class="fact"><b>Địa điểm</b><span>' + lotLocationLine(item) + '</span></div>';
     facts += '<div class="fact"><b>Tổng giá trị</b><span>' + lotValueLine(item) + '</span></div>';
+    // v249 (MB-16): them hang "Giá đơn vị" — truoc day modal lo chi co
+    // "Tổng giá trị" (vd lot-01: 52.000.000đ) ma khong co don gia
+    // (6.500đ/cái) du data.js co san truong price/priceNum.
+    facts += '<div class="fact"><b>Giá đơn vị</b><span>' + esc(hasReal(item.price) ? item.price : (typeof item.priceNum === 'number' && item.priceNum > 0 ? fmtVnd(item.priceNum) + 'đ/' + (item.priceUnit || 'cái') : 'Chưa cập nhật')) + '</span></div>';
     facts += '<div class="fact"><b>Loại mặt hàng</b><span>' + esc(hasReal(item.cat) ? catLabel(item.cat) : 'Chưa cập nhật') + '</span></div>';
     facts += '<div class="fact"><b>Số lượng</b><span>' + (item.qty == null ? 'Chưa cập nhật' : Number(item.qty).toLocaleString('vi-VN') + ' món') + '</span></div>';
     facts += '<div class="fact"><b>Nhóm</b><span>' + (item.group === 2 ? 'Thu mua' : item.group === 3 ? 'Chợ / Sàn' : 'Xả kho') + '</span></div>';
@@ -1958,8 +1962,13 @@ function lotCardHTML(l, withComments){
   // la "Bình Dương", khong con khop loc TP. Hồ Chí Minh.
   // v135: data-group de bo loc Nhom (lo nhom 1/2/3); kiot khong co nhom.
   var cardProv = targetType === 'kiot' ? normProvKiot(l.prov) : lotProvOf(l);
+  // v249 (MB-16): them data-detail-id len anh the lo — thong nhat voi
+  // the moi (newObjCardHTML) + handler uy quyen [data-detail-id] o
+  // initNewObjSections; mo modal dung ham chung openLotFactoryKiotDetail.
+  // Goi kep voi handler cu (.card-compact-photo) la vo hai: cung id,
+  // cung noi dung modal, popup goi y dang ky co guard chi 1 popup 1 luc.
   return '<article class="lot-card card-compact" id="'+esc(l.id)+'" data-prov="' + esc(cardProv) + '" data-price="' + (l.priceNum == null ? '' : l.priceNum) + '" data-qty="' + (l.qty == null ? '' : l.qty) + '" data-cat="' + esc(l.cat) + '" data-group="' + (targetType === 'kiot' || l.group == null ? '' : l.group) + '" data-v2s-id="'+esc(l.id)+'">'
-  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(l) + photoContent + lotFactoryPhotoHTML(l, l.title) + '<span class="card-compact-name"><span>' + esc(l.title) + '</span></span></a>'
+  + '<a class="card-compact-photo card-compact-photo--' + targetType + '" data-detail-id="'+esc(l.id)+'" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + userListingBadgeHTML(l) + photoContent + lotFactoryPhotoHTML(l, l.title) + '<span class="card-compact-name"><span>' + esc(l.title) + '</span></span></a>'
   + starButtonHTML(targetType, l.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">' + line1 + '</p><p class="card-compact-line">' + line2 + '</p>' + userListingShopLineHTML(l) + '</div>'
   + (withComments ? commentToggleHTML(targetType, userListingCommentTargetId(l)) : '') + '</article>';
