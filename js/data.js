@@ -13098,6 +13098,54 @@ window.V20_DATA = {
    "takeaway": "Lịch sale cuối năm 2026: Black Friday 27/11, 12.12, Giáng sinh 25/12, 1.1 và Tết 2027 mùng 1 ngày 6/2 — shop nhỏ lên lịch live và chốt đơn đúng hạn."
   },
   {
+   "title": "Hồ sơ mẫu livestream mới 13/11: 76 mẫu, 63 shop lên sàn",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-14",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-13-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-13-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 13/11/2026: 76 mẫu + 63 shop đã lên sàn (thu thập 80 mẫu + 69 shop + 80 nhóm); tổng live 219 mẫu, 250 shop; 4 hồ sơ doanh thu khủng đứng đầu là Diệp Lê 1 triệu USD/phiên và Võ Hà Linh 237 tỷ đồng/phiên 6/6/2024."
+  },
+  {
+   "title": "Mẫu live TikTok: 12–70 USD/giờ, không cần kinh nghiệm",
+   "cat": "Việc Làm",
+   "source": "ZipRecruiter / Glassdoor / TikTok Newsroom",
+   "date": "2026-11-14",
+   "url": "https://www.ziprecruiter.com/Jobs/Tiktok-Host/-in-New-York,NY",
+   "page": "bai-viet/mau-live-tiktok.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-live-tiktok.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu live TikTok tại Mỹ tháng 11/2026: lương giờ 12–70 USD, trung bình 14,60–18,02 USD/giờ theo ZipRecruiter; host giỏi 5.000–20.000 USD/tháng; nhiều tin không cần kinh nghiệm; điều kiện mở live là đủ 18 tuổi và thường 1.000 follower."
+  },
+  {
+   "title": "Việc làm livestream Tết: lương 40.000–120.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "HR Forward Asia / VIR / Threads",
+   "date": "2026-11-14",
+   "url": "https://hrforwardasia.com/aeon-vietnam-plans-3000-hires-in-2026-as-it-opens-three-new-stores/",
+   "page": "bai-viet/viec-lam-livestream-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm livestream Tết 2027: mẫu live 120.000đ/giờ, host 18–30 triệu/tháng, đóng gói Tết 35.000đ/giờ, AEON tuyển 3.000 người; nộp đơn trước 12.12 để kịp tập dượt trước Tết 06/02/2027."
+  },
+  {
+   "title": "Tuyển mẫu live Hà Nội: 21 shop, lương 40.000–110.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-14",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-live-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live Hà Nội ngày 13/11/2026: 21 shop mới, lương giờ 40.000–110.000đ (cao nhất HIỀN HƠI ĐIỆU 110.000đ/giờ), lương tháng 8–20 triệu đồng (cao nhất DROCOM 15–20 triệu); Hà Nội chiếm 1/3 shop mới trong ngày."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
