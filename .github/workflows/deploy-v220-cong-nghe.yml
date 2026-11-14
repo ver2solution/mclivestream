@@ -1,0 +1,60 @@
+name: Deploy v220-cong-nghe (4 bai Cong nghe 14/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v220-cong-nghe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v220-cong-nghe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "235" || (echo "BASE DOI: data.js khong con 235 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "258" || (echo "BASE DOI: sitemap khong con 258 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          grep -o '"page": "bai-viet/[^"]*"' js/data.js | sort > /tmp/live-pages-before.txt
+          grep -o '<loc>[^<]*</loc>' sitemap.xml | sort > /tmp/live-locs-before.txt
+          echo "live article pages saved: $(wc -l < /tmp/live-pages-before.txt)"
+          echo "live sitemap locs saved: $(wc -l < /tmp/live-locs-before.txt)"
+      - name: Unzip v220-cong-nghe package
+        run: |
+          if unzip -l mclivestream-v220-cong-nghe-deploy.zip | grep -q 'sw\.js'; then echo "CAM: zip chua sw.js"; exit 1; fi
+          unzip -o mclivestream-v220-cong-nghe-deploy.zip
+          echo "--- verify v220-cong-nghe (4 bai) ---"
+          for slug in livestream-ban-hang-bang-ai-2026-14-phong-vuot-100-trieu-ndt ai-streamer-la-gi-55-trieu-ndt-13-trieu-luot-xem social-commerce-la-gi-586-ty-usd-tiktok-shop-dan-dau cach-lam-video-ai-sale-cuoi-nam-20-video-384-usd; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "262" || (echo "SAI TONG sitemap, phai 262"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "239" || (echo "SAI TONG data.js, phai 239"; exit 1)
+          echo "--- 0-missing guard: moi trang live truoc unzip phai con trong data.js/sitemap moi ---"
+          while IFS= read -r p; do grep -Fq "$p" js/data.js || { echo "MAT TRANG trong data.js: $p"; exit 1; }; done < /tmp/live-pages-before.txt
+          while IFS= read -r l; do grep -Fq "$l" sitemap.xml || { echo "MAT URL trong sitemap: $l"; exit 1; }; done < /tmp/live-locs-before.txt
+          echo "0-missing guard PASS: 235/235 trang + 258/258 URL live con nguyen"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v220-cong-nghe-deploy.zip || rm -f mclivestream-v220-cong-nghe-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v220-cong-nghe: 4 bai Cong nghe 14/11/2026 (livestream ban hang bang AI 2026 keyword #42 + AI streamer la gi + social commerce la gi + cach lam video AI sale cuoi nam #43)"
+            git push
+          fi
