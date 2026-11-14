@@ -113,6 +113,19 @@
     return t;
   }
 
+  // v220 (N20 — anh chot phuong an B 13:02 ngay 14/11/2026: kep tong tick
+  // nho, so dao dong nhe): tong tick tho 0..250 (5 bo dem x 0..50) duoc thu
+  // nho ve 0..10 (chia 25, lam tron) khi hien thi tong trang chu — popup
+  // chi dao dong nhe quanh so server thay vi +75..+250. Khong kep cung
+  // bang min(sum, 10): tong tho thuong > 10 nen so se ghim dung yen o muc
+  // tran, mat han dao dong. Chi ap cho displayTotal (popup trang chu);
+  // displayForPage (trang con, 1 bo dem 0..50) giu nguyen.
+  var MAX_TOTAL_TICK = 10;
+  var TOTAL_TICK_SCALE = 25;
+  function displayTickTotal(tick) {
+    return Math.min(MAX_TOTAL_TICK, Math.round(sumTick(tick) / TOTAL_TICK_SCALE));
+  }
+
   function shouldReset(lastSeen, now) {
     if (!lastSeen || !isFinite(lastSeen)) return true;
     return (now - lastSeen) >= RESET_AFTER_MS;
@@ -271,7 +284,7 @@
   function displayTotal(mergedTotal, tick) {
     var base = (mergedTotal !== null && mergedTotal !== undefined && isFinite(mergedTotal))
       ? mergedTotal : TOTAL_BASE;
-    return Math.max(0, Math.floor(Number(base) || 0)) + sumTick(tick);
+    return Math.max(0, Math.floor(Number(base) || 0)) + displayTickTotal(tick);
   }
 
   // Số hiển thị của 1 trang (badge và popup dùng chung 1 giá trị — popup
@@ -562,7 +575,7 @@
     TOTAL_BASE: TOTAL_BASE,
     MAX_TICK: MAX_TICK, LEADER_KEY: LEADER_KEY, LEADER_TTL: LEADER_TTL,
     leaderState: leaderState,
-    formatVi: formatVi, sumTick: sumTick, shouldReset: shouldReset,
+    formatVi: formatVi, sumTick: sumTick, displayTickTotal: displayTickTotal, shouldReset: shouldReset,
     dayKey: dayKey, isNewDay: isNewDay,
     loadState: loadState, nextIntervalMs: nextIntervalMs,
     tickTimesMs: tickTimesMs, applyTick: applyTick, tickDelta: tickDelta,
