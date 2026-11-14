@@ -1,0 +1,48 @@
+name: Deploy data 2026-11-14 lots
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-14-lots.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-14-lots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-14 lots package
+        run: |
+          unzip -o mclivestream-data-2026-11-14-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          echo "lots: $(grep -c '"id": "lot-' js/data.js)"
+          echo "factories: $(grep -c '"id": "fac-' js/data.js)"
+          echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
+          echo "articles (grep page): $(grep -c '"page": "bai-viet/' js/data.js)"
+          for f in lot-37 lot-38 lot-39 lot-40 lot-41 lot-42 lot-43 lot-44 lot-45 lot-46 lot-47 lot-48 lot-49 lot-52 lot-58 lot-66 lot-69 lot-70 lot-71; do ls -l images/lo/$f.jpg; done
+          test "$(grep -c '"id": "th-' js/data.js)" = "219" || (echo "BAD models count"; exit 1)
+          test "$(grep -c '"id": "sh-' js/data.js)" = "250" || (echo "BAD shops count"; exit 1)
+          test "$(grep -c '"id": "lot-' js/data.js)" = "71" || (echo "BAD lots count"; exit 1)
+          test "$(grep -c '"id": "fac-' js/data.js)" = "240" || (echo "BAD factories count"; exit 1)
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "200" || (echo "BAD kiots count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "260" || (echo "BAD articles grep count"; exit 1)
+          test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.articles.length)")" = "261" || (echo "BAD articles parsed count"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/lo/lot-37.jpg images/lo/lot-38.jpg images/lo/lot-39.jpg images/lo/lot-40.jpg images/lo/lot-41.jpg images/lo/lot-42.jpg images/lo/lot-43.jpg images/lo/lot-44.jpg images/lo/lot-45.jpg images/lo/lot-46.jpg images/lo/lot-47.jpg images/lo/lot-48.jpg images/lo/lot-49.jpg images/lo/lot-52.jpg images/lo/lot-58.jpg images/lo/lot-66.jpg images/lo/lot-69.jpg images/lo/lot-70.jpg images/lo/lot-71.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-14 lots: 71 lo (35 lo moi lot-37..71: nhom 1: 4, nhom 2: 3, nhom 3: 28, 19 anh moi), 219 mau / 250 shop / 261 bai viet"
+            git push
+          fi
