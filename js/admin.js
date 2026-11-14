@@ -335,6 +335,9 @@
           if (d.shop_name) parts.push('Shop: ' + d.shop_name);
           sub = parts.join(' · ');
         }
+        // v227 (L10): tin tuyển — hiện số lượng cần tuyển (data = to_jsonb
+        // của dòng shop_job_posts nên có quantity sau khi SQL v227 chạy).
+        if (it.kind === 'job_post' && d.quantity != null) sub += (sub ? ' · ' : '') + 'Cần tuyển: ' + d.quantity;
         html += '<tr data-mid="' + esc(it.id) + '"><td style="padding:8px;border-bottom:1px solid #eee">' + esc(MOD_KIND_LABEL[it.kind] || it.kind) + '</td>'
           + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(it.title || '(không tiêu đề)')
           + (sub ? '<br><small>' + esc(sub) + '</small>' : '') + '</td>'

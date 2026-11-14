@@ -550,7 +550,7 @@
   // .eq moderation_status. Giao diện đọc tên shop từ j.shop_name.
   async function fetchApprovedJobPosts() {
     var res = await client.from('public_shop_job_posts')
-      .select('id, shop_name, province, field, schedule, salary, channels, description, created_at')
+      .select('id, shop_name, province, field, schedule, salary, channels, description, quantity, created_at')
       .order('created_at', { ascending: false });
     if (res.error) throw res.error;
     return res.data || [];

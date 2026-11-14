@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(jobs.length){ js.textContent='Đang hiện '+jobs.length+' tin đã duyệt.';
         document.getElementById('approvedJobsList').innerHTML=jobs.map(function(j){
           var shop=j.shop_name||'Shop đã duyệt';
-          return '<article class="news-item"><h3 style="margin:0">'+esc(shop)+' — '+esc(j.field||'Chưa ghi lĩnh vực')+'</h3><p>Tỉnh: '+esc(j.province||'Chưa cập nhật')+' · Lịch: '+esc(j.schedule||'Chưa cập nhật')+' · Lương: '+esc(j.salary||'Thỏa thuận')+(j.channels&&j.channels.length?' · Kênh: '+esc(j.channels.join(', ')):'')+'</p>'+(j.description?('<p>'+esc(j.description)+'</p>'):'')+'</article>';
+          return '<article class="news-item"><h3 style="margin:0">'+esc(shop)+' — '+esc(j.field||'Chưa ghi lĩnh vực')+'</h3><p>Tỉnh: '+esc(j.province||'Chưa cập nhật')+' · Lịch: '+esc(j.schedule||'Chưa cập nhật')+' · Lương: '+esc(j.salary||'Thỏa thuận')+(j.quantity!=null?' · Số lượng cần tuyển: '+j.quantity:'')+(j.channels&&j.channels.length?' · Kênh: '+esc(j.channels.join(', ')):'')+'</p>'+(j.description?('<p>'+esc(j.description)+'</p>'):'')+'</article>';
         }).join('');
       } else { js.textContent='Hiện chưa có tin tuyển mẫu nào đã duyệt.'; document.getElementById('approvedJobsList').innerHTML='<p class="empty-state">Shop đăng nhập rồi đăng tin tuyển mẫu ở <a href="#dang-tin">mục bên dưới</a> — sau khi Ver2Solution duyệt, tin sẽ hiện công khai tại đây.</p>'; }
     }catch(e){
@@ -423,7 +423,9 @@ document.addEventListener('DOMContentLoaded', function(){
       var channels=checked(f,'jobChannels'); var chOther=f.jobChannelsOther.value.trim(); if(chOther) channels.push(chOther);
       var lines=[];
       if(f.productDetail.value.trim()) lines.push('Mặt hàng cụ thể: '+f.productDetail.value.trim());
-      if(f.quantity.value) lines.push('Số lượng cần tuyển: '+f.quantity.value);
+      /* v227 (L10): so luong KHONG nhet vao mo ta nua — gui co cau truc
+         (quantity) de luu vao cot shop_job_posts.quantity; the tin hien
+         truong rieng. Bai cu giu dong trong mo ta, khong sua nguoc. */
       if(f.workMode.value) lines.push('Hình thức làm việc: '+f.workMode.value);
       if(f.genderReq.value) lines.push('Giới tính yêu cầu: '+f.genderReq.value);
       if(f.ageReq.value.trim()) lines.push('Độ tuổi yêu cầu: '+f.ageReq.value.trim());
@@ -440,6 +442,9 @@ document.addEventListener('DOMContentLoaded', function(){
       var saved=await McLivestreamAPI.submitJobPost({
         province:f.province.value, field:fieldVal, schedule:f.schedule.value.trim()||null,
         salary:f.salary.value.trim()||null, channels:channels,
+        /* v227 (L10): gui so luong co cau truc (cot quantity, SQL v227);
+           parseInt co ||1 de o trong/chu khong hop le van luu 1. */
+        quantity:(parseInt(f.quantity.value,10)||1),
         description:fullDesc||null, contact_zalo:f.zalo.value.trim()||null });
       msg.textContent='Đã gửi tin tuyển mẫu. Tin ở trạng thái chờ duyệt (pending), chưa hiện công khai cho tới khi admin duyệt.';
       loadApproved();
