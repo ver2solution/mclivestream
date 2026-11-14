@@ -53,8 +53,6 @@
    10/11: them 20 mau (th-68..th-87, TikTok) + 20 shop (sh-97..sh-116, TopCV 18 + CHA&MOM + LILA; du phong STAR FACTORY thay Ivy Moda tin 2025 het han 30/11/2025): 77 mau / 116 shop; anh moi: 20 anh mau + 0 logo.
    11/11: them 39 mau (th-88..th-126, TikTok; loai 1 trung @thuyem4668 o file B; 3 mau khong co anh cong khai th-92/th-107/th-114) + 36 shop (sh-117..sh-152; loai 4 tin TopCV het han: LIGHTING 23/10, Vulcano, HUDA 07/10/2026, TRUONG NHAN 25/09/2026): 116 mau / 152 shop; anh moi: 36 anh mau + 0 logo.
    13/11: them 91 mau (th-127..th-242; 77 mau khong co anh cong khai) + 63 shop (sh-188..sh-252, loai 2 trung bai cu sh-228/sh-241): 219 mau / 250 shop; anh moi: 14 anh mau + 1 logo (Chicmax). Gom 15 mau ton 12/11 (th-127..th-141, 14 anh) + 76 mau moi th-167..th-242 + 63 shop moi sh-188..sh-252 (loai 2 trung)... Loai: 3 mau D (Chang Oiii trung URL, BIGO, MiTa), 4 shop trung trong ngay (Sannadle D, Chicmax B/D, MOWA B) + 2 shop trung bai cu (sh-228 = sh-175 O To Ha, sh-241 = sh-150 An Lac Phat); nhom moi 71 (loai 9 trung seeding-list). Phien Facebook chet 10:28 -> moi 0/80, cho moi bu.
-   14/11: them 11 mau (th-243..th-253; 11 mau khong co anh cong khai — URL anh khong trich xuat duoc, khong co anh de tai) + 20 shop (sh-253..sh-272; 0 logo moi): 230 mau / 270 shop; muc moi: +7 lop livestream (cl-12..18), +6 lop makeup (cm-12..17), +3 su kien (em-12..14), +9 logistics (lg-12..20), +6 cho thue (rt-12..17) = 31/50 doi tuong (thieu 19: su kien 7, lop makeup 4, lop livestream 3, cho thue 4, logistics 1). Loai: 7 mau an danh + 3 mau bai thang 4-5/2026; nhom moi kiem chung 10 (dung duoc 4: LOGISTICS BAO GIA CUOC TAU, DAC SAN OCOP, HOI SI-LE DO AN VAT NOI DIA TRUNG, HOI MUA BAN THANH LY DA NANG; loai co bac SI BANH KEO AN VAT TP.HCM; han che Cho Phien Que; khong dung duoc 4). Moi 0/80: nhom 1002938194724844 tu choi ca 2 binh luan moi (bo loc tu khoa) -> Trang DA ROI NHOM 14/11; 31 ho so cho moi bu (nhap invite-drafts-2026-11-14.md).
-   14/11 (cron new-objects 11:21): GO 31 muc moi tren (cl-12..18, cm-12..17, em-12..14, lg-12..20, rt-12..17) khoi prep data.js — KHONG DU DIEU KIEN: 29/31 price null, 31/31 avatar la anh tai su dung (th-01/th-02/og-brand/lot-21/kiot-01, khong phai avatar cong khai cua don vi), 9/9 logistics thieu logisticsOption; nguon JSON + ghi chu thu thap giu nguyen tai hidden_files/new-categories-collect-2026-11-14.json de bo sung sau; muc tieu van 50 that (live da du 10/muc), KHONG thu moi trong luot nay; 0 muc het han 30 ngay.
    v92 adds 10 articles (08/11/2026): 1 keyword SEO article ("mau livestream",
    kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 07/11:
    1 model, 30 shops, 0 groups) + 8 news articles (gold 08/11, China-import potential,
@@ -6097,293 +6095,6 @@ window.V20_DATA = {
    "photoSrc": null,
    "contacts": [
     {"provider": "website", "value": "https://me.sh/profile/julian-erbil-2f197550", "label": "Website", "source": "post", "source_url": "https://me.sh/profile/julian-erbil-2f197550"}
-   ]  },
-  {
-   "id": "th-243",
-   "name": "Uyen Bao Ngo",
-   "gender": "nữ",
-   "title": "Live bán hàng — Hà Nội",
-   "province": "Hà Nội",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Livestream bán hàng, có kinh nghiệm live; tìm việc quanh Hà Đông, Hà Nội.",
-   "height": "Chưa cập nhật",
-   "schedule": "Chưa cập nhật",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-244",
-   "name": "Quýt_qiuu",
-   "gender": "Chưa cập nhật",
-   "title": "Live thời trang — TP. Hồ Chí Minh",
-   "province": "TP. Hồ Chí Minh",
-   "cat": "Thời trang",
-   "form": "live, ưu tiên thời trang",
-   "exp": "Host live Áo Thun Unisex / trợ live; kinh nghiệm trợ live 2 năm, biết makeup, hoạt ngôn, giọng miền Nam, không ngại cam.",
-   "height": "Chưa cập nhật",
-   "schedule": "Xoay ca",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-245",
-   "name": "Tiến Duy",
-   "gender": "nam",
-   "title": "Live bán hàng — Hà Nội",
-   "province": "Hà Nội",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Livestream bán hàng; sinh 2001, chưa có kinh nghiệm live bán hàng, ngoại hình ưa nhìn, giọng chuẩn phổ thông.",
-   "height": "Chưa cập nhật",
-   "schedule": "Chưa cập nhật",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-246",
-   "name": "Đậu Thị Hiền",
-   "gender": "nữ",
-   "title": "Live thời trang — Hà Nội",
-   "province": "Hà Nội",
-   "cat": "Thời trang",
-   "form": "live, ưu tiên thời trang",
-   "exp": "Live thời trang, dày dép, túi; sinh 2k4, cao 1m6, nặng 50kg, có kinh nghiệm live; không xin idol.",
-   "height": "1m60 / 50kg",
-   "schedule": "Chưa cập nhật",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-247",
-   "name": "IntelligentBlueberry9898",
-   "gender": "nữ",
-   "title": "Live bán hàng — Hà Nội",
-   "province": "Hà Nội",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Livestream; kinh nghiệm 1,5 năm; không live idol.",
-   "height": "Chưa cập nhật",
-   "schedule": "Ca sáng/tối",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-248",
-   "name": "Phương Linhh",
-   "gender": "Chưa cập nhật",
-   "title": "Live bán hàng — Toàn quốc / Live online",
-   "province": "Toàn quốc / Live online",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Nhận live tại nhà đa ngành; sẵn back live/ánh sáng/thiết bị đẹp, làm video giả live sản phẩm.",
-   "height": "Chưa cập nhật",
-   "schedule": "Chưa cập nhật",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-249",
-   "name": "Xiao Yang",
-   "gender": "Chưa cập nhật",
-   "title": "Live bán hàng — Toàn quốc / Live online",
-   "province": "Toàn quốc / Live online",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Nhận live tại nhà đa ngành, tìm shop tuyển live tại nhà.",
-   "height": "Chưa cập nhật",
-   "schedule": "Chưa cập nhật",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-250",
-   "name": "Phanh nè",
-   "gender": "Chưa cập nhật",
-   "title": "Live bán hàng — Toàn quốc / Live online",
-   "province": "Toàn quốc / Live online",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Nhận live tại nhà; sẵn đèn + back live, nhận cả ngày 8h–23h.",
-   "height": "Chưa cập nhật",
-   "schedule": "8h–23h",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "phone", "value": "0963603281", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "th-251",
-   "name": "Đổ Thị Như",
-   "gender": "nữ",
-   "title": "Live bán hàng — TP. Hồ Chí Minh",
-   "province": "TP. Hồ Chí Minh",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Host livestream; 1m65/58kg, kinh nghiệm gần 1 năm TikTok/Shopee, từng live quạt năng lượng mặt trời, đồ bé, mỹ phẩm; không live idol.",
-   "height": "1m65 / 58kg",
-   "schedule": "08:00–15:00, live 5–6h/ngày",
-   "shifts": [],
-   "salary": "Từ 100k/giờ",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/337105752372137",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-252",
-   "name": "BrightSloth8201",
-   "gender": "nữ",
-   "title": "Live bán hàng — TP. Hồ Chí Minh",
-   "province": "TP. Hồ Chí Minh",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Live đa ngành; có ngoại hình.",
-   "height": "Chưa cập nhật",
-   "schedule": "Ca sáng 6–9h và sau 14h, live được 2 ca/ngày",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/337105752372137",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
-  {
-   "id": "th-253",
-   "name": "Lisacute88",
-   "gender": "Chưa cập nhật",
-   "title": "Live bán hàng — TP. Hồ Chí Minh",
-   "province": "TP. Hồ Chí Minh",
-   "cat": "Chung / Đa ngành",
-   "form": "live bán hàng",
-   "exp": "Live bán hàng part-time; mới live ít.",
-   "height": "Chưa cập nhật",
-   "schedule": "Ca đêm càng tốt",
-   "shifts": [],
-   "salary": "Chưa cập nhật",
-   "salaryNum": null,
-   "topRevenue": "Chưa cập nhật",
-   "rating": "Chưa có đánh giá",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/337105752372137",
-   "views": 0,
-   "comments": 0,
-   "status": "Đang tìm việc",
-   "photoHas": false,
-   "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
    ]  } ],
  "shops": [
   {
@@ -10881,362 +10592,6 @@ window.V20_DATA = {
    "logoFit": "contain",
    "contacts": [
     {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa"}
-   ]  },
-  {
-   "id": "sh-253",
-   "name": "Đầm Bầu Mami",
-   "shopNameKnown": true,
-   "product": "Đầm bầu",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "80–120k/giờ + hoa hồng",
-   "shifts": [],
-   "req": "Tuyển 01 nữ livestream; nữ ưa nhìn, giọng nhẹ nhàng hoạt ngôn, có kinh nghiệm (không có được đào tạo). Địa điểm Hoàng Mai (Đại Từ, Đại Kim, Định Công, gần hồ Linh Đàm), Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0917682340", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-254",
-   "name": "Thời trang nam Remmy",
-   "shopNameKnown": true,
-   "product": "Thời trang nam",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Thu nhập tới 15 triệu",
-   "shifts": [],
-   "req": "Tuyển 2 host nam 18–28 tuổi, cao 1m75; đẹp trai, nói hay hoạt ngôn, giao tiếp tốt, giọng dễ nghe, kinh nghiệm live thời trang. 3h/phiên. Địa điểm Xã Đàn, Đống Đa, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0942421111", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"},
-    {"provider": "email", "value": "phongnhansu.remmy@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-255",
-   "name": "Thùy Vân",
-   "shopNameKnown": false,
-   "product": "Áo nữ",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "100k/giờ + 1% doanh thu + thưởng",
-   "shifts": [],
-   "req": "Tuyển 5 mẫu livestream; nữ 18–28, kinh nghiệm live thời trang từ 6 tháng, giọng miền Nam càng tốt. Tối thiểu 5 buổi/tuần, 2–3h/buổi. Địa điểm Vinsmart Tây Mỗ, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0972697177", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-256",
-   "name": "Phương Liên",
-   "shopNameKnown": false,
-   "product": "Idol livestream TikTok/Âu Mỹ + MC dẫn live nhóm",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Từ 15 triệu (idol); MC 14–20 triệu",
-   "shifts": [],
-   "req": "Idol livestream TikTok/Âu Mỹ: thu nhập từ 15 triệu, không yêu cầu kinh nghiệm. MC dẫn live nhóm: biết tiếng Anh, 14–20 triệu. Địa điểm Thanh Xuân / Mễ Trì Hạ, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0388173469", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-257",
-   "name": "Ly Sam",
-   "shopNameKnown": false,
-   "product": "Đồ công nghệ",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Thu nhập không giới hạn + KPI + thưởng",
-   "shifts": [],
-   "req": "Part-time/full-time linh hoạt; giao tiếp tốt, ưu tiên kinh nghiệm live. Địa điểm Vân Lũng, Nam An Khánh, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0829899028", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-258",
-   "name": "VNIDOL",
-   "shopNameKnown": true,
-   "product": "Vận hành livestream Douyin & TikTok",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "15–40 triệu/tháng",
-   "shifts": [],
-   "req": "Kinh nghiệm vận hành Douyin/TikTok từ 6 tháng, MCN/Agency, biết tiếng Trung là lợi thế. Địa điểm 15 Nguyễn Khả Trạc, Phú Diễn, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0944126602", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-259",
-   "name": "Huệ – Xnk Haiquan.HT",
-   "shopNameKnown": true,
-   "product": "Ngũ cốc dinh dưỡng",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Thỏa thuận",
-   "shifts": [],
-   "req": "Lương thỏa thuận theo hướng chủ live quyết. Địa điểm Hà Đông (gần Aeon Mall), Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0702065222", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"},
-    {"provider": "phone", "value": "0977685488", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
-  {
-   "id": "sh-260",
-   "name": "Phương Nguyễn SHOP",
-   "shopNameKnown": true,
-   "product": "Mẫu live quần áo nữ",
-   "province": "Toàn quốc",
-   "district": "Chưa cập nhật",
-   "salary": "100–150k/h + % doanh thu",
-   "shifts": [],
-   "req": "Mẫu live quần áo nữ; ca sáng/trưa/tối được chọn.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-261",
-   "name": "Ngoc Anh",
-   "shopNameKnown": false,
-   "product": "Livestream iPhone",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Chưa cập nhật",
-   "shifts": [],
-   "req": "Tuyển 01 nữ 18–26 livestream iPhone. Địa điểm Mễ Trì Thượng, Nam Từ Liêm, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0793435555", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"},
-    {"provider": "zalo", "value": "0869411944", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-262",
-   "name": "An Nguyễn",
-   "shopNameKnown": false,
-   "product": "Mẫu livestream Facebook",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "80k/giờ",
-   "shifts": [],
-   "req": "Live ít lộ mặt, không áp KPI. Địa điểm Geleximco B, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0949826267", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-263",
-   "name": "Tuyen Pham",
-   "shopNameKnown": false,
-   "product": "Host livestream thời trang nữ/giấy ăn/gia dụng",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "70–120k/giờ",
-   "shifts": [],
-   "req": "Nữ, kinh nghiệm từ 6 tháng. Địa điểm KĐT La Khê – Dương Nội – Hà Đông, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0945558070", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-264",
-   "name": "Nguyệt Minh",
-   "shopNameKnown": false,
-   "product": "Host live đồng hồ thông minh",
-   "province": "Toàn quốc",
-   "district": "Chưa cập nhật",
-   "salary": "100k/h",
-   "shifts": [],
-   "req": "Kinh nghiệm livestream, không lộ mặt. Xoay ca 3 buổi/tuần.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0829538675", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-265",
-   "name": "Lê Thanh Long / 51K ENTERTAINMENT",
-   "shopNameKnown": true,
-   "product": "Tuyển idol TikTok livestream",
-   "province": "Toàn quốc",
-   "district": "Chưa cập nhật",
-   "salary": "Chưa cập nhật",
-   "shifts": [],
-   "req": "Chi tiết trong ảnh bài đăng — chưa đọc được từ text.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-266",
-   "name": "Đào Tử / VTT MEDIA",
-   "shopNameKnown": true,
-   "product": "Tuyển idol",
-   "province": "Toàn quốc",
-   "district": "Chưa cập nhật",
-   "salary": "Chưa cập nhật",
-   "shifts": [],
-   "req": "Chi tiết trong ảnh bài đăng — chưa đọc được từ text.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-267",
-   "name": "Lê Thanh Đình",
-   "shopNameKnown": false,
-   "product": "Host Live",
-   "province": "TP. Hồ Chí Minh",
-   "district": "Chưa cập nhật",
-   "salary": "12–15 triệu/tháng",
-   "shifts": [],
-   "req": "Kinh nghiệm live từ 1 năm. Thứ 2–thứ 7, 13–22h, live 6h/ngày. Địa điểm Gần Aeon Bình Tân, TP.HCM.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0898142499", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-268",
-   "name": "Bùi Thị Kim Ngân / TEAM KIMCUONGSOKIU",
-   "shopNameKnown": true,
-   "product": "Trợ live",
-   "province": "TP. Hồ Chí Minh",
-   "district": "Chưa cập nhật",
-   "salary": "60–70k/giờ",
-   "shifts": [],
-   "req": "Trợ live. Địa điểm Gò Vấp, TP.HCM.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0903771814", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
-  {
-   "id": "sh-269",
-   "name": "Nguyễn Vũ Hải",
-   "shopNameKnown": false,
-   "product": "Đồ mẹ & bé",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "100k/h",
-   "shifts": [],
-   "req": "Tuyển nhân viên livestream đồ mẹ & bé. Địa điểm Vinsmart city, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/1002938194724844",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-270",
-   "name": "Như Ý Trương",
-   "shopNameKnown": false,
-   "product": "Host live thời trang",
-   "province": "Toàn quốc",
-   "district": "Chưa cập nhật",
-   "salary": "Chưa cập nhật",
-   "shifts": [],
-   "req": "Mặt xinh dáng đẹp, kinh nghiệm live thời trang, không nhận mỹ phẩm/gia dụng.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-271",
-   "name": "Hạ Nhật",
-   "shopNameKnown": false,
-   "product": "Livestream trang sức (live tay, không lộ mặt)",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "Thu nhập 10–25 triệu+ (lương cứng 8–10 triệu + % doanh số)",
-   "shifts": [],
-   "req": "Nam/nữ 1998–2005, kinh nghiệm từ 6 tháng. 5h/ngày, ca linh hoạt. BHXH. Địa điểm The Manor Central Park, Nguyễn Xiển, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
-  {
-   "id": "sh-272",
-   "name": "Hải Nguyên",
-   "shopNameKnown": false,
-   "product": "Nhân viên live thời trang nam",
-   "province": "Hà Nội",
-   "district": "Chưa cập nhật",
-   "salary": "60–90k/h + thưởng",
-   "shifts": [],
-   "req": "Nhân viên live thời trang nam. Địa điểm Khu ga Nhổn, Hà Nội.",
-   "channels": "www.facebook.com",
-   "date": "2026-11-14",
-   "src": "https://www.facebook.com/groups/812667316880352",
-   "logo": "",
-   "logoFit": "contain",
-   "contacts": [
    ]  } ],
  "articles": [
   {
@@ -14584,6 +13939,14 @@ window.V20_DATA = {
  // tren sangnhuong.top (chi an lien he, noi dung + ngay van cong khai) — van giu + ghi trong meta, theo tien le 11-12/11.
  // Loai 1 tin trung: quan nhau Trung My Tay 781 (15/10) trung 788 (16/10, cung 182m2/90 trieu) — thay bang khu vui choi
  // Ta Quang Buu 635 trieu 11/10. Facebook Ryan SONG toi it nhat 11:37 (luot Su That 10:51 dang du 2/2) — thu moi sau deploy.
+  
+ // 14/11: them 40 kiot moi (muc x4 KPI): TP. Hồ Chí Minh 32, Hà Nội 3, Đắk Lắk 1, Đà Nẵng 1, Bắc Ninh 1, Đồng Nai 1, Khánh Hòa 1; ngay dang 11/10–17/10/2026 (trong 60 ngay); GOP + SAP XEP toan bo 200 kiot theo ngay dang giam dan (cung ngay thi
+ // tin cu truoc, tin moi sau), danh lai id kiot-01..200; 39 anh dai dien moi images/kiot/ (1 kiot mam non Hiep Binh
+ // GIU tin, BO anh: og:image la anh minh hoa AI, khong phai anh co so — theo tien le kiot-132 13/11). 23/40 tin het thoi
+ // gian hien thi tren sangnhuong.top (chi an lien he, noi dung + ngay van cong khai) — van giu + ghi trong meta, theo
+ // tien le 11-13/11. Loai 1 tin trung: quan nhau Trung My Tay 781 (15/10) trung kiot-56/788 (cung 106 Tran Thi Nam,
+ // 182m2/90 trieu) — thay bang salon toc 288 Pham Van Hai 60 trieu 11/10.
+
   "kiots": [
    {
      "id": "kiot-01",
@@ -15324,6 +14687,57 @@ window.V20_DATA = {
    {
      "id": "kiot-45",
      "group": 1,
+     "title": "Sang nhượng phòng Gym và Boxing tại Phường An Phú, TP. Thủ Đức",
+     "price": "250 triệu",
+     "priceNum": 250000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng lại toàn bộ phòng Gym &amp; Boxing đang hoạt động ổn định tại Phường An Phú, TP. Thủ Đức. Thông tin chi tiết: -… · Diện tích 200 m², mặt tiền 10,0 m · thuê 37 triệu/tháng",
+     "date": "17/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-phong-gym-boxing-tai-phuong-an-phu-tp-thu-duc-805.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-45.jpg"
+   },
+   {
+     "id": "kiot-46",
+     "group": 1,
+     "title": "Sang nhượng phòng Gym và Võ 280m2 tại CT11 Hồng Hà Ecocity, Hoàng Ma…",
+     "price": "300 triệu",
+     "priceNum": 300000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Hà Nội · Cần sang nhượng gấp phòng tập Gym &amp; Võ tại tầng 2, tòa CT11 Hồng Hà Ecocity, phường Yên Sở, quận Hoàng Mai do không có thời… · Diện tích 280 m² · thuê Chưa xác nhận/tháng",
+     "date": "17/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-phong-gym-vo-280m2-tai-ct11-hong-ha-ecocity-hoang-mai-806.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
+     "img": "images/kiot/kiot-46.jpg"
+   },
+   {
+     "id": "kiot-47",
+     "group": 1,
+     "title": "Sang nhượng trung tâm năng khiếu Quận 10, sẵn 50 học viên",
+     "price": "120 triệu",
+     "priceNum": 120000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng trung tâm năng khiếu tại Phường Hòa Hưng, Quận 10 với đầy đủ cơ sở vật chất và lượng học viên ổn định. Thông tin… · Diện tích 60 m² · thuê 12 triệu/tháng",
+     "date": "17/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-trung-tam-nang-khieu-quan-10-san-50-hoc-vien-804.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-47.jpg"
+   },
+   {
+     "id": "kiot-48",
+     "group": 1,
      "title": "Sang nhượng tiệm nail – mi – spa 40m² — Phan Thanh Giản, Lái Thiêu, TP.HCM",
      "price": "45 triệu",
      "priceNum": 45000000,
@@ -15338,7 +14752,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-46",
+     "id": "kiot-49",
      "group": 1,
      "title": "Sang nhượng quán mặt tiền đường Liên Hương — Tuy Phong, Bình Thuận",
      "price": "250 triệu (thương lượng)",
@@ -15354,7 +14768,7 @@ window.V20_DATA = {
      "prov": "Bình Thuận"
    },
    {
-     "id": "kiot-47",
+     "id": "kiot-50",
      "group": 1,
      "title": "Sang nhượng quán cafe 2 mặt tiền 250m² — Làng Đại Học, Thủ Đức, TP.HCM",
      "price": "480 triệu",
@@ -15368,10 +14782,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-2-mat-tien-tai-lang-dai-hoc-thu-duc-786.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-47.jpg"
+     "img": "images/kiot/kiot-50.jpg"
    },
    {
-     "id": "kiot-48",
+     "id": "kiot-51",
      "group": 1,
      "title": "Sang gấp quán cafe mặt tiền 113m² — đường 79, Phước Long, Thủ Đức, TP.HCM",
      "price": "69 triệu",
@@ -15385,10 +14799,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-quan-cafe-mat-tien-duong-79-phuoc-long-thu-duc-787.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-48.jpg"
+     "img": "images/kiot/kiot-51.jpg"
    },
    {
-     "id": "kiot-49",
+     "id": "kiot-52",
      "group": 1,
      "title": "Sang nhượng gấp quán cafe 2 mặt tiền 195m² — Bà Điểm, Hóc Môn, TP. Hồ Chí Minh",
      "price": "300 triệu",
@@ -15402,10 +14816,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/TP-HCM/Sang-nhuong-gap-quan-cafe-2-mat-tien-ba-diem-hoc-mon-dang-hoat-dong-c15-raovat-34600973.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-49.jpg"
+     "img": "images/kiot/kiot-52.jpg"
    },
    {
-     "id": "kiot-50",
+     "id": "kiot-53",
      "group": 1,
      "title": "Sang nhượng hoặc bán 50% cổ phần quán net 4 tầng 100 máy — Tạ Quang Bửu, Hai Bà Trưng, Hà Nội",
      "price": "1,8 tỷ",
@@ -15419,10 +14833,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Sang-nhuong-hoac-ban-co-phan-quan-net-4-tang-100-may-tai-hai-ba-trung-ha-noi-canh-dh-bach-khoa-c15-raovat-34600913.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-50.jpg"
+     "img": "images/kiot/kiot-53.jpg"
    },
    {
-     "id": "kiot-51",
+     "id": "kiot-54",
      "group": 1,
      "title": "Sang nhượng cửa hàng 3 tầng 62m² — 54C Tràng Thi, Hoàn Kiếm, Hà Nội",
      "price": "25 triệu",
@@ -15436,10 +14850,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Sang-nhuong-cua-hang-3-tang-trang-thi-hoan-kiem-ha-noi-c15-raovat-34600842.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-51.jpg"
+     "img": "images/kiot/kiot-54.jpg"
    },
    {
-     "id": "kiot-52",
+     "id": "kiot-55",
      "group": 1,
      "title": "Nhượng gấp spa 130m² — Tự Thôn, Nam Sơn, Bắc Ninh",
      "price": "130 triệu",
@@ -15453,10 +14867,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Bac-Ninh/Nhuong-gap-spa-130m-tai-nam-son-bac-ninh-gia-130tr-c15-raovat-34600835.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Bắc Ninh",
-     "img": "images/kiot/kiot-52.jpg"
+     "img": "images/kiot/kiot-55.jpg"
    },
    {
-     "id": "kiot-53",
+     "id": "kiot-56",
      "group": 1,
      "title": "Sang nhượng kiốt kinh doanh đường Đình Phong Phú, TP. Thủ Đức",
      "price": "30 triệu",
@@ -15470,10 +14884,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-kiot-kinh-doanh-duong-dinh-phong-phu-tp-thu-duc-796.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-53.jpg"
+     "img": "images/kiot/kiot-56.jpg"
    },
    {
-     "id": "kiot-54",
+     "id": "kiot-57",
      "group": 1,
      "title": "Sang nhượng quán nhậu mặt tiền bờ kè Trường Sa, giá 290 triệu",
      "price": "290 triệu",
@@ -15487,10 +14901,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-nhau-mat-tien-bo-ke-truong-sa-gia-290-trieu-800.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-54.jpg"
+     "img": "images/kiot/kiot-57.jpg"
    },
    {
-     "id": "kiot-55",
+     "id": "kiot-58",
      "group": 1,
      "title": "Sang nhượng mặt bằng kinh doanh 32m² tại 154 Tân Kỳ Tân Quý, Tân Phú",
      "price": "27 triệu",
@@ -15504,10 +14918,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-32m2-tai-154-tan-ky-tan-quy-tan-phu-795.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-55.jpg"
+     "img": "images/kiot/kiot-58.jpg"
    },
    {
-     "id": "kiot-56",
+     "id": "kiot-59",
      "group": 1,
      "title": "Sang nhượng quán nhậu 2 mặt tiền, vỉa hè rộng tại Trung Mỹ Tây, Q12",
      "price": "90 triệu",
@@ -15521,10 +14935,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-nhau-2-mat-tien-via-he-rong-tai-trung-my-tay-q12-788.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-56.jpg"
+     "img": "images/kiot/kiot-59.jpg"
    },
    {
-     "id": "kiot-57",
+     "id": "kiot-60",
      "group": 1,
      "title": "Sang nhượng quán ốc tại đường Hoàng Sa, Phường Cầu Ông Lãnh, Quận 1",
      "price": "150 triệu",
@@ -15538,10 +14952,78 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-oc-tai-duong-hoang-sa-phuong-cau-ong-lanh-quan-1-784.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-57.jpg"
+     "img": "images/kiot/kiot-60.jpg"
    },
    {
-     "id": "kiot-58",
+     "id": "kiot-61",
+     "group": 1,
+     "title": "Sang nhượng quán cafe tại 182A Hoàng Văn Thụ, TP.HCM",
+     "price": "95 triệu",
+     "priceNum": 95000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng lại quán cafe tại địa chỉ 182A Hoàng Văn Thụ, Phường Đức Nhuận, TP.HCM. Quán đang hoạt động ổn định, vào là kinh… · thuê 5 triệu/tháng",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-tai-182a-hoang-van-thu-tp-hcm-799.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-61.jpg"
+   },
+   {
+     "id": "kiot-62",
+     "group": 1,
+     "title": "Sang nhượng quán mặt tiền Võ Văn Tần, Quận 3, đầy đủ nội thất",
+     "price": "350 triệu",
+     "priceNum": 350000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán mặt tiền đường Võ Văn Tần, Phường Bàn Cờ, Quận 3. Quán đang hoạt động ổn định, sang lại toàn bộ cơ sở… · thuê 25 triệu/tháng",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-mat-tien-vo-van-tan-quan-3-day-du-noi-that-801.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-62.jpg"
+   },
+   {
+     "id": "kiot-63",
+     "group": 1,
+     "title": "Sang nhượng spa dưỡng sinh 475m2 tại 198 Nguyễn Tri Phương, Q.10 | …",
+     "price": "600 triệu",
+     "priceNum": 600000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp cơ sở spa dưỡng sinh tại vị trí đắc địa số 198 Nguyễn Tri Phương, Quận 10. Với diện tích rộng rãi 475,2 m2,… · Diện tích 475 m² · thuê 130 triệu/tháng",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-spa-duong-sinh-475m2-tai-198-nguyen-tri-phuong-q-10-803.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-63.jpg"
+   },
+   {
+     "id": "kiot-64",
+     "group": 1,
+     "title": "Sang nhượng tiệm giặt ủi - giặt sấy tại Quận 8, TP.HCM",
+     "price": "255 triệu",
+     "priceNum": 255000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng tiệm giặt sấy đang hoạt động ổn định tại đường Tạ Quang Bửu, Quận 8. Tiệm có diện tích 80m2, lượng khách hàng ổn… · Diện tích 80 m² · thuê Chưa xác nhận/tháng",
+     "date": "16/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-giat-ui-giat-say-tai-quan-8-tp-hcm-783.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-64.jpg"
+   },
+   {
+     "id": "kiot-65",
      "group": 1,
      "title": "Sang nhượng quán ăn tại KĐT An Hưng — Dương Nội, Hà Đông, Hà Nội",
      "price": "Thỏa thuận",
@@ -15557,7 +15039,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-59",
+     "id": "kiot-66",
      "group": 1,
      "title": "Sang nhượng salon tóc 2 tầng 200m² — KĐT Tân Tây Đô, Hà Nội",
      "price": "100 triệu",
@@ -15573,7 +15055,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-60",
+     "id": "kiot-67",
      "group": 1,
      "title": "Sang nhượng spa 120m² — Đinh Tiên Hoàng, Cam Lâm, Khánh Hòa",
      "price": "390 triệu",
@@ -15587,10 +15069,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-120m2-tai-dinh-tien-hoang-cam-lam-khanh-hoa-761.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Khánh Hòa",
-     "img": "images/kiot/kiot-60.jpg"
+     "img": "images/kiot/kiot-67.jpg"
    },
    {
-     "id": "kiot-61",
+     "id": "kiot-68",
      "group": 1,
      "title": "Sang nhượng quán Thái 200m² — Phường Thủ Đức, TP.HCM",
      "price": "350 triệu",
@@ -15604,10 +15086,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-thai-tai-thu-duc-doanh-thu-200-300tr-thang-780.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-61.jpg"
+     "img": "images/kiot/kiot-68.jpg"
    },
    {
-     "id": "kiot-62",
+     "id": "kiot-69",
      "group": 1,
      "title": "Sang nhượng mặt bằng kinh doanh — Phố chợ Phú Khương, Bến Tre (Vĩnh Long)",
      "price": "75 triệu",
@@ -15621,10 +15103,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-tai-pho-cho-phu-khuong-ben-tre-757.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Vĩnh Long",
-     "img": "images/kiot/kiot-62.jpg"
+     "img": "images/kiot/kiot-69.jpg"
    },
    {
-     "id": "kiot-63",
+     "id": "kiot-70",
      "group": 1,
      "title": "Sang nhượng phòng khám nha khoa trung tâm Quận Hà Đông — Hà Nội",
      "price": "1 tỷ",
@@ -15638,10 +15120,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-phong-kham-nha-khoa-trung-tam-quan-ha-dong-day-du-thiet-b-762.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-63.jpg"
+     "img": "images/kiot/kiot-70.jpg"
    },
    {
-     "id": "kiot-64",
+     "id": "kiot-71",
      "group": 1,
      "title": "Sang nhượng nhà hàng Lẩu Chay.T 370m² — 134 Nguyễn Hữu Thọ, Đà Nẵng",
      "price": "2,5 tỷ",
@@ -15655,10 +15137,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-nha-hang-lau-chay-t-tai-134-nguyen-huu-tho-da-nang-750.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-64.jpg"
+     "img": "images/kiot/kiot-71.jpg"
    },
    {
-     "id": "kiot-65",
+     "id": "kiot-72",
      "group": 1,
      "title": "Cần sang gấp quán nhậu 200m² — Bàu Mạc 18, Hải Vân, Đà Nẵng",
      "price": "220 triệu",
@@ -15672,10 +15154,10 @@ window.V20_DATA = {
      "url": "https://alonhadat.com.vn/can-sang-gap-quan-nhau-200m2-khu-do-thi-xanh-bau-tram-phuong-hai-van-tp-da-nang-19148018.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-65.jpg"
+     "img": "images/kiot/kiot-72.jpg"
    },
    {
-     "id": "kiot-66",
+     "id": "kiot-73",
      "group": 1,
      "title": "Sang nhượng Spa trọn gói tại Phú Mỹ Hưng, Quận 7 - Giá 700 triệu",
      "price": "700 triệu",
@@ -15689,10 +15171,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-tron-goi-tai-phu-my-hung-quan-7-gia-700-trieu-779.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-66.jpg"
+     "img": "images/kiot/kiot-73.jpg"
    },
    {
-     "id": "kiot-67",
+     "id": "kiot-74",
      "group": 1,
      "title": "Sang nhượng nhà hàng Kua Thái tại 187 Nguyễn Cao, TP. Bắc Ninh",
      "price": "999 triệu",
@@ -15706,10 +15188,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-nha-hang-kua-thai-tai-187-nguyen-cao-tp-bac-ninh-774.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Bắc Ninh",
-     "img": "images/kiot/kiot-67.jpg"
+     "img": "images/kiot/kiot-74.jpg"
    },
    {
-     "id": "kiot-68",
+     "id": "kiot-75",
      "group": 1,
      "title": "Sang nhượng quán cafe 420m² tại 82 Nguyễn Văn Rốp, TP. Tây Ninh",
      "price": "220 triệu",
@@ -15723,10 +15205,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-420m2-tai-82-nguyen-van-rop-tp-tay-ninh-755.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Tây Ninh",
-     "img": "images/kiot/kiot-68.jpg"
+     "img": "images/kiot/kiot-75.jpg"
    },
    {
-     "id": "kiot-69",
+     "id": "kiot-76",
      "group": 1,
      "title": "Sang nhượng quán nhậu mặt tiền đường số 1, Bình Tân - 170 triệu",
      "price": "170 triệu",
@@ -15740,10 +15222,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-nhau-mat-tien-duong-so-1-binh-tan-170-trieu-778.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-69.jpg"
+     "img": "images/kiot/kiot-76.jpg"
    },
    {
-     "id": "kiot-70",
+     "id": "kiot-77",
      "group": 1,
      "title": "Sang gấp quán trà sữa và bánh tráng tại Tân Bình, giá 35 triệu",
      "price": "35 triệu",
@@ -15757,10 +15239,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-quan-tra-sua-banh-trang-tai-tan-binh-gia-35-trieu-753.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-70.jpg"
+     "img": "images/kiot/kiot-77.jpg"
    },
    {
-     "id": "kiot-71",
+     "id": "kiot-78",
      "group": 1,
      "title": "Sang nhượng spa mặt tiền Nguyễn Phúc Chu, Tân Bình, giá 60 triệu",
      "price": "60 triệu",
@@ -15774,10 +15256,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-mat-tien-nguyen-phuc-chu-tan-binh-gia-60-trieu-766.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-71.jpg"
+     "img": "images/kiot/kiot-78.jpg"
    },
    {
-     "id": "kiot-72",
+     "id": "kiot-79",
      "group": 1,
      "title": "Sang nhượng gấp tiệm tóc nam nữ gần Ngã tư 550, Dĩ An",
      "price": "25 triệu",
@@ -15791,10 +15273,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-gap-tiem-toc-nam-nu-gan-nga-tu-550-di-an-744.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-72.jpg"
+     "img": "images/kiot/kiot-79.jpg"
    },
    {
-     "id": "kiot-73",
+     "id": "kiot-80",
      "group": 1,
      "title": "Sang nhượng quán nhậu, Beer Club 400m² tại Phường Biên Hòa, Đồng Nai",
      "price": "560 triệu",
@@ -15808,10 +15290,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-nhau-beer-club-400m2-tai-phuong-bien-hoa-dong-nai-741.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-73.jpg"
+     "img": "images/kiot/kiot-80.jpg"
    },
    {
-     "id": "kiot-74",
+     "id": "kiot-81",
      "group": 1,
      "title": "Sang nhượng gấp quán tạp hóa mặt tiền đường 385, TP. Thủ Đức",
      "price": "30 triệu",
@@ -15825,10 +15307,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-gap-quan-tap-hoa-mat-tien-duong-385-tp-thu-duc-760.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-74.jpg"
+     "img": "images/kiot/kiot-81.jpg"
    },
    {
-     "id": "kiot-75",
+     "id": "kiot-82",
      "group": 1,
      "title": "Sang nhượng CHDV 10 phòng khu CityLand Gò Vấp, lợi nhuận ổn định",
      "price": "335 triệu",
@@ -15842,10 +15324,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-chdv-10-phong-khu-cityland-go-vap-loi-nhuan-on-dinh-771.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-75.jpg"
+     "img": "images/kiot/kiot-82.jpg"
    },
    {
-     "id": "kiot-76",
+     "id": "kiot-83",
      "group": 1,
      "title": "Sang nhượng quán cafe sân thượng view đẹp tại phố Khâm Thiên",
      "price": "250 triệu",
@@ -15859,10 +15341,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-san-thuong-view-dep-tai-pho-kham-thien-749.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-76.jpg"
+     "img": "images/kiot/kiot-83.jpg"
    },
    {
-     "id": "kiot-77",
+     "id": "kiot-84",
      "group": 1,
      "title": "Sang nhượng Spa nguyên căn đầy đủ trang thiết bị tại Tân Bình",
      "price": "35 triệu",
@@ -15876,10 +15358,231 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-nguyen-can-day-du-trang-thiet-bi-tai-tan-binh-758.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-77.jpg"
+     "img": "images/kiot/kiot-84.jpg"
    },
    {
-     "id": "kiot-78",
+     "id": "kiot-85",
+     "group": 1,
+     "title": "Sang nhượng cửa hàng tạp hóa tại Phường An Phú, TP.HCM",
+     "price": "160 triệu",
+     "priceNum": 160000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng lại cửa hàng tạp hóa tâm huyết tại Phường An Phú, TP.HCM do bận chăm con nhỏ không thể tiếp tục quản lý. Thông… · Diện tích 100 m², mặt tiền 5,0 m · thuê 8 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-cua-hang-tap-hoa-tai-phuong-an-phu-tp-hcm-759.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-85.jpg"
+   },
+   {
+     "id": "kiot-86",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng Cafe và Spa tại đường Phạm Văn Nghị, Quận 7 | S…",
+     "price": "1,50 tỷ",
+     "priceNum": 1500000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng mặt bằng kinh doanh kết hợp Cafe và Spa tại vị trí đắc địa đường Phạm Văn Nghị, Phường Phú Mỹ, Quận 7. Tổng diện… · Diện tích 336 m², mặt tiền 9,0 m · thuê 80 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-cafe-spa-tai-duong-pham-van-nghi-quan-7-782.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-86.jpg"
+   },
+   {
+     "id": "kiot-87",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng căn góc 2 mặt tiền khu Nam Long, Quận 7",
+     "price": "150 triệu",
+     "priceNum": 150000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp mặt bằng kinh doanh vị trí đắc địa tại khu Nam Long, Phường Phú Mỹ, Quận 7. Thông tin chi tiết: - Vị trí: Căn… · Diện tích 98 m², mặt tiền 7,0 m · thuê 33 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-can-goc-2-mat-tien-khu-nam-long-quan-7-776.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-87.jpg"
+   },
+   {
+     "id": "kiot-88",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng kinh doanh 136 Trâu Quỳ, Gia Lâm, Hà Nội",
+     "price": "25 triệu",
+     "priceNum": 25000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Hà Nội · Cần sang nhượng gấp mặt bằng kinh doanh tại địa chỉ 136 Trâu Quỳ, Gia Lâm, Hà Nội. Thông tin chi tiết: - Diện tích sân: 57m2, đã… · Diện tích 57 m² · thuê 8 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-136-trau-quy-gia-lam-ha-noi-772.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
+     "img": "images/kiot/kiot-88.jpg"
+   },
+   {
+     "id": "kiot-89",
+     "group": 1,
+     "title": "Sang nhượng nhà góc 2 mặt tiền đường Hoa Cúc - Hoa Phượng, Phú Nhuậ…",
+     "price": "300 triệu",
+     "priceNum": 300000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp căn nhà góc 2 mặt tiền đắc địa tại giao lộ đường Hoa Cúc và Hoa Phượng, Quận Phú Nhuận. Thông tin chi tiết: -… · Diện tích 35 m² · thuê 30 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-nha-goc-2-mat-tien-duong-hoa-cuc-hoa-phuong-phu-nhuan-770.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-89.jpg"
+   },
+   {
+     "id": "kiot-90",
+     "group": 1,
+     "title": "Sang nhượng quán cafe bánh mặt tiền Ngô Quyền, Quận 10",
+     "price": "180 triệu",
+     "priceNum": 180000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán cafe bánh tại đường Ngô Quyền, Quận 10. Quán có vị trí thuận lợi, không gian thoáng đãng. Thông tin chi… · Diện tích 90 m², mặt tiền 4,5 m · thuê 20 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-banh-mat-tien-ngo-quyen-quan-10-767.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-90.jpg"
+   },
+   {
+     "id": "kiot-91",
+     "group": 1,
+     "title": "Sang nhượng quán cafe Laha Coffee mặt tiền đường Nguyễn Kiệm, Gò Vấ…",
+     "price": "220 triệu",
+     "priceNum": 220000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng quán cafe thương hiệu Laha Coffee tại mặt tiền đường Nguyễn Kiệm, Phường An Hội Đông, Quận Gò Vấp. Thông tin chi… · Diện tích 75 m², mặt tiền 5,0 m · thuê 25 triệu/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-laha-coffee-mat-tien-duong-nguyen-kiem-go-vap-764.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-91.jpg"
+   },
+   {
+     "id": "kiot-92",
+     "group": 1,
+     "title": "Sang nhượng quán Thờ Ơ Coffee, đường Nguyễn Đình Chiểu, Đắk Lắk | S…",
+     "price": "150 triệu",
+     "priceNum": 150000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Đắk Lắk · Cần sang nhượng quán cà phê Thờ Ơ Coffee tọa lạc tại đường Nguyễn Đình Chiểu, Phường Tuy Hòa, tỉnh Đắk Lắk. Quán đang hoạt động… · Diện tích 198 m², mặt tiền 6,0 m · thuê Chưa xác nhận/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-tho-o-coffee-duong-nguyen-dinh-chieu-dak-lak-754.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đắk Lắk",
+     "img": "images/kiot/kiot-92.jpg"
+   },
+   {
+     "id": "kiot-93",
+     "group": 1,
+     "title": "Sang nhượng Vịnh Quán 2 mặt tiền đường Chu Huy Mân, Đà Nẵng",
+     "price": "730 triệu",
+     "priceNum": 730000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Đà Nẵng · Cần sang nhượng lại Vịnh Quán tại đường Chu Huy Mân, Phường Sơn Trà, Đà Nẵng do không có thời gian quản lý vì công việc cá nhân.… · thuê Chưa xác nhận/tháng",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-vinh-quan-2-mat-tien-duong-chu-huy-man-da-nang-756.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đà Nẵng",
+     "img": "images/kiot/kiot-93.jpg"
+   },
+   {
+     "id": "kiot-94",
+     "group": 1,
+     "title": "Sang nhượng CLB Bida 300m2 tại An Phú Đông, Quận 12",
+     "price": "350 triệu",
+     "priceNum": 350000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng lại CLB Bida tại phường An Phú Đông, Quận 12 với diện tích rộng rãi 300m2. Quán đã được trang bị đầy đủ cơ sở vật… · Diện tích 300 m² · thuê 25 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-clb-bida-300m2-tai-an-phu-dong-quan-12-746.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-94.jpg"
+   },
+   {
+     "id": "kiot-95",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng kinh doanh nhà hàng 200m2 tại Võ Cường, Bắc Ni…",
+     "price": "200 triệu",
+     "priceNum": 200000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Bắc Ninh · Cần sang nhượng gấp mặt bằng kinh doanh nhà hàng/sân bia tại vị trí đắc địa phường Võ Cường, thành phố Bắc Ninh. Thông tin chi… · Diện tích 200 m² · thuê 28 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-nha-hang-200m2-tai-vo-cuong-bac-ninh-751.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Bắc Ninh",
+     "img": "images/kiot/kiot-95.jpg"
+   },
+   {
+     "id": "kiot-96",
+     "group": 1,
+     "title": "Sang nhượng quán cafe đường Nguyễn Sơn Hà, Quận 3 - 52.5m2",
+     "price": "170 triệu",
+     "priceNum": 170000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng quán cafe đang hoạt động ổn định tại đường Nguyễn Sơn Hà, Phường Hòa Hưng, Quận 3. Quán có vị trí đắc địa, khu… · Diện tích 53 m², mặt tiền 3,5 m · thuê 15 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-duong-nguyen-son-ha-quan-3-52-5m2-740.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-96.jpg"
+   },
+   {
+     "id": "kiot-97",
+     "group": 1,
+     "title": "Sang nhượng Spa mặt tiền Nguyễn Thị Thập, Q7, diện tích 209m2",
+     "price": "800 triệu",
+     "priceNum": 800000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp cơ sở Spa tại trục đường sầm uất Nguyễn Thị Thập, Phường Tân Hưng, Quận 7. Vị trí đắc địa, giao thông thuận… · Diện tích 209 m² · thuê 78 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "15/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-spa-mat-tien-nguyen-thi-thap-q7-dien-tich-209m2-742.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-97.jpg"
+   },
+   {
+     "id": "kiot-98",
      "group": 1,
      "title": "Sang nhượng cửa hàng thú cưng Junior Pethouse — 30B Nguyễn Tuyển, Thủ Đức, TP.HCM",
      "price": "55 triệu",
@@ -15893,10 +15596,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-cua-hang-thu-cung-junior-pethouse-tai-thu-duc-738.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-78.jpg"
+     "img": "images/kiot/kiot-98.jpg"
    },
    {
-     "id": "kiot-79",
+     "id": "kiot-99",
      "group": 1,
      "title": "Sang nhượng Pet Shop, Spa và Hotel thú cưng Mèo Ú 80m² — Lê Văn Thọ, Gò Vấp, TP.HCM",
      "price": "260 triệu",
@@ -15910,10 +15613,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-pet-shop-spa-hotel-thu-cung-tai-go-vap-80m2-733.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-79.jpg"
+     "img": "images/kiot/kiot-99.jpg"
    },
    {
-     "id": "kiot-80",
+     "id": "kiot-100",
      "group": 1,
      "title": "Sang lại quán cơm 100m² — 65 Đặng Dung, Liên Chiểu, Đà Nẵng",
      "price": "60 triệu",
@@ -15927,10 +15630,10 @@ window.V20_DATA = {
      "url": "https://alonhadat.com.vn/sang-lai-quan-com-65-dang-dung-lien-chieu-da-nang-100m2-chi-60-trieu-vao-kinh-19146010.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-80.jpg"
+     "img": "images/kiot/kiot-100.jpg"
    },
    {
-     "id": "kiot-81",
+     "id": "kiot-101",
      "group": 1,
      "title": "Sang nhượng quán cơm đường Gò Xoài, Bình Tân - Giá 29 triệu",
      "price": "29 triệu",
@@ -15944,10 +15647,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-com-duong-go-xoai-binh-tan-gia-29-trieu-732.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-81.jpg"
+     "img": "images/kiot/kiot-101.jpg"
    },
    {
-     "id": "kiot-82",
+     "id": "kiot-102",
      "group": 1,
      "title": "Sang nhượng quán Wine và Coffee kết hợp Homestay tại Nam Ngư, Hoàn Kiếm",
      "price": "350 triệu",
@@ -15961,10 +15664,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-wine-coffee-ket-hop-homestay-tai-nam-ngu-hoan-kiem-722.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-82.jpg"
+     "img": "images/kiot/kiot-102.jpg"
    },
    {
-     "id": "kiot-83",
+     "id": "kiot-103",
      "group": 1,
      "title": "Sang nhượng cửa hàng thú cưng 130m2 tại Phường Tân Ninh, Tây Ninh",
      "price": "100 triệu",
@@ -15978,10 +15681,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-cua-hang-thu-cung-130m2-tai-phuong-tan-ninh-tay-ninh-735.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Tây Ninh",
-     "img": "images/kiot/kiot-83.jpg"
+     "img": "images/kiot/kiot-103.jpg"
    },
    {
-     "id": "kiot-84",
+     "id": "kiot-104",
      "group": 1,
      "title": "Sang nhượng trường mầm non 320m2 tại Phường Biên Hòa, Đồng Nai",
      "price": "650 triệu",
@@ -15995,10 +15698,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-truong-mam-non-320m2-tai-phuong-bien-hoa-dong-nai-728.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-84.jpg"
+     "img": "images/kiot/kiot-104.jpg"
    },
    {
-     "id": "kiot-85",
+     "id": "kiot-105",
      "group": 1,
      "title": "Sang nhượng mặt bằng kinh doanh đường Trần Quốc Toản, Dĩ An",
      "price": "80 triệu",
@@ -16012,10 +15715,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-duong-tran-quoc-toan-di-an-720.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-85.jpg"
+     "img": "images/kiot/kiot-105.jpg"
    },
    {
-     "id": "kiot-86",
+     "id": "kiot-106",
      "group": 1,
      "title": "Sang nhượng quán Bia Food mặt tiền đường bờ kè Hậu Giang, Quận 6",
      "price": "400 triệu",
@@ -16029,10 +15732,128 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-bia-food-mat-tien-duong-bo-ke-hau-giang-quan-6-718.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-86.jpg"
+     "img": "images/kiot/kiot-106.jpg"
    },
    {
-     "id": "kiot-87",
+     "id": "kiot-107",
+     "group": 1,
+     "title": "Sang nhượng cơ sở mầm non 350m² tại Hàm Nghi, Mỹ Đình - 190 triệu |…",
+     "price": "190 triệu",
+     "priceNum": 190000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Hà Nội · Cần sang nhượng lại toàn bộ cơ sở vật chất trường mầm non tại khu vực Hàm Nghi, Mỹ Đình, Nam Từ Liêm do nhu cầu mở rộng quy mô… · Diện tích 350 m² · thuê Chưa xác nhận/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-co-so-mam-non-350m-tai-ham-nghi-my-dinh-190-trieu-729.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
+     "img": "images/kiot/kiot-107.jpg"
+   },
+   {
+     "id": "kiot-108",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng kinh doanh 200m2 tại 58 Bát Nàn, TP. Thủ Đức |…",
+     "price": "1,00 tỷ",
+     "priceNum": 1000000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng mặt bằng kinh doanh vị trí đắc địa tại 58 Bát Nàn, Phường Bình Trưng, TP. Thủ Đức (Quận 2 cũ). Thông tin chi… · Diện tích 200 m² · thuê 32 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-200m2-tai-58-bat-nan-tp-thu-duc-721.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-108.jpg"
+   },
+   {
+     "id": "kiot-109",
+     "group": 1,
+     "title": "Sang nhượng quán bánh canh 12 năm tại Nguyễn Tư Giản, Gò Vấp",
+     "price": "80 triệu",
+     "priceNum": 80000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán bánh canh hoạt động ổn định suốt 12 năm tại đường Nguyễn Tư Giản, Phường Thông Tây Hội, Quận Gò Vấp.… · Diện tích 80 m², mặt tiền 4,0 m · thuê 15 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-banh-canh-12-nam-tai-nguyen-tu-gian-go-vap-719.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-109.jpg"
+   },
+   {
+     "id": "kiot-110",
+     "group": 1,
+     "title": "Sang nhượng quán cafe 250m2 góc 2 mặt tiền tại Làng Đại học Thủ Đức…",
+     "price": "480 triệu",
+     "priceNum": 480000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán cafe tâm huyết tại vị trí đắc địa khu Làng Đại học, TP. Thủ Đức. Quán nằm ngay góc 2 mặt tiền, khu vực… · Diện tích 250 m² · thuê 25 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-250m2-goc-2-mat-tien-tai-lang-dai-hoc-thu-duc-717.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-110.jpg"
+   },
+   {
+     "id": "kiot-111",
+     "group": 1,
+     "title": "Sang nhượng Say Garden 1.500m² tại Đặng Thúc Vịnh, Hóc Môn",
+     "price": "3,00 tỷ",
+     "priceNum": 3000000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán Say Garden tại địa chỉ 507 Đặng Thúc Vịnh, xã Xuân Thới Sơn, huyện Hóc Môn. Đây là cơ hội cho người có… · Diện tích 1.500 m² · thuê 30 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-say-garden-1-500m-tai-dang-thuc-vinh-hoc-mon-724.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-111.jpg"
+   },
+   {
+     "id": "kiot-112",
+     "group": 1,
+     "title": "Sang nhượng Spa 3 tầng gần BV ITO, Phường Trảng Dài, Biên Hòa",
+     "price": "120 triệu",
+     "priceNum": 120000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Đồng Nai · Cần sang nhượng gấp mặt bằng Spa tại Phường Trảng Dài, Biên Hòa, vị trí thuận lợi gần Bệnh viện ITO. Thông tin chi tiết: - Kết… · thuê 15 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-spa-3-tang-gan-bv-ito-phuong-trang-dai-bien-hoa-716.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đồng Nai",
+     "img": "images/kiot/kiot-112.jpg"
+   },
+   {
+     "id": "kiot-113",
+     "group": 1,
+     "title": "Sang nhượng trường mầm non tại Phường Hiệp Bình, Thủ Đức",
+     "price": "450 triệu",
+     "priceNum": 450000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng lại nhóm lớp mầm non đang hoạt động ổn định tại Phường Hiệp Bình, TP. Thủ Đức. Cơ sở có đầy đủ giấy phép, trang… · Diện tích 160 m² · thuê 28 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "14/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-truong-mam-non-tai-phuong-hiep-binh-thu-duc-730.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh"
+   },
+   {
+     "id": "kiot-114",
      "group": 1,
      "title": "Sang nhượng quán trà sữa — Phùng Văn Cung, Phú Nhuận, TP.HCM",
      "price": "130 triệu",
@@ -16046,10 +15867,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-tra-sua-tai-phung-van-cung-phu-nhuan-702.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-87.jpg"
+     "img": "images/kiot/kiot-114.jpg"
    },
    {
-     "id": "kiot-88",
+     "id": "kiot-115",
      "group": 1,
      "title": "Sang nhượng quán Bia Food mặt tiền bờ kè Hậu Giang 96m² — Quận 6, TP.HCM",
      "price": "400 triệu",
@@ -16063,10 +15884,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-bia-food-mat-tien-bo-ke-hau-giang-quan-6-701.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-88.jpg"
+     "img": "images/kiot/kiot-115.jpg"
    },
    {
-     "id": "kiot-89",
+     "id": "kiot-116",
      "group": 1,
      "title": "Sang nhượng quán cafe Trend Coffee tại Bến Cát, Bình Dương",
      "price": "100 triệu",
@@ -16080,10 +15901,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-trend-coffee-tai-ben-cat-binh-duong-709.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-89.jpg"
+     "img": "images/kiot/kiot-116.jpg"
    },
    {
-     "id": "kiot-90",
+     "id": "kiot-117",
      "group": 1,
      "title": "Sang nhượng quán ăn 320m2 tại đường Dương Bá Trạc, Quận 8",
      "price": "300 triệu",
@@ -16097,10 +15918,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-an-320m2-tai-duong-duong-ba-trac-quan-8-1-687.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-90.jpg"
+     "img": "images/kiot/kiot-117.jpg"
    },
    {
-     "id": "kiot-91",
+     "id": "kiot-118",
      "group": 1,
      "title": "Sang nhượng quán cafe góc 2 mặt tiền đường Phan Đình Phùng, Tân Phú",
      "price": "200 triệu",
@@ -16114,10 +15935,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-goc-2-mat-tien-duong-phan-dinh-phung-tan-phu-689.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-91.jpg"
+     "img": "images/kiot/kiot-118.jpg"
    },
    {
-     "id": "kiot-92",
+     "id": "kiot-119",
      "group": 1,
      "title": "Sang nhượng quán cafe góc 2 mặt tiền đường Tên Lửa, Quận Bình Tân",
      "price": "650 triệu",
@@ -16131,10 +15952,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-goc-2-mat-tien-duong-ten-lua-quan-binh-tan-690.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-92.jpg"
+     "img": "images/kiot/kiot-119.jpg"
    },
    {
-     "id": "kiot-93",
+     "id": "kiot-120",
      "group": 1,
      "title": "Sang nhượng quán cơm tại Bình Mỹ, Củ Chi - Đối diện trường học",
      "price": "25 triệu",
@@ -16148,10 +15969,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-com-tai-binh-my-cu-chi-doi-dien-truong-hoc-696.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-93.jpg"
+     "img": "images/kiot/kiot-120.jpg"
    },
    {
-     "id": "kiot-94",
+     "id": "kiot-121",
      "group": 1,
      "title": "Sang nhượng tiệm nail decor phong cách Hàn tại Quận Phú Nhuận",
      "price": "90 triệu",
@@ -16165,10 +15986,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-nail-decor-phong-cach-han-tai-quan-phu-nhuan-707.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-94.jpg"
+     "img": "images/kiot/kiot-121.jpg"
    },
    {
-     "id": "kiot-95",
+     "id": "kiot-122",
      "group": 1,
      "title": "Sang quán bún riêu góc 2 mặt tiền Tân Kỳ Tân Quý, Tân Sơn Nhì",
      "price": "20 triệu",
@@ -16182,10 +16003,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-quan-bun-rieu-goc-2-mat-tien-tan-ky-tan-quy-tan-son-nhi-694.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-95.jpg"
+     "img": "images/kiot/kiot-122.jpg"
    },
    {
-     "id": "kiot-96",
+     "id": "kiot-123",
      "group": 1,
      "title": "SANG QUÁN CÀ PHÊ ÔNG BẦU – 845 PHẠM THẾ HIỂN, QUẬN 8 (có thể bán ngồi lại)",
      "price": "90 triệu",
@@ -16199,10 +16020,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-quan-ca-phe-ong-bau-845-pham-the-hien-quan-8-co-the-ban-ngoi-lai-712.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-96.jpg"
+     "img": "images/kiot/kiot-123.jpg"
    },
    {
-     "id": "kiot-97",
+     "id": "kiot-124",
      "group": 1,
      "title": "Sang quán cafe góc 2 mặt tiền hẻm Quang Trung, Gò Vấp",
      "price": "200 triệu",
@@ -16216,10 +16037,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-quan-cafe-goc-2-mat-tien-hem-quang-trung-go-vap-714.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-97.jpg"
+     "img": "images/kiot/kiot-124.jpg"
    },
    {
-     "id": "kiot-98",
+     "id": "kiot-125",
      "group": 1,
      "title": "Sang quán cafe góc 2 mặt tiền khu Bàu Cát, Tân Bình",
      "price": "200 triệu",
@@ -16233,10 +16054,95 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-quan-cafe-goc-2-mat-tien-khu-bau-cat-tan-binh-704.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-98.jpg"
+     "img": "images/kiot/kiot-125.jpg"
    },
    {
-     "id": "kiot-99",
+     "id": "kiot-126",
+     "group": 1,
+     "title": "Sang gấp quán cơm mặt tiền đường Tô Hiến Thành, Quận 10",
+     "price": "80 triệu",
+     "priceNum": 80000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Do cần về quê gấp, tôi muốn sang nhượng lại quán cơm đang kinh doanh ổn định tại mặt tiền đường Tô Hiến Thành, Phường Hòa Hưng,… · Diện tích 60 m², mặt tiền 3,0 m · thuê Chưa xác nhận/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "13/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-gap-quan-com-mat-tien-duong-to-hien-thanh-quan-10-703.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-126.jpg"
+   },
+   {
+     "id": "kiot-127",
+     "group": 1,
+     "title": "Sang nhượng CHDV 11 phòng tại Phường Tân Hưng, Quận 7",
+     "price": "100 triệu",
+     "priceNum": 100000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp căn hộ dịch vụ (CHDV) đang kinh doanh ổn định tại Phường Tân Hưng, Quận 7. Thông tin chi tiết như sau: - Quy… · thuê 61 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "13/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-chdv-11-phong-tai-phuong-tan-hung-quan-7-1-706.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-127.jpg"
+   },
+   {
+     "id": "kiot-128",
+     "group": 1,
+     "title": "Sang nhượng nhà hàng đang hoạt động tại KĐT Mỹ Gia, Nha Trang",
+     "price": "800 triệu",
+     "priceNum": 800000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Khánh Hòa · Cần sang nhượng gấp nhà hàng đang kinh doanh ổn định tại Khu đô thị Mỹ Gia, Phường Bắc Nha Trang do chủ không có thời gian quản… · Diện tích 720 m², mặt tiền 20,0 m · thuê 22 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "13/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-nha-hang-dang-hoat-dong-tai-kdt-my-gia-nha-trang-700.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Khánh Hòa",
+     "img": "images/kiot/kiot-128.jpg"
+   },
+   {
+     "id": "kiot-129",
+     "group": 1,
+     "title": "Sang nhượng quán cafe 600m2 đường 3/2, Quận 10, sẵn doanh thu",
+     "price": "900 triệu",
+     "priceNum": 900000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán cafe tại đường 3/2, Phường Hòa Hưng, Quận 10. Quán có vị trí đắc địa trong hẻm xe hơi, thuận tiện di… · Diện tích 600 m², mặt tiền 8,7 m · thuê 50 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "13/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-600m2-duong-3-2-quan-10-san-doanh-thu-715.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-129.jpg"
+   },
+   {
+     "id": "kiot-130",
+     "group": 1,
+     "title": "Sang nhượng quán cafe 600m2 gần Vạn Hạnh Mall, Quận 10",
+     "price": "625 triệu",
+     "priceNum": 625000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán cafe tâm huyết tại khu vực gần Vạn Hạnh Mall, Quận 10. Quán có không gian rộng rãi, phù hợp kinh doanh… · Diện tích 600 m² · thuê 50 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "13/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-600m2-gan-van-hanh-mall-quan-10-708.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-130.jpg"
+   },
+   {
+     "id": "kiot-131",
      "group": 1,
      "title": "Sang nhượng mặt bằng spa 600m², 3 tầng — An Phú, Quận 2, TP.HCM",
      "price": "360 triệu",
@@ -16252,7 +16158,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-100",
+     "id": "kiot-132",
      "group": 1,
      "title": "Sang nhượng spa phong cách Trung Hoa 48m² — Quang Trung, Gò Vấp, TP.HCM",
      "price": "150 triệu",
@@ -16266,10 +16172,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-phong-cach-trung-hoa-tai-quang-trung-go-vap-671.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-100.jpg"
+     "img": "images/kiot/kiot-132.jpg"
    },
    {
-     "id": "kiot-101",
+     "id": "kiot-133",
      "group": 1,
      "title": "Sang gấp tiệm Nail tại Mỹ Đình, Hà Nội - Lượng khách ổn định",
      "price": "55 triệu",
@@ -16283,10 +16189,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-tiem-nail-tai-my-dinh-ha-noi-luong-khach-on-dinh-675.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-101.jpg"
+     "img": "images/kiot/kiot-133.jpg"
    },
    {
-     "id": "kiot-102",
+     "id": "kiot-134",
      "group": 1,
      "title": "Sang nhượng mặt bằng kinh doanh tại Phường An Bình, Cần Thơ",
      "price": "20 triệu",
@@ -16300,10 +16206,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-kinh-doanh-tai-phuong-an-binh-can-tho-668.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-102.jpg"
+     "img": "images/kiot/kiot-134.jpg"
    },
    {
-     "id": "kiot-103",
+     "id": "kiot-135",
      "group": 1,
      "title": "Sang nhượng quán bánh mỳ chảo tại Trần Quang Diệu, Đống Đa",
      "price": "199 triệu",
@@ -16317,10 +16223,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-banh-my-chao-tai-tran-quang-dieu-dong-da-662.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-103.jpg"
+     "img": "images/kiot/kiot-135.jpg"
    },
    {
-     "id": "kiot-104",
+     "id": "kiot-136",
      "group": 1,
      "title": "Sang nhượng tiệm rửa xe 4 năm hoạt động tại Phạm Hùng, Hòa Thành",
      "price": "150 triệu",
@@ -16334,10 +16240,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-rua-xe-4-nam-hoat-dong-tai-pham-hung-hoa-thanh-676.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Tây Ninh",
-     "img": "images/kiot/kiot-104.jpg"
+     "img": "images/kiot/kiot-136.jpg"
    },
    {
-     "id": "kiot-105",
+     "id": "kiot-137",
      "group": 1,
      "title": "Sang nhượng tiệm tóc nam 32m2 tại Bình Minh, Trảng Bom, Đồng Nai",
      "price": "23 triệu",
@@ -16351,10 +16257,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-toc-nam-32m2-tai-binh-minh-trang-bom-dong-nai-663.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-105.jpg"
+     "img": "images/kiot/kiot-137.jpg"
    },
    {
-     "id": "kiot-106",
+     "id": "kiot-138",
      "group": 1,
      "title": "Sang nhượng đại lý vé số tại 256 Bà Hom, Phường Phú Lâm, Quận 6",
      "price": "80 triệu",
@@ -16368,10 +16274,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-dai-ly-ve-so-tai-256-ba-hom-phuong-phu-lam-quan-6-682.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-106.jpg"
+     "img": "images/kiot/kiot-138.jpg"
    },
    {
-     "id": "kiot-107",
+     "id": "kiot-139",
      "group": 1,
      "title": "Sang nhượng gấp tiệm gội đầu, Massage body đường Nguyễn Trãi, Q1",
      "price": "450 triệu",
@@ -16385,10 +16291,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-gap-tiem-goi-dau-massage-body-duong-nguyen-trai-q1-686.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-107.jpg"
+     "img": "images/kiot/kiot-139.jpg"
    },
    {
-     "id": "kiot-108",
+     "id": "kiot-140",
      "group": 1,
      "title": "Sang nhượng quán cafe võng 300m2 tại An Phú, Thủ Đức",
      "price": "200 triệu",
@@ -16402,10 +16308,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-vong-300m2-tai-an-phu-thu-duc-666.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-108.jpg"
+     "img": "images/kiot/kiot-140.jpg"
    },
    {
-     "id": "kiot-109",
+     "id": "kiot-141",
      "group": 1,
      "title": "Sang nhượng Spa mặt tiền Bùi Tá Hán, TP. Thủ Đức, diện tích 99m2",
      "price": "400 triệu",
@@ -16419,10 +16325,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-mat-tien-bui-ta-han-tp-thu-duc-dien-tich-99m2-1-670.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-109.jpg"
+     "img": "images/kiot/kiot-141.jpg"
    },
    {
-     "id": "kiot-110",
+     "id": "kiot-142",
      "group": 1,
      "title": "Sang nhượng tiệm giặt sấy Sakura tại Masteri C, TP. Thủ Đức",
      "price": "194 triệu",
@@ -16436,10 +16342,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-giat-say-sakura-tai-masteri-c-tp-thu-duc-683.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-110.jpg"
+     "img": "images/kiot/kiot-142.jpg"
    },
    {
-     "id": "kiot-111",
+     "id": "kiot-143",
      "group": 1,
      "title": "Sang nhượng quán cafe sân vườn 500m² — Tam Hiệp, Biên Hòa, Đồng Nai",
      "price": "235 triệu",
@@ -16453,10 +16359,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-san-vuon-500m2-tai-phuong-tam-hiep-bien-hoa-657.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-111.jpg"
+     "img": "images/kiot/kiot-143.jpg"
    },
    {
-     "id": "kiot-112",
+     "id": "kiot-144",
      "group": 1,
      "title": "Sang nhượng quán cafe 75m² x 3 tầng — ngõ Lạc Long Quân, Tây Hồ, Hà Nội",
      "price": "120 triệu",
@@ -16470,10 +16376,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-75m2-x-3-tang-tai-ngo-lac-long-quan-tay-ho-599.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-112.jpg"
+     "img": "images/kiot/kiot-144.jpg"
    },
    {
-     "id": "kiot-113",
+     "id": "kiot-145",
      "group": 1,
      "title": "Sang nhượng thẩm mỹ viện 85m2 tại đường Lý Thái Tổ, TP. Bắc Ninh",
      "price": "95 triệu",
@@ -16487,10 +16393,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tham-my-vien-85m2-tai-duong-ly-thai-to-tp-bac-ninh-611.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Bắc Ninh",
-     "img": "images/kiot/kiot-113.jpg"
+     "img": "images/kiot/kiot-145.jpg"
    },
    {
-     "id": "kiot-114",
+     "id": "kiot-146",
      "group": 1,
      "title": "Sang nhượng quán trà sữa LaBoong, Hoàng Quốc Việt, Cầu Giấy",
      "price": "65 triệu",
@@ -16504,10 +16410,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-tra-sua-laboong-hoang-quoc-viet-cau-giay-612.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-114.jpg"
+     "img": "images/kiot/kiot-146.jpg"
    },
    {
-     "id": "kiot-115",
+     "id": "kiot-147",
      "group": 1,
      "title": "Sang nhượng quán tại Trảng Dài, Biên Hòa - Vào kinh doanh ngay",
      "price": "200 triệu",
@@ -16521,10 +16427,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-tai-trang-dai-bien-hoa-vao-kinh-doanh-ngay-623.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-115.jpg"
+     "img": "images/kiot/kiot-147.jpg"
    },
    {
-     "id": "kiot-116",
+     "id": "kiot-148",
      "group": 1,
      "title": "Sang nhượng quán cafe 50m2 tại ngõ Huỳnh Thúc Kháng, Đống Đa",
      "price": "200 triệu",
@@ -16538,10 +16444,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-50m2-tai-ngo-huynh-thuc-khang-dong-da-603.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-116.jpg"
+     "img": "images/kiot/kiot-148.jpg"
    },
    {
-     "id": "kiot-117",
+     "id": "kiot-149",
      "group": 1,
      "title": "Sang nhượng quán cafe lô góc mặt phố Hàng Mã, Hoàn Kiếm",
      "price": "300 triệu",
@@ -16555,10 +16461,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-lo-goc-mat-pho-hang-ma-hoan-kiem-601.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-117.jpg"
+     "img": "images/kiot/kiot-149.jpg"
    },
    {
-     "id": "kiot-118",
+     "id": "kiot-150",
      "group": 1,
      "title": "Sang nhượng quán cafe vị trí đắc địa quận Hoàn Kiếm, mặt tiền 25m",
      "price": "800 triệu",
@@ -16572,10 +16478,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-vi-tri-dac-dia-quan-hoan-kiem-mat-tien-25m-600.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-118.jpg"
+     "img": "images/kiot/kiot-150.jpg"
    },
    {
-     "id": "kiot-119",
+     "id": "kiot-151",
      "group": 1,
      "title": "Sang nhượng khu vui chơi 1000m2 tại Tạ Quang Bửu, Quận 8",
      "price": "635 triệu",
@@ -16589,10 +16495,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-khu-vui-choi-1000m2-tai-ta-quang-buu-quan-8-653.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-119.jpg"
+     "img": "images/kiot/kiot-151.jpg"
    },
    {
-     "id": "kiot-120",
+     "id": "kiot-152",
      "group": 1,
      "title": "Sang gấp tiệm tóc đường Lê Văn Việt, TP. Thủ Đức - Giá 30 triệu",
      "price": "30 triệu",
@@ -16606,10 +16512,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-tiem-toc-duong-le-van-viet-tp-thu-duc-gia-30-trieu-647.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-120.jpg"
+     "img": "images/kiot/kiot-152.jpg"
    },
    {
-     "id": "kiot-121",
+     "id": "kiot-153",
      "group": 1,
      "title": "Sang gấp trạm sạc xe điện 8 trụ tại 224 Trường Chinh, Tân Bình",
      "price": "15 triệu",
@@ -16623,10 +16529,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-gap-tram-sac-xe-dien-8-tru-tai-224-truong-chinh-tan-binh-606.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-121.jpg"
+     "img": "images/kiot/kiot-153.jpg"
    },
    {
-     "id": "kiot-122",
+     "id": "kiot-154",
      "group": 1,
      "title": "Sang nhượng CHDV 5 phòng tại KDC Nam Long, Quận 12",
      "price": "200 triệu",
@@ -16640,10 +16546,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-chdv-5-phong-tai-kdc-nam-long-quan-12-615.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-122.jpg"
+     "img": "images/kiot/kiot-154.jpg"
    },
    {
-     "id": "kiot-123",
+     "id": "kiot-155",
      "group": 1,
      "title": "Sang nhượng Homestay 5 phòng ngủ + mặt bằng tại Trần Hữu Trang, PN",
      "price": "150 triệu",
@@ -16657,10 +16563,146 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-homestay-5-phong-ngu-mat-bang-tai-tran-huu-trang-pn-631.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-123.jpg"
+     "img": "images/kiot/kiot-155.jpg"
    },
    {
-     "id": "kiot-124",
+     "id": "kiot-156",
+     "group": 1,
+     "title": "Sang nhượng salon tóc 189m2 tại 288 Phạm Văn Hai, Tân Bình",
+     "price": "60 triệu",
+     "priceNum": 60000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp salon tóc đang hoạt động ổn định tại địa chỉ 288 Phạm Văn Hai, Phường Tân Sơn Nhất, TP.HCM. Thông tin chi… · Diện tích 189 m² · thuê Chưa xác nhận/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-salon-toc-189m2-tai-288-pham-van-hai-tan-binh-633.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-156.jpg"
+   },
+   {
+     "id": "kiot-157",
+     "group": 1,
+     "title": "Sang nhượng mặt bằng 3 mặt tiền tại Phường Dĩ An, Bình Dương",
+     "price": "130 triệu",
+     "priceNum": 130000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp mặt bằng vị trí đắc địa với 3 mặt tiền tại Phường Dĩ An. Mặt bằng được thiết kế tiện nghi, bao gồm 2 phòng… · thuê 15 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-mat-bang-3-mat-tien-tai-phuong-di-an-binh-duong-622.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-157.jpg"
+   },
+   {
+     "id": "kiot-158",
+     "group": 1,
+     "title": "Sang nhượng nhà hàng đẹp tại khu Hưng Gia 5, Phú Mỹ Hưng, Quận 7",
+     "price": "250 triệu",
+     "priceNum": 250000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp nhà hàng nằm tại vị trí đắc địa trên đường Bùi Bằng Đoàn, khu Hưng Gia 5, Phú Mỹ Hưng, Quận 7. Thông tin chi… · Diện tích 93 m² · thuê 44 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-nha-hang-dep-tai-khu-hung-gia-5-phu-my-hung-quan-7-616.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-158.jpg"
+   },
+   {
+     "id": "kiot-159",
+     "group": 1,
+     "title": "Sang nhượng phòng khám nha khoa tại TP. Thủ Đức, giá 90 triệu",
+     "price": "90 triệu",
+     "priceNum": 90000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp phòng khám nha khoa tại khu vực TP. Thủ Đức do không còn thời gian quản lý. Thông tin chi tiết: - Hiện trạng:… · thuê Chưa xác nhận/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-phong-kham-nha-khoa-tai-tp-thu-duc-gia-90-trieu-618.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-159.jpg"
+   },
+   {
+     "id": "kiot-160",
+     "group": 1,
+     "title": "Sang nhượng quán ăn sáng kết hợp nhậu mặt tiền Tây Thạnh, Tân Phú",
+     "price": "200 triệu",
+     "priceNum": 200000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán ăn sáng kết hợp mô hình nhậu buổi tối tại mặt tiền đường Tây Thạnh, Quận Tân Phú. Vị trí đắc địa, ngay… · Diện tích 100 m² · thuê 18 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-an-sang-ket-hop-nhau-mat-tien-tay-thanh-tan-phu-625.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-160.jpg"
+   },
+   {
+     "id": "kiot-161",
+     "group": 1,
+     "title": "Sang nhượng quán Buffet 1000m2 mặt tiền Phan Văn Hớn, Hóc Môn",
+     "price": "450 triệu",
+     "priceNum": 450000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán Buffet 2 Muối tại số 7 Phan Văn Hớn, xã Bà Điểm, huyện Hóc Môn do không có người quản lý. Thông tin chi… · Diện tích 1.000 m² · thuê 35 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-buffet-1000m2-mat-tien-phan-van-hon-hoc-mon-658.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-161.jpg"
+   },
+   {
+     "id": "kiot-162",
+     "group": 1,
+     "title": "Sang nhượng quán cafe tại 72/4 Phan Đăng Lưu, Phú Nhuận",
+     "price": "154 triệu",
+     "priceNum": 154000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng gấp quán cafe đang hoạt động ổn định tại địa chỉ 72/4 Phan Đăng Lưu, Phường Đức Nhuận, Quận Phú Nhuận do bận công… · thuê 12 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-tai-72-4-phan-dang-luu-phu-nhuan-628.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-162.jpg"
+   },
+   {
+     "id": "kiot-163",
+     "group": 1,
+     "title": "Sang nhượng quán cafe tại Phường Tây Nam, TP.HCM - Giá 15 triệu",
+     "price": "15 triệu",
+     "priceNum": 15000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang gấp quán cafe tại Phường Tây Nam, TP.HCM do không có thời gian quản lý. Quán nằm ở vị trí đắc địa gần chợ và khu công… · thuê 7 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "11/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-tai-phuong-tay-nam-tp-hcm-gia-15-trieu-624.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-163.jpg"
+   },
+   {
+     "id": "kiot-164",
      "group": 1,
      "title": "Sang nhượng quán ăn 45m² — Phường Phước Long, Thủ Đức, TP.HCM",
      "price": "65 triệu",
@@ -16674,10 +16716,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-an-tai-phuong-phuoc-long-tp-hcm-gia-65-trieu-552.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-124.jpg"
+     "img": "images/kiot/kiot-164.jpg"
    },
    {
-     "id": "kiot-125",
+     "id": "kiot-165",
      "group": 1,
      "title": "Sang nhượng spa biệt thự 120m² — Đặng Văn Ngữ, Phú Nhuận, TP.HCM",
      "price": "450 triệu",
@@ -16691,10 +16733,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-biet-thu-120m2-tai-dang-van-ngu-phu-nhuan-546.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-125.jpg"
+     "img": "images/kiot/kiot-165.jpg"
    },
    {
-     "id": "kiot-126",
+     "id": "kiot-166",
      "group": 1,
      "title": "Sang nhượng cửa hàng tạp hóa — phố Hoa Bằng, Cầu Giấy, Hà Nội",
      "price": "500 triệu",
@@ -16708,10 +16750,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-cua-hang-tap-hoa-tai-pho-hoa-bang-cau-giay-539.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-126.jpg"
+     "img": "images/kiot/kiot-166.jpg"
    },
    {
-     "id": "kiot-127",
+     "id": "kiot-167",
      "group": 1,
      "title": "Sang nhượng quán cafe 250m2 tại 102 Trần Hoàng Na, Ninh Kiều, Cần Thơ",
      "price": "450 triệu",
@@ -16725,10 +16767,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-250m2-tai-102-tran-hoang-na-ninh-kieu-can-tho-575.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-127.jpg"
+     "img": "images/kiot/kiot-167.jpg"
    },
    {
-     "id": "kiot-128",
+     "id": "kiot-168",
      "group": 1,
      "title": "Sang nhượng Spa tại Bờ kè Mạc Thiên Tích, Ninh Kiều, Cần Thơ",
      "price": "60 triệu",
@@ -16742,10 +16784,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-spa-tai-bo-ke-mac-thien-tich-ninh-kieu-can-tho-581.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-128.jpg"
+     "img": "images/kiot/kiot-168.jpg"
    },
    {
-     "id": "kiot-129",
+     "id": "kiot-169",
      "group": 1,
      "title": "Sang nhượng quán bún chả cá tại Hòa Xuân, Đà Nẵng - Giá 55 triệu",
      "price": "55 triệu",
@@ -16759,10 +16801,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-bun-cha-ca-tai-hoa-xuan-da-nang-gia-55-trieu-566.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-129.jpg"
+     "img": "images/kiot/kiot-169.jpg"
    },
    {
-     "id": "kiot-130",
+     "id": "kiot-170",
      "group": 1,
      "title": "Sang nhượng quán cafe 24h mặt tiền Nguyễn Văn Cừ, Cần Thơ",
      "price": "360 triệu",
@@ -16776,10 +16818,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-24h-mat-tien-nguyen-van-cu-can-tho-578.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-130.jpg"
+     "img": "images/kiot/kiot-170.jpg"
    },
    {
-     "id": "kiot-131",
+     "id": "kiot-171",
      "group": 1,
      "title": "Sang nhượng quán bida mặt tiền đường Nguyễn Lương Bằng, Đà Nẵng",
      "price": "220 triệu",
@@ -16793,10 +16835,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-bida-mat-tien-duong-nguyen-luong-bang-da-nang-573.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-131.jpg"
+     "img": "images/kiot/kiot-171.jpg"
    },
    {
-     "id": "kiot-132",
+     "id": "kiot-172",
      "group": 1,
      "title": "Cơ hội kinh doanh giáo dục: Sang nhượng Trường Mầm non tại Thanh Xuân",
      "price": "2,40 tỷ",
@@ -16812,7 +16854,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-133",
+     "id": "kiot-173",
      "group": 1,
      "title": "Sang mặt bằng kinh doanh trung tâm Ninh Kiều, Cần Thơ - Giá 12tr",
      "price": "12 triệu",
@@ -16826,10 +16868,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-mat-bang-kinh-doanh-trung-tam-ninh-kieu-can-tho-gia-12tr-576.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-133.jpg"
+     "img": "images/kiot/kiot-173.jpg"
    },
    {
-     "id": "kiot-134",
+     "id": "kiot-174",
      "group": 1,
      "title": "Sang nhượng quán cơm tại 321 Trần Đại Nghĩa, Ngũ Hành Sơn, Đà Nẵng",
      "price": "35 triệu",
@@ -16843,10 +16885,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-com-tai-321-tran-dai-nghia-ngu-hanh-son-da-nang-571.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-134.jpg"
+     "img": "images/kiot/kiot-174.jpg"
    },
    {
-     "id": "kiot-135",
+     "id": "kiot-175",
      "group": 1,
      "title": "Sang nhượng tiệm giặt sấy gần ĐH Tây Đô, đường Trần Chiên, Cần Thơ",
      "price": "65 triệu",
@@ -16860,10 +16902,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-giat-say-gan-dh-tay-do-duong-tran-chien-can-tho-582.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cần Thơ",
-     "img": "images/kiot/kiot-135.jpg"
+     "img": "images/kiot/kiot-175.jpg"
    },
    {
-     "id": "kiot-136",
+     "id": "kiot-176",
      "group": 1,
      "title": "Sang nhượng tiệm giặt sấy tại Phường Tân Thành, TP. Cà Mau",
      "price": "47 triệu",
@@ -16877,10 +16919,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-tiem-giat-say-tai-phuong-tan-thanh-tp-ca-mau-586.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Cà Mau",
-     "img": "images/kiot/kiot-136.jpg"
+     "img": "images/kiot/kiot-176.jpg"
    },
    {
-     "id": "kiot-137",
+     "id": "kiot-177",
      "group": 1,
      "title": "Sang nhượng quán bar – lounge Nhật đang hoạt động 3 tầng — Phan Bội Châu, Hải Châu, Đà Nẵng",
      "price": "750 triệu",
@@ -16894,10 +16936,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Da-Nang/Sang-nhuong-quan-bar-lounge-nhat-dang-hoat-dong-3-tang-quan-hai-chau-da-nang-c15-raovat-34597643.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-137.jpg"
+     "img": "images/kiot/kiot-177.jpg"
    },
    {
-     "id": "kiot-138",
+     "id": "kiot-178",
      "group": 1,
      "title": "Sang nhượng quán cafe Take a Break full setup — Thành Công, Hà Nội",
      "price": "Thỏa thuận",
@@ -16913,7 +16955,7 @@ window.V20_DATA = {
      "prov": "Hà Nội"
    },
    {
-     "id": "kiot-139",
+     "id": "kiot-179",
      "group": 1,
      "title": "Sang nhượng quán cafe SUNSHINE — phố Ngọc Lân, Từ Sơn, Bắc Ninh",
      "price": "Thỏa thuận",
@@ -16929,7 +16971,7 @@ window.V20_DATA = {
      "prov": "Bắc Ninh"
    },
    {
-     "id": "kiot-140",
+     "id": "kiot-180",
      "group": 1,
      "title": "Sang nhượng tiệm nail/mi/gội đầu 4x9m — Quận 1, TP.HCM",
      "price": "45 triệu (thương lượng)",
@@ -16945,7 +16987,7 @@ window.V20_DATA = {
      "prov": "TP.HCM"
    },
    {
-     "id": "kiot-141",
+     "id": "kiot-181",
      "group": 1,
      "title": "Sang gấp nguyên tiệm nail – mi – gội đầu 26m² — 71/9 Cộng Hòa, Tân Bình, TP. Hồ Chí Minh",
      "price": "170 triệu",
@@ -16959,10 +17001,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/TP-HCM/Sang-gap-nguyen-tiem-nail-mi-goi-dau-phuong-13-quan-tan-binh-tphcm-c15-raovat-34596531.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-141.jpg"
+     "img": "images/kiot/kiot-181.jpg"
    },
    {
-     "id": "kiot-142",
+     "id": "kiot-182",
      "group": 1,
      "title": "Sang nhượng quán cơm - phở 50m² — Nguyễn Ngọc Nại, Thanh Xuân, Hà Nội",
      "price": "150 triệu",
@@ -16976,10 +17018,10 @@ window.V20_DATA = {
      "url": "https://alonhadat.com.vn/sang-nhuong-quan-com-pho-dang-kinh-doanh-dong-khach-thanh-xuan-ha-noi-19128784.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-142.jpg"
+     "img": "images/kiot/kiot-182.jpg"
    },
    {
-     "id": "kiot-143",
+     "id": "kiot-183",
      "group": 1,
      "title": "Sang Nhượng Quán Cafe Tại Nguyễn Văn Rốp, Tây Ninh - Vào Là Kinh Doanh",
      "price": "250 triệu",
@@ -16993,10 +17035,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-tai-nguyen-van-rop-tay-ninh-vao-la-kinh-doanh-487.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Tây Ninh",
-     "img": "images/kiot/kiot-143.jpg"
+     "img": "images/kiot/kiot-183.jpg"
    },
    {
-     "id": "kiot-144",
+     "id": "kiot-184",
      "group": 1,
      "title": "Sang nhượng mặt bằng 150m² — đường Phạm Hồng Thái, Chơn Thành, Đồng Nai",
      "price": "80 triệu",
@@ -17010,10 +17052,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Binh-Phuoc/Sang-nhuong-mat-bang-pham-hong-thai-chon-thanh-c15-raovat-34595404.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Nai",
-     "img": "images/kiot/kiot-144.jpg"
+     "img": "images/kiot/kiot-184.jpg"
    },
    {
-     "id": "kiot-145",
+     "id": "kiot-185",
      "group": 1,
      "title": "Sang nhượng gấp SPA tâm huyết 300m2 tại 65 Hùng Vương, Tiền Giang",
      "price": "50 triệu",
@@ -17027,10 +17069,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-gap-spa-tam-huyet-300m2-tai-65-hung-vuong-tien-giang-474.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đồng Tháp",
-     "img": "images/kiot/kiot-145.jpg"
+     "img": "images/kiot/kiot-185.jpg"
    },
    {
-     "id": "kiot-146",
+     "id": "kiot-186",
      "group": 1,
      "title": "Sang nhượng quán cafe view hồ Văn Quán, Hà Đông, diện tích 200m2",
      "price": "50 triệu",
@@ -17044,10 +17086,10 @@ window.V20_DATA = {
      "url": "https://sangnhuong.top/tin/sang-nhuong-quan-cafe-view-ho-van-quan-ha-dong-dien-tich-200m2-463.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-146.jpg"
+     "img": "images/kiot/kiot-186.jpg"
    },
    {
-     "id": "kiot-147",
+     "id": "kiot-187",
      "group": 1,
      "title": "Sang nhượng mặt bằng kinh doanh 36m² — 48 Thống Nhất, Nha Trang, Khánh Hòa",
      "price": "75 triệu",
@@ -17061,10 +17103,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Khanh-Hoa/Sang-nhuo-ng-ma-t-ba-ng-kinh-doanh-ta-i-48-tho-ng-nha-t-nha-trang-c15-raovat-34592979.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Khánh Hòa",
-     "img": "images/kiot/kiot-147.jpg"
+     "img": "images/kiot/kiot-187.jpg"
    },
    {
-     "id": "kiot-148",
+     "id": "kiot-188",
      "group": 1,
      "title": "Sang nhượng quán 608 Âu Cơ — Liên Chiểu, Đà Nẵng",
      "price": "50 triệu",
@@ -17078,10 +17120,10 @@ window.V20_DATA = {
      "url": "https://alonhadat.com.vn/gia-tot-sang-nhuong-quan-608-au-co-lien-chieu-da-nang-khu-dan-cu-dong-duc-19105741.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Đà Nẵng",
-     "img": "images/kiot/kiot-148.jpg"
+     "img": "images/kiot/kiot-188.jpg"
    },
    {
-     "id": "kiot-149",
+     "id": "kiot-189",
      "group": 1,
      "title": "Sang mặt bằng nail 32m² — đường Tân Sơn Nhì, Tân Phú, TP. Hồ Chí Minh",
      "price": "48 triệu",
@@ -17095,10 +17137,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/TP-HCM/Sang-mat-bang-nail-tai-tan-son-nhi-ho-chi-minh-gia-tot-c15-raovat-34591404.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-149.jpg"
+     "img": "images/kiot/kiot-189.jpg"
    },
    {
-     "id": "kiot-150",
+     "id": "kiot-190",
      "group": 1,
      "title": "Sang nhượng quán bánh mì đang hoạt động hơn 5 năm 20m² — phố Vĩnh Hưng, Hoàng Mai, Hà Nội",
      "price": "35 triệu",
@@ -17112,10 +17154,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Do-khong-co-tho-i-gian-qua-n-ly-mi-nh-ca-n-sang-nhuo-ng-qua-n-ba-nh-my-dang-hoa-t-do-ng-hon-5-c15-raovat-34589900.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-150.jpg"
+     "img": "images/kiot/kiot-190.jpg"
    },
    {
-     "id": "kiot-151",
+     "id": "kiot-191",
      "group": 1,
      "title": "Sang nhượng salon tóc 32m² — 115 Phú Tân, Thủ Dầu Một, TP. Hồ Chí Minh",
      "price": "50 triệu",
@@ -17129,10 +17171,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Binh-Duong/Sang-nhuong-salon-toc-gia-cuc-tot-tai-phu-tan-thu-dau-mot-binh-duong-c15-raovat-34589473.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-151.jpg"
+     "img": "images/kiot/kiot-191.jpg"
    },
    {
-     "id": "kiot-152",
+     "id": "kiot-192",
      "group": 1,
      "title": "Sang nhượng tiệm gội đầu dưỡng sinh giá cực tốt tại Tân Bình, TP. Hồ Chí Minh",
      "price": "250 triệu",
@@ -17146,10 +17188,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/TP-HCM/Sang-nhuong-tiem-goi-dau-duong-sinh-gia-cuc-tot-tai-tan-binh-ho-chi-minh-c15-raovat-34589446.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-152.jpg"
+     "img": "images/kiot/kiot-192.jpg"
    },
    {
-     "id": "kiot-153",
+     "id": "kiot-193",
      "group": 1,
      "title": "Chính chủ sang nhượng cửa hàng cơm trứng lốc xoáy — Lê Mao kéo dài, TP. Vinh, Nghệ An",
      "price": "200 triệu",
@@ -17163,10 +17205,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Nghe-An/Chinh-chu-sang-nhuong-cua-hang-com-trung-loc-xoay-le-mao-keo-dai-tp-vinh-nghe-an-c15-raovat-34589423.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Nghệ An",
-     "img": "images/kiot/kiot-153.jpg"
+     "img": "images/kiot/kiot-193.jpg"
    },
    {
-     "id": "kiot-154",
+     "id": "kiot-194",
      "group": 1,
      "title": "Sang nhượng spa 4 tầng vị trí đẹp tại Hạc Thành, TP. Thanh Hóa",
      "price": "290 triệu",
@@ -17180,10 +17222,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Thanh-Hoa/Sang-nhuong-spa-4-tang-vi-tri-dep-tai-hac-thanh-thanh-pho-thanh-hoa-c15-raovat-34589405.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Thanh Hóa",
-     "img": "images/kiot/kiot-154.jpg"
+     "img": "images/kiot/kiot-194.jpg"
    },
    {
-     "id": "kiot-155",
+     "id": "kiot-195",
      "group": 1,
      "title": "Sang lại tiệm nối mi 99 Lê Khôi, phường Lê Lợi, TP. Vinh, Nghệ An",
      "price": "180 triệu",
@@ -17197,10 +17239,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Nghe-An/Sang-lai-tiem-noi-mi-99-le-khoi-phuong-le-loi-tp-vinh-nghe-an-c15-raovat-34586744.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Nghệ An",
-     "img": "images/kiot/kiot-155.jpg"
+     "img": "images/kiot/kiot-195.jpg"
    },
    {
-     "id": "kiot-156",
+     "id": "kiot-196",
      "group": 1,
      "title": "Sang nhượng cửa hàng hai mặt tiền, lô góc tại Đặng Văn Ngữ, Hà Nội",
      "price": "47 triệu",
@@ -17214,10 +17256,10 @@ window.V20_DATA = {
      "url": "https://rongbay.com/Ha-Noi/Sang-nhuo-ng-cu-a-ha-ng-hai-ma-t-tie-n-lo-go-c-ta-i-da-ng-van-ngu-ha-no-i-c15-raovat-34586587.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Hà Nội",
-     "img": "images/kiot/kiot-156.jpg"
+     "img": "images/kiot/kiot-196.jpg"
    },
    {
-     "id": "kiot-157",
+     "id": "kiot-197",
      "group": 1,
      "title": "Thanh lý toàn bộ cửa hàng đồ gia dụng — Hòa Thành, Tây Ninh",
      "price": "Thỏa thuận",
@@ -17233,7 +17275,7 @@ window.V20_DATA = {
      "prov": "Tây Ninh"
    },
    {
-     "id": "kiot-158",
+     "id": "kiot-198",
      "group": 1,
      "title": "Sang mặt bằng 24m² hẻm xe tải — 489A/21/3 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM",
      "price": "25 triệu",
@@ -17247,10 +17289,10 @@ window.V20_DATA = {
      "url": "https://thegioisangnhuong.vn/chi-tiet/sang-mat-bang-tai-phu-nhuan-hem-xe-tai-489a-21-3-huynh-van-banhid-3384",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP.HCM",
-     "img": "images/kiot/kiot-158.jpg"
+     "img": "images/kiot/kiot-198.jpg"
    },
    {
-     "id": "kiot-159",
+     "id": "kiot-199",
      "group": 1,
      "title": "Sang nhượng tiệm giặt Trần Hưng Đạo — Đông Hòa, Dĩ An, TP.HCM",
      "price": "120 triệu",
@@ -17264,10 +17306,10 @@ window.V20_DATA = {
      "url": "https://thegioisangnhuong.vn/chi-tiet/sang-tiem-giat-duong-tran-hung-dao-dong-hoa-di-an-binh-duongid-3383",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-159.jpg"
+     "img": "images/kiot/kiot-199.jpg"
    },
    {
-     "id": "kiot-160",
+     "id": "kiot-200",
      "group": 1,
      "title": "Sang nhượng salon hoặc sang riêng mặt bằng quận 12, TP. Hồ Chí Minh",
      "price": "45 triệu",
@@ -17281,7 +17323,7 @@ window.V20_DATA = {
      "url": "https://rongbay.com/TP-HCM/Sang-nhuong-salon-hoac-sang-rieng-mat-bang-quan-12-c15-raovat-34584997.html",
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
-     "img": "images/kiot/kiot-160.jpg"
+     "img": "images/kiot/kiot-200.jpg"
    }
  ],
  "factories": [
@@ -20270,7 +20312,7 @@ window.V20_DATA = {
   {"id": "cl-08", "type": "classesLive", "name": "Bán Hàng Online Đa Kênh — TikTok Shop, Shopee Và Livestream", "provider": "Vietdemy", "price": 1290000, "priceLabel": "Học phí", "province": "Online", "avatar": "images-new/cl-08.jpg", "detail": "Khóa học online 45 bài, 21,8 giờ theo kế hoạch 30 ngày lên đơn đầu tiên: chọn sản phẩm, dựng gian hàng, viết kịch bản video ngắn và tổ chức livestream 60 phút theo kịch bản, kèm khung pháp lý 2026 cho người bán online. Truy cập 12 tháng, có chứng nhận hoàn thành.", "sourceUrl": "https://www.vietdemy.vn/khoa-hoc/ban-hang-online-tiktok-shop-shopee-livestream/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cl-09", "type": "classesLive", "name": "Khóa Học Tự Tin Nói Trước Công Chúng", "provider": "Học viện Đào tạo Kỹ năng Việt Mỹ", "price": 3000000, "priceLabel": "Học phí", "province": "Đà Nẵng", "avatar": "images-new/cl-09.jpg", "detail": "Khóa học 12 buổi, mỗi buổi 2 giờ, lớp tối đa 12 học viên tại Đà Nẵng: rèn giọng nói, tự tin nói trước đám đông, giao tiếp linh hoạt và kỹ năng thuyết trình, trình bày ý kiến trước nhiều người. Giảng viên chính: chuyên gia đào tạo Thanh Hà (hơn 15 năm kinh nghiệm đào tạo kỹ năng mềm).", "sourceUrl": "https://kynangvietmy.com/khoa-hoc-mc-nguoi-lon-viet-my/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cl-10", "type": "classesLive", "name": "Lớp Kỹ Năng Thuyết Trình Hiệu Quả", "provider": "Nhà Văn hóa Phụ nữ TP. Hồ Chí Minh", "price": 1200000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cl-10.jpg", "detail": "Lớp 6 buổi vào các ngày thứ Bảy (9h00–11h30) tại cơ sở Phan Xích Long, Nhà Văn hóa Phụ nữ TP.HCM: rèn sự tự tin khi thuyết trình bài tập trước lớp, phỏng vấn xin việc và thuyết phục đối tác. Lớp mở định kỳ nhiều đợt trong năm (đợt gần nhất khai giảng 10/10/2026).", "sourceUrl": "https://nvhphunu.vn/san-pham/lop-ky-nang-thuyet-trinh-hieu-qua-co-so-1/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
-  {"id": "cl-11", "type": "classesLive", "name": "Livestream Chuẩn Nghề — Kinh Doanh Bền Vững", "provider": "Astralux Education", "price": 5500000, "priceLabel": "Học phí", "province": "Hà Nội", "avatar": "images-new/cl-11.jpg", "detail": "Khóa học offline trực tiếp 6 buổi trong 3 ngày tập trung tại Hà Nội và TP.HCM, lộ trình 5 bước: định vị thương hiệu, xây thương hiệu cá nhân, kỹ năng livestream thực chiến (giọng nói, ngôn từ, kịch bản chốt đơn), định hướng nhân hiệu, thuế và pháp lý cho người bán online. Hỗ trợ 1-1 trong 30 ngày sau khóa, hơn 500 học viên đã học.", "sourceUrl": "https://livestream.astralux.vn/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "cl-11", "type": "classesLive", "name": "Livestream Chuẩn Nghề — Kinh Doanh Bền Vững", "provider": "Astralux Education", "price": 5500000, "priceLabel": "Học phí", "province": "Hà Nội", "avatar": "images-new/cl-11.jpg", "detail": "Khóa học offline trực tiếp 6 buổi trong 3 ngày tập trung tại Hà Nội và TP.HCM, lộ trình 5 bước: định vị thương hiệu, xây thương hiệu cá nhân, kỹ năng livestream thực chiến (giọng nói, ngôn từ, kịch bản chốt đơn), định hướng nhân hiệu, thuế và pháp lý cho người bán online. Hỗ trợ 1-1 trong 30 ngày sau khóa, hơn 500 học viên đã học.", "sourceUrl": "https://livestream.astralux.vn/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
 
  ],
  "classesMakeup": [
@@ -20284,7 +20326,7 @@ window.V20_DATA = {
   {"id": "cm-08", "type": "classesMakeup", "name": "Khóa Học Makeup Cá Nhân 1 Kèm 1", "provider": "Seoul Academy", "price": 3500000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cm-08.jpg", "detail": "Khóa makeup cá nhân 5 buổi tại Seoul Academy, học phí khoảng 3.500.000đ, giảng viên hướng dẫn 1 kèm 1 và hỗ trợ mỹ phẩm trong quá trình thực hành.", "sourceUrl": "https://seoulacademy.edu.vn/gia-hoc-makeup-ca-nhan", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cm-09", "type": "classesMakeup", "name": "Khóa Học Trang Điểm Cá Nhân", "provider": "Jong APhuong Academy", "price": 950000, "priceLabel": "Học phí", "province": "Đà Nẵng", "avatar": "images-new/cm-09.jpg", "detail": "Khóa makeup cá nhân 3 buổi tại Jong APhuong Academy Đà Nẵng, lớp tối đa 10 học viên, đội ngũ makeup artist chuyên nghiệp trực tiếp giảng dạy; học phí 1.700.000đ giảm còn 950.000đ.", "sourceUrl": "https://jongaphuong.com/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cm-10", "type": "classesMakeup", "name": "Khóa Học Trang Điểm Cá Nhân Căn Bản", "provider": "Vanmiu Beauty", "price": 3000000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cm-10.jpg", "detail": "Lớp makeup cá nhân căn bản 4 buổi tại Vanmiu Beauty TP.HCM, học phí 3.000.000đ; học viên tự trang điểm đi chơi, đi tiệc cơ bản sau khóa học.", "sourceUrl": "https://vanmiubeauty.com/san-pham", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
-  {"id": "cm-11", "type": "classesMakeup", "name": "Khóa Học Trang Điểm Cá Nhân", "provider": "ANA Beauty Academy", "price": 3000000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cm-11.jpg", "detail": "Khóa học trang điểm tại ANA Beauty Academy TP.HCM, thời lượng 5 buổi, học phí 3.000.000đ đã bao gồm dụng cụ, mỹ phẩm và nguyên liệu thực hành.", "sourceUrl": "https://ana.edu.vn/khoa-hoc/khoa-hoc-trang-diem/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "cm-11", "type": "classesMakeup", "name": "Khóa Học Trang Điểm Cá Nhân", "provider": "ANA Beauty Academy", "price": 3000000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cm-11.jpg", "detail": "Khóa học trang điểm tại ANA Beauty Academy TP.HCM, thời lượng 5 buổi, học phí 3.000.000đ đã bao gồm dụng cụ, mỹ phẩm và nguyên liệu thực hành.", "sourceUrl": "https://ana.edu.vn/khoa-hoc/khoa-hoc-trang-diem/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
 
  ],
  "eventsMarketing": [
@@ -20298,7 +20340,7 @@ window.V20_DATA = {
   {"id": "em-08", "type": "eventsMarketing", "name": "Workshop Affiliate Shopee – Facebook: 3 giờ học cách kiếm tiền từ Affiliate (10/11/2026)", "provider": "PBS Group", "price": 0, "priceLabel": "Phí tham dự", "province": "Online", "avatar": "images-new/em-08.jpg", "detail": "Workshop online miễn phí '3 giờ học cách kiếm tiền từ Affiliate Facebook – Shopee': cách làm content viral trên Facebook, Threads, Shopee Video để kiếm tiền từ affiliate, công thức rải link hiệu quả và cách làm mới cho người làm affiliate TikTok muốn chuyển nền tảng. Diễn giả: Ms. Hường Maruco (làm Affiliate Shopee từ 07/2025, kênh TikTok 150 nghìn follow). Thứ Ba 10/11/2026, 19:30–22:30, học qua Zoom (vào nhóm Zalo nhận link). Do PBS Group tổ chức.", "sourceUrl": "https://affshopeehuongmaruco.pbsgroup.vn/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "em-09", "type": "eventsMarketing", "name": "Performance Ads Day 2026 — AI in Commerce & Marketing (06/11/2026)", "provider": "OneAds Digital", "price": 0, "priceLabel": "Phí tham dự", "province": "TP. Hồ Chí Minh", "avatar": "images-new/em-09.jpg", "detail": "Sự kiện Performance Ads Day 2026 – AI in Commerce & Marketing: cập nhật xu hướng Performance Digital & AI, ứng dụng AI trong quảng cáo, sáng tạo nội dung, thương mại điện tử và vận hành kinh doanh; 2 phiên thảo luận 'Tương lai Performance Ads trong kỷ nguyên AI' và 'Từ AI Ads đến hệ thống tăng trưởng bằng AI & Automation'. Thứ Sáu 06/11/2026, 13:30–17:30 tại Trung tâm Hội nghị Capella Parkview, 3 Đặng Văn Sâm, Phú Nhuận, TP. Hồ Chí Minh. Vé miễn phí. Do OneAds Digital phối hợp cùng Haravan và Lemon Digital tổ chức.", "sourceUrl": "https://www.performanceadsday.com/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "em-10", "type": "eventsMarketing", "name": "Workshop Haravan x iLive: Bứt phá lợi nhuận mùa Lễ Tết với Meta Marketing & AI (23/10/2026)", "provider": "Haravan", "price": 0, "priceLabel": "Phí tham dự", "province": "TP. Hồ Chí Minh", "avatar": "images-new/em-10.jpg", "detail": "Workshop 'Bứt phá lợi nhuận mùa Lễ Tết với Meta Marketing & AI': chiến lược Meta Marketing mùa lễ Tết, quảng cáo Facebook, AI Livestream và phát sóng đa kênh, case study Reels tự động chốt đơn hàng loạt. Diễn giả: chuyên gia Haravan, PMAX, OneAds và iLive. Thứ Sáu 23/10/2026, 09:00–11:30 tại Nina Ecom Center, 180/1 Nguyễn Tất Thành, Quận 4, TP. Hồ Chí Minh. Do Haravan tổ chức (đồng hành: OneAds, iLive, PMAX). Miễn phí tham dự.", "sourceUrl": "https://www.ilive.vn/post/ilive-haravan-workshop-meta-marketing-ai-2026", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
-  {"id": "em-11", "type": "eventsMarketing", "name": "Lớp tập huấn TikTok Shop: Bứt phá doanh số mùa mua sắm cuối năm — Hải Phòng (05/11/2026)", "provider": "TikTok Shop", "price": 0, "priceLabel": "Phí tham dự", "province": "Hải Phòng", "avatar": "images-new/em-11.jpg", "detail": "Lớp tập huấn miễn phí 'Bứt phá doanh số mùa mua sắm cuối năm cùng TikTok Shop': kiến thức thực chiến về livestream bán hàng, mở gian hàng, xây dựng video và tối ưu quảng cáo TikTok Shop cho nhà bán hàng và doanh nghiệp. Thứ Năm 05/11/2026, 14:00–17:00 tại Sở Công Thương thành phố Hải Phòng. Do TikTok Shop phối hợp cùng Meta Ecom và MARS Marketing tổ chức; hơn 120 doanh nghiệp, hợp tác xã và hộ kinh doanh tham dự.", "sourceUrl": "https://dang-ki-su-kien.vercel.app/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "em-11", "type": "eventsMarketing", "name": "Lớp tập huấn TikTok Shop: Bứt phá doanh số mùa mua sắm cuối năm — Hải Phòng (05/11/2026)", "provider": "TikTok Shop", "price": 0, "priceLabel": "Phí tham dự", "province": "Hải Phòng", "avatar": "images-new/em-11.jpg", "detail": "Lớp tập huấn miễn phí 'Bứt phá doanh số mùa mua sắm cuối năm cùng TikTok Shop': kiến thức thực chiến về livestream bán hàng, mở gian hàng, xây dựng video và tối ưu quảng cáo TikTok Shop cho nhà bán hàng và doanh nghiệp. Thứ Năm 05/11/2026, 14:00–17:00 tại Sở Công Thương thành phố Hải Phòng. Do TikTok Shop phối hợp cùng Meta Ecom và MARS Marketing tổ chức; hơn 120 doanh nghiệp, hợp tác xã và hộ kinh doanh tham dự.", "sourceUrl": "https://dang-ki-su-kien.vercel.app/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
 
  ],
  "logistics": [
@@ -20312,7 +20354,7 @@ window.V20_DATA = {
   {"id": "lg-08", "type": "logistics", "name": "Vận Chuyển Chính Ngạch Alibaba — Về 3–5 Ngày", "provider": "Thương Đô Logistics", "price": 8000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images-new/lg-08.jpg", "logisticsOption": "chinh-ngach", "detail": "Chính ngạch Alibaba: lô 200–500kg về Hà Nội 8.000đ/kg (tổng phí = phí dịch vụ + vận chuyển + thuế + VAT); giao 3–5 ngày, phí mua hộ từ 1%.", "sourceUrl": "https://www.thuongdo.com/ship-hang-alibaba", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "lg-09", "type": "logistics", "name": "Ký Gửi Tiểu Ngạch — Về 3–7 Ngày", "provider": "Tín Phong Logistics", "price": 21000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images-new/lg-09.jpg", "logisticsOption": "tieu-ngach", "detail": "Ký gửi Trung–Việt: dưới 70kg về Hà Nội 21.000đ/kg, TP.HCM 26.000đ/kg; thời gian 3–7 ngày, có app theo dõi đơn.", "sourceUrl": "https://tinphonglogistics.com/huong-dan/huong-dan-tao-don-hang-ky-gui.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "lg-10", "type": "logistics", "name": "Mua Hộ Taobao — Phí Order Từ 1%", "provider": "Dimex Logistics", "price": 8000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images-new/lg-10.jpg", "logisticsOption": "mua-ho", "detail": "Mua hộ Taobao/1688 phí order chỉ từ 1%, cước vận chuyển từ 8.000đ/kg; kho Bằng Tường/Đông Hưng/Quảng Châu, về 3–7 ngày.", "sourceUrl": "https://dimexlogistics.com/bao-gia/", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
-  {"id": "lg-11", "type": "logistics", "name": "Mua Hộ 1688/Tmall — Về 2–4 Ngày", "provider": "Lê Phương Logistics", "price": 20000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images-new/lg-11.jpg", "logisticsOption": "mua-ho", "detail": "Mua hộ 1688/Tmall/Aliexpress phí chỉ từ 1%, vận chuyển line TMĐT từ 20.000đ/kg (20.000–24.000đ/kg); hàng về 2–4 ngày.", "sourceUrl": "https://lephuonglogistics.vn/chuyen-muc/tin-tuc/mua-ho-aliexpress", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "lg-11", "type": "logistics", "name": "Mua Hộ 1688/Tmall — Về 2–4 Ngày", "provider": "Lê Phương Logistics", "price": 20000, "priceLabel": "Giá vận chuyển", "priceSuffix": "/kg", "province": "Hà Nội", "avatar": "images-new/lg-11.jpg", "logisticsOption": "mua-ho", "detail": "Mua hộ 1688/Tmall/Aliexpress phí chỉ từ 1%, vận chuyển line TMĐT từ 20.000đ/kg (20.000–24.000đ/kg); hàng về 2–4 ngày.", "sourceUrl": "https://lephuonglogistics.vn/chuyen-muc/tin-tuc/mua-ho-aliexpress", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
 
  ],
  "rentals": [
@@ -20326,7 +20368,7 @@ window.V20_DATA = {
   {"id": "rt-08", "type": "rentals", "name": "Cho Thuê Cửa Hàng Mặt Phố Quỳnh Mai, Hai Bà Trưng — 65m²", "provider": "Chủ nhà", "price": 25000000, "priceLabel": "Giá thuê", "province": "Hà Nội", "avatar": "images-new/rt-08.jpg", "detail": "Cửa hàng 65m², mặt tiền 5,5m, căn góc. Gần trường học các cấp, bệnh viện, chợ và trung tâm mua sắm; khu đông sinh viên và người đi làm.", "sourceUrl": "https://rongbay.com/Ha-Noi/Chinh-chu-cho-thue-cua-hang-mat-pho-quynh-mai-qua-c272-raovat-33848786.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "rt-09", "type": "rentals", "name": "Cho Thuê Cửa Hàng Mặt Phố 90 Xã Đàn, Đống Đa — 65m²", "provider": "Chị Oanh", "price": 26000000, "priceLabel": "Giá thuê", "province": "Hà Nội", "avatar": "images-new/rt-09.jpg", "detail": "Cửa hàng mặt phố Xã Đàn, tầng 1 diện tích 65m², mặt tiền 5m, sử dụng riêng biệt.", "sourceUrl": "https://touch.rongbay.com/Ha-Noi/Chinh-chu-can-cho-thue-cua-hang-mat-pho-65m2-pho-xa-dan-dong-da-ha-noi-c272-raovat-33085451.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "rt-10", "type": "rentals", "name": "Cho Thuê Kho Nhà Xưởng Hoàng Văn Thái, Liên Chiểu — 430m²", "provider": "Chủ nhà", "price": 20000000, "priceLabel": "Giá thuê", "province": "Đà Nẵng", "avatar": "images-new/rt-10.jpg", "detail": "Kho nhà xưởng 430m² tại đường Hoàng Văn Thái, gần quốc lộ, có điện 3 pha, xe container vào được. Phù hợp lưu trữ hàng hóa, sản xuất hoặc làm văn phòng.", "sourceUrl": "https://touch.rongbay.com/Da-Nang/Cho-Thue-Kho-Nha-Xuong-Dien-Tich-430m-tai-Hoang-Van-Thai-Gia-Chi-20-Trieu-c296-raovat-33837168.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
-  {"id": "rt-11", "type": "rentals", "name": "Cho Thuê Kho Xưởng Vĩnh Hưng, Hoàng Mai — 400m²", "provider": "Chủ nhà", "price": 20000000, "priceLabel": "Giá thuê", "province": "Hà Nội", "avatar": "images-new/rt-11.jpg", "detail": "Kho xưởng 400m² tại đường Vĩnh Hưng, phía trước sân rộng quây tôn kín, cuối nhà 2 tầng khoảng 50m². Vừa làm kho xưởng vừa ở được.", "sourceUrl": "https://touch.rongbay.com/Ha-Noi/Cho-thue-kho-xuong-vinh-hung-400m2-gia-chi-20-trieu-thang-c272-raovat-33327475.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "rt-11", "type": "rentals", "name": "Cho Thuê Kho Xưởng Vĩnh Hưng, Hoàng Mai — 400m²", "provider": "Chủ nhà", "price": 20000000, "priceLabel": "Giá thuê", "province": "Hà Nội", "avatar": "images-new/rt-11.jpg", "detail": "Kho xưởng 400m² tại đường Vĩnh Hưng, phía trước sân rộng quây tôn kín, cuối nhà 2 tầng khoảng 50m². Vừa làm kho xưởng vừa ở được.", "sourceUrl": "https://touch.rongbay.com/Ha-Noi/Cho-thue-kho-xuong-vinh-hung-400m2-gia-chi-20-trieu-thang-c272-raovat-33327475.html", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"}
 
  ],
   "movingServices": [
