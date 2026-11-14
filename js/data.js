@@ -11987,7 +11987,7 @@ window.V20_DATA = {
    "img": "https://vieclamlivestream.online/images/bai-viet/gioi-thieu-ver2solution.png",
    "imgSelf": true,
    "pinned": false,
-   "takeaway": "Ver2Solution là hệ sinh thái cho shop nhỏ bán online và livestream: sàn tuyển mẫu livestream toàn quốc với 37 mẫu, 76 shop đang tuyển, 20 lô xả kho, 60 xưởng may và 20 kiot — hồ sơ thật từ bài đăng công khai, liên hệ trực tiếp, giai đoạn 1 miễn phí. Mẫu tìm việc tại danh sách mẫu, shop đăng tin tuyển tại danh sách shop."
+   "takeaway": "Ver2Solution là hệ sinh thái cho shop nhỏ bán online và livestream: sàn tuyển mẫu livestream toàn quốc với 230 mẫu, 270 shop đang tuyển, 71 lô xả kho, 240 xưởng may và 200 kiot — hồ sơ thật từ bài đăng công khai, liên hệ trực tiếp, giai đoạn 1 miễn phí. Mẫu tìm việc tại danh sách mẫu, shop đăng tin tuyển tại danh sách shop."
   },
   {
    "title": "Tuyển idol livestream 2026: lương 15–36 triệu, ở đâu tuyển?",
