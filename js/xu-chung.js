@@ -351,6 +351,26 @@
       if (b && !b.ok && b.code === 'bridge_not_enabled' && submitEl) submitEl.disabled = true;
     });
     if (historyEl) refreshHistory(historyEl);
+    /* v224 (S2-8): theo doi phien — dang xuat thi summary/history ve "Can dang
+       nhap" + khoa nut chuyen; dang nhap lai thi tai lai. Truoc day initXuChung
+       chi chay 1 lan luc tai trang nen du lieu cu ket toi khi tai lai trang. */
+    try {
+      var A = window.V2SAuthUI;
+      if (A && typeof A.onSessionChange === 'function') {
+        A.onSessionChange(function (user) {
+          if (!user) {
+            if (submitEl) submitEl.disabled = true;
+            if (summaryEl) renderSummary(summaryEl, { ok: false }, null, false);
+            if (historyEl) historyEl.innerHTML = '<p>Cần đăng nhập để xem lịch sử xu liên web.</p>';
+            return;
+          }
+          if (summaryEl) refreshSummary(summaryEl).then(function (b) {
+            if (submitEl) submitEl.disabled = !!(b && !b.ok && b.code === 'bridge_not_enabled');
+          });
+          if (historyEl) refreshHistory(historyEl);
+        });
+      }
+    } catch (e) { /* bo qua — van tai 1 lan luc mo trang */ }
     if (form && form.getAttribute('data-v2s-xu-chung-wired') !== '1') {
       form.setAttribute('data-v2s-xu-chung-wired', '1');
       form.addEventListener('submit', function (ev) {

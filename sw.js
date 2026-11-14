@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v223-shell-1'; /* v223: so dem thong nhat (S2-3/4/5/6, S3-15) + han du lieu 30 ngay */
+const CACHE = 'v224-shell-1'; /* v224: badge Hoi dap/Trao doi (S2-7) + dang xuat sach phien (S2-8) + ten header 1 lan (S3-10) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

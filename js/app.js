@@ -3999,6 +3999,7 @@ function initHeaderAuth(){
   // cạnh tên người dùng, dạng "Tên · 10 xu". Lỗi/mất mạng/RPC chưa có
   // thì KHÔNG hiện số dư (không vỡ header, không hiện 0 giả).
   var headerName = null, headerBalance = null;
+  var headerNameUserId = null; // v224 (S3-10): nguoi dung ma headerName dang cho — doi phien thi lookup cu khong duoc ghi de
   var headerBalanceLoading = false; // v114 (P3-4): dang tai so du -> "Ten · …", khong hien 0 gia.
   var headerBalanceSeq = 0; // v117: so thu tu lan doc so du — chi lan doc moi nhat duoc ap dung ket qua.
   var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
@@ -4138,31 +4139,54 @@ function initHeaderAuth(){
   buildUserMenu();
   function apply(user){
     if(user){
-      headerName = headerDisplayName(user) || 'Trang của tôi';
+      headerNameUserId = (user && (user.id || user.email)) || null;
       btn.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
-      renderHeaderLabel();
-      loadHeaderBalance();
-      if(!headerMetaName(user)){
-        /* Chua co ten that trong metadata (dang hien phan truoc @ cua email
-           hoac "Trang của tôi") — hoi them bang profiles.full_name; co ten
-           that thi doi ten (uu tien hon phan truoc @ cua email). Chi doi ten
-           neu nut van dang o trang thai da dang nhap (tranh truong hop nguoi
-           dung dang xuat trong luc cho ket qua). */
+      if(headerMetaName(user)){
+        headerName = headerDisplayName(user) || 'Trang của tôi';
+        renderHeaderLabel();
+        loadHeaderBalance();
+      } else {
+        /* v224 (S3-10): chua co ten that trong metadata thi KHONG render ten
+           email-prefix ngay — truoc day header hien "hdfhyu" roi moi doi thanh
+           "Muse Test" khi profiles.full_name ve (hoac ket o "hdfhyu" neu lookup
+           cham/hong). Giu nut "…" (v166) cho toi khi lookup xong (toi da 3s)
+           roi moi render 1 lan, dung ten. Metadata co ten thi render ngay nhu cu. */
+        headerName = null;
+        var _uid = headerNameUserId;
+        var _settled = false;
+        var _timer = null;
+        function _settle(name){
+          if(_settled || headerNameUserId !== _uid) return;
+          _settled = true;
+          headerName = name || 'Trang của tôi';
+          renderHeaderLabel();
+        }
+        _timer = setTimeout(function(){ _settle(headerDisplayName(user)); }, 3000);
+        loadHeaderBalance();
+        /* Chua co ten that trong metadata — hoi them bang profiles.full_name;
+           co ten that thi doi ten (uu tien hon phan truoc @ cua email). Chi doi
+           ten neu van la cung nguoi dung (tranh truong hop doi phien trong luc
+           cho ket qua). */
         try {
           var M = window.McLivestreamAPI;
           if(M && typeof M.fetchMyProfile === 'function'){
             M.fetchMyProfile().then(function (p) {
-              if(p && p.full_name && String(p.full_name).trim()
-                 && btn.getAttribute('href') === pathPrefix + 'trang-cua-toi.html'){
-                headerName = String(p.full_name).trim();
-                renderHeaderLabel();
-              }
-            }).catch(function () {});
+              clearTimeout(_timer);
+              _settle(p && p.full_name && String(p.full_name).trim()
+                ? String(p.full_name).trim()
+                : headerDisplayName(user));
+            }).catch(function () { clearTimeout(_timer); _settle(headerDisplayName(user)); });
+          } else {
+            clearTimeout(_timer);
+            _settle(headerDisplayName(user));
           }
-        } catch (e) { /* bo qua — giu "Trang của tôi" */ }
+        } catch (e) {
+          clearTimeout(_timer);
+          _settle(headerDisplayName(user));
+        }
       }
     } else {
-      headerName = null; headerBalance = null;
+      headerName = null; headerNameUserId = null; headerBalance = null;
       closeMenu(); // v90 (F): dang xuat tu noi khac cung dong dropdown
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);

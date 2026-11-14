@@ -116,6 +116,7 @@
     chatChannel: null, // kênh Realtime 'admin-room' (mở suốt phiên admin, xem § Trao đổi)
     badgeTimer: null, // tự làm mới badge tin chưa đọc mỗi 60 giây khi không ở tab Trao đổi
     chatUnread: 0, // số tin chưa đọc (tính từ lần xem tab Trao đổi gần nhất)
+    faqNew: 0, // v224 (S2-7): số Hỏi đáp mới — hiện badge ở nút tab Hỏi đáp
     chatMessages: [], // danh sách tin đã tải gần nhất (mới nhất trước)
     chatSeq: 0, // P3 (13/11): số thứ tự lượt loadChat — lượt cũ về sau bị bỏ, không được ghi đè lượt mới
     chatLoading: false, // P3 (13/11): đang có lượt loadChat chạy (appendChatMessage không chen DOM lúc này)
@@ -150,6 +151,26 @@
   };
   var ORDER = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc', 'home', 'total'];
 
+  /* v224 (S2-7): số đếm tổng quan GĐ2 + badge Hỏi đáp — tách khỏi loadOverview
+     để handler đổi trạng thái FAQ cũng refresh được badge. Thiếu RPC (GĐ2 chưa
+     chạy) thì bỏ qua, badge giữ ẩn — không hiện số cũ. */
+  async function refreshOverviewCounts() {
+    try {
+      var ov = await rpc('get_admin_overview');
+      var box = $('qtOverviewCounts');
+      if (box && Array.isArray(ov)) {
+        var m = {};
+        ov.forEach(function (r) { m[r.metric] = Number(r.value) || 0; });
+        box.innerHTML = '<b>Bình luận chờ duyệt:</b> ' + fmt(m.comments_pending) + ' · '
+          + '<b>Hỏi đáp mới:</b> ' + fmt(m.faq_new) + '/' + fmt(m.faq_total) + ' · '
+          + '<b>Xu đã phát (tổng):</b> ' + fmt(m.xu_issued_total) + ' · '
+          + '<b>Xu đã thu hồi:</b> ' + fmt(m.xu_reclaimed_total);
+        box.hidden = false;
+        state.faqNew = m.faq_new || 0;
+        updateFaqBadge();
+      }
+    } catch (e4) { /* GĐ2 chưa chạy — bỏ qua, tab Tổng quan vẫn hiện số online */ }
+  }
   async function loadOverview() {
     var rows = await rpc('get_online_breakdown');
     if (!Array.isArray(rows) || !rows.length) throw new Error('Chưa có dữ liệu online.');
@@ -212,19 +233,7 @@
       if (trEl2) trEl2.textContent = 'Chưa có dữ liệu chuyển xu.';
     }
     // Số đếm tổng quan GĐ2 (không bắt buộc — thiếu thì để trống).
-    try {
-      var ov = await rpc('get_admin_overview');
-      var box = $('qtOverviewCounts');
-      if (box && Array.isArray(ov)) {
-        var m = {};
-        ov.forEach(function (r) { m[r.metric] = Number(r.value) || 0; });
-        box.innerHTML = '<b>Bình luận chờ duyệt:</b> ' + fmt(m.comments_pending) + ' · '
-          + '<b>Hỏi đáp mới:</b> ' + fmt(m.faq_new) + '/' + fmt(m.faq_total) + ' · '
-          + '<b>Xu đã phát (tổng):</b> ' + fmt(m.xu_issued_total) + ' · '
-          + '<b>Xu đã thu hồi:</b> ' + fmt(m.xu_reclaimed_total);
-        box.hidden = false;
-      }
-    } catch (e4) { /* GĐ2 chưa chạy — bỏ qua, tab Tổng quan vẫn hiện số online */ }
+    await refreshOverviewCounts();
     try {
       var cnt = await rpc('get_admin_counts');
       var box2 = $('qtAdminCounts');
@@ -755,6 +764,16 @@
     var b = $('admChatBadge');
     if (!b) return;
     var n = state.chatUnread || 0;
+    if (!state.isAdmin || n <= 0) { b.hidden = true; b.textContent = ''; return; }
+    b.textContent = n > 99 ? '99+' : String(n);
+    b.hidden = false;
+  }
+  /* v224 (S2-7): badge Hỏi đáp mới ở nút tab — truoc day tab Hỏi đáp KHONG
+     CO badge (chi tab Trao đổi co), du so faq_new da co trong get_admin_overview. */
+  function updateFaqBadge() {
+    var b = $('admFaqBadge');
+    if (!b) return;
+    var n = state.faqNew || 0;
     if (!state.isAdmin || n <= 0) { b.hidden = true; b.textContent = ''; return; }
     b.textContent = n > 99 ? '99+' : String(n);
     b.hidden = false;
@@ -1811,8 +1830,14 @@
       var dis = (locked && k !== 'overview') ? ' disabled' : '';
       var title = (locked && k !== 'overview') ? ' title="Chưa chạy migration GĐ1/GĐ2 nên tab này chưa mở được"' : '';
       return '<button type="button" class="adm-tab-btn' + (k === 'overview' ? ' sel' : '') + '" data-adm-tab="' + k + '"' + dis + title + '>' + TABS[k].label
-        + (k === 'chat' ? '<span class="adm-tab-badge" id="admChatBadge" hidden></span>' : '') + '</button>';
+        + (k === 'chat' ? '<span class="adm-tab-badge" id="admChatBadge" hidden></span>' : '')
+        + (k === 'faq' ? '<span class="adm-tab-badge" id="admFaqBadge" hidden></span>' : '') + '</button>';
     }).join('');
+    /* v224 (S2-7): khoi phuc badge tu state ngay sau khi dung nut (span moi tao
+       o trang thai hidden) — truoc day chi refresh 60s / Realtime moi goi lai
+       nen badge mat sau moi lan render lai tab. */
+    updateChatBadge();
+    updateFaqBadge();
     bar.addEventListener('click', function (e) {
       var b = e.target && e.target.closest ? e.target.closest('[data-adm-tab]') : null;
       if (!b || b.disabled) return;
@@ -1884,7 +1909,7 @@
       var qid = sel.getAttribute('data-adm-faq');
       var msg = $('admActionMsg');
       rpc('admin_set_faq_status', { p_id: qid, p_status: sel.value, p_note: null })
-        .then(function () { setMsg(msg, 'Đã đổi trạng thái câu hỏi.'); })
+        .then(function () { setMsg(msg, 'Đã đổi trạng thái câu hỏi.'); refreshOverviewCounts().catch(function () {}); })
         .catch(function (err) { setMsg(msg, friendlyErr(err), true); loadFaq(); });
     });
   }

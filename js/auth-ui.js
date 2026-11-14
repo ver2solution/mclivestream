@@ -853,6 +853,11 @@
       if (box) box.style.display = 'none';
       msg('Đang đăng xuất…');
       showAuthView('login');
+      /* v224 (S2-8): vo hieu cache TRUOC khi signOut — GoTrue ban SIGNED_OUT ngay
+         trong luc signOut, listener toan cuc (Vi, popup online, header) doc
+         getSession() luc do van thay user cu neu cache chua xoa → UI render lai
+         so du cu va khong bao gio chay lai. */
+      invalidateSessionCache();
       try { if (api()) await api().signOut(); } catch (e) {}
       sessionCache = null;
       sessionCacheReady = false;
@@ -864,6 +869,9 @@
       if (typeof cfg.onSessionChange === 'function') {
         try { cfg.onSessionChange(null); } catch (e) {}
       }
+      /* v224 (S2-8): bao lai cho moi listener toan cuc SAU khi cache da sach —
+         showUser() chi goi cfg.onSessionChange, khong goi notifySession. */
+      try { notifySession(null); } catch (e) {}
     });
 
     showUser();
