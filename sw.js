@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v240-shell-1'; /* v240: F-R2-07 cap nhat so cu bai gioi-thieu-ver2solution (bai-viet + js/data.js) — nen v239-shell-1 live */
+const CACHE = 'v241-shell-1'; /* v241: F-R2-03b hien chuoi price lo khi thieu priceNum + bo hang Ngay dang trung o modal loai moi — nen v240-shell-1 live */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

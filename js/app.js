@@ -147,7 +147,13 @@ function lotValueLine(l){
   // khoi phuc fallback theo quy tac 08/11 theo chi dao 10/11. Ten nganh
   // van hien trong o anh ("Xả kho: Quần áo" / "Thu mua: Quần áo").)
   if(l && typeof l.priceNum === 'number' && typeof l.qty === 'number' && l.qty > 0) return fmtVnd(l.priceNum * l.qty) + 'đ';
-  if(l && typeof l.priceNum === 'number' && l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ/' + (l.priceUnit || 'cái');
+  if(l && typeof l.priceNum === 'number' && typeof l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ/' + (l.priceUnit || 'cái');
+  // v241 (F-R2-03b): lo khong co priceNum nhung co chuoi price (vd "Bán lẻ
+  // theo món", "Giá theo thỏa thuận", "Thép phế liệu 15.500–22.000đ/kg")
+  // thi hien dung chuoi do — 9/71 lo dang roi ve nhan loai hang (vd the
+  // lot-06 chi hien "Mỹ phẩm" trong khi nhan loai da co o o anh "Xả kho:
+  // Mỹ phẩm"). Khong tu dat priceNum (gia tung mon nam trong bai goc).
+  if(l && hasReal(l.price)) return esc(l.price);
   if(l && hasReal(l.cat)) return esc(catLabel(l.cat));
   if(l && typeof l.qty === 'number' && l.qty > 0) return fmtVnd(l.qty) + ' cái';
   return 'Chưa cập nhật';
@@ -1285,7 +1291,11 @@ function lotFactoryKiotDetailHTML(kind, item){
     facts += '<div class="fact"><b>Loại hình kinh doanh</b><span>' + kiotTypeLine(item) + '</span></div>';
     facts += '<div class="fact"><b>Giá sang nhượng</b><span>' + esc(item.price || 'Thoả thuận') + '</span></div>';
   }
-  facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(item.date || '') + '</span></div>';
+  // v241 (F-R2-03b): hang "Ngày đăng" chung chi them khi KHONG phai loai
+  // moi — nhanh isNewObj o tren da co hang "Ngày đăng" tu dateAdded; ca
+  // 88 muc moi chi co dateAdded (khong co date) nen hang chung truoc day
+  // hien them 1 hang "Ngày đăng" TRONG (modal Thiet bi hien "NGÀY ĐĂNG ×2").
+  if(!isNewObj) facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(item.date || '') + '</span></div>';
   // Anh dai dien: mau dung anh ho so, shop dung logo, lo/xuong/kiot dung anh bai goc, 5 loai moi dung avatar (bat buoc).
   var photo = kind === 'model' ? photoHTML(item) : kind === 'shop' ? shopLogoHTML(item) : isNewObj ? '<img src="' + esc(item.avatar) + '" alt="Ảnh đại diện của ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : lotFactoryPhotoHTML(item, title);
   // Meta: mau dung tieu de ho so, shop dung mat hang + tinh, lo/xuong/kiot dung meta san co, 5 loai moi dung don vi + tinh.
