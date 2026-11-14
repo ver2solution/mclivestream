@@ -1,0 +1,35 @@
+name: deploy-v228
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v228:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v228 package
+        run: |
+          unzip -o v228.zip
+          ls -l trang-cua-toi.html sw.js
+          sha256sum trang-cua-toi.html sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          test "$(sha256sum trang-cua-toi.html | cut -d' ' -f1)" = "c4f8a67b3eb63191f2bb473c4c4dddbb36d81936cb1f49e1421136295a6c22c7"
+          test "$(sha256sum sw.js | cut -d' ' -f1)" = "a738d6005288c4bf08b0a771de20ce110daef560ca6a2f05025b78a894445151"
+          grep -Fq "v228 (L9)" trang-cua-toi.html
+          grep -Fq "toIsoDate" trang-cua-toi.html
+          grep -Fq "v228-shell-1" sw.js
+      - name: Commit v228 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add trang-cua-toi.html sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v228 L9 handler dan ngay sinh DD/MM/YYYY; trang-cua-toi.html + sw.js CACHE v228-shell-1"
+            git push
+          fi
