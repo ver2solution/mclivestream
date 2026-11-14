@@ -4353,10 +4353,34 @@ function initArticleComments(){
   if(typeof document === 'undefined' || !document.querySelector) return;
   try {
     if (String(location.pathname || '').indexOf('/bai-viet/') === -1) return;
+    var slug = String(location.pathname || '').split('/').pop() || '';
+    // v250 (N22): them nut Thich vao hang chia se tren cung cua trang bai
+    // chi tiet — truoc day chi the tin o danh sach (newsCardHTML) moi co
+    // nut Thich (pointsButtonsHTML), trang bai chi co Chia se/Ghim/Binh
+    // luan. Dung chung co che diem: nut data-v2s-like nam trong
+    // .v2s-points-row (target-type article, target-id = ten file .html
+    // nhu articleRef/mountPointsDetail) nen handler uy quyen o
+    // initPointsUI goi awardInteraction('like',...) + markLiked nhu cu,
+    // khong can handler moi. Chi them nut Thich (khong them Chia se/Ghim
+    // vi trang bai da co san). Chen dau hang .share-row tren cung.
+    try {
+      var shareRow = document.querySelector('.share-row');
+      if (shareRow && !shareRow._v2sLikeAdded && slug) {
+        shareRow._v2sLikeAdded = true;
+        var liked = (typeof likedToday === 'function') ? likedToday('article', slug) : false;
+        var row = document.createElement('span');
+        row.className = 'v2s-points-row';
+        row.setAttribute('data-v2s-target-type', 'article');
+        row.setAttribute('data-v2s-target-id', slug);
+        row.innerHTML = '<button class="btn btn-ghost btn-sm' + (liked ? ' v2s-liked' : '') + '" type="button" data-v2s-like' + (liked ? ' disabled aria-pressed="true"' : '') + '>' + (liked ? '👍 Đã thích' : '👍 Thích · +1') + '</button>'
+          + '<span class="v2s-points-msg" role="status"></span>';
+        if (shareRow.firstChild) shareRow.insertBefore(row, shareRow.firstChild);
+        else shareRow.appendChild(row);
+      }
+    } catch (e2) { /* bo qua — trang bai van doc duoc, chi thieu nut Thich */ }
     var shareBox = document.querySelector('.share-box');
     if (!shareBox || shareBox._v2sCommentsAdded) return;
     shareBox._v2sCommentsAdded = true;
-    var slug = String(location.pathname || '').split('/').pop() || '';
     if (!slug) return;
     var wrap = document.createElement('div');
     wrap.className = 'v2s-article-comments';
