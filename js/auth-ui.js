@@ -664,16 +664,22 @@
             invalidateSessionCache(); // v165: vo hieu cache phien cu truoc khi showUser() doc
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
             // v111 (N1, tiep): luu lien he + 3 o ho so vao localStorage
-            // 'v2s_signup_prefs' (gop voi ban dang-ky.html da luu) de
-            // trang-cua-toi dien san ca SDT + email lien he khi tao ho so.
+            // de trang-cua-toi dien san ca SDT + email lien he khi tao
+            // ho so. v221 (L1): ghi vao khoa RIENG theo userId
+            // ('v2s_signup_prefs_<userId>'), object du 5 truong, KHONG
+            // merge — khoa chung cu lam 2 user dung chung 1 trinh duyet
+            // doc nham SDT/email cua nhau. Khoa chung van ghi de ban
+            // cu (trang-cua-toi chi dung lam du phong khi email khop).
             try {
-              var prefs = {};
-              try { prefs = JSON.parse(localStorage.getItem('v2s_signup_prefs') || '{}') || {}; } catch (e2) { prefs = {}; }
-              prefs.workLocation = workLocation || prefs.workLocation || '';
-              prefs.desiredField = desiredField || prefs.desiredField || '';
-              prefs.priorityField = priorityField || prefs.priorityField || '';
-              prefs.phoneZalo = normalizePhone(phone);
-              prefs.contactEmail = email;
+              var prefs = {
+                workLocation: workLocation || '',
+                desiredField: desiredField || '',
+                priorityField: priorityField || '',
+                phoneZalo: normalizePhone(phone),
+                contactEmail: email
+              };
+              var _uid = (res.session && res.session.user && res.session.user.id) ? String(res.session.user.id) : '';
+              if (_uid) { try { localStorage.setItem('v2s_signup_prefs_' + _uid, JSON.stringify(prefs)); } catch (e2) {} }
               localStorage.setItem('v2s_signup_prefs', JSON.stringify(prefs));
             } catch (e) { /* bo qua — chi la prefill, dang ky van xong */ }
             // v111 (header "0 xu"): DOI awardRegistration() tra ve TRUOC

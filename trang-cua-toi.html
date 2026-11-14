@@ -185,6 +185,7 @@
   var form=document.getElementById('myProfileForm'), status=document.getElementById('myStatus'), msg=document.getElementById('myFormMsg');
   function ferr(e, context){ if(window.McLivestreamAPI && McLivestreamAPI.friendlyError) return McLivestreamAPI.friendlyError(e, context); return 'Đã có lỗi xảy ra, hãy thử lại sau.'; }
   var existing=null;
+  var currentUser=null; /* v221 (L1): user dang xem form — prefill chi doc prefs cua user nay */
   function val(id){var el=document.getElementById(id); return el?el.value.trim():'';}
   function set(id,v){var el=document.getElementById(id); if(el&&v!=null) el.value=v;}
   /* v97: dien lai form tu doi tuong ho so (dung chung cho init() va sau
@@ -210,10 +211,19 @@
   }
   /* v99 (§1b): dien san 3 o ho so tu thong tin dang ky (localStorage
      'v2s_signup_prefs') khi ho so server chua co gia tri — dang ky chi
-     dien truoc, sua ho so ghi de sau; khong bao gio ghi de du lieu server. */
+     dien truoc, sua ho so ghi de sau; khong bao gio ghi de du lieu server.
+     v221 (L1): doc khoa RIENG 'v2s_signup_prefs_<userId>' truoc; chi
+     dung khoa chung lam du phong khi shared.contactEmail === email cua
+     currentUser (nguoi dung cu, dang ky truoc v221). */
   function prefillFromSignup(){
     var prefs = null;
-    try { prefs = JSON.parse(localStorage.getItem('v2s_signup_prefs') || 'null'); } catch (e) { prefs = null; }
+    var uid = (currentUser && currentUser.id) ? String(currentUser.id) : '';
+    try { if (uid) prefs = JSON.parse(localStorage.getItem('v2s_signup_prefs_' + uid) || 'null'); } catch (e) { prefs = null; }
+    if (!prefs) {
+      var shared = null;
+      try { shared = JSON.parse(localStorage.getItem('v2s_signup_prefs') || 'null'); } catch (e2) { shared = null; }
+      if (shared && currentUser && currentUser.email && shared.contactEmail === currentUser.email) prefs = shared;
+    }
     if(!prefs) return;
     if(!val('myWorkLocation') && prefs.workLocation) set('myWorkLocation', prefs.workLocation);
     if(!val('myDesiredField') && prefs.desiredField) set('myDesiredField', prefs.desiredField);
@@ -259,6 +269,7 @@
       return;
     }
     initialized=true;
+    currentUser = session.user; /* v221 (L1): ghi nho user de prefill doc dung khoa prefs */
     status.textContent='Đã đăng nhập: '+session.user.email;
     form.style.display='block';
     // v124: mục Tin đăng của tôi (lô/xưởng/kiot) — chạy song song, không
@@ -297,11 +308,17 @@
         window.V2SAuthUI.onSessionChange(function (user) {
           if (!user || user.id === session.user.id) return;
           session = { user: user };
+          currentUser = user; /* v221 (L1): doi user thi prefill phai doc khoa cua user moi */
           status.textContent = 'Đã đăng nhập: ' + user.email;
           McLivestreamAPI.fetchMyProfile().then(function (p) {
             existing = p;
+            /* v221 (L1): xoa sach form cu truoc khi dien du lieu user moi —
+               neu khong, o nao ho so moi khong co (vd SDT) se giu nguyen
+               gia tri cua user cu. form.reset() an toan: moi input/select
+               deu khong co value mac dinh trong HTML. */
+            form.reset();
             if (p) { fillForm(p); status.textContent = 'Đã đăng nhập: ' + user.email + ' · Trạng thái hồ sơ hiện tại: ' + (p.moderation_status || 'pending'); }
-            else { status.textContent = 'Đã đăng nhập: ' + user.email + ' · Chưa có hồ sơ, hãy điền form dưới đây.'; }
+            else { prefillFromSignup(); status.textContent = 'Đã đăng nhập: ' + user.email + ' · Chưa có hồ sơ, hãy điền form dưới đây.'; }
             try { if (window.V2SClaim && typeof window.V2SClaim.initMyPageClaim === 'function') window.V2SClaim.initMyPageClaim(session, p ? p.full_name : ''); } catch (e2) {}
           }, function () { status.textContent = 'Đã đăng nhập: ' + user.email; });
         });

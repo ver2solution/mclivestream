@@ -52,8 +52,13 @@
 <script>
 /* v99 (§1b): luu 3 o ho so dang ky vao localStorage de trang-cua-toi
    dien san khi tao ho so (dong bo 2 noi qua cung 1 ho so). Chi luu
-   tren may nguoi dung, khong gui di dau. */
-(function(){var f=document.getElementById('authSignUp');if(!f)return;f.addEventListener('submit',function(){try{var v=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};var prefs={workLocation:v('authSuWorkLocation'),desiredField:v('authSuDesiredField'),priorityField:v('authSuPriorityField')};if(prefs.workLocation||prefs.desiredField||prefs.priorityField)localStorage.setItem('v2s_signup_prefs',JSON.stringify(prefs));}catch(e){}});})();
+   tren may nguoi dung, khong gui di dau. v221 (L1/MC-F3): MERGE chu
+   khong ghi de — doc prefs cu, chi cap nhat 3 truong khi co gia tri,
+   giu nguyen phoneZalo/contactEmail khi dang ky that bai; ghi them
+   contactEmail tu o authSuEmail; neu email doi khac contactEmail da
+   luu thi xoa phoneZalo (chong ghep SDT nguoi nay voi email nguoi
+   khac). */
+(function(){var f=document.getElementById('authSignUp');if(!f)return;f.addEventListener('submit',function(){try{var v=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};var prefs={};try{prefs=JSON.parse(localStorage.getItem('v2s_signup_prefs')||'{}')||{};}catch(e){prefs={};}var wl=v('authSuWorkLocation'),df=v('authSuDesiredField'),pf=v('authSuPriorityField'),em=v('authSuEmail');if(wl)prefs.workLocation=wl;if(df)prefs.desiredField=df;if(pf)prefs.priorityField=pf;if(em&&prefs.contactEmail&&em!==prefs.contactEmail){delete prefs.phoneZalo;}if(em)prefs.contactEmail=em;if(prefs.workLocation||prefs.desiredField||prefs.priorityField||prefs.contactEmail)localStorage.setItem('v2s_signup_prefs',JSON.stringify(prefs));}catch(e){}});})();
 </script>
 <p class="auth-note">Sau khi đăng ký, bạn điền tiếp hồ sơ (Trang của tôi / Hồ sơ shop) với các thông tin bắt buộc theo bộ lọc — tỉnh, lĩnh vực, giờ làm, lương — để hồ sơ hiện lên và được tìm thấy. Thông tin liên hệ (Số điện thoại/Zalo, email) dùng để xác nhận quyền sở hữu hồ sơ và cộng xu thưởng cho tài khoản của bạn.</p>
 <p style="font-size:13px">Sau khi đăng ký xong, bạn đăng nhập ngay để điền hồ sơ — hiện không cần xác nhận qua email.</p>
