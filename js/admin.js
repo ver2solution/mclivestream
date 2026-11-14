@@ -117,6 +117,8 @@
     badgeTimer: null, // tự làm mới badge tin chưa đọc mỗi 60 giây khi không ở tab Trao đổi
     chatUnread: 0, // số tin chưa đọc (tính từ lần xem tab Trao đổi gần nhất)
     chatMessages: [], // danh sách tin đã tải gần nhất (mới nhất trước)
+    chatSeq: 0, // P3 (13/11): số thứ tự lượt loadChat — lượt cũ về sau bị bỏ, không được ghi đè lượt mới
+    chatLoading: false, // P3 (13/11): đang có lượt loadChat chạy (appendChatMessage không chen DOM lúc này)
     tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
     usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
@@ -656,11 +658,17 @@
   async function loadChat() {
     var wrap = $('admChatList');
     if (!wrap) return;
+    /* P3 (13/11): 2 lượt loadChat chồng nhau (timer 60s + bấm Làm mới/gửi tin/
+       mở tab) thì lượt CHẬM (bản cũ) có thể về SAU và ghi đè bản mới —
+       khung chat hiện bản lẫn. Đánh số thứ tự: chỉ lượt mới nhất được render. */
+    var seq = ++state.chatSeq;
+    state.chatLoading = true;
     var wasBottom = chatNearBottom(wrap);
     var prevTop = wrap.scrollTop;
     wrap.innerHTML = '<p>Đang tải…</p>';
     try {
       var list = await rpc('get_admin_comments', { p_limit: 50, p_offset: 0 });
+      if (seq !== state.chatSeq) return; // lượt cũ về sau — bỏ, không render
       if (!Array.isArray(list) || !list.length) {
         state.chatMessages = [];
         wrap.innerHTML = '<p>Chưa có trao đổi nào — gửi tin đầu tiên.</p>';
@@ -671,12 +679,20 @@
       wrap.innerHTML = '<div class="adm-chat-list">' + list.slice().reverse().map(chatItemHtml).join('') + '</div>';
       if (wasBottom) wrap.scrollTop = wrap.scrollHeight; else wrap.scrollTop = prevTop;
     } catch (e) {
+      if (seq !== state.chatSeq) return; // lượt cũ lỗi sau — không ghi đè lỗi lên bản mới
       wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ3 chưa chạy (hàm get_admin_comments chưa có).' : friendlyErr(e)) + '</p>';
+    } finally {
+      if (seq === state.chatSeq) state.chatLoading = false;
     }
   }
   function appendChatMessage(m) {
     var wrap = $('admChatList');
     if (!wrap || !m || !m.id) return false;
+    /* P3 (13/11): đang có lượt loadChat chạy thì KHÔNG chen tin vào DOM —
+       lượt đó render lại toàn bộ từ ảnh chụp RPC cũ hơn tin này nên tin vừa
+       chen sẽ bị xóa ngay. Gọi loadChat() mới (lượt mới nhất, ảnh chụp RPC
+       sau tin này) để tin hiện trong danh sách đầy đủ. */
+    if (state.chatLoading) { loadChat(); return true; }
     var listEl = wrap.querySelector('.adm-chat-list');
     if (!listEl) { loadChat(); return true; } // chưa tải xong / đang trống → tải lại
     if (listEl.querySelector('[data-mid="' + String(m.id).replace(/"/g, '') + '"]')) return false; // đã có (polling/vừa gửi)
@@ -1634,6 +1650,21 @@
     var session = null;
     try { session = await getSession(); } catch (e) { session = null; }
     var user = session && session.user ? session.user : null;
+    /* C1/N1 (14/11): console CHI nghe phien 1 lan luc mo trang — state.email/
+       state.userId dong bang tu main() trong khi token RPC chay theo phien
+       hien tai. Tab khac dang nhap tai khoan khac (cung profile) thi server
+       hanh dong voi tu cach tai khoan MOI, con UI van hien/ghi nhan tai khoan
+       CU → form tron du lieu giua cac tai khoan. auth-ui.js da co
+       onSessionChange (v166, nghe storage + focus); console dang ky de tai
+       lai toan bo khi tai khoan doi (ke ca dang nhap/xuat sau luc mo trang).
+       Chi so sanh id — token refresh cung user thi khong tai lai. */
+    var initialUserId = user && user.id ? user.id : '';
+    if (window.V2SAuthUI && typeof window.V2SAuthUI.onSessionChange === 'function') {
+      window.V2SAuthUI.onSessionChange(function (u) {
+        var nid = u && u.id ? u.id : '';
+        if (nid !== initialUserId) { try { window.location.reload(); } catch (e) { /* bo qua */ } }
+      });
+    }
     if (!user) { show('qtLogin'); return; }
     state.email = user.email || '';
     state.userId = user.id || '';
