@@ -13246,6 +13246,54 @@ window.V20_DATA = {
    "takeaway": "Cả 71 chuyên gia đều dự báo ECB tăng lãi suất lên 2,75% tháng 12: shop nhập hàng châu Âu tính lại giá vốn theo euro mạnh lên và giữ tiền mặt đủ 2 tháng."
   },
   {
+   "title": "Cách xả hàng tồn kho: 10 bước thu hồi vốn trước Tết 2027",
+   "cat": "Đang hot",
+   "source": "Shopify",
+   "date": "2026-11-14",
+   "url": "https://www.shopify.com/ph/blog/inventory-liquidation",
+   "page": "bai-viet/cach-xa-hang-ton-kho-10-buoc-thu-hoi-von-truoc-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-10-buoc-thu-hoi-von-truoc-tet-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách xả hàng tồn kho trước Tết 2027: kiểm kê và phân loại trong 1 ngày, giảm giá theo 4 đợt 15–40% từ 14/11/2026 tới 05/02/2027, xả nhanh bằng flash sale livestream và bundle, bán sỉ phần còn lại — American Eagle đã xóa sổ 75 triệu USD hàng tồn trong tháng 5/2025 vì để quá lâu."
+  },
+  {
+   "title": "Black Friday 2026: 12,9 tỷ USD ngày 27/11, shop nhỏ làm gì",
+   "cat": "Đang hot",
+   "source": "Adobe",
+   "date": "2026-11-14",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/black-friday-2026-12-9-ty-usd-27-11-shop-nho-lam-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-2026-12-9-ty-usd-27-11-shop-nho-lam-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Black Friday 2026 ngày 27/11: Adobe dự báo 12,9 tỷ USD online tại Mỹ (+9,2%), Cyber Monday 30/11 dự báo 15,1 tỷ USD, cả mùa lễ 275,1 tỷ USD (+6,7%) — shop nhỏ Việt Nam nên chốt 5–10 mã chủ lực, live xả kho và ghi hạn giao hàng trước Tết 2027."
+  },
+  {
+   "title": "Tết Nguyên đán 2027 ngày nào? Mùng 1 thứ Bảy 06/02/2027",
+   "cat": "Đang hot",
+   "source": "CareerLink",
+   "date": "2026-11-14",
+   "url": "https://www.careerlink.vn/cam-nang-viec-lam/goc-ky-nang/con-bao-nhieu-ngay-nua-den-tet",
+   "page": "bai-viet/tet-nguyen-dan-2027-ngay-nao-mung-1-06-02-lich-nghi-7-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tet-nguyen-dan-2027-ngay-nao-mung-1-06-02-lich-nghi-7-ngay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tết Nguyên đán 2027 ngày nào? Mùng 1 Tết Đinh Mùi là thứ Bảy 06/02/2027, giao thừa tối thứ Sáu 05/02/2027; công chức nghỉ 7 ngày 04–10/02/2027 theo Thông báo 11483/TB-BNV ngày 09/10/2026; doanh nghiệp chọn 1 trong 3 phương án và báo trước 30 ngày."
+  },
+  {
+   "title": "Vận chuyển Tết 2027: chốt đơn trước 01/02 để kịp giao",
+   "cat": "Đang hot",
+   "source": "SEKO Logistics",
+   "date": "2026-11-14",
+   "url": "https://www.sekologistics.com/en/resource-hub/knowledge-hub/lunar-new-year-complete-supply-chain-planning-guide-for-asia-sourcing/",
+   "page": "bai-viet/van-chuyen-tet-2027-chot-don-truoc-01-02-de-kip-giao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/van-chuyen-tet-2027-chot-don-truoc-01-02-de-kip-giao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vận chuyển Tết 2027: mùng 1 Tết 06/02/2027, hãng vận chuyển dự kiến nghỉ từ 29 tháng Chạp 05/02/2027; hạn tạo đơn an toàn khoảng 01/02/2027; xưởng Trung Quốc ngừng sản xuất 30/01–14/02/2027; chốt đơn nhập hàng trước cuối tháng 11/2026."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
