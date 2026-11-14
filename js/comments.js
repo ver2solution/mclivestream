@@ -175,7 +175,11 @@
     var note, formHTML;
     if (user) {
       note = '<p class="v2s-note">' + esc(LOGGED_IN_NOTE) + '</p>';
-      formHTML = '<form class="v2s-comment-form"><label>Tên hiển thị<input name="v2sName" maxlength="100" placeholder="Khách Vãng Lai" value=""></label>'
+      // v244 (MB-15): điền sẵn tên hiển thị của tài khoản đang đăng nhập
+      // (cùng chuỗi fallback như submitComment: metadata → email) — trước
+      // đây value='' nên ô hiện placeholder "Khách Vãng Lai" dù đã đăng nhập.
+      var displayName = (user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name)) || user.email || '';
+      formHTML = '<form class="v2s-comment-form"><label>Tên hiển thị<input name="v2sName" maxlength="100" placeholder="Khách Vãng Lai" value="' + esc(displayName) + '"></label>'
         + '<label>Bình luận *<textarea name="v2sText" rows="3" required minlength="20" placeholder="Viết bình luận từ 20 ký tự trở lên…"></textarea></label>'
         + '<p class="v2s-comment-msg" role="status"></p>'
         + '<button class="btn btn-primary btn-sm" type="submit">Gửi bình luận</button></form>';
