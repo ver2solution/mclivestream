@@ -19,6 +19,10 @@ a:hover{text-decoration:underline}
 .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
 .logo:hover{text-decoration:none}
 .logo-badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--brand);color:#fff;font-size:22px}
+/* v252 (F-R2-04): badge logo anh — bo nen brand (dau hieu C xanh dam
+   tren nen trong suot), anh vua khung badge. */
+.logo-badge.logo-badge-img{background:transparent}
+.logo-badge img{display:block;width:100%;height:100%;object-fit:contain}
 .logo small{display:block;font-size:11px;letter-spacing:.12em;color:var(--mut);font-weight:700}
 .main-nav{margin-left:auto;display:flex;gap:4px;flex-wrap:nowrap;flex-shrink:0}
 .main-nav a{color:var(--ink);font-weight:700;padding:9px 10px;border-radius:999px;white-space:nowrap}
