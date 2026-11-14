@@ -13196,6 +13196,54 @@ window.V20_DATA = {
    "takeaway": "Shop nhỏ Malaysia tăng 140% nhờ #JomLokal và LIVE — người mới Việt Nam nên live đều, hợp tác creator và ra mắt trước 12.12."
   },
   {
+   "title": "Cách tính lãi lỗ livestream Tết: 5 bước tính đúng 1 phiên",
+   "cat": "Dòng tiền",
+   "source": "Adtek",
+   "date": "2026-11-14",
+   "url": "https://adtek.agency/livestream-ban-hang-hieu-qua/",
+   "page": "bai-viet/cach-tinh-lai-lo-livestream-tet-5-buoc-tinh-dung-1-phien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-tinh-lai-lo-livestream-tet-5-buoc-tinh-dung-1-phien.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách tính lãi lỗ livestream Tết trong 5 bước: GMV hòa vốn khoảng 35,2 triệu, phiên mẫu 400 đơn lãi 24,3 triệu — tính trước khi live, đừng bán càng nhiều càng lỗ."
+  },
+  {
+   "title": "PPI Mỹ tháng 10 tăng 6,5%: cao nhất 4 năm, Fed khó dừng",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua 98.5 The River)",
+   "date": "2026-11-14",
+   "url": "https://985theriver.com/2026/11/13/us-producer-prices-rise-further-in-october/",
+   "page": "bai-viet/ppi-my-thang-10-tang-65-phan-tram-cao-nhat-4-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ppi-my-thang-10-tang-65-phan-tram-cao-nhat-4-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "PPI Mỹ tháng 10 tăng 6,5% so với cùng kỳ, cao nhất từ 11/2022: shop nhỏ tính lại giá vốn, phí ship và lãi vay theo mặt bằng mới trước mùa Tết."
+  },
+  {
+   "title": "Giá dầu Brent về 96 USD: giảm tuần thứ 2, vì sao vẫn rủi ro",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua Duke FM)",
+   "date": "2026-11-14",
+   "url": "https://duke.fm/2026/11/12/oil-prices-set-for-second-weekly-decline-as-trump-to-stay-with-iran-blockade/",
+   "page": "bai-viet/gia-dau-brent-ve-96-usd-giam-tuan-thu-2.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-dau-brent-ve-96-usd-giam-tuan-thu-2.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá dầu Brent về 96 USD, giảm tuần thứ 2 liên tiếp: shop nhỏ tranh thủ chốt phí ship lô hàng Tết, đừng cược một chiều khi tàu ở Hormuz vẫn bị tấn công."
+  },
+  {
+   "title": "ECB tăng lãi suất tháng 12 lên 2,75%: 71 chuyên gia đồng ý",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua 98.5 The River)",
+   "date": "2026-11-14",
+   "url": "https://985theriver.com/2026/11/12/ecb-set-for-last-rate-hike-in-december-but-inflation-risks-keep-door-open-for-one-more-reuters-poll/",
+   "page": "bai-viet/ecb-tang-lai-suat-thang-12-len-275-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ecb-tang-lai-suat-thang-12-len-275-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cả 71 chuyên gia đều dự báo ECB tăng lãi suất lên 2,75% tháng 12: shop nhập hàng châu Âu tính lại giá vốn theo euro mạnh lên và giữ tiền mặt đủ 2 tháng."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
