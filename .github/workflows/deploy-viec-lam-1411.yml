@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "220" || (echo "BASE DOI: data.js khong con 220 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "219" || (echo "BASE DOI: data.js khong con 219 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
           test "$(grep -c '<loc>' sitemap.xml)" = "242" || (echo "BASE DOI: sitemap khong con 242 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip viec-lam-1411 package
         run: |
@@ -35,7 +35,7 @@ jobs:
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           test "$(grep -c '<loc>' sitemap.xml)" = "246" || (echo "SAI TONG sitemap, phai 246"; exit 1)
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "224" || (echo "SAI TONG data.js, phai 224"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "223" || (echo "SAI TONG data.js, phai 223 bai-viet page (224 bai tong, 1 bai cu dung truong url)"; exit 1)
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
