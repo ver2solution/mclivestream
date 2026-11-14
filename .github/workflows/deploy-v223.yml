@@ -1,0 +1,55 @@
+name: deploy-v223
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v223:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v223 package
+        run: |
+          unzip -o v223.zip
+          ls -l js/app.js js/data.js index.html dieu-khoan-su-dung.html bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html danh-sach-shop.html danh-sach-lo.html sw.js
+          sha256sum js/app.js js/data.js index.html dieu-khoan-su-dung.html bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html danh-sach-shop.html danh-sach-lo.html sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          test "$(sha256sum js/app.js | cut -d' ' -f1)" = "39ae43217636d57030e34cbd533029b3efd1b4e8cb12035d96384c138eee51c7"
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "daae4cf44f202be22d842aef232a2f51b41adf206cb3d291ab49df4f47162bee"
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "da0bf4b2cda9c3e1115543fbeb11b1e9c6a8581ea49ddb1d4fb49488b3990b23"
+          test "$(sha256sum dieu-khoan-su-dung.html | cut -d' ' -f1)" = "ea30778d0bc48671e4a83f6b0b52b5805cc765fd334c4d479b5479e4ae7d6785"
+          test "$(sha256sum bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html | cut -d' ' -f1)" = "1d218ae666fd6bccb8bce564edfd315c2287261ce3c1a80ee143fb8a352b33c0"
+          test "$(sha256sum danh-sach-shop.html | cut -d' ' -f1)" = "d12ce3cb72ab02069921d67a9853c87189162b56ed0ee99d17c5b3fff134bbc9"
+          test "$(sha256sum danh-sach-lo.html | cut -d' ' -f1)" = "56506af96fcaed5f00e8c890563590a17f1f85fa4e58d6d26b6e5efacd2cf446"
+          test "$(sha256sum sw.js | cut -d' ' -f1)" = "3004865ebdb793e3c3d4af1e20a0ae5b2d71705b42191ca4e628a04d21980b1d"
+          grep -Fq "homeModelsAll" js/app.js
+          grep -Fq "homeShopsAll" js/app.js
+          grep -Fq "return days <= 30" js/app.js
+          grep -Fq "Toàn quốc':'Toàn quốc / Live online" js/app.js
+          grep -Fq "f.shift === '__none__'" js/app.js
+          grep -Fq "f.payType === '__none__'" js/app.js
+          grep -Fq "mainList.length+' bài khớp bộ lọc.'" js/app.js
+          grep -Fq "id=\"homeModelsAll\"" index.html
+          grep -Fq "Đào tạo livestream" index.html
+          grep -Fq "Lô giữ 30 ngày" index.html
+          grep -Fq "đăng tối đa 30 ngày" dieu-khoan-su-dung.html
+          grep -Fq "hết hạn sau 30 ngày" js/data.js
+          grep -Fq "hạn 30 ngày" bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html
+          grep -Fq "Chưa ghi giờ làm" danh-sach-shop.html
+          grep -Fq "đang có 15 lô" danh-sach-lo.html
+          grep -Fq "v223-shell-1" sw.js
+          if grep -Fq "60 ngày" js/app.js index.html dieu-khoan-su-dung.html js/data.js bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html; then echo "CON 60 NGAY"; exit 1; fi
+      - name: Commit v223 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/app.js js/data.js index.html dieu-khoan-su-dung.html bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html danh-sach-shop.html danh-sach-lo.html sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v223 so dem thong nhat S2-3/4/5/6 + S3-15 + han du lieu 30 ngay; js/app.js + js/data.js + index.html + dieu-khoan-su-dung.html + bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html + danh-sach-shop.html + danh-sach-lo.html + sw.js CACHE v223-shell-1"
+            git push
+          fi
