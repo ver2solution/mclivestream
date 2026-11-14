@@ -75,7 +75,11 @@ var MERGED_PROV = {'TP.HCM':'TP. Hồ Chí Minh','Bình Dương':'TP. Hồ Chí 
    (5 lop live + 4 su kien + 1 lop makeup) ve 'Toàn quốc / Live online'
    (ten chuan trong D.provinces). Ca dem (newObjProvCount) va loc
    (newObjMatches) deu di qua normProv nen 1 cho nay sua ca 2. */
-'Thành phố Hồ Chí Minh':'TP. Hồ Chí Minh','Online':'Toàn quốc / Live online'};
+'Thành phố Hồ Chí Minh':'TP. Hồ Chí Minh','Online':'Toàn quốc / Live online',
+/* v223 (S2-5, 14/11/2026): 'Toàn quốc' (12 shop, ghi thô trong data.js) ve
+   'Toàn quốc / Live online' — truoc day 12 shop nay khong khop option tinh nao
+   nen bo loc tinh Shop cong chi 258/270. */
+'Toàn quốc':'Toàn quốc / Live online'};
 function normProv(p){ var s = String(p == null ? '' : p).trim(); return MERGED_PROV[s] || s; }
 /* v166 (N8, 12/11/2026): chuẩn hóa tỉnh RIÊNG cho Kiot — chỉ gộp bí
    danh 'TP.HCM' → 'TP. Hồ Chí Minh', KHÔNG áp bản đồ sáp nhập
@@ -1808,14 +1812,14 @@ function parseVnDate(s){
   return isNaN(d.getTime()) ? null : d;
 }
 function lotActive(l, ref){
-  if(!l || l.group !== 1) return true; /* chi nhom 1 chiu quy tac 60 ngay */
+  if(!l || l.group !== 1) return true; /* v223: chi nhom 1 chiu quy tac 30 ngay (anh chot 13:01 14/11 — thu hoi 60 ngay cu) */
   var d = parseVnDate(l.date);
   if(!d) return true; /* khong co ngay hop le: hien de khoi mat du lieu */
   /* kiem tra kieu Date bang duck-type (khong dung instanceof) de chay dung
      ca khi ref duoc tao o realm khac (vd test chay qua vm). */
   var r = (ref && typeof ref.getTime === 'function') ? ref : new Date();
   var days = (r.getTime() - d.getTime()) / 86400000;
-  return days <= 60; /* ngay tuong lai (days am) van hien */
+  return days <= 30; /* ngay tuong lai (days am) van hien */
 }
 function lotsByGroup(lots, ref){
   var out = {g1: [], g2: [], g3: []};
@@ -1830,7 +1834,11 @@ function lotFactoryStats(lots, factories, ref){
   var byGroup = lotsByGroup(lots, ref);
   var provs = {};
   (factories || []).forEach(function(f){ if(f.prov) provs[f.prov] = true; });
-  return {lotCount: byGroup.g1.length, buyerCount: byGroup.g2.length, batchCount: byGroup.g3.length, factoryCount: (factories || []).length, factoryProvinceCount: Object.keys(provs).length};
+  return {lotCount: byGroup.g1.length + byGroup.g2.length + byGroup.g3.length, buyerCount: byGroup.g2.length, batchCount: byGroup.g3.length, factoryCount: (factories || []).length, factoryProvinceCount: Object.keys(provs).length};
+  /* v223 (S2-4): lotCount truoc day chi dem nhom 1 (18) trong khi link trang chu
+     + tong the tren trang danh sach lo dem ca 3 nhom (71) — banner ghi 18, link ghi
+     71. Nay dem TONG lo dang hoat dong (g1 active + g2 + g3); voi han 30 ngay:
+     15 + 6 + 47 = 68. */
 }
 /* v76: the lo/xuong render tu data.js — phai GIONG HET the tinh cu (cung
    class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu.
@@ -2657,6 +2665,12 @@ function initHome(){
   }).join('');
   var homeShops=document.getElementById('homeShops');
   if(homeShops) homeShops.innerHTML=dedupeProfiles(defaultShopOrder(D.shops||[]).slice(0,12), homeSeen, 'shop').map(shopCardHTML).join('');
+  /* v223 (S2-3): link "Xem tat ca" Mau/Shop ghi so dong tu data.js (truoc day
+     ghi cung 219/250 trong index.html, lech ngay khi data.js len 230/270). */
+  var homeModelsAll=document.getElementById('homeModelsAll');
+  if(homeModelsAll) homeModelsAll.textContent='Xem tất cả '+(D.models||[]).length+' hồ sơ →';
+  var homeShopsAll=document.getElementById('homeShopsAll');
+  if(homeShopsAll) homeShopsAll.textContent='Xem tất cả '+(D.shops||[]).length+' shop →';
   // v130: 3 muc moi tren trang chu (Kiot -> Lo -> Xuong), sau muc Shop.
   renderHomeSection('kiot-moi', 'homeKiots', 'homeKiotsAll', dedupeProfiles(D.kiots || [], homeSeen, 'kiot'), 'kiot', 'kiot');
   renderHomeSection('lo-moi', 'homeLots', 'homeLotsAll', dedupeProfiles(D.lots || [], homeSeen, 'lot'), 'lô', 'lot');
@@ -2731,7 +2745,9 @@ function uniSortToModelSort(v){
 function uniProvToFactory(prov){ return prov === 'TP. Hồ Chí Minh' ? 'TP.HCM' : prov; }
 function filterShops(list, f){
   return list.filter(function(s){
-    if(f.prov && s.province!==f.prov) return false;
+    /* v223 (S2-5): so tinh qua normProv — 'Toàn quốc' (12 shop) phai khop
+       option 'Toàn quốc / Live online' (xem MERGED_PROV). */
+    if(f.prov && normProv(s.province)!==f.prov) return false;
     if(f.cat && shopCatGroup(s.product)!==f.cat) return false;
     /* v42: loc gio lam theo truong shifts (suy ra tu req, xem data.js).
        Quyet dinh: shop fulltime hien trong MOI ca (Sang/Chieu/Toi) vi fulltime
@@ -2739,7 +2755,10 @@ function filterShops(list, f){
        (shifts rong) chi hien khi chon "Tất cả giờ". */
     if(f.shift){
       var sh = s.shifts || [];
-      if(f.shift === 'fulltime'){ if(sh.indexOf('fulltime') === -1) return false; }
+      /* v223 (S2-5): '__none__' = shop chua ghi gio lam (shifts rong, 214/270) —
+         truoc day nhom nay khong thuoc option gio lam nao nen tong option chi 112. */
+      if(f.shift === '__none__'){ if(sh.length) return false; }
+      else if(f.shift === 'fulltime'){ if(sh.indexOf('fulltime') === -1) return false; }
       else if(sh.indexOf(f.shift) === -1 && sh.indexOf('fulltime') === -1) return false;
     }
     /* v45: loc theo loai luong + muc luong toi thieu. payMin chi ap dung khi
@@ -2747,6 +2766,10 @@ function filterShops(list, f){
        disabled o giao dien). */
     if(f.payType === 'hourly' && parseHourlyMin(s.salary) === null) return false;
     if(f.payType === 'monthly' && parseMonthlyMax(s.salary) === null) return false;
+    /* v223 (S2-5): '__none__' = shop chua ghi luong parse duoc (khong gio, khong
+       thang — vd 'Thỏa thuận năng lực') — truoc day nhom nay khong thuoc option
+       luong nao nen tong option chi 126. */
+    if(f.payType === '__none__' && (parseHourlyMin(s.salary) !== null || parseMonthlyMax(s.salary) !== null)) return false;
     if(f.payMin != null && f.payType === 'hourly'){ var h = parseHourlyMin(s.salary); if(h === null || h < f.payMin) return false; }
     if(f.payMin != null && f.payType === 'monthly'){ var mm = parseMonthlyMax(s.salary); if(mm === null || mm < f.payMin) return false; }
     return true;
@@ -3717,13 +3740,14 @@ function initNews(){
     /* v100: danh sach tin dung chung the tin rut gon (1 anh + 2 dong).
        Anh goc / takeaway / nut diem chi con o trang chi tiet bai-viet,
        khong hien trong danh sach nua. Bo loc + sap xep + dem + sidebar giu nguyen. */
-    // v114 (P3-3): hang ghim + hang moi nhat cung theo bo loc; bai da
-    // hien o hang ghim khong lap lai o danh sach chinh. So dem giu
-    // nguyen = tong so bai khop bo loc.
+    // v223 (S2-6, 14/11/2026): DAO QUYET v114 — so dem = so the trong danh sach
+    // chinh (mainList), khong phai tong khop loc. Ly do: nguoi doc chi dem duoc
+    // 257 the duoi tieu de "Tin moi nhat" trong khi count ghi 261 (4 bai da hien
+    // o hang ghim/moi nhat phia tren) — so dem phai mo ta dung danh sach dang nhin.
     var topIds = renderTopRows(list);
     var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
     main.innerHTML=mainList.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
-    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
+    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=mainList.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
       return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">'+esc(formatArticleDate(a.date))+'</span></span></li>';
