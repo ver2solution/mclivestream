@@ -218,7 +218,7 @@ a:hover{text-decoration:underline}
    nen cho phep xuong hang (flex-wrap) + nut co min-width de nhan + so dem
    (N) khong bi cat; section moi bi an khi chon muc con khac thi display:none. */
 .uni-cat-switch{display:flex;flex-wrap:wrap;gap:6px;background:#e7efec;border:1px solid var(--line);border-radius:999px;padding:5px;margin:0 0 10px}
-.uni-cat-switch .uni-cat-btn{flex:1 1 140px;min-width:0;border:0;background:transparent;border-radius:999px;padding:11px 6px;font:inherit;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uni-cat-switch .uni-cat-btn{flex:1 1 auto;min-width:0;border:0;background:transparent;border-radius:999px;padding:11px 4px;font:inherit;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} /* v242 (F-R2-03): flex-basis auto + padding 4px — nut dai (Agency 230px, Xuong 204px) du cho hien het chu, khong cat "…" */
 .uni-cat-switch .uni-cat-btn.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(11,93,78,.28)}
 .uni-cat-switch .uni-cat-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .uni-cat-switch .uni-cat-btn .uni-cat-count{white-space:nowrap}
