@@ -1,0 +1,42 @@
+name: deploy-v233
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v233:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v233 package
+        run: |
+          unzip -o v233.zip
+          ls -l tuyen-bo-mien-tru.html chinh-sach-cookie.html sitemap.xml
+      - name: Verify package contents (grep invariants, not per-file sha — 291 files)
+        run: |
+          set -e
+          test "$(grep -rl 'phục vụ cộng đồng hơn 400 khách' bai-viet/ | wc -l)" -eq 0
+          test "$(grep -rl 'idol tìm việc, shop tìm idol' bai-viet/ | wc -l)" -eq 260
+          test "$(grep -rl 'Tư vấn tăng chuyển đổi live' bai-viet/ | wc -l)" -eq 260
+          test "$(grep -c '<url>' sitemap.xml)" -eq 285
+          grep -Fq 'tuyen-bo-mien-tru.html' sitemap.xml
+          grep -Fq 'chinh-sach-cookie.html' sitemap.xml
+          test -f tuyen-bo-mien-tru.html
+          test -f chinh-sach-cookie.html
+          test "$(grep -rl 'tuyen-bo-mien-tru.html' --include='*.html' . | wc -l)" -eq 290
+          grep -Fq 'idol tìm việc, shop tìm idol' bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html
+          grep -Fq 'idol tìm việc, shop tìm idol' bai-viet/11-11-ngay-mai-trung-quoc-ban-1026-ti-ndt.html
+          grep -Fq 'idol tìm việc, shop tìm idol' bai-viet/quy-dinh-facebook-2026-khoa-tai-khoan-cam-dang-thuat-toan-uu-tien.html
+      - name: Commit v233 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add bai-viet/ *.html sitemap.xml
+          git status --short | head -20
+          git status --short | wc -l
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v233 retrofit chu ky ngan 260 bai + 2 trang phap ly AdSense + footer + sitemap 285 URL"
+            git push
+          fi
