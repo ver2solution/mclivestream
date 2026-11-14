@@ -1,0 +1,51 @@
+name: Deploy articles-viec-lam-2026-11-14 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-viec-lam-1411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-viec-lam-1411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "220" || (echo "BASE DOI: data.js khong con 220 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "242" || (echo "BASE DOI: sitemap khong con 242 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip viec-lam-1411 package
+        run: |
+          unzip -o mclivestream-viec-lam-1411-deploy.zip
+          echo "--- verify viec-lam-1411 (4 bai) ---"
+          for slug in thong-ke-ho-so-moi-13-11-2026 mau-live-tiktok viec-lam-livestream-tet tuyen-mau-live-ha-noi; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "246" || (echo "SAI TONG sitemap, phai 246"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "224" || (echo "SAI TONG data.js, phai 224"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-viec-lam-1411-deploy.zip || rm -f mclivestream-viec-lam-1411-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-viec-lam-2026-11-14: 4 bai (thong-ke-ho-so-moi-13-11, mau-live-tiktok, viec-lam-livestream-tet, tuyen-mau-live-ha-noi)"
+            git push
+          fi
