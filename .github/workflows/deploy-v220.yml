@@ -1,0 +1,37 @@
+name: deploy-v220
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v220:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v220 package
+        run: |
+          unzip -o v220.zip
+          ls -l js/online-counter.js sw.js
+          sha256sum js/online-counter.js sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          test "$(sha256sum js/online-counter.js | cut -d' ' -f1)" = "46cdc526e25e1f56a46a24bc056165e6b8b11b97f323359e09cc48d648c44fa7"
+          test "$(sha256sum sw.js | cut -d' ' -f1)" = "c9ea0e31c54faa000427b4379b9b424d08d0dd2e91c5b0b72cfca596963265ac"
+          grep -Fq "displayTickTotal" js/online-counter.js
+          grep -Fq "TOTAL_TICK_SCALE" js/online-counter.js
+          grep -Fq "MAX_TOTAL_TICK" js/online-counter.js
+          grep -Fq "pointsSeq" js/online-counter.js
+          grep -Fq "v220-shell-1" sw.js
+      - name: Commit v220 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/online-counter.js sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v220 N20: kep tong tick nho — popup trang chu chi dao dong nhe quanh so server (tong tick tho 0..250 thu nho ve 0..10); js/online-counter.js + sw.js CACHE v220-shell-1"
+            git push
+          fi
