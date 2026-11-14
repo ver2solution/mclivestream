@@ -1,0 +1,40 @@
+name: deploy-v221
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v221:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v221 package
+        run: |
+          unzip -o v221.zip
+          ls -l js/auth-ui.js dang-ky.html trang-cua-toi.html sw.js
+          sha256sum js/auth-ui.js dang-ky.html trang-cua-toi.html sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          test "$(sha256sum js/auth-ui.js | cut -d' ' -f1)" = "02c3c9a681c2eaef19af22b78e58325b02cad8a33f6449b5bfa227912d338d90"
+          test "$(sha256sum dang-ky.html | cut -d' ' -f1)" = "bba6d44931b7052c8542e38b5ff6f4ad1219cc95183c03abf3cad20b64ef9287"
+          test "$(sha256sum trang-cua-toi.html | cut -d' ' -f1)" = "b536eb3425a4ee54f79d8a7e9605b12fe90bddb98b2885f9442de34a9c24f559"
+          test "$(sha256sum sw.js | cut -d' ' -f1)" = "48b2b79d484485424ac2c305f15cdfc5d11a23cdb025e9555af85bb0ebda190c"
+          grep -Fq "v2s_signup_prefs_' + _uid" js/auth-ui.js
+          grep -Fq "delete prefs.phoneZalo" dang-ky.html
+          grep -Fq "var currentUser=null" trang-cua-toi.html
+          grep -Fq "shared.contactEmail === currentUser.email" trang-cua-toi.html
+          grep -Fq "form.reset()" trang-cua-toi.html
+          grep -Fq "v221-shell-1" sw.js
+      - name: Commit v221 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/auth-ui.js dang-ky.html trang-cua-toi.html sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v221 L1: form Trang cua toi khong tron du lieu giua cac tai khoan — prefs theo userId + merge o dang-ky + reset form khi doi phien; js/auth-ui.js + dang-ky.html + trang-cua-toi.html + sw.js CACHE v221-shell-1"
+            git push
+          fi
