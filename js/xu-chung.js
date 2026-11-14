@@ -45,6 +45,23 @@
     var e = res.error || res;
     return String((e && (e.message || e.code)) || e || 'Không rõ lỗi.');
   }
+  // v222 (S1-1): phân biệt lỗi cầu nối CHƯA BẬT với lỗi mạng/lỗi khác.
+  // M16 chưa chạy → PostgREST 404 PGRST202 "Could not find the function
+  // public.xu_* ..." hoặc PostgREST 42703 cột sync_status chưa có (lịch
+  // sử query points_ledger). Cả hai đều KHÔNG sửa được bằng "tải lại
+  // trang" — hiện đúng thông báo "cầu nối chưa bật" + vô hiệu form
+  // chuyển liên web, thay vì bắt người dùng tải lại vô ích.
+  function bridgeErrorCode(res) {
+    try {
+      var e = (res && res.error) || res || {};
+      var code = String(e.code || '');
+      var msg = String(e.message || e || '');
+      if (code === 'PGRST202' || msg.indexOf('Could not find the function') !== -1) return 'bridge_not_enabled';
+      if (code === '42703' || msg.indexOf('sync_status does not exist') !== -1) return 'bridge_not_enabled';
+    } catch (err) {}
+    return null;
+  }
+  var BRIDGE_NOT_ENABLED_TEXT = 'Xu liên web chưa được bật — cầu nối đang chờ kích hoạt. Số dư xu ở web này vẫn dùng bình thường.';
   // v166 (C1/N1): đọc session qua V2SAuthUI khi có (1 nguồn đúng duy
   // nhất) — xem ghi chú ở js/comments.js.
   async function sessionUser() {
@@ -52,7 +69,12 @@
     var session = null;
     try {
       var A = (typeof window !== 'undefined') ? window.V2SAuthUI : null;
-      if (A && typeof A.getSession === 'function') session = await A.getSession();
+      // v222 (S1-1): getSession() đọc 1 lần có thể trả null khi GoTrue
+      // chưa khôi phục xong session từ localStorage → form hiện sai
+      // "Cần đăng nhập" dù đã đăng nhập. getSessionRobust thử lại tới
+      // ~2 giây rồi mới kết luận null (chỉ chậm khi thật sự chưa đăng nhập).
+      if (A && typeof A.getSessionRobust === 'function') session = await A.getSessionRobust(2000);
+      else if (A && typeof A.getSession === 'function') session = await A.getSession();
     } catch (e) { session = null; }
     if (!session) session = await a.getSession();
     if (!session) throw new Error('Cần đăng nhập mới dùng được xu liên web.');
@@ -93,7 +115,11 @@
     try {
       var s = await sessionUser();
       var res = await s.api.client.rpc('xu_get_balances', {});
-      if (res.error) return { ok: false, error: rpcErrorText(res) };
+      if (res.error) {
+        var bc = bridgeErrorCode(res);
+        if (bc) { try { console.warn('[xu-chung] getBalances: ' + bc, rpcErrorText(res)); } catch (e2) {} }
+        return { ok: false, code: bc, error: rpcErrorText(res) };
+      }
       var d = firstRow(res.data);
       if (!d) return { ok: false, error: 'Không đọc được số dư xu liên web.' };
       return {
@@ -113,7 +139,11 @@
     try {
       var s = await sessionUser();
       var res = await s.api.client.rpc('xu_health_check', {});
-      if (res.error) return { ok: false, error: rpcErrorText(res) };
+      if (res.error) {
+        var bc = bridgeErrorCode(res);
+        if (bc) { try { console.warn('[xu-chung] getHealth: ' + bc, rpcErrorText(res)); } catch (e2) {} }
+        return { ok: false, code: bc, error: rpcErrorText(res) };
+      }
       var d = firstRow(res.data);
       if (!d) return { ok: false, error: 'Không kiểm tra được trạng thái bên kia.' };
       return {
@@ -151,6 +181,11 @@
     if (!n || n < XFER_MIN) return { ok: false, code: 'invalid_amount', error: 'Chuyển liên web tối thiểu 10 xu/lần.' };
     if (n > XFER_DAILY_MAX) return { ok: false, code: 'invalid_amount', error: 'Chuyển liên web tối đa 100 xu/ngày (pilot).' };
     var h = await getHealth();
+    // v222 (S1-1): cầu nối chưa bật thì báo đúng ngay, khỏi gọi init
+    // (gọi cũng chỉ 404) và khỏi hiện lỗi PostgREST tiếng Anh.
+    if (!h.ok && h.code === 'bridge_not_enabled') {
+      return { ok: false, code: 'bridge_not_enabled', error: 'Cầu nối xu liên web chưa được bật — chuyển liên web tạm thời chưa dùng được.' };
+    }
     if (h.ok && h.status !== 'song') {
       return { ok: false, code: 'paused', error: 'Tạm dừng vì web bên kia đang bảo trì — thử lại khi kết nối.' };
     }
@@ -163,6 +198,7 @@
       });
       if (res.error) {
         var msg = rpcErrorText(res);
+        if (bridgeErrorCode(res)) return { ok: false, code: 'bridge_not_enabled', error: 'Cầu nối xu liên web chưa được bật — chuyển liên web tạm thời chưa dùng được.' };
         var code = 'transfer_failed';
         ['account_not_linked', 'insufficient_earn_balance', 'xfer_daily_cap', 'debt_locked', 'xfer_amount_below_minimum'].forEach(function (c) {
           if (msg.indexOf(c) !== -1) code = c;
@@ -201,6 +237,11 @@
   // truyen tu refreshSummary (co session thi true).
   function summaryHtml(balances, health, loggedIn) {
     if (!balances || !balances.ok) {
+      // v222 (S1-1): cầu nối chưa bật thì nói đúng bệnh — tải lại trang
+      // không bao giờ sửa được 404 PGRST202; chỉ lỗi khác mới nhắc tải lại.
+      if (loggedIn && balances && balances.code === 'bridge_not_enabled') {
+        return '<p>' + BRIDGE_NOT_ENABLED_TEXT + '</p>';
+      }
       return loggedIn
         ? '<p>Chưa tải được số dư xu liên web, hãy tải lại trang.</p>'
         : '<p>Cần đăng nhập để xem số dư xu liên web.</p>';
@@ -244,7 +285,11 @@
         .in('type', CROSS_TYPES)
         .order('created_at', { ascending: false })
         .limit(Math.max(1, Math.min(100, Number(limit) || 20)));
-      if (res.error) return { ok: false, items: [] };
+      if (res.error) {
+        var bc2 = bridgeErrorCode(res);
+        if (bc2) { try { console.warn('[xu-chung] getCrossHistory: ' + bc2, rpcErrorText(res)); } catch (e2) {} }
+        return { ok: false, code: bc2, items: [] };
+      }
       return { ok: true, items: Array.isArray(res.data) ? res.data : [] };
     } catch (e) { return { ok: false, items: [] }; }
   }
@@ -280,7 +325,13 @@
     var r = await getCrossHistory(20);
     var b = { ok: false, debt: 0 };
     try { b = await getBalances(); } catch (e) { b = { ok: false, debt: 0 }; }
-    if (!r.ok) { el.innerHTML = '<p>Chưa tải được lịch sử xu liên web, hãy tải lại trang.</p>'; return r; }
+    if (!r.ok) {
+      // v222 (S1-1): cầu nối chưa bật thì nói đúng bệnh, không nhắc tải lại.
+      el.innerHTML = (r.code === 'bridge_not_enabled')
+        ? '<p>' + BRIDGE_NOT_ENABLED_TEXT + '</p>'
+        : '<p>Chưa tải được lịch sử xu liên web, hãy tải lại trang.</p>';
+      return r;
+    }
     el.innerHTML = crossHistoryHtml(r.items, b.ok ? b.debt : 0);
     return r;
   }
@@ -294,7 +345,11 @@
     var amountEl = document.getElementById('xuChungAmount');
     var msgEl = document.getElementById('xuChungMsg');
     var submitEl = document.getElementById('xuChungSubmit');
-    if (summaryEl) refreshSummary(summaryEl);
+    if (summaryEl) refreshSummary(summaryEl).then(function (b) {
+      // v222 (S1-1): cầu nối chưa bật → vô hiệu form chuyển liên web
+      // (bấm cũng chỉ 404), tránh bắt người dùng thử đi thử lại.
+      if (b && !b.ok && b.code === 'bridge_not_enabled' && submitEl) submitEl.disabled = true;
+    });
     if (historyEl) refreshHistory(historyEl);
     if (form && form.getAttribute('data-v2s-xu-chung-wired') !== '1') {
       form.setAttribute('data-v2s-xu-chung-wired', '1');

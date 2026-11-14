@@ -515,7 +515,8 @@
     var reason = reasonEl ? String(reasonEl.value || '').trim() : '';
     if (!delta || isNaN(delta)) { setMsg(msg, 'Nhập số xu điều chỉnh khác 0.', true); return; }
     if (!reason) { setMsg(msg, 'Nhập lý do điều chỉnh xu.', true); return; }
-    if (!window.confirm('Điều chỉnh ' + delta + ' xu cho tài khoản này? Lý do: ' + reason)) return;
+    // v222: xác nhận 2 bước ngay trên nút thay window.confirm (mẫu v217).
+    if (!admArm(btn, 'Chắc chắn điều chỉnh ' + delta + ' xu?')) return;
     btn.disabled = true;
     try {
       var out = await rpc('admin_adjust_points', { p_user_id: uid, p_delta: delta, p_reason: reason });
@@ -524,18 +525,21 @@
       await viewUser(uid, '');
     } catch (err) { setMsg(msg, friendlyErr(err), true); }
     btn.disabled = false;
+    admDisarm(btn);
   }
   async function onGrantAdmin(e) {
     var btn = e.currentTarget;
     var uid = btn.getAttribute('data-uid');
     var msg = $('admUsersMsg');
-    if (!window.confirm('Cấp quyền admin cho tài khoản này? Người này sẽ thấy toàn bộ dữ liệu quản trị.')) return;
+    // v222: xác nhận 2 bước ngay trên nút thay window.confirm (mẫu v217).
+    if (!admArm(btn, 'Chắc chắn cấp quyền admin?')) return;
     btn.disabled = true;
     try {
       await rpc('admin_grant_admin', { p_user_id: uid, p_note: 'Cấp từ trang quản trị' });
       setMsg(msg, 'Đã cấp quyền admin.');
     } catch (err) { setMsg(msg, friendlyErr(err), true); }
     btn.disabled = false;
+    admDisarm(btn);
   }
   // v121 (notes admin): lưu ghi chú cho tài khoản (chỉ admin; RPC
   // admin_set_profile_notes kiểm tra quyền + ghi audit log). Lưu xong
@@ -547,7 +551,8 @@
     var ta = $('admUserNotes');
     var val = ta ? String(ta.value || '').trim() : '';
     if (val.length > 200) { setMsg(msg, 'Ghi chú tối đa 200 ký tự.', true); return; }
-    if (!window.confirm(val ? 'Lưu ghi chú "' + val + '" cho tài khoản này?' : 'Xóa ghi chú của tài khoản này?')) return;
+    // v222: xác nhận 2 bước ngay trên nút thay window.confirm (mẫu v217).
+    if (!admArm(btn, val ? 'Chắc chắn lưu ghi chú?' : 'Chắc chắn xóa ghi chú?')) return;
     btn.disabled = true;
     try {
       await rpc('admin_set_profile_notes', { p_user_id: uid, p_notes: val });
@@ -556,6 +561,7 @@
       await viewUser(uid, '');
     } catch (err) { setMsg(msg, friendlyErr(err), true); }
     btn.disabled = false;
+    admDisarm(btn);
   }
 
   /* ---------- TAB: Dữ liệu test (GĐ2) ---------- */
@@ -1387,6 +1393,46 @@
   }
 
   /* ---------- điều phối nút bấm (ủy quyền 1 listener) ---------- */
+  // v222: ô nhập lý do inline thay window.prompt (hộp thoại native bị
+  // tự tắt trên trình duyệt tự động → bấm không tác dụng, không báo gì).
+  // Bấm 1: gắn ô nhập ngay sau nút + đổi chữ nút; bấm 2: đọc ô nhập.
+  // Trả '' khi chưa có ô nhập (lần bấm 1), giá trị đã trim khi có.
+  function admReasonInput(btn, kind) {
+    var old = btn.parentNode ? btn.parentNode.querySelector('.adm-reason-input') : null;
+    if (old) return String(old.value || '').trim();
+    var el;
+    if (kind === 'delete-comment') {
+      el = document.createElement('select');
+      el.className = 'adm-reason-input';
+      el.innerHTML = '<option value="spam">spam</option><option value="violation">violation</option><option value="user_request">user_request</option><option value="other">other</option>';
+    } else {
+      el = document.createElement('input');
+      el.type = 'text';
+      el.className = 'adm-reason-input';
+      el.placeholder = 'Lý do (bắt buộc)';
+      el.maxLength = 200;
+    }
+    el.style.marginLeft = '6px';
+    if (btn.parentNode) btn.parentNode.insertBefore(el, btn.nextSibling);
+    try { el.focus(); } catch (e) {}
+    return '';
+  }
+  // v222: xác nhận 2 bước ngay trên nút cho 3 nút chỉ-cần-xác-nhận
+  // (onAdjustPoints/onGrantAdmin/onSaveNotes) — cùng mẫu v217.
+  // Trả true ở lần bấm 2 (đã armed), false ở lần bấm 1 (vừa arm).
+  function admArm(btn, armedText) {
+    if (btn.getAttribute('data-armed') === '1') return true;
+    if (!btn.getAttribute('data-orig-text')) btn.setAttribute('data-orig-text', btn.textContent);
+    btn.setAttribute('data-armed', '1');
+    btn.textContent = armedText;
+    return false;
+  }
+  function admDisarm(btn) {
+    btn.removeAttribute('data-armed');
+    var t = btn.getAttribute('data-orig-text');
+    if (t) btn.textContent = t;
+    btn.removeAttribute('data-orig-text');
+  }
   var MOD_RPC = { profile: ['approve_profile', 'reject_profile'], shop_profile: ['approve_shop_profile', 'reject_shop_profile'], job_post: ['approve_job_post', 'reject_job_post'],
     // v124: tin lô / xưởng / kiot do thành viên đăng — RPC nhận p_listing_id.
     user_lot: ['approve_user_lot', 'reject_user_lot'], user_factory: ['approve_user_factory', 'reject_user_factory'], user_kiot: ['approve_user_kiot', 'reject_user_kiot'] };
@@ -1411,17 +1457,32 @@
         setMsg(msg, 'Đã duyệt bình luận. Trạng thái điểm: ' + (c.points_status || '') + ' (+' + fmt(c.points_value) + ' xu).');
         await loadComments();
       } else if (act === 'reject-comment') {
-        var reason = window.prompt('Lý do từ chối bình luận (bắt buộc):', '');
-        if (reason === null || !String(reason).trim()) { setMsg(msg, 'Từ chối cần có lý do.', true); return; }
-        await rpc('admin_reject_comment', { p_comment_id: id, p_reason: String(reason).trim() });
+        // v222: ô nhập lý do inline thay window.prompt (tự tắt trên
+        // trình duyệt tự động). Bấm 1 gắn ô nhập, bấm 2 thực hiện.
+        var reason = admReasonInput(btn);
+        if (!reason) {
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Nhập lý do rồi bấm lại để từ chối';
+          }
+          setMsg(msg, 'Nhập lý do từ chối bình luận (bắt buộc).', true);
+          return;
+        }
+        await rpc('admin_reject_comment', { p_comment_id: id, p_reason: reason });
         setMsg(msg, 'Đã từ chối bình luận (không cộng xu).');
         await loadComments();
       } else if (act === 'delete-comment') {
-        var dr = window.prompt('Lý do xóa (spam / violation / user_request / other):', 'spam');
-        if (dr === null) return;
-        dr = String(dr).trim();
-        if (['spam', 'violation', 'user_request', 'other'].indexOf(dr) === -1) { setMsg(msg, 'Lý do xóa không hợp lệ.', true); return; }
-        if (!window.confirm('Xóa bình luận này? (xóa mềm, giữ lại để đối chiếu)')) return;
+        // v222: chọn lý do inline (select) + xác nhận 2 bước trên nút,
+        // thay window.prompt + window.confirm. Bấm 1 gắn select, bấm 2 xóa.
+        var dr = admReasonInput(btn, 'delete-comment');
+        if (!dr) {
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Chọn lý do rồi bấm lại để xóa';
+          }
+          setMsg(msg, 'Chọn lý do xóa bình luận.', true);
+          return;
+        }
         await rpc('admin_delete_comment', { p_comment_id: id, p_reason: dr });
         setMsg(msg, 'Đã xóa bình luận (xóa mềm).');
         await loadComments(); await loadTestData();
@@ -1504,12 +1565,21 @@
           await rpc(pair[0], args);
           setMsg(msg, 'Đã duyệt.');
         } else {
-          var rr = window.prompt('Lý do từ chối (bắt buộc):', '');
-          if (rr === null || !String(rr).trim()) { setMsg(msg, 'Từ chối cần có lý do.', true); return; }
-          await rpc(pair[1], kind === 'profile' ? { p_profile_id: id, p_reason: String(rr).trim() }
-            : kind === 'shop_profile' ? { p_shop_id: id, p_reason: String(rr).trim() }
-            : kind === 'job_post' ? { p_post_id: id, p_reason: String(rr).trim() }
-            : { p_listing_id: id, p_reason: String(rr).trim() });
+          // v222: ô nhập lý do inline thay window.prompt. Bấm 1 gắn ô
+          // nhập, bấm 2 thực hiện.
+          var rr = admReasonInput(btn);
+          if (!rr) {
+            if (btn.getAttribute('data-armed') !== '1') {
+              btn.setAttribute('data-armed', '1');
+              btn.textContent = 'Nhập lý do rồi bấm lại để từ chối';
+            }
+            setMsg(msg, 'Nhập lý do từ chối (bắt buộc).', true);
+            return;
+          }
+          await rpc(pair[1], kind === 'profile' ? { p_profile_id: id, p_reason: rr }
+            : kind === 'shop_profile' ? { p_shop_id: id, p_reason: rr }
+            : kind === 'job_post' ? { p_post_id: id, p_reason: rr }
+            : { p_listing_id: id, p_reason: rr });
           setMsg(msg, 'Đã từ chối.');
         }
         await loadModeration(); await loadTestData();
@@ -1525,9 +1595,18 @@
         setMsg(msg, 'Đã ghim hồ sơ.');
         await loadModeration();
       } else if (act === 'suspend-user') {
-        var sr = window.prompt('Lý do khóa tài khoản (bắt buộc):', '');
-        if (sr === null || !String(sr).trim()) { setMsg(msg, 'Khóa tài khoản cần có lý do.', true); return; }
-        await rpc('suspend_user', { p_user_id: id, p_reason: String(sr).trim() });
+        // v222: ô nhập lý do inline thay window.prompt. Bấm 1 gắn ô nhập,
+        // bấm 2 thực hiện.
+        var sr = admReasonInput(btn);
+        if (!sr) {
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Nhập lý do rồi bấm lại để khóa';
+          }
+          setMsg(msg, 'Nhập lý do khóa tài khoản (bắt buộc).', true);
+          return;
+        }
+        await rpc('suspend_user', { p_user_id: id, p_reason: sr });
         setMsg(msg, 'Đã khóa tài khoản (tầng ứng dụng — không tạo/sửa được hồ sơ, tin, bình luận).');
         await loadUsers(); await loadTestData();
       } else if (act === 'unsuspend-user') {

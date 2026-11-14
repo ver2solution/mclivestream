@@ -4222,7 +4222,14 @@ function pointsGuestNoteHTML(){
   return 'Đăng ký / đăng nhập tài khoản để bình luận và các hoạt động khác được cộng xu thưởng, đổi quà. <a href="dang-ky.html">Đăng ký</a> · <a href="dang-nhap.html">Đăng nhập</a>';
 }
 function pointsSessionUser(){
+  // v222 (S1-1): đọc session bền — getSession() 1 lần có thể trả null
+  // khi GoTrue chưa khôi phục xong (mở thẳng vi.html bằng phiên cũ),
+  // form chuyển xu hiện sai "Cần đăng nhập" dù đã đăng nhập.
+  // getSessionRobust thử lại tới ~2 giây rồi mới kết luận null.
   try {
+    if (window.V2SAuthUI && typeof window.V2SAuthUI.getSessionRobust === 'function') {
+      return window.V2SAuthUI.getSessionRobust(2000).then(function (s){ return (s && s.user) ? s.user : null; }).catch(function(){ return null; });
+    }
     if (window.V2SAuthUI && typeof window.V2SAuthUI.getSession === 'function') {
       return window.V2SAuthUI.getSession().then(function (s){ return (s && s.user) ? s.user : null; }).catch(function(){ return null; });
     }
