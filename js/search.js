@@ -53,7 +53,7 @@
   /* v179 + v196 + v198: 8 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
   var NEWOBJ_META = {
     'lop-live': {label: 'Lớp Livestream / MC / Thuyết trình', page: 'danh-sach-mau.html'},
-    'lop-makeup': {label: 'Lớp dạy Makeup', page: 'danh-sach-mau.html'},
+    'lop-makeup': {label: 'Lớp Makeup', page: 'danh-sach-mau.html'},
     'su-kien': {label: 'Sự kiện Marketing', page: 'danh-sach-shop.html'},
     'logistics': {label: 'Logistics Trung – Việt', page: 'danh-sach-shop.html'},
     'thue-mb': {label: 'Cho thuê cửa hàng / kho hàng', page: 'thanh-ly-kiot.html'},
