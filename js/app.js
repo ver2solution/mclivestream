@@ -3986,7 +3986,8 @@ function initMobileNotice(){
    MAT, thay bang TEN nguoi dung da dang nhap — bat buoc, moi trang, ca
    mobile lan desktop. Ten lay theo thu tu: user_metadata.full_name/name
    (tai khoan OAuth) -> profiles.full_name (ho so da dien o Trang cua toi)
-   -> phan truoc @ cua email (theo bo sung spec 15:52 07/11); chi khi ca 3
+   -> shop_profiles.shop_name (v232 S3-10b: TK chi co ho so shop)
+   -> phan truoc @ cua email (theo bo sung spec 15:52 07/11); chi khi ca 4
    deu khong co moi du phong "Trang của tôi". Nut van tro toi
    trang-cua-toi.html; chua dang nhap thi giu nut "Đăng Nhập" nhu cu. Dung
    chung trang thai phien tu js/auth-ui.js (getSession/onSessionChange);
@@ -4203,15 +4204,31 @@ function initHeaderAuth(){
         /* Chua co ten that trong metadata — hoi them bang profiles.full_name;
            co ten that thi doi ten (uu tien hon phan truoc @ cua email). Chi doi
            ten neu van la cung nguoi dung (tranh truong hop doi phien trong luc
-           cho ket qua). */
+           cho ket qua).
+           v232 (S3-10b): TK chi co ho so shop (khong co ho so mau) thi
+           fetchMyProfile tra null -> hoi them shop_profiles.shop_name
+           (fetchMyShopProfile, da co san trong API + RLS cho chu so huu doc)
+           truoc khi roi ve phan truoc @ cua email. Thu tu uu tien giu nguyen:
+           metadata -> ten mau -> ten shop -> phan truoc @. */
         try {
           var M = window.McLivestreamAPI;
           if(M && typeof M.fetchMyProfile === 'function'){
             M.fetchMyProfile().then(function (p) {
-              clearTimeout(_timer);
-              _settle(p && p.full_name && String(p.full_name).trim()
-                ? String(p.full_name).trim()
-                : headerDisplayName(user));
+              if(p && p.full_name && String(p.full_name).trim()){
+                clearTimeout(_timer);
+                _settle(String(p.full_name).trim());
+              } else if(typeof M.fetchMyShopProfile === 'function'){
+                /* v232 (S3-10b): khong co ten mau -> thu ten shop. */
+                M.fetchMyShopProfile().then(function (s) {
+                  clearTimeout(_timer);
+                  _settle(s && s.shop_name && String(s.shop_name).trim()
+                    ? String(s.shop_name).trim()
+                    : headerDisplayName(user));
+                }).catch(function () { clearTimeout(_timer); _settle(headerDisplayName(user)); });
+              } else {
+                clearTimeout(_timer);
+                _settle(headerDisplayName(user));
+              }
             }).catch(function () { clearTimeout(_timer); _settle(headerDisplayName(user)); });
           } else {
             clearTimeout(_timer);
