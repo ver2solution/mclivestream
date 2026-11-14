@@ -13996,6 +13996,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "22 tấn sầu riêng bán hết trong 5 phút livestream ngày 7/7/2024 — phiên live nông sản gây bão nhất TikTok Shop Việt Nam. Đằng sau kỷ lục đó là thị trường sầu riêng Trung Quốc trị giá 6,99 tỷ USD (khoảng 175.000 tỷ đồng) năm 2024, nơi Việt Nam xuất 2,94 tỷ USD. Phân tích vì sao sầu riêng bán chạy trên livestream, mặt trái hủy đơn và vụ kẹo Kera, cùng 7 bài học cho shop Việt trước 12.12."
   },
+  {
+   "title": "28.700 tỷ đồng trong 1 đêm livestream bán hàng — Vi Á: \"nữ hoàng livestream\" bán cả tên lửa, rồi sụp đổ vì trốn thuế 4.693 tỷ đồng",
+   "cat": "Phân tích",
+   "source": "VietnamBiz",
+   "date": "2026-11-14",
+   "url": "https://vietnambiz.vn/su-nghiep-livestream-ban-hang-cua-thanh-chot-don-trung-quoc-tu-kinh-doanh-nam-18-tuoi-va-ban-hop-dong-dac-biet-voi-taobao-20211222164131171.htm",
+   "page": "bai-viet/vi-a-28700-ty-dong-1-dem-livestream-ban-hang-tron-thue-4693-ty-dong.html",
+   "img": "https://cdn.vietnambiz.vn/171464876016439296/2021/12/22/huang-wei-viya-china-16401659919041489056028.jpg",
+   "pinned": false,
+   "takeaway": "Đêm presale 20/10/2021, Vi Á bán 28.700 tỷ đồng chỉ trong 1 đêm livestream bán hàng — cả tên lửa cũng bán được. Hai tháng sau, cô bị phạt 4.693 tỷ đồng vì trốn thuế và biến mất khỏi mọi nền tảng. Phân tích đế chế Qianxun và cú ngã của \"nữ hoàng livestream\" Taobao Live."
+  },
 ],
  "lots": [
    {
