@@ -1734,38 +1734,58 @@ function parseMoneyInput(s){
   if(isNaN(v) || v <= 0) return null;
   return v;
 }
-/* v42: parse luong gio thap nhat tu text salary cua shop.
-   Chi xet chuoi co don vi gio ("giờ" hoac "/h"); lay phan text TRUOC moc gio
-   dau tien de khong lay nham so %/thang o sau (vd "95.000 – 140.000đ/giờ
-   + 0.5% - 1%" -> 95000, khong lay 0.5/1; "70.000đ - 100.000đ / giờ
-   (8.000.000đ - 15.000.000đ/tháng)" -> 70000, khong lay phan thang).
-   So co dau "." la phan cach hang nghin ("50.000" -> 50000); so < 1000 hoac
-   co hau to "k" hieu la nghin dong ("100k" -> 100000, "150-170/h" -> 150000).
+/* v226 (L4): parse luong gio thap nhat tu text salary cua shop.
+   Duyet TUNG moc gio ('giờ' hoac '/h') theo thu tu, lay moc DAU TIEN ma
+   menh de truoc no KET THUC bang 1 so tien (hoac dai "A-B") — vi cum
+   "luong theo gio" cung chua chu "giờ" nhung khong co so tien ke sau.
+   Menh de = phan sau dau ';' cuoi cung truoc moc. So tien phai co don vi
+   (k/d/VNĐ/dong) hoac dau '.' phan cach nghin hoac ',' hoac gan '/' (moc
+   '/h' tu gan '/') hoac la 1 dau cua dai co don vi; so tran khong don vi
+   (vd "1 gio" = so luong video, "4 tieng", "ca 3 gio") thi BO.
+   Dai "80-110k" lay so nho nhat; "150-170/h" -> 150000. Goc L4: ham cu
+   lay MIN moi so TRUOC moc gio dau tien nen nuot ca luong THANG o menh
+   de truoc (vd XDS sh-202: 8.000.000 thang -> coi la luong gio 8tr,
+   xep dau; sh-154: 7-18 trieu/thang -> 7000 thay vi 60000).
+   So co dau "." la phan cach hang nghin ("50.000" -> 50000); so < 1000
+   hoac co hau to "k" hieu la nghin dong ("100k" -> 100000).
    Tra ve so thap nhat trong khoang, hoac null neu khong co luong gio. */
 function parseHourlyMin(s){
   if(!s) return null;
   var low = String(s).toLowerCase();
-  var cut = low.indexOf('giờ');
-  var cutH = low.indexOf('/h');
-  if(cut === -1 && cutH === -1) return null;
-  var end = cut !== -1 && cutH !== -1 ? Math.min(cut, cutH) : (cut !== -1 ? cut : cutH);
-  var head = low.slice(0, end);
-  var toks = head.match(/(\d[\d.,]*)\s*(k)?/g);
-  if(!toks) return null;
-  var min = null;
-  toks.forEach(function(tok){
-    var m = tok.match(/([\d.,]+)\s*(k)?/);
-    if(!m) return;
-    var raw = m[1];
+  var marks = [];
+  var i = -1;
+  while((i = low.indexOf('giờ', i + 1)) !== -1) marks.push({pos: i, slash: false});
+  i = -1;
+  while((i = low.indexOf('/h', i + 1)) !== -1) marks.push({pos: i, slash: true});
+  marks.sort(function(a, b){ return a.pos - b.pos; });
+  if(!marks.length) return null;
+  function money(raw, unit, partnerUnit, hasSlash){
+    if(raw == null) return null;
+    var hasDot = raw.indexOf('.') !== -1, hasComma = raw.indexOf(',') !== -1;
+    if(!unit && !hasDot && !hasComma && !hasSlash && !partnerUnit) return null;
     var v;
-    if(raw.indexOf('.') !== -1){ v = parseInt(raw.replace(/\./g, ''), 10); }
-    else if(raw.indexOf(',') !== -1){ v = parseFloat(raw.replace(',', '.')); }
+    if(hasDot){ v = parseInt(raw.replace(/\./g, ''), 10); }
+    else if(hasComma){ v = parseFloat(raw.replace(',', '.')); }
     else { v = parseInt(raw, 10); }
-    if(isNaN(v)) return;
-    if(m[2] === 'k' || v < 1000) v = v * 1000;
-    if(min === null || v < min) min = v;
-  });
-  return min;
+    if(isNaN(v)) return null;
+    if(unit === 'k' || partnerUnit === 'k' || v < 1000) v = v * 1000;
+    return v;
+  }
+  for(var k = 0; k < marks.length; k++){
+    var end = marks[k].pos;
+    var clause = low.slice(0, end);
+    var semi = clause.lastIndexOf(';');
+    if(semi !== -1) clause = clause.slice(semi + 1);
+    var m = clause.match(/(\d[\d.,]*)\s*(k|đ|vnđ|vnd|đồng)?(?:\s*[-–—]\s*(\d[\d.,]*)\s*(k|đ|vnđ|vnd|đồng)?)?\s*\/?\s*$/);
+    if(!m) continue;
+    var hasSlash = marks[k].slash || /\/\s*$/.test(clause);
+    var v1 = money(m[1], m[2], m[4], hasSlash);
+    if(v1 === null) continue;
+    var v2 = money(m[3], m[4], m[2], hasSlash);
+    if(v2 === null) return v1;
+    return Math.min(v1, v2);
+  }
+  return null;
 }
 /* v42: sap xep. null (khong co gia tri) LUON xep cuoi cung o ca 2 chieu.
    sortModelsBy: 'wage-asc'/'wage-desc' dung salaryNum; 'revenue-asc'/
