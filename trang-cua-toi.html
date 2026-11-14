@@ -64,7 +64,7 @@
 <form class="form-card" id="myProfileForm" data-track="form-ho-so-mau" style="display:none">
 <h2>1. Thông tin bắt buộc</h2>
 <p><label>Họ tên *<br><input id="myFullName" required></label></p>
-<p><label>Ngày tháng năm sinh *<br><input id="myDob" type="date" required></label></p>
+<p><label>Ngày tháng năm sinh *<br><input id="myDob" type="date" required></label><br><small>Nhập ngày/tháng/năm (vd 14/11/1990) hoặc bấm chọn lịch.</small></p>
 <p><label>Quê quán *<br><input id="myHometown" required></label></p>
 <p><label>Nơi muốn làm việc *<br><select id="myWorkLocation" required><option value="">Chọn tỉnh / thành phố</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc / Live online</option></select></label></p>
 <p><label>Học vấn *<br><input id="myEducation" required></label></p>
@@ -193,9 +193,18 @@
      (ke ca chuan hoa phia server), khong de form trong; o file (album/
      video) khong dien lai duoc theo quy dinh trinh duyet, gia tri cu
      van giu trong `existing` de lan luu sau dung lai. */
+  /* v228 (L9): phong thu — neu server tra ngay sinh dang DD/MM/YYYY thi doi
+     sang ISO truoc khi set vao input date (set truc tiep dang VN se im lang
+     that bai, o hien trong). DB hien luu ISO nen day chi la phong thu. */
+  function toIsoDate(s){
+    if(!s) return s;
+    var m=String(s).trim().match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
+    if(!m) return s;
+    return m[3]+'-'+String(parseInt(m[2],10)).padStart(2,'0')+'-'+String(parseInt(m[1],10)).padStart(2,'0');
+  }
   function fillForm(p){
     if(!p) return;
-    set('myFullName',p.full_name); set('myDob',p.date_of_birth); set('myHometown',p.hometown);
+    set('myFullName',p.full_name); set('myDob',toIsoDate(p.date_of_birth)); set('myHometown',p.hometown);
     set('myWorkLocation',p.work_location); set('myEducation',p.education); set('myExperience',p.experience);
     set('myDesiredField',p.desired_field); set('myPhoneZalo',p.phone_zalo); set('myEmail',p.contact_email);
     set('myPriorityField',p.priority_field);
@@ -235,6 +244,24 @@
     if(!val('myEmail') && prefs.contactEmail) set('myEmail', prefs.contactEmail);
   }
   var initialized=false;
+  /* v228 (L9): o Ngay sinh la input date native — dan DD/MM/YYYY bi trinh
+     duyet tu choi, go tung phim dung/sai tuy locale. Handler paste: bat
+     chuoi ngay VN (D/M/YYYY, phan cach / - .) roi doi sang ISO truoc khi
+     trinh duyet xu ly; neu khong parse duoc thi de trinh duyet xu ly nhu cu. */
+  (function(){
+    var dob=document.getElementById('myDob');
+    if(!dob) return;
+    dob.addEventListener('paste', function(e){
+      var t=''; try{ t=((e.clipboardData||window.clipboardData)||{}).getData('text')||''; }catch(_){ t=''; }
+      var m=String(t).trim().match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
+      if(!m) return;
+      var d=parseInt(m[1],10), mo=parseInt(m[2],10), y=parseInt(m[3],10);
+      if(d<1||d>31||mo<1||mo>12||y<1900||y>2100) return;
+      e.preventDefault();
+      dob.value=y+'-'+String(mo).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+      dob.dispatchEvent(new Event('change',{bubbles:true}));
+    });
+  })();
   async function init(){
     if(initialized) return;
     if(!window.McLivestreamAPI){status.textContent='Chưa kết nối Supabase, chưa lưu được hồ sơ.'; return;}
