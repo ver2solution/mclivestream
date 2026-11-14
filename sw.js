@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v230-shell-1'; /* v230: L12 anh tin ghim eager + onerror fallback (js/app.js) — nen v228-shell-1 live */
+const CACHE = 'v231-shell-1'; /* v231: S3-16 text vi trung tinh + loadApproved song song (vi.html + danh-sach-mau.html) — nen v230-shell-1 live */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

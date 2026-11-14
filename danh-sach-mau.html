@@ -336,8 +336,11 @@ document.addEventListener('DOMContentLoaded', function(){
     var st=document.getElementById('shopBackendStatus');
     if(!window.McLivestreamAPI){ st.textContent='Chưa tải được danh sách shop và tin đã duyệt. Bạn vẫn xem được 250 tin tuyển công khai bên dưới; cần hỗ trợ thì nhắn Zalo 032 998 3699.'; document.getElementById('approvedJobsStatus').textContent='Chưa tải được danh sách đã duyệt.'; return; }
     try{
-      var shops=await McLivestreamAPI.fetchApprovedShops();
-      var jobs=await McLivestreamAPI.fetchApprovedJobPosts();
+      /* v231 (S3-16): 2 fetch chay song song thay vi tuan tu — giam ~1/2 thoi
+         gian cho hien "Tin tuyen mau da duyet". */
+      var res=await Promise.all([McLivestreamAPI.fetchApprovedShops(), McLivestreamAPI.fetchApprovedJobPosts()]);
+      var shops=res[0];
+      var jobs=res[1];
       st.textContent='Shop đăng ký hồ sơ ở form bên dưới; đăng nhập để đăng tin tuyển mẫu. Hồ sơ và tin đã duyệt sẽ hiện ở mục này.';
       if(shops.length){
         document.getElementById('approvedShopsList').innerHTML=shops.map(function(s){
