@@ -3819,14 +3819,20 @@ function initNews(){
     /* v100: danh sach tin dung chung the tin rut gon (1 anh + 2 dong).
        Anh goc / takeaway / nut diem chi con o trang chi tiet bai-viet,
        khong hien trong danh sach nua. Bo loc + sap xep + dem + sidebar giu nguyen. */
-    // v223 (S2-6, 14/11/2026): DAO QUYET v114 — so dem = so the trong danh sach
-    // chinh (mainList), khong phai tong khop loc. Ly do: nguoi doc chi dem duoc
-    // 257 the duoi tieu de "Tin moi nhat" trong khi count ghi 261 (4 bai da hien
-    // o hang ghim/moi nhat phia tren) — so dem phai mo ta dung danh sach dang nhin.
+    // v238 (F-R2-01, 14/11/2026): DAO LAI v223 — so dem = tong bai KHOP BO
+    // LOC (list.length), khong phai so the trong danh sach chinh (mainList).
+    // Ly do: #newsCount nam o thanh loc (tin-tuc.html dong 48), tren ca 3
+    // hang (ghim 4 + moi nhat 4 + danh sach chinh), nhan cua no la "bai
+    // khop bo loc" — 262 bai khop thi dem phai la 262, khong phai 258.
+    // Cach doc cua v223 (dem chi danh sach chinh) lam dem lech voi tong
+    // so bai trang dang noi toi, dung nhu vong test 2 chi ra (262 - 4 =
+    // 258). 4 bai ghim van hien o hang ghim + 4 bai moi nhat van hien o
+    // hang moi nhat; viec 4 bai moi nhat trung 4 bai dau danh sach chinh
+    // la loi hien thi rieng (L15), KHONG sua trong goi nay.
     var topIds = renderTopRows(list);
     var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
     main.innerHTML=mainList.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
-    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=mainList.length+' bài khớp bộ lọc.';
+    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
       return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">'+esc(formatArticleDate(a.date))+'</span></span></li>';
