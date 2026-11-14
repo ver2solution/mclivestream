@@ -1,0 +1,51 @@
+name: Deploy articles-doi-song-2026-11-14 (5 bai Doi Song 14/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-doi-song-1411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-doi-song-1411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "247" || (echo "BASE DOI: data.js khong con 247 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "270" || (echo "BASE DOI: sitemap khong con 270 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip doi-song-1411 package
+        run: |
+          unzip -o mclivestream-doi-song-1411-deploy.zip
+          echo "--- verify doi-song-1411 (5 bai) ---"
+          for slug in lam-them-cuoi-nam-kiem-tien-tet thang-1-du-lich-dau-dep-nhat-5-diem-den tiet-kiem-chi-tieu-tet-gen-z-hoan-tien-nha sua-yen-mach-co-tot-khong-3g-protein quan-cafe-check-in-dep-tui-mo-to-da-lat; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "275" || (echo "SAI TONG sitemap, phai 275"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "252" || (echo "SAI TONG data.js, phai 252"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-doi-song-1411-deploy.zip || rm -f mclivestream-doi-song-1411-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-doi-song-2026-11-14: 5 bai Doi Song 14/11/2026 (lam them cuoi nam kiem tien Tet keyword #2 + thang 1 du lich + tiet kiem chi tieu Tet + sua yen mach + cafe Tui Mo To Da Lat)"
+            git push
+          fi
