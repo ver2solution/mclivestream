@@ -14041,6 +14041,54 @@ window.V20_DATA = {
    "takeaway": "Mua sắm lễ cuối năm 2026 lần đầu vượt 1.013 nghìn tỷ USD, online kỷ lục 275,1 tỷ USD: shop nhỏ đón sóng bằng hàng thiết yếu, bán qua điện thoại và live, giữ hàng cho ngày sau sale."
   },
   {
+   "title": "Cách thanh lý hàng tồn kho: bán sỉ, ký gửi, đấu giá",
+   "cat": "Đang hot",
+   "source": "ForthClear",
+   "date": "2026-11-15",
+   "url": "https://forthclear.io/blog/surplus-inventory-guide-shopify-merchants",
+   "page": "bai-viet/cach-thanh-ly-hang-ton-kho-ban-si-ky-gui-dau-gia.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-thanh-ly-hang-ton-kho-ban-si-ky-gui-dau-gia.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách thanh lý hàng tồn kho trước Tết 2027: kiểm kê theo ABC, định giá theo bậc để thu hồi 40–60% vốn trong 30 ngày, bán sỉ trực tiếp cho shop cùng ngành, ký gửi lô lẻ size, đấu giá lô khó định giá — nhận cọc 30–50% rồi mới giao hàng; dọn xong trước 20/01/2027."
+  },
+  {
+   "title": "Hàng tồn kho giá rẻ: mua ở đâu, tránh lừa đảo",
+   "cat": "Đang hot",
+   "source": "WholesaleSeeker",
+   "date": "2026-11-15",
+   "url": "https://wholesaleseeker.com/blog/best-wholesale-liquidation-pallet-suppliers/",
+   "page": "bai-viet/hang-ton-kho-gia-re-mua-o-dau-tranh-lua-dao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hang-ton-kho-gia-re-mua-o-dau-tranh-lua-dao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hàng tồn kho giá rẻ: pallet 200–2.000 USD (khoảng 5,2–51,8 triệu đồng), giá trúng đấu 10–25% giá bán lẻ; chỉ mua ở sàn có manifest và hạng tình trạng, tính lãi sau khi trừ hao 10–20% và phí 10–15%; tránh lời rao “pallet 99 USD” trên mạng xã hội."
+  },
+  {
+   "title": "Sale 12.12: Shopee, Lazada, TikTok Shop giảm gì?",
+   "cat": "Đang hot",
+   "source": "BigSeller",
+   "date": "2026-11-15",
+   "url": "https://www.bigseller.com/blog/articleDetails/shopee-12.12-birthday-sale-2026.5101.htm",
+   "page": "bai-viet/sale-12-12-shopee-lazada-tiktok-shop-giam-gia.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sale-12-12-shopee-lazada-tiktok-shop-giam-gia.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sale 12.12 ngày 12/12/2026 (thứ Bảy): Shopee, Lazada, TikTok Shop cùng giảm sâu; lưu lượng tăng 4–5 lần so với ngày thường (BigSeller 13/11/2026); 3 khung giờ cao điểm 0–2h, 12–14h, 20–24h; đăng ký chiến dịch TikTok trước 25/11/2026."
+  },
+  {
+   "title": "TikTok Shop Black Friday: live tăng 84%, phí ra sao",
+   "cat": "Đang hot",
+   "source": "TikTok Shop",
+   "date": "2026-11-15",
+   "url": "https://www.globenewswire.com/news-release/2026/10/19/3383528/0/en/tiktok-shop-announces-black-friday-and-cyber-monday-campaign-running-november-11-30.html",
+   "page": "bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Black Friday 11–30/11/2026: Black Friday 27/11, Cyber Monday 30/11; đợt 2025 vượt 500 triệu USD trong 4 ngày, người bán live tăng 84% với 760.000 phiên và 1,6 tỷ lượt xem; phí Smart Promotion 4,5% trong chiến dịch; tính điểm hòa vốn trước khi giảm giá."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
