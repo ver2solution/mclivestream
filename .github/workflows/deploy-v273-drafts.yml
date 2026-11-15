@@ -1,0 +1,38 @@
+name: Deploy v273-drafts (article drafts)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v273-drafts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v273-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v273-drafts package
+        run: |
+          unzip -o mclivestream-v273-drafts-deploy.zip
+          echo "--- verify v273-drafts (1 bai) ---"
+          test -f bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html || (echo "THIEU bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html"; exit 1)
+          grep -q "bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html" js/data.js || (echo "THIEU shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12 trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html</loc>" sitemap.xml || (echo "THIEU shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12 trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v273-drafts-deploy.zip
+          git add bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v273-drafts: 1 bai viet tu ban thao (Muse Zalo/admin) — shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12"
+            git push
+          fi
