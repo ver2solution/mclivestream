@@ -384,6 +384,37 @@
         highest_revenue_amount:revNum, highest_revenue_note:val('myTopRevenueNote')||null,
         album_images:album, demo_video_url:demo
       };
+      /* v264 (MC-82): chan ho so trung khi TAO MOI (existing == null) — SDT/
+         email trung ho so da thu thap tren web thi khong tao moi, huong dan
+         nhan so huu (claim) thay vi tao trung. Khi SUA ho so da co thi khong
+         chan (SDT do la cua chinh chu). (b) Gui lai y het du lieu da luu thi
+         bao "khong co gi thay doi" thay vi luu them — luoi an toan khi upsert
+         auth_user_id chua co rang buoc duy nhat o DB (can chay SQL UNIQUE cho
+         profiles.auth_user_id de triet de). */
+      var _dupMsg = (function(){
+        try{
+          if(!existing){
+            var C = window.V2SClaim;
+            if(C && typeof C.findMatches === 'function'){
+              var fm = C.findMatches(data.phone_zalo, data.contact_email, data.full_name);
+              if(fm && fm.dataLoaded && fm.phoneMatches && fm.phoneMatches.length){
+                var hit = fm.phoneMatches[0];
+                return 'Số điện thoại/email này đã có hồ sơ "' + (hit.name || hit.id) + '" trên web. Nếu đây là hồ sơ của bạn, hãy dùng chức năng "Nhận sở hữu hồ sơ" (banner trên trang này / trang chủ) thay vì tạo hồ sơ mới.';
+              }
+            }
+          }
+        }catch(e){}
+        try{
+          if(existing){
+            var _same = String(existing.full_name || '') === String(data.full_name || '')
+              && String(existing.phone_zalo || '') === String(data.phone_zalo || '')
+              && String(existing.date_of_birth || '') === String(data.date_of_birth || '');
+            if(_same) return 'Hồ sơ không có gì thay đổi, không cần lưu lại.';
+          }
+        }catch(e){}
+        return '';
+      })();
+      if(_dupMsg){ msg.textContent = _dupMsg; return; }
       var saved, priorityFallback = false;
       try {
         saved = await McLivestreamAPI.saveMyProfile(data);
