@@ -1152,16 +1152,20 @@ function facSortComparator(key){
 }
 function initLotPageFilter(){
   if(typeof document === 'undefined' || !document.getElementById('lotFilter')) return null;
-  var up = document.getElementById('fLotProv');
-  if(up) applyOptionCounts(up, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(!lotProvOf(l)) nm++; }); return nm; } return uniProvCount('lot', v); }, uniTotal('lot'));
+  /* v256 (MC-96): danh sach tinh build DONG tu du lieu (rebuildProvOptions)
+     thay vi chi cap nhat so tren option tinh co san — danh sach tinh trong
+     HTML thieu 5 tinh co lo that (Lam Dong 4, Tay Ninh 2, Ca Mau 1, An
+     Giang 1, Thanh Hoa 1) nen tong chi duoc 62/71. So dem chi tinh lo
+     DANG HOAT DONG (v223). */
+  rebuildProvOptions('fLotProv', 'lot', function(v){ return uniProvCount('lot', v); }, uniTotal('lot'));
   var uc = document.getElementById('fLotCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount('lot', v); }, uniTotal('lot'));
   var upr = document.getElementById('fLotPrice');
-  if(upr) applyOptionCounts(upr, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, (D.lots || []).length);
+  if(upr) applyOptionCounts(upr, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, uniTotal('lot'));
   var uq = document.getElementById('fLotQty');
-  if(uq) applyOptionCounts(uq, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(l.qty == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(l.qty != null && inRange(l.qty, v)) n++; }); return n; }, (D.lots || []).length);
+  if(uq) applyOptionCounts(uq, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty != null && inRange(l.qty, v)) n++; }); return n; }, uniTotal('lot'));
   var ug = document.getElementById('fLotGroup');
-  if(ug) applyOptionCounts(ug, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(String(l.group) === v) n++; }); return n; }, (D.lots || []).length);
+  if(ug) applyOptionCounts(ug, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && String(l.group) === v) n++; }); return n; }, uniTotal('lot'));
   initFilterToggle();
   return initSectionFilter({
     sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'lotFilter', pointsCategory: 'lot',
@@ -1185,8 +1189,10 @@ function initLotPageFilter(){
 }
 function initFactoryPageFilter(){
   if(typeof document === 'undefined' || !document.getElementById('facFilter')) return null;
-  var up = document.getElementById('fFacProv');
-  if(up) applyOptionCounts(up, function(v){ return uniProvCount('factory', v); }, uniTotal('factory'));
+  /* v256 (MC-96): nhu fLotProv — danh sach tinh HTML thieu nhieu tinh co
+     xuong that (vd Lam Dong 8, An Giang 4, Lao Cai 7) nen phai build dong
+     tu du lieu. */
+  rebuildProvOptions('fFacProv', 'factory', function(v){ return uniProvCount('factory', v); }, uniTotal('factory'));
   var uc = document.getElementById('fFacCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount('factory', v); }, uniTotal('factory'));
   var um = document.getElementById('fFacMoq');
@@ -2743,7 +2749,7 @@ function initHome(){
   if(homeShopsAll) homeShopsAll.textContent='Xem tất cả '+(D.shops||[]).length+' shop →';
   // v130: 3 muc moi tren trang chu (Kiot -> Lo -> Xuong), sau muc Shop.
   renderHomeSection('kiot-moi', 'homeKiots', 'homeKiotsAll', dedupeProfiles(D.kiots || [], homeSeen, 'kiot'), 'kiot', 'kiot');
-  renderHomeSection('lo-moi', 'homeLots', 'homeLotsAll', dedupeProfiles(D.lots || [], homeSeen, 'lot'), 'lô', 'lot');
+  renderHomeSection('lo-moi', 'homeLots', 'homeLotsAll', dedupeProfiles((D.lots || []).filter(function(l){ return lotActive(l); }), homeSeen, 'lot'), 'lô', 'lot'); /* v256 (MC-96): chi lo DANG HOAT DONG — link 'Xem tat ca' phai la 68, khop tieu de muc */
   renderHomeSection('xuong-moi', 'homeFactories', 'homeFactoriesAll', dedupeProfiles(D.factories || [], homeSeen, 'factory'), 'xưởng', 'factory');
   /* v184: 5 muc moi (lop live/makeup, su kien, logistics, cho thue),
      moi muc 1 hang, duoi #xuong-moi. */
@@ -2939,7 +2945,7 @@ function initOptionCounts(){
 function uniProvCount(cat, prov){
   var ncfg = NEWOBJ_UNI_CATS[cat];
   if(ncfg) return newObjProvCount(ncfg.type, prov);
-  if(cat === 'lot'){ var n = 0; (D.lots || []).forEach(function(l){ if(lotProvOf(l) === prov) n++; }); return n; }
+  if(cat === 'lot'){ var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && lotProvOf(l) === prov) n++; }); return n; } /* v256 (MC-96): chi dem lo DANG HOAT DONG */
   if(cat === 'factory'){ var nf = 0; (D.factories || []).forEach(function(f){ if(normProv(f.prov) === prov) nf++; }); return nf; }
   return filterModels(D.models || [], {prov: prov}).length;
 }
@@ -2947,14 +2953,14 @@ function uniCatCount(cat, code){
   /* v182: o Linh vuc bi khoa khi chon muc con moi nen so dem khong hien —
      tra 0 cho gon (khong anh huong loc). */
   if(NEWOBJ_UNI_CATS[cat]) return 0;
-  if(cat === 'lot'){ var n = 0; (D.lots || []).forEach(function(l){ if(l.cat === code) n++; }); return n; }
+  if(cat === 'lot'){ var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.cat === code) n++; }); return n; } /* v256 (MC-96): chi dem lo DANG HOAT DONG */
   if(cat === 'factory'){ var nf = 0; (D.factories || []).forEach(function(f){ if(f.cat === code) nf++; }); return nf; }
   return filterModels(D.models || [], {cat: uniCatToModel(code)}).length;
 }
 function uniTotal(cat){
   var ncfg = NEWOBJ_UNI_CATS[cat];
   if(ncfg) return newObjCount(ncfg.type);
-  if(cat === 'lot') return (D.lots || []).length;
+  if(cat === 'lot') return (D.lots || []).filter(function(l){ return lotActive(l); }).length; /* v256 (MC-96): tong lo DANG HOAT DONG (68) — khop so the that su hien, khong phai tong tho 71 */
   if(cat === 'factory') return (D.factories || []).length;
   return (D.models || []).length;
 }
@@ -3044,7 +3050,7 @@ function provEntriesForCat(cat, countFn){
      dung nhung lo do. Chi hien khi con lo thieu tinh. */
   if(cat === 'lot'){
     var nm = 0;
-    (D.lots || []).forEach(function(l){ if(!lotProvOf(l)) nm++; });
+    (D.lots || []).forEach(function(l){ if(lotActive(l) && !lotProvOf(l)) nm++; }); /* v256 (MC-96): chi dem lo DANG HOAT DONG */
     if(nm > 0) entries.push({value: MISSING_META, text: countLabel('Chưa ghi tỉnh', nm)});
   }
   return entries;
