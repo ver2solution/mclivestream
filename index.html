@@ -37,6 +37,28 @@
 .game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
 .game-entry small{display:none}
 @media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
+/* v274-lich-sale (15/11/2026): khoi "Lich sale" trong #lo-trinh — thay nut 11.11 da het han.
+   HTML tinh + JS inline danh dau hom nay/qua han (gio VN). Khong scrollIntoView, khong them section/H2/menu. */
+.sale-calendar{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.sale-cal-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.sale-cal-head h3{margin:0;font-size:19px}
+.sale-cal-head a{font-weight:800;white-space:nowrap}
+.sale-rows{display:grid;grid-template-columns:1fr;gap:8px}
+.sale-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;color:var(--ink);background:var(--card)}
+.sale-row:hover{text-decoration:none;border-color:var(--brand);background:var(--brandsoft)}
+.sale-date{flex:0 0 86px;text-align:center;font-weight:800;font-size:12px;line-height:1.3;color:var(--brand);background:var(--brandsoft);border-radius:999px;padding:6px 4px}
+.sale-body{flex:1;min-width:0}
+.sale-body b{display:block;font-size:15px}
+.sale-body span{font-size:13px;color:var(--mut)}
+.sale-arrow{flex:0 0 auto;color:var(--brand);font-weight:800}
+.sale-row.today{border-color:var(--brand);background:var(--brandsoft);box-shadow:0 2px 10px rgba(11,93,78,.12)}
+.sale-row.today .sale-date{background:var(--brand);color:#fff}
+.sale-row.next{border-color:var(--brand)}
+.sale-row.next .sale-date{box-shadow:inset 0 0 0 1.5px var(--brand)}
+.sale-row.past{opacity:.55}
+.sale-note{margin:10px 0 0;font-size:12px;color:var(--mut)}
+@media(min-width:768px){.sale-rows{grid-template-columns:1fr 1fr}}
+@media(max-width:359px){.sale-row{flex-direction:column;align-items:flex-start;gap:6px}.sale-date{flex:none}.sale-arrow{display:none}}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">136</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -110,7 +132,17 @@
 
 <section class="section" id="lo-trinh"><div class="section-head"><div><h2><a href="tin-tuc.html" data-track="tieu-de-tin-tuc">Tin mới thị trường Livestream/TMĐT Việt Nam và Thế giới</a></h2></div></div>
 <div class="news-list" id="homeNews"></div>
-<div class="section-foot"><a class="btn btn-primary btn-sm" href="tinh-lai-1111.html" data-track="cong-cu-tinh-lai">🧮 Tính lãi sau phí sàn 11.11 →</a> <a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
+<div class="sale-calendar" id="saleCalendar"><div class="sale-cal-head"><h3>🗓️ Lịch sale — mua đúng đợt, khỏi tiếc</h3><a href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-track="lich-sale-xem-lich">Xem lịch đầy đủ →</a></div><div class="sale-rows">
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-15" data-track="lich-sale-moc-15-11"><span class="sale-date">HÔM NAY 15/11</span><span class="sale-body"><b>Sale giữa tháng</b><span>Shopee mã 0h 50% tối đa 500K · Lazada TMall 30–50% tối đa 1,5 triệu · TikTok Shop 25–35%</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date-start="2026-11-15" data-date-end="2026-11-30" data-track="lich-sale-moc-phong-vu"><span class="sale-date">15–30/11</span><span class="sale-body"><b>Phong Vũ “Đại chiến công nghệ”</b><span>Black Friday mở sớm</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-25" data-track="lich-sale-moc-25-11"><span class="sale-date">25/11</span><span class="sale-body"><b>Sale lương</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#black-friday" data-date="2026-11-27" data-track="lich-sale-moc-27-11"><span class="sale-date">27/11</span><span class="sale-body"><b>Black Friday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-30" data-track="lich-sale-moc-30-11"><span class="sale-date">30/11</span><span class="sale-body"><b>Cyber Monday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#1212" data-date="2026-12-12" data-track="lich-sale-moc-12-12"><span class="sale-date">12/12</span><span class="sale-body"><b>Sale 12.12</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+</div><p class="sale-note">Số liệu theo công bố của sàn — kiểm tra lại trên app sàn trước khi dùng.</p></div>
+<script>/* v274-lich-sale (15/11/2026): danh dau moc hom nay / da qua theo gio Viet Nam; moc khoang ngay tinh theo ngay bat dau (theo vi du §4.4/§5.5 cua thiet ke). Khong cuon trang. */
+(function(){try{var today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());var rows=document.querySelectorAll('#saleCalendar .sale-row');var next=null;rows.forEach(function(r){var ref=r.getAttribute('data-date')||r.getAttribute('data-date-start');if(!ref)return;if(today>ref){r.classList.add('past')}else if(today===ref){r.classList.add('today')}else if(!next){next=r}});if(next&&!document.querySelector('#saleCalendar .sale-row.today')){next.classList.add('next')}}catch(e){}})();</script>
+<div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
 
 <section class="section collapsed" id="faq"><div class="section-head"><h2>Hỏi đáp nhanh</h2></div>
 <div class="steps"><div class="step"><h3>Xem hồ sơ có cần đăng nhập không?</h3><p>Không. Khách xem đủ hồ sơ không cần đăng nhập. Chỉ mẫu tự đăng hoặc sửa hồ sơ mới cần đăng nhập.</p></div>
