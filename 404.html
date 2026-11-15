@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Không tìm thấy trang — Ver2Solution</title>
+<meta name="description" content="Trang bạn tìm không còn tồn tại hoặc đã chuyển địa chỉ. Về trang chủ Ver2Solution — sàn việc làm dành cho idol live top 1 Việt Nam.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Không tìm thấy trang — Ver2Solution">
+<meta property="og:description" content="Trang bạn tìm không còn tồn tại hoặc đã chuyển địa chỉ.">
+<meta property="og:image" content="https://vieclamlivestream.online/images/og-brand.jpg">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b5d4e">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v20.css"></head><body>
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="index.html"><span class="logo-badge">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="index.html" class="">Trang chủ</a><a href="danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="danh-sach-mau.html" class="">Dành cho Shop</a><a href="thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="tin-tuc.html" class="">Tin tức</a><a href="hoi-dap.html" class="">Hỏi đáp</a><a href="dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<a class="btn btn-primary btn-sm" href="dang-nhap.html">Đăng Nhập</a></div></header>
+<main class="wrap">
+<!-- v267 (route /bai/, 15/11/2026): trang 404 có thương hiệu + chuyển hướng
+     đường dẫn bài cũ /bai/<slug> và /bai/<slug>.html sang /bai-viet/<slug>.html.
+     GitHub Pages không có chuyển hướng phía server nên chuyển bằng JS ngay
+     khi tải trang; người tắt JS vẫn thấy link bấm tay. Các đường dẫn khác
+     hiện trang 404 bình thường. -->
+<section class="section" id="notFoundSection">
+<h1>Không tìm thấy trang</h1>
+<p id="redirectMsg" hidden>Bài viết đã chuyển địa chỉ mới — đang đưa bạn tới bài viết… <a id="redirectLink" href="tin-tuc.html">Bấm vào đây nếu trang không tự chuyển</a></p>
+<div id="genericMsg">
+<p>Trang bạn tìm không còn tồn tại, đã chuyển địa chỉ, hoặc bạn gõ sai đường dẫn.</p>
+<p><a class="btn btn-primary" href="index.html">← Về trang chủ</a></p>
+<p style="font-size:14px">Bạn có thể tìm tiếp ở: <a href="danh-sach-mau.html">Danh sách mẫu livestream</a> · <a href="danh-sach-shop.html">Danh sách shop tuyển mẫu</a> · <a href="tin-tuc.html">Tin tức</a> · <a href="thanh-ly-kiot.html">Thanh lý kiot</a></p>
+</div>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>
+<p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua Ver2Solution trung gian.</p><p class="powered">Powered by Ver2Solution</p><p class="foot-legal"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="lien-he.html">Liên hệ</a> · <a href="tuyen-bo-mien-tru.html">Tuyên bố miễn trừ</a> · <a href="chinh-sach-cookie.html">Chính sách cookie</a></p></div></footer>
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('mainNav');
+  if(btn&&nav){ btn.addEventListener('click',function(){ var open=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',open?'true':'false'); }); }
+  var path=window.location.pathname.replace(/\/+$/,'');
+  var m=path.match(/^\/bai\/([^\/]+?)(\.html)?$/);
+  if(m&&m[1]){
+    var slug=decodeURIComponent(m[1]);
+    var target='/bai-viet/'+slug+'.html';
+    document.getElementById('redirectMsg').hidden=false;
+    document.getElementById('genericMsg').hidden=true;
+    document.getElementById('redirectLink').href=target;
+    document.getElementById('redirectLink').textContent='Bấm vào đây nếu trang không tự chuyển: '+target;
+    window.location.replace(target);
+  }
+})();
+</script>
+</body></html>
