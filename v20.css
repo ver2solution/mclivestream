@@ -1110,3 +1110,12 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 
 /* v225 (14/11/2026): [hidden] thua display cua .btn/.lot-more — nut Xem them/Tai them da hidden van hien voi text cu (L3 Kiot: loc ra 1/1 tin ma nut van "con 17 tin", bam khong tai them; L7: nut Tai them van hien sau "Da het ket qua"). Cung ho loi v89 (online-badge, dong 137): display:inline-flex/block o tren thang [hidden] cua UA. Dat cuoi file de thang moi quy tac display cua .btn/.lot-more. */
 .btn[hidden], .lot-more[hidden]{display:none}
+
+/* v282 (16/11/2026): nut Gop y (#gopyFab) chu "Gop y" tran khoi vong tron — span
+   .gopy-fab-text khong co CSS rieng, ke thua font-size 22px cua nut nen xuong 2 dong
+   ("Gop" / "y"), dong "y" tran ra ngoai hinh tron, bi cat o mep duoi (desktop + mobile 390px).
+   Xep icon + chu theo cot, chu 1 dong 11px khong xuong dong; giu [hidden] cho trang cu. */
+.gopy-fab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:0}
+.gopy-fab-icon{display:block;font-size:20px;line-height:1}
+.gopy-fab-text{display:block;font-size:11px;font-weight:800;line-height:1.2;white-space:nowrap}
+.gopy-fab[hidden]{display:none}
