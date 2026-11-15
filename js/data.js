@@ -14677,6 +14677,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Bộ dưỡng da PDRN bán 5,5 triệu đơn, doanh số tích lũy 38.700 tỷ đồng. Xem 10 sản phẩm bán triệu đơn trên TikTok Shop 2026 và 7 bài học chọn hàng cho shop Việt trước 12.12."
   },
+  {
+   "title": "1.050 tỷ đồng trong 1 buổi livestream bán hàng — Hướng Thái bán rẻ 9,9 NDT, mất 1 triệu follower rồi lội ngược dòng 560 tỷ đồng",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-15",
+   "url": "https://www.36kr.com/p/3706969918107781",
+   "page": "bai-viet/huong-thai-1050-ty-dong-livestream-ban-hang-99-ndt-mat-1-trieu-follower.html",
+   "img": "https://img.36krcdn.com/hsossms/20260303/v2_f92037e01ca34b7196c9103138a62ae4@000000_oswg172888oswg1080oswg1405_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Hướng Thái bán 300 triệu NDT trong buổi livestream bán hàng đầu tiên trên Douyin rồi mất gần 1 triệu follower, trả hàng tới 70%. Ba năm sau, bà lội ngược dòng với 160 triệu NDT tiền trang sức trên Xiaohongshu."
+  },
 ],
  "lots": [
    {
