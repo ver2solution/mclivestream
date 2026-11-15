@@ -1,0 +1,36 @@
+name: deploy-v281
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy-v281:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip v281 package
+        run: |
+          unzip -o v281-xu-p0.zip
+          ls -l js/reward.js js/app.js sw.js
+      - name: Verify package contents
+        run: |
+          set -e
+          grep -Fq "v284-shell-1" sw.js
+          grep -Fq "points_spent" js/reward.js
+          grep -Fq "serverCost" js/reward.js
+          grep -Fq "r.cost" js/app.js
+          echo "OK: v281 cost ghim lay tu server (points_spent), UI hien r.cost"
+      - name: Commit v281 files
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@gmail.com"
+          git add js/reward.js js/app.js sw.js
+          echo "So file staged:"
+          git status --short | wc -l
+          git status --short | head -5
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v281 cost ghim lay tu server (3 files)"
+            git push
+          fi
