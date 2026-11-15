@@ -47,6 +47,12 @@
     return (s == null ? '' : String(s)).replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  /* v283 (MBS-4): thoi gian tim that chi 1–4 ms — (ms/1000).toFixed(2) luon ra "0,00 giay".
+     <1s hien mili-giay (1 chu so thap phan), >=1s hien giay 2 chu so thap phan. */
+  function fmtElapsed(ms) {
+    if (ms >= 1000) return (ms / 1000).toFixed(2).replace('.', ',') + ' giây';
+    return ms.toFixed(1).replace('.', ',') + ' ms';
+  }
 
   var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
   var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
@@ -253,6 +259,7 @@
 
   var API = {
     normalize: normalize, provKey: provKey, parseDateMs: parseDateMs, escHtml: escHtml,
+    fmtElapsed: fmtElapsed,
     buildIndex: buildIndex, countByType: countByType, scoreEntry: scoreEntry,
     search: search, parseDeepLink: parseDeepLink, buildDeepLink: buildDeepLink,
     suggest: suggest, hotKeywords: hotKeywords, TYPE_LABELS: TYPE_LABELS, TYPE_ORDER: TYPE_ORDER
@@ -336,8 +343,7 @@
     function renderMeta(res) {
       var m = $('searchMeta'); if (!m) return;
       if (!res || res.tooShort) { m.textContent = ''; return; }
-      var sec = (res.elapsedMs / 1000).toFixed(2).replace('.', ',');
-      m.innerHTML = 'Tìm thấy <b>' + res.total + ' kết quả</b> cho “<b>' + escHtml(state.q) + '</b>” · ' + sec + ' giây';
+      m.innerHTML = 'Tìm thấy <b>' + res.total + ' kết quả</b> cho “<b>' + escHtml(state.q) + '</b>” · ' + fmtElapsed(res.elapsedMs);
     }
 
     function renderResults(res, append) {
@@ -413,7 +419,9 @@
       currentRes = res;
       if (q && q.length >= 2) rememberSearch(q);
       if (res.tooShort) {
-        if (box) box.innerHTML = '';
+        /* v283 (MBS-2): an feed trong khi chua co tu khoa — feed mobile cao 514px,
+           de trong thi trang nhu trang trang; chi hien lai khi co ket qua (nhanh duoi). */
+        if (box) { box.innerHTML = ''; box.hidden = true; }
         if ($('searchEmpty')) $('searchEmpty').hidden = true;
         if ($('searchEnd')) $('searchEnd').hidden = true;
         if ($('searchLoadMore')) $('searchLoadMore').hidden = true;
@@ -421,13 +429,17 @@
         renderMeta(null);
         showPopular();
       } else if (res.results.length === 0) {
-        if (box) box.innerHTML = '';
+        /* v283 (MBS-2): an feed trong khi 0 ket qua — neu khong, hop "Khong tim thay"
+           bi day xuong duoi feed trong 514px (y~1102 o 390px), nguoi dung chi thay
+           trang trang. */
+        if (box) { box.innerHTML = ''; box.hidden = true; }
         if ($('searchEnd')) $('searchEnd').hidden = true;
         if ($('searchLoadMore')) $('searchLoadMore').hidden = true;
         renderFilters(res.counts);
         renderMeta(res);
         showEmptyState(q);
       } else {
+        if (box) box.hidden = false;
         if ($('searchEmpty')) $('searchEmpty').hidden = true;
         renderFilters(res.counts);
         renderMeta(res);

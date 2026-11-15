@@ -1119,3 +1119,10 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .gopy-fab-icon{display:block;font-size:20px;line-height:1}
 .gopy-fab-text{display:block;font-size:11px;font-weight:800;line-height:1.2;white-space:nowrap}
 .gopy-fab[hidden]{display:none}
+
+/* v283 (16/11/2026): [hidden] thua display cua #searchLoadMore/.feed-status — cung ho v89/v225.
+   #searchLoadMore{display:block} (ID) thang .btn[hidden] (class) nen nut "Tai them" van hien
+   sau khi het ket qua / 0 ket qua, bam khong tai them (MBS-1). .feed-status mobile display:flex
+   thang [hidden] cua UA nen de lai vach trang 10px khi phai an. .search-results khong co display
+   rieng nhung them [hidden] de phong quy tac sau nay (MBS-2: an feed trong khi 0 ket qua). */
+#searchLoadMore[hidden], .feed-status[hidden], .search-results[hidden]{display:none}
