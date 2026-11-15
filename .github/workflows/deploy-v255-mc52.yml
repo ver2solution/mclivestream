@@ -1,0 +1,43 @@
+name: Deploy v255 (MC-52)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v255-mc52.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v255-mc52:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v255-mc52 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v255-mc52-deploy.zip
+          echo "--- verify v255 (MC-52) ---"
+          node --check js/app.js || (echo "SYNTAX FAIL js/app.js"; exit 1)
+          node --check sw.js || (echo "SYNTAX FAIL sw.js"; exit 1)
+          grep -m1 "v255-shell-1" sw.js
+          grep -m1 "v255 (MC-52)" js/app.js
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js js/app.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v255-mc52-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v255: MC-52 sua dem sao tren trang con (fetchStarStats khong loc bo hang thieu place), sw.js v255-shell-1"
+            git push
+          fi
