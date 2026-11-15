@@ -14666,6 +14666,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Quý III/2026, Shopee đạt GMV 74.400 tỷ đồng, TikTok Shop đạt 70.100 tỷ đồng — khoảng cách chỉ còn 4.300 tỷ. TikTok Shop tăng 60%, Shopee tăng 8%. Cuộc đua ngôi vương sàn thương mại điện tử Việt Nam sẽ ngã ngũ ở 12.12?"
   },
+  {
+   "title": "38.700 tỷ đồng từ 1 bộ dưỡng da — 10 sản phẩm bán triệu đơn trên TikTok Shop 2026, shop Việt nhập gì cho 12.12?",
+   "cat": "Hàng hoá",
+   "source": "SellTheTrend",
+   "date": "2026-11-15",
+   "url": "https://www.sellthetrend.com/reports/top-selling-tiktok-shop",
+   "page": "bai-viet/san-pham-ban-trieu-don-tiktok-shop-2026-shop-viet-nhap-gi-12-12.html",
+   "img": "https://www.bebolddigital.com/hs-fs/hubfs/medicube_vs_dr_melaxin_gmv_chart.png?width=1980&height=1180&name=medicube_vs_dr_melaxin_gmv_chart.png",
+   "pinned": false,
+   "takeaway": "Bộ dưỡng da PDRN bán 5,5 triệu đơn, doanh số tích lũy 38.700 tỷ đồng. Xem 10 sản phẩm bán triệu đơn trên TikTok Shop 2026 và 7 bài học chọn hàng cho shop Việt trước 12.12."
+  },
 ],
  "lots": [
    {
