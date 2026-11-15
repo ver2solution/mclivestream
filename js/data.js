@@ -13986,7 +13986,7 @@ window.V20_DATA = {
 {"title":"Nguồn hàng giá sỉ: chợ Nghĩa Ô xuất 420,7 tỷ NDT","cat":"Hàng hoá","source":"PRNewswire","date":"2026-11-14","url":"https://ECjobsonline.com/news/d/11433/Global-Creators-Turn-to-Yiwu-as-Livestream-Commerce-Gains-Momentum/","page": "bai-viet/nguon-hang-gia-si-cho-nghia-o-xuat-420-7-ty-ndt.html","img":"https://vieclamlivestream.online/images/bai-viet/nguon-hang-gia-si-cho-nghia-o-xuat-420-7-ty-ndt.jpg","pinned":false,"takeaway":"Nguồn hàng giá sỉ: chợ Nghĩa Ô xuất 420,7 tỷ NDT nửa đầu 2026 (+17,3%); 300 creator livestream tại chợ, 305 video, 128 triệu lượt xem, 8.000+ yêu cầu tìm nguồn (PRNewswire, 05/08/2026); số lượng đặt tối thiểu từ 1 thùng."},
 {"title":"Dao bếp làm từ đậu phụ: phát minh dị Nhật Bản","cat":"Hàng hoá","source":"Hive Life","date":"2026-11-14","url":"https://hivelife.com/kiwami-japan/","page": "bai-viet/dao-bep-lam-tu-dau-phu-phat-minh-di-nhat-ban.html","img":"https://vieclamlivestream.online/images/bai-viet/dao-bep-lam-tu-dau-phu-phat-minh-di-nhat-ban.jpg","pinned":false,"takeaway":"Dao bếp làm từ đậu phụ: Kiwami Japan biến đậu phụ thành dao bếp sắc bén nhờ máy ly tâm (Hive Life, 13/11/2019); 2,68 triệu người đăng ký; video quá trình 15-20 phút không nhạc, không lời; trào lưu dao mì Ý viral lại tháng 08/2026."},
   {
-   "title": "175.000 tỷ đồng mỗi năm — 22 tấn sầu riêng \"cháy hàng\" trong 5 phút livestream: nông sản Việt bán nghìn đơn bằng cách nào?",
+   "title": "Sầu riêng 22 tấn bán hết trong 5 phút livestream kỷ lục",
    "cat": "Hàng hoá",
    "source": "CafeF",
    "date": "2026-11-14",
@@ -13994,10 +13994,10 @@ window.V20_DATA = {
    "page": "bai-viet/sau-rieng-22-tan-5-phut-livestream-nong-san-viet-ban-nghin-don.html",
    "img": "https://cafefcdn.com/thumb_w/1200/203337114487263232/2024/8/25/avatar1724593242031-17245932429621641011785.png",
    "pinned": false,
-   "takeaway": "22 tấn sầu riêng bán hết trong 5 phút livestream ngày 7/7/2024 — phiên live nông sản gây bão nhất TikTok Shop Việt Nam. Đằng sau kỷ lục đó là thị trường sầu riêng Trung Quốc trị giá 6,99 tỷ USD (khoảng 175.000 tỷ đồng) năm 2024, nơi Việt Nam xuất 2,94 tỷ USD. Phân tích vì sao sầu riêng bán chạy trên livestream, mặt trái hủy đơn và vụ kẹo Kera, cùng 7 bài học cho shop Việt trước 12.12."
+   "takeaway": "22 tấn sầu riêng bán hết trong 5 phút livestream ngày 7/7/2024 — phiên live nông sản gây bão TikTok Shop. Xem ngay 7 bài học bán nghìn đơn cho shop Việt."
   },
   {
-   "title": "28.700 tỷ đồng trong 1 đêm livestream bán hàng — Vi Á: \"nữ hoàng livestream\" bán cả tên lửa, rồi sụp đổ vì trốn thuế 4.693 tỷ đồng",
+   "title": "Vi Á: 28.700 tỷ đồng trong 1 đêm livestream bán hàng kỷ lục",
    "cat": "Phân tích",
    "source": "VietnamBiz",
    "date": "2026-11-14",
@@ -14005,7 +14005,7 @@ window.V20_DATA = {
    "page": "bai-viet/vi-a-28700-ty-dong-1-dem-livestream-ban-hang-tron-thue-4693-ty-dong.html",
    "img": "https://cdn.vietnambiz.vn/171464876016439296/2021/12/22/huang-wei-viya-china-16401659919041489056028.jpg",
    "pinned": false,
-   "takeaway": "Đêm presale 20/10/2021, Vi Á bán 28.700 tỷ đồng chỉ trong 1 đêm livestream bán hàng — cả tên lửa cũng bán được. Hai tháng sau, cô bị phạt 4.693 tỷ đồng vì trốn thuế và biến mất khỏi mọi nền tảng. Phân tích đế chế Qianxun và cú ngã của \"nữ hoàng livestream\" Taobao Live."
+   "takeaway": "Đêm presale 20/10/2021, Vi Á bán 28.700 tỷ đồng trong 1 đêm livestream — cả tên lửa cũng bán. Xem ngay hành trình lên đỉnh và cú ngã trốn thuế 4.693 tỷ."
   },
 ],
  "lots": [
