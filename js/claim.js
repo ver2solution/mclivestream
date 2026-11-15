@@ -116,18 +116,37 @@
     return null;
   }
 
+  /* v269 (MC-94, 15/11/2026): localStorage dung chung giua cac tai khoan
+     tren cung trinh duyet — khoa chung 'v2s_signup_prefs' lam SDT/email
+     cua TK truoc roi sang banner/TK sau (goc MC-94/MC-92: banner chi cho
+     SDT 0969151680 hien ca khi dang nhap TK khac). Thu tu moi: (1)
+     user_metadata.phone_zalo; (2) khoa RIENG 'v2s_signup_prefs_<user.id>';
+     (3) khoa chung CHI KHI shared.contactEmail khop email TK hien tai
+     (giong v221 o trang-cua-toi.html). */
   function getUserContact(user) {
     var md = (user && user.user_metadata) || {};
     var phone = md.phone_zalo || '';
     var email = (user && user.email) || md.contact_email || '';
-    try {
-      var p = JSON.parse((typeof window !== 'undefined' && window.localStorage)
-        ? (window.localStorage.getItem('v2s_signup_prefs') || 'null') : 'null');
-      if (p) {
-        if (!phone && p.phoneZalo) phone = p.phoneZalo;
-        if (!email && p.contactEmail) email = p.contactEmail;
+    var acctEmail = (user && user.email) || md.contact_email || '';
+    var uid = (user && user.id) ? String(user.id) : '';
+    function readPrefs(key){
+      try {
+        if (typeof window === 'undefined' || !window.localStorage) return null;
+        return JSON.parse(window.localStorage.getItem(key) || 'null');
+      } catch (e) { return null; }
+    }
+    var p = uid ? readPrefs('v2s_signup_prefs_' + uid) : null;
+    if (p) {
+      if (!phone && p.phoneZalo) phone = p.phoneZalo;
+      if (!email && p.contactEmail) email = p.contactEmail;
+    }
+    if ((!phone || !email) && acctEmail) {
+      var shared = readPrefs('v2s_signup_prefs');
+      if (shared && shared.contactEmail === acctEmail) {
+        if (!phone && shared.phoneZalo) phone = shared.phoneZalo;
+        if (!email && shared.contactEmail) email = shared.contactEmail;
       }
-    } catch (e) {}
+    }
     return { phone: phone, email: email };
   }
 
