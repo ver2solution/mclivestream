@@ -68,6 +68,10 @@
     'thiet-bi-live': {label: 'Thiết bị Phòng Live', page: 'thanh-ly-kiot.html'}
   };
   var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'thue-mb': 'rentals', 'agency-ads': 'agencyAds', 'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment'};
+  /* v229: nhan loai con Kiot — BAN SAO cua KIOT_SUBTYPES trong js/app.js
+     (search.js doc lap, chay ca trong Node test khong co window.V20;
+     test v229 doi chieu 2 map phai khop nhau tung ma). */
+  var KIOT_SUBTYPE_LABELS = {'tron-goi': 'Chuyển nhà trọn gói', 'thue-xe-tai': 'Thuê xe tải / chở đồ lẻ', 'phong-tro': 'Chuyển phòng trọ / sinh viên', 'van-phong': 'Chuyển văn phòng', 'den-live': 'Đèn phòng live', 'micro': 'Micro & thu âm', 'webcam': 'Webcam & thu hình', 'combo': 'Combo trọn bộ', 'chan-may': 'Chân máy & phụ kiện', 'mat-pho': 'Cửa hàng mặt phố', 'kho-xuong': 'Kho / nhà xưởng'};
   var HOT_FALLBACK = ['mẫu livestream', 'tuyển mẫu livestream', 'Phạm Thoại', 'xả kho thời trang', 'xưởng may', 'thanh lý kiot', 'mẫu livestream Hà Nội', 'livestream bán hàng'];
 
   /* ---------- Xây chỉ mục 1 lần ---------- */
@@ -113,7 +117,11 @@
          anh = avatar (bat buoc), chip = tinh + nhan gia/gia + ngay dang. */
       var nm = NEWOBJ_META[type];
       e.title = raw.name || ''; e.desc = raw.detail || ''; e.cat = nm.label; e.prov = raw.province || '';
-      e.field = [raw.provider, nm.label, raw.logisticsOption || ''].join(' ');
+      /* v229: index them nhan + ma loai con Kiot (vd go "chuyen van phong"
+         ra mv-11 qua nhan "Chuyen van phong"; go "capture card" ra le-07
+         qua ten + nhan "Webcam & thu hinh"). Khong doi logic xep hang. */
+      var stLabel = (raw.subType && KIOT_SUBTYPE_LABELS[raw.subType]) || '';
+      e.field = [raw.provider, nm.label, stLabel, raw.subType || '', raw.logisticsOption || ''].join(' ');
       e.img = raw.avatar || '';
       e.url = nm.page + '#' + raw.id;
       e.chips = [raw.province, (raw.priceLabel || '') + ': ' + (raw.price != null ? raw.price.toLocaleString('vi-VN') + 'đ' + (raw.priceSuffix || '') : 'Liên hệ'), raw.dateAdded || ''].filter(Boolean);
@@ -262,7 +270,8 @@
     fmtElapsed: fmtElapsed,
     buildIndex: buildIndex, countByType: countByType, scoreEntry: scoreEntry,
     search: search, parseDeepLink: parseDeepLink, buildDeepLink: buildDeepLink,
-    suggest: suggest, hotKeywords: hotKeywords, TYPE_LABELS: TYPE_LABELS, TYPE_ORDER: TYPE_ORDER
+    suggest: suggest, hotKeywords: hotKeywords, TYPE_LABELS: TYPE_LABELS, TYPE_ORDER: TYPE_ORDER,
+    KIOT_SUBTYPE_LABELS: KIOT_SUBTYPE_LABELS
   };
 
   /* ================= UI — chỉ chạy trong trình duyệt ================= */

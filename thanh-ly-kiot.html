@@ -358,7 +358,10 @@
     if(window.V20 && typeof window.V20.refreshNewObjCatCounts === 'function') window.V20.refreshNewObjCatCounts();
     var secId = newObjSectionCfg(cat);
     if(kiotListWrap) kiotListWrap.hidden = !!secId;
-    if(catSel) catSel.disabled = !!secId;
+    /* v229: BO disabled o #kiotCat (thiet ke §4.2) — o tab muc con select
+       BAT va chi chua loai con cua tab do; doi tab thi reset ve "Tat ca"
+       truoc khi build lai option (xem refreshKiotCatOptions). */
+    refreshKiotCatOptions(cat, true);
     if(!secId){ kiotShown = KIOT_MAX_ROWS; /* v212: ve trang thai mac dinh v198-B — danh sach chinh 2 hang (truoc day giu nguyen so the da mo rong qua nut Xem them, sai trang thai mac dinh "moi muc 2 hang") */ showKiotDefault(); render(); return; }
     if(window.V20 && typeof window.V20.showOnlyNewObjSection === 'function') window.V20.showOnlyNewObjSection(cat);
     if(secId){
@@ -390,11 +393,14 @@
     var secId = newObjSectionCfg(cat);
     if(secId){
       var h = newObjSectionHandle(secId);
-      if(h && h.apply) h.apply(true);
-      /* v213 (anh Thọ dặn 23:58 ngày 13/11 — TAT CA muc loc sau khi Ap dung
-         ra ket qua thi TU CUON toi ket qua): apply(true) da cuon toi the
-         khop dau tien / bang "Chua co du lieu" (ghi de phan cam cuon khi
-         Ap dung cua v207). Bam hang muc/switch (setKiotCat) van KHONG cuon. */
+      /* v229 (thiet ke loai hinh con §4.4 + luat v213 sua 00:22 ngay 14/11):
+         o tab muc con, Ap dung / doi bo loc KHONG cuon — apply() KHONG
+         truyen doScroll (guard noScroll trong initSectionFilter chan
+         cuon). Chi danh sach CHINH (tab Kiot, nhanh duoi) giu cuon khi
+         Ap dung. Luu y: comment v213 cu o day noi "TAT CA muc loc Ap
+         dung thi cuon" la ban cu, da bi dinh chinh boi luat tren. */
+      if(h && h.apply) h.apply();
+      refreshKiotCatOptions(cat, false); /* v229: cap nhat so dem loai con theo tinh vua chon, giu lua chon hien tai */
       updateKiotCountForSub(secId);
       refreshKiotSubMoreBtn(secId);
       return;
@@ -432,6 +438,72 @@
       var o = document.createElement('option'); o.value = p; o.textContent = p + ' (' + res.counts[p] + ')'; provSel.appendChild(o);
     });
     provSel.value = (cur && res.counts[cur]) ? cur : '';
+  }
+  /* v229 (thiet ke loai hinh con §3.3 + §4.2): #kiotCat co 2 nghia tuy tab
+     — tab Kiot: 4 loai kiot cu (giong HTML goc, so dem nhu initOptionCounts);
+     tab muc con: chi loai con cua tab do, lay tu KIOT_SUBTYPES (app.js).
+     Doi tab (resetValue=true) thi reset ve "Tat ca" truoc khi build lai
+     option; doi tinh/sap xep (resetValue=false) thi giu lua chon hien tai,
+     chi cap nhat so dem theo tinh dang chon. Option tao bang createElement
+     phai setAttribute('value') (khong chi .value) vi applyOptionCounts doc
+     gia tri qua getAttribute('value') — neu khong no doc nham text lam value. */
+  var KIOT_CAT_OLD = [['', 'Tất cả loại hình'], ['sang-mat-bang', 'Sang mặt bằng'], ['do-dac-thiet-bi', 'Đồ đạc, thiết bị'], ['hang-ton-kho', 'Hàng tồn kho'], ['toan-bo-cua-hang', 'Toàn bộ cửa hàng']];
+  var KIOT_SUB_TYPEMAP = {'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment', 'rentals': 'rentals'};
+  function kiotSubtypeCount(type, code, prov){
+    var arr = (window.V20_DATA && window.V20_DATA[type]) || [];
+    var normFn = (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
+    var n = 0;
+    arr.forEach(function(x){
+      if(!x || !x.avatar) return;
+      if(x.subType !== code) return;
+      if(prov && normFn(x.province || '') !== normFn(prov)) return;
+      n++;
+    });
+    return n;
+  }
+  function refreshKiotCatOptions(cat, resetValue){
+    if(!catSel) return;
+    var cur = resetValue ? '' : catSel.value;
+    var prov = provSel ? provSel.value : '';
+    var entries;
+    if(cat === 'kiot'){
+      entries = KIOT_CAT_OLD.slice();
+    } else {
+      var type = KIOT_SUB_TYPEMAP[cat];
+      var list = (window.V20 && window.V20.KIOT_SUBTYPES && window.V20.KIOT_SUBTYPES[type]) || [];
+      entries = [['', 'Tất cả loại hình']];
+      list.forEach(function(st){ entries.push([st.code, st.label]); });
+    }
+    catSel.options.length = 0;
+    entries.forEach(function(en){
+      var o = document.createElement('option');
+      o.setAttribute('value', en[0]); o.value = en[0]; o.textContent = en[1];
+      catSel.appendChild(o);
+    });
+    var keep = '';
+    for(var i = 0; i < catSel.options.length; i++){ if(catSel.options[i].value === cur){ keep = cur; break; } }
+    catSel.value = keep;
+    if(cat === 'kiot'){
+      /* Giu nguyen hanh vi hien tai (v103): so dem theo kiot that, dung
+         chinh ham applyOptionCounts nhu initOptionCounts luc mo trang. */
+      if(window.V20 && typeof window.V20.applyOptionCounts === 'function'){
+        window.V20.applyOptionCounts(catSel, function(v){ var n = 0; kiots.forEach(function(k){ if(k.cat === v) n++; }); return n; }, kiots.length);
+      }
+    } else {
+      /* So dem theo muc da render (co avatar) cua tab, da loc theo tinh
+         dang chon; option "Tat ca loai hinh" KHONG co so dem; loai con
+         0 muc trong tinh dang chon thi an + vo hieu (tru muc dang chon),
+         cung quy uoc applyOptionCounts o cac o loc khac. */
+      var type2 = KIOT_SUB_TYPEMAP[cat];
+      for(var j = 0; j < catSel.options.length; j++){
+        var oj = catSel.options[j];
+        if(oj.value === ''){ oj.textContent = 'Tất cả loại hình'; oj.hidden = false; oj.disabled = false; continue; }
+        var n2 = kiotSubtypeCount(type2, oj.value, prov);
+        oj.textContent = entries[j][1] + ' (' + n2 + ')';
+        var hideZero = (n2 === 0 && oj.value !== keep);
+        oj.hidden = hideZero; oj.disabled = hideZero;
+      }
+    }
   }
   // Nap option tinh/thanh theo muc dang chon (mac dinh: Kiot chinh), sap xep A-Z.
   if (provSel) {
@@ -510,8 +582,10 @@
       var h = newObjSectionHandle(secId);
       if(h && h.reset) h.reset();
     });
+    /* v229: KHONG goi onFilterChange() them — setKiotCat('kiot') da reset
+       kiotShown + render lai danh sach chinh; onFilterChange() o tab Kiot
+       se cuon toi #kiotList, trai §4.4/§5.4 thiet ke (Dat lai KHONG cuon). */
     setKiotCat('kiot');
-    onFilterChange();
   });
   if (window.V20 && typeof window.V20.initFilterToggle === 'function') window.V20.initFilterToggle();
   render();
