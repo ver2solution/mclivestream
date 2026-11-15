@@ -14181,7 +14181,18 @@ window.V20_DATA = {
 {"title":"Tháng 2 du lịch đâu đẹp nhất? 5 điểm đến đúng mùa","cat":"Đời Sống","source":"Jetpac Global","date":"2026-11-15","url":"https://www.jetpacglobal.com/blog/best-places-to-visit-in-february/","page": "bai-viet/thang-2-du-lich-dau-dep-nhat-5-diem-den.html","img":"https://vieclamlivestream.online/images/bai-viet/thang-2-du-lich-dau-dep-nhat-5-diem-den.jpg","pinned":false,"takeaway":"Tháng 2 du lịch đâu đẹp nhất: Dubai, Maldives, Phuket/Krabi, Cape Town và Paris vào mùa đẹp tháng 2/2027 (Jetpac 21/09/2026); lưu ý Tết 06/02/2027 nằm giữa tháng."},
 {"title":"Trả hàng sau Tết: 17% hàng lễ bị trả lại, shop làm gì","cat":"Đời Sống","source":"NRF (National Retail Federation)","date":"2026-11-15","url":"https://nrf.com/research/2025-retail-returns-landscape","page": "bai-viet/tra-hang-sau-tet-17-phan-tram-hang-le.html","img":"https://vieclamlivestream.online/images/bai-viet/tra-hang-sau-tet-17-phan-tram-hang-le.jpg","pinned":false,"takeaway":"Trả hàng sau Tết: 17% hàng lễ bị trả lại, online 19,3%, tổng 849,9 tỷ USD năm 2025 (NRF 15/10/2025); 82% khách chọn shop vì miễn phí trả hàng; tháng 1 là tháng trả hàng cao điểm."},
 {"title":"Nước dừa có tốt không? 45 calo, 600mg kali mỗi cốc","cat":"Đời Sống","source":"University of Rochester Medical Center","date":"2026-11-15","url":"https://www.urmc.Rochester.edu/encyclopedia/content.aspx?contenttypeid=76&contentid=12119-1","page": "bai-viet/nuoc-dua-co-tot-khong-45-calo-600mg-kali.html","img":"https://vieclamlivestream.online/images/bai-viet/nuoc-dua-co-tot-khong-45-calo-600mg-kali.jpg","pinned":false,"takeaway":"Nước dừa có tốt không: 1 cốc 45,6 calo, 600mg kali, 252mg natri (USDA); bù nước tốt sau tập nhẹ nhưng không thay nước lọc; người bệnh thận nên hạn chế (Harvard Health 2018)."},
-{"title":"Quán cafe check-in đẹp Faifo Coffee Hội An","cat":"Đời Sống","source":"Tripadvisor","date":"2026-11-15","url":"https://www.tripadvisor.ie/Restaurant_Review-g298082-d8773820-Reviews-Faifo_Coffee-Hoi_An_Quang_Nam_Province.html","page": "bai-viet/quan-cafe-check-in-dep-faifo-coffee-hoi-an.html","img":"https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-faifo-coffee-hoi-an.jpg","pinned":false,"takeaway":"Quán cafe check-in đẹp Faifo Coffee Hội An: 130 Trần Phú, sân thượng nhìn mái ngói phố cổ; giá 45.000–85.000đ; giờ vàng 7:00–9:30 và 16:30–17:30; giờ mở cửa chưa thống nhất giữa các nguồn (kiểm chứng 15/11/2026)."}
+{"title":"Quán cafe check-in đẹp Faifo Coffee Hội An","cat":"Đời Sống","source":"Tripadvisor","date":"2026-11-15","url":"https://www.tripadvisor.ie/Restaurant_Review-g298082-d8773820-Reviews-Faifo_Coffee-Hoi_An_Quang_Nam_Province.html","page": "bai-viet/quan-cafe-check-in-dep-faifo-coffee-hoi-an.html","img":"https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-faifo-coffee-hoi-an.jpg","pinned":false,"takeaway":"Quán cafe check-in đẹp Faifo Coffee Hội An: 130 Trần Phú, sân thượng nhìn mái ngói phố cổ; giá 45.000–85.000đ; giờ vàng 7:00–9:30 và 16:30–17:30; giờ mở cửa chưa thống nhất giữa các nguồn (kiểm chứng 15/11/2026)."},
+  {
+   "title": "73.500 tỷ đồng trong 1 năm — Đổng Vũ Huy livestream bán hàng 421 buổi: ít buổi hơn, đắt hơn, lãi gấp đôi",
+   "cat": "Phân tích",
+   "source": "36Kr (字母PRO)",
+   "date": "2026-11-15",
+   "url": "https://www.36kr.com/p/3630464884617733",
+   "page": "bai-viet/dong-vu-huy-73500-ty-dong-nam-2025-421-buoi-livestream.html",
+   "img": "https://daoinsights.com/wp-content/uploads/2024/01/dong_yuhui_1_2-transformed-1870x1325.jpeg",
+   "pinned": false,
+   "takeaway": "Năm 2025, Đổng Vũ Huy livestream bán hàng 421 buổi, trung bình 50–75 triệu NDT/buổi, cả năm hơn 21 tỷ NDT (~73.500 tỷ đồng). Ít hơn năm 2024 tới 210 buổi mà doanh thu gấp đôi — bí quyết nằm ở giá trị đơn hàng và cách làm sản phẩm."
+  },
 ],
  "lots": [
    {
