@@ -1,0 +1,42 @@
+name: Deploy v264 (MC-82)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v264-mc82.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v264-mc82:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v264-mc82 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v264-mc82-deploy.zip
+          echo "--- verify v264 (MC-82) ---"
+          node --check sw.js || (echo "SYNTAX FAIL sw.js"; exit 1)
+          grep -m1 "v264-shell-1" sw.js
+          grep -m1 "v264 (MC-82)" trang-cua-toi.html
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum sw.js trang-cua-toi.html
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v264-mc82-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v264: MC-82 chan tao ho so trung SDT/email (findMatches) + gui lai y het, sw.js v264-shell-1"
+            git push
+          fi
