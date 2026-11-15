@@ -935,6 +935,7 @@ th{background:#f4f8f6}
 .detail-star{margin:12px 0 0;font-size:14px}
 .detail-star .v2s-star-btn{position:static;box-shadow:none}
 .detail-box .detail-actions .v2s-star-btn{position:static;box-shadow:none} /* v245 (N13/N14): nut sao trong dialog chay theo hang nut hanh dong, khong absolute goc phai nua — truoc day che nut × dong dialog (do ★ 46x44 phu gan het × 36x36) */
+.form-card{min-width:0;overflow-wrap:break-word}.form-card h1,.form-card h2,.form-card h3,.form-card p{overflow-wrap:break-word} /* v276 (mobile-auth): the dang-ky/dang-nhap tran mobile 390px — H1 chua tu dai khong be duoc "vieclamlivestream.online" (26 ky tu) day min-content cua grid item .auth-layout len 451px, bi html,body overflow-x:hidden cat mat 73px phai (tieu de, o nhap, nut); min-width:0 + be dong theo mau v85 (.lot-card) */
 body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logged-in .pin-longer-btn,body.v2s-logged-in .hero-cta{display:none} /* v246 (MC-71): an loi moi dang ky khi da dang nhap — chi an 3 khoi moi, khong an nut sao hay co che ghim; v262 (MC-71b): them .hero-cta — hero trang chu van hien nut "Đăng ký miễn phí — nhận 10 xu" du da dang nhap (probe 15/11) */
 /* Shop: logo/chu cai dau lap day khung anh (nen trang cho logo contain). */
 .card-compact-photo--shop{background:#fff}
