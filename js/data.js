@@ -13990,6 +13990,54 @@ window.V20_DATA = {
    "takeaway": "9 bước khởi động kinh doanh online của Xero: kiểm chứng ý tưởng, đăng ký, tài chính, website, marketing — dịch vụ dưới 500 USD, shop Việt bắt đầu rẻ hơn nhờ sàn 0 đồng."
   },
   {
+   "title": "Vốn nhập hàng Tết: cần bao nhiêu vốn cho shop nhỏ?",
+   "cat": "Dòng tiền",
+   "source": "NRF",
+   "date": "2026-11-15",
+   "url": "https://nrf.com/media-center/press-releases/nrf-forecasts-2026-holiday-sales-growth-as-consumers-remain-resilient",
+   "page": "bai-viet/von-nhap-hang-tet-can-bao-nhieu-von-5-muc-von-shop-nho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/von-nhap-hang-tet-can-bao-nhieu-von-5-muc-von-shop-nho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vốn nhập hàng Tết tính theo đơn kỳ vọng, chia 3 đợt 40–40–20, giữ 20% dự phòng: 5 mức vốn từ 20 tới 500 triệu cho shop nhỏ, tính trước 21/11/2026."
+  },
+  {
+   "title": "Giá vàng thế giới giảm 4,6% trong tuần: về 3.884 USD",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua Kitco)",
+   "date": "2026-11-15",
+   "url": "https://www.kitco.com/news/off-the-wire/2026-11-12/gold-extends-losses-one-week-low-dollar-rallies-fed-hike-bets",
+   "page": "bai-viet/gia-vang-the-gioi-giam-46-phan-tram-tuan-ve-3884-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-the-gioi-giam-46-phan-tram-tuan-ve-3884-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá vàng thế giới chốt tuần 13/11/2026 ở 3.884 USD/ounce, giảm 4,6% trong tuần: Fed có thể tăng 50 điểm tháng 12, USD lên đỉnh 19 tháng — shop tính lại giá vốn hàng nhập."
+  },
+  {
+   "title": "Tỷ giá USD lên đỉnh 19 tháng, yên Nhật vượt mốc 160",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua 98.5 The River)",
+   "date": "2026-11-15",
+   "url": "https://985theriver.com/2026/11/12/dollar-near-19-month-high-on-fed-hike-bets-yen-tests-160/",
+   "page": "bai-viet/usd-len-dinh-19-thang-yen-vuot-160-nhat-ban-canh-bao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/usd-len-dinh-19-thang-yen-vuot-160-nhat-ban-canh-bao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tỷ giá USD lên đỉnh 19 tháng, yên Nhật vượt mốc 160 lần đầu từ đầu tháng 9/2026: shop nhập hàng Nhật, Mỹ chốt tỷ giá trước khi đặt cọc lô Tết."
+  },
+  {
+   "title": "Mua sắm lễ cuối năm 2026: lần đầu vượt 1.013 tỷ USD",
+   "cat": "Dòng tiền",
+   "source": "NRF",
+   "date": "2026-11-15",
+   "url": "https://nrf.com/media-center/press-releases/nrf-forecasts-2026-holiday-sales-growth-as-consumers-remain-resilient",
+   "page": "bai-viet/mua-sam-le-cuoi-nam-2026-vuot-1013-nghin-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-le-cuoi-nam-2026-vuot-1013-nghin-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm lễ cuối năm 2026 lần đầu vượt 1.013 nghìn tỷ USD, online kỷ lục 275,1 tỷ USD: shop nhỏ đón sóng bằng hàng thiết yếu, bán qua điện thoại và live, giữ hàng cho ngày sau sale."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
