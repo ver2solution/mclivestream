@@ -160,6 +160,29 @@
 <div id="myListingsList"><p>Đang tải…</p></div>
 </div>
 </section>
+<!-- v265 (MC-83, 15/11/2026): Tin tuyển của tôi — sửa/xóa tin tuyển mẫu
+     của chính mình. Đăng tin mới vẫn ở danh-sach-mau.html#dang-tin; mục
+     này chỉ liệt kê + sửa/xóa. Xóa 2 bước ngay trên nút (luật v217),
+     không dùng window.confirm. Chỉ hiện khi đã có hồ sơ shop (cổng
+     kiểm tra ở JS initJobPosts bên dưới). -->
+<section class="form-card" id="myJobPostsSection" style="display:none;margin-top:24px">
+<h2>Tin tuyển của tôi</h2>
+<p style="font-size:13px">Tin tuyển mẫu bạn đã gửi từ <a href="danh-sach-mau.html#dang-tin">mục Đăng tin tuyển mẫu</a>. Tin mới gửi ở trạng thái <b>chờ duyệt (pending)</b>, chỉ hiện công khai sau khi admin duyệt. Tin đang đăng thì liên hệ admin để gỡ, không tự xóa được.</p>
+<p id="myJobPostsMsg" style="font-size:13px"></p>
+<div id="myJobPostsList"><p>Đang tải…</p></div>
+<form id="jobEditForm" style="display:none;margin-top:16px" data-track="form-sua-tin-tuyen">
+<h3>Sửa tin tuyển mẫu</h3>
+<input type="hidden" id="jobEditId" value="">
+<p><label>Tỉnh / Thành phố *<br><select id="jobEditProvince"><option value="">— Chọn tỉnh / thành phố —</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Toàn quốc / Live online</option><option>Khác</option></select></label></p>
+<p><label>Lĩnh vực cần tuyển *<br><select id="jobEditField"><option value="">— Chọn lĩnh vực —</option><option>Thời trang</option><option>Mỹ phẩm</option><option>Mẹ và bé</option><option>Gia dụng</option><option>Thực phẩm</option><option>Điện tử</option><option>Phụ kiện</option><option>Thể thao</option><option>Chung / Đa ngành</option><option>Khác</option></select></label></p>
+<p><label>Số lượng cần tuyển<br><input id="jobEditQty" type="number" min="1" step="1"></label></p>
+<p><label>Lịch livestream<br><input id="jobEditSchedule" placeholder="Ví dụ: ca tối 20h–22h30"></label></p>
+<p><label>Lương / thù lao<br><input id="jobEditSalary" placeholder="Ví dụ: Thỏa thuận, hoặc 120.000–150.000 đồng/giờ"></label></p>
+<p><label>Mô tả công việc<br><textarea id="jobEditDesc" rows="4"></textarea></label></p>
+<p id="jobEditMsg"></p>
+<div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" id="jobEditSaveBtn" data-track="nut-luu-sua-tin-tuyen">Lưu bản sửa</button><button class="btn btn-ghost" type="button" id="jobEditCancelBtn">Hủy sửa</button></div>
+</form>
+</section>
 <p><a href="danh-sach-mau.html">← Quay lại danh sách mẫu</a></p>
 </section>
 </main>
@@ -302,6 +325,8 @@
     // v124: mục Tin đăng của tôi (lô/xưởng/kiot) — chạy song song, không
     // chặn form hồ sơ mẫu (tự xử lý lỗi bên trong).
     initListings(session);
+    // v265 (MC-83): mục Tin tuyển của tôi — chạy song song như trên.
+    initJobPosts(session);
     try{
       existing=await McLivestreamAPI.fetchMyProfile();
       if(existing){
@@ -765,6 +790,121 @@
     };
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(lstForm, run); else run();
   });
+
+  /* ---------- v265 (MC-83): Tin tuyển của tôi ---------- */
+  var jpSection=document.getElementById('myJobPostsSection'),
+      jpList=document.getElementById('myJobPostsList'),
+      jpMsg=document.getElementById('myJobPostsMsg'),
+      jpForm=document.getElementById('jobEditForm'),
+      jpEditId=null, jpRows={};
+  var JP_STATUS_LABEL={pending:'Chờ duyệt',approved:'Đã đăng',rejected:'Bị từ chối',closed:'Đã đóng'};
+  function jpSet(id,v){var el=document.getElementById(id); if(el&&v!=null) el.value=v;}
+  function jpVal(id){var el=document.getElementById(id); return el?el.value.trim():'';}
+  async function refreshMyJobPosts(){
+    if(!jpList) return;
+    jpList.innerHTML='<p>Đang tải…</p>';
+    try{
+      var rows=await McLivestreamAPI.fetchMyJobPosts();
+      jpRows={};
+      if(!rows.length){ jpList.innerHTML='<p>Bạn chưa có tin tuyển mẫu nào. Đăng tin mới tại <a href="danh-sach-mau.html#dang-tin">trang Dành cho Shop</a>.</p>'; return; }
+      var html='';
+      rows.forEach(function(r){
+        jpRows[r.id]=r;
+        var st=JP_STATUS_LABEL[r.moderation_status]||r.moderation_status||'—';
+        var title=(r.field||'Tin tuyển mẫu')+' · '+(r.province||'');
+        html+='<div class="my-listing" data-jp-id="'+r.id+'">'
+          +'<div class="my-listing-main"><b>'+lstEsc(title)+'</b> <span class="listing-badge st-'+lstEsc(r.moderation_status||'pending')+'">'+lstEsc(st)+'</span>'
+          +'<br><span style="font-size:13px;color:#666">'+lstEsc(lstFmtDate(r.created_at))+(r.quantity?' · cần tuyển '+lstEsc(String(r.quantity))+' mẫu':'')+(r.salary?' · '+lstEsc(r.salary):'')+'</span>'
+          +(r.description?'<br><span style="font-size:13px">'+lstEsc(String(r.description).slice(0,200))+'</span>':'')
+          +'</div>'
+          +'<div class="my-listing-actions">'
+          +'<button type="button" class="btn btn-ghost" data-jp-act="edit">Sửa</button>'
+          +(r.moderation_status!=='approved'?'<button type="button" class="btn btn-ghost" data-jp-act="delete">Xóa</button>':'')
+          +'</div></div>';
+      });
+      jpList.innerHTML=html;
+    }catch(e){
+      jpList.innerHTML='<p>Chưa tải được tin tuyển của bạn: '+lstEsc(ferr(e))+'</p>';
+    }
+  }
+  function fillJobEditForm(row){
+    jpEditId=row.id;
+    jpSet('jobEditId', row.id);
+    jpSet('jobEditProvince', row.province);
+    jpSet('jobEditField', row.field);
+    jpSet('jobEditQty', row.quantity!=null?String(row.quantity):'');
+    jpSet('jobEditSchedule', row.schedule);
+    jpSet('jobEditSalary', row.salary);
+    jpSet('jobEditDesc', row.description);
+    jpForm.style.display='block';
+    var m=document.getElementById('jobEditMsg');
+    if(m) m.textContent='Đang sửa tin "'+(row.field||'')+' · '+(row.province||'')+'". Lưu xong, hệ thống sẽ cập nhật nội dung tin.';
+    if(jpForm.scrollIntoView) jpForm.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function resetJobEditForm(){
+    jpEditId=null;
+    if(jpForm){ jpForm.reset(); jpForm.style.display='none'; }
+  }
+  async function jpRowAction(act, id, btn){
+    var row=jpRows[id];
+    if(!row) return;
+    if(act==='edit'){ fillJobEditForm(row); return; }
+    if(act==='delete'){
+      // 2 bước ngay trên nút (luật v217): bấm 1 đổi nhãn, bấm 2 mới xóa;
+      // tự trả nhãn sau 5 giây nếu không bấm tiếp.
+      if(btn.getAttribute('data-armed')!=='1'){
+        btn.setAttribute('data-armed','1');
+        btn.textContent='Chắc chắn xóa?';
+        setTimeout(function(){ if(btn.isConnected){ btn.removeAttribute('data-armed'); btn.textContent='Xóa'; } }, 5000);
+        return;
+      }
+      btn.removeAttribute('data-armed'); btn.textContent='Đang xóa…'; btn.disabled=true;
+      try{ await McLivestreamAPI.deleteJobPost(id); jpMsg.textContent='Đã xóa tin.'; await refreshMyJobPosts(); }
+      catch(err){ jpMsg.textContent='Chưa xóa được: '+ferr(err); btn.disabled=false; btn.textContent='Xóa'; }
+      return;
+    }
+  }
+  if(jpSection) jpSection.addEventListener('click', function(e){
+    var t=e.target||{};
+    var actBtn=t.closest?t.closest('[data-jp-act]'):null;
+    if(!actBtn) return;
+    var rowEl=actBtn.closest?actBtn.closest('[data-jp-id]'):null;
+    if(rowEl) jpRowAction(actBtn.getAttribute('data-jp-act'), rowEl.getAttribute('data-jp-id'), actBtn);
+  });
+  if(jpForm) jpForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var run=async function(){
+      var m=document.getElementById('jobEditMsg');
+      try{
+        if(!jpEditId) throw new Error('Chưa chọn tin để sửa.');
+        var province=jpVal('jobEditProvince'), field=jpVal('jobEditField');
+        if(!province) throw new Error('Chưa chọn tỉnh / thành phố.');
+        if(!field) throw new Error('Chưa chọn lĩnh vực.');
+        var qty=jpVal('jobEditQty'); var qn=qty?parseInt(qty,10):null;
+        if(qty && (isNaN(qn)||qn<1)) throw new Error('Số lượng cần tuyển phải ≥ 1.');
+        await McLivestreamAPI.updateJobPost(jpEditId, {
+          province:province, field:field,
+          quantity:qn, schedule:jpVal('jobEditSchedule')||null,
+          salary:jpVal('jobEditSalary')||null, description:jpVal('jobEditDesc')||null });
+        resetJobEditForm();
+        jpMsg.textContent='Đã lưu bản sửa.';
+        await refreshMyJobPosts();
+      }catch(err){ if(m) m.textContent='Chưa lưu được: '+ferr(err); }
+    };
+    if(window.V2SAuthUI) V2SAuthUI.guardSubmit(jpForm, run); else run();
+  });
+  var jpCancel=document.getElementById('jobEditCancelBtn');
+  if(jpCancel) jpCancel.addEventListener('click', function(){ resetJobEditForm(); });
+  async function initJobPosts(session){
+    if(!window.McLivestreamAPI || !jpSection) return;
+    // Chỉ tài khoản có hồ sơ shop mới thấy mục này (tin tuyển là của
+    // shop); tài khoản mẫu tìm việc thì ẩn hẳn, tránh gây nhầm.
+    var shop=null;
+    try{ shop=await McLivestreamAPI.fetchMyShopProfile(); }catch(e){ shop=null; }
+    if(!shop) return;
+    jpSection.style.display='block';
+    await refreshMyJobPosts();
+  }
 
   init();
 })();

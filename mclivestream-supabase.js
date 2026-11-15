@@ -590,6 +590,38 @@
     return res.data;
   }
 
+  // v265 (MC-83, 15/11/2026): sửa / xóa tin tuyển mẫu của chính mình —
+  // cùng mẫu updateUserListing/deleteUserListing (v124). Lưu ý:
+  // moderation_status nằm trong PROTECTED_FIELDS nên client KHÔNG tự
+  // đưa tin đã duyệt về pending khi sửa (khác tin lô/xưởng/kiot có
+  // trigger DB); muốn tin sửa phải duyệt lại thì cần trigger/SQL riêng.
+  // RLS có thể chặn update/delete → probe-test bằng TK2 sau deploy;
+  // nếu bị 42501 thì ghi bị chặn chờ SQL (không tự sửa RLS ở client).
+  async function updateJobPost(id, data) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới sửa được tin.');
+    var clean = stripProtected(data);
+    var res = await client.from('shop_job_posts').update(clean)
+      .eq('id', id).eq('auth_user_id', session.user.id).select().single();
+    if (res.error) throw res.error;
+    return res.data;
+  }
+  async function deleteJobPost(id) {
+    var session = await getSession();
+    if (!session) throw new Error('Cần đăng nhập mới xóa được tin.');
+    var cur = await client.from('shop_job_posts').select('moderation_status')
+      .eq('id', id).eq('auth_user_id', session.user.id).maybeSingle();
+    // Cột moderation_status chưa có (42703) thì bỏ qua bước kiểm tra
+    // trạng thái, xóa thẳng (cùng cách fallback như submitJobPost).
+    if (cur.error && cur.error.code !== '42703' && String(cur.error.message || '').indexOf('42703') === -1) throw cur.error;
+    if (!cur.error && !cur.data) throw new Error('Không tìm thấy tin.');
+    if (cur.data && cur.data.moderation_status === 'approved') throw new Error('Tin đang đăng thì liên hệ admin để gỡ, không tự xóa được.');
+    var res = await client.from('shop_job_posts').delete()
+      .eq('id', id).eq('auth_user_id', session.user.id);
+    if (res.error) throw res.error;
+    return true;
+  }
+
   // ---------- Tin lô / xưởng / kiot tự đăng (v124) ----------
   // Yêu cầu đã chạy supabase-migration-user-listings-v124.sql.
   // User ghi trực tiếp qua RLS (giống submitJobPost); duyệt qua RPC admin.
@@ -747,6 +779,7 @@
     saveMyShopProfile: saveMyShopProfile, uploadShopLogo: uploadShopLogo,
     fetchApprovedJobPosts: fetchApprovedJobPosts, fetchMyJobPosts: fetchMyJobPosts,
     submitJobPost: submitJobPost,
+    updateJobPost: updateJobPost, deleteJobPost: deleteJobPost,
     // v124: tin lô / xưởng / kiot tự đăng
     fetchMyListings: fetchMyListings,
     submitUserLot: submitUserLot, submitUserFactory: submitUserFactory, submitUserKiot: submitUserKiot,
