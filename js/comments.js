@@ -30,7 +30,7 @@
   // GUEST_NOTE cũ giữ lại (đã export) để không vỡ code khác, nhưng form
   // khách không dùng nữa.
   var GUEST_SIMPLE_NOTE = 'Bình luận với tên Khách Vãng Lai — không cần đăng nhập.';
-  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động).';
+  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động). Mỗi tài khoản chỉ được 1 bình luận trong 60 giây (tối đa 30 bình luận trong 5 phút cho cùng 1 mục).'; /* v260 (MC-95): ghi luat chan ngay duoi form — truoc day nguoi dung gui lien tiep moi bi chan (loi tho), khong bao truoc. */
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
@@ -117,6 +117,29 @@
 
   // Gửi 1 bình luận: gọi RPC submit_comment (SECURITY DEFINER, bypass RLS
   // — sửa NEW-01: INSERT trực tiếp bị RLS chặn 42501). Validate: đã đăng
+  /* v260 (MC-95): cooldown phia client — 1 binh luan/60 giay/tai khoan
+     (luat cong bo o quy-tac-diem-thuong.html). Ghi thoi diem gui THANH CONG
+     gan nhat theo uid; gui lai trong 60s thi bao than thien kem so giay con
+     lai, KHONG goi RPC. Chi ap cho tai khoan dang nhap (luat noi "moi tai
+     khoan"); khach vang lai RPC tu xu ly. */
+  var COMMENT_COOLDOWN_MS = 60000;
+  function commentCooldownKey(uid){ return 'v2s_comment_last_' + String(uid || ''); }
+  function commentCooldownLeftMs(uid){
+    if(!uid || typeof localStorage === 'undefined') return 0;
+    try{ var t = parseInt(localStorage.getItem(commentCooldownKey(uid)) || '0', 10); if(!t) return 0; return Math.max(0, COMMENT_COOLDOWN_MS - (Date.now() - t)); }catch(e){ return 0; }
+  }
+  function commentCooldownMark(uid){
+    if(!uid || typeof localStorage === 'undefined') return;
+    try{ localStorage.setItem(commentCooldownKey(uid), String(Date.now())); }catch(e){}
+  }
+  /* v260 (MC-95): dich loi chan spam cua RPC sang cau than thien — loi goc
+     la ma/thong bao ky thuat cua server (vd M7.9b). */
+  function friendlyCommentError(err){
+    var m = String((err && err.message) || err || '');
+    if (/rate|429|too many|quá nhanh|chờ|giây|second|spam|M7\.9b/i.test(m)) return 'Bạn gửi bình luận quá nhanh — mỗi tài khoản chỉ được 1 bình luận trong 60 giây, vui lòng đợi một lát rồi gửi lại nhé.';
+    return 'Chưa gửi được bình luận: ' + m;
+  }
+
   // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu +1
   // SAU KHI DUYỆT); khách vãng lai → chỉ cần viết gì đó (≥2 ký tự, v95 —
   // khớp CHECK của bảng comments; chặn link + chống spam do RPC lo).
@@ -142,6 +165,10 @@
     var name = String(displayName || '').trim()
       || (user && user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name))
       || (user ? user.email : '') || 'Khách Vãng Lai';
+    if (user) {
+      var leftMs = commentCooldownLeftMs(user.id);
+      if (leftMs > 0) return { ok: false, points: 0, message: 'Bạn vừa gửi bình luận, vui lòng đợi ' + Math.ceil(leftMs / 1000) + ' giây nữa rồi gửi tiếp nhé (mỗi tài khoản chỉ được 1 bình luận trong 60 giây).' };
+    }
     // NEW-01 (08/11): INSERT trực tiếp bị RLS chặn (42501) dù policy cho
     // phép — gửi bình luận qua RPC SECURITY DEFINER submit_comment() thay
     // cho INSERT trực tiếp. RPC tự validate + chống spam (luật M7.9b) và
@@ -153,10 +180,11 @@
         p_comment: String(text).trim(), p_commenter_name: name.slice(0, 100),
         p_auth_user_id: user ? user.id : null
       });
-      if (res.error) return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String(res.error.message || res.error) };
+      if (res.error) return { ok: false, points: 0, message: friendlyCommentError(res.error) };
     } catch (e) {
-      return { ok: false, points: 0, message: 'Chưa gửi được bình luận: ' + String((e && e.message) || e) };
+      return { ok: false, points: 0, message: friendlyCommentError(e) };
     }
+    if (user) commentCooldownMark(user.id);
     // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt —
     // KHÔNG gọi awardInteraction ở đây (v111 NEW-06). Trả message nói rõ
     // xu cộng sau khi duyệt để người dùng không tưởng đã cộng ngay.
