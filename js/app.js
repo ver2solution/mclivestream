@@ -455,7 +455,13 @@ function fetchStarStats(){
   return M.fetchStarStats().then(function(rows){
     var map = {};
     var place = starPlace(); // v185: chi nap so sao cua noi hien tai (hang cu khong co place -> 'home').
-    (rows || []).forEach(function(r){ if(r && r.profile_id){ var rp = (r.place === 'sub' || r.place === 'home') ? r.place : 'home'; if(rp !== place) return; map[r.profile_id] = {count: Number(r.star_count) || 0, last: r.last_starred_at || null}; } });
+    /* v255 (MC-52): view profile_star_stats KHONG co cot place (RPC
+       star_profile cung khong nhan place) nen moi hang deu khong co
+       place — ban cu gan mac dinh 'home' roi loc bo khi dang o trang
+       con (place='sub') nen toan bo so sao ve 0 tren danh-sach-* (an
+       sao xong tai lai ve 0, dung nhu Zalo bao). Hang khong co place
+       ap dung cho moi noi: chi loc bo khi hang GHI RO place khac. */
+    (rows || []).forEach(function(r){ if(r && r.profile_id){ var rp = (r.place === 'sub' || r.place === 'home') ? r.place : null; if(rp && rp !== place) return; map[r.profile_id] = {count: Number(r.star_count) || 0, last: r.last_starred_at || null}; } });
     STAR_STATS = map;
     STAR_STATS_LOADED = true;
     return map;
