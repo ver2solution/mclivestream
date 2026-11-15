@@ -1,4 +1,4 @@
-/* M16 — Xu chung Ver2Solution ↔ Phật Pháp Online (09/11/2026, DRAFT).
+/* M16 — Xu chung vieclamlivestream.online ↔ Phật Pháp Online (09/11/2026, DRAFT).
    Cầu nối "2 sổ cái độc lập + 1 cầu nối", liên kết bằng email, chỉ xu
    KIẾM nối 1:1, xu NẠP không chuyển chéo (xem phuong-an-xu-doc-lap-
    dong-bo-2026-11-09.md). Module này CHỈ ĐỌC số dư qua RPC + GỌI RPC
@@ -6,7 +6,7 @@
    vào points_ledger / wallet_accounts (nguyên tắc M5, giữ như
    js/reward.js). Mọi cộng/trừ qua RPC SECURITY DEFINER M16.
    - Số dư tách xu kiếm / xu nạp (M16): "Xu kiếm được: A" / "Xu nạp: B".
-   - Hiển thị 3 dòng: "Xu Ver2Solution: A • Xu Phật Pháp: B • Tổng dùng
+   - Hiển thị 3 dòng: "Xu vieclamlivestream.online: A • Xu Phật Pháp: B • Tổng dùng
      được: A+B" + trạng thái bên kia + số âm theo mẫu thiết kế §5.3.
    - Nút chuyển liên web: gọi xu_cross_transfer_init (tối thiểu 10 xu,
      tối đa 100 xu/ngày pilot); bên kia bảo trì thì nút hiện "tạm dừng".
@@ -248,7 +248,7 @@
     }
     var mc = (balances.mc_earn || 0) + (balances.mc_topup || 0);
     var pp = (balances.pp_earn || 0) + (balances.pp_topup || 0);
-    var html = '<p class="xu-chung-lines">Xu Ver2Solution: <b>' + mc + '</b>'
+    var html = '<p class="xu-chung-lines">Xu vieclamlivestream.online: <b>' + mc + '</b>'
       + ' • Xu Phật Pháp: <b>' + pp + '</b>'
       + ' • Tổng dùng được: <b>' + (balances.total_usable || 0) + '</b></p>'
       + '<p class="xu-chung-split">Xu kiếm được: ' + (balances.mc_earn || 0)

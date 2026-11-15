@@ -17,7 +17,7 @@
     pin_home_7d: { label: 'Ghim hồ sơ ở trang chủ 7 ngày (cần duyệt, không đảm bảo vị trí cố định)', coins: 200, days: 7, placement: 'Hàng hồ sơ nổi bật ở trang chủ, trong 2 hàng đã chốt', sla: 'Kích hoạt trong 24 giờ sau khi duyệt' },
     highlight_job_7d: { label: 'Làm nổi bật tin tuyển mẫu 7 ngày', coins: 80, days: 7, placement: 'Khung nổi bật ở đầu danh sách tin đã duyệt của shop', sla: 'Kích hoạt trong 24 giờ sau khi duyệt' }
   };
-  // Gói dịch vụ theo kiểu Fiverr/Collabstr nhưng sửa thành của Ver2Solution:
+  // Gói dịch vụ theo kiểu Fiverr/Collabstr nhưng sửa thành của vieclamlivestream.online:
   // giá xu công khai trước khi đăng nhập, không chặn xem hồ sơ bằng gói trả phí.
   var PACKAGES = {
     starter: { label: 'Gói Khởi động', coins: 50, desc: 'Up top 24 giờ + làm nổi bật tin 7 ngày (chọn 1 trong 2 khi dùng).' },
@@ -39,7 +39,7 @@
       account_type: accountType || 'model',
       email: session.user.email,
       marketing_opt_in: !!optIn,
-      purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution',
+      purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ vieclamlivestream.online',
       source: 'signup_form',
       alert_province: (alerts && alerts.province) || null,
       alert_field: (alerts && alerts.field) || null

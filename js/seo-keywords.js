@@ -1,4 +1,4 @@
-/* Danh sách 100 từ khóa SEO Ver2Solution — vendor từ tu-khoa-seo-100.csv (05/11/2026).
+/* Danh sách 100 từ khóa SEO vieclamlivestream.online — vendor từ tu-khoa-seo-100.csv (05/11/2026).
    Dùng cho datalist "Từ khóa chính" trong tab Viết bài (console admin) + kiểm tra SEO live.
    Nguồn: ~/workspace/goals/mc-livestream-job-board/hidden_files/tu-khoa-seo-100.csv
    Khi đổi CSV thì sinh lại file này (không sửa tay từng từ khóa). */
@@ -454,53 +454,53 @@ window.V2S_SEO_KEYWORDS = [
     "priority": "trung bình"
   },
   {
-    "kw": "Ver2Solution",
-    "group": "6. Ver2Solution & dịch vụ",
+    "kw": "vieclamlivestream.online",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "sàn việc làm livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "thuê mẫu livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "dịch vụ livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "tư vấn tăng doanh thu livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "thuê mẫu live theo buổi",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "đăng tin tuyển mẫu livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   },
   {
     "kw": "mẫu livestream chuyên nghiệp",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "trung bình"
   },
   {
     "kw": "dịch vụ thuê MC livestream",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "trung bình"
   },
   {
     "kw": "sàn tuyển mẫu live",
-    "group": "6. Ver2Solution & dịch vụ",
+    "group": "6. vieclamlivestream.online & dịch vụ",
     "priority": "cao"
   }
 ];

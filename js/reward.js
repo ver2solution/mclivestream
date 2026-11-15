@@ -110,7 +110,7 @@
     reclaim: 'Thu hồi xu', adjust: 'Điều chỉnh xu',
     registration_field: 'Đăng ký: điền trường', account_created: 'Tạo tài khoản',
     pin: 'Ghim bài', filter: 'Lọc danh sách', contact_view: 'Xem liên hệ',
-    // M16 (xu chung Ver2Solution ↔ Phật Pháp): nhãn cho các type mới.
+    // M16 (xu chung vieclamlivestream.online ↔ Phật Pháp): nhãn cho các type mới.
     game_earn: 'Xu game', xfer_out_hold: 'Chuyển liên web (đang khóa)',
     xfer_in: 'Nhận xu liên web', xfer_out_refund: 'Hoàn xu chuyển liên web',
     offline_spend: 'Tiêu ngoại tuyến', offline_spend_settle: 'Đồng bộ tiêu ngoại tuyến',

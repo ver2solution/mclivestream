@@ -1,4 +1,4 @@
-/* v110 — Form "Đặt câu hỏi cho Ver2Solution" trên trang Hỏi đáp
+/* v110 — Form "Đặt câu hỏi cho vieclamlivestream.online" trên trang Hỏi đáp
    (hoi-dap.html, trên Top, trước các mục hỏi đáp tĩnh).
    Bố cục: select mục tính năng 1/3 trái + textarea 2/3 phải (CSS
    .faq-ask-grid trong v20.css); mobile ≤600px xếp dọc.
@@ -18,7 +18,7 @@
   var TABLE = 'faq_questions';
   var MIN_LEN = 10;
   var MAX_LEN = 2000;
-  var SUCCESS_MSG = 'Đã gửi câu hỏi, Ver2Solution sẽ xem và sửa sớm.';
+  var SUCCESS_MSG = 'Đã gửi câu hỏi, vieclamlivestream.online sẽ xem và sửa sớm.';
   var CATEGORIES = ['dang_ky', 'dang_nhap', 'tim_mau', 'tim_shop', 'thanh_ly_kiot',
     'lo_xuong', 'xu', 'ghim_top', 'binh_luan', 'loi_hien_thi', 'khac'];
 
@@ -28,7 +28,7 @@
   function validateQuestion(category, question) {
     if (!category || CATEGORIES.indexOf(category) === -1) return 'Hãy chọn mục tính năng cho câu hỏi của bạn.';
     var q = String(question == null ? '' : question).trim();
-    if (q.length < MIN_LEN) return 'Câu hỏi cần từ 10 ký tự trở lên — hãy mô tả rõ hơn để Ver2Solution sửa đúng chỗ.';
+    if (q.length < MIN_LEN) return 'Câu hỏi cần từ 10 ký tự trở lên — hãy mô tả rõ hơn để vieclamlivestream.online sửa đúng chỗ.';
     if (q.length > MAX_LEN) return 'Câu hỏi tối đa 2000 ký tự.';
     return null;
   }
@@ -123,7 +123,7 @@
       + '<p>Mã tham chiếu: <b>' + escHtml(r.ref) + '</b> · Gửi lúc ' + escHtml(r.time) + ' (giờ Việt Nam)</p>'
       + '<p>Mục: ' + escHtml(catLabel || r.category) + '</p>'
       + '<p>Câu hỏi: ' + escHtml(r.question) + '</p>'
-      + '<p>Ver2Solution sẽ xem và sửa sớm — câu trả lời sẽ xuất hiện ở mục Hỏi đáp.</p>';
+      + '<p>vieclamlivestream.online sẽ xem và sửa sớm — câu trả lời sẽ xuất hiện ở mục Hỏi đáp.</p>';
   }
 
   // Tự gắn khi trang tải xong (script đặt cuối body nên DOM đã sẵn;

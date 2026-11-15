@@ -76,7 +76,7 @@
         phone_zalo: opts.phoneZalo || '',
         account_type: opts.accountType || '',
         marketing_opt_in: !!opts.marketingOptIn,
-        marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ Ver2Solution',
+        marketing_purpose: 'Nhận thông tin, ưu đãi và tin tuyển mẫu từ vieclamlivestream.online',
         // v99 (§1b): 3 o ho so thu thap ngay khi dang ky (dang-ky.html)
         // de the hien dung ngay sau khi dang ky; auth-ui.js truyen qua
         // opts khi co, thieu thi de trong (trang-cua-toi dien sau).
@@ -158,10 +158,10 @@
   // về trang danh sách và thành link đăng nhập ma thuật.
   // URL goc cua web (trang chu) — dung lam redirect xac nhan email dang ky.
   // FIX (v49): GoTrue tu suy redirect_to mac dinh ve goc
-  // ver2solution.github.io (thieu /mclivestream/) du Site URL tren
+  // goc GitHub Pages cu (thieu /mclivestream/) du Site URL tren
   // Dashboard da dung (kiem tra 2 lan, 11:23) — thu xac nhan 11:21 van sai
   // — nen truyen tuong minh qua emailRedirectTo trong signUp. Doi cung luc
-  // voi RESET_PASSWORD_URL khi domain chinh ver2solution.com dung duoc.
+  // voi RESET_PASSWORD_URL khi domain chinh vieclamlivestream.online dung duoc.
   var SITE_URL = 'https://vieclamlivestream.online/';
   var RESET_PASSWORD_URL = 'https://vieclamlivestream.online/dat-lai-mat-khau.html';
   async function resetPassword(email, redirectTo) {

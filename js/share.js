@@ -14,7 +14,7 @@
      copy link + toast huong dan dan vao Zalo. Luon hoat dong, khong mo
      trang chet.
    - Tieu de lay tu og:title (neu co), roi <title> (cat hau to
-     " — Ver2Solution"), roi h1. URL lay tu <link rel="canonical">
+     " — vieclamlivestream.online"), roi h1. URL lay tu <link rel="canonical">
      (neu co), roi location.href — luon la bai dang mo, khong hardcode.
    - Tu dung, khong phu thuoc app.js / Supabase; chay lai 2 lan cung
      khong gan handler trung (co V2SShare + co data-v2s-share-bound). */
@@ -23,7 +23,7 @@
   if (typeof window === 'undefined' || window.V2SShare) return;
 
   var TOAST_ID = 'v2s-share-toast';
-  var TITLE_SUFFIX = ' — Ver2Solution';
+  var TITLE_SUFFIX = ' — vieclamlivestream.online';
 
   function docOf(d) { return d || (typeof document !== 'undefined' ? document : null); }
   function locOf(l) { return l || (typeof location !== 'undefined' ? location : null); }

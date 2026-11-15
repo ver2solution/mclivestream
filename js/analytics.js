@@ -1,6 +1,6 @@
 /* v27 — Tracker hành động người dùng, ẨN DANH TUYỆT ĐỐI (yêu cầu người dùng 2026-11-05 13:39).
    Mục đích: xem khách dừng lại lâu nhất ở trang nào và bị lỗi ở điểm nào,
-   để cron ver2solution-web-analytics đọc bảng web_analytics_events và báo cáo.
+   để cron vieclamlivestream.online-web-analytics đọc bảng web_analytics_events và báo cáo.
    ---------------------------------------------------------------------------
    NGUYÊN TẮC ẨN DANH (không bao giờ vi phạm):
    - KHÔNG gửi email, số điện thoại, mật khẩu, nội dung ô nhập, địa chỉ IP,

@@ -1,5 +1,5 @@
 /* Admin console GĐ2 — quan-tri.html (v116, chưa deploy).
-   Console quản trị riêng của Ver2Solution. Nguyên tắc (đặc tả
+   Console quản trị riêng của vieclamlivestream.online. Nguyên tắc (đặc tả
    trang-quan-tri-spec-2026-11-06.md §0.2 + §3):
    - Quyền kiểm tra ở SERVER (RPC is_admin() + mọi hàm admin_* đều kiểm
      tra is_admin() đầu hàm). Client chỉ ẩn/hiện giao diện.

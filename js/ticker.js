@@ -1,4 +1,4 @@
-/* js/ticker.js — Hàng chữ chạy (ticker) cho Ver2Solution.
+/* js/ticker.js — Hàng chữ chạy (ticker) cho vieclamlivestream.online.
  *
  * Module RIÊNG, độc lập với js/app.js: chỉ cần window.V20_DATA (js/data.js).
  * - Tóm tắt TỰ ĐỘNG nội dung mấu chốt của bài web thành 4/6/8 từ, lấy từ trường
@@ -120,7 +120,7 @@
     var ptext = protectNumbers(text);
     // Lấy câu đầu tiên.
     var sent = ptext.split(/[.。!?\n]/)[0].trim();
-    sent = sent.replace(/^(Ver2Solution|Ver2 Solution)[,:—–-]?\s*/i, '');
+    sent = sent.replace(/^(vieclamlivestream\.online|Ver2Solution|Ver2 Solution)[,:—–-]?\s*/i, '');
     // Bỏ ngày mở đầu KHÔNG kèm năm ("Ngày 08/11, ..."). Ngày CÓ năm ("Ngày 12/11/2025,")
     // phải GIỮ LẠI — đó là dữ liệu năm cũ, bỏ đi sẽ khiến số liệu trông như thống kê
     // hiện tại (vd 913,4 tỷ của 12/11/2025 mà tưởng là 11/11/2026).

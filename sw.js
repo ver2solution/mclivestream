@@ -12,7 +12,7 @@
    .online-popup cho game/nong-trai.html; GĐ4 tab Viet bai (js/admin.js)
    + sua pheu dang ky (js/app.js/js/auth-ui.js) da co trong prep.
    v118: chuyen domain sang vieclamlivestream.online (them CNAME + doi
-   link tuyet doi ver2solution.github.io/mclivestream -> https://
+   link tuyet doi tu goc GitHub Pages cu -> https://
    vieclamlivestream.online + site.config.json origin/basePath).
    v120: rut gon 2 popup noi thanh o vuong 96px (.online-popup v20.css +
    .game-entry inline 99 file HTML) — doi v20.css + HTML, khong doi data.js.
@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v271-shell-1'; /* v271: F-R2-08b facMatches nhanh MISSING_META cho f.moq (bo loc trang Xuong truyen MOQ qua f.moq, khong phai f.value) */
+const CACHE = 'v272-shell-1'; /* v272: doi ten thuong hieu sang vieclamlivestream.online */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

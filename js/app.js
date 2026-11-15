@@ -1,4 +1,5 @@
 /* v20 app: render cards / detail / filters / pagination from window.V20_DATA.
+   // v272 (rename-brand): thuong hieu doi thanh vieclamlivestream.online.
    Rules ported from v19-fix2:
    - Every <article> gets all attributes INSIDE its opening tag (never after a closing div).
    - Real photos are embedded directly in the HTML string for the 18 profiles that have one;
@@ -228,7 +229,7 @@ function decisionHTML(m){
    dang nhap. Voi 5 danh muc moi (khong nut sao), dong nay van hien nhu loi
    moi dang ky, khong nhac sao (replace o modal chi bo cau ghim sao). */
 var PIN_LONGER_HTML = '<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a>';
-var DISCLAIMER = 'Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. Ver2Solution không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).' + PIN_LONGER_HTML;
+var DISCLAIMER = 'Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).' + PIN_LONGER_HTML;
 /* v42: dong huong dan chu so huu o cuoi moi the (yeu cau nguoi dung 06/11/2026),
    ngay DUOI .disclaimer, la phan tu cuoi cung cua the. Khop quy tac so huu ho
    so chot 05/11/2026 23:38: chi chu ho so dang ky tai khoan, khop thong tin
@@ -1352,7 +1353,7 @@ function lotFactoryKiotDetailHTML(kind, item){
   }
   var note = kind === 'model' ? '⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế.'
     : kind === 'shop' ? 'Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).'
-    : hasReal(item.label) ? esc(item.label) : 'Tin đăng được tổng hợp từ bài đăng công khai trên mạng. Ver2Solution chưa xác thực thông tin trong tin đăng này.';
+    : hasReal(item.label) ? esc(item.label) : 'Tin đăng được tổng hợp từ bài đăng công khai trên mạng. vieclamlivestream.online chưa xác thực thông tin trong tin đăng này.';
   var starKind = kind === 'model' ? 'model_profile' : kind === 'shop' ? 'shop_profile' : kind;
   // Binh luan inline chi co o lo/xuong/kiot (nhu cu); mau/shop binh luan
   // o trang chi tiet day du.
@@ -2358,7 +2359,7 @@ function userListingToLot(r){
     shop_name: r.shop_name || '', contact_zalo: r.contact_zalo || '',
     contact_phone: r.contact_phone || '', source_url: r.source_url || '',
     url: null, date: userListingDateStr(r.created_at), group: 1,
-    label: 'Đã duyệt bởi Ver2Solution'
+    label: 'Đã duyệt bởi vieclamlivestream.online'
   };
 }
 function userListingToFactory(r){
@@ -2376,7 +2377,7 @@ function userListingToFactory(r){
     img: (r.images && r.images[0]) || null, images: r.images || [],
     shop_name: r.shop_name || '', contact_zalo: r.contact_zalo || '',
     url: null, date: userListingDateStr(r.created_at),
-    label: 'Đã duyệt bởi Ver2Solution'
+    label: 'Đã duyệt bởi vieclamlivestream.online'
   };
 }
 function userListingToKiot(r){
@@ -2393,7 +2394,7 @@ function userListingToKiot(r){
     contact_zalo: r.contact_zalo || '', contact_phone: r.contact_phone || '',
     source_url: r.source_url || '', url: null,
     date: userListingDateStr(r.created_at),
-    label: 'Đã duyệt bởi Ver2Solution'
+    label: 'Đã duyệt bởi vieclamlivestream.online'
   };
 }
 function registerUserListing(item){
@@ -2466,7 +2467,7 @@ function userListingPanelHTML(item){
     + (details.length ? '<ul style="margin:10px 0;padding-left:18px">' + details.map(function(d){ return '<li>' + d + '</li>'; }).join('') + '</ul>' : '')
     + (contact.length ? '<p style="display:flex;gap:8px;flex-wrap:wrap">' + contact.join('') + '</p>' : '')
     + (item.source_url ? '<p style="font-size:13px"><a href="' + esc(item.source_url) + '" target="_blank" rel="noopener">Bài gốc</a></p>' : '')
-    + '<p style="font-size:12px;color:#999">Tin do thành viên đăng, đã qua admin duyệt. Ver2Solution không chịu trách nhiệm về giao dịch giữa hai bên.</p>'
+    + '<p style="font-size:12px;color:#999">Tin do thành viên đăng, đã qua admin duyệt. vieclamlivestream.online không chịu trách nhiệm về giao dịch giữa hai bên.</p>'
     + '<p><button type="button" class="btn btn-ghost btn-sm" data-user-panel-admin-close hidden>Đóng tin (admin)</button></p>';
 }
 async function toggleUserListingPanel(cardEl, item){
@@ -3790,10 +3791,10 @@ var HUB_ZALO = 'https://zalo.me/0329983699';
 /* v63: tin nhan Zalo soan san cho shop can mau dot 11.11 — dung mau cau cua
    thiet ke 04/11 ("Hoi lich 11.11 qua Zalo", chua code toi 06/11): neu thiet
    ke 04/11 duoc code sau thi tai dung ham nay, khong viet lai ham moi. Chi
-   dung Zalo chung Ver2Solution; khong hien so rieng cua mau o bat ky dau
+   dung Zalo chung vieclamlivestream.online; khong hien so rieng cua mau o bat ky dau
    (ke ca 5 ho so co Zalo cong khai trong du lieu). */
 function hubZaloHref(m){
-  var msg = 'Chào Ver2Solution, tôi là shop cần mẫu ' + (m.name || '') + ' live ' + (m.cat || '') + ' đợt 11.11 (10–13/11). Nhờ giới thiệu và xác nhận lịch trống giúp tôi.';
+  var msg = 'Chào vieclamlivestream.online, tôi là shop cần mẫu ' + (m.name || '') + ' live ' + (m.cat || '') + ' đợt 11.11 (10–13/11). Nhờ giới thiệu và xác nhận lịch trống giúp tôi.';
   return HUB_ZALO + '?text=' + encodeURIComponent(msg);
 }
 /* v63: link video demo cua ho so — truong luu tren Supabase la demo_video_url
@@ -3991,7 +3992,7 @@ function initDetail(){
   + gatedContactsHTML('model_profile', m.id, m.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
   + '<a class="btn btn-light" data-track="xem-bai-goc-mau" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
-  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a>'
+  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a>'
   + '<a class="btn btn-ghost" data-track="yeu-cau-go-ho-so" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
   + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> <a href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
   var others=document.getElementById('otherGrid');
@@ -4044,7 +4045,7 @@ function initShopDetail(){
   + '<p><b>Yêu cầu:</b> '+esc(s.req)+'</p>'
   + (hasReal(s.channels) ? '<p><b>Kênh livestream:</b> '+esc(s.channels)+'</p>' : '')
   + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
-  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution</a></div>'
+  + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online</a></div>'
   + '</article>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
   // v99 (§3): sao dong bo voi the danh sach + mien tru + goi y dang ky/
@@ -4054,7 +4055,7 @@ function initShopDetail(){
   + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
   + gatedContactsHTML('shop_profile', s.id, s.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'
-  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo Ver2Solution 032 998 3699</a></div></div></div>';
+  + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a></div></div></div>';
   var others=document.getElementById('otherShops');
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
   mountPointsDetail('shop_profile', s.id);
@@ -4147,14 +4148,14 @@ function initLogoBadge(){
     var prefix = (String(location.pathname || '').indexOf('/bai-viet/') !== -1) ? '../' : '';
     var img = document.createElement('img');
     img.src = prefix + 'logo-c-mark.png';
-    img.alt = 'Ver2Solution';
+    img.alt = 'vieclamlivestream.online';
     img.width = 40; img.height = 40;
     img.decoding = 'async';
     badge.textContent = '';
     badge.appendChild(img);
     badge.classList.add('logo-badge-img');
     var link = badge.closest ? badge.closest('a.logo') : null;
-    if(link && !link.getAttribute('aria-label')) link.setAttribute('aria-label', 'Ver2Solution — Trang chủ');
+    if(link && !link.getAttribute('aria-label')) link.setAttribute('aria-label', 'vieclamlivestream.online — Trang chủ');
   } catch (e) { /* bo qua — badge giu chu "2" cu, khong vo header */ }
 }
 function initHeaderAuth(){
@@ -5224,9 +5225,9 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
     if(!data.content){ if(msg) msg.textContent='Bạn nhập nội dung góp ý trước nhé.'; return; }
     try{
       var API=window.McLivestreamAPI;
-      if(API && API.submitFeedback){ await API.submitFeedback(data); if(msg) msg.textContent='Cảm ơn bạn! Góp ý đã gửi về Ver2Solution để tổng hợp.'; gf.reset(); return; }
+      if(API && API.submitFeedback){ await API.submitFeedback(data); if(msg) msg.textContent='Cảm ơn bạn! Góp ý đã gửi về vieclamlivestream.online để tổng hợp.'; gf.reset(); return; }
     }catch(err){ var fe=((window.McLivestreamAPI&&McLivestreamAPI.friendlyError)?McLivestreamAPI.friendlyError(err):'Đã có lỗi xảy ra, hãy thử lại sau.'); fe=String(fe||'').replace(/[.]+$/,''); /* v161 (Rion S3-2): friendlyError tra ve cau ket thuc bang '.' roi code cong them '.' -> '..' */ /* v166: cau cu "Góp ý đã lưu tạm" la NOI SAI — submitFeedback loi (RLS chan) thi khong co gi duoc luu; chi huong user gui qua Zalo. */ if(msg) msg.textContent='Chưa gửi được: '+fe+'. Bạn gửi thêm qua Zalo giúp mình nhé.'; }
-    if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Bạn gửi thêm qua Zalo giúp mình nhé để Ver2Solution tổng hợp ngay.'; gf.reset();};
+    if(msg && !msg.textContent) msg.textContent='Cảm ơn bạn! Bạn gửi thêm qua Zalo giúp mình nhé để vieclamlivestream.online tổng hợp ngay.'; gf.reset();};
     if(window.V2SAuthUI) V2SAuthUI.guardSubmit(gf, run); else run();});
 });
 /* v176: lưới an toàn cho dropdown — nếu chuỗi DOMContentLoaded vì lý do

@@ -31,14 +31,14 @@ var THEMES=[
   {id:'noel',name:'Giáng sinh',cls:'theme-noel',kind:'md',
    start:{m:12,d:1},end:{m:12,d:26},
    note:'01/12–26/12 hang nam',
-   greeting:'🎄 Giáng sinh an lành! Ver2Solution chúc các chủ shop một mùa lễ ấm áp — livestream đông khách, chốt đơn liên tục.'},
+   greeting:'🎄 Giáng sinh an lành! vieclamlivestream.online chúc các chủ shop một mùa lễ ấm áp — livestream đông khách, chốt đơn liên tục.'},
   {id:'tet-duong',name:'Tết Dương lịch',cls:'theme-tet-duong',kind:'md',
    start:{m:12,d:28},end:{m:1,d:3},
    note:'28/12–03/01 hang nam (qua nam)',
-   greeting:'🎉 Chúc mừng năm mới! Ver2Solution chúc các chủ shop năm mới khởi sắc — đơn hàng tăng trưởng, livestream bứt phá.'},
+   greeting:'🎉 Chúc mừng năm mới! vieclamlivestream.online chúc các chủ shop năm mới khởi sắc — đơn hàng tăng trưởng, livestream bứt phá.'},
   {id:'tet',name:'Tết Nguyên Đán',cls:'theme-tet',kind:'years',
    /* {year} duoc thay bang ten nam am cua cua so dang bat (xem getGreeting). */
-   greeting:'🧧 Chúc mừng năm mới {year}! Ver2Solution kính chúc các chủ shop năm mới an khang, phát tài — livestream rộn ràng, đơn về như ý.',
+   greeting:'🧧 Chúc mừng năm mới {year}! vieclamlivestream.online kính chúc các chủ shop năm mới an khang, phát tài — livestream rộn ràng, đơn về như ý.',
    windows:[
      {start:'2027-01-23',end:'2027-02-13',yearName:'Đinh Mùi',note:'Mùng 1 Tết Đinh Mùi 06/02/2027'},
      {start:'2028-01-12',end:'2028-02-02',yearName:'Mậu Thân',note:'Mùng 1 Tết Mậu Thân 26/01/2028'}
