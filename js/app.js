@@ -1484,6 +1484,14 @@ function scrollToHashedCard(){
   if(!el && document.querySelector){ try{ el=document.querySelector('[data-v2s-id="'+String(h).replace(/"/g,'')+'"]'); }catch(e){} }
   if(!el || typeof el.scrollIntoView !== 'function') return false;
   el.scrollIntoView({behavior:'auto', block:'start'});
+  /* v259 (N21): link tim-kiem "Xem ho so" tro toi danh sach + hash #<id> —
+     truoc day trang chi cuon toi the, dialog chi tiet KHONG tu mo nen nguoi
+     dung khong thay gi khac. Gio mo luon modal chi tiet khi hash trung 1
+     muc co chi tiet (mau/shop/lo/xuong/kiot); hash neo section (#ho-so-shop...)
+     khong co muc tuong ung thi findDetailItem tra null nen khong mo. */
+  try{
+    if(typeof openLotFactoryKiotDetail === 'function' && typeof findDetailItem === 'function' && findDetailItem(h)) openLotFactoryKiotDetail(h);
+  }catch(e){}
   return true;
 }
 /* Home: hero search + 2 rows, 8 with-photo first */
