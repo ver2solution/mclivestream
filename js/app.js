@@ -115,7 +115,7 @@ function modelFieldLine(m){
 }
 function modelLocationLine(m){
   if(m && hasReal(m.province)) return esc(m.province);
-  return sourceDetailLink(m && m.src);
+  return 'Chưa ghi tỉnh'; /* v257 (N17): khong link ra Facebook voi nhan "Chi tiết" nua — nhan do lua nguoi dung (bam tuong mo chi tiet noi bo nhung ra bai goc Facebook, co khi khong tai duoc). Bai goc van co trong nut "Xem bai goc" o modal chi tiet (bam anh the). */
 }
 function shopLocationLine(s){
   if(s && hasReal(s.province)){
@@ -123,7 +123,7 @@ function shopLocationLine(s){
     if(s.district && s.district !== 'Chưa cập nhật') loc += ' — ' + esc(s.district);
     return loc;
   }
-  return sourceDetailLink(s && s.src);
+  return 'Chưa ghi tỉnh'; /* v257 (N17): nhu modelLocationLine — khong link "Chi tiết" ra Facebook. */
 }
 function shopSalaryLine(s){
   if(s && hasReal(s.salary)) return esc(s.salary);
@@ -133,7 +133,7 @@ function lotLocationLine(l){
   if(l && hasReal(l.prov)) return esc(l.prov);
   var p = findProvinceInText((l && l.title ? l.title + ' ' : '') + (l && l.meta ? l.meta : ''));
   if(p) return esc(p);
-  return sourceDetailLink(l && l.url);
+  return 'Chưa ghi tỉnh'; /* v257 (N17): day la dong "Chi tiết" Zalo bao — lo thieu tinh hien link Facebook nhan "Chi tiết". Doi thanh chu that; bai goc van co trong modal. */
 }
 function lotValueLine(l){
   // Quy tac 08/11 19:20 (dac ta the rut gon §1c, anh chot): dong 2 the lo =
@@ -160,7 +160,7 @@ function lotValueLine(l){
 }
 function factoryLocationLine(f){
   if(f && hasReal(f.prov)) return esc(f.prov);
-  return sourceDetailLink(f && f.url);
+  return 'Chưa ghi tỉnh'; /* v257 (N17): nhu lotLocationLine. */
 }
 function factoryItemsLine(f){
   var items = String((f && f.items) || '').split(',');
@@ -170,11 +170,11 @@ function factoryItemsLine(f){
 }
 function kiotLocationLine(k){
   if(k && hasReal(k.prov)) return esc(k.prov);
-  return sourceDetailLink(k && k.url);
+  return 'Chưa ghi tỉnh'; /* v257 (N17): nhu lotLocationLine. */
 }
 function kiotTypeLine(k){
   if(k && hasReal(k.cat)) return esc(catLabel(k.cat));
-  return sourceDetailLink(k && k.url);
+  return 'Chưa cập nhật'; /* v257 (N17): nhu lotLocationLine (dong loai hinh, khong phai dong dia diem). */
 }
 /* v85 (M1 đã chạy 13:57 07/11, 3 cột highest_revenue_*): doanh thu chỉ
    tính/hiển thị khi đã xác minh (highest_revenue_verified = true) và có
