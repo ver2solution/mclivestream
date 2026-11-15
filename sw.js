@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v269-shell-1'; /* v269: MC-94 getUserContact uu tien phone_zalo metadata -> khoa rieng v2s_signup_prefs_<uid> -> khoa chung chi khi khop email TK */
+const CACHE = 'v270-shell-1'; /* v270: MC-83b deleteJobPost/deleteUserListing .select('id') + kiem tra 0 dong (bao loi that thay vi "Da xoa tin." gia) */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

@@ -616,9 +616,14 @@
     if (cur.error && cur.error.code !== '42703' && String(cur.error.message || '').indexOf('42703') === -1) throw cur.error;
     if (!cur.error && !cur.data) throw new Error('Không tìm thấy tin.');
     if (cur.data && cur.data.moderation_status === 'approved') throw new Error('Tin đang đăng thì liên hệ admin để gỡ, không tự xóa được.');
+    // v270 (MC-83b, 15/11/2026): delete KHONG .select() thi PostgREST tra
+    // thanh cong ca khi RLS chan het (0 dong bi xoa, khong loi) -> client
+    // bao sai "Da xoa tin." (probe TK2 13:09). Them .select('id') va kiem
+    // tra 0 dong de hien loi that thay vi bao thanh cong gia.
     var res = await client.from('shop_job_posts').delete()
-      .eq('id', id).eq('auth_user_id', session.user.id);
+      .eq('id', id).eq('auth_user_id', session.user.id).select('id');
     if (res.error) throw res.error;
+    if (!res.data || res.data.length === 0) throw new Error('Không xóa được tin — có thể do chưa có quyền xóa, liên hệ admin.');
     return true;
   }
 
@@ -719,9 +724,13 @@
     if (cur.error) throw cur.error;
     if (!cur.data) throw new Error('Không tìm thấy tin.');
     if (cur.data.moderation_status === 'approved') throw new Error('Tin đang đăng thì bấm Đóng tin thay vì Xóa.');
+    // v270 (MC-83b, 15/11/2026): nhu deleteJobPost — delete khong .select()
+    // thi RLS chan het van tra thanh cong (0 dong, khong loi). Them
+    // .select('id') + kiem tra 0 dong de hien loi that.
     var res = await client.from(listingTable(kind)).delete()
-      .eq('id', id).eq('auth_user_id', session.user.id);
+      .eq('id', id).eq('auth_user_id', session.user.id).select('id');
     if (res.error) throw res.error;
+    if (!res.data || res.data.length === 0) throw new Error('Không xóa được tin — có thể do chưa có quyền xóa, liên hệ admin.');
     return true;
   }
   // Ảnh tin: bucket profile-media, prefix listings/<uid>/<kind>/<listingId>/,
