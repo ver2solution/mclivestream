@@ -13941,6 +13941,54 @@ window.V20_DATA = {
    "takeaway": "Vận chuyển Tết 2027: mùng 1 Tết 06/02/2027, hãng vận chuyển dự kiến nghỉ từ 29 tháng Chạp 05/02/2027; hạn tạo đơn an toàn khoảng 01/02/2027; xưởng Trung Quốc ngừng sản xuất 30/01–14/02/2027; chốt đơn nhập hàng trước cuối tháng 11/2026."
   },
   {
+   "title": "Lương mẫu livestream 2026 phân tích: Tết trả gấp đôi",
+   "cat": "Phân tích",
+   "source": "Gyre",
+   "date": "2026-11-15",
+   "url": "https://gyre.pro/blog/live-streaming-statistics-insights-from-platforms-to-profit",
+   "page": "bai-viet/luong-mau-livestream-2026-phan-tich.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mau-livestream-2026-phan-tich.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương mẫu livestream 2026: phổ biến 80.000–150.000đ/giờ, Tết 120.000đ/giờ và nhân đôi ca Tết; mẫu Việt ở bậc giữa thang toàn cầu, leo bậc bằng lịch đều và tệp fan."
+  },
+  {
+   "title": "Ý tưởng bán hàng online: 22 ý tưởng lãi cao 2026",
+   "cat": "Phân tích",
+   "source": "Shopify",
+   "date": "2026-11-15",
+   "url": "https://www.shopify.com/hk-en/blog/10580693-how-to-start-an-ecommerce-business-without-spending-any-money",
+   "page": "bai-viet/y-tuong-ban-hang-online-22-y-tuong-shopify-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/y-tuong-ban-hang-online-22-y-tuong-shopify-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "22 ý tưởng bán hàng online của Shopify gom thành 6 nhóm theo vốn: không ôm hàng, làm tay, bán kỹ năng, thuê lại — người mới nên thử 1 ngách 30 ngày."
+  },
+  {
+   "title": "Bán hàng online vốn ít: mở shop từ 5 USD/tháng",
+   "cat": "Phân tích",
+   "source": "Shopify",
+   "date": "2026-11-15",
+   "url": "https://www.shopify.com/hk-en/blog/cheap-ecommerce-platforms",
+   "page": "bai-viet/ban-hang-online-von-it-5-do-la-mo-shop-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-hang-online-von-it-5-do-la-mo-shop-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "9 nền tảng rẻ nhất 2026: 5 nền tảng vào cửa 0 USD, Shopify chỉ 5 USD/tháng; shop Việt mở shop 0 đồng trên Shopee/TikTok Shop, vốn thật nằm ở phí sàn và quảng cáo."
+  },
+  {
+   "title": "Kinh doanh online cho người mới: 9 bước ra đơn đầu",
+   "cat": "Phân tích",
+   "source": "Xero",
+   "date": "2026-11-15",
+   "url": "https://www.xero.com/us/guides/starting-an-online-business/",
+   "page": "bai-viet/kinh-doanh-online-cho-nguoi-moi-9-buoc-xero-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-doanh-online-cho-nguoi-moi-9-buoc-xero-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "9 bước khởi động kinh doanh online của Xero: kiểm chứng ý tưởng, đăng ký, tài chính, website, marketing — dịch vụ dưới 500 USD, shop Việt bắt đầu rẻ hơn nhờ sàn 0 đồng."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
