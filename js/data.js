@@ -14655,6 +14655,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Năm 2025, Đổng Vũ Huy livestream bán hàng 421 buổi, trung bình 50–75 triệu NDT/buổi, cả năm hơn 21 tỷ NDT (~73.500 tỷ đồng). Ít hơn năm 2024 tới 210 buổi mà doanh thu gấp đôi — bí quyết nằm ở giá trị đơn hàng và cách làm sản phẩm."
   },
+  {
+   "title": "74.400 tỷ vs 70.100 tỷ đồng — TikTok Shop chỉ còn cách ngôi vương Shopee 4.300 tỷ, 12.12 sẽ là ngày đổi chủ?",
+   "cat": "Xu hướng",
+   "source": "VietnamBiz",
+   "date": "2026-11-15",
+   "url": "https://vietnambiz.vn/tiktok-shop-ap-sat-ngoi-vuong-thi-phan-cua-shopee-2026119195711186.htm",
+   "page": "bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html",
+   "img": "https://cdn.vietnambiz.vn/1881912202208555/images/2026/11/09/crawl-20261109195505449.png?width=700",
+   "pinned": false,
+   "takeaway": "Quý III/2026, Shopee đạt GMV 74.400 tỷ đồng, TikTok Shop đạt 70.100 tỷ đồng — khoảng cách chỉ còn 4.300 tỷ. TikTok Shop tăng 60%, Shopee tăng 8%. Cuộc đua ngôi vương sàn thương mại điện tử Việt Nam sẽ ngã ngũ ở 12.12?"
+  },
 ],
  "lots": [
    {
