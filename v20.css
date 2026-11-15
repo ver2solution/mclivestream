@@ -660,16 +660,13 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .field-err{margin:4px 0 0;font-size:13px;font-weight:700;color:#b42318}
 .field-err:empty{display:none}
 .form-card input.invalid,.form-card select.invalid,.form-card textarea.invalid{border-color:#d92b1f;box-shadow:0 0 0 1px #d92b1f}
-/* v85: thong bao man hinh ban mobile — dung 2 dong, chi hien <=768px
-   (tren desktop/tablet lon an han). Thanh nho tren cung, tren header;
-   chu nguyen van, khong link; nut X tat (luu sessionStorage, xem app.js). */
-.mobile-notice{display:none}
+/* V3-S1-01 (16/11/2026): BO banner "Mo web PC" (V-03) — xoa CSS cua banner
+   cung ham khoi tao trong js/app.js. Chi giu quy tac doi widget online. */
 @media(max-width:768px){
-  .mobile-notice{display:flex;align-items:flex-start;gap:10px;background:var(--brandsoft);border-bottom:1px solid var(--line);padding:8px 12px;font-size:13px;line-height:1.45;color:var(--ink)}
-  .mobile-notice-text{flex:1 1 auto;min-width:0}
-  .mobile-notice-text span{display:block}
-  .mobile-notice-close{flex:0 0 auto;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:13px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}/* v235: nut X banner du 44px (mobile P3 — do 28x28) */
-  .mobile-notice-close:hover{border-color:var(--brand);color:var(--brand)}
+  /* V3-S1-01: widget "N nguoi dang online" xuong goc duoi (tren nut Gop y 48px),
+     khong che CTA hero o giua man hinh (V-04 — do truoc: popup top:50% che
+     nut "Dang ky mien phi" o 390px, x298-390/y382-462 de len nut x30-316/y385-432). */
+  .online-popup{top:auto;bottom:84px;transform:none}
 }
 @media(max-width:900px){.auth-layout{grid-template-columns:1fr}}
 
