@@ -1,0 +1,41 @@
+name: Deploy v266 (MC-85)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v266-mc85.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v266-mc85:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v266-mc85 package
+        run: |
+          echo "data.js sha before unzip (live, must stay untouched):"
+          sha256sum js/data.js
+          unzip -o mclivestream-v266-mc85-deploy.zip
+          echo "--- verify v266 (MC-85) ---"
+          grep -m1 "v266-shell-1" sw.js
+          grep -m1 "v266 (MC-85" trang-cua-toi.html
+          echo "data.js sha after unzip (must match before):"
+          sha256sum js/data.js
+          sha256sum trang-cua-toi.html sw.js
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v266-mc85-deploy.zip
+          git add -A
+          git status --short | head -30
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v266: MC-85 link Kiem tra xu lien web (vi.html#xuChungSection) tren trang-cua-toi.html, sw.js v266-shell-1"
+            git push
+          fi
