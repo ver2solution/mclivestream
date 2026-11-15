@@ -4182,6 +4182,44 @@ function initHeaderAuth(){
   var headerBalanceLoading = false; // v114 (P3-4): dang tai so du -> "Ten · …", khong hien 0 gia.
   var headerBalanceSeq = 0; // v117: so thu tu lan doc so du — chi lan doc moi nhat duoc ap dung ket qua.
   var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
+  /* v261 (MC-97/MC-93): cache ten + so du header o localStorage — tai lai
+     trang hien ngay ten da biet thay vi "…" ~10s cho getSession + lookup
+     ho so xong, va ten NHAT QUAN giua cac trang (truoc day trang thi hien
+     ten shop, trang thi hien phan truoc @ tuy lookup kip hay khong). Chi la
+     hien thi lac quan: phien that ve se xac nhan/sua (neu da dang xuat thi
+     apply(null) tra ve "Đăng Nhập"); moi hanh dong van can phien that. */
+  var HEADER_CACHE_KEY = 'v2s_header_cache_v1';
+  function readHeaderCache(){
+    try{
+      if(typeof localStorage === 'undefined') return null;
+      var raw = localStorage.getItem(HEADER_CACHE_KEY);
+      if(!raw) return null;
+      var c = JSON.parse(raw);
+      if(!c || !c.name || !c.uid) return null;
+      return c;
+    }catch(e){ return null; }
+  }
+  function writeHeaderCache(){
+    try{
+      if(typeof localStorage === 'undefined' || headerName === null || !headerNameUserId) return;
+      localStorage.setItem(HEADER_CACHE_KEY, JSON.stringify({uid: headerNameUserId, name: headerName, balance: headerBalance, at: Date.now()}));
+    }catch(e){}
+  }
+  function clearHeaderCache(){
+    try{ if(typeof localStorage !== 'undefined') localStorage.removeItem(HEADER_CACHE_KEY); }catch(e){}
+  }
+  /* v261: hien ngay ten da cache (neu co) thay vi "…" — phien that ve se
+     xac nhan lai so du + ten. Neu khong co cache thi giu "…" nhu cu. */
+  try{
+    var _hc = readHeaderCache();
+    if(_hc){
+      headerName = _hc.name; headerNameUserId = _hc.uid;
+      headerBalance = (typeof _hc.balance === 'number') ? _hc.balance : null;
+      btn.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
+      try { if(document.body && document.body.classList) document.body.classList.add('v2s-logged-in'); } catch (e) {}
+      renderHeaderLabel();
+    }
+  }catch(e){}
   function renderHeaderLabel(){
     if(headerName === null) return;
     btn.textContent = headerName + (headerBalanceLoading ? ' · …' : (headerBalance === null ? '' : ' · ' + headerBalance + ' xu'));
@@ -4249,6 +4287,7 @@ function initHeaderAuth(){
     // Cap nhat UI NGAY (giong luong signOut hien co o auth-ui.js:443-462),
     // roi moi doi api().signOut() xong; sau do ve trang chu.
     headerName = null; headerBalance = null;
+    clearHeaderCache(); /* v261: dang xuat chu dong — xoa ten cache ngay, khong doi su kien SIGNED_OUT */
     try { btn.textContent = btn._loginLabel; btn.setAttribute('href', btn._loginHref); } catch (e) {}
     function goHome(){
       try { if(typeof window !== 'undefined' && window.location) window.location.href = pathPrefix + 'index.html'; } catch (e) {}
@@ -4327,6 +4366,7 @@ function initHeaderAuth(){
       if(headerMetaName(user)){
         headerName = headerDisplayName(user) || 'Trang của tôi';
         renderHeaderLabel();
+        writeHeaderCache(); /* v261: luu ten da xac dinh de lan tai sau hien ngay */
         loadHeaderBalance();
       } else {
         /* v224 (S3-10): chua co ten that trong metadata thi KHONG render ten
@@ -4343,6 +4383,7 @@ function initHeaderAuth(){
           _settled = true;
           headerName = name || 'Trang của tôi';
           renderHeaderLabel();
+          writeHeaderCache(); /* v261: luu ten da lookup (mau/shop) de lan tai sau hien ngay + nhat quan cac trang */
         }
         _timer = setTimeout(function(){ _settle(headerDisplayName(user)); }, 3000);
         loadHeaderBalance();
@@ -4386,6 +4427,7 @@ function initHeaderAuth(){
       }
     } else {
       headerName = null; headerNameUserId = null; headerBalance = null;
+      clearHeaderCache(); /* v261: da dang xuat — xoa ten cache de lan sau khong hien ten cu */
       closeMenu(); // v90 (F): dang xuat tu noi khac cung dong dropdown
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);
@@ -4395,9 +4437,15 @@ function initHeaderAuth(){
   try {
     var A = window.V2SAuthUI;
     if(!A || typeof A.getSession !== 'function') return;
-    A.getSession().then(function (s) { apply(s && s.user ? s.user : null); }).catch(function () {});
+    /* v261 (MC-97/MC-93): dung getSessionRobust(2000) khi co — cho GoTrue
+       khoi phuc xong thay vi tra null thoang qua (lam header nhay ve
+       "Đăng Nhập" roi moi hien ten); catch cu RONG lam nut ket "…" mai khi
+       getSession reject — gio loi thi apply(null) de ve "Đăng Nhập" dut
+       khoat thay vi ket. */
+    var _getSession = (typeof A.getSessionRobust === 'function') ? function(){ return A.getSessionRobust(2000); } : function(){ return A.getSession(); };
+    _getSession().then(function (s) { apply(s && s.user ? s.user : null); }).catch(function () { apply(null); });
     if(typeof A.onSessionChange === 'function') A.onSessionChange(function (user) { apply(user); });
-  } catch (e) { /* bo qua — header giu nut Dang Nhap mac dinh */ }
+  } catch (e) { apply(null); /* v261: loi dong bo thi ve "Đăng Nhập" thay vi giu "…" */ }
 }
 /* v96: dai kich hoat ho so tren trang chu (chi index.html co phan tu
    #kich-hoat-ho-so; trang khac khong co thi bo qua lang le). */
