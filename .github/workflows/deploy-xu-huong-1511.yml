@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "278" || (echo "BASE DOI: data.js khong con 278 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "304" || (echo "BASE DOI: sitemap khong con 304 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "282" || (echo "BASE DOI: data.js khong con 282 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "308" || (echo "BASE DOI: sitemap khong con 308 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip xu-huong-1511 package
         run: |
           unzip -o mclivestream-xu-huong-1511-deploy.zip
@@ -34,8 +34,8 @@ jobs:
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "308" || (echo "SAI TONG sitemap, phai 308"; exit 1)
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "282" || (echo "SAI TONG data.js, phai 282"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "312" || (echo "SAI TONG sitemap, phai 312"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "286" || (echo "SAI TONG data.js, phai 286"; exit 1)
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
