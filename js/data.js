@@ -36,7 +36,7 @@
    viec lam MC livestream — kind:"keyword", pinned:false per v84) + 29 news (big-revenue cases, TikTok Shop new\
    rules, Facebook Live ads, AI live, Japan weird inventions, Geats News, Dòng tiền Battlecry, Đời sống, market-\
    potential evaluation) + rotating topic #5 (dong tien 11/11, LAST). Total 175 articles. Articles-only deploy:\
-   sw.js NOT touched (data.js is NETWORK-FIRST). Title rule from 12/11: <title> WITHOUT " — Ver2Solution" suffix.\
+   sw.js NOT touched (data.js is NETWORK-FIRST). Title rule from 12/11: <title> WITHOUT " — vieclamlivestream.online" suffix.\
    articles-doi-song-2026-11-15 adds 5 Đời Sống articles (15/11/2026, Sunday): 1 seasonal keyword "shop online sau Tết bán gì" #3/10 (3.264 words, deep) + 3 news ("tháng 2 du lịch đâu đẹp nhất" 1.835 words; "trả hàng sau Tết" 2.564 words; "nước dừa có tốt không" 2.389 words) + 1 cafe "quán cafe check-in đẹp Faifo Coffee Hội An" (2.276 words). Total 299 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-xu-huong-2026-11-15 adds 4 Xu hướng articles (15/11/2026, Sunday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 (3.247 words, deep) + 1 bo 100 keyword "TikTok Shop Affiliate" STT 55 (2.879 words) + 2 news ("xu hướng mua sắm hàng đã qua sử dụng" 3.033 words; "thương mại nội dung Đông Nam Á" 2.812 words). Total 290 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v257 adds 4 Thi truong articles (15/11/2026, Sunday): 1 seasonal keyword "TikTok Shop 12.12" #3/10 (deep + đánh giá tiềm năng) + 3 news ("Lazada 11.11 2026"; "TMĐT Việt Nam 9 tháng 2026: 442 nghìn tỷ" (Metric); "Temu Shein 2026: hết miễn thuế"). Total 274 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -50,7 +50,7 @@
    v256 adds 4 Livestream articles (15/11/2026, Sunday): 1 seasonal keyword "livestream bán hàng 12.12" #5/10 (3.422 words, deep, Shopee 20h 11/12 + D+1 peak) + 3 cluster B keywords "cách xử lý bình luận khi livestream bán hàng" (3.534 words), "thiết bị livestream bán hàng" (3.326 words, 3 tiers from 50 USD), "cách tăng tương tác livestream" (3.554 words, +20% session length). Total 266 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v218 adds 4 Livestream articles (14/11/2026, Saturday): 1 seasonal keyword "cách tăng mắt xem livestream Tết" #4/10 (2.990 words, deep, GMV = hours x GPMV) + 1 cluster B keyword "cách giữ chân người xem livestream" (3.163 words) + 2 news ("minigame livestream bán hàng" 2.828 words; "livestream bán đồ gia dụng" 2.693 words, 15,7% Double 11). Total 227 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v145 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Đổng Vũ Huy 30 phút 100.000 đơn,\n   3 ngày 6,79 tỷ NDT, 5 mẹo chốt đơn (5.689 từ, 17 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi nên\n   Ryan tạo file + deploy giúp). Total 135 articles. Articles-only deploy:\n   sw.js bumped to v145-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
-   Facebook Reach->Viewers 31/10, Ver2Solution intro) + 1 keyword SEO article ("tuyển idol
+   Facebook Reach->Viewers 31/10, vieclamlivestream.online intro) + 1 keyword SEO article ("tuyển idol
    livestream", kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected
    08/11: 11 models, 26 shops, 20 groups unverified) + 4 news (TikTok Shop fee hike 3/8,
    gold 09/11 SJC 138-141tr, consumer-psychology MDPI study, clearance-lot potential
@@ -5681,7 +5681,7 @@ window.V20_DATA = {
    "shifts": [],
    "salary": "Thỏa thuận",
    "salaryNum": null,
-   "topRevenue": "237 tỷ đồng/phiên live ngày 6/6/2024, gần 1,4 triệu đơn, đỉnh 316.000 mắt xem (theo bài Ver2Solution tổng hợp từ Kinh Doanh Net/VietnamFinance/Afamily)",
+   "topRevenue": "237 tỷ đồng/phiên live ngày 6/6/2024, gần 1,4 triệu đơn, đỉnh 316.000 mắt xem (theo bài vieclamlivestream.online tổng hợp từ Kinh Doanh Net/VietnamFinance/Afamily)",
    "rating": "Chưa có đánh giá",
    "date": "2026-11-13",
    "src": "https://vidiq.com/youtube-stats/channel/@halinhofficial/",
@@ -11709,7 +11709,7 @@ window.V20_DATA = {
   {
    "title": "Vì sao 90% Page bị bóp reach khi đi share group? 3 tín hiệu Facebook chấm spam",
    "cat": "Phân tích",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-03",
    "url": "bai-viet-bop-reach.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/bop-reach.webp",
@@ -11821,7 +11821,7 @@ window.V20_DATA = {
   {
    "title": "Hồ sơ MC livestream: 7 mục bắt buộc giúp mẫu được shop tìm thấy nhanh hơn",
    "cat": "Livestream",
-   "source": "Bài demo nội bộ — Ver2Solution",
+   "source": "Bài demo nội bộ — vieclamlivestream.online",
    "date": "2026-11-05",
    "url": null,
    "page": "bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.html",
@@ -11832,7 +11832,7 @@ window.V20_DATA = {
   {
    "title": "Lương MC livestream theo buổi: Mặt bằng giá ở thời trang, mỹ phẩm và gia dụng",
    "cat": "Dòng tiền",
-   "source": "Bài demo nội bộ — Ver2Solution",
+   "source": "Bài demo nội bộ — vieclamlivestream.online",
    "date": "2026-11-05",
    "url": null,
    "page": "bai-viet/luong-mc-livestream-theo-buoi.html",
@@ -11939,7 +11939,7 @@ window.V20_DATA = {
    "cat": "Hàng hoá",
    "source": "Gia Dụng Nhanh",
    "date": "2026-11-07",
-   "dateNote": "Bài gốc không ghi rõ ngày đăng; ngày đăng trên Ver2Solution",
+   "dateNote": "Bài gốc không ghi rõ ngày đăng; ngày đăng trên vieclamlivestream.online",
    "url": "https://giadungnhanh.com/cach-xu-ly-amp-xa-hang-ton-kho-do-gia-dung-hieu-qua-cuoi-nam-n165660.html",
    "page": "bai-viet/xa-kho-do-gia-dung-cuoi-nam.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/xa-kho-do-gia-dung-cuoi-nam.jpg",
@@ -11970,7 +11970,7 @@ window.V20_DATA = {
   {
    "title": "Tuyển mẫu livestream cho shop nhỏ: 7 bước thuê đúng người",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-06",
    "url": null,
    "page": "bai-viet/tuyen-mau-livestream.html",
@@ -12082,7 +12082,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm mẫu livestream 2026: lương bao nhiêu, tìm ở đâu?",
    "cat": "Dòng tiền",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-07",
    "url": null,
    "page": "bai-viet/viec-lam-mau-livestream.html",
@@ -12257,7 +12257,7 @@ window.V20_DATA = {
   {
    "title": "Mẫu livestream là gì? Thuê mẫu live ở đâu, giá bao nhiêu?",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "url": null,
    "page": "bai-viet/mau-livestream.html",
@@ -12265,12 +12265,12 @@ window.V20_DATA = {
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
-   "takeaway": "Mẫu livestream không phải là người đẹp nhất, mà là người bán được hàng cho đúng mặt hàng của shop. Trước khi thuê, shop hãy xem clip live thật, thử live 15–20 phút với sản phẩm thật và thỏa thuận rõ lương, ca, hoa hồng bằng tin nhắn. Người mới làm mẫu thì bắt đầu bằng ca part-time 50.000–80.000 đồng/giờ, tích đủ 5–10 ca live thật rồi mới đòi mức cao hơn. Xem hồ sơ mẫu có clip live thử tại danh sách mẫu của Ver2Solution để chọn đúng người ngay hôm nay."
+   "takeaway": "Mẫu livestream không phải là người đẹp nhất, mà là người bán được hàng cho đúng mặt hàng của shop. Trước khi thuê, shop hãy xem clip live thật, thử live 15–20 phút với sản phẩm thật và thỏa thuận rõ lương, ca, hoa hồng bằng tin nhắn. Người mới làm mẫu thì bắt đầu bằng ca part-time 50.000–80.000 đồng/giờ, tích đủ 5–10 ca live thật rồi mới đòi mức cao hơn. Xem hồ sơ mẫu có clip live thử tại danh sách mẫu của vieclamlivestream.online để chọn đúng người ngay hôm nay."
   },
   {
    "title": "Hôm qua (07/11): 30 shop tuyển mẫu livestream mới, 1 mẫu mới lên sàn",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "dateNote": "Số liệu thu thập ngày 07/11/2026",
    "url": null,
@@ -12279,7 +12279,7 @@ window.V20_DATA = {
    "imgSelf": true,
    "kind": "news",
    "pinned": false,
-   "takeaway": "Ngày 07/11 có 30 shop chờ người live nhưng chỉ 1 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút với sản phẩm thật và nộp vào ca part-time trước. Shop hãy đăng tin ghi rõ lương, ca và địa điểm, rồi thử live ngắn trước khi ký dài hạn. Xem hồ sơ mẫu và shop mới nhất tại danh sách mẫu và danh sách shop của Ver2Solution."
+   "takeaway": "Ngày 07/11 có 30 shop chờ người live nhưng chỉ 1 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút với sản phẩm thật và nộp vào ca part-time trước. Shop hãy đăng tin ghi rõ lương, ca và địa điểm, rồi thử live ngắn trước khi ký dài hạn. Xem hồ sơ mẫu và shop mới nhất tại danh sách mẫu và danh sách shop của vieclamlivestream.online."
   },
   {
    "title": "Giá vàng hôm nay 8/11/2026: SJC 138–141 triệu, tiền của khách đang chảy đi đâu?",
@@ -12344,7 +12344,7 @@ window.V20_DATA = {
   {
    "title": "5 prompt AI viết mô tả, kịch bản live và trả lời khách cho shop nhỏ: dùng ChatGPT, Gemini miễn phí",
    "cat": "Công nghệ",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "url": null,
    "page": "bai-viet/5-prompt-ai-viet-mo-ta-kich-ban-live-tra-loi-khach.html",
@@ -12381,7 +12381,7 @@ window.V20_DATA = {
   {
    "title": "Quản trị dòng tiền cho người làm nghề tự do: lãi kép là gì và cách tạo dòng tiền tự động",
    "cat": "Dòng tiền",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "page": "bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/quan-tri-dong-tien-lai-kep-thu-nhap-thu-dong.jpg",
@@ -12392,7 +12392,7 @@ window.V20_DATA = {
   {
    "title": "Tự do tài chính tuổi 30: nghỉ hưu sớm và thế nào là sống tự do?",
    "cat": "Dòng tiền",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "page": "bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/tu-do-tai-chinh-tuoi-30-nghi-huu-som-song-tu-do.jpg",
@@ -12403,7 +12403,7 @@ window.V20_DATA = {
   {
    "title": "Các địa điểm phải đi trong đời: 10 điểm đến trong nước và quốc tế đáng đi nhất",
    "cat": "Đời Sống",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "page": "bai-viet/cac-dia-diem-phai-di-trong-doi.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/cac-dia-diem-phai-di-trong-doi.jpg",
@@ -12414,7 +12414,7 @@ window.V20_DATA = {
   {
    "title": "Phân tích các tháng trong năm đi du lịch đâu là đẹp nhất: mùa hoa, mùa quả, lễ hội",
    "cat": "Đời Sống",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-08",
    "page": "bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/cac-thang-di-du-lich-dep-nhat-trong-nam.jpg",
@@ -12446,21 +12446,21 @@ window.V20_DATA = {
    "takeaway": "Facebook bỏ chỉ số Reach từ 31/10/2026, thay bằng Viewers — số tài khoản duy nhất đã xem nội dung thật sự. Vì Viewers đếm chặt hơn nên số liệu shop có thể giảm 15–35% trên giấy, dù nội dung vẫn hiển thị như cũ. Shop cần xuất dữ liệu Reach cũ ngay, từ nay chỉ so Viewers với Viewers, và chuyển sang nội dung gốc đáng chia sẻ trước 11.11."
   },
   {
-   "title": "Ver2Solution là gì? Sàn tuyển mẫu livestream và hệ sinh thái cho shop nhỏ bán online",
+   "title": "vieclamlivestream.online là gì? Sàn tuyển mẫu livestream và hệ sinh thái cho shop nhỏ bán online",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-09",
    "url": null,
-   "page": "bai-viet/gioi-thieu-ver2solution.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/gioi-thieu-ver2solution.png",
+   "page": "bai-viet/gioi-thieu-vieclamlivestream-online.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gioi-thieu-vieclamlivestream-online.png",
    "imgSelf": true,
    "pinned": false,
-   "takeaway": "Ver2Solution là hệ sinh thái cho shop nhỏ bán online và livestream: sàn tuyển mẫu livestream toàn quốc với 230 mẫu, 270 shop đang tuyển, 71 lô xả kho, 240 xưởng may và 200 kiot — hồ sơ thật từ bài đăng công khai, liên hệ trực tiếp, giai đoạn 1 miễn phí. Mẫu tìm việc tại danh sách mẫu, shop đăng tin tuyển tại danh sách shop."
+   "takeaway": "vieclamlivestream.online là hệ sinh thái cho shop nhỏ bán online và livestream: sàn tuyển mẫu livestream toàn quốc với 230 mẫu, 270 shop đang tuyển, 71 lô xả kho, 240 xưởng may và 200 kiot — hồ sơ thật từ bài đăng công khai, liên hệ trực tiếp, giai đoạn 1 miễn phí. Mẫu tìm việc tại danh sách mẫu, shop đăng tin tuyển tại danh sách shop."
   },
   {
    "title": "Tuyển idol livestream 2026: lương 15–36 triệu, ở đâu tuyển?",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-09",
    "url": null,
    "page": "bai-viet/tuyen-idol-livestream.html",
@@ -12473,7 +12473,7 @@ window.V20_DATA = {
   {
    "title": "Hôm qua (08/11): 11 mẫu mới, 26 shop mới lên sàn — host live thị trường Mỹ 300–500k/giờ",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-09",
    "url": null,
    "page": "bai-viet/thong-ke-ho-so-moi-08-11-2026.html",
@@ -12520,7 +12520,7 @@ window.V20_DATA = {
   {
    "title": "Tỉnh nào đang cần lô xả kho thời trang nhất? Đánh giá tiềm năng từ số liệu thật",
    "cat": "Phân tích",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-09",
    "url": null,
    "page": "bai-viet/tinh-nao-can-lo-xa-kho-thoi-trang-nhat.html",
@@ -12554,18 +12554,18 @@ window.V20_DATA = {
   {
    "title": "Dịch vụ comment livestream giúp shop nhỏ tăng đơn bền vững",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/dich-vu-comment-livestream-tang-don-ban-hang.html",
    "page": "bai-viet/dich-vu-comment-livestream-tang-don-ban-hang.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/dich-vu-comment-livestream-tang-don-ban-hang-hero.jpg",
    "pinned": false,
-   "takeaway": "Dịch vụ comment livestream của Ver2Solution: đội ngũ bình luận, thả tim và tăng mắt xem bằng tài khoản thật trong suốt buổi live — giúp shop nhỏ tăng tương tác, được thuật toán đẩy lên và tăng chốt đơn. Giá từ 200.000đ/buổi, tặng 200 mắt xem trong 3 giờ."
+   "takeaway": "Dịch vụ comment livestream của vieclamlivestream.online: đội ngũ bình luận, thả tim và tăng mắt xem bằng tài khoản thật trong suốt buổi live — giúp shop nhỏ tăng tương tác, được thuật toán đẩy lên và tăng chốt đơn. Giá từ 200.000đ/buổi, tặng 200 mắt xem trong 3 giờ."
   },
   {
    "title": "Dịch vụ Comment Seeding Livestream: Hàng nghìn shop đang dùng để ra đơn mỗi ngày — 4 buổi dùng thử miễn phí",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online",
    "page": "bai-viet/dich-vu-comment-seeding-livestream.html",
@@ -12576,13 +12576,13 @@ window.V20_DATA = {
   {
    "title": "Cách xả hàng tồn kho nhanh: đăng lô, xưởng, kiot miễn phí",
    "cat": "Thị trường",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html",
    "page": "bai-viet/cach-xa-hang-ton-kho-dang-lo-xuong-kiot.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-hero.jpg",
    "pinned": false,
-   "takeaway": "Ver2Solution mở tính năng tự đăng tin lô xả kho, xưởng may và kiot thanh lý cho tài khoản Doanh nghiệp: đăng tin miễn phí trong giai đoạn thử nghiệm, admin duyệt trong 24 giờ, tin đã duyệt hiện trước tin thu thập kèm huy hiệu Thành viên đăng. Chỉ cần đăng ký tài khoản Doanh nghiệp, tạo hồ sơ shop đã duyệt rồi vào Trang của tôi đăng tin — tối đa 5 ảnh/tin, 5 tin/ngày, lô và kiot hết hạn sau 30 ngày."
+   "takeaway": "vieclamlivestream.online mở tính năng tự đăng tin lô xả kho, xưởng may và kiot thanh lý cho tài khoản Doanh nghiệp: đăng tin miễn phí trong giai đoạn thử nghiệm, admin duyệt trong 24 giờ, tin đã duyệt hiện trước tin thu thập kèm huy hiệu Thành viên đăng. Chỉ cần đăng ký tài khoản Doanh nghiệp, tạo hồ sơ shop đã duyệt rồi vào Trang của tôi đăng tin — tối đa 5 ảnh/tin, 5 tin/ngày, lô và kiot hết hạn sau 30 ngày."
   },
   {
    "title": "800.000 đơn trong 1 đêm livestream: Khăn vệ sinh Đóa Vi bán 40 triệu NDT — 7 bài học cho shop Việt",
@@ -12598,7 +12598,7 @@ window.V20_DATA = {
   {
    "title": "Nghề livestream Trung Quốc: 15 triệu người, lương ra sao?",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/nghe-livestream-trung-quoc-15-trieu-nguoi-luong-ra-sao.html",
    "page": "bai-viet/nghe-livestream-trung-quoc-15-trieu-nguoi-luong-ra-sao.html",
@@ -12609,7 +12609,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm livestream Trung Quốc: tuyển host Douyin lương cao",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-trung-quoc-tuyen-host-douyin-luong-cao.html",
    "page": "bai-viet/viec-lam-livestream-trung-quoc-tuyen-host-douyin-luong-cao.html",
@@ -12620,7 +12620,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm livestream Đông Nam Á: host Indonesia, Thái Lan",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-dong-nam-a-host-indonesia-thai-lan.html",
    "page": "bai-viet/viec-lam-livestream-dong-nam-a-host-indonesia-thai-lan.html",
@@ -12631,7 +12631,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm TikTok Shop Đông Nam Á: thu nhập, hoa hồng, kỹ năng",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang.html",
    "page": "bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang.html",
@@ -12642,7 +12642,7 @@ window.V20_DATA = {
   {
    "title": "Nghề creator livestream: 250 tỷ USD, ai kiếm được tiền?",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/nghe-creator-livestream-250-ty-usd-ai-kiem-duoc-tien.html",
    "page": "bai-viet/nghe-creator-livestream-250-ty-usd-ai-kiem-duoc-tien.html",
@@ -12653,7 +12653,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm livestream tại nhà: cần gì, thu nhập bao nhiêu?",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/viec-lam-livestream-tai-nha.html",
    "page": "bai-viet/viec-lam-livestream-tai-nha.html",
@@ -12664,7 +12664,7 @@ window.V20_DATA = {
   {
    "title": "Lương mẫu livestream 2026: mặt bằng thu nhập theo từng cấp",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/luong-mau-livestream-2026.html",
    "page": "bai-viet/luong-mau-livestream-2026.html",
@@ -12675,7 +12675,7 @@ window.V20_DATA = {
   {
    "title": "Mẫu livestream không cần kinh nghiệm: lương, cách ứng tuyển",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/mau-livestream-khong-can-kinh-nghiem.html",
    "page": "bai-viet/mau-livestream-khong-can-kinh-nghiem.html",
@@ -12686,7 +12686,7 @@ window.V20_DATA = {
   {
    "title": "Mẫu livestream lương theo giờ: giá theo ngành và nền tảng",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/mau-livestream-luong-theo-gio.html",
    "page": "bai-viet/mau-livestream-luong-theo-gio.html",
@@ -12697,7 +12697,7 @@ window.V20_DATA = {
   {
    "title": "Việc làm MC livestream 2026: thị trường, kỹ năng, thu nhập",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-10",
    "url": "https://vieclamlivestream.online/bai-viet/viec-lam-mc-livestream-2026.html",
    "page": "bai-viet/viec-lam-mc-livestream-2026.html",
@@ -12807,7 +12807,7 @@ window.V20_DATA = {
   {
    "title": "Tuyển streamer game 2026: lương 8–18 triệu, ở đâu tuyển?",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/tuyen-streamer-game.html",
@@ -12820,7 +12820,7 @@ window.V20_DATA = {
   {
    "title": "Hôm qua (10/11): 20 mẫu mới, 20 shop mới lên sàn — Đồng Tháp",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/thong-ke-ho-so-moi-10-11-2026.html",
@@ -13119,7 +13119,7 @@ window.V20_DATA = {
   {
    "title": "Thuê mẫu livestream giá bao nhiêu 1 giờ? Bảng theo tỉnh 2026",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/thue-mau-livestream-gia-bao-nhieu-1-gio-theo-tinh.html",
@@ -13131,7 +13131,7 @@ window.V20_DATA = {
   {
    "title": "Thuê mẫu livestream lần đầu: 5 sai lầm khiến live đầu flop",
    "cat": "Livestream",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/thue-mau-livestream-lan-dau-5-sai-lam-live-flop.html",
@@ -13163,7 +13163,7 @@ window.V20_DATA = {
    "page": "bai-viet/xa-kho-cuoi-nam-3-chieu-thu-hoi-von-truoc-tet.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/xa-kho-cuoi-nam-3-chieu-thu-hoi-von-truoc-tet.jpg",
    "pinned": false,
-   "takeaway": "Xả kho cuối năm thu hồi vốn trước Tết bằng 3 chiêu: định giá lô theo giá trị thực còn lại, giảm giá theo đợt có lịch (10% rồi 20%, đợt 25% rồi 40%), bán qua nhiều kênh cùng lúc. Web Ver2Solution hiện có 26 lô xả kho và 40 kiot thanh lý để tham khảo giá lô."
+   "takeaway": "Xả kho cuối năm thu hồi vốn trước Tết bằng 3 chiêu: định giá lô theo giá trị thực còn lại, giảm giá theo đợt có lịch (10% rồi 20%, đợt 25% rồi 40%), bán qua nhiều kênh cùng lúc. Web vieclamlivestream.online hiện có 26 lô xả kho và 40 kiot thanh lý để tham khảo giá lô."
   },
   {
    "title": "Nhập hàng Trung Quốc đón Tết 2027: chốt đơn trước tháng 12",
@@ -13236,7 +13236,7 @@ window.V20_DATA = {
   {
    "title": "Quy định Facebook 2026: tài khoản bị khóa và cách kháng cáo",
    "cat": "Phân tích",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/quy-dinh-facebook-2026-khoa-tai-khoan-cam-dang-thuat-toan-uu-tien.html",
@@ -13323,7 +13323,7 @@ window.V20_DATA = {
   {
    "title": "Hồ sơ mẫu livestream mới 11/11: 39 mẫu, 36 shop lên sàn",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-12",
    "url": "https://vieclamlivestream.online/danh-sach-mau.html",
    "page": "bai-viet/thong-ke-ho-so-moi-11-11-2026.html",
@@ -13706,7 +13706,7 @@ window.V20_DATA = {
   {
    "title": "Lô xả kho thời trang tỉnh nào cần nhất: 112 tin tuyển TP.HCM",
    "cat": "Thị trường",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-12",
    "url": "https://vieclamlivestream.online/danh-sach-mau.html",
    "page": "bai-viet/tinh-nao-dang-can-lo-xa-kho-thoi-trang-nhat.html",
@@ -13754,7 +13754,7 @@ window.V20_DATA = {
   {
    "title": "Hồ sơ mẫu livestream mới 12/11: 35 shop, 20 tài khoản",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-13",
    "url": "https://vieclamlivestream.online/danh-sach-mau.html",
    "page": "bai-viet/thong-ke-ho-so-moi-12-11-2026.html",
@@ -14218,7 +14218,7 @@ window.V20_DATA = {
   {
    "title": "Hồ sơ mẫu livestream mới 13/11: 76 mẫu, 63 shop lên sàn",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-14",
    "url": "https://vieclamlivestream.online/danh-sach-mau.html",
    "page": "bai-viet/thong-ke-ho-so-moi-13-11-2026.html",
@@ -14254,7 +14254,7 @@ window.V20_DATA = {
   {
    "title": "Tuyển mẫu live Hà Nội: 21 shop, lương 40.000–110.000đ/giờ",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-14",
    "url": "https://vieclamlivestream.online/danh-sach-shop.html",
    "page": "bai-viet/tuyen-mau-live-ha-noi.html",
@@ -14564,11 +14564,11 @@ window.V20_DATA = {
   {
    "title": "7.000.000 đồng/khách: mẫu live giới thiệu shop nhận 50%",
    "cat": "Việc Làm",
-   "source": "Ver2Solution",
+   "source": "vieclamlivestream.online",
    "date": "2026-11-13",
    "url": null,
-   "page": "bai-viet/cong-tac-vien-ver2solution-50-hoa-hong.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/cong-tac-vien-ver2solution-50-hoa-hong-hero.jpg",
+   "page": "bai-viet/cong-tac-vien-vieclamlivestream-online-50-hoa-hong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cong-tac-vien-vieclamlivestream-online-50-hoa-hong-hero.jpg",
    "takeaway": "Mẫu livestream giới thiệu shop dùng thử 4 buổi Comment miễn phí: khách đóng tiền thì nhận 50% hoa hồng tháng đầu, cao nhất 7.000.000 đồng/khách, không giới hạn số khách — chỉ cần hồ sơ mẫu đã được duyệt trên web."
   },
 {"title":"1.995 tỷ đồng trong 1 ngày — Double 11/2026: shop tự live chiếm 62% GMV livestream, thời KOL siêu đầu đã qua","cat":"Xu hướng","source":"Syntun (qua PRNewswire)","date":"2026-11-13","url":"https://www.prnewswire.com/news-releases/syntun--2026-double-11-promotion-report-gmv-during-chinas-double-11-shopping-festival-reached-rmb-1-776-4-billion-approx-us264-4-billion-302937680.html","page": "bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream.html","img":"https://vieclamlivestream.online/images/bai-viet/1995-ty-dong-1-ngay-double-11-2026-shop-tu-live-chiem-62-gmv-livestream-hero.jpg","pinned":false,"takeaway":"Double 11/2026: shop tự live chiếm 62% GMV livestream Douyin, KOL chỉ còn dưới 40%; Giả Nãi Lượng bán 570 triệu NDT trong 1 ngày 21/10/2026; Syntun chốt sổ 1.776,4 tỷ NDT (+4,8%); trả hàng livestream tới 80–90% — 7 bài học cho shop Việt trước 12.12."},
@@ -24746,7 +24746,7 @@ window.V20_DATA = {
   "Thời trang"
  ],
  /* v179 (12/11/2026): 5 danh muc doi tuong moi — du lieu that do cron
-    ver2solution-daily-new-objects thu thap hang ngay (luot dau 13/11 11:21,
+    vieclamlivestream-online-daily-new-objects thu thap hang ngay (luot dau 13/11 11:21,
     10/ngay toi 20/11 roi 3/ngay, xoa sau 30 ngay). Truong bat buoc:
     id, type, name, provider, price, priceLabel, province, avatar, detail,
     sourceUrl, dateAdded, expiresAt; logistics them logisticsOption
@@ -24755,7 +24755,7 @@ window.V20_DATA = {
     newObjCardHTML trong js/app.js). Duoi day la 1 muc MAU moi mang de
     test giao dien; cron se ghi de/bo sung du lieu that. */
  "classesLive": [
-  {"id": "class-live-01", "type": "classesLive", "name": "Khóa Livestream Bán Hàng Chuyên Nghiệp — Lên Sóng Tự Tin, Chốt Đơn Mỗi Ngày", "provider": "Học viện Livestream V2S", "price": 2900000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images/th-01.jpg", "detail": "Khóa học 8 buổi dành cho mẫu live và người mới bắt đầu: kỹ năng nói trước camera, xây kịch bản live bán hàng, xử lý tình huống khi đang live, chốt đơn và giữ chân khách. Học trực tiếp tại TP. Hồ Chí Minh, lớp tối đa 15 học viên, có buổi thực hành live thật trên kênh của học viên.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-mau.html#class-live-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
+  {"id": "class-live-01", "type": "classesLive", "name": "Khóa Livestream Bán Hàng Chuyên Nghiệp — Lên Sóng Tự Tin, Chốt Đơn Mỗi Ngày", "provider": "Học viện Livestream vieclamlivestream.online", "price": 2900000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images/th-01.jpg", "detail": "Khóa học 8 buổi dành cho mẫu live và người mới bắt đầu: kỹ năng nói trước camera, xây kịch bản live bán hàng, xử lý tình huống khi đang live, chốt đơn và giữ chân khách. Học trực tiếp tại TP. Hồ Chí Minh, lớp tối đa 15 học viên, có buổi thực hành live thật trên kênh của học viên.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-mau.html#class-live-01", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cl-02", "type": "classesLive", "name": "Khóa Học Nghệ Thuật Livestream Bán Hàng — 30 Video Hướng Dẫn Kịch Bản Chốt Đơn", "provider": "Học viện MC Online", "price": 650000, "priceLabel": "Học phí", "province": "Online", "avatar": "images-new/cl-02.jpg", "detail": "Khóa học online 'Nghệ thuật Livestream Bán hàng' — 30 video, 4 giờ 30 phút: cách xây kịch bản livestream bán hàng chuyên nghiệp, kỹ năng nói trước camera, chốt đơn và giữ chân khách. Giảng viên: Trainer Nguyễn Văn Minh (nhà đào tạo kỹ năng bán hàng, GĐ Học viện Livestream Success 4.0). Học online mọi lúc, phù hợp người mới bắt đầu bán hàng online.", "sourceUrl": "https://hocvienmc.edu.vn/khoa-hoc/khoa-hoc-ky-nang/ky-nang-livestream-ban-hang/4", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cl-03", "type": "classesLive", "name": "Khóa Học Livestream Bán Hàng Thực Chiến — 16 Buổi Cùng Chuyên Gia, Live Thật Ngay Tại Lớp", "provider": "Học viện NUU", "price": 5800000, "priceLabel": "Học phí", "province": "TP. Hồ Chí Minh", "avatar": "images-new/cl-03.jpg", "detail": "Khóa học livestream thực chiến 16 buổi (6 buổi học + 10 buổi thực hành): bí kíp livestream với phong cách chuyên nghiệp, xây kịch bản, thực hành live thật ngay tại lớp, hỗ trợ kỹ thuật trọn đời. Giảng viên: Hoàng Dương Phi Hùng (Trưởng phòng đào tạo livestream thực chiến, nguyên giảng viên Livestream TikTok Việt Nam). Đã đào tạo hơn 8.500 học viên và 100+ doanh nghiệp (PNJ, Watsons, Aeon Mall). Khai giảng liên tục hằng tuần, học trực tiếp hoặc online. Địa chỉ: 224 Điện Biên Phủ, Quận 3, TP.HCM.", "sourceUrl": "https://nuu.edu.vn/khoa-hoc-livestream-thuc-chien", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
   {"id": "cl-04", "type": "classesLive", "name": "TikTok Livestream Mastery — Chìa Khóa Xây Dựng Chiến Lược Và Vận Hành Livestream Hiệu Quả", "provider": "Brandcamp", "price": 799000, "priceLabel": "Học phí", "province": "Online", "avatar": "images-new/cl-04.jpg", "detail": "Khóa học online của Brandcamp do Trần Thị Hồng Vân (Head of MCN Meta Ecom, 1 trong 5 giảng viên được TikTok Shop Việt Nam chứng nhận) giảng dạy: xây kịch bản livestream thu hút, tăng tương tác, tối ưu chuyển đổi và phân tích dữ liệu sau phiên live. Phù hợp nhà bán hàng, chủ shop và KOC/KOL muốn livestream affiliate hiệu quả trên TikTok.", "sourceUrl": "https://www.brandcamp.asia/course/260-tiktok-livestream-mastery-chia-khoa-xay-dung-chien-luoc-va-van-hanh-livestream-hieu-qua", "dateAdded": "2026-11-12", "expiresAt": "2026-12-12"},
@@ -24875,7 +24875,7 @@ window.V20_DATA = {
 
  ],
   "movingServices": [
-  {"id": "mv-01", "type": "movingServices", "name": "Dịch Vụ Chuyển Nhà Trọn Gói Mẫu — Đóng Gói, Vận Chuyển, Sắp Xếp Tận Nơi", "provider": "Ver2Solution — Dịch vụ chuyển nhà", "price": 300000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/chuyến", "province": "Hà Nội", "avatar": "images/kiot/kiot-01.jpg", "detail": "Dịch vụ chuyển nhà trọn gói mẫu: đóng gói, vận chuyển và sắp xếp tận nơi cho shop và hộ kinh doanh online. Xe tải nhiều cỡ, có thùng và màng PE miễn phí, hỗ trợ tháo lắp giường, tủ, điều hòa, làm cả tối và cuối tuần.", "sourceUrl": "https://vieclamlivestream.online/thanh-ly-kiot.html#mv-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "mv-01", "type": "movingServices", "name": "Dịch Vụ Chuyển Nhà Trọn Gói Mẫu — Đóng Gói, Vận Chuyển, Sắp Xếp Tận Nơi", "provider": "vieclamlivestream.online — Dịch vụ chuyển nhà", "price": 300000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/chuyến", "province": "Hà Nội", "avatar": "images/kiot/kiot-01.jpg", "detail": "Dịch vụ chuyển nhà trọn gói mẫu: đóng gói, vận chuyển và sắp xếp tận nơi cho shop và hộ kinh doanh online. Xe tải nhiều cỡ, có thùng và màng PE miễn phí, hỗ trợ tháo lắp giường, tủ, điều hòa, làm cả tối và cuối tuần.", "sourceUrl": "https://vieclamlivestream.online/thanh-ly-kiot.html#mv-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "mv-02", "type": "movingServices", "name": "Chuyển nhà trọn gói đón Tết", "provider": "Chuyển Nhà Trọn Gói Giá Rẻ Kiến Vàng", "price": 800000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-02.jpg", "detail": "Chỉ cần một cuộc gọi, mọi đồ đạc sẽ được đóng gói, vận chuyển và sắp xếp gọn gàng tại nhà mới. Đóng gói cẩn thận, vận chuyển an toàn, bảo hiểm hàng hóa và đền bù 100% nếu hư hỏng.", "sourceUrl": "https://www.facebook.com/chuyennhatrongoigiarekienvang24h.vn", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "mv-03", "type": "movingServices", "name": "Chuyển nhà trọn gói tại Hà Nội", "provider": "Chuyển Nhà Huy Hoàng", "price": 300000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/chuyến", "province": "Hà Nội", "avatar": "images-new/mv-03.jpg", "detail": "Chuyển nhà trọn gói, chuyển văn phòng, chuyển đồ sinh viên, cho thuê xe tải chở hàng từ 0,5 đến 5 tấn. Giá chỉ từ 300k-500k tùy quãng đường và số lượng đồ, làm việc nhanh gọn, giá tốt tại Hà Nội.", "sourceUrl": "https://www.facebook.com/profile.php?id=100053196021869", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "mv-04", "type": "movingServices", "name": "Chuyển nhà trọn gói T-Move", "provider": "Dịch Vụ Chuyển Nhà Trọn Gói T-Move", "price": 299000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-04.jpg", "detail": "Nhận chuyển nhà, chuyển phòng trọ và chuyển văn phòng, giá chỉ từ 299K; hỗ trợ đóng gói, bốc xếp, tháo lắp theo thỏa thuận, báo giá trước và thống nhất chi phí trước khi vận chuyển, hỗ trợ sắp xếp đồ đạc tại địa điểm mới.", "sourceUrl": "https://www.facebook.com/chuyennhatrongoiTMove", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
@@ -24888,7 +24888,7 @@ window.V20_DATA = {
   {"id": "mv-11", "type": "movingServices", "name": "Chuyển văn phòng trọn gói", "provider": "AE Linh Logistic", "price": 900000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-11.jpg", "detail": "Chuyển đồ văn phòng trọn gói: tháo lắp thiết bị điện tử, đồ gỗ, bọc lót bàn ghế, sofa; thuê xe chở đồ được miễn phí bốc xếp; báo giá trước, không phát sinh.", "sourceUrl": "https://www.facebook.com/profile.php?id=100084488412833", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"}
  ],
   "liveEquipment": [
-  {"id": "le-01", "type": "liveEquipment", "name": "Thiết Bị Phòng Live Mẫu — Đèn, Mic, Webcam Cho Livestream Bán Hàng", "provider": "Ver2Solution — Thiết bị phòng live", "price": 550000, "priceLabel": "Giá bán", "priceSuffix": "/bộ", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Bộ thiết bị phòng live mẫu: đèn, mic và webcam cho livestream bán hàng. Ánh sáng đều, âm thanh rõ, hình ảnh sắc nét, phù hợp shop mới bắt đầu live.", "sourceUrl": "https://vieclamlivestream.online/thanh-ly-kiot.html#le-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "le-01", "type": "liveEquipment", "name": "Thiết Bị Phòng Live Mẫu — Đèn, Mic, Webcam Cho Livestream Bán Hàng", "provider": "vieclamlivestream.online — Thiết bị phòng live", "price": 550000, "priceLabel": "Giá bán", "priceSuffix": "/bộ", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Bộ thiết bị phòng live mẫu: đèn, mic và webcam cho livestream bán hàng. Ánh sáng đều, âm thanh rõ, hình ảnh sắc nét, phù hợp shop mới bắt đầu live.", "sourceUrl": "https://vieclamlivestream.online/thanh-ly-kiot.html#le-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "le-02", "type": "liveEquipment", "name": "Combo Đèn LED Ring Tròn Tràn Viền PF-45 18cm kèm chân", "provider": "shopnhiepanh.vn", "price": 550000, "priceLabel": "Giá bán", "priceSuffix": "/bộ", "province": "TP. Hồ Chí Minh", "avatar": "images-new/le-02.jpg", "detail": "Cho ánh sáng đều, đẹp cho livestream, quay video, chụp ảnh, makeup; điều chỉnh nhiệt độ màu 3200K-5600K và độ sáng 0%-100%, 3 chế độ màu, kèm chân đứng có thể điều chỉnh độ cao tối đa 1,8m; bảo hành 06 tháng.", "sourceUrl": "https://www.facebook.com/shopnhiepanh.vn", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "le-03", "type": "liveEquipment", "name": "Webcam Logitech C930e", "provider": "PhươngVy iCenter", "price": 1050000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "Hà Nội", "avatar": "images-new/le-03.jpg", "detail": "Webcam cao cấp chuyên dụng cho họp online, livestream, học tập và làm việc từ xa; hình ảnh Full HD 1080p, góc rộng 90°, tự động lấy nét và cân bằng sáng, mic kép giảm ồn; tình trạng Like New 99%, hàng chuẩn Mỹ, bảo hành chính hãng 3 tháng, ship toàn quốc.", "sourceUrl": "https://www.facebook.com/van.pham.9421", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "le-04", "type": "liveEquipment", "name": "Tripod K&F Concept KF09.184", "provider": "Nguyễn Nga", "price": 650000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "Hà Nội", "avatar": "images-new/le-04.jpg", "detail": "Trụ giữa xoay ngang giúp setup góc top-down, flatlay hay chụp sản phẩm; cao tối đa khoảng 1,8m, tải trọng khoảng 4kg, kèm củ dầu BV07, có thể chuyển thành monopod, gấp gọn tiện mang theo.", "sourceUrl": "https://www.facebook.com/profile.php?id=100009850448222", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
@@ -24901,7 +24901,7 @@ window.V20_DATA = {
   {"id": "le-11", "type": "liveEquipment", "name": "Webcam Obsbot Meet 2 quay 4K (Likenew)", "provider": "Phan Đạt Hữu Tiến", "price": 1790000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "TP. Hồ Chí Minh", "avatar": "images-new/le-11.jpg", "detail": "Webcam dùng cho học tập, livestream cực ổn, có sẵn mic thu âm trên cam; kết nối cực dễ, cắm dây vào máy là nhận ngay; hàng Likenew, quay 4K, giao dịch trực tiếp tại TP.HCM, có ship.", "sourceUrl": "https://www.facebook.com/p.d.h.tien/", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"}
  ],
   "agencyAds": [
-  {"id": "ag-01", "type": "agencyAds", "name": "Agency Ads Livestream Mẫu — Chạy Quảng Cáo Livestream Cho Shop Online", "provider": "Ver2Solution — Agency Ads Livestream", "price": 500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/buổi live", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Agency Ads Livestream mẫu: chạy quảng cáo livestream TikTok/Facebook cho shop online, tối ưu mắt xem và đơn hàng trong buổi live. Shop liên hệ để được tư vấn gói chạy ads phù hợp ngân sách.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#ag-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "ag-01", "type": "agencyAds", "name": "Agency Ads Livestream Mẫu — Chạy Quảng Cáo Livestream Cho Shop Online", "provider": "vieclamlivestream.online — Agency Ads Livestream", "price": 500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/buổi live", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Agency Ads Livestream mẫu: chạy quảng cáo livestream TikTok/Facebook cho shop online, tối ưu mắt xem và đơn hàng trong buổi live. Shop liên hệ để được tư vấn gói chạy ads phù hợp ngân sách.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#ag-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "ag-02", "type": "agencyAds", "name": "Chạy Ads Livestream Kinh Nghiệm — Livestream Là Phải Cháy Ads", "provider": "Chạy Ads Livestream Kinh Nghiệm - Livestream Là Phải Cháy Ads", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Thành phố Hồ Chí Minh", "avatar": "images-new/ag-02.jpg", "detail": "Quảng cáo live stream — Nghìn đơn là chuyện nhỏ — TĂNG số lượng đơn hàng. Bứt Phá Doanh Thu Với Livestream Ads — Tăng Tốc Hiệu Quả, Chốt Sale Siêu Nhanh! Nhận chạy quảng cáo không ra khách hàng — không lấy phí.", "sourceUrl": "https://www.facebook.com/LiveChay0335885830", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "ag-03", "type": "agencyAds", "name": "Chạy Quảng Cáo Fanpage Ads — Quảng Cáo Livestream Hiệu Quả", "provider": "Chạy Quảng Cáo Fanpage Ads - Quảng Cáo Livestream Hiệu Quả", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Hà Nội", "avatar": "images-new/ag-03.jpg", "detail": "Nhận Quảng cáo #LiveStream Facebook cho các Shop, Doanh nghiệp Online — Bán Fanpage có tính năng quảng cáo Livestream chuyên nghiệp. Tài khoản Agency khoẻ, cân all mặt hàng kể cả VPCS, phí 10% all.", "sourceUrl": "https://www.facebook.com/profile.php?id=61575976693301", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "ag-04", "type": "agencyAds", "name": "Chạy Quảng Cáo Livestream — Ads Livestream Fanpage Trực Tiếp", "provider": "Chạy Quảng Cáo Livestream - Ads Livestream Fanpage Trực Tiếp", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Hà Nội", "avatar": "images-new/ag-04.jpg", "detail": "UY TÍN TẠO NÊN THƯƠNG HIỆU — Nhận chạy quảng cáo ADS - Live stream. Đội ngũ Agency chuyên nghiệp, chạy quảng cáo hiệu quả — ra đơn, hỗ trợ tận tình.", "sourceUrl": "https://www.facebook.com/FanpageQCLive0896666787", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
