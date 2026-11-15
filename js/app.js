@@ -1196,7 +1196,10 @@ function initFactoryPageFilter(){
   var uc = document.getElementById('fFacCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount('factory', v); }, uniTotal('factory'));
   var um = document.getElementById('fFacMoq');
-  if(um) applyOptionCounts(um, function(v){ var n = 0; (D.factories || []).forEach(function(f){ if(f.moq != null && f.moq <= parseInt(v, 10)) n++; }); return n; }, (D.factories || []).length);
+  /* v268 (F-R2-08, 15/11/2026): dem ca xuong CHUA GHI MOQ (moq == null,
+     224/240 xuong) — giong nhanh MISSING_META cua fLotQty o tren; khong
+     co nhanh nay thi option __missing__ hien 0 va loc khong dung. */
+  if(um) applyOptionCounts(um, function(v){ if(v === MISSING_META){ var nm = 0; (D.factories || []).forEach(function(f){ if(f.moq == null) nm++; }); return nm; } var n = 0; (D.factories || []).forEach(function(f){ if(f.moq != null && f.moq <= parseInt(v, 10)) n++; }); return n; }, (D.factories || []).length);
   initFilterToggle();
   return initSectionFilter({
     sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'facFilter', pointsCategory: 'factory',
