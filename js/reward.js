@@ -48,6 +48,11 @@
   // ở js/app.js (gateFilterApply, hero search, xem liên hệ); ghim thì
   // pin_post phía server đọc cờ free_services (site_settings, M15) để bỏ
   // qua trừ xu, còn pinPost() dưới đây trả cost 0 khi cờ này bật. KHÔNG
+  // v281 (16/11/2026): pinPost() KHÔNG còn tự tính cost từ cờ này — cost lấy từ
+  // server (cột points_spent của dòng pin pin_post trả về: 0 khi miễn phí, = số
+  // giờ khi tính phí). Cờ chỉ còn là fallback khi server không trả points_spent.
+  // Đóng lỗ 2 nguồn sự thật (cờ client vs cờ server site_settings.free_services)
+  // lệch nhau thì UI báo sai đúng kiểu MB-4.
   // xóa code trừ xu (spendPoints/filterChargeBucket/shouldChargeFilter +
   // RPC phía server giữ nguyên) — mở lại thu phí chỉ bằng cách đổi cờ
   // này thành false + UPDATE site_settings SET value='false', rồi kiểm
@@ -553,7 +558,8 @@
     } catch (e) { return false; }
   }
   // Ghim bài lên top danh mục: giá thường 1 xu = 1 giờ; M15: đang tạm
-  // miễn phí (server không trừ xu, pinPost trả cost 0). hours 1..720.
+  // miễn phí (server không trừ xu). hours 1..720. v281: cost trả về lấy từ
+  // server (points_spent của dòng pin), không tự tính từ cờ cục bộ.
   // Trả {ok:true, pin} khi thành công, {ok:false, error} khi lỗi
   // (sai số giờ, không đủ xu, RPC chưa có).
   // Ánh xạ target_type → category theo enum M7.2 (cố định): model_profile→
@@ -575,7 +581,16 @@
       });
       if (res.error) return { ok: false, error: rpcErrorText(res), points: 0 };
       refreshPointsUI(); // v111 (NEW-04): header cap nhat ngay sau ghim
-      return { ok: true, pin: res.data, cost: V20_FREE_SERVICES ? 0 : pinCostHours(hours) }; // M15: ghim tạm miễn phí → cost 0 (server cũng không trừ xu)
+      // v281: cost LẤY TỪ SERVER — pin_post trả về dòng pinned_posts, cột points_spent
+      // là số xu server THỰC SỰ trừ (0 khi free_services bật, = hours khi tính phí).
+      // Trước đây client tự tính cost từ cờ V20_FREE_SERVICES cục bộ — 2 nguồn sự thật
+      // (cờ client vs cờ server site_settings.free_services) lệch nhau thì UI báo sai
+      // đúng kiểu MB-4. Cờ cục bộ chỉ còn là fallback khi server không trả points_spent.
+      var pinRow = res.data;
+      if (Array.isArray(pinRow)) pinRow = pinRow[0] || null;
+      var serverCost = (pinRow && typeof pinRow.points_spent === 'number') ? pinRow.points_spent : null;
+      var cost = (serverCost !== null) ? serverCost : (V20_FREE_SERVICES ? 0 : pinCostHours(hours));
+      return { ok: true, pin: res.data, cost: cost, serverCost: serverCost };
     } catch (e) {
       if (typeof console !== 'undefined' && console.error) console.error('[reward v2] pin_post lỗi:', e);
       return { ok: false, error: String((e && e.message) || e), points: 0 };

@@ -4856,7 +4856,7 @@ function initPointsUI(){
             if (!pinMsg) return;
             if (r && r.ok) {
               var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + hours + ' xu).');
+              pinMsg.textContent = 'Đã ghim lên top' + (until ? ' đến ' + pinUntilText(until, R) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + (typeof r.cost === 'number' ? r.cost : hours) + ' xu).');
             } else { pinMsg.textContent = 'Chưa ghim được: ' + ((r && r.error) || 'hệ thống xu chưa bật.'); }
           });
         });
@@ -4893,7 +4893,7 @@ function initPointsUI(){
             R.pinPost(targetType, targetId, targetType, hours).then(function (r){
               if (r && r.ok) {
                 var until = r.pin && (r.pin.pinned_until || (Array.isArray(r.pin) && r.pin[0] && r.pin[0].pinned_until));
-                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + hours + ' xu).'));
+                say('Đã ghim lên top' + (until ? ' đến ' + esc(pinUntilText(until, R)) : '') + ((r && r.cost === 0) ? ' (miễn phí).' : ' (' + (typeof r.cost === 'number' ? r.cost : hours) + ' xu).'));
                 form.remove();
               } else { say('Chưa ghim được: ' + esc((r && r.error) || 'hệ thống xu chưa bật.')); }
             });
