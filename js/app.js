@@ -905,7 +905,14 @@ function facMatches(card, f){
     if(f.value === 'medium' && !(mv >= 30 && mv <= 100)) return false;
     if(f.value === 'large' && !(mv > 100)) return false;
   }
-  if(f.moq){
+  /* v271 (F-R2-08b, 15/11/2026): bo loc trang Xuong truyen MOQ qua f.moq
+     (readForm initFactoryPageFilter), khong phai f.value — nhanh
+     MISSING_META o tren chi bat f.value nen chon "Chưa ghi MOQ" roi vao
+     nhanh so hoc: parseInt('__missing__') = NaN, the khong co MOQ bi loai
+     o buoc null/'' -> tra ve tap nguoc (17 xuong CO MOQ thay vi 263 chua
+     ghi, probe live 13:36). */
+  if(f.moq === MISSING_META){ var mm0 = card.getAttribute('data-moq'); if(mm0 !== null && mm0 !== '') return false; }
+  else if(f.moq){
     var mm = card.getAttribute('data-moq');
     if(mm === null || mm === '') return false;
     if(parseInt(mm, 10) > parseInt(f.moq, 10)) return false;
