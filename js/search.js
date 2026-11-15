@@ -69,7 +69,11 @@
     var e = { type: type, raw: raw, id: raw.id || '', dateMs: parseDateMs(raw.date), dateLabel: raw.date || '' };
     if (type === 'mau') {
       e.title = raw.name || ''; e.desc = raw.title || ''; e.cat = raw.cat || ''; e.prov = raw.province || '';
-      e.field = [raw.title, raw.cat].join(' '); e.img = raw.photoUrl || ''; e.salary = raw.salary || '';
+      /* v258 (PC-S2): them nhan loai chung "mẫu livestream" vao field — truoc day
+         tim "mẫu livestream" ra 0 ho so Mau vi khong truong nao cua ho so chua
+         dung cum do (ten la ten nguoi, title/cat la linh vuc). Gio moi ho so
+         Mau deu khop cum nay (diem 40), nhu cach S1-2 sua "lớp makeup" 11/11. */
+      e.field = [raw.title, raw.cat, 'mẫu livestream'].join(' '); e.img = raw.photoUrl || ''; e.salary = raw.salary || '';
       e.url = 'danh-sach-mau.html#' + raw.id; e.chips = [raw.province, raw.cat, raw.salary].filter(Boolean);
       e.status = raw.status || '';
     } else if (type === 'shop') {
