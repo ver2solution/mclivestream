@@ -18,7 +18,7 @@ jobs:
       - name: Unzip v307 package
         run: |
           echo "--- BASE guard (bai hoc v233/v234: khong deploy chong) ---"
-          test "$(git rev-parse HEAD)" = "f59bcc46b1e1763b228e9948904535044594d302" || (echo "BASE DOI: HEAD khong con f59bcc4 - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          if grep -q "v307 (F-R2-10" danh-sach-mau.html; then echo "v307 DA DEPLOY ROI - dung"; exit 1; fi
           test "$(md5sum js/data.js | cut -d' ' -f1)" = "7008a075a6ee42f8d8b081fa68e506d8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
           test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
           unzip -o mclivestream-v307-deploy.zip
