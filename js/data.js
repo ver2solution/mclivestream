@@ -38,6 +38,7 @@
    potential evaluation) + rotating topic #5 (dong tien 11/11, LAST). Total 175 articles. Articles-only deploy:\
    sw.js NOT touched (data.js is NETWORK-FIRST). Title rule from 12/11: <title> WITHOUT " — vieclamlivestream.online" suffix.\
    articles-doi-song-2026-11-15 adds 5 Đời Sống articles (15/11/2026, Sunday): 1 seasonal keyword "shop online sau Tết bán gì" #3/10 (3.264 words, deep) + 3 news ("tháng 2 du lịch đâu đẹp nhất" 1.835 words; "trả hàng sau Tết" 2.564 words; "nước dừa có tốt không" 2.389 words) + 1 cafe "quán cafe check-in đẹp Faifo Coffee Hội An" (2.276 words). Total 299 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-viec-lam-2026-11-16 RESTORES 4 Viec Lam articles lost from live data.js by v288 rebase (commit 6c58991, 02:54 16/11/2026) + adds 4 new Viec Lam articles (16/11/2026, Monday): 1 stats (6 models + 17 shops 15/11) + 1 market stats (TMĐT Q3/2026 150,4 nghìn tỷ, Metric 28/10/2026) + 1 intro 'sàn việc làm livestream' + 1 bo 100 keyword STT 11 'việc làm livestream part time' (deep). Total 312 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-15 adds 4 Xu hướng articles (15/11/2026, Sunday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 (3.247 words, deep) + 1 bo 100 keyword "TikTok Shop Affiliate" STT 55 (2.879 words) + 2 news ("xu hướng mua sắm hàng đã qua sử dụng" 3.033 words; "thương mại nội dung Đông Nam Á" 2.812 words). Total 290 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v257 adds 4 Thi truong articles (15/11/2026, Sunday): 1 seasonal keyword "TikTok Shop 12.12" #3/10 (deep + đánh giá tiềm năng) + 3 news ("Lazada 11.11 2026"; "TMĐT Việt Nam 9 tháng 2026: 442 nghìn tỷ" (Metric); "Temu Shein 2026: hết miễn thuế"). Total 274 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v220 adds 4 Cong nghe articles (14/11/2026, Saturday): 1 seasonal keyword "livestream bán hàng bằng AI 2026" #42/10 (3.220 words, deep) + 2 bo 100 keywords "AI streamer là gì" (3.709 words) + "social commerce là gì" (3.698 words) + 1 seasonal "cách làm video AI sale cuối năm" #43/10 (3.620 words). Total 247 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -14550,6 +14551,102 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok Shop Black Friday 11–30/11/2026: Black Friday 27/11, Cyber Monday 30/11; đợt 2025 vượt 500 triệu USD trong 4 ngày, người bán live tăng 84% với 760.000 phiên và 1,6 tỷ lượt xem; phí Smart Promotion 4,5% trong chiến dịch; tính điểm hòa vốn trước khi giảm giá."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 15/11: 6 mẫu, 17 shop lên sàn",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-16",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-15-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-15-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 15/11/2026: 6 mẫu + 17 shop đã lên sàn (thu thập 6 mẫu + 17 shop + 10 nhóm đợt 2, 2 nhóm dùng được); tổng live 236 mẫu, 287 shop; lương giờ cao nhất đợt 150.000–250.000đ tại Mỹ Hàn; 4 hồ sơ doanh thu khủng vẫn dẫn đầu."
+  },
+  {
+   "title": "Thị trường livestream tuần qua: TMĐT quý 3 150,4 nghìn tỷ",
+   "cat": "Việc Làm",
+   "source": "Metric",
+   "date": "2026-11-16",
+   "url": "https://homepage-metric.muadee.vn/resource/blog/metric-bao-cao-toan-canh-thi-truong-san-ban-le-truc-tuyen-quy-iii-2026-du-bao-quy-iv-2026",
+   "page": "bai-viet/thi-truong-livestream-tuan-qua-16-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-tuan-qua-16-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường livestream tuần qua (tới 16/11/2026): TMĐT quý 3/2026 đạt 150,4 nghìn tỷ đồng (+45,16%), 9 tháng đạt 442 nghìn tỷ đồng (+44,47%), quý 4 dự báo 165,5 nghìn tỷ đồng; Shopee và TikTok Shop cân bằng thị phần; 12.12 (12/12/2026) là đỉnh mua sắm tiếp theo."
+  },
+  {
+   "title": "Sàn việc làm livestream: idol tìm việc, shop tìm idol",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-16",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/san-viec-lam-livestream-vieclamlivestream-online.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/san-viec-lam-livestream-vieclamlivestream-online.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sàn việc làm livestream vieclamlivestream.online (tính tới 16/11/2026): 236 mẫu, 287 shop, 35 tỉnh; mẫu tạo hồ sơ đủ 7 mục miễn phí, shop đăng tin tuyển ghi rõ lương; liên hệ trực tiếp không qua trung gian; lương giờ 30.000–500.000đ, lương tháng 6–45 triệu đồng."
+  },
+  {
+   "title": "Việc làm livestream part time: lương 40.000–250.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "TopCV",
+   "date": "2026-11-16",
+   "url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-part-time/2256930.html",
+   "page": "bai-viet/viec-lam-livestream-part-time.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-part-time.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm livestream part time tháng 11/2026: 8 tin TopCV mới, lương giờ 40.000–250.000đ (cao nhất NEXTGEN CONNECT 150.000–250.000đ/giờ, thấp nhất MCBooks 40.000–50.000đ/giờ); ca linh hoạt 2–5 tiếng/ngày; 55/287 shop trên sàn trả lương theo giờ; 5/8 tin đã hết hạn ứng tuyển tính tới 16/11/2026."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 14/11: 11 mẫu, 20 shop lên sàn",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-15",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-14-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-14-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 14/11/2026: 11 mẫu + 20 shop đã lên sàn (thu thập 11 mẫu + 20 shop + 10 nhóm, 5 nhóm dùng được); tổng live 230 mẫu, 270 shop; 4 hồ sơ doanh thu khủng đứng đầu là Diệp Lê 1 triệu USD/phiên và Võ Hà Linh 237 tỷ đồng/phiên 6/6/2024."
+  },
+  {
+   "title": "Tuyển mẫu live TP HCM: 100 shop, lương 30.000–500.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution / TopCV",
+   "date": "2026-11-15",
+   "url": "https://www.topcv.vn/viec-lam/host-livestream-tiktok/2143070.html",
+   "page": "bai-viet/tuyen-mau-live-tp-hcm.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-tp-hcm.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live TP HCM tháng 11/2026: 100 shop đang tuyển (83 shop ghi lương), lương giờ 30.000–500.000đ (cao nhất DU DU VN 300.000–500.000đ/giờ), lương tháng 6–45 triệu đồng (cao nhất TO Media 15–45 triệu); 32 mẫu TP HCM trên sàn."
+  },
+  {
+   "title": "Lương mẫu livestream Tết: 120.000đ/giờ, thưởng tháng 13",
+   "cat": "Việc Làm",
+   "source": "HR Forward Asia / AEON",
+   "date": "2026-11-15",
+   "url": "https://hrforwardasia.com/aeon-vietnam-plans-3000-hires-in-2026-as-it-opens-three-new-stores/",
+   "page": "bai-viet/luong-mau-livestream-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mau-livestream-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương mẫu livestream Tết 2027: mẫu live 120.000đ/giờ + 1% hoa hồng, nhân đôi ca Tết; host 18–30 triệu/tháng; trợ live 40.000đ/giờ; đóng gói 35.000đ/giờ; AEON tuyển 3.000 người, ca Tết 22/12/2026–04/02/2027; SOLEE trả lương lễ gấp 3–4 lần + thưởng Tết + tháng 13."
+  },
+  {
+   "title": "Tuyển mẫu live bán quần áo: lương 25.000–230.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "Ver2Solution",
+   "date": "2026-11-15",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-live-ban-quan-ao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ban-quan-ao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live bán quần áo tháng 11/2026: 56 shop thời trang đang tuyển (48 shop ghi lương), lương giờ 25.000–230.000đ (cao nhất Mỹ Tâm 230.000đ/giờ ca đêm), lương tháng 5–50 triệu đồng (cao nhất TRANG ANH 30–50 triệu khi đạt 100% KPI)."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
