@@ -1,0 +1,46 @@
+name: Deploy data 2026-11-16
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-16.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-16:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data package and verify
+        run: |
+          unzip -o mclivestream-data-2026-11-16-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "f6d0a6405cc055e94b87ba6bbfbe96bed92e2556879af17cf5ba11b35492234d"
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          echo "lots: $(grep -c '"id": "lot-' js/data.js)"
+          echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
+          echo "factories: $(grep -c '"id": "fac-' js/data.js)"
+          test "$(grep -c '"id": "th-' js/data.js)" = "238"
+          test "$(grep -c '"id": "sh-' js/data.js)" = "290"
+          test "$(grep -c '"id": "lot-' js/data.js)" = "112"
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "240"
+          test "$(grep -c '"id": "fac-' js/data.js)" = "280"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-16: 238 mau / 290 shop (2 mau moi th-260..th-261 + 3 shop moi sh-290..sh-292; cap nhat sh-09 FANI)"
+            git push
+          fi
+
