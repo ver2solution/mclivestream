@@ -1,0 +1,52 @@
+name: Deploy articles-cong-nghe-2026-11-16 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-cong-nghe-1611.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-cong-nghe-1611:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "319" || (echo "BASE DOI: data.js khong con 319 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "345" || (echo "BASE DOI: sitemap khong con 345 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip cong-nghe-1611 package
+        run: |
+          unzip -o mclivestream-cong-nghe-1611-deploy.zip
+          echo "--- verify cong-nghe-1611 (4 bai moi) ---"
+          for slug in cong-cu-livestream-tet-13-cong-cu-ai-mien-phi-den-31-12 thuat-toan-tiktok-2026-eu-siet-for-you-my-dao-tao-lai tiktok-shop-affiliate-tet-hoa-hong-nhan-doi-den-30-11 meta-bat-tay-anymind-quang-cao-facebook-dan-vao-live-ai; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "349" || (echo "SAI TONG sitemap, phai 349"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "323" || (echo "SAI TONG data.js, phai 323 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-cong-nghe-1611-deploy.zip || rm -f mclivestream-cong-nghe-1611-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-cong-nghe-2026-11-16: 4 bai moi (cong-cu-livestream-tet, thuat-toan-tiktok-2026, tiktok-shop-affiliate-tet, meta-bat-tay-anymind)"
+            git push
+          fi
