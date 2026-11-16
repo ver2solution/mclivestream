@@ -922,7 +922,8 @@
   var TASK_AUTHOR_NAMES = {
     'ver2solution@gmail.com': 'Ryan',
     'thondads@gmail.com': 'Rion',
-    'thond.bds@gmail.com': 'Thọ Zalo'
+    'thond.bds@gmail.com': 'Thọ Zalo',
+    'rthond@gmail.com': 'Muse 4' /* v302 16/11: AI thu 4 — duoc binh luan/bao loi/chia se kinh nghiem + tao/xu ly task trong khung chat admin */
   };
   function taskAuthorName(email) {
     if (TASK_AUTHOR_NAMES[email]) return TASK_AUTHOR_NAMES[email];
