@@ -1,0 +1,44 @@
+name: Deploy v307-f-r2-10 (redirect mau ?newobj=event-mkt to shop)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v307.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v307:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v307 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong) ---"
+          test "$(git rev-parse HEAD)" = "f59bcc46b1e1763b228e9948904535044594d302" || (echo "BASE DOI: HEAD khong con f59bcc4 - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7008a075a6ee42f8d8b081fa68e506d8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v307-deploy.zip
+          echo "--- verify v307 (1 file) ---"
+          test "$(unzip -l mclivestream-v307-deploy.zip | grep -c ' danh-sach-mau.html$')" -eq 1 || (echo "SAI: goi v307 phai co dung 1 file danh-sach-mau.html"; exit 1)
+          if unzip -l mclivestream-v307-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v307 KHONG duoc chua sw.js"; exit 1; fi
+          grep -q "v307 (F-R2-10" danh-sach-mau.html || (echo "THIEU khoi v307 trong danh-sach-mau.html"; exit 1)
+          grep -q "location.replace('danh-sach-shop.html?newobj='" danh-sach-mau.html || (echo "THIEU dong redirect trong danh-sach-mau.html"; exit 1)
+          grep -q "event-mkt" danh-sach-shop.html || (echo "THIEU event-mkt o trang Shop (dich redirect)"; exit 1)
+          echo "verify OK: 1 file danh-sach-mau.html, redirect event-mkt/class-live/class-makeup sang shop, shop handler co event-mkt"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v307-deploy.zip
+          git add danh-sach-mau.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v307: redirect mau ?newobj=event-mkt/class-live/class-makeup to shop page (F-R2-10, test vong 3); logistics/agency-ads GIU NGUYEN tren trang Mau; data.js/sitemap khong doi (base f59bcc4)"
+            git push
+          fi
