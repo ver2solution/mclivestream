@@ -14988,7 +14988,18 @@ window.V20_DATA = {
 {"title":"Khung giờ vàng livestream Tết: 19–21h chốt 7,4% đơn","cat":"Livestream","source":"Z Media","date":"2026-11-16","url":"https://www.z.media/insights/how-to-sell-on-tiktok-shop-live-2026","page": "bai-viet/khung-gio-vang-livestream-tet-19-21h.html","img":"https://vieclamlivestream.online/images/bai-viet/khung-gio-vang-livestream-tet-19-21h.jpg","pinned":false,"takeaway":"Khung giờ vàng livestream Tết là 19–21h: live TikTok Shop chuyển đổi 7,4–12%, cao gấp 3 lần video ngắn; live từ 3 phiên/tuần có GMV tháng cao hơn 47% (Z Media 25/08/2026)."},
 {"title":"Livestream bán đồ gia dụng: 748.500 USD/30 ngày nhờ nồi hấp","cat":"Livestream","source":"Tuke Marketing","date":"2026-11-16","url":"https://www.tktk.com/en/jiqiao/4066.html","page": "bai-viet/livestream-ban-do-gia-dung.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-do-gia-dung.jpg","pinned":false,"takeaway":"Nồi hấp Freemir bán 35.100 đơn, GMV 748.500 USD trong 30 ngày trên TikTok Shop Indonesia; livestream đóng góp 71,3% (Tuke Marketing 23/10/2026)."},
 {"title":"Minigame livestream bán hàng: tương tác tăng gấp 2 lần","cat":"Livestream","source":"ScreenApp","date":"2026-11-16","url":"https://embed.screenapp.io/blog/how-to-play-interactive-games-tiktok-live","page": "bai-viet/minigame-livestream-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/minigame-livestream-ban-hang.jpg","pinned":false,"takeaway":"Nội dung tương tác tạo gấp 2 lần tương tác so với nội dung tĩnh (HubSpot 08/05/2025); TikTok Shop Mỹ cấm quay số, chỉ dùng LIVE Giveaway (chính sách 30/10/2026)."},
-{"title":"Cách livestream bán hàng: 9 bước chốt đơn, tỉ lệ 26%","cat":"Livestream","source":"Shopify Blog","date":"2026-11-16","url":"https://www.shopify.com/ca/blog/live-selling","page": "bai-viet/cach-livestream-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-livestream-ban-hang.jpg","pinned":false,"takeaway":"Three Ships Beauty: 356 đơn trong 1 giờ, tỉ lệ chuyển đổi 26%, doanh thu 25.000 USD với 1.200 người xem (Shopify 23/10/2026)."}
+{"title":"Cách livestream bán hàng: 9 bước chốt đơn, tỉ lệ 26%","cat":"Livestream","source":"Shopify Blog","date":"2026-11-16","url":"https://www.shopify.com/ca/blog/live-selling","page": "bai-viet/cach-livestream-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-livestream-ban-hang.jpg","pinned":false,"takeaway":"Three Ships Beauty: 356 đơn trong 1 giờ, tỉ lệ chuyển đổi 26%, doanh thu 25.000 USD với 1.200 người xem (Shopify 23/10/2026)."},
+  {
+   "title": "1,22 triệu tỷ đồng trong 1 mùa Double 11/2025 — JD.com \"ông lớn im lặng\" thắng bằng AI và dịch vụ, không cần \"đại chiến giá rẻ\"",
+   "cat": "Phân tích",
+   "source": "亿邦动力",
+   "date": "2026-11-16",
+   "url": "https://m.ebrun.com/718904.html",
+   "page": "bai-viet/jd-com-122-trieu-ty-dong-double-11-ai-dich-vu-ong-lon-im-lang.html",
+   "img": "https://q6.itc.cn/q_70/images03/20261112/8a3fed4e4a6f4b3f99cbae98f8eb5c41.jpeg",
+   "pinned": false,
+   "takeaway": "Double 11/2026: JD.com bán hơn 50 triệu sản phẩm AI, hơn 300 triệu đơn dịch vụ — trong khi Tmall đi ngang so với năm ngoái. Vì sao \"ông lớn im lặng\" thắng mà không cần KOL siêu đầu?"
+  },
 ],
  "lots": [
    {
