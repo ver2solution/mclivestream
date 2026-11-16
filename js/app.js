@@ -3980,7 +3980,12 @@ function initNews(){
     var topIds = renderTopRows(list);
     var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
     main.innerHTML=mainList.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
-    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.';
+    /* v308 (F-R2-01, 17/11/2026): GIU quyet v238 — dem = tong bai KHOP BO
+       LOC (list.length), khong phai so the trong danh sach chinh. Chi them
+       dong giai thich tach bach (so bai ghim o hang tren + so bai ben
+       duoi) de nguoi doc khoi tuong dem lech voi so the thay duoc
+       (350 the ben duoi + 4 bai ghim = 354). */
+    var cnt=document.getElementById('newsCount'); if(cnt) cnt.textContent=list.length+' bài khớp bộ lọc.'+(topIds&&topIds.length?' ('+topIds.length+' bài ghim ở hàng trên + '+(list.length-topIds.length)+' bài bên dưới)':'');
     var most=document.getElementById('mostList');
     if(most) most.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:1;}).slice(0,20).map(function(a,i){
       return '<li><span class="rank">'+(i+1)+'</span><span>'+linkHTML(a)+'<span class="meta" style="display:block">'+esc(formatArticleDate(a.date))+'</span></span></li>';
