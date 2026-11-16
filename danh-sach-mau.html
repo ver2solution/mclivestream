@@ -279,6 +279,16 @@ window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
 document.addEventListener('DOMContentLoaded', function(){
   var ncat = window.__v199_newobj || '';
+  /* v307 (F-R2-10, 17/11/2026): muc event-mkt / class-live / class-makeup
+     thuoc trang Shop (nut chi co tren danh-sach-shop.html) — link ?newobj=
+     toi trang Mau voi 3 gia tri nay la duong cut (khong nut nao khop, trang
+     dung yen). Chuyen huong sang trang Shop de nut dung duoc bam; dung
+     location.replace de nut Back khong quay lai URL cut. logistics /
+     agency-ads GIU NGUYEN tren trang Mau (nut co san, bam duoc). */
+  if(ncat === 'event-mkt' || ncat === 'class-live' || ncat === 'class-makeup'){
+    location.replace('danh-sach-shop.html?newobj=' + encodeURIComponent(ncat));
+    return;
+  }
   if(ncat === 'logistics' || ncat === 'agency-ads'){
     var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
     if(nbtn) nbtn.click();
