@@ -39,6 +39,7 @@
    sw.js NOT touched (data.js is NETWORK-FIRST). Title rule from 12/11: <title> WITHOUT " — vieclamlivestream.online" suffix.\
    articles-doi-song-2026-11-15 adds 5 Đời Sống articles (15/11/2026, Sunday): 1 seasonal keyword "shop online sau Tết bán gì" #3/10 (3.264 words, deep) + 3 news ("tháng 2 du lịch đâu đẹp nhất" 1.835 words; "trả hàng sau Tết" 2.564 words; "nước dừa có tốt không" 2.389 words) + 1 cafe "quán cafe check-in đẹp Faifo Coffee Hội An" (2.276 words). Total 299 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-16 RESTORES 4 Viec Lam articles lost from live data.js by v288 rebase (commit 6c58991, 02:54 16/11/2026) + adds 4 new Viec Lam articles (16/11/2026, Monday): 1 stats (6 models + 17 shops 15/11) + 1 market stats (TMĐT Q3/2026 150,4 nghìn tỷ, Metric 28/10/2026) + 1 intro 'sàn việc làm livestream' + 1 bo 100 keyword STT 11 'việc làm livestream part time' (deep). Total 312 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-phan-tich-2026-11-16 adds 4 Phan tich articles (16/11/2026, Monday): 1 seasonal keyword "phi san TikTok Shop Shopee 2026" #6/10 (deep) + 2 bo 100 cum E "y tuong kinh doanh it von" STT 83 + "ban hang online khong can von" STT 84 + 1 bo 100 cum E "khoi nghiep ban hang online" STT 90 (rotation topic #4 — boc me mo hinh kinh doanh thanh cong, Gymshark case, written last). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-15 adds 4 Xu hướng articles (15/11/2026, Sunday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 (3.247 words, deep) + 1 bo 100 keyword "TikTok Shop Affiliate" STT 55 (2.879 words) + 2 news ("xu hướng mua sắm hàng đã qua sử dụng" 3.033 words; "thương mại nội dung Đông Nam Á" 2.812 words). Total 290 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v257 adds 4 Thi truong articles (15/11/2026, Sunday): 1 seasonal keyword "TikTok Shop 12.12" #3/10 (deep + đánh giá tiềm năng) + 3 news ("Lazada 11.11 2026"; "TMĐT Việt Nam 9 tháng 2026: 442 nghìn tỷ" (Metric); "Temu Shein 2026: hết miễn thuế"). Total 274 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v220 adds 4 Cong nghe articles (14/11/2026, Saturday): 1 seasonal keyword "livestream bán hàng bằng AI 2026" #42/10 (3.220 words, deep) + 2 bo 100 keywords "AI streamer là gì" (3.709 words) + "social commerce là gì" (3.698 words) + 1 seasonal "cách làm video AI sale cuối năm" #43/10 (3.620 words). Total 247 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -14647,6 +14648,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu live bán quần áo tháng 11/2026: 56 shop thời trang đang tuyển (48 shop ghi lương), lương giờ 25.000–230.000đ (cao nhất Mỹ Tâm 230.000đ/giờ ca đêm), lương tháng 5–50 triệu đồng (cao nhất TRANG ANH 30–50 triệu khi đạt 100% KPI)."
+  },
+  {
+   "title": "Phí sàn TikTok Shop Shopee 2026: shop giữ lại bao nhiêu?",
+   "cat": "Phân tích",
+   "source": "Digital in Asia",
+   "date": "2026-11-16",
+   "url": "https://digitalinasia.com/shopee-lazada-tiktok-shop-fees-2026/",
+   "page": "bai-viet/phi-san-tiktok-shop-shopee-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phi-san-tiktok-shop-shopee-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phí sàn 2026: TikTok Shop hoa hồng tới 17,8%, Shopee phí cố định tới 17%, phí giao dịch 6% + 3.000đ/đơn; cộng quảng cáo và hoa hồng creator, shop chỉ giữ 56–74% mỗi đơn — tính lãi theo 4 lớp phí trước 12.12."
+  },
+  {
+   "title": "Ý tưởng kinh doanh ít vốn: 24 ý tưởng lãi cao 2026",
+   "cat": "Phân tích",
+   "source": "Shopify",
+   "date": "2026-11-16",
+   "url": "https://www.shopify.com/pk/blog/low-cost-business-ideas-with-high-profit",
+   "page": "bai-viet/y-tuong-kinh-doanh-it-von-24-y-tuong-shopify-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/y-tuong-kinh-doanh-it-von-24-y-tuong-shopify-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "24 ý tưởng kinh doanh ít vốn của Shopify (11/2026): 3 nhóm không ôm hàng — dịch vụ/kỹ năng, sản phẩm số, bán hộ; vốn bắt đầu 100–500 USD cho dropshipping; mẫu live nên bắt đầu từ affiliate và khóa học."
+  },
+  {
+   "title": "Bán hàng online không cần vốn: 5 mô hình bắt đầu",
+   "cat": "Phân tích",
+   "source": "Ecomposer",
+   "date": "2026-11-16",
+   "url": "https://ecomposer.io/blogs/shopify-knowledge/start-a-shopify-store-with-no-money",
+   "page": "bai-viet/ban-hang-online-khong-can-von-5-mo-hinh-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-hang-online-khong-can-von-5-mo-hinh-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bán hàng online không cần vốn: 5 mô hình 0 đồng vốn nhập hàng (dropshipping, in theo yêu cầu, dịch vụ, sản phẩm số, handmade); vốn thật là thời gian + phí sàn tới 17,8% + quảng cáo; bắt đầu từ affiliate trong phiên live."
+  },
+  {
+   "title": "Khởi nghiệp bán hàng online: 34 triệu thành 22.332 tỷ",
+   "cat": "Phân tích",
+   "source": "Entrepreneur Plus",
+   "date": "2026-11-16",
+   "url": "https://entrepreneurplus.co.uk/how-does-gymshark-make-money-the-garage-brand-betting-big-on-bricks/",
+   "page": "bai-viet/khoi-nghiep-ban-hang-online-gymshark-646-trieu-bang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khoi-nghiep-ban-hang-online-gymshark-646-trieu-bang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Gymshark: khởi nghiệp 2012 với 1.000 bảng tiết kiệm (34,6 triệu đồng), doanh thu 646 triệu bảng FY2025 (22.332 tỷ đồng) nhưng lãi trước thuế chỉ 6,9 triệu bảng (−41%) — bài học: bán trực tiếp, cộng đồng thay quảng cáo, đừng nhầm doanh thu với lãi."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
