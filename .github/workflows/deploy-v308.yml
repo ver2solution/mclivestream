@@ -26,7 +26,7 @@ jobs:
           test "$(unzip -l mclivestream-v308-deploy.zip | grep -c ' js/app.js$')" -eq 1 || (echo "SAI: goi v308 phai co dung 1 file js/app.js"; exit 1)
           if unzip -l mclivestream-v308-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v308 KHONG duoc chua sw.js"; exit 1; fi
           grep -q "v308 (F-R2-01" js/app.js || (echo "THIEU khoi v308 trong js/app.js"; exit 1)
-          grep -q "bai ghim ở hàng trên" js/app.js || (echo "THIEU dong giai thich ghim/ben duoi trong js/app.js"; exit 1)
+          grep -q "bài ghim ở hàng trên" js/app.js || (echo "THIEU dong giai thich ghim/ben duoi trong js/app.js"; exit 1)
           echo "verify OK: 1 file js/app.js, dong dem giai thich tach ghim/ben duoi, quyet v238 giu nguyen"
       - name: Commit deployed files
         run: |
