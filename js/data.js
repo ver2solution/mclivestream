@@ -14749,6 +14749,54 @@ window.V20_DATA = {
    "takeaway": "GDP Nhật Bản quý III/2026 suy giảm 0,1%, trái dự báo tăng 0,3%; yên kẹt 159,69 đổi 1 USD — shop nhập hàng Nhật chốt tỷ giá trước khi đặt cọc lô Tết."
   },
   {
+   "title": "Cách nhập hàng 1688 không cần trung gian",
+   "cat": "Đang hot",
+   "source": "Yakkyofy",
+   "date": "2026-11-16",
+   "url": "https://yakkyofy.com/how-to-buy-from-1688-without-an-agent/",
+   "page": "bai-viet/cach-nhap-hang-1688-khong-can-trung-gian.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-nhap-hang-1688-khong-can-trung-gian.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách nhập hàng 1688 không cần trung gian: thanh toán thẻ quốc tế mở từ tháng 03/2024, giao tới kho gom hàng Trung Quốc, 7 bước tự đặt; phí trung gian 2–15% (tối thiểu 100 USD/đơn nhỏ) là khoản tiết kiệm được; đơn đầu dưới 500 USD, đặt mẫu trước, chốt đơn trước tháng 12/2026 để kịp Tết 06/02/2027."
+  },
+  {
+   "title": "Nhập hàng Trung Quốc chính ngạch: chi phí, thủ tục",
+   "cat": "Đang hot",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-16",
+   "url": "https://www.mordorintelligence.com/industry-reports/vietnam-cross-border-b2c-e-commerce-market",
+   "page": "bai-viet/nhap-hang-trung-quoc-chinh-ngach-chi-phi-thu-tuc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-chinh-ngach-chi-phi-thu-tuc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nhập hàng Trung Quốc chính ngạch: thương mại song phương 253,2 tỷ USD 9 tháng 2026 (+37,6%), nhập từ Trung Quốc 187,3 tỷ USD (+39,3%); TMĐT xuyên biên giới 5,5 tỷ USD năm 2026; cửa khẩu thông minh + NAPAS tích hợp Alipay+/WeChat Pay; lộ trình 30 ngày chuyển sang chính ngạch trước Tết 06/02/2027."
+  },
+  {
+   "title": "Lazada 12.12: giảm tới 55%, quà tặng lên ngôi",
+   "cat": "Đang hot",
+   "source": "ShopBack",
+   "date": "2026-11-16",
+   "url": "https://www.shopback.sg/guide/shopping/12-12-sale-singapore",
+   "page": "bai-viet/lazada-12-12-2026-giam-toi-55-phan-tram-qua-tang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lazada-12-12-2026-giam-toi-55-phan-tram-qua-tang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lazada 12.12 ngày 12/12/2026 (thứ Bảy): giảm 25–55% cho quà tặng, đồ gia dụng nhỏ, trang sức; thu voucher trước ngày 07–09/12, flash sale theo giờ ngày 12–13/12, một số gian hàng kéo tới 15/12; hàng đặt 12/12 giao trước 20–25/12, kịp Giáng sinh."
+  },
+  {
+   "title": "Amazon Black Friday 2026: sale 19–30/11, giảm 60%",
+   "cat": "Đang hot",
+   "source": "Amazon",
+   "date": "2026-11-16",
+   "url": "https://www.aboutamazon.com/news/retail/amazon-black-friday-cyber-monday-deals-2026",
+   "page": "bai-viet/amazon-black-friday-2026-sale-19-30-thang-11-giam-60-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/amazon-black-friday-2026-sale-19-30-thang-11-giam-60-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Amazon Black Friday 2026: sale 19–30/11/2026, 12 ngày deal theo chủ đề, giảm tới 60%, thả deal 2 lần lúc nửa đêm và 8 giờ sáng giờ Thái Bình Dương ngày 27/11 và 30/11; bối cảnh Adobe: Black Friday online Mỹ 12,9 tỷ USD (+9,2%), Cyber Monday 15,1 tỷ USD (+6,2%)."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
