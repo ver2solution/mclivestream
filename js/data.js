@@ -40,6 +40,7 @@
    articles-doi-song-2026-11-15 adds 5 Đời Sống articles (15/11/2026, Sunday): 1 seasonal keyword "shop online sau Tết bán gì" #3/10 (3.264 words, deep) + 3 news ("tháng 2 du lịch đâu đẹp nhất" 1.835 words; "trả hàng sau Tết" 2.564 words; "nước dừa có tốt không" 2.389 words) + 1 cafe "quán cafe check-in đẹp Faifo Coffee Hội An" (2.276 words). Total 299 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-16 RESTORES 4 Viec Lam articles lost from live data.js by v288 rebase (commit 6c58991, 02:54 16/11/2026) + adds 4 new Viec Lam articles (16/11/2026, Monday): 1 stats (6 models + 17 shops 15/11) + 1 market stats (TMĐT Q3/2026 150,4 nghìn tỷ, Metric 28/10/2026) + 1 intro 'sàn việc làm livestream' + 1 bo 100 keyword STT 11 'việc làm livestream part time' (deep). Total 312 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-16 adds 4 Phan tich articles (16/11/2026, Monday): 1 seasonal keyword "phi san TikTok Shop Shopee 2026" #6/10 (deep) + 2 bo 100 cum E "y tuong kinh doanh it von" STT 83 + "ban hang online khong can von" STT 84 + 1 bo 100 cum E "khoi nghiep ban hang online" STT 90 (rotation topic #4 — boc me mo hinh kinh doanh thanh cong, Gymshark case, written last). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   v289 adds 4 Thi truong articles (16/11/2026, Monday): 1 seasonal keyword "Shopee 12.12" #4/10 (7.054 words, deep + đánh giá tiềm năng) + 3 news ("Shopee quý 3 2026: GMV 39,7 tỷ USD" 6.320 words; "livestream Trung Quốc 2026: Double 11 1.776,4 tỷ NDT" 6.909 words; "TMĐT Đông Nam Á 2026: 226 tỷ USD" 5.630 words). Total 319 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-xu-huong-2026-11-15 adds 4 Xu hướng articles (15/11/2026, Sunday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 (3.247 words, deep) + 1 bo 100 keyword "TikTok Shop Affiliate" STT 55 (2.879 words) + 2 news ("xu hướng mua sắm hàng đã qua sử dụng" 3.033 words; "thương mại nội dung Đông Nam Á" 2.812 words). Total 290 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v257 adds 4 Thi truong articles (15/11/2026, Sunday): 1 seasonal keyword "TikTok Shop 12.12" #3/10 (deep + đánh giá tiềm năng) + 3 news ("Lazada 11.11 2026"; "TMĐT Việt Nam 9 tháng 2026: 442 nghìn tỷ" (Metric); "Temu Shein 2026: hết miễn thuế"). Total 274 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v220 adds 4 Cong nghe articles (14/11/2026, Saturday): 1 seasonal keyword "livestream bán hàng bằng AI 2026" #42/10 (3.220 words, deep) + 2 bo 100 keywords "AI streamer là gì" (3.709 words) + "social commerce là gì" (3.698 words) + 1 seasonal "cách làm video AI sale cuối năm" #43/10 (3.620 words). Total 247 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -14834,6 +14835,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Hướng Thái bán 300 triệu NDT trong buổi livestream bán hàng đầu tiên trên Douyin rồi mất gần 1 triệu follower, trả hàng tới 70%. Ba năm sau, bà lội ngược dòng với 160 triệu NDT tiền trang sức trên Xiaohongshu."
   },
+  {
+   "title": "Shopee 12.12: sinh nhật Shopee, sale tới 90%, Live giảm 50%",
+   "cat": "Thị trường",
+   "source": "Shopee Singapore",
+   "date": "2026-11-16",
+   "url": "https://shopee.sg/m/12-12",
+   "page": "bai-viet/shopee-12-12-sinh-nhat-sale-cuoi-nam-voucher-freeship-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-12-12-sinh-nhat-sale-cuoi-nam-voucher-freeship-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopee 12.12 diễn ra thứ Bảy 12/12/2026, mở màn 20h 11/12/2026 (Shopee Singapore, 16/11/2026): Live giảm 50%, Brands Flash Sale tới 90%, freeship 0Đ; GMV Shopee quý 3/2026 39,7 tỷ USD (+23,3%, Sea 10/11/2026); 12.12 2025 tại Việt Nam hơn 12 triệu lượt truy cập ngày 12/12, tiết kiệm hơn 4.000 tỷ đồng (Vietnam News 18/12/2025)."
+  },
+  {
+   "title": "Shopee quý 3 2026: GMV 39,7 tỷ USD, phí sàn 15,3%",
+   "cat": "Thị trường",
+   "source": "Sea Limited / Business Wire",
+   "date": "2026-11-16",
+   "url": "https://www.businesswire.com/news/home/20261109862081/en/Sea-Limited-Reports-Third-Quarter-2026-Results",
+   "page": "bai-viet/shopee-quy-3-2026-gmv-39-7-ty-usd-phi-san-15-3.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-quy-3-2026-gmv-39-7-ty-usd-phi-san-15-3.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sea công bố 10/11/2026: Shopee quý 3/2026 GMV 39,7 tỷ USD (+23,3%), doanh thu 6,1 tỷ USD (+41,3%), lãi kỷ lục 269,2 triệu USD; phí sàn lên 15,3%; tại Việt Nam Shopee 74,4 nghìn tỷ đồng quý 3/2026, chỉ hơn TikTok Shop 4,3 nghìn tỷ (YouNet ECI 27/10/2026)."
+  },
+  {
+   "title": "Livestream Trung Quốc 2026: Double 11 đạt 1.776,4 tỷ NDT",
+   "cat": "Thị trường",
+   "source": "Marketing to China (GMA) / Reuters",
+   "date": "2026-11-16",
+   "url": "https://marketingtochina.com/double-11-2026-results/",
+   "page": "bai-viet/livestream-trung-quoc-2026-double-11-1776-ty-ndt.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-trung-quoc-2026-double-11-1776-ty-ndt.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double 11 2026 đạt 1.776,4 tỷ NDT (7/10–11/11/2026, +4,8%, Syntun công bố 12/11/2026); Douyin đẩy live tự vận hành, merchant live vượt 10 triệu NDT tăng 96% ngày đầu; AI streamer bùng nổ, 6 tháng đầu 2026 đạt 45,1 tỷ NDT (+186%)."
+  },
+  {
+   "title": "Thương mại điện tử Đông Nam Á 2026: 226 tỷ USD",
+   "cat": "Thị trường",
+   "source": "e-Conomy SEA 2026 — Google / Temasek / Bain",
+   "date": "2026-11-16",
+   "url": "https://www.temasek.com.sg/en/news-and-resources/news-room/news/2026/southeast-asia-digital-economy-set-for-368b-gmv-in-2026-tracking-to-1t-by-2035",
+   "page": "bai-viet/thuong-mai-dien-tu-dong-nam-a-2026-226-ty-usd-viet-nam-32-ty.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuong-mai-dien-tu-dong-nam-a-2026-226-ty-usd-viet-nam-32-ty.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "e-Conomy SEA 2026 (công bố toàn cầu 21/10/2026, bản Việt Nam 05/11/2026): TMĐT Đông Nam Á 226 tỷ USD (+18%), Việt Nam 32 tỷ USD (+22%); video commerce chiếm 32% GMV sàn năm 2025; kinh tế số khu vực 368 tỷ USD, hướng tới 1.000 tỷ USD năm 2035."
+  }
 ],
  "lots": [
    {
