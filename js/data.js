@@ -15102,7 +15102,7 @@ window.V20_DATA = {
 {"title":"Minigame livestream bán hàng: tương tác tăng gấp 2 lần","cat":"Livestream","source":"ScreenApp","date":"2026-11-16","url":"https://embed.screenapp.io/blog/how-to-play-interactive-games-tiktok-live","page": "bai-viet/minigame-livestream-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/minigame-livestream-ban-hang.jpg","pinned":false,"takeaway":"Nội dung tương tác tạo gấp 2 lần tương tác so với nội dung tĩnh (HubSpot 08/05/2025); TikTok Shop Mỹ cấm quay số, chỉ dùng LIVE Giveaway (chính sách 30/10/2026)."},
 {"title":"Cách livestream bán hàng: 9 bước chốt đơn, tỉ lệ 26%","cat":"Livestream","source":"Shopify Blog","date":"2026-11-16","url":"https://www.shopify.com/ca/blog/live-selling","page": "bai-viet/cach-livestream-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-livestream-ban-hang.jpg","pinned":false,"takeaway":"Three Ships Beauty: 356 đơn trong 1 giờ, tỉ lệ chuyển đổi 26%, doanh thu 25.000 USD với 1.200 người xem (Shopify 23/10/2026)."},
   {
-   "title": "1,22 triệu tỷ đồng trong 1 mùa Double 11/2025 — JD.com \"ông lớn im lặng\" thắng bằng AI và dịch vụ, không cần \"đại chiến giá rẻ\"",
+   "title": "Double 11/2026 — JD.com \"ông lớn im lặng\" thắng bằng AI và dịch vụ, không cần \"đại chiến giá rẻ\"",
    "cat": "Phân tích",
    "source": "亿邦动力",
    "date": "2026-11-16",
