@@ -1,0 +1,47 @@
+name: Deploy v306-toc-fix-3bai (TOC Winnie/Douyin/Kinh)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v306-toc-fix-3bai.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v306-toc-fix-3bai:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v306-toc-fix-3bai package
+        run: |
+          unzip -o mclivestream-v306-toc-fix-3bai-deploy.zip
+          echo "--- verify v306-toc-fix-3bai (3 bai) ---"
+          test -f bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html || (echo "THIEU bai Winnie"; exit 1)
+          test -f bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html || (echo "THIEU bai Douyin"; exit 1)
+          test -f bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html || (echo "THIEU bai Kinh"; exit 1)
+          test "$(grep -o '<h2 id="bai-muc-' bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html | wc -l)" -eq 14 || (echo "SAI so h2 Winnie (can 14)"; exit 1)
+          test "$(grep -o '<li><a href="#bai-muc-' bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html | wc -l)" -eq 14 || (echo "SAI so muc nav Winnie (can 14)"; exit 1)
+          test "$(grep -o '<p><a href="#bai-muc-' bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html | wc -l)" -eq 13 || (echo "SAI so link Winnie (can 13)"; exit 1)
+          test "$(grep -o '<h2 id="bai-muc-' bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html | wc -l)" -eq 8 || (echo "SAI so h2 Douyin (can 8)"; exit 1)
+          test "$(grep -o '<li><a href="#bai-muc-' bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html | wc -l)" -eq 8 || (echo "SAI so muc nav Douyin (can 8)"; exit 1)
+          test "$(grep -o '<p><a href="#bai-muc-' bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html | wc -l)" -eq 7 || (echo "SAI so link Douyin (can 7)"; exit 1)
+          test "$(grep -o '<h2 id="bai-muc-' bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html | wc -l)" -eq 8 || (echo "SAI so h2 Kinh (can 8)"; exit 1)
+          test "$(grep -o '<li><a href="#bai-muc-' bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html | wc -l)" -eq 8 || (echo "SAI so muc nav Kinh (can 8)"; exit 1)
+          test "$(grep -o '<p><a href="#bai-muc-' bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html | wc -l)" -eq 6 || (echo "SAI so link Kinh (can 6)"; exit 1)
+          echo "TOC OK: Winnie 14/14/13 + Douyin 8/8/7 + Kinh 8/8/6"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v306-toc-fix-3bai-deploy.zip
+          git add bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v306-toc-fix-3bai: sua muc luc 3 bai Winnie/Douyin/Kinh (form chung v306)"
+            git push
+          fi
