@@ -1952,6 +1952,15 @@ function renderLiveStats(){
   for(var i = 0; i < els.length; i++){
     els[i].textContent = String(liveCount(els[i].getAttribute('data-stat')));
   }
+  /* v299: alt cua infographic trang gioi-thieu cung dien so live (chu thich +
+     alt khong con so cung — JS dien moi lan tai trang, khop voi chu thich
+     ben duoi; ngay trong alt la ngay tai trang hien tai). */
+  var infoImg = document.getElementById('gioi-thieu-infographic');
+  if(infoImg){
+    var d = new Date();
+    var dd = String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + d.getFullYear();
+    infoImg.setAttribute('alt', 'Infographic vieclamlivestream.online: ' + liveCount('models') + ' mẫu livestream, ' + liveCount('shops') + ' shop, ' + liveCount('lots') + ' lô xả kho đang hoạt động, ' + liveCount('factories') + ' xưởng may, ' + liveCount('kiots') + ' kiot — số liệu sàn tính tới ' + dd);
+  }
 }
 /* v76: the lo/xuong render tu data.js — phai GIONG HET the tinh cu (cung
    class, data-*, thu tu) de bo loc + nut Xem them 2 hang chay y nhu cu.
