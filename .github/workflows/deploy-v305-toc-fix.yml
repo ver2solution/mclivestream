@@ -1,0 +1,39 @@
+name: Deploy v305-toc-fix (Double 11 TOC)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v305-toc-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v305-toc-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v305-toc-fix package
+        run: |
+          unzip -o mclivestream-v305-toc-fix-deploy.zip
+          echo "--- verify v305-toc-fix (1 bai) ---"
+          test -f bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html || (echo "THIEU bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html"; exit 1)
+          test "$(grep -c '<h2 id="bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "8" || (echo "SAI so h2 bai-muc (can 8)"; exit 1)
+          test "$(grep -c '<li><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "8" || (echo "SAI so muc nav.toc (can 8)"; exit 1)
+          test "$(grep -c '<p><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "7" || (echo "SAI so link muc luc trong bai (can 7)"; exit 1)
+          echo "TOC OK: 8 h2 + 8 nav + 7 link trong bai"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v305-toc-fix-deploy.zip
+          git add bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v305-toc-fix: sua muc luc bai Double 11 (7 muc thanh h2 + link)"
+            git push
+          fi
