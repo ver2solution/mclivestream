@@ -15213,6 +15213,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "1 video 10 giây, 1,2 triệu lượt xem, GMV 1,4–2,6 tỷ đồng — kính mắt mèo chiếm 2 trong 3 video bán chạy nhất Shopee tuần qua. Vì sao sản phẩm vài chục nghìn này bán khỏe hơn cả iPhone 18 Pro Max, và shop Việt cần làm gì trước Black Friday 27/11?"
   },
+  {
+   "title": "4.725 tỷ đồng trong 1 ngày vẫn là thua — tổng kết Double 11/2026: ai thắng, ai thua?",
+   "cat": "Phân tích",
+   "source": "第一财经 (Tài chính số 1)",
+   "date": "2026-11-16",
+   "url": "https://www.sohu.com/a/1100730156_114986",
+   "page": "bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html",
+   "img": "https://q0.itc.cn/q_70/images03/20261110/e6381af90562441ea414cbf5f918319a.png",
+   "pinned": false,
+   "takeaway": "Double 11/2026 chốt sổ với 6.217 nghìn tỷ đồng nhưng chỉ tăng 4,8%: shop tự live tăng 200%, Vợ chồng Quảng Đông rớt một nửa đỉnh 1 ngày, Quyền Leo và Long Chun thắng lớn nhờ live."
+  },
 ],
  "lots": [
    {
