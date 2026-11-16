@@ -14700,6 +14700,54 @@ window.V20_DATA = {
    "takeaway": "Gymshark: khởi nghiệp 2012 với 1.000 bảng tiết kiệm (34,6 triệu đồng), doanh thu 646 triệu bảng FY2025 (22.332 tỷ đồng) nhưng lãi trước thuế chỉ 6,9 triệu bảng (−41%) — bài học: bán trực tiếp, cộng đồng thay quảng cáo, đừng nhầm doanh thu với lãi."
   },
   {
+   "title": "Doanh thu Double 12: shop nhỏ đón sóng sale cuối năm",
+   "cat": "Dòng tiền",
+   "source": "TikTok Shop (qua Instagram)",
+   "date": "2026-11-16",
+   "url": "https://www.instagram.com/p/DSZh1kFkdae/",
+   "page": "bai-viet/doanh-thu-double-12-shop-nho-don-song-sale-cuoi-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doanh-thu-double-12-shop-nho-don-song-sale-cuoi-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Doanh thu Double 12 năm 2025: TikTok Shop tăng 1,5 lần, livestream tăng 144%; Việt Nam 9 tháng 2026 đã 411,8 nghìn tỷ — shop live thật, giữ voucher ngày sau sale, tính lãi sau phí."
+  },
+  {
+   "title": "Bán lẻ Mỹ tháng 10 tăng chậm nhất gần 1 năm",
+   "cat": "Dòng tiền",
+   "source": "NRF (qua MyTotalRetail)",
+   "date": "2026-11-16",
+   "url": "https://www.mytotalretail.com/article/october-retail-data-shows-signs-of-consumer-strain/",
+   "page": "bai-viet/ban-le-my-thang-10-tang-cham-nhat-gan-1-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-le-my-thang-10-tang-cham-nhat-gan-1-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bán lẻ Mỹ tháng 10/2026 chỉ tăng 0,2%, chậm nhất gần 1 năm: 561,7 tỷ USD — người mua chờ sale, Black Friday 27/11 và 12.12 quyết định mùa lễ."
+  },
+  {
+   "title": "Bán lẻ Trung Quốc tháng 10 chậm nhất từ 2024",
+   "cat": "Dòng tiền",
+   "source": "NBS Trung Quốc (qua QNC News)",
+   "date": "2026-11-16",
+   "url": "https://qncnews.com/2026/11/14/china-factory-output-and-retail-sales-slow-to-weakest-pace-in-over-a-year/",
+   "page": "bai-viet/ban-le-trung-quoc-thang-10-cham-nhat-tu-2024.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-le-trung-quoc-thang-10-cham-nhat-tu-2024.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bán lẻ Trung Quốc tháng 10/2026 tăng 2,9%, chậm nhất từ 2024; Double 11 chỉ tăng 4,8% — xưởng thừa hàng, shop Việt Nam tranh thủ ép giá nhập trước 12.12."
+  },
+  {
+   "title": "GDP Nhật Bản quý III suy giảm, yên kẹt gần 160",
+   "cat": "Dòng tiền",
+   "source": "Reuters",
+   "date": "2026-11-16",
+   "url": "https://www.reuters.com/world/middle-east/yen-steady-against-euro-dollar-after-soft-japanese-gdp-data-2026-11-16/",
+   "page": "bai-viet/gdp-nhat-ban-quy-3-suy-giam-yen-ket-gan-160.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gdp-nhat-ban-quy-3-suy-giam-yen-ket-gan-160.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "GDP Nhật Bản quý III/2026 suy giảm 0,1%, trái dự báo tăng 0,3%; yên kẹt 159,69 đổi 1 USD — shop nhập hàng Nhật chốt tỷ giá trước khi đặt cọc lô Tết."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
