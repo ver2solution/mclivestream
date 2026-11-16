@@ -15191,6 +15191,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "27–28/12/2025: Winnie Tang — blogger thời trang 7 năm trên Xiaohongshu, không phải minh tinh — bán hơn 170 triệu NDT trang sức trong 2 ngày, giá trung bình 63 triệu đồng/đơn. 7 mẹo đặt trước và xây niềm tin shop Việt áp dụng được trước 12.12."
   },
+  {
+   "title": "6.217 nghìn tỷ đồng — Douyin chốt sổ Double 11/2026: shop tự live tăng 200%, KOL lớn \"mất hút\" khỏi bảng vàng",
+   "cat": "Xu hướng",
+   "source": "观察者网 / 新浪财经",
+   "date": "2026-11-16",
+   "url": "https://finance.sina.com.cn/roll/2026-11-13/doc-iniypzqc1083442.shtml",
+   "page": "bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html",
+   "img": "https://inews.gtimg.com/news_bt/ORt6LLs4DyBD2jGyVInzbasdsZN4fLZzJNaR3M6CkTHjIAA/641",
+   "pinned": false,
+   "takeaway": "Douyin chốt sổ Double 11/2026 (12/11): shop tự live phá 100 triệu NDT tăng 200%, 860.000 shop lần đầu mở live đã có đơn — 330 vùng công nghiệp bán hơn 350 tỷ đồng mỗi vùng."
+  },
 ],
  "lots": [
    {
