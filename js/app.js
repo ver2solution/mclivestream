@@ -877,7 +877,11 @@ var MISSING_META = '__missing__';
 function lotMatches(card, f){
   if(f.prov === MISSING_META){ if(card.getAttribute('data-prov')) return false; }
   else if(f.prov && normProv(card.getAttribute('data-prov')) !== normProv(f.prov)) return false;
-  if(f.price){
+  /* v309 (F-R2-08c, 17/11/2026): "Chưa ghi giá trị" — loc ra cac lo
+     THIEU priceNum (data-price rong), theo dung mau MISSING_META cua
+     prov/qty (v254). Truoc day lo khong gia bien mat khoi moi loc gia. */
+  if(f.price === MISSING_META){ if(card.getAttribute('data-price')) return false; }
+  else if(f.price){
     var p = card.getAttribute('data-price');
     if(p === null || p === '') return false;
     if(!inRange(parseInt(p, 10), f.price)) return false;
@@ -1169,7 +1173,7 @@ function initLotPageFilter(){
   var uc = document.getElementById('fLotCat');
   if(uc) applyOptionCounts(uc, function(v){ return uniCatCount('lot', v); }, uniTotal('lot'));
   var upr = document.getElementById('fLotPrice');
-  if(upr) applyOptionCounts(upr, function(v){ var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, uniTotal('lot'));
+  if(upr) applyOptionCounts(upr, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, uniTotal('lot'));
   var uq = document.getElementById('fLotQty');
   if(uq) applyOptionCounts(uq, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty != null && inRange(l.qty, v)) n++; }); return n; }, uniTotal('lot'));
   var ug = document.getElementById('fLotGroup');
