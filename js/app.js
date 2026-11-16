@@ -663,7 +663,7 @@ function cardHTML(m, opts){
   // tinh (v28) — chu placeholder khong bao gio vao DOM.
   opts = opts || {};
   return '<article class="card card-compact" id="'+esc(m.id)+'" data-v2s-id="'+esc(m.id)+'" data-province="'+esc(m.province)+'" data-cat="'+esc(m.cat)+'" data-gender="'+esc(hasReal(m.gender)?m.gender:'')+'" data-views="'+m.views+'" data-comments="'+m.comments+'">'
-  + '<a class="card-compact-photo" href="ho-so.html?id='+esc(m.id)+'">'+photoHTML(m, 'compact')+'<span class="card-compact-name"><span>'+esc(m.name)+'</span></span></a>'
+  + '<a class="card-compact-photo card-compact-photo--model" href="ho-so.html?id='+esc(m.id)+'">'+photoHTML(m, 'compact')+'<span class="card-compact-name"><span>'+esc(m.name)+'</span></span></a>'
   + starButtonHTML('model_profile', m.id)
   + '<div class="card-compact-lines"><p class="card-compact-line">'+modelLocationLine(m)+'</p><p class="card-compact-line">'+modelFieldLine(m)+'</p></div>'
   + '</article>';
