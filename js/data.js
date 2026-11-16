@@ -1,4 +1,5 @@
 /* v76 data: them 2 mang "lots" (13 lo: 8 nhom 1 + 3 nhom 2 + 2 nhom 3) va "factories" (20 xuong) —
+   16/11/2026 group-work: +2 mau (th-260..th-261) + 3 shop (sh-290..sh-292); loai 3 mau trung (Tien Duy=th-245, Dau Thi Hien=th-246, IntelligentBlueberry9898=th-247); cap nhat sh-09 FANI (them Tro Live 15-25tr + dia diem Nha Live 475 Hoang Quoc Viet, bai moi 16/11); moi 0/80 — co spam link chua xac minh duoc da go (12 yeu cau xem xet 15/11 dang cho); nhom dot-2 #33-42: dung duoc 0, loai 10; 5 muc moi van du 21 muc, khong muc nao het han.
    15/11/2026 new-objects: +50 du lieu that moi (cl-12..21, cm-12..21, em-12..21, lg-12..21, rt-13..22) — du dich 100 (20/muc); live truoc deploy: 112 lo / 280 xuong / 240 kiot / 236 mau / 287 shop.
    15/11/2026 group-work: +6 mau (th-254..th-259) + 17 shop (sh-273..sh-289); loai 2 mau trung (Do Thi Nhu=th-251, Quyt_qiuu=th-244) + 4 shop trung (Le Thanh Dinh=sh-267, Tuyen Pham=sh-263, Bui Thi Kim Ngan=sh-268, Nguyet Minh=sh-264); moi 0/80 — Facebook go binh luan vi spam (xem file an group-work-2026-11-15.md); 4 muc moi dat chuan (2 logistics + 2 cho thue kho) CHUA deploy, cho anh xac nhan dich 50 hay 100; nhom dot-2 #23-32: dung duoc 2 (#28 Thanh Li Do Sinh Vien, #32 Cho tot – Ha Nam), loai 8.
    14/11/2026 khoi phuc du lieu bi deploy lo 4ecba3e ghi de: 11 sua title/meta kiot + 11 mau + 20 shop batch A group-work (live base 62c4d018).
@@ -6557,6 +6558,59 @@ window.V20_DATA = {
    "photoSrc": null,
    "contacts": [
    ]  }
+,
+  {
+   "id": "th-260",
+   "name": "FabulousMango9359",
+   "gender": "nữ",
+   "title": "Live thời trang — Hà Nội",
+   "province": "Hà Nội",
+   "cat": "Thời trang",
+   "form": "mẫu live",
+   "exp": "Mẫu live ngành thời trang, kinh nghiệm 3 năm. Tìm việc đều khu vực Long Biên, Vin 1 (Vinhomes Ocean Park 1); đi làm được full tháng; ca sáng–trưa hoặc trưa–chiều cố định.",
+   "height": "Chưa cập nhật",
+   "schedule": "ca sáng–trưa hoặc trưa–chiều cố định, full tháng",
+   "shifts": [],
+   "salary": "Chưa cập nhật",
+   "salaryNum": null,
+   "topRevenue": "Chưa cập nhật",
+   "rating": "Chưa có đánh giá",
+   "date": "2026-09-13",
+   "src": "https://www.facebook.com/groups/225529306817040/posts/1124423063594322",
+   "views": 0,
+   "comments": 0,
+   "status": "Đang tìm việc",
+   "photoHas": false,
+   "photoUrl": null,
+   "photoSrc": null,
+   "contacts": [
+   ]  },
+  {
+   "id": "th-261",
+   "name": "Quách Thị Nhâm",
+   "gender": "nữ",
+   "title": "Live bán hàng — Hà Nội",
+   "province": "Hà Nội",
+   "cat": "Chung / Đa ngành",
+   "form": "live bán hàng",
+   "exp": "Có kinh nghiệm live. Tìm việc live TikTok khu Xuân Phương, Hoài Đức (Hà Nội).",
+   "height": "Chưa cập nhật",
+   "schedule": "Chưa cập nhật",
+   "shifts": [],
+   "salary": "Chưa cập nhật",
+   "salaryNum": null,
+   "topRevenue": "Chưa cập nhật",
+   "rating": "Chưa có đánh giá",
+   "date": "2026-10-14",
+   "src": "https://www.facebook.com/groups/2930003470551216/posts/4535353910016156/",
+   "views": 0,
+   "comments": 0,
+   "status": "Đang tìm việc",
+   "photoHas": false,
+   "photoUrl": null,
+   "photoSrc": null,
+   "contacts": [
+   ]  }
 ],
  "shops": [
   {
@@ -6709,10 +6763,10 @@ window.V20_DATA = {
    "shopNameKnown": true,
    "product": "Đồ dùng gia đình, ngành Giấy (TopGia), Mẹ & Bé (TopGiaKids)",
    "province": "Hà Nội",
-   "district": "Bắc Từ Liêm / Cầu Giấy",
+   "district": "Nhà Live, 475 Hoàng Quốc Việt, P. Nghĩa Đô (mới 16/11/2026); trước đó Bắc Từ Liêm / Cầu Giấy",
    "salary": "20.000.000 – 50.000.000 VNĐ (Lương cơ bản 13 triệu + % Hoa hồng)",
    "shifts": [],
-   "req": "6 tháng – 1 năm kinh nghiệm livestream hoặc quay video; ca linh hoạt; đóng BHXH, BHYT, BHTN, thưởng lễ Tết, quà sinh nhật.",
+   "req": "6 tháng – 1 năm kinh nghiệm livestream hoặc quay video; ca linh hoạt; đóng BHXH, BHYT, BHTN, thưởng lễ Tết, quà sinh nhật. Cập nhật 16/11/2026 (bài tuyển mới https://www.facebook.com/groups/1002938194724844/posts/1718913003127356): tuyển thêm Trợ Live 15–25 triệu (lương cứng 10 triệu + hoa hồng; CĐ/ĐH, nam/nữ 18–30, từ 3 tháng kinh nghiệm, thành thạo máy tính cơ bản); Host Live 20–50 triệu (lương cứng 13 triệu + hoa hồng; CĐ/ĐH, 6 tháng–1 năm kinh nghiệm, giọng chuẩn); nghỉ 1 ngày/tuần, xoay 4 ca.",
    "channels": "TikTok",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382",
@@ -11711,6 +11765,60 @@ window.V20_DATA = {
    "logoFit": "contain",
    "contacts": [
     {"provider": "phone", "value": "0703150265", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137"}
+   ]  }
+,
+  {
+   "id": "sh-290",
+   "name": "TY MEDIA",
+   "shopNameKnown": true,
+   "product": "Tuyển Nữ Livestream TikTok (NPC)",
+   "province": "TP. Hồ Chí Minh",
+   "district": "793/60B Trần Xuân Soạn, P. Tân Hưng, Q7",
+   "salary": "LCB 15–40 triệu/tháng + phụ cấp xăng xe; thưởng chuyên cần 2 triệu + thưởng hiệu suất",
+   "shifts": [],
+   "req": "Nữ từ 18+, tự tin, không cần kinh nghiệm, không yêu cầu tiếng Anh. Studio đầy đủ thiết bị, phòng make-up, trang phục; đào tạo make-up & nhảy. Ca: sáng 08h–14h, chiều 14h–20h, tối 20h–02h (live 5–5,5h/ca, nghỉ 4 ngày/tháng). Người đăng: VickyHr. Lưu ý: Zalo trong bài đăng hiển thị 086.990.381 (chỉ 9 chữ số, chưa đủ 10 số nên chưa đưa vào liên hệ — cần xác minh). Địa điểm 793/60B Trần Xuân Soạn, P. Tân Hưng, Q7.",
+   "channels": "www.facebook.com",
+   "date": "2026-11-16",
+   "src": "https://www.facebook.com/groups/337105752372137/posts/979280004821372",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+   ]  },
+  {
+   "id": "sh-291",
+   "name": "WIN LIVE",
+   "shopNameKnown": true,
+   "product": "Tuyển Idol Live TikTok & Agency các app livestream/call toàn quốc",
+   "province": "TP. Hồ Chí Minh",
+   "district": "475/51A CMT8, P. Hòa Hưng (văn phòng đại diện; làm tại nhà 100% toàn quốc)",
+   "salary": "Lương cứng 16–21 triệu/tháng + chuyên cần + thưởng hiệu suất tuần/tháng/quý; iPhone do công ty cấp giao tận nhà",
+   "shifts": [],
+   "req": "Nữ từ 18 tuổi, tiếng Anh giao tiếp tốt, nghiêm túc, có trách nhiệm. Livestream trò chuyện, ca hát, giải trí trên TikTok, tương tác người xem, phối hợp team vận hành. Làm tại nhà 100%, khung giờ cố định 8g30–14g30 (off 4 ngày/tháng); đào tạo từ đầu. Người đăng: Thuy Trang (HR). Địa điểm 475/51A CMT8, P. Hòa Hưng (văn phòng đại diện; làm tại nhà 100% toàn quốc).",
+   "channels": "www.facebook.com",
+   "date": "2026-11-12",
+   "src": "https://www.facebook.com/groups/1546946925709046/posts/2519966688407060",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0337655284", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1546946925709046/posts/2519966688407060"}
+   ]  },
+  {
+   "id": "sh-292",
+   "name": "HOAI VU",
+   "shopNameKnown": true,
+   "product": "Tuyển mẫu livestream thời trang thiết kế",
+   "province": "Hà Nội",
+   "district": "Nguyên Hồng, phường Láng",
+   "salary": "Thu nhập thỏa thuận theo năng lực/kinh nghiệm (không nêu số)",
+   "shifts": [],
+   "req": "Nữ, cao từ 1m60 (size S), ngoại hình ưa nhìn, thần thái tốt, có kinh nghiệm livestream bán hàng, giao tiếp tự nhiên, phong cách nhẹ nhàng thanh lịch, có trách nhiệm, đúng giờ, gắn bó lâu dài. Lịch live cố định, môi trường thời trang chuyên nghiệp. 3–5 buổi/tuần, mỗi buổi 4 tiếng, khung 11h–15h hoặc 19h–23h. Người đăng: D Ha Phuong. Địa điểm Nguyên Hồng, phường Láng.",
+   "channels": "www.facebook.com",
+   "date": "2026-10-20",
+   "src": "https://www.facebook.com/groups/2930003470551216/posts/4542495535968660",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "email", "value": "Phuongdh312@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/2930003470551216/posts/4542495535968660"}
    ]  }
 ],
  "articles": [
