@@ -1,0 +1,45 @@
+name: Deploy v310-f-r2-02 (model photos and service logos contain)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v310.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v310:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v310 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA) ---"
+          if grep -q "v310 (F-R2-02" v20.css; then echo "v310 DA DEPLOY ROI - dung"; exit 1; fi
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7008a075a6ee42f8d8b081fa68e506d8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v310-deploy.zip
+          echo "--- verify v310 (2 files) ---"
+          test "$(unzip -l mclivestream-v310-deploy.zip | grep -c ' js/app.js$')" -eq 1 || (echo "SAI: goi v310 phai co dung 1 file js/app.js"; exit 1)
+          test "$(unzip -l mclivestream-v310-deploy.zip | grep -c ' v20.css$')" -eq 1 || (echo "SAI: goi v310 phai co dung 1 file v20.css"; exit 1)
+          if unzip -l mclivestream-v310-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v310 KHONG duoc chua sw.js"; exit 1; fi
+          grep -q "v310 (F-R2-02" v20.css || (echo "THIEU khoi v310 trong v20.css"; exit 1)
+          grep -q "card-compact-photo--model" js/app.js || (echo "THIEU lop --model trong js/app.js"; exit 1)
+          grep -q "card-compact-photo--model img{object-fit:contain}" v20.css || (echo "THIEU contain the mau trong v20.css"; exit 1)
+          echo "verify OK: 2 files, the mau + logo logistics/agencyAds contain, shop/lo/kiot/xuong giu cover"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v310-deploy.zip
+          git add js/app.js v20.css
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v310: show model photos and service logos whole with contain (F-R2-02, test vong 3); anh the mau + logo logistics/agencyAds contain, shop/lo/kiot/xuong giu cover; data.js/sitemap khong doi (base f59bcc4 + v307 + v308 + v309)"
+            git push
+          fi
