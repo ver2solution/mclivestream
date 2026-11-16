@@ -1,4 +1,4 @@
-name: Deploy v298-jd2026-title (JD.com Double 11: rewrite title for 2026, drop 1.22M figure)
+name: "Deploy v298-jd2026-title (JD.com Double 11: rewrite title for 2026, drop 1.22M figure)"
 
 on:
   push:
