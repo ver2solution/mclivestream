@@ -85,6 +85,32 @@
       return (s && s.user) ? s.user : null;
     } catch (e) { return null; }
   }
+  // v297 (MC-99, P1 — rò email, 16/11/2026): tên hiển thị của tài khoản
+  // KHÔNG BAO GIỜ lấy từ email. Thứ tự: user_metadata.display_name /
+  // full_name / name → profiles.full_name (cùng nguồn header dùng, qua
+  // McLivestreamAPI.fetchMyProfile) → '' (để trống, form hiện placeholder
+  // "Khách Vãng Lai"). Email chỉ dùng để đăng nhập, không phải tên công khai.
+  async function resolveDisplayName(user) {
+    if (!user) return '';
+    var md = user.user_metadata || {};
+    var n = md.display_name || md.full_name || md.name || '';
+    if (typeof n === 'string' && n.trim()) return n.trim();
+    try {
+      var M = api();
+      if (M && typeof M.fetchMyProfile === 'function') {
+        var p = await M.fetchMyProfile();
+        if (p && p.full_name && String(p.full_name).trim()) return String(p.full_name).trim();
+      }
+    } catch (e) { /* bỏ qua — rơi xuống '' */ }
+    return '';
+  }
+  // Tên người dùng tự gõ (hoặc metadata lạ) mà chứa '@' thì coi như email
+  // → bỏ, để chuỗi fallback quyết định (tên hồ sơ hoặc "Khách Vãng Lai").
+  function sanitizeDisplayName(name) {
+    var s = String(name || '').trim();
+    if (!s || s.indexOf('@') !== -1) return '';
+    return s;
+  }
   function loginHref() {
     try {
       var p = String(location.pathname || '');
@@ -162,9 +188,10 @@
     } else if (String(text || '').trim().length < 2) {
       return { ok: false, points: 0, message: 'Hãy viết nội dung bình luận.' };
     }
-    var name = String(displayName || '').trim()
-      || (user && user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name))
-      || (user ? user.email : '') || 'Khách Vãng Lai';
+    // v297 (MC-99): tên hiển thị KHÔNG BAO GIỜ lấy từ email — ô tên đã
+    // sanitize (chặn '@') → tên metadata/hồ sơ → "Khách Vãng Lai".
+    var name = sanitizeDisplayName(displayName)
+      || await resolveDisplayName(user) || 'Khách Vãng Lai';
     if (user) {
       var leftMs = commentCooldownLeftMs(user.id);
       if (leftMs > 0) return { ok: false, points: 0, message: 'Bạn vừa gửi bình luận, vui lòng đợi ' + Math.ceil(leftMs / 1000) + ' giây nữa rồi gửi tiếp nhé (mỗi tài khoản chỉ được 1 bình luận trong 60 giây).' };
@@ -203,10 +230,11 @@
     var note, formHTML;
     if (user) {
       note = '<p class="v2s-note">' + esc(LOGGED_IN_NOTE) + '</p>';
-      // v244 (MB-15): điền sẵn tên hiển thị của tài khoản đang đăng nhập
-      // (cùng chuỗi fallback như submitComment: metadata → email) — trước
-      // đây value='' nên ô hiện placeholder "Khách Vãng Lai" dù đã đăng nhập.
-      var displayName = (user.user_metadata && (user.user_metadata.display_name || user.user_metadata.full_name)) || user.email || '';
+      // v244 (MB-15): điền sẵn tên hiển thị của tài khoản đang đăng nhập.
+      // v297 (MC-99): KHÔNG dùng email nữa — metadata → profiles.full_name
+      // (resolveDisplayName, cùng nguồn header dùng); không có tên thì để
+      // trống, form hiện placeholder "Khách Vãng Lai".
+      var displayName = await resolveDisplayName(user);
       formHTML = '<form class="v2s-comment-form"><label>Tên hiển thị<input name="v2sName" maxlength="100" placeholder="Khách Vãng Lai" value="' + esc(displayName) + '"></label>'
         + '<label>Bình luận *<textarea name="v2sText" rows="3" required minlength="20" placeholder="Viết bình luận từ 20 ký tự trở lên…"></textarea></label>'
         + '<p class="v2s-comment-msg" role="status"></p>'
