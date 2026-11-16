@@ -1,0 +1,48 @@
+name: "Deploy v302-muse4-chat (them Muse 4 vao khung chat admin)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v302-muse4-chat.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v302-muse4-chat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v302-muse4-chat package
+        run: |
+          echo "--- BASE guard (khong deploy chong) ---"
+          grep -q "v299-shell-1" sw.js || (echo "BASE DOI: sw.js khong con v299-shell-1 - mot deploy khac da bump cache, DUNG LAI de rebuild"; exit 1)
+          if grep -q "rthond@gmail.com" js/admin.js; then echo "DA CO Muse 4 trong admin.js - deploy trung, DUNG LAI"; exit 1; fi
+          unzip -o mclivestream-v302-muse4-chat-deploy.zip
+          echo "--- verify v302-muse4-chat (3 file: js/admin.js, quan-tri.html, sw.js) ---"
+          test -f js/admin.js || (echo "THIEU js/admin.js"; exit 1)
+          test -f quan-tri.html || (echo "THIEU quan-tri.html"; exit 1)
+          test -f sw.js || (echo "THIEU sw.js"; exit 1)
+          node --check js/admin.js || (echo "admin.js LOI CU PHAP"; exit 1)
+          grep -F -q "'rthond@gmail.com': 'Muse 4'" js/admin.js || (echo "THIEU Muse 4 trong TASK_AUTHOR_NAMES"; exit 1)
+          grep -F -q '<option value="rthond@gmail.com">Muse 4</option>' quan-tri.html || (echo "THIEU option Muse 4 trong bo loc Ben neu"; exit 1)
+          grep -F -q "v302-shell-1" sw.js || (echo "THIEU v302-shell-1 trong sw.js"; exit 1)
+          grep -F -q "'ver2solution@gmail.com': 'Ryan'" js/admin.js || (echo "MAT Ryan trong TASK_AUTHOR_NAMES"; exit 1)
+          grep -F -q "'thondads@gmail.com': 'Rion'" js/admin.js || (echo "MAT Rion trong TASK_AUTHOR_NAMES"; exit 1)
+          grep -F -q "'thond.bds@gmail.com': 'Thọ Zalo'" js/admin.js || (echo "MAT Tho Zalo trong TASK_AUTHOR_NAMES"; exit 1)
+          echo "verify v302 OK"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v302-muse4-chat-deploy.zip
+          git add js/admin.js quan-tri.html sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v302-muse4-chat: them Muse 4 (rthond@gmail.com) vao khung chat admin - hien ten Muse 4 o tin chat + task, bo loc Ben neu co Muse 4; bump sw.js v302-shell-1"
+            git push
+          fi
