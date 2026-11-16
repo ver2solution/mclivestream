@@ -1,0 +1,44 @@
+name: Deploy v312-f-r2-04 (logo badge title + aria-label, 385 files)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v312.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v312:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v312 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c) ---"
+          test "$(grep -rl 'title="Ver2Solution — phiên bản 2"' --include='*.html' . | wc -l)" = "0" || (echo "v312 DA DEPLOY ROI (mot so file da co badge) - dung"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7008a075a6ee42f8d8b081fa68e506d8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v312-deploy.zip
+          echo "--- verify v312 (385 files) ---"
+          test "$(unzip -l mclivestream-v312-deploy.zip | grep -c ' \.html$')" -eq 385 || (echo "SAI: goi v312 phai co dung 385 file HTML"; exit 1)
+          if unzip -l mclivestream-v312-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v312 KHONG duoc chua sw.js"; exit 1; fi
+          test "$(grep -rl 'title="Ver2Solution — phiên bản 2"' --include='*.html' . | wc -l)" -eq 385 || (echo "SAI: sau unzip phai co dung 385 file co badge title"; exit 1)
+          test "$(grep -rl 'aria-label="Ver2Solution — phiên bản 2"' --include='*.html' . | wc -l)" -eq 385 || (echo "SAI: sau unzip phai co dung 385 file co badge aria-label"; exit 1)
+          echo "verify OK: 385 file HTML, badge co title + aria-label, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v312-deploy.zip
+          git add '*.html'
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v312: add title + aria-label to logo badge on all 385 pages (F-R2-04, test vong 3); chi doi dong badge, khong doi noi dung; data.js/sitemap khong doi (base f59bcc4 + v307 + v308 + v309 + v310 + v311)"
+            git push
+          fi
