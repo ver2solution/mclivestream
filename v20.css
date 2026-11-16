@@ -65,11 +65,8 @@ a:hover{text-decoration:underline}
 .main-nav .nav-news-dropdown a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
 .nav-news-head{display:block;padding:8px 12px 6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8fd4c0}
 .nav-news-cat-name{flex:1;font-weight:700;line-height:1.4}
-.nav-news-cat-count{flex:none;min-width:34px;text-align:center;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:13px;font-weight:800;line-height:1.6}
-.main-nav .nav-news-dropdown a.nav-news-cat:hover .nav-news-cat-count{background:var(--amber);color:#123b31}
 .main-nav .nav-news-dropdown a.nav-news-all{display:block;margin-top:6px;border-top:1px solid rgba(255,255,255,.22);color:var(--amber);font-weight:800;text-align:center}
 .main-nav .nav-news-dropdown a.nav-news-all:hover{background:rgba(255,176,32,.14);color:var(--amber)}
-.nav-news-loading{display:block;padding:10px 12px;color:#bfe3d8;font-weight:700}
 @media(max-width:1200px){
 .main-nav.open .nav-news-wrap{display:block}
 .main-nav.open .nav-news-dropdown{position:static;min-width:0;max-width:none;box-shadow:none;border-radius:12px;margin:6px 0 8px}

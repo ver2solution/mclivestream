@@ -5114,42 +5114,29 @@ function initTransferForm(){
     if (A && typeof A.onSessionChange === 'function') A.onSessionChange(function () { refreshTransfer(); });
   } catch (e) { /* bỏ qua — vẫn tải 1 lần lúc mở trang */ }
 }
-/* v176: dropdown "Tin tức" trên nav — 10 CHUYÊN MỤC + số bài + "Xem tất cả tin →".
-   Thay dropdown 8 bài mới nhất (v175) theo yêu cầu của anh Thọ 12/11:
-   overlay chuyên mục giống cách danh sách bộ lọc chuyên mục làm
-   (tên + số bài, vd "Việc Làm (16)"), hoàn thiện đẹp hơn.
+/* v176: dropdown "Tin tức" trên nav — 10 CHUYÊN MỤC + "Xem tất cả tin →".
+   Thay dropdown 8 bài mới nhất (v175) theo yêu cầu của anh Thọ 12/11.
+   v313 (17/11/2026, lệnh anh Thọ 02:26): TẮT số bài ở 10 mục nhỏ — chỉ còn
+   tên chuyên mục, không còn tổng hợp số lượng bài; bỏ luôn việc tải data.js
+   để đếm (dropdown giờ là nội dung tĩnh, dựng ngay lúc chạy, không chờ).
    Markup nav trong HTML KHÔNG đổi (7 mục, byte-identical toàn site — quy tắc 9);
-   JS tự chèn dropdown vào mục "Tin tức" lúc chạy, render từ data.js.
-   Tên 10 chuyên mục ghi cứng theo thứ tự cố định; SỐ BÀI tính lúc chạy
-   từ D.articles (như applyOptionCounts), không ghi cứng số đếm.
+   JS tự chèn dropdown vào mục "Tin tức" lúc chạy.
+   Tên 10 chuyên mục ghi cứng theo thứ tự cố định.
    Mỗi dòng link tới tin-tuc.html?cat=<tên đã mã hoá URL>; initNews (v111)
-   đã đọc ?cat= để chọn sẵn bộ lọc. Trang đã có V20_DATA thì dựng ngay;
-   trang chưa có (đa số bai-viet/*, hoi-dap, dang-ky...) thì chỉ tải data.js
-   khi người dùng chạm vào mục Tin tức (hover/focus/click) để lần tải trang
-   đầu không nặng thêm. Desktop: hover/focus mở. Mobile/cảm ứng: chạm lần 1
-   mở, chạm lần 2 đi tới trang lọc; bấm ngoài hoặc Esc để đóng. */
+   đã đọc ?cat= để chọn sẵn bộ lọc. Desktop: hover/focus mở. Mobile/cảm ứng:
+   chạm lần 1 mở, chạm lần 2 đi tới trang lọc; bấm ngoài hoặc Esc để đóng. */
 var NEWS_DROPDOWN_CATS = ['Việc Làm', 'Livestream', 'Phân tích', 'Thị trường', 'Công nghệ', 'Dòng tiền', 'Xu hướng', 'Hàng hoá', 'Đang hot', 'Đời Sống'];
 var _newsDropdownReady = false; /* khung DOM đã chèn xong */
 var _newsDropdownFilled = false; /* đã đổ đủ 10 chuyên mục vào panel */
-var _newsDataLoading = false; /* đang tải data.js (chỉ 1 lần) */
-function newsDropdownCounts(articles){
-  var counts = {};
-  NEWS_DROPDOWN_CATS.forEach(function(c){ counts[c] = 0; });
-  (articles || []).forEach(function(a){
-    if (a && a.cat && counts.hasOwnProperty(a.cat)) counts[a.cat]++;
-  });
-  return counts;
-}
 function newsDropdownRoot(newsLink){
   var h = newsLink ? (newsLink.getAttribute('href') || '') : '';
   return h.replace(/tin-tuc\.html$/, ''); /* '' ở trang gốc, '../' ở bai-viet/* — đúng cả khi deploy ở subpath */
 }
-function newsDropdownHTML(counts, root){
+function newsDropdownHTML(root){
   var items = NEWS_DROPDOWN_CATS.map(function(c){
     var href = root + 'tin-tuc.html?cat=' + encodeURIComponent(c);
     return '<a class="nav-news-item nav-news-cat" href="' + esc(href) + '">'
-      + '<span class="nav-news-cat-name">' + esc(c) + '</span>'
-      + '<span class="nav-news-cat-count">' + (counts[c] || 0) + '</span></a>';
+      + '<span class="nav-news-cat-name">' + esc(c) + '</span></a>';
   }).join('');
   return '<div class="nav-news-head">Chuyên mục tin tức</div>' + items
     + '<a class="nav-news-item nav-news-all" href="' + esc(root + 'tin-tuc.html') + '">Xem tất cả tin →</a>';
@@ -5180,29 +5167,14 @@ function initNewsDropdown(){
   link.setAttribute('aria-expanded', 'false');
   var panel = document.createElement('div');
   panel.className = 'nav-news-dropdown';
-  panel.innerHTML = '<span class="nav-news-loading">Đang tải chuyên mục…</span>';
   wrap.appendChild(panel);
   _newsDropdownReady = true;
   function fill(){
     if (_newsDropdownFilled) return;
-    var arts = (window.V20_DATA && window.V20_DATA.articles) || D.articles || [];
-    panel.innerHTML = newsDropdownHTML(newsDropdownCounts(arts), root);
+    panel.innerHTML = newsDropdownHTML(root);
     _newsDropdownFilled = true;
   }
-  function hasData(){
-    return !!(window.V20_DATA && window.V20_DATA.articles && window.V20_DATA.articles.length);
-  }
-  function ensureData(){
-    if (_newsDropdownFilled) return;
-    if (hasData()){ fill(); return; }
-    if (_newsDataLoading) return;
-    _newsDataLoading = true;
-    var s = document.createElement('script');
-    s.src = root + 'js/data.js';
-    s.onload = function(){ fill(); };
-    s.onerror = function(){ panel.innerHTML = '<span class="nav-news-loading">Chưa tải được chuyên mục.</span>'; };
-    document.head.appendChild(s);
-  }
+  fill(); /* v313: muc tinh, khong can data.js — dung ngay, khong cho */
   function closeDropdown(){
     wrap.classList.remove('open');
     link.setAttribute('aria-expanded', 'false');
@@ -5210,13 +5182,6 @@ function initNewsDropdown(){
   function openDropdown(){
     wrap.classList.add('open');
     link.setAttribute('aria-expanded', 'true');
-  }
-  if (hasData()){ fill(); }
-  else {
-    /* Chưa có dữ liệu: chỉ tải khi người dùng chạm vào mục Tin tức. */
-    wrap.addEventListener('mouseenter', ensureData);
-    wrap.addEventListener('focusin', ensureData);
-    link.addEventListener('click', ensureData);
   }
   /* Chạm (mobile / màn cảm ứng / menu mobile đang mở): lần 1 mở dropdown,
      lần 2 mới đi tới tin-tuc.html. Desktop chuột: hover đã mở, click đi thẳng. */
@@ -5226,7 +5191,6 @@ function initNewsDropdown(){
     var mobileOpen = nav.classList.contains('open');
     if ((touch || mobileOpen) && !wrap.classList.contains('open')){
       e.preventDefault();
-      ensureData();
       openDropdown();
     }
   });
@@ -5282,7 +5246,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
    nào đó không gắn được dropdown, thử lại khi trang tải xong.
    initNewsDropdown idempotent nên gọi 2 lần không chèn trùng. */
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initHeaderAuth:initHeaderAuth, initLogoBadge:initLogoBadge, initActivationStrip:initActivationStrip, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, imgFallback:imgFallback, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownCounts:newsDropdownCounts, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, liveCount:liveCount, renderLiveStats:renderLiveStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, KIOT_SUBTYPES:KIOT_SUBTYPES, kiotSubtypeLabel:kiotSubtypeLabel, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initHeaderAuth:initHeaderAuth, initLogoBadge:initLogoBadge, initActivationStrip:initActivationStrip, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, imgFallback:imgFallback, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, liveCount:liveCount, renderLiveStats:renderLiveStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, KIOT_SUBTYPES:KIOT_SUBTYPES, kiotSubtypeLabel:kiotSubtypeLabel, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
