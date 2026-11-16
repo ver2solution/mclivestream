@@ -23,7 +23,7 @@ jobs:
           test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
           unzip -o mclivestream-v312-deploy.zip
           echo "--- verify v312 (385 files) ---"
-          test "$(unzip -l mclivestream-v312-deploy.zip | grep -c ' \.html$')" -eq 385 || (echo "SAI: goi v312 phai co dung 385 file HTML"; exit 1)
+          test "$(unzip -l mclivestream-v312-deploy.zip | grep -c '\.html$')" -eq 385 || (echo "SAI: goi v312 phai co dung 385 file HTML"; exit 1)
           if unzip -l mclivestream-v312-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v312 KHONG duoc chua sw.js"; exit 1; fi
           test "$(grep -rl 'title="Ver2Solution — phiên bản 2"' --include='*.html' . | wc -l)" -eq 385 || (echo "SAI: sau unzip phai co dung 385 file co badge title"; exit 1)
           test "$(grep -rl 'aria-label="Ver2Solution — phiên bản 2"' --include='*.html' . | wc -l)" -eq 385 || (echo "SAI: sau unzip phai co dung 385 file co badge aria-label"; exit 1)
