@@ -41,6 +41,7 @@
    articles-cong-nghe-2026-11-16 adds 4 Cong nghe articles (16/11/2026, Monday): 1 seasonal keyword "công cụ livestream Tết" #5/10 (4.715 words, deep) + 1 Monday algorithm update "thuật toán TikTok 2026" (3.230 words) + 1 seasonal "TikTok Shop Affiliate Tết" #6/10 (2.944 words) + 1 news "Meta bắt tay AnyMind" (2.292 words). Total 323 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-16 RESTORES 4 Viec Lam articles lost from live data.js by v288 rebase (commit 6c58991, 02:54 16/11/2026) + adds 4 new Viec Lam articles (16/11/2026, Monday): 1 stats (6 models + 17 shops 15/11) + 1 market stats (TMĐT Q3/2026 150,4 nghìn tỷ, Metric 28/10/2026) + 1 intro 'sàn việc làm livestream' + 1 bo 100 keyword STT 11 'việc làm livestream part time' (deep). Total 312 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-16 adds 4 Phan tich articles (16/11/2026, Monday): 1 seasonal keyword "phi san TikTok Shop Shopee 2026" #6/10 (deep) + 2 bo 100 cum E "y tuong kinh doanh it von" STT 83 + "ban hang online khong can von" STT 84 + 1 bo 100 cum E "khoi nghiep ban hang online" STT 90 (rotation topic #4 — boc me mo hinh kinh doanh thanh cong, Gymshark case, written last). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-doi-song-2026-11-16 adds 5 Đời Sống articles (16/11/2026, Monday): 1 seasonal keyword "đời sống mẫu livestream dịp Tết" #4/10 (deep) + 3 news ("du lịch Đà Lạt tháng 12"; "đi bộ 10000 bước mỗi ngày"; "cách chia tiền lương 50 30 20") + 1 cafe "quán cafe check-in đẹp The Workshop Coffee Sài Gòn". Total 345 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    v289 adds 4 Thi truong articles (16/11/2026, Monday): 1 seasonal keyword "Shopee 12.12" #4/10 (7.054 words, deep + đánh giá tiềm năng) + 3 news ("Shopee quý 3 2026: GMV 39,7 tỷ USD" 6.320 words; "livestream Trung Quốc 2026: Double 11 1.776,4 tỷ NDT" 6.909 words; "TMĐT Đông Nam Á 2026: 226 tỷ USD" 5.630 words). Total 319 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-xu-huong-2026-11-15 adds 4 Xu hướng articles (15/11/2026, Sunday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 (3.247 words, deep) + 1 bo 100 keyword "TikTok Shop Affiliate" STT 55 (2.879 words) + 2 news ("xu hướng mua sắm hàng đã qua sử dụng" 3.033 words; "thương mại nội dung Đông Nam Á" 2.812 words). Total 290 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v257 adds 4 Thi truong articles (15/11/2026, Sunday): 1 seasonal keyword "TikTok Shop 12.12" #3/10 (deep + đánh giá tiềm năng) + 3 news ("Lazada 11.11 2026"; "TMĐT Việt Nam 9 tháng 2026: 442 nghìn tỷ" (Metric); "Temu Shein 2026: hết miễn thuế"). Total 274 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -15004,7 +15005,67 @@ window.V20_DATA = {
 {"title":"Đồ trang trí Tết bán chạy: 251,4 tỷ linh vật Ngựa","cat":"Hàng hoá","source":"Metric","date":"2026-11-16","url":"https://www.brandsvietnam.com/congdong/topic/dip-can-tet-2026-tu-khoa-linh-vat-ngua-ghi-nhan-xu-huong-tim-kiem-tang-cao","page": "bai-viet/do-trang-tri-tet-ban-chay-251-ty-linh-vat-ngua.html","img":"https://vieclamlivestream.online/images/bai-viet/do-trang-tri-tet-ban-chay-251-ty-linh-vat-ngua.jpg","pinned":false,"takeaway":"Đồ trang trí Tết bán chạy: linh vật Ngựa đạt 251,4 tỷ đồng trong 6 tuần cận Tết 2026, tăng 77%, 3,4 triệu sản phẩm; TikTok Shop chiếm 61% thị phần; Tết 2027 đổi sang linh vật Dê (Metric, 14/02/2026)."},
 {"title":"Nhập hàng sỉ ở đâu: 11 nhà cung cấp giá sỉ 2026","cat":"Hàng hoá","source":"Shopify","date":"2026-11-16","url":"https://www.shopify.com/blog/small-business-wholesale-suppliers","page": "bai-viet/nhap-hang-si-o-dau-11-nha-cung-cap-gia-si-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/nhap-hang-si-o-dau-11-nha-cung-cap-gia-si-2026.jpg","pinned":false,"takeaway":"Nhập hàng sỉ ở đâu: 11 nhà cung cấp giá sỉ 2026 của Shopify — Faire hơn 100.000 thương hiệu, trả chậm 60 ngày; AliExpress và DHgate không có số lượng tối thiểu; kiểm tra nhà cung cấp bằng 4 bước trước khi đặt cọc (Shopify, 07/11/2026)."},
 {"title":"Cách quản lý hàng tồn kho: 5 nguyên tắc shop nhỏ","cat":"Hàng hoá","source":"Linnworks","date":"2026-11-16","url":"https://www.linnworks.com/blog/the-definitive-guide-to-shopify-inventory-management/","page": "bai-viet/cach-quan-ly-hang-ton-kho-5-nguyen-tac-shop-nho.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-quan-ly-hang-ton-kho-5-nguyen-tac-shop-nho.jpg","pinned":false,"takeaway":"Cách quản lý hàng tồn kho: 5 nguyên tắc của Linnworks — điểm đặt hàng lại bằng công thức doanh số mỗi ngày nhân thời gian giao hàng cộng hàng dự phòng; nhà bán lẻ giữ 1,26 tháng doanh số trong kho (tháng 04/2026)."},
-{"title":"Tai nghe Kinoko no Yama: nấm sô-cô-la cháy hàng","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-16","url":"https://soranews24.com/2026/10/28/japanese-snack-lovers-may-soon-be-spore-ting-the-latest-crowdfunded-confectionery-tech/","page": "bai-viet/tai-nghe-kinoko-no-yama-nam-socola-chay-hang-10-phut.html","img":"https://vieclamlivestream.online/images/bai-viet/tai-nghe-kinoko-no-yama-nam-socola-chay-hang-10-phut.jpg","pinned":false,"takeaway":"Tai nghe Kinoko no Yama: tai nghe hình nấm sô-cô-la cháy hàng 3.500 chiếc trong 10 phút năm 2024, gây quỹ gấp 98,36 lần mục tiêu; bản Pro 2027 trở lại 01/11/2026, dịch AI 144 ngôn ngữ, giá từ 29.800 yên (SoraNews24, 28/10/2026)."}
+{"title":"Tai nghe Kinoko no Yama: nấm sô-cô-la cháy hàng","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-16","url":"https://soranews24.com/2026/10/28/japanese-snack-lovers-may-soon-be-spore-ting-the-latest-crowdfunded-confectionery-tech/","page": "bai-viet/tai-nghe-kinoko-no-yama-nam-socola-chay-hang-10-phut.html","img":"https://vieclamlivestream.online/images/bai-viet/tai-nghe-kinoko-no-yama-nam-socola-chay-hang-10-phut.jpg","pinned":false,"takeaway":"Tai nghe Kinoko no Yama: tai nghe hình nấm sô-cô-la cháy hàng 3.500 chiếc trong 10 phút năm 2024, gây quỹ gấp 98,36 lần mục tiêu; bản Pro 2027 trở lại 01/11/2026, dịch AI 144 ngôn ngữ, giá từ 29.800 yên (SoraNews24, 28/10/2026)."},
+  {
+   "title": "Đời sống mẫu livestream dịp Tết: làm, nghỉ ra sao",
+   "cat": "Đời Sống",
+   "source": "Vietnam Briefing",
+   "date": "2026-11-16",
+   "url": "https://www.vietnam-briefing.com/news/2027-vietnam-public-holidays.html/",
+   "page": "bai-viet/doi-song-mau-livestream-dip-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doi-song-mau-livestream-dip-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đời sống mẫu livestream dịp Tết xoay quanh lịch nghỉ: Tết Nguyên đán 2027 bắt đầu vào thứ Bảy, ngày 6 tháng 2 năm 2027, và khối công chức, viên chức được nghỉ 7 ngày liên tục từ ngày 4 đến ngày 10 tháng 2 năm 2027 theo thông báo của Bộ Nội vụ ngày 10 tháng 10 năm 2026."
+  },
+  {
+   "title": "Du lịch Đà Lạt tháng 12: 5 trải nghiệm đúng mùa",
+   "cat": "Đời Sống",
+   "source": "Da Lat in December — Thong Xanh Spa",
+   "date": "2026-11-16",
+   "url": "https://www.thongxanhspa.com/tin-tuc/da-lat-in-december",
+   "page": "bai-viet/du-lich-da-lat-thang-12-5-trai-nghiem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-da-lat-thang-12-5-trai-nghiem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Đà Lạt tháng 12 là mùa khô lạnh nhất trong năm, với Festival Hoa lần thứ 11 khai mạc ngày 19/12/2026 và những buổi sáng sương mù phủ kín đồi thông."
+  },
+  {
+   "title": "Đi bộ 10000 bước mỗi ngày có tốt không?",
+   "cat": "Đời Sống",
+   "source": "Harvard Health Publishing",
+   "date": "2026-11-16",
+   "url": "https://www.health.harvard.edu/blog/10000-steps-a-day-or-fewer-2019071117305",
+   "page": "bai-viet/di-bo-10000-buoc-moi-ngay-co-tot-khong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/di-bo-10000-buoc-moi-ngay-co-tot-khong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đi bộ 10000 bước mỗi ngày có tốt không?"
+  },
+  {
+   "title": "Cách chia tiền lương 50 30 20 cho mẫu livestream",
+   "cat": "Đời Sống",
+   "source": "NerdWallet",
+   "date": "2026-11-16",
+   "url": "https://www.nerdwallet.com/finance/learn/nerdwallet-budget-calculator?trk=nw_gn_4.0",
+   "page": "bai-viet/cach-chia-tien-luong-50-30-20-cho-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-chia-tien-luong-50-30-20-cho-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách chia tiền lương 50 30 20 giúp mẫu livestream nhận lương theo ca xử lý thu nhập bấp bênh: có tháng chạy nhiều ca thu nhập lên tới 18 đến 30 triệu đồng, có tháng ít ca chỉ còn khoảng 9 đến 12 triệu đồng, theo các tin tuyển dụng công khai từ ngày 31/10/2026 tới ngày 12/11/2026."
+  },
+  {
+   "title": "Quán cafe check-in đẹp The Workshop Coffee Sài Gòn",
+   "cat": "Đời Sống",
+   "source": "Fanpage The Workshop Coffee",
+   "date": "2026-11-16",
+   "url": "http://www.facebook.com/the.workshop.coffee",
+   "page": "bai-viet/quan-cafe-check-in-dep-the-workshop-coffee-sai-gon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-the-workshop-coffee-sai-gon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp The Workshop Coffee nằm ở số 27 Ngô Đức Kế, phường Bến Nghé, Quận 1, TP.HCM, là một trong những quán cafe check-in đẹp lâu đời nhất Sài Gòn, mở cửa từ năm 2013 và được du khách chấm 4,5 trên 5 sao với 621 đánh giá trên Tripadvisor tính đến ngày 16/11/2026."
+  }
 ],
  "lots": [
    {
