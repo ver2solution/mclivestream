@@ -15202,6 +15202,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Douyin chốt sổ Double 11/2026 (12/11): shop tự live phá 100 triệu NDT tăng 200%, 860.000 shop lần đầu mở live đã có đơn — 330 vùng công nghiệp bán hơn 350 tỷ đồng mỗi vùng."
   },
+  {
+   "title": "2,6 tỷ đồng từ 1 video 10 giây — kính mắt mèo: sản phẩm \"nhỏ mà có võ\" đang khuấy đảo Shopee trước Black Friday",
+   "cat": "Hàng hoá",
+   "source": "ShopeeAnalytics + Accio",
+   "date": "2026-11-16",
+   "url": "https://www.accio.com/business/tiktok-trend-glasses",
+   "page": "bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html",
+   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/6360232c023a45979257c40361c104c7~tplv-aphluv4xwc-resize-jpeg:800:800.jpeg",
+   "pinned": false,
+   "takeaway": "1 video 10 giây, 1,2 triệu lượt xem, GMV 1,4–2,6 tỷ đồng — kính mắt mèo chiếm 2 trong 3 video bán chạy nhất Shopee tuần qua. Vì sao sản phẩm vài chục nghìn này bán khỏe hơn cả iPhone 18 Pro Max, và shop Việt cần làm gì trước Black Friday 27/11?"
+  },
 ],
  "lots": [
    {
