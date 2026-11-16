@@ -20,9 +20,9 @@ jobs:
           unzip -o mclivestream-v305-toc-fix-deploy.zip
           echo "--- verify v305-toc-fix (1 bai) ---"
           test -f bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html || (echo "THIEU bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html"; exit 1)
-          test "$(grep -c '<h2 id="bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "8" || (echo "SAI so h2 bai-muc (can 8)"; exit 1)
-          test "$(grep -c '<li><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "8" || (echo "SAI so muc nav.toc (can 8)"; exit 1)
-          test "$(grep -c '<p><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html)" = "7" || (echo "SAI so link muc luc trong bai (can 7)"; exit 1)
+          test "$(grep -o '<h2 id="bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html | wc -l)" -eq 8 || (echo "SAI so h2 bai-muc (can 8)"; exit 1)
+          test "$(grep -o '<li><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html | wc -l)" -eq 8 || (echo "SAI so muc nav.toc (can 8)"; exit 1)
+          test "$(grep -o '<p><a href="#bai-muc-' bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html | wc -l)" -eq 7 || (echo "SAI so link muc luc trong bai (can 7)"; exit 1)
           echo "TOC OK: 8 h2 + 8 nav + 7 link trong bai"
       - name: Commit deployed files
         run: |
