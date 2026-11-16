@@ -1,0 +1,45 @@
+name: Deploy v313 (turn off article counts in Tin tuc nav dropdown)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v313.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v313:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v313 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c) ---"
+          grep -q 'nav-news-cat-count' js/app.js || (echo "v313 DA DEPLOY ROI (app.js khong con count) - dung"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7008a075a6ee42f8d8b081fa68e506d8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v313-deploy.zip
+          echo "--- verify v313 (2 files) ---"
+          test "$(unzip -l mclivestream-v313-deploy.zip | grep -cE ' (js/app\.js|v20\.css)$')" -eq 2 || (echo "SAI: goi v313 phai co dung 2 file (js/app.js + v20.css)"; exit 1)
+          if grep -q 'nav-news-cat-count' js/app.js v20.css; then echo "SAI: sau unzip app.js/v20.css khong duoc con nav-news-cat-count"; exit 1; fi
+          if grep -q 'nav-news-loading' js/app.js v20.css; then echo "SAI: sau unzip khong duoc con nav-news-loading"; exit 1; fi
+          grep -q 'newsDropdownHTML(root)' js/app.js || (echo "SAI: app.js phai goi newsDropdownHTML(root) (khong count)"; exit 1)
+          grep -q 'newsDropdownCounts' js/app.js && (echo "SAI: app.js khong duoc con newsDropdownCounts"; exit 1) || true
+          echo "verify OK: 2 file, khong con so dem dropdown Tin tuc, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v313-deploy.zip
+          git add js/app.js v20.css
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v313: turn off article counts in Tin tuc nav dropdown (per user 02:26 17/11); remove newsDropdownCounts + lazy data.js load, dropdown static; drop dead .nav-news-cat-count/.nav-news-loading CSS; data.js/sitemap khong doi (base v312 HEAD 1ebcc32)"
+            git push
+          fi
