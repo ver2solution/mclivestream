@@ -9,7 +9,10 @@
    get_home_chat_top. Không đưa dữ liệu demo giả lên live: khi chưa có tin thật
    thì khung chat hiện "Chưa có tin nhắn — hãy là người đầu tiên trò chuyện".
    v325 (18/11/2026): tin bot từ js/chat-bots.js vẽ đè lên sau mỗi lần render
-   (repaint) — tin bot chỉ ở phía client, không ghi DB. */
+   (repaint) — tin bot chỉ ở phía client, không ghi DB.
+   v326 (18/11/2026): dòng ghi chú bot đổi theo trạng thái đăng nhập
+   (setLoggedIn) — khách thấy lời mời đăng nhập, người đã đăng nhập thấy
+   link chỉnh mục tóm tắt. */
 (function () {
   'use strict';
 
@@ -251,6 +254,17 @@
   function setLoggedIn(loggedIn) {
     var input = $('homeChatInput'), btn = $('homeChatSend');
     if (!input || !btn) return;
+    // v325-fix (18/11/2026, anh Thọ): dòng ghi chú dưới ô nhập đổi theo trạng
+    // thái đăng nhập — khách thấy lời mời đăng nhập (kích thích đăng ký),
+    // người đã đăng nhập thấy link chỉnh mục tóm tắt ở Trang của tôi.
+    var note = $('homeChatBotNote');
+    if (note) {
+      if (loggedIn) {
+        note.innerHTML = 'Bạn có thể chọn mục tóm tắt tin theo yêu cầu trong khung chat, hoặc tắt nó đi. <a href="trang-cua-toi.html#bot-tom-tat">Chỉnh ở Trang của tôi →</a>';
+      } else {
+        note.innerHTML = 'Mẹo nhỏ: Bạn đăng nhập để chọn tin tóm tắt yêu thích cho bot hoặc tắt nó đi. <a href="dang-ky.html">Đăng nhập / Đăng ký →</a>';
+      }
+    }
     if (loggedIn) {
       input.disabled = false;
       input.placeholder = 'Nhắn tin trong Chat tổng…';

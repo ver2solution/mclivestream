@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v325-shell-1'; /* v325 (bot tom tat tin + doi vi tri Tin tuc, 18/11/2026): goi doi v20.css (CSS chat/bot) + index.html (di chuyen #lo-trinh, dong bot-note, script chat-bots.js) + js/community-chat.js (hook repaint bot) + js/chat-bots.js moi + images/bots/*.png moi + trang-cua-toi.html (muc chon chu de bot). v20.css nam trong SHELL cache-first nen phai bump, khong thi trinh duyet phuc vu CSS cu. */
+const CACHE = 'v326-shell-1'; /* v326 (18/11/2026, fix nho sau v325): dong ghi chu bot doi theo trang thai dang nhap — khach thay loi moi dang nhap (kich thich dang ky), nguoi da dang nhap thay link chinh muc tom tat. Goi doi index.html (bot-note + id) + js/community-chat.js (setLoggedIn doi note). v325 da live 00:33 (commit 3bc9230). */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
