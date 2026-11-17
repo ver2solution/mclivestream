@@ -1,0 +1,44 @@
+name: Deploy v318 (MC-108: hide model list on lot/factory tabs)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v318.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v318:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v318 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c; so sanh so bang -eq) ---"
+          grep -q 'v318 (MC-108' js/app.js && (echo "v318 DA DEPLOY ROI - dung"; exit 1) || true
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dded91b0ef6f332377d0ed00f6c92b7e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" -eq 387 || (echo "BASE DOI: sitemap khong con 387 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v318-deploy.zip
+          echo "--- verify v318 (2 files) ---"
+          test "$(unzip -l mclivestream-v318-deploy.zip | grep -cE ' (js/app\.js|v20\.css)$')" -eq 2 || (echo "SAI: goi v318 phai co dung 2 file (js/app.js + v20.css)"; exit 1)
+          grep -q "v318 (MC-108" js/app.js || (echo "SAI: app.js phai co marker v318 (MC-108"; exit 1)
+          grep -q "collapseSection('model-list-section'" js/app.js || (echo "SAI: app.js phai co collapseSection model-list-section"; exit 1)
+          grep -q "#model-list-section.collapsed{display:none}" v20.css || (echo "SAI: v20.css phai co #model-list-section.collapsed"; exit 1)
+          echo "verify OK: 2 file, v318 co mat, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v318-deploy.zip
+          git add js/app.js v20.css
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v318 (MC-108): an danh sach Mau chinh khi chuyen tab Lo/Xuong/muc con; setCat thu gon/mo model-list-section theo tab + CSS #model-list-section.collapsed{display:none}; data.js/sitemap khong doi (base 32fdc90)"
+            git push
+          fi
