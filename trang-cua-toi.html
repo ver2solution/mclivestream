@@ -96,6 +96,89 @@
 <button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-mau">Lưu hồ sơ</button>
 <p style="font-size:13px">Bấm Lưu là gửi hồ sơ về hệ thống để admin duyệt. Hồ sơ chưa duyệt sẽ không hiện ở danh sách công khai.</p>
 </form>
+<!-- v325 (18/11/2026): Bot tóm tắt tin trong khung chat trang chủ — người dùng
+     chọn chủ đề bot tóm tắt / tắt bot. Lưu localStorage v2s_bot_prefs ngay khi
+     đổi ô tích (không cần bấm Lưu hồ sơ); khung chat đọc lại mỗi 5 giây. -->
+<section class="form-card" id="bot-tom-tat" style="margin-top:24px">
+<h2>4. Bot tóm tắt tin trong khung chat</h2>
+<p style="font-size:14px">Trong khung chat ở trang chủ, 20 bot sẽ tóm tắt tin tức mỗi 5 giây theo các mục bạn tích dưới đây. Bỏ tích một mục thì bot không tóm tắt mục đó nữa; tắt hẳn thì khung chat chỉ hiện tin thật của người dùng.</p>
+<p><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="botEnabled" checked> <b>Bật bot tóm tắt tin trong khung chat</b></label></p>
+<div id="botTopics">
+<p><label><input type="checkbox" data-bot-topic="huong-dan" checked> Hướng dẫn dùng web</label></p>
+<p><label><input type="checkbox" data-bot-topic="tin-hot" checked> Tin mới hot</label></p>
+<p><label><input type="checkbox" data-bot-topic="an-choi" checked> Nơi ăn chơi</label></p>
+<p><label><input type="checkbox" data-bot-topic="nghe-nghiep" checked> Phát triển nghề nghiệp</label></p>
+<p><label><input type="checkbox" data-bot-topic="tang-don" checked> Tăng đơn hàng</label></p>
+<p><label><input type="checkbox" data-bot-topic="tai-chinh" checked> Quản lý tài chính cá nhân</label></p>
+<p><label><input type="checkbox" data-bot-topic="doanh-nghiep" checked> Tổ chức doanh nghiệp</label></p>
+</div>
+<p id="botPrefsMsg" style="font-size:13px"></p>
+</section>
+<script>
+/* v325: Bot tóm tắt tin — đọc/ghi lựa chọn (localStorage v2s_bot_prefs).
+   Đổi ô tích là lưu ngay, không cần bấm Lưu hồ sơ; khung chat trang chủ
+   đọc lại mỗi 5 giây (và nghe event v2s-bot-prefs-changed cùng tab). */
+(function () {
+  var KEY = 'v2s_bot_prefs';
+  var TOPICS = ['huong-dan', 'tin-hot', 'an-choi', 'nghe-nghiep', 'tang-don', 'tai-chinh', 'doanh-nghiep'];
+  function defaults() {
+    var t = {};
+    TOPICS.forEach(function (id) { t[id] = true; });
+    return { enabled: true, topics: t };
+  }
+  function read() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return defaults();
+      var p = JSON.parse(raw);
+      if (!p || typeof p !== 'object') return defaults();
+      var out = defaults();
+      if (typeof p.enabled === 'boolean') out.enabled = p.enabled;
+      if (p.topics) TOPICS.forEach(function (id) {
+        if (typeof p.topics[id] === 'boolean') out.topics[id] = p.topics[id];
+      });
+      return out;
+    } catch (e) { return defaults(); }
+  }
+  function write(p) {
+    try { window.localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) { /* bỏ qua */ }
+    try { window.dispatchEvent(new Event('v2s-bot-prefs-changed')); } catch (e) { /* bỏ qua */ }
+  }
+  function init() {
+    var master = document.getElementById('botEnabled');
+    var box = document.getElementById('botTopics');
+    var msg = document.getElementById('botPrefsMsg');
+    if (!master || !box) return;
+    var p = read();
+    master.checked = !!p.enabled;
+    box.querySelectorAll('[data-bot-topic]').forEach(function (cb) {
+      var id = cb.getAttribute('data-bot-topic');
+      cb.checked = !!p.topics[id];
+      cb.disabled = !p.enabled;
+    });
+    function save(showMsg) {
+      var np = { enabled: master.checked, topics: {} };
+      box.querySelectorAll('[data-bot-topic]').forEach(function (cb) {
+        np.topics[cb.getAttribute('data-bot-topic')] = !!cb.checked;
+      });
+      write(np);
+      box.querySelectorAll('[data-bot-topic]').forEach(function (cb) { cb.disabled = !np.enabled; });
+      if (msg && showMsg) {
+        msg.textContent = np.enabled
+          ? 'Đã lưu: bot sẽ tóm tắt theo các mục bạn đã tích.'
+          : 'Đã tắt bot: khung chat chỉ hiện tin thật của người dùng.';
+        setTimeout(function () { if (msg) msg.textContent = ''; }, 4000);
+      }
+    }
+    master.addEventListener('change', function () { save(true); });
+    box.querySelectorAll('[data-bot-topic]').forEach(function (cb) {
+      cb.addEventListener('change', function () { save(true); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
 <!-- v124 (10/11/2026): Tin đăng của tôi — lô / xưởng / kiot tự đăng.
      Chỉ tài khoản Doanh nghiệp / Tổ chức có hồ sơ shop đã duyệt mới
      đăng được (cổng kiểm tra ở JS initListings bên dưới). -->

@@ -1146,11 +1146,23 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .chat-meta b{color:var(--ink);font-size:14px}
 .chat-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--brand);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px}
 .chat-text{margin:2px 0 0;font-size:15px;word-break:break-word}
-.chat-input{display:flex;gap:10px;padding:12px 0 0;margin-top:16px;border-top:1px solid var(--line)}
+.chat-input{display:flex;gap:10px;padding:12px 0 0;margin-top:auto;border-top:1px solid var(--line)}
 .chat-input input{flex:1;border:1px solid var(--line);border-radius:999px;padding:12px 16px;font-size:15px;min-height:44px;font-family:inherit;background:var(--card);color:var(--ink)}
 .chat-input input:disabled{background:#f1f5f3;color:var(--mut)}
 .chat-hint{font-size:13px;color:#b3261e;margin:8px 0 0}
 .chat-jump{align-self:center;margin-top:10px;border:1px solid var(--line);background:var(--card);color:var(--brand);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer}
+/* v325: Bot tóm tắt tin — avatar ảnh AI + nhãn Bot + link trong tin. */
+.chat-msg-bot .chat-body{background:#f8fafc;border:1px solid #eef2f7;border-radius:12px;padding:8px 12px}
+.chat-avatar-bot{background:none;width:40px;height:40px}
+.chat-avatar-bot img{width:40px;height:40px;border-radius:50%;object-fit:cover;display:block}
+.bot-tag{background:#7c3aed}
+.chat-bot-link{color:var(--brand);font-weight:700;white-space:nowrap}
+.chat-bot-link:hover{text-decoration:underline}
+.chat-bot-note{font-size:12px;color:var(--mut);margin:8px 0 0;line-height:1.5}
+.chat-bot-note a{color:var(--brand);font-weight:700}
+/* v325: Mục chọn chủ đề bot ở Trang của tôi. */
+#botTopics p{margin:6px 0}
+#botTopics label{cursor:pointer}
 .cf-top h3{margin:0 0 10px;font-size:16px}
 .top-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
 .top-row:last-child{border-bottom:0}

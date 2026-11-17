@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v324-shell-1'; /* v324 (muc chat cong dong trang chu, 17/11/2026): goi doi v20.css (CSS chat) + index.html (section #chat-cong-dong) + js/community-chat.js moi. v20.css nam trong SHELL cache-first nen phai bump, khong thi trinh duyet phuc vu CSS cu va muc chat khong co kieu. */
+const CACHE = 'v325-shell-1'; /* v325 (bot tom tat tin + doi vi tri Tin tuc, 18/11/2026): goi doi v20.css (CSS chat/bot) + index.html (di chuyen #lo-trinh, dong bot-note, script chat-bots.js) + js/community-chat.js (hook repaint bot) + js/chat-bots.js moi + images/bots/*.png moi + trang-cua-toi.html (muc chon chu de bot). v20.css nam trong SHELL cache-first nen phai bump, khong thi trinh duyet phuc vu CSS cu. */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

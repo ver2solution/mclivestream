@@ -7,7 +7,9 @@
    người dùng đang ở cuối danh sách); nút "Về tin mới nhất" hiện khi cuộn lên.
    Backend: RPC chat V4 (PR-03) — get_home_chat_messages / post_home_chat_message /
    get_home_chat_top. Không đưa dữ liệu demo giả lên live: khi chưa có tin thật
-   thì khung chat hiện "Chưa có tin nhắn — hãy là người đầu tiên trò chuyện". */
+   thì khung chat hiện "Chưa có tin nhắn — hãy là người đầu tiên trò chuyện".
+   v325 (18/11/2026): tin bot từ js/chat-bots.js vẽ đè lên sau mỗi lần render
+   (repaint) — tin bot chỉ ở phía client, không ghi DB. */
 (function () {
   'use strict';
 
@@ -193,6 +195,11 @@
     // tin cũ thì giữ nguyên vị trí, hiện nút "Về tin mới nhất".
     if (wasBottom) scrollToBottom(list);
     updateJumpBtn();
+    // v325: vẽ lại tin bot (js/chat-bots.js) sau mỗi lần render tin thật,
+    // vì render này thay innerHTML nên tin bot bị xóa theo.
+    if (typeof window !== 'undefined' && window.V2SChatBots && typeof window.V2SChatBots.repaint === 'function') {
+      try { window.V2SChatBots.repaint(); } catch (e) { /* bỏ qua */ }
+    }
   }
 
   function renderTop(rows) {

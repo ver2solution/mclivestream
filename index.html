@@ -130,6 +130,7 @@
           <input type="text" id="homeChatInput" placeholder="Đăng nhập để trò chuyện" disabled aria-label="Nhắn tin (cần đăng nhập)" maxlength="2000">
           <button class="btn btn-primary" id="homeChatSend" type="button">Đăng nhập</button>
         </div>
+        <p class="chat-bot-note">🤖 Bạn có thể chọn mục tóm tắt tin theo yêu cầu trong khung chat, hoặc tắt nó đi. <a href="trang-cua-toi.html#bot-tom-tat">Chỉnh ở Trang của tôi →</a></p>
         <p class="chat-hint" id="homeChatHint" hidden></p>
       </div>
       <div class="cf-col cf-top">
@@ -145,6 +146,20 @@
   </div>
 </section>
 
+<!-- v325 (18/11/2026): Tin tức kéo lên ngay dưới khung chat chung (anh Thọ yêu cầu 00:21 18/11). -->
+<section class="section" id="lo-trinh"><div class="section-head"><div><h2><a href="tin-tuc.html" data-track="tieu-de-tin-tuc">Tin mới thị trường Livestream/TMĐT Việt Nam và Thế giới</a></h2></div></div>
+<div class="news-list" id="homeNews"></div>
+<div class="sale-calendar" id="saleCalendar"><div class="sale-cal-head"><h3>🗓️ Lịch sale — mua đúng đợt, khỏi tiếc</h3><a href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-track="lich-sale-xem-lich">Xem lịch đầy đủ →</a></div><div class="sale-rows">
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-15" data-track="lich-sale-moc-15-11"><span class="sale-date">HÔM NAY 15/11</span><span class="sale-body"><b>Sale giữa tháng</b><span>Shopee mã 0h 50% tối đa 500K · Lazada TMall 30–50% tối đa 1,5 triệu · TikTok Shop 25–35%</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date-start="2026-11-15" data-date-end="2026-11-30" data-track="lich-sale-moc-phong-vu"><span class="sale-date">15–30/11</span><span class="sale-body"><b>Phong Vũ “Đại chiến công nghệ”</b><span>Black Friday mở sớm</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-25" data-track="lich-sale-moc-25-11"><span class="sale-date">25/11</span><span class="sale-body"><b>Sale lương</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#black-friday" data-date="2026-11-27" data-track="lich-sale-moc-27-11"><span class="sale-date">27/11</span><span class="sale-body"><b>Black Friday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-30" data-track="lich-sale-moc-30-11"><span class="sale-date">30/11</span><span class="sale-body"><b>Cyber Monday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#1212" data-date="2026-12-12" data-track="lich-sale-moc-12-12"><span class="sale-date">12/12</span><span class="sale-body"><b>Sale 12.12</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
+</div><p class="sale-note">Số liệu theo công bố của sàn — kiểm tra lại trên app sàn trước khi dùng.</p></div>
+<script>/* v274-lich-sale (15/11/2026): danh dau moc hom nay / da qua theo gio Viet Nam; moc khoang ngay tinh theo ngay bat dau (theo vi du §4.4/§5.5 cua thiet ke). Khong cuon trang. */
+(function(){try{var today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());var rows=document.querySelectorAll('#saleCalendar .sale-row');var next=null;rows.forEach(function(r){var ref=r.getAttribute('data-date')||r.getAttribute('data-date-start');if(!ref)return;if(today>ref){r.classList.add('past')}else if(today===ref){r.classList.add('today')}else if(!next){next=r}});if(next&&!document.querySelector('#saleCalendar .sale-row.today')){next.classList.add('next')}}catch(e){}})();</script>
+<div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
 <section class="section" id="cach-hoat-dong"><div class="section-head"><h2>Shop tuyển trong 3 bước</h2></div>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm</h3><p>Gõ tên, chọn tỉnh và lĩnh vực ở ô tìm kiếm trên cùng. Kết quả đổi theo đúng bộ lọc, link lọc có thể gửi cho người khác.</p></div>
 <div class="step"><b>2</b><h3>So sánh</h3><p>Đọc ngay trên thẻ: tỉnh, lĩnh vực, lương, lịch, kinh nghiệm, doanh thu cao nhất. Mục chưa có số kiểm chứng ghi rõ “Chưa cập nhật”, không bịa.</p></div>
@@ -168,19 +183,6 @@
 </div>
 </section>
 
-<section class="section" id="lo-trinh"><div class="section-head"><div><h2><a href="tin-tuc.html" data-track="tieu-de-tin-tuc">Tin mới thị trường Livestream/TMĐT Việt Nam và Thế giới</a></h2></div></div>
-<div class="news-list" id="homeNews"></div>
-<div class="sale-calendar" id="saleCalendar"><div class="sale-cal-head"><h3>🗓️ Lịch sale — mua đúng đợt, khỏi tiếc</h3><a href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-track="lich-sale-xem-lich">Xem lịch đầy đủ →</a></div><div class="sale-rows">
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-15" data-track="lich-sale-moc-15-11"><span class="sale-date">HÔM NAY 15/11</span><span class="sale-body"><b>Sale giữa tháng</b><span>Shopee mã 0h 50% tối đa 500K · Lazada TMall 30–50% tối đa 1,5 triệu · TikTok Shop 25–35%</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date-start="2026-11-15" data-date-end="2026-11-30" data-track="lich-sale-moc-phong-vu"><span class="sale-date">15–30/11</span><span class="sale-body"><b>Phong Vũ “Đại chiến công nghệ”</b><span>Black Friday mở sớm</span></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-25" data-track="lich-sale-moc-25-11"><span class="sale-date">25/11</span><span class="sale-body"><b>Sale lương</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#black-friday" data-date="2026-11-27" data-track="lich-sale-moc-27-11"><span class="sale-date">27/11</span><span class="sale-body"><b>Black Friday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#nam-moc" data-date="2026-11-30" data-track="lich-sale-moc-30-11"><span class="sale-date">30/11</span><span class="sale-body"><b>Cyber Monday</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-<a class="sale-row" href="bai-viet/lich-sale-cuoi-nam-2026-11-11-12-12-giang-sinh-tet-2027.html#1212" data-date="2026-12-12" data-track="lich-sale-moc-12-12"><span class="sale-date">12/12</span><span class="sale-body"><b>Sale 12.12</b></span><span class="sale-arrow" aria-hidden="true">→</span></a>
-</div><p class="sale-note">Số liệu theo công bố của sàn — kiểm tra lại trên app sàn trước khi dùng.</p></div>
-<script>/* v274-lich-sale (15/11/2026): danh dau moc hom nay / da qua theo gio Viet Nam; moc khoang ngay tinh theo ngay bat dau (theo vi du §4.4/§5.5 cua thiet ke). Khong cuon trang. */
-(function(){try{var today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());var rows=document.querySelectorAll('#saleCalendar .sale-row');var next=null;rows.forEach(function(r){var ref=r.getAttribute('data-date')||r.getAttribute('data-date-start');if(!ref)return;if(today>ref){r.classList.add('past')}else if(today===ref){r.classList.add('today')}else if(!next){next=r}});if(next&&!document.querySelector('#saleCalendar .sale-row.today')){next.classList.add('next')}}catch(e){}})();</script>
-<div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
 
 <section class="section collapsed" id="faq"><div class="section-head"><h2>Hỏi đáp nhanh</h2></div>
 <div class="steps"><div class="step"><h3>Xem hồ sơ có cần đăng nhập không?</h3><p>Không. Khách xem đủ hồ sơ không cần đăng nhập. Chỉ mẫu tự đăng hoặc sửa hồ sơ mới cần đăng nhập.</p></div>
@@ -208,4 +210,4 @@
 <p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="mclivestream-supabase.js"></script>
-<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/community-chat.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
+<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/community-chat.js"></script><script src="js/chat-bots.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
