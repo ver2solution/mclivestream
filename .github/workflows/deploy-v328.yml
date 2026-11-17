@@ -1,0 +1,50 @@
+name: "Deploy v328 (hien nut Gop y toan site: bo hidden o #gopyFab 365 file)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v328.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v328:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Apply v328 fix
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c; so sanh so bang -eq) ---"
+          grep -q 'v328-shell-1' sw.js && (echo "v328 DA DEPLOY ROI - dung"; exit 1) || true
+          grep -q 'v327-shell-1' sw.js || (echo "BASE SAI: sw.js phai dang o v327-shell-1 (v327 da live)"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "828bc91f10da5a88eda42686f77ac3e2" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" -eq 392 || (echo "BASE DOI: sitemap khong con 392 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -rl 'id="gopyFab" hidden' --include='*.html' . | wc -l)" -eq 365 || (echo "BASE DOI: so file hidden khac 365 - mot deploy khac da len hoac base da doi, DUNG LAI"; exit 1)
+          grep -rl 'id="gopyFab" hidden' --include='*.html' . | xargs sed -i 's/id="gopyFab" hidden/id="gopyFab"/g'
+          sed -i 's/v327-shell-1/v328-shell-1/g' sw.js
+          echo "--- verify v328 (365 html + sw.js) ---"
+          test "$(grep -rl 'id="gopyFab" hidden' --include='*.html' . | wc -l)" -eq 0 || (echo "SAI: van con file hidden"; exit 1)
+          test "$(grep -rl 'id="gopyFab"' --include='*.html' . | wc -l)" -eq 371 || (echo "SAI: so file co #gopyFab khac 371"; exit 1)
+          test "$(git diff --name-only | wc -l)" -eq 366 || (echo "SAI: so file doi khac 366 (365 html + sw.js)"; git diff --name-only | head -20; exit 1)
+          test "$(git diff | grep -E '^[-+]' | grep -v '^[-+][-+]' | grep -vc 'gopyFab\|v328-shell-1\|v327-shell-1')" -eq 0 || (echo "SAI: co dong doi khong lien quan gopyFab/CACHE"; exit 1)
+          grep -q 'v328-shell-1' sw.js || (echo "SAI: sw.js phai co v328-shell-1"; exit 1)
+          grep -q 'id="gopyFab" data-track' tim-kiem.html || (echo "SAI: tim-kiem.html phai co nut hien"; exit 1)
+          grep -q "getElementById('gopyFab')" js/app.js || (echo "SAI: app.js phai giu handler GOPY-1311"; exit 1)
+          node tests/test-v328-gopy-fab-visible.mjs || (echo "SAI: test hoi quy v328 FAIL"; exit 1)
+          echo "verify OK: 365 html bo hidden + sw.js v328, 0 dong lac, test hoi quy 18/18 PASS, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v328 (hien nut Gop y toan site: bo hidden o #gopyFab 365 file HTML + bump SW CACHE v327-shell-1 -> v328-shell-1; GOPY-1311 chi moi go hidden o 3 trang nen nut vo hinh 365 trang, click Gop y 0 lan/24h; data.js/sitemap khong doi; base e68b3f9)"
+            git push
+          fi
