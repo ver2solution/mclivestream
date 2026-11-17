@@ -1,0 +1,57 @@
+name: Deploy v316-cong-nghe (4 bai Cong nghe 17/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v316-cong-nghe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v316-cong-nghe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v316-cong-nghe package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong) ---"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "357" || (echo "BASE DOI: data.js khong con 357 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "383" || (echo "BASE DOI: sitemap khong con 383 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v316-cong-nghe-deploy.zip
+          echo "--- verify v316-cong-nghe (4 bai) ---"
+          test "$(unzip -l mclivestream-v316-cong-nghe-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 4 || (echo "SAI: goi v316 phai co dung 4 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-v316-cong-nghe-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 8 || (echo "SAI: goi v316 phai co dung 8 anh"; exit 1)
+          if unzip -l mclivestream-v316-cong-nghe-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi v316 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in quang-cao-shopee-tet-79-phan-tram-hoan-ngan-sach tiktok-shop-quy-4-2026-gmv-max-pro-live-14-ngay meta-hoan-dieu-khoan-ai-quang-cao-facebook-20-11 video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "--- verify KHONG mat bai cua cac cron khac hom nay ---"
+          for slug in cach-tang-mat-xem-livestream kich-ban-livestream-ban-hang livestream-ban-hang-cho-nguoi-moi meo-livestream-chot-don-tet meta-hoan-dieu-khoan-ai-quang-cao-facebook-20-11 quang-cao-shopee-tet-79-phan-tram-hoan-ngan-sach tiktok-shop-quy-4-2026-gmv-max-pro-live-14-ngay video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that; do
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "MAT BAI KHAC: $slug khong co trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "MAT BAI KHAC: $slug khong co trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 387 || (echo "SAI: sitemap phai co 387 URL (383 live + 4 bai moi)"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" -eq 361 || (echo "SAI: data.js phai co 361 bai (357 live + 4 bai moi)"; exit 1)
+          echo "verify OK: 4 bai + 8 anh + data.js (361 bai) + sitemap (387 URL), 0 bai hom nay bi mat"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v316-cong-nghe-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v316-cong-nghe: 4 bai Cong nghe 17/11/2026 (quang cao Shopee Tet keyword theo mua #8 + TikTok Shop quy 4/2026 + Meta hoan dieu khoan AI + video AI ban hang; DAT 100% SEO 19/19 hang); data.js/sitemap rebase tren live 357 bai/383 URL, 0 bai hom nay bi mat; sw.js NOT touched"
+            git push
+          fi
