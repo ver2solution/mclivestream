@@ -1,0 +1,52 @@
+name: Deploy S1-06 (module Comment Seeding trang chu)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-s1-06.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-s1-06:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip S1-06 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c) ---"
+          if grep -q 'id="dich-vu-seeding"' index.html; then echo "S1-06 DA DEPLOY ROI (index.html da co section seeding) - dung"; exit 1; fi
+          test "$(md5sum index.html | cut -d' ' -f1)" = "4e4d4e9a9e749142631a39a25670b192" || (echo "BASE DOI: index.html live khong con la ban origin/main a215480 - mot deploy khac da doi index.html, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dded91b0ef6f332377d0ed00f6c92b7e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" = "387" || (echo "BASE DOI: sitemap khong con 387 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-s1-06-deploy.zip
+          echo "--- verify S1-06 (1 file: index.html) ---"
+          test "$(unzip -l mclivestream-s1-06-deploy.zip | grep -cE ' index\.html$')" -eq 1 || (echo "SAI: goi S1-06 phai co dung 1 file (index.html)"; exit 1)
+          test "$(md5sum index.html | cut -d' ' -f1)" = "f927ae9e1ddfc63f0059841814c90ac7" || (echo "SAI: index.html sau unzip khong dung md5 cua commit 9fa2ccb"; exit 1)
+          grep -q 'id="dich-vu-seeding"' index.html || (echo "SAI: index.html phai co section #dich-vu-seeding"; exit 1)
+          grep -q 'Đã tuyển được mẫu — live sao cho đông và chốt đơn?' index.html || (echo "SAI: thieu H2 module"; exit 1)
+          grep -q 'data-track="seeding-module-cta"' index.html || (echo "SAI: thieu CTA data-track"; exit 1)
+          grep -q 'data-track="seeding-module-xem-dich-vu"' index.html || (echo "SAI: thieu link phu data-track"; exit 1)
+          test "$(grep 'id="mainNav"' index.html | grep -o '<a ' | wc -l)" -eq 7 || (echo "SAI: menu phai co dung 7 muc"; exit 1)
+          if sed -n '/id="dich-vu-seeding"/,/<\/section>/p' index.html | grep -q 'scrollIntoView('; then echo "SAI: module khong duoc co scrollIntoView (v213)"; exit 1; fi
+          if sed -n '/id="dich-vu-seeding"/,/<\/section>/p' index.html | grep -q '<script'; then echo "SAI: module khong duoc co <script> moi"; exit 1; fi
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dded91b0ef6f332377d0ed00f6c92b7e" || (echo "SAI: data.js doi sau unzip (goi chi duoc doi index.html)"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" = "387" || (echo "SAI: sitemap doi sau unzip"; exit 1)
+          echo "verify OK: 1 file index.html, section seeding dung vi tri, menu 7 muc, khong cuon, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-s1-06-deploy.zip
+          git add index.html
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy S1-06: them module Comment Seeding trang chu (thiet ke duyet 13:39 17/11); 1 file index.html +35 (section #dich-vu-seeding sau #cach-hoat-dong, truoc #lo-trinh); data.js/sitemap khong doi (base origin/main a215480)"
+            git push
+          fi
