@@ -1,0 +1,44 @@
+name: "Deploy v319 (MC-108: bump SW cache so v318 takes effect)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v319.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v319:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v319 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c; so sanh so bang -eq) ---"
+          grep -q 'v319-shell-1' sw.js && (echo "v319 DA DEPLOY ROI - dung"; exit 1) || true
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dded91b0ef6f332377d0ed00f6c92b7e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" -eq 387 || (echo "BASE DOI: sitemap khong con 387 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v319-deploy.zip
+          echo "--- verify v319 (1 file) ---"
+          test "$(unzip -l mclivestream-v319-deploy.zip | grep -cE ' sw\.js$')" -eq 1 || (echo "SAI: goi v319 phai co dung 1 file (sw.js)"; exit 1)
+          grep -q "v319-shell-1" sw.js || (echo "SAI: sw.js phai co v319-shell-1"; exit 1)
+          grep -q "v318 (MC-108" js/app.js || (echo "SAI: app.js phai giu marker v318 (MC-108"; exit 1)
+          grep -q "#model-list-section.collapsed{display:none}" v20.css || (echo "SAI: v20.css phai giu #model-list-section.collapsed"; exit 1)
+          echo "verify OK: 1 file, v319 co mat, v318 giu nguyen, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v319-deploy.zip
+          git add sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v319 (MC-108): bump SW cache v302-shell-1 -> v319-shell-1 de trinh duyet cai SW moi, xoa cache cu (app.js/v20.css v318); data.js/sitemap khong doi (base edebb5c)"
+            git push
+          fi
