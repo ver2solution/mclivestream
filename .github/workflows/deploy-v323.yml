@@ -1,0 +1,49 @@
+name: "Deploy v323 (tat 13 muc doi tuong trang chu)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v323.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v323:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v323 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c; so sanh so bang -eq) ---"
+          grep -q 'v323-shell-1' sw.js && (echo "v323 DA DEPLOY ROI - dung"; exit 1) || true
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "828bc91f10da5a88eda42686f77ac3e2" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" -eq 392 || (echo "BASE DOI: sitemap khong con 392 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v323-deploy.zip
+          echo "--- verify v323 (3 files) ---"
+          test "$(unzip -l mclivestream-v323-deploy.zip | grep -cE ' (index\.html|js/app\.js|sw\.js)$')" -eq 3 || (echo "SAI: goi v323 phai co dung 3 file (index.html, js/app.js, sw.js)"; exit 1)
+          grep -q "v323-shell-1" sw.js || (echo "SAI: sw.js phai co v323-shell-1"; exit 1)
+          grep -q "Mẫu tìm việc Livestream" index.html && (echo "SAI: index.html van con muc Mau"; exit 1) || true
+          grep -q "home-newobj-" index.html && (echo "SAI: index.html van con muc newobj"; exit 1) || true
+          grep -q "id=\"shop-tuyen\"" index.html && (echo "SAI: index.html van con muc Shop"; exit 1) || true
+          grep -q "trust-nums" index.html || (echo "SAI: index.html phai giu khoi so lieu"; exit 1)
+          grep -q "id=\"dich-vu-seeding\"" index.html || (echo "SAI: index.html phai giu S1-06"; exit 1)
+          grep -q "id=\"homeNews\"" index.html || (echo "SAI: index.html phai giu muc Tin moi"; exit 1)
+          grep -q "v323 (17/11/2026" js/app.js || (echo "SAI: js/app.js phai co marker v323 (initHome guard)"; exit 1)
+          echo "verify OK: 3 files, v323 co mat, 13 muc doi tuong da tat, so lieu/S1-06/Tin moi con nguyen, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v323-deploy.zip
+          git add index.html js/app.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v323 (tat 13 muc doi tuong trang chu): giu so lieu + S1-06 + Tin moi; initHome khong return som khi mat homeGrid; bump SW CACHE v322-shell-1 -> v323-shell-1; data.js/sitemap khong doi (base 34fc75e)"
+            git push
+          fi
