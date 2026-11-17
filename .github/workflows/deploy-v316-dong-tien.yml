@@ -1,0 +1,52 @@
+name: Deploy v316-dong-tien (4 bai Dong tien 17/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v316-dong-tien.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v316-dong-tien:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "353" || (echo "BASE DOI: data.js khong con 353 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "379" || (echo "BASE DOI: sitemap khong con 379 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip v316-dong-tien package
+        run: |
+          unzip -o mclivestream-v316-dong-tien-deploy.zip
+          echo "--- verify v316-dong-tien (4 bai) ---"
+          for slug in hoa-hong-mau-livestream-tet-bao-nhieu-phan-tram fed-tang-lai-suat-thang-12-thi-truong-dat-cuoc-100-phan-tram gia-vang-quy-3-ngan-hang-trung-uong-mua-321-tan chi-tieu-tet-2027-51-phan-tram-chi-nhieu-hon; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "383" || (echo "SAI TONG sitemap, phai 383"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "357" || (echo "SAI TONG data.js, phai 357"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v316-dong-tien-deploy.zip || rm -f mclivestream-v316-dong-tien-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v316-dong-tien: 4 bai Dong tien 17/11/2026 (hoa hong mau livestream Tet keyword #5 + Fed thang 12 + gia vang quy III + chi tieu Tet 2027 chu de xoay vong #5)"
+            git push
+          fi
