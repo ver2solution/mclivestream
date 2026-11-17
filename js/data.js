@@ -15232,7 +15232,62 @@ window.V20_DATA = {
 {"title":"Quảng cáo Shopee Tết: hoàn 79% ngân sách, tính sao cho lời","cat":"Công nghệ","source":"Shopee","date":"2026-11-17","url":"https://help.shopee.vn/portal/10/article/197046-%C4%90I%E1%BB%80U%20KHO%E1%BA%A2N%20V%C3%80%20%C4%90I%E1%BB%80U%20KI%E1%BB%86N%20CH%C6%AF%C6%A0NG%20TR%C3%8CNH%20TH%E1%BA%A6N%20T%C3%80I%20G%C3%95%20C%E1%BB%ACA%20-%20HO%C3%80N%20TI%E1%BB%80N%20NH%C6%AF%20M%C6%AF%20A%20%28TERMS%20AND%20CONDITIONS%20THAN%20TAI%20GO%20CUA%20-%20HOAN%20TIEN%20NHU%20MUA%20PROGRAM%20%28Sellers%20Affiliate_Tet%20Campaign%29%29","page": "bai-viet/quang-cao-shopee-tet-79-phan-tram-hoan-ngan-sach.html","img":"https://vieclamlivestream.online/images/bai-viet/quang-cao-shopee-tet-79-phan-tram-hoan-ngan-sach.jpg","pinned":false,"takeaway":"Quảng cáo Shopee Tết: Shopee hoàn tới 79% ngân sách ads (tối đa 39,4 triệu đồng) cho shop chạy xuyên Tết 2026; 11.11 cho thấy live + quảng cáo đẩy đơn tăng tới 45 lần."},
 {"title":"TikTok Shop quý 4/2026: GMV Max Pro và số live tính 14 ngày","cat":"Công nghệ","source":"Medium","date":"2026-11-17","url":"https://medium.com/@nadeer2004/tiktok-is-automating-more-of-the-ad-account-before-black-friday-keep-these-decisions-for-yourself-eac0b6011ae3","page": "bai-viet/tiktok-shop-quy-4-2026-gmv-max-pro-live-14-ngay.html","img":"https://vieclamlivestream.online/images/bai-viet/tiktok-shop-quy-4-2026-gmv-max-pro-live-14-ngay.jpg","pinned":false,"takeaway":"TikTok Shop quý 4/2026: 7 tính năng mới từ 30/10 (GMV Max Pro, Smart+); Brand LIVE Impact tính GMV live trong 14 ngày, chốt số 11–14/12/2026."},
 {"title":"Meta hoãn điều khoản AI: quảng cáo Facebook không đổi 20/11","cat":"Công nghệ","source":"Slate","date":"2026-11-17","url":"https://www.slate.co.il/en/news/2026-11-08-meta-terms-paused","page": "bai-viet/meta-hoan-dieu-khoan-ai-quang-cao-facebook-20-11.html","img":"https://vieclamlivestream.online/images/bai-viet/meta-hoan-dieu-khoan-ai-quang-cao-facebook-20-11.jpg","pinned":false,"takeaway":"Meta hoãn điều khoản AI: 4 văn bản sửa đổi không có hiệu lực 20/11/2026; điều khoản 06/03/2024 vẫn áp dụng, shop vẫn nên rà soát Advantage+."},
-{"title":"Video AI bán hàng: TikTok Shop siết kích thước thật từ 12/11","cat":"Công nghệ","source":"hubStudio","date":"2026-11-17","url":"https://www.hubstudio.ai/resources/insights/ai-news-google-core-update-november-2026","page": "bai-viet/video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that.html","img":"https://vieclamlivestream.online/images/bai-viet/video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that.jpg","pinned":false,"takeaway":"Video AI bán hàng: từ 12/11/2026, TikTok Shop bắt ghi kích thước thật trong video AI đồ chơi, nội thất tại Việt Nam; Pinterest cấm ảnh AI sai thật cùng ngày."}
+{"title":"Video AI bán hàng: TikTok Shop siết kích thước thật từ 12/11","cat":"Công nghệ","source":"hubStudio","date":"2026-11-17","url":"https://www.hubstudio.ai/resources/insights/ai-news-google-core-update-november-2026","page": "bai-viet/video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that.html","img":"https://vieclamlivestream.online/images/bai-viet/video-ai-ban-hang-tiktok-shop-siet-kich-thuoc-that.jpg","pinned":false,"takeaway":"Video AI bán hàng: từ 12/11/2026, TikTok Shop bắt ghi kích thước thật trong video AI đồ chơi, nội thất tại Việt Nam; Pinterest cấm ảnh AI sai thật cùng ngày."},
+  {
+   "title": "2.086 tỷ đồng trong 1 ngày — Trần Tiên Sinh: \"người thay thế Tân Ba\" bán 596 triệu NDT bằng mô hình đối tác kiểu mới",
+   "cat": "Phân tích",
+   "source": "Tencent News",
+   "date": "2026-11-17",
+   "url": "https://news.qq.com/rain/a/20261101A04V3F00",
+   "page": "bai-viet/tran-tien-sinh-2086-ty-dong-1-ngay-mo-hinh-doi-tac-thay-the-tan-ba.html",
+   "img": "https://inews.gtimg.com/news_bt/ODMe9Os2UHAgyxb1hW84vRfrR9FMp_0x2PtEi6LQU5FMEAA/641",
+   "pinned": false,
+   "takeaway": "Ngày 24/10/2026, Trần Tiên Sinh livestream bán hàng 2 buổi trên Kuaishou, doanh thu ước tính 596 triệu NDT (khoảng 2.086 tỷ đồng), 1,26 triệu đơn. Đằng sau con số là mô hình đối tác kiểu mới của đế chế Tân Ba."
+  },
+  {
+   "title": "1,9 tỷ đồng từ 1 video 19 giây — áo phao Gile HeHi bán chạy top 3 Shopee: 7 bài học bán thời trang đông bằng video ngắn",
+   "cat": "Hàng hoá",
+   "source": "ShopeeAnalytics",
+   "date": "2026-11-17",
+   "url": "https://www.shopeeanalytics.com/vn/search/tiktok-video",
+   "page": "bai-viet/ao-phao-gile-hehi-19-ty-dong-video-19-giay-shopee-top-3.html",
+   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/219e1571855247189b32d43e4c4e75e1~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my&from=1432613627&from_p=3004324551",
+   "pinned": false,
+   "takeaway": "1 video 19 giây, 2,8 triệu lượt xem, GMV 1,1–1,9 tỷ đồng — áo phao Gile HeHi chiếm 3 vị trí trong top 26 video bán chạy Shopee. Vì sao hàng mùa đông bùng nổ đúng lúc này, và shop Việt cần làm gì trước Black Friday 27/11 và 12.12?"
+  },
+  {
+   "title": "40.860 tỷ đồng trong 2 tháng cuối năm — Mega Sale Q4 TikTok Shop: livestream bán hàng tối thiểu 5 giờ, 3 ngày cao điểm GMV gấp đôi",
+   "cat": "Xu hướng",
+   "source": "BrandsVietnam (FinT Việt Nam, theo TikTok for Business)",
+   "date": "2026-11-17",
+   "url": "https://www.brandsvietnam.com/congdong/topic/mega-sale-q4-tren-tiktok-shop-4-nhom-chien-luoc-tao-da-tang-truong",
+   "page": "bai-viet/mega-sale-q4-tiktok-shop-live-5-gio-gmv-gap-doi.html",
+   "img": "https://fint-global.com/wp-content/uploads/2026/11/Huong-Dan-Ban-Hang-Q4-TikTok-Shop-1536x864.png",
+   "pinned": false,
+   "takeaway": "Tháng 11 và 12/2025, TikTok Shop Việt Nam đạt 40.860 tỷ đồng GMV, chiếm 23,2% cả năm. Cẩm nang Mega Sale Q4 của TikTok for Business chỉ ra 4 chiến lược: chọn đúng danh mục, 3 ngày cao điểm GMV gấp đôi, livestream bán hàng tối thiểu 5 giờ, GMV Max và ngân sách dự phòng 2 lần."
+  },
+  {
+   "title": "13.000 tỷ đồng trong 4 ngày — đừng giết buổi live chỉ vì số trong phòng thấp: 7 mẹo đo lường livestream bán hàng bằng Compass 14 ngày trước Black Frid",
+   "cat": "Livestream",
+   "source": "PPC Land",
+   "date": "2026-11-17",
+   "url": "https://ppc.land/tiktok-shop-us-sellers-gain-9-compass-analytics-tools-from-ad-data-to-churn/",
+   "page": "bai-viet/meo-do-luong-live-tiktok-shop-compass-14-ngay-black-friday-13000-ty-dong.html",
+   "img": "https://ppc.land/content/images/2026/11/mp-og-ae8ac0ec-25d2-4b17-80ad-930dd8089273.png",
+   "pinned": false,
+   "takeaway": "TikTok Shop Mỹ bán hơn 500 triệu USD trong 4 ngày Black Friday 2025. Từ 02/11/2026, TikTok Shop đổi cách đếm doanh thu livestream: 9 công cụ Compass mới và Brand LIVE Impact tính cả đơn phát sinh 14 ngày sau live. 7 mẹo đo lường livestream bán hàng để shop Việt không giết nhầm buổi live tốt trước Black Friday 27/11 và 12.12."
+  },
+  {
+   "title": "6,77 tỷ đồng trong 1 phiên live — Đỗ Mạnh Cường tự mặc váy bán hàng: nhà thiết kế chốt đơn gấp hơn 20 lần người mẫu",
+   "cat": "Phân tích",
+   "source": "Ngôi Sao (VnExpress)",
+   "date": "2026-11-17",
+   "url": "https://ngoisao.vnexpress.net/ntk-do-manh-cuong-chot-don-hon-7-ty-dong-khi-mac-vay-livestream-5001199.html",
+   "page": "bai-viet/do-manh-cuong-677-ty-dong-1-phien-live-tu-mac-vay-ban-hang-sixdo.html",
+   "img": "https://iv1cdn.vnecdn.net/ngoisao/images/web/2026/01/02/ntk-do-manh-cuong-chot-don-hon-7-ty-dong-khi-mac-vay-livestr-1767349018.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=jUQNU46Vw0cDE_EhhrNQXg",
+   "pinned": false,
+   "takeaway": "Đỗ Mạnh Cường tự mặc váy livestream bán SIXDO: 1 phiên 6,77 tỷ đồng, 19.470 sản phẩm, 605.000 lượt xem. Vì sao ông chủ tự bán lại chốt đơn gấp hơn 20 lần người mẫu?"
+  },
 ],
  "lots": [
    {
