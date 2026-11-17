@@ -59,6 +59,23 @@
 .sale-note{margin:10px 0 0;font-size:12px;color:var(--mut)}
 @media(min-width:768px){.sale-rows{grid-template-columns:1fr 1fr}}
 @media(max-width:359px){.sale-row{flex-direction:column;align-items:flex-start;gap:6px}.sale-date{flex:none}.sale-arrow{display:none}}
+/* S1-06-seeding (17/11/2026, thiet ke da duyet 13:39): module Comment Seeding trang chu — HTML tinh, khong JS, khong scrollIntoView.
+   Vi tri: ngay sau #cach-hoat-dong ("Shop tuyen trong 3 buoc"), truoc #lo-trinh. Chi co tren trang chu (v1). */
+.seeding-module{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.seeding-inner{display:grid;grid-template-columns:1fr;gap:16px}
+.seeding-eyebrow{margin:0;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.seeding-main h2{margin:8px 0 10px;font-size:20px;line-height:1.3}
+.seeding-intro{margin:0 0 12px;font-size:15px;line-height:1.6}
+.seeding-benefits{list-style:none;margin:0 0 4px;padding:0;display:grid;grid-template-columns:1fr;gap:8px}
+.seeding-benefits li{font-size:15px;font-weight:600}
+.seeding-benefits li::before{content:"✓";color:var(--brand);font-weight:800;margin-right:8px}
+.seeding-card{background:var(--brandsoft);border:1px solid var(--line);border-radius:12px;padding:16px}
+.seeding-trial{margin:0 0 12px;font-size:15px;font-weight:700;line-height:1.5}
+.seeding-cta{width:100%;font-size:16px;min-height:48px}
+.seeding-more{display:inline-block;margin-top:12px;font-weight:800;color:var(--brand)}
+.seeding-zalo{margin:10px 0 0;font-size:14px;color:var(--mut)}
+@media(min-width:768px){.seeding-inner{max-width:640px;margin:0 auto}.seeding-benefits{grid-template-columns:repeat(3,1fr);gap:12px}.seeding-cta{width:auto;max-width:320px}}
+@media(min-width:1024px){.seeding-module{padding:24px}.seeding-inner{max-width:none;grid-template-columns:3fr 2fr;gap:24px;align-items:start}.seeding-main h2{font-size:26px}.seeding-card{align-self:stretch}}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">136</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -129,6 +146,24 @@
 <div class="steps"><div class="step"><b>1</b><h3>Tìm</h3><p>Gõ tên, chọn tỉnh và lĩnh vực ở ô tìm kiếm trên cùng. Kết quả đổi theo đúng bộ lọc, link lọc có thể gửi cho người khác.</p></div>
 <div class="step"><b>2</b><h3>So sánh</h3><p>Đọc ngay trên thẻ: tỉnh, lĩnh vực, lương, lịch, kinh nghiệm, doanh thu cao nhất. Mục chưa có số kiểm chứng ghi rõ “Chưa cập nhật”, không bịa.</p></div>
 <div class="step"><b>3</b><h3>Liên hệ</h3><p>Bấm Xem hồ sơ, rồi nhắn qua bài gốc trên Facebook hoặc nhắn Zalo vieclamlivestream.online 032 998 3699 để được giới thiệu.</p></div></div></section>
+
+<!-- S1-06-seeding (17/11/2026, thiet ke da duyet 13:39): module Comment Seeding — HTML tinh, khong JS, khong tu cuon. Chi co tren trang chu (v1). -->
+<section class="section seeding-module" id="dich-vu-seeding" aria-label="Dịch vụ Comment Seeding cho shop">
+<div class="seeding-inner">
+<div class="seeding-main">
+<p class="seeding-eyebrow">DỊCH VỤ CHO SHOP</p>
+<h2>Đã tuyển được mẫu — live sao cho đông và chốt đơn?</h2>
+<p class="seeding-intro">Khách vào live thấy vắng là thoát ngay. Comment Seeding làm live đông, sôi động và đáng tin — để người xem ở lại và chốt đơn.</p>
+<ul class="seeding-benefits"><li>Hiệu ứng đám đông</li><li>Khơi gợi nhu cầu</li><li>Ăn theo đề xuất</li></ul>
+</div>
+<div class="seeding-card">
+<p class="seeding-trial">4 buổi dùng thử miễn phí — dùng trước, thấy hiệu quả rồi mới quyết định.</p>
+<a class="btn btn-primary seeding-cta" href="https://zalo.me/0329983699" target="_blank" rel="noopener" data-track="seeding-module-cta">Đăng ký 4 buổi thử miễn phí</a>
+<a class="seeding-more" href="bai-viet/dich-vu-comment-seeding-livestream.html" data-track="seeding-module-xem-dich-vu">Xem dịch vụ Comment Seeding →</a>
+<p class="seeding-zalo">Tư vấn qua Zalo: 032 998 3699</p>
+</div>
+</div>
+</section>
 
 <section class="section" id="lo-trinh"><div class="section-head"><div><h2><a href="tin-tuc.html" data-track="tieu-de-tin-tuc">Tin mới thị trường Livestream/TMĐT Việt Nam và Thế giới</a></h2></div></div>
 <div class="news-list" id="homeNews"></div>
