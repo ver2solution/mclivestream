@@ -1,0 +1,51 @@
+name: Deploy articles-xu-huong-2026-11-17 (4 bai Xu huong 17/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-xu-huong-1711.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-xu-huong-1711:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "357" || (echo "BASE DOI: data.js khong con 357 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "383" || (echo "BASE DOI: sitemap khong con 383 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip xu-huong-1711 package
+        run: |
+          unzip -o mclivestream-xu-huong-1711-deploy.zip
+          echo "--- verify xu-huong-1711 (4 bai) ---"
+          for slug in xu-huong-qua-tet-2027-gio-qua-402-ty-dat-som xu-huong-tieu-dung-2027-euromonitor-5-xu-huong mua-truoc-tra-sau-2026-213-ty-usd-dip-le mua-sam-som-dip-le-2026-28-phan-tram-het-thang-10; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "387" || (echo "SAI TONG sitemap, phai 387"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "361" || (echo "SAI TONG data.js, phai 361"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-xu-huong-1711-deploy.zip || rm -f mclivestream-xu-huong-1711-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-xu-huong-2026-11-17: 4 bai Xu huong 17/11/2026 (xu huong qua Tet 2027 keyword #5 + xu huong tieu dung 2027 Euromonitor + mua truoc tra sau BNPL + mua sam som dip le 2026 Deloitte)"
+            git push
+          fi
