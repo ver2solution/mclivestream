@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v322-shell-1'; /* v322 (Chat AI admin, 17/11/2026): goi doi js/admin.js (tab Chat AI + upload anh/video) + quan-tri.html. admin.js khong nam trong SHELL nhung SW cache-first moi tai nguyen JS (runtime cache) nen khong bump thi console van phuc vu admin.js CU. Bump de SW moi cai dat, xoa cache cu, lay admin.js moi. */
+const CACHE = 'v323-shell-1'; /* v323 (tat muc doi tuong trang chu, 17/11/2026): goi doi js/app.js (initHome khong return som khi mat #homeGrid) + index.html (tat 13 muc doi tuong). app.js khong nam trong SHELL nhung SW cache-first moi tai nguyen JS (runtime cache) nen khong bump thi trinh duyet van phuc vu app.js CU, initHome se return som va giet ca trust-stats + Tin moi. HTML la network-first nen index.html moi len ngay; bump CACHE de SW moi cai dat, xoa cache cu, lay app.js moi. */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

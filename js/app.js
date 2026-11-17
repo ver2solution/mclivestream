@@ -2813,18 +2813,24 @@ function renderHomeNewObj(seen){
   });
 }
 function initHome(){
-  var grid=document.getElementById('homeGrid'); if(!grid) return;
+  var grid=document.getElementById('homeGrid');
   /* v184: seen-set dung chung toan trang chu — cung 1 ho so khong hien
      2 lan (mau/shop/lo/xuong/kiot + 5 muc moi). */
   var homeSeen = {};
   // v41 trust strip: so lieu tinh dong tu data.js; so tinh trong index.html
   // (20 / 30) chi la du phong neu JS loi — dai khong bao gio trong.
   renderTrustStats();
-  // v152: trang chu 12 mau = 12 mau dau cua toan bo danh sach da xoay theo
-  // cua so 6 tieng, khong phan biet co anh hay khong (quyet cua user 15:50
-  // 11/11 — bo uu tien co anh; thay quy tac v103/v118 hang 1 co anh).
-  var shown=dedupeProfiles(homeModels12(D.models), homeSeen, 'model');
-  grid.innerHTML=shown.map(cardHTML).join('');
+  // v323 (17/11/2026, lenh tat muc doi tuong trang chu): muc Mau da tat
+  // (khong con #homeGrid) — chi render luoi mau khi con phan tu; KHONG
+  // return som nhu truoc (return som se giet ca trust-stats, tin ghim,
+  // muc Tin moi va form tim kiem hero).
+  if(grid){
+    // v152: trang chu 12 mau = 12 mau dau cua toan bo danh sach da xoay theo
+    // cua so 6 tieng, khong phan biet co anh hay khong (quyet cua user 15:50
+    // 11/11 — bo uu tien co anh; thay quy tac v103/v118 hang 1 co anh).
+    var shown=dedupeProfiles(homeModels12(D.models), homeSeen, 'model');
+    grid.innerHTML=shown.map(cardHTML).join('');
+  }
   // v38: hang tin ghim (4 khung) duoi hero search. Muc Tin moi (#homeNews)
   // giu nguyen list 6 bai moi nhat nhu cu (user-directed 22:37 05/11:
   // chi them 1 dong 4 o tin moi, muc Tin tuc de nguyen).
