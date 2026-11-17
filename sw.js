@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v319-shell-1'; /* v319 (MC-108, 17/11/2026): v318 doi js/app.js + v20.css nhung KHONG bump CACHE — SW cu (v302-shell-1) cache-first nen trinh duyet da cai SW van phuc vu app.js/v20.css CU, kiem chung live 21:23 that bai (tab Lo khong an danh sach Mau du file live da moi). Bump de SW moi cai dat, xoa cache cu, cache lai app.js/v20.css moi. */
+const CACHE = 'v320-shell-1'; /* v320 (B-02/L-01, 17/11/2026): goi doi js/admin.js + quan-tri.html. admin.js KHONG nam trong SHELL nhung SW cache-first moi tai nguyen JS (runtime cache) nen khong bump thi console van phuc vu admin.js CU. Bump de SW moi cai dat, xoa cache cu, lay admin.js moi. */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',

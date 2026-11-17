@@ -92,7 +92,7 @@
       + '<button class="btn btn-ghost btn-sm" data-adm-page="' + key + '" data-adm-dir="1" type="button"'
       + (hasMore ? '' : ' disabled') + '>Trang sau →</button></div>';
   }
-  var PAGE_FIELDS = { comments: 'commentsPage', moderation: 'modPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage', write: 'writePage' };
+  var PAGE_FIELDS = { comments: 'commentsPage', decided: 'decidedPage', moderation: 'modPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage', write: 'writePage' };
   var PAGE_LOADERS = null; // gán sau khi các hàm load* đã định nghĩa (xem trước § chuyển tab)
   function onPagerClick(e) {
     var btn = e.target && e.target.closest ? e.target.closest('[data-adm-page]') : null;
@@ -121,7 +121,7 @@
     chatSeq: 0, // P3 (13/11): số thứ tự lượt loadChat — lượt cũ về sau bị bỏ, không được ghi đè lượt mới
     chatLoading: false, // P3 (13/11): đang có lượt loadChat chạy (appendChatMessage không chen DOM lúc này)
     tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
-    usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
+    usersPage: 0, commentsPage: 0, decidedPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
     usersList: [], // tài khoản đã tải gần nhất ở tab Người dùng (để form chi tiết lấy notes prefill)
     testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
@@ -264,6 +264,9 @@
     var wrap = $('admCommentsList');
     var msg = $('admCommentsMsg');
     if (!wrap) return;
+    /* B-02/L-01: tải kèm danh sách đã xử lý (để nút "Chuyển về chờ duyệt"
+       có chỗ bấm); 2 danh sách luôn đồng bộ sau mỗi lần duyệt/từ chối/xóa. */
+    loadDecidedComments();
     wrap.innerHTML = '<p>Đang tải…</p>';
     try {
       var rows = await rpc('get_pending_comments', { p_limit: PAGE_SIZE + 1, p_offset: state.commentsPage * PAGE_SIZE });
@@ -286,7 +289,9 @@
           + esc(c.comment) + '</td><td style="padding:8px;border-bottom:1px solid #eee">'
           + esc(COMMENT_TARGET_LABEL[c.target_type] || c.target_type) + '<br><small>' + esc(c.target_ref) + '</small></td>'
           + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(c.commenter_name || 'Khách Vãng Lai')
-          + (c.commenter_email ? '<br><small>' + esc(c.commenter_email) + '</small>' : '') + '</td>'
+          + (c.commenter_email ? '<br><small>' + esc(c.commenter_email) + '</small>' : '')
+          /* B-02/L-01 (17/11/2026): SĐT để phân biệt bình luận trùng. */
+          + (c.commenter_phone ? '<br><small>' + esc(c.commenter_phone) + '</small>' : '') + '</td>'
           + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(c.points_value)
           + '<br><small>' + esc(c.points_status || '') + '</small></td>'
           + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(vnDate(c.created_at)) + '</td>'
@@ -300,6 +305,50 @@
       wrap.innerHTML = html;
     } catch (e) {
       wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ2 chưa chạy (hàm get_pending_comments chưa có).' : friendlyErr(e)) + '</p>';
+    }
+  }
+
+  /* B-02/L-01 (17/11/2026): danh sách bình luận ĐÃ xử lý (đã duyệt/từ chối)
+     để admin thấy và bấm "Chuyển về chờ duyệt" khi duyệt nhầm hoặc phát hiện
+     trùng sau khi duyệt. Điểm đã cộng không đổi; duyệt lại không cộng trùng
+     nhờ khóa idempotency 'comment:<id>' (M6/M12). */
+  async function loadDecidedComments() {
+    var wrap = $('admDecidedList');
+    if (!wrap) return;
+    wrap.innerHTML = '<p>Đang tải…</p>';
+    try {
+      var rows = await rpc('get_decided_comments', { p_limit: PAGE_SIZE + 1, p_offset: state.decidedPage * PAGE_SIZE });
+      var hasMore = Array.isArray(rows) && rows.length > PAGE_SIZE;
+      var list = hasMore ? rows.slice(0, PAGE_SIZE) : rows;
+      if (!Array.isArray(list) || !list.length) {
+        wrap.innerHTML = '<p>Chưa có bình luận nào đã duyệt/từ chối.</p>' + pagerHtml('decided', state.decidedPage, false);
+        return;
+      }
+      var html = '<table class="qt-table" style="width:100%;border-collapse:collapse"><thead><tr>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Bình luận</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Mục</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Trạng thái</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ngày xử lý</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Thao tác</th></tr></thead><tbody>';
+      list.forEach(function (c) {
+        html += '<tr data-cid="' + esc(c.id) + '"><td style="padding:8px;border-bottom:1px solid #eee;max-width:340px">'
+          + esc(c.comment) + '</td><td style="padding:8px;border-bottom:1px solid #eee">'
+          + esc(COMMENT_TARGET_LABEL[c.target_type] || c.target_type) + '<br><small>' + esc(c.target_ref) + '</small></td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(c.commenter_name || 'Khách Vãng Lai')
+          + (c.commenter_email ? '<br><small>' + esc(c.commenter_email) + '</small>' : '')
+          + (c.commenter_phone ? '<br><small>' + esc(c.commenter_phone) + '</small>' : '') + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(c.moderation_status === 'approved' ? 'Đã duyệt' : 'Đã từ chối')
+          + '<br><small>' + esc(c.points_status || '') + '</small></td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(vnDate(c.updated_at)) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap">'
+          + '<button class="btn btn-ghost btn-sm" data-adm-act="requeue-comment" data-id="' + esc(c.id) + '" type="button">Chuyển về chờ duyệt</button>'
+          + '</td></tr>';
+      });
+      html += '</tbody></table>' + pagerHtml('decided', state.decidedPage, hasMore);
+      wrap.innerHTML = html;
+    } catch (e) {
+      wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration B-02 chưa chạy (hàm get_decided_comments chưa có).' : friendlyErr(e)) + '</p>';
     }
   }
 
@@ -1509,6 +1558,19 @@
         await rpc('admin_delete_comment', { p_comment_id: id, p_reason: dr });
         setMsg(msg, 'Đã xóa bình luận (xóa mềm).');
         await loadComments(); await loadTestData();
+      } else if (act === 'requeue-comment') {
+        // B-02/L-01 (17/11/2026): xác nhận 2 bước ngay trên nút (v217 —
+        // không dùng window.confirm). Đưa bình luận đã duyệt/từ chối về lại
+        // chờ duyệt; điểm đã cộng không đổi, duyệt lại không cộng trùng
+        // (khóa idempotency 'comment:<id>', M6/M12).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn chuyển về chờ duyệt?';
+          return;
+        }
+        await rpc('admin_requeue_comment', { p_comment_id: id });
+        setMsg(msg, 'Đã chuyển bình luận về chờ duyệt.');
+        await loadComments();
       } else if (act === 'delete-chat') {
         // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
         // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
@@ -1719,7 +1781,7 @@
     chat: { label: 'Trao đổi', load: loadChat },
     write: { label: 'Viết bài', load: loadArticleDrafts }
   };
-  var PAGE_LOADERS = { comments: loadComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
+  var PAGE_LOADERS = { comments: loadComments, decided: loadDecidedComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
   function switchTab(key) {
     state.activeTab = key;
     Object.keys(TABS).forEach(function (k) {
