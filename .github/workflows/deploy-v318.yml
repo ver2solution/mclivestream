@@ -1,4 +1,4 @@
-name: Deploy v318 (MC-108: hide model list on lot/factory tabs)
+name: "Deploy v318 (MC-108: hide model list on lot/factory tabs)"
 
 on:
   push:
