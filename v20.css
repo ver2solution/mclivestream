@@ -601,6 +601,7 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .lot-section.collapsed .lot-extra{display:none}
 #faq.collapsed .faq-extra{display:none}/* v75: FAQ trang chu chi hien 3 cau dau, cac cau sau an sau nut Xem them */
 .lot-section.collapsed .lot-grid .lot-card:nth-child(n+13){display:none}
+#model-list-section.collapsed{display:none}/* v318 (MC-108): an danh sach Mau chinh khi chuyen tab Lo/Xuong/muc con — truoc day class collapsed khong co luat CSS nao cho .section nen danh sach Mau van hien */
 /* v181: muc lop hoc fix 1 hang khi thu gon (desktop 6 the = 1 hang x 6 cot,
    tablet 2 the = 1 hang x 2 cot, mobile 1 the = 1 hang x 1 cot). */
 .lot-section.collapsed.rows-1 .lot-grid .lot-card:nth-child(n+7){display:none}

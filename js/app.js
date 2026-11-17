@@ -3368,6 +3368,14 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
     refreshUniCounts(cat);
     refreshNewObjCatCounts(); /* v214: an so cua nut vua chon, hien lai so cua nut vua bo chon */
     refreshLockedCountsForCat(cat, 'model'); /* v237 (F-R2-10): so dem o loc bi khoa theo muc dang chon */
+    /* v318 (MC-108, 17/11/2026): chuyen tab Lo/Xuong/muc con — AN danh sach
+       Mau chinh (model-list-section) de danh sach cua muc dang chon thanh
+       danh sach chinh; ve tab Tim Mau thi MO lai. Truoc day setCat chi
+       mo/dong muc Lo/Xuong/moi nen #listGrid (120 the Mau) van hien tren
+       cung, nguoi dung thay "danh sach chinh van la Mau" va tuong loc
+       khong co tac dung (bo loc gia tri lo/xuong that ra van chay dung). */
+    if(cat === 'model'){ expandSection('model-list-section', null); }
+    else { collapseSection('model-list-section', null); }
     /* v182: muc con moi — chi hien section cua muc do (an cac section moi
        con lai), mo rong no; thu gon Lo/Xuong + section moi con lai de khi
        quay lai trang thai mac dinh van dung 1 hang. */
