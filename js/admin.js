@@ -120,6 +120,11 @@
     chatMessages: [], // danh sách tin đã tải gần nhất (mới nhất trước)
     chatSeq: 0, // P3 (13/11): số thứ tự lượt loadChat — lượt cũ về sau bị bỏ, không được ghi đè lượt mới
     chatLoading: false, // P3 (13/11): đang có lượt loadChat chạy (appendChatMessage không chen DOM lúc này)
+    aiChatTimer: null, // tự làm mới tab Chat AI mỗi 60 giây khi đang mở
+    aiChatChannel: null, // kênh Realtime 'ai-admin-room' (mở suốt phiên admin, xem § Chat AI)
+    aiChatSeq: 0, // số thứ tự lượt loadAiChat — lượt cũ về sau bị bỏ
+    aiChatLoading: false, // đang có lượt loadAiChat chạy
+    aiChatPending: [], // file đã upload xong, chờ gắn vào tin khi bấm Gửi ({id, file_name, mime_type, size_bytes, kind})
     tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
     usersPage: 0, commentsPage: 0, decidedPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
@@ -943,6 +948,238 @@
     btn.disabled = false;
   }
 
+  /* ---------- TAB: Chat AI (PR-A2, 17/11) — khung chat AI admin nội bộ ----------
+     Chỉ admin thật + AI. Gửi được ảnh (≤5 MB) và video (≤50 MB) qua bucket
+     private 'chat-attachments' (PR-A1: bảng ai_chat_messages/chat_attachments/
+     chat_ai_settings + 4 RPC). Khung Trao đổi và khung chat chung của user
+     CHỈ TEXT — không đính kèm, không đụng vào đây.
+     Mẫu theo tab Trao đổi: Realtime kênh 'ai-admin-room' (INSERT trên
+     ai_chat_messages) + polling 60 giây + nút Làm mới. Không có badge, không
+     có presence (khung nội bộ, chỉ admin + AI).
+     Luồng đính kèm: chọn file → kiểm tra loại/dung lượng ở client → upload
+     lên bucket → RPC ai_chat_upload_confirm ghi metadata (message_id NULL)
+     → bấm Gửi thì RPC ai_chat_post_message gắn file vào tin. File đính kèm
+     xem qua signed URL (hết hạn 1 giờ), do client tự tạo — RPC chỉ trả
+     storage_path, không trả URL trực tiếp. */
+  var AI_CHAT_BUCKET = 'chat-attachments';
+  var AI_CHAT_IMG_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+  var AI_CHAT_VIDEO_TYPES = ['video/mp4', 'video/webm'];
+  var AI_CHAT_IMG_MAX = 5 * 1024 * 1024; // 5 MB
+  var AI_CHAT_VIDEO_MAX = 50 * 1024 * 1024; // 50 MB
+  var AI_CHAT_MAX_FILES = 5;
+  function aiChatFileLabel(a) {
+    var kb = Math.max(1, Math.round((Number(a.size_bytes) || 0) / 1024));
+    return (a.file_name || 'file') + ' (' + (kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : kb + ' KB') + ')';
+  }
+  function aiChatSignedUrl(path) {
+    var c = client();
+    if (!c || !c.storage) return Promise.resolve(null);
+    return c.storage.from(AI_CHAT_BUCKET).createSignedUrl(path, 3600).then(function (res) {
+      if (res && res.data && res.data.signedUrl) return res.data.signedUrl;
+      return null;
+    }).catch(function () { return null; });
+  }
+  async function withAiChatUrls(list) {
+    // Gắn signed URL vào từng attachment trước khi render (để aiChatItemHtml
+    // dùng trực tiếp, không phải resolve sau khi chèn DOM).
+    var jobs = [];
+    (list || []).forEach(function (m) {
+      (m.attachments || []).forEach(function (a) { jobs.push(aiChatSignedUrl(a.storage_path).then(function (u) { a.url = u; })); });
+    });
+    await Promise.all(jobs);
+    return list;
+  }
+  function aiChatItemHtml(m) {
+    var isAi = m.author_type === 'ai';
+    var mine = !isAi && m.author_email && m.author_email === state.email;
+    var name = isAi ? (m.author_email || 'AI') : taskAuthorName(m.author_email);
+    var label = isAi ? ' <span class="adm-ai-label">AI</span>' : '';
+    var html = '<div class="adm-chat-item" data-mid="' + esc(m.id) + '"><p class="adm-chat-meta"><b>' + esc(name) + '</b>' + label
+      + ' · ' + esc(chatTime(m.created_at)) + (mine ? ' · (bạn)' : '') + '</p>';
+    if (m.body) html += '<div class="adm-chat-body">' + esc(m.body) + '</div>';
+    var atts = m.attachments || [];
+    if (atts.length) {
+      html += '<div class="adm-ai-attach">';
+      atts.forEach(function (a) {
+        if (a.kind === 'image' && a.url) {
+          html += '<img src="' + esc(a.url) + '" alt="' + esc(a.file_name || '') + '" loading="lazy">';
+        } else if (a.kind === 'video' && a.url) {
+          html += '<video src="' + esc(a.url) + '" controls preload="metadata"></video>';
+        }
+        html += '<div class="adm-ai-file">' + esc(aiChatFileLabel(a)) + '</div>';
+      });
+      html += '</div>';
+    }
+    html += '<p style="margin:6px 0 0"><button class="btn btn-ghost btn-sm" data-adm-act="delete-ai-chat" data-id="' + esc(m.id) + '" type="button">Xóa</button></p></div>';
+    return html;
+  }
+  async function loadAiChat() {
+    var wrap = $('admAiChatList');
+    if (!wrap) return;
+    var seq = ++state.aiChatSeq;
+    state.aiChatLoading = true;
+    var wasBottom = chatNearBottom(wrap);
+    var prevTop = wrap.scrollTop;
+    wrap.innerHTML = '<p>Đang tải…</p>';
+    try {
+      var list = await rpc('get_ai_chat_messages', { p_limit: 50, p_offset: 0 });
+      if (seq !== state.aiChatSeq) return;
+      if (!Array.isArray(list) || !list.length) {
+        wrap.innerHTML = '<p>Chưa có tin nhắn nào — gửi tin đầu tiên cho AI.</p>';
+        return;
+      }
+      await withAiChatUrls(list);
+      if (seq !== state.aiChatSeq) return;
+      // RPC trả mới nhất trước; chat hiển thị cũ → mới (tin mới nhất ở cuối).
+      wrap.innerHTML = '<div class="adm-chat-list">' + list.slice().reverse().map(aiChatItemHtml).join('') + '</div>';
+      if (wasBottom) wrap.scrollTop = wrap.scrollHeight; else wrap.scrollTop = prevTop;
+    } catch (e) {
+      if (seq !== state.aiChatSeq) return;
+      wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration PR-A1 chưa chạy (hàm get_ai_chat_messages chưa có).' : friendlyErr(e)) + '</p>';
+    } finally {
+      if (seq === state.aiChatSeq) state.aiChatLoading = false;
+    }
+  }
+  async function appendAiChatMessage(m) {
+    var wrap = $('admAiChatList');
+    if (!wrap || !m || !m.id) return false;
+    if (state.aiChatLoading) { loadAiChat(); return true; }
+    var listEl = wrap.querySelector('.adm-chat-list');
+    if (!listEl) { loadAiChat(); return true; }
+    if (listEl.querySelector('[data-mid="' + String(m.id).replace(/"/g, '') + '"]')) return false;
+    // Tin từ Realtime chỉ có cột tin nhắn, chưa có attachments — tải lại
+    // danh sách để lấy đủ file đính kèm (đơn giản, chắc chắn đúng).
+    loadAiChat();
+    return true;
+  }
+  function renderAiChatPending() {
+    var el = $('admAiAttachList');
+    if (!el) return;
+    var list = state.aiChatPending || [];
+    if (!list.length) { el.innerHTML = ''; return; }
+    el.innerHTML = list.map(function (a, i) {
+      return '<span class="adm-ai-chip">' + esc(aiChatFileLabel(a))
+        + '<button type="button" data-ai-remove="' + i + '" aria-label="Bỏ file">×</button></span>';
+    }).join('');
+  }
+  function aiChatSanitizeName(name) {
+    var base = String(name || 'file').split(/[\\/]/).pop() || 'file';
+    base = base.replace(/[^A-Za-z0-9._-]+/g, '_').replace(/_+/g, '_');
+    return base.slice(0, 80) || 'file';
+  }
+  async function uploadAiChatFile(file) {
+    var c = client();
+    if (!c || !c.storage) throw new Error('Chưa kết nối được Supabase, hãy tải lại trang.');
+    var type = file.type || '';
+    var isImg = AI_CHAT_IMG_TYPES.indexOf(type) !== -1;
+    var isVid = AI_CHAT_VIDEO_TYPES.indexOf(type) !== -1;
+    if (!isImg && !isVid) throw new Error('Loại file không được phép: ' + (type || 'không rõ') + '. Chỉ nhận ảnh JPG/PNG/WebP/GIF và video MP4/WebM.');
+    var max = isImg ? AI_CHAT_IMG_MAX : AI_CHAT_VIDEO_MAX;
+    if (file.size > max) throw new Error((isImg ? 'Ảnh tối đa 5 MB.' : 'Video tối đa 50 MB.') + ' File "' + file.name + '" nặng ' + (file.size / 1048576).toFixed(1) + ' MB.');
+    var now = new Date();
+    var ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    var rand = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+    var path = 'ai-chat/' + ym + '/' + rand + '-' + aiChatSanitizeName(file.name);
+    var up = await c.storage.from(AI_CHAT_BUCKET).upload(path, file, { contentType: type, upsert: false });
+    if (up.error) throw up.error;
+    var id = await rpc('ai_chat_upload_confirm', {
+      p_storage_path: path, p_file_name: file.name, p_mime_type: type, p_size_bytes: file.size,
+      p_width: null, p_height: null, p_duration_sec: null
+    });
+    return { id: id, file_name: file.name, mime_type: type, size_bytes: file.size, kind: isImg ? 'image' : 'video', storage_path: path };
+  }
+  async function onAiChatFileChange(e) {
+    var msg = $('admAiChatMsg');
+    var files = (e && e.target && e.target.files) ? Array.prototype.slice.call(e.target.files) : [];
+    if (e && e.target) e.target.value = '';
+    if (!files.length) return;
+    if ((state.aiChatPending || []).length + files.length > AI_CHAT_MAX_FILES) {
+      setMsg(msg, 'Tối đa ' + AI_CHAT_MAX_FILES + ' file mỗi tin.', true);
+      return;
+    }
+    setMsg(msg, 'Đang tải lên ' + files.length + ' file…');
+    var ok = 0;
+    for (var i = 0; i < files.length; i++) {
+      try {
+        var att = await uploadAiChatFile(files[i]);
+        state.aiChatPending.push(att);
+        ok++;
+      } catch (err) {
+        setMsg(msg, friendlyErr(err), true);
+        break;
+      }
+    }
+    renderAiChatPending();
+    if (ok) setMsg(msg, ok === files.length ? 'Đã đính kèm ' + ok + ' file — bấm Gửi để gửi tin.' : 'Đã đính kèm ' + ok + '/' + files.length + ' file.');
+  }
+  async function onSendAiChat() {
+    var input = $('admAiChatInput');
+    var btn = $('admAiChatSend');
+    var msg = $('admAiChatMsg');
+    if (!input || !btn) return;
+    if (state.legacyGate) { setMsg(msg, 'Chưa chạy migration GĐ1 — tab Chat AI chưa mở được.', true); return; }
+    var body = String(input.value || '').trim();
+    var pending = state.aiChatPending || [];
+    if (!body && !pending.length) { setMsg(msg, 'Nhập nội dung tin nhắn hoặc đính kèm ảnh/video trước khi gửi.', true); return; }
+    if (body.length > 10000) { setMsg(msg, 'Tin nhắn tối đa 10000 ký tự.', true); return; }
+    btn.disabled = true;
+    try {
+      var ids = pending.map(function (a) { return a.id; });
+      await rpc('ai_chat_post_message', { p_body: body, p_attachment_ids: ids });
+      input.value = '';
+      state.aiChatPending = [];
+      renderAiChatPending();
+      setMsg(msg, 'Đã gửi.');
+      await loadAiChat();
+    } catch (err) { setMsg(msg, friendlyErr(err), true); }
+    btn.disabled = false;
+  }
+  function setAiChatLiveStatus(mode) {
+    var dot = $('admAiChatLiveDot');
+    var txt = $('admAiChatLiveText');
+    if (!dot || !txt) return;
+    if (mode === 'live') { dot.style.background = '#1faa59'; txt.textContent = 'Trực tiếp'; }
+    else if (mode === 'reconnecting') { dot.style.background = '#999'; txt.textContent = 'Đang kết nối lại…'; }
+    else { dot.style.background = '#999'; txt.textContent = 'Chưa có kết nối trực tiếp — tự làm mới 60 giây.'; }
+  }
+  function startAiChatLive() {
+    stopAiChatLive();
+    var c = client();
+    if (!c || typeof c.channel !== 'function') { setAiChatLiveStatus('off'); return; }
+    try {
+      var ch = c.channel('ai-admin-room')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ai_chat_messages' }, function (payload) {
+          setAiChatLiveStatus('live');
+          if (payload && payload.new && state.activeTab === 'ai-chat') appendAiChatMessage(payload.new);
+        })
+        .subscribe(function (status) {
+          if (status === 'SUBSCRIBED') setAiChatLiveStatus('live');
+          else setAiChatLiveStatus('reconnecting');
+        });
+      state.aiChatChannel = ch;
+    } catch (e) {
+      state.aiChatChannel = null;
+      setAiChatLiveStatus('off');
+    }
+  }
+  function stopAiChatLive() {
+    var ch = state.aiChatChannel;
+    state.aiChatChannel = null;
+    if (ch && typeof ch.unsubscribe === 'function') {
+      try { ch.unsubscribe(); } catch (e) { /* bỏ qua */ }
+    }
+    setAiChatLiveStatus('off');
+  }
+  function startAiChatTimer() {
+    stopAiChatTimer();
+    state.aiChatTimer = setInterval(function () {
+      loadAiChat().catch(function () { /* lần sau thử lại */ });
+    }, 60000);
+  }
+  function stopAiChatTimer() {
+    if (state.aiChatTimer) { clearInterval(state.aiChatTimer); state.aiChatTimer = null; }
+  }
+
   /* ---------- TAB: Trao đổi — Danh sách tổng hợp công việc (v118) ----------
      Task tự thêm bằng trigger trên admin_comments (SQL v118): tin mới chứa
      từ khóa chỉ vấn đề (lỗi, cần sửa, thiếu, hỏng...) thì sinh 1 dòng
@@ -1582,6 +1819,18 @@
         await rpc('admin_delete_admin_comment', { p_id: id, p_reason: null });
         setMsg(msg, 'Đã xóa tin nhắn.');
         await loadChat();
+      } else if (act === 'delete-ai-chat') {
+        // Chat AI (PR-A2): xác nhận 2 bước ngay trên nút, mẫu v217 (không
+        // dùng window.confirm). Chỉ người gửi hoặc Owner mới xóa được
+        // (server kiểm tra lại trong ai_chat_delete_message).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          btn.textContent = 'Chắc chắn xóa?';
+          return;
+        }
+        await rpc('ai_chat_delete_message', { p_message_id: id });
+        setMsg($('admAiChatMsg'), 'Đã xóa tin nhắn.');
+        await loadAiChat();
       } else if (act === 'cycle-task') {
         // Đổi trạng thái workflow: admin nào cũng được (người sửa lỗi cần
         // đánh dấu tiến độ trên task do bên khác nêu). Server chặn khôi
@@ -1779,6 +2028,7 @@
     testdata: { label: 'Dữ liệu test', load: loadTestData },
     audit: { label: 'Nhật ký', load: loadAudit },
     chat: { label: 'Trao đổi', load: loadChat },
+    'ai-chat': { label: 'Chat AI', load: loadAiChat },
     write: { label: 'Viết bài', load: loadArticleDrafts }
   };
   var PAGE_LOADERS = { comments: loadComments, decided: loadDecidedComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
@@ -1799,9 +2049,19 @@
       loadChat().then(function () { markChatSeen(); }).catch(function (e) { /* tab tự hiện lỗi */ });
       loadTasks().catch(function (e) { /* tab tự hiện lỗi */ });
       startChatTimer();
+      stopAiChatTimer();
+      return;
+    }
+    // Tab Chat AI: tải lại mỗi lần mở + tự làm mới mỗi 60 giây khi đang mở.
+    if (key === 'ai-chat') {
+      state.loaded['ai-chat'] = true;
+      loadAiChat().catch(function (e) { /* tab tự hiện lỗi */ });
+      startAiChatTimer();
+      stopChatTimer();
       return;
     }
     stopChatTimer();
+    stopAiChatTimer();
     if (!state.loaded[key]) {
       state.loaded[key] = true;
       var loader = TABS[key] && TABS[key].load;
@@ -1886,6 +2146,7 @@
     // (giữ kênh suốt phiên để badge nhận INSERT cả khi đang ở tab khác;
     // rời tab Trao đổi không hủy kênh nữa — xem § Trao đổi).
     startChatLive();
+    startAiChatLive();
     startBadgeTimer();
     refreshChatBadge().catch(function () { /* lần sau thử lại */ });
   }
@@ -1936,6 +2197,24 @@
     if (cr) cr.addEventListener('click', function () { loadChat(); loadTasks(); });
     var ci = $('admChatInput');
     if (ci) ci.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') onSendChat(); });
+    // Tab Chat AI (PR-A2): gửi / làm mới / Ctrl+Enter / đính kèm file.
+    var acs = $('admAiChatSend');
+    if (acs) acs.addEventListener('click', onSendAiChat);
+    var acr = $('admAiChatRefresh');
+    if (acr) acr.addEventListener('click', function () { loadAiChat(); });
+    var aci = $('admAiChatInput');
+    if (aci) aci.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') onSendAiChat(); });
+    var acf = $('admAiChatFile');
+    var aca = $('admAiChatAttach');
+    if (aca && acf) aca.addEventListener('click', function () { acf.click(); });
+    if (acf) acf.addEventListener('change', onAiChatFileChange);
+    var aal = $('admAiAttachList');
+    if (aal) aal.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-ai-remove]') : null;
+      if (!b) return;
+      var idx = Number(b.getAttribute('data-ai-remove'));
+      if (!isNaN(idx)) { state.aiChatPending.splice(idx, 1); renderAiChatPending(); }
+    });
     // Danh sách tổng hợp công việc (v118): bộ lọc + thêm tay.
     var tsf = $('admTaskStatusFilter');
     if (tsf) tsf.addEventListener('change', function () { loadTasks(); });
