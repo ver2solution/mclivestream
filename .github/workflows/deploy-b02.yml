@@ -1,0 +1,48 @@
+name: "Deploy B-02 (L-01: requeue comment + show phone)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-b02.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-b02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip B-02 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; bai hoc v307: KHONG guard HEAD-SHA; bai hoc v305: dem bang grep -o | wc -l, KHONG grep -c; so sanh so bang -eq) ---"
+          grep -q 'loadDecidedComments' js/admin.js && (echo "B-02 DA DEPLOY ROI - dung"; exit 1) || true
+          grep -q 'v320-shell-1' sw.js && (echo "v320 DA DEPLOY ROI - dung"; exit 1) || true
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dded91b0ef6f332377d0ed00f6c92b7e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -o '<loc>' sitemap.xml | wc -l)" -eq 387 || (echo "BASE DOI: sitemap khong con 387 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-b02-deploy.zip
+          echo "--- verify B-02 (3 files) ---"
+          test "$(unzip -l mclivestream-b02-deploy.zip | grep -cE ' (js/admin\.js|quan-tri\.html|sw\.js)$')" -eq 3 || (echo "SAI: goi B-02 phai co dung 3 file (js/admin.js, quan-tri.html, sw.js)"; exit 1)
+          grep -q "loadDecidedComments" js/admin.js || (echo "SAI: admin.js phai co loadDecidedComments"; exit 1)
+          grep -q "requeue-comment" js/admin.js || (echo "SAI: admin.js phai co requeue-comment"; exit 1)
+          grep -q "commenter_phone" js/admin.js || (echo "SAI: admin.js phai co commenter_phone"; exit 1)
+          grep -q "admDecidedList" quan-tri.html || (echo "SAI: quan-tri.html phai co admDecidedList"; exit 1)
+          grep -q "v320-shell-1" sw.js || (echo "SAI: sw.js phai co v320-shell-1"; exit 1)
+          grep -q "v319-shell-1" sw.js && (echo "SAI: sw.js van con v319-shell-1"; exit 1) || true
+          echo "verify OK: 3 files, B-02 co mat, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-b02-deploy.zip
+          git add js/admin.js quan-tri.html sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy B-02 (L-01): nut Chuyen ve cho duyet + hien SDT nguoi gui (binh luan); bump SW cache v319-shell-1 -> v320-shell-1 (admin.js cache-first); data.js/sitemap khong doi (base 23d92b8)"
+            git push
+          fi
