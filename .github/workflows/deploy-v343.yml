@@ -1,0 +1,49 @@
+name: "Deploy v343 (P1-2/P1-3 + MC-108 — 1 trang 1 muc hien thi, disclaimer 1 lan)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v343.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v343:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v343 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v343-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v343-shell-1' sw.js; then echo "v343 DA DEPLOY ROI (sw.js da co v343-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main fd7e0d8 — sau v342-drafts LANBENA) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "6a0490edbde7860f9931845e8e8012a8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "449" || (echo "BASE DOI: sitemap khong con 449 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v343-deploy.zip
+          echo "--- verify v343 (5 file) ---"
+          test "$(unzip -l mclivestream-v343-deploy.zip | grep -cE ' (danh-sach-mau\.html|danh-sach-shop\.html|js/app\.js|v20\.css|sw\.js)$')" -eq 5 || (echo "SAI: goi v343 phai co dung 5 file"; exit 1)
+          grep -q "v343-shell-1" sw.js || (echo "SAI: sw.js phai co v343-shell-1"; exit 1)
+          grep -q "mat-na-mat-lanbena" js/data.js || (echo "SAI: data.js phai giu bai LANBENA v342-drafts"; exit 1)
+          grep -q "mat-na-mat-lanbena" sitemap.xml || (echo "SAI: sitemap phai giu bai LANBENA (449 URL)"; exit 1)
+          node --check js/app.js || (echo "SAI: app.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -q "setMauListVisibility" js/app.js || (echo "SAI: app.js phai co setMauListVisibility (v343)"; exit 1)
+          grep -q "setShopListVisibility" js/app.js || (echo "SAI: app.js phai co setShopListVisibility (v343)"; exit 1)
+          echo "verify OK: 5 file, sw.js v343-shell-1, data.js/sitemap giu LANBENA, JS hop le, du marker v343"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v343-deploy.zip
+          git add danh-sach-mau.html danh-sach-shop.html js/app.js v20.css sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v343: P1-2/P1-3 tach muc phu khoi trang danh sach (1 trang, 1 muc hien thi; hang tin xuong duoi danh sach; disclaimer gom 1 lan/trang; noi 6 control Lo/Xuong + dem option) + MC-108; CACHE v343-shell-1 (rebase tu fd7e0d8, giu bai LANBENA v342-drafts)"
+            git push
+          fi
