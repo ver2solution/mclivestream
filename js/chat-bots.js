@@ -275,7 +275,22 @@
     if (!m) return;
     messages.push(m);
     if (messages.length > MAX_BOT_MSGS) messages.splice(0, messages.length - MAX_BOT_MSGS);
+    /* v340 (TOP-01, 18/11/2026): ghi tăng 1 tin bot vào Top tương tác qua
+       RPC record_bot_message — fire-and-forget, không chặn render; RPC tự
+       kiểm allowlist 20 tên + giới hạn 1 lần/bot/phút. */
+    recordBotTop(m.bot && m.bot.name);
     repaint();
+  }
+  /* v340 (TOP-01): ghi tăng tin bot cho Top tương tác. Dùng Supabase client
+     chung (McLivestreamAPI.client); lỗi thì bỏ qua im lặng (migration chưa
+     chạy, mạng lỗi, hay RPC từ chối đều không được làm hỏng khung chat). */
+  function recordBotTop(botName) {
+    try {
+      var api = (typeof window !== 'undefined' && window.McLivestreamAPI) ? window.McLivestreamAPI : null;
+      if (!api || !api.client || !botName) return;
+      var p = api.client.rpc('record_bot_message', { p_bot_name: botName });
+      if (p && typeof p.catch === 'function') p.catch(function () { /* bỏ qua */ });
+    } catch (e) { /* bỏ qua */ }
   }
   function start() {
     if (timer) return;

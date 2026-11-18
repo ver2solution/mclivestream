@@ -255,7 +255,7 @@
     var box = $('homeChatTop');
     if (!box) return;
     if (!rows || !rows.length) {
-      box.innerHTML = '<p class="chat-empty">Chưa có tương tác tuần này.</p>';
+      box.innerHTML = '<p class="chat-empty">Chưa có tương tác hôm nay.</p>';
     } else {
       // v337: thứ tự ưu tiên User > Test tên thật > Bot (anh Thọ 13:41).
       // Trong mỗi nhóm vẫn xếp theo số tương tác giảm dần.
