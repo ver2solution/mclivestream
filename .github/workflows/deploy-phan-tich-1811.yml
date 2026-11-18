@@ -1,0 +1,53 @@
+name: Deploy articles-phan-tich-2026-11-18 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-phan-tich-1811.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-phan-tich-1811:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "366" || (echo "BASE DOI: data.js khong con 366 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "392" || (echo "BASE DOI: sitemap khong con 392 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip phan-tich-1811 package
+        run: |
+          unzip -o mclivestream-phan-tich-1811-deploy.zip
+          echo "--- verify phan-tich-1811 (4 bai moi) ---"
+          for slug in phan-tich-nganh-hang-ban-chay-tet-67700-ty mo-hinh-kinh-doanh-online-2026-6-mo-hinh kinh-doanh-handmade-online-etsy-shopify-2026 mo-hinh-ban-hang-qua-koc-xiaohongshu-2026; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "396" || (echo "SAI TONG sitemap, phai 396"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "370" || (echo "SAI TONG data.js, phai 370 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-phan-tich-1811-deploy.zip || rm -f mclivestream-phan-tich-1811-deploy.zip
+          git rm -q .github/workflows/deploy-phan-tich-1711.yml mclivestream-phan-tich-1711-deploy.zip || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-phan-tich-2026-11-18: 4 bai (phan-tich-nganh-hang-ban-chay-tet-67700-ty, mo-hinh-kinh-doanh-online-2026-6-mo-hinh, kinh-doanh-handmade-online-etsy-shopify-2026, mo-hinh-ban-hang-qua-koc-xiaohongshu-2026); xoa workflow + zip cu 1711 chua live"
+            git push
+          fi
