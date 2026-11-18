@@ -1,0 +1,47 @@
+name: "Deploy v329 (3 loi P1: MC-118 online, TK-01/TK-02 tim kiem)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v329.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v329:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v329 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v329-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v329-shell-1' sw.js; then echo "v329 DA DEPLOY ROI (sw.js da co v329-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main a8f82ff) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "53f865da2f84dec9417740b596530ad8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "437" || (echo "BASE DOI: sitemap khong con 437 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v329-deploy.zip
+          echo "--- verify v329 (3 file) ---"
+          test "$(unzip -l mclivestream-v329-deploy.zip | grep -cE ' (js/online-counter\.js|js/search\.js|sw\.js)$')" -eq 3 || (echo "SAI: goi v329 phai co dung 3 file (js/online-counter.js + js/search.js + sw.js)"; exit 1)
+          grep -q "v329-shell-1" sw.js || (echo "SAI: sw.js phai co v329-shell-1"; exit 1)
+          if grep -qF 'Math.floor((u / 0.05) * 11)' js/online-counter.js; then echo "SAI: online-counter.js khong duoc con delta cu Math.floor((u / 0.05) * 11)"; exit 1; fi
+          grep -q 'countByType(index)' js/search.js || (echo "SAI: search.js phai co countByType(index)"; exit 1)
+          grep -q 'qRaw: qRaw' js/search.js || (echo "SAI: search.js phai co qRaw: qRaw"; exit 1)
+          if grep -qF 'renderFilters(countByType([]))' js/search.js; then echo "SAI: search.js khong duoc con renderFilters(countByType([]))"; exit 1; fi
+          echo "verify OK: 3 file, sw.js v329-shell-1, online-counter delta moi, search tooShort so dem that + qRaw, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v329-deploy.zip
+          git add js/online-counter.js js/search.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v329: sua 3 loi P1 (MC-118 so online nhay, TK-01 tim rong tra 0, TK-02 '%^&*' mat thong bao); tickDelta -2..+2, search tooShort so dem that + qRaw; CACHE v329-shell-1"
+            git push
+          fi
