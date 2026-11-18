@@ -1138,14 +1138,14 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .cf-chat-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .cf-chat-head h3{margin:0;font-size:16px;flex:1}
 .chat-list{flex:1;min-height:200px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;padding-right:4px}
-/* v334: KHÔNG dùng justify-content:flex-end ở đây — khi nội dung dài hơn
-   khung, flex-end đẩy phần tràn lên TRÊN và trình duyệt không cho cuộn lên
-   tới đó (tin ở đầu khung bị cắt, không tới được — chí mạng khi tin AI/bot
-   đã chuyển lên đầu). Thay bằng margin-top:auto ở tin đầu tiên: nội dung
-   ngắn thì cả danh sách vẫn neo xuống đáy như trước, nội dung dài thì tràn
-   xuống DƯỚI, cuộn lên được tới tin đầu tiên. (Không đụng margin-top:auto
-   ở .chat-input — bài học v327 vẫn giữ.) */
-.chat-list>:first-child{margin-top:auto}
+/* v337 (18/11/2026, anh Thọ 13:36): BỎ margin-top:auto ở tin đầu tiên
+   (v334) — nó neo nội dung ngắn xuống ĐÁY khung, tin mới mọc lên từ dưới
+   ("đẩy từ dưới lên"); người xem chỉ lướt vài giây nên phải thấy tin mới
+   ngay ở ĐẦU khung. Nay danh sách neo lên ĐẦU (flex-start mặc định): tin
+   mới ở đầu, tin cũ trôi xuống dưới. KHÔNG dùng lại justify-content:
+   flex-end (bẫy v334: phần tràn lên trên không cuộn tới được). Nội dung
+   dài vẫn tràn xuống dưới, cuộn lên được tới tin đầu. (Không đụng
+   margin-top:auto ở .chat-input — bài học v327 vẫn giữ.) */
 /* v334 (18/11/2026, anh Thọ: khung chat cao đúng bằng mục Top bên phải):
    trên desktop, chiều cao khung do cột Top quyết định — cột chat và cột
    nổi bật cuộn bên trong thay vì đẩy khung cao lên. min-height:0 để cột

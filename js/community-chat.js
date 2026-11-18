@@ -19,7 +19,7 @@
   'use strict';
 
   var MSG_LIMIT = 6;
-  var TOP_LIMIT = 5;
+  var TOP_LIMIT = 10; /* v337 (18/11/2026, anh Thọ 13:37): Top 10 người — "10 người thì cộng 10 người vào". Trước đây 5. */
   var POLL_MS = 60000;
   var MAX_BODY = 2000;
 
@@ -227,12 +227,43 @@
     updateJumpBtn();
   }
 
+  /* v337 (18/11/2026, anh Thọ 13:37 + 13:41): thứ tự ưu tiên Top tương
+     tác: User (người thật) > Test tên thật > Bot. Bot chat nhắn mỗi 5
+     giây nên nếu xếp theo số tin thì Bot luôn đứng đầu — người thật phải
+     được ưu tiên; Test (tài khoản test dùng tên thật) xếp sau User nhưng
+     trước Bot. Nhận diện: Bot = cờ is_bot / role 'bot' / tên có "Bot"/
+     "🤖"; Test = cờ is_test / tên có "TEST"/"QA Test" / tên trong danh
+     sách tài khoản test hiện tại. Đây là heuristic phía client — RPC sau
+     này cần trả cờ tier (user/test/bot) theo tài khoản để nhận diện chắc
+     chắn (luật Top mới); tên Test trùng tên người thật là trường hợp hiếm,
+     chấp nhận. */
+  var TEST_TOP_NAMES = ['anh nguyễn', 'bình trần', 'qa test 1800'];
+  function topTier(r) {
+    if (!r) return 0;
+    if (r.is_bot === true || r.author_role === 'bot') return 2;
+    var n = (r.author_name || '').toLowerCase();
+    if (n.indexOf('bot') !== -1 || n.indexOf('🤖') !== -1) return 2;
+    if (r.is_test === true) return 1;
+    if (n.indexOf('test') !== -1 || n.indexOf('qa test') !== -1) return 1;
+    for (var i = 0; i < TEST_TOP_NAMES.length; i++) {
+      if (n === TEST_TOP_NAMES[i]) return 1;
+    }
+    return 0;
+  }
+
   function renderTop(rows) {
     var box = $('homeChatTop');
     if (!box) return;
     if (!rows || !rows.length) {
       box.innerHTML = '<p class="chat-empty">Chưa có tương tác tuần này.</p>';
     } else {
+      // v337: thứ tự ưu tiên User > Test tên thật > Bot (anh Thọ 13:41).
+      // Trong mỗi nhóm vẫn xếp theo số tương tác giảm dần.
+      rows = rows.slice().sort(function (a, b) {
+        var ta = topTier(a), tb = topTier(b);
+        if (ta !== tb) return ta - tb;
+        return (b.interact_count || 0) - (a.interact_count || 0);
+      });
       var html = '';
       rows.forEach(function (r, i) {
         var rank = i + 1;
