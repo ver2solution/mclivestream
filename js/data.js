@@ -16051,6 +16051,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Mặt nạ mắt LANBENA giá 158.000 đồng bán 2.700 đơn, doanh thu 715,62 triệu đồng trong 1 tháng (16/10–15/11/2026, theo bảng xếp hạng Kalodata). Vì sao sản phẩm nhỏ giá rẻ vẫn thắng mùa sale, và shop Việt học được gì trước Black Friday 27/11 và 12.12?"
   },
+  {
+   "title": "2.450 tỷ đồng trong 1 buổi live — Vợ chồng Quảng Đông: đêm phá kỷ lục Double 11/2022 và cú tụt dốc 4 năm sau",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-18",
+   "url": "https://www.36kr.com/p/2305893349731847",
+   "page": "bai-viet/vo-chong-quang-dong-2450-ty-dong-1-buoi-double-11-2022-ky-luc-douyin.html",
+   "img": "https://img.36krcdn.com/hsossms/20230617/v2_b89dcdfe9b5e4d1bbbfd9c10e5ab7bc3@000000_oswg170650oswg1080oswg923_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Vợ chồng Quảng Đông bán hơn 700 triệu nhân dân tệ (khoảng 2.450 tỷ đồng) trong 1 buổi live Double 11/2022, từng là kỷ lục Douyin. Bài viết \"bóc mẽ\" đêm kỷ lục, công thức người – hàng – sân, bài toán lỗ 3 điểm của Lý Quốc Khánh và cú tụt dốc tới Double 11/2026."
+  },
 ],
  "lots": [
    {
