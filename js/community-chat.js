@@ -250,17 +250,16 @@
     scheduleFrameSync();
   }
 
-  /* v335 (18/11/2026, anh Thọ 13:19): Khung chat cao bằng cột phải CAO
-     NHẤT (Top hoặc Highlights), không phải chỉ Top. Gốc v334: khung neo
-     theo .cf-top, mà Top đang TRỐNG ("Chưa có tương tác tuần này") nên
-     khung chỉ ~250px, bé hẳn so với cột Shop bên phải (có nội dung, cao
-     hơn nhiều) — anh báo "bé thế này, phải lấy mốc khung bên phải làm
-     khung cố định". Đo chiều cao tự nhiên của cả 2 cột phải bằng bản sao
-     ẩn (không bị kéo giãn bởi lưới), lấy số LỚN hơn, đặt chiều cao khung
-     bằng đúng số đó; cột nào ngắn hơn thì có khoảng trống bên dưới, cột
-     chat và cột dài cuộn bên trong. Khung không dài hơn cột phải cao
-     nhất (giữ luật "cấm dài hơn" ở mức cột phải). Chỉ chạy trên desktop
-     (>720px); mobile xếp dọc nên không giới hạn. */
+  /* v336 (18/11/2026, anh Thọ 13:28): Khung chat cao đúng bằng cột NGOÀI
+     CÙNG BÊN PHẢI (.cf-hl — "Shop tuyển lương cao nhất" + các mục tin hot),
+     CHỈ cột đó làm mốc. v335 lấy max(Top, Highlights) là SAI yêu cầu: đã
+     kéo cột Top vào phép đo (anh bảo "kéo vào làm gì"), và khi Top cao hơn
+     thì khung dài hơn cột mốc, các mục trong cột mốc bị dàn ra. Đo chiều
+     cao tự nhiên của riêng .cf-hl bằng bản sao ẩn (không bị kéo giãn bởi
+     lưới), đặt chiều cao khung bằng đúng số đó; cột Top ngắn hơn thì có
+     khoảng trống bên dưới (không kéo khung theo Top), cột chat cuộn bên
+     trong. Chỉ chạy trên desktop (>720px); mobile xếp dọc nên không giới
+     hạn. */
   var frameSyncTimer = null;
   function measureNaturalHeight(el) {
     if (!el || !el.clientWidth) return 0;
@@ -276,14 +275,13 @@
   }
   function syncFrameHeight() {
     var body = document.querySelector('.chat-frame-body');
-    var top = document.querySelector('.cf-top');
     var hl = document.querySelector('.cf-hl');
-    if (!body || !top) return;
+    if (!body || !hl) return;
     if (window.matchMedia && window.matchMedia('(max-width:720px)').matches) {
       body.style.height = '';
       return;
     }
-    var h = Math.max(measureNaturalHeight(top), measureNaturalHeight(hl));
+    var h = measureNaturalHeight(hl);
     if (h > 0) body.style.height = h + 'px';
   }
   function scheduleFrameSync() {
