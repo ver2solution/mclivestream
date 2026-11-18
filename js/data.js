@@ -59,6 +59,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-thi-truong-2026-11-18 adds 4 Thi truong articles (18/11/2026, Wednesday): 1 seasonal keyword "thị trường thương mại điện tử cuối năm" #5/10 (4.269 words, deep + đánh giá tiềm năng; written 17/11 as v315, live 18/11 after upload failed 17/11) + 3 news ("Black Friday 2026: 12,9 tỷ USD" 2.758 words; "xuất khẩu Việt Nam tháng 10/2026: 64,67 tỷ USD" 2.620 words; "Double 12 Trung Quốc 2026" 2.633 words). Total 394 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-18 adds 4 Xu hướng articles (18/11/2026, Wednesday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 (3.938 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("xu hướng tiêu dùng 2027" Euromonitor 2.812 words; "mua trước trả sau" BNPL 2.691 words; "mua sắm sớm dịp lễ 2026" Deloitte 2.720 words). Total 390 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
@@ -15536,6 +15537,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Mua sắm sớm dịp lễ 2026: 28% ngân sách hết trước tháng 11 (cao nhất 6 năm), 42% săn sale tháng 10, 38% là người săn giá trị (Deloitte 15/10/2026)."
+  },
+  {
+   "title": "Thị trường thương mại điện tử cuối năm: 275,1 tỷ USD",
+   "cat": "Thị trường",
+   "source": "Adobe / Deloitte / e-Conomy SEA 2026",
+   "date": "2026-11-18",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/thi-truong-thuong-mai-dien-tu-cuoi-nam-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thuong-mai-dien-tu-cuoi-nam-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường TMĐT cuối năm 2026: Mỹ dự báo 275,1 tỷ USD online (Adobe 28/09/2026); Double 11 Trung Quốc 1.776,4 tỷ NDT, tăng 4,8% (Syntun 12/11/2026); Việt Nam bán lẻ tháng 10/2026 tăng 14,7% (Cục Thống kê 03/11/2026); ngày cao điểm 12/12/2026."
+  },
+  {
+   "title": "Black Friday 2026: 12,9 tỷ USD, Cyber Monday 15,1 tỷ",
+   "cat": "Thị trường",
+   "source": "Adobe",
+   "date": "2026-11-18",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/black-friday-2026-adobe-275-ty-usd-cyber-monday-15-ty.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-2026-adobe-275-ty-usd-cyber-monday-15-ty.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Black Friday 2026 (thứ Sáu 27/11/2026) được Adobe dự báo đạt 12,9 tỷ USD, tăng 9,2%; Cyber Monday 30/11/2026 đạt 15,1 tỷ USD; cả mùa lễ 275,1 tỷ USD, điện thoại chiếm 57,4% (Adobe 28/09/2026)."
+  },
+  {
+   "title": "Xuất khẩu Việt Nam tháng 10/2026: 64,67 tỷ USD, tăng 51,4%",
+   "cat": "Thị trường",
+   "source": "Vietnam Briefing / Cục Thống kê",
+   "date": "2026-11-18",
+   "url": "https://www.vietnam-briefing.com/news/vietnam-trade-us-1-trillion-2026.html/",
+   "page": "bai-viet/xuat-khau-viet-nam-thang-10-2026-64-67-ty-usd-tang-51-4-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xuat-khau-viet-nam-thang-10-2026-64-67-ty-usd-tang-51-4-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xuất khẩu Việt Nam tháng 10/2026 đạt kỷ lục 64,67 tỷ USD, tăng 51,4%; thặng dư 7,31 tỷ USD lớn nhất từ trước tới nay; 10 tháng 2026 kim ngạch vượt 1.000 tỷ USD lần đầu tiên (Cục Thống kê 03/11/2026)."
+  },
+  {
+   "title": "Double 12 Trung Quốc 2026: xả kho sau 11.11",
+   "cat": "Thị trường",
+   "source": "Moojing Global / Reuters",
+   "date": "2026-11-18",
+   "url": "https://moojing-global.com/wiki/china-ecommerce-calendar",
+   "page": "bai-viet/double-12-trung-quoc-2026-taobao-12-12-xa-kho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/double-12-trung-quoc-2026-taobao-12-12-xa-kho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double 12 Trung Quốc 2026 diễn ra thứ Bảy 12/12/2026 trên Taobao và Tmall, đợt xả kho cho shop nhỏ sau Double 11 đạt 1.776,4 tỷ NDT, tăng 4,8% (Syntun 12/11/2026; Moojing 16/11/2026)."
   }
 ],
  "lots": [
