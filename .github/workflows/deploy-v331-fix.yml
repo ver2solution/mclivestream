@@ -1,0 +1,55 @@
+name: Deploy v331-fix (article drafts)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v331-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v331-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v331-fix package
+        run: |
+          unzip -o mclivestream-v331-fix-deploy.zip
+          echo "--- verify v331-fix (1 bai) ---"
+          test -f bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html || (echo "THIEU bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html"; exit 1)
+          grep -q "bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html" js/data.js || (echo "THIEU vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html</loc>" sitemap.xml || (echo "THIEU vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua trong sitemap"; exit 1)
+          grep -q "v331-shell-1" sw.js || (echo "THIEU v331-shell-1 trong sw.js"; exit 1)
+          grep -q "xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don" js/data.js || (echo "THIEU xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don" sitemap.xml || (echo "THIEU xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11" js/data.js || (echo "THIEU shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11" sitemap.xml || (echo "THIEU shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "shein-black-friday-giam-toi-95-phan-tram-live-15-gio" js/data.js || (echo "THIEU shein-black-friday-giam-toi-95-phan-tram-live-15-gio trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "shein-black-friday-giam-toi-95-phan-tram-live-15-gio" sitemap.xml || (echo "THIEU shein-black-friday-giam-toi-95-phan-tram-live-15-gio trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd" js/data.js || (echo "THIEU temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd" sitemap.xml || (echo "THIEU temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12" js/data.js || (echo "THIEU sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12" sitemap.xml || (echo "THIEU sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd" js/data.js || (echo "THIEU dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd" sitemap.xml || (echo "THIEU dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "walmart-black-friday-2026-3-dot-sale-tv-128-usd" js/data.js || (echo "THIEU walmart-black-friday-2026-3-dot-sale-tv-128-usd trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "walmart-black-friday-2026-3-dot-sale-tv-128-usd" sitemap.xml || (echo "THIEU walmart-black-friday-2026-3-dot-sale-tv-128-usd trong sitemap (8 bai Dang hot)"; exit 1)
+          grep -q "best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd" js/data.js || (echo "THIEU best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd trong data.js (8 bai Dang hot)"; exit 1)
+          grep -q "best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd" sitemap.xml || (echo "THIEU best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd trong sitemap (8 bai Dang hot)"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v331-fix-deploy.zip
+          git add bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html js/data.js sitemap.xml sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v331-fix: 1 bai viet tu ban thao (Muse Zalo/admin) — vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua"
+            git push
+          fi
