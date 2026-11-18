@@ -250,28 +250,40 @@
     scheduleFrameSync();
   }
 
-  /* v334: Khung chat cao đúng bằng mục Top bên phải (desktop). Đo chiều cao
-     tự nhiên của cột Top bằng bản sao ẩn (không bị kéo giãn bởi lưới), rồi
-     đặt chiều cao khung bằng đúng số đó; cột chat và cột nổi bật cuộn bên
-     trong. Chỉ chạy trên desktop (>720px); mobile xếp dọc nên không giới hạn.
-     Khung chỉ dài đúng bằng Top, cấm dài hơn (anh Thọ 13:00 18/11). */
+  /* v335 (18/11/2026, anh Thọ 13:19): Khung chat cao bằng cột phải CAO
+     NHẤT (Top hoặc Highlights), không phải chỉ Top. Gốc v334: khung neo
+     theo .cf-top, mà Top đang TRỐNG ("Chưa có tương tác tuần này") nên
+     khung chỉ ~250px, bé hẳn so với cột Shop bên phải (có nội dung, cao
+     hơn nhiều) — anh báo "bé thế này, phải lấy mốc khung bên phải làm
+     khung cố định". Đo chiều cao tự nhiên của cả 2 cột phải bằng bản sao
+     ẩn (không bị kéo giãn bởi lưới), lấy số LỚN hơn, đặt chiều cao khung
+     bằng đúng số đó; cột nào ngắn hơn thì có khoảng trống bên dưới, cột
+     chat và cột dài cuộn bên trong. Khung không dài hơn cột phải cao
+     nhất (giữ luật "cấm dài hơn" ở mức cột phải). Chỉ chạy trên desktop
+     (>720px); mobile xếp dọc nên không giới hạn. */
   var frameSyncTimer = null;
+  function measureNaturalHeight(el) {
+    if (!el || !el.clientWidth) return 0;
+    var clone = el.cloneNode(true);
+    clone.removeAttribute('id');
+    var ids = clone.querySelectorAll('[id]');
+    for (var i = 0; i < ids.length; i++) ids[i].removeAttribute('id');
+    clone.style.cssText = 'position:fixed;left:-9999px;top:0;visibility:hidden;height:auto;width:' + el.clientWidth + 'px;margin:0;';
+    document.body.appendChild(clone);
+    var h = clone.offsetHeight;
+    document.body.removeChild(clone);
+    return h || 0;
+  }
   function syncFrameHeight() {
     var body = document.querySelector('.chat-frame-body');
     var top = document.querySelector('.cf-top');
-    if (!body || !top || !top.clientWidth) return;
+    var hl = document.querySelector('.cf-hl');
+    if (!body || !top) return;
     if (window.matchMedia && window.matchMedia('(max-width:720px)').matches) {
       body.style.height = '';
       return;
     }
-    var clone = top.cloneNode(true);
-    var ids = clone.querySelectorAll('[id]');
-    for (var i = 0; i < ids.length; i++) ids[i].removeAttribute('id');
-    clone.style.cssText = 'position:fixed;left:-9999px;top:0;visibility:hidden;height:auto;width:' + top.clientWidth + 'px;margin:0;';
-    document.body.appendChild(clone);
-    var h = clone.offsetHeight;
-    document.body.removeChild(clone);
-    // Khung chỉ dài đúng bằng Top, cấm dài hơn (anh Thọ 13:00 18/11).
+    var h = Math.max(measureNaturalHeight(top), measureNaturalHeight(hl));
     if (h > 0) body.style.height = h + 'px';
   }
   function scheduleFrameSync() {
