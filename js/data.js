@@ -1,4 +1,5 @@
 /* v76 data: them 2 mang "lots" (13 lo: 8 nhom 1 + 3 nhom 2 + 2 nhom 3) va "factories" (20 xuong) —
+   18/11/2026 data them 43 (shop sh-293..301 +9, xuong fac-401..407 +7, kiot kiot-361..363 +3, lg-22..26 +5, mv-12..14 +3, le-12..13 +2, ag-12..15 +4, cl-22..23 +2, cm-22..25 +4, em-22..24 +3, rt-23 +1) — shop 299, xuong 407, kiot 363; muc moi lech nhau khong tron: lop live 23, lop makeup 25, su kien 24, logistics 26, cho thue 22, chuyen nha 14, thiet bi 13, agency 15. Anh: 22/34 co anh dai dien; 12 de rong (lg-23/25/26, le-12/13, ag-13, cm-25, em-23/24, rt-23, kiot-362/363 — khong hotlink, khong anh logo chung).
    16/11/2026 lots 11:21: +34 lo (lot-113..146: A12 VOZ/OTOFUN + B10 YouTube + C6 web thu mua + D6 KG/random, loai D4 trung A10); chuan hoa prov lot-107/108/112 Kien Giang -> An Giang (danh sach 34 tinh, MERGED_PROV); 24 anh moi lot-113..138 + kem 20 anh lot-72..111 chua live. REBASE 12:16 len live sau deploy kiot (71197584, kiot 280) — lan deploy 1 dung vi kiot chen ngang, goi nay giu nguyen 40 kiot moi.
    18/11/2026 lots 11:21: RE-INSERT 40 lo 17/11 (lot-147..186) — deploy 17/11 khong len live (upload ket + deploy xu-huong chen ngang); prep 04:07 dong bo lai tu live (dbe0864f, 146 lo) lam mat 40 lo; chen lai tu lots-2026-11-17-new.js (da kiem chung 17/11).
    18/11/2026 lots 11:21: +40 lo moi (lot-187..226: A11 VOZ/OTOFUN + B12 YouTube + C10 Cho Tot/web + D7 dong cua FB/IG); 32/40 co anh dai dien (thieu lot-190 VOZ + lot-220..226 FB/IG khong co URL anh truc tiep). Tong 226 lo.
@@ -11835,7 +11836,163 @@ window.V20_DATA = {
    "logoFit": "contain",
    "contacts": [
     {"provider": "email", "value": "Phuongdh312@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/2930003470551216/posts/4542495535968660"}
-   ]  }
+   ]  },
+  {
+   "id": "sh-293",
+   "name": "MIUCHO",
+   "shopNameKnown": true,
+   "product": "Áo thun (local brand)",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Tân Thới Nhất, Quận 12",
+   "salary": "100.000 - 120.000 đồng/giờ (theo năng lực)",
+   "shifts": ["Ca linh hoạt"],
+   "req": "Tuyển 5 mẫu livestream bán áo thun; giao tiếp lưu loát, năng lượng tích cực, ngoại hình sáng, biết makeup cơ bản, có kinh nghiệm livestream; gửi video live trước qua Zalo; làm việc tại Tân Thới Nhất 8, Quận 12",
+   "channels": "www.threads.com",
+   "date": "2026-11-16",
+   "src": "https://www.threads.com/@miucho.com_/post/Df1EuixERGp",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  },
+  {
+   "id": "sh-294",
+   "name": "BUBBLE CREATIVE MEDIA",
+   "shopNameKnown": true,
+   "product": "Tuyển Idol nữ livestream TikTok",
+   "province": "TP. Hồ Chí Minh",
+   "district": "80/12A Ba Vân, P. Tân Bình",
+   "salary": "Lương cứng 15 - 25 triệu/tháng + hoa hồng 5% + thưởng chuyên cần 2 triệu",
+   "shifts": [],
+   "req": "Tuyển Idol nữ livestream TikTok; đào tạo A–Z, không KPI, vận hành 1:1; làm việc tại 80/12A Ba Vân, P. Tân Bình",
+   "channels": "www.facebook.com",
+   "date": "2026-11-18",
+   "src": "https://www.facebook.com/groups/1007825283653307/posts/1754647802304381",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0901341102", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/groups/1007825283653307/posts/1754647802304381"}
+   ]  },
+  {
+   "id": "sh-295",
+   "name": "BRILLIANT STARS",
+   "shopNameKnown": true,
+   "product": "Tuyển idol live onl/off",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quang Trung, Gò Vấp",
+   "salary": "Thu nhập 18 - 35 triệu/tháng",
+   "shifts": ["6 giờ/ngày, off 4 ngày/tháng"],
+   "req": "Tuyển idol live online/offline; trò chuyện + PK + donate; làm việc tại Quang Trung, Gò Vấp; người đăng Bao Chau",
+   "channels": "www.facebook.com",
+   "date": "2026-11-17",
+   "src": "https://www.facebook.com/groups/1007825283653307/posts/1754325065669988",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0916356625", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/groups/1007825283653307/posts/1754325065669988"}
+   ]  },
+  {
+   "id": "sh-296",
+   "name": "WORTHFIND",
+   "shopNameKnown": true,
+   "product": "Hành lý du lịch — Host Livestream TikTok",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Chưa cập nhật",
+   "salary": "18 - 30 triệu/tháng (150k–250k/giờ)",
+   "shifts": [],
+   "req": "Tuyển Host Livestream TikTok (Cty TNHH Worthfind Travel Goods); tin đăng 30/10/2026, hạn nộp 29/11/2026 — đang mở trên CareerViet/Vieclam Tuổi Trẻ (bản gốc TopCV đã hết hạn)",
+   "channels": "www.vieclam.tuoitre.vn",
+   "date": "2026-10-30",
+   "src": "https://vieclam.tuoitre.vn/vi/tim-viec-lam/host-livestream-tiktok.35C88F41.html",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  },
+  {
+   "id": "sh-297",
+   "name": "Công Ty TNHH Giải Trí KL-Commerce",
+   "shopNameKnown": true,
+   "product": "Gia dụng công nghệ (máy hút bụi, máy lọc không khí, quạt điện)",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Bình Tân",
+   "salary": "12 - 30 triệu/tháng (lương 10-12 triệu + thưởng KPIs + hoa hồng)",
+   "shifts": ["Xoay ca theo sắp xếp công ty"],
+   "req": "Nữ 20-30 tuổi, ngoại hình ưa nhìn, tự tin trước ống kính; không yêu cầu kinh nghiệm (có kinh nghiệm live TikTok/Shopee là lợi thế); giọng nói rõ ràng, giao tiếp lưu loát; live Shopee và TikTok; làm việc tại 204 đường số 34, P. An Lạc, Bình Tân; chỉ live cho các brand của công ty; thử việc 2 tháng; tuyển 3 người",
+   "channels": "www.vieclam24h.vn",
+   "date": "2026-11-05",
+   "src": "https://vieclam24h.vn/short/job/200985474",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  },
+  {
+   "id": "sh-298",
+   "name": "Cty TNHH Sài Gòn Bếp",
+   "shopNameKnown": true,
+   "product": "Thiết bị nhà bếp cao cấp",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Quận 10",
+   "salary": "7 - 15 triệu/tháng",
+   "shifts": ["Ca linh hoạt"],
+   "req": "Kinh nghiệm dưới 1 năm; có kinh nghiệm hoặc đam mê livestream, giao tiếp tự tin, hoạt ngôn trước ống kính; có kiến thức/tư duy xây dựng nội dung TikTok; làm việc theo ca linh hoạt, cam kết đạt chỉ tiêu doanh số; live TikTok Shop, Facebook, Shopee; làm việc tại 414 Đường 3/2, P. Hòa Hưng, Quận 10; tuyển 2 người; thử việc 1 tháng",
+   "channels": "www.vieclam24h.vn",
+   "date": "2026-11-01",
+   "src": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-ban-hang-livestream-c13p210000187id200980046.html?open_from=2701_9_10",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  },
+  {
+   "id": "sh-299",
+   "name": "MAKE P:REM",
+   "shopNameKnown": true,
+   "product": "Mỹ phẩm (MAKE P:REM)",
+   "province": "Hà Nội",
+   "district": "Thanh Xuân",
+   "salary": "Chưa công bố — inbox nhận JD",
+   "shifts": ["13:00–16:00", "16:00–20:00"],
+   "req": "Tuyển part-time livestreamer, nam/nữ/LGBT đều được; tối thiểu 3 tháng kinh nghiệm livestream bán hàng; giao tiếp tự tin, tư vấn khách; có trách nhiệm, chủ động; làm việc tại 227 Hoàng Văn Thái, Hà Nội; inbox nhận JD đầy đủ",
+   "channels": "www.threads.com",
+   "date": "2026-11-16",
+   "src": "https://www.threads.com/@may_bongbenh_00/post/Df1MFXUGAAU",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  },
+  {
+   "id": "sh-300",
+   "name": "Mỵ Tiến Đạt",
+   "shopNameKnown": true,
+   "product": "Chung / Đa ngành (live bán hàng)",
+   "province": "Hà Nội",
+   "district": "Bắc Từ Liêm",
+   "salary": "6 - 10 triệu/tháng (lương giờ + 0,5% doanh thu)",
+   "shifts": ["Ca linh hoạt (part-time, theo lịch học)"],
+   "req": "Tuyển 5 nhân viên livestream bán hàng, ưu tiên sinh viên muốn làm part-time lâu dài; ngoại hình ưa nhìn, có gu thời trang là lợi thế; tự tin trước camera, giao tiếp tốt, đúng giờ; được đào tạo từ đầu, làm quen vận hành TikTok Shop; làm việc tại 20 Lê Văn Hiến, Đông Ngạc, Hà Nội (gần Học viện Tài chính)",
+   "channels": "www.threads.com",
+   "date": "2026-11-15",
+   "src": "https://www.threads.com/@0201mytiendat/post/DfylkADn2_y",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0919920338", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@0201mytiendat/post/DfylkADn2_y"}
+   ]  },
+  {
+   "id": "sh-301",
+   "name": "Công Ty Cổ Phần Sản Xuất Dược Mỹ Phẩm Vincos Việt Nam",
+   "shopNameKnown": true,
+   "product": "Mỹ phẩm, thực phẩm chức năng, hàng tiêu dùng",
+   "province": "Hà Nội",
+   "district": "Chưa cập nhật",
+   "salary": "10 - 22 triệu/tháng (lương cứng 7-8 triệu + hoa hồng doanh số)",
+   "shifts": ["Ca 1: 08:00–17:00 (live chính 11:30–13:00)", "Ca 2: 13:00–21:30 (live chính 19:30–21:30)"],
+   "req": "Kinh nghiệm 1-2 năm (ưu tiên 3-6 tháng kinh nghiệm live bán hàng, đặc biệt mỹ phẩm/TPCN/tiêu dùng); tự tin trước ống kính, giọng rõ ràng, không ngọng/lắp; thành thạo tự quay và dựng video bằng CapCut; live TikTok Shop, Shopee, Facebook + sáng tạo video ngắn; 2 nhân sự đổi ca theo tuần; phụ cấp ăn trưa, phụ cấp 150.000đ/ca live Chủ Nhật",
+   "channels": "www.jobsgo.vn",
+   "date": "2026-10-24",
+   "src": "https://jobsgo.vn/viec-lam/chuyen-vien-livestream-video-ban-hang-29478854785.html",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": []
+  }
 ],
  "articles": [
   {
@@ -25762,6 +25919,57 @@ window.V20_DATA = {
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
      "img": "images/kiot/kiot-360.jpg"
+   },
+   {
+     "id": "kiot-361",
+     "group": 1,
+     "title": "Sang nhượng CHILLA HAIR & MATCHA – Hải Phòng",
+     "price": "200 triệu",
+     "priceNum": 200000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Salon tóc + matcha 80m², 223 Lê Lợi, Q. Ngô Quyền, Hải Phòng; thuê 15 triệu/tháng; sang nhượng trọn gói 200 triệu (toàn bộ nội thất, máy móc, thiết bị, khu vực Matcha setup sẵn, tiền cọc mặt bằng, tệp khách hàng); liên hệ chính chủ 0775 216 319.",
+     "date": "11/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://chonhadat24h.vn/sang-nhuong-chilla-hair-matcha-hai-phong/",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hải Phòng",
+     "img": "images/kiot/kiot-361.jpg"
+   },
+   {
+     "id": "kiot-362",
+     "group": 1,
+     "title": "Sang nhượng của hàng quần áo",
+     "price": "8 triệu",
+     "priceNum": 8000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "Hà Nội — Chung cư Thanh Hà Cienco 5, Thanh Oai · 37m² · Mặt tiền <5m, hướng Tây Nam",
+     "date": "16/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://rongbay.com/toan-quoc/Cua-hang-Ki-ot-Mat-bang-Mua-Ban-nha-dat-c15-t2-fn394:397.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
+     "img": ""
+   },
+   {
+     "id": "kiot-363",
+     "group": 1,
+     "title": "Sang nhượng salon tóc - nhà nguyên căn mặt tiền đường Tân Quý, Tân Phú",
+     "price": "70 triệu",
+     "priceNum": 70000000,
+     "qty": null,
+     "cat": "sang-mat-bang",
+     "meta": "TP. Hồ Chí Minh — Đường Tân Quý, Tân Quý, Tân Phú · 60m² · Nhà nguyên căn mặt tiền",
+     "date": "14/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://RONGBAY.COM/TP-HCM/Cua-hang-Ki-ot-Mat-bang-Mua-Ban-nha-dat-c15-t2.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": ""
    }
  ],
  "factories": [
@@ -31583,6 +31791,111 @@ window.V20_DATA = {
      "url": "https://tripi.vn/blog/vi/doi-song/top-10-xuong-may-thoi-trang-uy-tin-gia-hop-ly-tai-tp-hcm-tripi",
      "linkText": "Xem trang gốc →",
      "img": "images/xuong/fac-400.jpg"
+   },
+   {
+     "id": "fac-401",
+     "name": "Hoa Phat Garment",
+     "items": "Gia công trọn gói CMT, OEM: áo thun đồng phục, áo polo, áo gió, áo khoác, áo sơ mi công sở, đồng phục bảo hộ lao động, nón đồng phục",
+     "meta": "Vĩnh Long — Nhà máy: 92 Ấp Tân Quới Tây, Xã An Định; VP: 68/1 Trần Tấn, P. Tân Sơn Nhì, TP.HCM · MOQ: Không công khai (nhận từ vài trăm sản phẩm) · Số điện thoại 0938 812 811",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Vĩnh Long",
+     "date": "07/05/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://hoaphatgarment.vn/xuong-may-gia-cong-tron-goi/",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-401.jpg"
+   },
+   {
+     "id": "fac-402",
+     "name": "Sao Khuê",
+     "items": "Áo thun đồng phục công ty, văn phòng, công nhân, quán ăn, cafe, áo thun nhóm, áo lớp; đồng phục bảo hộ lao động, áo sơ mi, đồng phục spa; in thêu logo theo yêu cầu",
+     "meta": "TP.HCM — Xưởng: 507/1/43 Nguyễn Thị Tú, P. Bình Hưng Hòa B, Q. Bình Tân; VP: 123/12 Đường số 3, P. Bình Hưng Hòa, Q. Bình Tân · MOQ: Không công khai · Số điện thoại 0939 398 268",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "TP.HCM",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://saokhue.net.vn/ao-thun-dong-phuc/ao-thun-dong-phuc-gia-re-tphcm/",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-402.jpg"
+   },
+   {
+     "id": "fac-403",
+     "name": "Bamboo Uniform",
+     "items": "Đồng phục công nhân, đồng phục bảo hộ lao động, áo thun đồng phục, vest đồng phục, áo khoác đồng phục; vải kaki, in thêu logo theo yêu cầu",
+     "meta": "TP.HCM — Trụ sở: 29/31 Lê Đức Thọ, P. Hạnh Thông; Xưởng: 135A Nguyễn Cửu Đàm, Tân Sơn Nhì · MOQ: Không công khai · Số điện thoại 0902 149 780",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "TP.HCM",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://bamboouniform.vn/may-dong-phuc-cong-nhan-tai-tphcm",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-403.jpg"
+   },
+   {
+     "id": "fac-404",
+     "name": "Túi Vải Thành Tiến",
+     "items": "Túi vải bố (canvas), túi tote, túi đeo chéo, túi dây rút, túi đựng laptop, túi đựng bình nước; in logo (in lụa, in chuyển nhiệt, in PET)",
+     "meta": "TP.HCM — Xưởng: 62 Đường số 26, Ấp Trung, Xã Củ Chi; VP TP.HCM: 77 Lê Cao Lãng, P. Phú Thạnh; VP Hà Nội: 75A Nông Vụ, P. Phúc Lợi · MOQ: 50 túi · Số điện thoại 0908 308 240",
+     "moq": 50,
+     "cat": "quan-ao",
+     "prov": "TP.HCM",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tuivaithanhtien.com/tui-vai-bo-canvas/",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-404.jpg"
+   },
+   {
+     "id": "fac-405",
+     "name": "Xưởng may Vĩnh Thành",
+     "items": "Thời trang trẻ trung, đồng phục doanh nghiệp, trang phục công sở; gia công cho shop thời trang và local brand",
+     "meta": "Bắc Ninh — Xóm Đình, Thôn Hoài Thượng, Tiên Du · Số điện thoại 0965 479 968",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Bắc Ninh",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày tra cứu (nguồn không ghi ngày đăng)",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://tripi.vn/blog/vi/xep-hang/10-xuong-may-thoi-trang-ha-noi-dang-tin-cay-chat-luong-vuot-troi-gia-thanh-hap-dan-tripi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-405.jpg"
+   },
+   {
+     "id": "fac-406",
+     "name": "Gavishalom",
+     "items": "Áo thun, hoodie, sweater, sơ mi, đầm, quần, đồng phục, thời trang local brand; nhận mẫu nhanh, QC 2 lớp",
+     "meta": "TP. Hồ Chí Minh — 103 Nguyễn Thị Nhung, Hiệp Bình, Thủ Đức · Zalo/Hotline 0972107109 · MOQ tham khảo áo thun 30–50 sp/mẫu/màu",
+     "moq": "30–50 sp/mẫu/màu (áo thun)",
+     "cat": "quan-ao",
+     "prov": "TP. Hồ Chí Minh",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày tra cứu (nguồn không ghi ngày đăng)",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://xuongaothungiare.net/xuong-gia-cong-may-mac/",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-406.jpg"
+   },
+   {
+     "id": "fac-407",
+     "name": "Xưởng may Đăng Khôi",
+     "items": "Áo thun trơn, đồ đôi, áo gia đình, quần áo thu đông, đồ hè; quần áo sỉ lẻ thời trang nam, nữ",
+     "meta": "Hà Nội — Cao Viên, Thanh Oai · Số điện thoại 0969 828 291 · Website xuongmaydangkhoi.com",
+     "moq": null,
+     "cat": "quan-ao",
+     "prov": "Hà Nội",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày tra cứu (nguồn không ghi ngày đăng)",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://hanoireview.vn/topAZ/dia-chi-xuong-si-quan-ao-tai-ha-noi",
+     "linkText": "Xem trang gốc →",
+     "img": "images/xuong/fac-407.jpg"
    }
  ],
  "provinces": [
@@ -31658,7 +31971,9 @@ window.V20_DATA = {
  {"id":"cl-18","type":"classesLive","name":"Khóa Học Master Sale — Làm Chủ Cuộc Bán Hàng Qua Zoom (2 Buổi + 1 Lab)","provider":"Helen Bàn Academy","price":499000,"priceLabel":"Học phí","province":"Online","avatar":"images-new/cl-18.jpg","detail":"Khóa Master Sale của Helen Bàn Academy gồm 2 buổi đào tạo và 1 buổi Sales Coaching Lab, mỗi buổi 150 phút, học online live qua Zoom. Học viên học cách hiểu khách trước khi bán, xử lý từ chối bằng quy trình 5R, mang tình huống bán hàng thật vào luyện role-play và sửa lời thoại. Khóa học dành cho sales, tư vấn viên, CSKH, môi giới và chủ cửa hàng đang có cuộc bán hàng thực tế.","sourceUrl":"https://helenbanacademy.com/?utm_medium=paid&utm_source=fb&utm_id=120256576543160602&utm_content=120256576543150602&utm_term=120256576543140602&utm_campaign=120256576543160602","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"cl-19","type":"classesLive","name":"Khóa Học 2T – Triệu View Triệu Đô: Quay Video & Livestream Thực Chiến 2 Ngày Tại TP.HCM","provider":"Đào tạo Kinh doanh (Trần Xuân Phúc)","price":4789000,"priceLabel":"Học phí","province":"TP. Hồ Chí Minh","avatar":"images-new/cl-19.jpg","detail":"Khóa học offline thực chiến 2T – Triệu View Triệu Đô diễn ra 2 ngày 28–29/11/2026, từ 08:00 đến 16:00 mỗi ngày tại Tòa nhà C4, PiCity High Park, TP.HCM. Học viên học cách hiểu khách, viết hook và kịch bản, quay dựng video bằng điện thoại, thực hành livestream và chuyển đổi, kèm 7 ngày chấm bài video trong nhóm và hỗ trợ trọn đời. Khóa học dành cho chủ shop, người mới làm affiliate và người muốn theo nghề livestream; giảng viên là Trần Xuân Phúc.","sourceUrl":"https://phuc.daotaokinhdoanh.vn/2t","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"cl-20","type":"classesLive","name":"Khóa Học Livestream Miễn Phí — 2 Buổi Zoom Cùng Đạo Diễn Trang Cara","provider":"Trang Cara","price":0,"priceLabel":"Học phí","province":"Online","avatar":"images-new/cl-20.jpg","detail":"Khóa học livestream miễn phí của Trang Cara gồm 2 buổi học online qua Zoom, từ 20h00 đến 22h00 thứ 2 và thứ 3 hàng tuần. Học viên học bí quyết livestream nghìn đơn từ con số 0: cấu trúc kịch bản livestream, tự tin trước camera, chốt đơn và giữ khách, kèm tài liệu 'Kịch bản Livestream Nghìn Đơn'. Giảng viên là đạo diễn Trang Cara, 8 năm giảng viên trường Đại học Sân khấu – Điện ảnh Hà Nội; khóa học dành cho người mới bắt đầu và chủ shop online.","sourceUrl":"http://hoclivestreammienphi.trangcara.vn","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
- {"id":"cl-21","type":"classesLive","name":"Khóa Học MC Sự Kiện Online — Học Qua Zoom Cùng MC Mỹ Vân","provider":"MC Mỹ Vân","price":6200000,"priceLabel":"Học phí","province":"Online","avatar":"images-new/cl-21.jpg","detail":"Khóa MC Sự kiện của Trung tâm Đào tạo Nghệ thuật MC Mỹ Vân, học qua Zoom online hoặc offline trực tiếp, được MC Mỹ Vân góp ý trực tiếp và đội ngũ hỗ trợ 24/7 trong nhóm kín riêng. Học viên rèn cách lên dàn ý và sắp xếp chương trình, xây dựng phong cách MC riêng, ứng biến linh hoạt trên sân khấu và phối hợp âm thanh, ánh sáng; khóa học tặng kèm bộ video kỹ năng giao tiếp và sách nói. Khóa học dành cho người muốn dẫn chương trình sự kiện chuyên nghiệp và có cơ hội được giới thiệu show.","sourceUrl":"https://www.mcmyvan.com/mcsukien","dateAdded":"2026-11-15","expiresAt":"2026-12-15"}
+ {"id":"cl-21","type":"classesLive","name":"Khóa Học MC Sự Kiện Online — Học Qua Zoom Cùng MC Mỹ Vân","provider":"MC Mỹ Vân","price":6200000,"priceLabel":"Học phí","province":"Online","avatar":"images-new/cl-21.jpg","detail":"Khóa MC Sự kiện của Trung tâm Đào tạo Nghệ thuật MC Mỹ Vân, học qua Zoom online hoặc offline trực tiếp, được MC Mỹ Vân góp ý trực tiếp và đội ngũ hỗ trợ 24/7 trong nhóm kín riêng. Học viên rèn cách lên dàn ý và sắp xếp chương trình, xây dựng phong cách MC riêng, ứng biến linh hoạt trên sân khấu và phối hợp âm thanh, ánh sáng; khóa học tặng kèm bộ video kỹ năng giao tiếp và sách nói. Khóa học dành cho người muốn dẫn chương trình sự kiện chuyên nghiệp và có cơ hội được giới thiệu show.","sourceUrl":"https://www.mcmyvan.com/mcsukien","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
+ {"id":"cl-22","type":"classesLive","name":"Livestream Song Sàn — Học Viện KOC","provider":"Học Viện KOC","price":3500000,"priceLabel":"Học phí","province":null,"avatar":"images-new/cl-22.jpg","detail":"Khóa livestream bán hàng trên TikTok Shop Live và Shopee Live, do giảng viên Nguyễn Vũ Thanh Lâm đứng lớp. Học 4 buổi trực tiếp tại lớp, thứ 2 và thứ 4, 18:00–21:00, mỗi buổi 40 phút lý thuyết và 140 phút thực hành. Học viên ra về với bộ thiết lập thiết bị – ánh sáng – âm thanh, 2 kịch bản 15 phút cho TikTok Shop và Shopee Live, 1 buổi thực hành livestream song sàn 10 phút và bản phân tích số liệu phiên live.","sourceUrl":"https://hocvienkoc.com/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"cl-23","type":"classesLive","name":"Khóa học Làm chủ Livestream bán hàng — Vinalink Academy","provider":"Vinalink Academy","price":6900000,"priceLabel":"Học phí","province":"Hà Nội","avatar":"images-new/cl-23.jpg","detail":"Khóa 4 buổi của Vinalink Academy dạy tổ chức và vận hành phiên livestream bán hàng từ A đến Z: setup phòng live, xây dựng đội ngũ nhân sự tinh gọn, kịch bản livestream nhân bản mẫu 5 phút và ứng dụng AI viết kịch bản, quảng bá trước phiên live. Giảng viên: thầy Đỗ Quang Huy (CEO Ecotop Agency, giảng viên Học viện Lazada) và TS. Nguyễn Thị Phan Thu. Học phí ưu đãi đăng ký sớm 6.900.000đ (gốc 7.900.000đ; học online 4.900.000đ). Địa điểm: Tầng 3, Tòa nhà D2 Giảng Võ, Ba Đình, Hà Nội.","sourceUrl":"https://vinalink.edu.vn/khoa-hoc-livestream-ban-hang/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"}
 
  ],
  "classesMakeup": [
@@ -31682,7 +31997,11 @@ window.V20_DATA = {
  {"id":"cm-18","type":"classesMakeup","name":"Khóa Đào Tạo Makeup Chuyên Nghiệp — TT Wedding Đà Lạt","provider":"TT Wedding – Photography of Da Lat","price":15000000,"priceLabel":"Học phí","province":"Lâm Đồng","avatar":"images-new/cm-18.jpg","detail":"TT Wedding tại Đà Lạt đào tạo học viên makeup từ cơ bản đến nâng cao trong môi trường học tập chuyên nghiệp, tận tâm và sáng tạo. Khóa đào tạo makeup chuyên nghiệp có học phí ưu đãi 15.000.000đ; khóa đào tạo makeup cá nhân 2.000.000đ, phù hợp cả người mới bắt đầu lẫn người muốn theo nghề trang điểm. Địa chỉ: 48/12 Đoàn Thị Điểm, phường 4, TP. Đà Lạt, Lâm Đồng.","sourceUrl":"https://topaz.vn/toplist/dia-chi-day-nghe-trang-diem-makeup-tai-da-lat","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"cm-19","type":"classesMakeup","name":"Khóa Học Makeup Chuyên Nghiệp Trọn Gói — Trâm Trần Makeup & Academy","provider":"Trâm Trần Makeup & Academy","price":40000000,"priceLabel":"Học phí","province":"Cần Thơ","avatar":"images-new/cm-19.jpg","detail":"Khóa học makeup chuyên nghiệp trọn gói tại Trâm Trần Makeup & Academy (Cần Thơ) có học phí 40.000.000đ, tặng cốp đồ nghề trị giá 5 triệu và hỗ trợ trả góp học phí. Học viện có hơn 10 năm kinh nghiệm, đào tạo từ cơ bản đến chuyên sâu với chương trình chuẩn quốc tế, chú trọng thực hành, lớp học ít học viên. Địa chỉ: 15 Trần Khánh Dư, phường Xuân Khánh, quận Ninh Kiều, TP. Cần Thơ; phù hợp với người muốn theo nghề trang điểm chuyên nghiệp tại Cần Thơ.","sourceUrl":"https://tinhte.vn/thread/hoc-makeup-chuyen-nghiep-o-dau-tai-can-tho-la-uy-tin-nhat.3966713/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"cm-20","type":"classesMakeup","name":"Khóa Học Trang Điểm Chuyên Nghiệp 40 Buổi — Kendinh Makeup & Academy","provider":"Kendinh Makeup & Academy","price":28000000,"priceLabel":"Học phí","province":"Hải Phòng","avatar":"images-new/cm-20.jpg","detail":"Khóa học makeup tại Kendinh Makeup & Academy (Hải Phòng) dạy theo lộ trình quốc tế, gồm khóa trang điểm cơ bản, trang điểm cô dâu, trang điểm làm đẹp và thời trang, với mức phí từ 28.000.000đ cho 40 buổi học. Học viện thành lập từ năm 2015, đã đào tạo nhiều thế hệ học viên với cơ sở vật chất hiện đại, chú trọng kỹ năng xử lý nhiều layout makeup khác nhau. Địa chỉ: 246 Hai Bà Trưng, quận Lê Chân, TP. Hải Phòng; học viên tốt nghiệp được cấp chứng chỉ.","sourceUrl":"https://evaxinh.edu.vn/hoc-make-up-o-hai-phong/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
- {"id":"cm-21","type":"classesMakeup","name":"Khóa Học Trang Điểm Cá Nhân Cơ Bản 6 Buổi — Mai Wedding Đà Nẵng","provider":"Mai Wedding Đà Nẵng","price":3500000,"priceLabel":"Học phí","province":"Đà Nẵng","avatar":"images-new/cm-21.jpg","detail":"Khóa học trang điểm cá nhân cơ bản tại Mai Wedding Đà Nẵng có học phí 3.500.000đ cho 6 buổi, học viên được xác định phong cách cá nhân và học kỹ thuật trang điểm từ cơ bản đến nâng cao. Khóa học gồm lý thuyết, thực hành trên lớp và hoạt động ngoại khóa, do đội ngũ chuyên viên tay nghề cao, nhiều năm kinh nghiệm giảng dạy. Địa chỉ: 164 Lê Lợi, phường Hải Châu, Đà Nẵng; phù hợp với người muốn tự trang điểm đi làm, đi chơi và đi tiệc.","sourceUrl":"https://hanamihotel.com/top-7-dia-chi-day-makeup-chuyen-nghiep-o-da-nang/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"}
+ {"id":"cm-21","type":"classesMakeup","name":"Khóa Học Trang Điểm Cá Nhân Cơ Bản 6 Buổi — Mai Wedding Đà Nẵng","provider":"Mai Wedding Đà Nẵng","price":3500000,"priceLabel":"Học phí","province":"Đà Nẵng","avatar":"images-new/cm-21.jpg","detail":"Khóa học trang điểm cá nhân cơ bản tại Mai Wedding Đà Nẵng có học phí 3.500.000đ cho 6 buổi, học viên được xác định phong cách cá nhân và học kỹ thuật trang điểm từ cơ bản đến nâng cao. Khóa học gồm lý thuyết, thực hành trên lớp và hoạt động ngoại khóa, do đội ngũ chuyên viên tay nghề cao, nhiều năm kinh nghiệm giảng dạy. Địa chỉ: 164 Lê Lợi, phường Hải Châu, Đà Nẵng; phù hợp với người muốn tự trang điểm đi làm, đi chơi và đi tiệc.","sourceUrl":"https://hanamihotel.com/top-7-dia-chi-day-makeup-chuyen-nghiep-o-da-nang/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
+ {"id":"cm-22","type":"classesMakeup","name":"Chuyên đề Trang điểm cá nhân — Học Viện Á Âu (Phần 1, 4 buổi)","provider":"Học Viện Chăm Sóc Sắc Đẹp Á Âu","price":1600000,"priceLabel":"Học phí","province":"TP. Hồ Chí Minh","avatar":"images-new/cm-22.jpg","detail":"Khóa trang điểm cá nhân cho người mới bắt đầu, dạy từ số 0: nhận diện loại da, chọn mỹ phẩm phù hợp, chăm sóc da trước và sau makeup, thực hành nền – mày – mắt – môi. Phần 1 gồm 4 buổi, học phí học trực tiếp 1.600.000đ (trực tuyến 1.200.000đ); Phần 2 nâng cao 6 buổi có học phí trực tiếp 3.600.000đ. Học viện có hệ thống chi nhánh toàn quốc, lớp học trang điểm cá nhân tại TP.HCM.","sourceUrl":"https://hocviensacdepaau.com/trang-diem-ca-nhan","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"cm-23","type":"classesMakeup","name":"Khóa học Makeup Artist chuyên nghiệp — Gạo Nâu Master Class","provider":"Gạo Nâu Master Class","price":55000000,"priceLabel":"Học phí","province":"TP. Hồ Chí Minh","avatar":"images-new/cm-23.jpg","detail":"Khóa nghề Makeup Artist 3–4 tháng, học từ số 0: nền da và che khuyết điểm, mắt – mày – môi, phối màu theo tông da người Việt, tạo khối và bắt sáng, makeup cô dâu, makeup sự kiện và chân dung studio; học viện cấp toàn bộ đồ nghề trong khóa. Ba gói công khai: Cơ bản 44.000.000đ, Vào nghề 55.000.000đ (gói chính, có đi ca thật kèm thợ, sát hạch tay nghề và xét vào làm tại Gạo Nâu), Kèm riêng 89.000.000đ. Lứa sáng lập tại TP.HCM khai giảng 11/01/2027, nhận hồ sơ từ 20/11/2026, mỗi lớp 8 người.","sourceUrl":"https://www.gaonaumasterclass.com/khoa-hoc-makeup-chuyen-nghiep","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"cm-24","type":"classesMakeup","name":"Khóa học Trang điểm Cô dâu — Hướng Nghiệp Á Âu","provider":"Học Viện Chăm Sóc Sắc Đẹp – Hướng Nghiệp Á Âu","price":12000000,"priceLabel":"Học phí","province":"TP. Hồ Chí Minh","avatar":"images-new/cm-24.jpg","detail":"Khóa trang điểm cô dâu 24 buổi trong 2 tháng, dạy từ cơ bản các layout ứng dụng cao: cô dâu tiệc ngày, tiệc đêm, ngoại cảnh theo phong cách Á Đông và Tây phương, kèm kỹ thuật chải bới tóc căn bản và thi kết thúc học phần. Học phí 12.000.000đ đã gồm đồng phục, giáo trình, lệ phí cấp chứng chỉ, mỹ phẩm và phục trang cô dâu cho buổi học và thi; hoàn thành khóa học nhận chứng chỉ Kỹ Thuật Trang Điểm Cô Dâu có giá trị toàn quốc. Chiêu sinh tại TP.HCM, Bình Dương và Hà Nội.","sourceUrl":"https://www.huongnghiepaau.com/khoa-hoc-trang-diem-co-dau","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"cm-25","type":"classesMakeup","name":"Khóa học Makeup Chuyên Nghiệp — Phương Kòi Makeup Academy","provider":"Phương Kòi Makeup Academy","price":55000000,"priceLabel":"Học phí","province":"Hà Nội","avatar":"","detail":"Khóa makeup chuyên nghiệp 4 tháng của Phương Kòi Makeup Academy, học từ con số 0: nhân trắc học và bánh xe màu sắc, kỹ thuật đánh nền cho mọi loại da, triệt sắc và che khuyết điểm, các tone makeup, thực hành 75–80% thời lượng trên mẫu thật, kèm hướng dẫn xây dựng thương hiệu cá nhân và quay dựng video bằng điện thoại. Học phí 55.000.000đ/khóa, đã gồm khóa làm tóc 24 buổi, gói chụp ảnh sản phẩm makeup và hỗ trợ đầu ra cho học viên. Địa điểm: Tầng 6, 130 Trung Phụng, Đống Đa, Hà Nội.","sourceUrl":"https://phuongkoimakeup.com/khoa-hoc-makeup-chuyen-nghiep/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"}
 
  ],
  "eventsMarketing": [
@@ -31706,7 +32025,10 @@ window.V20_DATA = {
  {"id":"em-18","type":"eventsMarketing","name":"Khóa đào tạo Livestream Bán Hàng","provider":"Hội Doanh nghiệp phường Bảy Hiền","price":0,"priceLabel":"Phí tham dự","province":"TP. Hồ Chí Minh","avatar":"images-new/em-18.jpg","detail":"Khóa đào tạo \"Livestream Bán Hàng\" diễn ra 16–18/11/2026 tại 1129/20 Lạc Long Quan, TP.HCM, do Hội Doanh nghiệp phường Bảy Hiền phối hợp Phòng Kinh tế - Hạ tầng - Đô thị phường Bảy Hiền, Trung tâm CSED (thuộc Sở Công Thương TP.HCM) và Live Channel tổ chức. Nội dung: giao tiếp chuyên nghiệp, pháp lý khi livestream bán hàng, truyền thông số và thực hành livestream trực tiếp. Đối tượng: doanh nghiệp và hộ kinh doanh trên địa bàn phường Bảy Hiền. Chương trình miễn phí, đăng ký qua Google Forms và QR trên flyer.","sourceUrl":"https://www.facebook.com/hdnbayhien/posts/pfbid02gGMYGbVQZzopygjRYmUFe98U9nofVmrC7ZmwcKa2uBAmgrSZyBaxAaQoyzLogxmpl","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"em-19","type":"eventsMarketing","name":"Advanced Workshop: Branded Videos với HeyGen Avatars","provider":"HeyGen","price":0,"priceLabel":"Phí tham dự","province":"Online","avatar":"images-new/em-19.jpg","detail":"Workshop trực tuyến \"Advanced workshop: Branded videos with HeyGen Avatars, the Video Agent and AI Studio\" diễn ra 60 phút ngày 19/11/2026 lúc 9h00 PST (tức 0h00 ngày 20/11 giờ Việt Nam). Nội dung: tạo video thương hiệu bằng HeyGen Avatars, viết prompt cho avatar theo nhận diện thương hiệu (logo, tài sản thương hiệu), huấn luyện model cá nhân, tạo video bằng Video Agent và chỉnh sửa, hoàn thiện giọng đọc trong AI Studio. Đối tượng: người đã tạo avatar HeyGen và muốn nâng cấp video bán hàng, video thương hiệu bằng AI. Đăng ký miễn phí trên trang sự kiện HeyGen.","sourceUrl":"https://www.heygen.com/zh-hk/events/advanced-workshop-branded-videos-november-2026","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"em-20","type":"eventsMarketing","name":"TECHFEST Việt Nam 2026 — Ngày hội Khởi nghiệp sáng tạo quốc gia","provider":"Bộ Khoa học và Công nghệ","price":0,"priceLabel":"Phí tham dự","province":"Hà Nội","avatar":"images-new/em-20.jpg","detail":"TECHFEST Việt Nam 2026 — Ngày hội Khởi nghiệp sáng tạo quốc gia diễn ra 11–13/12/2026 tại không gian mở khu vực hồ Hoàn Kiếm, phố đi bộ, Hà Nội, với khoảng 400 gian hàng triển lãm và 50.000–60.000 lượt người tham dự. Chương trình gồm các hội nghị, hội thảo chuyên đề ngày 11 và 13/12, diễn đàn chính sách quốc gia và hợp tác quốc tế về đầu tư khởi nghiệp ngày 12/12, lễ khai mạc tối 12/12 và chung kết Cuộc thi Tìm kiếm tài năng khởi nghiệp sáng tạo quốc gia tối 11/12. Đối tượng: startup, doanh nghiệp, nhà đầu tư, nhà bán hàng và cộng đồng khởi nghiệp sáng tạo.","sourceUrl":"https://www.facebook.com/techfestvietnam/posts/pfbid0kxHivTgPe3tBz55G52ksA3u4t8xGKPPXSADW9mFVnZwhD7TfVEMZonEWsecJN34yl","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
- {"id":"em-21","type":"eventsMarketing","name":"Free Training: Đào insight & ý tưởng MKT bứt phá mùa lễ hội cuối năm cùng Claude","provider":"Run By Linh","price":0,"priceLabel":"Phí tham dự","province":"Online","avatar":"images-new/em-21.jpg","detail":"Free Training \"Đào insight & ý tưởng MKT bứt phá mùa lễ hội cuối năm cùng Claude\" diễn ra 19h30–21h00 thứ Tư, 18/11/2026, trực tuyến qua Zoom (giới hạn 200 người, không có record). Trần Thùy Linh (Trainer, Founder Run By Linh) hướng dẫn dùng Claude nghiên cứu nhu cầu mua sắm, khai thác insight và phát triển ý tưởng marketing cho Black Friday, 12.12 và Giáng sinh, kèm demo thiết lập Agent trên Claude hỗ trợ nghiên cứu cho các chiến dịch tiếp theo và phần Q&A. Đối tượng: content marketer, marketer đa nhiệm tại SME/startup, marketing leader và chủ doanh nghiệp đang chuẩn bị chiến dịch bán hàng cuối năm; không yêu cầu biết lập trình.","sourceUrl":"https://www.runbylinh.com/freetraining","dateAdded":"2026-11-15","expiresAt":"2026-12-15"}
+ {"id":"em-21","type":"eventsMarketing","name":"Free Training: Đào insight & ý tưởng MKT bứt phá mùa lễ hội cuối năm cùng Claude","provider":"Run By Linh","price":0,"priceLabel":"Phí tham dự","province":"Online","avatar":"images-new/em-21.jpg","detail":"Free Training \"Đào insight & ý tưởng MKT bứt phá mùa lễ hội cuối năm cùng Claude\" diễn ra 19h30–21h00 thứ Tư, 18/11/2026, trực tuyến qua Zoom (giới hạn 200 người, không có record). Trần Thùy Linh (Trainer, Founder Run By Linh) hướng dẫn dùng Claude nghiên cứu nhu cầu mua sắm, khai thác insight và phát triển ý tưởng marketing cho Black Friday, 12.12 và Giáng sinh, kèm demo thiết lập Agent trên Claude hỗ trợ nghiên cứu cho các chiến dịch tiếp theo và phần Q&A. Đối tượng: content marketer, marketer đa nhiệm tại SME/startup, marketing leader và chủ doanh nghiệp đang chuẩn bị chiến dịch bán hàng cuối năm; không yêu cầu biết lập trình.","sourceUrl":"https://www.runbylinh.com/freetraining","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
+ {"id":"em-22","type":"eventsMarketing","name":"Workshop online miễn phí — Ứng dụng AI vào nghiệp vụ kế toán TMĐT (Buổi 2, 21/11/2026)","provider":"VAR eCOM","price":0,"priceLabel":"Phí tham dự","province":"Online","avatar":"images-new/em-22.jpg","detail":"Workshop online miễn phí, buổi 2 với chủ đề mới: hướng dẫn ứng dụng AI vào nghiệp vụ kế toán thương mại điện tử, do chị Trần Thanh Linh, Trưởng phòng nghiệp vụ VAR eCOM, trực tiếp hướng dẫn. Thời gian: thứ Bảy 21/11/2026, 19:00–20:30, tham dự từ xa qua link gửi qua Zalo sau khi đăng ký. Dành cho kế toán shop bán sàn Shopee, TikTok Shop, Lazada muốn xử lý nhanh các phần việc lặp lại. Đăng ký chỉ cần họ tên, số Zalo và email.","sourceUrl":"https://ai.varecom.vn/ws211126","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"em-23","type":"eventsMarketing","name":"Lễ hưởng ứng Ngày Thương mại điện tử quốc gia 12/12 (11/12/2026, Bảo tàng Hà Nội)","provider":"Cục Thương mại điện tử và Kinh tế số (Bộ Công Thương)","price":0,"priceLabel":"Phí tham dự","province":"Hà Nội","avatar":"","detail":"Lễ hưởng ứng Ngày Thương mại điện tử quốc gia 12/12 diễn ra lúc 9 giờ ngày 11/12/2026 tại sân khấu chính của sự kiện trải nghiệm và không gian số ở Bảo tàng Hà Nội, trong khuôn khổ Tuần lễ Thương mại điện tử quốc gia Online Friday 2026 (10–16/12/2026). Sự kiện trải nghiệm 10–11/12 có khoảng 150 gian hàng, 8 phiên hội thảo chuyên đề (kết nối nền tảng, vận hành gian hàng, livestream bán hàng Việt, AI trong kinh doanh, TMĐT xuyên biên giới) và khu tư vấn E-commerce Clinic. Doanh nghiệp và nhà bán hàng đăng ký tham gia tại cổng onlinefriday.vn trước 30/11/2026.","sourceUrl":"https://baomoi.com/online-friday-2026-co-gi-hap-dan-c56514934.epi","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"em-24","type":"eventsMarketing","name":"Webinar Quyết toán thuế 2026 — Đối thoại trực tuyến cùng chuyên gia (26/11/2026)","provider":"Sapo x Cenvi","price":0,"priceLabel":"Phí tham dự","province":"Online","avatar":"","detail":"Webinar miễn phí do Sapo phối hợp cùng Cenvi tổ chức, diễn ra lúc 14:00 ngày 26/11/2026 qua Google Meet, trả lời câu hỏi của nhà bán hàng: sàn đã trừ thuế thì người bán nộp thừa hay nộp thiếu. Diễn giả: chuyên gia Phùng Duy Anh, Phó Tổng Giám đốc Công ty Tư vấn Luật và Kế toán Cenvi, hơn 10 năm kinh nghiệm. Đăng ký tham dự miễn phí qua bài đăng của Sapo.","sourceUrl":"https://www.facebook.com/sapo.vn/posts/pfbid0upfh4ZCgahBUCsbJA7Nf4ZJqbPx7JgHoHTxJRRoK28vhqEidhMfuJ8HqmhJzrVjSl","dateAdded":"2026-11-18","expiresAt":"2026-12-18"}
 
  ],
  "logistics": [
@@ -31730,7 +32052,12 @@ window.V20_DATA = {
  {"id":"lg-18","type":"logistics","name":"Mua Hộ Taobao/1688/Tmall — Phí Dịch Vụ 1,5%, Hàng Về Hà Nội 3–5 Ngày","provider":"Tín Mã","price":26000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"TP. Hồ Chí Minh","avatar":"images-new/lg-18.jpg","logisticsOption":"mua-ho","detail":"Tinma.vn mua hộ, thanh toán hộ và vận chuyển hàng Trung Quốc về tận nhà: order Taobao, 1688, Tmall, Pinduoduo, Xianyu và Poizon; phí dịch vụ 1,5% mọi giá trị đơn hàng, đặt cọc 70% (50% với khách VIP), cam kết đền bù 100% nếu thất lạc. Bảng giá vận chuyển: từ 26.000đ/kg cho lô trên 500kg (bậc thấp nhất), 35.000đ/kg cho đơn dưới 100kg; hàng về Hà Nội 3–5 ngày, TP.HCM 5–7 ngày, tuyến bay nhanh 3–5 ngày. Địa chỉ liên hệ: 343/39 Sư Vạn Hạnh, Phường 12, Quận 10, TP.HCM.","sourceUrl":"https://tinma.vn/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"lg-19","type":"logistics","name":"Vận Chuyển Tiểu Ngạch Trung Quốc Về Việt Nam — Hàng Lô Từ 12.500đ/kg","provider":"HVT Logistics","price":12500,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Hà Nội","avatar":"images-new/lg-19.jpg","logisticsOption":"tieu-ngach","detail":"HVT Logistics (Công ty TNHH TM&DV xuất nhập khẩu HVT) vận chuyển hàng tiểu ngạch từ Trung Quốc về Việt Nam, thủ tục đơn giản, không phải chờ thông quan lâu như chính ngạch, phù hợp hàng kinh doanh nhỏ lẻ và hàng lô. Bảng giá vận chuyển tiểu ngạch: hàng lô từ 12.500đ/kg (bảng chi tiết: 13.000đ/kg cho lô 200–500kg về Hà Nội, 14.000đ/kg cho lô 70–200kg); hàng lẻ tiểu ngạch 21.000đ/kg về Hà Nội. Địa chỉ: 19 Nguyễn Trãi, Thanh Xuân, Hà Nội; hotline 1900.299.234.","sourceUrl":"https://hvtlogistics.vn/van-chuyen-quoc-te/van-chuyen-tieu-ngach-tu-trung-quoc-ve-viet-nam.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"lg-20","type":"logistics","name":"Order Taobao/1688/Tmall — Mua Hộ Từ 1,9%, Vận Chuyển Order Từ 17.000đ/kg","provider":"Mã Đại","price":17000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Hà Nội","avatar":"images-new/lg-20.jpg","logisticsOption":"mua-ho","detail":"Mã Đại chuyên order Taobao, 1688, Tmall, JD.com và tìm nguồn hàng tại các chợ lớn Quảng Châu, Nghĩa Ô; phí dịch vụ mua hàng 1,9–3,9% giá trị đơn hàng (đơn 1–50 triệu là 2,9%). Cước vận chuyển cho dịch vụ order về Hà Nội: 17.000đ/kg cho lô trên 200kg, 19.000đ/kg cho lô 100–200kg, 23.000đ/kg dưới 100kg; thời gian giao hàng 5–7 ngày (bảng giá áp dụng từ 08/05/2025). Địa chỉ: số 16 ngách 1, ngõ 140 Nguyễn Xiển, Thanh Xuân, Hà Nội.","sourceUrl":"https://vantaimadai.com/bang-gia-dich-vu-ma-dai.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
- {"id":"lg-21","type":"logistics","name":"Order & Vận Chuyển Taobao — Mua Hộ Chỉ 1%, Vận Chuyển Từ 11.000đ/kg","provider":"WeLog Logistics","price":11000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Hà Nội","avatar":"images-new/lg-21.jpg","logisticsOption":"mua-ho","detail":"WeLog Logistics cung cấp dịch vụ mua hộ, kiểm đếm, đóng gói và vận chuyển hàng Taobao về Việt Nam trọn gói, với hệ thống kho tại Trung Quốc và Việt Nam, hàng về Hà Nội chỉ 2–3 ngày. Phí dịch vụ mua hộ Taobao chỉ 1% giá trị đơn hàng; phí vận chuyển: vận chuyển thường từ 17.000đ/kg (lô 70–200kg về Hà Nội), vận chuyển tiết kiệm hàng lô ghép công từ 11.000đ/kg (từ 1.000kg trở lên về Hà Nội). Địa chỉ: 108 phố Cự Lộc, Nhân Chính, Thanh Xuân, Hà Nội.","sourceUrl":"https://welog.vn/tin-tuc/cong-ty-van-chuyen-hang-tu-taobao.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"}
+ {"id":"lg-21","type":"logistics","name":"Order & Vận Chuyển Taobao — Mua Hộ Chỉ 1%, Vận Chuyển Từ 11.000đ/kg","provider":"WeLog Logistics","price":11000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Hà Nội","avatar":"images-new/lg-21.jpg","logisticsOption":"mua-ho","detail":"WeLog Logistics cung cấp dịch vụ mua hộ, kiểm đếm, đóng gói và vận chuyển hàng Taobao về Việt Nam trọn gói, với hệ thống kho tại Trung Quốc và Việt Nam, hàng về Hà Nội chỉ 2–3 ngày. Phí dịch vụ mua hộ Taobao chỉ 1% giá trị đơn hàng; phí vận chuyển: vận chuyển thường từ 17.000đ/kg (lô 70–200kg về Hà Nội), vận chuyển tiết kiệm hàng lô ghép công từ 11.000đ/kg (từ 1.000kg trở lên về Hà Nội). Địa chỉ: 108 phố Cự Lộc, Nhân Chính, Thanh Xuân, Hà Nội.","sourceUrl":"https://welog.vn/tin-tuc/cong-ty-van-chuyen-hang-tu-taobao.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
+ {"id":"lg-22","type":"logistics","name":"Vận chuyển Trung – Việt — VIP GROUP Logistics","provider":"CÔNG TY TNHH VIP GROUP","price":12000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Online","avatar":"images-new/lg-22.jpg","logisticsOption":"van-chuyen","detail":"VIP GROUP Logistics vận chuyển hàng Trung Quốc – Việt Nam, cước chỉ từ 12.000đ/kg (lô trên 1.000kg), hàng lẻ 0–5kg là 20.000đ/kg, bảng giá cập nhật 07/11/2026. Nhận hàng tại 5 kho Trung Quốc (Thâm Quyến, Hạ Môn, Quảng Châu, Nghĩa Ô, Bằng Tường). Phí dịch vụ đặt hàng hộ từ 1–3% giá trị đơn, đơn đầu tiên miễn phí dịch vụ.","sourceUrl":"https://www.vipgroup.com.vn/logistics/bang-gia/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"lg-23","type":"logistics","name":"Nhập hàng Trung Quốc trọn gói — SEUBAY","provider":"SEUBAY","price":22000,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Lạng Sơn","avatar":"","logisticsOption":"mua-ho","detail":"SEUBAY (Sếu Bay) nhập hàng Trung Quốc trọn gói, giá công khai từng khoản: mua hộ Taobao, 1688, Tmall, Pinduoduo với phí mua hộ 1–2,5% giá trị đơn; ký gửi hàng lẻ về Hà Nội từ 22.000đ/kg, hàng lô line TMĐT từ 15.500đ/kg, nhập chính ngạch từ 5.000đ/kg (đã gồm kiểm đếm, bảo hiểm 100% và thủ tục thông quan). Văn phòng tại Bằng Tường, sát cửa khẩu Lạng Sơn; hàng về Lạng Sơn, Hà Nội, TP.HCM.","sourceUrl":"https://seubay.com/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"lg-24","type":"logistics","name":"Order Taobao/Tmall/1688 + vận chuyển Trung – Việt — Phong Đà Logistics","provider":"Phong Đà Logistics","price":null,"priceLabel":"Giá vận chuyển","province":"Hà Nội","avatar":"images-new/lg-24.jpg","logisticsOption":"mua-ho","detail":"Phong Đà Logistics chuyên đặt hàng hộ và vận chuyển hàng từ Taobao, Tmall, 1688, Pinduoduo về Việt Nam, kèm ký gửi hàng Quảng Châu, nhập hàng chính ngạch, tìm kiếm nguồn hàng, kết nối xưởng OEM và thanh toán hộ. Giá tính theo đơn hàng qua công cụ ước tính trên website (không công khai bảng giá cố định). Hotline 0844 713 555; địa chỉ: Đường Bãi Cát, Lĩnh Nam, Q. Hoàng Mai, Hà Nội.","sourceUrl":"https://phongda.com/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"lg-25","type":"logistics","name":"Nhập hàng Taobao/1688/Alibaba — Khải Hoàn Express","provider":"Khải Hoàn Express","price":null,"priceLabel":"Giá vận chuyển","province":"Hà Nội","avatar":"","logisticsOption":"mua-ho","detail":"Khải Hoàn Express (website hoanchina.vn) chuyên nhập hàng Trung Quốc giá rẻ: đặt hàng Taobao, 1688, Alibaba; đặt hàng sau 3,5 giờ kể từ lúc đặt cọc; 48 giờ từ kho Trung Quốc về Việt Nam; cam kết đền bù gấp 10 lần nếu đặt sai hàng hoặc tự tăng giá. Giá báo theo đơn hàng (không công khai bảng giá cố định). Hotline 0247 101 3993 / 0966 545 934.","sourceUrl":"https://hoanchina.vn/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"},
+ {"id":"lg-26","type":"logistics","name":"Vận chuyển Trung – Việt + order hàng nội địa Trung — Cẩm Thạch Logistics","provider":"Cẩm Thạch Logistics","price":2500,"priceLabel":"Giá vận chuyển","priceSuffix":"/kg","province":"Hà Nội","avatar":"","logisticsOption":"van-chuyen","detail":"Cẩm Thạch Logistics vận chuyển hàng Trung Quốc về Việt Nam theo nhiều phương thức, quản lý chuỗi cung ứng và order hàng nội địa Trung theo yêu cầu; nhận order từ 1 sản phẩm, 3 giờ lên đơn, 3–5 ngày hàng về Hà Nội, kiểm đếm và đóng kiện gỗ, hỗ trợ 24/7. Giá ưu đãi cuối năm từ 2.500đ/kg (theo Facebook chính thức ngày 12/11/2026). Hotline 1900 86 86 55; địa chỉ: 18 Tam Trinh, Hai Bà Trưng, Hà Nội.","sourceUrl":"https://camthachlogistics.com/","dateAdded":"2026-11-18","expiresAt":"2026-12-18"}
 
  ],
  "rentals": [
@@ -31754,7 +32081,8 @@ window.V20_DATA = {
  {"id":"rt-19","type":"rentals","subType":"kho-xuong","name":"Cho Thuê Kho Xưởng 1.800m² Đường ĐT743B, Tân Đông Hiệp, Dĩ An — Gần KCN VSIP 1","provider":"Lương Quang Cảnh","price":80000000,"priceLabel":"Giá thuê","province":"Bình Dương","avatar":"images-new/rt-19.jpg","detail":"Kho xưởng 1.800m² (37m x 48m) tại đường ĐT743B, phường Tân Đông Hiệp, TP. Dĩ An, tỉnh Bình Dương, ngay trung tâm phường, gần KCN VSIP 1 và KCN Sóng Thần 1-2, thuận tiện di chuyển ra cao tốc Mỹ Phước – Tân Vạn và các tuyến ĐT743. Khuôn viên chung có bảo vệ, có điện 3 pha đầy đủ, mặt tiền rộng trên 15m, pháp lý có sổ đỏ. Chủ trương cho thuê làm kho vận dịch vụ, chứa hàng hoặc sản xuất ngành nghề nhẹ, phù hợp làm tổng kho cho shop livestream. Giá thuê 80 triệu/tháng.","sourceUrl":"https://rongbay.com/Binh-Duong/Cho-thue-kho-xuong-Tan-Dong-Hiep-Tp-Di-An-DT-1800m2-c15-raovat-33097131.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"rt-20","type":"rentals","subType":"mat-pho","name":"Cho Thuê Mặt Bằng Kinh Doanh 80m² Đường Hà Huy Tập, Đà Lạt — 1 Trệt 1 Lửng","provider":"Chủ nhà","price":12000000,"priceLabel":"Giá thuê","province":"Lâm Đồng","avatar":"images-new/rt-20.jpg","detail":"Mặt bằng kinh doanh 80m² tại đường Hà Huy Tập, phường 3, TP. Đà Lạt, tỉnh Lâm Đồng, kết cấu 1 trệt, 1 lửng, 1 toilet và bếp, đầy đủ tiện nghi, mặt tiền đường ô tô 2 chiều, sân để xe 3,5m x 5m. Khu dân cư đông đúc, an ninh tốt, gần khách sạn Palace và công viên, xung quanh nhiều khách sạn, rất phù hợp làm văn phòng, mặt bằng kinh doanh hoặc vừa ở vừa livestream. Giá thuê 12 triệu/tháng, cọc 3 tháng, đóng 12 tháng, hợp đồng lâu dài.","sourceUrl":"https://touch.rongbay.com/Lam-Dong/Chinh-chu-can-cho-thue-mat-bang-kinh-doanh-lam-van-phong-phuong-3-tp-da-lat-lam-dong-c272-raovat-33587233.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
  {"id":"rt-21","type":"rentals","subType":"mat-pho","name":"Cho Thuê Mặt Bằng 608m² Bãi Cháy, Hạ Long — Phù Hợp Nhà Hàng Hoặc Kho Hàng","provider":"Chủ nhà","price":40000000,"priceLabel":"Giá thuê","province":"Quảng Ninh","avatar":"images-new/rt-21.jpg","detail":"Mặt bằng 608m² tại Tổ 1B, khu 1, phường Hùng Thắng, TP. Hạ Long, tỉnh Quảng Ninh, vị trí đẹp bên Bãi Cháy, trước mặt là hồ câu cá, bên cạnh quán cafe cá Koi, khu kinh doanh sầm uất. Khu dân cư hiện hữu, người qua lại đông, thuận tiện kinh doanh buôn bán, phù hợp mở nhà hàng hoặc làm kho hàng. Giá thuê 40 triệu/tháng, thuê theo năm giá tốt hơn.","sourceUrl":"https://rongbay.com/Quang-Ninh/Cho-thue-mat-bang-vi-tri-dep-ben-bai-chay-phuong-hung-thang-tp-ha-long-c272-raovat-33401763.html","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
- {"id":"rt-22","type":"rentals","subType":"kho-xuong","name":"Cho Thuê Kho Xưởng 1.000m² Đường Lũng Bắc, Đằng Hải, Hải An — Cạnh Điện Lực Hải An","provider":"Chủ nhà","price":60000000,"priceLabel":"Giá thuê","province":"Hải Phòng","avatar":"images-new/rt-22.jpg","detail":"Cho thuê kho xưởng 1.000m² tại đường Lũng Bắc, phường Đằng Hải, quận Hải An, TP. Hải Phòng, ngay cạnh Điện Lực Hải An. Kho xưởng nhà khung lợp tôn, mặt tiền 26m, 2 tầng, pháp lý sổ đỏ/sổ hồng, phù hợp làm kho chứa hàng hoặc sản xuất. Giá thuê 60 triệu/tháng (60.000đ/m², có thỏa thuận), thời hạn thuê trên 1 năm; liên hệ 0968129240. Đăng ngày 14/11/2026.","sourceUrl":"https://nhaphonet.vn/tin-dang/cho-thue-kho-xuong-1000m2-tai-hai-ancanh-dien-luc-hai-an-0968129240/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"}
+ {"id":"rt-22","type":"rentals","subType":"kho-xuong","name":"Cho Thuê Kho Xưởng 1.000m² Đường Lũng Bắc, Đằng Hải, Hải An — Cạnh Điện Lực Hải An","provider":"Chủ nhà","price":60000000,"priceLabel":"Giá thuê","province":"Hải Phòng","avatar":"images-new/rt-22.jpg","detail":"Cho thuê kho xưởng 1.000m² tại đường Lũng Bắc, phường Đằng Hải, quận Hải An, TP. Hải Phòng, ngay cạnh Điện Lực Hải An. Kho xưởng nhà khung lợp tôn, mặt tiền 26m, 2 tầng, pháp lý sổ đỏ/sổ hồng, phù hợp làm kho chứa hàng hoặc sản xuất. Giá thuê 60 triệu/tháng (60.000đ/m², có thỏa thuận), thời hạn thuê trên 1 năm; liên hệ 0968129240. Đăng ngày 14/11/2026.","sourceUrl":"https://nhaphonet.vn/tin-dang/cho-thue-kho-xuong-1000m2-tai-hai-ancanh-dien-luc-hai-an-0968129240/","dateAdded":"2026-11-15","expiresAt":"2026-12-15"},
+ {"id":"rt-23","type":"rentals","subType":"mat-pho","name":"Cho thuê cửa hàng mặt đường Hoàng Công Chất, Phú Diễn, Hà Nội — 80m², mặt tiền 11m","provider":"RongBay.com (tin đăng cá nhân)","price":15000000,"priceLabel":"Giá thuê","priceSuffix":"/tháng","province":"Hà Nội","avatar":"","detail":"Cho thuê cửa hàng tại số 431 đường Hoàng Công Chất, Phú Diễn, Bắc Từ Liêm, Hà Nội. Diện tích 80m², mặt tiền rộng 11m, để xe máy thoải mái, gần khu dân cư và ngã tư, vỉa hè rộng, khu vực tập trung văn phòng và gần trường học. Giá thuê 15.000.000đ/tháng, tin đăng ngày 18/11/2026 trên RongBay. Mặt bằng phù hợp làm cửa hàng hoặc văn phòng.","sourceUrl":"https://touch.rongbay.com/Ha-Noi/Cho-thue-cu-hang-mat-duong-Hoang-Cong-Chat-Phu-Dien-Ha-Noi-c296-raovat-34463905.html","dateAdded":"2026-11-18","expiresAt":"2026-12-18"}
 
  ],
   "movingServices": [
@@ -31768,7 +32096,10 @@ window.V20_DATA = {
   {"id": "mv-08", "type": "movingServices", "subType": "thue-xe-tai", "name": "Thuê xe tải chuyển nhà giá rẻ", "provider": "Xe Tải Chuyển Nhà Liên Tỉnh & Nội Thành - Phúc Khang 24H", "price": 350000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/chuyến", "province": "Hà Nội", "avatar": "images-new/mv-08.jpg", "detail": "Bạn cần chở đồ, chuyển nhà, gửi hàng liên tỉnh, Taxi Tải Phúc Khang đồng hành; xe tải đa dạng từ 5 tạ đến 10 tấn, có xe cắt nóc chui hầm chung cư, phục vụ tận nơi 24/7, hàng hóa an toàn, cam kết không phát sinh chi phí.", "sourceUrl": "https://www.facebook.com/profile.php?id=61561372234296", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "mv-09", "type": "movingServices", "subType": "phong-tro", "name": "Chuyển trọ sinh viên, chuyển phòng, chở đồ lẻ ghép xe", "provider": "Chuyển Nhà Hà Nội", "price": 250000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/chuyến", "province": "Hà Nội", "avatar": "images-new/mv-09.jpg", "detail": "Chuyển trọ sinh viên - Văn phòng trọn gói 24h, xe ba gác, xe tải 500kg-10 tấn, xe chui hầm chung cư; có thùng và màng PE miễn phí, hỗ trợ tháo giường, tủ, điều hòa, làm cả tối và cuối tuần, đi tỉnh 24/7.", "sourceUrl": "https://www.facebook.com/profile.php?id=61582641907499", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "mv-10", "type": "movingServices", "subType": "phong-tro", "name": "Chuyển phòng trọ sinh viên", "provider": "Zohome Chuyển Nhà", "price": 250000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/phòng trọ", "province": "Hà Nội", "avatar": "images-new/mv-10.jpg", "detail": "Chuyên chuyển nhà mặt đất, chung cư; chuyển văn phòng, kho xưởng; chuyển phòng trọ sinh viên, giá chỉ từ 250K/phòng trọ nhỏ và 550K/phòng trọ lớn đã bao gồm bê vác 2 đầu. Đóng bọc đồ đạc kỹ càng, tháo lắp tủ, giường, điều hòa, nóng lạnh, có thùng carton, băng keo, màng PE, xốp nổ, xe kéo; xe tải từ 5 tạ đến 10 tấn, phục vụ 24/7.", "sourceUrl": "https://www.facebook.com/profile.php?id=61562501774981", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
-  {"id": "mv-11", "type": "movingServices", "subType": "van-phong", "name": "Chuyển văn phòng trọn gói", "provider": "AE Linh Logistic", "price": 900000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-11.jpg", "detail": "Chuyển đồ văn phòng trọn gói: tháo lắp thiết bị điện tử, đồ gỗ, bọc lót bàn ghế, sofa; thuê xe chở đồ được miễn phí bốc xếp; báo giá trước, không phát sinh.", "sourceUrl": "https://www.facebook.com/profile.php?id=100084488412833", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"}
+  {"id": "mv-11", "type": "movingServices", "subType": "van-phong", "name": "Chuyển văn phòng trọn gói", "provider": "AE Linh Logistic", "price": 900000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-11.jpg", "detail": "Chuyển đồ văn phòng trọn gói: tháo lắp thiết bị điện tử, đồ gỗ, bọc lót bàn ghế, sofa; thuê xe chở đồ được miễn phí bốc xếp; báo giá trước, không phát sinh.", "sourceUrl": "https://www.facebook.com/profile.php?id=100084488412833", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "mv-12", "type": "movingServices", "subType": "nha-o", "name": "Chuyển nhà trọn gói Kiến Vàng", "provider": "Công ty CP Đầu tư dịch vụ Kiến Vàng", "price": 1200000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-12.jpg", "detail": "Kiến Vàng chuyển nhà trọn gói tại Hà Nội và TP.HCM, từ 1.200.000đ; chuyển liên tỉnh Hà Nội – TP.HCM từ 2.900.000đ (bảng giá tham khảo 2026). Gói gồm khảo sát, đóng gói, tháo lắp nội thất, vận chuyển và sắp xếp tại nhà mới; có hơn 20 năm kinh nghiệm, phục vụ hơn 11.000 hộ gia đình mỗi năm.", "sourceUrl": "https://chuyennhakienvangchinhhang.com", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "mv-13", "type": "movingServices", "subType": "nha-o", "name": "Chuyển nhà trọn gói Thành Hưng", "provider": "Chuyển Nhà Thành Hưng Group", "price": 1400000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "TP. Hồ Chí Minh", "avatar": "images-new/mv-13.jpg", "detail": "Thành Hưng (từ 1996, hơn 29 năm kinh nghiệm) chuyển nhà trọn gói tại TP.HCM, giá tham khảo tháng 10/2026 từ 1.400.000đ cho gói trọn gói, chuyển phòng trọ sinh viên từ 1.200.000đ, nhà cấp 4/chung cư/nhà phố từ 2.700.000đ (quãng đường dưới 10km). Tổng đài 1800.0008, khảo sát và báo giá miễn phí.", "sourceUrl": "https://thanhhungvn.vn/tin-tuc/gia-dich-vu-chuyen-nha-tron-goi-tphcm.html", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "mv-14", "type": "movingServices", "subType": "van-phong", "name": "Chuyển văn phòng trọn gói Phát Đạt", "provider": "Chuyển nhà Phát Đạt", "price": 6000000, "priceLabel": "Giá dịch vụ", "priceSuffix": "/trọn gói", "province": "Hà Nội", "avatar": "images-new/mv-14.jpg", "detail": "Phát Đạt chuyển văn phòng trọn gói tại Hà Nội: khảo sát, lập kế hoạch, đóng gói, tháo lắp, vận chuyển và bố trí lại toàn bộ văn phòng. Văn phòng nhỏ (tối đa 10 nhân sự) giá trọn gói nội thành 6.000.000–12.000.000đ, gồm tháo lắp bàn ghế, 1–2 xe 1,5–2,5 tấn và 4–8 công nhân; cam kết bảo hiểm đồ đạc 100% và không phát sinh chi phí ẩn.", "sourceUrl": "https://www.dichvuchuyennhahanoi.com/chuyen-van-phong-tron-goi-ha-noi-gia-re.html", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"}
  ],
   "liveEquipment": [
   {"id": "le-01", "type": "liveEquipment", "subType": "combo", "name": "Thiết Bị Phòng Live Mẫu — Đèn, Mic, Webcam Cho Livestream Bán Hàng", "provider": "vieclamlivestream.online — Thiết bị phòng live", "price": 550000, "priceLabel": "Giá bán", "priceSuffix": "/bộ", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Bộ thiết bị phòng live mẫu: đèn, mic và webcam cho livestream bán hàng. Ánh sáng đều, âm thanh rõ, hình ảnh sắc nét, phù hợp shop mới bắt đầu live.", "sourceUrl": "https://vieclamlivestream.online/thanh-ly-kiot.html#le-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
@@ -31781,7 +32112,9 @@ window.V20_DATA = {
   {"id": "le-08", "type": "liveEquipment", "subType": "micro", "name": "Micro thu âm Shure SM7B", "provider": "Nguyễn Đức Long", "price": 7200000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "TP. Hồ Chí Minh", "avatar": "images-new/le-08.jpg", "detail": "Micro thu âm full box, đã dùng khoảng 20 lần, giá gốc 12,5 triệu; phù hợp cho livestream, podcast và thu âm; ưu tiên giao dịch trực tiếp tại Thủ Đức, TP.HCM.", "sourceUrl": "https://www.facebook.com/profile.php?id=100024161402546", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "le-09", "type": "liveEquipment", "subType": "micro", "name": "Micro thu âm condenser AUNI00", "provider": "SamPy Vũ", "price": 350000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "Sơn La", "avatar": "images-new/le-09.jpg", "detail": "Bộ mic thu âm condenser nhỏ gọn, thiết kế chắc chắn, phù hợp thu giọng nói, livestream, hát karaoke; hàng nội địa Nhật, dạng trụ, lưới kim loại, thu âm rõ tiếng, bắt giọng khá nhạy, mic mới nguyên hộp, phù hợp thu âm tại nhà, podcast, học online, bán hàng livestream.", "sourceUrl": "https://www.facebook.com/profile.php?id=100012167953118", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "le-10", "type": "liveEquipment", "subType": "micro", "name": "Combo thu âm Steinberg UR22 MK2 Recording Pack", "provider": "HIFI SHOP - Thiết bị thu âm", "price": 3800000, "priceLabel": "Giá bán", "priceSuffix": "/bộ", "province": "Hà Nội", "avatar": "images-new/le-10.jpg", "detail": "Fullbox, hàng lướt đẹp như mới, gồm 1 soundcard UR22 MK2, 1 tai nghe kiểm âm ST-H01, 1 micro Tascam TM-80, kèm chân kẹp bàn, shock gắn mic, dây mic và dây USB; ship COD toàn quốc.", "sourceUrl": "https://www.facebook.com/profile.php?id=1805356890", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
-  {"id": "le-11", "type": "liveEquipment", "subType": "webcam", "name": "Webcam Obsbot Meet 2 quay 4K (Likenew)", "provider": "Phan Đạt Hữu Tiến", "price": 1790000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "TP. Hồ Chí Minh", "avatar": "images-new/le-11.jpg", "detail": "Webcam dùng cho học tập, livestream cực ổn, có sẵn mic thu âm trên cam; kết nối cực dễ, cắm dây vào máy là nhận ngay; hàng Likenew, quay 4K, giao dịch trực tiếp tại TP.HCM, có ship.", "sourceUrl": "https://www.facebook.com/p.d.h.tien/", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"}
+  {"id": "le-11", "type": "liveEquipment", "subType": "webcam", "name": "Webcam Obsbot Meet 2 quay 4K (Likenew)", "provider": "Phan Đạt Hữu Tiến", "price": 1790000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "TP. Hồ Chí Minh", "avatar": "images-new/le-11.jpg", "detail": "Webcam dùng cho học tập, livestream cực ổn, có sẵn mic thu âm trên cam; kết nối cực dễ, cắm dây vào máy là nhận ngay; hàng Likenew, quay 4K, giao dịch trực tiếp tại TP.HCM, có ship.", "sourceUrl": "https://www.facebook.com/p.d.h.tien/", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "le-12", "type": "liveEquipment", "subType": "den", "name": "Đèn livestream ZB-F348 18 inch", "provider": "Chợ Tốt — Quận 11, TP.HCM", "price": 200000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "TP. Hồ Chí Minh", "avatar": "", "detail": "Đèn livestream ZB-F348 18 inch màu đen, tình trạng mới, rao bán 200.000đ trên Chợ Tốt khu vực Quận 11, TP.HCM (tin đăng trong tháng 11/2026, 10 lượt xem). Đèn vòng 18 inch phù hợp livestream bán hàng, quay video và chụp ảnh; cùng trang còn có đèn livestream 2 nhánh giá 700.000đ.", "sourceUrl": "https://www.chotot.com/mua-ban-den-quan-11-tp-ho-chi-minh", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "le-13", "type": "liveEquipment", "subType": "mic", "name": "Micro không dây Boya BY-V1 cho livestream", "provider": "Thế Giới Di Động", "price": 690000, "priceLabel": "Giá bán", "priceSuffix": "/cái", "province": "Online", "avatar": "", "detail": "Micro không dây Boya BY-V1 do Thế Giới Di Động phân phối, giá 690.000đ, bảo hành 1 năm. Micro lọc tiếng ồn, khoảng cách thu 50m, pin 8–10 giờ, kèm hộp sạc; dùng cho TikTok, vlog, livestream bán hàng và phỏng vấn. Bài đăng ngày 09/10/2026 giới thiệu dòng mic Boya từ 690.000đ (BY-V20 890.000đ, Mini 2 1.390.000đ).", "sourceUrl": "https://www.facebook.com/thegioididongcom/posts/pfbid0rEbvof1PRBn1XcsT6q5qEQsptLAddwsFjEyWTAER9q3t9mjdPykacYSK7C25aL5dl", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"}
  ],
   "agencyAds": [
   {"id": "ag-01", "type": "agencyAds", "name": "Agency Ads Livestream Mẫu — Chạy Quảng Cáo Livestream Cho Shop Online", "provider": "vieclamlivestream.online — Agency Ads Livestream", "price": 500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/buổi live", "province": "Hà Nội", "avatar": "images/th-01.jpg", "detail": "Agency Ads Livestream mẫu: chạy quảng cáo livestream TikTok/Facebook cho shop online, tối ưu mắt xem và đơn hàng trong buổi live. Shop liên hệ để được tư vấn gói chạy ads phù hợp ngân sách.", "sourceUrl": "https://vieclamlivestream.online/danh-sach-shop.html#ag-01", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
@@ -31794,7 +32127,11 @@ window.V20_DATA = {
   {"id": "ag-08", "type": "agencyAds", "name": "HanoiLive — Livestream Bán Hàng Trọn Gói", "provider": "HanoiLive - Livestream Bán Hàng Trọn Gói", "price": 500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/buổi live đầu tiên", "province": "Hà Nội", "avatar": "images-new/ag-08.jpg", "detail": "Thử livestream chuyên nghiệp chỉ 500K cho buổi livestream đầu tiên — có sẵn người livestream chuyên nghiệp, studio đầy đủ ánh sáng — âm thanh, hỗ trợ livestream đa nền tảng TikTok — Facebook — Shopee và chạy ads miễn phí trong buổi đầu.", "sourceUrl": "https://www.facebook.com/permalink.php?story_fbid=pfbid034eeJBSVyM8xrfmoRoSwW8Bgdm4KiZ9wLvA9XWmrEWpizA3NLDM8Sq31UMFFLSZevl&id=100066580391276", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "ag-09", "type": "agencyAds", "name": "EZstream — Dịch vụ Livestream Hà Nội HCM", "provider": "EZstream - Dịch vụ Livestream Hà Nội HCM", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Hà Nội", "avatar": "images-new/ag-09.jpg", "detail": "Dịch vụ livestream, thu hình chuyên nghiệp cho sự kiện trên YouTube, Facebook. Cung cấp dịch vụ livestream Hà Nội — HCM.", "sourceUrl": "https://www.facebook.com/ezstream.vn", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
   {"id": "ag-10", "type": "agencyAds", "name": "Chạy QC Livestream Chuyên Nghiệp — Quảng Cáo Livestream Ads Live", "provider": "Chạy QC Livestream Chuyên Nghiệp - Quảng Cáo Livestream Ads Live", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Bình Dương", "avatar": "images-new/ag-10.jpg", "detail": "Chạy QC Livestream chuyên nghiệp — Quảng cáo Livestream Ads Live, kinh doanh tại nhà, địa chỉ 327 Đường Huỳnh Văn Lũy, TP. Thủ Dầu Một, Bình Dương.", "sourceUrl": "https://www.facebook.com/profile.php?id=61559457354851", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
-  {"id": "ag-11", "type": "agencyAds", "name": "Dịch vụ chạy quảng cáo Mess — Livestream", "provider": "Dịch vụ chạy quảng cáo Mess - Livestream", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Hải Phòng", "avatar": "images-new/ag-11.jpg", "detail": "Đơn vị chạy quảng cáo cho các shop tổng kho, khu vực toàn quốc — Chạy quảng cáo Mess — Livestream. Đã có rất nhiều shop tin tưởng sử dụng dịch vụ.", "sourceUrl": "https://www.facebook.com/dichvuchayquangcaplivestream", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"}
+  {"id": "ag-11", "type": "agencyAds", "name": "Dịch vụ chạy quảng cáo Mess — Livestream", "provider": "Dịch vụ chạy quảng cáo Mess - Livestream", "price": null, "priceLabel": "Phí dịch vụ", "priceSuffix": null, "province": "Hải Phòng", "avatar": "images-new/ag-11.jpg", "detail": "Đơn vị chạy quảng cáo cho các shop tổng kho, khu vực toàn quốc — Chạy quảng cáo Mess — Livestream. Đã có rất nhiều shop tin tưởng sử dụng dịch vụ.", "sourceUrl": "https://www.facebook.com/dichvuchayquangcaplivestream", "dateAdded": "2026-11-13", "expiresAt": "2026-12-13"},
+  {"id": "ag-12", "type": "agencyAds", "name": "Vận hành TikTok Shop trọn gói — LDH Media", "provider": "LDH Media", "price": 9900000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/tháng", "province": "Đắk Lắk", "avatar": "images-new/ag-12.jpg", "detail": "LDH Media vận hành TikTok Shop trọn gói: gian hàng, video AI/UGC, KOC/Affiliate, quảng cáo GMV Max, livestream và báo cáo tăng trưởng. Gói Starter từ 9.900.000đ/tháng, Professional 15.000.000đ/tháng, Premium 25.000.000đ/tháng (chưa gồm VAT và ngân sách ads). Trụ sở tại Buôn Ma Thuột, Đắk Lắk, nhận vận hành cho shop toàn quốc, hợp đồng tối thiểu 3 tháng.", "sourceUrl": "https://ldhmedia.com/dich-vu/van-hanh-shop", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "ag-13", "type": "agencyAds", "name": "Quản lý quảng cáo TikTok/Meta + vận hành livestream — Height Media", "provider": "Height Media", "price": 3000000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/phiên live", "province": "Online", "avatar": "", "detail": "Height Media quản lý và triển khai quảng cáo TikTok Ads (phí quản lý 5–15% ngân sách), Meta Ads (5–10%) và Shopee Ads, gồm lập kế hoạch ngân sách, thiết lập quảng cáo video và livestream, thử nghiệm nội dung. Dịch vụ set up và vận hành livestream tại studio Height Media giá 3.000.000đ/phiên livestream 2 giờ; bảng giá cập nhật 16/10/2026.", "sourceUrl": "https://heightentertainment.vn/static/portfolio-documents-20261027/height-media-service-rates-2026.pdf", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "ag-14", "type": "agencyAds", "name": "Chạy quảng cáo đa nền tảng + livestream TikTok Shop — Do Agency", "provider": "Do Agency", "price": 8900000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/tháng", "province": "Đà Nẵng", "avatar": "images-new/ag-14.jpg", "detail": "Do Agency (Đà Nẵng) là đối tác chính thức của TikTok Shop (TSP, MCN), cung cấp dịch vụ trọn gói: chạy quảng cáo đa nền tảng (Facebook, TikTok, YouTube, Google), livestream bán hàng TikTok Shop, xây kênh, booking KOL/KOC. Dịch vụ từ 8.900.000đ/tháng (chưa gồm VAT và ngân sách quảng cáo). Khách hàng tiêu biểu: Olay (P&G) đạt 1,5 tỷ doanh thu trong 1,5 tháng, ROAS 14,9. Văn phòng: 35 Nại Nam, Hòa Cường, Đà Nẵng.", "sourceUrl": "https://doagency.vn/news/thue-don-vi-cong-ty-truyen-thong-agency-marketing-da-nang", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
+  {"id": "ag-15", "type": "agencyAds", "name": "Vận hành fanpage + chạy quảng cáo livestream — Em Tâm Làm Ads", "provider": "Em Tâm Làm Ads", "price": 7500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/dự án", "province": "Online", "avatar": "images-new/ag-15.jpg", "detail": "Em Tâm Làm Ads lo trọn marketing cho shop: vận hành fanpage và mạng xã hội, quay chụp – dựng video sản phẩm và chạy quảng cáo ra đơn, trong đó có quảng cáo livestream cho shop thời trang (khách Style by BaoAnh). Gói vận hành Ads + Edit clip 7.500.000đ/dự án (ngân sách quảng cáo tính riêng), chạy trên tài khoản quảng cáo của agency và báo cáo chi tiêu rõ ràng.", "sourceUrl": "https://emtamlamads.com/", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"}
  ],
 };
 window.V20_PHOTOS = {"th-01": "images/th-01.jpg", "th-02": "images/th-02.jpg", "th-03": "images/th-03.jpg", "th-05": "images/th-05.jpg", "th-06": "images/th-06.jpg", "th-07": "images/th-07.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-11": "images/th-11.jpg", "th-12": "images/th-12.jpg", "th-13": "images/th-13.jpg", "th-14": "images/th-14.jpg", "th-15": "images/th-15.jpg", "th-16": "images/th-16.jpg", "th-17": "images/th-17.jpg", "th-18": "images/th-18.jpg", "th-19": "images/th-19.jpg", "th-20": "images/th-20.jpg"};
