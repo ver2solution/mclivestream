@@ -29,10 +29,10 @@ jobs:
           if grep -q "v344-shell-1" sw.js; then echo "SAI: sw.js khong duoc con v344-shell-1 lam CACHE hien tai"; exit 1; fi
           node --check js/app.js || (echo "SAI: js/app.js loi cu phap"; exit 1)
           node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
-          grep -q "pageOfId(list, hid, 24)" js/app.js || (echo "SAI: js/app.js phai co pageOfId 24 (danh sach mau)"; exit 1)
-          grep -q "list.slice((pg-1)*24,pg*24)" js/app.js || (echo "SAI: js/app.js phai slice 24/trang"; exit 1)
-          grep -q "KIOT_MAX_ROWS = 24" thanh-ly-kiot.html || (echo "SAI: thanh-ly-kiot.html phai co KIOT_MAX_ROWS = 24"; exit 1)
-          grep -q "mỗi trang tối đa 24 hồ sơ" index.html || (echo "SAI: index.html FAQ phai ghi 24 ho so"; exit 1)
+          grep -qF "pageOfId(list, hid, 24)" js/app.js || (echo "SAI: js/app.js phai co pageOfId 24 (danh sach mau)"; exit 1)
+          grep -qF "list.slice((pg-1)*24,pg*24)" js/app.js || (echo "SAI: js/app.js phai slice 24/trang"; exit 1)
+          grep -qF "KIOT_MAX_ROWS = 24" thanh-ly-kiot.html || (echo "SAI: thanh-ly-kiot.html phai co KIOT_MAX_ROWS = 24"; exit 1)
+          grep -qF "mỗi trang tối đa 24 hồ sơ" index.html || (echo "SAI: index.html FAQ phai ghi 24 ho so"; exit 1)
           echo "verify OK: 4 file, sw.js v345-shell-1, mau 24/trang, Kiot 24, FAQ 24"
       - name: Commit deployed files
         run: |
