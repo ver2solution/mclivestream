@@ -60,6 +60,8 @@
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
+   articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-18 adds 4 Thi truong articles (18/11/2026, Wednesday): 1 seasonal keyword "thị trường thương mại điện tử cuối năm" #5/10 (4.269 words, deep + đánh giá tiềm năng; written 17/11 as v315, live 18/11 after upload failed 17/11) + 3 news ("Black Friday 2026: 12,9 tỷ USD" 2.758 words; "xuất khẩu Việt Nam tháng 10/2026: 64,67 tỷ USD" 2.620 words; "Double 12 Trung Quốc 2026" 2.633 words). Total 394 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15012,6 +15014,102 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển host livestream TikTok tại Đông Nam Á (tháng 11/2026): Philippines 22.000–35.000 peso/tháng, Malaysia tới 5.000 ringgit, Thái Lan 20.000 baht + hoa hồng, Indonesia 3–5 triệu rupiah; tin mới nhất ngày 17/11/2026; so với Việt Nam 10–18 triệu đồng/tháng."
+  },
+  {
+   "title": "Hoa hồng mẫu livestream Tết: bao nhiêu % là đủ?",
+   "cat": "Dòng tiền",
+   "source": "Ecomobi (qua vieclamlivestream.online)",
+   "date": "2026-11-17",
+   "url": "https://vieclamlivestream.online/bai-viet/viec-lam-tiktok-shop-dong-nam-a-thu-nhap-hoa-hong-ky-nang.html",
+   "page": "bai-viet/hoa-hong-mau-livestream-tet-bao-nhieu-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hoa-hong-mau-livestream-tet-bao-nhieu-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hoa hồng mẫu livestream Tết: TikTok 5–20%, mỹ phẩm 10–30%, gia dụng 8–10% — chốt bằng văn bản 5 điều, tính thu nhập 1 phiên trước khi nhận lịch."
+  },
+  {
+   "title": "Fed tăng lãi suất tháng 12: thị trường đặt cược 100%",
+   "cat": "Dòng tiền",
+   "source": "Kurums (qua The Motley Fool)",
+   "date": "2026-11-17",
+   "url": "https://kurums.com/december-2026-fed-rate-hike-25-or-50-treasury-playbook/",
+   "page": "bai-viet/fed-tang-lai-suat-thang-12-thi-truong-dat-cuoc-100-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/fed-tang-lai-suat-thang-12-thi-truong-dat-cuoc-100-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Fed tăng lãi suất tháng 12 được đặt cược 100%: 25 điểm có khả năng 87–89%, 50 điểm 8–11% — shop chốt tỷ giá trước 04/12/2026."
+  },
+  {
+   "title": "Giá vàng quý III: ngân hàng trung ương mua 321 tấn",
+   "cat": "Dòng tiền",
+   "source": "Hội đồng Vàng Thế giới (qua FXLeaders)",
+   "date": "2026-11-17",
+   "url": "https://www.fxleaders.com/news/2026/11/04/gold-fundamentals-midterm-shock-softer-dollar-and-record-etf-holdings-lift-xau-usd-back-above-4000/",
+   "page": "bai-viet/gia-vang-quy-3-ngan-hang-trung-uong-mua-321-tan.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-quy-3-ngan-hang-trung-uong-mua-321-tan.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá vàng quý III/2026: ngân hàng trung ương mua 321 tấn (+42%), ETF kỷ lục 4.256 tấn — nhưng giá trung bình quý vẫn giảm về 4.262 USD vì Fed cứng rắn."
+  },
+  {
+   "title": "Chi tiêu Tết 2027: 51% người Việt chi nhiều hơn",
+   "cat": "Dòng tiền",
+   "source": "Cốc Cốc (qua Brands Vietnam)",
+   "date": "2026-11-17",
+   "url": "https://www.brandsvietnam.com/congdong/topic/toan-canh-thi-truong-tet-2027-phan-tich-xu-huong-chi-tieu-va-hanh-vi-mua-sam-cua-nguoi-viet",
+   "page": "bai-viet/chi-tieu-tet-2027-51-phan-tram-chi-nhieu-hon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/chi-tieu-tet-2027-51-phan-tram-chi-nhieu-hon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Chi tiêu Tết 2027: 51% người Việt chi nhiều hơn, nhóm 18–29 tới 61% — nhưng 69% cất thưởng vào tiết kiệm; tiền chảy về thực phẩm, giỏ quà, combo."
+  },
+  {
+   "title": "Bán lẻ Mỹ tháng 10: 748,2 tỷ USD, tăng 0,2%",
+   "cat": "Dòng tiền",
+   "source": "Cục Thống kê Mỹ (qua TML News)",
+   "date": "2026-11-18",
+   "url": "https://tml.news/stories/retail-sales-rise-0-2-percent-october/",
+   "page": "bai-viet/ban-le-my-thang-10-chinh-thuc-748-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-le-my-thang-10-chinh-thuc-748-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bán lẻ Mỹ tháng 10 đạt 748,2 tỷ USD (+0,2%): nhóm lõi +0,6%, bán online +1,2%, ô tô −1,6% — shop bán món giá vừa, chốt tỷ giá trước 04/12/2026."
+  },
+  {
+   "title": "Giá vàng thủng đáy 1 năm: 3.830 USD/ounce",
+   "cat": "Dòng tiền",
+   "source": "Reuters (qua GainLynx)",
+   "date": "2026-11-18",
+   "url": "https://gainlynx.com/gold-near-one-year-low-dollar-fed-rate-hike/",
+   "page": "bai-viet/gia-vang-thung-day-1-nam-3830-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-thung-day-1-nam-3830-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá vàng thủng đáy 1 năm ngày 16/11/2026: 3.830 USD/ounce, −31,5% so với kỷ lục tháng 1 — Goldman nói 2 năm mới lấy lại kỷ lục, chờ Fed 09/12/2026."
+  },
+  {
+   "title": "Bitcoin dưới 65.000 USD, mất 24% từ đầu tháng 10",
+   "cat": "Dòng tiền",
+   "source": "CoinDesk",
+   "date": "2026-11-18",
+   "url": "https://www.coindesk.com/markets/2026/11/17/bitcoin-remains-penned-in-near-usd64-000-even-as-etf-outflow-streak-ends",
+   "page": "bai-viet/bitcoin-duoi-65000-usd-quy-etf-rut-von.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-duoi-65000-usd-quy-etf-rut-von.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin dưới 65.000 USD ngày 17/11/2026, mất 24% từ đầu tháng 10: quỹ ETF rút 2,35 tỷ USD trong 2 tuần, stablecoin co 17 tỷ USD trong 30 ngày — Wintermute cảnh báo giá có thể về vùng 50.000 USD, chờ Fed 09/12/2026."
+  },
+  {
+   "title": "Kiếm tiền ăn Tết bằng livestream: 2 tháng cuối năm",
+   "cat": "Dòng tiền",
+   "source": "Ecomobi / Kalodata (qua vieclamlivestream.online)",
+   "date": "2026-11-18",
+   "url": "https://vieclamlivestream.online/bai-viet/luong-mau-livestream-tet.html",
+   "page": "bai-viet/kiem-tien-an-tet-bang-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kiem-tien-an-tet-bang-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kiếm tiền ăn Tết bằng livestream: tháng 11+12 là 23,2% GMV cả năm — bắt đầu bằng live thuê/host thời vụ 8–15 triệu/tháng, chốt deal bằng văn bản, giữ lịch D+1 13/12 và 2 tuần cuối tháng 1/2027."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
