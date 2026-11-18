@@ -1,0 +1,47 @@
+name: "Deploy v339 (bo loc avatar 8 muc moi — so hien thi khop data.js)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v339.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v339:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v339 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v339-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v339-shell-1' sw.js; then echo "v339 DA DEPLOY ROI (sw.js da co v339-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 97f4fb0 - data.js/sitemap khong doi so voi v338) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "c5268417d1312344ddb41ec07cec0b90" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "447" || (echo "BASE DOI: sitemap khong con 447 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v339-deploy.zip
+          echo "--- verify v339 (2 file) ---"
+          test "$(unzip -l mclivestream-v339-deploy.zip | grep -cE ' (js/app\.js|sw\.js)$')" -eq 2 || (echo "SAI: goi v339 phai co dung 2 file (js/app.js + sw.js)"; exit 1)
+          grep -q "v339-shell-1" sw.js || (echo "SAI: sw.js phai co v339-shell-1"; exit 1)
+          node --check js/app.js || (echo "SAI: app.js loi cu phap"; exit 1)
+          grep -q "logo.png" js/app.js || (echo "SAI: app.js phai co logo.png lam anh tam cho the khong avatar (v339)"; exit 1)
+          if grep -q "if(x && x.avatar) n++" js/app.js; then echo "SAI: newObjCount van loc avatar — v339 phai bo loc"; exit 1; fi
+          if grep -q "return x && x.avatar" js/app.js; then echo "SAI: renderNewObjSections/renderHomeNewObj van loc avatar — v339 phai bo loc"; exit 1; fi
+          echo "verify OK: 2 file, sw.js v339-shell-1, app.js hop le, bo loc avatar"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v339-deploy.zip
+          git add js/app.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v339: bo loc avatar o 8 muc moi — 10 ho so v338 khong anh nay duoc dem + render voi logo.png tam; CACHE v339-shell-1"
+            git push
+          fi
