@@ -59,6 +59,8 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    v218 adds 4 Livestream articles (14/11/2026, Saturday): 1 seasonal keyword "cách tăng mắt xem livestream Tết" #4/10 (2.990 words, deep, GMV = hours x GPMV) + 1 cluster B keyword "cách giữ chân người xem livestream" (3.163 words) + 2 news ("minigame livestream bán hàng" 2.828 words; "livestream bán đồ gia dụng" 2.693 words, 15,7% Double 11). Total 227 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v145 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Đổng Vũ Huy 30 phút 100.000 đơn,\n   3 ngày 6,79 tỷ NDT, 5 mẹo chốt đơn (5.689 từ, 17 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi nên\n   Ryan tạo file + deploy giúp). Total 135 articles. Articles-only deploy:\n   sw.js bumped to v145-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
    Facebook Reach->Viewers 31/10, vieclamlivestream.online intro) + 1 keyword SEO article ("tuyển idol
@@ -14908,6 +14910,102 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Amazon Black Friday 2026: sale 19–30/11/2026, 12 ngày deal theo chủ đề, giảm tới 60%, thả deal 2 lần lúc nửa đêm và 8 giờ sáng giờ Thái Bình Dương ngày 27/11 và 30/11; bối cảnh Adobe: Black Friday online Mỹ 12,9 tỷ USD (+9,2%), Cyber Monday 15,1 tỷ USD (+6,2%)."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 16/11: 2 mẫu, 3 shop lên sàn",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-17",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-16-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-16-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 16/11/2026: 2 mẫu + 3 shop đã lên sàn (thu thập 2 mẫu + 3 shop, loại 3 mẫu trùng + 10 nhóm đợt 2); tổng live 238 mẫu, 290 shop; lương tháng cao nhất đợt 15–40 triệu tại TY MEDIA; 4 hồ sơ doanh thu khủng vẫn dẫn đầu."
+  },
+  {
+   "title": "Mẫu livestream thời vụ Tết: lương 8–15 triệu/tháng",
+   "cat": "Việc Làm",
+   "source": "Blog Fidovn",
+   "date": "2026-11-17",
+   "url": "https://blog.fidovn.com/viec-lam-thoi-vu-part-time-dip-tet/",
+   "page": "bai-viet/mau-livestream-thoi-vu-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-thoi-vu-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream thời vụ Tết 2026: lương 8–15 triệu đồng/tháng + hoa hồng (Fidovn), lương cứng 7–15 triệu đồng/tháng (TopCV LEMON/JETCASE, tháng 11/2026), ca Tết nhân đôi, lễ gấp 3–4 lần, thưởng tháng 13; tuyển từ 31/10/2026, làm tới Tết 06/02/2027; 2 hình thức trả lương theo ca và theo tháng đều có."
+  },
+  {
+   "title": "Đăng ký làm mẫu livestream: 5 bước, hồ sơ 7 mục",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-17",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/dang-ky-lam-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dang-ky-lam-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đăng ký làm mẫu livestream trên vieclamlivestream.online (17/11/2026): 5 bước (tài khoản 10 xu → hồ sơ 7 mục → video demo 2–3 phút → chọn shop → thử live 15–20 phút); 238 mẫu, 290 shop trên sàn; lương giờ phổ biến 80.000–150.000đ, lương tháng phổ biến 10–18 triệu đồng."
+  },
+  {
+   "title": "Tìm mẫu livestream: shop trả bao nhiêu, tìm ở đâu",
+   "cat": "Việc Làm",
+   "source": "The China Path",
+   "date": "2026-11-17",
+   "url": "https://www.thechinapath.com/insights/china-livestream-cost-for-brands",
+   "page": "bai-viet/tim-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tim-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tìm mẫu livestream (17/11/2026): 238 mẫu, 290 shop trên sàn; lương giờ Việt Nam phổ biến 80.000–150.000đ, lương tháng phổ biến 10–18 triệu đồng; host Douyin 1–2 năm kinh nghiệm 15.000–20.000 NDT/tháng (Tài Liên Xã 03/04/2025); 5 bước lọc hồ sơ theo tỉnh, ngành, lương, video demo, thử live."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 17/11: sàn giữ 238 mẫu, 290 shop",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-18",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-17-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-17-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 17/11/2026: 0 mẫu + 0 shop mới (lượt thu thập chạy trễ 2h42' và không mở browser); tổng live giữ 238 mẫu, 290 shop, 367 bài; 3 shop mới nhất ngày 16/11 vẫn tuyển với lương tháng tới 40 triệu đồng."
+  },
+  {
+   "title": "Việc làm thời vụ Tết livestream: tìm ở đâu, lương bao nhiêu",
+   "cat": "Việc Làm",
+   "source": "TopCV",
+   "date": "2026-11-18",
+   "url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/1624892.html",
+   "page": "bai-viet/viec-lam-thoi-vu-tet-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-thoi-vu-tet-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm thời vụ Tết livestream 2026: 4 kênh tìm việc (TopCV, Threads, nhóm Facebook, sàn vieclamlivestream.online); lương 4,5–30 triệu đồng/tháng theo vị trí; 2 tin TopCV đã hết hạn tính tới 18/11/2026; nộp đơn trước sale 12.12 (thứ Bảy 12/12/2026)."
+  },
+  {
+   "title": "Việc làm host livestream: lương bao nhiêu, tìm ở đâu",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-18",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/viec-lam-host-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-host-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm host livestream 2026: host dẫn live (giải trí, PK, bán hàng), khác mẫu live ở vai trò dẫn dắt; lương Mỹ 30–40 USD/giờ, Đài Loan NT$15.000–46.500 + 70% hoa hồng, Việt Nam 9–20 triệu đồng/tháng; chỉ 2/290 shop trên sàn ghi rõ tuyển Host."
+  },
+  {
+   "title": "Tuyển host livestream TikTok: Đông Nam Á trả bao nhiêu",
+   "cat": "Việc Làm",
+   "source": "Indeed Philippines",
+   "date": "2026-11-18",
+   "url": "https://ph.indeed.com/viewjob?from=social_facebook&jk=b076d2030ad7f725",
+   "page": "bai-viet/tuyen-host-livestream-tiktok.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-host-livestream-tiktok.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển host livestream TikTok tại Đông Nam Á (tháng 11/2026): Philippines 22.000–35.000 peso/tháng, Malaysia tới 5.000 ringgit, Thái Lan 20.000 baht + hoa hồng, Indonesia 3–5 triệu rupiah; tin mới nhất ngày 17/11/2026; so với Việt Nam 10–18 triệu đồng/tháng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
