@@ -61,6 +61,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-18 adds 4 Cong nghe articles (18/11/2026, Wednesday): 1 seasonal keyword 'xac thuc VNeID ban hang online' #10/10 (deep, Nghi dinh 320/2026, han 31/12/2026) + 3 news (TikTok Shop Product Diagnosis 12/11, TikTok Shop Seller AI BFCM 04/11, nhan AI Shopee Video 12.12). SEO V2 (title suffix + link boxes). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v218 adds 4 Livestream articles (14/11/2026, Saturday): 1 seasonal keyword "cách tăng mắt xem livestream Tết" #4/10 (2.990 words, deep, GMV = hours x GPMV) + 1 cluster B keyword "cách giữ chân người xem livestream" (3.163 words) + 2 news ("minigame livestream bán hàng" 2.828 words; "livestream bán đồ gia dụng" 2.693 words, 15,7% Double 11). Total 227 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v143 adds 40 articles (11/11/2026, Wednesday, x4): 5 x 11/11 series (VN/TQ/livestream/SEA/global,\n   pages already in prep, 5 URLs were 404 on live) + 1 keyword SEO article ("tuyển streamer game",\n   kind:"keyword", pinned:false per v84) + 1 stats article (profiles collected 10/11: 20 models,\n   20 shops) + 33 news (9 A big-revenue cases + 9 B Facebook/TikTok-law/Dòng tiền/Đời Sống +\n   9 C Google-top-keywords/potential + 6 D AI-live/xả kho/nhập hàng/sản phẩm mới/11.11-hot) +\n   rotating topic #4 (bóc mẽ Hannah Olala, LAST). Total 133 articles. Articles-only deploy:\n   sw.js NOT touched (data.js is NETWORK-FIRST).\n   v144 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Double 11/2025 1.695 nghìn tỷ NDT,\n   livestream chiếm bao nhiêu (4.891 từ, 15 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi đo độ dài\n   vào trường HTML rỗng nên Ryan tạo file + deploy giúp). Total 134 articles. Articles-only deploy:\n   sw.js bumped to v144-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v145 adds 1 article (11/11/2026, Zalo CASE DOANH THU KHỦNG): Đổng Vũ Huy 30 phút 100.000 đơn,\n   3 ngày 6,79 tỷ NDT, 5 mẹo chốt đơn (5.689 từ, 17 phần Zalo gửi qua chat admin; form 'Viết bài' lỗi nên\n   Ryan tạo file + deploy giúp). Total 135 articles. Articles-only deploy:\n   sw.js bumped to v145-shell-1 per deploy brief (data.js is NETWORK-FIRST, HTML is network-first).\n   v112 adds 10 articles (09/11/2026, Monday): 3 Monday articles (TMĐT 9-month stats,
@@ -15438,7 +15439,55 @@ window.V20_DATA = {
 {"title":"Livestream Shopee: 1 phiên live 330.000 SGD, tăng 5 lần","cat":"Livestream","source":"Media OutReach Newswire","date":"2026-11-18","url":"https://www.superadrianme.com/media-outreach/shopee-11-11-big-sale-campaign-delivers-record-breaking-sales-and-over-111m-coins-in-cashback-for-shopeevip-users/","page": "bai-viet/livestream-shopee.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-shopee.jpg","pinned":false,"takeaway":"Shopee Live + Video watch time tăng hơn 5 lần dịp 11.11 (Media OutReach 16/11/2026); Ingu 330.000 SGD trong 1 phiên live 3 giờ, bán hết hàng; 167 Bakkwa gần 200.000 SGD trong 1 phiên 10/11/2026."},
 {"title":"Mẹo livestream chốt đơn: 15 cách biến người xem thành khách","cat":"Livestream","source":"Stremify","date":"2026-11-18","url":"https://stremify.net/blog/live-selling-tips","page": "bai-viet/meo-livestream-chot-don.html","img":"https://vieclamlivestream.online/images/bai-viet/meo-livestream-chot-don.jpg","pinned":false,"takeaway":"Live chuyển đổi trên 10% so với 1,3% trung bình (GetStream 2026 qua LiveShopFront 04/2026); 15 mẹo Stremify cập nhật 22/10/2026; chăm sóc sau live tăng thêm 10-20% chuyển đổi."},
 {"title":"Cách livestream trên Facebook bán hàng: 2 cách mới 2026","cat":"Livestream","source":"LiveMeUp","date":"2026-11-18","url":"https://www.livemeup.io/blogs/infos/how-to-live-sell-on-facebook-with-shopify","page": "bai-viet/cach-livestream-tren-facebook-ban-hang.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-livestream-tren-facebook-ban-hang.jpg","pinned":false,"takeaway":"Meta tắt Live Shopping gốc 01/10/2022; Live Video Ads toàn cầu 17/06/2026; 2 cách: comment-to-buy và shop-in-stream (LiveMeUp 2026); Trang cần 100+ follower."},
-{"title":"Livestream bán giỏ quà Tết: 275 triệu USD trong 7 ngày","cat":"Livestream","source":"Beauty Independent","date":"2026-11-18","url":"https://www.beautyindependent.com/tiktok-shop-beauty-gm-forecasts-bigger-holiday-sales-more-brand-livestreams/","page": "bai-viet/livestream-ban-gio-qua-tet.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-gio-qua-tet.jpg","pinned":false,"takeaway":"Nhóm hàng quà tặng TikTok Shop Mỹ 275 triệu USD trong 7 ngày tới 15/11/2026, live chiếm 16% (TokConnect 17/11/2026); top 10 nhà bán live mỹ phẩm hơn 83 triệu USD nửa đầu 2026 (Beauty Independent 14/10/2026)."}
+{"title":"Livestream bán giỏ quà Tết: 275 triệu USD trong 7 ngày","cat":"Livestream","source":"Beauty Independent","date":"2026-11-18","url":"https://www.beautyindependent.com/tiktok-shop-beauty-gm-forecasts-bigger-holiday-sales-more-brand-livestreams/","page": "bai-viet/livestream-ban-gio-qua-tet.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-gio-qua-tet.jpg","pinned":false,"takeaway":"Nhóm hàng quà tặng TikTok Shop Mỹ 275 triệu USD trong 7 ngày tới 15/11/2026, live chiếm 16% (TokConnect 17/11/2026); top 10 nhà bán live mỹ phẩm hơn 83 triệu USD nửa đầu 2026 (Beauty Independent 14/10/2026)."},
+  {
+   "title": "Xác thực VNeID bán hàng online: hạn chót 31/12/2026",
+   "cat": "Công nghệ",
+   "source": "Dân Việt",
+   "date": "2026-11-18",
+   "url": "https://danviet.vn/11-loai-tai-khoan-phai-lien-ket-xac-thuc-voi-vneid-truoc-ngay-31-12-2026-nguoi-dan-can-luu-y-d1452640.html",
+   "page": "bai-viet/xac-thuc-vneid-ban-hang-online-han-31-12-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xac-thuc-vneid-ban-hang-online-han-31-12-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xác thực VNeID bán hàng online: người bán, người livestream bán hàng và người tiếp thị liên kết phải liên kết, xác thực tài khoản với VNeID chậm nhất ngày 31/12/2026 theo Nghị định 320/2026/NĐ-CP (hiệu lực 28/9/2026); tài khoản ngân hàng có hạn tới 30/6/2027; tài khoản chỉ mua sắm không thuộc diện."
+  },
+  {
+   "title": "TikTok Shop Product Diagnosis: 10 lý do đơn hàng giảm",
+   "cat": "Công nghệ",
+   "source": "PPC Land",
+   "date": "2026-11-18",
+   "url": "https://ppc.land/tiktok-shop-gives-us-sellers-up-to-10-reasons-a-products-sales-fell/",
+   "page": "bai-viet/tiktok-shop-product-diagnosis-10-ly-do-don-hang-giam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-product-diagnosis-10-ly-do-don-hang-giam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Product Diagnosis (11/2026, Mỹ): công cụ mới trong Product Analytics gắn cờ \"Need attention\" khi GMV realtime giảm và chẩn đoán offline cùng kết luận, tách GMV theo 5 kịch bản, xếp hạng tới 10 thẻ nguyên nhân loại Risk/AA/AB, so với kỳ trước và với sản phẩm dẫn đầu cùng ngành."
+  },
+  {
+   "title": "TikTok Shop Seller AI: ước đơn tăng trước Black Friday",
+   "cat": "Công nghệ",
+   "source": "PPC Land",
+   "date": "2026-11-18",
+   "url": "https://ppc.land/tiktok-shop-ai-estimates-extra-orders-per-listing-fix-ahead-of-black-friday/",
+   "page": "bai-viet/tiktok-shop-seller-ai-uoc-don-tang-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-seller-ai-uoc-don-tang-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Seller AI (04/11/2026, Mỹ): AI Homepage + Seller Assistant gom các trợ lý AI theo 3 nhóm ACE (sản phẩm, nội dung, chiến dịch); Product Growth Opportunities ước số đơn tăng thêm cho từng lỗi listing; LIVE Recommendations gợi ý cải thiện phiên live; Smart Promotion 3,5% GMV là điều kiện bắt buộc."
+  },
+  {
+   "title": "Nhãn AI Shopee Video: bật trước khi đăng video 12.12",
+   "cat": "Công nghệ",
+   "source": "RockAi Studio",
+   "date": "2026-11-18",
+   "url": "https://rockit.site/aistudio/blog/shopee-ai-generated-label-12-12-labu-sayong-kuala-kangsar-nov-2026",
+   "page": "bai-viet/nhan-ai-shopee-video-bat-truoc-khi-dang-video-12-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nhan-ai-shopee-video-bat-truoc-khi-dang-video-12-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nhãn AI Shopee Video: video làm hoàn toàn bằng AI hoặc chỉnh sửa đáng kể bằng AI phải bật nhãn \"AI-generated\" trước khi đăng (Malaysia 12/06/2026, Singapore 10/05/2026); Singapore phạt 3 điểm + gỡ video + mất hoa hồng khi không gắn nhãn; quy tắc chính xác về màu, kích thước, chất liệu có hiệu lực từ 01/08/2026."
+  }
 ],
  "lots": [
    {
