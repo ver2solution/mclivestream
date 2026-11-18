@@ -3869,7 +3869,7 @@ function initShopPage(){
   // vua gan so theo tab.
   refreshUniCounts(getUniCat());
 }
-/* List page: grid + filters + pagination 12/page, URL-synced */
+/* List page: grid + filters + pagination 24/page (v345: 4 hang x 6 cot, user 19:29 18/11; truoc 12 = 2 hang), URL-synced */
 /* A3 un-swap (10/11, dao v96-swap 08/11): grid MAU gio o trang Mau (danh-sach-mau.html), loc
    bang KHUNG LOC CHUNG (#uniFilter, hang muc Tim Mau) thay cho bo loc mau
    cu (fProv...fQ da bo khoi trang Mau). Anh xa truong chung -> mau: tinh
@@ -3943,15 +3943,15 @@ function initList(){
       render._hashDone = true;
       var hid = '';
       try { hid = (location.hash || '').replace(/^#/, ''); } catch (e) {}
-      var hp = pageOfId(list, hid, 12);
+      var hp = pageOfId(list, hid, 24); /* v345: 4 hang x 6 cot */
       if(hp){ pg = hp; render._hashTarget = hid; }
     }
-    var totalPages=Math.max(1,Math.ceil(list.length/12)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
-    grid.innerHTML=list.length?list.slice((pg-1)*12,pg*12).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
+    var totalPages=Math.max(1,Math.ceil(list.length/24)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
+    grid.innerHTML=list.length?list.slice((pg-1)*24,pg*24).map(cardHTML).join(''):emptyResultsHTML('Chưa có hồ sơ khớp bộ lọc. Hãy chọn tỉnh khác, chọn Toàn quốc / Live online, hoặc bấm Đặt lại.');
     renderPager(document.getElementById('pager'),pg,totalPages,list.length,function(np){
       if (JSON.stringify(readForm()) !== lastFilterKey) { gateFilterApply('model', 'danh-sach-mau.html', function(){ render(np); grid.scrollIntoView(); }, document.getElementById('uniApplyBtn')); }
       else { render(np); grid.scrollIntoView(); }
-    },12,'hồ sơ');
+    },24,'hồ sơ');
     /* URL giu dang ?cat= ten linh vuc mau (nhu hero/chip/hub) + cac khoa
        cua bo loc chung; q chi ghi khi co tu khoa. */
     var sp={prov:f.prov,cat:f.cat,sort:elVal('fUniSort'),shift:elVal('fUniShift'),paytype:elVal('fUniPayType'),paymin:elVal('fUniPayMin'),q:f.q,page:String(pg)};
