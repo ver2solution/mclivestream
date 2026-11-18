@@ -1,0 +1,49 @@
+name: Deploy data 2026-11-18 factories
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-18-factories.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-18-factories:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-18 factories package
+        run: |
+          unzip -o mclivestream-data-2026-11-18-factories-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "0b937173627f3513cf9c4bea3fc207d511ec2d2797477ae2718a7df4b447abd7" || (echo "BAD data.js sha256"; exit 1)
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          echo "lots: $(grep -c '"id": "lot-' js/data.js)"
+          echo "factories: $(grep -c '"id": "fac-' js/data.js)"
+          echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
+          echo "articles (grep page): $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '"id": "th-' js/data.js)" = "238" || (echo "BAD models count"; exit 1)
+          test "$(grep -c '"id": "sh-' js/data.js)" = "290" || (echo "BAD shops count"; exit 1)
+          test "$(grep -c '"id": "lot-' js/data.js)" = "226" || (echo "BAD lots count"; exit 1)
+          test "$(grep -c '"id": "fac-' js/data.js)" = "400" || (echo "BAD factories count"; exit 1)
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "360" || (echo "BAD kiots count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "421" || (echo "BAD articles grep count"; exit 1)
+          test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.articles.length)")" = "422" || (echo "BAD articles parsed count"; exit 1)
+          for f in images/xuong/fac-321.jpg images/xuong/fac-322.jpg images/xuong/fac-323.jpg images/xuong/fac-324.jpg images/xuong/fac-325.jpg images/xuong/fac-326.jpg images/xuong/fac-327.jpg images/xuong/fac-328.jpg images/xuong/fac-329.jpg images/xuong/fac-330.jpg images/xuong/fac-331.jpg images/xuong/fac-332.jpg images/xuong/fac-333.jpg images/xuong/fac-334.jpg images/xuong/fac-351.jpg images/xuong/fac-352.jpg images/xuong/fac-358.jpg images/xuong/fac-361.jpg images/xuong/fac-362.jpg images/xuong/fac-363.jpg images/xuong/fac-364.jpg images/xuong/fac-365.jpg images/xuong/fac-366.jpg images/xuong/fac-367.jpg images/xuong/fac-368.jpg images/xuong/fac-369.jpg images/xuong/fac-370.jpg images/xuong/fac-371.jpg images/xuong/fac-372.jpg images/xuong/fac-373.jpg images/xuong/fac-374.jpg images/xuong/fac-392.jpg images/xuong/fac-400.jpg; do test -f "$f" || (echo "MISSING $f"; exit 1); done
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/xuong/fac-321.jpg images/xuong/fac-322.jpg images/xuong/fac-323.jpg images/xuong/fac-324.jpg images/xuong/fac-325.jpg images/xuong/fac-326.jpg images/xuong/fac-327.jpg images/xuong/fac-328.jpg images/xuong/fac-329.jpg images/xuong/fac-330.jpg images/xuong/fac-331.jpg images/xuong/fac-332.jpg images/xuong/fac-333.jpg images/xuong/fac-334.jpg images/xuong/fac-351.jpg images/xuong/fac-352.jpg images/xuong/fac-358.jpg images/xuong/fac-361.jpg images/xuong/fac-362.jpg images/xuong/fac-363.jpg images/xuong/fac-364.jpg images/xuong/fac-365.jpg images/xuong/fac-366.jpg images/xuong/fac-367.jpg images/xuong/fac-368.jpg images/xuong/fac-369.jpg images/xuong/fac-370.jpg images/xuong/fac-371.jpg images/xuong/fac-372.jpg images/xuong/fac-373.jpg images/xuong/fac-374.jpg images/xuong/fac-392.jpg images/xuong/fac-400.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-18 factories: 400 xuong (80 moi fac-321..fac-400: 40 cua 17/11 deploy bu + 40 moi 18/11, 33 anh), 238 mau / 290 shop / 226 lo / 360 kiot / 422 bai viet"
+            git push
+          fi
