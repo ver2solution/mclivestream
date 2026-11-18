@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "370" || (echo "BASE DOI: data.js khong con 370 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "396" || (echo "BASE DOI: sitemap khong con 396 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "378" || (echo "BASE DOI: data.js khong con 378 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "404" || (echo "BASE DOI: sitemap khong con 404 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip v329-livestream package
         run: |
           unzip -o mclivestream-v329-livestream-deploy.zip
@@ -34,8 +34,8 @@ jobs:
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "400" || (echo "SAI TONG sitemap, phai 400"; exit 1)
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "374" || (echo "SAI TONG data.js, phai 374"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "408" || (echo "SAI TONG sitemap, phai 408"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "382" || (echo "SAI TONG data.js, phai 382"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
