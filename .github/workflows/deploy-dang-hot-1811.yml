@@ -1,0 +1,91 @@
+name: Deploy articles-dang-hot-2026-11-18 (8 bai: 4 bai 17/11 + 4 bai 18/11)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dang-hot-1811.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dang-hot-1811:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "403" || (echo "BASE DOI: data.js khong con 403 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "429" || (echo "BASE DOI: sitemap khong con 429 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          for slug in xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 shein-black-friday-giam-toi-95-phan-tram-live-15-gio temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram walmart-black-friday-2026-3-dot-sale-tv-128-usd best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd; do
+            grep -q "bai-viet/$slug.html" js/data.js && (echo "DA DEPLOY ROI: $slug da co trong data.js - DUNG LAI"; exit 1) || true
+          done
+      - name: Unzip dang-hot-1811 package
+        run: |
+          unzip -o mclivestream-v331-dang-hot-deploy.zip
+          echo "--- verify dang-hot-1811 (8 bai) ---"
+            test -f "bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.html" || (echo "THIEU bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.html"; exit 1)
+            test -f "images/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.jpg" || (echo "THIEU images/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.jpg"; exit 1)
+            test -f "images/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don-og.jpg" || (echo "THIEU images/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don-og.jpg"; exit 1)
+            grep -q "bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.html" js/data.js || (echo "THIEU xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.html</loc>" sitemap.xml || (echo "THIEU xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don trong sitemap"; exit 1)
+            test -f "bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.html" || (echo "THIEU bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.html"; exit 1)
+            test -f "images/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.jpg" || (echo "THIEU images/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.jpg"; exit 1)
+            test -f "images/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11-og.jpg" || (echo "THIEU images/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11-og.jpg"; exit 1)
+            grep -q "bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.html" js/data.js || (echo "THIEU shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.html</loc>" sitemap.xml || (echo "THIEU shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 trong sitemap"; exit 1)
+            test -f "bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.html" || (echo "THIEU bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.html"; exit 1)
+            test -f "images/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.jpg" || (echo "THIEU images/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.jpg"; exit 1)
+            test -f "images/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio-og.jpg" || (echo "THIEU images/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio-og.jpg"; exit 1)
+            grep -q "bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.html" js/data.js || (echo "THIEU shein-black-friday-giam-toi-95-phan-tram-live-15-gio trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.html</loc>" sitemap.xml || (echo "THIEU shein-black-friday-giam-toi-95-phan-tram-live-15-gio trong sitemap"; exit 1)
+            test -f "bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.html" || (echo "THIEU bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.html"; exit 1)
+            test -f "images/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.jpg" || (echo "THIEU images/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.jpg"; exit 1)
+            test -f "images/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd-og.jpg" || (echo "THIEU images/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd-og.jpg"; exit 1)
+            grep -q "bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.html" js/data.js || (echo "THIEU temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.html</loc>" sitemap.xml || (echo "THIEU temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd trong sitemap"; exit 1)
+            test -f "bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.html" || (echo "THIEU bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.html"; exit 1)
+            test -f "images/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.jpg" || (echo "THIEU images/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.jpg"; exit 1)
+            test -f "images/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12-og.jpg" || (echo "THIEU images/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12-og.jpg"; exit 1)
+            grep -q "bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.html" js/data.js || (echo "THIEU sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.html</loc>" sitemap.xml || (echo "THIEU sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 trong sitemap"; exit 1)
+            test -f "bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.html" || (echo "THIEU bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.html"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.jpg"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram-og.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram-og.jpg"; exit 1)
+            grep -q "bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.html" js/data.js || (echo "THIEU tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram.html</loc>" sitemap.xml || (echo "THIEU tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram trong sitemap"; exit 1)
+            test -f "bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.html" || (echo "THIEU bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.html"; exit 1)
+            test -f "images/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.jpg" || (echo "THIEU images/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.jpg"; exit 1)
+            test -f "images/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd-og.jpg" || (echo "THIEU images/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd-og.jpg"; exit 1)
+            grep -q "bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.html" js/data.js || (echo "THIEU walmart-black-friday-2026-3-dot-sale-tv-128-usd trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.html</loc>" sitemap.xml || (echo "THIEU walmart-black-friday-2026-3-dot-sale-tv-128-usd trong sitemap"; exit 1)
+            test -f "bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.html" || (echo "THIEU bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.html"; exit 1)
+            test -f "images/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.jpg" || (echo "THIEU images/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.jpg"; exit 1)
+            test -f "images/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd-og.jpg" || (echo "THIEU images/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd-og.jpg"; exit 1)
+            grep -q "bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.html" js/data.js || (echo "THIEU best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.html</loc>" sitemap.xml || (echo "THIEU best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "437" || (echo "SAI TONG sitemap, phai 437"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "411" || (echo "SAI TONG data.js, phai 411 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v331-dang-hot-deploy.zip || rm -f mclivestream-v331-dang-hot-deploy.zip
+          git rm -q mclivestream-dang-hot-1711-deploy.zip || true
+          git rm -q .github/workflows/deploy-dang-hot-1711.yml || true
+          git rm -q .github/workflows/deploy-dang-hot-1811.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-dang-hot-2026-11-18: 8 bai (4 bai 17/11 + 4 bai 18/11) (xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11 shein-black-friday-giam-toi-95-phan-tram-live-15-gio temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12 tiktok-shop-black-friday-2026-live-tang-84-phan-tram-phi-4-5-phan-tram walmart-black-friday-2026-3-dot-sale-tv-128-usd best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd)"
+            git push
+          fi
