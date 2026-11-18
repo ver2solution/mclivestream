@@ -281,15 +281,16 @@
     recordBotTop(m.bot && m.bot.name);
     repaint();
   }
-  /* v340 (TOP-01): ghi tăng tin bot cho Top tương tác. Dùng Supabase client
-     chung (McLivestreamAPI.client); lỗi thì bỏ qua im lặng (migration chưa
-     chạy, mạng lỗi, hay RPC từ chối đều không được làm hỏng khung chat). */
+  /* v341 (18/11/2026, sửa gốc v340): PostgrestBuilder của supabase-js v2 CHỈ
+     có .then(), KHÔNG có .catch() — gọi .catch() thì điều kiện typeof là
+     false, RPC không bao giờ chạy (số Top đứng yên). Dùng .then() với cả 2
+     handler để vừa kích hoạt RPC vừa nuốt lỗi. */
   function recordBotTop(botName) {
     try {
       var api = (typeof window !== 'undefined' && window.McLivestreamAPI) ? window.McLivestreamAPI : null;
       if (!api || !api.client || !botName) return;
       var p = api.client.rpc('record_bot_message', { p_bot_name: botName });
-      if (p && typeof p.catch === 'function') p.catch(function () { /* bỏ qua */ });
+      if (p && typeof p.then === 'function') p.then(function () {}, function () { /* bỏ qua */ });
     } catch (e) { /* bỏ qua */ }
   }
   function start() {

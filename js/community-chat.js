@@ -269,7 +269,10 @@
         var rank = i + 1;
         var rankHtml = rank === 1 ? '<span class="top-rank r1">👑</span>'
           : '<span class="top-rank r' + (rank <= 3 ? rank : '') + '">' + rank + '</span>';
-        var role = r.author_role === 'shop' ? 'Chủ Shop' : (r.author_role === 'model' ? 'Mẫu Live' : 'Thành viên');
+        /* v341 (18/11/2026): bot phải hiện nhãn "🤖 Bot", không phải "Thành viên"
+           (v340 trả author_role='bot' nhưng dòng này không có nhánh bot). */
+        var role = (r.is_bot === true || r.author_role === 'bot') ? '🤖 Bot'
+          : (r.author_role === 'shop' ? 'Chủ Shop' : (r.author_role === 'model' ? 'Mẫu Live' : 'Thành viên'));
         var lv = (typeof r.level === 'number' && r.level > 0) ? r.level : 1;
         html += '<div class="top-row' + (rank === 1 ? ' top1' : '') + '">' + rankHtml
           + '<div class="top-name"><b>' + esc(r.author_name || 'Khách') + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span></b>'
