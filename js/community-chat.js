@@ -1,10 +1,12 @@
 /* v324 (17/11/2026): Mục chat cộng đồng trang chủ — Vị trí 1, thiết kế v3 đã duyệt 22:28 17/11.
-   1 khung duy nhất: chat tổng 3/5 (6 tin mới nhất, mới nhất ở dưới) + Top tương tác 1/5
+   1 khung duy nhất: chat tổng 3/5 (6 tin mới nhất, mới nhất ở ĐẦU) + Top tương tác 1/5
    + 4 danh sách nổi bật 1/5 (từ data.js). Khách chỉ xem, đăng nhập mới gửi; AI TẮT;
    không SĐT/email; không Xu từ chat. Realtime theo mẫu admin_comments (RPC +
    postgres_changes INSERT trên chat_messages + polling 60 giây fallback).
-   KHÔNG tự cuộn khi người dùng đang đọc tin cũ (luật cuộn v213: chỉ cuộn khi
-   người dùng đang ở cuối danh sách); nút "Về tin mới nhất" hiện khi cuộn lên.
+   v334 (18/11/2026, anh Thọ: CÔNG BẰNG, tin mới lên đầu — không phân biệt AI,
+   bot, test hay user): toàn bộ tin (thật + bot) xếp theo giờ, mới nhất trước.
+   KHÔNG tự cuộn khi người dùng đang đọc tin cũ (luật cuộn v213); nút
+   "Về tin mới nhất" (↑, lên đầu) hiện khi đã cuộn xuống.
    Backend: RPC chat V4 (PR-03) — get_home_chat_messages / post_home_chat_message /
    get_home_chat_top. Không đưa dữ liệu demo giả lên live: khi chưa có tin thật
    thì khung chat hiện "Chưa có tin nhắn — hãy là người đầu tiên trò chuyện".
@@ -98,7 +100,7 @@
     var box = $('homeChatHighlights');
     if (!box) return;
     var D = (typeof window !== 'undefined' && window.V20_DATA) ? window.V20_DATA : null;
-    if (!D) { box.innerHTML = '<p class="chat-empty">Chưa tải được danh sách.</p>'; return; }
+    if (!D) { box.innerHTML = '<p class="chat-empty">Chưa tải được danh sách.</p>'; scheduleFrameSync(); return; }
     var html = '';
 
     // 1. Shop tuyển lương cao nhất (lương tháng cứng, bỏ "tham khảo").
@@ -149,24 +151,52 @@
     html += '</ul></div>';
 
     box.innerHTML = html;
+    scheduleFrameSync();
   }
 
   /* --- Khung chat tổng --- */
-  var state = { sending: false, pollTimer: null, channel: null, atBottom: true };
+  // v334: công bằng, tin mới lên đầu — tin mới nhất ở ĐẦU danh sách nên
+  // "đang ở tin mới nhất" nghĩa là đang ở ĐẦU (scrollTop ~ 0), không phải
+  // ở cuối như trước. Nút "Về tin mới nhất" cuộn lên đầu.
+  var state = { sending: false, pollTimer: null, channel: null, atTop: true };
 
-  function isAtBottom(list) {
+  function isAtTop(list) {
     if (!list) return true;
-    return (list.scrollHeight - list.scrollTop - list.clientHeight) < 12;
+    return list.scrollTop < 12;
   }
-  function scrollToBottom(list) {
+  function scrollToTop(list) {
     if (!list) return;
-    try { list.scrollTop = list.scrollHeight; } catch (e) { /* bỏ qua */ }
+    try { list.scrollTop = 0; } catch (e) { /* bỏ qua */ }
   }
   function updateJumpBtn() {
     var list = $('homeChatList'), btn = $('homeChatJump');
     if (!list || !btn) return;
-    state.atBottom = isAtBottom(list);
-    btn.hidden = state.atBottom;
+    state.atTop = isAtTop(list);
+    btn.hidden = state.atTop;
+  }
+
+  function messageHtml(m) {
+    var kind = m.author_kind || 'user';
+    var tag = kind === 'admin' ? '<span class="chat-tag">QUẢN TRỊ</span>'
+      : (kind === 'ai' ? '<span class="chat-tag">AI</span>' : '');
+    var lv = (typeof m.level === 'number' && m.level > 0) ? m.level : 1;
+    var verified = m.is_verified ? ' <span class="verified" title="Đã xác minh đăng ký">✓</span>' : '';
+    var ts = 0;
+    try { ts = new Date(m.created_at).getTime() || 0; } catch (e) { ts = 0; }
+    return '<div class="chat-msg" data-ts="' + ts + '">'
+      + '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>'
+      + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.author_name || 'Khách')
+      + '</b>' + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'
+      + roleBadge(m.author_role) + verified + ' · ' + esc(fmtTime(m.created_at)) + '</div>'
+      + '<p class="chat-text">' + esc(m.body || '') + '</p></div></div>';
+  }
+
+  function restoreScroll(list, prev) {
+    if (!list || !prev) return;
+    try {
+      if (prev.wasTop || prev.top < 12) { scrollToTop(list); return; }
+      list.scrollTop = Math.max(0, prev.top + (list.scrollHeight - prev.height));
+    } catch (e) { /* bỏ qua */ }
   }
 
   function renderMessages(rows) {
@@ -176,33 +206,25 @@
       list.innerHTML = '<p class="chat-empty">Chưa có tin nhắn — hãy là người đầu tiên trò chuyện.</p>';
       return;
     }
-    // RPC trả mới nhất trước; hiển thị cũ trước, mới nhất ở dưới cùng.
-    var ordered = rows.slice().reverse();
+    // v334 (18/11/2026, anh Thọ: CÔNG BẰNG, tin mới lên đầu — không phân
+    // biệt AI, bot, test hay user): hiển thị đúng thứ tự RPC trả về (mới
+    // nhất trước), KHÔNG đảo, KHÔNG tách theo loại. Tin test chỉ là tin
+    // người dùng bình thường, xếp theo giờ như mọi tin khác.
+    // Chụp vị trí cuộn TRƯỚC khi thay innerHTML để giữ nguyên chỗ đang đọc
+    // (luật cuộn v213); V2SChatBots.repaint(anchor) chèn tin bot theo giờ
+    // và khôi phục vị trí cuộn theo anchor này.
+    var anchor = { top: list.scrollTop, height: list.scrollHeight, wasTop: state.atTop };
     var html = '';
-    ordered.forEach(function (m) {
-      var kind = m.author_kind || 'user';
-      var tag = kind === 'admin' ? '<span class="chat-tag">QUẢN TRỊ</span>'
-        : (kind === 'ai' ? '<span class="chat-tag">AI</span>' : '');
-      var lv = (typeof m.level === 'number' && m.level > 0) ? m.level : 1;
-      var verified = m.is_verified ? ' <span class="verified" title="Đã xác minh đăng ký">✓</span>' : '';
-      html += '<div class="chat-msg">'
-        + '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>'
-        + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.author_name || 'Khách')
-        + '</b>' + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'
-        + roleBadge(m.author_role) + verified + ' · ' + esc(fmtTime(m.created_at)) + '</div>'
-        + '<p class="chat-text">' + esc(m.body || '') + '</p></div></div>';
-    });
-    var wasBottom = state.atBottom;
+    rows.forEach(function (m) { html += messageHtml(m); });
     list.innerHTML = html;
-    // Chỉ tự cuộn khi người dùng đang ở cuối (đang đọc tin mới nhất); đang đọc
-    // tin cũ thì giữ nguyên vị trí, hiện nút "Về tin mới nhất".
-    if (wasBottom) scrollToBottom(list);
-    updateJumpBtn();
     // v325: vẽ lại tin bot (js/chat-bots.js) sau mỗi lần render tin thật,
     // vì render này thay innerHTML nên tin bot bị xóa theo.
     if (typeof window !== 'undefined' && window.V2SChatBots && typeof window.V2SChatBots.repaint === 'function') {
-      try { window.V2SChatBots.repaint(); } catch (e) { /* bỏ qua */ }
+      try { window.V2SChatBots.repaint(anchor); } catch (e) { /* bỏ qua */ }
+    } else {
+      restoreScroll(list, anchor);
     }
+    updateJumpBtn();
   }
 
   function renderTop(rows) {
@@ -210,21 +232,51 @@
     if (!box) return;
     if (!rows || !rows.length) {
       box.innerHTML = '<p class="chat-empty">Chưa có tương tác tuần này.</p>';
+    } else {
+      var html = '';
+      rows.forEach(function (r, i) {
+        var rank = i + 1;
+        var rankHtml = rank === 1 ? '<span class="top-rank r1">👑</span>'
+          : '<span class="top-rank r' + (rank <= 3 ? rank : '') + '">' + rank + '</span>';
+        var role = r.author_role === 'shop' ? 'Chủ Shop' : (r.author_role === 'model' ? 'Mẫu Live' : 'Thành viên');
+        var lv = (typeof r.level === 'number' && r.level > 0) ? r.level : 1;
+        html += '<div class="top-row' + (rank === 1 ? ' top1' : '') + '">' + rankHtml
+          + '<div class="top-name"><b>' + esc(r.author_name || 'Khách') + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span></b>'
+          + '<span>' + esc(role) + '</span></div>'
+          + '<span class="top-count">' + esc(r.interact_count) + '</span></div>';
+      });
+      box.innerHTML = html;
+    }
+    scheduleFrameSync();
+  }
+
+  /* v334: Khung chat cao đúng bằng mục Top bên phải (desktop). Đo chiều cao
+     tự nhiên của cột Top bằng bản sao ẩn (không bị kéo giãn bởi lưới), rồi
+     đặt chiều cao khung bằng đúng số đó; cột chat và cột nổi bật cuộn bên
+     trong. Chỉ chạy trên desktop (>720px); mobile xếp dọc nên không giới hạn.
+     Khung chỉ dài đúng bằng Top, cấm dài hơn (anh Thọ 13:00 18/11). */
+  var frameSyncTimer = null;
+  function syncFrameHeight() {
+    var body = document.querySelector('.chat-frame-body');
+    var top = document.querySelector('.cf-top');
+    if (!body || !top || !top.clientWidth) return;
+    if (window.matchMedia && window.matchMedia('(max-width:720px)').matches) {
+      body.style.height = '';
       return;
     }
-    var html = '';
-    rows.forEach(function (r, i) {
-      var rank = i + 1;
-      var rankHtml = rank === 1 ? '<span class="top-rank r1">👑</span>'
-        : '<span class="top-rank r' + (rank <= 3 ? rank : '') + '">' + rank + '</span>';
-      var role = r.author_role === 'shop' ? 'Chủ Shop' : (r.author_role === 'model' ? 'Mẫu Live' : 'Thành viên');
-      var lv = (typeof r.level === 'number' && r.level > 0) ? r.level : 1;
-      html += '<div class="top-row' + (rank === 1 ? ' top1' : '') + '">' + rankHtml
-        + '<div class="top-name"><b>' + esc(r.author_name || 'Khách') + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span></b>'
-        + '<span>' + esc(role) + '</span></div>'
-        + '<span class="top-count">' + esc(r.interact_count) + '</span></div>';
-    });
-    box.innerHTML = html;
+    var clone = top.cloneNode(true);
+    var ids = clone.querySelectorAll('[id]');
+    for (var i = 0; i < ids.length; i++) ids[i].removeAttribute('id');
+    clone.style.cssText = 'position:fixed;left:-9999px;top:0;visibility:hidden;height:auto;width:' + top.clientWidth + 'px;margin:0;';
+    document.body.appendChild(clone);
+    var h = clone.offsetHeight;
+    document.body.removeChild(clone);
+    // Khung chỉ dài đúng bằng Top, cấm dài hơn (anh Thọ 13:00 18/11).
+    if (h > 0) body.style.height = h + 'px';
+  }
+  function scheduleFrameSync() {
+    if (frameSyncTimer) clearTimeout(frameSyncTimer);
+    frameSyncTimer = setTimeout(syncFrameHeight, 50);
   }
 
   async function loadMessages() {
@@ -297,7 +349,8 @@
       input.value = '';
       // Tin mới sẽ về qua Realtime; polling 60s là fallback nếu Realtime rớt.
       await loadMessages();
-      scrollToBottom($('homeChatList'));
+      // v334: tin mới lên đầu nên cuộn lên đầu để thấy tin mình vừa gửi.
+      scrollToTop($('homeChatList'));
     } catch (e) {
       var msg = String((e && e.message) || e || '');
       if (/Cần đăng nhập/i.test(msg)) showHint('Cần đăng nhập để gửi tin.');
@@ -344,7 +397,8 @@
     var list = $('homeChatList');
     if (list) list.addEventListener('scroll', updateJumpBtn);
     var jump = $('homeChatJump');
-    if (jump) jump.addEventListener('click', function () { scrollToBottom(list); updateJumpBtn(); });
+    // v334: tin mới ở đầu nên nút này cuộn lên đầu khung.
+    if (jump) jump.addEventListener('click', function () { scrollToTop(list); updateJumpBtn(); });
     var input = $('homeChatInput');
     if (input) input.addEventListener('keydown', function (ev) {
       if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); sendMessage(); }
@@ -356,6 +410,8 @@
     // Tải lại 4 danh sách khi data.js sẵn sàng muộn (data.js nạp trước app.js
     // nhưng community-chat.js chạy ngay sau — render lại sau 1s cho chắc).
     setTimeout(renderHighlights, 1000);
+    // v334: khung cao bằng mục Top — đo lại khi cửa sổ đổi kích thước.
+    if (window.addEventListener) window.addEventListener('resize', scheduleFrameSync);
   }
 
   if (document.readyState === 'loading') {

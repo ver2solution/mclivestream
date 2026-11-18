@@ -1137,7 +1137,24 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .cf-col+.cf-col{border-left:1px solid var(--line)}
 .cf-chat-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .cf-chat-head h3{margin:0;font-size:16px;flex:1}
-.chat-list{flex:1;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;overflow-y:auto;padding-right:4px}
+.chat-list{flex:1;min-height:200px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;padding-right:4px}
+/* v334: KHÔNG dùng justify-content:flex-end ở đây — khi nội dung dài hơn
+   khung, flex-end đẩy phần tràn lên TRÊN và trình duyệt không cho cuộn lên
+   tới đó (tin ở đầu khung bị cắt, không tới được — chí mạng khi tin AI/bot
+   đã chuyển lên đầu). Thay bằng margin-top:auto ở tin đầu tiên: nội dung
+   ngắn thì cả danh sách vẫn neo xuống đáy như trước, nội dung dài thì tràn
+   xuống DƯỚI, cuộn lên được tới tin đầu tiên. (Không đụng margin-top:auto
+   ở .chat-input — bài học v327 vẫn giữ.) */
+.chat-list>:first-child{margin-top:auto}
+/* v334 (18/11/2026, anh Thọ: khung chat cao đúng bằng mục Top bên phải):
+   trên desktop, chiều cao khung do cột Top quyết định — cột chat và cột
+   nổi bật cuộn bên trong thay vì đẩy khung cao lên. min-height:0 để cột
+   không ép hàng lưới cao hơn cột Top; cột nổi bật cuộn dọc nội bộ. */
+@media (min-width:721px){
+.cf-chat{min-height:0}
+.cf-hl{min-height:0;overflow-y:auto}
+.chat-list{min-height:0}
+}
 .chat-empty{font-size:14px;color:var(--mut);margin:0}
 .chat-msg{display:flex;gap:10px}
 .chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--brandsoft);color:var(--brand);display:grid;place-items:center;font-weight:800;flex-shrink:0;font-size:13px}

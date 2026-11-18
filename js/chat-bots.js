@@ -9,8 +9,9 @@
      lưu localStorage v2s_bot_prefs); khách chưa đăng nhập dùng mặc định
      (bật, đủ 7 chủ đề). Engine đọc lại lựa chọn mỗi lần đăng tin nên đổi
      ở tab Trang của tôi là khung chat đổi theo ngay.
-   - Tôn trọng luật cuộn v213: chỉ tự cuộn khi người dùng đang ở cuối danh
-     sách; đang đọc tin cũ thì giữ nguyên vị trí, hiện nút "Về tin mới nhất".
+   - Tôn trọng luật cuộn v213: tin mới ở đầu nên chỉ giữ đầu khi người
+     dùng đang ở đầu (tin mới nhất); đang đọc tin cũ thì giữ nguyên vị
+     trí, hiện nút "Về tin mới nhất" (↑, lên đầu).
    - Rõ ràng là bot: avatar ảnh + nhãn "🤖 Bot" trên mỗi tin, không giả
      làm người thật. */
 (function () {
@@ -198,42 +199,73 @@
   function messageHtml(m) {
     var linkHtml = (m.url && m.link)
       ? ' <a class="chat-bot-link" href="' + esc(m.url) + '">👉 ' + esc(m.link) + '</a>' : '';
-    return '<div class="chat-msg chat-msg-bot">'
+    return '<div class="chat-msg chat-msg-bot" data-ts="' + m.time.getTime() + '">'
       + '<div class="chat-avatar chat-avatar-bot"><img src="' + esc(m.bot.avatar) + '" alt="' + esc(m.bot.name) + '" width="40" height="40" loading="lazy"></div>'
       + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.bot.name) + '</b>'
       + ' <span class="chat-tag bot-tag">🤖 Bot</span>' + roleBadge(m.bot.role)
       + ' · ' + esc(fmtTime(m.time)) + '</div>'
       + '<p class="chat-text">' + esc(m.text) + linkHtml + '</p></div></div>';
   }
-  function isAtBottom(list) {
+  function isAtTop(list) {
     if (!list) return true;
-    return (list.scrollHeight - list.scrollTop - list.clientHeight) < 12;
+    return list.scrollTop < 12;
   }
-  function scrollToBottom(list) {
+  function scrollToTop(list) {
     if (!list) return;
-    try { list.scrollTop = list.scrollHeight; } catch (e) { /* bỏ qua */ }
+    try { list.scrollTop = 0; } catch (e) { /* bỏ qua */ }
   }
 
-  /* Vẽ lại toàn bộ tin bot trong danh sách chat (gọi sau mỗi lần
-     community-chat.js render lại tin thật, vì render đó thay innerHTML). */
-  function repaint() {
+  /* v334: Vẽ lại toàn bộ tin bot trong danh sách chat — CÔNG BẰNG, tin mới
+     lên đầu, không phân biệt AI, bot, test hay user (anh Thọ 13:00 18/11).
+     Mỗi tin bot được chèn vào đúng vị trí theo giờ (mới nhất trước): tin
+     bot mới hơn thì ở trên tin người dùng, tin bot cũ hơn thì ở dưới.
+     Gọi sau mỗi lần community-chat.js render lại tin thật, vì render đó
+     thay innerHTML. Giữ nguyên vị trí đọc khi chèn (luật cuộn v213): đang
+     ở đầu (tin mới nhất) → giữ đầu; đang đọc giữa/cuối → giữ nguyên nội
+     dung đang xem (scrollTop += độ cao phần chèn thêm). anchor (nếu có)
+     là vị trí chụp TRƯỚC khi community-chat.js thay innerHTML. */
+  function repaint(anchor) {
     var list = document.getElementById('homeChatList');
     if (!list) return;
     var prefs = getPrefs();
+    var prev = anchor || { top: list.scrollTop, height: list.scrollHeight, wasTop: isAtTop(list) };
     var existing = list.querySelectorAll('.chat-msg-bot');
     for (var i = 0; i < existing.length; i++) existing[i].remove();
-    if (!prefs.enabled || !messages.length) return;
+    if (!prefs.enabled || !messages.length) { restoreScroll(list, prev); updateJump(list); return; }
     /* Nếu danh sách đang hiện câu "Chưa có tin nhắn" thì bỏ câu đó — bot
        đã nói thì khung chat không còn trống. */
     var empty = list.querySelector('.chat-empty');
     if (empty) empty.remove();
-    var wasBottom = isAtBottom(list);
-    var html = '';
-    messages.forEach(function (m) { html += messageHtml(m); });
-    list.insertAdjacentHTML('beforeend', html);
-    if (wasBottom) scrollToBottom(list);
+    // Chèn từng tin bot (mới nhất trước) vào đúng vị trí theo giờ: tìm
+    // tin đầu tiên CŨ HƠN tin bot này rồi chèn ngay trước nó; nếu không có
+    // (tin bot cũ nhất) thì gắn ở cuối. data-ts trên mỗi .chat-msg là giờ
+    // gửi (ms) — tin thật do community-chat.js gắn, tin bot do messageHtml
+    // gắn.
+    for (var i = messages.length - 1; i >= 0; i--) {
+      var m = messages[i];
+      var ts = m.time.getTime();
+      var ref = null;
+      var kids = list.children;
+      for (var j = 0; j < kids.length; j++) {
+        var kts = parseInt(kids[j].getAttribute('data-ts') || '0', 10) || 0;
+        if (kts < ts) { ref = kids[j]; break; }
+      }
+      if (ref) ref.insertAdjacentHTML('beforebegin', messageHtml(m));
+      else list.insertAdjacentHTML('beforeend', messageHtml(m));
+    }
+    restoreScroll(list, prev);
+    updateJump(list);
+  }
+  function restoreScroll(list, prev) {
+    if (!list || !prev) return;
+    try {
+      if (prev.wasTop || prev.top < 12) { scrollToTop(list); return; }
+      list.scrollTop = Math.max(0, prev.top + (list.scrollHeight - prev.height));
+    } catch (e) { /* bỏ qua */ }
+  }
+  function updateJump(list) {
     var jump = document.getElementById('homeChatJump');
-    if (jump) jump.hidden = isAtBottom(list);
+    if (jump) jump.hidden = isAtTop(list);
   }
 
   function postNext() {
