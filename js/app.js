@@ -1339,8 +1339,8 @@ function lotFactoryKiotDetailHTML(kind, item){
   // 88 muc moi chi co dateAdded (khong co date) nen hang chung truoc day
   // hien them 1 hang "Ngày đăng" TRONG (modal Thiet bi hien "NGÀY ĐĂNG ×2").
   if(!isNewObj) facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(item.date || '') + '</span></div>';
-  // Anh dai dien: mau dung anh ho so, shop dung logo, lo/xuong/kiot dung anh bai goc, 5 loai moi dung avatar (bat buoc).
-  var photo = kind === 'model' ? photoHTML(item) : kind === 'shop' ? shopLogoHTML(item) : isNewObj ? '<img src="' + esc(item.avatar) + '" alt="Ảnh đại diện của ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : lotFactoryPhotoHTML(item, title);
+  // Anh dai dien: mau dung anh ho so, shop dung logo, lo/xuong/kiot dung anh bai goc, 5 loai moi dung avatar (v339: khong co avatar thi dung logo.png tam).
+  var photo = kind === 'model' ? photoHTML(item) : kind === 'shop' ? shopLogoHTML(item) : isNewObj ? '<img src="' + esc(hasReal(item.avatar) ? item.avatar : 'logo.png') + '" alt="Ảnh đại diện của ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : lotFactoryPhotoHTML(item, title);
   // Meta: mau dung tieu de ho so, shop dung mat hang + tinh, lo/xuong/kiot dung meta san co, 5 loai moi dung don vi + tinh.
   var meta = kind === 'model' ? item.title : kind === 'shop' ? ((hasReal(item.product) ? '🎯 ' + item.product + ' · ' : '') + '📍 ' + (item.province || '')) : isNewObj ? ((item.provider || '') + (item.province ? ' · 📍 ' + item.province : '')) : item.meta;
   // Nut hanh dong: mau/shop co nut "Xem day du" dan toi trang chi tiet
@@ -2104,8 +2104,7 @@ function renderLotSections(ref){
    co (khong doi thu tu section cu, khong them menu). The dung chung
    khung .lot-card/.lot-grid + modal dung chung lotFactoryKiotDetailHTML
    (mo rong them 5 loai); bo loc dung chung initSectionFilter.
-   Avatar BAT BUOC: the khong co avatar thi khong render — newObjCardHTML
-   tra '' (anh dai dien la bat buoc theo yeu cau 20:05 ngay 12/11).
+   Avatar (v339, ghi de yeu cau 20:05 ngay 12/11): the khong co avatar van render, dung logo.png lam anh dai dien tam — de so dem khop data.js (10 ho so moi v338 khong co anh).
    Khong co nut sao cho 7 loai moi: enum category cua RPC sao (M7.2)
    chua co cac loai nay, bam sao se loi hoan tac — cho backend bo sung
    roi moi bat sao. Khong co binh luan inline (nhu mau/shop: binh luan
@@ -2176,9 +2175,9 @@ function newObjUniCatCfg(cat){ return NEWOBJ_UNI_CATS[cat] || null; }
    Kiot dat qua setKiotPriceRange; readForm cua section moi doc o day. */
 var KIOT_PRICE_RANGE = {min: null, max: null};
 function setKiotPriceRange(min, max){ KIOT_PRICE_RANGE.min = (min == null ? null : min); KIOT_PRICE_RANGE.max = (max == null ? null : max); }
-/* Dem that theo mang du lieu (chi tinh muc co avatar — giong render). */
-function newObjCount(type){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar) n++; }); return n; }
-function newObjProvCount(type, prov){ var n = 0; (D[type] || []).forEach(function(x){ if(x && x.avatar && normProv(x.province || '') === normProv(prov)) n++; }); return n; }
+/* Dem that theo mang du lieu (tinh TAT CA muc — v339: bo loc avatar vi 10 ho so moi v338 khong co anh bi loai khoi dem, lam so hien thi thap hon data.js va trung nhau; the khong anh dung logo.png lam anh dai dien tam). */
+function newObjCount(type){ var n = 0; (D[type] || []).forEach(function(x){ if(x) n++; }); return n; }
+function newObjProvCount(type, prov){ var n = 0; (D[type] || []).forEach(function(x){ if(x && normProv(x.province || '') === normProv(prov)) n++; }); return n; }
 /* v214 (anh Thọ dặn 01:08 ngày 14/11): BO so thong ke canh ten 7 muc moi
    (5 muc KPI: lop livestream, lop makeup, su kien/marketing, logistics,
    cho thue mat bang + 2 muc con Kiot: dich vu chuyen nha, thiet bi phong
@@ -2233,13 +2232,14 @@ function newObjPriceText(item){
   return fmtVnd(item.price) + 'đ' + (item.priceSuffix || '');
 }
 function newObjCardHTML(item){
-  /* Avatar bat buoc: khong co avatar thi khong render the. */
-  if(!item || !hasReal(item.avatar)) return '';
+  /* v339: bo luat "Avatar bat buoc" — ho so khong co anh van render the, dung logo.png lam anh dai dien tam (10 ho so moi v338 khong co anh: cm-25, em-23/24, lg-23/25/26, rt-23, le-12/13, ag-13). */
+  if(!item) return '';
+  var av = hasReal(item.avatar) ? item.avatar : 'logo.png';
   var meta = NEWOBJ_TYPES[item.type] || {};
   var priceTxt = newObjPriceText(item);
   var priceLabel = item.priceLabel || meta.priceLabel || 'Giá';
   return '<article class="lot-card newobj-card" id="' + esc(item.id) + '" data-v2s-id="' + esc(item.id) + '" data-type="' + esc(item.type) + '" data-prov="' + esc(item.province || '') + '" data-price="' + (item.price == null ? '' : item.price) + '" data-subtype="' + esc(item.subType || '') + '" data-logistics-option="' + esc(item.logisticsOption || '') + '">' /* v229: data-subtype de loc loai con Kiot (muc chua phan loai co '' — chi hien duoi "Tat ca loai hinh") */
-    + '<a href="#" class="newobj-photo" data-detail-id="' + esc(item.id) + '" aria-label="Xem chi tiết ' + esc(item.name || '') + '"><img src="' + esc(item.avatar) + '" alt="' + esc(item.name || '') + ' — ' + esc(meta.label || '') + '" loading="lazy" onerror="this.remove()"></a>'
+    + '<a href="#" class="newobj-photo" data-detail-id="' + esc(item.id) + '" aria-label="Xem chi tiết ' + esc(item.name || '') + '"><img src="' + esc(av) + '" alt="' + esc(item.name || '') + ' — ' + esc(meta.label || '') + '" loading="lazy" onerror="this.remove()"></a>'
     + '<div class="newobj-lines"><p class="newobj-name">' + esc(item.name || '') + '</p>'
     + '<p class="newobj-provider">' + esc(item.provider || '') + '</p>'
     + '<p class="newobj-price">' + esc(priceLabel) + ': <b>' + esc(priceTxt) + '</b></p>'
@@ -2249,7 +2249,7 @@ function newObjCardHTML(item){
 }
 function renderNewObjSections(){
   NEWOBJ_SECTIONS.forEach(function(cfg){
-    var items = (D[cfg.type] || []).filter(function(x){ return x && x.avatar; });
+    var items = (D[cfg.type] || []).filter(function(x){ return !!x; }); /* v339: tinh TAT CA muc (bo loc avatar) — khop newObjCount + data.js */
     var g = document.getElementById(cfg.gridId);
     if(g) g.innerHTML = items.map(function(it){ return newObjCardHTML(it); }).join('');
     var s = document.getElementById(cfg.subId);
@@ -2782,7 +2782,7 @@ function sortNewObjByDateDesc(list){
   });
 }
 /* v184: 5 muc moi tren trang chu — moi muc 1 hang, duoi #xuong-moi.
-   Moi muc toi da 6 the (newObjCardHTML, bat buoc co avatar), sap
+   Moi muc toi da 6 the (newObjCardHTML; v339: the khong anh dung logo.png tam), sap
    dateAdded giam dan, an section neu rong, link "Xem tat ca N →" tinh
    tu du lieu da loc trung. Dung chung seen-set cua trang chu (truyen
    vao tu initHome) de khong trung voi mau/shop/lo/xuong/kiot. */
@@ -2804,7 +2804,7 @@ function renderHomeNewObj(seen){
     var sec = document.getElementById(cfg.sectionId);
     var grid = document.getElementById(cfg.gridId);
     if(!sec || !grid) return;
-    var items = (D[cfg.type] || []).filter(function(x){ return x && x.avatar; });
+    var items = (D[cfg.type] || []).filter(function(x){ return !!x; }); /* v339: tinh TAT CA muc (bo loc avatar) */
     var list = dedupeProfiles(sortNewObjByDateDesc(items), seen, 'newobj');
     if(!list.length){ sec.style.display = 'none'; return; }
     /* v207: mỗi mục trang chủ dàn 2 hàng nội dung (tối đa 12 thẻ/mục, khớp
@@ -3171,7 +3171,7 @@ function rebuildProvOptions(selId, cat, countFn, total){
 function refreshShopLogOptCounts(){
   var slo = document.getElementById('fShopLogOpt');
   if(!slo) return;
-  applyOptionCounts(slo, function(v){ var n = 0; (D.logistics || []).forEach(function(x){ if(x && x.avatar && x.logisticsOption === v) n++; }); return n; }, newObjCount('logistics'));
+  applyOptionCounts(slo, function(v){ var n = 0; (D.logistics || []).forEach(function(x){ if(x && x.logisticsOption === v) n++; }); return n; }, newObjCount('logistics'));
 }
 /* v118 (P2-9): so dem o loc linh vuc phai dem theo linh vuc THAT trong
    data.js. Truoc day o fUniCat dung chung 12 ma uni (shop) cho ca 3 tab:
