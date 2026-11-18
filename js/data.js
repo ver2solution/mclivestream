@@ -15562,7 +15562,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "url": "https://finance.sina.com.cn/roll/2026-11-13/doc-iniypzqc1083442.shtml",
    "page": "bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san.html",
-   "img": "https://inews.gtimg.com/news_bt/ORt6LLs4DyBD2jGyVInzbasdsZN4fLZzJNaR3M6CkTHjIAA/641",
+   "img": "https://vieclamlivestream.online/images/bai-viet/douyin-chot-so-double-11-2026-shop-tu-live-tang-200-kol-lui-san-hero.jpg",
    "pinned": false,
    "takeaway": "Douyin chốt sổ Double 11/2026 (12/11): shop tự live phá 100 triệu NDT tăng 200%, 860.000 shop lần đầu mở live đã có đơn — 330 vùng công nghiệp bán hơn 350 tỷ đồng mỗi vùng."
   },
@@ -15603,7 +15603,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "url": "https://news.qq.com/rain/a/20261101A04V3F00",
    "page": "bai-viet/tran-tien-sinh-2086-ty-dong-1-ngay-mo-hinh-doi-tac-thay-the-tan-ba.html",
-   "img": "https://inews.gtimg.com/news_bt/ODMe9Os2UHAgyxb1hW84vRfrR9FMp_0x2PtEi6LQU5FMEAA/641",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tran-tien-sinh-2086-ty-dong-1-ngay-mo-hinh-doi-tac-thay-the-tan-ba-hero.jpg",
    "pinned": false,
    "takeaway": "Ngày 24/10/2026, Trần Tiên Sinh livestream bán hàng 2 buổi trên Kuaishou, doanh thu ước tính 596 triệu NDT (khoảng 2.086 tỷ đồng), 1,26 triệu đơn. Đằng sau con số là mô hình đối tác kiểu mới của đế chế Tân Ba."
   },

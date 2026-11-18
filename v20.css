@@ -52,6 +52,8 @@ a:hover{text-decoration:underline}
 .btn-ghost:hover{text-decoration:none;background:var(--brandsoft)}
 .btn-light{background:#fff;color:var(--ink)}
 .btn-sm{padding:9px 15px;font-size:14px;min-height:44px}/* v81: nut nho van du 44px de bam (mobile) */
+.share-row .btn{min-height:0}/* v346: nut Thich (.btn min-height:44px) lech voi nut Chia se — giu bang chieu cao tu nhien (user 19:46 18/11) */
+.share-row .v2s-points-row{margin-top:0}/* v346: GOC lech 8px — .v2s-points-row co margin-top:8px lam hang share cao 54px, cac nut Chia se (flex item truc tiep) bi stretch len 54px trong khi nut Thich nam trong span chi 46px; bo margin trong hang share thi tat ca ve 46px, deu nhau */
 .menu-btn{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font-weight:800;min-height:44px}/* v81: nut Menu du 44px de bam (mobile) */
 @media(max-width:1200px){.main-nav{display:none}.menu-btn{display:block}.main-nav.open{display:flex;flex-direction:column;width:100%;margin-left:0;margin-top:8px}.main-nav.open a{padding:12px 14px}.main-nav.open .nav-register{display:block}}
 /* v176: dropdown "Tin tức" trên nav — 10 CHUYÊN MỤC + số bài (thay 8 bài v175).
