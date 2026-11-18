@@ -1,0 +1,46 @@
+name: "Deploy v338 (them 43 ho so moi — so lieu lech nhau, khong tron)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v338.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v338:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v338 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v338-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v338-shell-1' sw.js; then echo "v338 DA DEPLOY ROI (sw.js da co v338-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 76dd30a - data.js/sitemap khong doi so voi v337) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "2cb550928dc6e43810213e4957cafe9c" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "447" || (echo "BASE DOI: sitemap khong con 447 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v338-deploy.zip
+          echo "--- verify v338 (24 file) ---"
+          test "$(unzip -l mclivestream-v338-deploy.zip | grep -cE ' (js/data\.js|sw\.js|images-new/.*\.jpg|images/xuong/.*\.jpg|images/kiot/.*\.jpg)$')" -eq 24 || (echo "SAI: goi v338 phai co dung 24 file (js/data.js + sw.js + 22 anh)"; exit 1)
+          grep -q "v338-shell-1" sw.js || (echo "SAI: sw.js phai co v338-shell-1"; exit 1)
+          node --check js/data.js || (echo "SAI: data.js loi cu phap"; exit 1)
+          echo "--- verify counts (VM) ---"
+          node -e "const fs=require('fs');const vm=require('vm');const src=fs.readFileSync('js/data.js','utf8');const ctx={window:{}};vm.createContext(ctx);vm.runInContext(src,ctx);const D=ctx.window.V20_DATA;const exp={shops:299,factories:407,kiots:363,classesLive:23,classesMakeup:25,eventsMarketing:24,logistics:26,rentals:22,movingServices:14,liveEquipment:13,agencyAds:15,models:238,lots:226,articles:422};let bad=[];Object.keys(exp).forEach(k=>{if(D[k].length!==exp[k])bad.push(k+':'+D[k].length+'!='+exp[k]);});if(bad.length){console.error('SAI SO LIEU:',bad.join(', '));process.exit(1);}console.log('counts OK: shops 299, factories 407, kiots 363, 8 muc moi 23/25/24/26/22/14/13/15');"
+          echo "verify OK: 24 file, sw.js v338-shell-1, data.js hop le, so lieu dung"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v338-deploy.zip
+          git add js/data.js sw.js images-new/ag-12.jpg images-new/ag-14.jpg images-new/ag-15.jpg images-new/cl-22.jpg images-new/cl-23.jpg images-new/cm-22.jpg images-new/cm-23.jpg images-new/cm-24.jpg images-new/em-22.jpg images-new/lg-22.jpg images-new/lg-24.jpg images-new/mv-12.jpg images-new/mv-13.jpg images-new/mv-14.jpg images/xuong/fac-401.jpg images/xuong/fac-402.jpg images/xuong/fac-403.jpg images/xuong/fac-404.jpg images/xuong/fac-405.jpg images/xuong/fac-406.jpg images/xuong/fac-407.jpg images/kiot/kiot-361.jpg
+          git status --short | head -30
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v338: them 43 ho so moi (9 shop, 7 xuong, 3 kiot, 5 logistics, 3 chuyen nha, 2 thiet bi, 4 agency, 2 lop live, 4 lop makeup, 3 su kien, 1 cho thue); CACHE v338-shell-1"
+            git push
+          fi
