@@ -1,0 +1,52 @@
+name: "Deploy v337 (tin chat troi tu tren xuong; Top 10, User > Test > Bot)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v337.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v337:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v337 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v337-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v337-shell-1' sw.js; then echo "v337 DA DEPLOY ROI (sw.js da co v337-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 538c81c - data.js/sitemap khong doi so voi v336) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "2cb550928dc6e43810213e4957cafe9c" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "447" || (echo "BASE DOI: sitemap khong con 447 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v337-deploy.zip
+          echo "--- verify v337 (3 file) ---"
+          test "$(unzip -l mclivestream-v337-deploy.zip | grep -cE ' (js/community-chat\.js|sw\.js|v20\.css)$')" -eq 3 || (echo "SAI: goi v337 phai co dung 3 file (js/community-chat.js + sw.js + v20.css)"; exit 1)
+          grep -q "v337-shell-1" sw.js || (echo "SAI: sw.js phai co v337-shell-1"; exit 1)
+          grep -q "measureNaturalHeight" js/community-chat.js || (echo "SAI: community-chat.js phai co ham measureNaturalHeight (v335/v336)"; exit 1)
+          grep -q "querySelector('.cf-hl')" js/community-chat.js || (echo "SAI: community-chat.js phai do cot .cf-hl (v336)"; exit 1)
+          if grep -q "querySelector('.cf-top')" js/community-chat.js; then echo "SAI: community-chat.js khong duoc do cot .cf-top trong syncFrameHeight (v336 chi lay .cf-hl)"; exit 1; fi
+          if grep -q "Math.max(measureNaturalHeight" js/community-chat.js; then echo "SAI: community-chat.js khong duoc lay max(Top, HL) (v335) - v336 chi lay .cf-hl"; exit 1; fi
+          grep -q 'data-ts' js/community-chat.js || (echo "SAI: community-chat.js phai giu data-ts (xep theo gio, v334)"; exit 1)
+          if grep -q 'aiRows' js/community-chat.js; then echo "SAI: community-chat.js khong duoc con tach tin theo loai (aiRows) - phai CONG BANG theo gio (v334)"; exit 1; fi
+          grep -q "TOP_LIMIT = 10" js/community-chat.js || (echo "SAI: community-chat.js phai co TOP_LIMIT = 10 (v337)"; exit 1)
+          grep -q "topTier" js/community-chat.js || (echo "SAI: community-chat.js phai co ham topTier (v337: User > Test > Bot)"; exit 1)
+          if grep -q "chat-list>:first-child{margin-top:auto}" v20.css; then echo "SAI: v20.css khong duoc con margin-top:auto o .chat-list (v337 bo neo day)"; exit 1; fi
+          echo "verify OK: 3 file, sw.js v337-shell-1, tin neo len dau (troi xuong), Top 10 User>Test>Bot, khung van bang .cf-hl, giu cong bang v334, data.js/sitemap khong doi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v337-deploy.zip
+          git add js/community-chat.js sw.js v20.css
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v337: tin chat troi tu tren xuong (bo neo day); Top 10, User > Test > Bot; CACHE v337-shell-1"
+            git push
+          fi
