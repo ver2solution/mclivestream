@@ -15288,6 +15288,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Đỗ Mạnh Cường tự mặc váy livestream bán SIXDO: 1 phiên 6,77 tỷ đồng, 19.470 sản phẩm, 605.000 lượt xem. Vì sao ông chủ tự bán lại chốt đơn gấp hơn 20 lần người mẫu?"
   },
+  {
+   "title": "Phân tích ngành hàng bán chạy Tết: 67.700 tỷ đồng",
+   "cat": "Phân tích",
+   "source": "Ebrun",
+   "date": "2026-11-18",
+   "url": "https://english.ebrun.com/20260214/640611.shtml",
+   "page": "bai-viet/phan-tich-nganh-hang-ban-chay-tet-67700-ty.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-nganh-hang-ban-chay-tet-67700-ty.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tết 2026: người mua chi 67.700 tỷ đồng trong 6 tuần trước Tết, TikTok Shop 34.600 tỷ lần đầu vượt Shopee 33.100 tỷ; 5 ngành dẫn đầu là làm đẹp, thời trang nữ, nhà cửa, thời trang nam, thực phẩm; linh vật Ngựa 251,4 tỷ đồng."
+  },
+  {
+   "title": "Mô hình kinh doanh online 2026: 6 mô hình lãi cao nhất",
+   "cat": "Phân tích",
+   "source": "Shopify",
+   "date": "2026-11-18",
+   "url": "https://www.shopify.com/ae/blog/10580693-how-to-start-an-ecommerce-business-without-spending-any-money",
+   "page": "bai-viet/mo-hinh-kinh-doanh-online-2026-6-mo-hinh.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-kinh-doanh-online-2026-6-mo-hinh.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "6 mô hình kinh doanh online 2026: DTC lãi gộp 40–65% nhưng cần vốn 2.000–10.000 USD; dropshipping vốn 50–200 USD nhưng lãi ròng thường dưới 5% sau quảng cáo; đăng ký định kỳ bền nhất với churn 6–8%/tháng."
+  },
+  {
+   "title": "Kinh doanh handmade online: Etsy lấy tới 25% mỗi đơn",
+   "cat": "Phân tích",
+   "source": "Shopify",
+   "date": "2026-11-18",
+   "url": "https://www.shopify.com/in/blog/how-to-start-a-craft-business",
+   "page": "bai-viet/kinh-doanh-handmade-online-etsy-shopify-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-doanh-handmade-online-etsy-shopify-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Handmade 2026: Etsy 86,5 triệu người mua, 5,6 triệu người bán, GMS 10,5 tỷ USD cuối 2025; phí Etsy 12–25%/đơn; công thức giá (nguyên liệu + công + chi phí chung) × 2 = sỉ, × 2 = lẻ; 73% người lớn Mỹ làm thủ công trong năm qua."
+  },
+  {
+   "title": "Mô hình bán hàng qua KOC: 61,49% người mua tin review",
+   "cat": "Phân tích",
+   "source": "MarketingToChina",
+   "date": "2026-11-18",
+   "url": "https://marketingtochina.com/micro-influencers-why-brands-need-to-care/",
+   "page": "bai-viet/mo-hinh-ban-hang-qua-koc-xiaohongshu-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-ban-hang-qua-koc-xiaohongshu-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "KOC 2026: 61,49% người mua TQ tin review KOC; giá nano 80–300 NDT/bài, junior 500–2.000 NDT, tầm trung 3.000–15.000 NDT; tương tác cao hơn tới 8,7 lần so với celebrity; case 55 KOC cho 210 review, +34% lượt vào shop."
+  },
 ],
  "lots": [
    {
