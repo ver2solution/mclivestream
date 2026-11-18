@@ -1,0 +1,47 @@
+name: "Deploy v344 (L4 — guard sua ho so so sanh TOAN BO payload)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v344.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v344:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v344 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v344-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v344-shell-1' sw.js; then echo "v344 DA DEPLOY ROI (sw.js da co v344-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 96aa9a8 — sau v343) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "6a0490edbde7860f9931845e8e8012a8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "449" || (echo "BASE DOI: sitemap khong con 449 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v344-deploy.zip
+          echo "--- verify v344 (2 file) ---"
+          test "$(unzip -l mclivestream-v344-deploy.zip | grep -cE ' (trang-cua-toi\.html|sw\.js)$')" -eq 2 || (echo "SAI: goi v344 phai co dung 2 file"; exit 1)
+          grep -q "v344-shell-1" sw.js || (echo "SAI: sw.js phai co v344-shell-1"; exit 1)
+          if grep -q "v343-shell-1" sw.js; then echo "SAI: sw.js khong duoc con v343-shell-1 lam CACHE hien tai"; exit 1; fi
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -q "_norm" trang-cua-toi.html || (echo "SAI: trang-cua-toi.html phai co ham _norm (L4)"; exit 1)
+          grep -q "for(var _k in data)" trang-cua-toi.html || (echo "SAI: trang-cua-toi.html phai so sanh TOAN BO key cua data (L4)"; exit 1)
+          echo "verify OK: 2 file, sw.js v344-shell-1, trang-cua-toi.html co guard L4 day du"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v344-deploy.zip
+          git add trang-cua-toi.html sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v344: sua L4 — guard 'khong co gi thay doi' o trang-cua-toi.html so sanh TOAN BO payload (chuan hoa null/''/undefined, trim, mang theo noi dung) thay vi chi 3 truong; CACHE v344-shell-1 (rebase tu 96aa9a8)"
+            git push
+          fi
