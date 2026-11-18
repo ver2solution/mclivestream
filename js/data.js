@@ -61,6 +61,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-xu-huong-2026-11-18 adds 4 Xu hướng articles (18/11/2026, Wednesday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 (3.938 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("xu hướng tiêu dùng 2027" Euromonitor 2.812 words; "mua trước trả sau" BNPL 2.691 words; "mua sắm sớm dịp lễ 2026" Deloitte 2.720 words). Total 390 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-cong-nghe-2026-11-18 adds 4 Cong nghe articles (18/11/2026, Wednesday): 1 seasonal keyword 'xac thuc VNeID ban hang online' #10/10 (deep, Nghi dinh 320/2026, han 31/12/2026) + 3 news (TikTok Shop Product Diagnosis 12/11, TikTok Shop Seller AI BFCM 04/11, nhan AI Shopee Video 12.12). SEO V2 (title suffix + link boxes). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v218 adds 4 Livestream articles (14/11/2026, Saturday): 1 seasonal keyword "cách tăng mắt xem livestream Tết" #4/10 (2.990 words, deep, GMV = hours x GPMV) + 1 cluster B keyword "cách giữ chân người xem livestream" (3.163 words) + 2 news ("minigame livestream bán hàng" 2.828 words; "livestream bán đồ gia dụng" 2.693 words, 15,7% Double 11). Total 227 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -15487,6 +15488,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Nhãn AI Shopee Video: video làm hoàn toàn bằng AI hoặc chỉnh sửa đáng kể bằng AI phải bật nhãn \"AI-generated\" trước khi đăng (Malaysia 12/06/2026, Singapore 10/05/2026); Singapore phạt 3 điểm + gỡ video + mất hoa hồng khi không gắn nhãn; quy tắc chính xác về màu, kích thước, chất liệu có hiệu lực từ 01/08/2026."
+  },
+  {
+   "title": "Xu hướng quà Tết 2027: giỏ quà 40,2 tỷ, đặt sớm",
+   "cat": "Xu hướng",
+   "source": "Thương hiệu & Sản phẩm",
+   "date": "2026-11-18",
+   "url": "https://thuonghieusanpham.vn/gio-qua-tet-2026-doi-truc-hang-viet-vuon-len-giu-the-chu-luc",
+   "page": "bai-viet/xu-huong-qua-tet-2027-gio-qua-402-ty-dat-som.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-qua-tet-2027-gio-qua-402-ty-dat-som.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng quà Tết 2027: giỏ quà Tết 2025 đạt 40,2 tỷ đồng trên Shopee (+21%); hộp quà in logo, đặc sản vùng miền và quà sức khỏe lên ngôi; doanh nghiệp đặt 01/11–15/12/2026 (Thương hiệu & Sản phẩm 26/01/2026; Drinkies 19/10/2026)."
+  },
+  {
+   "title": "Xu hướng tiêu dùng 2027: 72% lo giá tăng, chỉ tin hãng quen",
+   "cat": "Xu hướng",
+   "source": "BusinessWire",
+   "date": "2026-11-18",
+   "url": "https://www.businesswire.com/news/home/20261103010032/en/Global-Consumer-Trends-2027-Trust-Transparency-and-Control-Take-Centre-Stage",
+   "page": "bai-viet/xu-huong-tieu-dung-2027-euromonitor-5-xu-huong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-tieu-dung-2027-euromonitor-5-xu-huong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng tiêu dùng 2027: 72% lo giá tăng, 54% chỉ mua hãng tin cậy, 81% dùng AI nhưng chỉ 19% tin AI khi mua sắm; 72% tin bạn bè hơn 46% tin quảng cáo (Euromonitor 04/11/2026)."
+  },
+  {
+   "title": "Mua trước trả sau 2026: 21,3 tỷ USD, đỉnh Cyber Monday",
+   "cat": "Xu hướng",
+   "source": "Adobe",
+   "date": "2026-11-18",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/mua-truoc-tra-sau-2026-213-ty-usd-dip-le.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-truoc-tra-sau-2026-213-ty-usd-dip-le.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua trước trả sau dịp lễ 2026: dự báo 21,3 tỷ USD (+6,6%), Cyber Monday 1,09 tỷ USD, Black Friday 807 triệu USD; 82% qua mobile (Adobe 28/09/2026)."
+  },
+  {
+   "title": "Mua sắm sớm dịp lễ 2026: 28% ngân sách hết tháng 10",
+   "cat": "Xu hướng",
+   "source": "Deloitte",
+   "date": "2026-11-18",
+   "url": "https://www.deloitte.com/global/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html",
+   "page": "bai-viet/mua-sam-som-dip-le-2026-28-phan-tram-het-thang-10.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-som-dip-le-2026-28-phan-tram-het-thang-10.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm sớm dịp lễ 2026: 28% ngân sách hết trước tháng 11 (cao nhất 6 năm), 42% săn sale tháng 10, 38% là người săn giá trị (Deloitte 15/10/2026)."
   }
 ],
  "lots": [
