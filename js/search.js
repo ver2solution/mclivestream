@@ -192,7 +192,11 @@
     var sort = opts.sort === 'moi-nhat' ? 'moi-nhat' : 'lien-quan';
     var nowMs = opts.nowMs || Date.now();
     if (!q || q.length < 2) {
-      return { q: q, results: [], counts: countByType([]), total: 0, tooShort: true, elapsedMs: 0, sort: sort, type: type };
+      /* v329 (TK-01, 18/11/2026): tra ve SO DEM THAT cua toan bo chi muc
+         (truoc day countByType([]) -> tat ca 0, chip loc hien 0 het).
+         qRaw giu lai de UI phan biet "chua go gi" voi "go toan ky tu dac
+         biet" (TK-02: '%^&*' chuan hoa ve ''). */
+      return { q: q, qRaw: qRaw, results: [], counts: countByType(index), total: 0, tooShort: true, elapsedMs: 0, sort: sort, type: type };
     }
     var scored = [];
     index.forEach(function (e) {
@@ -351,7 +355,19 @@
 
     function renderMeta(res) {
       var m = $('searchMeta'); if (!m) return;
-      if (!res || res.tooShort) { m.textContent = ''; return; }
+      if (!res) { m.textContent = ''; return; }
+      if (res.tooShort) {
+        /* v329 (TK-02, 18/11/2026): go tu khoa nhung chuan hoa ve rong
+           (toan ky tu dac biet, vd '%^&*') -> hien "0 ket qua" thay vi
+           xoa trang dong dem. Go that su trong / 1 ky tu -> de trong
+           (chi hien tu khoa pho bien). */
+        if (state.q && !res.q) {
+          m.innerHTML = 'Tìm thấy <b>0 kết quả</b> cho “<b>' + escHtml(state.q) + '</b>”';
+          return;
+        }
+        m.textContent = '';
+        return;
+      }
       m.innerHTML = 'Tìm thấy <b>' + res.total + ' kết quả</b> cho “<b>' + escHtml(state.q) + '</b>” · ' + fmtElapsed(res.elapsedMs);
     }
 
@@ -431,12 +447,22 @@
         /* v283 (MBS-2): an feed trong khi chua co tu khoa — feed mobile cao 514px,
            de trong thi trang nhu trang trang; chi hien lai khi co ket qua (nhanh duoi). */
         if (box) { box.innerHTML = ''; box.hidden = true; }
-        if ($('searchEmpty')) $('searchEmpty').hidden = true;
         if ($('searchEnd')) $('searchEnd').hidden = true;
         if ($('searchLoadMore')) $('searchLoadMore').hidden = true;
-        renderFilters(countByType([]));
-        renderMeta(null);
-        showPopular();
+        /* v329 (TK-01): hien SO DEM THAT cua chi muc (res.counts) thay vi
+           countByType([]) -> chip loc khong con 0 het khi chua go tu khoa. */
+        renderFilters(res.counts);
+        renderMeta(res);
+        /* v329 (TK-02): go toan ky tu dac biet (vd '%^&*', chuan hoa ve '')
+           -> hien hop "Khong tim thay ket qua" + goi y nhu truong hop 0 ket
+           qua that, thay vi chi hien tu khoa pho bien. Go trong / 1 ky tu
+           thi giu nhu cu (tu khoa pho bien). */
+        if (q && !res.q) {
+          showEmptyState(q);
+        } else {
+          if ($('searchEmpty')) $('searchEmpty').hidden = true;
+          showPopular();
+        }
       } else if (res.results.length === 0) {
         /* v283 (MBS-2): an feed trong khi 0 ket qua — neu khong, hop "Khong tim thay"
            bi day xuong duoi feed trong 514px (y~1102 o 390px), nguoi dung chi thay

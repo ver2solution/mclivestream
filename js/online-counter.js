@@ -209,12 +209,14 @@
 
   // v99 (§8 dac ta sao len top): RANDOM WALK co kiem soat, seed theo
   // cua so 8 gio (window8h, cung co che rotateWindow). Moi tick:
-  // delta -13..+13 (trung binh ~0 — v118 P2-5 doi tu -10..+16/trung binh
-  // +3 vi so leo nhanh ve tran band roi dung yen), hiem (~5%) tut manh
-  // -20..-30 nhu nguoi that roi trang; keo ve muc tam cua so (15..35,
-  // khac nhau moi khung 8h) de so khong troi xuong hay dinh tran. Cung
-  // (win, key, count) cho cung delta — on dinh trong cua so, doi mau
-  // khi sang khung 8h moi. count = so tick da chay cua bo dem do.
+  // v329 (MC-118, 18/11/2026): delta CHI -2..+2 (trung binh ~0), hiem
+  // (~5%) tut nhe -3..-5 — truoc day -13..+13 (hiem -20..-30) lam so
+  // trang con nhay +-15 moi tick (~18s): mau 30->67 trong 20 phut,
+  // nguoi dung thay "nhay ngau nhien". So dao dong NHE nhu v220 da lam
+  // cho tong trang chu (displayTickTotal 0..10). Keo ve muc tam cua so
+  // (15..35, khac nhau moi khung 8h) de so khong troi xuong hay dinh
+  // tran. Cung (win, key, count) cho cung delta — on dinh trong cua so,
+  // doi mau khi sang khung 8h moi. count = so tick da chay cua bo dem do.
   // v118 (P2-5) truoc day: trang thai moi khoi tao tick o muc tam cua so
   // thay vi 0. v136 doi lai: trang thai moi khoi tao tick = 0 (hien dung
   // muc goc 136 roi tang dan); muc tam cua so van dung de keo random walk
@@ -251,13 +253,13 @@
     var c = Math.floor(Number(count) || 0);
     var curV = (cur == null) ? MAX_TICK / 2 : Math.floor(Number(cur) || 0);
     var u = hash01(seedForWindow(w, k), c);
-    if(u < 0.05) return -(20 + Math.floor((u / 0.05) * 11)); // -20..-30, hiem (~5%)
+    if(u < 0.05) return -(3 + Math.floor((u / 0.05) * 3)); // v329 (MC-118): -3..-5, hiem (~5%) — truoc day -20..-30
     var v = (u - 0.05) / 0.95;
-    var base = -13 + Math.floor(v * 27); // -13..+13, trung binh ~0 (v118 P2-5: truoc day -10..+16, trung binh +3, lam so leo nhanh ve tran band roi dung yen o ~800 thay vi dao dong quanh muc tam)
+    var base = -2 + Math.floor(v * 5); // v329 (MC-118): -2..+2, trung binh ~0 — truoc day -13..+13
     var pull = (windowCenter(w, k) - curV) / 25; // -1..+1, keo ve muc tam
-    var d = base + Math.round(pull * 6);
-    if(d > 18) d = 18;
-    if(d < -15) d = -15;
+    var d = base + Math.round(pull * 2); // v329: pull * 2 — truoc day * 6
+    if(d > 3) d = 3;
+    if(d < -3) d = -3;
     return d;
   }
 
