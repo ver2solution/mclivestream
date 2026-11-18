@@ -1,0 +1,50 @@
+name: "Deploy v345 (4 hang x 6 cot — danh sach mau + Kiot 12->24)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v345.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v345:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v345 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v345-shell-1 thi da deploy roi, DUNG ---"
+          if grep -q 'v345-shell-1' sw.js; then echo "v345 DA DEPLOY ROI (sw.js da co v345-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main ab347a0 — sau v344) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "6a0490edbde7860f9931845e8e8012a8" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "449" || (echo "BASE DOI: sitemap khong con 449 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v345-deploy.zip
+          echo "--- verify v345 (4 file) ---"
+          test "$(unzip -l mclivestream-v345-deploy.zip | grep -cE ' (index\.html|js/app\.js|sw\.js|thanh-ly-kiot\.html)$')" -eq 4 || (echo "SAI: goi v345 phai co dung 4 file"; exit 1)
+          grep -q "v345-shell-1" sw.js || (echo "SAI: sw.js phai co v345-shell-1"; exit 1)
+          if grep -q "v344-shell-1" sw.js; then echo "SAI: sw.js khong duoc con v344-shell-1 lam CACHE hien tai"; exit 1; fi
+          node --check js/app.js || (echo "SAI: js/app.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -q "pageOfId(list, hid, 24)" js/app.js || (echo "SAI: js/app.js phai co pageOfId 24 (danh sach mau)"; exit 1)
+          grep -q "list.slice((pg-1)*24,pg*24)" js/app.js || (echo "SAI: js/app.js phai slice 24/trang"; exit 1)
+          grep -q "KIOT_MAX_ROWS = 24" thanh-ly-kiot.html || (echo "SAI: thanh-ly-kiot.html phai co KIOT_MAX_ROWS = 24"; exit 1)
+          grep -q "mỗi trang tối đa 24 hồ sơ" index.html || (echo "SAI: index.html FAQ phai ghi 24 ho so"; exit 1)
+          echo "verify OK: 4 file, sw.js v345-shell-1, mau 24/trang, Kiot 24, FAQ 24"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v345-deploy.zip
+          git add index.html js/app.js sw.js thanh-ly-kiot.html
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v345: 4 hang x 6 cot — danh sach mau 12->24 ho so/trang + danh sach Kiot 12->24 tin (Xem them +24/lan) + FAQ 24 ho so; CACHE v345-shell-1 (rebase tu ab347a0)"
+            git push
+          fi
