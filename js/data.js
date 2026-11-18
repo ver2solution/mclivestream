@@ -59,6 +59,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-thi-truong-2026-11-18 adds 4 Thi truong articles (18/11/2026, Wednesday): 1 seasonal keyword "thị trường thương mại điện tử cuối năm" #5/10 (4.269 words, deep + đánh giá tiềm năng; written 17/11 as v315, live 18/11 after upload failed 17/11) + 3 news ("Black Friday 2026: 12,9 tỷ USD" 2.758 words; "xuất khẩu Việt Nam tháng 10/2026: 64,67 tỷ USD" 2.620 words; "Double 12 Trung Quốc 2026" 2.633 words). Total 394 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15590,7 +15591,67 @@ window.V20_DATA = {
 {"title":"Đặc sản vùng miền Tết: 40,2 tỷ đồng quà tặng","cat":"Hàng hoá","source":"Metric","date":"2026-11-18","url":"https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt","page": "bai-viet/dac-san-vung-mien-tet-402-ty-qua-tang.html","img":"https://vieclamlivestream.online/images/bai-viet/dac-san-vung-mien-tet-402-ty-qua-tang.jpg","pinned":false,"takeaway":"Đặc sản vùng miền Tết: thị trường quà tặng 40,2 tỷ đồng trong 9 tuần trước Tết, tăng 21%, 126 nghìn sản phẩm; mứt Tết dồn 45–60% doanh số cả năm vào 6–8 tuần; bán theo 3 mức combo 199.000–499.000 đồng (Metric, 12/01/2026; IndexBox 2026)."},
 {"title":"Nhập hàng Quảng Châu: 5 chợ đầu mối lớn nhất 2026","cat":"Hàng hoá","source":"ChinaTripTop","date":"2026-11-18","url":"https://chinatriptop.com/business-trade/hub/guangzhou-wholesale-markets-vs-canton-fair","page": "bai-viet/nhap-hang-quang-chau-5-cho-dau-moi-lon-nhat.html","img":"https://vieclamlivestream.online/images/bai-viet/nhap-hang-quang-chau-5-cho-dau-moi-lon-nhat.jpg","pinned":false,"takeaway":"Nhập hàng Quảng Châu: 5 chợ đầu mối lớn nhất — Baima, Thập Tam Hành (7:00–13:30), Trung Đại (100.000+ loại vải), Quế Hoa Cương, Trạm Tây/Hoa Lâm; MOQ 10–100 chiếc, chợ nghỉ 2–3 tuần dịp Tết (ChinaTripTop, tháng 11/2026)."},
 {"title":"Nguồn hàng giá sỉ: 16 kênh shop nhỏ nên biết 2026","cat":"Hàng hoá","source":"SaleHoo","date":"2026-11-18","url":"https://www.salehoo.com/learn/wholesale-marketplaces","page": "bai-viet/nguon-hang-gia-si-16-kenh-shop-nho-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/nguon-hang-gia-si-16-kenh-shop-nho-2026.jpg","pinned":false,"takeaway":"Nguồn hàng giá sỉ: 16 kênh đã kiểm chứng — Faire (trả chậm 60 ngày, hoa hồng 15%), SaleHoo (8.000+ nhà cung cấp, từ 9 USD/tháng), Alibaba (34.000+ nhà máy); tính giá vốn thật + 5 bước kiểm tra nhà cung cấp (SaleHoo, 21/07/2026)."},
-{"title":"Muỗng sữa chua Nhật Bản: vét sạch hũ chỉ 594 yên","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-18","url":"https://soranews24.com/2026/11/10/amazing-japanese-yogurt-spoon-scoops-up-every-last-drop-of-dairy-effortlessly/","page": "bai-viet/muong-sua-chua-nhat-ban-mar-na-594-yen-vet-sach-hu.html","img":"https://vieclamlivestream.online/images/bai-viet/muong-sua-chua-nhat-ban-mar-na-594-yen-vet-sach-hu.jpg","pinned":false,"takeaway":"Muỗng sữa chua Nhật Bản Marna: đầu silicon mềm vét sạch hũ sữa chua, giá 594 yên (3,75 USD); bản hợp tác cùng Chichiyasu — hãng sữa chua đầu tiên của Nhật từ năm 1917 (SoraNews24, 09/11/2026)."}
+{"title":"Muỗng sữa chua Nhật Bản: vét sạch hũ chỉ 594 yên","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-18","url":"https://soranews24.com/2026/11/10/amazing-japanese-yogurt-spoon-scoops-up-every-last-drop-of-dairy-effortlessly/","page": "bai-viet/muong-sua-chua-nhat-ban-mar-na-594-yen-vet-sach-hu.html","img":"https://vieclamlivestream.online/images/bai-viet/muong-sua-chua-nhat-ban-mar-na-594-yen-vet-sach-hu.jpg","pinned":false,"takeaway":"Muỗng sữa chua Nhật Bản Marna: đầu silicon mềm vét sạch hũ sữa chua, giá 594 yên (3,75 USD); bản hợp tác cùng Chichiyasu — hãng sữa chua đầu tiên của Nhật từ năm 1917 (SoraNews24, 09/11/2026)."},
+  {
+   "title": "Cân bằng làm việc ngày Tết: mẫu live nghỉ 7 ngày",
+   "cat": "Đời Sống",
+   "source": "Resume.io",
+   "date": "2026-11-18",
+   "url": "https://resume.io/blog/holiday-spending-squeeze",
+   "page": "bai-viet/can-bang-lam-viec-ngay-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/can-bang-lam-viec-ngay-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cân bằng làm việc ngày Tết là bài toán khó nhất trong năm của mẫu livestream, khi lịch nghỉ Tết 2027 kéo dài bảy ngày từ 04/02/2027 đến 10/02/2027 mà nhu cầu mua sắm lại lên cao nhất."
+  },
+  {
+   "title": "Quỹ dự phòng cho mẫu livestream: 3 tháng chi tiêu",
+   "cat": "Đời Sống",
+   "source": "Bankrate",
+   "date": "2026-11-18",
+   "url": "https://www.bankrate.com/banking/savings/emergency-savings-report/",
+   "page": "bai-viet/quy-du-phong-cho-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quy-du-phong-cho-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Khi thu nhập tính theo buổi live, quỹ dự phòng cho mẫu livestream không phải là khoản tiền để dành khi rảnh rỗi, mà là tấm đệm bắt buộc."
+  },
+  {
+   "title": "Du lịch Phú Quốc tháng 12: 5 trải nghiệm đúng mùa",
+   "cat": "Đời Sống",
+   "source": "VietnamTour.in",
+   "date": "2026-11-18",
+   "url": "https://vietnamtour.in/best-time-to-visit-phu-quoc/",
+   "page": "bai-viet/du-lich-phu-quoc-thang-12-5-trai-nghiem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-phu-quoc-thang-12-5-trai-nghiem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Phú Quốc tháng 12/2026 là lựa chọn đúng mùa cho mẫu livestream vừa xong cao điểm live ngày 12/12/2026: đảo bước vào đầu mùa khô, nhiệt độ 24–31°C, biển lặng và nắng 8 giờ mỗi ngày."
+  },
+  {
+   "title": "Uống cà phê buổi sáng có tốt không? 40.725 người nói có",
+   "cat": "Đời Sống",
+   "source": "European Heart Journal (qua Harvard Health Publishing)",
+   "date": "2026-11-18",
+   "url": "https://www.health.harvard.edu/heart-health/keeping-coffee-to-mornings-may-better-protect-the-heart",
+   "page": "bai-viet/uong-ca-phe-buoi-sang-co-tot-khong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/uong-ca-phe-buoi-sang-co-tot-khong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Uống cà phê buổi sáng có tốt không là câu hỏi nhiều mẫu livestream đặt ra khi vừa muốn tỉnh táo để live khuya, vừa sợ mất ngủ sau ca live."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Cafe Giảng Hà Nội 1946",
+   "cat": "Đời Sống",
+   "source": "Tatinta",
+   "date": "2026-11-18",
+   "url": "https://tatinta.com/en/diem-den/ca-phe-giang/9210",
+   "page": "bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Cafe Giảng nằm ở số 39 Nguyễn Hữu Huân, ngay trong một con ngõ nhỏ của phố cổ Hà Nội, là địa chỉ mà bất cứ ai yêu cà phê cũng nên ghé một lần trong đời."
+  }
 ],
  "lots": [
    {
