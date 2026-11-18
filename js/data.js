@@ -15859,6 +15859,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Vợ chồng Quảng Đông bán 1,119 tỷ NDT (3.916 tỷ đồng) trong 18 buổi live 618/2023, ngày 1/6/2023 chốt hơn 500 triệu NDT với 540.000 đơn. Nhưng đỉnh 1 ngày Double 11/2026 chỉ còn 1,35 tỷ NDT, giảm 44% so với 2025 — cặp đôi vàng của Douyin cũng hạ nhiệt. Phân tích công thức người – hàng – sân và 7 bài học cho shop Việt."
   },
+  {
+   "title": "335.400 tỷ đồng trong 1 ngày — Black Friday 27/11: 7 mẹo giữ điểm SPS từ 3.5 để TikTok Shop cho shop tham gia chiến dịch",
+   "cat": "Livestream",
+   "source": "TikTok Shop University",
+   "date": "2026-11-18",
+   "url": "https://seller-us.tiktok.com/university/essay?knowledge_id=26854147802894&lang=en",
+   "page": "bai-viet/black-friday-335400-ty-dong-7-meo-giu-sps-35-tiktok-shop.html",
+   "img": "https://image.dienthoaivui.com.vn/x,webp,q90/https://media-asset.dienthoaivui.com.vn/uploads/dashboard/editor_upload/black-friday-tiktok-01.jpg",
+   "pinned": false,
+   "takeaway": "Black Friday 27/11/2026: người Mỹ dự kiến chi 12,9 tỷ USD online trong 1 ngày. TikTok Shop chỉ cho shop đạt điểm SPS từ 3.5 trở lên tham gia chiến dịch BFCM. 7 mẹo giữ điểm, giữ đơn, tránh bị loại khỏi chiến dịch."
+  },
 ],
  "lots": [
    {
