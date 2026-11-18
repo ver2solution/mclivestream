@@ -63,6 +63,8 @@
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-18 adds 4 Thi truong articles (18/11/2026, Wednesday): 1 seasonal keyword "thị trường thương mại điện tử cuối năm" #5/10 (4.269 words, deep + đánh giá tiềm năng; written 17/11 as v315, live 18/11 after upload failed 17/11) + 3 news ("Black Friday 2026: 12,9 tỷ USD" 2.758 words; "xuất khẩu Việt Nam tháng 10/2026: 64,67 tỷ USD" 2.620 words; "Double 12 Trung Quốc 2026" 2.633 words). Total 394 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-dang-hot-2026-11-17 adds 4 Dang hot articles (17/11/2026, Tuesday): 1 seasonal keyword 'xa kho cuoi nam' #1/10 vong 2 (deep, live xa kho) + 3 news (Shopee 11.11 ky luc, SHEIN BF 95%, Temu BF 90%). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 415 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dang-hot-2026-11-18 adds 4 Dang hot articles (18/11/2026, Wednesday): 1 seasonal keyword 'sale 12.12' #7/10 vong 2 (deep, Shopee SG cong bo chinh thuc) + 3 news (Drophouse dau gia live 24h ky luc TikTok Shop Anh, Walmart BF 3 dot, Best Buy BF gift card). SEO V2 (title suffix + link boxes). Total 419 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-17 adds 4 Viec Lam articles (17/11/2026, Tuesday): 1 stats (2 models + 3 shops 16/11) + 1 seasonal keyword 'mau livestream thoi vu Tet' #4/10 (deep) + 1 bo 100 keyword STT 13 'dang ky lam mau livestream' + 1 bo 100 keyword STT 15 'tim mau livestream' (Douyin pay benchmark). DEPLOYED LATE 18/11/2026 (browser zip upload stuck 17/11). Total 375 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-18 adds 4 Xu hướng articles (18/11/2026, Wednesday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 (3.938 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("xu hướng tiêu dùng 2027" Euromonitor 2.812 words; "mua trước trả sau" BNPL 2.691 words; "mua sắm sớm dịp lễ 2026" Deloitte 2.720 words). Total 390 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
@@ -15749,6 +15751,102 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Cafe Giảng nằm ở số 39 Nguyễn Hữu Huân, ngay trong một con ngõ nhỏ của phố cổ Hà Nội, là địa chỉ mà bất cứ ai yêu cà phê cũng nên ghé một lần trong đời."
+  },
+  {
+   "title": "Xả kho cuối năm bằng livestream: 7 bước chốt đơn",
+   "cat": "Đang hot",
+   "source": "Media OutReach Newswire",
+   "date": "2026-11-17",
+   "url": "https://capitalpost.com.ng/shopee-11-11-big-sale-campaign-delivers-record-breaking-sales-and-over-111m-coins-in-cashback-for-shopeevip-users/",
+   "page": "bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xa-kho-cuoi-nam-bang-livestream-7-buoc-chot-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xả kho cuối năm bằng livestream: Shopee Live tăng 5 lần dịp 11.11/2026, live TikTok chốt 8–12% đơn; 7 bước tổ chức phiên live xả kho — teaser trước 1 ngày, ghim lại mỗi 30 giây, chốt bằng LIVE Flash Sale — thu hồi vốn trước Tết 06/02/2027."
+  },
+  {
+   "title": "Shopee 11.11 phá kỷ lục: live tăng 5 lần, sale tới 17/11",
+   "cat": "Đang hot",
+   "source": "Capital Post",
+   "date": "2026-11-17",
+   "url": "https://capitalpost.com.ng/shopee-11-11-big-sale-campaign-delivers-record-breaking-sales-and-over-111m-coins-in-cashback-for-shopeevip-users/",
+   "page": "bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-11-11-pha-ky-luc-live-tang-5-lan-sale-toi-17-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopee 11.11 phá kỷ lục: tiết kiệm hơn 111 triệu SGD, Shopee Live tăng 5 lần; Ingu bán 330.000 SGD trong 1 phiên live 3 giờ; sale và quay số xe Aion V kéo dài tới 17/11/2026."
+  },
+  {
+   "title": "SHEIN Black Friday: giảm tới 95%, live 15 giờ mỗi ngày",
+   "cat": "Đang hot",
+   "source": "São Paulo Secreto",
+   "date": "2026-11-17",
+   "url": "https://saopaulosecreto.com/en/black-friday-2026-in-sao-paulo-discounts/",
+   "page": "bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shein-black-friday-giam-toi-95-phan-tram-live-15-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "SHEIN Black Friday: giảm tới 95% trên hơn 800.000 sản phẩm, 40 triệu R$ coupon, live 15 giờ ngày cao điểm; sale chính 25–30/11/2026."
+  },
+  {
+   "title": "Temu Black Friday: giảm tới 90%, máy làm đá chỉ 56 USD",
+   "cat": "Đang hot",
+   "source": "DealNews",
+   "date": "2026-11-17",
+   "url": "https://www.dealnews.com/s60123/Temu/t3/Store-Sales-and-Events/",
+   "page": "bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/temu-black-friday-giam-toi-90-phan-tram-may-lam-da-56-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Temu Black Friday giảm tới 90%: máy làm đá 56 USD, scooter điện 189 USD, Lightning Deals từ 0,64 USD; cao điểm 26–30/11/2026, đổi trả miễn phí 90 ngày."
+  },
+  {
+   "title": "Sale 12.12: Shopee Live giảm 50%, mở bán 20h 11/12",
+   "cat": "Đang hot",
+   "source": "Shopee Singapore",
+   "date": "2026-11-18",
+   "url": "https://shopee.sg/m/12-12",
+   "page": "bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sale-12-12-shopee-live-giam-50-phan-tram-mo-ban-20h-11-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sale 12.12 Shopee mở bán 20h ngày 11/12/2026: Shopee Live giảm 50%, deal 12 USD, voucher thương hiệu giảm 12%, hoàn tiền tới 200 USD; giờ G thật sự là tối 11/12, đỉnh doanh thu live rơi vào ngày đầu."
+  },
+  {
+   "title": "Đấu giá live 24 giờ: kỷ lục TikTok Shop Anh 115.867 USD",
+   "cat": "Đang hot",
+   "source": "TechRound",
+   "date": "2026-11-18",
+   "url": "https://techround.co.uk/other/drophouse-breaks-uk-tiktok-live-auction-record-24-hour-techdrops-broadcast/",
+   "page": "bai-viet/dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dau-gia-live-24-gio-ky-luc-tiktok-shop-anh-115867-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Drophouse phá kỷ lục đấu giá live TikTok Shop Anh: phiên TechDrops 24 giờ liên tục, GMV 115.867 USD, 1.240 sản phẩm, 606.870 lượt xem, 12,75 triệu lượt hiển thị; TechDrops từng lên số 1 bảng xếp hạng Live của TikTok Shop Anh."
+  },
+  {
+   "title": "Walmart Black Friday: 3 đợt sale, TV 128 USD",
+   "cat": "Đang hot",
+   "source": "Undercode News",
+   "date": "2026-11-18",
+   "url": "https://undercodenews.com/walmarts-black-friday-2026-sale-is-officially-live-early-gaming-4k-tv-lego-and-blu-ray-deals-worth-watching-video/",
+   "page": "bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/walmart-black-friday-2026-3-dot-sale-tv-128-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Walmart Black Friday 2026 chia 3 đợt 12/11–02/12: TV QLED 50 inch 128 USD, LEGO giảm tới 63%, giảm tới 75% nhiều ngành; thành viên Walmart+ vào trước 24 giờ; đợt 2 từ 23/11 mới là đợt chính."
+  },
+  {
+   "title": "Best Buy Black Friday: gift card 100 USD chỉ 60 USD",
+   "cat": "Đang hot",
+   "source": "Best Buy",
+   "date": "2026-11-18",
+   "url": "https://corporate.bestbuy.com/2026/black-friday-sale-deals/",
+   "page": "bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/best-buy-black-friday-2026-gift-card-100-usd-chi-60-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Best Buy Black Friday 2026 bắt đầu 19/11: 10 ngày Doorbuster, gift card 100 USD chỉ 60 USD ngày 27/11, MacBook Air giảm 250 USD; cửa hàng đóng cửa lễ Tạ ơn 26/11; hãng bán cả qua TikTok Shop."
   },
   {
    "title": "3.916 tỷ đồng trong 18 buổi live — Vợ chồng Quảng Đông: kỷ lục 618/2023 đã qua, đỉnh 2026 tụt gần một nửa",

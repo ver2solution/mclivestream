@@ -23,7 +23,7 @@
    (js/article-editor.js, js/article-media.js, js/seo-keywords.js) +
    publisher nhan body HTML (tools/publish-article-drafts.mjs); doi
    js/admin.js + quan-tri.html; them SQL bucket article-media (chua chay). */
-const CACHE = 'v330-shell-1'; /* v330 (18/11/2026, drafts: them bai vo-chong-quang-dong + bump CACHE; v329:  tong hop loi sang: MC-118 so online nhay ngau nhien, TK-01 tim rong tra 0, TK-02 '%^&*' mat thong bao): doi js/online-counter.js (tickDelta -2..+2 thay vi -13..+13) + js/search.js (tooShort tra so dem that + '%^&*' hien hop Khong tim thay). v328 da live (commit b019e16). */
+const CACHE = 'v331-shell-1'; /* v331 (18/11/2026, FIX: khoi phuc 8 bai Dang hot bi v330-drafts de mat trong data.js/sitemap + giu bai vo-chong-quang-dong; v329: 18/11/2026, tong hop loi sang: MC-118 so online nhay ngau nhien, TK-01 tim rong tra 0, TK-02 '%^&*' mat thong bao): doi js/online-counter.js (tickDelta -2..+2 thay vi -13..+13) + js/search.js (tooShort tra so dem that + '%^&*' hien hop Khong tim thay). v328 da live (commit b019e16). */
 const SHELL = ['v20.css', 'js/data.js', 'js/app.js', 'js/themes.js', 'icon-192.png', 'icon-512.png',
   'images/partners/google-icon.png', 'images/partners/meta-icon.png', 'images/partners/tiktok-icon.png',
   'images/partners/thaco-icon.png', 'images/partners/tpbank-icon.png', 'images/partners/coccoc-icon.png',
