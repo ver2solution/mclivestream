@@ -51,7 +51,7 @@
 <div class="filter-area">
 <!-- v182: switch chon hang muc cho bo loc shop (nhu uni-cat-switch trang Mau)
      — mac dinh 'shop'; 3 muc con moi loc dung mang du lieu cua no. -->
-<div class="uni-cat-switch" id="shopFilterSwitch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
+<div class="uni-cat-switch list-switch" id="shopFilterSwitch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
 <!-- v211 (13/11/2026, anh chot 22:54 + duyet 23:01 — giong ben Kiot):
      MOT hang switch duy nhat chua TAT CA cac muc (nhu switch Kiot). 2 muc lop hoc
      tu hang nut rieng trong bo loc (v210) CHUYEN VAO switch chinh; bo han nhan
@@ -77,11 +77,13 @@
 <div class="filter-actions"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc shop</button><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p><p class="filter-count" id="shopCount"></p>
 </div>
-<!-- v123: hang 4 o tin livestream & xu huong cho shop (render boi initModelNewsRow) -->
-<div class="section" id="modelNewsRow" aria-label="Tin xu hướng sống mới cho mẫu"></div>
 <h2 id="shop-list-title">Danh sách shop tuyển mẫu livestream</h2>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
+<!-- v343 (P1-2/P1-3): Tin tuyen doi len ngay sau danh sach shop (truoc day nam sau form dang nhap) -->
+<section class="form-card" id="tin-tuyen-da-duyet"><h2>Tin tuyển mẫu đã duyệt</h2>
+<p id="jobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
+<p style="font-size:13px">Chỉ tin ở trạng thái đã duyệt mới hiện ở đây. Tin mới gửi ở trạng thái chờ duyệt. Số điện thoại và email riêng của shop không hiện công khai; cần ứng tuyển thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo vieclamlivestream.online 032 998 3699</a> và ghi tên tin tuyển.</p></section>
 <!-- v210 (13/11/2026): 2 muc lop hoc CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo tieu de menu — lop hoc la nhu cau cua MAU. v213: 2 muc lop hoc hien 2 hang (bo class rows-1 cua v181 — mac dinh collapsed hien 2 hang); nut Xem them hien so luong do app.js refreshClassMoreBtn lam chu duy nhat (da bo 2 script inline rieng). -->
 <section class="lot-section filter-section collapsed" id="lop-livestream-mc" aria-labelledby="class-live-title">
 <h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
@@ -91,7 +93,6 @@
 <p class="filter-empty" id="classLiveEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
 <div class="lot-grid" id="classLiveGrid"></div>
 <button class="lot-more" id="classLiveMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <section class="lot-section filter-section collapsed" id="lop-makeup" aria-labelledby="class-makeup-title">
 <h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
@@ -101,7 +102,6 @@
 <p class="filter-empty" id="classMakeupEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
 <div class="lot-grid" id="classMakeupGrid"></div>
 <button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <!-- v247 (15/11/2026): muc Su kien Marketing CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo lenh anh 01:06 — du lieu + bo loc (tinh fShProv + sap xep gia fShopPriceSort) di cung. -->
 <section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
@@ -112,9 +112,11 @@
 <p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
 <div class="lot-grid" id="eventMarketingGrid"></div>
 <button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("su-kien-marketing");if(!s)return;var b=document.getElementById("eventMarketingMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<!-- v343 (P1-2/P1-3): hang tin doi xuong duoi danh sach (truoc day nam truoc danh sach shop) -->
+<!-- v123: hang 4 o tin livestream & xu huong cho shop (render boi initModelNewsRow) -->
+<div class="section" id="modelNewsRow" aria-label="Tin xu hướng sống mới cho mẫu"></div>
 <section class="section"><p>Mẫu tìm shop theo Tỉnh / Thành phố và/hoặc Lĩnh vực — chọn 1 hoặc cả 2 tiêu chí đều lọc được; chỉ gồm tỉnh và lĩnh vực hiện đang có tin tuyển. Xem tin tuyển có lương, giờ làm và yêu cầu, tự liên hệ shop, tự chốt lịch trực tiếp. Giai đoạn đầu, sàn không trung gian và không giữ tiền.</p>
 <div class="steps"><div class="step"><b>1</b><h3>Tìm shop</h3><p>Chọn Tỉnh / Thành phố và/hoặc Lĩnh vực, rồi dùng thêm sắp xếp theo lương giờ, lương tháng, lọc theo giờ làm hoặc mức lương tối thiểu để tìm đúng shop nhanh hơn.</p></div>
 <div class="step"><b>2</b><h3>Xem tin tuyển và liên hệ</h3><p>Mở trang chi tiết của shop để xem toàn bộ thông tin: tỉnh, mặt hàng, lương, giờ làm, yêu cầu chính và liên hệ. Sau đó tự liên hệ shop qua bài gốc hoặc qua Zalo vieclamlivestream.online.</p></div>
@@ -137,13 +139,14 @@
 <button class="auth-type-btn" type="button" data-auth-type="model" data-track="chon-dang-ky-mau"><b>Đăng ký tài khoản tìm việc</b><span>Dành cho mẫu livestream tìm việc</span></button>
 <div style="display:flex;gap:10px"><button class="btn btn-ghost" type="button" id="mauAuthTypeClose">Đóng</button></div>
 </div></div>
-<section class="form-card" id="tin-tuyen-da-duyet"><h2>Tin tuyển mẫu đã duyệt</h2>
-<p id="jobsStatus">Đang tải tin đã duyệt…</p><div id="approvedJobsList"></div>
-<p style="font-size:13px">Chỉ tin ở trạng thái đã duyệt mới hiện ở đây. Tin mới gửi ở trạng thái chờ duyệt. Số điện thoại và email riêng của shop không hiện công khai; cần ứng tuyển thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo vieclamlivestream.online 032 998 3699</a> và ghi tên tin tuyển.</p></section>
 <!-- v157: khu tin 3 hang (giong khu Tin moi trang chu: .news-list 2 cot, 6 bai moi nhat Đời Sống + Việc Làm). v181: day xuong cuoi trang, sau tin tuyen da duyet -->
 <section class="section" id="tin-moi-cho-mau"><div class="section-head"><div><h2><a href="tin-tuc.html">Tin mới cho mẫu livestream</a></h2></div></div>
 <div class="news-list" id="shopBottomNews"></div>
 <div class="section-foot"><a class="btn btn-ghost btn-sm" href="tin-tuc.html">Xem tất cả tin →</a></div></section>
+<!-- v343 (P1-2/P1-3, 18/11/2026): disclaimer gom 1 lan/trang — dung ban day du co cau ghim sao (ban Lo/Xuong), giu nguyen van ban; cac ban lot-note trong section da bo. -->
+<section class="section"><h2>Lưu ý</h2>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
 <p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-mau.html">Xem hồ sơ mẫu →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>

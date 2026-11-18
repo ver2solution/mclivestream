@@ -223,11 +223,19 @@ a:hover{text-decoration:underline}
 .uni-cat-switch .uni-cat-btn.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(11,93,78,.28)}
 .uni-cat-switch .uni-cat-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .uni-cat-switch .uni-cat-btn .uni-cat-count{white-space:nowrap}
-.lot-section[hidden]{display:none}
-.filter-card .uni-field.locked{opacity:.55}
-.filter-card .uni-field.locked label{color:#9aa8a2}
+/* v343 (P1-2/P1-3, 18/11/2026): 1 trang, 1 muc hien thi — section danh sach khong active an bang
+   hidden; luat nay dam bao [hidden] thang bat ky display nao cua .section/.lot-section/.form-card/.shop-grid
+   (mo rong luat .lot-section[hidden] da co san). */
+.lot-section[hidden],#model-list-section[hidden],#shops-approved[hidden],#tin-tuyen-da-duyet[hidden],#publicShopsList[hidden],#shop-list-title[hidden],#shopPager[hidden]{display:none}
+/* v343 (P1-2/P1-3 + MC-108, 18/11/2026): o loc cua tab khac AN KHOI vung loc (khong chi mo nhu truoc) —
+   chi control cua tab dang chon duoc hien + bat (thiet ke §4.3). */
+.filter-card .uni-field.locked{display:none}
 .filter-card select:disabled,.filter-card input:disabled{background:#f1f4f2;color:#8a9a94;cursor:not-allowed}
 @media(max-width:600px){.uni-cat-switch{flex-direction:column;border-radius:16px}.uni-cat-switch .uni-cat-btn{white-space:normal}}
+/* v343 (P1-2/P1-3, 18/11/2026): switch 2 trang danh sach tren mobile la 1 HANG, CUON NGANG
+   (thiet ke §5.3/§5.4/§7.8) — nut khong xep cot day danh sach xuong; chi ap cho 2 trang danh sach
+   (class .list-switch), khong doi switch trang Lo/Xuong (nut <a> dan trang) hay trang Kiot. */
+@media(max-width:600px){.uni-cat-switch.list-switch{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;border-radius:999px;-webkit-overflow-scrolling:touch}.uni-cat-switch.list-switch .uni-cat-btn{flex:0 0 auto;white-space:nowrap}}
 /* v63: khoi "Tim mau cho 11.11 — 3 buoc" tren trang Danh cho Shop (thiet ke
    2026-11-06). 1 the noi bat ngay duoi tieu de trang, truoc the loc tin tuyen
    shop; vung ket qua tai dung .grid.grid-3 (3 cot desktop, 2 cot <=1000px,

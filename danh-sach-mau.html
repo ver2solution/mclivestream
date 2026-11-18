@@ -49,7 +49,7 @@
 <section class="section filter-section"><div class="section-head"><div><h1>Tìm mẫu livestream</h1></div></div>
 <button class="filter-toggle" id="filterToggleShop" type="button" aria-expanded="false" data-track="mo-bo-loc-shop">🔍 Bộ lọc tìm kiếm</button>
 <div class="filter-area">
-<div class="uni-cat-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
+<div class="uni-cat-switch list-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
 <!-- v211 (13/11/2026, anh chot 22:54 + duyet 23:01 — giong ben Kiot):
      MOT hang switch duy nhat chua TAT CA cac muc (nhu switch Kiot: Kiot thanh ly +
      3 muc moi tren 1 hang). 2 muc dich vu (logistics/agency) tu hang nut
@@ -69,10 +69,10 @@
 <div class="uni-field" id="uf-shift"><label for="fUniShift">Giờ làm</label><select id="fUniShift" data-track="loc-gio-lam-chung"><option value="">Tất cả giờ</option><option value="sang">Sáng</option><option value="chieu">Chiều</option><option value="toi">Tối</option><option value="fulltime">Fulltime</option></select></div>
 <div class="uni-field" id="uf-paytype"><label for="fUniPayType">Loại lương</label><select id="fUniPayType" data-track="loc-loai-luong-chung"><option value="">Tất cả lương</option><option value="hourly">Lương theo giờ</option><option value="monthly">Lương theo tháng</option></select></div>
 <div class="uni-field" id="uf-paymin"><label id="fUniPayMinLabel" for="fUniPayMin">Mức lương tối thiểu</label><input id="fUniPayMin" type="text" inputmode="decimal" list="fUniPayMinList" data-track="loc-muc-luong-toi-thieu-chung" placeholder="Chọn loại lương trước" disabled><datalist id="fUniPayMinList"></datalist></div>
-<div class="uni-field" id="uf-lotprice"><label for="fUniLotPrice">Giá trị lô</label><select id="fUniLotPrice" data-track="loc-gia-lo-chung"><option value="">Tất cả giá</option><option value="lt20">Dưới 20.000đ/cái</option><option value="20-50">20.000–50.000đ/cái</option><option value="50-100">50.000–100.000đ/cái</option><option value="gt100">Trên 100.000đ/cái</option></select></div>
+<div class="uni-field" id="uf-lotprice"><label for="fUniLotPrice">Giá trị lô</label><select id="fUniLotPrice" data-track="loc-gia-lo-chung"><option value="">Tất cả giá</option><option value="__missing__">Chưa ghi giá trị</option><option value="lt20">Dưới 20.000đ/cái</option><option value="20-50">20.000–50.000đ/cái</option><option value="50-100">50.000–100.000đ/cái</option><option value="gt100">Trên 100.000đ/cái</option></select></div>
 <div class="uni-field" id="uf-lotqty"><label for="fUniLotQty">Số lượng lô</label><select id="fUniLotQty" data-track="loc-so-luong-lo-chung"><option value="">Tất cả số lượng</option><option value="__missing__">Chưa ghi số lượng</option><option value="lt500">Dưới 500 món</option><option value="500-1000">500–1.000 món</option><option value="1000-5000">1.000–5.000 món</option><option value="gt5000">Trên 5.000 món</option></select></div>
 <div class="uni-field" id="uf-facvalue"><label for="fUniFacValue">Giá trị đơn</label><select id="fUniFacValue" data-track="loc-gia-tri-don-chung"><option value="">Tất cả</option><option value="__missing__">Chưa công khai MOQ</option><option value="small">Đơn nhỏ (MOQ dưới 30)</option><option value="medium">Đơn vừa (MOQ 30–100)</option><option value="large">Đơn lớn (MOQ trên 100)</option></select></div>
-<div class="uni-field" id="uf-facmoq"><label for="fUniFacMoq">Số lượng tối thiểu</label><select id="fUniFacMoq" data-track="loc-so-luong-toi-thieu-chung"><option value="">Tất cả</option><option value="10">Nhận đơn từ 10 sản phẩm</option><option value="30">Nhận đơn từ 30 sản phẩm</option><option value="100">Nhận đơn từ 100 sản phẩm</option><option value="300">Nhận đơn từ 300 sản phẩm</option></select></div>
+<div class="uni-field" id="uf-facmoq"><label for="fUniFacMoq">Số lượng tối thiểu</label><select id="fUniFacMoq" data-track="loc-so-luong-toi-thieu-chung"><option value="">Tất cả</option><option value="__missing__">Chưa ghi MOQ</option><option value="10">Nhận đơn từ 10 sản phẩm</option><option value="30">Nhận đơn từ 30 sản phẩm</option><option value="100">Nhận đơn từ 100 sản phẩm</option><option value="300">Nhận đơn từ 300 sản phẩm</option></select></div>
 <!-- v210: 2 o cua 3 muc shop CHUYEN SANG day cung section — chi mo khi chon muc tuong ung tren switch (khoa mac dinh); loc 3 muc moi chi con o loc chung tren top (tinh fUniProv + sap xep gia fShopPriceSort + hinh thuc fShopLogOpt). -->
 <div class="uni-field locked" id="uf-shop-logopt"><label for="fShopLogOpt">Hình thức vận chuyển</label><select id="fShopLogOpt" data-track="loc-hinh-thuc-van-chuyen-shop" disabled><option value="">Tất cả hình thức</option><option value="chinh-ngach">Vận chuyển chính ngạch</option><option value="tieu-ngach">Vận chuyển trọn gói – tiểu ngạch</option><option value="mua-ho">Dịch vụ mua hàng hộ</option></select></div>
 <div class="uni-field locked" id="uf-shop-pricesort"><label for="fShopPriceSort">Sắp xếp theo giá</label><select id="fShopPriceSort" data-track="sap-xep-gia-shop" disabled><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
@@ -81,8 +81,6 @@
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p>
 <p class="filter-count" id="uniCount"></p><p class="filter-empty" id="uniEmpty" hidden><b>Chưa có dữ liệu.</b> Không có kết quả nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại toàn bộ.</p>
 </div>
-<!-- v100: hang 4 o tin xu huong song moi cho mau (render boi initShopNewsRow) -->
-<div class="section" id="shopNewsRow" aria-label="Tin livestream và xu hướng cho shop"></div>
 <section class="section" id="model-list-section" aria-labelledby="model-list-title">
 <h2 id="model-list-title">Danh sách mẫu livestream</h2>
 <div class="grid" id="listGrid" style="margin-top:18px"></div>
@@ -104,7 +102,6 @@
 <div class="lot-grid" id="lotGrid3"></div>
 </div>
 <button class="lot-more" id="lotMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("lo-hang-xa-kho");if(!s)return;var b=document.getElementById("lotMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section collapsed" id="xuong-may-gia-cong" aria-labelledby="factory-title">
@@ -114,7 +111,6 @@
 
 <div class="lot-grid" id="factoryGrid"></div>
 <button class="lot-more" id="factoryMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("xuong-may-gia-cong");if(!s)return;var b=document.getElementById("factoryMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="logistics-trung-viet" aria-labelledby="logistics-title">
@@ -125,7 +121,6 @@
 <p class="filter-empty" id="logisticsEmpty" hidden>Chưa có đơn vị vận chuyển nào khớp bộ lọc.</p>
 <div class="lot-grid" id="logisticsGrid"></div>
 <button class="lot-more" id="logisticsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="agency-ads-livestream" aria-labelledby="agencyAds-title">
@@ -136,7 +131,6 @@
 <p class="filter-empty" id="agencyAdsEmpty" hidden>Chưa có agency nào khớp bộ lọc.</p>
 <div class="lot-grid" id="agencyAdsGrid"></div>
 <button class="lot-more" id="agencyAdsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
-<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <script>(function(){var s=document.getElementById("agency-ads-livestream");if(!s)return;var b=document.getElementById("agencyAdsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 </section>
@@ -149,6 +143,9 @@
 <button class="lot-more" id="shopsApprovedMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p style="font-size:13px">Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop; thông tin chưa công khai không hiển thị. Các bên chủ động liên hệ trao đổi, thông tin là công khai. Cần ứng tuyển mà shop không ghi liên hệ thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo vieclamlivestream.online 032 998 3699</a> để được giới thiệu.</p></section>
 <script>(function(){var s=document.getElementById("shops-approved");if(!s)return;var b=document.getElementById("shopsApprovedMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<!-- v343 (P1-2/P1-3): hang tin doi xuong duoi danh sach (truoc day nam truoc danh sach mau) -->
+<!-- v100: hang 4 o tin xu huong song moi cho mau (render boi initShopNewsRow) -->
+<div class="section" id="shopNewsRow" aria-label="Tin livestream và xu hướng cho shop"></div>
 
 <section class="form-card" id="ho-so-shop" aria-labelledby="shop-profile-title"><h2 id="shop-profile-title">Hồ sơ shop</h2>
 <div id="shopProfileGate"><p>Bạn cần đăng nhập để tạo / sửa hồ sơ shop.</p><p><a class="btn btn-primary" href="#dang-nhap-shop">Đăng Nhập</a></p></div>
@@ -247,6 +244,10 @@
 <p id="jobMsg" role="status"></p>
 </form>
 </div></section>
+<!-- v343 (P1-2/P1-3, 18/11/2026): disclaimer gom 1 lan/trang — dung ban day du co cau ghim sao (ban Lo/Xuong), giu nguyen van ban; cac ban lot-note trong section da bo. -->
+<section class="section"><h2>Lưu ý</h2>
+<p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
+</section>
 <p><a href="index.html">← Quay lại trang chủ</a> · <a href="danh-sach-shop.html">Sang trang mẫu tìm việc →</a> · <a href="tin-tuc.html">Tin tức →</a></p>
 </main>
 <footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>

@@ -953,6 +953,10 @@ function initFilterToggle(){
         var open = sec.classList.toggle('filters-open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         btn.textContent = open ? '✕ Ẩn bộ lọc' : btn._label;
+        /* v343: mo bo loc tren mobile — giu nut active luon thay trong hang switch cuon ngang
+           (khi mo bang ?newobj=, setCat chay luc strip dang an nen chua cuon duoc; den luc mo
+           bo loc moi cuon). */
+        if(open && typeof scrollActiveCatBtnIntoView === 'function') scrollActiveCatBtnIntoView();
       });
     })(btns[i]);
   }
@@ -1090,7 +1094,7 @@ function initSectionFilter(opts){
 function initLotFilter(){
   /* v96: doc tu khung loc chung (fUni*); dem + thong bao dung chung
      (uniCount/uniEmpty); khong gan nut rieng — khung chung dieu phoi. */
-  return initSectionFilter({
+  var ctl = initSectionFilter({
     sectionId: 'lo-hang-xa-kho', moreBtnId: 'lotMoreBtn', filterId: 'uniFilter', pointsCategory: 'lot',
     countId: 'uniCount', emptyId: 'uniEmpty', label: 'lô',
     readForm: function(){
@@ -1106,10 +1110,17 @@ function initLotFilter(){
     },
     matches: lotMatches
   });
+  /* v343 (P1-2/P1-3 + MC-108): dem that trong () cho o Gia tri lo / So luong lo — giong
+     fLotPrice/fLotQty trang Lo (v309: nhanh MISSING_META + dem "Chua ghi gia tri"). */
+  var upr = document.getElementById('fUniLotPrice');
+  if(upr) applyOptionCounts(upr, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.priceNum != null && inRange(l.priceNum, v)) n++; }); return n; }, uniTotal('lot'));
+  var uq = document.getElementById('fUniLotQty');
+  if(uq) applyOptionCounts(uq, function(v){ if(v === MISSING_META){ var nm = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty == null) nm++; }); return nm; } var n = 0; (D.lots || []).forEach(function(l){ if(lotActive(l) && l.qty != null && inRange(l.qty, v)) n++; }); return n; }, uniTotal('lot'));
+  return ctl;
 }
 function initFactoryFilter(){
   /* v96: nhu tren; tinh doi 'TP. Hồ Chí Minh' -> 'TP.HCM' cho data-prov. */
-  return initSectionFilter({
+  var ctl = initSectionFilter({
     sectionId: 'xuong-may-gia-cong', moreBtnId: 'factoryMoreBtn', filterId: 'uniFilter', pointsCategory: 'factory',
     countId: 'uniCount', emptyId: 'uniEmpty', label: 'xưởng',
     readForm: function(){
@@ -1125,6 +1136,14 @@ function initFactoryFilter(){
     },
     matches: facMatches
   });
+  /* v343 (P1-2/P1-3 + MC-108): dem that trong () cho o Gia tri don / So luong toi thieu — giong
+     fFacMoq trang Xuong (v268: dem ca xuong CHUA GHI MOQ; o Gia tri don dem theo dung nhanh
+     MISSING_META/small/medium/large cua facMatches). */
+  var uv = document.getElementById('fUniFacValue');
+  if(uv) applyOptionCounts(uv, function(v){ if(v === MISSING_META){ var nm = 0; (D.factories || []).forEach(function(f){ if(f.moq == null) nm++; }); return nm; } var n = 0; (D.factories || []).forEach(function(f){ if(f.moq == null) return; var mv = parseInt(f.moq, 10); if(v === 'small' && mv < 30) n++; else if(v === 'medium' && mv >= 30 && mv <= 100) n++; else if(v === 'large' && mv > 100) n++; }); return n; }, (D.factories || []).length);
+  var um = document.getElementById('fUniFacMoq');
+  if(um) applyOptionCounts(um, function(v){ if(v === MISSING_META){ var nm = 0; (D.factories || []).forEach(function(f){ if(f.moq == null) nm++; }); return nm; } var n = 0; (D.factories || []).forEach(function(f){ if(f.moq != null && f.moq <= parseInt(v, 10)) n++; }); return n; }, (D.factories || []).length);
+  return ctl;
 }
 /* v135: bo loc rieng cho trang danh-sach-lo.html / danh-sach-xuong.html
    (chuan v98: khung 2 hang x 6 o + 3 nut chon doi tuong .uni-cat-switch).
@@ -2215,6 +2234,62 @@ function showAllNewObjSections(){
     var s = document.getElementById(NEWOBJ_UNI_CATS[k].sectionId);
     if(s) s.hidden = false;
   });
+}
+/* v343 (P1-2/P1-3, 18/11/2026): "1 trang, 1 muc hien thi" (phuong an B, thiet ke §3.1/§5.1) —
+   tren trang Mau, chi section danh sach cua tab dang chon hien; cac section danh sach khac an
+   bang hidden (ke ca Lo/Xuong — truoc day chi collapse nen van hien H2 + 2 the + disclaimer).
+   Quyet §10.5: Shop da duyet / Tin tuyen chi hien o tab mac dinh (Tim Mau). */
+function setMauListVisibility(cat){
+  if(typeof document === 'undefined') return;
+  var map = {
+    'model': ['model-list-section'],
+    'lot': ['lo-hang-xa-kho'],
+    'factory': ['xuong-may-gia-cong'],
+    'logistics': ['logistics-trung-viet'],
+    'agency-ads': ['agency-ads-livestream']
+  };
+  var show = map[cat] || map['model'];
+  ['model-list-section','lo-hang-xa-kho','xuong-may-gia-cong','logistics-trung-viet','agency-ads-livestream'].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) s.hidden = (show.indexOf(id) === -1);
+  });
+  var sa = document.getElementById('shops-approved');
+  if(sa) sa.hidden = (cat !== 'model');
+}
+/* v343 (P1-2/P1-3, 18/11/2026): mobile — giu nut active luon thay trong hang switch cuon ngang
+   (thiet ke §7.8). Chi cuon NGANG trong strip (scrollLeft), KHONG cuon trang (khong dong
+   window.scrollY) — khong vi pham luat cam tu cuon v207/v213. */
+function scrollActiveCatBtnIntoView(){
+  if(typeof document === 'undefined' || !document.querySelector) return;
+  var sw = document.querySelector('.uni-cat-switch.list-switch');
+  if(!sw) return;
+  var ab = sw.querySelector('.uni-cat-btn.active');
+  if(!ab) return;
+  /* Can giua nut active trong strip neu no dang nam ngoai vung thay (vd mo bang ?newobj=);
+     khi bam truc tiep thi nut vua bam von dang thay nen khong doi gi. */
+  var left = ab.offsetLeft - (sw.clientWidth - ab.offsetWidth) / 2;
+  if(left < 0) left = 0;
+  var max = sw.scrollWidth - sw.clientWidth;
+  if(left > max) left = max;
+  if(typeof sw.scrollTo === 'function'){ try { sw.scrollTo({left: left, behavior: 'auto'}); return; } catch (e) {} }
+  sw.scrollLeft = left;
+}
+/* v343 (P1-2/P1-3, 18/11/2026): nhu tren, cho trang Shop (thiet ke §5.2) — chi section cua tab
+   dang chon hien; danh sach shop + Tin tuyen chi hien o tab mac dinh (Tim viec). */
+function setShopListVisibility(cat){
+  if(typeof document === 'undefined') return;
+  var isShop = (cat === 'shop');
+  ['shop-list-title','publicShopsList','shopPager'].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) s.hidden = !isShop;
+  });
+  var show = isShop ? null : ({'class-live': 'lop-livestream-mc', 'class-makeup': 'lop-makeup', 'event-mkt': 'su-kien-marketing'})[cat];
+  ['lop-livestream-mc','lop-makeup','su-kien-marketing'].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) s.hidden = (id !== show);
+  });
+  var tt = document.getElementById('tin-tuyen-da-duyet');
+  if(tt) tt.hidden = !isShop;
 }
 /* Thu tu hien thi + id DOM cua 8 section (v210: shop.html: 2 muc dau — lop hoc; mau.html: 3 muc giua — su kien/logistics/agency; thanh-ly-kiot.html: 3 muc cuoi). */
 var NEWOBJ_SECTIONS = [
@@ -3363,6 +3438,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
+    scrollActiveCatBtnIntoView(); /* v343: giu nut active luon thay trong hang switch cuon ngang (mobile) */
     setUniCatFieldStates(cat);
     /* v210: so dem 3 option con cua muc logistics (fShopLogOpt da chuyen
        sang trang Shop cung section) — chi cap nhat khi dang chon logistics. */
@@ -3418,12 +3494,29 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       collapseSection('logistics-trung-viet', 'logisticsMoreBtn');
       collapseSection('agency-ads-livestream', 'agencyAdsMoreBtn');
     }
+    /* v343 (P1-2/P1-3, phuong an B): chi section cua tab dang chon hien — dat SAU cac lenh
+       showOnly/showAll o tren de trang thai hidden cuoi cung do ham nay quyet dinh. */
+    setMauListVisibility(cat);
   }
   btns.forEach(function(b){
     b.addEventListener('click', function(){ setCat(b.getAttribute('data-uni-cat')); });
   });
   setUniCatFieldStates(getUniCat());
   if(typeof syncPayMinFn === 'function') syncPayMinFn();
+  setMauListVisibility(getUniCat());
+  /* v343: deep-link #<id-the> tu tim-kiem — mo dung tab chua the do truoc khi scrollToHashedCard
+     chay (neu khong, the nam trong section dang an nen cuon khong toi duoc; modal van mo). */
+  (function(){
+    var h = '';
+    try { h = (location.hash || '').replace(/^#/, ''); } catch (e) {}
+    if(!h || typeof findDetailItem !== 'function') return;
+    var found = null;
+    try { found = findDetailItem(h); } catch (e) {}
+    if(!found) return;
+    var tabByKind = {lot: 'lot', factory: 'factory', logistics: 'logistics', agencyAds: 'agency-ads'};
+    var tab = tabByKind[found.kind];
+    if(tab && tab !== getUniCat()) setCat(tab);
+  })();
   if(applyBtn){
     applyBtn.addEventListener('click', function(){
       var cat = getUniCat();
@@ -3573,6 +3666,7 @@ function initShops(){
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
+    scrollActiveCatBtnIntoView(); /* v343: giu nut active luon thay trong hang switch cuon ngang (mobile) */
     var isNew = !!NEWOBJ_UNI_CATS[cat];
     ['fShCat','fShSort','fShShift','fShPayType','fShPayMin'].forEach(function(id){
       var fEl = document.getElementById(id);
@@ -3630,11 +3724,26 @@ function initShops(){
     refreshShopProvCounts(cat);
     refreshNewObjCatCounts(); /* v214: luat an so cua muc dang chon */
     refreshLockedCountsForCat(cat, 'shop'); /* v237 (F-R2-10): so dem o loc bi khoa theo muc dang chon */
+    /* v343 (P1-2/P1-3, phuong an B): chi section cua tab dang chon hien — dat SAU cac lenh
+       showOnly/showAll o tren de trang thai hidden cuoi cung do ham nay quyet dinh. */
+    setShopListVisibility(cat);
   }
   shopCatBtns.forEach(function(b){
     b.addEventListener('click', function(){ setShopCat(b.getAttribute('data-uni-cat')); });
   });
   setShopCat('shop');
+  /* v343: deep-link #<id-the> tu tim-kiem — mo dung tab lop/su kien chua the do. */
+  (function(){
+    var h = '';
+    try { h = (location.hash || '').replace(/^#/, ''); } catch (e) {}
+    if(!h || typeof findDetailItem !== 'function') return;
+    var found = null;
+    try { found = findDetailItem(h); } catch (e) {}
+    if(!found) return;
+    var tabByKind = {classesLive: 'class-live', classesMakeup: 'class-makeup', eventsMarketing: 'event-mkt'};
+    var tab = tabByKind[found.kind];
+    if(tab) setShopCat(tab);
+  })();
   var applyBtn=document.getElementById('shopApplyBtn');
   if(applyBtn) applyBtn.addEventListener('click',function(){
     var b=applyBtn;
