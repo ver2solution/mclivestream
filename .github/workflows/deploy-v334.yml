@@ -1,4 +1,4 @@
-name: "Deploy v334 (khung chat: AI/bot len dau, khung cao bang muc Top)"
+name: "Deploy v334 (khung chat: tin moi len dau - cong bang, khung cao bang muc Top)"
 
 on:
   push:
@@ -19,31 +19,35 @@ jobs:
         run: |
           echo "--- Guard DAU: neu sw.js da co v334-shell-1 thi da deploy roi, DUNG ---"
           if grep -q 'v334-shell-1' sw.js; then echo "v334 DA DEPLOY ROI (sw.js da co v334-shell-1) - dung"; exit 1; fi
-          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 4bf94c9) ---"
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 22f1e1b - data.js/sitemap khong doi so voi 4bf94c9) ---"
           test "$(md5sum js/data.js | cut -d' ' -f1)" = "2cb550928dc6e43810213e4957cafe9c" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
           test "$(grep -c '<loc>' sitemap.xml)" = "447" || (echo "BASE DOI: sitemap khong con 447 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
           unzip -o mclivestream-v334-deploy.zip
-          echo "--- verify v334 (4 file) ---"
-          test "$(unzip -l mclivestream-v334-deploy.zip | grep -cE ' (js/community-chat\.js|js/chat-bots\.js|sw\.js|v20\.css)$')" -eq 4 || (echo "SAI: goi v334 phai co dung 4 file (js/community-chat.js + js/chat-bots.js + sw.js + v20.css)"; exit 1)
+          echo "--- verify v334 (5 file) ---"
+          test "$(unzip -l mclivestream-v334-deploy.zip | grep -cE ' (index\.html|js/community-chat\.js|js/chat-bots\.js|sw\.js|v20\.css)$')" -eq 5 || (echo "SAI: goi v334 phai co dung 5 file (index.html + js/community-chat.js + js/chat-bots.js + sw.js + v20.css)"; exit 1)
           grep -q "v334-shell-1" sw.js || (echo "SAI: sw.js phai co v334-shell-1"; exit 1)
           grep -q 'syncFrameHeight' js/community-chat.js || (echo "SAI: community-chat.js phai co syncFrameHeight"; exit 1)
-          grep -q 'author_kind' js/community-chat.js || (echo "SAI: community-chat.js phai loc author_kind"; exit 1)
-          grep -q "insertAdjacentHTML('afterbegin'" js/chat-bots.js || (echo "SAI: chat-bots.js phai chen bot o dau (afterbegin)"; exit 1)
+          grep -q 'data-ts' js/community-chat.js || (echo "SAI: community-chat.js phai gan data-ts (xep theo gio)"; exit 1)
+          if grep -q 'aiRows' js/community-chat.js; then echo "SAI: community-chat.js khong duoc con tach tin theo loai (aiRows) - phai CONG BANG theo gio"; exit 1; fi
           grep -q 'restoreScroll' js/chat-bots.js || (echo "SAI: chat-bots.js phai co restoreScroll"; exit 1)
+          grep -q 'beforebegin' js/chat-bots.js || (echo "SAI: chat-bots.js phai chen bot theo gio (beforebegin)"; exit 1)
+          if grep -q "afterbegin" js/chat-bots.js; then echo "SAI: chat-bots.js khong duoc con chen bot co dinh o dau (afterbegin) - phai CONG BANG theo gio"; exit 1; fi
           grep -q '.chat-list>:first-child{margin-top:auto}' v20.css || (echo "SAI: v20.css phai co margin-top:auto o tin dau"; exit 1)
           grep -q 'min-width:721px' v20.css || (echo "SAI: v20.css phai co khoi desktop v334"; exit 1)
-          echo "verify OK: 4 file, sw.js v334-shell-1, AI/bot len dau, khung cao bang Top, data.js/sitemap khong doi"
+          grep -q 'Về tin mới nhất' index.html || (echo "SAI: index.html phai co nut Ve tin moi nhat"; exit 1)
+          if grep -q '↓ Về tin mới nhất' index.html; then echo "SAI: index.html khong duoc con mui ten xuong (tin moi o dau, mui ten phai len)"; exit 1; fi
+          echo "verify OK: 5 file, sw.js v334-shell-1, tin moi len dau cong bang theo gio, khung cao dung bang Top, data.js/sitemap khong doi"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm -q mclivestream-v334-deploy.zip
-          git add js/community-chat.js js/chat-bots.js sw.js v20.css
+          git add index.html js/community-chat.js js/chat-bots.js sw.js v20.css
           git status --short | head -20
           echo "changed files: $(git diff --cached --name-only | wc -l)"
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Deploy v334: khung chat - AI/bot len dau, khung cao bang muc Top, test khong ghim; CACHE v334-shell-1"
+            git commit -m "Deploy v334: khung chat - CONG BANG, tin moi len dau (khong phan biet AI/bot/test/user), khung cao dung bang muc Top; CACHE v334-shell-1"
             git push
           fi
