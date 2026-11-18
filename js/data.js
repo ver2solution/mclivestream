@@ -16029,6 +16029,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Black Friday 27/11/2026: người Mỹ dự kiến chi 12,9 tỷ USD online trong 1 ngày. TikTok Shop chỉ cho shop đạt điểm SPS từ 3.5 trở lên tham gia chiến dịch BFCM. 7 mẹo giữ điểm, giữ đơn, tránh bị loại khỏi chiến dịch."
   },
+  {
+   "title": "525 tỷ đồng trong 1 ngày — cả nhà cùng live: xu hướng livestream gia đình đang \"ăn\" dần thị phần của siêu KOL",
+   "cat": "Xu hướng",
+   "source": "36Kr / 卡思数据",
+   "date": "2026-11-18",
+   "url": "https://www.36kr.com/p/3388453516230788",
+   "page": "bai-viet/livestream-gia-dinh-525-ty-dong-1-ngay-ca-nha-cung-live-xu-huong-2026.html",
+   "img": "https://q2.itc.cn/q_70/images03/20261027/57a6c4b15b294f3995aed8523b41ad00.jpeg",
+   "pinned": false,
+   "takeaway": "Ngày 18/6/2025, một đám cưới ở nông thôn Hà Nam biến thành phòng livestream bán hàng: 2 buổi live, hơn 525 tỷ đồng. Đằng sau là xu hướng livestream gia đình — vợ chồng, mẹ con, cả họ cùng live — đang nổi lên ở Trung Quốc khi siêu KOL hạ nhiệt."
+  },
 ],
  "lots": [
    {
