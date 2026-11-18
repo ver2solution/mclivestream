@@ -16040,6 +16040,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Ngày 18/6/2025, một đám cưới ở nông thôn Hà Nam biến thành phòng livestream bán hàng: 2 buổi live, hơn 525 tỷ đồng. Đằng sau là xu hướng livestream gia đình — vợ chồng, mẹ con, cả họ cùng live — đang nổi lên ở Trung Quốc khi siêu KOL hạ nhiệt."
   },
+  {
+   "title": "715 triệu đồng trong 1 tháng — mặt nạ mắt LANBENA 158K bán 2.700 đơn: sản phẩm nhỏ vẫn ra tiền tỷ mùa Black Friday",
+   "cat": "Hàng hoá",
+   "source": "Kalodata",
+   "date": "2026-11-18",
+   "url": "https://www.facebook.com/groups/1346679573696322/permalink/1770195174678091/",
+   "page": "bai-viet/mat-na-mat-lanbena-715-trieu-dong-1-thang-2700-don-black-friday.html",
+   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/b0f5d7a532a44651aae23d6f9424f071~tplv-aphluv4xwc-resize-jpeg:800:800.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=2408c917&shcp=32ce9e9e&idc=my2&from=604555543",
+   "pinned": false,
+   "takeaway": "Mặt nạ mắt LANBENA giá 158.000 đồng bán 2.700 đơn, doanh thu 715,62 triệu đồng trong 1 tháng (16/10–15/11/2026, theo bảng xếp hạng Kalodata). Vì sao sản phẩm nhỏ giá rẻ vẫn thắng mùa sale, và shop Việt học được gì trước Black Friday 27/11 và 12.12?"
+  },
 ],
  "lots": [
    {
