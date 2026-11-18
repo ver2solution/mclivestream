@@ -531,9 +531,22 @@
         }catch(e){}
         try{
           if(existing){
-            var _same = String(existing.full_name || '') === String(data.full_name || '')
-              && String(existing.phone_zalo || '') === String(data.phone_zalo || '')
-              && String(existing.date_of_birth || '') === String(data.date_of_birth || '');
+            /* L4 (v342): so sanh TOAN BO payload thay vi chi 3 truong. v264 chi so
+               full_name/phone_zalo/date_of_birth nen doi Kinh nghiem/Hoc van...
+               van bi bao "khong co gi thay doi" va KHONG goi saveMyProfile.
+               Chuan hoa: null ≡ '' ≡ undefined, trim chuoi, so sanh mang theo
+               noi dung (album_images giu thu tu). */
+            var _norm = function(v){
+              if(v == null) return '';
+              if(Array.isArray(v)) return JSON.stringify(v.map(function(x){ return String(x == null ? '' : x).trim(); }));
+              if(typeof v === 'number') return String(v);
+              return String(v).trim();
+            };
+            var _same = true;
+            for(var _k in data){
+              if(!Object.prototype.hasOwnProperty.call(data, _k)) continue;
+              if(_norm(existing[_k]) !== _norm(data[_k])){ _same = false; break; }
+            }
             if(_same) return 'Hồ sơ không có gì thay đổi, không cần lưu lại.';
           }
         }catch(e){}
