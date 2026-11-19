@@ -9,13 +9,15 @@
    xưởng không có trang chi tiết riêng). Cần migration M10 nới CHECK
    target_type của bảng comments (file riêng, CHƯA chạy live) thì 3 loại
    mới mới INSERT được; client đã chấp nhận trước để không chặn UI.
-   - Bình luận mới LUÔN ở trạng thái chờ duyệt (moderation_status='pending'),
-     KHÔNG tự duyệt, KHÔNG tự cộng xu lúc gửi (points 0 ở phía client).
-   - Xu bình luận M12 (+1, tối đa 1 lần/ngày toàn site) CHỈ được cộng
-     SAU KHI DUYỆT (quyết định 18:49 ngày 08/11, sửa NEW-06 ở v111):
-     client KHÔNG gọi award_interaction_points() lúc gửi — việc cộng do
-     luồng duyệt phía server lo; message lúc gửi nói rõ "sau khi được
-     duyệt sẽ được cộng 1 xu".
+   - v355 (19/11/2026, anh Thọ 13:45): BỎ chờ duyệt — bình luận mới tạo ở
+     trạng thái approved (hiện ngay công khai), điểm cộng NGAY ở server
+     (submit_comment gọi credit_comment_points sau INSERT, y hệt
+     approve_comment trước đây). Client KHÔNG gọi award_interaction_points()
+     lúc gửi (điểm do server cộng 1 lần duy nhất).
+   - Chỉ hạn chế bằng CHE TỪ KHÓA khi hiển thị (maskSensitive): từ khóa
+     nhạy cảm / lừa đảo / chửi bậy / không phù hợp văn hoá thành *** với
+     người xem; dữ liệu gốc trong DB không đổi nên admin vẫn đọc đầy đủ
+     trong console (js/admin.js chỉ esc(), không che).
    - v95: khách vãng lai bình luận ĐƠN GIẢN — chỉ 1 ô bình luận, không cần
      tên, không luật 20 ký tự (chỉ cần ≥2 ký tự, khớp CHECK của bảng
      comments), ghi chú rõ không cần đăng nhập; tên mặc định "Khách Vãng
@@ -30,19 +32,35 @@
   // GUEST_NOTE cũ giữ lại (đã export) để không vỡ code khác, nhưng form
   // khách không dùng nữa.
   var GUEST_SIMPLE_NOTE = 'Bình luận với tên Khách Vãng Lai — không cần đăng nhập.';
-  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự, sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày cho mỗi loại hoạt động). Mỗi tài khoản chỉ được 1 bình luận trong 60 giây (tối đa 30 bình luận trong 5 phút cho cùng 1 mục).'; /* v260 (MC-95): ghi luat chan ngay duoi form — truoc day nguoi dung gui lien tiep moi bi chan (loi tho), khong bao truoc. */
+  var LOGGED_IN_NOTE = 'Bình luận từ 20 ký tự được cộng điểm ngay khi đăng (theo luật điểm thưởng). Mỗi tài khoản chỉ được 1 bình luận trong 60 giây (tối đa 30 bình luận trong 5 phút cho cùng 1 mục).'; /* v260 (MC-95): ghi luat chan ngay duoi form — truoc day nguoi dung gui lien tiep moi bi chan (loi tho), khong bao truoc. */
   var VALID_TYPES = ['model_profile', 'shop_profile', 'article', 'lot', 'factory', 'kiot'];
   var COUNT_CACHE_KEY = 'v2s-comment-counts-v1';
 
-  // v118 (09/11/2026, anh giao 22:55): ẩn từ khoá nhạy cảm thành *** khi
-  // HIỂN THỊ bình luận. Chỉ khớp từ/phrase đứng riêng (có ranh giới từ 2
-  // đầu) để không ẩn nhầm từ lành chứa chuỗi con trùng (vd "các", "đi",
-  // "dù", "buổi", "lớn", "cắt") — vì vậy KHÔNG liệt kê các dạng không dấu
-  // ngắn dễ nhầm (cac/di/du/buoi/lon/cut). Chỉ giữ dạng có dấu + dạng
-  // không dấu dài, không gây nhầm. Thêm/bớt từ thì sửa mảng này.
+  // v118 (09/11/2026, anh giao 22:55) + v355 (19/11/2026, anh Thọ 13:45):
+  // ẩn từ khoá nhạy cảm thành *** khi HIỂN THỊ bình luận (và tin chat).
+  // Chỉ khớp từ/phrase đứng riêng (có ranh giới từ 2 đầu) để không ẩn
+  // nhầm từ lành chứa chuỗi con trùng (vd "các", "đi", "dù", "buổi",
+  // "lớn", "cắt") — vì vậy KHÔNG liệt kê các dạng không dấu ngắn dễ nhầm
+  // (cac/di/du/buoi/lon/cut). Chỉ giữ dạng có dấu + dạng không dấu dài,
+  // không gây nhầm. KHÔNG liệt kê dạng không dấu của cụm mà từ đứng riêng
+  // đã là cụm lành (vd 'du ma' = "dư mà", 'an chan' = "ăn chan canh",
+  // 'anh nong' = "anh nóng", 'do cho'/'thang cho' = "do/thang cho...",
+  // 'con chó' = con chó nhà nuôi) và KHÔNG liệt kê cụm 2 nghĩa trong mua
+  // bán ('cọc trước', 'chuyển khoản trước' — shop thu cọc là bình thường).
+  // Thêm/bớt từ thì sửa mảng này.
   var SENSITIVE_WORDS = [
     'địt', 'dit', 'đéo', 'deo', 'lồn', 'cặc', 'buồi', 'đĩ', 'cứt', 'đụ',
-    'mẹ kiếp', 'khốn nạn', 'chó chết'
+    'mẹ kiếp', 'khốn nạn', 'chó chết',
+    /* v355: chửi bậy thêm */
+    'đm', 'địt mẹ', 'dit me', 'đụ má', 'đụ mẹ', 'vãi lồn', 'vai lon',
+    'đồ chó', 'thằng chó', 'cút đi', 'cut di', 'bố mày', 'bo may',
+    'óc chó', 'oc cho',
+    /* v355: lừa đảo */
+    'lừa đảo', 'lua dao', 'lừa tiền', 'lua tien', 'lừa gạt', 'lua gat',
+    'mạo danh', 'mao danh', 'giả mạo', 'gia mao', 'ăn chặn',
+    'chiếm đoạt', 'chiem doat',
+    /* v355: nội dung sex / không phù hợp văn hoá */
+    'phim sex', 'clip sex', 'ảnh nóng', 'khiêu dâm', 'khieu dam'
   ];
   function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function maskSensitive(text) {
@@ -131,7 +149,7 @@
     return res.data || [];
   }
   function commentsListHTML(list) {
-    if (!list || !list.length) return '<p class="v2s-comments-empty">Chưa có bình luận nào được duyệt.</p>';
+    if (!list || !list.length) return '<p class="v2s-comments-empty">Chưa có bình luận nào.</p>';
     return '<ul class="v2s-comments-list">' + list.map(function (c) {
       var when = '';
       try { when = c.created_at ? new Date(c.created_at).toLocaleDateString('vi-VN') : ''; } catch (e) {}
@@ -168,15 +186,13 @@
     return 'Chưa gửi được bình luận: ' + m;
   }
 
-  // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu +1
-  // SAU KHI DUYỆT); khách vãng lai → chỉ cần viết gì đó (≥2 ký tự, v95 —
-  // khớp CHECK của bảng comments; chặn link + chống spam do RPC lo).
+  // nhập → ≥20 ký tự (validateComment của js/reward.js, để tính xu);
+  // khách vãng lai → chỉ cần viết gì đó (≥2 ký tự, v95 — khớp CHECK của
+  // bảng comments; chặn link + chống spam do RPC lo).
   // Trả {ok, points, message} — KHÔNG ném lỗi.
-  // v111 (NEW-06, quyet dinh 18:49 ngay 08/11): KHONG cong xu luc gui.
-  // Xu binh luan +1 chi cong SAU KHI DUYET — viec cong do luong duyet
-  // phia server lo; client khong goi awardInteraction('comment') o day
-  // nua (ban cu goi ngay sau RPC submit_comment nen xu cong truoc khi
-  // duyet, trai quy tac cong bo). points luon 0 o day.
+  // v355 (19/11/2026): KHONG cong xu o client — diem do server cong ngay
+  // trong submit_comment (credit_comment_points sau INSERT, 1 lan duy
+  // nhat nho khoa idempotency). points luon 0 o day.
   async function submitComment(targetType, targetRef, text, displayName) {
     if (VALID_TYPES.indexOf(targetType) === -1) return { ok: false, points: 0, message: 'Loại mục bình luận không hợp lệ.' };
     if (!targetRef) return { ok: false, points: 0, message: 'Thiếu mục bình luận.' };
@@ -200,8 +216,9 @@
     }
     // NEW-01 (08/11): INSERT trực tiếp bị RLS chặn (42501) dù policy cho
     // phép — gửi bình luận qua RPC SECURITY DEFINER submit_comment() thay
-    // cho INSERT trực tiếp. RPC tự validate + chống spam (luật M7.9b) và
-    // luôn tạo bình luận ở trạng thái pending; xu chỉ cộng sau khi duyệt.
+    // cho INSERT trực tiếp. RPC tự validate + chống spam (luật M7.9b);
+    // v355 (19/11): bình luận tạo ở trạng thái approved (hiện ngay, không
+    // chờ duyệt) và điểm cộng ngay ở server.
     // p_auth_user_id: uid của tài khoản đang đăng nhập, null khi khách vãng lai.
     try {
       var res = await a.client.rpc('submit_comment', {
@@ -214,10 +231,9 @@
       return { ok: false, points: 0, message: friendlyCommentError(e) };
     }
     if (user) commentCooldownMark(user.id);
-    // Bình luận đã gửi (đang chờ duyệt). Xu chỉ tính sau khi duyệt —
-    // KHÔNG gọi awardInteraction ở đây (v111 NEW-06). Trả message nói rõ
-    // xu cộng sau khi duyệt để người dùng không tưởng đã cộng ngay.
-    return { ok: true, points: 0, message: 'Bình luận đã gửi, đang chờ duyệt. Sau khi được duyệt sẽ được cộng 1 xu (tối đa 1 lần/ngày).' };
+    // v355 (19/11/2026): bình luận đã hiện ngay + điểm (nếu đủ điều kiện)
+    // đã cộng ở server. KHÔNG gọi awardInteraction ở đây.
+    return { ok: true, points: 0, message: user ? 'Bình luận đã đăng. Bình luận từ 20 ký tự được cộng điểm ngay theo luật điểm thưởng.' : 'Bình luận đã đăng.' };
   }
 
   // Vẽ mục bình luận (form + danh sách) vào 1 phần tử. container: element

@@ -175,6 +175,18 @@
     btn.hidden = state.atTop;
   }
 
+  /* v355 (19/11/2026, anh Thọ 13:45): che từ khóa nhạy cảm/lừa đảo/
+     chửi bậy thành *** khi HIỂN THỊ tin chat (cùng danh sách
+     js/comments.js maskSensitive); dữ liệu gốc trong DB không đổi nên
+     admin vẫn đọc đầy đủ. Bot là nội dung hệ thống nên không chứa từ
+     khóa — che chung không ảnh hưởng. */
+  function maskChatText(t) {
+    try {
+      if (typeof window !== 'undefined' && window.Ver2Comments && typeof window.Ver2Comments.maskSensitive === 'function') return window.Ver2Comments.maskSensitive(t);
+    } catch (e) { /* rơi về chữ gốc bên dưới */ }
+    return t;
+  }
+
   function messageHtml(m) {
     var kind = m.author_kind || 'user';
     var tag = kind === 'admin' ? '<span class="chat-tag">QUẢN TRỊ</span>'
@@ -190,7 +202,7 @@
       + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.author_name || 'Khách')
       + '</b>' + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'
       + roleBadge(m.author_role) + verified + ' · ' + esc(fmtTime(m.created_at)) + '</div>'
-      + '<p class="chat-text">' + esc(m.body || '') + '</p></div></div>';
+      + '<p class="chat-text">' + esc(maskChatText(m.body || '')) + '</p></div></div>';
   }
 
   function restoreScroll(list, prev) {
@@ -230,7 +242,7 @@
   }
 
   /* v337 (18/11/2026, anh Thọ 13:37 + 13:41): thứ tự ưu tiên Top tương
-     tác: User (người thật) > Test tên thật > Bot. Bot chat nhắn mỗi 5
+     tác: User (người thật) > Test tên thật > Bot. Bot chat nhắn mỗi 15
      giây nên nếu xếp theo số tin thì Bot luôn đứng đầu — người thật phải
      được ưu tiên; Test (tài khoản test dùng tên thật) xếp sau User nhưng
      trước Bot. Nhận diện: Bot = cờ is_bot / role 'bot' / tên có "Bot"/

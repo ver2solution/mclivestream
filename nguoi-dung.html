@@ -54,7 +54,6 @@
 .hist-answer{margin:10px 0 0 12px;padding:10px 12px;background:#f2f6f5;border-left:3px solid #0b5d4e;border-radius:0 8px 8px 0}
 .hist-answer .hist-src{margin-bottom:4px}
 .hist-foot{margin-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:14px}
-.hist-pending{display:inline-block;background:#fff3d6;color:#6b4e00;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
 .nd-empty{color:#666;padding:16px 0;line-height:1.6}
 .nd-edit label{display:block;font-weight:700;margin:12px 0 4px}
 .nd-edit input[type=text]{width:100%;max-width:420px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit}
@@ -250,8 +249,7 @@
       h += '<div class="hist-answer"><div class="hist-src"><b>' + esc(it.answer_author_name || 'Trả lời') + '</b> · ' + esc(fmtTime(it.answer_at)) + '</div>'
         + '<div class="hist-body">' + esc(it.answer_body) + '</div></div>';
     }
-    h += '<div class="hist-foot"><a href="' + esc(it.target_url || '#') + '">Xem tại nguồn →</a>'
-      + (it.status === 'pending' ? '<span class="hist-pending">Đang chờ duyệt</span>' : '') + '</div></div>';
+    h += '<div class="hist-foot"><a href="' + esc(it.target_url || '#') + '">Xem tại nguồn →</a></div></div>';
     return h;
   }
   async function loadHistory(reset) {
