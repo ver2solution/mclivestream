@@ -183,7 +183,9 @@
     var verified = m.is_verified ? ' <span class="verified" title="Đã xác minh đăng ký">✓</span>' : '';
     var ts = 0;
     try { ts = new Date(m.created_at).getTime() || 0; } catch (e) { ts = 0; }
-    return '<div class="chat-msg" data-ts="' + ts + '">'
+    /* v353 (19/11/2026, M-02 lịch sử tương tác): neo id cho từng tin để link
+       lịch sử (#chat-msg-<id>) cuộn đúng vị trí; chỉ thêm khi RPC trả id. */
+    return '<div class="chat-msg"' + (m.id ? ' id="chat-msg-' + m.id + '"' : '') + ' data-ts="' + ts + '">'
       + '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>'
       + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.author_name || 'Khách')
       + '</b>' + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'

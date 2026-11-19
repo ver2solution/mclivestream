@@ -135,7 +135,9 @@
     return '<ul class="v2s-comments-list">' + list.map(function (c) {
       var when = '';
       try { when = c.created_at ? new Date(c.created_at).toLocaleDateString('vi-VN') : ''; } catch (e) {}
-      return '<li><b>' + esc(c.commenter_name || 'Khách Vãng Lai') + '</b>'
+      /* v353 (19/11/2026, M-02 lịch sử tương tác): neo id cho từng bình luận
+         để link lịch sử (#comment-<id>) cuộn đúng vị trí. */
+      return '<li' + (c.id ? ' id="comment-' + c.id + '"' : '') + '><b>' + esc(c.commenter_name || 'Khách Vãng Lai') + '</b>'
         + (when ? ' <span class="v2s-comments-date">' + esc(when) + '</span>' : '')
         + '<p>' + esc(maskSensitive(c.comment)) + '</p></li>';
     }).join('') + '</ul>';
