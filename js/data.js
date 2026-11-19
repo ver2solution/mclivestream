@@ -16509,6 +16509,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Double 11/2026 đạt 1.776,4 tỷ NDT (khoảng 6.217 nghìn tỷ đồng) nhưng chỉ tăng 4,8% — lạnh nhất lịch sử. Ba cơ quan độc lập hội tụ cùng một khoảng số; gói bưu kiện có thể tăng trưởng âm lần đầu; giỏ hàng người trẻ chỉ còn gạo, dầu ăn, giấy vệ sinh; Tmall bỏ mãn giảm, Douyin giảm thẳng 15%. Ai thắng trong mùa lạnh — và 7 bài học cho shop Việt trước Black Friday 27/11 và 12.12."
   },
+  {
+   "title": "VinCons tuyển 200.000 thợ xây, lương tới 50 triệu/tháng",
+   "cat": "Việc Làm",
+   "source": "Người Quan Sát",
+   "date": "2026-11-19",
+   "url": "https://vn.tradingview.com/news/nguoiquansat:342e1a8e1833d:0/",
+   "page": "bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero.jpg",
+   "pinned": false,
+   "takeaway": "VinCons tuyển dụng 200.000 thợ xây, lương 14–50 triệu/tháng, không cần kinh nghiệm, bao ăn ở miễn phí. Vì sao thợ xây đổ xô ứng tuyển và đăng ký thế nào?"
+  },
 ],
  "lots": [
    {
