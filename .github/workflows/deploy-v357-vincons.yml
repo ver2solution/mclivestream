@@ -1,0 +1,48 @@
+name: "Deploy v357-vincons (Bai VinCons tuyen 200.000 tho xay)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v357-vincons.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v357-vincons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v357-vincons package
+        run: |
+          echo "--- Guard DAU: neu bai VinCons da co tren main thi da deploy roi, DUNG ---"
+          if test -f bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html; then echo "Bai VinCons DA DEPLOY ROI - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main ba2b88d) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "e1b9c4fac1e6eb0dbe960d0ebea68d61" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "494" || (echo "BASE DOI: sitemap khong con 494 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v357-vincons-deploy.zip
+          echo "--- verify v357-vincons (5 file) ---"
+          for f in bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html js/data.js sitemap.xml images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero.jpg images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero-og.jpg; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang" js/data.js || (echo "SAI: data.js phai co slug VinCons"; exit 1)
+          grep -qF "vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang" sitemap.xml || (echo "SAI: sitemap phai co slug VinCons"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "495" || (echo "SAI: sitemap phai 495 URL"; exit 1)
+          node --check js/data.js || (echo "SAI: js/data.js loi cu phap"; exit 1)
+          grep -qF "VinCons tuyển 200.000 thợ xây, lương tới 50 triệu/tháng" bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html || (echo "SAI: bai VinCons phai co dung tieu de"; exit 1)
+          grep -qF "images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero.jpg" bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html || (echo "SAI: bai VinCons phai dung anh hero local"; exit 1)
+          echo "verify OK: 5 file, bai VinCons + data.js + sitemap 495 + anh hero local"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v357-vincons-deploy.zip
+          git add bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang.html js/data.js sitemap.xml images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero.jpg images/bai-viet/vincons-tuyen-200000-tho-xay-luong-toi-50-trieu-thang-hero-og.jpg
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v357-vincons: Bai VinCons tuyen 200.000 tho xay, luong toi 50 trieu/thang (chu de hot trend video Cu Dau; lenh anh Tho 15:33) — bai moi + data.js + sitemap 495 + anh hero local Pexels; KHONG doi sw.js (deploy bai rieng, theo tien le v355-drafts)"
+            git push
+          fi
