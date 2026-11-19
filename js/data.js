@@ -16542,6 +16542,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Diêm Thống Nhất từng bị viết điếu văn năm 2020, rồi lột xác thành 'chúa tể meme' của Gen Z. Phân tích 3 cú lật của ông cụ 70 tuổi và 5 bài học content cho shop nhỏ."
   },
+  {
+   "title": "A/B test kiểu MythBusters: đổi 1 chi tiết, tiền boa tăng 36%",
+   "cat": "Phân tích",
+   "source": "Giải Phẫu Công Nghệ (YouTube Shorts)",
+   "date": "2026-11-19",
+   "url": "https://www.youtube.com/shorts/NwJwlWCBNVo",
+   "page": "bai-viet/mythbusters-a-b-test-tien-boa-tang-36-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mythbusters-a-b-test-tien-boa-tang-36-phan-tram-hero.jpg",
+   "pinned": false,
+   "takeaway": "Thí nghiệm 3 ngày của MythBusters: chỉ đổi 1 chi tiết, tiền boa từ 72 lên 98 đô la, tăng 36%. Shop live học được gì về cách test tăng doanh thu? Xem ngay."
+  },
 ],
  "lots": [
    {
