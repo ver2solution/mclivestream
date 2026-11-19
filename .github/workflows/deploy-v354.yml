@@ -1,0 +1,48 @@
+name: "Deploy v354 (Bot chat Cong dong 15 giay/tin)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v354.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v354:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v354 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v354-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v354-shell-1' sw.js; then echo "v354 DA DEPLOY ROI (sw.js da co v354-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 5ea4921) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "176034b9836e7c489f402e88b735ef34" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "493" || (echo "BASE DOI: sitemap khong con 493 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v354-deploy.zip
+          echo "--- verify v354 (2 file) ---"
+          for f in js/chat-bots.js sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "v354-shell-1" sw.js || (echo "SAI: sw.js phai co v354-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v353-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v353-shell-1"; exit 1; fi
+          node --check js/chat-bots.js || (echo "SAI: js/chat-bots.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -qF "BOT_INTERVAL_MS = 15000" js/chat-bots.js || (echo "SAI: js/chat-bots.js phai co BOT_INTERVAL_MS = 15000"; exit 1)
+          if grep -qF "BOT_INTERVAL_MS = 5000" js/chat-bots.js; then echo "SAI: js/chat-bots.js van con 5000"; exit 1; fi
+          echo "verify OK: 2 file, sw.js v354-shell-1, BOT_INTERVAL_MS = 15000"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v354-deploy.zip
+          git add js/chat-bots.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v354: Bot chat Cong dong ra tin moi 15 giay (js/chat-bots.js BOT_INTERVAL_MS 5000 -> 15000, lenh anh Tho 13:45 19/11); CACHE v354-shell-1 (rebase tu 5ea4921)"
+            git push
+          fi
