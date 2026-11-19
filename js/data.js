@@ -15376,6 +15376,54 @@ window.V20_DATA = {
    "takeaway": "Thu hồi vốn xả kho cuối năm: tính giá hòa vốn sau phí sàn — món vốn 100.000đ, giá gốc 200.000đ thì giảm 30% lãi 26.000đ, giảm 50% lỗ 10.000đ; ngưỡng tối đa ~44,4%; xả 3 đợt tới Tết 06/02/2027."
   },
   {
+   "title": "Cách xả hàng tồn kho bằng live và affiliate Black Friday",
+   "cat": "Đang hot",
+   "source": "595 Agency (TikTok Shop)",
+   "date": "2026-11-19",
+   "url": "https://www.595.agency/blog/tiktok-shop-black-friday-2026-seller-guide",
+   "page": "bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách xả hàng tồn kho tuần Black Friday 27–30/11/2026: live + affiliate — người bán live TikTok tăng 84% doanh số cuối tuần 2025; tính giá hòa vốn sau phí sàn 6% + 4,5% trước khi giảm."
+  },
+  {
+   "title": "Target Black Friday 2026: giảm 50%, tặng thẻ 1.000 USD",
+   "cat": "Đang hot",
+   "source": "Target Corporation",
+   "date": "2026-11-19",
+   "url": "https://corporate.target.com/press/release/2026/11/target-announces-black-friday-deals-and-giveaways-to-help-families-save-big-on-gifts-they-ll-love-to",
+   "page": "bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Target Black Friday 2026 (công bố 17/11/2026): sale 22–29/11 giảm tới 50%, 100 khách đầu tiên mỗi cửa hàng ngày 27/11 nhận thẻ quà 25–1.000 USD; Pokémon drop ngày 28/11."
+  },
+  {
+   "title": "Shopify Black Friday 2026: 14,6 tỷ USD, shop nhỏ học gì",
+   "cat": "Đang hot",
+   "source": "OMA Digital (Shopify / Adobe)",
+   "date": "2026-11-19",
+   "url": "https://omazdigital.com/blog/shopify-black-friday-2026-checklist/",
+   "page": "bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopify Black Friday 2026: nhà bán lẻ Shopify bán 14,6 tỷ USD dịp BFCM 2025 (+27%), đỉnh 5,1 triệu USD/phút; hạn chót đóng băng gian hàng ngày 20/11/2026."
+  },
+  {
+   "title": "Small Business Saturday 2026: ngày của shop nhỏ 28/11",
+   "cat": "Đang hot",
+   "source": "Constant Contact (American Express / SBA / NRF)",
+   "date": "2026-11-19",
+   "url": "https://www.constantcontact.com/blog/small-business-saturday/",
+   "page": "bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Small Business Saturday 2026 (thứ Bảy 28/11/2026): ngày của shop nhỏ do American Express lập năm 2010; chi tiêu báo cáo năm 2025 đạt 22 tỷ USD, 68 xu mỗi USD ở lại cộng đồng."
+  },
+  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
