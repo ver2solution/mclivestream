@@ -65,6 +65,7 @@
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-19 adds 4 Thi truong articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm Tết 2026" #6/10 (4.094 words, deep + đánh giá tiềm năng; góc mới: thưởng sớm + mua món đắt tiền hơn; chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng) + 3 news ("mua sắm lễ hội Ấn Độ 2026" 2.481 words; "social commerce Hàn Quốc 2026" 2.496 words; "livestream toàn cầu 2026" 2.485 words). SEO V2. Total 440 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-xu-huong-2026-11-19 adds 4 Xu hướng articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng kinh doanh sau Tết" #6/10 (deep, 3.159 words; Cốc Cốc 09/2026 via Brands Vietnam 16/11/2026) + 1 rotation topic #2 "xu hướng mua hàng mới" (eMarketer 29/06/2026, added LAST for Zalo 10:00) + 2 news ("mua sắm lễ 2026" NRF 15/10/2026, 1.735 words; "hành vi mua sắm 2027" FashionUnited 18/11/2026, 2.407 words). Total 448 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-dong-tien-2026-11-19 adds 4 Dong tien articles (19/11/2026, Thursday): 1 seasonal keyword 'thu hoi von xa kho cuoi nam' #7/10 (deep, NEW angle: bang tinh gia hoa von theo phi san — khac bai 12 cach cua Dang hot 13/11; added LAST) + 3 news 18/11 (bien ban FOMC tinh tang 50 diem thang 12 + Nvidia quy III 115,8 ty USD co phieu van giam 2,9% + vang roi tiep 3.752 USD thap nhat 14 thang). SEO V2 (title suffix + link boxes). Total 444 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16262,6 +16263,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Xu hướng mua sắm Tết 2026: thưởng Tết trả sớm từ tháng 11/2026 (LĐLĐ TP.HCM 02/11/2026); đơn trên 1 triệu đồng tăng từ 14,5% lên 19,0%; doanh số 4 sàn quý 3/2026 đạt 150,4 nghìn tỷ đồng, tăng 45,16% (Metric 28/10/2026); 51% người Việt chi nhiều hơn dịp Tết 2027 (Cốc Cốc 09/2026). Bài chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng."
+  },
+  {
+   "title": "Xu hướng kinh doanh sau Tết: 6 việc shop nhỏ nên làm",
+   "cat": "Xu hướng",
+   "source": "Brands Vietnam",
+   "date": "2026-11-19",
+   "url": "https://www.brandsvietnam.com/congdong/topic/toan-canh-thi-truong-tet-2027-phan-tich-xu-huong-chi-tieu-va-hanh-vi-mua-sam-cua-nguoi-viet",
+   "page": "bai-viet/xu-huong-kinh-doanh-sau-tet-2027-6-viec-shop-nho-nen-lam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-kinh-doanh-sau-tet-2027-6-viec-shop-nho-nen-lam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng kinh doanh sau Tết 2027: 51% chi nhiều hơn cho Tết 2027, 46% chưa lên kế hoạch mua cụ thể, 76% để giá và khuyến mãi quyết định thời điểm mua — 6 việc shop nhỏ nên làm (Cốc Cốc 09/2026, Brands Vietnam 16/11/2026)."
+  },
+  {
+   "title": "Mua sắm lễ 2026: lần đầu vượt 1.013 nghìn tỷ USD",
+   "cat": "Xu hướng",
+   "source": "NRF",
+   "date": "2026-11-19",
+   "url": "https://nrf.com/media-center/press-releases/nrf-forecasts-2026-holiday-sales-growth-as-consumers-remain-resilient",
+   "page": "bai-viet/mua-sam-le-2026-vuot-1013-nghin-ty-usd-lan-dau-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-le-2026-vuot-1013-nghin-ty-usd-lan-dau-tien.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm lễ 2026: NRF dự báo doanh số tháng 11–12/2026 tăng 4,2% lên 1.013 nghìn tỷ USD — lần đầu vượt 1.000 tỷ USD; thuê mùa vụ 325.000–375.000 người (NRF 15/10/2026)."
+  },
+  {
+   "title": "Hành vi mua sắm 2027: AI tìm hàng, cảm xúc chốt đơn",
+   "cat": "Xu hướng",
+   "source": "FashionUnited",
+   "date": "2026-11-19",
+   "url": "https://fashionunited.uk/news/business/consumer-behaviour-outlook-2027-ai-the-human-element-and-value-for-money/2026111891262",
+   "page": "bai-viet/hanh-vi-mua-sam-2027-ai-tim-hang-cam-xuc-chot-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hanh-vi-mua-sam-2027-ai-tim-hang-cam-xuc-chot-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hành vi mua sắm 2027: thương mại qua AI có thể đạt 1.000 tỷ USD vào năm 2030; 66% đặt giá trị lên đầu, 70% muốn thuộc về cộng đồng (ICSC/McKinsey/WGSN qua FashionUnited 18/11/2026)."
+  },
+  {
+   "title": "Xu hướng mua hàng mới: mua ngay trong mạng xã hội",
+   "cat": "Xu hướng",
+   "source": "eMarketer",
+   "date": "2026-11-19",
+   "url": "https://www.emarketer.com/content/1-3-western-consumers-shop-via-social-ai-data-essential",
+   "page": "bai-viet/xu-huong-mua-hang-moi-mua-ngay-trong-mang-xa-hoi-100-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-hang-moi-mua-ngay-trong-mang-xa-hoi-100-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng mua hàng mới: thương mại xã hội Mỹ lần đầu vượt 100 tỷ USD năm 2026, TikTok Shop đạt 23,41 tỷ USD, lưu lượng qua AI tăng 1.200% (eMarketer/NIQ 29/06/2026)."
   }
 ],
  "lots": [
