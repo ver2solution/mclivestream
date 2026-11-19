@@ -1,0 +1,61 @@
+name: "Deploy v355 (Bo cho duyet binh luan)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v355.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v355:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v355 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v355-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v355-shell-1' sw.js; then echo "v355 DA DEPLOY ROI (sw.js da co v355-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 8646c5f) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "e1b9c4fac1e6eb0dbe960d0ebea68d61" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "494" || (echo "BASE DOI: sitemap khong con 494 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v355-deploy.zip
+          echo "--- verify v355 (7 file) ---"
+          for f in js/comments.js js/community-chat.js js/admin.js quan-tri.html nguoi-dung.html quy-tac-diem-thuong.html sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "v355-shell-1" sw.js || (echo "SAI: sw.js phai co v355-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v354-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v354-shell-1"; exit 1; fi
+          node --check js/comments.js || (echo "SAI: js/comments.js loi cu phap"; exit 1)
+          node --check js/community-chat.js || (echo "SAI: js/community-chat.js loi cu phap"; exit 1)
+          node --check js/admin.js || (echo "SAI: js/admin.js loi cu phap"; exit 1)
+          grep -qF "get_decided_comments" js/admin.js || (echo "SAI: js/admin.js phai goi get_decided_comments"; exit 1)
+          if grep -qF "approve-comment" js/admin.js; then echo "SAI: js/admin.js van con approve-comment"; exit 1; fi
+          if grep -qF "reject-comment" js/admin.js; then echo "SAI: js/admin.js van con reject-comment"; exit 1; fi
+          if grep -qF "requeue-comment" js/admin.js; then echo "SAI: js/admin.js van con requeue-comment"; exit 1; fi
+          if grep -qF "loadDecidedComments" js/admin.js; then echo "SAI: js/admin.js van con loadDecidedComments"; exit 1; fi
+          if grep -qF "get_pending_comments" js/admin.js; then echo "SAI: js/admin.js van con get_pending_comments"; exit 1; fi
+          grep -qF "lua dao" js/comments.js || (echo "SAI: js/comments.js phai co tu khoa lua dao trong SENSITIVE_WORDS"; exit 1)
+          grep -qF "maskSensitive" js/comments.js || (echo "SAI: js/comments.js phai co maskSensitive"; exit 1)
+          grep -qF "maskChatText" js/community-chat.js || (echo "SAI: js/community-chat.js phai co maskChatText"; exit 1)
+          grep -qF "Bình luận</h2>" quan-tri.html || (echo "SAI: quan-tri.html phai co h2 Binh luan"; exit 1)
+          if grep -qF "admDecidedList" quan-tri.html; then echo "SAI: quan-tri.html van con admDecidedList"; exit 1; fi
+          if grep -qF "hist-pending" nguoi-dung.html; then echo "SAI: nguoi-dung.html van con hist-pending"; exit 1; fi
+          grep -qF "ngay khi đăng" quy-tac-diem-thuong.html || (echo "SAI: quy-tac-diem-thuong.html phai co cau cong ngay khi dang"; exit 1)
+          if grep -qF "chờ duyệt" quy-tac-diem-thuong.html; then echo "SAI: quy-tac-diem-thuong.html van con cho duyet"; exit 1; fi
+          echo "verify OK: 7 file, sw.js v355-shell-1, admin chi nut Xoa, khong con cho duyet"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v355-deploy.zip
+          git add js/comments.js js/community-chat.js js/admin.js quan-tri.html nguoi-dung.html quy-tac-diem-thuong.html sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v355: Bo cho duyet binh luan (lenh anh Tho 13:45 19/11) — binh luan hien ngay + cong diem ngay luc gui (migration submit_comment 'approved' + credit); tu khoa nhay cam/lua dao/chui bay hien *** (js/comments.js + js/community-chat.js); admin chi con nut Xoa (js/admin.js + quan-tri.html); CACHE v355-shell-1 (rebase tu 8646c5f)"
+            git push
+          fi
