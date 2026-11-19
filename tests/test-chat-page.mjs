@@ -43,7 +43,14 @@ ok(css.includes('[hidden]{display:none!important}'), 'v20.css co [hidden]{displa
 ok(css.includes('@media (max-width:720px)') && css.includes('.chat-page.room-open'), 'v20.css co responsive mobile (danh sach phong / hoi thoai)');
 
 const sw = read('sw.js');
-ok(sw.includes('v360-shell-1'), 'sw.js CACHE v360-shell-1');
+ok(sw.includes('v361-shell-1'), 'sw.js CACHE v361-shell-1');
+
+const login = read('dang-nhap.html');
+ok(!login.includes("v.charAt(0) === '/'"), 'dang-nhap.html: safeNext KHONG loai duong dan tuyet doi bat dau / (loi v360)');
+ok(login.includes("v.indexOf('//') === 0"), 'dang-nhap.html: safeNext VAN chan // (protocol-relative)');
+
+ok(chat.includes('/js/reward.js'), 'chat.html nap js/reward.js (lay so xu cho chip header)');
+ok(js.includes('syncHeader') && js.includes("'/trang-cua-toi.html'"), 'chat-page.js dong bo chip header (ten + xu, bam vao mo Trang cua toi)');
 
 console.log(`\n${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

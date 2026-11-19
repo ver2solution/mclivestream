@@ -355,18 +355,55 @@
     }
   }
 
+  /* --- Nut header (v361): dong bo chip tai khoan tren trang chat --- */
+  function displayNameFromSession(user) {
+    var meta = (user && user.user_metadata) || {};
+    var n = String(meta.full_name || meta.name || '').trim();
+    if (n) return n;
+    var email = (user && user.email) || '';
+    return email ? email.split('@')[0] : 'Trang của tôi';
+  }
+  function syncHeader(user) {
+    /* V20HeaderRefresh (js/app.js) khong co tren trang nay vi trang chat
+       khong nap app.js/data.js — chip tai khoan o header khong tu doi
+       thanh ten + xu khi dang nhap. Dong bo thu cong o day: da dang nhap
+       -> ten (+ so xu qua reward.js neu co), bam vao mo Trang cua toi;
+       khach -> nut Dang Nhap nhu cu. */
+    var btn = document.querySelector('.site-head .btn.btn-primary.btn-sm');
+    if (!btn) return;
+    if (user) {
+      var name = displayNameFromSession(user);
+      btn.textContent = name;
+      btn.setAttribute('href', '/trang-cua-toi.html');
+      btn.setAttribute('title', 'Mở Trang của tôi');
+      var R = (typeof window !== 'undefined' && window.Ver2Reward) ? window.Ver2Reward : null;
+      if (R && typeof R.getMyPointsBalanceResult === 'function') {
+        R.getMyPointsBalanceResult().then(function (r) {
+          if (r && r.ok) btn.textContent = name + ' · ' + (Number(r.balance) || 0) + ' xu';
+        }).catch(function () { /* giu ten khong so du */ });
+      }
+    } else {
+      btn.textContent = 'Đăng Nhập';
+      btn.setAttribute('href', '/dang-nhap.html?next=/cong-dong/chat');
+      btn.removeAttribute('title');
+    }
+  }
+
   /* --- Auth: khach chi thay loi moi, KHONG goi RPC doc tin --- */
   async function refreshAuth() {
     var invite = $('chatGuestInvite'), app = $('chatApp');
     var A = authUI();
     var loggedIn = false;
+    var user = null;
     if (A && typeof A.getSession === 'function') {
       try {
         var s = await A.getSession();
-        loggedIn = !!(s && s.user);
-      } catch (e) { loggedIn = false; }
+        user = (s && s.user) || null;
+        loggedIn = !!user;
+      } catch (e) { loggedIn = false; user = null; }
     }
     state.loggedIn = loggedIn;
+    syncHeader(user);
     if (invite) invite.hidden = loggedIn;
     if (app) app.hidden = !loggedIn;
     if (loggedIn) {

@@ -106,11 +106,16 @@
     location.replace('dang-ky.html' + (qs.length ? '?' + qs.join('&') : ''));
     return;
   }
+  /* v361 (19/11/2026): CHO PHEP duong dan tuyet doi bat dau '/' (vd
+     ?next=/cong-dong/chat) — truoc day safeNext loai bo moi gia tri bat
+     dau '/', nen dang nhap tu trang chat (va moi trang dung ?next=/...)
+     deu roi ve index.html thay vi ve dung trang. '//' van bi chan
+     (protocol-relative), '://' va '..' van bi chan. */
   function safeNext(v) {
     if (!v) return 'index.html';
     try { v = decodeURIComponent(v); } catch (e) { return 'index.html'; }
     if (v.indexOf('://') !== -1 || v.indexOf('//') === 0 || v.indexOf('..') !== -1
-      || v.charAt(0) === '/' || v.indexOf('dang-nhap.html') === 0 || v.indexOf('dang-ky.html') === 0
+      || v.indexOf('dang-nhap.html') === 0 || v.indexOf('dang-ky.html') === 0
       || !/^[A-Za-z0-9\-_\/\.#\?=&%]+$/.test(v)) return 'index.html';
     return v;
   }
