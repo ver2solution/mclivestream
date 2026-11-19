@@ -16553,6 +16553,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Thí nghiệm 3 ngày của MythBusters: chỉ đổi 1 chi tiết, tiền boa từ 72 lên 98 đô la, tăng 36%. Shop live học được gì về cách test tăng doanh thu? Xem ngay."
   },
+  {
+   "title": "22.400 tỷ đồng trong 1 ngày livestream — Tân Ba tuyên bố rút lui lần thứ 5: đế chế 175.000 tỷ đồng/năm đi về đâu?",
+   "cat": "Phân tích",
+   "source": "36Kr (野马财经)",
+   "date": "2026-11-19",
+   "url": "https://www.36kr.com/p/3433683458952582",
+   "page": "bai-viet/tan-ba-22400-ty-dong-1-ngay-double-11-2023-tuyen-bo-rut-lui-lan-5.html",
+   "img": "https://img.36krcdn.com/hsossms/20250822/v2_3d2699d735e340d59aa3dee17d5d4364@5888275_oswg173617oswg1080oswg2066_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Tân Ba bán 22.400 tỷ đồng trong 1 ngày Double 11/2023, xây đế chế Tân Tuyển 175.000 tỷ đồng/năm, rồi tuyên bố rút lui lần thứ 5 tối 18/8/2025 vì lá phổi \"như người 95 tuổi\". Giải mã mô hình đối tác 60%/5%, người kế nhiệm Sơ Thụy Tuyết và 7 bài học cho shop Việt trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
