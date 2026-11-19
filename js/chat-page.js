@@ -1,4 +1,13 @@
-/* v360 (19/11/2026, lenh Owner 16:27): Trang chat cong dong day du
+/* v364 (19/11/2026): CHAT-01 (P2) — trang chat dung RPC theo phong.
+   Migration CHAT-01 da chay xong (2 phan, kiem chung 5/5 + 6/6):
+   list_chat_rooms (danh sach phong server-driven) + get_chat_messages
+   (theo phong, tra them author_username/avatar_url/parent_id/reply_to)
+   + post_chat_message (tra loi + idempotency client_msg_id + chong spam
+   10s + toi da 60 tin/gio + kiem mute) + delete_my_chat_message (chi
+   xoa tin cua minh) + report_chat_message + block_chat_user.
+   Kiem duyet (mute_chat_user / moderate_chat_message) lam o console
+   admin (js/admin.js), khong lam tren trang chat cong khai.
+   v360 (19/11/2026, lenh Owner 16:27): Trang chat cong dong day du
    /cong-dong/chat (V4 PR-04) — Chat tong truoc, doc lap voi trang chu.
    CHI tin THAT tu DB qua RPC chat V4 (PR-03); khong bot, khong so online
    gia, khong tin demo. Khach chua dang nhap: chi thay loi moi, KHONG goi
@@ -14,25 +23,34 @@
   var PAGE = 50;
   var POLL_MS = 60000;
   var MAX_BODY = 2000;
-  var LASTSEEN_KEY = 'v2s_chat_lastseen_chat-tong';
 
-  /* Danh sach phong v1 — theo seed DB chat_rooms (PR-03): chi chat-tong
-     mo (is_open=true); 6 phong con lai dong, hien khoa "Sap mo". CHAT-01
-     se chuyen sang RPC list_chat_rooms (server-driven). */
-  var ROOMS = [
-    { slug: 'chat-tong', name: 'Chat tổng', note: 'Trò chuyện chung toàn cộng đồng.', open: true },
-    { slug: 'viec-lam', name: 'Việc làm & Tuyển dụng', note: 'Tìm việc, tuyển người, chia sẻ kinh nghiệm nghề.', open: false },
-    { slug: 'livestream', name: 'Livestream & Bán hàng', note: 'Kỹ thuật live, chốt đơn, tăng chuyển đổi.', open: false },
-    { slug: 'mau-live', name: 'Mẫu Live', note: 'Cộng đồng mẫu livestream.', open: false },
-    { slug: 'chu-shop', name: 'Chủ Shop', note: 'Chủ shop nhỏ trao đổi kinh nghiệm bán live.', open: false },
-    { slug: 'kiot-lo', name: 'Kiot & Lô xả kho', note: 'Sang nhượng kiot, xả lô tồn kho.', open: false },
-    { slug: 'hoi-dap', name: 'Hỏi đáp & Chia sẻ', note: 'Hỏi đáp chung, chia sẻ kinh nghiệm.', open: false }
+  /* Danh sach phong du phong khi RPC list_chat_rooms loi — theo seed DB
+     chat_rooms (PR-03): chi chat-tong mo (is_open=true); 6 phong con lai
+     dong, hien khoa "Sap mo". */
+  var ROOMS_FALLBACK = [
+    { slug: 'chat-tong', name: 'Chat tổng', open: true },
+    { slug: 'viec-lam', name: 'Việc làm & Tuyển dụng', open: false },
+    { slug: 'livestream', name: 'Livestream & Bán hàng', open: false },
+    { slug: 'mau-live', name: 'Mẫu Live', open: false },
+    { slug: 'chu-shop', name: 'Chủ Shop', open: false },
+    { slug: 'kiot-lo', name: 'Kiot & Lô xả kho', open: false },
+    { slug: 'hoi-dap', name: 'Hỏi đáp & Chia sẻ', open: false }
   ];
+  var ROOM_NOTES = {
+    'chat-tong': 'Trò chuyện chung toàn cộng đồng.',
+    'viec-lam': 'Tìm việc, tuyển người, chia sẻ kinh nghiệm nghề.',
+    'livestream': 'Kỹ thuật live, chốt đơn, tăng chuyển đổi.',
+    'mau-live': 'Cộng đồng mẫu livestream.',
+    'chu-shop': 'Chủ shop nhỏ trao đổi kinh nghiệm bán live.',
+    'kiot-lo': 'Sang nhượng kiot, xả lô tồn kho.',
+    'hoi-dap': 'Hỏi đáp chung, chia sẻ kinh nghiệm.'
+  };
 
   var state = {
     loggedIn: false, sending: false, loadingOlder: false,
     msgs: [], seenIds: {}, loadedCount: 0, hasMore: true,
-    atBottom: true, unread: 0, channel: null, pollTimer: null
+    atBottom: true, unread: 0, channel: null, pollTimer: null,
+    room: 'chat-tong', rooms: null, myId: null, replyTo: null
   };
 
   function api() { return (typeof window !== 'undefined' && window.McLivestreamAPI) ? window.McLivestreamAPI : null; }
@@ -44,6 +62,16 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  function uuid() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    } catch (e) { /* roi ve du phong */ }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+  function lastSeenKey() { return 'v2s_chat_lastseen_' + state.room; }
   function initials(name) {
     var parts = String(name || '?').trim().split(/\s+/).filter(Boolean);
     var a = parts.length ? parts[0].charAt(0) : '?';
@@ -89,15 +117,36 @@
     return res.data;
   }
 
-  /* --- Danh sach phong --- */
+  /* --- Danh sach phong (CHAT-01: server-driven qua list_chat_rooms) --- */
+  function roomList() {
+    return state.rooms || ROOMS_FALLBACK;
+  }
+  function roomBySlug(slug) {
+    var list = roomList();
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].slug === slug) return list[i];
+    }
+    return null;
+  }
+  async function loadRooms() {
+    try {
+      var rows = await rpc('list_chat_rooms', {});
+      if (rows && rows.length) {
+        state.rooms = rows.map(function (r) {
+          return { slug: r.slug, name: r.name, open: !!r.is_open };
+        });
+      }
+    } catch (e) { /* giu danh sach du phong */ }
+    renderRooms('');
+  }
   function renderRooms(filter) {
     var list = $('chatRoomList');
     if (!list) return;
     var q = String(filter || '').trim().toLowerCase();
     var html = '';
-    ROOMS.forEach(function (r) {
+    roomList().forEach(function (r) {
       if (q && r.name.toLowerCase().indexOf(q) === -1) return;
-      html += '<li><button type="button" class="chat-room-item' + (r.slug === 'chat-tong' ? ' active' : '') + '" data-slug="' + esc(r.slug) + '" data-open="' + (r.open ? '1' : '0') + '">'
+      html += '<li><button type="button" class="chat-room-item' + (r.slug === state.room ? ' active' : '') + '" data-slug="' + esc(r.slug) + '" data-open="' + (r.open ? '1' : '0') + '">'
         + '<span class="chat-room-name">' + esc(r.name) + '</span>'
         + (r.open ? '<span class="chat-room-open">Đang mở</span>' : '<span class="chat-room-locked">Sắp mở</span>')
         + '</button></li>';
@@ -116,7 +165,33 @@
       showHint('Phòng này sẽ mở khi hệ thống phân quyền và kiểm duyệt đã sẵn sàng.');
       return;
     }
-    if (slug === 'chat-tong') openConversation();
+    switchRoom(slug);
+  }
+  function switchRoom(slug) {
+    if (slug === state.room) { openConversation(); return; }
+    var r = roomBySlug(slug);
+    if (!r || !r.open) return;
+    state.room = slug;
+    state.msgs = [];
+    state.seenIds = {};
+    state.loadedCount = 0;
+    state.hasMore = true;
+    state.unread = 0;
+    clearReply();
+    updateRoomHead();
+    renderRooms('');
+    renderMessages();
+    loadInitial();
+    openConversation();
+  }
+  function updateRoomHead() {
+    var r = roomBySlug(state.room);
+    var title = $('chatRoomTitle');
+    var note = $('chatRoomNote');
+    var input = $('chatPageInput');
+    if (title) title.textContent = r ? r.name : 'Chat tổng';
+    if (note) note.textContent = ROOM_NOTES[state.room] || 'Trò chuyện chung toàn cộng đồng.';
+    if (input) input.setAttribute('placeholder', 'Nhắn tin trong ' + (r ? r.name : 'Chat tổng') + '…');
   }
   function openConversation() {
     var app = $('chatApp');
@@ -129,21 +204,50 @@
   }
 
   /* --- Tin nhan --- */
+  function avatarHtml(m) {
+    if (m.avatar_url) {
+      return '<div class="chat-avatar"><img src="' + esc(m.avatar_url) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></div>';
+    }
+    return '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>';
+  }
+  function nameHtml(m) {
+    /* CHAT-01: bam ten/avatar -> ho so (chi khi RPC tra username). */
+    var name = esc(m.author_name || 'Khách');
+    if (m.author_username) {
+      return '<a class="chat-name-link" href="/nguoi-dung.html?u=' + encodeURIComponent(m.author_username) + '"><b>' + name + '</b></a>';
+    }
+    return '<b>' + name + '</b>';
+  }
   function messageHtml(m) {
     var kind = m.author_kind || 'user';
     var tag = kind === 'admin' ? '<span class="chat-tag">QUẢN TRỊ</span>'
       : (kind === 'ai' ? '<span class="chat-tag">AI</span>' : '');
     var lv = (typeof m.level === 'number' && m.level > 0) ? m.level : 1;
     var verified = m.is_verified ? ' <span class="verified" title="Đã xác minh đăng ký">✓</span>' : '';
-    /* v360: ten tac gia la <b> thuan nhu khung chat trang chu — CHAT-01
-       moi link ve ho so (can RPC tra them username/avatar_url). */
+    var quote = '';
+    if (m.parent_id && (m.reply_to_author || m.reply_to_body)) {
+      quote = '<div class="chat-reply-quote"><b>' + esc(m.reply_to_author || 'Thành viên') + '</b> '
+        + esc(m.reply_to_body || '') + '</div>';
+    }
+    var own = state.myId && m.author_id && m.author_id === state.myId;
+    var actions = '<div class="chat-msg-actions">'
+      + '<button type="button" class="chat-msg-action" data-chat-action="reply" data-msg-id="' + esc(m.id) + '">Trả lời</button>';
+    if (own) {
+      actions += '<button type="button" class="chat-msg-action danger" data-chat-action="delete" data-msg-id="' + esc(m.id) + '">Xóa</button>';
+    } else {
+      actions += '<button type="button" class="chat-msg-action" data-chat-action="report" data-msg-id="' + esc(m.id) + '">Báo cáo</button>'
+        + '<button type="button" class="chat-msg-action danger" data-chat-action="block" data-msg-id="' + esc(m.id) + '" data-author-id="' + esc(m.author_id || '') + '">Chặn</button>';
+    }
+    actions += '</div>';
     return '<div class="chat-msg"' + (m.id ? ' id="chat-msg-' + m.id + '"' : '') + '>'
-      + '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>'
-      + '<div class="chat-body"><div class="chat-meta"><b>' + esc(m.author_name || 'Khách')
-      + '</b>' + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'
+      + avatarHtml(m)
+      + '<div class="chat-body"><div class="chat-meta">' + nameHtml(m)
+      + tag + ' <span class="' + lvClass(lv) + '">Lv.' + lv + '</span>'
       + roleBadge(m.author_role) + verified + ' · ' + esc(fmtTime(m.created_at))
       + ' <span title="' + esc(fmtDate(m.created_at)) + '">' + esc(fmtDate(m.created_at)) + '</span></div>'
-      + '<p class="chat-text">' + esc(maskChatText(m.body || '')) + '</p></div></div>';
+      + quote
+      + '<p class="chat-text">' + esc(maskChatText(m.body || '')) + '</p>'
+      + actions + '</div></div>';
   }
   function sortAsc(rows) {
     return rows.slice().sort(function (a, b) {
@@ -207,7 +311,7 @@
     updateUnreadBadge();
     try {
       if (state.msgs.length) {
-        window.localStorage.setItem(LASTSEEN_KEY, state.msgs[state.msgs.length - 1].id);
+        window.localStorage.setItem(lastSeenKey(), state.msgs[state.msgs.length - 1].id);
       }
     } catch (e) { /* bo qua */ }
   }
@@ -215,7 +319,7 @@
   async function loadInitial() {
     var list = $('chatPageList');
     try {
-      var rows = await rpc('get_home_chat_messages', { p_limit: PAGE, p_offset: 0 });
+      var rows = await rpc('get_chat_messages', { p_room_slug: state.room, p_limit: PAGE, p_offset: 0 });
       state.msgs = [];
       state.seenIds = {};
       state.loadedCount = (rows || []).length;
@@ -237,7 +341,7 @@
     var prevHeight = wrap ? wrap.scrollHeight : 0;
     var prevTop = wrap ? wrap.scrollTop : 0;
     try {
-      var rows = await rpc('get_home_chat_messages', { p_limit: PAGE, p_offset: state.loadedCount });
+      var rows = await rpc('get_chat_messages', { p_room_slug: state.room, p_limit: PAGE, p_offset: state.loadedCount });
       if (!rows || !rows.length) { state.hasMore = false; updateLoadOlder(); return; }
       state.loadedCount += rows.length;
       if (rows.length < PAGE) state.hasMore = false;
@@ -255,7 +359,7 @@
   }
   async function loadNew() {
     try {
-      var rows = await rpc('get_home_chat_messages', { p_limit: 10, p_offset: 0 });
+      var rows = await rpc('get_chat_messages', { p_room_slug: state.room, p_limit: 10, p_offset: 0 });
       var added = mergeRows(rows || []);
       if (!added) return;
       var wasBottom = state.atBottom;
@@ -312,7 +416,7 @@
     }
   }
 
-  /* --- Gui tin --- */
+  /* --- Gui tin (CHAT-01: post_chat_message + tra loi + idempotency) --- */
   function showHint(text) {
     var hint = $('chatPageHint');
     if (!hint) return;
@@ -324,6 +428,21 @@
     if (!input || !count) return;
     count.textContent = (input.value || '').length + '/' + MAX_BODY;
   }
+  function setReply(m) {
+    state.replyTo = m ? { id: m.id, author_name: m.author_name, body: m.body } : null;
+    var bar = $('chatReplyBar');
+    if (!bar) return;
+    if (state.replyTo) {
+      var q = $('chatReplyQuote');
+      if (q) q.innerHTML = '<b>' + esc(state.replyTo.author_name || 'Thành viên') + '</b> ' + esc((state.replyTo.body || '').slice(0, 80));
+      bar.hidden = false;
+      var input = $('chatPageInput');
+      if (input) input.focus();
+    } else {
+      bar.hidden = true;
+    }
+  }
+  function clearReply() { setReply(null); }
   async function sendMessage() {
     var input = $('chatPageInput'), btn = $('chatPageSend');
     if (!input || state.sending) return;
@@ -334,9 +453,15 @@
     if (btn) { btn.disabled = true; btn.textContent = 'Đang gửi…'; }
     showHint('');
     try {
-      await rpc('post_home_chat_message', { p_body: body });
+      await rpc('post_chat_message', {
+        p_room_slug: state.room,
+        p_body: body,
+        p_parent_id: state.replyTo ? state.replyTo.id : null,
+        p_client_msg_id: uuid()
+      });
       input.value = '';
       updateCount();
+      clearReply();
       await loadNew();
       scrollToBottom(true);
     } catch (e) {
@@ -344,6 +469,8 @@
       if (/Cần đăng nhập/i.test(msg)) showHint('Cần đăng nhập để gửi tin.');
       else if (/Gửi quá nhanh/i.test(msg)) showHint('Gửi quá nhanh, thử lại sau vài giây.');
       else if (/tối đa 2000/i.test(msg)) showHint('Tin nhắn tối đa 2000 ký tự.');
+      else if (/khóa chat/i.test(msg)) showHint('Tài khoản đang bị khóa chat tạm thời.');
+      else if (/60 tin/i.test(msg)) showHint('Đã gửi quá 60 tin trong 1 giờ, thử lại sau.');
       else showHint('Chưa gửi được — bấm Gửi lại để thử.');
       if (btn) btn.textContent = 'Gửi lại';
     } finally {
@@ -352,6 +479,94 @@
         btn.disabled = false;
         if (btn.textContent !== 'Gửi lại') btn.textContent = 'Gửi';
       }
+    }
+  }
+
+  /* --- Hanh dong tren tin (CHAT-01): xoa tin minh / bao cao / chan.
+     Xac nhan 2 buoc ngay tren nut (mau delete-draft/delete-task o
+     js/admin.js) — KHONG dung window.confirm/window.prompt. */
+  function findMsg(id) {
+    for (var i = 0; i < state.msgs.length; i++) {
+      if (state.msgs[i].id === id) return state.msgs[i];
+    }
+    return null;
+  }
+  function twoStep(btn, label) {
+    if (btn.getAttribute('data-confirm') === '1') {
+      btn.removeAttribute('data-confirm');
+      btn.textContent = label;
+      return true;
+    }
+    btn.setAttribute('data-confirm', '1');
+    btn.textContent = 'Chắc chắn?';
+    btn.classList.add('confirm');
+    setTimeout(function () {
+      if (btn.getAttribute('data-confirm') === '1') {
+        btn.removeAttribute('data-confirm');
+        btn.textContent = label;
+        btn.classList.remove('confirm');
+      }
+    }, 5000);
+    return false;
+  }
+  async function deleteOwn(btn) {
+    var id = btn.getAttribute('data-msg-id');
+    if (!twoStep(btn, 'Xóa')) return;
+    btn.disabled = true;
+    try {
+      await rpc('delete_my_chat_message', { p_message_id: id });
+      state.msgs = state.msgs.filter(function (m) { return m.id !== id; });
+      delete state.seenIds[id];
+      renderMessages();
+      showHint('Đã xóa tin của bạn.');
+    } catch (e) {
+      showHint('Chưa xóa được tin, thử lại sau.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  async function reportMsg(btn) {
+    var id = btn.getAttribute('data-msg-id');
+    if (!twoStep(btn, 'Báo cáo')) return;
+    btn.disabled = true;
+    try {
+      await rpc('report_chat_message', { p_message_id: id, p_reason: '' });
+      showHint('Đã gửi báo cáo, quản trị sẽ xem xét.');
+    } catch (e) {
+      showHint('Chưa gửi được báo cáo, thử lại sau.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  async function blockUser(btn) {
+    var authorId = btn.getAttribute('data-author-id');
+    if (!authorId) return;
+    if (!twoStep(btn, 'Chặn')) return;
+    btn.disabled = true;
+    try {
+      await rpc('block_chat_user', { p_blocked_id: authorId });
+      showHint('Đã chặn người dùng này, tin của họ sẽ không hiện với bạn nữa.');
+      loadInitial();
+    } catch (e) {
+      showHint('Chưa chặn được, thử lại sau.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  function onListClick(ev) {
+    var btn = ev.target && ev.target.closest ? ev.target.closest('[data-chat-action]') : null;
+    if (!btn) return;
+    var action = btn.getAttribute('data-chat-action');
+    var id = btn.getAttribute('data-msg-id');
+    var m = findMsg(id);
+    if (action === 'reply') {
+      if (m) setReply(m);
+    } else if (action === 'delete') {
+      deleteOwn(btn);
+    } else if (action === 'report') {
+      reportMsg(btn);
+    } else if (action === 'block') {
+      blockUser(btn);
     }
   }
 
@@ -403,11 +618,13 @@
       } catch (e) { loggedIn = false; user = null; }
     }
     state.loggedIn = loggedIn;
+    state.myId = user ? user.id : null;
     syncHeader(user);
     if (invite) invite.hidden = loggedIn;
     if (app) app.hidden = !loggedIn;
     if (loggedIn) {
-      renderRooms('');
+      updateRoomHead();
+      loadRooms();
       loadInitial();
       loadTop();
       setupRealtime();
@@ -434,6 +651,7 @@
   function init() {
     if (!$('chatApp') && !$('chatGuestInvite')) return;
     renderRooms('');
+    updateRoomHead();
     var search = $('chatRoomSearch');
     if (search) search.addEventListener('input', function () { renderRooms(search.value); });
     var back = $('chatBackBtn');
@@ -442,6 +660,10 @@
     if (older) older.addEventListener('click', loadOlder);
     var jump = $('chatPageJump');
     if (jump) jump.addEventListener('click', function () { scrollToBottom(true); markSeen(); });
+    var list = $('chatPageList');
+    if (list) list.addEventListener('click', onListClick);
+    var replyCancel = $('chatReplyCancel');
+    if (replyCancel) replyCancel.addEventListener('click', clearReply);
     var wrap = $('chatPageListWrap');
     if (wrap) wrap.addEventListener('scroll', function () {
       state.atBottom = isAtBottom(wrap);

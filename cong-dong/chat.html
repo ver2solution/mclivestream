@@ -64,6 +64,7 @@
       <button class="chat-jump" id="chatPageJump" type="button" hidden>↓ Về tin mới nhất</button>
     </div>
     <div class="chat-page-composer">
+      <div class="chat-reply-bar" id="chatReplyBar" hidden><span>Đang trả lời: </span><span id="chatReplyQuote"></span><button type="button" class="chat-reply-cancel" id="chatReplyCancel" aria-label="Hủy trả lời">✕</button></div>
       <textarea id="chatPageInput" rows="2" maxlength="2000" placeholder="Nhắn tin trong Chat tổng…" aria-label="Nhắn tin"></textarea>
       <div class="chat-page-composer-row">
         <span class="chat-page-count" id="chatPageCount">0/2000</span>
@@ -77,8 +78,8 @@
   <aside class="chat-side" aria-label="Top tương tác">
     <h3>Top tương tác hôm nay</h3>
     <div id="chatPageTop"><p class="chat-empty">Đang tải…</p></div>
-    <p class="chat-side-note"><a href="/#chat-cong-dong">Xem Top tương tác trên trang chủ →</a></p>
-    <!-- v360: tam tro ve Top trang chu; P1b doi sang /bang-xep-hang sau khi BXH deploy (tranh tao them 404). -->
+    <p class="chat-side-note"><a href="/bang-xep-hang">Xem bảng xếp hạng →</a></p>
+    <!-- v364: doi sang /bang-xep-hang (BXH da live tu v363). -->
   </aside>
 </div>
 </main>
