@@ -1,0 +1,52 @@
+name: Deploy v350-hang-hoa (4 bai Hang hoa 19/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v350-hang-hoa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v350-hang-hoa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "448" || (echo "BASE DOI: data.js khong con 448 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "474" || (echo "BASE DOI: sitemap khong con 474 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip v350-hang-hoa package
+        run: |
+          unzip -o mclivestream-v350-hang-hoa-deploy.zip
+          echo "--- verify v350-hang-hoa (4 bai) ---"
+          for slug in nhap-hang-taobao-huong-dan-shop-viet-2026 nguon-hang-si-thoi-trang-19-kenh-shop-nho-2026 nuoc-tang-luc-dang-the-nhat-ban-street-fighter my-pham-ban-chay-dip-tet-k-beauty-lap-ky-luc-1143-ty-usd; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -F -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -F -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "478" || (echo "SAI TONG sitemap, phai 478"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "452" || (echo "SAI TONG data.js, phai 452"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v350-hang-hoa-deploy.zip || rm -f mclivestream-v350-hang-hoa-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v350-hang-hoa: 4 bai Hang hoa 19/11/2026 (nhap hang Taobao STT 68 + nguon hang si thoi trang STT 73 + nuoc tang luc dang the Nhat Ban + my pham ban chay dip Tet keyword #6 deep LAST; SEO V2 19/19)"
+            git push
+          fi
