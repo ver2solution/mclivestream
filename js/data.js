@@ -16531,6 +16531,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "1,8–3,3 tỷ đồng từ 1 video 77 giây: cơ bida Way Cues LD Series của ThyA Billiards Shop vượt kính mắt mèo, áo phao HeHi để dẫn đầu top 100 video bán chạy TikTok Shop 7 ngày (ShopeeAnalytics 19/11/2026)."
   },
+  {
+   "title": "Content cứu sống thương hiệu quốc dân 70 tuổi — Diêm Thống Nhất",
+   "cat": "Phân tích",
+   "source": "BATTLECRY - Khám phá",
+   "date": "2026-11-19",
+   "url": "https://www.youtube.com/watch?v=ygv1Ly343c8",
+   "page": "bai-viet/content-cuu-song-thuong-hieu-quoc-dan-70-tuoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/content-cuu-song-thuong-hieu-quoc-dan-70-tuoi-hero-og.jpg",
+   "pinned": false,
+   "takeaway": "Diêm Thống Nhất từng bị viết điếu văn năm 2020, rồi lột xác thành 'chúa tể meme' của Gen Z. Phân tích 3 cú lật của ông cụ 70 tuổi và 5 bài học content cho shop nhỏ."
+  },
 ],
  "lots": [
    {
