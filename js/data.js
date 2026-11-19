@@ -65,6 +65,7 @@
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-19 adds 4 Thi truong articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm Tết 2026" #6/10 (4.094 words, deep + đánh giá tiềm năng; góc mới: thưởng sớm + mua món đắt tiền hơn; chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng) + 3 news ("mua sắm lễ hội Ấn Độ 2026" 2.481 words; "social commerce Hàn Quốc 2026" 2.496 words; "livestream toàn cầu 2026" 2.485 words). SEO V2. Total 440 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-dong-tien-2026-11-19 adds 4 Dong tien articles (19/11/2026, Thursday): 1 seasonal keyword 'thu hoi von xa kho cuoi nam' #7/10 (deep, NEW angle: bang tinh gia hoa von theo phi san — khac bai 12 cach cua Dang hot 13/11; added LAST) + 3 news 18/11 (bien ban FOMC tinh tang 50 diem thang 12 + Nvidia quy III 115,8 ty USD co phieu van giam 2,9% + vang roi tiep 3.752 USD thap nhat 14 thang). SEO V2 (title suffix + link boxes). Total 444 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15323,6 +15324,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu livestream Đà Nẵng (tháng 11/2026): 12 shop, 4 mẫu trên sàn; lương tháng 7,5–30 triệu đồng; 3 shop tuyển idol live 13–30 triệu đồng/tháng; tin tuyển mới nhất ngày 10/11/2026."
+  },
+  {
+   "title": "Biên bản FOMC: Fed tính tăng 50 điểm tháng 12",
+   "cat": "Dòng tiền",
+   "source": "InvestingLive (theo biên bản FOMC)",
+   "date": "2026-11-19",
+   "url": "https://investinglive.com/central-banks/fomc-minutes-a-couple-of-participants-noted-a-hike-of-more-than-25-bps-could-warrant-consideration-in-december/",
+   "page": "bai-viet/bien-ban-fomc-fed-tinh-tang-50-diem-thang-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bien-ban-fomc-fed-tinh-tang-50-diem-thang-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Biên bản FOMC 18/11/2026: gần như toàn bộ quan chức Fed muốn tăng thêm, vài người tính tăng 50 điểm tháng 12 — thị trường cược 91–95% tăng 25 điểm ngày 09/12/2026, chờ việc làm tháng 11 ngày 04/12/2026."
+  },
+  {
+   "title": "Nvidia quý III: doanh thu 115,8 tỷ USD, cổ phiếu vẫn giảm",
+   "cat": "Dòng tiền",
+   "source": "Zacks",
+   "date": "2026-11-19",
+   "url": "https://www.zacks.com/stock/news/3031586/nvidia-q3-earnings-beat-on-data-center-demand-rubin-ramp-up",
+   "page": "bai-viet/nvidia-quy-3-doanh-thu-115-ty-usd-co-phieu-van-giam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nvidia-quy-3-doanh-thu-115-ty-usd-co-phieu-van-giam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nvidia quý III: doanh thu 115,8 tỷ USD (+103%), Vera Rubin gần 20 tỷ USD quý đầu — nhưng cổ phiếu giảm 2,9% ngày 18/11/2026 vì lo chi tiêu AI và ghế CEO trống sau khi Huang từ chức 12/11/2026."
+  },
+  {
+   "title": "Vàng rơi tiếp về 3.752 USD, thấp nhất 14 tháng",
+   "cat": "Dòng tiền",
+   "source": "BeInCrypto",
+   "date": "2026-11-19",
+   "url": "https://beincrypto.com/gold-price-14-month-low-2027-recovery/",
+   "page": "bai-viet/gia-vang-roi-tiep-3752-usd-thap-nhat-14-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-roi-tiep-3752-usd-thap-nhat-14-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng rơi tiếp về 3.752 USD ngày 18/11/2026, thấp nhất 14 tháng, −33% so với kỷ lục tháng 1 — SJC về 137,2 triệu đồng/lượng; chờ Fed 09/12/2026, chia nhỏ lệnh mua."
+  },
+  {
+   "title": "Thu hồi vốn xả kho cuối năm: tính giá hòa vốn",
+   "cat": "Dòng tiền",
+   "source": "Metric / Ecomobi (qua vieclamlivestream.online)",
+   "date": "2026-11-19",
+   "url": "https://vieclamlivestream.online/bai-viet/von-nhap-hang-tet-can-bao-nhieu-von-5-muc-von-shop-nho.html",
+   "page": "bai-viet/thu-hoi-von-xa-kho-cuoi-nam-tinh-gia-hoa-von.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thu-hoi-von-xa-kho-cuoi-nam-tinh-gia-hoa-von.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thu hồi vốn xả kho cuối năm: tính giá hòa vốn sau phí sàn — món vốn 100.000đ, giá gốc 200.000đ thì giảm 30% lãi 26.000đ, giảm 50% lỗ 10.000đ; ngưỡng tối đa ~44,4%; xả 3 đợt tới Tết 06/02/2027."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
