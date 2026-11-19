@@ -1,0 +1,59 @@
+name: "Deploy v364 (CHAT-01 frontend)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v364.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v364:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v364 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v364-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v364-shell-1' sw.js; then echo "v364 DA DEPLOY ROI (sw.js da co v364-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 39179b5) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "349dd3773fc61f4116b6ecb862b15bf3" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "497" || (echo "BASE DOI: sitemap khong con 497 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v364-deploy.zip
+          echo "--- verify v364 (4 file) ---"
+          for f in js/chat-page.js cong-dong/chat.html v20.css sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "v364-shell-1" sw.js || (echo "SAI: sw.js phai co v364-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v363-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v363-shell-1"; exit 1; fi
+          node --check js/chat-page.js || (echo "SAI: js/chat-page.js loi cu phap"; exit 1)
+          grep -qF "list_chat_rooms" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi list_chat_rooms"; exit 1)
+          grep -qF "get_chat_messages" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi get_chat_messages"; exit 1)
+          grep -qF "post_chat_message" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi post_chat_message"; exit 1)
+          grep -qF "delete_my_chat_message" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi delete_my_chat_message"; exit 1)
+          grep -qF "report_chat_message" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi report_chat_message"; exit 1)
+          grep -qF "block_chat_user" js/chat-page.js || (echo "SAI: js/chat-page.js phai goi block_chat_user"; exit 1)
+          if grep -qF "get_home_chat_messages" js/chat-page.js; then echo "SAI: js/chat-page.js van dung RPC cu get_home_chat_messages"; exit 1; fi
+          if grep -qF "post_home_chat_message" js/chat-page.js; then echo "SAI: js/chat-page.js van dung RPC cu post_home_chat_message"; exit 1; fi
+          grep -qF "chatReplyBar" cong-dong/chat.html || (echo "SAI: cong-dong/chat.html phai co chatReplyBar"; exit 1)
+          grep -qF "/bang-xep-hang" cong-dong/chat.html || (echo "SAI: cong-dong/chat.html phai link /bang-xep-hang"; exit 1)
+          if grep -qF "/#chat-cong-dong" cong-dong/chat.html; then echo "SAI: cong-dong/chat.html van link /#chat-cong-dong"; exit 1; fi
+          grep -qF "chat-reply-quote" v20.css || (echo "SAI: v20.css phai co .chat-reply-quote"; exit 1)
+          grep -qF "chat-msg-actions" v20.css || (echo "SAI: v20.css phai co .chat-msg-actions"; exit 1)
+          grep -qF "chat-reply-bar" v20.css || (echo "SAI: v20.css phai co .chat-reply-bar"; exit 1)
+          echo "verify OK: 4 file, sw.js v364-shell-1, RPC theo phong + tra loi + xoa/bao cao/chan"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v364-deploy.zip
+          git add js/chat-page.js cong-dong/chat.html v20.css sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v364: CHAT-01 (P2) frontend — trang chat dung RPC theo phong (list_chat_rooms + get_chat_messages + post_chat_message tra loi/idempotency + xoa tin minh + bao cao + chan; link ten/avatar -> ho so; link Top -> /bang-xep-hang) + CSS trich dan/nut hanh dong/thanh tra loi; CACHE v364-shell-1 (rebase tu 39179b5)"
+            git push
+          fi
