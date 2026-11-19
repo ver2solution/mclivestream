@@ -1,0 +1,51 @@
+name: "Deploy v367 (cong Xem bai goc — link nguon mo + Dang Nhap)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v367.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v367:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v367 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v367-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v367-shell-1' sw.js; then echo "v367 DA DEPLOY ROI (sw.js da co v367-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main da845da) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "af9580aed283a9358a8b3dbd8b067bdb" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "500" || (echo "BASE DOI: sitemap khong con 500 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v367-deploy.zip
+          echo "--- verify v367 (3 file) ---"
+          for f in js/app.js v20.css sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "const CACHE = 'v367-shell-1'" sw.js || (echo "SAI: sw.js phai co const CACHE v367-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v364-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v364-shell-1"; exit 1; fi
+          node --check js/app.js || (echo "SAI: js/app.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -qF "originGateHTML" js/app.js || (echo "SAI: js/app.js phai co originGateHTML"; exit 1)
+          grep -qF "applyOriginGate" js/app.js || (echo "SAI: js/app.js phai co applyOriginGate"; exit 1)
+          grep -qF "unblurOriginGates" js/app.js || (echo "SAI: js/app.js phai co unblurOriginGates"; exit 1)
+          grep -qF "origin-gate" v20.css || (echo "SAI: v20.css phai co .origin-gate"; exit 1)
+          if grep -E "Xem bài gốc|Xem bài tuyển gốc" js/app.js | grep -v "originGateHTML" | grep -q .; then echo "SAI: js/app.js van con link Xem bai goc chua gate"; exit 1; fi
+          echo "verify OK: 3 file, sw.js v367-shell-1, cong Xem bai goc (mo + Dang Nhap)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v367-deploy.zip
+          git add js/app.js v20.css sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v367: cong Xem bai goc — link nguon mo + Dang Nhap khi chua dang nhap (js/app.js originGateHTML/applyOriginGate + v20.css .origin-gate; SĐT/link MXH da an san boi gatedContactsHTML); CACHE v367-shell-1 (rebase tu da845da)"
+            git push
+          fi
