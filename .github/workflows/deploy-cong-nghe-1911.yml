@@ -1,0 +1,66 @@
+name: Deploy articles-cong-nghe-2026-11-19 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-cong-nghe-1911.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-cong-nghe-1911:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "432" || (echo "BASE DOI: data.js khong con 432 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "458" || (echo "BASE DOI: sitemap khong con 458 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip cong-nghe-1911 package
+        run: |
+          unzip -o mclivestream-v349-cong-nghe-deploy.zip
+          echo "--- verify cong-nghe-1911 (4 bai moi) ---"
+            test -f "bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.html" || (echo "THIEU bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.html"; exit 1)
+            test -f "images/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.jpg" || (echo "THIEU images/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.jpg"; exit 1)
+            test -f "images/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem-og.jpg" || (echo "THIEU images/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem-og.jpg"; exit 1)
+            grep -q "bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.html" js/data.js || (echo "THIEU ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.html</loc>" sitemap.xml || (echo "THIEU ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem trong sitemap"; exit 1)
+            test -f "bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.html" || (echo "THIEU bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.html"; exit 1)
+            test -f "images/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.jpg" || (echo "THIEU images/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.jpg"; exit 1)
+            test -f "images/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan-og.jpg" || (echo "THIEU images/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan-og.jpg"; exit 1)
+            grep -q "bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.html" js/data.js || (echo "THIEU quang-cao-facebook-meta-f3-lightning-nhanh-36-lan trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.html</loc>" sitemap.xml || (echo "THIEU quang-cao-facebook-meta-f3-lightning-nhanh-36-lan trong sitemap"; exit 1)
+            test -f "bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.html" || (echo "THIEU bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.html"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.jpg"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac-og.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac-og.jpg"; exit 1)
+            grep -q "bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.html" js/data.js || (echo "THIEU tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.html</loc>" sitemap.xml || (echo "THIEU tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac trong sitemap"; exit 1)
+            test -f "bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.html" || (echo "THIEU bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.html"; exit 1)
+            test -f "images/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.jpg" || (echo "THIEU images/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.jpg"; exit 1)
+            test -f "images/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live-og.jpg" || (echo "THIEU images/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live-og.jpg"; exit 1)
+            grep -q "bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.html" js/data.js || (echo "THIEU tiktok-shopping-assistant-ai-tra-loi-thay-mau-live trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.html</loc>" sitemap.xml || (echo "THIEU tiktok-shopping-assistant-ai-tra-loi-thay-mau-live trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "462" || (echo "SAI TONG sitemap, phai 462"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "436" || (echo "SAI TONG data.js, phai 436 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v349-cong-nghe-deploy.zip || rm -f mclivestream-v349-cong-nghe-deploy.zip
+          git rm -q .github/workflows/deploy-cong-nghe-1911.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-cong-nghe-2026-11-19: 4 bai (ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem quang-cao-facebook-meta-f3-lightning-nhanh-36-lan tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac tiktok-shopping-assistant-ai-tra-loi-thay-mau-live)"
+            git push
+          fi
