@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chat cộng đồng — vieclamlivestream.online</title>
+<meta name="description" content="Chat cộng đồng vieclamlivestream.online: trò chuyện với chủ shop, MC, idol, KOC và hàng nghìn thành viên. Đăng ký miễn phí để tham gia.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="vieclamlivestream.online">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/v20.css"></head><body>
+<!-- v360 (19/11/2026, lenh Owner 16:27): Trang chat cong dong day du, doc lap
+     voi trang chu (V4 PR-04). Chat tong truoc; chi tin THAT tu DB (khong bot,
+     khong so online gia); khach chua dang nhap chi thay loi moi, khong doc/
+     gui duoc tin. Duong dan TUYET DOI (trang nam trong thu muc con). -->
+<header class="site-head"><div class="wrap head-in"><a class="logo" href="/"><span class="logo-badge" title="Ver2Solution — phiên bản 2" aria-label="Ver2Solution — phiên bản 2">2</span><span>vieclamlivestream.online<small>MC LIVESTREAM</small></span></a>
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="/">Trang chủ</a><a href="/danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="/danh-sach-mau.html" class="">Dành cho Shop</a><a href="/thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="/tin-tuc.html" class="">Tin tức</a><a href="/hoi-dap.html" class="">Hỏi đáp</a><a href="/dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<a class="btn btn-primary btn-sm" href="/dang-nhap.html?next=/cong-dong/chat">Đăng Nhập</a></div></header>
+<main class="wrap">
+<div class="chat-page-head">
+  <div>
+    <h1>Chat cộng đồng</h1>
+    <p class="chat-page-sub">Trò chuyện với chủ shop, MC, idol, KOC và hàng nghìn thành viên.</p>
+  </div>
+  <div class="chat-page-actions">
+    <a class="btn btn-ghost btn-sm" href="/">← Về trang chủ</a>
+    <a class="btn btn-ghost btn-sm" href="/trang-cua-toi.html">Trang của tôi</a>
+  </div>
+</div>
+
+<!-- Loi moi cho khach chua dang nhap — NGUYEN VAN lenh Owner 19/11/2026. -->
+<section class="chat-guest-invite" id="chatGuestInvite" hidden>
+  <h2>Tham gia cộng đồng Livestream Việt Nam</h2>
+  <p>Đăng ký miễn phí để trò chuyện với chủ shop, MC, idol, KOC và hàng nghìn thành viên trong cộng đồng. Tìm việc làm, chia sẻ kinh nghiệm và kết nối cơ hội kinh doanh.</p>
+  <div class="chat-guest-actions">
+    <a class="btn btn-primary" href="/dang-ky.html">ĐĂNG KÝ MIỄN PHÍ</a>
+    <a class="btn btn-ghost" href="/dang-nhap.html?next=/cong-dong/chat">ĐÃ CÓ TÀI KHOẢN? ĐĂNG NHẬP</a>
+  </div>
+  <p class="chat-guest-note">Đăng nhập xong bạn quay về đúng phòng chat đang mở. Web không hiển thị số điện thoại hay email riêng của thành viên.</p>
+</section>
+
+<!-- Ung dung chat — chi hien khi da dang nhap. -->
+<div class="chat-page" id="chatApp" hidden>
+  <aside class="chat-rooms" id="chatRoomsPanel" aria-label="Danh sách phòng chat">
+    <div class="chat-rooms-head">
+      <h2>Phòng chat</h2>
+      <input type="search" id="chatRoomSearch" placeholder="Tìm phòng…" aria-label="Tìm phòng chat">
+    </div>
+    <ul class="chat-room-list" id="chatRoomList"></ul>
+    <p class="chat-rooms-note">Phòng mới chỉ mở khi hệ thống phân quyền và kiểm duyệt đã sẵn sàng.</p>
+  </aside>
+
+  <section class="chat-conv" aria-label="Hội thoại">
+    <div class="chat-conv-head">
+      <button class="btn btn-ghost btn-sm chat-back" id="chatBackBtn" type="button" aria-label="Quay lại danh sách phòng">← Phòng</button>
+      <div class="chat-conv-title">
+        <h2 id="chatRoomTitle">Chat tổng</h2>
+        <p id="chatRoomNote">Trò chuyện chung toàn cộng đồng.</p>
+      </div>
+      <span class="chat-unread" id="chatUnreadBadge" hidden>0</span>
+    </div>
+    <div class="chat-conv-body" id="chatPageListWrap">
+      <button class="btn btn-ghost btn-sm chat-load-older" id="chatLoadOlder" type="button" hidden>↑ Tải tin cũ hơn</button>
+      <div class="chat-list chat-page-list" id="chatPageList" aria-live="polite"></div>
+      <button class="chat-jump" id="chatPageJump" type="button" hidden>↓ Về tin mới nhất</button>
+    </div>
+    <div class="chat-page-composer">
+      <textarea id="chatPageInput" rows="2" maxlength="2000" placeholder="Nhắn tin trong Chat tổng…" aria-label="Nhắn tin"></textarea>
+      <div class="chat-page-composer-row">
+        <span class="chat-page-count" id="chatPageCount">0/2000</span>
+        <span class="chat-hint" id="chatPageHint" hidden></span>
+        <button class="btn btn-primary" id="chatPageSend" type="button">Gửi</button>
+      </div>
+      <p class="chat-bot-note">Enter để gửi, Shift+Enter để xuống dòng. Tin nhắn tuân thủ nội quy cộng đồng; từ ngữ nhạy cảm hiển thị thành ***.</p>
+    </div>
+  </section>
+
+  <aside class="chat-side" aria-label="Top tương tác">
+    <h3>Top tương tác hôm nay</h3>
+    <div id="chatPageTop"><p class="chat-empty">Đang tải…</p></div>
+    <p class="chat-side-note"><a href="/#chat-cong-dong">Xem Top tương tác trên trang chủ →</a></p>
+    <!-- v360: tam tro ve Top trang chu; P1b doi sang /bang-xep-hang sau khi BXH deploy (tranh tao them 404). -->
+  </aside>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap"><p><b>vieclamlivestream.online</b> — Việc làm livestream cho idol, tin tức cho shop nhỏ bán live.<br>Đăng ký miễn phí, tìm việc — tìm mẫu nhanh hơn.<br>Tư vấn tăng chuyển đổi live: <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a></p>
+<p>Web không đăng số điện thoại, Zalo hay email riêng của mẫu. Mọi liên hệ đều qua bài gốc công khai của mẫu hoặc qua vieclamlivestream.online trung gian.</p><p class="powered">Powered by Ver2Solution.com</p><p class="foot-legal"><a href="/gioi-thieu.html">Giới thiệu</a> · <a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="/dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="/lien-he.html">Liên hệ</a> · <a href="/tuyen-bo-mien-tru.html">Tuyên bố miễn trừ</a> · <a href="/chinh-sach-cookie.html">Chính sách cookie</a></p></div></footer>
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('mainNav');
+  if(btn&&nav){ btn.addEventListener('click',function(){ var open=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',open?'true':'false'); }); }
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/mclivestream-supabase.js"></script>
+<script src="/js/auth-ui.js"></script><script src="/js/comments.js"></script><script src="/js/chat-page.js"></script><script src="/js/analytics.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script></body></html>

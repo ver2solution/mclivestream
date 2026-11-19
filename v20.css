@@ -1255,3 +1255,64 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .cf-hl li a{color:inherit;text-decoration:none}
 .cf-hl li a:hover b{text-decoration:underline}
 @media (max-width:720px){.chat-frame-body{grid-template-columns:1fr}.cf-col+.cf-col{border-left:0;border-top:1px solid var(--line)}.chat-list{max-height:360px}}
+
+/* v360 (19/11/2026): [hidden] phai luon an — cac class .chat-page (display:grid)
+   hay .chat-unread (display:grid) se thang quy tac [hidden] mac dinh cua
+   trinh duyet, lam #chatApp hien ca khi chua dang nhap. */
+[hidden]{display:none!important}
+
+/* v360 (19/11/2026, lenh Owner 16:27): Trang chat cong dong day du
+   /cong-dong/chat (V4 PR-04). Tai dung class .chat-msg/.chat-avatar/
+   .chat-body/.chat-meta/.chat-text/.top-row co san o tren. */
+.chat-page-head{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin:8px 0 16px}
+.chat-page-head h1{margin:0;font-size:26px}
+.chat-page-sub{margin:4px 0 0;color:var(--mut);font-size:15px}
+.chat-page-actions{display:flex;gap:8px;flex-wrap:wrap}
+.chat-guest-invite{max-width:720px;margin:24px auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 24px}
+.chat-guest-invite h2{margin:0 0 12px;font-size:22px;color:var(--brand)}
+.chat-guest-invite p{font-size:15px;line-height:1.6;margin:0 0 20px}
+.chat-guest-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.chat-guest-note{font-size:13px;color:var(--mut);margin:20px 0 0}
+.chat-page{display:grid;grid-template-columns:250px minmax(0,1fr) 230px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;height:640px;height:calc(100vh - 260px);height:calc(100dvh - 260px);min-height:480px;max-height:760px}
+.chat-rooms{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:#fbfdfc}
+.chat-rooms-head{padding:14px 14px 10px;border-bottom:1px solid var(--line)}
+.chat-rooms-head h2{margin:0 0 10px;font-size:16px}
+.chat-rooms-head input{width:100%;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-family:inherit;background:var(--card);color:var(--ink)}
+.chat-room-list{list-style:none;margin:0;padding:6px 0;overflow-y:auto;flex:1;min-height:0}
+.chat-room-item{display:flex;gap:8px;align-items:center;justify-content:space-between;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:11px 14px;font-size:14px;font-family:inherit;color:var(--ink);cursor:pointer}
+.chat-room-item:hover{background:var(--brandsoft)}
+.chat-room-item.active{background:var(--brandsoft);font-weight:700}
+.chat-room-name{flex:1;min-width:0}
+.chat-room-open{font-size:11px;font-weight:800;color:var(--brand);white-space:nowrap}
+.chat-room-locked{font-size:11px;font-weight:700;color:var(--mut);white-space:nowrap}
+.chat-rooms-note{font-size:12px;color:var(--mut);padding:10px 14px;margin:0;border-top:1px solid var(--line);line-height:1.5}
+.chat-conv{display:flex;flex-direction:column;min-width:0;min-height:0}
+.chat-conv-head{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.chat-back{display:none}
+.chat-conv-title{flex:1;min-width:0}
+.chat-conv-title h2{margin:0;font-size:17px}
+.chat-conv-title p{margin:2px 0 0;font-size:13px;color:var(--mut)}
+.chat-unread{min-width:22px;height:22px;border-radius:999px;background:#dc2626;color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 6px}
+.chat-conv-body{flex:1;min-height:0;overflow-y:auto;position:relative;padding:14px 16px}
+.chat-page-list{display:flex;flex-direction:column;gap:14px;min-height:0}
+.chat-load-older{display:block;margin:0 auto 12px}
+.chat-page-composer{border-top:1px solid var(--line);padding:12px 16px}
+.chat-page-composer textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:15px;font-family:inherit;min-height:56px;resize:vertical;background:var(--card);color:var(--ink)}
+.chat-page-composer-row{display:flex;gap:10px;align-items:center;margin-top:8px}
+.chat-page-count{font-size:13px;color:var(--mut);flex:1}
+.chat-page-composer .chat-bot-note{margin:8px 0 0}
+.chat-side{border-left:1px solid var(--line);padding:16px;overflow-y:auto;min-height:0}
+.chat-side h3{margin:0 0 10px;font-size:16px}
+.chat-side-note{font-size:13px;margin:12px 0 0}
+.chat-side-note a{color:var(--brand);font-weight:700}
+@media (max-width:1000px){.chat-page{grid-template-columns:220px minmax(0,1fr)}.chat-side{display:none}}
+@media (max-width:720px){
+  .chat-page{grid-template-columns:1fr;height:calc(100vh - 200px);height:calc(100dvh - 200px);min-height:420px;max-height:none}
+  .chat-page .chat-conv{display:none}
+  .chat-page.room-open .chat-rooms{display:none}
+  .chat-page.room-open .chat-conv{display:flex}
+  .chat-rooms{border-right:0}
+  .chat-back{display:inline-flex}
+  .chat-page-head h1{font-size:22px}
+  .chat-guest-invite{padding:24px 16px}
+}
