@@ -62,6 +62,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15271,6 +15272,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Kiếm tiền ăn Tết bằng livestream: tháng 11+12 là 23,2% GMV cả năm — bắt đầu bằng live thuê/host thời vụ 8–15 triệu/tháng, chốt deal bằng văn bản, giữ lịch D+1 13/12 và 2 tuần cuối tháng 1/2027."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 18/11: 9 shop, 0 mẫu lên sàn",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-19",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-18-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-18-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 18/11/2026: 0 mẫu + 9 shop mới (sh-293..sh-301, 6 shop TP. Hồ Chí Minh + 3 shop Hà Nội); tổng live 238 mẫu, 299 shop, 425 bài; 2 shop tuyển idol live trả lương tháng tới 35 triệu đồng."
+  },
+  {
+   "title": "Tuyển idol live Tết: lương 15–40 triệu, shop tuyển gấp",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-19",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-idol-live-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-idol-live-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển idol live Tết 2026: 7 shop trên sàn tuyển idol live, lương tháng 13–40 triệu đồng; ca Tết nhân đôi lương giờ; tháng 13 có ở 2 tin TopCV; nộp đơn trước sale 12.12 (thứ Bảy 12/12/2026, còn 23 ngày)."
+  },
+  {
+   "title": "Việc làm idol livestream TikTok: lương, việc, cách ứng tuyển",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-19",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/viec-lam-idol-livestream-tiktok.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-idol-livestream-tiktok.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm idol livestream TikTok 2026: idol TikTok dẫn live giải trí + bán hàng trên TikTok; lương Việt Nam 13–40 triệu đồng/tháng, Philippines 22.000–35.000 peso, Malaysia tới 5.000 ringgit; đa số tin không yêu cầu kinh nghiệm."
+  },
+  {
+   "title": "Tuyển mẫu livestream Đà Nẵng: 12 shop, lương tới 30 triệu",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-19",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-livestream-da-nang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-da-nang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Đà Nẵng (tháng 11/2026): 12 shop, 4 mẫu trên sàn; lương tháng 7,5–30 triệu đồng; 3 shop tuyển idol live 13–30 triệu đồng/tháng; tin tuyển mới nhất ngày 10/11/2026."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
