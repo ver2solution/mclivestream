@@ -16498,6 +16498,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "EcomDay 2026 diễn ra hôm nay 19/11/2026 tại TP.HCM với keynote \"From Traffic To Revenue\" của CEO ViHAT Cai Ngọc Luân. 7 mẹo biến traffic thành doanh thu cho shop Việt trước Black Friday 27/11 và 12.12."
   },
+  {
+   "title": "6.217 nghìn tỷ đồng sau 36 ngày sale — Double 11/2026 lạnh nhất lịch sử: người trẻ chỉ mua gạo, dầu ăn, giấy vệ sinh",
+   "cat": "Xu hướng",
+   "source": "163.com / 东哥解读电商",
+   "date": "2026-11-19",
+   "url": "https://www.163.com/dy/article/LBKES12605119BMQ.html",
+   "page": "bai-viet/double-11-2026-lanh-nhat-lich-su-nguoi-tre-mua-gao-dau-an-giay-ve-sinh.html",
+   "img": "https://n.sinaimg.cn/spider20261114/335/w1200h735/20261114/ca46-86f86b856b056e2ac2c748aacbc3703a.jpg",
+   "pinned": false,
+   "takeaway": "Double 11/2026 đạt 1.776,4 tỷ NDT (khoảng 6.217 nghìn tỷ đồng) nhưng chỉ tăng 4,8% — lạnh nhất lịch sử. Ba cơ quan độc lập hội tụ cùng một khoảng số; gói bưu kiện có thể tăng trưởng âm lần đầu; giỏ hàng người trẻ chỉ còn gạo, dầu ăn, giấy vệ sinh; Tmall bỏ mãn giảm, Douyin giảm thẳng 15%. Ai thắng trong mùa lạnh — và 7 bài học cho shop Việt trước Black Friday 27/11 và 12.12."
+  },
 ],
  "lots": [
    {
