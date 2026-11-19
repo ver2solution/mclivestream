@@ -1166,6 +1166,24 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .chat-list{min-height:0}
 }
 .chat-empty{font-size:14px;color:var(--mut);margin:0}
+/* v356 (19/11/2026): Hàng chọn chủ đề Bot tóm tắt tin trên top mục chat cộng đồng. */
+.bot-topics-row{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px}
+.bot-topics-guest{position:relative;overflow:hidden;border-radius:10px;min-height:96px}
+.bot-topics-blur{position:absolute;inset:0;display:flex;gap:8px;flex-wrap:wrap;align-content:center;filter:blur(4px);opacity:.55;pointer-events:none;user-select:none}
+.bot-topics-blur span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;white-space:nowrap}
+.bot-topics-lock{position:relative;z-index:1;min-height:96px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;background:rgba(255,255,255,.45);text-align:center;padding:10px}
+.bot-topics-lock span{font-size:14px;font-weight:600}
+.bot-topics-user .bot-topics-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.bot-topics-user .bot-topics-head b{font-size:15px}
+.bot-topics-note{font-size:13px;color:var(--brand)}
+.bot-topics-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.bot-topic-chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;min-height:44px}
+.bot-topic-chip.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+.bot-topic-chip:disabled{opacity:.45;cursor:default}
+.bot-topics-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bot-topics-actions .btn{min-height:44px}
+.bot-topics-hint{font-size:13px;color:var(--mut)}
+@media (max-width:720px){.bot-topics-actions .btn{flex:1 1 100%}}
 .chat-msg{display:flex;gap:10px}
 .chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--brandsoft);color:var(--brand);display:grid;place-items:center;font-weight:800;flex-shrink:0;font-size:13px}
 .chat-body{flex:1;min-width:0}

@@ -116,6 +116,18 @@
     <h2 id="chat-cong-dong-title">Cộng đồng đang trao đổi</h2>
     <a href="/cong-dong/chat">Mở khung chat đầy đủ →</a>
   </div>
+  <!-- v356 (19/11/2026, anh Thọ 14:10): Hàng chọn chủ đề Bot tóm tắt tin — lối tắt tới mục "Bot tóm tắt tin" ở Trang của tôi (v325): cùng 7 chủ đề, cùng localStorage v2s_bot_prefs, cùng API window.V2SChatBots. Khách thấy hàng mờ + nút Đăng nhập; đã đăng nhập thấy chip chọn chủ đề + Lưu / Tắt tóm tắt. js/bot-topics.js điều khiển hiển thị. -->
+  <div class="bot-topics-row" id="botTopicsRow" hidden>
+    <div class="bot-topics-guest" id="botTopicsGuest">
+      <div class="bot-topics-blur" aria-hidden="true"><span>Hướng dẫn dùng web</span><span>Tin mới hot</span><span>Nơi ăn chơi</span><span>Phát triển nghề nghiệp</span><span>Tăng đơn hàng</span><span>Quản lý tài chính cá nhân</span><span>Tổ chức doanh nghiệp</span></div>
+      <div class="bot-topics-lock"><span aria-hidden="true">🔒</span><span>Đăng nhập để chọn lọc chủ đề cho Bot tổng hợp tin tức quan trọng nhất theo nhu cầu cá nhân</span><a class="btn btn-primary" href="dang-ky.html">Đăng nhập</a></div>
+    </div>
+    <div class="bot-topics-user" id="botTopicsUser" hidden>
+      <div class="bot-topics-head"><b>🤖 Bot tóm tắt tin theo chủ đề bạn chọn</b><span class="bot-topics-note" id="botTopicsMsg" role="status"></span></div>
+      <div class="bot-topics-chips" id="botTopicsChips" role="group" aria-label="Chọn chủ đề cho Bot tóm tắt tin"></div>
+      <div class="bot-topics-actions"><button class="btn btn-primary" id="botTopicsSave" type="button">Lưu</button><button class="btn btn-ghost" id="botTopicsToggle" type="button">Tắt tóm tắt</button><span class="bot-topics-hint">Bot sẽ tóm tắt tin quan trọng nhất theo chủ đề bạn chọn, cập nhật trong khung Chat tổng.</span></div>
+    </div>
+  </div>
   <div class="chat-frame">
     <div class="chat-frame-body">
       <div class="cf-col cf-chat">
@@ -210,4 +222,4 @@
 <p id="gopyMsg"></p><div style="display:flex;gap:10px"><button class="btn btn-primary" type="submit" data-track="gui-gop-y">Gửi góp ý</button><button class="btn btn-ghost" type="button" onclick="document.getElementById('gopyOverlay').classList.remove('open')">Đóng</button></div>
 <p style="font-size:13px">Nếu cần trả lời nhanh, nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo 032 998 3699</a>.</p></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="mclivestream-supabase.js"></script>
-<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/community-chat.js"></script><script src="js/chat-bots.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
+<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script><script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/community-chat.js"></script><script src="js/bot-topics.js"></script><script src="js/chat-bots.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script></body></html>
