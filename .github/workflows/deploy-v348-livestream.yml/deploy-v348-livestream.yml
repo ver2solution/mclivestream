@@ -1,0 +1,52 @@
+name: Deploy v348-livestream (4 bai Livestream 19/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v348-livestream.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v348-livestream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -cF '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -cF '<loc>' sitemap.xml)"
+          test "$(grep -cF '"page": "bai-viet/' js/data.js)" = "428" || (echo "BASE DOI: data.js khong con 428 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -cF '<loc>' sitemap.xml)" = "454" || (echo "BASE DOI: sitemap khong con 454 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip v348-livestream package
+        run: |
+          unzip -o mclivestream-v348-livestream-deploy.zip
+          echo "--- verify v348-livestream (4 bai) ---"
+          for slug in livestream-ban-hang-hieu-qua-30-phan-tram-nho-nguoi-dan livestream-tiktok-ban-hang-plus-999-usd-thang cach-giu-chan-nguoi-xem-livestream-phong-live-rieng-tang-98 livestream-ban-hang-giang-sinh-qua-tang-255-trieu-usd-tuan; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -qF "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -qF "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -cF '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -cF '"page": "bai-viet/' js/data.js)"
+          test "$(grep -cF '<loc>' sitemap.xml)" = "458" || (echo "SAI TONG sitemap, phai 458"; exit 1)
+          test "$(grep -cF '"page": "bai-viet/' js/data.js)" = "432" || (echo "SAI TONG data.js, phai 432"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v348-livestream-deploy.zip || rm -f mclivestream-v348-livestream-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v348-livestream: 4 bai Livestream 19/11/2026 (livestream ban hang hieu qua STT 27 + livestream ban hang Giang sinh #9 + livestream TikTok ban hang Plus + cach giu chan nguoi xem live)"
+            git push
+          fi
