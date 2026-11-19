@@ -64,6 +64,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-thi-truong-2026-11-19 adds 4 Thi truong articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm Tết 2026" #6/10 (4.094 words, deep + đánh giá tiềm năng; góc mới: thưởng sớm + mua món đắt tiền hơn; chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng) + 3 news ("mua sắm lễ hội Ấn Độ 2026" 2.481 words; "social commerce Hàn Quốc 2026" 2.496 words; "livestream toàn cầu 2026" 2.485 words). SEO V2. Total 440 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16164,6 +16165,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok Shopping Assistant: trợ lý AI trả lời câu hỏi mua hàng trên trang sản phẩm (ra mắt 05/10/2026), Buy Direct cho mua 1 chạm từ feed — cả hai đang thử nghiệm theo diện nhà quảng cáo đủ điều kiện; TikTok chưa nói hoa hồng của creator được tính thế nào, nên mẫu live phải khớp video với listing và giữ nguyên link affiliate."
+  },
+  {
+   "title": "Mua sắm lễ hội Ấn Độ 2026: 1,41 lakh crore rupee",
+   "cat": "Thị trường",
+   "source": "IANS / Datum Intelligence",
+   "date": "2026-11-19",
+   "url": "https://hiindia.com/indias-online-festive-sales-grow-17-pc-to-rs-1-41-lakh-crore-report/",
+   "page": "bai-viet/mua-sam-le-hoi-an-do-2026-1-41-lakh-crore-rupee.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-le-hoi-an-do-2026-1-41-lakh-crore-rupee.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm lễ hội Ấn Độ 2026 đạt 1,41 lakh crore rupee, tăng 17% (Datum Intelligence 12/11/2026); điện thoại lao dốc, lượng bán giảm 25-33%, tỉ trọng rơi từ 35,2% xuống 25%; giao nhanh 10 phút tăng 75% đơn; Amazon +50%, Flipkart +22%, Meesho +75% ngày mở màn."
+  },
+  {
+   "title": "Social commerce Hàn Quốc 2026: 125,57 tỷ USD",
+   "cat": "Thị trường",
+   "source": "Research and Markets",
+   "date": "2026-11-19",
+   "url": "https://www.globenewswire.com/news-release/2026/01/29/3228371/28124/en/South-Korea-B2C-Ecommerce-Market-Forecast-Report-2025-2029-Coupang-Naver-and-SSG-Lead-While-AliExpress-Amazon-Cross-Border-and-Omnichannel-Retailers-Lotte-and-Shinsegae-Increase-Pr.html",
+   "page": "bai-viet/social-commerce-han-quoc-2026-125-ty-usd-live-len-ngoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/social-commerce-han-quoc-2026-125-ty-usd-live-len-ngoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Social commerce Hàn Quốc 2026 đạt 125,57 tỷ USD, tăng 12,1% (Research and Markets 22/04/2026), dự báo 196,64 tỷ USD năm 2031; live commerce thành kênh chính trên Naver, Kakao, Coupang; Chijijik 4,5 triệu người dùng/tháng, gấp đôi SOOP (Aju Press 21/10/2026)."
+  },
+  {
+   "title": "Livestream toàn cầu 2026: 112 tỷ USD tới 706 tỷ",
+   "cat": "Thị trường",
+   "source": "Dataintelo",
+   "date": "2026-11-19",
+   "url": "https://dataintelo.com/report/global-livestream-shopping-market",
+   "page": "bai-viet/livestream-toan-cau-2026-112-ty-usd-den-706-ty.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-toan-cau-2026-112-ty-usd-den-706-ty.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream shopping toàn cầu đạt 112 tỷ USD năm 2025, dự báo 706,2 tỷ USD năm 2034, tăng 22,5%/năm (Dataintelo 05/2026); châu Á chiếm 54,8%, Đông Nam Á tăng trên 45%/năm; điện thoại chiếm 67,3% giao dịch; tỉ lệ chốt đơn 25-35%, gấp 10 lần gian hàng tĩnh."
+  },
+  {
+   "title": "Xu hướng mua sắm Tết 2026: thưởng sớm, mua món đắt hơn",
+   "cat": "Thị trường",
+   "source": "Metric / Kenh14 / Cốc Cốc",
+   "date": "2026-11-19",
+   "url": "https://www.brandsvietnam.com/congdong/topic/metric-bao-cao-toan-canh-thi-truong-san-ban-le-truc-tuyen-quy-iii-2026-du-bao-quy-iv-2026",
+   "page": "bai-viet/xu-huong-mua-sam-tet-2026-thuong-som-mua-dat-tien-hon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-sam-tet-2026-thuong-som-mua-dat-tien-hon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng mua sắm Tết 2026: thưởng Tết trả sớm từ tháng 11/2026 (LĐLĐ TP.HCM 02/11/2026); đơn trên 1 triệu đồng tăng từ 14,5% lên 19,0%; doanh số 4 sàn quý 3/2026 đạt 150,4 nghìn tỷ đồng, tăng 45,16% (Metric 28/10/2026); 51% người Việt chi nhiều hơn dịp Tết 2027 (Cốc Cốc 09/2026). Bài chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng."
   }
 ],
  "lots": [
