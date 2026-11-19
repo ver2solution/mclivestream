@@ -62,6 +62,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-19 adds 4 Thi truong articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm Tết 2026" #6/10 (4.094 words, deep + đánh giá tiềm năng; góc mới: thưởng sớm + mua món đắt tiền hơn; chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng) + 3 news ("mua sắm lễ hội Ấn Độ 2026" 2.481 words; "social commerce Hàn Quốc 2026" 2.496 words; "livestream toàn cầu 2026" 2.485 words). SEO V2. Total 440 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
@@ -16377,6 +16378,114 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Lôi Quân live đầu 16/8/2020: 210 triệu NDT (khoảng 735 tỷ đồng), 50,5 triệu lượt xem, 27 sản phẩm. Vì sao CEO Xiaomi \"bị ép\" livestream bán hàng mà vẫn bán gấp 42 lần Đổng Minh Châu? Phân tích case + 7 bài học cho shop Việt."
   },
+  {
+   "title": "Cách xả hàng tồn kho bằng live và affiliate Black Friday",
+   "cat": "Đang hot",
+   "source": "595 Agency (TikTok Shop)",
+   "date": "2026-11-19",
+   "url": "https://www.595.agency/blog/tiktok-shop-black-friday-2026-seller-guide",
+   "page": "bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách xả hàng tồn kho tuần Black Friday 27–30/11/2026: live + affiliate — người bán live TikTok tăng 84% doanh số cuối tuần 2025; tính giá hòa vốn sau phí sàn 6% + 4,5% trước khi giảm."
+  },
+  {
+   "title": "Target Black Friday 2026: giảm 50%, tặng thẻ 1.000 USD",
+   "cat": "Đang hot",
+   "source": "Target Corporation",
+   "date": "2026-11-19",
+   "url": "https://corporate.target.com/press/release/2026/11/target-announces-black-friday-deals-and-giveaways-to-help-families-save-big-on-gifts-they-ll-love-to",
+   "page": "bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Target Black Friday 2026 (công bố 17/11/2026): sale 22–29/11 giảm tới 50%, 100 khách đầu tiên mỗi cửa hàng ngày 27/11 nhận thẻ quà 25–1.000 USD; Pokémon drop ngày 28/11."
+  },
+  {
+   "title": "Shopify Black Friday 2026: 14,6 tỷ USD, shop nhỏ học gì",
+   "cat": "Đang hot",
+   "source": "OMA Digital (Shopify / Adobe)",
+   "date": "2026-11-19",
+   "url": "https://omazdigital.com/blog/shopify-black-friday-2026-checklist/",
+   "page": "bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopify Black Friday 2026: nhà bán lẻ Shopify bán 14,6 tỷ USD dịp BFCM 2025 (+27%), đỉnh 5,1 triệu USD/phút; hạn chót đóng băng gian hàng ngày 20/11/2026."
+  },
+  {
+   "title": "Small Business Saturday 2026: ngày của shop nhỏ 28/11",
+   "cat": "Đang hot",
+   "source": "Constant Contact (American Express / SBA / NRF)",
+   "date": "2026-11-19",
+   "url": "https://www.constantcontact.com/blog/small-business-saturday/",
+   "page": "bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Small Business Saturday 2026 (thứ Bảy 28/11/2026): ngày của shop nhỏ do American Express lập năm 2010; chi tiêu báo cáo năm 2025 đạt 22 tỷ USD, 68 xu mỗi USD ở lại cộng đồng."
+  },
+  {
+   "title": "Tặng quà Tết cho nhân viên shop: 77% muốn tiền mặt",
+   "cat": "Đời Sống",
+   "source": "Inc.",
+   "date": "2026-11-19",
+   "url": "https://www.inc.com/bruce-crumley/most-workers-dont-want-an-office-holiday-party-they-want-this-instead/91437118",
+   "page": "bai-viet/tang-qua-tet-cho-nhan-vien-shop-77-phan-tram-muon-tien-mat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tang-qua-tet-cho-nhan-vien-shop-77-phan-tram-muon-tien-mat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tặng quà Tết cho nhân viên shop: 77% nhân viên muốn tiền mặt nhưng chỉ 34% được nhận — shop nhỏ nên tặng tiền và ngày nghỉ, đúng hẹn trước Tết, thay vì tiệc tùng và đồ lưu niệm."
+  },
+  {
+   "title": "Du lịch Hà Giang tháng 12: hoa tam giác mạch muộn",
+   "cat": "Đời Sống",
+   "source": "LoopTrails",
+   "date": "2026-11-19",
+   "url": "https://looptrails.com/guide/ha-giang-buckwheat-flower-season/",
+   "page": "bai-viet/du-lich-ha-giang-thang-12-hoa-tam-giac-mach-muon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-ha-giang-thang-12-hoa-tam-giac-mach-muon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Hà Giang tháng 12: hoa tam giác mạch muộn còn ở vùng cao, trời 5–15°C, đường vắng, giá rẻ — hợp với người đi để nghỉ ngơi và chụp ảnh, không phải để chen chúc."
+  },
+  {
+   "title": "Quản lý tiền cuối năm: 6 việc làm trước 31/12",
+   "cat": "Đời Sống",
+   "source": "Illinois CPA Society",
+   "date": "2026-11-19",
+   "url": "https://www.icpas.org/resources/press/press-releases/2026/11/02/beat-financial-stress--6-essential-year-end-money-moves",
+   "page": "bai-viet/quan-ly-tien-cuoi-nam-6-viec-lam-truoc-31-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-ly-tien-cuoi-nam-6-viec-lam-truoc-31-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quản lý tiền cuối năm: 6 việc nên làm trước 31/12/2026 theo Hiệp hội Kế toán Illinois — chốt sổ thu nhập, đối chiếu nợ catse, nạp lại quỹ dự phòng và lên ngân sách Tết 2027."
+  },
+  {
+   "title": "Đi bộ 7000 bước mỗi ngày: giảm 47% nguy cơ tử vong",
+   "cat": "Đời Sống",
+   "source": "Grazia USA",
+   "date": "2026-11-19",
+   "url": "https://graziamagazine.com/us/articles/not-10000-scientists-have-found-the-number-of-steps-a-day-you-really-need-to-stay-healthy-25497-c1/",
+   "page": "bai-viet/di-bo-7000-buoc-moi-ngay-giam-47-phan-tram-tu-vong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/di-bo-7000-buoc-moi-ngay-giam-47-phan-tram-tu-vong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đi bộ 7000 bước mỗi ngày giảm 47% nguy cơ tử vong so với chỉ đi 2.000 bước — gần bằng lợi ích của 10.000 bước, theo tổng quan Lancet Public Health 2025 trên hơn 160.000 người."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Mắt Biếc Huế: nhà Hà Lan",
+   "cat": "Đời Sống",
+   "source": "VnTravellive",
+   "date": "2026-11-19",
+   "url": "https://vntravellive.com/en/den-hue-nho-ghe-tham-cafe-mat-biec-d31556.html",
+   "page": "bai-viet/quan-cafe-check-in-dep-mat-biec-hue.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-mat-biec-hue.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Mắt Biếc Huế nằm ở số 66 Bao Vinh, là ngôi nhà của Hà Lan trong phim Mắt Biếc 2019, giá 25.000–50.000đ, góc chụp đẹp nhất là tường vàng và cửa sổ gỗ xanh."
+  }
 ],
  "lots": [
    {
