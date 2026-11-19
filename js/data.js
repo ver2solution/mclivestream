@@ -63,6 +63,7 @@
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16115,7 +16116,55 @@ window.V20_DATA = {
 {"title":"Livestream bán hàng hiệu quả: chốt tới 30% nhờ người dẫn","cat":"Livestream","source":"VTEX","date":"2026-11-19","url":"https://www.vtex.com/en-us/news/live-shopping-brings-the-salesperson-back","page": "bai-viet/livestream-ban-hang-hieu-qua-30-phan-tram-nho-nguoi-dan.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-hieu-qua-30-phan-tram-nho-nguoi-dan.jpg","pinned":false,"takeaway":"Live chot toi 30% so voi web 2-3% (McKinsey qua VTEX 28/10/2026); TikTok Shop Brazil GMV live tang 161 lan 5/2025-5/2026; NielsenIQ: 91% mua sam noi live la dinh dang tot nhat (30/09/2026)."},
 {"title":"Livestream TikTok bán hàng: gói Plus 9,99 USD/tháng ra mắt","cat":"Livestream","source":"Tubefilter","date":"2026-11-19","url":"https://www.tubefilter.com/2026/11/10/tiktok-shop-plus-ecommerce-paid-subscription-tier/","page": "bai-viet/livestream-tiktok-ban-hang-plus-999-usd-thang.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-tiktok-ban-hang-plus-999-usd-thang.jpg","pinned":false,"takeaway":"TikTok Shop Plus 9,99 USD/thang, mien phi ship + 3 coupon (Tubefilter 10/11/2026); Disney Super Brand Days 4-10/11/2026; moc 500 trieu USD Black Friday 2025 lam thuoc do 2026."},
 {"title":"Cách giữ chân người xem livestream: live riêng tăng 98%","cat":"Livestream","source":"TheRedScroll","date":"2026-11-19","url":"https://www.theredscroll.com/insights/double-11-2026-results/","page": "bai-viet/cach-giu-chan-nguoi-xem-livestream-phong-live-rieng-tang-98.html","img":"https://vieclamlivestream.online/images/bai-viet/cach-giu-chan-nguoi-xem-livestream-phong-live-rieng-tang-98.jpg","pinned":false,"takeaway":"Douyin: phong live thuong hieu vuot 10 trieu NDT tang 98% Double 11 2026 (TheRedScroll 13/11/2026); SkinCeuticals tang 1,2 lo, khong ha gia; ti le hoan Douyin 70,36%."},
-{"title":"Livestream bán hàng Giáng sinh: quà 2,55 triệu USD/tuần","cat":"Livestream","source":"TokConnect","date":"2026-11-19","url":"https://tokconnect.com/trends/tiktok-shop/holiday-gifts-2026/","page": "bai-viet/livestream-ban-hang-giang-sinh-qua-tang-255-trieu-usd-tuan.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-giang-sinh-qua-tang-255-trieu-usd-tuan.jpg","pinned":false,"takeaway":"Do choi 2,55 trieu USD/tuan, live chiem 28% doanh so lich advent (TokConnect 26/10/2026); khung gia 25-50 USD dat 3,09 trieu USD/tuan; lich live tu Black Friday toi 26/12."}
+{"title":"Livestream bán hàng Giáng sinh: quà 2,55 triệu USD/tuần","cat":"Livestream","source":"TokConnect","date":"2026-11-19","url":"https://tokconnect.com/trends/tiktok-shop/holiday-gifts-2026/","page": "bai-viet/livestream-ban-hang-giang-sinh-qua-tang-255-trieu-usd-tuan.html","img":"https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-giang-sinh-qua-tang-255-trieu-usd-tuan.jpg","pinned":false,"takeaway":"Do choi 2,55 trieu USD/tuan, live chiem 28% doanh so lich advent (TokConnect 26/10/2026); khung gia 25-50 USD dat 3,09 trieu USD/tuan; lich live tu Black Friday toi 26/12."},
+  {
+   "title": "AI livestream bán hàng Tết: ai chịu trách nhiệm",
+   "cat": "Công nghệ",
+   "source": "PYMNTS",
+   "date": "2026-11-19",
+   "url": "https://www.pymnts.com/news/retail/2026/china-singles-day-sells-robots-ai-credits-help-around-house/",
+   "page": "bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-livestream-ban-hang-tet-ai-chiu-trach-nhiem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "AI livestream bán hàng Tết: bản sao số của 6 người nổi tiếng đã trực tiếp dẫn live Tmall dịp Double 11 (PYMNTS 14/11/2026); người thật đứng sau kênh ảo phải xác thực VNeID trước 31/12/2026 và gắn nhãn AI theo quy định của sàn — shop Việt làm 3 việc ngay: xác thực, gắn nhãn, giữ người thật kiểm soát nội dung."
+  },
+  {
+   "title": "Quảng cáo Facebook: Meta F3 Lightning nhanh gấp 3,6 lần",
+   "cat": "Công nghệ",
+   "source": "Anchor Agency",
+   "date": "2026-11-19",
+   "url": "https://anchor.tn/en/blog/meta-ads-updates-november-2026-f3-lightning/",
+   "page": "bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quang-cao-facebook-meta-f3-lightning-nhanh-36-lan.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quảng cáo Facebook: Meta F3 Lightning (03/11/2026) đưa tín hiệu quảng cáo lên production nhanh gấp khoảng 3,6 lần mà không tăng chi phí tính toán, nối sau GEM (13/10/2026) và Andromeda (28/10/2026) — shop live Việt cần gửi dữ liệu chuyển đổi sạch qua pixel + Conversions API, giữ catalog chuẩn và làm creative đa dạng."
+  },
+  {
+   "title": "TikTok Shop AI Assistance: chatbot gộp 1 công tắc",
+   "cat": "Công nghệ",
+   "source": "TikTok Shop",
+   "date": "2026-11-19",
+   "url": "https://seller-ph.tiktok.com/university/essay?knowledge_id=4293090979333905",
+   "page": "bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-ai-assistance-chatbot-gop-1-cong-tac.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop AI Assistance: từ tháng 11/2026, lời chào tự động và chatbot gộp dưới 1 công tắc duy nhất, triển khai dần trong tháng 11-12/2026; tính năng nhắc giao gấp mới giúp shop giao đơn đúng hạn trước Tết — shop nào không bật sẽ mất cả chatbot lẫn lời chào và khách không nhắc giao được."
+  },
+  {
+   "title": "TikTok Shopping Assistant: AI trả lời thay mẫu live?",
+   "cat": "Công nghệ",
+   "source": "SMMToolbox",
+   "date": "2026-11-19",
+   "url": "https://smmtoolbox.com/tiktok-shopping-assistant-buy-direct-creators/",
+   "page": "bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shopping-assistant-ai-tra-loi-thay-mau-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shopping Assistant: trợ lý AI trả lời câu hỏi mua hàng trên trang sản phẩm (ra mắt 05/10/2026), Buy Direct cho mua 1 chạm từ feed — cả hai đang thử nghiệm theo diện nhà quảng cáo đủ điều kiện; TikTok chưa nói hoa hồng của creator được tính thế nào, nên mẫu live phải khớp video với listing và giữ nguyên link affiliate."
+  }
 ],
  "lots": [
    {
