@@ -4,9 +4,9 @@
        pinned truoc (moi nhat), chua du 4 thi lap bang bai moi nhat,
        khong trung lap. Khung co anh hoac o placeholder + tieu de + chuyen
        muc, link toi trang bai.
-   (2) Muc Tin moi (#homeNews) GIU NGUYEN list 6 bai moi nhat nhu cu
-       (news-item: chuyen muc + tieu de link + ngay) — muc Tin tuc de
-       nguyen, khong doi sang 4 cot chuyen muc.
+   (2) Muc Tin moi (#homeNews) — v358 (19/11/2026, lenh anh Tho 16:10):
+       4 hang x 4 o = 16 bai moi nhat (truoc day giu nguyen 6 bai theo
+       quyet 22:37 05/11 — nay ghi de). CSS #lo-trinh .news-list 4 cot.
    (3) v40: khong con bai nao thieu anh hay thieu link — 2 bai demo da co
        page + img infographic, pin card link noi bo toi trang bai-viet.
    (4) CSS chi co .pinned-row (grid 4 cot, gap 16px) + responsive 2 cot
@@ -72,11 +72,11 @@ t('khung link toi trang bai (page neu co, khong thi url)',
   && pinnedHtml.includes('href="bai-viet/cho-40-tieu-thuong-hoc-livestream-tiktok.html"')
   && pinnedHtml.includes('href="bai-viet/shopee-live-video-tet-2026-16-ty-luot-xem.html"'));
 
-// ---- (2) muc Tin moi giu nguyen list 6 bai moi nhat ----
-const newest6 = D.articles.slice().sort(function(x, y){ return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0); }).slice(0, 6);
-t('list tin moi co dung 6 bai moi nhat', newest6.length === 6);
+// ---- (2) muc Tin moi v358: 4 hang x 4 o = 16 bai moi nhat ----
+const newest16 = D.articles.slice().sort(function(x, y){ return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0); }).slice(0, 16);
+t('list tin moi co dung 16 bai moi nhat (v358)', newest16.length === 16);
 t('list tin moi xep dung thu tu ngay giam dan',
-  newest6.every((a, i) => i === 0 || (newest6[i-1].date||'') >= (a.date||'')));
+  newest16.every((a, i) => i === 0 || (newest16[i-1].date||'') >= (a.date||'')));
 t('khong con ham 4 cot (getNewsCol/newsColHTML/NEWS_CATS) trong app.js',
   typeof V.getNewsCol === 'undefined' && typeof V.newsColHTML === 'undefined' && typeof V.NEWS_CATS === 'undefined');
 
@@ -191,6 +191,10 @@ t('o dau (bai ghim) mang so 1',
   V.pinCardHTML(pinned[0], 1).includes('>1</span>') && pinned[0].pinned === true);
 t('initHome truyen so thu tu vao pinCardHTML',
   appJs.includes('pinCardHTML(a,i+1)'));
+t('trang chu: initHome slice tin moi 0,16 (v358: 4 hang x 4 o = 16 tin moi nhat)',
+  appJs.includes('slice(0,16)'));
+t('trang chu: CSS #lo-trinh .news-list 4 cot (v358, chi ap cho trang chu)',
+  css.includes('#lo-trinh .news-list{grid-template-columns:repeat(4,1fr)}'));
 
 // ---- (5d) trang chu KHONG DOI: van 2 hang (8 mau, 6 shop) ----
 t('trang chu: homeTop8 van tra 8 mau',

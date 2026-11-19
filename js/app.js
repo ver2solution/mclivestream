@@ -2909,14 +2909,14 @@ function initHome(){
     grid.innerHTML=shown.map(cardHTML).join('');
   }
   // v38: hang tin ghim (4 khung) duoi hero search. Muc Tin moi (#homeNews)
-  // giu nguyen list 6 bai moi nhat nhu cu (user-directed 22:37 05/11:
-  // chi them 1 dong 4 o tin moi, muc Tin tuc de nguyen).
+  // v358 (19/11/2026, lenh anh Tho 16:10): 6 bai moi nhat -> 4 hang x 4 o
+  // = 16 bai moi nhat (ghi de quyet 22:37 05/11 chi them 1 dong 4 o).
   // v38c: hang tin moi danh so 1-4 (badge tren anh), o nho gon (anh 16:9).
   var pinned=document.getElementById('homePinned');
   if(pinned) pinned.innerHTML=getPinnedRow(D.articles||[]).map(function(a,i){return pinCardHTML(a,i+1);}).join('');
   var news=document.getElementById('homeNews');
   /* v100: muc Tin moi dung chung the tin rut gon (1 anh + 2 dong). */
-  if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,6).map(function(a){
+  if(news) news.innerHTML=D.articles.slice().sort(function(x,y){return (x.date||'')>(y.date||'')?-1:((x.date||'')<(y.date||'')?1:0);}).slice(0,16).map(function(a){
     return newsCardHTML(a);
   }).join('');
   var homeShops=document.getElementById('homeShops');

@@ -287,6 +287,13 @@ a:hover{text-decoration:underline}
 .step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
 .step b{font-size:26px;color:var(--brand)}
 .news-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* v358 (19/11/2026, lenh anh Tho 16:10): muc Tin moi trang chu (#lo-trinh)
+   4 hang x 4 o = 16 tin moi nhat. CHI ap cho trang chu — cac trang khac
+   (tin-tuc, danh-sach-shop, thanh-ly-kiot) giu .news-list 2 cot nhu cu.
+   Tablet 2 cot, mobile 1 cot (quy tac 600px o cuoi file van ap dung). */
+#lo-trinh .news-list{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){#lo-trinh .news-list{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){#lo-trinh .news-list{grid-template-columns:1fr}}
 .news-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
 .news-item .cat{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--brand);text-transform:uppercase}
 .news-item a{color:var(--ink);font-weight:800}
