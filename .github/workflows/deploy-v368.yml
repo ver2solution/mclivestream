@@ -1,0 +1,50 @@
+name: "Deploy v368 (sua nhan Xem bai goc — trung tinh)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v368.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v368:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v368 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v368-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v368-shell-1' sw.js; then echo "v368 DA DEPLOY ROI (sw.js da co v368-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main e0c0da0) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "af9580aed283a9358a8b3dbd8b067bdb" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "500" || (echo "BASE DOI: sitemap khong con 500 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v368-deploy.zip
+          echo "--- verify v368 (2 file doi) ---"
+          for f in js/app.js sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "const CACHE = 'v368-shell-1'" sw.js || (echo "SAI: sw.js phai co const CACHE v368-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v367-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v367-shell-1"; exit 1; fi
+          node --check js/app.js || (echo "SAI: js/app.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -qF "originGateHTML" js/app.js || (echo "SAI: js/app.js phai co originGateHTML (cong v367)"; exit 1)
+          if grep -qF "Xem bài gốc trên Facebook" js/app.js; then echo "SAI: js/app.js van con nhan mau 'Xem bai goc tren Facebook'"; exit 1; fi
+          grep -qF "Xem bài tuyển gốc trên Facebook" js/app.js || (echo "SAI: nhan shop 'Xem bai tuyen goc tren Facebook' phai giu nguyen"; exit 1)
+          grep -qF "origin-gate" v20.css || (echo "SAI: v20.css phai co .origin-gate (cong v367)"; exit 1)
+          echo "verify OK: 2 file, sw.js v368-shell-1, nhan mau trung tinh 'Xem bai goc'"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v368-deploy.zip
+          git add js/app.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v368: sua nhan nut mau 'Xem bai goc tren Facebook' -> 'Xem bai goc' (trung tinh; mot so mau co link nguon TikTok); CACHE v368-shell-1 (rebase tu e0c0da0)"
+            git push
+          fi
