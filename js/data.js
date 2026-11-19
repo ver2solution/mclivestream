@@ -15376,54 +15376,6 @@ window.V20_DATA = {
    "takeaway": "Thu hồi vốn xả kho cuối năm: tính giá hòa vốn sau phí sàn — món vốn 100.000đ, giá gốc 200.000đ thì giảm 30% lãi 26.000đ, giảm 50% lỗ 10.000đ; ngưỡng tối đa ~44,4%; xả 3 đợt tới Tết 06/02/2027."
   },
   {
-   "title": "Cách xả hàng tồn kho bằng live và affiliate Black Friday",
-   "cat": "Đang hot",
-   "source": "595 Agency (TikTok Shop)",
-   "date": "2026-11-19",
-   "url": "https://www.595.agency/blog/tiktok-shop-black-friday-2026-seller-guide",
-   "page": "bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Cách xả hàng tồn kho tuần Black Friday 27–30/11/2026: live + affiliate — người bán live TikTok tăng 84% doanh số cuối tuần 2025; tính giá hòa vốn sau phí sàn 6% + 4,5% trước khi giảm."
-  },
-  {
-   "title": "Target Black Friday 2026: giảm 50%, tặng thẻ 1.000 USD",
-   "cat": "Đang hot",
-   "source": "Target Corporation",
-   "date": "2026-11-19",
-   "url": "https://corporate.target.com/press/release/2026/11/target-announces-black-friday-deals-and-giveaways-to-help-families-save-big-on-gifts-they-ll-love-to",
-   "page": "bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/target-black-friday-2026-giam-50-phan-tram-tang-the-1000-usd.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Target Black Friday 2026 (công bố 17/11/2026): sale 22–29/11 giảm tới 50%, 100 khách đầu tiên mỗi cửa hàng ngày 27/11 nhận thẻ quà 25–1.000 USD; Pokémon drop ngày 28/11."
-  },
-  {
-   "title": "Shopify Black Friday 2026: 14,6 tỷ USD, shop nhỏ học gì",
-   "cat": "Đang hot",
-   "source": "OMA Digital (Shopify / Adobe)",
-   "date": "2026-11-19",
-   "url": "https://omazdigital.com/blog/shopify-black-friday-2026-checklist/",
-   "page": "bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/shopify-black-friday-2026-146-ty-usd-shop-nho-hoc-gi.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Shopify Black Friday 2026: nhà bán lẻ Shopify bán 14,6 tỷ USD dịp BFCM 2025 (+27%), đỉnh 5,1 triệu USD/phút; hạn chót đóng băng gian hàng ngày 20/11/2026."
-  },
-  {
-   "title": "Small Business Saturday 2026: ngày của shop nhỏ 28/11",
-   "cat": "Đang hot",
-   "source": "Constant Contact (American Express / SBA / NRF)",
-   "date": "2026-11-19",
-   "url": "https://www.constantcontact.com/blog/small-business-saturday/",
-   "page": "bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/small-business-saturday-2026-ngay-cua-shop-nho-28-11.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Small Business Saturday 2026 (thứ Bảy 28/11/2026): ngày của shop nhỏ do American Express lập năm 2010; chi tiêu báo cáo năm 2025 đạt 22 tỷ USD, 68 xu mỗi USD ở lại cộng đồng."
-  },
-  {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
    "cat": "Phân tích",
    "source": "VTC News",
@@ -16364,7 +16316,18 @@ window.V20_DATA = {
 {"title":"Nhập hàng Taobao: 7 bước cho shop Việt 2026","cat":"Hàng hoá","source":"SuanSupply","date":"2026-11-19","url":"https://suansupply.com/guides/how-to-buy-from-taobao/","page": "bai-viet/nhap-hang-taobao-huong-dan-shop-viet-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/nhap-hang-taobao-huong-dan-shop-viet-2026.jpg","pinned":false,"takeaway":"Nhập hàng Taobao: bản tiếng Anh đầy đủ chỉ có ở Singapore, Malaysia và Hồng Kông (từ 09/2024–01/2025, mở rộng 17+ thị trường 28/05/2026); shop Việt qua đại lý mua hộ, phí 5–10%, kiểm ảnh QC trước khi hàng rời kho Trung Quốc; chốt đơn Tết trước giữa 01/2027 (SuanSupply, 06/10/2026; ebrun 27/10/2026)."},
 {"title":"Nguồn hàng sỉ thời trang: 19 kênh shop nhỏ 2026","cat":"Hàng hoá","source":"Shopify","date":"2026-11-19","url":"https://www.shopify.com/ie/blog/wholesale-clothing-vendors","page": "bai-viet/nguon-hang-si-thoi-trang-19-kenh-shop-nho-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/nguon-hang-si-thoi-trang-19-kenh-shop-nho-2026.jpg","pinned":false,"takeaway":"Nguồn hàng sỉ thời trang: 19 kênh đã so sánh — Faire (100.000+ thương hiệu, trả chậm net-60), Alibaba (Trade Assurance), FashionGo (miễn ship từ 300 USD); ngành bán sỉ quần áo Mỹ 119,4 tỷ USD năm 2026, shop độc lập chiếm 62% giao dịch trên JOOR (Shopify, tháng 11/2026)."},
 {"title":"Nước tăng lực dạng thẻ Nhật Bản: uống 0,5 giây","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-19","url":"https://soranews24.com/2026/11/17/we-try-japans-craziest-energy-drink-from-a-street-fighter-card/","page": "bai-viet/nuoc-tang-luc-dang-the-nhat-ban-street-fighter.html","img":"https://vieclamlivestream.online/images/bai-viet/nuoc-tang-luc-dang-the-nhat-ban-street-fighter.jpg","pinned":false,"takeaway":"Nước tăng lực dạng thẻ Nhật Bản ENERGY ARTS (UHA Mikakuto, hợp tác Street Fighter 6): 12 ml mỗi thẻ, uống trong 0,5 giây, 24 mẫu ngẫu nhiên, top 5 dự báo hit 2027 của Nikkei Trendy; hộp 10 thẻ 3.383 yên (~22 USD), chỉ bán online (SoraNews24, 16/11/2026)."},
-{"title":"Mỹ phẩm bán chạy dịp Tết: K-beauty 11,43 tỷ USD","cat":"Hàng hoá","source":"Korea Herald","date":"2026-11-19","url":"https://www.koreaherald.com/article/10652611","page": "bai-viet/my-pham-ban-chay-dip-tet-k-beauty-lap-ky-luc-1143-ty-usd.html","img":"https://vieclamlivestream.online/images/bai-viet/my-pham-ban-chay-dip-tet-k-beauty-lap-ky-luc-1143-ty-usd.jpg","pinned":false,"takeaway":"Mỹ phẩm bán chạy dịp Tết: xuất khẩu K-beauty lập kỷ lục 11,43 tỷ USD năm 2025 (+12,3%), chăm sóc da 8,54 tỷ USD; 9 tháng đầu 2026 đã 11,1 tỷ USD (+31,1%); thị trường mỹ phẩm Việt Nam 1,79 tỷ USD năm 2025; 5 nhóm bán chạy dịp Tết + kịch bản live (Korea Herald 09/01/2026; MFDS 10/2026)."}
+{"title":"Mỹ phẩm bán chạy dịp Tết: K-beauty 11,43 tỷ USD","cat":"Hàng hoá","source":"Korea Herald","date":"2026-11-19","url":"https://www.koreaherald.com/article/10652611","page": "bai-viet/my-pham-ban-chay-dip-tet-k-beauty-lap-ky-luc-1143-ty-usd.html","img":"https://vieclamlivestream.online/images/bai-viet/my-pham-ban-chay-dip-tet-k-beauty-lap-ky-luc-1143-ty-usd.jpg","pinned":false,"takeaway":"Mỹ phẩm bán chạy dịp Tết: xuất khẩu K-beauty lập kỷ lục 11,43 tỷ USD năm 2025 (+12,3%), chăm sóc da 8,54 tỷ USD; 9 tháng đầu 2026 đã 11,1 tỷ USD (+31,1%); thị trường mỹ phẩm Việt Nam 1,79 tỷ USD năm 2025; 5 nhóm bán chạy dịp Tết + kịch bản live (Korea Herald 09/01/2026; MFDS 10/2026)."},
+  {
+   "title": "735 tỷ đồng trong 1 buổi live — Lôi Quân: CEO Xiaomi \"bị ép\" livestream bán hàng, 50,5 triệu người xem",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-19",
+   "url": "https://www.36kr.com/p/841817756567552",
+   "page": "bai-viet/loi-quan-735-ty-dong-1-buoi-live-ceo-xiaomi-bi-ep-livestream-ban-hang.html",
+   "img": "https://img.36krcdn.com/20200817/v2_590f77447d494059ad47575ac7199d8c_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Lôi Quân live đầu 16/8/2020: 210 triệu NDT (khoảng 735 tỷ đồng), 50,5 triệu lượt xem, 27 sản phẩm. Vì sao CEO Xiaomi \"bị ép\" livestream bán hàng mà vẫn bán gấp 42 lần Đổng Minh Châu? Phân tích case + 7 bài học cho shop Việt."
+  },
 ],
  "lots": [
    {
