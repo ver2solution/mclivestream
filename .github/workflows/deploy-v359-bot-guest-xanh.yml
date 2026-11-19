@@ -1,0 +1,46 @@
+name: "Deploy v359-bot-guest-xanh (Hang Bot cho khach gon + nen xanh la)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v359-bot-guest-xanh.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v359-bot-guest-xanh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v359 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v359-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF "v359-shell-1" sw.js; then echo "v359 DA DEPLOY ROI - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main b2f608b) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "202063ecade64cbb8939cb2df3e67e51" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "495" || (echo "BASE DOI: sitemap khong con 495 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v359-deploy.zip
+          echo "--- verify v359 (2 file) ---"
+          for f in v20.css sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF ".bot-topics-guest .bot-topics-blur{display:none}" v20.css || (echo "SAI: v20.css phai an lop chip mo o hang khach"; exit 1)
+          grep -qF "background:var(--brand);color:#fff;text-align:left;padding:9px 14px" v20.css || (echo "SAI: v20.css phai co .bot-topics-lock xanh la chu trang gon"; exit 1)
+          grep -qF ".bot-topics-row:has(#botTopicsGuest:not([hidden]))" v20.css || (echo "SAI: v20.css phai co quy tac :has() bo vo trang hang khach"; exit 1)
+          grep -qF "v359-shell-1" sw.js || (echo "SAI: sw.js phai co CACHE v359-shell-1"; exit 1)
+          echo "verify OK: 2 file, hang khach xanh la gon + CACHE v359-shell-1"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v359-deploy.zip
+          git add v20.css sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v359: Hang Bot cho khach gon lai, nen xanh la, chu trang (lenh anh Tho 16:21 19/11) — v20.css .bot-topics-lock xanh + an lop chip mo, :has() bo vo trang khi hien hang khach; hang da dang nhap giu nguyen; sw.js CACHE v359-shell-1"
+            git push
+          fi
