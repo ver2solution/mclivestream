@@ -1,6 +1,6 @@
 /* v325 (18/11/2026): Bot tóm tắt tin trong khung chat trang chủ.
    20 bot AI (avatar images/bots/bot-01..20.png, AI tạo) tự trò chuyện:
-   mỗi 5 giây 1 tin, random bot, nội dung tổng hợp từ web theo 7 chủ đề,
+   mỗi 15 giây 1 tin, random bot, nội dung tổng hợp từ web theo 7 chủ đề,
    kèm link thật tới bài/trang trên web.
    - Tin bot CHỈ render phía client (không ghi DB, không tính Xu, không
      tính Top tương tác, không gửi qua Realtime). Mỗi lượt truy cập thấy
@@ -17,7 +17,7 @@
 (function () {
   'use strict';
 
-  var BOT_INTERVAL_MS = 5000;
+  var BOT_INTERVAL_MS = 15000; /* v354 (19/11/2026, anh Thọ 13:45): Bot ra tin mỗi 15 giây (trước 5 giây). */
   var MAX_BOT_MSGS = 30;
   var PREFS_KEY = 'v2s_bot_prefs';
 
