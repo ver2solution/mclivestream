@@ -16485,7 +16485,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Mắt Biếc Huế nằm ở số 66 Bao Vinh, là ngôi nhà của Hà Lan trong phim Mắt Biếc 2019, giá 25.000–50.000đ, góc chụp đẹp nhất là tường vàng và cửa sổ gỗ xanh."
-  }
+  },
+  {
+   "title": "175.840 tỷ đồng trong 1 năm — 7 mẹo biến traffic thành doanh thu: bài học từ EcomDay 2026 hôm nay 19/11",
+   "cat": "Livestream",
+   "source": "ViHAT Solutions",
+   "date": "2026-11-19",
+   "url": "https://vihatsolutions.com/tin-su-kien/growthverse-ecomday-2026/",
+   "page": "bai-viet/ecomday-2026-175840-ty-dong-7-meo-bien-traffic-thanh-doanh-thu.html",
+   "img": "https://vihatsolutions.com/wp-content/uploads/2026/11/growthverse-ecomday-2026-gv-kv.webp",
+   "pinned": false,
+   "takeaway": "EcomDay 2026 diễn ra hôm nay 19/11/2026 tại TP.HCM với keynote \"From Traffic To Revenue\" của CEO ViHAT Cai Ngọc Luân. 7 mẹo biến traffic thành doanh thu cho shop Việt trước Black Friday 27/11 và 12.12."
+  },
 ],
  "lots": [
    {
