@@ -1,0 +1,53 @@
+name: "Deploy v353 (M-02 trang ho so member-only + lich su tuong tac)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v353.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v353:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v353 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v353-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v353-shell-1' sw.js; then echo "v353 DA DEPLOY ROI (sw.js da co v353-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 77f67bc) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "176034b9836e7c489f402e88b735ef34" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "493" || (echo "BASE DOI: sitemap khong con 493 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v353-deploy.zip
+          echo "--- verify v353 (4 file) ---"
+          for f in nguoi-dung.html js/comments.js js/community-chat.js sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "v353-shell-1" sw.js || (echo "SAI: sw.js phai co v353-shell-1"; exit 1)
+          if grep -qF "v346-shell-1" sw.js; then echo "SAI: sw.js khong duoc con v346-shell-1 lam CACHE hien tai"; exit 1; fi
+          node --check js/comments.js || (echo "SAI: js/comments.js loi cu phap"; exit 1)
+          node --check js/community-chat.js || (echo "SAI: js/community-chat.js loi cu phap"; exit 1)
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -qF 'id="chat-msg-' js/community-chat.js || (echo "SAI: js/community-chat.js phai co neo chat-msg-"; exit 1)
+          grep -qF 'id="comment-' js/comments.js || (echo "SAI: js/comments.js phai co neo comment-"; exit 1)
+          grep -qF "Lịch sử tương tác" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai co tab Lich su tuong tac"; exit 1)
+          grep -qF "Kết nối cộng đồng Livestream Việt Nam" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai co hop moi"; exit 1)
+          grep -qF "noindex" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai co noindex"; exit 1)
+          grep -qF "get_my_interactions" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai goi get_my_interactions"; exit 1)
+          echo "verify OK: 4 file, sw.js v353-shell-1, neo chat-msg/comment, hop moi + noindex"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v353-deploy.zip
+          git add nguoi-dung.html js/comments.js js/community-chat.js sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v353: M-02 trang ho so member-only nguoi-dung.html (hop moi nguyen van, ?next=, tab Lich su tuong tac goi RPC get_my_interactions) + neo chat-msg- (js/community-chat.js) + neo comment- (js/comments.js); CACHE v353-shell-1 (rebase tu 77f67bc)"
+            git push
+          fi
