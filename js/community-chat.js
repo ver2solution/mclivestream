@@ -250,7 +250,12 @@
      sách tài khoản test hiện tại. Đây là heuristic phía client — RPC sau
      này cần trả cờ tier (user/test/bot) theo tài khoản để nhận diện chắc
      chắn (luật Top mới); tên Test trùng tên người thật là trường hợp hiếm,
-     chấp nhận. */
+     chấp nhận.
+     BXH (19/11/2026, Q1 thiết kế bảng xếp hạng — Ryan tự duyệt 21:38
+     18/11): thứ tự sắp xếp ĐÃ ĐỔI — tổng-trước, tầng chỉ phá tie (xem
+     renderTop). topTier() vẫn dùng để phá tie. Lý do: luật anh chốt
+     12:07–14:41 18/11 là "xếp hạng theo số lượng nhiều nhất"; tầng-trước-
+     tổng-sau làm User 1 tương tác đứng trên Bot 50 tương tác, lệch luật. */
   var TEST_TOP_NAMES = ['anh nguyễn', 'bình trần', 'qa test 1800'];
   function topTier(r) {
     if (!r) return 0;
@@ -271,12 +276,17 @@
     if (!rows || !rows.length) {
       box.innerHTML = '<p class="chat-empty">Chưa có tương tác hôm nay.</p>';
     } else {
-      // v337: thứ tự ưu tiên User > Test tên thật > Bot (anh Thọ 13:41).
-      // Trong mỗi nhóm vẫn xếp theo số tương tác giảm dần.
+      // BXH (19/11/2026, Q1 — đồng bộ với /bang-xep-hang): xếp theo TỔNG
+      // tương tác giảm dần trước; tầng (User > Test tên thật > Bot) CHỈ
+      // phá tie khi đồng tổng; vẫn đồng thì tên A→Z để thứ tự ổn định.
       rows = rows.slice().sort(function (a, b) {
+        var ca = a.interact_count || 0, cb = b.interact_count || 0;
+        if (cb !== ca) return cb - ca;
         var ta = topTier(a), tb = topTier(b);
         if (ta !== tb) return ta - tb;
-        return (b.interact_count || 0) - (a.interact_count || 0);
+        var na = String(a.author_name || '').toLowerCase();
+        var nb = String(b.author_name || '').toLowerCase();
+        return na < nb ? -1 : (na > nb ? 1 : 0);
       });
       var html = '';
       rows.forEach(function (r, i) {

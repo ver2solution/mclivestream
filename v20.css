@@ -1316,3 +1316,85 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
   .chat-page-head h1{font-size:22px}
   .chat-guest-invite{padding:24px 16px}
 }
+
+/* BXH-02 (19/11/2026) — Trang Bảng xếp hạng /bang-xep-hang.
+   Theo mockup hidden_files/mockup-bang-xep-hang-2026-11-18.html (đã kiểm
+   desktop 1280 + mobile 390, sửa 2 lỗi §12 thiết kế). Tiền tố .lb- để
+   không đụng .card/.chips/.empty-state đã có trong v20.css. Dùng token
+   site (--brand/--line/--mut/--ink/--brandsoft); màu huy chương tái dùng
+   đúng .top-rank.r1/r2/r3 (#f59e0b/#94a3b8/#b45309). */
+.lb-page{max-width:960px;margin:0 auto}
+.lb-crumb{font-size:13px;color:var(--mut);margin:20px 0 0}
+.lb-crumb a{color:var(--mut)}
+.lb-page h1{font-size:28px;line-height:1.25;margin:20px 0 4px}
+.lb-sub{color:var(--mut);font-size:15px;line-height:1.5;margin:0}
+.lb-meta{font-size:13px;color:var(--mut);margin-top:8px}
+.lb-meta b{color:var(--brand)}
+.lb-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:16px}
+.lb-card h2{font-size:18px;margin:0 0 10px}
+.lb-rules{font-size:15px;line-height:1.65;margin:0;padding-left:18px}
+.lb-rules li{margin-bottom:4px}
+.lb-rules .hl{background:#fff7d6;padding:0 4px;border-radius:4px;font-weight:700}
+.lb-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.lb-filters .lb-sep{width:1px;height:24px;background:var(--line);margin:0 4px}
+.lb-chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;cursor:pointer;color:var(--ink);white-space:nowrap;min-height:44px}
+.lb-chip.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.lb-chip.soon{color:#b0b3b8;background:#f5f6f7;cursor:default}
+.lb-chip.soon::after{content:" · Sắp có";font-size:11px}
+.lb-podium{display:flex;gap:12px;align-items:flex-end;margin-top:16px}
+.lb-pod{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 14px 16px;text-align:center}
+.lb-pod.p1{order:2;border:2px solid #f59e0b;padding-top:24px}
+.lb-pod.p2{order:1}
+.lb-pod.p3{order:3}
+.lb-crown{font-size:28px;display:block}
+.lb-medal{width:52px;height:52px;border-radius:50%;margin:6px auto 10px;display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff;background:#94a3b8}
+.lb-pod.p1 .lb-medal{background:#f59e0b;width:64px;height:64px;font-size:26px}
+.lb-pod.p3 .lb-medal{background:#b45309}
+.lb-pname{font-weight:800;font-size:16px;line-height:1.3;word-break:break-word}
+.lb-prole{font-size:13px;color:var(--mut);margin-top:2px}
+.lb-pod .lv{margin-top:6px}
+.lb-total{font-size:26px;font-weight:800;color:var(--brand);margin-top:8px;line-height:1}
+.lb-total small{display:block;font-size:12px;color:var(--mut);font-weight:400;margin-top:3px}
+.lb-split{font-size:13px;color:var(--mut);margin-top:8px;line-height:1.5}
+.lb-split b{color:var(--ink)}
+.lb-table{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.lb-head,.lb-row{display:grid;grid-template-columns:52px 1fr 64px 120px 140px 96px;gap:8px;align-items:center;padding:11px 16px}
+.lb-head{background:var(--brandsoft);color:var(--brand);font-size:13px;font-weight:800}
+.lb-row{border-top:1px solid var(--line);font-size:15px}
+.lb-row:nth-child(even){background:#fafbfb}
+.lb-rank{width:30px;height:30px;border-radius:50%;background:var(--brandsoft);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:14px}
+.lb-who{min-width:0}
+.lb-who b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-who span{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-who span.lb-m-break{display:none;font-size:12px;color:var(--mut);margin-top:2px}
+.lb-row .lv{white-space:nowrap}
+.lb-num{text-align:right;font-variant-numeric:tabular-nums}
+.lb-total-col{text-align:right;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums}
+.lb-note{padding:12px 16px;font-size:13px;color:var(--mut);background:var(--card);border-top:1px solid var(--line);line-height:1.55}
+.lb-more{padding:14px 16px;text-align:center;background:var(--card);border-top:1px solid var(--line)}
+.lb-more .btn{width:100%;max-width:320px}
+.lb-shown{font-size:13px;color:var(--mut);margin-top:8px}
+.lb-privacy{background:var(--card);border:1px dashed #c9a227;border-radius:12px;padding:14px 18px;font-size:14px;color:#6b5b00;margin-top:16px;line-height:1.6}
+.lb-empty{text-align:center;padding:34px 18px;color:var(--mut);font-size:15px;line-height:1.7}
+.lb-empty .lb-big{font-size:40px;display:block;margin-bottom:8px}
+.lb-empty b{color:var(--ink)}
+.lb-error{text-align:center;padding:34px 18px;color:var(--mut);font-size:15px;line-height:1.7}
+.lb-error b{color:var(--ink)}
+@media (max-width:720px){
+  .lb-page h1{font-size:23px}
+  .lb-podium{flex-wrap:wrap}
+  .lb-pod.p1{order:1;flex-basis:100%}
+  .lb-pod.p2{order:2;flex-basis:calc(50% - 6px)}
+  .lb-pod.p3{order:3;flex-basis:calc(50% - 6px)}
+  .lb-pod .lb-total{font-size:22px}
+  .lb-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .lb-head{display:none}
+  .lb-row{grid-template-columns:36px 1fr auto;gap:10px;padding:12px 14px}
+  .lb-row .lb-c-chat,.lb-row .lb-c-cmt{display:none}
+  .lb-row .lb-rank{grid-column:1;grid-row:1}
+  .lb-row .lb-who{grid-column:2;grid-row:1/span 2}
+  .lb-row .lv{grid-column:3;grid-row:1;justify-self:end}
+  .lb-row .lb-total-col{grid-column:3;grid-row:2}
+  .lb-row .lb-who span.lb-m-break{display:block}
+  .lb-row .lb-who b{font-size:14px}
+}
