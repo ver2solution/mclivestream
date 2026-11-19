@@ -530,6 +530,57 @@ function v2sSignupPopup(kind){
     } else { show(); }
   } catch (e) {}
 }
+/* v367 (cong "Xem bai goc", anh Tho chot 01:12-01:14 20/11/2026 — GHI
+   BAT BUOC vao cron agent-developer 15:21, ghi de moi quy tac cu ve
+   link nguon/liien he khi chua dang nhap): link nguon bai chi mo khi
+   da dang nhap. Khach thay link VAN HIEN nhung bi che boi 1 lop mo
+   (blur) + chu "Dang Nhap" tren nen mo; bam vao thi sang
+   dang-nhap.html (kem ?next= duong dan tuong doi de quay lai), KHONG
+   mo bai goc. Mac dinh render MO (fail-closed); chi go mo sau khi
+   session check (pointsSessionUser, getSessionRobust ~2s) xac nhan da
+   dang nhap. Ap dung moi doi tuong: mau, shop, xuong, kiot, lo — ca
+   popup chi tiet lan trang chi tiet (ho-so.html, chi-tiet-shop.html).
+   Lien he (SĐT/link MXH) da an san boi gatedContactsHTML (Contact
+   Gate 15/11) — khong doi o day. */
+function originGateHTML(url, label, btnClass, track){
+  var u = String(url || '').trim();
+  if(!u) return '';
+  var cls = (btnClass === undefined || btnClass === null) ? 'btn btn-ghost' : btnClass;
+  var tr = track ? ' data-track="' + esc(track) + '"' : '';
+  var next = '';
+  try {
+    if (typeof window !== 'undefined' && window.location) {
+      next = String(window.location.pathname || '') + String(window.location.search || '') + String(window.location.hash || '');
+    }
+  } catch (e) { next = ''; }
+  var loginHref = 'dang-nhap.html' + (next ? '?next=' + encodeURIComponent(next) : '');
+  return '<span class="origin-gate origin-gate--blurred">'
+    + '<a class="' + cls + '" href="' + esc(u) + '" target="_blank" rel="noopener"' + tr + ' tabindex="-1" aria-hidden="true">' + esc(label) + '</a>'
+    + '<a class="origin-gate__login" href="' + esc(loginHref) + '">Đăng Nhập</a>'
+    + '</span>';
+}
+function unblurOriginGates(){
+  try {
+    if (typeof document === 'undefined' || !document.querySelectorAll) return;
+    var els = document.querySelectorAll('.origin-gate--blurred');
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.remove('origin-gate--blurred');
+      els[i].classList.add('origin-gate--open');
+      var a = els[i].querySelector ? els[i].querySelector('a:not(.origin-gate__login)') : null;
+      if (a) { a.removeAttribute('tabindex'); a.removeAttribute('aria-hidden'); }
+    }
+  } catch (e) {}
+}
+function applyOriginGate(){
+  // Go mo neu da dang nhap; khach giu nguyen lop mo. Dung
+  // pointsSessionUser (getSessionRobust) de tranh false-negative khi
+  // GoTrue chua khoi phuc xong (v222).
+  try {
+    if (typeof pointsSessionUser === 'function') {
+      pointsSessionUser().then(function(u){ if (u) unblurOriginGates(); }).catch(function(){});
+    }
+  } catch (e) {}
+}
 /* v117 (pheu dang ky): toast dung chung — cung kieu starToast (style
    inline, co dinh duoi giua man hinh, tu bien mat), dung cho thong bao
    sau dang ky ("Ban nhan duoc 10 xu thuong!"). msg() trong form khong
@@ -1369,14 +1420,14 @@ function lotFactoryKiotDetailHTML(kind, item){
   var fullLink = '';
   if(kind === 'model'){
     fullLink = '<a class="btn btn-primary" href="ho-so.html?id=' + esc(item.id) + '">Xem hồ sơ đầy đủ →</a>';
-    if(hasReal(item.src)) origin = '<a class="btn btn-ghost" href="' + esc(item.src) + '" target="_blank" rel="noopener">Xem bài gốc →</a>';
+    if(hasReal(item.src)) origin = originGateHTML(item.src, 'Xem bài gốc →', 'btn btn-ghost');
   } else if(kind === 'shop'){
     fullLink = '<a class="btn btn-primary" href="chi-tiet-shop.html?id=' + esc(item.id) + '">Xem shop đầy đủ →</a>';
-    if(hasReal(item.src)) origin = '<a class="btn btn-ghost" href="' + esc(item.src) + '" target="_blank" rel="noopener">Xem bài tuyển gốc →</a>';
+    if(hasReal(item.src)) origin = originGateHTML(item.src, 'Xem bài tuyển gốc →', 'btn btn-ghost');
   } else if(isNewObj && hasReal(item.sourceUrl)){
-    origin = '<a class="btn btn-primary" href="' + esc(item.sourceUrl) + '" target="_blank" rel="noopener">Xem bài gốc →</a>';
+    origin = originGateHTML(item.sourceUrl, 'Xem bài gốc →', 'btn btn-primary');
   } else if(hasReal(item.url)){
-    origin = '<a class="btn btn-primary" href="' + esc(item.url) + '" target="_blank" rel="noopener">Xem bài gốc →</a>';
+    origin = originGateHTML(item.url, 'Xem bài gốc →', 'btn btn-primary');
   }
   var note = kind === 'model' ? '⚠ CHƯA XÁC NHẬN ĐỒNG Ý ĐĂNG WEB — hồ sơ từ bài đăng công khai, sẽ xóa khi có hồ sơ mới tự đăng ký thay thế.'
     : kind === 'shop' ? 'Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).'
@@ -1407,6 +1458,7 @@ function openLotFactoryKiotDetail(id){
   body.innerHTML = lotFactoryKiotDetailHTML(found.kind, found.item);
   overlay.classList.add('open');
   v2sSignupPopup('detail'); // v185: popup goi y dang ky khi xem chi tiet (chi goi y, khong chan).
+  applyOriginGate(); // v367: go mo link nguon neu da dang nhap.
   return true;
 }
 function closeLotFactoryKiotDetail(){
@@ -4199,15 +4251,16 @@ function initDetail(){
   + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
   + gatedContactsHTML('model_profile', m.id, m.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
-  + '<a class="btn btn-light" data-track="xem-bai-goc-mau" href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook →</a>'
+  + originGateHTML(m.src, 'Xem bài gốc trên Facebook →', 'btn btn-light', 'xem-bai-goc-mau')
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a>'
   + '<a class="btn btn-ghost" data-track="yeu-cau-go-ho-so" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
-  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> <a href="'+esc(m.src)+'" target="_blank" rel="noopener">Xem bài gốc trên Facebook</a> · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
+  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> ' + originGateHTML(m.src, 'Xem bài gốc trên Facebook', '', '') + ' · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
   var others=document.getElementById('otherGrid');
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
   mountPointsDetail('model_profile', m.id);
   v2sSignupPopup('detail'); // v185: popup goi y dang ky khi xem chi tiet (chi goi y, khong chan).
+  applyOriginGate(); // v367: go mo link nguon neu da dang nhap.
 }
 /* Shop detail (v32): company-page layout after the big job sites
    (VietnamWorks company page: header with big logo + name, key facts,
@@ -4252,7 +4305,7 @@ function initShopDetail(){
   + '<p class="job-meta">'+meta.join(' · ')+'</p>'
   + '<p><b>Yêu cầu:</b> '+esc(s.req)+'</p>'
   + (hasReal(s.channels) ? '<p><b>Kênh livestream:</b> '+esc(s.channels)+'</p>' : '')
-  + '<div class="card-actions"><a class="btn btn-primary btn-sm" data-track="xem-bai-tuyen-goc" href="'+esc(s.src)+'" target="_blank" rel="noopener">Xem bài tuyển gốc trên Facebook →</a>'
+  + '<div class="card-actions">' + originGateHTML(s.src, 'Xem bài tuyển gốc trên Facebook →', 'btn btn-primary btn-sm', 'xem-bai-tuyen-goc')
   + '<a class="btn btn-ghost btn-sm" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online</a></div>'
   + '</article>'
   + '<p class="warn">Shop có thể yêu cầu cập nhật hoặc gỡ tin qua nút Góp ý (💬).</p>'
@@ -4268,6 +4321,7 @@ function initShopDetail(){
   if(others) others.innerHTML=(D.shops||[]).filter(function(x){return x.id!==s.id;}).slice(0,6).map(shopCardHTML).join('');
   mountPointsDetail('shop_profile', s.id);
   v2sSignupPopup('detail'); // v185: popup goi y dang ky khi xem chi tiet (chi goi y, khong chan).
+  applyOriginGate(); // v367: go mo link nguon neu da dang nhap.
 }
 /* V3-S1-01 (16/11/2026): BO banner mobile "Mo web PC" (V-03, P0.4).
    Banner cu (v85, theo yeu cau 07/11) bao nguoi dung bo mobile sang PC —

@@ -1415,3 +1415,10 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
   .lb-row .lb-who span.lb-m-break{display:block}
   .lb-row .lb-who b{font-size:14px}
 }
+
+/* v367 (20/11/2026): cổng "Xem bài gốc" — link nguồn mờ khi chưa đăng nhập (anh Thọ chốt 01:12–01:14; quy tắc bắt buộc trong cron agent-developer 15:21). Khách thấy link vẫn hiện nhưng mờ + chữ "Đăng Nhập" trên nền mờ; bấm vào sang trang đăng nhập, không mở bài gốc. Đã đăng nhập thì .origin-gate--open gỡ mờ + ẩn lớp phủ. */
+.origin-gate{position:relative;display:inline-block;max-width:100%;vertical-align:middle;}
+.origin-gate > a:not(.origin-gate__login){filter:blur(3px);opacity:.65;pointer-events:none;}
+.origin-gate__login{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);color:#0b5d4e;font-weight:800;text-decoration:none;border-radius:8px;padding:2px 10px;white-space:nowrap;}
+.origin-gate--open > a:not(.origin-gate__login){filter:none;opacity:1;pointer-events:auto;}
+.origin-gate--open .origin-gate__login{display:none;}
