@@ -67,6 +67,7 @@
    articles-thi-truong-2026-11-19 adds 4 Thi truong articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm Tết 2026" #6/10 (4.094 words, deep + đánh giá tiềm năng; góc mới: thưởng sớm + mua món đắt tiền hơn; chủ đề xoay vòng Zalo #2 ngày 19/11, thêm vào data.js sau cùng) + 3 news ("mua sắm lễ hội Ấn Độ 2026" 2.481 words; "social commerce Hàn Quốc 2026" 2.496 words; "livestream toàn cầu 2026" 2.485 words). SEO V2. Total 440 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-xu-huong-2026-11-19 adds 4 Xu hướng articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng kinh doanh sau Tết" #6/10 (deep, 3.159 words; Cốc Cốc 09/2026 via Brands Vietnam 16/11/2026) + 1 rotation topic #2 "xu hướng mua hàng mới" (eMarketer 29/06/2026, added LAST for Zalo 10:00) + 2 news ("mua sắm lễ 2026" NRF 15/10/2026, 1.735 words; "hành vi mua sắm 2027" FashionUnited 18/11/2026, 2.407 words). Total 448 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-dong-tien-2026-11-19 adds 4 Dong tien articles (19/11/2026, Thursday): 1 seasonal keyword 'thu hoi von xa kho cuoi nam' #7/10 (deep, NEW angle: bang tinh gia hoa von theo phi san — khac bai 12 cach cua Dang hot 13/11; added LAST) + 3 news 18/11 (bien ban FOMC tinh tang 50 diem thang 12 + Nvidia quy III 115,8 ty USD co phieu van giam 2,9% + vang roi tiep 3.752 USD thap nhat 14 thang). SEO V2 (title suffix + link boxes). Total 444 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-phan-tich-2026-11-19 adds 4 Phan tich articles (19/11/2026, Thursday): 1 seasonal keyword "luat livestream ban hang 2026" #8/10 (deep, enforcement angle: Kera verdict 19/11/2025 + ND 87/2026 fines to 100M) + 3 bo 100 cum E STT 76 "mo hinh kinh doanh doc la" + STT 82 "affiliate marketing la gi" + STT 88 "cach kiem tien tu livestream". Group 4 KW-161/162/169 NOT written: Recovery V1 gate (PR 10 bai dau nghiem thu) has no acceptance record. SEO V2. Total 457 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15374,6 +15375,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Thu hồi vốn xả kho cuối năm: tính giá hòa vốn sau phí sàn — món vốn 100.000đ, giá gốc 200.000đ thì giảm 30% lãi 26.000đ, giảm 50% lỗ 10.000đ; ngưỡng tối đa ~44,4%; xả 3 đợt tới Tết 06/02/2027."
+  },
+  {
+   "title": "Luật livestream bán hàng 2026: phạt tới 100 triệu đồng",
+   "cat": "Phân tích",
+   "source": "VnExpress",
+   "date": "2026-11-19",
+   "url": "https://vnexpress.net/hoa-hau-thuy-tien-hang-du-muc-quang-linh-vlogs-bi-phat-2-nam-tu-4965935.html",
+   "page": "bai-viet/luat-livestream-ban-hang-2026-phat-toi-100-trieu-dong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luat-livestream-ban-hang-2026-phat-toi-100-trieu-dong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vụ kẹo Kera (19/11/2025): 3 KOL lĩnh 2 năm tù, thu lợi bất chính 12,4 tỷ đồng; từ 2026 KOL quảng cáo sai bị phạt tới 100 triệu đồng (Nghị định 87/2026); xác minh điện tử người bán và người livestream áp dụng từ 1/1/2027."
+  },
+  {
+   "title": "Mô hình kinh doanh độc lạ: web xấu kiếm 106 triệu USD",
+   "cat": "Phân tích",
+   "source": "TechStartups",
+   "date": "2026-11-19",
+   "url": "https://techstartups.com/2026/10/24/this-ugly-website-generates-106-million-a-year-from-860000-paying-customers-heres-how/",
+   "page": "bai-viet/mo-hinh-kinh-doanh-doc-la-web-xau-kiem-106-trieu-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-hinh-kinh-doanh-doc-la-web-xau-kiem-106-trieu-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "pdfFiller: website 'xấu' kiếm 106 triệu USD/năm từ 860.000 khách trả phí (TechStartups 24/10/2026); đá cảnh làm thú cưng bán 15 triệu USD trong nửa năm — 7 mô hình độc lạ và bài học cho shop nhỏ."
+  },
+  {
+   "title": "Affiliate marketing là gì? 42% GMV TikTok Shop Mỹ",
+   "cat": "Phân tích",
+   "source": "Hamster Garage",
+   "date": "2026-11-19",
+   "url": "https://www.hamstergarage.com/article/tiktok-shop-affiliate-statistics-benchmarks-roi",
+   "page": "bai-viet/affiliate-marketing-la-gi-42-phan-tram-gmv-tiktok-shop-my.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/affiliate-marketing-la-gi-42-phan-tram-gmv-tiktok-shop-my.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Affiliate chiếm 42% GMV TikTok Shop Mỹ, hoa hồng trung bình 13,02% (2026); thị trường toàn cầu 17–20 tỷ USD; top 0,5% creator chiếm 38% doanh thu affiliate."
+  },
+  {
+   "title": "Cách kiếm tiền từ livestream: 10–150 USD mỗi giờ",
+   "cat": "Phân tích",
+   "source": "TTCalculator",
+   "date": "2026-11-19",
+   "url": "https://ttcalculator.net/learn/tiktok-live-earnings-per-hour/",
+   "page": "bai-viet/cach-kiem-tien-tu-livestream-10-150-usd-moi-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-kiem-tien-tu-livestream-10-150-usd-moi-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok LIVE trả 10–150 USD mỗi giờ (2026): 100 người xem cùng lúc cho khoảng 13 USD/giờ sau khi TikTok giữ ~50%; creator 50.000+ follower kiếm 3.000–15.000 USD/tháng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
