@@ -16520,6 +16520,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "VinCons tuyển dụng 200.000 thợ xây, lương 14–50 triệu/tháng, không cần kinh nghiệm, bao ăn ở miễn phí. Vì sao thợ xây đổ xô ứng tuyển và đăng ký thế nào?"
   },
+  {
+   "title": "3,3 tỷ đồng từ 1 video 77 giây — cơ bida Way Cues vượt mặt kính mắt mèo: sản phẩm ngách vẫn bán nghìn đơn",
+   "cat": "Hàng hoá",
+   "source": "ShopeeAnalytics",
+   "date": "2026-11-19",
+   "url": "https://www.shopeeanalytics.com/vn/search/tiktok-video",
+   "page": "bai-viet/co-bida-way-cues-33-ty-dong-video-77-giay-vuot-kinh-mat-meo-ao-phao-hehi.html",
+   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/40ab99ae1a2a468489597c716b356d02~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my2&from=1432613627&from_p=3004324551",
+   "pinned": false,
+   "takeaway": "1,8–3,3 tỷ đồng từ 1 video 77 giây: cơ bida Way Cues LD Series của ThyA Billiards Shop vượt kính mắt mèo, áo phao HeHi để dẫn đầu top 100 video bán chạy TikTok Shop 7 ngày (ShopeeAnalytics 19/11/2026)."
+  },
 ],
  "lots": [
    {
