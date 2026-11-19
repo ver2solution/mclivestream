@@ -4251,10 +4251,10 @@ function initDetail(){
   + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
   + gatedContactsHTML('model_profile', m.id, m.contacts)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
-  + originGateHTML(m.src, 'Xem bài gốc trên Facebook →', 'btn btn-light', 'xem-bai-goc-mau')
+  + originGateHTML(m.src, 'Xem bài gốc →', 'btn btn-light', 'xem-bai-goc-mau')
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a>'
   + '<a class="btn btn-ghost" data-track="yeu-cau-go-ho-so" style="background:transparent;color:#fff;border-color:#fff" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Yêu cầu gỡ hồ sơ</a></div>'
-  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> ' + originGateHTML(m.src, 'Xem bài gốc trên Facebook', '', '') + ' · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
+  + '<div class="side-card"><h2 style="margin-top:0">Thông tin thêm</h2><p><b>Hình thức:</b> '+esc(m.form)+'</p><p><b>Giới tính:</b> '+esc(m.gender)+'</p><p><b>Bài gốc:</b> ' + originGateHTML(m.src, 'Xem bài gốc', '', '') + ' · Ngày bài: '+esc(m.date)+'</p></div></div></div>';
   var others=document.getElementById('otherGrid');
   if(others) others.innerHTML=D.models.filter(function(x){return x.id!==m.id;}).map(miniHTML).join('');
   var title=document.getElementById('detailTitle'); if(title) title.textContent='Hồ sơ: '+m.province+' — '+m.name;
