@@ -1175,11 +1175,18 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .chat-empty{font-size:14px;color:var(--mut);margin:0}
 /* v356 (19/11/2026): Hàng chọn chủ đề Bot tóm tắt tin trên top mục chat cộng đồng. */
 .bot-topics-row{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px}
-.bot-topics-guest{position:relative;overflow:hidden;border-radius:10px;min-height:96px}
+/* v359 (19/11/2026, lenh anh Tho 16:21): hang Bot cho KHACH gon lai, nen
+   xanh la, chu trang. Khi hien hang khach: vo trang bien mat, chi con
+   thanh xanh; lop chip mo phia sau bi an (chinh no lam khung cao 96px).
+   Hang cua nguoi DA dang nhap (chip + Luu/Tat) giu nguyen nhu cu. */
+.bot-topics-row:has(#botTopicsGuest:not([hidden])){padding:0;border:0;background:transparent;margin-bottom:8px}
+.bot-topics-guest{position:relative;overflow:hidden;border-radius:10px;min-height:0}
+.bot-topics-guest .bot-topics-blur{display:none}
 .bot-topics-blur{position:absolute;inset:0;display:flex;gap:8px;flex-wrap:wrap;align-content:center;filter:blur(4px);opacity:.55;pointer-events:none;user-select:none}
 .bot-topics-blur span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;white-space:nowrap}
-.bot-topics-lock{position:relative;z-index:1;min-height:96px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;background:rgba(255,255,255,.45);text-align:center;padding:10px}
-.bot-topics-lock span{font-size:14px;font-weight:600}
+.bot-topics-lock{position:relative;z-index:1;min-height:0;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--brand);color:#fff;text-align:left;padding:9px 14px;border-radius:10px}
+.bot-topics-lock span{font-size:13px;font-weight:600}
+.bot-topics-lock .btn{background:#fff;color:var(--brand);border-color:#fff;min-height:36px;padding:6px 16px;white-space:nowrap}
 .bot-topics-user .bot-topics-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
 .bot-topics-user .bot-topics-head b{font-size:15px}
 .bot-topics-note{font-size:13px;color:var(--brand)}
