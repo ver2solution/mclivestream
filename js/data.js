@@ -73,6 +73,7 @@
    articles-phan-tich-2026-11-19 adds 4 Phan tich articles (19/11/2026, Thursday): 1 seasonal keyword "luat livestream ban hang 2026" #8/10 (deep, enforcement angle: Kera verdict 19/11/2025 + ND 87/2026 fines to 100M) + 3 bo 100 cum E STT 76 "mo hinh kinh doanh doc la" + STT 82 "affiliate marketing la gi" + STT 88 "cach kiem tien tu livestream". Group 4 KW-161/162/169 NOT written: Recovery V1 gate (PR 10 bai dau nghiem thu) has no acceptance record. SEO V2. Total 457 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-20 adds 4 Phan tich articles (20/11/2026, Friday): 1 seasonal keyword "phan tich thi truong TMĐT quy 4 2026" #9/10 (deep: Metric Q3 150.380 ty +45,16%, Q4 forecast 165.500 ty, TikTok Shop gap 1,7 diem) + 2 NEW-TYPE tam ly hoc (a) bang chung xa hoi thang khan hiem 0,480 vs 0,392 (Effendi 27/07/2026) + (b) 5 diem nghen khach xem live khong mua (Unair 2026, H8 REJECTED) + 1 NEWS Black Friday 2026 TikTok Shop 11-30/11, Michael Kors ~4x ky vong (Capri 30/10/2026). Cum E bo 100 DA HET (STT 76-90); Nhom 4 KW-161/162/169 CHUA viet (Recovery V1 gate: PR 10 bai dau nghiem thu — chua co bien ban). SEO V2. Total 485 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-20 adds 4 Thi truong articles (20/11/2026, Friday): 1 seasonal keyword "sale cuối năm 2026" #7/10 (4.148 words, deep + đánh giá tiềm năng; góc mới: 3 con số toàn cầu Adobe + Salesforce + NRF + lịch VN tới Tết) + 3 news ("Coupang quý 3/2026" 2.294 words; "AI mua sắm mùa lễ 2026" 2.405 words; "thương mại điện tử toàn cầu 2026" 2.204 words). SEO V2 (18/18 hàng 4/4, TOC khớp). Total 489 articles (grep; 490 node-parse). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-xu-huong-2026-11-20 adds 4 Xu hướng articles (20/11/2026, Friday): 1 seasonal keyword "xu hướng tìm kiếm cuối năm" #7/10 (deep, 2.642 words; Google Holiday 100 09/11/2026 + Google Trends to 18/11/2026) + 3 news ("quà tặng trải nghiệm 2026" Deloitte 15/10/2026, 2.317 words; "tâm lý mua sắm dịp lễ 2026" Kurums 18/11/2026, 2.481 words; "mặt hàng bán chạy dịp lễ" Aigoru 15/11/2026, 2.520 words). Zalo rotation 20/11 is topic #3 (Hang hoa) — no rotation article in this batch. Total 497 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-dong-tien-2026-11-20 adds 4 Dong tien articles (20/11/2026, Friday): 1 seasonal keyword 'chi phi quang cao Tet' #8/10 (deep, NEW angle: cong thuc tinh ngan sach theo ROAS + bang 3 muc ngan sach + lich chay 3 giai doan toi Tet 06/02/2027; added LAST) + 3 news 19/11 (vang roi xuong 3.625 USD thap nhat 14 thang + Bitcoin tien sat 60.000 USD, ETF rut hon 2,5 ty USD nam 2026 + so lieu kinh te My 19/11 yeu di: that nghiep 203.000, Philly Fed 6,3, LEI -0,3% nhung gia dau vao 58,2). SEO V2 (title suffix + link boxes). Total 494 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16803,7 +16804,55 @@ window.V20_DATA = {
   "imgSelf": false,
   "pinned": false,
   "takeaway": "Sale cuối năm 2026: mua sắm online Mỹ dự báo 275,1 tỷ USD (Adobe 28/09/2026), Cyber Week toàn cầu 357 tỷ USD (Salesforce 19/11/2026), bán lẻ mùa lễ Mỹ lần đầu vượt 1.000 tỷ USD (NRF tháng 10/2026); lịch VN: 12.12 ngày 12/12/2026, Giáng sinh 25/12/2026, chốt đơn trước 01/02/2027, Tết 06/02/2027. Bài từ khóa theo mùa #7/10, thêm vào data.js sau cùng."
- }
+ },
+  {
+   "title": "Xu hướng tìm kiếm cuối năm: 10 món quà Google tìm nhiều nhất",
+   "cat": "Xu hướng",
+   "source": "Google",
+   "date": "2026-11-20",
+   "url": "https://blog.google/products-and-platforms/products/shopping/holiday-100-gift-guide-2026/",
+   "page": "bai-viet/xu-huong-tim-kiem-cuoi-nam-10-mon-qua-google-tim-nhieu-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-tim-kiem-cuoi-nam-10-mon-qua-google-tim-nhieu-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu hướng tìm kiếm cuối năm 2026: Google Holiday 100 (09/11/2026) — bàn chải mặt tăng tìm kiếm 400%, giày kitten heel tăng 295%, tàu hoả cổ điển tăng 240%; 'Black Friday deals' tăng gấp đôi trong 1 tuần tới 18/11/2026."
+  },
+  {
+   "title": "Quà tặng trải nghiệm 2026: một nửa người mua chọn tặng",
+   "cat": "Xu hướng",
+   "source": "Deloitte",
+   "date": "2026-11-20",
+   "url": "https://www.deloitte.com/us/en/about/press-room/deloitte-holiday-spending-set-to-increase.html",
+   "page": "bai-viet/qua-tang-trai-nghiem-2026-50-phan-tram-nguoi-mua-chon-tang-trai-nghiem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/qua-tang-trai-nghiem-2026-50-phan-tram-nguoi-mua-chon-tang-trai-nghiem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quà tặng trải nghiệm 2026: 50% người mua chọn tặng trải nghiệm (39% năm 2024, 47% năm 2025); 79% kèm thêm món đồ vật chất; Gen Z và millennials lần đầu chiếm 50% chi tiêu lễ (Deloitte 15/10/2026)."
+  },
+  {
+   "title": "Tâm lý mua sắm dịp lễ 2026: chỉ 32% tin giá công bằng",
+   "cat": "Xu hướng",
+   "source": "Kurums",
+   "date": "2026-11-20",
+   "url": "https://kurums.com/holiday-marketing-2026-deal-fatigue-ai-shopping-black-friday-playbook/",
+   "page": "bai-viet/tam-ly-mua-sam-dip-le-2026-chi-32-phan-tram-tin-gia-cong-bang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tam-ly-mua-sam-dip-le-2026-chi-32-phan-tram-tin-gia-cong-bang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tâm lý mua sắm dịp lễ 2026: chỉ 32% tin giá công bằng, 79% chờ giá tăng; quảng cáo lễ tháng 9/2026 cao gấp 6 lần tháng 9/2021; 3 cách chứng minh giá thật (Kurums 18/11/2026, Deloitte/Nielsen/Gartner)."
+  },
+  {
+   "title": "Mặt hàng bán chạy dịp lễ: 1.283 sản phẩm Etsy bán chạy nhất",
+   "cat": "Xu hướng",
+   "source": "Aigoru",
+   "date": "2026-11-20",
+   "url": "https://www.aigoru.store/2026/11/what-sells-on-etsy-november-2026.html",
+   "page": "bai-viet/mat-hang-ban-chay-dip-le-2026-1283-san-pham-etsy-ban-chay-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mat-hang-ban-chay-dip-le-2026-1283-san-pham-etsy-ban-chay-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mặt hàng bán chạy dịp lễ 2026: 1.283 sản phẩm Etsy bán chạy nhất trong 7 ngày giữa tháng 11/2026 — 11.631 lần bán, 41.768 USD; Giáng sinh chiếm 50,9%, file số chiếm 82,8% doanh số (Aigoru 15/11/2026)."
+  }
 ],
  "lots": [
    {
