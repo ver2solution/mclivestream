@@ -17039,6 +17039,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Lowe's Black Friday 2026 (công bố 08/10/2026): 4 tuần sale từ 29/10, 12 Days of Deals mới từ 16/11, doorbuster 27/11, thành viên mua sớm online 26/11, December Deal Drops 3–24/12 — đồ gia dụng tới 45%, patio tới 50%."
   },
+  {
+   "title": "Black Friday 2026: Giảm tới 85%, 760.000 phiên live bùng nổ",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-20",
+   "url": null,
+   "page": "bai-viet/black-friday-2026-thi-truong-nhon-nhip-khap-the-gioi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-2026-tiktok-shop-dat-cuoc-vao-livestream.jpg",
+   "pinned": false,
+   "takeaway": "Black Friday 2026 (27/11) nóng từ giữa tháng 11: sale tới 85%, livestream bùng nổ khắp Mỹ, châu Âu, Trung Quốc, Đông Nam Á và Việt Nam. Lịch săn sale trong bài."
+  },
 ],
  "lots": [
    {
