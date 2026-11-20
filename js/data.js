@@ -17050,6 +17050,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Black Friday 2026 (27/11) nóng từ giữa tháng 11: sale tới 85%, livestream bùng nổ khắp Mỹ, châu Âu, Trung Quốc, Đông Nam Á và Việt Nam. Lịch săn sale trong bài."
   },
+  {
+   "title": "1.400 tỷ đồng trong 1 ngày mở bán — Xiaomi Mi 10 Ultra: chiếc điện thoại bán chạy nhất buổi livestream đầu tiên của Lôi Quân",
+   "cat": "Hàng hoá",
+   "source": "Caixin Global",
+   "date": "2026-11-20",
+   "url": "https://www.caixinglobal.com/2020-08-18/xiaomi-ceo-lei-jun-makes-30-million-in-sales-in-livestreaming-debut-101594107.html",
+   "page": "bai-viet/xiaomi-mi-10-ultra-1400-ty-dong-1-ngay-mo-ban-ban-chay-nhat-live-loi-quan.html",
+   "img": "https://www.engadget.com/engadget/xiaomi-mi-10-ultra-flagship-phones-134354175/291f08a0-dbd8-11ea-bdbf-991b78d54003.jpg",
+   "pinned": false,
+   "takeaway": "Xiaomi Mi 10 Ultra giá 5.299 NDT (khoảng 18,5 triệu đồng) bán hơn 400 triệu NDT (khoảng 1.400 tỷ đồng) ngay ngày mở bán đầu tiên 16/8/2020, dẫn đầu buổi livestream đầu tiên của Lôi Quân đạt 210 triệu NDT với 50,5 triệu người xem. Phân tích 3 số 120 và 7 bài học cho shop Việt trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
