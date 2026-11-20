@@ -16930,6 +16930,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Quyền Leo Daily bán 75 tỷ đồng trong 13 giờ livestream ngày 2/3/2024 — kỷ lục Việt Nam và Đông Nam Á lúc bấy giờ. Phân tích công thức, góc khuất tỷ lệ hủy đơn và chuỗi kỷ lục 100 tỷ sau đó."
   },
+  {
+   "title": "577 tỷ đồng tiền phạt trong 9 tháng — Douyin siết cả người ảo lẫn streamer đời đầu: Cao Địch vĩnh viễn mất quyền live, shop Việt học được 7 mẹo gì trư",
+   "cat": "Livestream",
+   "source": "Trung Hoa Net",
+   "date": "2026-11-19",
+   "url": "https://news.china.com/socialgd/10000169/20261116/49875001.html",
+   "page": "bai-viet/douyin-siet-nguoi-ao-cao-dich-mat-quyen-live-7-meo-shop-viet-black-friday.html",
+   "img": "https://img0.utuku.imgcdc.com/650x0/news/20261116/b8d933ee-600e-4232-98df-c830b24e78c2.jpg",
+   "pinned": false,
+   "takeaway": "Douyin xử hơn 26.000 tài khoản AI giả mạo trong 1 tháng, phạt 577 tỷ đồng trong 9 tháng. Cao Địch vĩnh viễn mất quyền live — 7 mẹo livestream bán hàng cho shop Việt trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
