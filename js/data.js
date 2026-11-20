@@ -72,6 +72,7 @@
    articles-dong-tien-2026-11-19 adds 4 Dong tien articles (19/11/2026, Thursday): 1 seasonal keyword 'thu hoi von xa kho cuoi nam' #7/10 (deep, NEW angle: bang tinh gia hoa von theo phi san — khac bai 12 cach cua Dang hot 13/11; added LAST) + 3 news 18/11 (bien ban FOMC tinh tang 50 diem thang 12 + Nvidia quy III 115,8 ty USD co phieu van giam 2,9% + vang roi tiep 3.752 USD thap nhat 14 thang). SEO V2 (title suffix + link boxes). Total 444 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-19 adds 4 Phan tich articles (19/11/2026, Thursday): 1 seasonal keyword "luat livestream ban hang 2026" #8/10 (deep, enforcement angle: Kera verdict 19/11/2025 + ND 87/2026 fines to 100M) + 3 bo 100 cum E STT 76 "mo hinh kinh doanh doc la" + STT 82 "affiliate marketing la gi" + STT 88 "cach kiem tien tu livestream". Group 4 KW-161/162/169 NOT written: Recovery V1 gate (PR 10 bai dau nghiem thu) has no acceptance record. SEO V2. Total 457 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-20 adds 4 Phan tich articles (20/11/2026, Friday): 1 seasonal keyword "phan tich thi truong TMĐT quy 4 2026" #9/10 (deep: Metric Q3 150.380 ty +45,16%, Q4 forecast 165.500 ty, TikTok Shop gap 1,7 diem) + 2 NEW-TYPE tam ly hoc (a) bang chung xa hoi thang khan hiem 0,480 vs 0,392 (Effendi 27/07/2026) + (b) 5 diem nghen khach xem live khong mua (Unair 2026, H8 REJECTED) + 1 NEWS Black Friday 2026 TikTok Shop 11-30/11, Michael Kors ~4x ky vong (Capri 30/10/2026). Cum E bo 100 DA HET (STT 76-90); Nhom 4 KW-161/162/169 CHUA viet (Recovery V1 gate: PR 10 bai dau nghiem thu — chua co bien ban). SEO V2. Total 485 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-thi-truong-2026-11-20 adds 4 Thi truong articles (20/11/2026, Friday): 1 seasonal keyword "sale cuối năm 2026" #7/10 (4.148 words, deep + đánh giá tiềm năng; góc mới: 3 con số toàn cầu Adobe + Salesforce + NRF + lịch VN tới Tết) + 3 news ("Coupang quý 3/2026" 2.294 words; "AI mua sắm mùa lễ 2026" 2.405 words; "thương mại điện tử toàn cầu 2026" 2.204 words). SEO V2 (18/18 hàng 4/4, TOC khớp). Total 489 articles (grep; 490 node-parse). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16705,7 +16706,56 @@ window.V20_DATA = {
   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.jpg",
   "pinned": false,
   "takeaway": "TikTok giam 17% luot xem moi bai, Instagram giam 31% reach (Metricool 10/12/2025); Facebook tang 51% reach; 5 cach go: live 2 phien, dang it nhung chat, giu tep khach rieng."
- }],
+ },
+ {
+  "title": "Coupang quý 3/2026: 10 tỷ USD, mảng mới tăng 27%",
+  "cat": "Thị trường",
+  "source": "Coupang / Business Wire",
+  "date": "2026-11-20",
+  "url": "https://www.nasdaq.com/press-release/coupang-announces-results-third-quarter-2026-2026-11-03",
+  "page": "bai-viet/coupang-quy-3-2026-10-ty-usd-mang-moi-tang-27-phan-tram.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/coupang-quy-3-2026-10-ty-usd-mang-moi-tang-27-phan-tram.jpg",
+  "imgSelf": false,
+  "pinned": false,
+  "takeaway": "Coupang quý 3/2026 đạt 10 tỷ USD, tăng 11% theo tỉ giá cố định, vượt dự báo 8-9% (báo cáo 03/11/2026); mảng mới Đài Loan + giao đồ ăn tăng 27%, mảng thương mại chỉ tăng 8%; lỗ ròng 501 triệu USD vì cháy kho 180 triệu USD; dự báo quý 4/2026 tăng 13-14%."
+ },
+ {
+  "title": "AI mua sắm mùa lễ 2026: 75,8 tỷ USD nhờ trợ lý ảo",
+  "cat": "Thị trường",
+  "source": "Salesforce",
+  "date": "2026-11-20",
+  "url": "https://www.salesforce.com/news/stories/cyber-week-ai-sales-2026/",
+  "page": "bai-viet/ai-mua-sam-mua-le-2026-758-ty-usd-tro-ly-ao.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/ai-mua-sam-mua-le-2026-758-ty-usd-tro-ly-ao.jpg",
+  "imgSelf": false,
+  "pinned": false,
+  "takeaway": "AI mua sắm mùa lễ 2026: trợ lý ảo ảnh hưởng 75,8 tỷ USD doanh số Cyber Week (21%, +13% so với 2025), lưu lượng AI tăng 104%, 1 trong 5 người mua bắt đầu bằng AI, 74% tin gợi ý AI (Salesforce 19/11/2026); người mua qua AI chốt đơn gấp đôi, đơn to hơn 8%."
+ },
+ {
+  "title": "Thương mại điện tử toàn cầu 2026: 6,88 nghìn tỷ USD",
+  "cat": "Thị trường",
+  "source": "eMarketer",
+  "date": "2026-11-20",
+  "url": "https://www.shopify.com/ca/blog/global-ecommerce-sales",
+  "page": "bai-viet/thuong-mai-dien-tu-toan-cau-2026-688-nghin-ty-usd.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/thuong-mai-dien-tu-toan-cau-2026-688-nghin-ty-usd.jpg",
+  "imgSelf": false,
+  "pinned": false,
+  "takeaway": "Thương mại điện tử toàn cầu 2026 dự báo 6,88 nghìn tỷ USD, tăng 7,2%, chiếm 21,1% bán lẻ (eMarketer, dự báo tháng 02/2025, Shopify cập nhật 29/09/2025); 2,86 tỷ người mua online, mobile khoảng 60%; livestream Trung Quốc 1,1 nghìn tỷ USD; Việt Nam 32 tỷ USD, tăng 22%."
+ },
+ {
+  "title": "Sale cuối năm 2026: lịch săn sale từ Black Friday tới Tết",
+  "cat": "Thị trường",
+  "source": "Adobe / Salesforce",
+  "date": "2026-11-20",
+  "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+  "page": "bai-viet/sale-cuoi-nam-2026-lich-sale-black-friday-12-12-den-tet.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/sale-cuoi-nam-2026-lich-sale-black-friday-12-12-den-tet.jpg",
+  "imgSelf": false,
+  "pinned": false,
+  "takeaway": "Sale cuối năm 2026: mua sắm online Mỹ dự báo 275,1 tỷ USD (Adobe 28/09/2026), Cyber Week toàn cầu 357 tỷ USD (Salesforce 19/11/2026), bán lẻ mùa lễ Mỹ lần đầu vượt 1.000 tỷ USD (NRF tháng 10/2026); lịch VN: 12.12 ngày 12/12/2026, Giáng sinh 25/12/2026, chốt đơn trước 01/02/2027, Tết 06/02/2027. Bài từ khóa theo mùa #7/10, thêm vào data.js sau cùng."
+ }
+],
  "lots": [
    {
      "id": "lot-01",
