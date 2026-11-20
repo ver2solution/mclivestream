@@ -63,6 +63,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-doi-song-2026-11-20 adds 5 Đời Sống articles (20/11/2026, Friday): 1 seasonal keyword "mua sắm Tết thông minh" #7/10 (2,402 words, deep; NRF 15/10/2026 + Deloitte 15/10/2026) + 3 news ("du lịch Sapa tháng 12" 1,863 words; "ngủ 7 tiếng mỗi ngày" 1,967 words; "du lịch một mình 2026" 2,075 words) + 1 cafe "quán cafe check-in đẹp Chuồn Chuồn Phú Quốc" 1,587 words. Total 507 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16857,7 +16858,67 @@ window.V20_DATA = {
 {"title":"Kinh nghiệm nhập hàng Trung Quốc: 7 bước 2026","cat":"Hàng hoá","source":"Importivity","date":"2026-11-20","url":"https://importivity.com/blog/essential-guide-to-importing-products-from-china/","page": "bai-viet/kinh-nghiem-nhap-hang-trung-quoc-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/kinh-nghiem-nhap-hang-trung-quoc-2026.jpg","pinned":false,"takeaway":"Kinh nghiệm nhập hàng Trung Quốc: phân biệt nhà máy – công ty thương mại – đại lý bằng giấy phép kinh doanh, kiểm chứng 6 bước trước khi cọc, giữ nguyên tắc cọc 30% và trả 70% sau khi duyệt kiểm hàng; giá về tay đội thêm khoảng 38% so với giá xưởng; đơn đầu mất 60–90 ngày, chốt đơn xuân trước đầu tháng 12 (Importivity, 01/11/2026; CN Ally, 2026)."},
 {"title":"Gacha Starbucks Nhật Bản: 9 móc bông 880 yên","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-20","url":"https://soranews24.com/2026/11/12/starbucks-japan-reveals-new-joyful-capsule-gacha-toy-release-date/","page": "bai-viet/starbucks-gacha-nhat-ban-880-yen-mo-hop-mu.html","img":"https://vieclamlivestream.online/images/bai-viet/starbucks-gacha-nhat-ban-880-yen-mo-hop-mu.jpg","pinned":false,"takeaway":"Gacha Starbucks Nhật Bản Joyful Capsule: lần đầu hãng bán đồ chơi gacha — 9 móc bông mini 5–8 cm, 880 yên mỗi viên (dòng Reserve 1.100 yên, chỉ bán tại Roastery Tokyo), mở bán toàn quốc từ 18/11/2026 sau lần hoãn vì động đất Kumamoto 28/07/2026 (SoraNews24, 12/11/2026)."},
 {"title":"Quà Tết cho doanh nghiệp: 957 tỷ USD thị trường","cat":"Hàng hoá","source":"The Business Research Company","date":"2026-11-20","url":"https://www.thebusinessresearchcompany.com/report/corporate-gifting-global-market-report","page": "bai-viet/qua-tet-cho-doanh-nghiep-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/qua-tet-cho-doanh-nghiep-2026.jpg","pinned":false,"takeaway":"Quà Tết cho doanh nghiệp: thị trường quà tặng toàn cầu 956,93 tỷ USD năm 2026 (+7,9%), dự báo 1.312,85 tỷ USD năm 2030; ngân sách 4 nhóm đối tượng từ 80.000 đồng tới 10 triệu đồng mỗi phần; riêng quà tặng Tết Việt Nam đạt 40,2 tỷ đồng trong 9 tuần trước Tết 2025 (+21%) (TBRC, 30/09/2026; Metric, 12/01/2026)."},
-{"title":"Matcha: nhu cầu tăng vọt, giá tăng 3,3 lần","cat":"Hàng hoá","source":"Meguri Group","date":"2026-11-20","url":"https://meguri-group.co.jp/en/matcha/journal/matcha-shortage/","page": "bai-viet/matcha-nhu-cau-tang-vot-gia-tang-33-lan.html","img":"https://vieclamlivestream.online/images/bai-viet/matcha-nhu-cau-tang-vot-gia-tang-33-lan.jpg","pinned":false,"takeaway":"Matcha nhu cầu tăng vọt: giá tencha tại Kyoto 17.797 yên/kg (19/06/2026), tăng 3,3 lần so với 2024; xuất khẩu trà xanh 8 tháng đầu 2026 tăng 77,3% về giá trị; các hãng trà lớn giới hạn bán, trồng trà mới mất 5 năm mới thu hoạch — giá khó giảm sớm (Meguri Group, 13/10/2026)."}
+{"title":"Matcha: nhu cầu tăng vọt, giá tăng 3,3 lần","cat":"Hàng hoá","source":"Meguri Group","date":"2026-11-20","url":"https://meguri-group.co.jp/en/matcha/journal/matcha-shortage/","page": "bai-viet/matcha-nhu-cau-tang-vot-gia-tang-33-lan.html","img":"https://vieclamlivestream.online/images/bai-viet/matcha-nhu-cau-tang-vot-gia-tang-33-lan.jpg","pinned":false,"takeaway":"Matcha nhu cầu tăng vọt: giá tencha tại Kyoto 17.797 yên/kg (19/06/2026), tăng 3,3 lần so với 2024; xuất khẩu trà xanh 8 tháng đầu 2026 tăng 77,3% về giá trị; các hãng trà lớn giới hạn bán, trồng trà mới mất 5 năm mới thu hoạch — giá khó giảm sớm (Meguri Group, 13/10/2026)."},
+  {
+   "title": "Mua sắm Tết thông minh: 7 cách chi đúng, không hụt tiền",
+   "cat": "Đời Sống",
+   "source": "NRF",
+   "date": "2026-11-20",
+   "url": "https://nrf.com/research-insights/holiday-data-and-trends/winter-holidays",
+   "page": "bai-viet/mua-sam-tet-thong-minh-7-cach-chi-dung-khong-hut-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-tet-thong-minh-7-cach-chi-dung-khong-hut-tien.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm Tết thông minh: chốt ngân sách trước 15/12/2026, mua đồ lâu bền trong đợt 12.12, giữ lại 10% làm quỹ dự phòng; NRF dự báo chi tiêu dịp lễ Mỹ 2026 đạt 1.013 nghìn tỷ USD."
+  },
+  {
+   "title": "Du lịch Sapa tháng 12: săn biển mây lúc 6h30, lạnh 8°C",
+   "cat": "Đời Sống",
+   "source": "Sapa Nomad",
+   "date": "2026-11-20",
+   "url": "https://sapanomad.com/sapa-in-december/",
+   "page": "bai-viet/du-lich-sapa-thang-12-san-bien-may-6h30.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-sapa-thang-12-san-bien-may-6h30.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Sapa tháng 12: ngày 15°C, đêm 8°C, biển mây gần như mỗi sáng từ 6h30 đến 9h, tuyết chỉ 1–3 ngày/năm — tháng khô và trong nhất để săn mây và chụp ảnh."
+  },
+  {
+   "title": "Ngủ 7 tiếng mỗi ngày: nghiên cứu 500.000 người nói gì",
+   "cat": "Đời Sống",
+   "source": "Columbia Magazine",
+   "date": "2026-11-20",
+   "url": "https://magazine.columbia.edu/print/pdf/node/14811",
+   "page": "bai-viet/ngu-7-tieng-moi-ngay-nghien-cuu-500000-nguoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ngu-7-tieng-moi-ngay-nghien-cuu-500000-nguoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ngủ 7 tiếng mỗi ngày: nghiên cứu Nature 13/05/2026 trên gần 500.000 người cho thấy khoảng 6,4–7,8 tiếng giúp cơ thể trẻ lâu nhất; ngủ dưới 6 tiếng tăng 50% nguy cơ tử vong."
+  },
+  {
+   "title": "Du lịch một mình 2026: 39% người đi để gặp người mới",
+   "cat": "Đời Sống",
+   "source": "Travel Daily News",
+   "date": "2026-11-20",
+   "url": "https://www.traveldailynews.com/statistics-trends/skyscanner-identifies-seven-key-trends-shaping-global-travel-in-2026/",
+   "page": "bai-viet/du-lich-mot-minh-2026-39-phan-tram-di-de-gap-nguoi-moi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-mot-minh-2026-39-phan-tram-di-de-gap-nguoi-moi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch một mình 2026: 39% đi nước ngoài để gặp người mới, đặt phòng lọc đi một mình tăng 83%; đi lần đầu nên bắt đầu bằng chuyến ngắn 2 ngày trong nước."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Chuồn Chuồn Phú Quốc ngắm hoàng hôn",
+   "cat": "Đời Sống",
+   "source": "VietnamSpot",
+   "date": "2026-11-20",
+   "url": "https://vietnamspot.ru/en/blog/phu-quoc-cafes",
+   "page": "bai-viet/quan-cafe-check-in-dep-chuon-chuon-phu-quoc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-chuon-chuon-phu-quoc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Chuồn Chuồn Phú Quốc: Đồi Sao Mai, 69 Trần Hưng Đạo, Dương Đông; mở 7h30–23h; cà phê sữa đá 80.000đ; góc đẹp nhất là sân thượng ngắm hoàng hôn hướng tây."
+  }
 ],
  "lots": [
    {
