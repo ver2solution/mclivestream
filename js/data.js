@@ -16875,6 +16875,54 @@ window.V20_DATA = {
      "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
      "linkText": "Xem bài đăng gốc →"
    },
+  {
+   "title": "Cách thanh lý hàng tồn kho bằng live đấu giá Black Friday",
+   "cat": "Đang hot",
+   "source": "TechRound (Drophouse)",
+   "date": "2026-11-20",
+   "url": "https://techround.co.uk/other/drophouse-breaks-uk-tiktok-live-auction-record-24-hour-techdrops-broadcast/",
+   "page": "bai-viet/cach-thanh-ly-hang-ton-kho-live-dau-gia-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-thanh-ly-hang-ton-kho-live-dau-gia-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thanh lý hàng tồn kho tuần Black Friday 27–30/11/2026: live đấu giá cho hàng lẻ size, ký gửi cho hàng còn giá trị, bán sỉ cả lô cho hàng lỗi mốt — giá sàn hòa vốn 44,4% (vốn 100.000đ, giá 200.000đ, phí sàn 10,5%)."
+  },
+  {
+   "title": "eBay Black Friday 2026: giảm tới 70%, hàng refurbished rẻ",
+   "cat": "Đang hot",
+   "source": "DealNews (eBay)",
+   "date": "2026-11-20",
+   "url": "https://www.dealnews.com/Certified-Refurb-Dyson-Vacuums-Hair-Tools-Air-Purifiers-Deals-at-eBay-Up-to-70-off-Extra-20-off-free-shipping/22403263.html",
+   "page": "bai-viet/ebay-black-friday-2026-giam-toi-70-phan-tram-hang-refurbished.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ebay-black-friday-2026-giam-toi-70-phan-tram-hang-refurbished.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "eBay Black Friday 2026: hàng refurbished giảm tới 70% (Dyson + mã SHOPDYSON tới 23/11), Brand Outlet tới 60%, The North Face giảm 63% + mã FASHUPNOV26 tới 27/11 — mã EFCYBER20 hết hạn 22/11/2026."
+  },
+  {
+   "title": "Kohl's Black Friday 2026: tuần sale 22–28/11, tặng 15 USD",
+   "cat": "Đang hot",
+   "source": "Kohl's Corporation",
+   "date": "2026-11-20",
+   "url": "https://corporate.kohls.com/news/now-arriving-at-the-north-kohls-november-holiday-savings-events",
+   "page": "bai-viet/kohls-black-friday-2026-tuan-sale-22-28-thang-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kohls-black-friday-2026-tuan-sale-22-28-thang-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kohl's Black Friday 2026 (công bố 30/10/2026): tuần sale 22–28/11 giảm tới 50% + thêm 20%, tặng 15 USD Kohl's Cash mỗi 50 USD, 200 khách đầu ngày 27/11 nhận quà 5–100 USD, sweepstakes 10.000 USD tới 30/11."
+  },
+  {
+   "title": "Lowe's Black Friday 2026: 12 ngày deal từ 16/11",
+   "cat": "Đang hot",
+   "source": "Lowe's Companies",
+   "date": "2026-11-20",
+   "url": "https://pr.capitalpress.com/article/Lowes-Unveils-Holiday-2026-Lineup-with-New-Gifts-and-Decor-MyLowes-Rewards-Perks-and-Weeks-of-Black-Friday-Savings/6ac7869d129730098884a970",
+   "page": "bai-viet/lowes-black-friday-2026-12-days-of-deals-tu-16-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lowes-black-friday-2026-12-days-of-deals-tu-16-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lowe's Black Friday 2026 (công bố 08/10/2026): 4 tuần sale từ 29/10, 12 Days of Deals mới từ 16/11, doorbuster 27/11, thành viên mua sớm online 26/11, December Deal Drops 3–24/12 — đồ gia dụng tới 45%, patio tới 50%."
+  },
    {
      "id": "lot-02",
      "group": 1,
