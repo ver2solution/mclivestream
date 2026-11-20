@@ -73,6 +73,7 @@
    articles-phan-tich-2026-11-19 adds 4 Phan tich articles (19/11/2026, Thursday): 1 seasonal keyword "luat livestream ban hang 2026" #8/10 (deep, enforcement angle: Kera verdict 19/11/2025 + ND 87/2026 fines to 100M) + 3 bo 100 cum E STT 76 "mo hinh kinh doanh doc la" + STT 82 "affiliate marketing la gi" + STT 88 "cach kiem tien tu livestream". Group 4 KW-161/162/169 NOT written: Recovery V1 gate (PR 10 bai dau nghiem thu) has no acceptance record. SEO V2. Total 457 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-20 adds 4 Phan tich articles (20/11/2026, Friday): 1 seasonal keyword "phan tich thi truong TMĐT quy 4 2026" #9/10 (deep: Metric Q3 150.380 ty +45,16%, Q4 forecast 165.500 ty, TikTok Shop gap 1,7 diem) + 2 NEW-TYPE tam ly hoc (a) bang chung xa hoi thang khan hiem 0,480 vs 0,392 (Effendi 27/07/2026) + (b) 5 diem nghen khach xem live khong mua (Unair 2026, H8 REJECTED) + 1 NEWS Black Friday 2026 TikTok Shop 11-30/11, Michael Kors ~4x ky vong (Capri 30/10/2026). Cum E bo 100 DA HET (STT 76-90); Nhom 4 KW-161/162/169 CHUA viet (Recovery V1 gate: PR 10 bai dau nghiem thu — chua co bien ban). SEO V2. Total 485 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-20 adds 4 Thi truong articles (20/11/2026, Friday): 1 seasonal keyword "sale cuối năm 2026" #7/10 (4.148 words, deep + đánh giá tiềm năng; góc mới: 3 con số toàn cầu Adobe + Salesforce + NRF + lịch VN tới Tết) + 3 news ("Coupang quý 3/2026" 2.294 words; "AI mua sắm mùa lễ 2026" 2.405 words; "thương mại điện tử toàn cầu 2026" 2.204 words). SEO V2 (18/18 hàng 4/4, TOC khớp). Total 489 articles (grep; 490 node-parse). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-20 adds 4 Dong tien articles (20/11/2026, Friday): 1 seasonal keyword 'chi phi quang cao Tet' #8/10 (deep, NEW angle: cong thuc tinh ngan sach theo ROAS + bang 3 muc ngan sach + lich chay 3 giai doan toi Tet 06/02/2027; added LAST) + 3 news 19/11 (vang roi xuong 3.625 USD thap nhat 14 thang + Bitcoin tien sat 60.000 USD, ETF rut hon 2,5 ty USD nam 2026 + so lieu kinh te My 19/11 yeu di: that nghiep 203.000, Philly Fed 6,3, LEI -0,3% nhung gia dau vao 58,2). SEO V2 (title suffix + link boxes). Total 494 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15524,6 +15525,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Nghiên cứu 2026 (238 người, Shopee Live + TikTok Live): uy tín mẫu tác động tới cảm xúc 0,313 (mạnh nhất); cảm xúc dẫn tới mua bốc đồng 0,579; ngân sách KHÔNG điều tiết được mối quan hệ này (β = 0,038, p = 0,232) — giả thuyết H8 bị bác bỏ."
+  },
+  {
+   "title": "Vàng rơi xuống 3.625 USD, thấp nhất 14 tháng",
+   "cat": "Dòng tiền",
+   "source": "Kitco (bản tin chiều 19/11/2026)",
+   "date": "2026-11-20",
+   "url": "https://www.kitco.com/news/article/2026-11-19/gold-falls-below-3650-silver-tumbles-fed-rate-concerns-pressure-metals",
+   "page": "bai-viet/gia-vang-roi-xuong-3625-usd-thap-nhat-14-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-roi-xuong-3625-usd-thap-nhat-14-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng rơi xuống 3.625 USD ngày 19/11/2026, thấp nhất 14 tháng, −33% so với kỷ lục tháng 1 — SJC về 136,2 triệu đồng/lượng; chờ Fed 09/12/2026, chia nhỏ lệnh mua."
+  },
+  {
+   "title": "Bitcoin tiến sát 60.000 USD, ETF rút 2,5 tỷ USD",
+   "cat": "Dòng tiền",
+   "source": "Motley Fool (19/11/2026)",
+   "date": "2026-11-20",
+   "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/crypto-market-today-nov-19-bitcoin-approaches-usd60-000-as-etf-outflows-surpass-usd2-5-billion-in-2026/",
+   "page": "bai-viet/bitcoin-tien-sat-60000-usd-etf-rut-25-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-tien-sat-60000-usd-etf-rut-25-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin tiến sát 60.000 USD ngày 19/11/2026, thấp nhất hơn 4 tháng — ETF rút hơn 2,5 tỷ USD từ đầu năm; mốc 62.000 USD là lằn ranh cuối, mất mốc này thì 60.000 USD sẽ bị thử thách."
+  },
+  {
+   "title": "Kinh tế Mỹ 19/11: tăng trưởng chậm, giá vẫn nóng",
+   "cat": "Dòng tiền",
+   "source": "ApexWire (19/11/2026)",
+   "date": "2026-11-20",
+   "url": "https://theapexwire.com/finance/us-jobless-claims-rise-philly-fed-slumps/",
+   "page": "bai-viet/kinh-te-my-19-11-tang-truong-cham-gia-van-nong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-te-my-19-11-tang-truong-cham-gia-van-nong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kinh tế Mỹ 19/11/2026: việc làm yếu (203.000 đơn mới), Philly Fed 6,3 thấp nhất 6 tháng, LEI −0,3% — nhưng giá đầu vào vọt 58,2 nên Fed khó hoãn tăng lãi suất 09/12/2026."
+  },
+  {
+   "title": "Chi phí quảng cáo Tết 2027: tính sao cho lãi",
+   "cat": "Dòng tiền",
+   "source": "Ecomobi (cập nhật tháng 11/2026)",
+   "date": "2026-11-20",
+   "url": "https://ecomobi.com/vi/chi-phi-chay-tiktok-ads/",
+   "page": "bai-viet/chi-phi-quang-cao-tet-2027-tinh-sao-cho-lai.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/chi-phi-quang-cao-tet-2027-tinh-sao-cho-lai.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Chi phí quảng cáo Tết tăng 20–40% dịp Tết: tính ngân sách theo CPA tối đa (một nửa lãi gộp/đơn) × số đơn mục tiêu, tăng tối đa 40%/lần, dồn 60% ngân sách vào 13/12/2026–25/01/2027."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
