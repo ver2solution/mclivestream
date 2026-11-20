@@ -300,7 +300,7 @@
       var name = form.v2sName ? form.v2sName.value : ''; // form khách v95 không có ô tên
       var out = await submitComment(targetType, targetRef, text, name);
       if (msgEl) msgEl.textContent = out.message;
-      if (out.ok) { form.v2sText.value = ''; }
+      if (out.ok) { form.v2sText.value = ''; await refreshList(); } // v372 (B-20261120-09): gui xong tai lai danh sach de binh luan moi hien ngay — truoc day chi xoa o nhap, list khong doi moi cho toi khi tai lai trang/mo lai toggle
       if (btn) btn.disabled = false;
     });
     await refreshList();
