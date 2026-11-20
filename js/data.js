@@ -71,6 +71,7 @@
    articles-xu-huong-2026-11-19 adds 4 Xu hướng articles (19/11/2026, Thursday): 1 seasonal keyword "xu hướng kinh doanh sau Tết" #6/10 (deep, 3.159 words; Cốc Cốc 09/2026 via Brands Vietnam 16/11/2026) + 1 rotation topic #2 "xu hướng mua hàng mới" (eMarketer 29/06/2026, added LAST for Zalo 10:00) + 2 news ("mua sắm lễ 2026" NRF 15/10/2026, 1.735 words; "hành vi mua sắm 2027" FashionUnited 18/11/2026, 2.407 words). Total 448 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-dong-tien-2026-11-19 adds 4 Dong tien articles (19/11/2026, Thursday): 1 seasonal keyword 'thu hoi von xa kho cuoi nam' #7/10 (deep, NEW angle: bang tinh gia hoa von theo phi san — khac bai 12 cach cua Dang hot 13/11; added LAST) + 3 news 18/11 (bien ban FOMC tinh tang 50 diem thang 12 + Nvidia quy III 115,8 ty USD co phieu van giam 2,9% + vang roi tiep 3.752 USD thap nhat 14 thang). SEO V2 (title suffix + link boxes). Total 444 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-phan-tich-2026-11-19 adds 4 Phan tich articles (19/11/2026, Thursday): 1 seasonal keyword "luat livestream ban hang 2026" #8/10 (deep, enforcement angle: Kera verdict 19/11/2025 + ND 87/2026 fines to 100M) + 3 bo 100 cum E STT 76 "mo hinh kinh doanh doc la" + STT 82 "affiliate marketing la gi" + STT 88 "cach kiem tien tu livestream". Group 4 KW-161/162/169 NOT written: Recovery V1 gate (PR 10 bai dau nghiem thu) has no acceptance record. SEO V2. Total 457 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-phan-tich-2026-11-20 adds 4 Phan tich articles (20/11/2026, Friday): 1 seasonal keyword "phan tich thi truong TMĐT quy 4 2026" #9/10 (deep: Metric Q3 150.380 ty +45,16%, Q4 forecast 165.500 ty, TikTok Shop gap 1,7 diem) + 2 NEW-TYPE tam ly hoc (a) bang chung xa hoi thang khan hiem 0,480 vs 0,392 (Effendi 27/07/2026) + (b) 5 diem nghen khach xem live khong mua (Unair 2026, H8 REJECTED) + 1 NEWS Black Friday 2026 TikTok Shop 11-30/11, Michael Kors ~4x ky vong (Capri 30/10/2026). Cum E bo 100 DA HET (STT 76-90); Nhom 4 KW-161/162/169 CHUA viet (Recovery V1 gate: PR 10 bai dau nghiem thu — chua co bien ban). SEO V2. Total 485 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-18 adds 5 Đời Sống articles (18/11/2026, Wednesday): 1 seasonal keyword "cân bằng làm việc ngày Tết" #5/10 (3,370 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("quỹ dự phòng cho mẫu livestream" 2,501 words; "du lịch Phú Quốc tháng 12" 2,531 words; "uống cà phê buổi sáng có tốt không" 3,373 words) + 1 cafe "quán cafe check-in đẹp Cafe Giảng Hà Nội" 2,756 words. Total 403 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dong-tien-2026-11-17 adds 4 Dong tien articles (17/11/2026, Tuesday): 1 seasonal keyword 'hoa hong mau livestream Tet' #5/10 (deep) + 1 news Fed thang 12 (100% bet) + 1 news gia vang quy III (321 tan) + 1 Zalo rotation topic #5 'chi tieu Tet 2027'. DEPLOYED LATE 18/11/2026 (browser deploy stuck 17/11). SEO V2 retrofit (title suffix + link boxes). Total 407 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-18 adds 4 Dong tien articles (18/11/2026, Wednesday): 1 seasonal keyword 'kiem tien an Tet bang livestream' #6/10 (deep, added LAST) + 3 news (ban le My thang 10 chinh thuc 748,2 ty USD + gia vang thung day 1 nam 3.830 USD + Bitcoin duoi 65.000 USD). SEO V2 (title suffix + link boxes). Total 411 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15474,6 +15475,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu livestream Cần Thơ: 7 shop đang tuyển, 5 mẫu trên sàn (tỉ lệ 1,4 shop trên 1 mẫu); lương tháng 6–30 triệu đồng; MELOT trả lương cứng 10 triệu đồng/tháng tại Cần Thơ; FPT Shop có lương tháng 13."
+  },
+  {
+   "title": "Phân tích thị trường TMĐT quý 4 2026: 165.500 tỷ đồng",
+   "cat": "Phân tích",
+   "source": "VnBusiness",
+   "date": "2026-11-20",
+   "url": "https://vnbusiness.vn/thuong-mai-dien-tu-tang-truong-45-vi-sao-hang-chuc-nghin-shop-van-hut-don.html",
+   "page": "bai-viet/phan-tich-thi-truong-tmdt-quy-4-2026-165500-ty-dong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-thi-truong-tmdt-quy-4-2026-165500-ty-dong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quý III/2026: 4 sàn đạt 150.380 tỷ đồng (+45,16%); Metric dự báo quý IV/2026 đạt 165.500 tỷ đồng (+10,05%); TikTok Shop chỉ còn kém Shopee 1,7 điểm thị phần; 470.300 gian hàng có đơn, giảm 56.209 so với quý II/2026."
+  },
+  {
+   "title": "Vì sao khách mua ngay trên live: bằng chứng xã hội",
+   "cat": "Phân tích",
+   "source": "Journal of Marketing Breakthroughs",
+   "date": "2026-11-20",
+   "url": "https://generatedp.com/index.php/jmb/article/download/174/165/1620",
+   "page": "bai-viet/vi-sao-khach-mua-ngay-tren-live-bang-chung-xa-hoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vi-sao-khach-mua-ngay-tren-live-bang-chung-xa-hoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nghiên cứu 2026 (207 người, Shopee Live + TikTok Shop): bằng chứng xã hội tác động tới mua bốc đồng 0,480, mạnh hơn khan hiếm 0,392; bằng chứng xã hội tác động tới cảm xúc hưng phấn 0,548, gấp hơn 2 lần khan hiếm 0,233."
+  },
+  {
+   "title": "Black Friday 2026: TikTok Shop đặt cược vào livestream",
+   "cat": "Phân tích",
+   "source": "TikTok Newsroom",
+   "date": "2026-11-20",
+   "url": "https://newsroom.tiktok.com/black-friday-and-cyber-monday-on-tiktok-shop?lang=en",
+   "page": "bai-viet/black-friday-2026-tiktok-shop-dat-cuoc-vao-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-2026-tiktok-shop-dat-cuoc-vao-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Black Friday 2026: TikTok Shop chạy chiến dịch 11–30/11 (20 ngày); Michael Kors bán gấp gần 4 lần kỳ vọng (Capri, 30/10/2026); mùa Black Friday 2025, TikTok Shop Mỹ vượt 500 triệu USD và shop live tăng 84%."
+  },
+  {
+   "title": "Khách xem live nhưng không mua: 5 điểm nghẽn cần gỡ",
+   "cat": "Phân tích",
+   "source": "Journal of Theoretical and Applied Management",
+   "date": "2026-11-20",
+   "url": "https://e-journal.unair.ac.id/JMTT/article/view/95863",
+   "page": "bai-viet/khach-xem-live-nhung-khong-mua-5-diem-nghen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khach-xem-live-nhung-khong-mua-5-diem-nghen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nghiên cứu 2026 (238 người, Shopee Live + TikTok Live): uy tín mẫu tác động tới cảm xúc 0,313 (mạnh nhất); cảm xúc dẫn tới mua bốc đồng 0,579; ngân sách KHÔNG điều tiết được mối quan hệ này (β = 0,038, p = 0,232) — giả thuyết H8 bị bác bỏ."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
