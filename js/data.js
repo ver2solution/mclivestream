@@ -63,6 +63,7 @@
    v290 adds 4 Livestream articles (16/11/2026, Monday): 1 seasonal keyword "khung giờ vàng livestream Tết" #6/10 (4.395 words, deep, 19-21h + Tet 06/02/2027) + 3 cluster B keywords "livestream bán đồ gia dụng" (4.337 words, Freemir 748.500 USD/30 days), "minigame livestream bán hàng" (4.197 words, 5 games + TikTok rules 30/10/2026), "cách livestream bán hàng" (3.998 words, 9 steps + 26% case). Total 331 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v292 adds 4 Hang hoa articles (16/11/2026, Monday): 1 seasonal keyword "đồ trang trí Tết bán chạy" #4/10 (2.456 words, deep) + 2 cluster D keywords "nhập hàng sỉ ở đâu" STT 72 (2.829 words) + "cách quản lý hàng tồn kho" STT 75 (2.428 words) + 1 news/invention "tai nghe Kinoko no Yama" (2.540 words, SoraNews24 28/10/2026). Total 340 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
+   articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15425,6 +15426,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok LIVE trả 10–150 USD mỗi giờ (2026): 100 người xem cùng lúc cho khoảng 13 USD/giờ sau khi TikTok giữ ~50%; creator 50.000+ follower kiếm 3.000–15.000 USD/tháng."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 19/11: 5 shop, 0 mẫu lên sàn",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-20",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-19-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-19-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 19/11/2026: 0 mẫu + 5 shop mới thu thập (sh-302..sh-306, chưa lên sàn lúc bài đăng — chờ deploy dữ liệu lượt sau); tổng live 238 mẫu, 299 shop, 474 bài; 3 shop trả lương tháng tới 30 triệu đồng."
+  },
+  {
+   "title": "Lương tháng 13 mẫu livestream: 10 tin tuyển trả thế nào",
+   "cat": "Việc Làm",
+   "source": "TopCV",
+   "date": "2026-11-20",
+   "url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2129342.html",
+   "page": "bai-viet/luong-thang-13-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-thang-13-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương tháng 13 mẫu livestream: 10 tin tuyển thật trên TopCV tháng 11/2026 đều có tháng 13 (lương cứng 7–20 triệu đồng/tháng); tháng 13 không bắt buộc theo Điều 104 Bộ luật Lao động 2019; chỉ nhân viên ký hợp đồng lao động, làm đủ 12 tháng mới nhận đủ 1 tháng lương."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream: 7 mục phải có để shop gọi ngay",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-20",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/ho-so-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ho-so-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream gồm 7 mục: ảnh rõ mặt, tên và tỉnh, lĩnh vực, kinh nghiệm, lương mong muốn, ca làm, liên hệ công khai. 112/238 mẫu trên sàn chưa có ảnh đại diện; hồ sơ đủ 7 mục được shop gọi thử live trước trong mùa tuyển gấp tháng 11/2026."
+  },
+  {
+   "title": "Tuyển mẫu livestream Cần Thơ: 7 shop, lương tới 30 triệu",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-20",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-livestream-can-tho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-can-tho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Cần Thơ: 7 shop đang tuyển, 5 mẫu trên sàn (tỉ lệ 1,4 shop trên 1 mẫu); lương tháng 6–30 triệu đồng; MELOT trả lương cứng 10 triệu đồng/tháng tại Cần Thơ; FPT Shop có lương tháng 13."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
