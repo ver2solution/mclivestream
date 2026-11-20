@@ -62,6 +62,21 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  // v370 (20/11/2026, B-20261120-08 / FULL-MC-035): URL trong tin nhắn
+  // chat thành link bấm được (mở tab mới). Nhận chuỗi ĐÃ esc (nên & trong
+  // URL là &amp; — dùng nguyên cho cả href lẫn chữ hiển thị, trình duyệt
+  // hiểu đúng). Chỉ link http(s)://; bỏ dấu câu cuối câu (.,;:!?) ra ngoài link.
+  function linkifyText(t) {
+    try {
+      return String(t || '').replace(/((?:https?:\/\/)[^\s<>"']+)/g, function (u) {
+        var tail = '';
+        var m2 = u.match(/[.,;:!?)\]]+$/);
+        if (m2) { tail = m2[0]; u = u.slice(0, u.length - tail.length); }
+        if (!u) return tail;
+        return '<a href="' + u + '" target="_blank" rel="noopener">' + u + '</a>' + tail;
+      });
+    } catch (e) { return t; }
+  }
   function uuid() {
     try {
       if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
@@ -246,7 +261,7 @@
       + roleBadge(m.author_role) + verified + ' · ' + esc(fmtTime(m.created_at))
       + ' <span title="' + esc(fmtDate(m.created_at)) + '">' + esc(fmtDate(m.created_at)) + '</span></div>'
       + quote
-      + '<p class="chat-text">' + esc(maskChatText(m.body || '')) + '</p>'
+      + '<p class="chat-text">' + linkifyText(esc(maskChatText(m.body || ''))) + '</p>' // v370 (B-20261120-08): URL thành link bấm được
       + actions + '</div></div>';
   }
   function sortAsc(rows) {
