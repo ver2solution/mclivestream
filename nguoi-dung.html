@@ -324,6 +324,22 @@
       }
       return;
     }
+    // v373 (20/11/2026, B-20261120-03): RPC tra false (khong loi) khi
+    // tai khoan CHUA CO dong profiles — UPDATE 0 dong. Truoc day client
+    // chi kiem res.error nen bao "Da luu" gia roi chuyen toi ?u=<ten>
+    // khong ton tai ("Khong tim thay ho so"). Gio kiem res.data: false
+    // thi bao loi that + huong dan tao ho so, KHONG chuyen trang.
+    // (Khong UPSERT o RPC: profiles co 9 cot NOT NULL khong default —
+    // full_name, date_of_birth, hometown, work_location, education,
+    // experience, desired_field, phone_zalo, contact_email — INSERT chi
+    // (auth_user_id, username) se vi pham; username can ho so mau.)
+    if (res.data !== true) {
+      if (msgEl) {
+        msgEl.textContent = 'Chưa lưu được tên — tài khoản của bạn chưa có hồ sơ. Hãy tạo hồ sơ (đăng ký làm mẫu) rồi quay lại đặt tên.';
+        msgEl.className = 'nd-msg err';
+      }
+      return;
+    }
     if (msgEl) { msgEl.textContent = 'Đã lưu tên người dùng: @' + v; msgEl.className = 'nd-msg ok'; }
     if (afterOk) afterOk(v);
   }
@@ -409,6 +425,10 @@
       var r5 = await a.client.rpc('set_profile_fields', { p_bio: bio || null, p_avatar_url: null, p_cover_url: null });
       if (msgEl) {
         if (r5.error) { msgEl.textContent = 'Chưa lưu được tiểu sử: ' + (r5.error.message || r5.error); msgEl.className = 'nd-msg err'; }
+        // v373 (B-20261120-03, cung loi nhu set_username): RPC tra false
+        // (khong loi) khi tai khoan chua co dong profiles — truoc day bao
+        // "Da luu thay doi" gia. Gio kiem r5.data, false thi bao loi that.
+        else if (r5.data !== true) { msgEl.textContent = 'Chưa lưu được tiểu sử — tài khoản của bạn chưa có hồ sơ. Hãy tạo hồ sơ (đăng ký làm mẫu) rồi quay lại.'; msgEl.className = 'nd-msg err'; }
         else {
           var bb = $('ndBio');
           if (bb) { if (bio) { bb.textContent = bio; bb.hidden = false; } else bb.hidden = true; }
