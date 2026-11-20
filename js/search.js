@@ -360,9 +360,16 @@
         /* v329 (TK-02, 18/11/2026): go tu khoa nhung chuan hoa ve rong
            (toan ky tu dac biet, vd '%^&*') -> hien "0 ket qua" thay vi
            xoa trang dong dem. Go that su trong / 1 ky tu -> de trong
-           (chi hien tu khoa pho bien). */
+           (chi hien tu khoa pho bien).
+           v383 (TK-01, 21/11/2026): go THAT SU TRONG (bam Enter khi o trong)
+           -> hien dong huong dan thay vi de trong (QA 20-21/11: khong co
+           dong dem, khong co thong bao nao; fix v369 chua len live, rebase len v383). 1 ky tu van de trong nhu cu. */
         if (state.q && !res.q) {
           m.innerHTML = 'Tìm thấy <b>0 kết quả</b> cho “<b>' + escHtml(state.q) + '</b>”';
+          return;
+        }
+        if (!state.q) {
+          m.textContent = 'Nhập từ khóa để tìm kiếm mẫu, shop, lô, xưởng, kiot hoặc bài báo.';
           return;
         }
         m.textContent = '';
