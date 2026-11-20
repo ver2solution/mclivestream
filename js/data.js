@@ -17072,6 +17072,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "La Chapelle bán hơn 1,3 tỷ NDT (4.550 tỷ đồng) trong Double 11/2026, tăng 40%: Kuaishou +169%, Pinduoduo +170%, Douyin +92%."
   },
+  {
+   "title": "117.500 tỷ đồng/năm — Mixue: ly trà sữa 10.000 đồng và đế chế gần 60.000 cửa hàng, tiền thật không nằm ở ly nước",
+   "cat": "Phân tích",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-20",
+   "url": null,
+   "page": "bai-viet/mixue-117500-ty-dong-nam-ly-tra-sua-10000-dong-de-che-gan-60000-cua-hang.html",
+   "img": "https://mmx.prnewswire.com/media/MS1984552/20260909030322EDT_image_2.jpg?id=OA2937980",
+   "pinned": false,
+   "takeaway": "Mixue thu 33,56 tỷ NDT năm 2025 với gần 60.000 cửa hàng, nhưng 97,6% doanh thu đến từ bán nguyên liệu cho chủ nhượng quyền. Tại Việt Nam, chuỗi thu hẹp từ 1.304 còn khoảng 1.000 cửa hàng."
+  },
 ],
  "lots": [
    {
