@@ -265,7 +265,7 @@
 <script src="mclivestream-supabase.js"></script>
 <script src="js/auth-ui.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/wallet.js"></script>
-<script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/ticker.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
+<script src="js/data.js" defer></script><script src="js/themes.js"></script><script src="js/app.js" defer></script><script src="js/ticker.js" defer></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><!-- v374 (20/11/2026, B-20261120-04): data.js (~2MB) + app.js + ticker.js (ca 2 dung D) chuyen sang defer — truoc day data.js dong bo chan trinh phan tich, block inline sau (prefill ho so shop) khien form trong ~10s moi khi tai trang. Inline sau khong dung D/app.js (chi McLivestreamAPI/V2SAuthUI + ham cuc bo) nen chay som duoc; defer giu dung thu tu data.js -> app.js -> ticker.js. -->
 <!-- v210: mo muc Lo/Xuong/2 muc shop theo ?newobj= (link "Xem tat ca" tu trang chu).
      2 muc shop gio la nut that tren trang nay — bam nut tuong ung de goi dung
      setCat(cat) trong js/app.js. KHONG cuon toi muc (v207 + anh bao 22:03:
