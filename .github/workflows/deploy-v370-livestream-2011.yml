@@ -1,0 +1,48 @@
+---
+name: "Deploy v370 Livestream 20/11: 4 bai moi (SEO V2)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v370-livestream-2011.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v370:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v370 package
+        run: |
+          echo "--- Guard DA DEPLOY: neu data.js da co slug A4 thi da deploy roi, DUNG ---"
+          if grep -qF 'livestream-ban-hang-bi-bop-reach-dip-tet' js/data.js; then echo "v370 DA DEPLOY ROI - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 056e0f1) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7cc6f60b005c18b13ae7f3b4660e6f6b" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "504" || (echo "BASE DOI: sitemap khong con 504 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v370-livestream-2011-deploy.zip
+          echo "--- verify v370 (4 bai HTML + 8 anh + data.js + sitemap; 0 file thieu) ---"
+          for f in bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.html bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.html bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.html bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.html images/bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.jpg images/bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd-og.jpg images/bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.jpg images/bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd-og.jpg images/bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.jpg images/bai-viet/khung-gio-vang-livestream-ban-hang-14-18h-og.jpg images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.jpg images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet-og.jpg js/data.js sitemap.xml; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          node --check js/data.js || (echo "SAI: js/data.js loi cu phap"; exit 1)
+          for s in livestream-ban-quan-ao-comfrt-166-trieu-usd livestream-ban-my-pham-medicube-194-trieu-usd khung-gio-vang-livestream-ban-hang-14-18h livestream-ban-hang-bi-bop-reach-dip-tet; do grep -qF "$s" js/data.js || (echo "SAI: data.js thieu $s"; exit 1); grep -qF "$s.html" sitemap.xml || (echo "SAI: sitemap thieu $s"; exit 1); done
+          test "$(grep -c '<loc>' sitemap.xml)" = "508" || (echo "SAI: sitemap phai co 508 URL"; exit 1)
+          node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));const n=window.V20_DATA.articles.length;console.log('articles:',n);if(n!==482){console.error('SAI: articles phai la 482');process.exit(1)}"
+          echo "verify OK: 4 bai, 8 anh, data.js 482 bai, sitemap 508 URL"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v370-livestream-2011-deploy.zip
+          git add bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.html bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.html bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.html bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.html images/bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.jpg images/bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd-og.jpg images/bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.jpg images/bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd-og.jpg images/bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.jpg images/bai-viet/khung-gio-vang-livestream-ban-hang-14-18h-og.jpg images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.jpg images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet-og.jpg js/data.js sitemap.xml
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v370 Livestream 20/11: 4 bai moi (SEO V2) — Comfrt 16,6 trieu USD; Medicube 19,4 trieu USD; khung gio vang 14-18h; bop reach dip Tet (bai sau)"
+            git push
+          fi
+---
