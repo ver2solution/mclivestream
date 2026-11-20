@@ -16613,7 +16613,50 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Tân Ba bán 22.400 tỷ đồng trong 1 ngày Double 11/2023, xây đế chế Tân Tuyển 175.000 tỷ đồng/năm, rồi tuyên bố rút lui lần thứ 5 tối 18/8/2025 vì lá phổi \"như người 95 tuổi\". Giải mã mô hình đối tác 60%/5%, người kế nhiệm Sơ Thụy Tuyết và 7 bài học cho shop Việt trước Black Friday 27/11."
   },
-],
+ {
+  "title": "Livestream bán quần áo: Comfrt bán 16,6 triệu USD",
+  "cat": "Livestream",
+  "source": "FastMoss",
+  "date": "2026-11-20",
+  "url": "https://www.fastmoss.com/blog/how-to-check-tiktok-shop-gmv/",
+  "page": "bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-quan-ao-comfrt-166-trieu-usd.jpg",
+  "pinned": false,
+  "takeaway": "Comfrt ban 16,6 trieu USD thang 10/2026, 78,3% doanh so tu creator lien ket (FastMoss 25/10/2026); chan Dreamer 95 USD ganh 16% doanh so; video dan 68,2% GMV, live 13,6%."
+ },
+ {
+  "title": "Livestream bán mỹ phẩm: Medicube bán 19,4 triệu USD",
+  "cat": "Livestream",
+  "source": "Beauty Independent",
+  "date": "2026-11-20",
+  "url": "https://www.beautyindependent.com/10-beauty-sellers-dominating-tiktok-shop-livestreaming/",
+  "page": "bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-my-pham-medicube-194-trieu-usd.jpg",
+  "pinned": false,
+  "takeaway": "Medicube ban 19,4 trieu USD qua live nua dau 2026; top 10 my pham hon 83 trieu USD (Beauty Independent 24/09/2026); Simply Mandys 1 trieu USD trong 1 phien live 8 gio."
+ },
+ {
+  "title": "Khung giờ vàng livestream bán hàng: 14–18h thứ 3–5",
+  "cat": "Livestream",
+  "source": "Gyre",
+  "date": "2026-11-20",
+  "url": "https://gyre.pro/blog/best-time-to-go-live-on-social-media",
+  "page": "bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/khung-gio-vang-livestream-ban-hang-14-18h.jpg",
+  "pinned": false,
+  "takeaway": "TikTok 14-18h thu 3-5, Facebook 12-20h thu 3-4 theo Sprout Social 2026 (Gyre 08/10/2026); test 1 khung moi lan, it nhat 3 tuan; lich goi y 2 phien/ngay toi Tet."
+ },
+ {
+  "title": "Livestream bán hàng bị bóp reach dịp Tết: 5 cách gỡ",
+  "cat": "Livestream",
+  "source": "Metricool qua NetInfluencer",
+  "date": "2026-11-20",
+  "url": "https://www.netinfluencer.com/social-media-saturation-reaches-tipping-point-as-content-volume-outpaces-engagement-study-finds/",
+  "page": "bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet.jpg",
+  "pinned": false,
+  "takeaway": "TikTok giam 17% luot xem moi bai, Instagram giam 31% reach (Metricool 10/12/2025); Facebook tang 51% reach; 5 cach go: live 2 phien, dang it nhung chat, giu tep khach rieng."
+ }],
  "lots": [
    {
      "id": "lot-01",
