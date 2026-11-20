@@ -468,6 +468,15 @@
       wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ1 chưa chạy (hàm get_admin_users chưa có).' : friendlyErr(e)) + '</p>';
     }
   }
+  // v381 (20/11/2026, khóa tạm theo lệnh Owner 20:47 — admin CHỈ Owner cấp
+  // hoặc hệ thống AI cấp, không đăng ký/cấp dễ dàng): chỉ tài khoản chủ mới
+  // thấy nút "Cấp quyền admin". OWNER_UID = UID của ver2solution@gmail.com
+  // (tk chủ — tk đã cấp cả 5 quyền admin hiện tại). Các admin AI khác
+  // (Rion, Thọ Zalo, rthond, Codex) không thấy nút. Đây là khóa TẠM ở giao
+  // diện — RPC admin_grant_admin vẫn chấp nhận mọi admin cho tới khi V5-02
+  // siết kiểm tra Owner ở server (has_permission + grant có hạn + audit).
+  var OWNER_UID = '6ffc8507-4020-40a2-b79d-9d022ba7a915';
+  function isOwner() { return String(state.userId || '') === OWNER_UID; }
   async function viewUser(uid, email) {
     var box = $('admUserDetail');
     var msg = $('admUsersMsg');
@@ -504,7 +513,7 @@
         + '<div style="margin-top:12px"><label>Điều chỉnh xu (âm = trừ, dương = cộng) <input id="admAdjustDelta" type="number" step="1" style="width:110px" placeholder="vd -10"></label> '
         + '<label>Lý do * <input id="admAdjustReason" type="text" style="width:220px" placeholder="vd Thu hồi xu gian lận"></label> '
         + '<button class="btn btn-primary btn-sm" id="admAdjustBtn" data-uid="' + esc(uid) + '" type="button">Áp dụng điều chỉnh</button> '
-        + '<button class="btn btn-ghost btn-sm" id="admGrantAdminBtn" data-uid="' + esc(uid) + '" type="button">Cấp quyền admin</button></div>'
+        + (isOwner() ? '<button class="btn btn-ghost btn-sm" id="admGrantAdminBtn" data-uid="' + esc(uid) + '" type="button">Cấp quyền admin</button>' : '') + '</div>'
         + '<p style="font-size:13px;color:#666">Điều chỉnh âm chỉ trừ tới số dư 0 — phần thiếu ghi thành nợ xu (trừ dần khi user có hoạt động tạo xu sau này). Admin không được tự điều chỉnh xu của chính mình.</p>'
         + '<div style="margin-top:16px;border-top:1px solid #eee;padding-top:12px"><h4 style="margin:0 0 6px">Ghi chú (chỉ admin thấy)</h4>'
         + '<p style="font-size:13px;color:#666;margin:0 0 6px">Ghi chú nội bộ về tài khoản này — người dùng không thấy, không tự xóa được. Ghi “Muse test” để đánh dấu tài khoản test (hiện badge 🧪 test ở danh sách). Tối đa 200 ký tự; để trống để xóa ghi chú.</p>'
@@ -547,6 +556,9 @@
     var btn = e.currentTarget;
     var uid = btn.getAttribute('data-uid');
     var msg = $('admUsersMsg');
+    // v381: khóa tạm — chỉ Owner được cấp admin (phòng nút bị gọi lại bằng
+    // devtools; chặn thật ở server thuộc V5-02).
+    if (!isOwner()) { setMsg(msg, 'Chỉ Owner mới được cấp quyền admin.', true); return; }
     // v222: xác nhận 2 bước ngay trên nút thay window.confirm (mẫu v217).
     if (!admArm(btn, 'Chắc chắn cấp quyền admin?')) return;
     btn.disabled = true;
