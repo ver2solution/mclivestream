@@ -16918,7 +16918,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Chuồn Chuồn Phú Quốc: Đồi Sao Mai, 69 Trần Hưng Đạo, Dương Đông; mở 7h30–23h; cà phê sữa đá 80.000đ; góc đẹp nhất là sân thượng ngắm hoàng hôn hướng tây."
-  }
+  },
+  {
+   "title": "75 tỷ đồng trong 13 giờ livestream — Quyền Leo Daily và phiên live mở ra kỷ nguyên mega live Việt Nam",
+   "cat": "Phân tích",
+   "source": "VietnamNet",
+   "date": "2026-11-20",
+   "url": "https://vietnamnet.vn/phien-livestream-chot-don-75-ty-chan-dong-vi-sao-chua-tiet-lo-ti-le-huy-don-2255886.html",
+   "page": "bai-viet/quyen-leo-daily-75-ty-dong-13-gio-livestream-ky-luc-dong-nam-a.html",
+   "img": "https://mkt.1cdn.vn/2024/03/12/_mg_0077.jpg",
+   "pinned": false,
+   "takeaway": "Quyền Leo Daily bán 75 tỷ đồng trong 13 giờ livestream ngày 2/3/2024 — kỷ lục Việt Nam và Đông Nam Á lúc bấy giờ. Phân tích công thức, góc khuất tỷ lệ hủy đơn và chuỗi kỷ lục 100 tỷ sau đó."
+  },
 ],
  "lots": [
    {
