@@ -17061,6 +17061,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Xiaomi Mi 10 Ultra giá 5.299 NDT (khoảng 18,5 triệu đồng) bán hơn 400 triệu NDT (khoảng 1.400 tỷ đồng) ngay ngày mở bán đầu tiên 16/8/2020, dẫn đầu buổi livestream đầu tiên của Lôi Quân đạt 210 triệu NDT với 50,5 triệu người xem. Phân tích 3 số 120 và 7 bài học cho shop Việt trước Black Friday 27/11."
   },
+  {
+   "title": "4.550 tỷ đồng trong mùa Double 11 — La Chapelle hồi sinh nhờ bán đa sàn: Kuaishou tăng 169%, Pinduoduo tăng 170%",
+   "cat": "Xu hướng",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-20",
+   "url": null,
+   "page": "bai-viet/la-chapelle-4550-ty-dong-double-11-2026-ban-da-san-kuaishou-tang-169-phan-tram.html",
+   "img": "https://cds.chinadaily.com.cn/dams/capital/image/202611/18/6afd6d9e6b8e635a962e4e39_m.jpeg",
+   "pinned": false,
+   "takeaway": "La Chapelle bán hơn 1,3 tỷ NDT (4.550 tỷ đồng) trong Double 11/2026, tăng 40%: Kuaishou +169%, Pinduoduo +170%, Douyin +92%."
+  },
 ],
  "lots": [
    {
