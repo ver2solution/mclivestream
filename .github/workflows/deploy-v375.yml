@@ -1,0 +1,53 @@
+name: "Deploy v375 (B-20261120-03 luu ten/tieu su het bao thanh cong gia)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v375.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v375:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v375 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v375-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v375-shell-1' sw.js; then echo "v375 DA DEPLOY ROI (sw.js da co v375-shell-1) - dung"; exit 1; fi
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong; base origin/main 7496116) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "448e420c8ec971d8ce413104414e4a2e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "543" || (echo "BASE DOI: sitemap khong con 543 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v375-deploy.zip
+          echo "--- verify v375 (2 file doi) ---"
+          for f in nguoi-dung.html sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "const CACHE = 'v375-shell-1'" sw.js || (echo "SAI: sw.js phai co const CACHE v375-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v374-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v374-shell-1"; exit 1; fi
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          grep -qF "res.data" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai co kiem res.data (B-03)"; exit 1)
+          grep -qF "saveUsername" nguoi-dung.html || (echo "SAI: nguoi-dung.html phai co saveUsername"; exit 1)
+          echo "--- guard hoi quy v374 (refreshList + scrollToCommentHash phai con) ---"
+          grep -qF "refreshList" js/comments.js || (echo "SAI: js/comments.js mat refreshList (v374)"; exit 1)
+          grep -qF "scrollToCommentHash" js/comments.js || (echo "SAI: js/comments.js mat scrollToCommentHash (v370)"; exit 1)
+          echo "--- guard hoi quy v372 (linkifyText phai con) ---"
+          grep -qF "linkifyText" js/chat-page.js || (echo "SAI: js/chat-page.js mat linkifyText (v372)"; exit 1)
+          grep -qF "linkifyText" js/community-chat.js || (echo "SAI: js/community-chat.js mat linkifyText (v372)"; exit 1)
+          echo "verify OK: 2 file, sw.js v375-shell-1, res.data check + hoi quy du"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v375-deploy.zip
+          git add nguoi-dung.html sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v375: B-20261120-03 'Luu ten/tieu su' kiem res.data, het bao thanh cong gia (nguoi-dung.html saveUsername + bio save); CACHE v375-shell-1 (rebase tu 7496116)"
+            git push
+          fi
