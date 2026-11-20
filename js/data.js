@@ -65,6 +65,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-doi-song-2026-11-20 adds 5 Đời Sống articles (20/11/2026, Friday): 1 seasonal keyword "mua sắm Tết thông minh" #7/10 (2,402 words, deep; NRF 15/10/2026 + Deloitte 15/10/2026) + 3 news ("du lịch Sapa tháng 12" 1,863 words; "ngủ 7 tiếng mỗi ngày" 1,967 words; "du lịch một mình 2026" 2,075 words) + 1 cafe "quán cafe check-in đẹp Chuồn Chuồn Phú Quốc" 1,587 words. Total 507 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-20 adds 4 Cong nghe articles (20/11/2026, Friday): 1 seasonal keyword 'livestream ban hang bang AI 2026' #2/10 VONG 2 (goc moi: QUY MO + CHI PHI — 9 trieu gio live AI 12-30/10/2026, 100.000+ shop dung, mien phi toi 31/12/2026, chi phi bang 1/10 mau that, thoi gian xem chi 40%) + 3 news (Hyundai AI-REAL 16/11, TikTok Symphony 30 giay 08/11, Shopee trong ChatGPT 19/11). SEO V2 (title suffix + link boxes). Total 513 articles (node) / 516 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-19 adds 4 Cong nghe articles (19/11/2026, Thursday): 1 seasonal keyword 'AI livestream ban hang Tet' #1/10 VONG 2 (goc moi: ai chiu trach nhiem khi MC la nguoi ao — ban sao so Tmall + VNeID 31/12/2026 + nhan AI) + 3 news (Meta F3 Lightning 03/11, TikTok Shop AI Assistance 12/11, TikTok Shopping Assistant + Buy Direct 05/10). SEO V2 (title suffix + link boxes). Total 436 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -16941,6 +16942,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Douyin xử hơn 26.000 tài khoản AI giả mạo trong 1 tháng, phạt 577 tỷ đồng trong 9 tháng. Cao Địch vĩnh viễn mất quyền live — 7 mẹo livestream bán hàng cho shop Việt trước Black Friday 27/11."
   },
+  {
+   "title": "Livestream bán hàng bằng AI 2026: 9 triệu giờ live",
+   "cat": "Công nghệ",
+   "source": "GRA.world",
+   "date": "2026-11-20",
+   "url": "https://www.gra.world/ai-presenters-now-sell-around-the-clock-on-chinas-biggest-shopping-stages/",
+   "page": "bai-viet/livestream-ban-hang-bang-ai-2026-9-trieu-gio-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-bang-ai-2026-9-trieu-gio-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream ban hang bang AI 2026: MC ao live hon 9 trieu gio tu 12-30/10/2026, hon 100.000 shop dung (GRA.world 06/11/2026); dich vu mien phi toi 31/12/2026, chi phi bang 1/10 mau that, nhung thoi gian xem chi 40% so voi nguoi that — shop Viet nen dung MC ao cho ca dem, giu nguoi that cho ca vang."
+  },
+  {
+   "title": "Bán hàng bằng AI: Hyundai không cần người dẫn",
+   "cat": "Công nghệ",
+   "source": "i4u.business",
+   "date": "2026-11-20",
+   "url": "https://i4u.business/en/news/ai-teleshopping-hyundai-home-shopping-no-host/",
+   "page": "bai-viet/ban-hang-bang-ai-hyundai-khong-can-nguoi-dan.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-hang-bang-ai-hyundai-khong-can-nguoi-dan.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ban hang bang AI: Hyundai Home Shopping phat show AI-REAL tu 16/11/2026 — khong nguoi dan, khong may quay (i4u.business 15/11/2026, dan Korea Herald); chi phi nha cung cap giam hon 80%, doanh so dat 120% muc tieu; bai hoc cho shop Viet: hang ban bang thong tin thi AI lam tot, hang ban bang niem tin thi van can nguoi that."
+  },
+  {
+   "title": "TikTok Symphony: video quảng cáo AI dài 30 giây",
+   "cat": "Công nghệ",
+   "source": "RouteNote",
+   "date": "2026-11-20",
+   "url": "https://licensing.routenote.com/blog/?p=11762",
+   "page": "bai-viet/tiktok-symphony-video-quang-cao-ai-30-giay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-symphony-video-quang-cao-ai-30-giay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Symphony: video quang cao AI dai toi 30 giay (tu 15 giay), toi da 50 anh tham chieu (tu 9), token BytePlus mo ban ngoai Bac My tu 09/11/2026 (RouteNote 17/11/2026, thong bao TikTok 08/11/2026) — shop Viet nen thu 1 video AI 30 giay truoc 12.12, doi chieu voi 1 video nguoi that cung ngan sach."
+  },
+  {
+   "title": "Shopee trong ChatGPT: bán hàng qua trò chuyện",
+   "cat": "Công nghệ",
+   "source": "Marketing-Interactive",
+   "date": "2026-11-20",
+   "url": "https://www.marketing-interactive.com/shopee-lands-in-chatgpt-as-sea-and-openai-deepen-partnership",
+   "page": "bai-viet/shopee-trong-chatgpt-ban-hang-qua-tro-chuyen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-trong-chatgpt-ban-hang-qua-tro-chuyen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopee trong ChatGPT: Sea + OpenAI mo rong hop tac, app Shopee trong ChatGPT tai 8 thi truong co Viet Nam, ChatGPT for Business sap mo cho shop (Marketing-Interactive 19/11/2026) — shop Viet viet tieu de nhu khach noi, chuan bi 5 cau hoi khach hay hoi nhat, san sang dung thu ChatGPT for Business."
+  }
 ],
  "lots": [
    {
