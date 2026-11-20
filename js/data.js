@@ -1,4 +1,5 @@
 /* v76 data: them 2 mang "lots" (13 lo: 8 nhom 1 + 3 nhom 2 + 2 nhom 3) va "factories" (20 xuong) —
+   21/11/2026 bu KPI 20/11: REBASE tu live 1dc2f9c (v383, TK-01) +5 shop (sh-302..sh-306: COQUI, IDOLVIET Ben Tre, STAR PROGRAM Da Nang, CChat, Quynh Nhu Nguyen Da Nang) — shop 304; logo de trong ca 5 (khong lay duoc URL anh truc tiep — can trinh duyet live backfill); sh-303 chuan hoa Ben Tre -> Vinh Long (34 tinh).
    20/11/2026 kiot 11:31: +3 kiot (kiot-367..369: spa Ham Nghi 150tr Ha Noi, bai giu xe TL16 200tr TP. Ho Chi Minh, cafe Le Sao 140tr TP. Ho Chi Minh; ngay dang 28-29/09/2026; nguon sangnhuong.top, pool 17/11 con lai; het thoi gian hien thi, giu + ghi meta theo tien le 11-19/11). APPEND o cuoi mang, KHONG sap xep lai (theo tien le v338 kiot-361..363) — tranh doi id/anh 366 kiot cu. Tong 369 kiot.   19/11/2026 kiot 11:31: +3 kiot (kiot-364..366: quan nuong Ut Tich 200tr TP. Ho Chi Minh, quan tra sua Pham Van Chi 60tr TP. Ho Chi Minh [khong anh — uploads/342 tra rong], spa Nguyen Dinh Hoan 145tr Ha Noi; ngay dang 29/09/2026; nguon sangnhuong.top, pool 17/11 con lai; het thoi gian hien thi, giu + ghi meta theo tien le 11-18/11). APPEND o cuoi mang, KHONG sap xep lai (theo tien le v338 kiot-361..363) — tranh doi id/anh 363 kiot cu. Tong 366 kiot.   18/11/2026 data them 43 (shop sh-293..301 +9, xuong fac-401..407 +7, kiot kiot-361..363 +3, lg-22..26 +5, mv-12..14 +3, le-12..13 +2, ag-12..15 +4, cl-22..23 +2, cm-22..25 +4, em-22..24 +3, rt-23 +1) — shop 299, xuong 407, kiot 363; muc moi lech nhau khong tron: lop live 23, lop makeup 25, su kien 24, logistics 26, cho thue 22, chuyen nha 14, thiet bi 13, agency 15. Anh: 22/34 co anh dai dien; 12 de rong (lg-23/25/26, le-12/13, ag-13, cm-25, em-23/24, rt-23, kiot-362/363 — khong hotlink, khong anh logo chung).
    16/11/2026 lots 11:21: +34 lo (lot-113..146: A12 VOZ/OTOFUN + B10 YouTube + C6 web thu mua + D6 KG/random, loai D4 trung A10); chuan hoa prov lot-107/108/112 Kien Giang -> An Giang (danh sach 34 tinh, MERGED_PROV); 24 anh moi lot-113..138 + kem 20 anh lot-72..111 chua live. REBASE 12:16 len live sau deploy kiot (71197584, kiot 280) — lan deploy 1 dung vi kiot chen ngang, goi nay giu nguyen 40 kiot moi.
    18/11/2026 lots 11:21: RE-INSERT 40 lo 17/11 (lot-147..186) — deploy 17/11 khong len live (upload ket + deploy xu-huong chen ngang); prep 04:07 dong bo lai tu live (dbe0864f, 146 lo) lam mat 40 lo; chen lai tu lots-2026-11-17-new.js (da kiem chung 17/11).
@@ -12011,6 +12012,100 @@ window.V20_DATA = {
    "logo": "",
    "logoFit": "contain",
    "contacts": []
+  },
+{
+   "id": "sh-302",
+   "name": "COQUI",
+   "shopNameKnown": true,
+   "product": "Thời trang nữ",
+   "province": "TP. Hồ Chí Minh",
+   "district": "Tân Phú",
+   "salary": "100.000 – 200.000 VNĐ/giờ (2–3 giờ/ca; thu nhập 8–15 triệu/tháng nếu làm cố định)",
+   "shifts": ["Ca linh hoạt 2–3 giờ/ca"],
+   "req": "Nữ, mặc size S; chăm chỉ, nhiệt tình, thân thiện, giao tiếp tốt, tự tin trước ống kính; ưu tiên có kinh nghiệm live bán hàng/mẫu live. Gửi hồ sơ, số đo và video live mẫu qua Zalo HR.",
+   "channels": "Threads",
+   "date": "2026-11-16",
+   "src": "https://www.threads.com/@coqui.official/post/Df07LXEHVqp",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0911798399", "label": "Zalo HR (Ms Nhi, theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@coqui.official/post/Df07LXEHVqp"}
+   ]
+  },
+{
+   "id": "sh-303",
+   "name": "IDOLVIET Bến Tre",
+   "shopNameKnown": true,
+   "product": "Idol live TikTok (giải trí)",
+   "province": "Vĩnh Long",
+   "district": "Chưa cập nhật",
+   "salary": "Chưa cập nhật",
+   "shifts": ["Online / Offline (theo bài đăng)"],
+   "req": "Yêu thích livestream, tự tin, tham gia được hoạt động online và offline; được đào tạo, hỗ trợ xây kênh, tham gia LIVE FEST TikTok 2026 và hợp tác nhãn hàng.",
+   "channels": "Facebook",
+   "date": "2026-11-13",
+   "src": "https://www.facebook.com/kiet.la.175471/posts/pfbid02ZSFRQHRjXmJ6HmB9wgsJbYpuYXGSfo7a43Ap1SEtpr2hcUrfZhBxH7uUCNWBPX4Jl",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "phone", "value": "0823208756", "label": "Liên hệ Kiet (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/kiet.la.175471/posts/pfbid02ZSFRQHRjXmJ6HmB9wgsJbYpuYXGSfo7a43Ap1SEtpr2hcUrfZhBxH7uUCNWBPX4Jl"}
+   ]
+  },
+{
+   "id": "sh-304",
+   "name": "STAR PROGRAM Đà Nẵng",
+   "shopNameKnown": true,
+   "product": "Idol live & MC livestream (giải trí)",
+   "province": "Đà Nẵng",
+   "district": "Cẩm Lệ",
+   "salary": "15 – 30 triệu/tháng + hoa hồng + thưởng",
+   "shifts": ["Ca sáng 09:00–16:00", "Ca tối 17:00–00:00 (thứ 3–Chủ nhật, nghỉ thứ 2)"],
+   "req": "Nam/nữ, không yêu cầu kinh nghiệm, được đào tạo; hỗ trợ 1:1, makeup và trang phục; nghỉ 4 ngày/tháng, có phụ cấp.",
+   "channels": "Facebook",
+   "date": "2026-11-08",
+   "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ZasdAQw8AAkV28Xk3hAtKUnyRHHsvrXE7cbzBzqUaL4qfSRJUZbEhoNbcJjGjXeGl&id=61595801087159",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "zalo", "value": "0788662108", "label": "Zalo HCNS (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ZasdAQw8AAkV28Xk3hAtKUnyRHHsvrXE7cbzBzqUaL4qfSRJUZbEhoNbcJjGjXeGl&id=61595801087159"}
+   ]
+  },
+{
+   "id": "sh-305",
+   "name": "CChat",
+   "shopNameKnown": true,
+   "product": "Thời trang nữ",
+   "province": "Hà Nội",
+   "district": "Long Biên",
+   "salary": "Live Model 12 – 25 triệu/tháng; Live Assistant 8 – 12 triệu/tháng",
+   "shifts": ["Chưa cập nhật"],
+   "req": "Live Model: nữ 18–26 tuổi, ngoại hình ưa nhìn, tự tin trước ống kính. Live Assistant: 18–26 tuổi, nhanh nhẹn, thạo công nghệ. Đóng BHXH đầy đủ, thưởng lễ Tết, du lịch hằng năm, môi trường Gen Z, giảm giá nhân viên.",
+   "channels": "Threads",
+   "date": "2026-10-30",
+   "src": "https://www.threads.com/@tuyendung6676/post/DfHMqQhgYd2",
+   "logo": "",
+   "logoFit": "contain",
+   "contacts": [
+    {"provider": "email", "value": "tuyendung@cchat.vn", "label": "Email tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@tuyendung6676/post/DfHMqQhgYd2"}
+   ]
+  },
+{
+   "id": "sh-306",
+   "name": "Quỳnh Như Nguyễn",
+   "shopNameKnown": false,
+   "product": "Idol live (giải trí)",
+   "province": "Đà Nẵng",
+   "district": "Chưa cập nhật",
+   "salary": "15 – 30 triệu/tháng",
+   "shifts": ["Chưa cập nhật"],
+   "req": "Nam/nữ, ngoại hình sáng, tính cách năng động; được hỗ trợ học nhảy, đội makeup, stylist và media. Địa điểm: 31 Nguyễn Hữu An, Đà Nẵng.",
+   "channels": "Threads",
+   "date": "2026-11-11",
+   "src": "https://www.threads.com/@wyn_nhu03/post/DfoKsOymcmt",
+   "logo": "",
+   "contacts": [
+    {"provider": "phone", "value": "0772560008", "label": "Liên hệ (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@wyn_nhu03/post/DfoKsOymcmt"}
+   ]
   }
 ],
  "articles": [
