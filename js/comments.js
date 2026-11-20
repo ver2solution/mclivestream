@@ -236,6 +236,25 @@
     return { ok: true, points: 0, message: user ? 'Bình luận đã đăng. Bình luận từ 20 ký tự được cộng điểm ngay theo luật điểm thưởng.' : 'Bình luận đã đăng.' };
   }
 
+  // v369 (20/11/2026, B-20261120-02 / FULL-MC-033): link lịch sử "Xem tại
+  // nguồn" (#comment-<id>) — sau khi danh sách bình luận render xong,
+  // cuộn tới đúng bình luận + tô sáng. Trước đây không có bước này nên
+  // mở bài ở đầu trang, bình luận không tô sáng: trình duyệt chỉ cuộn
+  // theo anchor lúc tải trang, khi đó danh sách chưa render (renderComments
+  // chạy bất đồng bộ sau loadPointsScripts + loadComments).
+  function scrollToCommentHash(){
+    try {
+      var h = String(location.hash || '');
+      var m = h.match(/^#comment-([A-Za-z0-9-]+)$/);
+      if (!m) return false;
+      var el = document.getElementById('comment-' + m[1]);
+      if (!el) return false; // bình luận ngoài top 50 (loadComments limit 50) — không cuộn, không lỗi
+      el.classList.add('v2s-comment-target');
+      if (typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return true;
+    } catch (e) { return false; }
+  }
+
   // Vẽ mục bình luận (form + danh sách) vào 1 phần tử. container: element
   // hoặc id. Trả promise (xong khi đã tải danh sách, lỗi tải thì vẫn hiện form).
   async function renderComments(targetType, targetRef, container) {
@@ -285,6 +304,7 @@
       if (btn) btn.disabled = false;
     });
     await refreshList();
+    scrollToCommentHash(); // v369 (B-20261120-02): cuộn + tô sáng bình luận được link từ lịch sử
     return true;
   }
 
@@ -389,6 +409,31 @@
       }
     });
     refreshCommentCounts(doc);
+    // v369 (20/11/2026, B-20261120-02): mở bài từ link lịch sử
+    // (#comment-<id>) thì tự mở khu bình luận — trước đây khu bình luận
+    // nằm sau nút toggle nên #comment-<id> không tồn tại lúc tải trang,
+    // trình duyệt không cuộn được, người dùng phải bấm tay nút Bình luận.
+    // Chỉ mở đúng toggle của trang hiện tại (bài chi tiết); trang hồ sơ
+    // (ho-so/chi-tiet-shop) chưa có khu bình luận — xem ghi chú follow-up
+    // ở bug-triage-2026-11-20.md.
+    try {
+      var h2 = String(location.hash || '');
+      if (/^#comment-/.test(h2)) {
+        var targetType = null, targetId = null;
+        var p = String(location.pathname || '');
+        var mm = p.match(/\/bai-viet\/(.+)\.html$/);
+        if (mm) { targetType = 'article'; targetId = mm[1] + '.html'; }
+        var btn = null;
+        if (targetType && targetId) {
+          btn = doc.querySelector('[data-v2s-comment-toggle][data-v2s-target-type="' + targetType + '"][data-v2s-target-id="' + targetId + '"]');
+        }
+        if (!btn) {
+          var all = doc.querySelectorAll('[data-v2s-comment-toggle]');
+          if (all && all.length === 1) btn = all[0];
+        }
+        if (btn && typeof btn.click === 'function') btn.click();
+      }
+    } catch (e2) { /* bỏ qua — người dùng vẫn bấm tay được */ }
     return true;
   }
 
