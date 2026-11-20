@@ -1306,6 +1306,7 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .chat-avatar:has(img){background:none}
 .chat-name-link{color:inherit;text-decoration:none}
 .chat-name-link:hover b{text-decoration:underline}
+.chat-avatar-link{flex-shrink:0;display:block;line-height:0} /* v371 (B-20261120-05): link bao avatar — giu kich thuoc/khong co nhu .chat-avatar */
 /* v364 (19/11/2026): CHAT-01 — trich dan tra loi + nut hanh dong tren tin
    + thanh tra loi tren o soan. */
 .chat-reply-quote{border-left:3px solid var(--brand);background:#f8fafc;padding:6px 10px;border-radius:0 8px 8px 0;font-size:13px;color:var(--mut);margin:4px 0}

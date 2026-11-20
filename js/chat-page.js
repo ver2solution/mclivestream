@@ -220,10 +220,19 @@
 
   /* --- Tin nhan --- */
   function avatarHtml(m) {
+    /* v371 (20/11/2026, B-20261120-05): avatar cũng là link tới hồ sơ
+       (như tên) — trước đây chỉ có tên là link, avatar không bấm được dù
+       v364 báo "bấm tên/avatar → hồ sơ". Chỉ link khi RPC trả username. */
+    var inner;
     if (m.avatar_url) {
-      return '<div class="chat-avatar"><img src="' + esc(m.avatar_url) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></div>';
+      inner = '<div class="chat-avatar"><img src="' + esc(m.avatar_url) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></div>';
+    } else {
+      inner = '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>';
     }
-    return '<div class="chat-avatar">' + esc(initials(m.author_name)) + '</div>';
+    if (m.author_username) {
+      return '<a class="chat-avatar-link" href="/nguoi-dung.html?u=' + encodeURIComponent(m.author_username) + '">' + inner + '</a>';
+    }
+    return inner;
   }
   function nameHtml(m) {
     /* CHAT-01: bam ten/avatar -> ho so (chi khi RPC tra username). */
