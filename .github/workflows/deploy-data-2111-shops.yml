@@ -1,0 +1,42 @@
+name: Deploy data 21/11 (5 shop sh-302..sh-306, bu KPI 20/11)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2111-shops.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2111-shops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 21/11 package
+        run: |
+          unzip -o mclivestream-data-2026-11-21-deploy.zip
+          echo "--- verify data 21/11 (5 shop sh-302..sh-306) ---"
+          test -f js/data.js || (echo "THIEU js/data.js"; exit 1)
+          echo "sha256: $(sha256sum js/data.js)"
+          echo "sha256: $(sha256sum js/data.js)" | grep -q "2aa6d11105dcac80a2e1b743f4529514ad79fd4803a7171154751087be729e02" || (echo "SHA256 KHONG KHOP"; exit 1)
+          node --check js/data.js || (echo "node --check FAIL"; exit 1)
+          echo "shops: $(grep -c '\"id\": \"sh-' js/data.js)"
+          test "$(grep -c '\"id\": \"sh-' js/data.js)" = "304" || (echo "SHOP COUNT != 304"; exit 1)
+          for id in sh-302 sh-303 sh-304 sh-305 sh-306; do grep -q "\"id\": \"$id\"" js/data.js || (echo "THIEU $id"; exit 1); done
+          echo "OK: 304 shop, du 5 shop moi"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-data-2026-11-21-deploy.zip
+          git add js/data.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 21/11: +5 shop sh-302..sh-306 (bu KPI 20/11) — shop 304"
+            git push
+          fi
