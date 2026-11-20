@@ -1,0 +1,67 @@
+name: "Deploy v378 (B-20261120-06 van ban huong dan ghi luat cu, trai v355)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v378.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v378:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v378 package
+        run: |
+          echo "--- Guard DAU: neu sw.js da co v378-shell-1 thi da deploy roi, DUNG ---"
+          if grep -qF 'v378-shell-1' sw.js; then echo "v378 DA DEPLOY ROI (sw.js da co v378-shell-1) - dung"; exit 1; fi
+          echo "--- Guard thu tu: v377 phai live truoc ---"
+          grep -qF "const CACHE = 'v377-shell-1'" sw.js || (echo "v377 CHUA LIVE (sw.js chua co v377-shell-1) - dung, doi v377 xong"; exit 1)
+          echo "--- BASE guard (base sau v377: data.js + sitemap khong doi qua v377) ---"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7bcd6aaa2b3f7069f6d8e2100a6ac48e" || (echo "BASE DOI: data.js md5 doi - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "544" || (echo "BASE DOI: sitemap khong con 544 URL - mot deploy khac da len, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-v378-deploy.zip
+          echo "--- verify v378 (8 file doi) ---"
+          for f in bai-viet/gioi-thieu-vieclamlivestream-online.html bang-xep-hang.html dang-ky.html dang-nhap.html huong-dan-diem.html index.html trang-cua-toi.html sw.js; do test -f "$f" || (echo "SAI: thieu file $f"; exit 1); done
+          grep -qF "const CACHE = 'v378-shell-1'" sw.js || (echo "SAI: sw.js phai co const CACHE v378-shell-1"; exit 1)
+          if grep -qF "const CACHE = 'v377-shell-1'" sw.js; then echo "SAI: sw.js van dung CACHE cu v377-shell-1"; exit 1; fi
+          node --check sw.js || (echo "SAI: sw.js loi cu phap"; exit 1)
+          echo "--- verify B-06: van ban moi phai co, luat cu phai het ---"
+          grep -qF "cộng ngay khi gửi" dang-ky.html || (echo "SAI: dang-ky.html thieu 'cộng ngay khi gửi'"; exit 1)
+          grep -qF "cộng ngay khi gửi" dang-nhap.html || (echo "SAI: dang-nhap.html thieu 'cộng ngay khi gửi'"; exit 1)
+          grep -qF "cộng ngay khi gửi" huong-dan-diem.html || (echo "SAI: huong-dan-diem.html thieu 'cộng ngay khi gửi'"; exit 1)
+          grep -qF "bình luận cộng 1 xu (tính ngay khi gửi)" bai-viet/gioi-thieu-vieclamlivestream-online.html || (echo "SAI: gioi-thieu thieu 'bình luận cộng 1 xu (tính ngay khi gửi)'"; exit 1)
+          grep -qF "tổng tương tác giảm dần" trang-cua-toi.html || (echo "SAI: trang-cua-toi.html thieu 'tổng tương tác giảm dần'"; exit 1)
+          grep -qF "Đồng tổng thì ưu tiên" trang-cua-toi.html || (echo "SAI: trang-cua-toi.html thieu 'Đồng tổng thì ưu tiên'"; exit 1)
+          if grep -qF "bình luận đã duyệt" bang-xep-hang.html index.html trang-cua-toi.html; then echo "SAI: van con 'bình luận đã duyệt' sot (B-06 chua sach)"; exit 1; fi
+          echo "--- guard hoi quy v377 (defer x3 phai con) ---"
+          grep -qF 'js/data.js" defer' danh-sach-mau.html || (echo "SAI: danh-sach-mau.html mat data.js defer (v377)"; exit 1)
+          grep -qF 'js/app.js" defer' danh-sach-mau.html || (echo "SAI: danh-sach-mau.html mat app.js defer (v377)"; exit 1)
+          grep -qF 'js/ticker.js" defer' danh-sach-mau.html || (echo "SAI: danh-sach-mau.html mat ticker.js defer (v377)"; exit 1)
+          echo "--- guard hoi quy v375 (res.data phai con) ---"
+          grep -qF "res.data" nguoi-dung.html || (echo "SAI: nguoi-dung.html mat res.data (v375)"; exit 1)
+          echo "--- guard hoi quy v374 (refreshList + scrollToCommentHash phai con) ---"
+          grep -qF "refreshList" js/comments.js || (echo "SAI: js/comments.js mat refreshList (v374)"; exit 1)
+          grep -qF "scrollToCommentHash" js/comments.js || (echo "SAI: js/comments.js mat scrollToCommentHash (v370)"; exit 1)
+          echo "--- guard hoi quy v372 (linkifyText phai con) ---"
+          grep -qF "linkifyText" js/chat-page.js || (echo "SAI: js/chat-page.js mat linkifyText (v372)"; exit 1)
+          grep -qF "linkifyText" js/community-chat.js || (echo "SAI: js/community-chat.js mat linkifyText (v372)"; exit 1)
+          echo "verify OK: 8 file, sw.js v378-shell-1, B-06 markers du + hoi quy du"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-v378-deploy.zip
+          git add bai-viet/gioi-thieu-vieclamlivestream-online.html bang-xep-hang.html dang-ky.html dang-nhap.html huong-dan-diem.html index.html trang-cua-toi.html sw.js
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v378: B-20261120-06 van ban huong dan ghi luat cu, trai v355 (7 file); CACHE v378-shell-1 (rebase tu cb9156b)"
+            git push
+          fi
