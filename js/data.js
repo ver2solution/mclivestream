@@ -93,6 +93,7 @@
    articles-viec-lam-2026-11-18 adds 4 Viec Lam articles (18/11/2026, Wednesday): 1 stats (0 models + 0 shops 17/11) + 1 seasonal keyword 'viec lam thoi vu Tet livestream' #5/10 + 1 bo 100 keyword STT 16 'viec lam host livestream' + 1 news STT 17 'tuyen host livestream TikTok' (SEA hiring wave). SEO V2 first run (title suffix + link boxes). REBUILD on d6ed14d (Phan tich deployed first). Total 379 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-18 adds 4 Xu hướng articles (18/11/2026, Wednesday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 (3.938 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("xu hướng tiêu dùng 2027" Euromonitor 2.812 words; "mua trước trả sau" BNPL 2.691 words; "mua sắm sớm dịp lễ 2026" Deloitte 2.720 words). Total 390 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-cong-nghe-2026-11-18 adds 4 Cong nghe articles (18/11/2026, Wednesday): 1 seasonal keyword 'xac thuc VNeID ban hang online' #10/10 (deep, Nghi dinh 320/2026, han 31/12/2026) + 3 news (TikTok Shop Product Diagnosis 12/11, TikTok Shop Seller AI BFCM 04/11, nhan AI Shopee Video 12.12). SEO V2 (title suffix + link boxes). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-xu-huong-2026-11-21 adds 4 Xu hướng articles (21/11/2026, Saturday): 1 seasonal keyword "xu hướng bán hàng Giáng sinh" #8/10 (deep, 2.444 words; Adobe 28/09/2026: 275,1 ty USD +6,7%, Cyber Monday 15,1 ty, Black Friday 12,9 ty, mobile 57,4%, AI +130%) + 3 news ("AI mua hàng" ChatGPT Wallet 13/11/2026, FinTech Futures 17/11/2026, 2.324 words; "quà Giáng sinh đã qua sử dụng" ThredUp 26/10/2026, 62%, FashionUnited 28/10/2026, 2.171 words; "KOC dẫn khách mua quà lễ" Syracuse 16/11/2026, 77%, 2.251 words). Zalo rotation 21/11 is topic #4 (Phan tich) — no rotation article in this batch. Total 548 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -17458,6 +17459,54 @@ window.V20_DATA = {
    "page": "bai-viet/thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11.html",
    "img": "bai-viet/hero-thi-truong-qua-tet-2026.png",
    "pinned": false
+  },
+  {
+   "title": "Xu hướng bán hàng Giáng sinh: 275,1 tỷ USD online",
+   "cat": "Xu hướng",
+   "source": "Adobe",
+   "date": "2026-11-21",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/xu-huong-ban-hang-giang-sinh-2026-275-ty-usd-adobe.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-ban-hang-giang-sinh-2026-275-ty-usd-adobe.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong ban hang Giang sinh 2026: Adobe du bao mua online My 275,1 ty USD (+6,7%); Cyber Monday 30/11/2026 15,1 ty USD, Black Friday 12,9 ty USD; mobile 57,4%; AI +130%; BNPL 21,3 ty USD (Adobe 28/09/2026)."
+  },
+  {
+   "title": "AI mua hàng thay người: ChatGPT Wallet ra mắt 13/11",
+   "cat": "Xu hướng",
+   "source": "FinTech Futures",
+   "date": "2026-11-21",
+   "url": "https://www.fintechfutures.com/digital-payments/openai-chatgpt-wallet-launch",
+   "page": "bai-viet/ai-mua-hang-thay-nguoi-chatgpt-wallet-13-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-mua-hang-thay-nguoi-chatgpt-wallet-13-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "AI mua hang thay nguoi: ChatGPT Wallet ra mat 13/11/2026 (OpenAI + Amex/Mastercard/Visa) — AI mua thay, nguoi duyet tung don bang sinh trac hoc, khong thay so the; chi cho Pro My; Instant Checkout dung thang 03/2026 (FinTech Futures 17/11/2026)."
+  },
+  {
+   "title": "Quà Giáng sinh đã qua sử dụng: 62% người Mỹ định mua",
+   "cat": "Xu hướng",
+   "source": "FashionUnited",
+   "date": "2026-11-21",
+   "url": "https://fashionunited.com/news/retail/thredup-62-percent-of-americans-plan-to-buy-secondhand-holiday-gifts/2026102875418",
+   "page": "bai-viet/qua-giang-sinh-da-qua-su-dung-62-phan-tram-nguoi-my-dinh-mua.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/qua-giang-sinh-da-qua-su-dung-62-phan-tram-nguoi-my-dinh-mua.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Qua Giang sinh da qua su dung: 62% nguoi My dinh mua qua cu mua le 2026; 55% thich nhan do doc ban hon do moi; 37% ngan sach qua cho do cu; 53% ban do trong tu de mua qua (ThredUp 26/10/2026)."
+  },
+  {
+   "title": "KOC dẫn khách mua quà lễ: 77% người Mỹ lưu ý tưởng",
+   "cat": "Xu hướng",
+   "source": "Đại học Syracuse",
+   "date": "2026-11-21",
+   "url": "https://news.syr.edu/2026/11/16/save-trust-buy-creators-drive-holiday-gift-ideas-for-77-of-u-s-adults/",
+   "page": "bai-viet/koc-dan-khach-mua-qua-le-77-phan-tram-nguoi-my-luu-y-tuong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/koc-dan-khach-mua-qua-le-77-phan-tram-nguoi-my-luu-y-tuong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "KOC dan khach mua qua le: 77% nguoi My luu y tuong qua tu KOC; 50% da mua theo goi y mua truoc, 61% se mua nam nay; Instagram 60%, YouTube 59%, TikTok 53% (Dai hoc Syracuse 16/11/2026)."
   }
 ],
  "lots": [
