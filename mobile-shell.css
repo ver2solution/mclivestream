@@ -1,0 +1,25 @@
+/* mobile-shell.css — S1 (21/11/2026, nhánh feat/fwa-social-mobile-v1).
+   Shell mobile 5 tab: Bảng tin · Tìm việc · Đăng tin (+) · Chat · Cá nhân.
+   Chỉ hiện trên mobile (<=768px); desktop giữ nguyên sàn việc làm.
+   Quy tắc: không tự cuộn (v213) — các tab là link điều hướng thuần, không JS cuộn.
+   Không số giả — S1 chưa có badge số (chưa có nguồn số chưa đọc thật). */
+.mobile-shell{display:none}
+@media (max-width:768px){
+  body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+  .mobile-shell{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:80;height:calc(60px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:var(--card);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(18,33,29,.08)}
+  .ms-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;padding:6px 2px 4px;color:var(--mut);text-decoration:none;font-size:11px;font-weight:600;line-height:1.2}
+  .ms-tab svg{width:24px;height:24px;flex:none}
+  .ms-tab .ms-label{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ms-tab.is-active{color:var(--brand)}
+  .ms-tab.is-active .ms-label{font-weight:800}
+  .ms-tab:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+  .ms-tab--post{justify-content:flex-start;padding-top:0}
+  .ms-tab--post .ms-post-circle{width:52px;height:52px;margin-top:-24px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;border:3px solid var(--card);box-shadow:0 8px 20px rgba(11,93,78,.35);flex:none}
+  .ms-tab--post .ms-post-circle svg{width:26px;height:26px}
+  /* Nút nổi dưới-phải + nút hiệu ứng: nhấc lên trên thanh tab để không bị che. */
+  .gopy-fab{bottom:calc(60px + env(safe-area-inset-bottom,0px) + 14px)}
+  .theme-fx-toggle{bottom:calc(60px + env(safe-area-inset-bottom,0px) + 12px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .mobile-shell{box-shadow:none}
+}
