@@ -67,6 +67,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-doi-song-2026-11-20 adds 5 Đời Sống articles (20/11/2026, Friday): 1 seasonal keyword "mua sắm Tết thông minh" #7/10 (2,402 words, deep; NRF 15/10/2026 + Deloitte 15/10/2026) + 3 news ("du lịch Sapa tháng 12" 1,863 words; "ngủ 7 tiếng mỗi ngày" 1,967 words; "du lịch một mình 2026" 2,075 words) + 1 cafe "quán cafe check-in đẹp Chuồn Chuồn Phú Quốc" 1,587 words. Total 507 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-doi-song-2026-11-21 adds 5 Đời Sống articles (21/11/2026, Saturday): 1 seasonal keyword "chuẩn bị Tết cho shop nhỏ" #8/10 (1,855 words, deep; NRF 15/10/2026 + Metric 29/10/2026) + 3 news ("thưởng Tết 2026" 1,339 words; "du lịch Mộc Châu tháng 12" 1,387 words; "đi bộ sau ăn 10 phút" 1,486 words) + 1 cafe "quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt" 1,352 words. Total 558 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-21 adds 4 Thi truong articles (21/11/2026, Saturday): 1 seasonal keyword 'thi truong qua Tet 2026' #8/10 (deep: Metric via Brands Vietnam 12/01/2026 — 73,7 nghìn tỷ đồng dịp Tết Bính Ngọ 2026 +51%, gift sets Shopee dịp Tết 2025: 40,2 tỷ đồng +21% vs Tết 2024, ~126k products + ao dai Tet 2025: 296 tỷ +39%, my pham Tet 2025: 11.151,5 tỷ +42%; Deloitte 15/10/2026 + NRF Oct 2026) + 3 news (PDD Q3 2026 19/11 — 108,3 tỷ NDT +0,1% vs 115,97 tỷ NDT forecast, Temu transaction -12%, MAU Sep 2026 -17,8% iOS / -11,2% Android; Tencent Q3 2026 18/11 — 207,3 tỷ NDT +8%, WeChat 1,449 tỷ, ads +19%, cloud +35%, capex 81,4 tỷ NDT +527%; Mercado Libre Q3 2026 04/11 — $10,75 tỷ +45%, GMV $23 tỷ +33% FX-neutral, TPV $109 tỷ +51%). SEO V2 (title suffix + link boxes). Total 541 articles (node) / 540 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17512,7 +17513,67 @@ window.V20_DATA = {
 {"title":"Quầy ramen mini Ichiran: 3.850 yên ăn tại bàn","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-21","url":"https://tollbit.soranews24.com/2026/11/14/ichiran-releases-an-at-home-counter-kit-that-turns-your-desk-into-a-ramen-restaurant/","page": "bai-viet/quay-ramen-mini-ichiran-3850-yen.html","img":"https://vieclamlivestream.online/images/bai-viet/quay-ramen-mini-ichiran-3850-yen.jpg","pinned":false,"takeaway":"Quầy ramen mini Ichiran: bộ kit quầy tập trung vị giác thu nhỏ để bàn, kèm màn tre và nút gọi món kêu đúng tiếng quán; 3.850 yên cho 5 phần mì, 4.980 yên cho 10 phần chỉ bán online (SoraNews24, 14/11/2026)."},
 {"title":"Stakuri Plus: giá đỡ điện thoại 17 dụng cụ 2.640 yên","cat":"Hàng hoá","source":"Notebookcheck","date":"2026-11-21","url":"https://www.notebookcheck.net/Cute-Japanese-accessory-arrives-with-17-cleaning-tools-and-built-in-smartphone-stand.1451169.0.html","page": "bai-viet/stakuri-plus-gia-do-dien-thoai-17-dung-cu.html","img":"https://vieclamlivestream.online/images/bai-viet/stakuri-plus-gia-do-dien-thoai-17-dung-cu.jpg","pinned":false,"takeaway":"Stakuri Plus: giá đỡ điện thoại Nhật Bản kiêm bộ vệ sinh 17 món, 165 g, giá 2.640 yên; đáy hộp tháo ra thành tay cầm lau màn hình; máy gập to có thể đặt không vừa, hãng không bán lẻ linh kiện (Notebookcheck, 16/11/2026)."},
 {"title":"Shark FacialPro tăng 754% trên TikTok Shop Mỹ","cat":"Hàng hoá","source":"TokConnect","date":"2026-11-21","url":"https://tokconnect.com/trends/tiktok-shop/rising-products/","page": "bai-viet/shark-facialpro-tang-754-phan-tram-tiktok-shop-my.html","img":"https://vieclamlivestream.online/images/bai-viet/shark-facialpro-tang-754-phan-tram-tiktok-shop-my.jpg","pinned":false,"takeaway":"Shark FacialPro tăng 754% trên TikTok Shop Mỹ trong 7 ngày tới 17/11/2026: máy làm đẹp 299 USD bán ước tính 253.800 USD; làm đẹp có 13 sản phẩm trong top 50, tổng 3,33 triệu USD; 36/50 sản phẩm tăng ít nhất gấp đôi (TokConnect, 19/11/2026; số liệu ước tính)."},
-{"title":"Thời trang Tết bán online: 73,7 nghìn tỷ đồng","cat":"Hàng hoá","source":"Ebrun","date":"2026-11-21","url":"https://english.ebrun.com/20260214/640611.shtml","page": "bai-viet/thoi-trang-tet-ban-online-737-nghin-ty-dong.html","img":"https://vieclamlivestream.online/images/bai-viet/thoi-trang-tet-ban-online-737-nghin-ty-dong.jpg","pinned":false,"takeaway":"Thời trang Tết bán online: 73,7 nghìn tỷ đồng trong 9 tuần trước Tết Bính Ngọ 2026, tăng 51%; TikTok Shop 34,6 nghìn tỷ vượt Shopee 33,1 nghìn tỷ lần đầu; áo dài 296 tỷ, 2.501 shop; đồ trẻ em và linh vật ngựa tăng vọt (Metric, qua Ebrun 14/02/2026)."}
+{"title":"Thời trang Tết bán online: 73,7 nghìn tỷ đồng","cat":"Hàng hoá","source":"Ebrun","date":"2026-11-21","url":"https://english.ebrun.com/20260214/640611.shtml","page": "bai-viet/thoi-trang-tet-ban-online-737-nghin-ty-dong.html","img":"https://vieclamlivestream.online/images/bai-viet/thoi-trang-tet-ban-online-737-nghin-ty-dong.jpg","pinned":false,"takeaway":"Thời trang Tết bán online: 73,7 nghìn tỷ đồng trong 9 tuần trước Tết Bính Ngọ 2026, tăng 51%; TikTok Shop 34,6 nghìn tỷ vượt Shopee 33,1 nghìn tỷ lần đầu; áo dài 296 tỷ, 2.501 shop; đồ trẻ em và linh vật ngựa tăng vọt (Metric, qua Ebrun 14/02/2026)."},
+  {
+   "title": "Chuẩn bị Tết cho shop nhỏ: 8 việc làm trước Tết",
+   "cat": "Đời Sống",
+   "source": "NRF",
+   "date": "2026-11-21",
+   "url": "https://nrf.com/research-insights/holiday-data-and-trends/winter-holidays",
+   "page": "bai-viet/chuan-bi-tet-cho-shop-nho-8-viec-lam-truoc-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/chuan-bi-tet-cho-shop-nho-8-viec-lam-truoc-tet-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Chuẩn bị Tết cho shop nhỏ: 8 việc làm trước Tết 2027 — chốt hàng trước 30/11/2026, tuyển mẫu thời vụ ngay, công bố thưởng Tết trước 31/12/2026; Metric dự báo TMĐT quý 4/2026 đạt 165.500 tỷ đồng."
+  },
+  {
+   "title": "Thưởng Tết 2026: 8,69 triệu đồng, tăng 13%",
+   "cat": "Đời Sống",
+   "source": "Vinex",
+   "date": "2026-11-21",
+   "url": "https://www.vinex.com.vn/post/13th-month-salary-vietnam",
+   "page": "bai-viet/thuong-tet-2026-bao-nhieu-tien-binh-quan-869-trieu-dong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuong-tet-2026-bao-nhieu-tien-binh-quan-869-trieu-dong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thưởng Tết 2026 bình quân 8,69 triệu đồng, tăng 13% so với Tết 2025 (Bộ Nội vụ, 04/02/2026); doanh nghiệp nhà nước 9,44 triệu, FDI 9,21 triệu, tư nhân 7,37 triệu; lương tháng 13 không bắt buộc theo Điều 104 Bộ luật Lao động 2019."
+  },
+  {
+   "title": "Du lịch Mộc Châu tháng 12: hoa cải trắng nở rộ",
+   "cat": "Đời Sống",
+   "source": "Klook",
+   "date": "2026-11-21",
+   "url": "https://www.klook.com/vi/tetris/experiences/moc-chau-cauliflower-season/",
+   "page": "bai-viet/du-lich-moc-chau-thang-12-hoa-cai-trang-no-ro.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-moc-chau-thang-12-hoa-cai-trang-no-ro.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Mộc Châu tháng 12: hoa cải trắng nở rộ tháng 11–12, đẹp nhất cuối tháng 12 (Klook); 6 điểm ngắm hoa: bản Áng, Nà Ka, Pa Phách, Chiềng Xuân, thác Dải Yếm, thị trấn Nông trường; Hà Nội–Mộc Châu 180 km, xe khách 150.000–220.000 đồng/lượt."
+  },
+  {
+   "title": "Đi bộ sau ăn 10 phút: giảm đường huyết sau bữa ăn",
+   "cat": "Đời Sống",
+   "source": "Scientific Reports",
+   "date": "2026-11-21",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12216464/",
+   "page": "bai-viet/di-bo-sau-an-10-phut-giam-duong-huyet-sau-bua-an.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/di-bo-sau-an-10-phut-giam-duong-huyet-sau-bua-an.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đi bộ sau ăn 10 phút ngay sau bữa ăn giúp đỉnh đường huyết giảm từ 181,9 xuống 164,3 mg/dL (Scientific Reports, 02/07/2025); đi bộ sau mỗi bữa ăn giảm đường huyết sau ăn 12%, sau bữa tối 22% (Diabetologia, 2016)."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt",
+   "cat": "Đời Sống",
+   "source": "Mia.vn",
+   "date": "2026-11-21",
+   "url": "https://mia.vn/cam-nang-du-lich/tiem-ca-phe-hoang-hon-chieu-12718",
+   "page": "bai-viet/quan-cafe-check-in-dep-hoang-hon-chieu-da-lat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-hoang-hon-chieu-da-lat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt: Dốc số 9, Trại Mát, Đà Lạt; mở cửa 05:00–20:00 theo fanpage (một số review ghi 19:00 — chưa xác nhận); giá 60.000–75.000 đồng/món; săn mây 05:00–06:30, hoàng hôn 16:30–17:30."
+  }
 ],
  "lots": [
    {
