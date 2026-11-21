@@ -17271,6 +17271,54 @@ window.V20_DATA = {
   "pinned": false,
   "takeaway": "Doanh so LIVE TikTok tang hon gap doi H1 2026, phien live tang 60% (TikTok noi voi CNBC 01/09/2026); LIVE chi 8,2% doanh so TikTok Shop My H1 2026 (Momentum Works); chau Au LIVE 17,2%, video 63,8% (Kalodata 27/10/2026)."
  },
+  {
+   "title": "Tổng kết năm shop online 2026: 5 bài học lớn",
+   "cat": "Phân tích",
+   "source": "VnBusiness",
+   "date": "2026-11-21",
+   "url": "https://vnbusiness.vn/thuong-mai-dien-tu-tang-truong-45-vi-sao-hang-chuc-nghin-shop-van-hut-don.html",
+   "page": "bai-viet/tong-ket-nam-shop-online-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tong-ket-nam-shop-online-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TMĐT Việt Nam 9 tháng đầu 2026 đạt 411,7 nghìn tỷ đồng (+22%), quý III tăng 45,16% — nhưng 56.209 gian hàng biến mất trong một quý; 5 bài học: live chốt đơn, tính lại giá sau phí sàn và thuế, uy tín lên ngôi sau luật mới, AI và affiliate đổi cách bán."
+  },
+  {
+   "title": "Hiệu ứng khan hiếm: chỉ còn 3 suất, chốt đơn nhanh",
+   "cat": "Phân tích",
+   "source": "Ruan 2025 (ICFTBA)",
+   "date": "2026-11-21",
+   "url": "https://aemps.ewapub.com/article/view/31813.pdf",
+   "page": "bai-viet/hieu-ung-khan-hiem-livestream-chi-con-3-suat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hieu-ung-khan-hiem-livestream-chi-con-3-suat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thí nghiệm Douyin 2025: khan hiếm đẩy tỷ lệ chốt đơn từ 21,03% lên 28,01%, quyết định nhanh hơn 4,32 phút; nhưng nghiên cứu Jakarta 2025 cho thấy chỉ khan hiếm số lượng hiệu quả, đếm ngược thì không — và khan hiếm vẫn là đòn bẩy yếu nhất trong 5 yếu tố."
+  },
+  {
+   "title": "Walmart quý 3 2026: online tăng 17%, ads tăng 37%",
+   "cat": "Phân tích",
+   "source": "Walmart",
+   "date": "2026-11-21",
+   "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-26-000168/earningsreleasefy27q3.htm",
+   "page": "bai-viet/walmart-quy-3-2026-online-tang-17-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/walmart-quy-3-2026-online-tang-17-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Walmart quý III năm tài chính 2027 (công bố 19/11/2026): doanh thu 188,8 tỷ USD (+5,2%), online toàn cầu +17%, Mỹ +23% quý thứ 11 liên tiếp trên 20%, quảng cáo Mỹ +37%, phí hội viên +17% — nhưng cổ phiếu vẫn giảm dù vượt kỳ vọng."
+  },
+  {
+   "title": "Luckin Coffee: mở 2.599 cửa hàng, lãi tăng 45%",
+   "cat": "Phân tích",
+   "source": "Nasdaq (GlobeNewswire)",
+   "date": "2026-11-21",
+   "url": "https://www.nasdaq.com/press-release/luckin-coffee-announces-third-quarter-2026-financial-results-2026-11-03",
+   "page": "bai-viet/luckin-coffee-mo-2599-cua-hang-lai-tang-45-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luckin-coffee-mo-2599-cua-hang-lai-tang-45-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Luckin Coffee quý III/2026 (công bố 03/11/2026): doanh thu 17,89 tỷ NDT (+17%), lãi ròng 1,86 tỷ NDT (+45,4%), 38.909 cửa hàng (+2.599 trong quý), 123 triệu khách/tháng — nhưng doanh số cửa hàng cũ giảm 11,1%, quý thứ ba liên tiếp giảm."
+  },
 ],
  "lots": [
    {
