@@ -17585,6 +17585,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Long Chun bán 213,9 tỷ đồng trong 1 năm trên TikTok Shop, livestream chiếm 138,6 tỷ (64,8%). Phân tích công thức video giữ chân, live chốt đơn và mặt sau của con số GMV."
   },
+  {
+   "title": "525 tỷ đồng trong 1 buổi livestream bán hàng — Ngô Thiên Ngữ: 7 mẹo bán hàng đắt tiền vẫn chốt đơn, chuyển đổi 13,22%",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-21",
+   "url": "https://www.36kr.com/p/3706969918107781",
+   "page": "bai-viet/ngo-thien-ngu-525-ty-dong-1-buoi-live-7-meo-ban-hang-dat-tien-chuyen-doi-1322-phan-tram.html",
+   "img": "https://img.36krcdn.com/hsossms/20260303/v2_f92037e01ca34b7196c9103138a62ae4@000000_oswg172888oswg1080oswg1405_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Ngô Thiên Ngữ bán 525 tỷ đồng trong 1 buổi livestream bán hàng trên Xiaohongshu, tỷ lệ chuyển đổi 13,22%, 93% khách là nữ. 7 mẹo bán hàng cao cấp rút ra từ 2 buổi live 70 triệu và 150 triệu NDT — shop Việt áp dụng được ngay trước Black Friday 27/11 và 12.12."
+  },
 ],
  "lots": [
    {
