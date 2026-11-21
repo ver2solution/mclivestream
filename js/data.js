@@ -70,6 +70,7 @@
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-21 adds 4 Thi truong articles (21/11/2026, Saturday): 1 seasonal keyword 'thi truong qua Tet 2026' #8/10 (deep: Metric via Brands Vietnam 12/01/2026 — 73,7 nghìn tỷ đồng dịp Tết Bính Ngọ 2026 +51%, gift sets Shopee dịp Tết 2025: 40,2 tỷ đồng +21% vs Tết 2024, ~126k products + ao dai Tet 2025: 296 tỷ +39%, my pham Tet 2025: 11.151,5 tỷ +42%; Deloitte 15/10/2026 + NRF Oct 2026) + 3 news (PDD Q3 2026 19/11 — 108,3 tỷ NDT +0,1% vs 115,97 tỷ NDT forecast, Temu transaction -12%, MAU Sep 2026 -17,8% iOS / -11,2% Android; Tencent Q3 2026 18/11 — 207,3 tỷ NDT +8%, WeChat 1,449 tỷ, ads +19%, cloud +35%, capex 81,4 tỷ NDT +527%; Mercado Libre Q3 2026 04/11 — $10,75 tỷ +45%, GMV $23 tỷ +33% FX-neutral, TPV $109 tỷ +51%). SEO V2 (title suffix + link boxes). Total 541 articles (node) / 540 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-21 adds 4 Dong tien articles (21/11/2026, Saturday): 1 seasonal keyword 'doanh thu TikTok Shop thang 12' #9/10 (deep, NEW angle: GMV My 9,0 -> 15,1 -> 23,4 ty USD + lich sale thang 12 + 5 viec shop nho lam ngay truoc 12.12; added LAST) + 3 news 20/11 (vang cham 3.514 USD thap nhat tu 04/09/2025, tuan toi te nhat 8 thang + Bitcoin thung 60.000 USD, lan dau tu dau thang 7, IBIT rut ky luc 541,1 trieu USD + lam phat ky vong My roi ve 3,7%, thap nhat tu thang 2/2026, tam ly len 51,5). SEO V2 (title suffix + link boxes). Total 545 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-20 adds 4 Cong nghe articles (20/11/2026, Friday): 1 seasonal keyword 'livestream ban hang bang AI 2026' #2/10 VONG 2 (goc moi: QUY MO + CHI PHI — 9 trieu gio live AI 12-30/10/2026, 100.000+ shop dung, mien phi toi 31/12/2026, chi phi bang 1/10 mau that, thoi gian xem chi 40%) + 3 news (Hyundai AI-REAL 16/11, TikTok Symphony 30 giay 08/11, Shopee trong ChatGPT 19/11). SEO V2 (title suffix + link boxes). Total 513 articles (node) / 516 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15724,6 +15725,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu livestream Thanh Hóa: 4 shop đang tuyển, 2 mẫu trên sàn (tỉ lệ 2:1); lương giờ cao nhất 100.000 đồng (Nhungg Nexi Beauty, 60.000–100.000đ/giờ + hoa hồng); mẫu Thanh Hóa có hồ sơ đầy đủ sẽ được shop nhìn thấy trước."
+  },
+  {
+   "title": "Vàng chạm 3.514 USD, tuần tồi tệ nhất 8 tháng",
+   "cat": "Dòng tiền",
+   "source": "Kitco (bản tin chiều 20/11/2026)",
+   "date": "2026-11-21",
+   "url": "https://www.kitco.com/news/article/2026-11-20/gold-falls-toward-3500-silver-slides-stock-markets-enter-correction",
+   "page": "bai-viet/vang-cham-3514-usd-tuan-toi-te-nhat-8-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vang-cham-3514-usd-tuan-toi-te-nhat-8-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng chạm 3.514 USD ngày 20/11/2026, thấp nhất từ 04/09/2025, mất khoảng 8% trong tuần — tuần tồi tệ nhất 8 tháng; SJC về 129,2–134,2 triệu đồng/lượng; chờ Fed 09/12/2026, chia nhỏ lệnh mua."
+  },
+  {
+   "title": "Bitcoin thủng 60.000 USD, thấp nhất từ tháng 7",
+   "cat": "Dòng tiền",
+   "source": "Reuters qua TradingView (20/11/2026)",
+   "date": "2026-11-21",
+   "url": "https://www.tradingview.com/news/reuters.com,2026:newsml_L2N4710M8:0-bitcoin-falls-below-60-000-level/",
+   "page": "bai-viet/bitcoin-thung-60000-usd-thap-nhat-tu-thang-7.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-thung-60000-usd-thap-nhat-tu-thang-7.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin thủng 60.000 USD ngày 20/11/2026, lần đầu từ đầu tháng 7 — IBIT rút kỷ lục 541,1 triệu USD trong ngày 19/11; mốc 57.700 USD là hỗ trợ cuối, mất mốc này thì 57.001 USD sẽ bị thử thách."
+  },
+  {
+   "title": "Lạm phát kỳ vọng Mỹ rơi về 3,7%, thấp nhất từ tháng 2",
+   "cat": "Dòng tiền",
+   "source": "TheStreet (20/11/2026)",
+   "date": "2026-11-21",
+   "url": "https://pro.thestreet.com/market-commentary/consumer-sentiment-gets-a-post-election-lift-as-inflation-expectations-plunge",
+   "page": "bai-viet/lam-phat-ky-vong-my-roi-ve-37-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lam-phat-ky-vong-my-roi-ve-37-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lạm phát kỳ vọng Mỹ rơi về 3,7% tháng 11/2026, thấp nhất từ tháng 2 — tâm lý hồi lên 51,5 nhưng vẫn thấp hơn 9% so với tháng 2; Fed vẫn được đặt cược gần 98% tăng lãi suất 09/12/2026."
+  },
+  {
+   "title": "Doanh thu TikTok Shop tháng 12 và cách shop nhỏ đón sóng",
+   "cat": "Dòng tiền",
+   "source": "Digital Applied (tổng hợp tháng 7/2026)",
+   "date": "2026-11-21",
+   "url": "https://www.digitalapplied.com/blog/social-commerce-statistics-2026-data-points",
+   "page": "bai-viet/doanh-thu-tiktok-shop-thang-12-shop-nho-don-song.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doanh-thu-tiktok-shop-thang-12-shop-nho-don-song.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Doanh thu TikTok Shop tháng 12: GMV Mỹ dự báo 23,41 tỷ USD năm 2026 (+48%), chiến dịch Black Friday chạy tới 30/11 — shop nhỏ làm 5 việc trước 12.12: chốt sản phẩm, tính lãi lỗ, đăng ký GMV Max, chốt hoa hồng affiliate, kiểm tồn kho."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
