@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản trị viên — vieclamlivestream.online</title>
+<meta name="description" content="Khu vực Admin người thật: duyệt hồ sơ, quản lý người dùng, nhật ký thao tác, chat nội bộ. Tách khỏi Admin AI. Bản thử nghiệm Human Admin MVP.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="vieclamlivestream.online">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/v20.css"><link rel="stylesheet" href="/admin/human/human-admin.css"></head><body>
+<!-- Human Admin MVP shell (21/11/2026, nhánh feat/human-admin-shell).
+     Khu Admin NGƯỜI THẬT — tách khỏi Admin AI (quan-tri.html). Dữ liệu mẫu, chưa nối backend. -->
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="/">Trang chủ</a><a href="/danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="/danh-sach-mau.html" class="">Dành cho Shop</a><a href="/thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="/tin-tuc.html" class="">Tin tức</a><a href="/hoi-dap.html" class="">Hỏi đáp</a><a href="/dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<main class="ha-wrap">
+<p class="ha-note"><strong>BẢN THỬ NGHIỆM — Human Admin MVP</strong> (nhánh feat/human-admin-shell). Khu vực Admin người thật, tách hoàn toàn khỏi Admin AI. Mọi bảng dưới đây là <strong>dữ liệu mẫu</strong>, chưa nối backend. Phân quyền server-side + MFA Owner là V5-02 (sau backup) — shell này chỉ kiểm thử giao diện và mô hình phân quyền phía client.</p>
+<h1>Quản trị viên — Khu vực con người</h1>
+<div class="ha-rolebar">
+<label for="haRole"><strong>Vai trò demo:</strong></label>
+<select id="haRole">
+<option value="owner">Owner</option>
+<option value="manager">Quản lý</option>
+<option value="staff">Nhân viên</option>
+</select>
+<span class="ha-badge ha-badge-owner" id="haRoleBadge">Owner</span>
+<span id="haRoleDesc" style="font-size:13px"></span>
+</div>
+<p style="font-size:13px;color:#6b7280">Vai trò demo chỉ để kiểm thử giao diện — production lấy vai trò từ phiên đăng nhập (V5-02).</p>
+
+<section class="ha-card">
+<h2>Mô hình phân quyền</h2>
+<div id="haMatrix" style="overflow-x:auto"></div>
+</section>
+
+<section class="ha-card">
+<h2>Hàng đợi duyệt</h2>
+<div id="haQueue" style="overflow-x:auto"></div>
+<p class="ha-toast" id="haToast"></p>
+</section>
+
+<section class="ha-card">
+<h2>Người dùng</h2>
+<div id="haUsers" style="overflow-x:auto"></div>
+</section>
+
+<section class="ha-card">
+<h2>Nhật ký thao tác</h2>
+<div id="haAudit" style="overflow-x:auto"></div>
+</section>
+
+<section class="ha-card">
+<h2>Chat nội bộ Admin</h2>
+<p class="ha-empty">Chưa có tin nhắn — khu chat nội bộ Admin người thật sẽ nối sau khi có backend (V5-03). Không dùng chung khung chat với Admin AI.</p>
+</section>
+
+<p data-ha-owner-only><a class="ha-btn ha-btn-primary" href="/owner/">Mở Owner Control →</a></p>
+<p id="ha-selftest" hidden></p>
+</main>
+<script src="/admin/human/rbac.js"></script><script>/* Nút Menu: cùng cơ chế app.js (toggle class open trên #mainNav). */document.getElementById('menuBtn').addEventListener('click',function(){var n=document.getElementById('mainNav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o?'true':'false');});</script></body></html>

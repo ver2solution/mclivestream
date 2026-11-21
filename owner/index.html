@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Owner Control — vieclamlivestream.online</title>
+<meta name="description" content="Owner Control: cấp/thu hồi quyền admin, trạng thái MFA, nhật ký thao tác. Chỉ Owner. Bản thử nghiệm Human Admin MVP.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="vieclamlivestream.online">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/v20.css"><link rel="stylesheet" href="/admin/human/human-admin.css"></head><body>
+<!-- Owner Control (21/11/2026, nhánh feat/human-admin-shell) — chỉ Owner.
+     Cấp quyền + MFA bắt buộc ở server-side là V5-02 (sau backup); đây là shell mẫu. -->
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="/">Trang chủ</a><a href="/danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="/danh-sach-mau.html" class="">Dành cho Shop</a><a href="/thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="/tin-tuc.html" class="">Tin tức</a><a href="/hoi-dap.html" class="">Hỏi đáp</a><a href="/dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<main class="ha-wrap">
+<p class="ha-note"><strong>BẢN THỬ NGHIỆM — Owner Control</strong> (nhánh feat/human-admin-shell). Chỉ Owner mở được trang này (kiểm tra quyền server-side ở V5-02). Mọi nội dung dưới đây là <strong>dữ liệu mẫu</strong>, thao tác chỉ ghi mẫu, chưa gửi server.</p>
+<h1>Owner Control</h1>
+<p><a href="/admin/human/">← Về khu Admin người thật</a></p>
+
+<section class="ha-card">
+<h2>Cấp / thu hồi quyền admin</h2>
+<p style="font-size:13px">Chọn người dùng mẫu và vai trò mới. Cấp quyền <strong>Owner</strong> không qua form mẫu — chỉ Owner hiện tại làm trực tiếp.</p>
+<p>
+<label>Người dùng<br><select id="ocUser">
+<option value="user-m01">Người dùng mẫu 01</option>
+<option value="user-m02">Người dùng mẫu 02</option>
+<option value="user-m03">Người dùng mẫu 03</option>
+<option value="user-m04">Người dùng mẫu 04</option>
+<option value="user-m05">Người dùng mẫu 05</option>
+</select></label>
+</p>
+<p>
+<label>Vai trò mới<br><select id="ocRole">
+<option value="manager">Quản lý</option>
+<option value="staff">Nhân viên</option>
+<option value="member">Thu hồi về thành viên</option>
+</select></label>
+</p>
+<p><button class="ha-btn ha-btn-primary" id="ocGrant" type="button">Cấp quyền (mẫu)</button></p>
+<p class="ha-toast" id="ocToast"></p>
+</section>
+
+<section class="ha-card">
+<h2>Trạng thái MFA</h2>
+<table class="ha-table"><thead><tr><th>Tài khoản</th><th>MFA</th><th>Ghi chú</th></tr></thead><tbody>
+<tr><td>Owner (mẫu)</td><td>Chưa bật (mẫu)</td><td>V5-02 sẽ bắt buộc MFA cho Owner.</td></tr>
+<tr><td>Quản lý (mẫu)</td><td>Chưa bật (mẫu)</td><td>Bật MFA trước khi cấp quyền thật.</td></tr>
+<tr><td>Nhân viên (mẫu)</td><td>Chưa bật (mẫu)</td><td>—</td></tr>
+</tbody></table>
+</section>
+
+<section class="ha-card">
+<h2>Nhật ký thao tác</h2>
+<div id="haAudit" style="overflow-x:auto"></div>
+</section>
+
+<p id="ha-selftest" hidden></p>
+</main>
+<script src="/admin/human/rbac.js"></script><script>
+/* Owner Control mẫu: cấp quyền chỉ ghi vào nhật ký mẫu trên trang, chưa gửi server. */
+document.getElementById('menuBtn').addEventListener('click',function(){var n=document.getElementById('mainNav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o?'true':'false');});
+document.getElementById('ocGrant').addEventListener('click',function(){
+  var u=document.getElementById('ocUser'); var r=document.getElementById('ocRole');
+  var uname=u.options[u.selectedIndex].text; var rlabel=r.options[r.selectedIndex].text;
+  var tb=document.querySelector('#haAudit tbody');
+  if(tb){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>21/11/2026 (mẫu)</td><td>owner-mau</td><td>Cấp quyền '+rlabel+' cho '+uname+'</td><td>Đã ghi (mẫu)</td>';
+    tb.insertBefore(tr,tb.firstChild);
+  }
+  var t=document.getElementById('ocToast');
+  if(t) t.textContent='Đã ghi thao tác mẫu: cấp quyền '+rlabel+' cho '+uname+' — chưa gửi server.';
+});
+</script></body></html>
