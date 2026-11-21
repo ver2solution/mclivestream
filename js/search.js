@@ -26,6 +26,15 @@
       .replace(/[^a-z0-9 ]+/g, ' ')
       .replace(/\s+/g, ' ').trim();
   }
+  /* FULL-MC-041 (21/11/2026): tách token từ truy vấn đã chuẩn hóa — bỏ token rỗng,
+     bỏ token 1 ký tự, khử trùng, giữ thứ tự. KHÔNG dùng stopword ở v1. */
+  function tokenize(q) {
+    var seen = {}, out = [];
+    (q || '').split(/\s+/).forEach(function (t) {
+      if (t && t.length > 1 && !seen[t]) { seen[t] = 1; out.push(t); }
+    });
+    return out;
+  }
   /* Khóa tỉnh để đối sánh: "TP. Hồ Chí Minh" / "TP.HCM" / "TP HCM" -> "ho chi minh". */
   function provKey(s) {
     var k = normalize(s).replace(/^(tp|tinh|thanh pho)\s+/, '').replace(/\s+/g, ' ').trim();
@@ -160,13 +169,33 @@
     if (nText.indexOf(q) !== -1) return 60;
     return 0;
   }
-  function scoreEntry(e, q, nowMs) {
+  /* FULL-MC-041: điểm tốt nhất của 1 token trên các trường (thang cũ giữ nguyên:
+     tiêu đề/slug 100/80/60 theo titleScore, field 40, tỉnh-danh mục 30, mô tả 20). */
+  function fieldScoreForToken(e, tok) {
     var s = 0;
-    s = Math.max(s, titleScore(e.nTitle, q));
-    s = Math.max(s, titleScore(e.nSlug, q)); /* slug bài = tiêu đề phụ (xem ghi chú đầu file) */
-    if (s === 0 && e.nField && e.nField.indexOf(q) !== -1) s = Math.max(s, 40);
-    if (s === 0 && ((e.nProv && e.nProv.indexOf(q) !== -1) || (e.nCat && e.nCat.indexOf(q) !== -1))) s = Math.max(s, 30);
-    if (s === 0 && e.nDesc && e.nDesc.indexOf(q) !== -1) s = Math.max(s, 20);
+    s = Math.max(s, titleScore(e.nTitle, tok));
+    s = Math.max(s, titleScore(e.nSlug, tok)); /* slug bài = tiêu đề phụ (xem ghi chú đầu file) */
+    if (e.nField && e.nField.indexOf(tok) !== -1) s = Math.max(s, 40);
+    if ((e.nProv && e.nProv.indexOf(tok) !== -1) || (e.nCat && e.nCat.indexOf(tok) !== -1)) s = Math.max(s, 30);
+    if (e.nDesc && e.nDesc.indexOf(tok) !== -1) s = Math.max(s, 20);
+    return s;
+  }
+  /* FULL-MC-041: AND giữa các token, OR giữa các trường — một mục khớp khi MỖI
+     token đều xuất hiện trong ÍT NHẤT MỘT trường. Điểm = tổng điểm các token,
+     chặn trần 100. +20 (chặn 100) khi toàn bộ truy vấn xuất hiện liên tục trong
+     tiêu đề/slug — chỉ áp cho truy vấn > 1 token: truy vấn 1 token giữ nguyên
+     điểm cũ (titleScore/field/...) nên hồi quy A2 giữ cả tổng lẫn thứ hạng. */
+  function scoreEntry(e, q, nowMs) {
+    var tokens = tokenize(q);
+    if (!tokens.length) return 0;
+    var s = 0;
+    for (var i = 0; i < tokens.length; i++) {
+      var ts = fieldScoreForToken(e, tokens[i]);
+      if (ts === 0) return 0; /* thiếu 1 token -> không khớp */
+      s += ts;
+    }
+    s = Math.min(100, s);
+    if (tokens.length > 1 && ((e.nTitle && e.nTitle.indexOf(q) !== -1) || (e.nSlug && e.nSlug.indexOf(q) !== -1))) s = Math.min(100, s + 20);
     if (s > 0 && e.dateMs && nowMs && (nowMs - e.dateMs) <= 15 * 86400000 && (nowMs - e.dateMs) >= 0) s = Math.min(100, s + 5);
     return s;
   }
@@ -251,17 +280,25 @@
   function suggest(index, qRaw, recentList) {
     var q = normalize(qRaw);
     if (!q || q.length < 2) return { names: [], hot: [], recent: [] };
+    var tokens = tokenize(q);
+    /* FULL-MC-041: gợi ý tên khi tiêu đề/slug chứa ĐỦ token (thay vì chỉ bắt đầu
+       bằng nguyên cụm). Lượt 1 ưu tiên tên bắt đầu bằng token đầu, lượt 2 mọi tên
+       chứa đủ token. Khớp cả tiêu đề lẫn slug bài (slug là tên bài trong URL —
+       vd bài Phạm Thoại chỉ mang tên đó trong slug, xem ghi chú đầu file). */
+    function hasAllTokens(text) {
+      if (!text) return false;
+      for (var i = 0; i < tokens.length; i++) if (text.indexOf(tokens[i]) === -1) return false;
+      return true;
+    }
     var names = [], seen = {};
-    /* Khớp cả tiêu đề lẫn slug bài (slug là tên bài trong URL — vd bài Phạm Thoại
-       chỉ mang tên đó trong slug, xem ghi chú đầu file). */
     index.forEach(function (e) {
       if (names.length >= 5) return;
-      if ((e.nTitle.indexOf(q) === 0 || (e.nSlug && e.nSlug.indexOf(q) === 0)) && !seen[e.title]) { seen[e.title] = 1; names.push({ title: e.title, type: e.type }); }
+      if (((e.nTitle.indexOf(tokens[0]) === 0 || (e.nSlug && e.nSlug.indexOf(tokens[0]) === 0)) && (hasAllTokens(e.nTitle) || hasAllTokens(e.nSlug))) && !seen[e.title]) { seen[e.title] = 1; names.push({ title: e.title, type: e.type }); }
     });
     if (names.length < 5) {
       index.forEach(function (e) {
         if (names.length >= 5) return;
-        if ((e.nTitle.indexOf(q) !== -1 || (e.nSlug && e.nSlug.indexOf(q) !== -1)) && !seen[e.title]) { seen[e.title] = 1; names.push({ title: e.title, type: e.type }); }
+        if ((hasAllTokens(e.nTitle) || hasAllTokens(e.nSlug)) && !seen[e.title]) { seen[e.title] = 1; names.push({ title: e.title, type: e.type }); }
       });
     }
     var hot = hotKeywords().filter(function (k) { return normalize(k).indexOf(q) !== -1; }).slice(0, 5);
@@ -270,7 +307,7 @@
   }
 
   var API = {
-    normalize: normalize, provKey: provKey, parseDateMs: parseDateMs, escHtml: escHtml,
+    normalize: normalize, tokenize: tokenize, provKey: provKey, parseDateMs: parseDateMs, escHtml: escHtml,
     fmtElapsed: fmtElapsed,
     buildIndex: buildIndex, countByType: countByType, scoreEntry: scoreEntry,
     search: search, parseDeepLink: parseDeepLink, buildDeepLink: buildDeepLink,
@@ -429,9 +466,17 @@
     }
     function showEmptyState(q) {
       var empty = $('searchEmpty'); if (!empty) return;
+      /* FULL-MC-041: them 1 dong goi y bo bot 1 tu khi truy van > 1 tu (chi bo tu
+         dau — tu con lai giu nguyen thu tu go cua nguoi dung, hien bang chu goc
+         co dau); 3 nut tu khoa hot thay vi 4. Khung cu + goi y cu giu nguyen. */
+      var words = (q || '').trim().split(/\s+/).filter(Boolean);
+      var dropHint = words.length > 1
+        ? '<p class="small">Thử bỏ bớt 1 từ — ví dụ chỉ tìm “' + escHtml(words.slice(1).join(' ')) + '” thay vì “' + escHtml(q) + '”.</p>'
+        : '';
       empty.innerHTML = '<div class="empty-big">🔍</div><p><b>Không tìm thấy kết quả cho “' + escHtml(q) + '”</b></p>' +
+        dropHint +
         '<p class="small">Gợi ý: kiểm tra chính tả · thử từ ngắn hơn · bỏ dấu thử (“pham thoai”) · hoặc thử từ khóa phổ biến:</p>' +
-        '<p>' + hotKeywords().slice(0, 4).map(function (k) {
+        '<p>' + hotKeywords().slice(0, 3).map(function (k) {
           return '<button type="button" class="sr-chip" data-q="' + escHtml(k) + '">' + escHtml(k) + '</button>';
         }).join('') + '</p>';
       empty.hidden = false;
