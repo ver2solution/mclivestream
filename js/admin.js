@@ -92,7 +92,7 @@
       + '<button class="btn btn-ghost btn-sm" data-adm-page="' + key + '" data-adm-dir="1" type="button"'
       + (hasMore ? '' : ' disabled') + '>Trang sau →</button></div>';
   }
-  var PAGE_FIELDS = { comments: 'commentsPage', moderation: 'modPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage', write: 'writePage' };
+  var PAGE_FIELDS = { comments: 'commentsPage', moderation: 'modPage', claim: 'claimPage', faq: 'faqPage', users: 'usersPage', audit: 'auditPage', testdata: 'testPage', write: 'writePage' };
   var PAGE_LOADERS = null; // gán sau khi các hàm load* đã định nghĩa (xem trước § chuyển tab)
   function onPagerClick(e) {
     var btn = e.target && e.target.closest ? e.target.closest('[data-adm-page]') : null;
@@ -126,7 +126,7 @@
     aiChatLoading: false, // đang có lượt loadAiChat chạy
     aiChatPending: [], // file đã upload xong, chờ gắn vào tin khi bấm Gửi ({id, file_name, mime_type, size_bytes, kind})
     tasks: [], // danh sách công việc đã tải gần nhất (mới nhất trước, v118)
-    usersPage: 0, commentsPage: 0, modPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
+    usersPage: 0, commentsPage: 0, modPage: 0, claimPage: 0, faqPage: 0, auditPage: 0, testPage: 0, writePage: 0,
     usersQuery: '', // từ khóa tìm email (tab Người dùng & xu); rỗng = không lọc
     usersList: [], // tài khoản đã tải gần nhất ở tab Người dùng (để form chi tiết lấy notes prefill)
     testData: null, // kết quả get_admin_test_data gần nhất (để phân trang client-side)
@@ -358,6 +358,77 @@
       wrap.innerHTML = html;
     } catch (e) {
       wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration ADMIN GĐ1 chưa chạy (hàm get_pending_moderation chưa có).' : friendlyErr(e)) + '</p>';
+    }
+  }
+
+  /* ---------- TAB: Duyệt nhận sở hữu (Claim V2, 21/11/2026) ----------
+     Gói B frontend — RPC get_pending_claims + review_claim +
+     link_profile_to_user + open_dispute thuộc gói A (migration), CHƯA
+     CÓ live (chờ backup V5-00). Tab thử gọi RPC; chưa có thì hiện
+     thông báo chờ migration + đường xem qua Dashboard, KHÔNG hien
+     du lieu gia, khong crash. Khi RPC co, bang hien: ho so (ten + id
+     + link chi tiet), user (id + email/SDT che), bang chung, diem
+     matching, tranh chap, thao tac Duyet + gan / Tu choi / Mo tranh
+     chap. Nut Duyet xac nhan 2 buoc tren nut (v217); Tu choi / Mo
+     tranh chap nhap ly do inline (v222). */
+  function maskClaimEmail(v) {
+    var s = String(v || '').trim();
+    var at = s.indexOf('@');
+    if (at <= 0) return s ? '•••' : '—';
+    return s.slice(0, Math.min(2, at)) + '***@' + s.slice(at + 1);
+  }
+  function maskClaimPhone(v) {
+    var d = String(v || '').replace(/\D/g, '');
+    if (!d) return '—';
+    return '••••••' + d.slice(-3);
+  }
+  function claimDetailUrl(kind, id) {
+    return (kind === 'shop' ? 'chi-tiet-shop.html?id=' : 'ho-so.html?id=') + encodeURIComponent(id || '');
+  }
+  async function loadClaimReview() {
+    var wrap = $('admClaimList');
+    if (!wrap) return;
+    wrap.innerHTML = '<p>Đang tải…</p>';
+    try {
+      var rows = await rpc('get_pending_claims', { p_limit: PAGE_SIZE + 1, p_offset: state.claimPage * PAGE_SIZE });
+      var hasMore = Array.isArray(rows) && rows.length > PAGE_SIZE;
+      var list = hasMore ? rows.slice(0, PAGE_SIZE) : rows;
+      if (!Array.isArray(list) || !list.length) { wrap.innerHTML = '<p>Không còn yêu cầu nhận sở hữu nào chờ duyệt.</p>' + pagerHtml('claim', state.claimPage, false); return; }
+      var html = '<table class="qt-table" style="width:100%;border-collapse:collapse"><thead><tr>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Hồ sơ</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người yêu cầu</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Bằng chứng</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Matching</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ngày gửi</th>'
+        + '<th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Thao tác</th></tr></thead><tbody>';
+      list.forEach(function (r) {
+        var pid = r.profile_id || '';
+        var pk = r.profile_kind || 'model';
+        var ev = r.evidence_kind ? esc(r.evidence_kind) : '—';
+        if (r.evidence_detail) {
+          var ed = String(r.evidence_detail);
+          ev += '<br><small>' + (/^https?:\/\//i.test(ed) ? '<a href="' + esc(ed) + '" target="_blank" rel="noopener">' + esc(ed.slice(0, 40)) + '…</a>' : esc(ed.slice(0, 80))) + '</small>';
+        }
+        var match = (r.match_score != null ? esc(String(r.match_score)) + ' điểm' : '—')
+          + (r.match_reasons ? '<br><small>' + esc(String(r.match_reasons)) + '</small>' : '');
+        var dispute = r.dispute_status ? '<br><small>⚖️ Tranh chấp: ' + esc(String(r.dispute_status)) + '</small>' : '';
+        var shared = r.phone_shared ? '<br><small>⚠️ SĐT dùng chung với tài khoản khác</small>' : '';
+        html += '<tr data-claim="' + esc(r.id) + '"><td style="padding:8px;border-bottom:1px solid #eee"><a href="' + esc(claimDetailUrl(pk, pid)) + '" target="_blank" rel="noopener">' + esc(r.profile_name || pid) + '</a>'
+          + '<br><small>' + esc(pid) + ' · ' + (pk === 'shop' ? 'shop' : 'mẫu') + '</small>' + dispute + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(maskClaimEmail(r.user_email)) + '<br><small>' + esc(maskClaimPhone(r.user_phone)) + '</small>' + shared + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + ev + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + match + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(vnDate(r.created_at)) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap">'
+          + '<button class="btn btn-primary btn-sm" data-adm-act="approve-claim" data-id="' + esc(r.id) + '" type="button">Duyệt + gán</button> '
+          + '<button class="btn btn-ghost btn-sm" data-adm-act="reject-claim" data-id="' + esc(r.id) + '" type="button">Từ chối</button> '
+          + '<button class="btn btn-ghost btn-sm" data-adm-act="dispute-claim" data-id="' + esc(r.id) + '" data-profile="' + esc(pid) + '" data-kind="' + esc(pk) + '" type="button">Mở tranh chấp</button>'
+          + '</td></tr>';
+      });
+      html += '</tbody></table><p style="font-size:13px;color:#666">Chỉ duyệt khi đã đối chiếu bài gốc + bằng chứng. Không tự chuyển quyền chỉ vì trùng SĐT/email. Từ chối / mở tranh chấp bắt buộc nhập lý do.</p>' + pagerHtml('claim', state.claimPage, hasMore);
+      wrap.innerHTML = html;
+    } catch (e) {
+      wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration Claim V2 (gói A: 3 bảng identity_evidence / claim_disputes / audit_events + RPC get_pending_claims) chưa chạy, đang chờ backup V5-00 xong. Hiện xem yêu cầu qua Supabase Dashboard → bảng profile_claims.' : friendlyErr(e)) + '</p>';
     }
   }
 
@@ -1839,6 +1910,66 @@
           setMsg(msg, 'Đã từ chối.');
         }
         await loadModeration(); await loadTestData();
+      } else if (act === 'approve-claim' || act === 'reject-claim' || act === 'dispute-claim') {
+        // Claim V2 (21/11): RPC thuoc goi A (migration) — chua co live
+        // thi bao ro "cho migration", khong gia vo thanh cong.
+        if (act === 'approve-claim') {
+          // v217: xac nhan 2 buoc ngay tren nut (khong window.confirm).
+          if (btn.getAttribute('data-armed') !== '1') {
+            btn.setAttribute('data-armed', '1');
+            btn.textContent = 'Chắc chắn duyệt + gán?';
+            return;
+          }
+          try {
+            await rpc('review_claim', { p_claim_id: id, p_action: 'approve', p_reason: null });
+          } catch (e) {
+            setMsg(msg, isMissingFn(e) ? 'Chưa duyệt được — migration Claim V2 (gói A) chưa chạy.' : friendlyErr(e), true);
+            return;
+          }
+          try {
+            await rpc('link_profile_to_user', { p_claim_id: id });
+            setMsg(msg, 'Đã duyệt + gán hồ sơ cho chủ hợp lệ.');
+          } catch (e2) {
+            setMsg(msg, isMissingFn(e2) ? 'Đã duyệt nhưng chưa gán được hồ sơ — RPC gán (gói A) chưa có, kiểm tra lại trong Dashboard.' : 'Đã duyệt nhưng gán hồ sơ lỗi: ' + friendlyErr(e2), true);
+          }
+        } else if (act === 'reject-claim') {
+          // v222: o nhap ly do inline thay window.prompt.
+          var rj = admReasonInput(btn);
+          if (!rj) {
+            if (btn.getAttribute('data-armed') !== '1') {
+              btn.setAttribute('data-armed', '1');
+              btn.textContent = 'Nhập lý do rồi bấm lại để từ chối';
+            }
+            setMsg(msg, 'Nhập lý do từ chối (bắt buộc).', true);
+            return;
+          }
+          try {
+            await rpc('review_claim', { p_claim_id: id, p_action: 'reject', p_reason: rj });
+            setMsg(msg, 'Đã từ chối yêu cầu nhận sở hữu.');
+          } catch (e) {
+            setMsg(msg, isMissingFn(e) ? 'Chưa từ chối được — migration Claim V2 (gói A) chưa chạy.' : friendlyErr(e), true);
+            return;
+          }
+        } else {
+          // Mo tranh chap: ly do inline (v222), RPC open_dispute (goi A).
+          var dp = admReasonInput(btn);
+          if (!dp) {
+            if (btn.getAttribute('data-armed') !== '1') {
+              btn.setAttribute('data-armed', '1');
+              btn.textContent = 'Nhập lý do rồi bấm lại để mở tranh chấp';
+            }
+            setMsg(msg, 'Nhập lý do mở tranh chấp (bắt buộc).', true);
+            return;
+          }
+          try {
+            await rpc('open_dispute', { p_profile_id: btn.getAttribute('data-profile'), p_profile_kind: btn.getAttribute('data-kind') || 'model', p_reason: dp });
+            setMsg(msg, 'Đã mở tranh chấp — hồ sơ tạm ẩn khỏi tìm kiếm.');
+          } catch (e) {
+            setMsg(msg, isMissingFn(e) ? 'Chưa mở tranh chấp được — migration Claim V2 (gói A) chưa chạy.' : friendlyErr(e), true);
+            return;
+          }
+        }
+        await loadClaimReview();
       } else if (act === 'pin-profile') {
         // v217: xác nhận 2 bước ngay trên nút (không dùng window.confirm —
         // hộp thoại native bị tự tắt trên trình duyệt tự động, gây thoát im lặng).
@@ -1945,6 +2076,7 @@
     overview: { label: 'Tổng quan', load: loadOverview },
     comments: { label: 'Bình luận', load: loadComments },
     moderation: { label: 'Duyệt hồ sơ / tin', load: loadModeration },
+    claim: { label: 'Duyệt nhận sở hữu', load: loadClaimReview },
     faq: { label: 'Hỏi đáp', load: loadFaq },
     users: { label: 'Người dùng & xu', load: loadUsers },
     testdata: { label: 'Dữ liệu test', load: loadTestData },
@@ -1953,7 +2085,7 @@
     'ai-chat': { label: 'Chat AI', load: loadAiChat },
     write: { label: 'Viết bài', load: loadArticleDrafts }
   };
-  var PAGE_LOADERS = { comments: loadComments, moderation: loadModeration, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
+  var PAGE_LOADERS = { comments: loadComments, moderation: loadModeration, claim: loadClaimReview, faq: loadFaq, users: loadUsers, audit: loadAudit, testdata: loadTestData, write: loadArticleDrafts };
   function switchTab(key) {
     state.activeTab = key;
     Object.keys(TABS).forEach(function (k) {
