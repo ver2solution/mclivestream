@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bảng tin — vieclamlivestream.online</title>
+<meta name="description" content="Bảng tin xã hội vieclamlivestream.online: việc làm livestream, mẫu, shop và bài viết mới — thích, lưu, theo dõi. Bản thử nghiệm User Social MVP.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d4e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="vieclamlivestream.online">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/v20.css"><link rel="stylesheet" href="/mobile-shell.css"><link rel="stylesheet" href="/social.css"></head><body>
+<!-- User Social MVP (21/11/2026, nhánh feat/user-social-mvp): Bảng tin xã hội.
+     Cấu trúc đầu trang + thanh tab lấy theo cong-dong/chat.html (cùng thư mục). -->
+<button class="menu-btn" id="menuBtn" data-track="nut-menu" aria-expanded="false" type="button">Menu</button><nav class="main-nav" id="mainNav"><a href="/">Trang chủ</a><a href="/danh-sach-shop.html" class="">Dành cho Mẫu</a><a href="/danh-sach-mau.html" class="">Dành cho Shop</a><a href="/thanh-ly-kiot.html" class="">Thanh lý Kiot</a><a href="/tin-tuc.html" class="">Tin tức</a><a href="/hoi-dap.html" class="">Hỏi đáp</a><a href="/dang-ky.html?type=model" class="nav-register">Đăng ký</a></nav>
+<main class="social-feed">
+<p class="sf-note"><strong>BẢN THỬ NGHIỆM — User Social MVP</strong> (nhánh feat/user-social-mvp). Bảng tin lấy từ dữ liệu công khai của web. Lượt thích / lưu / theo dõi chỉ lưu trên trình duyệt này, chưa đồng bộ tài khoản. SĐT/Zalo/Facebook không hiện trên thẻ — đăng nhập mới xem được liên hệ.</p>
+<h1>Bảng tin</h1>
+<div class="sf-filters" id="sfFilters"></div>
+<div id="sfFeed"></div>
+<p class="sf-empty" id="sfEmpty" hidden>Không có mục nào theo bộ lọc này.</p>
+<p style="text-align:center"><button class="btn btn-primary" id="sfMore" type="button">Xem thêm</button></p>
+<p id="sf-selftest" hidden></p>
+</main>
+<!-- S1 mobile-shell (21/11/2026): thanh tab mobile 5 mục, chỉ hiện <=768px (xem mobile-shell.css). -->
+<nav class="mobile-shell" aria-label="Điều hướng chính trên di động">
+<a class="ms-tab" data-ms-tab="feed" href="/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="ms-label">Bảng tin</span></a>
+<a class="ms-tab" data-ms-tab="jobs" href="/danh-sach-shop.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="ms-label">Tìm việc</span></a>
+<a class="ms-tab ms-tab--post" data-ms-tab="post" href="/danh-sach-mau.html#dang-tin" aria-label="Đăng tin tuyển mẫu"><span class="ms-post-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="ms-label">Đăng tin</span></a>
+<a class="ms-tab" data-ms-tab="chat" href="/cong-dong/chat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="ms-label">Chat</span></a>
+<a class="ms-tab" data-ms-tab="me" href="/trang-cua-toi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="ms-label">Cá nhân</span></a>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/mclivestream-supabase.js"></script>
+<script src="/js/data.js"></script><script src="/js/social-feed.js"></script><script src="/js/analytics.js"></script><script src="/js/mobile-shell.js"></script><script>/* Nút Menu: cùng cơ chế app.js (toggle class open trên #mainNav) — trang này không tải app.js. */document.getElementById('menuBtn').addEventListener('click',function(){var n=document.getElementById('mainNav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o?'true':'false');});</script></body></html>
