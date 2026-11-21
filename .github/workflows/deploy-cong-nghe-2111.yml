@@ -1,0 +1,69 @@
+name: "Deploy articles-cong-nghe-2026-11-21 (4 bai)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-cong-nghe-2111.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-cong-nghe-2111:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "532" || (echo "BASE DOI: data.js khong con 532 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "559" || (echo "BASE DOI: sitemap khong con 559 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip cong-nghe-2111 package
+        run: |
+          unzip -o mclivestream-cong-nghe-2111-deploy.zip
+          echo "--- verify cong-nghe-2111 (4 bai moi) ---"
+            test -f "bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.html" || (echo "THIEU bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.html"; exit 1)
+            test -f "images/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.jpg" || (echo "THIEU images/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.jpg"; exit 1)
+            test -f "images/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026-og.jpg" || (echo "THIEU images/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026-og.jpg"; exit 1)
+            grep -q "bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.html" js/data.js || (echo "THIEU cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.html</loc>" sitemap.xml || (echo "THIEU cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026 trong sitemap"; exit 1)
+            test -f "bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.html" || (echo "THIEU bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.html"; exit 1)
+            test -f "images/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.jpg" || (echo "THIEU images/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.jpg"; exit 1)
+            test -f "images/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong-og.jpg" || (echo "THIEU images/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong-og.jpg"; exit 1)
+            grep -q "bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.html" js/data.js || (echo "THIEU youtube-studio-goi-y-san-pham-affiliate-hoa-hong trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.html</loc>" sitemap.xml || (echo "THIEU youtube-studio-goi-y-san-pham-affiliate-hoa-hong trong sitemap"; exit 1)
+            test -f "bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.html" || (echo "THIEU bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.html"; exit 1)
+            test -f "images/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.jpg" || (echo "THIEU images/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.jpg"; exit 1)
+            test -f "images/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam-og.jpg" || (echo "THIEU images/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam-og.jpg"; exit 1)
+            grep -q "bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.html" js/data.js || (echo "THIEU amazon-alexa-for-shopping-tro-ly-ai-mua-sam trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.html</loc>" sitemap.xml || (echo "THIEU amazon-alexa-for-shopping-tro-ly-ai-mua-sam trong sitemap"; exit 1)
+            test -f "bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.html" || (echo "THIEU bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.html"; exit 1)
+            test -f "images/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.jpg" || (echo "THIEU images/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.jpg"; exit 1)
+            test -f "images/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10-og.jpg" || (echo "THIEU images/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10-og.jpg"; exit 1)
+            grep -q "bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.html" js/data.js || (echo "THIEU meta-product-browsing-quang-cao-facebook-tu-28-10 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.html</loc>" sitemap.xml || (echo "THIEU meta-product-browsing-quang-cao-facebook-tu-28-10 trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "563" || (echo "SAI TONG sitemap, phai 563"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "536" || (echo "SAI TONG data.js, phai 536 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Guard node-parse (bai hoc v370)
+        run: |
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==537) { console.log('SAI: articles.length phai 537'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026','youtube-studio-goi-y-san-pham-affiliate-hoa-hong','amazon-alexa-for-shopping-tro-ly-ai-mua-sam','meta-product-browsing-quang-cao-facebook-tu-28-10']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-cong-nghe-2111-deploy.zip || rm -f mclivestream-cong-nghe-2111-deploy.zip
+          git rm -q .github/workflows/deploy-cong-nghe-2111.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-cong-nghe-2026-11-21: 4 bai (cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026 youtube-studio-goi-y-san-pham-affiliate-hoa-hong amazon-alexa-for-shopping-tro-ly-ai-mua-sam meta-product-browsing-quang-cao-facebook-tu-28-10)"
+            git push
+          fi
