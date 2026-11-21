@@ -228,7 +228,15 @@ function decisionHTML(m){
    transfer). Dong nay nho, o cuoi muc ghi chu, khong anh huong nguoi da
    dang nhap. Voi 5 danh muc moi (khong nut sao), dong nay van hien nhu loi
    moi dang ky, khong nhac sao (replace o modal chi bo cau ghim sao). */
-var PIN_LONGER_HTML = '<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a>';
+/* NV4/NV5 goi A (21/11/2026): ?next= cho link Dang ky — dang ky xong quay ve dung
+   trang dang xem (decidePostSignup da ton trong ?next=). Tinh 1 lan luc tai trang
+   (duong dan khong doi trong 1 luot xem); tai dung cach tinh cua link Dang nhap
+   (originGateHTML: pathname + search + hash). */
+function currentNextValue(){ try { return encodeURIComponent(window.location.pathname + window.location.search + window.location.hash); } catch (e) { return ''; } }
+var NEXT_VALUE = currentNextValue();
+var NEXT_QS = NEXT_VALUE ? '?next=' + NEXT_VALUE : '';
+var NEXT_AMP = NEXT_VALUE ? '&next=' + NEXT_VALUE : '';
+var PIN_LONGER_HTML = '<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html' + NEXT_QS + '">Đăng ký</a> / <a href="dang-nhap.html' + NEXT_QS + '">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html' + NEXT_QS + '">Đăng ký để ghim lâu hơn</a>';
 var DISCLAIMER = 'Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối. Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).' + PIN_LONGER_HTML;
 /* v42: dong huong dan chu so huu o cuoi moi the (yeu cau nguoi dung 06/11/2026),
    ngay DUOI .disclaimer, la phan tu cuoi cung cua the. Khop quy tac so huu ho
@@ -250,7 +258,7 @@ function ownerNoteHTML(kind, profileId){
   var type = kind === 'shop' ? 'shop' : 'model';
   var loginHref = kind === 'shop' ? 'danh-sach-mau.html#dang-nhap-shop' : 'danh-sach-shop.html#dang-nhap-mau'; // A3 10/11 un-swap v96
   var slot = profileId ? ' <span class="claim-slot" data-claim-profile="'+esc(profileId)+'" data-claim-kind="'+type+'"></span>' : '';
-  return '<p class="owner-note"><a href="dang-ky.html?type='+type+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>' + slot;
+  return '<p class="owner-note"><a href="dang-ky.html?type='+type+NEXT_AMP+'">Đăng ký</a> &gt; <a href="'+loginHref+'">Đăng nhập</a> để sửa hồ sơ này, hoặc liên hệ <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo</a> để được gỡ bỏ.</p>' + slot;
 }
 /* ---- Xu thưởng v2 (GĐ2, 07/11/2026) — nút thích/chia sẻ, ghim, xếp ghim ----
    Xem goals/.../diem-thuong-v2-2026-11-07.md. Client chỉ gọi RPC M7 qua
@@ -515,7 +523,8 @@ function v2sSignupPopup(kind){
         box.innerHTML = '<button type="button" aria-label="Đóng" style="position:absolute;top:8px;right:12px;border:0;background:none;font-size:20px;cursor:pointer;">✕</button>'
           + '<h3 style="margin:0 0 8px;font-size:18px;">' + title + '</h3>'
           + '<p style="margin:0 0 16px;font-size:14px;line-height:1.5;color:#333;">' + body + '</p>'
-          + '<p style="margin:0;display:flex;gap:8px;justify-content:center;"><a href="dang-ky.html" style="background:#0b5d4e;color:#fff;padding:10px 18px;border-radius:8px;font-weight:700;text-decoration:none;">Đăng ký ngay</a>'
+          + '<p style="margin:0 0 16px;font-size:14px;line-height:1.5;color:#333;">Nhận lại hồ sơ của bạn để sửa, ẩn, ứng tuyển nhanh — miễn phí.</p>'
+          + '<p style="margin:0;display:flex;gap:8px;justify-content:center;"><a href="dang-ky.html' + NEXT_QS + '" style="background:#0b5d4e;color:#fff;padding:10px 18px;border-radius:8px;font-weight:700;text-decoration:none;">Đăng ký ngay</a>'
           + '<button type="button" style="background:#eee;color:#333;border:0;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer;">Để sau</button></p>';
         var close = function(){ if (ov.parentNode) ov.parentNode.removeChild(ov); };
         if (ov.addEventListener) ov.addEventListener('click', function(e){ if (e && e.target === ov) close(); });

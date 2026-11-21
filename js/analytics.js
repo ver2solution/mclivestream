@@ -57,17 +57,24 @@
     try { return fn(); } catch (e) { return fallback; }
   }
 
-  /* Mã phiên ngẫu nhiên, lưu trong sessionStorage (mỗi tab một mã). */
+  /* NV4 goi A (21/11/2026): ma phien ben 30 ngay trong localStorage (truoc day
+     sessionStorage — tat tab la mat nen khong do duoc "quay lai sau 7 ngay").
+     Giu format sess_<base36>_<rand>; an danh tuyet doi (khong user_id, khong PII).
+     Luu JSON {id, ts}; qua 30 ngay thi tao ma moi. Phien cu trong sessionStorage
+     duoc nhan 1 lan vao localStorage de khong reset so lieu ngay chuyen doi. */
+  var SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
   function getSessionId() {
     if (sessionId) return sessionId;
     sessionId = safe(function () {
-      var s = null;
-      try { s = window.sessionStorage.getItem(SESSION_KEY); } catch (e) { s = null; }
-      if (!s) {
-        s = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 12);
-        try { window.sessionStorage.setItem(SESSION_KEY, s); } catch (e) { /* bỏ qua */ }
-      }
-      return s;
+      var raw = null, obj = null;
+      try { raw = window.localStorage.getItem(SESSION_KEY); } catch (e) { raw = null; }
+      try { obj = raw ? JSON.parse(raw) : null; } catch (e) { obj = null; }
+      if (obj && obj.id && obj.ts && (Date.now() - obj.ts) < SESSION_TTL_MS) return obj.id;
+      var legacy = null;
+      try { legacy = window.sessionStorage.getItem(SESSION_KEY); } catch (e) { legacy = null; }
+      var id = legacy || ('sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 12));
+      try { window.localStorage.setItem(SESSION_KEY, JSON.stringify({ id: id, ts: Date.now() })); } catch (e) { /* bỏ qua */ }
+      return id;
     }, null);
     if (!sessionId) sessionId = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 12);
     return sessionId;
