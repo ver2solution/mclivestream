@@ -17227,6 +17227,50 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Mixue thu 33,56 tỷ NDT năm 2025 với gần 60.000 cửa hàng, nhưng 97,6% doanh thu đến từ bán nguyên liệu cho chủ nhượng quyền. Tại Việt Nam, chuỗi thu hẹp từ 1.304 còn khoảng 1.000 cửa hàng."
   },
+ {
+  "title": "Livestream 12.12: Shopee Live mở màn 11/12 lúc 20h",
+  "cat": "Livestream",
+  "source": "Shopee Singapore",
+  "date": "2026-11-21",
+  "url": "https://shopee.sg/m/12-12",
+  "page": "bai-viet/livestream-12-12-lich-live-shopee-tiktok-2026.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-12-12-lich-live-shopee-tiktok-2026.jpg",
+  "pinned": false,
+  "takeaway": "Shopee Live 12.12 mo man 11/12 luc 20h, voucher hoan tien 20% moi 2 gio; TikTok Shop chay 12-13/12, 12/12 roi thu Bay; shop live 3 phien 0h, 14-18h, 19-21h; tinh gia cuoi sau 3 lop voucher (Clyvant 05/11/2026)."
+ },
+ {
+  "title": "Livestream bán hàng 12.12: học phiên live 12 giờ Fenty",
+  "cat": "Livestream",
+  "source": "Narrative Group",
+  "date": "2026-11-21",
+  "url": "https://narrativegroup.co/blog/tiktok-shop-black-friday-2026/",
+  "page": "bai-viet/livestream-ban-hang-12-12-phien-live-dai-fenty-53-trieu.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-12-12-phien-live-dai-fenty-53-trieu.jpg",
+  "pinned": false,
+  "takeaway": "Fenty live 12 gio: hon 1 trieu nguoi xem, 53 trieu luot hien thi (TikTok newsroom 14/10/2026); live Black Friday 2025 tang 84%, hon 760.000 phien; shop nho lam phien 3-4 gio, 1 mat quen, 1 san pham chu luc."
+ },
+ {
+  "title": "Livestream bán hàng Tết: kế hoạch 3 giai đoạn, 6 tuần",
+  "cat": "Livestream",
+  "source": "Go Boundless",
+  "date": "2026-11-21",
+  "url": "https://www.gobndlss.com/insights/sea-ecommerce-calendar-2027/",
+  "page": "bai-viet/livestream-ban-hang-tet-3-giai-doan-6-tuan.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-tet-3-giai-doan-6-tuan.jpg",
+  "pinned": false,
+  "takeaway": "Livestream ban hang Tet bat dau truoc it nhat 6 tuan (Go Boundless 13/11/2026): giai doan 1 qua tang, giai doan 2 lam dep 2 tuan cuoi, giai doan 3 live nhe trong nghi; 51% nguoi Viet chi nhieu hon Tet 2027 (Coc Coc 09/2026)."
+ },
+ {
+  "title": "Cách tăng mắt xem livestream: LIVE TikTok tăng gấp đôi",
+  "cat": "Livestream",
+  "source": "Synlighetsverket",
+  "date": "2026-11-21",
+  "url": "https://www.synlighetsverket.se/en/insights/live-shopping-2026",
+  "page": "bai-viet/cach-tang-mat-xem-livestream-live-tang-gap-doi-2026.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/cach-tang-mat-xem-livestream-live-tang-gap-doi-2026.jpg",
+  "pinned": false,
+  "takeaway": "Doanh so LIVE TikTok tang hon gap doi H1 2026, phien live tang 60% (TikTok noi voi CNBC 01/09/2026); LIVE chi 8,2% doanh so TikTok Shop My H1 2026 (Momentum Works); chau Au LIVE 17,2%, video 63,8% (Kalodata 27/10/2026)."
+ },
 ],
  "lots": [
    {
