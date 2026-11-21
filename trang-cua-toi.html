@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="v20.css"><link rel="stylesheet" href="mobile-shell.css"></head><body>
+<link rel="stylesheet" href="v20.css"><link rel="stylesheet" href="mobile-shell.css"><link rel="stylesheet" href="social.css"></head><body>
 <p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">136</span>&nbsp;người đang online</p>
 <style>
 /* v116-game-entry (09/11/2026): loi vao game Nong Trai — xep chong NGAY TREN popup online, cung cot mep phai.
@@ -96,6 +96,29 @@
 <button class="btn btn-primary" type="submit" data-track="nut-luu-ho-so-mau">Lưu hồ sơ</button>
 <p style="font-size:13px">Bấm Lưu là gửi hồ sơ về hệ thống để admin duyệt. Hồ sơ chưa duyệt sẽ không hiện ở danh sách công khai.</p>
 </form>
+<!-- User Social MVP (21/11/2026, nhánh feat/user-social-mvp): mục 5 Hồ sơ nghề nghiệp
+     bản xem trước — lưu localStorage, chưa đồng bộ tài khoản (S2, sau backup). -->
+<section class="form-card" id="social-profile" style="margin-top:24px">
+<h2>5. Hồ sơ nghề nghiệp — bản xem trước (User Social MVP)</h2>
+<p class="sf-note">Bản xem trước trên nhánh thử nghiệm: điền thêm nghề, kỹ năng, nhu cầu để nhận gợi ý việc phù hợp. Chỉ lưu trên trình duyệt này, chưa đồng bộ tài khoản (đồng bộ ở bản cập nhật hồ sơ S2, sau backup). Không nhập số điện thoại, giấy tờ hay thông tin nhạy cảm vào đây.</p>
+<div class="sf-progress"><div class="sf-progress-bar" id="spBar"></div></div>
+<p id="spPct" style="font-size:13px">Hoàn thiện 0%</p>
+<form id="spForm" onsubmit="return false">
+<p><label>Nghề / vai trò<br><select id="spOccupation"><option value="">Chọn nghề / vai trò</option><option>MC livestream</option><option>Mẫu ảnh / mẫu live</option><option>Chủ shop</option><option>Kỹ thuật live</option><option>Vận hành</option><option>Quản lý</option></select></label></p>
+<p><label>Kỹ năng (cách nhau bằng dấu phẩy)<br><input id="spSkills" placeholder="VD: thời trang, mỹ phẩm, giao tiếp tốt"></label></p>
+<p><label>Khu vực làm việc<br><select id="spRegion"><option value="">Chọn tỉnh / thành phố</option><option>Hà Nội</option><option>Huế</option><option>Lai Châu</option><option>Điện Biên</option><option>Sơn La</option><option>Lạng Sơn</option><option>Quảng Ninh</option><option>Thanh Hóa</option><option>Nghệ An</option><option>Hà Tĩnh</option><option>Cao Bằng</option><option>Tuyên Quang</option><option>Lào Cai</option><option>Thái Nguyên</option><option>Phú Thọ</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Ninh Bình</option><option>Quảng Trị</option><option>Đà Nẵng</option><option>Quảng Ngãi</option><option>Gia Lai</option><option>Khánh Hòa</option><option>Lâm Đồng</option><option>Đắk Lắk</option><option>TP. Hồ Chí Minh</option><option>Đồng Nai</option><option>Tây Ninh</option><option>Cần Thơ</option><option>Vĩnh Long</option><option>Đồng Tháp</option><option>Cà Mau</option><option>An Giang</option><option>Toàn quốc / Live online</option></select></label></p>
+<p><label>Nhu cầu<br><select id="spLookingFor"><option value="">Chọn nhu cầu</option><option value="tim-viec">Tìm việc livestream</option><option value="tuyen-mau">Tuyển mẫu / MC</option><option value="tim-shop">Tìm shop hợp tác</option><option value="tim-doi-tac">Tìm đối tác / xưởng</option><option value="kinh-doanh">Kinh doanh / bán hàng</option></select></label></p>
+<p><label>Giờ làm việc<br><input id="spWorkHours" placeholder="VD: tối thứ 2–thứ 6, ca 19h–22h"></label></p>
+<p><label>Thu nhập mong muốn (triệu/tháng)<br><input id="spIncomeMin" type="number" min="0" placeholder="Từ"> — <input id="spIncomeMax" type="number" min="0" placeholder="Đến"></label></p>
+<p><label>Ngành quan tâm<br><input id="spInterests" placeholder="VD: gia dụng, thời trang, mẹ và bé"></label></p>
+<p><label>Link hồ sơ năng lực / video demo<br><input id="spPortfolio" placeholder="VD: link TikTok / YouTube công khai"></label></p>
+<p><button class="btn btn-primary" id="spSave" type="button">Lưu hồ sơ nghề nghiệp</button></p>
+<p id="spMsg" style="font-size:13px"></p>
+</form>
+<div id="spSuggest"><h3>Gợi ý cho bạn</h3><div id="spSuggestList"></div></div>
+<div id="spSaved" style="margin-top:16px"><h3>Đã lưu / Đang theo dõi</h3><div id="spSavedList"></div></div>
+<p id="sp-selftest" hidden></p>
+</section>
 <!-- v325 (18/11/2026): Bot tóm tắt tin trong khung chat trang chủ — người dùng
      chọn chủ đề bot tóm tắt / tắt bot. Lưu localStorage v2s_bot_prefs ngay khi
      đổi ô tích (không cần bấm Lưu hồ sơ); khung chat đọc lại mỗi 5 giây. -->
@@ -308,7 +331,7 @@
 <a class="ms-tab" data-ms-tab="chat" href="cong-dong/chat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="ms-label">Chat</span></a>
 <a class="ms-tab" data-ms-tab="me" href="trang-cua-toi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="ms-label">Cá nhân</span></a>
 </nav>
-<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script src="js/mobile-shell.js"></script>
+<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script src="js/mobile-shell.js"></script><script src="js/data.js"></script><script src="js/social-profile.js"></script>
 <script src="js/data.js" defer></script><!-- v165 (claim V1): data.js chi can o trang-cua-toi SAU dang nhap, defer de khong chan render form -->
 <script src="js/claim.js"></script><!-- v165 (claim V1): banner nhan so huu + kiem tra trung -->
 <script>
