@@ -1,0 +1,57 @@
+name: Deploy doi-song-2111 (5 bai Doi Song 21/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-doi-song-2111.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-doi-song-2111:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip doi-song-2111 package
+        run: |
+          echo "--- BASE guard (bai hoc v233/v234: khong deploy chong) ---"
+          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" = "552" || (echo "BASE DOI: data.js khong con 552 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "579" || (echo "BASE DOI: sitemap khong con 579 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          unzip -o mclivestream-doi-song-2111-deploy.zip
+          echo "--- verify doi-song-2111 (5 bai moi) ---"
+          test "$(unzip -l mclivestream-doi-song-2111-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 5 || (echo "SAI: goi doi-song-2111 phai co dung 5 file bai-viet HTML"; exit 1)
+          test "$(unzip -l mclivestream-doi-song-2111-deploy.zip | grep -c ' images/bai-viet/.*\.jpg$')" -eq 10 || (echo "SAI: goi doi-song-2111 phai co dung 10 anh"; exit 1)
+          if unzip -l mclivestream-doi-song-2111-deploy.zip | grep -q ' sw.js$'; then echo "SAI: goi doi-song-2111 KHONG duoc chua sw.js"; exit 1; fi
+          for slug in chuan-bi-tet-cho-shop-nho-8-viec-lam-truoc-tet-2027 thuong-tet-2026-bao-nhieu-tien-binh-quan-869-trieu-dong du-lich-moc-chau-thang-12-hoa-cai-trang-no-ro di-bo-sau-an-10-phut-giam-duong-huyet-sau-bua-an quan-cafe-check-in-dep-hoang-hon-chieu-da-lat; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "--- verify KHONG mat bai ---"
+          for slug in ai-mua-hang-thay-nguoi-chatgpt-wallet-13-11-2026 amazon-alexa-for-shopping-tro-ly-ai-mua-sam bitcoin-thung-60000-usd-thap-nhat-tu-thang-7 cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026 cach-tang-mat-xem-livestream-live-tang-gap-doi-2026 chuan-bi-tet-cho-shop-nho-8-viec-lam-truoc-tet-2027 di-bo-sau-an-10-phut-giam-duong-huyet-sau-bua-an doanh-thu-tiktok-shop-thang-12-shop-nho-don-song du-lich-moc-chau-thang-12-hoa-cai-trang-no-ro hieu-ung-khan-hiem-livestream-chi-con-3-suat koc-dan-khach-mua-qua-le-77-phan-tram-nguoi-my-luu-y-tuong lam-phat-ky-vong-my-roi-ve-37-phan-tram livestream-12-12-lich-live-shopee-tiktok-2026 livestream-ban-hang-12-12-phien-live-dai-fenty-53-trieu livestream-ban-hang-tet-3-giai-doan-6-tuan luckin-coffee-mo-2599-cua-hang-lai-tang-45-phan-tram mau-livestream-thoi-trang mercado-libre-quy-3-2026-gmv-23-ty-usd-tang-33-phan-tram meta-product-browsing-quang-cao-facebook-tu-28-10 pdd-quy-3-2026-temu-chung-lai-doanh-thu-di-ngang qua-giang-sinh-da-qua-su-dung-62-phan-tram-nguoi-my-dinh-mua quan-cafe-check-in-dep-hoang-hon-chieu-da-lat quay-ramen-mini-ichiran-3850-yen shark-facialpro-tang-754-phan-tram-tiktok-shop-my stakuri-plus-gia-do-dien-thoai-17-dung-cu tencent-quy-3-2026-wechat-1449-ty-nguoi-quang-cao-tang-19-phan-tram thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11 thoi-trang-tet-ban-online-737-nghin-ty-dong thong-ke-ho-so-moi-20-11-2026 thuong-tet-2026-bao-nhieu-tien-binh-quan-869-trieu-dong tong-ket-nam-shop-online-2026 tuyen-mau-livestream-thanh-hoa vang-cham-3514-usd-tuan-toi-te-nhat-8-thang viec-lam-livestream-part-time-tet walmart-quy-3-2026-online-tang-17-phan-tram xu-huong-ban-hang-giang-sinh-2026-275-ty-usd-adobe youtube-studio-goi-y-san-pham-affiliate-hoa-hong; do
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "MAT BAI: $slug khong co trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "MAT BAI: $slug khong co trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js articles: $(grep -c '"page":\s*"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 584 || (echo "SAI: sitemap phai co 584 URL (579 live + 5 bai)"; exit 1)
+          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" -eq 557 || (echo "SAI: data.js phai co 557 bai (552 live + 5 bai)"; exit 1)
+          echo "verify OK: 5 bai moi + data.js (557 bai) + sitemap (584 URL), 0 bai hom nay bi mat"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-doi-song-2111-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-doi-song-2026-11-21: 5 bai (chuan bi Tet cho shop nho keyword theo mua #8 deep + thuong Tet 2026 + du lich Moc Chau thang 12 + di bo sau an 10 phut + cafe Hoang Hon Chieu Da Lat); SEO V2"
+            git push
+          fi
