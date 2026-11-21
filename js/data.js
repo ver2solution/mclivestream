@@ -1,5 +1,5 @@
 /* v76 data: them 2 mang "lots" (13 lo: 8 nhom 1 + 3 nhom 2 + 2 nhom 3) va "factories" (20 xuong) —
-   21/11/2026 bu KPI 20/11: REBASE tu live 1dc2f9c (v383, TK-01) +5 shop (sh-302..sh-306: COQUI, IDOLVIET Ben Tre, STAR PROGRAM Da Nang, CChat, Quynh Nhu Nguyen Da Nang) — shop 304; logo de trong ca 5 (khong lay duoc URL anh truc tiep — can trinh duyet live backfill); sh-303 chuan hoa Ben Tre -> Vinh Long (34 tinh).
+   21/11/2026 kiot 11:31: +3 kiot (kiot-370..372: Sang quán cafe góc ngã 3 Phú Thọ 530 triệu TP. Hồ Chí Minh, Sang quán cafe tại Phường Đông H 210 triệu TP. Hồ Chí Minh, Sang nhượng gấp CLB Bi-a 250m2 t 350 triệu Hà Nội; ngay dang 26/09/2026-25/09/2026; nguon sangnhuong.top, pool 17/11 con lai; 3/3 het thoi gian hien thi, giu + ghi meta theo tien le 11-19/11). APPEND o cuoi mang, KHONG sap xep lai (theo tien le v338 kiot-361..363) — tranh doi id/anh 369 kiot cu. Tong 372 kiot.   21/11/2026 bu KPI 20/11: REBASE tu live 1dc2f9c (v383, TK-01) +5 shop (sh-302..sh-306: COQUI, IDOLVIET Ben Tre, STAR PROGRAM Da Nang, CChat, Quynh Nhu Nguyen Da Nang) — shop 304; logo de trong ca 5 (khong lay duoc URL anh truc tiep — can trinh duyet live backfill); sh-303 chuan hoa Ben Tre -> Vinh Long (34 tinh).
    20/11/2026 kiot 11:31: +3 kiot (kiot-367..369: spa Ham Nghi 150tr Ha Noi, bai giu xe TL16 200tr TP. Ho Chi Minh, cafe Le Sao 140tr TP. Ho Chi Minh; ngay dang 28-29/09/2026; nguon sangnhuong.top, pool 17/11 con lai; het thoi gian hien thi, giu + ghi meta theo tien le 11-19/11). APPEND o cuoi mang, KHONG sap xep lai (theo tien le v338 kiot-361..363) — tranh doi id/anh 366 kiot cu. Tong 369 kiot.   19/11/2026 kiot 11:31: +3 kiot (kiot-364..366: quan nuong Ut Tich 200tr TP. Ho Chi Minh, quan tra sua Pham Van Chi 60tr TP. Ho Chi Minh [khong anh — uploads/342 tra rong], spa Nguyen Dinh Hoan 145tr Ha Noi; ngay dang 29/09/2026; nguon sangnhuong.top, pool 17/11 con lai; het thoi gian hien thi, giu + ghi meta theo tien le 11-18/11). APPEND o cuoi mang, KHONG sap xep lai (theo tien le v338 kiot-361..363) — tranh doi id/anh 363 kiot cu. Tong 366 kiot.   18/11/2026 data them 43 (shop sh-293..301 +9, xuong fac-401..407 +7, kiot kiot-361..363 +3, lg-22..26 +5, mv-12..14 +3, le-12..13 +2, ag-12..15 +4, cl-22..23 +2, cm-22..25 +4, em-22..24 +3, rt-23 +1) — shop 299, xuong 407, kiot 363; muc moi lech nhau khong tron: lop live 23, lop makeup 25, su kien 24, logistics 26, cho thue 22, chuyen nha 14, thiet bi 13, agency 15. Anh: 22/34 co anh dai dien; 12 de rong (lg-23/25/26, le-12/13, ag-13, cm-25, em-23/24, rt-23, kiot-362/363 — khong hotlink, khong anh logo chung).
    16/11/2026 lots 11:21: +34 lo (lot-113..146: A12 VOZ/OTOFUN + B10 YouTube + C6 web thu mua + D6 KG/random, loai D4 trung A10); chuan hoa prov lot-107/108/112 Kien Giang -> An Giang (danh sach 34 tinh, MERGED_PROV); 24 anh moi lot-113..138 + kem 20 anh lot-72..111 chua live. REBASE 12:16 len live sau deploy kiot (71197584, kiot 280) — lan deploy 1 dung vi kiot chen ngang, goi nay giu nguyen 40 kiot moi.
    18/11/2026 lots 11:21: RE-INSERT 40 lo 17/11 (lot-147..186) — deploy 17/11 khong len live (upload ket + deploy xu-huong chen ngang); prep 04:07 dong bo lai tu live (dbe0864f, 146 lo) lam mat 40 lo; chen lai tu lots-2026-11-17-new.js (da kiem chung 17/11).
@@ -22511,6 +22511,7 @@ window.V20_DATA = {
  // sangnhuong.top (pool 17/11 con lai, 81 ung vien verified; sitemap 562 URL da quet het, 0 tin moi).\\n
    // 19/11: them 3 kiot moi (muc 3/ngay, het dot x4 KPI) — kiot-364..366 (TP. Ho Chi Minh 2, Ha Noi 1; ngay dang 29/09/2026; nguon sangnhuong.top, pool 17/11 con lai, 32 ung vien sau dedupe, con 29 cho cac luot sau); APPEND o cuoi mang, KHONG sap xep lai (tien le v338); anh: 2/3 (kiot-364, kiot-366 da xem truc tiep; kiot-365 khong anh — uploads/342 tra rong 6+ lan). 3/3 tin het thoi gian hien thi (ghi meta, theo tien le). Gia lay tu truong field (audit 3/3 khop: tieu de + gia + ngay).
    // 20/11: them 3 kiot moi (muc 3/ngay, het dot x4 KPI) — kiot-367..369 (Ha Noi 1, TP. Ho Chi Minh 2; ngay dang 28-29/09/2026; nguon sangnhuong.top, pool 17/11 con lai, 29 ung vien sau dedupe, con 26 cho cac luot sau); APPEND o cuoi mang, KHONG sap xep lai (tien le v338); anh: 3/3 (kiot-367, kiot-368, kiot-369 da xem truc tiep, dung noi dung). 3/3 tin het thoi gian hien thi (ghi meta, theo tien le). Gia lay tu truong field (audit 3/3 khop: tieu de + gia + ngay).
+   // 21/11: them 3 kiot moi (muc 3/ngay) — kiot-370..372 (TP. Hồ Chí Minh 2, Hà Nội 1; ngay dang 26/09/2026-25/09/2026; nguon sangnhuong.top, pool 17/11 con lai); APPEND o cuoi mang, KHONG sap xep lai (tien le v338); anh: 3/3 (da xem truc tiep, dung noi dung). 3/3 tin het thoi gian hien thi (ghi meta, theo tien le). Gia lay tu truong field (audit 3/3 khop: tieu de + gia + ngay).
   "kiots": [
    {
      "id": "kiot-01",
@@ -28759,6 +28760,57 @@ window.V20_DATA = {
      "linkText": "Xem bài đăng gốc →",
      "prov": "TP. Hồ Chí Minh",
      "img": "images/kiot/kiot-369.jpg"
+   },
+   {
+     "id": "kiot-370",
+     "group": 1,
+     "title": "Sang quán cafe góc ngã 3 Phú Thọ Hòa, Tân Phú, diện tích 367m2",
+     "price": "530 triệu",
+     "priceNum": 530000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng quán cà phê tại vị trí đắc địa góc ngã 3 Phường Phú Thọ Hòa, Quận Tân Phú. Quán có không gian rộng rãi, vừa được… · Diện tích 367 m² · thuê 30 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "26/09/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-quan-cafe-goc-nga-3-phu-tho-hoa-tan-phu-dien-tich-367m2-291.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-370.jpg"
+   },
+   {
+     "id": "kiot-371",
+     "group": 1,
+     "title": "Sang quán cafe tại Phường Đông Hưng Thuận, Quận 12, khách ổn định",
+     "price": "210 triệu",
+     "priceNum": 210000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "TP. Hồ Chí Minh · Cần sang nhượng quán cà phê đã hoạt động ổn định hơn 4 năm tại khu vực gần chợ Lạc Quang, Phường Đông Hưng Thuận, Quận 12. Thông… · Diện tích 130 m² · thuê 14 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "26/09/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-quan-cafe-tai-phuong-dong-hung-thuan-quan-12-khach-on-dinh-295.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "TP. Hồ Chí Minh",
+     "img": "images/kiot/kiot-371.jpg"
+   },
+   {
+     "id": "kiot-372",
+     "group": 1,
+     "title": "Sang nhượng gấp CLB Bi-a 250m2 tại Tam Trinh - Doanh thu ổn định",
+     "price": "350 triệu",
+     "priceNum": 350000000,
+     "qty": null,
+     "cat": "toan-bo-cua-hang",
+     "meta": "Hà Nội · Cơ hội sở hữu CLB Bi-a đang vận hành ổn định ngay tại mặt tiền đường Tam Trinh! Chỉ cần tiếp quản là có ngay dòng tiền đều đặn… · Diện tích 250 m², mặt tiền 10,0 m · thuê 30 triệu/tháng · Tin đã hết thời gian hiển thị trên nguồn (nội dung + ngày vẫn công khai)",
+     "date": "25/09/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — thông tin tổng hợp từ bài đăng công khai",
+     "url": "https://sangnhuong.top/tin/sang-nhuong-gap-clb-bi-a-250m2-tai-tam-trinh-doanh-thu-on-dinh-277.html",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Hà Nội",
+     "img": "images/kiot/kiot-372.jpg"
    }
  ],
  "factories": [
