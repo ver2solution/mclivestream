@@ -1,13 +1,16 @@
 name: Deploy articles-xu-huong-2026-11-21 (4 bai Xu huong 21/11/2026)
 
+
 on:
   push:
     paths:
       - '.github/workflows/deploy-xu-huong-2111.yml'
   workflow_dispatch:
 
+
 permissions:
   contents: write
+
 
 jobs:
   deploy-xu-huong-2111:
@@ -19,7 +22,7 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(md5sum js/data.js | cut -d' ' -f1)" = "faf2d4cb27e9b4bbea816b0c7beeaffd" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "01265e084bc5728e0e5d2b82acbca4d1" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
           test "$(grep -c '"page": "bai-viet/' js/data.js)" = "540" || (echo "BASE DOI: data.js khong con 540 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
           test "$(grep -c '<loc>' sitemap.xml)" = "567" || (echo "BASE DOI: sitemap khong con 567 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip xu-huong-2111 package
@@ -52,3 +55,4 @@ jobs:
             git commit -m "Deploy articles-xu-huong-2026-11-21: 4 bai Xu huong 21/11/2026 (xu huong ban hang Giang sinh Adobe keyword #8 deep + AI mua hang ChatGPT Wallet + qua Giang sinh da qua su dung ThredUp + KOC dan khach mua qua le Syracuse); SEO V2"
             git push
           fi
+
