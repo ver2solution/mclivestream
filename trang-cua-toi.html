@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="v20.css"><link rel="stylesheet" href="mobile-shell.css"><link rel="stylesheet" href="social.css"></head><body>
+<link rel="stylesheet" href="v20.css"><link rel="stylesheet" href="mobile-shell.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="smart-profile.css"></head><body>
 <p class="online-badge" hidden data-online="total"><span class="online-dot" aria-hidden="true"></span><span class="online-num">136</span>&nbsp;người đang online</p>
 <style>
 /* v116-game-entry (09/11/2026): loi vao game Nong Trai — xep chong NGAY TREN popup online, cung cot mep phai.
@@ -119,6 +119,54 @@
 <div id="spSaved" style="margin-top:16px"><h3>Đã lưu / Đang theo dõi</h3><div id="spSavedList"></div></div>
 <p id="sp-selftest" hidden></p>
 </section>
+<!-- FWA Smart Profile (21/11/2026, chỉ thị Owner P1): Hồ sơ nghề nghiệp thông minh.
+     Bản thử nghiệm — dữ liệu mẫu ghi rõ DEMO, chưa đồng bộ tài khoản (S2, sau backup).
+     Không migration, không chạm DB, không tự cộng Xu, không hiện liên hệ. -->
+<section class="form-card" id="smart-profile" style="margin-top:24px">
+<h2>6. Hồ sơ nghề nghiệp thông minh — bản thử nghiệm</h2>
+<p class="sf-note">Trang cá nhân FWA kiểu mới: thể hiện năng lực, tìm việc/tuyển người/tìm đối tác, gợi ý cơ hội phù hợp và thẻ chia sẻ. Dữ liệu lưu trên trình duyệt này (dùng chung kỹ năng/khu vực/nhu cầu ở mục 5). <strong>Bản thử nghiệm — chưa đồng bộ tài khoản, chưa cộng Xu.</strong></p>
+<div class="smart-guest-banner">Bạn đang xem hồ sơ ở chế độ khách: chỉ thấy thông tin nghề nghiệp được chủ hồ sơ cho phép công khai. Liên hệ chỉ hiện sau khi đăng nhập (Contact Gate).</div>
+<div class="sf-actions" style="margin-bottom:8px">
+<button class="sf-btn" id="smartDemoBtn" type="button">Xem mẫu (MC + Shop)</button>
+<button class="sf-btn" id="smartGuestBtn" type="button">Xem như khách</button>
+</div>
+<div class="smart-role-tabs" id="smartRoleTabs"></div>
+<div class="sf-progress"><div class="sf-progress-bar" id="smartBar"></div></div>
+<p id="smartPct" style="font-size:13px">Hoàn thiện hồ sơ 0%</p>
+<form id="smartForm" class="smart-edit-only smart-form-grid" onsubmit="return false">
+<label>Tên hiển thị<br><input id="smartName" placeholder="VD: An — MC livestream thời trang"></label>
+<p class="smart-line smart-muted">Vai trò chính: đổi ở hàng nút phía trên — giao diện hồ sơ đổi theo vai trò.</p>
+<label>Vai trò khác (chọn thêm nếu có)<br><span id="smartSecondary" class="smart-checks"><label><input type="checkbox" value="mc"> MC / Mẫu live</label><label><input type="checkbox" value="shop"> Shop tuyển dụng</label><label><input type="checkbox" value="koc"> KOC / Creator</label><label><input type="checkbox" value="studio"> Studio / Agency</label></span></label>
+<label>Trạng thái<br><select id="smartStatus"><option value="">Chọn trạng thái</option><option value="dang-nhan-viec">Đang nhận việc</option><option value="dang-tuyen">Đang tuyển dụng</option><option value="san-sang-hop-tac">Sẵn sàng hợp tác</option><option value="tam-nghi">Tạm nghỉ</option></select></label>
+<label>Nền tảng hoạt động<br><span class="smart-checks"><label><input type="checkbox" id="smartPf_Facebook"> Facebook</label><label><input type="checkbox" id="smartPf_TikTokShop"> TikTok Shop</label><label><input type="checkbox" id="smartPf_ShopeeLive"> Shopee Live</label><label><input type="checkbox" id="smartPf_YouTube"> YouTube</label></span></label>
+<label>Kinh nghiệm thực tế<br><textarea id="smartExperience" rows="2" placeholder="VD: 2 năm dẫn live thời trang, đã live 300+ phiên"></textarea></label>
+<label>Lịch nhận việc / lịch live<br><input id="smartSchedule" placeholder="VD: tối thứ 2–thứ 6, ca 19h–22h"></label>
+<label>Nhu cầu / lời nhắn tuyển dụng<br><textarea id="smartHireNote" rows="2" placeholder="VD: Nhận live thử 1 phiên trước khi ký hợp tác."></textarea></label>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="smartPayPublic"> Cho phép công khai mức thù lao mong muốn (đã điền ở mục 5)</label>
+</form>
+<div id="smartBlocks"></div>
+<p id="smartToast" style="font-size:13px"></p>
+<div class="smart-block"><h3>Portfolio — ảnh / video</h3>
+<div class="smart-pf-grid" id="smartPfGrid"></div>
+<form id="smartPfForm" class="smart-edit-only smart-form-grid" onsubmit="return false">
+<label>Tiêu đề mục<br><input id="smartPfTitle" placeholder="VD: Phiên live thời trang 20/11"></label>
+<label>Loại<br><select id="smartPfType"><option value="image">Ảnh</option><option value="video">Video</option></select></label>
+<label>Link ảnh / video (http:// hoặc https://)<br><input id="smartPfUrl" placeholder="VD: link ảnh hoặc video công khai"></label>
+<label>Ghi chú<br><input id="smartPfCap" placeholder="VD: Phiên live 2 giờ, 150 đơn"></label>
+<p><button class="btn btn-primary" type="submit">Thêm vào portfolio</button></p>
+<p id="smartPfMsg" style="font-size:13px"></p>
+</form>
+</div>
+<div class="smart-block"><h3>Thẻ chia sẻ hồ sơ</h3>
+<p class="smart-line smart-muted">Thẻ Talent Card / Job Card để chia sẻ Facebook, Zalo. Không chứa số điện thoại, email hay thu nhập.</p>
+<canvas id="smartShareCanvas" width="1080" height="1080"></canvas>
+<div class="sf-actions"><button type="button" class="sf-btn" id="smartShareBtn">Tạo thẻ chia sẻ</button><button type="button" class="sf-btn" id="smartShareDl">Tải thẻ PNG</button><button type="button" class="sf-btn" id="smartShareCopy">Sao chép link hồ sơ</button></div>
+<p id="smartShareMsg" style="font-size:13px"></p>
+</div>
+<div class="smart-block smart-edit-only"><h3>Trung tâm cơ hội của bạn</h3><div id="smartOppList"></div></div>
+<p id="smart-selftest" hidden></p>
+</section>
+<div id="smartModal" class="smart-modal" hidden><div class="smart-modal-card"><button id="smartModalClose" type="button" title="Đóng">×</button><div id="smartModalBody"></div></div></div>
 <!-- v325 (18/11/2026): Bot tóm tắt tin trong khung chat trang chủ — người dùng
      chọn chủ đề bot tóm tắt / tắt bot. Lưu localStorage v2s_bot_prefs ngay khi
      đổi ô tích (không cần bấm Lưu hồ sơ); khung chat đọc lại mỗi 5 giây. -->
@@ -331,7 +379,7 @@
 <a class="ms-tab" data-ms-tab="chat" href="cong-dong/chat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="ms-label">Chat</span></a>
 <a class="ms-tab" data-ms-tab="me" href="trang-cua-toi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="ms-label">Cá nhân</span></a>
 </nav>
-<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script src="js/mobile-shell.js"></script><script src="js/data.js"></script><script src="js/social-profile.js"></script>
+<script src="js/themes.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script><script src="js/online-counter.js"></script><script src="js/mobile-shell.js"></script><script src="js/data.js"></script><script src="js/social-profile.js"></script><script src="js/smart-profile.js"></script>
 <script src="js/data.js" defer></script><!-- v165 (claim V1): data.js chi can o trang-cua-toi SAU dang nhap, defer de khong chan render form -->
 <script src="js/claim.js"></script><!-- v165 (claim V1): banner nhan so huu + kiem tra trung -->
 <script>

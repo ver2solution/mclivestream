@@ -1,0 +1,49 @@
+/* smart-profile.css — Hồ sơ nghề nghiệp thông minh FWA (21/11/2026, nhánh feat/user-social-mvp).
+   Kiểu riêng cho mục 6 trang Cá nhân (trang-cua-toi.html). Mobile-first 360/390px.
+   Màu thương hiệu: xanh #0b5d4e, vàng #F7C948. Không sửa v20.css / social.css. */
+#smart-profile{max-width:640px;margin:24px auto 0;padding:0 16px 96px}
+.smart-demo-badge{display:inline-block;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:700;vertical-align:middle}
+.smart-role-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.smart-role-tab{border:1px solid #d1d5db;background:#fff;border-radius:999px;padding:7px 14px;font-size:14px;cursor:pointer;color:#111827;font-family:inherit}
+.smart-role-tab.is-active{background:#0b5d4e;color:#fff;border-color:#0b5d4e}
+.smart-block{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin:0 0 12px}
+.smart-block h3{font-size:16px;margin:0 0 8px}
+.smart-name{font-size:19px;font-weight:700;margin:4px 0}
+.smart-line{font-size:14px;line-height:1.55;margin:6px 0}
+.smart-muted{color:#6b7280}
+.smart-status{display:inline-block;background:#ecfdf5;color:#065f46;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
+.smart-tag{display:inline-block;background:#ecfdf5;color:#065f46;border-radius:999px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0}
+.smart-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.smart-pf-item{position:relative;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;cursor:pointer;background:#fff}
+.smart-pf-item img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.smart-pf-ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:#fff;background:linear-gradient(135deg,#0b5d4e,#14967f)}
+.smart-pf-cap{padding:8px 10px}
+.smart-pf-cap strong{display:block;font-size:13px;line-height:1.3}
+.smart-pf-cap span{display:block;font-size:12px;color:#6b7280;margin-top:2px}
+.smart-pf-del{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;border:1px solid #d1d5db;background:#fff;font-size:16px;line-height:1;cursor:pointer;color:#111827}
+.smart-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.smart-modal-card{background:#fff;border-radius:14px;padding:16px;max-width:520px;width:100%;max-height:85vh;overflow:auto;position:relative}
+.smart-modal-card img{max-width:100%;border-radius:10px}
+#smartModalClose{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;border:1px solid #d1d5db;background:#fff;font-size:18px;cursor:pointer}
+#smartShareCanvas{max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;display:block;margin:10px 0}
+.smart-form-grid{display:grid;gap:10px}
+.smart-form-grid label{font-size:14px;display:block}
+.smart-form-grid input,.smart-form-grid select,.smart-form-grid textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #d1d5db;border-radius:9px;font-size:14px;font-family:inherit;margin-top:4px}
+.smart-checks{display:flex;gap:12px;flex-wrap:wrap;font-size:14px}
+.smart-checks label{display:flex;gap:6px;align-items:center;white-space:nowrap}
+body.smart-guest .smart-edit-only{display:none}
+.smart-guest-banner{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;margin:10px 0}
+#smart-selftest{font-size:13px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:10px 12px;white-space:pre-wrap}
+.smart-modal[hidden]{display:none}
+.smart-guest-banner{display:none}
+body.smart-guest .smart-guest-banner{display:block}
+@media (max-width:360px){
+  #smart-profile{padding-left:10px;padding-right:10px}
+  .smart-pf-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .smart-role-tab{padding:6px 10px;font-size:13px}
+  .smart-name{font-size:17px}
+}
+@media (min-width:769px){
+  #smart-profile{padding-bottom:32px}
+  .smart-pf-grid{grid-template-columns:1fr 1fr 1fr}
+}
