@@ -17644,6 +17644,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Home Depot Black Friday 2026: giảm tới 50% hơn 11.000 món, mua 1 tặng 1 dụng cụ Ryobi, Milwaukee, DeWalt, cây thông 6,5 foot 49,98 USD, doorbuster ngày 27/11/2026 — mã YORK15OFF giảm 15% tới 04/12/2026."
   },
+  {
+   "title": "842.000 tỷ đồng/năm — TMĐT Việt Nam 2026 tăng nhanh nhất Đông Nam Á: TikTok Shop chỉ còn cách Shopee 1,7 điểm, shop livestream làm gì trước Black Frid",
+   "cat": "Xu hướng",
+   "source": "Tuổi Trẻ (bản tiếng Anh), theo báo cáo e-Conomy SEA 2026 của Google, Temasek và Bain & Company",
+   "date": "2026-11-21",
+   "url": "https://news.tuoitre.vn/print/vietnams-digital-economy-to-grow-20-to-49-billion-in-2026-103261105143044078.htm",
+   "page": "bai-viet/e-conomy-sea-2026-tmdt-viet-nam-32-ty-usd-tiktok-shop-ap-sat-shopee-17-diem.html",
+   "img": "https://cdn2.tuoitre.vn/471584752817336320/2026/11/5/screenshot-2026-11-05-at-141054-17938626660101404645125.png",
+   "pinned": false,
+   "takeaway": "TMĐT Việt Nam đạt 32 tỷ USD (842.000 tỷ đồng) năm 2026, tăng 22% nhanh nhất Đông Nam Á theo e-Conomy SEA 2026. TikTok Shop áp sát Shopee chỉ còn 1,7 điểm thị phần, 56.209 shop mất đơn trong quý III/2026. 7 việc shop livestream phải làm ngay trước Black Friday 27/11 và 12.12."
+  },
 ],
  "lots": [
    {
