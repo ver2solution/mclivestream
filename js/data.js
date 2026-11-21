@@ -17655,6 +17655,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "TMĐT Việt Nam đạt 32 tỷ USD (842.000 tỷ đồng) năm 2026, tăng 22% nhanh nhất Đông Nam Á theo e-Conomy SEA 2026. TikTok Shop áp sát Shopee chỉ còn 1,7 điểm thị phần, 56.209 shop mất đơn trong quý III/2026. 7 việc shop livestream phải làm ngay trước Black Friday 27/11 và 12.12."
   },
+  {
+   "title": "115.500 tỷ đồng từ 330 vùng xưởng — live từ xưởng/kho: shop tự live Douyin tăng 200%, ThredUp mở 10 live/tuần từ kho hàng",
+   "cat": "Hàng hoá",
+   "source": "Modern Retail",
+   "date": "2026-11-21",
+   "url": "https://www.modernretail.co/operations/thredup-launches-tiktok-shop-livestreams-as-part-of-its-social-commerce-push/?utm_source=digiday.com&utm_medium=referral&utm_campaign=digidaydis&utm_content=digidayhp-more-from-modernretail",
+   "page": "bai-viet/live-tu-xuong-kho-115500-ty-dong-shop-tu-live-tang-200-thredup-10-live-tuan.html",
+   "img": "https://ml.globenewswire.com/Resource/Download/392b0582-c670-4395-9030-b53ff20ebf26/live-selling-v1.jpg",
+   "pinned": false,
+   "takeaway": "Douyin Double 11/2026: shop tự live phá 100 triệu NDT tăng 200%; 330 vùng xưởng mỗi vùng bán hơn 350 tỷ đồng. ThredUp live từ kho ở Mỹ, 75% khách mới. Shop Việt học gì trước Black Friday 27/11 và 12.12?"
+  },
 ],
  "lots": [
    {
