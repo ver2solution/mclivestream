@@ -17573,7 +17573,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt: Dốc số 9, Trại Mát, Đà Lạt; mở cửa 05:00–20:00 theo fanpage (một số review ghi 19:00 — chưa xác nhận); giá 60.000–75.000 đồng/món; săn mây 05:00–06:30, hoàng hôn 16:30–17:30."
-  }
+  },
+  {
+   "title": "213,9 tỷ đồng trong 1 năm — Long Chun: livestream chiếm 64,8% doanh thu, video chỉ để giữ chân khách",
+   "cat": "Phân tích",
+   "source": "KTSG Online/Tuổi Trẻ",
+   "date": "2026-11-21",
+   "url": "https://tuoitre.vn/saigontimes/tang-bang-chim-sau-nhung-phien-livestream-ban-hang-chuc-ti-106900265.htm",
+   "page": "bai-viet/long-chun-2139-ty-dong-1-nam-live-chiem-648-doanh-thu-video-giu-chan.html",
+   "img": "https://cdn2.tuoitre.vn/thesaigontimes/uploads/2024/03/livestream-1-1.jpg",
+   "pinned": false,
+   "takeaway": "Long Chun bán 213,9 tỷ đồng trong 1 năm trên TikTok Shop, livestream chiếm 138,6 tỷ (64,8%). Phân tích công thức video giữ chân, live chốt đơn và mặt sau của con số GMV."
+  },
 ],
  "lots": [
    {
