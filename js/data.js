@@ -17429,7 +17429,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "desc": "Doanh thu quý 3/2026 của PDD đi ngang ở 108,3 tỷ NDT, Temu chững lại vì cạnh tranh gay gắt và chi phí nội địa tăng.",
    "page": "bai-viet/pdd-quy-3-2026-temu-chung-lai-doanh-thu-di-ngang.html",
-   "img": "bai-viet/hero-pdd-quy-3-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/pdd-quy-3-2026-temu-chung-lai-doanh-thu-di-ngang.jpg",
    "pinned": false
   },
  {
@@ -17439,7 +17439,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "desc": "Doanh thu quý 3/2026 của Tencent tăng 8% lên 207,3 tỷ NDT, WeChat chạm 1,449 tỷ người dùng, quảng cáo tăng 19%.",
    "page": "bai-viet/tencent-quy-3-2026-wechat-1449-ty-nguoi-quang-cao-tang-19-phan-tram.html",
-   "img": "bai-viet/hero-tencent-quy-3-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tencent-quy-3-2026-wechat-1449-ty-nguoi-quang-cao-tang-19-phan-tram.jpg",
    "pinned": false
   },
  {
@@ -17449,7 +17449,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "desc": "Doanh thu quý 3/2026 của Mercado Libre tăng 45% lên 10,75 tỷ USD, GMV 23 tỷ USD tăng 33% nhờ Brazil và Argentina.",
    "page": "bai-viet/mercado-libre-quy-3-2026-gmv-23-ty-usd-tang-33-phan-tram.html",
-   "img": "bai-viet/hero-mercado-libre-quy-3-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mercado-libre-quy-3-2026-gmv-23-ty-usd-tang-33-phan-tram.jpg",
    "pinned": false
   },
  {
@@ -17459,7 +17459,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "desc": "Giỏ quà Tết dẫn đầu mùa mua sắm Tết 2026, giỏ 500.000–750.000 đồng bán chạy nhất và người mua bắt đầu từ tháng 11 âm lịch.",
    "page": "bai-viet/thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11.html",
-   "img": "bai-viet/hero-thi-truong-qua-tet-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11.jpg",
    "pinned": false
   },
   {
