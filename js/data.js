@@ -68,6 +68,7 @@
    articles-doi-song-2026-11-20 adds 5 Đời Sống articles (20/11/2026, Friday): 1 seasonal keyword "mua sắm Tết thông minh" #7/10 (2,402 words, deep; NRF 15/10/2026 + Deloitte 15/10/2026) + 3 news ("du lịch Sapa tháng 12" 1,863 words; "ngủ 7 tiếng mỗi ngày" 1,967 words; "du lịch một mình 2026" 2,075 words) + 1 cafe "quán cafe check-in đẹp Chuồn Chuồn Phú Quốc" 1,587 words. Total 507 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-20 adds 4 Cong nghe articles (20/11/2026, Friday): 1 seasonal keyword 'livestream ban hang bang AI 2026' #2/10 VONG 2 (goc moi: QUY MO + CHI PHI — 9 trieu gio live AI 12-30/10/2026, 100.000+ shop dung, mien phi toi 31/12/2026, chi phi bang 1/10 mau that, thoi gian xem chi 40%) + 3 news (Hyundai AI-REAL 16/11, TikTok Symphony 30 giay 08/11, Shopee trong ChatGPT 19/11). SEO V2 (title suffix + link boxes). Total 513 articles (node) / 516 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17319,6 +17320,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Luckin Coffee quý III/2026 (công bố 03/11/2026): doanh thu 17,89 tỷ NDT (+17%), lãi ròng 1,86 tỷ NDT (+45,4%), 38.909 cửa hàng (+2.599 trong quý), 123 triệu khách/tháng — nhưng doanh số cửa hàng cũ giảm 11,1%, quý thứ ba liên tiếp giảm."
   },
+  {
+   "title": "Cách làm video AI sale cuối năm: bảng giá 2026",
+   "cat": "Công nghệ",
+   "source": "movoa.ai",
+   "date": "2026-11-21",
+   "url": "https://movoa.ai/blog/ai-video-generator-black-friday-deals-2026",
+   "page": "bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-lam-video-ai-sale-cuoi-nam-bang-gia-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cach lam video AI sale cuoi nam: bang gia that Black Friday 2026 — 10/25 cong cu giam gia/tang credit (movoa.ai 26/10/2026); re nhat Kuca 70 USD/nam, VidFlux Pro 169 USD/nam toi 02/12/2026; quy trinh 3 giai doan Tease/Convert/Last Chance (Vmake Labs 10/11/2026); coi chung trang mao danh ten model va gia gia han ve gia goc nam 2."
+  },
+  {
+   "title": "YouTube Studio gợi ý sản phẩm affiliate kèm hoa hồng",
+   "cat": "Công nghệ",
+   "source": "PPC Land",
+   "date": "2026-11-21",
+   "url": "https://ppc.land/youtube-studio-now-suggests-products-for-affiliate-creators-to-tag/",
+   "page": "bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/youtube-studio-goi-y-san-pham-affiliate-hoa-hong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "YouTube Studio goi y san pham affiliate kem hoa hong: ke goi y moi tu 06/11/2026 (PPC Land, video Creator Insider 06/11/2026); hoa hong uoc tinh hien ngay, tra qua AdSense sau 60-120 ngay; chuong trinh mo toi 35 thi truong cuoi 2026, hon 1,3 trieu creator; Ask Studio noi ho tro thanh 1 cua, leo thang len nguoi that co dieu kien."
+  },
+  {
+   "title": "Alexa for Shopping: trợ lý AI mua sắm của Amazon",
+   "cat": "Công nghệ",
+   "source": "About Amazon India",
+   "date": "2026-11-21",
+   "url": "https://www.aboutamazon.in/news/retail/alexa-for-shopping-amazon-india",
+   "page": "bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/amazon-alexa-for-shopping-tro-ly-ai-mua-sam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Alexa for Shopping: tro ly AI mua sam cua Amazon — ra mat Anh 11/11/2026, An Do/Canada/Nhat 12/11/2026 (About Amazon India 12/11/2026); so sanh san pham, lich su gia toi 365 ngay, bao deal; hon 400 trieu khach da dung tro ly AI mua sam cua Amazon trong 12 thang qua; mien phi, khong can Prime hay Echo."
+  },
+  {
+   "title": "Meta Product Browsing: quảng cáo Facebook đổi từ 28/10",
+   "cat": "Công nghệ",
+   "source": "PPC Land",
+   "date": "2026-11-21",
+   "url": "https://ppc.land/meta-will-turn-on-product-browsing-in-existing-ads-on-october-28/",
+   "page": "bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meta-product-browsing-quang-cao-facebook-tu-28-10.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Meta Product Browsing: bat mac dinh cho quang cao dang chay tu 28/10/2026 (PPC Land 15/10/2026); nguoi bam quang cao co the o lai trong Facebook/Instagram thay vi sang web; Meta noi chuyen doi tang 3% (thu nghiem 06-21/08/2026, khoang 117.700 nha quang cao); tat/mo tung quang cao trong Advantage+ creative va Destination; kiem tra truoc Black Friday 27/11/2026."
+  }
 ],
  "lots": [
    {
