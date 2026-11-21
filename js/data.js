@@ -17666,6 +17666,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Douyin Double 11/2026: shop tự live phá 100 triệu NDT tăng 200%; 330 vùng xưởng mỗi vùng bán hơn 350 tỷ đồng. ThredUp live từ kho ở Mỹ, 75% khách mới. Shop Việt học gì trước Black Friday 27/11 và 12.12?"
   },
+  {
+   "title": "350 triệu đồng cho 1 game làm bằng câu chữ — Kuaishou Yoola biến người xem livestream thành người chơi",
+   "cat": "Phân tích",
+   "source": "Ức Bang Động Lực (ebrun)",
+   "date": "2026-11-21",
+   "url": "https://m.ebrun.com/721471.html",
+   "page": "bai-viet/kuaishou-yoola-350-trieu-dong-1-game-lam-bang-cau-chu-ai-bien-nguoi-xem-livestream-thanh-nguoi-choi.html",
+   "img": "https://img.36krcdn.com/hsossms/20261104/v2_858abdef23bb499585bcf84ea6b6c1f0@6452578_oswg307015oswg501oswg709_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Kuaishou ra mắt Yoola ngày 17/11/2026: nền tảng AI biến câu chữ thành game tương tác, giải thưởng tới 350 triệu đồng cho 1 game. Vì sao Kuaishou lỗ 3.356 tỷ đồng quý 3/2026 vẫn đổ tiền vào AI? Shop Việt học được gì trước Black Friday 27/11 và 12.12?"
+  },
 ],
  "lots": [
    {
