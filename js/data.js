@@ -69,6 +69,7 @@
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-thi-truong-2026-11-21 adds 4 Thi truong articles (21/11/2026, Saturday): 1 seasonal keyword 'thi truong qua Tet 2026' #8/10 (deep: Metric via Brands Vietnam 12/01/2026 — 73,7 nghìn tỷ đồng dịp Tết Bính Ngọ 2026 +51%, gift sets Shopee dịp Tết 2025: 40,2 tỷ đồng +21% vs Tết 2024, ~126k products + ao dai Tet 2025: 296 tỷ +39%, my pham Tet 2025: 11.151,5 tỷ +42%; Deloitte 15/10/2026 + NRF Oct 2026) + 3 news (PDD Q3 2026 19/11 — 108,3 tỷ NDT +0,1% vs 115,97 tỷ NDT forecast, Temu transaction -12%, MAU Sep 2026 -17,8% iOS / -11,2% Android; Tencent Q3 2026 18/11 — 207,3 tỷ NDT +8%, WeChat 1,449 tỷ, ads +19%, cloud +35%, capex 81,4 tỷ NDT +527%; Mercado Libre Q3 2026 04/11 — $10,75 tỷ +45%, GMV $23 tỷ +33% FX-neutral, TPV $109 tỷ +51%). SEO V2 (title suffix + link boxes). Total 541 articles (node) / 540 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-20 adds 4 Cong nghe articles (20/11/2026, Friday): 1 seasonal keyword 'livestream ban hang bang AI 2026' #2/10 VONG 2 (goc moi: QUY MO + CHI PHI — 9 trieu gio live AI 12-30/10/2026, 100.000+ shop dung, mien phi toi 31/12/2026, chi phi bang 1/10 mau that, thoi gian xem chi 40%) + 3 news (Hyundai AI-REAL 16/11, TikTok Symphony 30 giay 08/11, Shopee trong ChatGPT 19/11). SEO V2 (title suffix + link boxes). Total 513 articles (node) / 516 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17367,6 +17368,47 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Meta Product Browsing: bat mac dinh cho quang cao dang chay tu 28/10/2026 (PPC Land 15/10/2026); nguoi bam quang cao co the o lai trong Facebook/Instagram thay vi sang web; Meta noi chuyen doi tang 3% (thu nghiem 06-21/08/2026, khoang 117.700 nha quang cao); tat/mo tung quang cao trong Advantage+ creative va Destination; kiem tra truoc Black Friday 27/11/2026."
+  }
+,
+ {
+   "slug": "pdd-quy-3-2026-temu-chung-lai-doanh-thu-di-ngang",
+   "title": "PDD quý 3/2026: Temu chững lại, doanh thu đi ngang",
+   "cat": "Thị trường",
+   "date": "2026-11-21",
+   "desc": "Doanh thu quý 3/2026 của PDD đi ngang ở 108,3 tỷ NDT, Temu chững lại vì cạnh tranh gay gắt và chi phí nội địa tăng.",
+   "page": "bai-viet/pdd-quy-3-2026-temu-chung-lai-doanh-thu-di-ngang.html",
+   "img": "bai-viet/hero-pdd-quy-3-2026.png",
+   "pinned": false
+  },
+ {
+   "slug": "tencent-quy-3-2026-wechat-1449-ty-nguoi-quang-cao-tang-19-phan-tram",
+   "title": "Tencent quý 3/2026: WeChat 1,449 tỷ người, quảng cáo tăng 19%",
+   "cat": "Thị trường",
+   "date": "2026-11-21",
+   "desc": "Doanh thu quý 3/2026 của Tencent tăng 8% lên 207,3 tỷ NDT, WeChat chạm 1,449 tỷ người dùng, quảng cáo tăng 19%.",
+   "page": "bai-viet/tencent-quy-3-2026-wechat-1449-ty-nguoi-quang-cao-tang-19-phan-tram.html",
+   "img": "bai-viet/hero-tencent-quy-3-2026.png",
+   "pinned": false
+  },
+ {
+   "slug": "mercado-libre-quy-3-2026-gmv-23-ty-usd-tang-33-phan-tram",
+   "title": "Mercado Libre quý 3/2026: GMV 23 tỷ USD, tăng 33%",
+   "cat": "Thị trường",
+   "date": "2026-11-21",
+   "desc": "Doanh thu quý 3/2026 của Mercado Libre tăng 45% lên 10,75 tỷ USD, GMV 23 tỷ USD tăng 33% nhờ Brazil và Argentina.",
+   "page": "bai-viet/mercado-libre-quy-3-2026-gmv-23-ty-usd-tang-33-phan-tram.html",
+   "img": "bai-viet/hero-mercado-libre-quy-3-2026.png",
+   "pinned": false
+  },
+ {
+   "slug": "thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11",
+   "title": "Thị trường quà Tết 2026: giỏ quà dẫn đầu, mua sớm tháng 11",
+   "cat": "Thị trường",
+   "date": "2026-11-21",
+   "desc": "Giỏ quà Tết dẫn đầu mùa mua sắm Tết 2026, giỏ 500.000–750.000 đồng bán chạy nhất và người mua bắt đầu từ tháng 11 âm lịch.",
+   "page": "bai-viet/thi-truong-qua-tet-2026-gio-qua-dan-dau-mua-som-thang-11.html",
+   "img": "bai-viet/hero-thi-truong-qua-tet-2026.png",
+   "pinned": false
   }
 ],
  "lots": [
