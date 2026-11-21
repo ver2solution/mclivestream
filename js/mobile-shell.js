@@ -9,7 +9,7 @@
     if(!nav) return;
     var path=window.location.pathname.replace(/\/+$/,'')||'/';
     var map={
-      'feed':['/','/index.html'],
+      'feed':['/','/index.html','/cong-dong/bang-tin.html'],
       'jobs':['/danh-sach-shop.html'],
       'post':['/danh-sach-mau.html'],
       'chat':['/cong-dong/chat.html','/cong-dong/chat'],
