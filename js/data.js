@@ -17530,6 +17530,54 @@ window.V20_DATA = {
      "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
      "linkText": "Xem bài đăng gốc →"
    },
+  {
+   "title": "Hàng tồn kho giá rẻ: săn lô thanh lý Mỹ Black Friday",
+   "cat": "Đang hot",
+   "source": "Resellbot (B-Stock)",
+   "date": "2026-11-21",
+   "url": "https://resellbot.com/auctions/retailer/target/",
+   "page": "bai-viet/hang-ton-kho-gia-re-san-lo-thanh-ly-my-black-friday-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hang-ton-kho-gia-re-san-lo-thanh-ly-my-black-friday-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hàng tồn kho giá rẻ từ kho thanh lý Mỹ: hơn 100 lô Target đang mở trên B-Stock (01/11/2026), giá trị bán lại eBay 830.000 USD — lô 3 pallet nhạc, sách lãi 21.473 USD trên giá 2.825 USD; chỉ mua lô đã kê khai, tính đủ phí vận chuyển trước khi đấu giá."
+  },
+  {
+   "title": "Macy's Black Friday 2026: giảm tới 70%, miễn ship 19–21/11",
+   "cat": "Đang hot",
+   "source": "Macy's",
+   "date": "2026-11-21",
+   "url": "https://www.macys.com/s/guides/black-friday-at-macys/",
+   "page": "bai-viet/macys-black-friday-2026-giam-toi-70-phan-tram-mien-ship.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/macys-black-friday-2026-giam-toi-70-phan-tram-mien-ship.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Macy's Black Friday 2026: sale từ 06/11 tới 28/11, giảm tới 70% áo khoác, miễn ship đơn từ 25 USD trong 19–21/11, túi tote miễn phí khi mua tại cửa hàng từ 100 USD ngày 27–28/11 — đổi trả tới 31/01/2027."
+  },
+  {
+   "title": "Costco Black Friday 2026: giảm tới 1.100 USD, TV 300 USD",
+   "cat": "Đang hot",
+   "source": "DealNews (Costco)",
+   "date": "2026-11-21",
+   "url": "https://www.dealnews.com/Costco-Early-Black-Friday-Deals-Up-to-1-100-off-shipping-varies/22385062.html",
+   "page": "bai-viet/costco-black-friday-2026-giam-toi-1100-usd-tv-300-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/costco-black-friday-2026-giam-toi-1100-usd-tv-300-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Costco Black Friday 2026: giảm tới 1.100 USD tủ lạnh Samsung, TV 65 inch 300 USD, laptop Dell 800 USD, giá tới 30/11/2026, mua hàng cần thẻ thành viên — kho đóng cửa ngày Lễ Tạ ơn 26/11/2026."
+  },
+  {
+   "title": "Home Depot Black Friday 2026: giảm tới 50%, 11.000 món",
+   "cat": "Đang hot",
+   "source": "Slickdeals (Home Depot)",
+   "date": "2026-11-21",
+   "url": "https://daily.slickdeals.net/stores/the-home-depot-promo-codes/",
+   "page": "bai-viet/home-depot-black-friday-2026-giam-toi-50-phan-tram-11000-mon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/home-depot-black-friday-2026-giam-toi-50-phan-tram-11000-mon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Home Depot Black Friday 2026: giảm tới 50% hơn 11.000 món, mua 1 tặng 1 dụng cụ Ryobi, Milwaukee, DeWalt, cây thông 6,5 foot 49,98 USD, doorbuster ngày 27/11/2026 — mã YORK15OFF giảm 15% tới 04/12/2026."
+  },
    {
      "id": "lot-02",
      "group": 1,
