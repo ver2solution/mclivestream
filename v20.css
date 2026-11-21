@@ -1025,7 +1025,17 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .claim-status{margin:8px 0;font-weight:700}
 .claim-status.ok{color:#0b5d4e}
 .claim-status.err{color:#b3261e}
+.claim-status.warn{color:#8a6d00}
 .claim-slot .claim-open{margin:8px 0}
+/* V2 (21/11/2026): ly do goi y ung vien + bang chung + huy hieu muc xac minh */
+.claim-reasons{font-size:13px;color:#555}
+.claim-evidence-kind{width:100%;margin-top:4px}
+.claim-evidence-detail{width:100%;margin-top:4px}
+.claim-evidence-note{font-size:13px;color:#555}
+.claim-withdraw-msg{font-size:13px;color:#555}
+.verify-badge{display:inline-block;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:700;border:1px solid #0b5d4e;color:#0b5d4e;background:#eef7f3}
+.verify-badge.l2{border-color:#c9a227;color:#6b4e00;background:#fffbe6}
+.verify-badge.l3{border-color:#0b5d4e;color:#fff;background:#0b5d4e}
 
 /* ===== v173: Trang Tìm kiếm (tim-kiem.html + js/search.js, 12/11/2026) =====
    Mobile: feed vuốt dọc kiểu TikTok (1 kết quả = 1 màn hình, scroll-snap).
