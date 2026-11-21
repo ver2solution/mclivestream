@@ -67,6 +67,7 @@
    v314 adds 4 Livestream articles (17/11/2026, Tuesday): 1 seasonal keyword "mẹo livestream chốt đơn Tết" #7/10 (4.300 words, deep, voucher 15-20% + flash sale theo giờ + Tết 06/02/2027) + 3 cluster B keywords "kịch bản livestream bán hàng" (3.685 words, 5-step demo loop + run of show 60-90 min), "cách tăng mắt xem livestream" (3.890 words, 3 levers + profit math 300 viewers), "livestream bán hàng cho người mới" (3.576 words, Facebook Live first + 30-day plan). Total 357 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    articles-doi-song-2026-11-20 adds 5 Đời Sống articles (20/11/2026, Friday): 1 seasonal keyword "mua sắm Tết thông minh" #7/10 (2,402 words, deep; NRF 15/10/2026 + Deloitte 15/10/2026) + 3 news ("du lịch Sapa tháng 12" 1,863 words; "ngủ 7 tiếng mỗi ngày" 1,967 words; "du lịch một mình 2026" 2,075 words) + 1 cafe "quán cafe check-in đẹp Chuồn Chuồn Phú Quốc" 1,587 words. Total 507 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-20 adds 4 Cong nghe articles (20/11/2026, Friday): 1 seasonal keyword 'livestream ban hang bang AI 2026' #2/10 VONG 2 (goc moi: QUY MO + CHI PHI — 9 trieu gio live AI 12-30/10/2026, 100.000+ shop dung, mien phi toi 31/12/2026, chi phi bang 1/10 mau that, thoi gian xem chi 40%) + 3 news (Hyundai AI-REAL 16/11, TikTok Symphony 30 giay 08/11, Shopee trong ChatGPT 19/11). SEO V2 (title suffix + link boxes). Total 513 articles (node) / 516 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-19 adds 5 Đời Sống articles (19/11/2026, Thursday): 1 seasonal keyword "tặng quà Tết cho nhân viên shop" #6/10 (2,954 words, deep; Zety 19/10/2026 + Inc. 16/11/2026) + 3 news ("du lịch Hà Giang tháng 12" 2,789 words; "quản lý tiền cuối năm" 2,388 words; "đi bộ 7000 bước mỗi ngày" 2,237 words) + 1 cafe "quán cafe check-in đẹp Mắt Biếc Huế" 2,568 words. RESTORES 4 Dang hot articles lost by v351-drafts deploy 09:23 (stale base 452/478): cach-xa-hang-ton-kho-livestream-affiliate-black-friday-2026, target-black-friday-2026, shopify-black-friday-2026, small-business-saturday-2026. Total 466 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-19 adds 4 Viec Lam articles (19/11/2026, Thursday): 1 stats (0 models + 9 shops 18/11) + 1 seasonal keyword 'tuyen idol live Tet' #6/10 (deep) + 1 bo 100 keyword STT 20 'viec lam idol livestream TikTok' + 1 news 'tuyen mau livestream Da Nang' (12 shops / 4 models). SEO V2. Total 429 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15673,6 +15674,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Chi phí quảng cáo Tết tăng 20–40% dịp Tết: tính ngân sách theo CPA tối đa (một nửa lãi gộp/đơn) × số đơn mục tiêu, tăng tối đa 40%/lần, dồn 60% ngân sách vào 13/12/2026–25/01/2027."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 20/11: 0 mẫu, 0 shop mới",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-21",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-20-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-20-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 20/11/2026: 0 mẫu + 0 shop mới thu thập (chỉ tìm kiếm web, 12 tin đều hết hạn hoặc đã có); 5 shop đợt 19/11 (sh-302..sh-306) đã lên sàn sáng 21/11/2026; tổng live 238 mẫu, 304 shop, 521 bài."
+  },
+  {
+   "title": "Việc làm livestream part time Tết: lương theo giờ 2026",
+   "cat": "Việc Làm",
+   "source": "NRF",
+   "date": "2026-11-21",
+   "url": "https://nrf.com/media-center/press-releases/nrf-forecasts-2026-holiday-sales-growth-as-consumers-remain-resilient",
+   "page": "bai-viet/viec-lam-livestream-part-time-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-part-time-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm livestream part time Tết: NRF dự báo Mỹ tuyển 325.000–375.000 nhân viên thời vụ cuối năm 2026; tin tuyển part-time tăng từ 38% lên 49%; trên sàn Việt Nam 27 shop tuyển part-time, lương giờ 40.000–500.000 đồng; làm tốt ca Tết có thể chuyển thành việc dài hạn."
+  },
+  {
+   "title": "Mẫu livestream thời trang: 91 mẫu, shop tuyển ra sao",
+   "cat": "Việc Làm",
+   "source": "Fashion China Agency",
+   "date": "2026-11-21",
+   "url": "https://fashionchinaagency.com/douyin-fashion-consumption-drivers-2026/",
+   "page": "bai-viet/mau-livestream-thoi-trang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-thoi-trang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream thời trang: 91 mẫu, 61 shop trên sàn; thời trang chiếm hơn 28% thị trường live commerce toàn cầu năm 2024; Douyin: live thời trang cửa hàng tăng 78% đợt 15–20/5/2026; mẫu cần 5 kỹ năng — thử đồ trực tiếp, phối theo bối cảnh, đọc size thật, xử lý đổi trả, giữ nhịp live."
+  },
+  {
+   "title": "Tuyển mẫu livestream Thanh Hóa: 4 shop, lương 100.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-21",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-livestream-thanh-hoa.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-thanh-hoa.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Thanh Hóa: 4 shop đang tuyển, 2 mẫu trên sàn (tỉ lệ 2:1); lương giờ cao nhất 100.000 đồng (Nhungg Nexi Beauty, 60.000–100.000đ/giờ + hoa hồng); mẫu Thanh Hóa có hồ sơ đầy đủ sẽ được shop nhìn thấy trước."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
