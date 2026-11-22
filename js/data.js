@@ -69,6 +69,7 @@
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-21 adds 5 Đời Sống articles (21/11/2026, Saturday): 1 seasonal keyword "chuẩn bị Tết cho shop nhỏ" #8/10 (1,855 words, deep; NRF 15/10/2026 + Metric 29/10/2026) + 3 news ("thưởng Tết 2026" 1,339 words; "du lịch Mộc Châu tháng 12" 1,387 words; "đi bộ sau ăn 10 phút" 1,486 words) + 1 cafe "quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt" 1,352 words. Total 558 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-22 adds 4 Cong nghe articles (22/11/2026, Sunday): 1 seasonal keyword 'AI streamer Tet' #4/10 VONG 2 (goc moi: CA DEM TET — giu khung 0h-8h khi mau nghi; thi truong 77 ty USD 2026, chi chot 8,3% GMV; luat nhan AI — MarketingToChina 05/11/2026 + HotNews 12/11/2026 + Scienjoy 28/01/2026) + 3 news (TikTok Shop Brand LIVE Impact 14 ngay 02/11, Gemini Tasks mien phi 17/11, Shopee AI LiveStream 4 cong cu 11/02). SEO V2 (title suffix + link boxes). Total 587 articles (node) / 586 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -18010,6 +18011,66 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Ngan sach mua sam le 2026: nguoi My du kien chi 2.198 USD, giam gan 600 USD so voi 2.755 USD nam 2025; 73% mua it qua hon; nhung nguoi dung AI chi 2.745 USD, mua qua mang xa hoi chi 3.639 USD (BMO 19/11/2026)."
+  },
+  {
+   "title": "Nghỉ Tết shop online: 7 việc chốt trước Tết",
+   "cat": "Đời Sống",
+   "source": "Vietnam Briefing",
+   "date": "2026-11-22",
+   "url": "https://www.vietnam-briefing.com/news/2027-vietnam-public-holidays.html/",
+   "page": "bai-viet/nghi-tet-shop-online-7-viec-chot-truoc-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nghi-tet-shop-online-7-viec-chot-truoc-tet-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nghỉ Tết shop online: Tết Đinh Mùi mùng 1 thứ Bảy 06/02/2027, khối nhà nước nghỉ 7 ngày 04–10/02/2027 (Thông báo 11483/TB-BNV 09/10/2026); shop phải báo lịch nghỉ trước 30 ngày, chốt đơn tỉnh xa trước 22/01/2027, hàng TQ về kho trước 20/01/2027."
+  },
+  {
+   "title": "Du lịch Đà Nẵng tháng 12: mưa nhiều, đi được không?",
+   "cat": "Đời Sống",
+   "source": "AirAsia",
+   "date": "2026-11-22",
+   "url": "https://www.airasia.com/blog/vietnam/da-nang/da-nang-weather/",
+   "page": "bai-viet/du-lich-da-nang-thang-12-mua-nhieu-di-duoc-khong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-da-nang-thang-12-mua-nhieu-di-duoc-khong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Đà Nẵng tháng 12: 20–26°C, mưa khoảng 145 mm (AirAsia 10/2026) hoặc 218 mm trong 19 ngày (vietnam-guides 10/2026); biển động, không nên kỳ vọng tắm biển; cầu Rồng phun lửa 21h thứ Bảy, Chủ nhật; đêm rằm Hội An 22/12/2026."
+  },
+  {
+   "title": "Gen Z không có quỹ dự phòng: 34% trắng tay",
+   "cat": "Đời Sống",
+   "source": "Bankrate",
+   "date": "2026-11-22",
+   "url": "https://www.bankrate.com/banking/savings/emergency-savings-report/",
+   "page": "bai-viet/gen-z-khong-co-quy-du-phong-34-phan-tram-trang-tay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gen-z-khong-co-quy-du-phong-34-phan-tram-trang-tay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Gen Z không có quỹ dự phòng: 34% Gen Z Mỹ không có tiết kiệm khẩn cấp, gấp hơn 2 lần thế hệ bùng nổ dân số (16%); chỉ 47% người Mỹ đủ tiền trả hóa đơn bất ngờ 1.000 USD; chỉ 30% trả bằng tiết kiệm (Bankrate, 04/02/2026)."
+  },
+  {
+   "title": "Ngủ bù cuối tuần có bù được giấc ngủ thiếu?",
+   "cat": "Đời Sống",
+   "source": "MedicalXpress",
+   "date": "2026-11-22",
+   "url": "https://medicalxpress.com/news/2024-08-weekends-heart-disease.html",
+   "page": "bai-viet/ngu-bu-cuoi-tuan-co-bu-duoc-giac-ngu-thieu.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ngu-bu-cuoi-tuan-co-bu-duoc-giac-ngu-thieu.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ngủ bù cuối tuần: nghiên cứu ESC 2024 trên 90.903 người nói giảm 19% nguy cơ tim mạch (20% ở nhóm thiếu ngủ), nhưng nghiên cứu SLEEP 11/2024 trên 73.513 người đo bằng thiết bị không thấy lợi ích; thí nghiệm lab 2019 cho thấy hại chuyển hóa không biến mất."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Jungle Coffee Nha Trang",
+   "cat": "Đời Sống",
+   "source": "Trip Moments",
+   "date": "2026-11-22",
+   "url": "https://www.trip.com/moments/poi-jungle-coffee-nha-trang-78929000/",
+   "page": "bai-viet/quan-cafe-check-in-dep-jungle-coffee-nha-trang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-jungle-coffee-nha-trang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Jungle Coffee Nha Trang: 8 Lê Quý Đôn, mở 6h30–22h (Google Maps; một số nguồn ghi 8h–22h); tường xanh cây sống + xích đu + biển neon; giá tham khảo 25.000–50.000đ (cũ) hoặc 50.000–115.000đ (11/2026); 4,7 sao Google, 500+ đánh giá."
   }
 ],
  "lots": [
