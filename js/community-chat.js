@@ -409,7 +409,8 @@
       input.disabled = true;
       input.placeholder = 'Đăng nhập để trò chuyện';
       btn.textContent = 'Đăng nhập';
-      btn.onclick = function () { window.location.href = 'dang-ky.html'; };
+      // v390 (22/11/2026): nut ghi "Đăng nhập" phải sang trang đăng nhập (P1-1) — trước đây nhầm sang trang đăng ký.
+      btn.onclick = function () { window.location.href = 'dang-nhap.html?next=index.html'; };
     }
   }
   function showHint(text) {

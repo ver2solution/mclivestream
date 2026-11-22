@@ -220,7 +220,15 @@
     form.hidden = true;
     chooser.hidden = false;
   });
-  V2SAuthUI.initAuthUI(authCfg);
+  /* v390 (22/11/2026): guard khi js/auth-ui.js lỗi tải (P2-1) — trước đây
+     ReferenceError giết cả IIFE, form submit native GET lộ mật khẩu trên URL. */
+  if (window.V2SAuthUI && typeof window.V2SAuthUI.initAuthUI === 'function') {
+    V2SAuthUI.initAuthUI(authCfg);
+  } else {
+    var am = document.getElementById('authMsg');
+    if (am) { am.textContent = 'Không tải được phần đăng nhập — kiểm tra mạng rồi tải lại trang.'; am.style.color = '#b3261e'; }
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+  }
   /* v96: panel kich hoat ho so (thiet ke 08/11) — nguoi da dang nhap
      mo lai trang nay ma chua co ho so thi thay panel thay hop cu. */
   if (window.V2SActivation && typeof window.V2SActivation.initRegisterPanel === 'function') {

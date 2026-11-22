@@ -25,7 +25,7 @@
      (diem chi hien khi RPC tra ve > 0, xem showPointsLine). */
   var CONTENT = {
     model: {
-      title: 'Tài khoản đã xong — tạo hồ sơ trong 2 phút',
+      title: 'Tài khoản đã xong — tạo hồ sơ trong 5 phút',
       sub: 'Shop chỉ liên hệ được với mẫu có hồ sơ. Hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.',
       prep: [
         '✓ Thông tin của bạn: họ tên, ngày sinh, quê quán',
@@ -39,12 +39,12 @@
       laterText: 'Để sau — xem mẫu đang được tuyển →',
       laterHref: 'danh-sach-mau.html',
       stripTitle: 'Chưa có hồ sơ — shop chưa tìm thấy bạn',
-      stripSub: 'Tạo trong 2 phút: tên, tỉnh, lĩnh vực, lương, lịch làm — hồ sơ chờ duyệt rồi mới hiện công khai.',
+      stripSub: 'Tạo trong 5 phút: tên, tỉnh, lĩnh vực, lương, lịch làm — hồ sơ chờ duyệt rồi mới hiện công khai.',
       stripCtaText: 'Tạo hồ sơ ngay →',
       stripCtaHref: 'trang-cua-toi.html'
     },
     shop: {
-      title: 'Tài khoản đã xong — tạo hồ sơ shop trong 2 phút',
+      title: 'Tài khoản đã xong — tạo hồ sơ shop trong 5 phút',
       sub: 'Mẫu chỉ ứng tuyển được vào shop có hồ sơ. Hồ sơ mới gửi ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt.',
       prep: [
         '✓ Tên shop',
@@ -58,7 +58,7 @@
       laterText: 'Để sau — xem mẫu trước →',
       laterHref: 'danh-sach-mau.html',
       stripTitle: 'Chưa có hồ sơ shop — mẫu chưa ứng tuyển được',
-      stripSub: 'Tạo trong 2 phút: tên, tỉnh, lĩnh vực, lương, lịch làm — hồ sơ chờ duyệt rồi mới hiện công khai.',
+      stripSub: 'Tạo trong 5 phút: tên, tỉnh, lĩnh vực, lương, lịch làm — hồ sơ chờ duyệt rồi mới hiện công khai.',
       stripCtaText: 'Tạo hồ sơ ngay →',
       stripCtaHref: 'danh-sach-mau.html#ho-so-shop' // A3 10/11 un-swap v96
     }
@@ -256,9 +256,15 @@
   function initHomeStrip() {
     var strip = $('kich-hoat-ho-so');
     if (!strip) return Promise.resolve('none');
-    if (isDismissed()) return Promise.resolve('dismissed');
     return getSessionUser().then(function (user) {
+      if (user) {
+        // v390 (22/11/2026): da dang nhap thi an CTA "Dang ky mien phi" o hero
+        // (P2-8) — dai kich hoat ho so thay the loi moi dang ky.
+        var heroCta = document.querySelector('.hero-cta');
+        if (heroCta) heroCta.hidden = true;
+      }
       if (!user) return 'none';
+      if (isDismissed()) return Promise.resolve('dismissed');
       return checkActivation(user).then(function (r) {
         if (r.hasProfile) return 'old';
         fillStrip(CONTENT[r.accountType] || CONTENT.model);
