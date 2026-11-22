@@ -18071,7 +18071,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Jungle Coffee Nha Trang: 8 Lê Quý Đôn, mở 6h30–22h (Google Maps; một số nguồn ghi 8h–22h); tường xanh cây sống + xích đu + biển neon; giá tham khảo 25.000–50.000đ (cũ) hoặc 50.000–115.000đ (11/2026); 4,7 sao Google, 500+ đánh giá."
-  }
+  },
+  {
+   "title": "385 tỷ đồng trong buổi live đầu tiên — La Vĩnh Hạo livestream trả nợ 2.100 tỷ đồng bằng cách nào?",
+   "cat": "Phân tích",
+   "source": "36Kr / Tech星球",
+   "date": "2026-11-22",
+   "url": "https://www.36kr.com/p/1725365747713",
+   "page": "bai-viet/la-vinh-hao-385-ty-dong-live-dau-tien-livestream-tra-no-2100-ty-dong.html",
+   "img": "https://img.36krcdn.com/20200409/v2_c678b0ac6d4e4d128203146e0f4222d4_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "La Vĩnh Hạo bán 385 tỷ đồng trong buổi livestream bán hàng đầu tiên (1/4/2020) để trả món nợ 2.100 tỷ đồng sau khi Hammer sụp đổ. Phân tích buổi live đầu, năm đầu của Giao Bạn Bè và hành trình trả nợ tới tháng 6/2022."
+  },
 ],
  "lots": [
    {
