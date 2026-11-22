@@ -79,6 +79,16 @@
     // thông báo khi có lỗi; 'nearest' nên không cuộn nếu đã thấy.
     if (isErr) { try { if (typeof el.scrollIntoView === 'function') el.scrollIntoView({ block: 'nearest' }); } catch (e) { /* cuộn không bắt buộc */ } }
   }
+  // v389 (22/11/2026): form Viết bài P1 — thông báo của form bài phải hiện
+  // cả ở đầu panel (admArtMsg) lẫn ngay dưới nút Đăng bài (admArtMsg2),
+  // vì user cuộn ở cuối form dài không thấy lỗi ở đầu panel (bấm 3 lần
+  // tưởng nút không phản hồi). Ô trên chỉ đổi chữ (không cuộn — tránh
+  // giật trang lên xuống); ô dưới cuộn 'nearest' như setMsg thường.
+  function setArtMsg(text, isErr) {
+    var m1 = $('admArtMsg');
+    if (m1) { m1.textContent = text || ''; m1.style.color = isErr ? '#b3261e' : '#0b5d4e'; }
+    setMsg($('admArtMsg2'), text, isErr);
+  }
 
   /* ---------- phân trang (P2): 20 dòng/trang, nút Trước/Sau + số trang ----------
      RPC không trả tổng số dòng nên "còn trang sau" được biết bằng cách lấy
@@ -1388,7 +1398,7 @@
     if (ARTICLE_CATS.indexOf(cat) === -1) errs.push('Chuyên mục phải là 1 trong 10 chuyên mục Tin tức đã chốt.');
     if (summary.length < 20 || summary.length > 500) errs.push('Mô tả ngắn phải từ 20 tới 500 ký tự.');
     var bodyLen = articleTextLength(body);
-    if (bodyLen < 200 || bodyLen > 30000) errs.push('Nội dung bài (không tính mã HTML) phải từ 200 tới 30000 ký tự (đang ' + bodyLen + ').');
+    if (bodyLen < 200 || bodyLen > 50000) errs.push('Nội dung bài (không tính mã HTML) phải từ 200 tới 50000 ký tự (đang ' + bodyLen + ').');
     if (!(/^https?:\/\//.test(img) || /^images\//.test(img) || /^\//.test(img))) errs.push('Ảnh đại diện phải là link http(s) hoặc đường dẫn images/...');
     if (src && !/^https?:\/\//.test(src)) errs.push('Link bài gốc phải bắt đầu bằng http:// hoặc https://.');
     if (srcName.length > 100) errs.push('Tên nguồn tối đa 100 ký tự.');
@@ -1471,8 +1481,7 @@
   // nội dung vừa nạp thành bản thảo mới).
   function cancelArticleEdit() {
     clearArticleForm();
-    var m = $('admArtMsg');
-    if (m) setMsg(m, 'Đã hủy sửa.');
+    setArtMsg('Đã hủy sửa.', false);
   }
   /* ---------- v122: SEO live + nạp bản thảo vào form để sửa ---------- */
   function updateArticleSeo() {
@@ -1519,7 +1528,6 @@
       } catch (e) {}
     }
     updateArticleSeo();
-    var msg = $('admArtMsg');
     if (forEdit) {
       state.editingDraftId = d.id;
       state.editingDraftStatus = d.status || null;
@@ -1528,9 +1536,9 @@
       var bar = $('admArtEditBar'); var barTitle = $('admArtEditTitle');
       if (barTitle) barTitle.textContent = '"' + (d.title || d.slug || '') + '"' + (d.status === 'published' ? ' (đã đăng — lưu xong sẽ chờ đăng lại)' : '');
       if (bar) bar.hidden = false;
-      if (msg) setMsg(msg, 'Đang sửa bản thảo "' + (d.title || d.slug || '') + '" — slug không đổi, lưu xong bài sẽ chờ đăng lại (nếu đã đăng).');
+      setArtMsg('Đang sửa bản thảo "' + (d.title || d.slug || '') + '" — slug không đổi, lưu xong bài sẽ chờ đăng lại (nếu đã đăng).', false);
     } else {
-      if (msg) setMsg(msg, 'Đã nạp bản thảo "' + (d.title || d.slug || '') + '" vào form — sửa xong bấm Đăng bài sẽ tạo bản thảo MỚI (xóa bản cũ trước nếu giữ nguyên slug, vì slug trùng bị chặn).');
+      setArtMsg('Đã nạp bản thảo "' + (d.title || d.slug || '') + '" vào form — sửa xong bấm Đăng bài sẽ tạo bản thảo MỚI (xóa bản cũ trước nếu giữ nguyên slug, vì slug trùng bị chặn).', false);
     }
     var panel = $('admTab-write');
     if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1594,8 +1602,7 @@
   function enableArticleBodyFallback(err) {
     state.articleEditorFailed = true;
     var reason = (err && (err.message || err)) || 'không rõ nguyên nhân';
-    var msg = $('admArtMsg');
-    if (msg) setMsg(msg, 'Trình soạn thảo gặp lỗi, đã chuyển sang ô nhập văn bản dự phòng bên dưới — hãy nhập/dán nội dung vào ô đó (khung soạn phía trên đã tắt). Lỗi: ' + reason, true);
+    setArtMsg('Trình soạn thảo gặp lỗi, đã chuyển sang ô nhập văn bản dự phòng bên dưới — hãy nhập/dán nội dung vào ô đó (khung soạn phía trên đã tắt). Lỗi: ' + reason, true);
     var ed = $('admArtBodyEditor');
     if (ed) {
       try { ed.contentEditable = 'false'; } catch (e) { /* không bắt buộc */ }
@@ -1621,10 +1628,10 @@
   async function onSubmitArticle() {
     var msg = $('admArtMsg');
     var btn = $('admArtSubmit');
-    if (state.legacyGate) { setMsg(msg, 'Chưa chạy migration GĐ1/GĐ4 — tab Viết bài chưa mở được.', true); return; }
+    if (state.legacyGate) { setArtMsg('Chưa chạy migration GĐ1/GĐ4 — tab Viết bài chưa mở được.', true); return; }
     var v = articleFormValues();
     var errs = validateArticleDraft(v);
-    if (errs.length) { setMsg(msg, errs[0], true); return; }
+    if (errs.length) { setArtMsg(errs[0], true); return; }
     // Sửa lỗi nút Đăng bài 23:57 ngày 09/11 (nguyên nhân chính): KHÔNG
     // dùng hộp thoại xác nhận native ở đây nữa. Hộp thoại native bị
     // trình duyệt tự động/tự động hóa chặn hoặc tự tắt thì trả false
@@ -1647,11 +1654,11 @@
         p_source_url: v.source_url || null, p_source_name: v.source_name || null,
         p_publish_date: v.publish_date || null
       });
-      setMsg(msg, 'Đã đăng bài (lưu bản thảo). Slug: ' + (out && out.slug ? out.slug : v.slug) + ' — đã tải JSON bản thảo để đưa cho publisher.');
+      setArtMsg('Đã đăng bài (lưu bản thảo). Slug: ' + (out && out.slug ? out.slug : v.slug) + ' — đã tải JSON bản thảo để đưa cho publisher.', false);
       if (out) downloadDraftJson(out);
       clearArticleForm();
       await loadArticleDrafts();
-    } catch (err) { setMsg(msg, friendlyErr(err), true); }
+    } catch (err) { setArtMsg(friendlyErr(err), true); }
     if (btn) btn.disabled = false;
   }
   // GĐ4b: lưu bản sửa qua RPC admin_update_article_draft (server chặn
@@ -1668,12 +1675,12 @@
         p_source_url: v.source_url || null, p_source_name: v.source_name || null,
         p_publish_date: v.publish_date || null
       });
-      setMsg(msg, wasPublished
+      setArtMsg(wasPublished
         ? 'Đã lưu bản sửa — bài sẽ được đăng lại trong lượt pipeline tiếp theo (trạng thái Chờ đăng).'
-        : 'Đã lưu bản sửa (Chờ đăng).');
+        : 'Đã lưu bản sửa (Chờ đăng).', false);
       clearArticleForm();
       await loadArticleDrafts();
-    } catch (err) { setMsg(msg, friendlyErr(err), true); }
+    } catch (err) { setArtMsg(friendlyErr(err), true); }
     if (btn) btn.disabled = false;
   }
   async function loadArticleDrafts() {
@@ -2282,7 +2289,7 @@
     var asub = $('admArtSubmit');
     if (asub) asub.addEventListener('click', onSubmitArticle);
     var aclr = $('admArtClear');
-    if (aclr) aclr.addEventListener('click', function () { clearArticleForm(); var m = $('admArtMsg'); if (m) setMsg(m, ''); });
+    if (aclr) aclr.addEventListener('click', function () { clearArticleForm(); setArtMsg('', false); });
     // GĐ4b: nút "Hủy sửa" trên thanh chế độ sửa (thoát sửa + dọn form).
     var aecancel = $('admArtEditCancel');
     if (aecancel) aecancel.addEventListener('click', cancelArticleEdit);
