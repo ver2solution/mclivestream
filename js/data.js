@@ -15933,7 +15933,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "url": "https://cafef.vn/hang-du-muc-lan-dau-noi-ve-nhung-kho-khan-dang-sau-phien-livestream-ky-luc-ban-22-tan-sau-rieng-trong-5-phut-bi-quyet-thanh-cong-goi-gon-trong-2-tu-188240825204124897.chn",
    "page": "bai-viet/sau-rieng-22-tan-5-phut-livestream-nong-san-viet-ban-nghin-don.html",
-   "img": "https://cafefcdn.com/thumb_w/1200/203337114487263232/2024/8/25/avatar1724593242031-17245932429621641011785.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sau-rieng-22-tan-5-phut-livestream-nong-san-viet-ban-nghin-don-og.jpg",
    "pinned": false,
    "takeaway": "22 tấn sầu riêng bán hết trong 5 phút livestream ngày 7/7/2024 — phiên live nông sản gây bão TikTok Shop. Xem ngay 7 bài học bán nghìn đơn cho shop Việt."
   },
@@ -15944,7 +15944,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "url": "https://vietnambiz.vn/su-nghiep-livestream-ban-hang-cua-thanh-chot-don-trung-quoc-tu-kinh-doanh-nam-18-tuoi-va-ban-hop-dong-dac-biet-voi-taobao-20211222164131171.htm",
    "page": "bai-viet/vi-a-28700-ty-dong-1-dem-livestream-ban-hang-tron-thue-4693-ty-dong.html",
-   "img": "https://cdn.vietnambiz.vn/171464876016439296/2021/12/22/huang-wei-viya-china-16401659919041489056028.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vi-a-28700-ty-dong-1-dem-livestream-ban-hang-tron-thue-4693-ty-dong-og.jpg",
    "pinned": false,
    "takeaway": "Đêm presale 20/10/2021, Vi Á bán 28.700 tỷ đồng trong 1 đêm livestream — cả tên lửa cũng bán. Xem ngay hành trình lên đỉnh và cú ngã trốn thuế 4.693 tỷ."
   },
@@ -15980,7 +15980,7 @@ window.V20_DATA = {
    "date": "2026-11-15",
    "url": "https://www.36kr.com/p/3630464884617733",
    "page": "bai-viet/dong-vu-huy-73500-ty-dong-nam-2025-421-buoi-livestream.html",
-   "img": "https://daoinsights.com/wp-content/uploads/2024/01/dong_yuhui_1_2-transformed-1870x1325.jpeg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-vu-huy-73500-ty-dong-nam-2025-421-buoi-livestream-og.jpg",
    "pinned": false,
    "takeaway": "Năm 2025, Đổng Vũ Huy livestream bán hàng 421 buổi, trung bình 50–75 triệu NDT/buổi, cả năm hơn 21 tỷ NDT (~73.500 tỷ đồng). Ít hơn năm 2024 tới 210 buổi mà doanh thu gấp đôi — bí quyết nằm ở giá trị đơn hàng và cách làm sản phẩm."
   },
@@ -15991,7 +15991,7 @@ window.V20_DATA = {
    "date": "2026-11-15",
    "url": "https://vietnambiz.vn/tiktok-shop-ap-sat-ngoi-vuong-thi-phan-cua-shopee-2026119195711186.htm",
    "page": "bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12.html",
-   "img": "https://cdn.vietnambiz.vn/1881912202208555/images/2026/11/09/crawl-20261109195505449.png?width=700",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-74400-ty-vs-tiktok-shop-70100-ty-ngoi-vuong-12-12-og.jpg",
    "pinned": false,
    "takeaway": "Quý III/2026, Shopee đạt GMV 74.400 tỷ đồng, TikTok Shop đạt 70.100 tỷ đồng — khoảng cách chỉ còn 4.300 tỷ. TikTok Shop tăng 60%, Shopee tăng 8%. Cuộc đua ngôi vương sàn thương mại điện tử Việt Nam sẽ ngã ngũ ở 12.12?"
   },
@@ -16002,7 +16002,7 @@ window.V20_DATA = {
    "date": "2026-11-15",
    "url": "https://www.sellthetrend.com/reports/top-selling-tiktok-shop",
    "page": "bai-viet/san-pham-ban-trieu-don-tiktok-shop-2026-shop-viet-nhap-gi-12-12.html",
-   "img": "https://www.bebolddigital.com/hs-fs/hubfs/medicube_vs_dr_melaxin_gmv_chart.png?width=1980&height=1180&name=medicube_vs_dr_melaxin_gmv_chart.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/san-pham-ban-trieu-don-tiktok-shop-2026-shop-viet-nhap-gi-12-12-og.jpg",
    "pinned": false,
    "takeaway": "Bộ dưỡng da PDRN bán 5,5 triệu đơn, doanh số tích lũy 38.700 tỷ đồng. Xem 10 sản phẩm bán triệu đơn trên TikTok Shop 2026 và 7 bài học chọn hàng cho shop Việt trước 12.12."
   },
@@ -16013,7 +16013,7 @@ window.V20_DATA = {
    "date": "2026-11-15",
    "url": "https://www.36kr.com/p/3706969918107781",
    "page": "bai-viet/huong-thai-1050-ty-dong-livestream-ban-hang-99-ndt-mat-1-trieu-follower.html",
-   "img": "https://img.36krcdn.com/hsossms/20260303/v2_f92037e01ca34b7196c9103138a62ae4@000000_oswg172888oswg1080oswg1405_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/huong-thai-1050-ty-dong-livestream-ban-hang-99-ndt-mat-1-trieu-follower-og.jpg",
    "pinned": false,
    "takeaway": "Hướng Thái bán 300 triệu NDT trong buổi livestream bán hàng đầu tiên trên Douyin rồi mất gần 1 triệu follower, trả hàng tới 70%. Ba năm sau, bà lội ngược dòng với 160 triệu NDT tiền trang sức trên Xiaohongshu."
   },
@@ -16080,7 +16080,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "url": "https://m.ebrun.com/718904.html",
    "page": "bai-viet/jd-com-122-trieu-ty-dong-double-11-ai-dich-vu-ong-lon-im-lang.html",
-   "img": "https://q6.itc.cn/q_70/images03/20261112/8a3fed4e4a6f4b3f99cbae98f8eb5c41.jpeg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/jd-com-122-trieu-ty-dong-double-11-ai-dich-vu-ong-lon-im-lang-og.jpg",
    "pinned": false,
    "takeaway": "Double 11/2026: JD.com bán hơn 50 triệu sản phẩm AI, hơn 300 triệu đơn dịch vụ — trong khi Tmall đi ngang so với năm ngoái. Vì sao \"ông lớn im lặng\" thắng mà không cần KOL siêu đầu?"
   },
@@ -16159,7 +16159,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "url": "https://www.36kr.com/p/3706969918107781",
    "page": "bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay.html",
-   "img": "https://img.36krcdn.com/hsossms/20260303/v2_c6e52bb11b6b45fab6abad0c545f372c@000000_oswg175591oswg1000oswg1338_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-dat-truoc-ban-trang-suc-cao-cap-hoc-winnie-tang-595-ty-dong-2-ngay-og.jpg",
    "pinned": false,
    "takeaway": "27–28/12/2025: Winnie Tang — blogger thời trang 7 năm trên Xiaohongshu, không phải minh tinh — bán hơn 170 triệu NDT trang sức trong 2 ngày, giá trung bình 63 triệu đồng/đơn. 7 mẹo đặt trước và xây niềm tin shop Việt áp dụng được trước 12.12."
   },
@@ -16181,7 +16181,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "url": "https://www.accio.com/business/tiktok-trend-glasses",
    "page": "bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday.html",
-   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/6360232c023a45979257c40361c104c7~tplv-aphluv4xwc-resize-jpeg:800:800.jpeg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kinh-mat-meo-26-ty-dong-video-10-giay-shopee-viral-black-friday-og.jpg",
    "pinned": false,
    "takeaway": "1 video 10 giây, 1,2 triệu lượt xem, GMV 1,4–2,6 tỷ đồng — kính mắt mèo chiếm 2 trong 3 video bán chạy nhất Shopee tuần qua. Vì sao sản phẩm vài chục nghìn này bán khỏe hơn cả iPhone 18 Pro Max, và shop Việt cần làm gì trước Black Friday 27/11?"
   },
@@ -16192,7 +16192,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "url": "https://www.sohu.com/a/1100730156_114986",
    "page": "bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua.html",
-   "img": "https://q0.itc.cn/q_70/images03/20261110/e6381af90562441ea414cbf5f918319a.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tong-ket-double-11-2026-ai-thang-ai-thua-og.jpg",
    "pinned": false,
    "takeaway": "Double 11/2026 chốt sổ với 6.217 nghìn tỷ đồng nhưng chỉ tăng 4,8%: shop tự live tăng 200%, Vợ chồng Quảng Đông rớt một nửa đỉnh 1 ngày, Quyền Leo và Long Chun thắng lớn nhờ live."
   },
@@ -16222,7 +16222,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "url": "https://www.shopeeanalytics.com/vn/search/tiktok-video",
    "page": "bai-viet/ao-phao-gile-hehi-19-ty-dong-video-19-giay-shopee-top-3.html",
-   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/219e1571855247189b32d43e4c4e75e1~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my&from=1432613627&from_p=3004324551",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ao-phao-gile-hehi-19-ty-dong-video-19-giay-shopee-top-3-og.jpg",
    "pinned": false,
    "takeaway": "1 video 19 giây, 2,8 triệu lượt xem, GMV 1,1–1,9 tỷ đồng — áo phao Gile HeHi chiếm 3 vị trí trong top 26 video bán chạy Shopee. Vì sao hàng mùa đông bùng nổ đúng lúc này, và shop Việt cần làm gì trước Black Friday 27/11 và 12.12?"
   },
@@ -16233,7 +16233,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "url": "https://www.brandsvietnam.com/congdong/topic/mega-sale-q4-tren-tiktok-shop-4-nhom-chien-luoc-tao-da-tang-truong",
    "page": "bai-viet/mega-sale-q4-tiktok-shop-live-5-gio-gmv-gap-doi.html",
-   "img": "https://fint-global.com/wp-content/uploads/2026/11/Huong-Dan-Ban-Hang-Q4-TikTok-Shop-1536x864.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mega-sale-q4-tiktok-shop-live-5-gio-gmv-gap-doi-og.jpg",
    "pinned": false,
    "takeaway": "Tháng 11 và 12/2025, TikTok Shop Việt Nam đạt 40.860 tỷ đồng GMV, chiếm 23,2% cả năm. Cẩm nang Mega Sale Q4 của TikTok for Business chỉ ra 4 chiến lược: chọn đúng danh mục, 3 ngày cao điểm GMV gấp đôi, livestream bán hàng tối thiểu 5 giờ, GMV Max và ngân sách dự phòng 2 lần."
   },
@@ -16244,7 +16244,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "url": "https://ppc.land/tiktok-shop-us-sellers-gain-9-compass-analytics-tools-from-ad-data-to-churn/",
    "page": "bai-viet/meo-do-luong-live-tiktok-shop-compass-14-ngay-black-friday-13000-ty-dong.html",
-   "img": "https://ppc.land/content/images/2026/11/mp-og-ae8ac0ec-25d2-4b17-80ad-930dd8089273.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-do-luong-live-tiktok-shop-compass-14-ngay-black-friday-13000-ty-dong-og.jpg",
    "pinned": false,
    "takeaway": "TikTok Shop Mỹ bán hơn 500 triệu USD trong 4 ngày Black Friday 2025. Từ 02/11/2026, TikTok Shop đổi cách đếm doanh thu livestream: 9 công cụ Compass mới và Brand LIVE Impact tính cả đơn phát sinh 14 ngày sau live. 7 mẹo đo lường livestream bán hàng để shop Việt không giết nhầm buổi live tốt trước Black Friday 27/11 và 12.12."
   },
@@ -16255,7 +16255,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "url": "https://ngoisao.vnexpress.net/ntk-do-manh-cuong-chot-don-hon-7-ty-dong-khi-mac-vay-livestream-5001199.html",
    "page": "bai-viet/do-manh-cuong-677-ty-dong-1-phien-live-tu-mac-vay-ban-hang-sixdo.html",
-   "img": "https://iv1cdn.vnecdn.net/ngoisao/images/web/2026/01/02/ntk-do-manh-cuong-chot-don-hon-7-ty-dong-khi-mac-vay-livestr-1767349018.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=jUQNU46Vw0cDE_EhhrNQXg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/do-manh-cuong-677-ty-dong-1-phien-live-tu-mac-vay-ban-hang-sixdo-og.jpg",
    "pinned": false,
    "takeaway": "Đỗ Mạnh Cường tự mặc váy livestream bán SIXDO: 1 phiên 6,77 tỷ đồng, 19.470 sản phẩm, 605.000 lượt xem. Vì sao ông chủ tự bán lại chốt đơn gấp hơn 20 lần người mẫu?"
   },
@@ -16622,7 +16622,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "url": "https://www.36kr.com/p/2305893349731847",
    "page": "bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua.html",
-   "img": "https://img.36krcdn.com/hsossms/20230617/v2_a84895e79f4d4238b8b22664e39c62c2@000000_oswg248960oswg1080oswg1618_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vo-chong-quang-dong-3916-ty-dong-18-buoi-618-2023-dinh-2026-tut-nua-og.jpg",
    "pinned": false,
    "takeaway": "Vợ chồng Quảng Đông bán 1,119 tỷ NDT (3.916 tỷ đồng) trong 18 buổi live 618/2023, ngày 1/6/2023 chốt hơn 500 triệu NDT với 540.000 đơn. Nhưng đỉnh 1 ngày Double 11/2026 chỉ còn 1,35 tỷ NDT, giảm 44% so với 2025 — cặp đôi vàng của Douyin cũng hạ nhiệt. Phân tích công thức người – hàng – sân và 7 bài học cho shop Việt."
   },
@@ -16633,7 +16633,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "url": "https://seller-us.tiktok.com/university/essay?knowledge_id=26854147802894&lang=en",
    "page": "bai-viet/black-friday-335400-ty-dong-7-meo-giu-sps-35-tiktok-shop.html",
-   "img": "https://image.dienthoaivui.com.vn/x,webp,q90/https://media-asset.dienthoaivui.com.vn/uploads/dashboard/editor_upload/black-friday-tiktok-01.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-335400-ty-dong-7-meo-giu-sps-35-tiktok-shop-og.jpg",
    "pinned": false,
    "takeaway": "Black Friday 27/11/2026: người Mỹ dự kiến chi 12,9 tỷ USD online trong 1 ngày. TikTok Shop chỉ cho shop đạt điểm SPS từ 3.5 trở lên tham gia chiến dịch BFCM. 7 mẹo giữ điểm, giữ đơn, tránh bị loại khỏi chiến dịch."
   },
@@ -16644,7 +16644,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "url": "https://www.36kr.com/p/3388453516230788",
    "page": "bai-viet/livestream-gia-dinh-525-ty-dong-1-ngay-ca-nha-cung-live-xu-huong-2026.html",
-   "img": "https://q2.itc.cn/q_70/images03/20261027/57a6c4b15b294f3995aed8523b41ad00.jpeg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-gia-dinh-525-ty-dong-1-ngay-ca-nha-cung-live-xu-huong-2026-og.jpg",
    "pinned": false,
    "takeaway": "Ngày 18/6/2025, một đám cưới ở nông thôn Hà Nam biến thành phòng livestream bán hàng: 2 buổi live, hơn 525 tỷ đồng. Đằng sau là xu hướng livestream gia đình — vợ chồng, mẹ con, cả họ cùng live — đang nổi lên ở Trung Quốc khi siêu KOL hạ nhiệt."
   },
@@ -16655,7 +16655,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "url": "https://www.facebook.com/groups/1346679573696322/permalink/1770195174678091/",
    "page": "bai-viet/mat-na-mat-lanbena-715-trieu-dong-1-thang-2700-don-black-friday.html",
-   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/b0f5d7a532a44651aae23d6f9424f071~tplv-aphluv4xwc-resize-jpeg:800:800.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=2408c917&shcp=32ce9e9e&idc=my2&from=604555543",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mat-na-mat-lanbena-715-trieu-dong-1-thang-2700-don-black-friday-og.jpg",
    "pinned": false,
    "takeaway": "Mặt nạ mắt LANBENA giá 158.000 đồng bán 2.700 đơn, doanh thu 715,62 triệu đồng trong 1 tháng (16/10–15/11/2026, theo bảng xếp hạng Kalodata). Vì sao sản phẩm nhỏ giá rẻ vẫn thắng mùa sale, và shop Việt học được gì trước Black Friday 27/11 và 12.12?"
   },
@@ -16666,7 +16666,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "url": "https://www.36kr.com/p/2305893349731847",
    "page": "bai-viet/vo-chong-quang-dong-2450-ty-dong-1-buoi-double-11-2022-ky-luc-douyin.html",
-   "img": "https://img.36krcdn.com/hsossms/20230617/v2_b89dcdfe9b5e4d1bbbfd9c10e5ab7bc3@000000_oswg170650oswg1080oswg923_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vo-chong-quang-dong-2450-ty-dong-1-buoi-double-11-2022-ky-luc-douyin-og.jpg",
    "pinned": false,
    "takeaway": "Vợ chồng Quảng Đông bán hơn 700 triệu nhân dân tệ (khoảng 2.450 tỷ đồng) trong 1 buổi live Double 11/2022, từng là kỷ lục Douyin. Bài viết \"bóc mẽ\" đêm kỷ lục, công thức người – hàng – sân, bài toán lỗ 3 điểm của Lý Quốc Khánh và cú tụt dốc tới Double 11/2026."
   },
@@ -16829,7 +16829,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://www.36kr.com/p/841817756567552",
    "page": "bai-viet/loi-quan-735-ty-dong-1-buoi-live-ceo-xiaomi-bi-ep-livestream-ban-hang.html",
-   "img": "https://img.36krcdn.com/20200817/v2_590f77447d494059ad47575ac7199d8c_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/loi-quan-735-ty-dong-1-buoi-live-ceo-xiaomi-bi-ep-livestream-ban-hang-og.jpg",
    "pinned": false,
    "takeaway": "Lôi Quân live đầu 16/8/2020: 210 triệu NDT (khoảng 735 tỷ đồng), 50,5 triệu lượt xem, 27 sản phẩm. Vì sao CEO Xiaomi \"bị ép\" livestream bán hàng mà vẫn bán gấp 42 lần Đổng Minh Châu? Phân tích case + 7 bài học cho shop Việt."
   },
@@ -16948,7 +16948,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://vihatsolutions.com/tin-su-kien/growthverse-ecomday-2026/",
    "page": "bai-viet/ecomday-2026-175840-ty-dong-7-meo-bien-traffic-thanh-doanh-thu.html",
-   "img": "https://vihatsolutions.com/wp-content/uploads/2026/11/growthverse-ecomday-2026-gv-kv.webp",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ecomday-2026-175840-ty-dong-7-meo-bien-traffic-thanh-doanh-thu-og.jpg",
    "pinned": false,
    "takeaway": "EcomDay 2026 diễn ra hôm nay 19/11/2026 tại TP.HCM với keynote \"From Traffic To Revenue\" của CEO ViHAT Cai Ngọc Luân. 7 mẹo biến traffic thành doanh thu cho shop Việt trước Black Friday 27/11 và 12.12."
   },
@@ -16959,7 +16959,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://www.163.com/dy/article/LBKES12605119BMQ.html",
    "page": "bai-viet/double-11-2026-lanh-nhat-lich-su-nguoi-tre-mua-gao-dau-an-giay-ve-sinh.html",
-   "img": "https://n.sinaimg.cn/spider20261114/335/w1200h735/20261114/ca46-86f86b856b056e2ac2c748aacbc3703a.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/double-11-2026-lanh-nhat-lich-su-nguoi-tre-mua-gao-dau-an-giay-ve-sinh-og.jpg",
    "pinned": false,
    "takeaway": "Double 11/2026 đạt 1.776,4 tỷ NDT (khoảng 6.217 nghìn tỷ đồng) nhưng chỉ tăng 4,8% — lạnh nhất lịch sử. Ba cơ quan độc lập hội tụ cùng một khoảng số; gói bưu kiện có thể tăng trưởng âm lần đầu; giỏ hàng người trẻ chỉ còn gạo, dầu ăn, giấy vệ sinh; Tmall bỏ mãn giảm, Douyin giảm thẳng 15%. Ai thắng trong mùa lạnh — và 7 bài học cho shop Việt trước Black Friday 27/11 và 12.12."
   },
@@ -16981,7 +16981,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://www.shopeeanalytics.com/vn/search/tiktok-video",
    "page": "bai-viet/co-bida-way-cues-33-ty-dong-video-77-giay-vuot-kinh-mat-meo-ao-phao-hehi.html",
-   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/40ab99ae1a2a468489597c716b356d02~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my2&from=1432613627&from_p=3004324551",
+   "img": "https://vieclamlivestream.online/images/bai-viet/co-bida-way-cues-33-ty-dong-video-77-giay-vuot-kinh-mat-meo-ao-phao-hehi-og.jpg",
    "pinned": false,
    "takeaway": "1,8–3,3 tỷ đồng từ 1 video 77 giây: cơ bida Way Cues LD Series của ThyA Billiards Shop vượt kính mắt mèo, áo phao HeHi để dẫn đầu top 100 video bán chạy TikTok Shop 7 ngày (ShopeeAnalytics 19/11/2026)."
   },
@@ -17014,7 +17014,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://www.36kr.com/p/3433683458952582",
    "page": "bai-viet/tan-ba-22400-ty-dong-1-ngay-double-11-2023-tuyen-bo-rut-lui-lan-5.html",
-   "img": "https://img.36krcdn.com/hsossms/20250822/v2_3d2699d735e340d59aa3dee17d5d4364@5888275_oswg173617oswg1080oswg2066_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tan-ba-22400-ty-dong-1-ngay-double-11-2023-tuyen-bo-rut-lui-lan-5-og.jpg",
    "pinned": false,
    "takeaway": "Tân Ba bán 22.400 tỷ đồng trong 1 ngày Double 11/2023, xây đế chế Tân Tuyển 175.000 tỷ đồng/năm, rồi tuyên bố rút lui lần thứ 5 tối 18/8/2025 vì lá phổi \"như người 95 tuổi\". Giải mã mô hình đối tác 60%/5%, người kế nhiệm Sơ Thụy Tuyết và 7 bài học cho shop Việt trước Black Friday 27/11."
   },
@@ -17229,7 +17229,7 @@ window.V20_DATA = {
    "date": "2026-11-20",
    "url": "https://vietnamnet.vn/phien-livestream-chot-don-75-ty-chan-dong-vi-sao-chua-tiet-lo-ti-le-huy-don-2255886.html",
    "page": "bai-viet/quyen-leo-daily-75-ty-dong-13-gio-livestream-ky-luc-dong-nam-a.html",
-   "img": "https://mkt.1cdn.vn/2024/03/12/_mg_0077.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quyen-leo-daily-75-ty-dong-13-gio-livestream-ky-luc-dong-nam-a-og.jpg",
    "pinned": false,
    "takeaway": "Quyền Leo Daily bán 75 tỷ đồng trong 13 giờ livestream ngày 2/3/2024 — kỷ lục Việt Nam và Đông Nam Á lúc bấy giờ. Phân tích công thức, góc khuất tỷ lệ hủy đơn và chuỗi kỷ lục 100 tỷ sau đó."
   },
@@ -17240,7 +17240,7 @@ window.V20_DATA = {
    "date": "2026-11-19",
    "url": "https://news.china.com/socialgd/10000169/20261116/49875001.html",
    "page": "bai-viet/douyin-siet-nguoi-ao-cao-dich-mat-quyen-live-7-meo-shop-viet-black-friday.html",
-   "img": "https://img0.utuku.imgcdc.com/650x0/news/20261116/b8d933ee-600e-4232-98df-c830b24e78c2.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/douyin-siet-nguoi-ao-cao-dich-mat-quyen-live-7-meo-shop-viet-black-friday-og.jpg",
    "pinned": false,
    "takeaway": "Douyin xử hơn 26.000 tài khoản AI giả mạo trong 1 tháng, phạt 577 tỷ đồng trong 9 tháng. Cao Địch vĩnh viễn mất quyền live — 7 mẹo livestream bán hàng cho shop Việt trước Black Friday 27/11."
   },
@@ -17358,7 +17358,7 @@ window.V20_DATA = {
    "date": "2026-11-20",
    "url": "https://www.caixinglobal.com/2020-08-18/xiaomi-ceo-lei-jun-makes-30-million-in-sales-in-livestreaming-debut-101594107.html",
    "page": "bai-viet/xiaomi-mi-10-ultra-1400-ty-dong-1-ngay-mo-ban-ban-chay-nhat-live-loi-quan.html",
-   "img": "https://www.engadget.com/engadget/xiaomi-mi-10-ultra-flagship-phones-134354175/291f08a0-dbd8-11ea-bdbf-991b78d54003.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xiaomi-mi-10-ultra-1400-ty-dong-1-ngay-mo-ban-ban-chay-nhat-live-loi-quan-og.jpg",
    "pinned": false,
    "takeaway": "Xiaomi Mi 10 Ultra giá 5.299 NDT (khoảng 18,5 triệu đồng) bán hơn 400 triệu NDT (khoảng 1.400 tỷ đồng) ngay ngày mở bán đầu tiên 16/8/2020, dẫn đầu buổi livestream đầu tiên của Lôi Quân đạt 210 triệu NDT với 50,5 triệu người xem. Phân tích 3 số 120 và 7 bài học cho shop Việt trước Black Friday 27/11."
   },
@@ -17369,7 +17369,7 @@ window.V20_DATA = {
    "date": "2026-11-20",
    "url": null,
    "page": "bai-viet/la-chapelle-4550-ty-dong-double-11-2026-ban-da-san-kuaishou-tang-169-phan-tram.html",
-   "img": "https://cds.chinadaily.com.cn/dams/capital/image/202611/18/6afd6d9e6b8e635a962e4e39_m.jpeg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/la-chapelle-4550-ty-dong-double-11-2026-ban-da-san-kuaishou-tang-169-phan-tram-og.jpg",
    "pinned": false,
    "takeaway": "La Chapelle bán hơn 1,3 tỷ NDT (4.550 tỷ đồng) trong Double 11/2026, tăng 40%: Kuaishou +169%, Pinduoduo +170%, Douyin +92%."
   },
@@ -17380,7 +17380,7 @@ window.V20_DATA = {
    "date": "2026-11-20",
    "url": null,
    "page": "bai-viet/mixue-117500-ty-dong-nam-ly-tra-sua-10000-dong-de-che-gan-60000-cua-hang.html",
-   "img": "https://mmx.prnewswire.com/media/MS1984552/20260909030322EDT_image_2.jpg?id=OA2937980",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mixue-117500-ty-dong-nam-ly-tra-sua-10000-dong-de-che-gan-60000-cua-hang-og.jpg",
    "pinned": false,
    "takeaway": "Mixue thu 33,56 tỷ NDT năm 2025 với gần 60.000 cửa hàng, nhưng 97,6% doanh thu đến từ bán nguyên liệu cho chủ nhượng quyền. Tại Việt Nam, chuỗi thu hẹp từ 1.304 còn khoảng 1.000 cửa hàng."
   },
@@ -17684,7 +17684,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "url": "https://tuoitre.vn/saigontimes/tang-bang-chim-sau-nhung-phien-livestream-ban-hang-chuc-ti-106900265.htm",
    "page": "bai-viet/long-chun-2139-ty-dong-1-nam-live-chiem-648-doanh-thu-video-giu-chan.html",
-   "img": "https://cdn2.tuoitre.vn/thesaigontimes/uploads/2024/03/livestream-1-1.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/long-chun-2139-ty-dong-1-nam-live-chiem-648-doanh-thu-video-giu-chan-og.jpg",
    "pinned": false,
    "takeaway": "Long Chun bán 213,9 tỷ đồng trong 1 năm trên TikTok Shop, livestream chiếm 138,6 tỷ (64,8%). Phân tích công thức video giữ chân, live chốt đơn và mặt sau của con số GMV."
   },
@@ -17695,7 +17695,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "url": "https://www.36kr.com/p/3706969918107781",
    "page": "bai-viet/ngo-thien-ngu-525-ty-dong-1-buoi-live-7-meo-ban-hang-dat-tien-chuyen-doi-1322-phan-tram.html",
-   "img": "https://img.36krcdn.com/hsossms/20260303/v2_f92037e01ca34b7196c9103138a62ae4@000000_oswg172888oswg1080oswg1405_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ngo-thien-ngu-525-ty-dong-1-buoi-live-7-meo-ban-hang-dat-tien-chuyen-doi-1322-phan-tram-og.jpg",
    "pinned": false,
    "takeaway": "Ngô Thiên Ngữ bán 525 tỷ đồng trong 1 buổi livestream bán hàng trên Xiaohongshu, tỷ lệ chuyển đổi 13,22%, 93% khách là nữ. 7 mẹo bán hàng cao cấp rút ra từ 2 buổi live 70 triệu và 150 triệu NDT — shop Việt áp dụng được ngay trước Black Friday 27/11 và 12.12."
   },
@@ -17754,7 +17754,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "url": "https://news.tuoitre.vn/print/vietnams-digital-economy-to-grow-20-to-49-billion-in-2026-103261105143044078.htm",
    "page": "bai-viet/e-conomy-sea-2026-tmdt-viet-nam-32-ty-usd-tiktok-shop-ap-sat-shopee-17-diem.html",
-   "img": "https://cdn2.tuoitre.vn/471584752817336320/2026/11/5/screenshot-2026-11-05-at-141054-17938626660101404645125.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/e-conomy-sea-2026-tmdt-viet-nam-32-ty-usd-tiktok-shop-ap-sat-shopee-17-diem-og.jpg",
    "pinned": false,
    "takeaway": "TMĐT Việt Nam đạt 32 tỷ USD (842.000 tỷ đồng) năm 2026, tăng 22% nhanh nhất Đông Nam Á theo e-Conomy SEA 2026. TikTok Shop áp sát Shopee chỉ còn 1,7 điểm thị phần, 56.209 shop mất đơn trong quý III/2026. 7 việc shop livestream phải làm ngay trước Black Friday 27/11 và 12.12."
   },
@@ -17765,7 +17765,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "url": "https://www.modernretail.co/operations/thredup-launches-tiktok-shop-livestreams-as-part-of-its-social-commerce-push/?utm_source=digiday.com&utm_medium=referral&utm_campaign=digidaydis&utm_content=digidayhp-more-from-modernretail",
    "page": "bai-viet/live-tu-xuong-kho-115500-ty-dong-shop-tu-live-tang-200-thredup-10-live-tuan.html",
-   "img": "https://ml.globenewswire.com/Resource/Download/392b0582-c670-4395-9030-b53ff20ebf26/live-selling-v1.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/live-tu-xuong-kho-115500-ty-dong-shop-tu-live-tang-200-thredup-10-live-tuan-og.jpg",
    "pinned": false,
    "takeaway": "Douyin Double 11/2026: shop tự live phá 100 triệu NDT tăng 200%; 330 vùng xưởng mỗi vùng bán hơn 350 tỷ đồng. ThredUp live từ kho ở Mỹ, 75% khách mới. Shop Việt học gì trước Black Friday 27/11 và 12.12?"
   },
@@ -17776,7 +17776,7 @@ window.V20_DATA = {
    "date": "2026-11-21",
    "url": "https://m.ebrun.com/721471.html",
    "page": "bai-viet/kuaishou-yoola-350-trieu-dong-1-game-lam-bang-cau-chu-ai-bien-nguoi-xem-livestream-thanh-nguoi-choi.html",
-   "img": "https://img.36krcdn.com/hsossms/20261104/v2_858abdef23bb499585bcf84ea6b6c1f0@6452578_oswg307015oswg501oswg709_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kuaishou-yoola-350-trieu-dong-1-game-lam-bang-cau-chu-ai-bien-nguoi-xem-livestream-thanh-nguoi-choi-og.jpg",
    "pinned": false,
    "takeaway": "Kuaishou ra mắt Yoola ngày 17/11/2026: nền tảng AI biến câu chữ thành game tương tác, giải thưởng tới 350 triệu đồng cho 1 game. Vì sao Kuaishou lỗ 3.356 tỷ đồng quý 3/2026 vẫn đổ tiền vào AI? Shop Việt học được gì trước Black Friday 27/11 và 12.12?"
   },
@@ -18079,7 +18079,7 @@ window.V20_DATA = {
    "date": "2026-11-22",
    "url": "https://www.36kr.com/p/1725365747713",
    "page": "bai-viet/la-vinh-hao-385-ty-dong-live-dau-tien-livestream-tra-no-2100-ty-dong.html",
-   "img": "https://img.36krcdn.com/20200409/v2_c678b0ac6d4e4d128203146e0f4222d4_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/la-vinh-hao-385-ty-dong-live-dau-tien-livestream-tra-no-2100-ty-dong-og.jpg",
    "pinned": false,
    "takeaway": "La Vĩnh Hạo bán 385 tỷ đồng trong buổi livestream bán hàng đầu tiên (1/4/2020) để trả món nợ 2.100 tỷ đồng sau khi Hammer sụp đổ. Phân tích buổi live đầu, năm đầu của Giao Bạn Bè và hành trình trả nợ tới tháng 6/2022."
   },
@@ -18138,7 +18138,7 @@ window.V20_DATA = {
    "date": "2026-11-22",
    "url": "https://www.36kr.com/p/1070734969383042",
    "page": "bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-7-meo-chon-dung-nen-tang-livestream.html",
-   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-7-meo-chon-dung-nen-tang-livestream-og.jpg",
    "pinned": false,
    "takeaway": "Hoa Thiếu bán 609 tỷ trong 5 giờ live đầu trên Kuaishou, rồi tụt còn 75 tỷ khi sang Douyin. Xem ngay 7 mẹo chọn đúng nền tảng livestream trước Black Friday."
   },
@@ -18160,7 +18160,7 @@ window.V20_DATA = {
    "date": "2026-11-22",
    "url": "https://vieclamlivestream.online/bai-viet/co-bida-way-cues-33-ty-dong-video-77-giay-vuot-kinh-mat-meo-ao-phao-hehi.html",
    "page": "bai-viet/co-bida-way-cues-74-ty-dong-video-duoi-dai-6-ngay-gmv-tang-gap-doi.html",
-   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/40ab99ae1a2a468489597c716b356d02~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my2&from=1432613627&from_p=3004324551",
+   "img": "https://vieclamlivestream.online/images/bai-viet/co-bida-way-cues-74-ty-dong-video-duoi-dai-6-ngay-gmv-tang-gap-doi-og.jpg",
    "pinned": false,
    "takeaway": "Cơ bida Way Cues bán 4–7,4 tỷ đồng từ 1 video 77 giây đăng 16/11/2026: GMV tăng gấp đôi sau 6 ngày. Video đuôi dài là gì, shop Việt làm gì trước Black Friday 27/11?"
   },
@@ -18171,7 +18171,7 @@ window.V20_DATA = {
    "date": "2026-11-22",
    "url": "https://www.36kr.com/p/1070734969383042",
    "page": "bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-gia-cua-hao-quang-minh-tinh.html",
-   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-gia-cua-hao-quang-minh-tinh-og.jpg",
    "pinned": false,
    "takeaway": "Hoa Thiếu bán 609 tỷ đồng trong 5 giờ live đầu trên Kuaishou, một năm sau chỉ còn 75 tỷ trên Douyin. Câu chuyện lên xuống của MC 'cái lưỡi tốt nhất Trung Quốc' phơi bày cái giá của hào quang minh tinh trong livestream."
   },
