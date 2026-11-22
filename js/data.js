@@ -18149,7 +18149,7 @@ window.V20_DATA = {
    "date": "2026-11-22",
    "url": "https://news.qq.com/rain/a/20261113A0DDFT00",
    "page": "bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.html",
-   "img": "https://inews.gtimg.com/news_bt/O9uD3jhD_g4FFLLmlREH-Sc6zkyO2wPNPfnjdS5xDcf5YAA/641",
+   "img": "https://vieclamlivestream.online/images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.jpg",
    "pinned": false,
    "takeaway": "Double 11/2026 khép lại với 17.764 tỷ NDT toàn mạng. Nhưng câu chuyện thật không nằm ở tổng tiền. Douyin công bố: phòng live phá 100 triệu NDT tăng 187%, riêng shop tự live tăng 200%; top 10 chỉ còn một nửa là KOL; 860.000 shop lần đầu live đã bán được hàng. Bài phân tích đầy đủ + 7 bài học cho shop Việt trước Black Friday 27/11 và 12.12."
   },
