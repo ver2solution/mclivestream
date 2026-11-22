@@ -17770,6 +17770,54 @@ window.V20_DATA = {
   "pinned": false,
   "takeaway": "Livestream ban hang hieu qua nhat TikTok Shop My thang 11/2026 thuoc ve tai khoan cua chinh thuong hieu: medicube ban 7,41 trieu USD qua LIVE trong 30 ngay, 9/10 phien top do tai khoan thuong hieu chay (TokConnect 19/11/2026). Thuoc do hieu qua la doanh thu moi gio — phien 8 gio cua medicube dat 35.600 USD moi gio, phien 293 gio chi 464 USD. Douyin noi cung mot cau chuyen: phong live cua chinh merchant tang 200% trong Double 11 (13/11/2026)."
  },
+  {
+   "title": "Tổng kết thị trường livestream 2026: Mỹ tăng 35%",
+   "cat": "Phân tích",
+   "source": "eMarketer",
+   "date": "2026-11-22",
+   "url": "https://www.emarketer.com/content/faq-on-livestream-commerce--what-marketers-need-know-about-live-shopping-2026",
+   "page": "bai-viet/tong-ket-thi-truong-livestream-2026-my-tang-35-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tong-ket-thi-truong-livestream-2026-my-tang-35-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tổng kết thị trường livestream 2026: Mỹ đạt 19,76 tỷ USD (+35%, eMarketer), 58 triệu người mua qua live; TikTok Shop LIVE tăng gấp đôi nửa đầu 2026; Trung Quốc: live chiếm gần 1/3 TMĐT; 24% đơn chốt sau khi live tắt (Adobe, 12/2025)."
+  },
+  {
+   "title": "Giá xăng giảm lần 5: shop nhỏ tính lại phí ship",
+   "cat": "Phân tích",
+   "source": "EIA (U.S. Energy Information Administration)",
+   "date": "2026-11-22",
+   "url": "https://www.eia.gov/outlooks/steo/tables/pdf/2tab.pdf",
+   "page": "bai-viet/gia-xang-giam-lan-5-shop-nho-tinh-lai-phi-ship.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-xang-giam-lan-5-shop-nho-tinh-lai-phi-ship.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá xăng giảm lần 5 liên tiếp (19/11/2026): E10 RON95 còn 19.100 đồng/lít (−740 đồng); Brent rớt từ 120,15 USD (30/10/2026) về 92,94 USD (17/11/2026) — shop nhỏ tính lại phí ship trước sale 12.12 ngày 12/12/2026."
+  },
+  {
+   "title": "Hiệu ứng mồi: 84% khách chọn gói đắt hơn",
+   "cat": "Phân tích",
+   "source": "Frontiers in Psychology (Park & Jang 2025)",
+   "date": "2026-11-22",
+   "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1497372/pdf",
+   "page": "bai-viet/hieu-ung-moi-livestream-84-phan-tram-chon-goi-dat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hieu-ung-moi-livestream-84-phan-tram-chon-goi-dat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hiệu ứng mồi: thí nghiệm Dan Ariely (100 sinh viên MIT) — thêm lựa chọn mồi 125 USD, tỷ lệ chọn gói đắt tăng từ 32% lên 84%; Park & Jang 2025 (3 thí nghiệm) xác nhận hiệu ứng nhỏ nhưng có thật; 1/3 deal Black Friday không hề rẻ (Groundwork, 16/11/2026)."
+  },
+  {
+   "title": "Kuaishou quý 3 2026: lỗ 959 triệu NDT",
+   "cat": "Phân tích",
+   "source": "PR Newswire (Kuaishou Technology)",
+   "date": "2026-11-22",
+   "url": "https://www.tradingview.com/news/prnewswire:753f457ca2ec4:0-kuaishou-technology-announces-third-quarter-2026-unaudited-financial-results/",
+   "page": "bai-viet/kuaishou-quy-3-2026-lo-959-trieu-ndt-live-giam-19-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kuaishou-quy-3-2026-lo-959-trieu-ndt-live-giam-19-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kuaishou quý III/2026 (công bố 19/11/2026): doanh thu 31,6 tỷ NDT (−11%), live streaming 7,8 tỷ NDT (−19%), GMV TMĐT 333 tỷ NDT (−13%), lỗ 959 triệu NDT (từ lãi 4,5 tỷ NDT); DAU 417,3 triệu; R&D +42% cho AI Kling."
+  },
 ],
  "lots": [
    {
