@@ -18131,6 +18131,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Nike Black Friday 2026 (27–30/11/2026, giảm tới 60%): mã EARLYBF giảm thêm 25% đã chạy từ 19/11/2026, mã BFCM26 giảm thêm 60% hết 30/11/2026 — Cyber Monday 30/11–01/12/2026 giảm 30–60%."
   },
+  {
+   "title": "609 tỷ đồng trong 5 giờ live, rồi tụt còn 75 tỷ — Hoa Thiếu: 7 mẹo chọn đúng nền tảng livestream trước khi đốt tiền",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-22",
+   "url": "https://www.36kr.com/p/1070734969383042",
+   "page": "bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-7-meo-chon-dung-nen-tang-livestream.html",
+   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Hoa Thiếu bán 609 tỷ trong 5 giờ live đầu trên Kuaishou, rồi tụt còn 75 tỷ khi sang Douyin. Xem ngay 7 mẹo chọn đúng nền tảng livestream trước Black Friday."
+  },
 ],
  "lots": [
    {
