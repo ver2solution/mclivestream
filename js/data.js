@@ -18028,6 +18028,54 @@ window.V20_DATA = {
      "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
      "linkText": "Xem bài đăng gốc →"
    },
+  {
+   "title": "Nhập hàng Trung Quốc trước Tết: đặt trước ngày nào?",
+   "cat": "Đang hot",
+   "source": "TradeRouteGuide",
+   "date": "2026-11-22",
+   "url": "https://traderouteguide.com/chinese-new-year-production-calendar-2027/",
+   "page": "bai-viet/nhap-hang-trung-quoc-truoc-tet-dat-truoc-ngay-nao-kip-ban.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-truoc-tet-dat-truoc-ngay-nao-kip-ban.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nhập hàng Trung Quốc trước Tết: xưởng ngừng sản xuất từ khoảng 26/01/2027, tàu biển cuối rời cảng 15–25/01/2027 — đặt hàng chuẩn trước giữa tháng 11/2026, đặt hàng không chuẩn trước 10/12/2026, chuyển phát nhanh trước 20/12/2026."
+  },
+  {
+   "title": "Apple Black Friday 2026: tặng thẻ quà tới 300 USD",
+   "cat": "Đang hot",
+   "source": "Macworld",
+   "date": "2026-11-22",
+   "url": "https://www.macworld.com/article/672787/apple-black-friday-2026.html",
+   "page": "bai-viet/apple-black-friday-2026-tang-the-qua-toi-300-usd-27-30-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/apple-black-friday-2026-tang-the-qua-toi-300-usd-27-30-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Apple Black Friday 2026 (27–30/11/2026, công bố 19/11/2026): tặng thẻ quà tới 300 USD với MacBook Pro 16 inch M5, tăng 20% so với mức cao nhất 250 USD năm 2025 — thẻ quà chỉ dùng cho lần mua sau, không trừ giá máy."
+  },
+  {
+   "title": "Samsung Black Friday 2026: giảm tới 1.300 USD",
+   "cat": "Đang hot",
+   "source": "Skimwire",
+   "date": "2026-11-22",
+   "url": "https://www.skimwire.com/samsung-black-friday-2026-dates-tech-deals/",
+   "page": "bai-viet/samsung-black-friday-2026-giam-toi-1300-usd-tv-1399-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/samsung-black-friday-2026-giam-toi-1300-usd-tv-1399-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Samsung Black Friday 2026 (02–30/11/2026): TV OLED 65 inch 1.399,99 USD (giảm 1.300 USD), Galaxy S26 Ultra 1.049,99 USD, đổi cũ lấy mới tới 1.200 USD — giao hàng và lắp đặt TV miễn phí chỉ tới 22/11/2026."
+  },
+  {
+   "title": "Nike Black Friday 2026: giảm tới 60%, mã EARLYBF",
+   "cat": "Đang hot",
+   "source": "GrabOn",
+   "date": "2026-11-22",
+   "url": "https://grabon.com/blog/nike-upcoming-sales/",
+   "page": "bai-viet/nike-black-friday-2026-giam-toi-60-phan-tram-ma-earlybf.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nike-black-friday-2026-giam-toi-60-phan-tram-ma-earlybf.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nike Black Friday 2026 (27–30/11/2026, giảm tới 60%): mã EARLYBF giảm thêm 25% đã chạy từ 19/11/2026, mã BFCM26 giảm thêm 60% hết 30/11/2026 — Cyber Monday 30/11–01/12/2026 giảm 30–60%."
+  },
    {
      "id": "lot-02",
      "group": 1,
