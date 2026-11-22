@@ -1,0 +1,36 @@
+name: Deploy v396-seo-lastmod
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v396-seo-lastmod.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v396-seo-lastmod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v396-seo-lastmod package
+        run: |
+          unzip -o mclivestream-v396-seo-lastmod-deploy.zip
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "sitemap lastmod: $(grep -c '<lastmod>' sitemap.xml)"
+          node --check tools/publish-article-drafts.mjs
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f mclivestream-v396-seo-lastmod-deploy.zip
+          git add sitemap.xml tools/publish-article-drafts.mjs
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v396-seo-lastmod: sitemap 637 URL co lastmod + publish script ghi lastmod cho bai moi"
+            git push
+          fi
