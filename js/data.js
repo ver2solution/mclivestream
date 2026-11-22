@@ -69,6 +69,7 @@
    articles-viec-lam-2026-11-20 adds 4 Viec Lam articles (20/11/2026, Friday): 1 stats (0 models + 5 shops 19/11, collected, not yet live) + 1 seasonal keyword 'luong thang 13 mau livestream' #7/10 (deep) + 1 bo 100 keyword STT 14 'ho so mau livestream' + 1 news 'tuyen mau livestream Can Tho' (7 shops / 5 models). SEO V2. Total 478 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-21 adds 5 Đời Sống articles (21/11/2026, Saturday): 1 seasonal keyword "chuẩn bị Tết cho shop nhỏ" #8/10 (1,855 words, deep; NRF 15/10/2026 + Metric 29/10/2026) + 3 news ("thưởng Tết 2026" 1,339 words; "du lịch Mộc Châu tháng 12" 1,387 words; "đi bộ sau ăn 10 phút" 1,486 words) + 1 cafe "quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt" 1,352 words. Total 558 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-21 adds 4 Thi truong articles (21/11/2026, Saturday): 1 seasonal keyword 'thi truong qua Tet 2026' #8/10 (deep: Metric via Brands Vietnam 12/01/2026 — 73,7 nghìn tỷ đồng dịp Tết Bính Ngọ 2026 +51%, gift sets Shopee dịp Tết 2025: 40,2 tỷ đồng +21% vs Tết 2024, ~126k products + ao dai Tet 2025: 296 tỷ +39%, my pham Tet 2025: 11.151,5 tỷ +42%; Deloitte 15/10/2026 + NRF Oct 2026) + 3 news (PDD Q3 2026 19/11 — 108,3 tỷ NDT +0,1% vs 115,97 tỷ NDT forecast, Temu transaction -12%, MAU Sep 2026 -17,8% iOS / -11,2% Android; Tencent Q3 2026 18/11 — 207,3 tỷ NDT +8%, WeChat 1,449 tỷ, ads +19%, cloud +35%, capex 81,4 tỷ NDT +527%; Mercado Libre Q3 2026 04/11 — $10,75 tỷ +45%, GMV $23 tỷ +33% FX-neutral, TPV $109 tỷ +51%). SEO V2 (title suffix + link boxes). Total 541 articles (node) / 540 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-21 adds 4 Dong tien articles (21/11/2026, Saturday): 1 seasonal keyword 'doanh thu TikTok Shop thang 12' #9/10 (deep, NEW angle: GMV My 9,0 -> 15,1 -> 23,4 ty USD + lich sale thang 12 + 5 viec shop nho lam ngay truoc 12.12; added LAST) + 3 news 20/11 (vang cham 3.514 USD thap nhat tu 04/09/2025, tuan toi te nhat 8 thang + Bitcoin thung 60.000 USD, lan dau tu dau thang 7, IBIT rut ky luc 541,1 trieu USD + lam phat ky vong My roi ve 3,7%, thap nhat tu thang 2/2026, tam ly len 51,5). SEO V2 (title suffix + link boxes). Total 545 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15776,6 +15777,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Doanh thu TikTok Shop tháng 12: GMV Mỹ dự báo 23,41 tỷ USD năm 2026 (+48%), chiến dịch Black Friday chạy tới 30/11 — shop nhỏ làm 5 việc trước 12.12: chốt sản phẩm, tính lãi lỗ, đăng ký GMV Max, chốt hoa hồng affiliate, kiểm tồn kho."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 21/11: 1 shop Lai Châu đầu tiên",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-22",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-21-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-21-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 21/11/2026: 0 mẫu + 1 shop mới (ThuKa Villa sh-307, Lai Châu — shop đầu tiên của tỉnh, lương cứng 10 triệu/tháng + hoa hồng, chờ deploy); sh-187 thêm chi nhánh An Giang; tổng live 238 mẫu, 304 shop, 567 bài."
+  },
+  {
+   "title": "Tuyển mẫu livestream Hải Phòng: 3 shop, lương 300.000đ/ca",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-22",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/tuyen-mau-livestream-hai-phong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-hai-phong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Hải Phòng: 3 shop đang tuyển, 1 mẫu trên sàn (tỉ lệ 3 shop/1 mẫu — dễ xin việc hơn Hà Nội 4,9 và TP. Hồ Chí Minh 3,5); lương cao nhất 300.000đ/ca + hoa hồng tối thiểu 500.000đ (ZENITH MEDIA, live tiếng Anh); 2 shop còn lại lương tháng 10–25 triệu đồng."
+  },
+  {
+   "title": "Tuyển mẫu live bán áo dài Tết: lương tới 200.000đ/giờ",
+   "cat": "Việc Làm",
+   "source": "CafeBiz",
+   "date": "2026-11-22",
+   "url": "https://cafebiz.vn/ao-dai-tro-thanh-hien-tuong-thuong-mai-dien-tu-don-hang-tang-gan-17-lan-176260620122509394.chn",
+   "page": "bai-viet/tuyen-mau-live-ban-ao-dai-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ban-ao-dai-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live bán áo dài Tết: TikTok Shop bán 2,8 triệu đơn áo dài quý 4/2025 (50% cả năm, gấp 9 lần cùng kỳ), tháng 1/2026 đạt 2 triệu đơn kỷ lục; Shopee Live Tết 2026 gần 16 tỷ lượt xem, đơn tăng 61%; trên sàn 2 shop tuyển mẫu live áo dài, lương 50.000–200.000đ/giờ; nhu cầu Tết bắt đầu từ tháng 10."
+  },
+  {
+   "title": "Mẫu livestream mỹ phẩm: 37 mẫu, shop tuyển ra sao",
+   "cat": "Việc Làm",
+   "source": "BeautyMatter",
+   "date": "2026-11-22",
+   "url": "https://beautymatter.com/articles/tiktok-live-and-the-rise-of-a-new-role-in-beauty",
+   "page": "bai-viet/mau-livestream-my-pham.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-my-pham.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream mỹ phẩm: 37 mẫu, 32 shop trên sàn; livestream chiếm 70% doanh số mỹ phẩm trên Douyin (NIQ 31/03/2026); TikTok Shop Mỹ: sức khỏe & làm đẹp tăng 84%, vượt 4,4 tỷ USD; host Mỹ mới 30–40 USD/giờ, hàng đầu 5.000–10.000 USD/phiên + 5–10% hoa hồng; mẫu cần 5 kỹ năng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
