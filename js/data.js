@@ -18153,6 +18153,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Double 11/2026 khép lại với 17.764 tỷ NDT toàn mạng. Nhưng câu chuyện thật không nằm ở tổng tiền. Douyin công bố: phòng live phá 100 triệu NDT tăng 187%, riêng shop tự live tăng 200%; top 10 chỉ còn một nửa là KOL; 860.000 shop lần đầu live đã bán được hàng. Bài phân tích đầy đủ + 7 bài học cho shop Việt trước Black Friday 27/11 và 12.12."
   },
+  {
+   "title": "7,4 tỷ đồng từ 1 video 77 giây — cơ bida Way Cues và \"video đuôi dài\": 6 ngày GMV tăng gấp đôi",
+   "cat": "Hàng hoá",
+   "source": "ShopeeAnalytics",
+   "date": "2026-11-22",
+   "url": "https://vieclamlivestream.online/bai-viet/co-bida-way-cues-33-ty-dong-video-77-giay-vuot-kinh-mat-meo-ao-phao-hehi.html",
+   "page": "bai-viet/co-bida-way-cues-74-ty-dong-video-duoi-dai-6-ngay-gmv-tang-gap-doi.html",
+   "img": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/40ab99ae1a2a468489597c716b356d02~tplv-aphluv4xwc-origin-image.image?dr=15570&t=555f072d&ps=933b5bde&shp=5563f2fb&shcp=b3125ac7&idc=my2&from=1432613627&from_p=3004324551",
+   "pinned": false,
+   "takeaway": "Cơ bida Way Cues bán 4–7,4 tỷ đồng từ 1 video 77 giây đăng 16/11/2026: GMV tăng gấp đôi sau 6 ngày. Video đuôi dài là gì, shop Việt làm gì trước Black Friday 27/11?"
+  },
 ],
  "lots": [
    {
