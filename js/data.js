@@ -7,7 +7,7 @@
    19/11/2026 lots 11:21: +40 lo moi (lot-227..266: A10 VOZ/OTOFUN + B10 YouTube + C10 Cho Tot/web + D10 dong cua FB; nhom 1: 2, nhom 2: 1, nhom 3: 37); 25/40 co anh dai dien (thieu lot-227/231/236 VOZ chan tai 403 + lot-230 anh sai lo (anh em be, da loai) + lot-232 khong anh + lot-257..266 FB/IG khong co URL anh truc tiep); sua lot-239 ngay 15/11->16/11 (uploadDate -08:00 quy doi VN), lot-249 prov Binh Duong->TP. Ho Chi Minh (sap nhap 34 tinh). Tong 266 lo.
    20/11/2026 lots 11:21: +11 lo moi (lot-267..277: 7 YouTube g3 + 1 Facebook g3 + 1 Facebook g1 + 2 thu mua g2 Duc Duong Cao Bang/Son La, 25/10/2026); 9/11 co anh dai dien (thieu lot-274/275 Facebook TEXT_ONLY, khong co anh cong khai); CHUYEN 4 bai Dang hot 20/11 (cach-thanh-ly-hang-ton-kho-live-dau-gia-black-friday-2026, ebay-black-friday-2026-giam-toi-70-phan-tram-hang-refurbished, kohls-black-friday-2026-tuan-sale-22-28-thang-11, lowes-black-friday-2026-12-days-of-deals-tu-16-11) tu mang lots sang mang articles — deploy dang-hot 02:23 chen nham mang. Tong 277 lo (36/31/210), 517 bai.
    21/11/2026 lots 11:21: +13 lo moi (lot-278..290: 8 Duc Duong g2 Lao Cai/Dien Bien/Lai Chau/Lang Son/Nghe An/Phu Tho/Quang Tri/Tuyen Quang + 4 YouTube g3 + 1 Facebook g3 HAI IDOL); 12/13 co anh dai dien (thieu lot-290 Facebook reel, khong co URL anh cong khai); CHUYEN 4 bai Black Friday 21/11 (hang-ton-kho-gia-re-san-lo-thanh-ly-my, macys, costco, home-depot) tu mang lots sang mang articles — deploy dang-hot chen nham mang (lan 2, nhu 20/11). Tong 290 lo (36/39/215), 563 bai.   16/11/2026 group-work: +2 mau (th-260..th-261) + 3 shop (sh-290..sh-292); loai 3 mau trung (Tien Duy=th-245, Dau Thi Hien=th-246, IntelligentBlueberry9898=th-247); cap nhat sh-09 FANI (them Tro Live 15-25tr + dia diem Nha Live 475 Hoang Quoc Viet, bai moi 16/11); moi 0/80 — co spam link chua xac minh duoc da go (12 yeu cau xem xet 15/11 dang cho); nhom dot-2 #33-42: dung duoc 0, loai 10; 5 muc moi van du 21 muc, khong muc nao het han.
-   15/11/2026 new-objects: +50 du lieu that moi (cl-12..21, cm-12..21, em-12..21, lg-12..21, rt-13..22) — du dich 100 (20/muc); live truoc deploy: 112 lo / 280 xuong / 240 kiot / 236 mau / 287 shop.
+   22/11/2026 lots 11:21: +7 lo moi (lot-291..297: 1 Website g1 si ao thun nam Quang Ngai Hoang Hung + 1 Facebook g3 sap quan ao cho Dak Lak + 1 Facebook g3 sieu thi Lan Lan xa hang Nha Trang + 1 Facebook g1 xa ~3.000 mon Dong Thap + 3 YouTube g3 hang bai Nhat); 4/7 co anh dai dien (thieu lot-292/293/294 Facebook, khong co URL anh cong khai); CHUYEN 4 bai Dang hot 22/11 (nhap-hang-trung-quoc-truoc-tet, apple-black-friday, samsung-black-friday, nike-black-friday) tu mang lots sang mang articles — deploy dang-hot chen nham mang (lan 3, nhu 20-21/11). Tong 297 lo (38/39/220), 609 bai.   15/11/2026 new-objects: +50 du lieu that moi (cl-12..21, cm-12..21, em-12..21, lg-12..21, rt-13..22) — du dich 100 (20/muc); live truoc deploy: 112 lo / 280 xuong / 240 kiot / 236 mau / 287 shop.
    15/11/2026 group-work: +6 mau (th-254..th-259) + 17 shop (sh-273..sh-289); loai 2 mau trung (Do Thi Nhu=th-251, Quyt_qiuu=th-244) + 4 shop trung (Le Thanh Dinh=sh-267, Tuyen Pham=sh-263, Bui Thi Kim Ngan=sh-268, Nguyet Minh=sh-264); moi 0/80 — Facebook go binh luan vi spam (xem file an group-work-2026-11-15.md); 4 muc moi dat chuan (2 logistics + 2 cho thue kho) CHUA deploy, cho anh xac nhan dich 50 hay 100; nhom dot-2 #23-32: dung duoc 2 (#28 Thanh Li Do Sinh Vien, #32 Cho tot – Ha Nam), loai 8.
    14/11/2026 khoi phuc du lieu bi deploy lo 4ecba3e ghi de: 11 sua title/meta kiot + 11 mau + 20 shop batch A group-work (live base 62c4d018).
    v83 them lot-14 (Si Shoes 1996, giay si 99K-199K, 24/10/2026, nhom 1): 14 lo (9 nhom 1 + 3 nhom 2 + 2 nhom 3).
@@ -18083,23 +18083,6 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "La Vĩnh Hạo bán 385 tỷ đồng trong buổi livestream bán hàng đầu tiên (1/4/2020) để trả món nợ 2.100 tỷ đồng sau khi Hammer sụp đổ. Phân tích buổi live đầu, năm đầu của Giao Bạn Bè và hành trình trả nợ tới tháng 6/2022."
   },
-],
- "lots": [
-   {
-     "id": "lot-01",
-     "group": 1,
-     "title": "Kho sỉ quần áo mới lẫn lộn — Lê Ngọc Thúy",
-     "price": "6.500đ/cái",
-     "priceNum": 6500,
-     "qty": 8000,
-     "cat": "quan-ao",
-     "meta": "Số lượng: 8.000 món (bài đăng ghi còn ~5.000 món) · Kênh: Facebook · Giao qua Zalo",
-     "date": "02/11/2026",
-     "dateLabel": "Ngày đăng",
-     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
-     "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
-     "linkText": "Xem bài đăng gốc →"
-   },
   {
    "title": "Nhập hàng Trung Quốc trước Tết: đặt trước ngày nào?",
    "cat": "Đang hot",
@@ -18148,6 +18131,23 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Nike Black Friday 2026 (27–30/11/2026, giảm tới 60%): mã EARLYBF giảm thêm 25% đã chạy từ 19/11/2026, mã BFCM26 giảm thêm 60% hết 30/11/2026 — Cyber Monday 30/11–01/12/2026 giảm 30–60%."
   },
+],
+ "lots": [
+   {
+     "id": "lot-01",
+     "group": 1,
+     "title": "Kho sỉ quần áo mới lẫn lộn — Lê Ngọc Thúy",
+     "price": "6.500đ/cái",
+     "priceNum": 6500,
+     "qty": 8000,
+     "cat": "quan-ao",
+     "meta": "Số lượng: 8.000 món (bài đăng ghi còn ~5.000 món) · Kênh: Facebook · Giao qua Zalo",
+     "date": "02/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
+     "linkText": "Xem bài đăng gốc →"
+   },
    {
      "id": "lot-02",
      "group": 1,
@@ -22935,6 +22935,122 @@ window.V20_DATA = {
      "url": "https://www.facebook.com/reel/1119155230984869/",
      "linkText": "Xem bài đăng gốc →",
      "prov": "Toàn quốc / Live online"
+   },
+   {
+     "id": "lot-291",
+     "group": 1,
+     "title": "Sỉ áo thun nam Quảng Ngãi 100K–135K/áo, nhập thử từ 3 ri — Xưởng Sỉ Hoàng Hưng",
+     "price": "100.000đ–135.000đ",
+     "priceNum": 100000,
+     "qty": null,
+     "cat": "nam",
+     "meta": "Sỉ áo thun + polo nam 100K–135K/áo; nhập thử tối thiểu 3 ri (~12 áo), từ 500 áo có chính sách riêng; có VAT, COD ViettelPost; xưởng tại TP. Hồ Chí Minh, giao về Quảng Ngãi ~3 ngày · Kênh: Website — Xưởng Sỉ Hoàng Hưng",
+     "date": "10/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://xuongsihoanghung.com/?p=7741",
+     "linkText": "Xem trang gốc →",
+     "prov": "Quảng Ngãi",
+     "img": "images/lo/lot-291.jpg"
+   },
+   {
+     "id": "lot-292",
+     "group": 3,
+     "title": "07/11 sạp quần áo chợ Đắk Lắk: quần jean 130–160K, kaki 110K, áo 60K — Duyên Trần",
+     "price": "60.000đ–160.000đ",
+     "priceNum": 60000,
+     "qty": null,
+     "cat": "quan-ao",
+     "meta": "Sạp quần áo chợ: quần jean 130–160K, quần kaki 110K, áo 60K; shop tại Đắk Lắk, có ship tỉnh khác · Kênh: Facebook — Duyên Trần",
+     "date": "07/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.facebook.com/reel/1325035539702852/",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đắk Lắk"
+   },
+   {
+     "id": "lot-293",
+     "group": 3,
+     "title": "30/10 Siêu Thị Lan Lan xả hàng toàn bộ chi nhánh, dồn về Số 7 Thủy Xưởng, Nha Trang — 30 ngày",
+     "price": "Giá theo thỏa thuận",
+     "priceNum": null,
+     "qty": null,
+     "cat": "khac",
+     "meta": "Siêu thị Lan Lan xả hàng toàn bộ chi nhánh, dồn về 1 điểm bán Số 7 Thủy Xưởng, Nha Trang; xả thêm 30 ngày để chuyển đổi kinh doanh đón Tết 2027 · Kênh: Facebook — Siêu Thị Lan Lan",
+     "date": "30/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02wrjACL4mA6haX1k3dSjShbXS1JavYAibS1jL8yiYbkyyCXHVUZPVeCk2g8nrYyPRl&id=61586748935474",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Khánh Hòa"
+   },
+   {
+     "id": "lot-294",
+     "group": 1,
+     "title": "23/10 xả ~3.000 món quần áo lẫn lộn chưa phân loại, hàng gốc — Trần Dân An (Đồng Tháp)",
+     "price": "Giá theo thỏa thuận",
+     "priceNum": null,
+     "qty": 3000,
+     "cat": "quan-ao",
+     "meta": "Xả ~3.000 món quần áo lẫn lộn chưa phân loại, hàng gốc; cần xả gấp lô đầm/jumpsuit chiếm gần nửa kho · Kênh: Facebook — Trần Dân An",
+     "date": "23/10/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.facebook.com/an.trandan.5/posts/pfbid02HMunDXLvXu8rLra1rkaK5Qi5XrspjUN3WYWwBEEJ26gQubBYx6a3PCyht6HoKtu7l",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Đồng Tháp"
+   },
+   {
+     "id": "lot-295",
+     "group": 3,
+     "title": "21/11 hàng bãi Nhật mới & cũ, free ship — dọn hết khỏi kho — Dương Hàng Bãi Sg",
+     "price": "Giá theo thỏa thuận",
+     "priceNum": null,
+     "qty": null,
+     "cat": "khac",
+     "meta": "Hàng bãi Nhật (đàn guitar, loa, đồ gia dụng): xả cả cũ lẫn mới, free ship, dọn hết khỏi kho để nhập hàng mới · Kênh: YouTube — Dương Hàng Bãi Sg",
+     "date": "21/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=XgWaWE8lCt4",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Toàn quốc / Live online",
+     "img": "images/lo/lot-295.jpg"
+   },
+   {
+     "id": "lot-296",
+     "group": 3,
+     "title": "18/11 xả kho đồ gia dụng nội địa Nhật — Luân Japan",
+     "price": "Giá theo thỏa thuận",
+     "priceNum": null,
+     "qty": null,
+     "cat": "khac",
+     "meta": "Xả kho các mặt hàng đồ gia dụng nội địa Nhật · Kênh: YouTube — Luân Japan",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=-A49YQzduvk",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Toàn quốc / Live online",
+     "img": "images/lo/lot-296.jpg"
+   },
+   {
+     "id": "lot-297",
+     "group": 3,
+     "title": "18/11 thanh lý lô hàng dọn kho: bếp ga mini, chảo chống dính, máy massage — Hoàng Nam Gia dụng Nhật",
+     "price": "Giá theo thỏa thuận",
+     "priceNum": null,
+     "qty": null,
+     "cat": "khac",
+     "meta": "Thanh lý lô hàng dọn kho đón lô hàng mới: bếp ga mini, chảo chống dính, máy massage · Kênh: YouTube — Hoàng nam_Gia dụng Nhật Mỹ Đức",
+     "date": "18/11/2026",
+     "dateLabel": "Ngày đăng",
+     "label": "Chưa xác thực — không phải lô chính hãng của thương hiệu",
+     "url": "https://www.youtube.com/watch?v=n5TehtzmY4I",
+     "linkText": "Xem bài đăng gốc →",
+     "prov": "Toàn quốc / Live online",
+     "img": "images/lo/lot-297.jpg"
    }
  ],
  // v86: kiot thanh ly — cung dinh dang truong nhu lots de lotCardHTML dung
