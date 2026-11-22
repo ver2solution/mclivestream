@@ -70,6 +70,7 @@
    articles-doi-song-2026-11-21 adds 5 Đời Sống articles (21/11/2026, Saturday): 1 seasonal keyword "chuẩn bị Tết cho shop nhỏ" #8/10 (1,855 words, deep; NRF 15/10/2026 + Metric 29/10/2026) + 3 news ("thưởng Tết 2026" 1,339 words; "du lịch Mộc Châu tháng 12" 1,387 words; "đi bộ sau ăn 10 phút" 1,486 words) + 1 cafe "quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt" 1,352 words. Total 558 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-22 adds 4 Cong nghe articles (22/11/2026, Sunday): 1 seasonal keyword 'AI streamer Tet' #4/10 VONG 2 (goc moi: CA DEM TET — giu khung 0h-8h khi mau nghi; thi truong 77 ty USD 2026, chi chot 8,3% GMV; luat nhan AI — MarketingToChina 05/11/2026 + HotNews 12/11/2026 + Scienjoy 28/01/2026) + 3 news (TikTok Shop Brand LIVE Impact 14 ngay 02/11, Gemini Tasks mien phi 17/11, Shopee AI LiveStream 4 cong cu 11/02). SEO V2 (title suffix + link boxes). Total 587 articles (node) / 586 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-22 adds 4 Thi truong articles (22/11/2026, Sunday): 1 seasonal keyword 'Black Friday Viet Nam 2026' #9/10 (deep: Adobe 28/09/2026 — Black Friday $12,9 ty +9,2%, Cyber Monday $15,1 ty +6,2%, Cyber Week $47,5 ty +7,4%, season $275,1 ty +6,7%; VN: Shopee tu 25/11, TikTok Shop 24-27/11, giam toi da 50% theo ND 81/2018 sua boi ND 128/2024; Metric Q3/2026 150,4 nghin ty +45,16%) + 3 news (JD.com Q3 2026 17/11 — 309,6 ty NDT +3,5%, non-GAAP 8,3 ty NDT +43,7%, logistics 64,0 ty NDT +16,1%, CECONOMY 59,8% 1,335 ty EUR 12/11; Shopify Q3 2026 03/11 — GMV 119,1 ty USD +29,5%, revenue 3,74 ty USD +32%, Payments 81,4 ty USD 68% GMV, Shop Pay GMV +50%; Amazon Q3 2026 29/10 — 201,9 ty USD +12%, AWS 46,0 ty USD +39,3%, op income 28,1 ty USD +61%, margin 13,9% ky luc). SEO V2 (title suffix + link boxes). Total 583 articles (node) / 582 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15827,6 +15828,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Mẫu livestream mỹ phẩm: 37 mẫu, 32 shop trên sàn; livestream chiếm 70% doanh số mỹ phẩm trên Douyin (NIQ 31/03/2026); TikTok Shop Mỹ: sức khỏe & làm đẹp tăng 84%, vượt 4,4 tỷ USD; host Mỹ mới 30–40 USD/giờ, hàng đầu 5.000–10.000 USD/phiên + 5–10% hoa hồng; mẫu cần 5 kỹ năng."
+  },
+  {
+   "title": "Kế hoạch tài chính shop cuối năm: 6 bước chốt sổ",
+   "cat": "Dòng tiền",
+   "source": "vieclamlivestream.online (tổng hợp từ Adobe, NRF, Metric)",
+   "date": "2026-11-22",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/ke-hoach-tai-chinh-shop-cuoi-nam-6-buoc-chot-so.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ke-hoach-tai-chinh-shop-cuoi-nam-6-buoc-chot-so.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kế hoạch tài chính shop cuối năm: 6 bước chốt sổ tồn kho, tính giá hòa vốn theo phí sàn thật, khóa ngân sách quảng cáo trước 12.12, chia 3 túi tiền, lập lịch thu–chi tới Tết 06/02/2027 và chốt thuế 10% + hợp đồng mẫu live."
+  },
+  {
+   "title": "Bitcoin rơi về 55.130 USD, thấp nhất từ tháng 9/2024",
+   "cat": "Dòng tiền",
+   "source": "Bitcoinist (21/11/2026)",
+   "date": "2026-11-22",
+   "url": "https://bitcoinist.com/bitcoin-price-crashes-to-two-year-low-near-55000-analysts-say-a-bottom-could-be-close/",
+   "page": "bai-viet/bitcoin-roi-ve-55130-usd-thap-nhat-tu-thang-9-2024.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-roi-ve-55130-usd-thap-nhat-tu-thang-9-2024.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin rơi về 55.130 USD sáng 21/11/2026, thấp nhất từ tháng 9/2024 — thanh lý 2,4 tỷ USD trong 24 giờ; mốc 54.592 USD là hỗ trợ cuối, mất mốc này thì 50.000 USD sẽ bị thử thách."
+  },
+  {
+   "title": "Vàng SJC về 128,5 triệu, người mua lỗ 9,5 triệu/lượng",
+   "cat": "Dòng tiền",
+   "source": "Dân Việt (21/11/2026)",
+   "date": "2026-11-22",
+   "url": "https://danviet.vn/gia-vang-hom-nay-moi-nhat-21-11-tiep-da-giam-nguoi-mua-lo-95-trieu-dong-luong-d1476716.html",
+   "page": "bai-viet/vang-sjc-ve-1285-trieu-nguoi-mua-lo-95-trieu-luong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vang-sjc-ve-1285-trieu-nguoi-mua-lo-95-trieu-luong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng SJC về 128,5–133,5 triệu đồng/lượng trưa 21/11/2026, giảm 700.000 đồng cả 2 chiều; người mua lỗ 9,5 triệu đồng/lượng; chênh lệch mua–bán 5 triệu, SJC cao hơn thế giới hơn 22 triệu đồng/lượng."
+  },
+  {
+   "title": "Người Mỹ cắt ngân sách lễ gần 600 USD vì lạm phát",
+   "cat": "Dòng tiền",
+   "source": "BMO qua PR Newswire (19/11/2026)",
+   "date": "2026-11-22",
+   "url": "https://www.prnewswire.com/news-releases/americans-cut-holiday-budgets-by-nearly-600-but-shoppers-who-use-ai-and-social-media-spend-more-bmo-real-financial-progress-index-302944622.html",
+   "page": "bai-viet/nguoi-my-cat-ngan-sach-le-gan-600-usd-ai-mua-nhieu-hon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nguoi-my-cat-ngan-sach-le-gan-600-usd-ai-mua-nhieu-hon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Người Mỹ cắt ngân sách lễ gần 600 USD mùa lễ 2026, còn 2.198 USD, vì 67% lo lạm phát — nhưng người mua qua mạng xã hội chi 3.639 USD và người dùng AI chi 2.745 USD: tiền chảy về live, video ngắn và người ảnh hưởng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
