@@ -1,0 +1,47 @@
+name: Deploy gtimg fix 22/11 (anh bai Double 11, mobile-check)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-gtimg-fix-2211.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-gtimg-fix-2211:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip gtimg-fix 22/11 package
+        run: |
+          unzip -o mclivestream-gtimg-fix-2026-11-22-deploy.zip
+          echo "--- verify gtimg fix 22/11 (1 anh bai Double 11) ---"
+          test -f js/data.js || (echo "THIEU js/data.js"; exit 1)
+          test -f bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.html || (echo "THIEU bai-viet html"; exit 1)
+          test -f images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.jpg || (echo "THIEU anh jpg"; exit 1)
+          test -f images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi-hero-og.jpg || (echo "THIEU anh hero-og"; exit 1)
+          echo "sha256: $(sha256sum js/data.js)"
+          echo "sha256: $(sha256sum js/data.js)" | grep -q "9464602268308f8d8bdd253bff0648bae8a87888354a66cfcbf75da470a65141" || (echo "SHA256 KHONG KHOP"; exit 1)
+          node --check js/data.js || (echo "node --check FAIL"; exit 1)
+          test "$(grep -c 'gtimg' js/data.js)" = "0" || (echo "CON gtimg trong data.js"; exit 1)
+          test "$(grep -c 'gtimg' bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.html)" = "0" || (echo "CON gtimg trong bai-viet html"; exit 1)
+          grep -q "images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.jpg" js/data.js || (echo "THIEU img local trong data.js"; exit 1)
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          test "$(grep -c '"id": "sh-' js/data.js)" = "304" || (echo "SHOP COUNT != 304"; exit 1)
+          echo "OK: 0 gtimg, du 2 anh jpg, shop 304"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-gtimg-fix-2026-11-22-deploy.zip
+          git add js/data.js bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.html images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi.jpg images/bai-viet/douyin-double-11-2026-livestream-ban-hang-shop-tu-live-len-ngoi-hero-og.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy gtimg fix 22/11: anh bai Double 11 hotlink gtimg 403 -> anh local (mobile-check)"
+            git push
+          fi
