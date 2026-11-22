@@ -17726,6 +17726,50 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Kuaishou ra mắt Yoola ngày 17/11/2026: nền tảng AI biến câu chữ thành game tương tác, giải thưởng tới 350 triệu đồng cho 1 game. Vì sao Kuaishou lỗ 3.356 tỷ đồng quý 3/2026 vẫn đổ tiền vào AI? Shop Việt học được gì trước Black Friday 27/11 và 12.12?"
   },
+ {
+  "title": "Kịch bản livestream Tết: 120 phút, 3 món, chốt đơn",
+  "cat": "Livestream",
+  "source": "Adtek",
+  "date": "2026-11-22",
+  "url": "https://adtek.agency/livestream-ban-hang-hieu-qua/",
+  "page": "bai-viet/kich-ban-livestream-tet-120-phut-mon-moi-chu-luc-combo.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/kich-ban-livestream-tet-120-phut-mon-moi-chu-luc-combo.jpg",
+  "pinned": false,
+  "takeaway": "Kich ban livestream Tet chay theo khung 120 phut voi 3 vai san pham — mon moi gia soc, mon chu luc la gio qua va hang lam dep, combo tang gia tri don — va phai vuot GMV hoa von moi co lai: phien 160 trieu dong GMV chi lai khoang 9 trieu dong, huy hoan len 20% thi lai con 3,5 trieu (Adtek 30/10/2026). Tet 2027 som hon 11 ngay, tu 12.12 toi mung 1 chi con 56 ngay."
+ },
+ {
+  "title": "Cách tăng mắt xem livestream Tết: 5 đòn bẩy",
+  "cat": "Livestream",
+  "source": "Shopee",
+  "date": "2026-11-22",
+  "url": "https://cafebiz.vn/doanh-nghiep-doi-moi-tiep-thi-tet-nho-livestream-video-tren-san-thuong-mai-dien-tu-176260218081809032.chn",
+  "page": "bai-viet/cach-tang-mat-xem-livestream-tet-5-don-bay-shopee-16-ty-luot-xem.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/cach-tang-mat-xem-livestream-tet-5-don-bay-shopee-16-ty-luot-xem.jpg",
+  "pinned": false,
+  "takeaway": "Cach tang mat xem livestream Tet khong phai live dai hon — phien 293 gio chi lai 464 USD moi gio, trong khi phien 8 gio cua medicube lai 35.600 USD moi gio (TokConnect 19/11/2026). Shopee Live dat 16 ty luot xem dip Tet 2026, don tang 61% (Shopee 02/2026): 5 don bay la series deu, video ngan dan ve live, AI live, mon moi + minigame, don vao ngay sale."
+ },
+ {
+  "title": "Livestream TikTok bán hàng: Black Friday 2026",
+  "cat": "Livestream",
+  "source": "eMarspro",
+  "date": "2026-11-22",
+  "url": "https://emarspro.com/blog/tiktok-shop-black-friday-strategy/",
+  "page": "bai-viet/livestream-tiktok-ban-hang-black-friday-2026-gmv-max.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-tiktok-ban-hang-black-friday-2026-gmv-max.jpg",
+  "pinned": false,
+  "takeaway": "Livestream TikTok ban hang tuan Black Friday 2026 thang bang series, khong thang bang mot phien don le: chien dich chay 11–30/11, Black Friday 27/11, Cyber Monday 30/11; shop vao chien dich can SPS tu 3,5, AHR tren 150 va giao muon duoi 20%. LIVE GMV Max va GMV Max Pro toi uu tong ROI, phi Smart Promotion 4,5% trong chien dich lon (TikTok Shop 12/11/2026, eMarspro 19/11/2026)."
+ },
+ {
+  "title": "Livestream bán hàng hiệu quả: medicube 7,41 triệu USD",
+  "cat": "Livestream",
+  "source": "TokConnect",
+  "date": "2026-11-22",
+  "url": "https://tokconnect.com/trends/tiktok-shop/top-live/",
+  "page": "bai-viet/livestream-ban-hang-hieu-qua-tokconnect-medicube-741-trieu-usd.html",
+  "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-hieu-qua-tokconnect-medicube-741-trieu-usd.jpg",
+  "pinned": false,
+  "takeaway": "Livestream ban hang hieu qua nhat TikTok Shop My thang 11/2026 thuoc ve tai khoan cua chinh thuong hieu: medicube ban 7,41 trieu USD qua LIVE trong 30 ngay, 9/10 phien top do tai khoan thuong hieu chay (TokConnect 19/11/2026). Thuoc do hieu qua la doanh thu moi gio — phien 8 gio cua medicube dat 35.600 USD moi gio, phien 293 gio chi 464 USD. Douyin noi cung mot cau chuyen: phong live cua chinh merchant tang 200% trong Double 11 (13/11/2026)."
+ },
 ],
  "lots": [
    {
