@@ -1,0 +1,58 @@
+name: "Deploy dang-hot-2211 (4 bai Dang hot 22/11/2026)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dang-hot-2211.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dang-hot-2211:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "37b17b28546aceab4ffcf51c24b45afa" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "598" || (echo "BASE DOI: data.js khong con 598 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "625" || (echo "BASE DOI: sitemap khong con 625 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip dang-hot-2211 package
+        run: |
+          unzip -o mclivestream-dang-hot-2211-deploy.zip
+          echo "--- verify dang-hot-2211 (4 bai moi) ---"
+          for slug in nhap-hang-trung-quoc-truoc-tet-dat-truoc-ngay-nao-kip-ban apple-black-friday-2026-tang-the-qua-toi-300-usd-27-30-11 samsung-black-friday-2026-giam-toi-1300-usd-tv-1399-usd nike-black-friday-2026-giam-toi-60-phan-tram-ma-earlybf; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "--- verify lead 4 bai moi ---"
+          grep -q "Nhập hàng Trung Quốc trước Tết Nguyên đán 06/02/2027 có một mốc" bai-viet/nhap-hang-trung-quoc-truoc-tet-dat-truoc-ngay-nao-kip-ban.html || (echo "LEAD SAI bai nhap-hang-trung-quoc"; exit 1)
+          grep -q "Apple Black Friday 2026 không giảm giá trực tiếp mà tặng thẻ quà" bai-viet/apple-black-friday-2026-tang-the-qua-toi-300-usd-27-30-11.html || (echo "LEAD SAI bai apple"; exit 1)
+          grep -q "Samsung Black Friday 2026 đã chạy từ ngày 02/11/2026 trên Samsung.com" bai-viet/samsung-black-friday-2026-giam-toi-1300-usd-tv-1399-usd.html || (echo "LEAD SAI bai samsung"; exit 1)
+          grep -q "Nike Black Friday 2026 giảm tới 60% các mẫu chọn lọc từ 27/11/2026" bai-viet/nike-black-friday-2026-giam-toi-60-phan-tram-ma-earlybf.html || (echo "LEAD SAI bai nike"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "629" || (echo "SAI TONG sitemap, phai 629"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "602" || (echo "SAI TONG data.js, phai 602"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-dang-hot-2211-deploy.zip || rm -f mclivestream-dang-hot-2211-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-dang-hot-2026-11-22: 4 bai moi (SEO V2)"
+            git push
+          fi
