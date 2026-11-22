@@ -99,6 +99,7 @@
    articles-xu-huong-2026-11-18 adds 4 Xu hướng articles (18/11/2026, Wednesday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 (3.938 words, deep; batch written 17/11, deployed 18/11 after publish jam) + 3 news ("xu hướng tiêu dùng 2027" Euromonitor 2.812 words; "mua trước trả sau" BNPL 2.691 words; "mua sắm sớm dịp lễ 2026" Deloitte 2.720 words). Total 390 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-cong-nghe-2026-11-18 adds 4 Cong nghe articles (18/11/2026, Wednesday): 1 seasonal keyword 'xac thuc VNeID ban hang online' #10/10 (deep, Nghi dinh 320/2026, han 31/12/2026) + 3 news (TikTok Shop Product Diagnosis 12/11, TikTok Shop Seller AI BFCM 04/11, nhan AI Shopee Video 12.12). SEO V2 (title suffix + link boxes). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-21 adds 4 Xu hướng articles (21/11/2026, Saturday): 1 seasonal keyword "xu hướng bán hàng Giáng sinh" #8/10 (deep, 2.444 words; Adobe 28/09/2026: 275,1 ty USD +6,7%, Cyber Monday 15,1 ty, Black Friday 12,9 ty, mobile 57,4%, AI +130%) + 3 news ("AI mua hàng" ChatGPT Wallet 13/11/2026, FinTech Futures 17/11/2026, 2.324 words; "quà Giáng sinh đã qua sử dụng" ThredUp 26/10/2026, 62%, FashionUnited 28/10/2026, 2.171 words; "KOC dẫn khách mua quà lễ" Syracuse 16/11/2026, 77%, 2.251 words). Zalo rotation 21/11 is topic #4 (Phan tich) — no rotation article in this batch. Total 548 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
+   articles-xu-huong-2026-11-22 adds 4 Xu hướng articles (22/11/2026, Sunday): 1 seasonal keyword "xu hướng thị trường Tết Đinh Mùi" #9/10 (deep, 2.817 words; Coc Coc 09/2026: 51% chi nhieu hon, 61% nhom 18-29, qua Brands Vietnam 16/11/2026) + 3 news ("Gen Z mua sắm lễ 2026" Deloitte 15/10/2026, 50%, 2.063 words; "livestream mua sắm lễ 2026" for.you.com 27/10/2026, LIVE x2, 2.005 words; "ngân sách mua sắm lễ 2026" BMO 19/11/2026, 2.198 USD, 2.304 words). Zalo rotation 22/11 is topic #5 (Dong tien) — no rotation article in this batch. Total 598 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -17961,7 +17962,55 @@ window.V20_DATA = {
 {"title":"Bánh bao Slime Dragon Quest: 256 yên, 1/10 gặp Metal","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-22","url":"https://soranews24.com/2026/11/20/edible-dragon-quest-slimes-coming-to-japanese-convenience-stores-and-metal-slimes-too-video/","page": "bai-viet/banh-bao-slime-dragon-quest-familymart-256-yen.html","img":"https://vieclamlivestream.online/images/bai-viet/banh-bao-slime-dragon-quest-familymart-256-yen.jpg","pinned":false,"takeaway":"Bánh bao Slime Dragon Quest: bánh bao hấp hình Slime bán tại FamilyMart từ 24/11/2026, nhân gà teriyaki giá 256 yên; Metal Slime hiếm 1/10; tem Fami Pay đổi lính game, 4–6 tem bốc thăm gấu bông; xổ số 790 yên từ 28/11/2026 (SoraNews24, 20/11/2026)."},
 {"title":"Đèn rèm LED TikTok Shop Mỹ: 21.000 chiếc/30 ngày","cat":"Hàng hoá","source":"TokConnect","date":"2026-11-22","url":"https://tokconnect.com/trends/tiktok-shop/breakout-products/","page": "bai-viet/den-rem-led-tiktok-shop-my-21-nghin-chiec-30-ngay.html","img":"https://vieclamlivestream.online/images/bai-viet/den-rem-led-tiktok-shop-my-21-nghin-chiec-30-ngay.jpg","pinned":false,"takeaway":"Đèn rèm LED TikTok Shop: bộ đèn rèm 300 bóng bán ước tính 21.000 chiếc trong 30 ngày tới 17/11/2026, chỉ 24 đánh giá; lịch bánh bao Squishy 19.000 chiếc, đèn tuyết 17.000 chiếc với 2 đánh giá (TokConnect, 19/11/2026; số liệu ước tính)."},
 {"title":"Lều xông hơi tại nhà Nhật Bản: 17.780 yên, đầu thò ra","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-22","url":"https://soranews24.com/2026/10/26/is-this-crazy-looking-home-sauna-just-what-our-busy-daddy-reporter-needs-in-his-life/","page": "bai-viet/leu-xong-hoi-tai-nha-nhat-ban-17780-yen.html","img":"https://vieclamlivestream.online/images/bai-viet/leu-xong-hoi-tai-nha-nhat-ban-17780-yen.jpg","pinned":false,"takeaway":"Lều xông hơi tại nhà Nhật Bản: bộ kit 17.780 yên, lều vải, ghế gấp, máy tạo hơi như nồi cơm; chờ 20 phút, đầu thò ra ngoài nên xông lâu không ngột ngạt; hộp hơi rất nóng, phải lau khô lều sau dùng (SoraNews24, 26/10/2026)."},
-{"title":"Đồ gia dụng bán chạy Tết: 7.966 tỷ đồng quý III/2026","cat":"Hàng hoá","source":"Stockbiz","date":"2026-11-22","url":"https://stockbiz.vn/en/news/e-commerce-sustains-strong-growth-with-sales-up-more-than-44/42534928","page": "bai-viet/do-gia-dung-ban-chay-tet-7966-ty-dong-quy-3-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/do-gia-dung-ban-chay-tet-7966-ty-dong-quy-3-2026.jpg","pinned":false,"takeaway":"Đồ gia dụng bán chạy Tết: quý III/2026 đạt 7.966,7 tỷ đồng, tăng 51,4% nhưng số lượng chỉ tăng 2,6%; bếp và gia dụng nhỏ chiếm 65,2%; LG +158,2%, Sunhouse +128,0%, Panasonic +117,9%, Casper +117,1%; Shopee chiếm 61,8% (Metric, qua Stockbiz 29/10/2026 và Maisa World 18/11/2026)."}
+{"title":"Đồ gia dụng bán chạy Tết: 7.966 tỷ đồng quý III/2026","cat":"Hàng hoá","source":"Stockbiz","date":"2026-11-22","url":"https://stockbiz.vn/en/news/e-commerce-sustains-strong-growth-with-sales-up-more-than-44/42534928","page": "bai-viet/do-gia-dung-ban-chay-tet-7966-ty-dong-quy-3-2026.html","img":"https://vieclamlivestream.online/images/bai-viet/do-gia-dung-ban-chay-tet-7966-ty-dong-quy-3-2026.jpg","pinned":false,"takeaway":"Đồ gia dụng bán chạy Tết: quý III/2026 đạt 7.966,7 tỷ đồng, tăng 51,4% nhưng số lượng chỉ tăng 2,6%; bếp và gia dụng nhỏ chiếm 65,2%; LG +158,2%, Sunhouse +128,0%, Panasonic +117,9%, Casper +117,1%; Shopee chiếm 61,8% (Metric, qua Stockbiz 29/10/2026 và Maisa World 18/11/2026)."},
+  {
+   "title": "Xu hướng thị trường Tết Đinh Mùi: 51% chi nhiều hơn",
+   "cat": "Xu hướng",
+   "source": "Brands Vietnam",
+   "date": "2026-11-22",
+   "url": "https://www.brandsvietnam.com/congdong/topic/toan-canh-thi-truong-tet-2027-phan-tich-xu-huong-chi-tieu-va-hanh-vi-mua-sam-cua-nguoi-viet",
+   "page": "bai-viet/xu-huong-thi-truong-tet-dinh-mui-51-phan-tram-chi-nhieu-hon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-thi-truong-tet-dinh-mui-51-phan-tram-chi-nhieu-hon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong thi truong Tet Dinh Mui 2027: 51% nguoi Viet du kien chi nhieu hon Tet 2026; nhom 18-29 tuoi tang manh nhat 61%; 46% chua len ke hoach; thuc pham/banh mut/gio qua dan dau 52% (Coc Coc 09/2026, qua Brands Vietnam 16/11/2026)."
+  },
+  {
+   "title": "Gen Z mua sắm lễ 2026: lần đầu chiếm một nửa chi tiêu",
+   "cat": "Xu hướng",
+   "source": "Retail TouchPoints",
+   "date": "2026-11-22",
+   "url": "https://www.retailtouchpoints.com/news/deloitte-holiday-spending-to-rise-4-as-gen-z-and-millennials-drive-gains/621781/",
+   "page": "bai-viet/gen-z-mua-sam-le-2026-lan-dau-chiem-mot-nua-chi-tieu.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gen-z-mua-sam-le-2026-lan-dau-chiem-mot-nua-chi-tieu.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Gen Z mua sam le 2026: Gen Z va millennials lan dau chiem 50% chi tieu le; chi trung binh 1.654 USD (+4%); 29% Gen Z mua phan lon qua le tren TikTok Shop, tang 61% (Deloitte 15/10/2026; Invoice Home 10/09/2026)."
+  },
+  {
+   "title": "Livestream mua sắm lễ 2026: TikTok LIVE tăng gấp đôi",
+   "cat": "Xu hướng",
+   "source": "for.you.com",
+   "date": "2026-11-22",
+   "url": "https://for.you.com/posts/social-commerce-splits-as-tiktok-shop-nears-112b-in-2026-db780751",
+   "page": "bai-viet/livestream-mua-sam-le-2026-tiktok-live-tang-gap-doi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-mua-sam-le-2026-tiktok-live-tang-gap-doi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream mua sam le 2026: TikTok Shop GMV toan cau du bao 112 ty USD, gan gap doi 64,3 ty USD nam 2025; LIVE Shopping My tang hon gap doi H1 2026; phien Fenty 12 gio hut hon 1 trieu nguoi xem (for.you.com 27/10/2026)."
+  },
+  {
+   "title": "Ngân sách mua sắm lễ 2026: người Mỹ cắt gần 600 USD",
+   "cat": "Xu hướng",
+   "source": "BMO",
+   "date": "2026-11-22",
+   "url": "https://www.thebesttimes.com/financial/americans-cut-holiday-budgets-by-nearly-600-but-shoppers-who-use-ai-and-social-media/article_fbb79167-fc52-5e43-80cd-1e92be5774bd.html",
+   "page": "bai-viet/ngan-sach-mua-sam-le-2026-nguoi-my-cat-gan-600-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ngan-sach-mua-sam-le-2026-nguoi-my-cat-gan-600-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ngan sach mua sam le 2026: nguoi My du kien chi 2.198 USD, giam gan 600 USD so voi 2.755 USD nam 2025; 73% mua it qua hon; nhung nguoi dung AI chi 2.745 USD, mua qua mang xa hoi chi 3.639 USD (BMO 19/11/2026)."
+  }
 ],
  "lots": [
    {
