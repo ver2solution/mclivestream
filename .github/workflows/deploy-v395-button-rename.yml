@@ -1,0 +1,37 @@
+name: Deploy v395-button-rename
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v395-button-rename.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v395-button-rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v395 package
+        run: |
+          unzip -o mclivestream-v395-button-rename-deploy.zip
+          echo "--- verify v395 (1 file) ---"
+          test -f danh-sach-shop.html || (echo "THIEU danh-sach-shop.html"; exit 1)
+          grep -q 'Áp dụng lọc</button>' danh-sach-shop.html || (echo "THIEU nut Ap dung loc"; exit 1)
+          if grep -q 'Áp dụng lọc shop' danh-sach-shop.html; then echo "CON chu Ap dung loc shop"; exit 1; fi
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f mclivestream-v395-button-rename-deploy.zip || rm -f mclivestream-v395-button-rename-deploy.zip
+          git add danh-sach-shop.html
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v395: doi nut 'Ap dung loc shop' -> 'Ap dung loc' (danh-sach-shop.html, 1 dong)"
+            git push
+          fi
