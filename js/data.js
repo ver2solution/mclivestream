@@ -18164,6 +18164,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Cơ bida Way Cues bán 4–7,4 tỷ đồng từ 1 video 77 giây đăng 16/11/2026: GMV tăng gấp đôi sau 6 ngày. Video đuôi dài là gì, shop Việt làm gì trước Black Friday 27/11?"
   },
+  {
+   "title": "609 tỷ đồng trong 5 giờ, rồi tụt còn 75 tỷ — Hoa Thiếu và cái giá của hào quang minh tinh trong livestream",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-22",
+   "url": "https://www.36kr.com/p/1070734969383042",
+   "page": "bai-viet/hoa-thieu-609-ty-dong-5-gio-roi-tut-con-75-ty-gia-cua-hao-quang-minh-tinh.html",
+   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Hoa Thiếu bán 609 tỷ đồng trong 5 giờ live đầu trên Kuaishou, một năm sau chỉ còn 75 tỷ trên Douyin. Câu chuyện lên xuống của MC 'cái lưỡi tốt nhất Trung Quốc' phơi bày cái giá của hào quang minh tinh trong livestream."
+  },
 ],
  "lots": [
    {
