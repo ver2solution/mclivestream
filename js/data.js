@@ -70,6 +70,7 @@
    articles-doi-song-2026-11-21 adds 5 Đời Sống articles (21/11/2026, Saturday): 1 seasonal keyword "chuẩn bị Tết cho shop nhỏ" #8/10 (1,855 words, deep; NRF 15/10/2026 + Metric 29/10/2026) + 3 news ("thưởng Tết 2026" 1,339 words; "du lịch Mộc Châu tháng 12" 1,387 words; "đi bộ sau ăn 10 phút" 1,486 words) + 1 cafe "quán cafe check-in đẹp Hoàng Hôn Chiều Đà Lạt" 1,352 words. Total 558 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-thi-truong-2026-11-22 adds 4 Thi truong articles (22/11/2026, Sunday): 1 seasonal keyword 'Black Friday Viet Nam 2026' #9/10 (deep: Adobe 28/09/2026 — Black Friday $12,9 ty +9,2%, Cyber Monday $15,1 ty +6,2%, Cyber Week $47,5 ty +7,4%, season $275,1 ty +6,7%; VN: Shopee tu 25/11, TikTok Shop 24-27/11, giam toi da 50% theo ND 81/2018 sua boi ND 128/2024; Metric Q3/2026 150,4 nghin ty +45,16%) + 3 news (JD.com Q3 2026 17/11 — 309,6 ty NDT +3,5%, non-GAAP 8,3 ty NDT +43,7%, logistics 64,0 ty NDT +16,1%, CECONOMY 59,8% 1,335 ty EUR 12/11; Shopify Q3 2026 03/11 — GMV 119,1 ty USD +29,5%, revenue 3,74 ty USD +32%, Payments 81,4 ty USD 68% GMV, Shop Pay GMV +50%; Amazon Q3 2026 29/10 — 201,9 ty USD +12%, AWS 46,0 ty USD +39,3%, op income 28,1 ty USD +61%, margin 13,9% ky luc). SEO V2 (title suffix + link boxes). Total 583 articles (node) / 582 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-21 adds 4 Cong nghe articles (21/11/2026, Saturday): 1 seasonal keyword 'cach lam video AI sale cuoi nam' #3/10 VONG 2 (goc moi: BANG GIA + DEAL BLACK FRIDAY 2026 cua 10 cong cu video AI + quy trinh 3 giai doan Tease/Convert/Last Chance — movoa.ai 26/10/2026 + Vmake Labs 10/11/2026) + 3 news (YouTube Studio goi y san pham affiliate 06/11, Amazon Alexa for Shopping 12/11, Meta Product Browsing tu 28/10). SEO V2 (title suffix + link boxes). Total 537 articles (node) / 536 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-21 adds 4 Thi truong articles (21/11/2026, Saturday): 1 seasonal keyword 'thi truong qua Tet 2026' #8/10 (deep: Metric via Brands Vietnam 12/01/2026 — 73,7 nghìn tỷ đồng dịp Tết Bính Ngọ 2026 +51%, gift sets Shopee dịp Tết 2025: 40,2 tỷ đồng +21% vs Tết 2024, ~126k products + ao dai Tet 2025: 296 tỷ +39%, my pham Tet 2025: 11.151,5 tỷ +42%; Deloitte 15/10/2026 + NRF Oct 2026) + 3 news (PDD Q3 2026 19/11 — 108,3 tỷ NDT +0,1% vs 115,97 tỷ NDT forecast, Temu transaction -12%, MAU Sep 2026 -17,8% iOS / -11,2% Android; Tencent Q3 2026 18/11 — 207,3 tỷ NDT +8%, WeChat 1,449 tỷ, ads +19%, cloud +35%, capex 81,4 tỷ NDT +527%; Mercado Libre Q3 2026 04/11 — $10,75 tỷ +45%, GMV $23 tỷ +33% FX-neutral, TPV $109 tỷ +51%). SEO V2 (title suffix + link boxes). Total 541 articles (node) / 540 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-21 adds 4 Dong tien articles (21/11/2026, Saturday): 1 seasonal keyword 'doanh thu TikTok Shop thang 12' #9/10 (deep, NEW angle: GMV My 9,0 -> 15,1 -> 23,4 ty USD + lich sale thang 12 + 5 viec shop nho lam ngay truoc 12.12; added LAST) + 3 news 20/11 (vang cham 3.514 USD thap nhat tu 04/09/2025, tuan toi te nhat 8 thang + Bitcoin thung 60.000 USD, lan dau tu dau thang 7, IBIT rut ky luc 541,1 trieu USD + lam phat ky vong My roi ve 3,7%, thap nhat tu thang 2/2026, tam ly len 51,5). SEO V2 (title suffix + link boxes). Total 545 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17818,6 +17819,46 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Kuaishou quý III/2026 (công bố 19/11/2026): doanh thu 31,6 tỷ NDT (−11%), live streaming 7,8 tỷ NDT (−19%), GMV TMĐT 333 tỷ NDT (−13%), lỗ 959 triệu NDT (từ lãi 4,5 tỷ NDT); DAU 417,3 triệu; R&D +42% cho AI Kling."
   },
+ {
+   "slug": "jd-com-quy-3-2026-doanh-thu-309-ty-ndt-lai-tang-44-phan-tram",
+   "title": "JD.com quý 3/2026: doanh thu 309,6 tỷ NDT, lãi tăng 44%",
+   "cat": "Thị trường",
+   "date": "2026-11-22",
+   "desc": "Doanh thu quý 3/2026 của JD.com tăng 3,5% lên 309,6 tỷ NDT, lợi nhuận phi GAAP tăng 43,7% nhờ bách hóa và logistics.",
+   "page": "bai-viet/jd-com-quy-3-2026-doanh-thu-309-ty-ndt-lai-tang-44-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/jd-com-quy-3-2026-doanh-thu-309-ty-ndt-lai-tang-44-phan-tram.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "shopify-quy-3-2026-gmv-119-ty-usd-doanh-thu-tang-32-phan-tram",
+   "title": "Shopify quý 3/2026: GMV 119 tỷ USD, doanh thu tăng 32%",
+   "cat": "Thị trường",
+   "date": "2026-11-22",
+   "desc": "GMV quý 3/2026 của Shopify tăng 29,5% lên 119,1 tỷ USD, doanh thu tăng 32% lên 3,74 tỷ USD, thanh toán chiếm 68% GMV.",
+   "page": "bai-viet/shopify-quy-3-2026-gmv-119-ty-usd-doanh-thu-tang-32-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopify-quy-3-2026-gmv-119-ty-usd-doanh-thu-tang-32-phan-tram.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "amazon-quy-3-2026-aws-tang-39-phan-tram-loi-nhuan-ky-luc",
+   "title": "Amazon quý 3/2026: AWS tăng 39%, lợi nhuận kỷ lục",
+   "cat": "Thị trường",
+   "date": "2026-11-22",
+   "desc": "Doanh thu quý 3/2026 của Amazon tăng 12% lên 201,9 tỷ USD, AWS tăng 39,3% lên 46 tỷ USD, biên lãi kỷ lục 13,9%.",
+   "page": "bai-viet/amazon-quy-3-2026-aws-tang-39-phan-tram-loi-nhuan-ky-luc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/amazon-quy-3-2026-aws-tang-39-phan-tram-loi-nhuan-ky-luc.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "black-friday-viet-nam-2026-shop-nho-5-ngay-vang",
+   "title": "Black Friday Việt Nam 2026: shop nhỏ làm gì 5 ngày vàng",
+   "cat": "Thị trường",
+   "date": "2026-11-22",
+   "desc": "Black Friday Việt Nam 2026 rơi vào thứ Sáu 27/11: Adobe dự báo Mỹ chi 12,9 tỷ USD online trong ngày; shop nhỏ cần chuẩn bị gì cho 5 ngày vàng?",
+   "page": "bai-viet/black-friday-viet-nam-2026-shop-nho-5-ngay-vang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-viet-nam-2026-shop-nho-5-ngay-vang.jpg",
+   "pinned": false
+  }
 ],
  "lots": [
    {
