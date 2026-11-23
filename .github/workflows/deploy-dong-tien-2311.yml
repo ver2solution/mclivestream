@@ -1,0 +1,69 @@
+name: "Deploy articles-dong-tien-2026-11-23 (4 bai)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dong-tien-2311.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dong-tien-2311:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "632" || (echo "BASE DOI: data.js khong con 632 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "657" || (echo "BASE DOI: sitemap khong con 657 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip dong-tien-2311 package
+        run: |
+          unzip -o mclivestream-dong-tien-2311-deploy.zip
+          echo "--- verify dong-tien-2311 (4 bai moi) ---"
+            test -f "bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.html" || (echo "THIEU bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.html"; exit 1)
+            test -f "images/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.jpg" || (echo "THIEU images/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.jpg"; exit 1)
+            test -f "images/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet-og.jpg" || (echo "THIEU images/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet-og.jpg"; exit 1)
+            grep -q "bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.html" js/data.js || (echo "THIEU doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.html</loc>" sitemap.xml || (echo "THIEU doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet trong sitemap"; exit 1)
+            test -f "bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.html" || (echo "THIEU bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.html"; exit 1)
+            test -f "images/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.jpg" || (echo "THIEU images/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.jpg"; exit 1)
+            test -f "images/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd-og.jpg" || (echo "THIEU images/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd-og.jpg"; exit 1)
+            grep -q "bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.html" js/data.js || (echo "THIEU bitcoin-hoi-len-61000-usd-sau-day-55130-usd trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.html</loc>" sitemap.xml || (echo "THIEU bitcoin-hoi-len-61000-usd-sau-day-55130-usd trong sitemap"; exit 1)
+            test -f "bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.html" || (echo "THIEU bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.html"; exit 1)
+            test -f "images/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.jpg" || (echo "THIEU images/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.jpg"; exit 1)
+            test -f "images/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12-og.jpg" || (echo "THIEU images/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12-og.jpg"; exit 1)
+            grep -q "bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.html" js/data.js || (echo "THIEU pce-my-tang-38-phan-tram-fed-hop-09-12 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.html</loc>" sitemap.xml || (echo "THIEU pce-my-tang-38-phan-tram-fed-hop-09-12 trong sitemap"; exit 1)
+            test -f "bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.html" || (echo "THIEU bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.html"; exit 1)
+            test -f "images/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.jpg" || (echo "THIEU images/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.jpg"; exit 1)
+            test -f "images/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen-og.jpg" || (echo "THIEU images/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen-og.jpg"; exit 1)
+            grep -q "bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.html" js/data.js || (echo "THIEU gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.html</loc>" sitemap.xml || (echo "THIEU gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "661" || (echo "SAI TONG sitemap, phai 661"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "636" || (echo "SAI TONG data.js, phai 636 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Guard node-parse (bai hoc v370)
+        run: |
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==637) { console.log('SAI: articles.length phai 637'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet','bitcoin-hoi-len-61000-usd-sau-day-55130-usd','pce-my-tang-38-phan-tram-fed-hop-09-12','gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-dong-tien-2311-deploy.zip || rm -f mclivestream-dong-tien-2311-deploy.zip
+          git rm -q .github/workflows/deploy-dong-tien-2311.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-dong-tien-2026-11-23: 4 bai (doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet bitcoin-hoi-len-61000-usd-sau-day-55130-usd pce-my-tang-38-phan-tram-fed-hop-09-12 gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen)"
+            git push
+          fi
