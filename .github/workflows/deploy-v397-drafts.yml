@@ -1,0 +1,38 @@
+name: Deploy v397-drafts (article drafts)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v397-drafts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v397-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v397-drafts package
+        run: |
+          unzip -o mclivestream-v397-drafts-deploy.zip
+          echo "--- verify v397-drafts (1 bai) ---"
+          test -f bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html || (echo "THIEU bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html"; exit 1)
+          grep -q "bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html" js/data.js || (echo "THIEU winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html</loc>" sitemap.xml || (echo "THIEU winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v397-drafts-deploy.zip
+          git add bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v397-drafts: 1 bai viet tu ban thao (Muse Zalo/admin) — winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu"
+            git push
+          fi
