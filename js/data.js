@@ -71,6 +71,7 @@
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-22 adds 4 Cong nghe articles (22/11/2026, Sunday): 1 seasonal keyword 'AI streamer Tet' #4/10 VONG 2 (goc moi: CA DEM TET — giu khung 0h-8h khi mau nghi; thi truong 77 ty USD 2026, chi chot 8,3% GMV; luat nhan AI — MarketingToChina 05/11/2026 + HotNews 12/11/2026 + Scienjoy 28/01/2026) + 3 news (TikTok Shop Brand LIVE Impact 14 ngay 02/11, Gemini Tasks mien phi 17/11, Shopee AI LiveStream 4 cong cu 11/02). SEO V2 (title suffix + link boxes). Total 587 articles (node) / 586 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-22 adds 4 Thi truong articles (22/11/2026, Sunday): 1 seasonal keyword 'Black Friday Viet Nam 2026' #9/10 (deep: Adobe 28/09/2026 — Black Friday $12,9 ty +9,2%, Cyber Monday $15,1 ty +6,2%, Cyber Week $47,5 ty +7,4%, season $275,1 ty +6,7%; VN: Shopee tu 25/11, TikTok Shop 24-27/11, giam toi da 50% theo ND 81/2018 sua boi ND 128/2024; Metric Q3/2026 150,4 nghin ty +45,16%) + 3 news (JD.com Q3 2026 17/11 — 309,6 ty NDT +3,5%, non-GAAP 8,3 ty NDT +43,7%, logistics 64,0 ty NDT +16,1%, CECONOMY 59,8% 1,335 ty EUR 12/11; Shopify Q3 2026 03/11 — GMV 119,1 ty USD +29,5%, revenue 3,74 ty USD +32%, Payments 81,4 ty USD 68% GMV, Shop Pay GMV +50%; Amazon Q3 2026 29/10 — 201,9 ty USD +12%, AWS 46,0 ty USD +39,3%, op income 28,1 ty USD +61%, margin 13,9% ky luc). SEO V2 (title suffix + link boxes). Total 583 articles (node) / 582 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15879,6 +15880,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Người Mỹ cắt ngân sách lễ gần 600 USD mùa lễ 2026, còn 2.198 USD, vì 67% lo lạm phát — nhưng người mua qua mạng xã hội chi 3.639 USD và người dùng AI chi 2.745 USD: tiền chảy về live, video ngắn và người ảnh hưởng."
+  },
+  {
+   "title": "Hồ sơ mẫu livestream mới 22/11: 0 mẫu, 0 shop mới",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-23",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/thong-ke-ho-so-moi-22-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-22-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Hồ sơ mẫu livestream mới ngày 22/11/2026: 0 mẫu + 0 shop mới (checkpoint selfie Facebook từ 08:53 chặn lượt thu thập 10:21; nick về hẳn 22:06 tối 22/11); sh-307 ThuKa Villa (Lai Châu) vẫn chờ lên sàn; tổng live 238 mẫu, 304 shop, 613 bài."
+  },
+  {
+   "title": "Mẫu livestream làm xuyên Tết: lương 400% theo luật",
+   "cat": "Việc Làm",
+   "source": "Thư viện Pháp luật",
+   "date": "2026-11-23",
+   "url": "https://thuvienphapluat.vn/phap-luat/ho-tro-phap-luat/cong-van-12421bnvctlbhxh-ve-bao-cao-tinh-hinh-tien-luong-va-thuong-tet-2027-trong-doanh-nghiep-co-n-299900.html",
+   "page": "bai-viet/mau-livestream-lam-xuyen-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-lam-xuyen-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream làm xuyên Tết: Tết 2027 nghỉ 04–10/02/2027 (7 ngày, mùng 1 thứ Bảy 06/02/2027); lương ngày lễ ít nhất 400% ban ngày theo Điều 98 Bộ luật Lao động 2019; 4 shop trên sàn có ca đêm (cao nhất 120.000đ/giờ ca 2:00–7:00); JD chi 1,3 tỷ NDT thưởng Tết cho nhân viên tuyến đầu."
+  },
+  {
+   "title": "Thị trường livestream quý 3/2026: 7 sàn, việc làm ra sao",
+   "cat": "Việc Làm",
+   "source": "Metric",
+   "date": "2026-11-23",
+   "url": "https://homepage-metric.muadee.vn/resource/blog/metric-bao-cao-toan-canh-thi-truong-san-ban-le-truc-tuyen-quy-iii-2026-du-bao-quy-iv-2026",
+   "page": "bai-viet/thi-truong-livestream-quy-3-2026-7-san-bao-cao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-quy-3-2026-7-san-bao-cao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường livestream quý 3/2026: 7 sàn báo cáo (29/10–19/11/2026) — Shopify GMV 119,1 tỷ USD +29,5%, Amazon 201,9 tỷ USD +12%, JD 309,6 tỷ NDT +3,5%, PDD 108,3 tỷ NDT +0,1%, Tencent 207,3 tỷ NDT +8%, Kuaishou live 7,8 tỷ NDT -19%, Mercado Libre 10,75 tỷ USD +45%; VN: Metric Q3 150,4 nghìn tỷ đồng +45,16%."
+  },
+  {
+   "title": "Sàn việc làm livestream: tìm mẫu live xuyên Tết ở đâu",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-23",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/vieclamlivestream-online-tim-mau-live-xuyen-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vieclamlivestream-online-tim-mau-live-xuyen-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sàn việc làm livestream vieclamlivestream.online: 238 mẫu, 304 shop, 613 bài, 31 tỉnh/thành + live online (23/11/2026); idol tìm việc, shop tìm idol, liên hệ trực tiếp không qua trung gian, không phí giới thiệu; mùa tuyển gấp: 12.12 còn 19 ngày, Tết 2027 còn 75 ngày."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
