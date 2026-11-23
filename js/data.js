@@ -18667,6 +18667,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Giảm 50–80% từ giữa tháng 11 nhưng nhiều cửa hàng Hà Nội vẫn thưa khách; TPHCM tối 20/11 đông nghịt nhưng ưu đãi thực chỉ khoảng 30% và hết size. Vì sao khách \"xem nhiều, chốt đơn ít\" và shop livestream cần làm gì trước Black Friday 27/11/2026?"
   },
+  {
+   "title": "609 tỷ đồng trong 5 giờ live đầu tiên — La Vĩnh Hạo, Hoa Thiếu, Lưu Đào, Uông Hàm: ai thắng cuộc đua live đầu 2020?",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-23",
+   "url": "https://www.36kr.com/p/1070734969383042",
+   "page": "bai-viet/la-vinh-hao-hoa-thieu-luu-dao-uong-ham-ai-thang-cuoc-dua-live-dau-2020.html",
+   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "Hoa Thiếu 609 tỷ, Uông Hàm 546 tỷ, Lưu Đào 518 tỷ, La Vĩnh Hạo 385 tỷ đồng trong buổi live đầu tiên năm 2020. So sánh 4 buổi live đầu và cái giá 6 năm sau cho shop Việt trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
