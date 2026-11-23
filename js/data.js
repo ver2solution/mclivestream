@@ -18656,6 +18656,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Shopee công bố chính thức kết quả 11.11/2026: GMV Shopee Live tăng 12 lần, đơn qua live tăng 9 lần, gần 2,5 tỷ lượt xem, người tiêu dùng tiết kiệm 16.000 tỷ đồng. 7 bài học cho shop Việt trước Black Friday 27/11."
   },
+  {
+   "title": "30.000 tỷ đồng kích cầu, giảm tới 80% mà khách vẫn thưa — \"xem nhiều, chốt đơn ít\" trước Black Friday 27/11/2026",
+   "cat": "Phân tích",
+   "source": "Báo Dân trí",
+   "date": "2026-11-23",
+   "url": "https://dantri.com.vn/kinh-doanh/giam-gia-sap-san-truoc-black-friday-khach-xem-nhieu-chot-don-it-20261121085930005.htm",
+   "page": "bai-viet/xem-nhieu-chot-don-it-black-friday-2026-giam-toi-80-van-thua-khach.html",
+   "img": "https://static-images.vnncdn.net/vps_images_publish/000001/000003/2026/11/17/w-giam-gia-black-friday-3300.jpg?width=260&s=tqPzA9JIq3ra-Gf-_ScKIA",
+   "pinned": false,
+   "takeaway": "Giảm 50–80% từ giữa tháng 11 nhưng nhiều cửa hàng Hà Nội vẫn thưa khách; TPHCM tối 20/11 đông nghịt nhưng ưu đãi thực chỉ khoảng 30% và hết size. Vì sao khách \"xem nhiều, chốt đơn ít\" và shop livestream cần làm gì trước Black Friday 27/11/2026?"
+  },
 ],
  "lots": [
    {
