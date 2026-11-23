@@ -108,6 +108,8 @@
 <div id="admTab-chat" class="adm-panel" hidden>
 <h2>Trao đổi</h2>
 <p class="filter-hint">Nơi Ryan, Rion và Thọ Zalo trao đổi trực tiếp — feedback lỗi + yêu cầu công việc chung. Nhiệm vụ chi tiết vẫn tổng hợp qua Google Sheet.</p>
+<div class="adm-chat-layout">
+<div class="adm-chat-main">
 <p id="admChatLive" style="font-size:13px"><span id="admChatLiveDot" class="adm-live-dot"></span> <span id="admChatLiveText">Đang kết nối…</span></p>
 <p id="admChatPresence" style="font-size:13px">Đang online: —</p>
 <p id="admChatMsg" role="status" style="font-weight:700"></p>
@@ -118,18 +120,32 @@
 <p style="margin:8px 0"><button class="btn btn-primary btn-sm" id="admChatSend" type="button">Gửi</button>
 <button class="btn btn-ghost btn-sm" id="admChatRefresh" type="button">Làm mới</button></p>
 </div>
-<hr>
-<h3>Tổng hợp công việc</h3>
-<p class="filter-hint">Các vấn đề được nêu trong khung chat sẽ tự thêm vào đây (khi tin nhắn chứa từ khóa như lỗi, cần sửa, thiếu, hỏng…). Bấm vào trạng thái để đổi: Chưa xử lý → Đang xử lý → Đã xong → Chưa xử lý. Chỉ bên nêu vấn đề (hoặc owner) mới được Sửa/Xóa task hoặc đánh dấu "Không phải vấn đề".</p>
+</div>
+<aside class="adm-chat-side" aria-label="Tóm tắt công việc">
+<h3>Tóm tắt công việc</h3>
+<p class="filter-hint">Chấm màu = loại việc: <span class="adm-task-cat cat-loi">Lỗi</span> <span class="adm-task-cat cat-can_giup">Cần giúp</span> <span class="adm-task-cat cat-y_tuong">Ý tưởng</span> <span class="adm-task-cat cat-bao_cao">Báo cáo số liệu</span> <span class="adm-task-cat cat-de_xuat">Đề xuất</span> <span class="adm-task-cat cat-giai_phap">Giải pháp mới</span> <span class="adm-task-cat cat-thanh_tuu">Thành tựu</span> <span class="adm-task-cat cat-cach_sua_loi">Cách sửa lỗi</span>. Các vấn đề nêu trong khung chat sẽ tự thêm vào đây (khi tin nhắn chứa từ khóa). Bấm vào trạng thái để đổi: Chưa xử lý → Đang xử lý → Đã xong → Chưa xử lý. Chỉ bên nêu vấn đề (hoặc owner) mới được Sửa/Xóa task hoặc đánh dấu "Không phải vấn đề".</p>
 <p><label>Trạng thái <select id="admTaskStatusFilter"><option value="">Việc đang làm</option><option value="chua_xu_ly">Chưa xử lý</option><option value="dang_xu_ly">Đang xử lý</option><option value="da_xong">Đã xong</option><option value="khong_phai_van_de">Không phải vấn đề</option><option value="all">Tất cả</option></select></label>
+<label>Loại <select id="admTaskCatFilter"><option value="">Tất cả loại</option><option value="loi">Lỗi</option><option value="can_giup">Cần giúp</option><option value="y_tuong">Ý tưởng</option><option value="bao_cao">Báo cáo số liệu</option><option value="de_xuat">Đề xuất</option><option value="giai_phap">Giải pháp mới</option><option value="thanh_tuu">Thành tựu</option><option value="cach_sua_loi">Cách sửa lỗi</option></select></label>
 <label>Bên nêu <select id="admTaskAuthorFilter"><option value="">Tất cả</option><option value="ver2solution@gmail.com">Ryan</option><option value="thondads@gmail.com">Rion</option><option value="thond.bds@gmail.com">Thọ Zalo</option><option value="rthond@gmail.com">Muse 4</option></select></label>
 <button class="btn btn-ghost btn-sm" id="admTaskRefresh" type="button">Làm mới</button></p>
 <p id="admTaskMsg" role="status" style="font-weight:700"></p>
+<h4>Việc đang làm</h4>
 <div id="admTaskList"><p>Chưa tải.</p></div>
+<h4>Đã xong — chờ xóa</h4>
+<p class="filter-hint">Người sửa xong ghi 1 dòng "đã sửa thế nào" rồi mới đánh dấu xong. Task ở đây tối đa 7 ngày — tác giả hoặc owner bấm Xóa (xác nhận 2 bước). Quá 7 ngày tự ẩn khỏi khối này, xem lại bằng bộ lọc "Tất cả".</p>
+<div id="admTaskDoneList"><p>Chưa có việc nào xong.</p></div>
+<h4>Kho ý tưởng &amp; cách sửa lỗi</h4>
+<p class="filter-hint">Ý tưởng, giải pháp mới, thành tựu và cách sửa lỗi lưu ở đây để ai cũng đọc lại được — không bao giờ tự xóa.</p>
+<p><input id="admTaskArchiveSearch" type="search" maxlength="100" placeholder="Tìm trong kho (VD: CLS, Shark Tank)…" style="width:100%" aria-label="Tìm trong kho ý tưởng và cách sửa lỗi">
+<label style="display:block;margin-top:6px">Loại <select id="admTaskArchiveCat"><option value="">Tất cả loại trong kho</option><option value="y_tuong">Ý tưởng</option><option value="giai_phap">Giải pháp mới</option><option value="thanh_tuu">Thành tựu</option><option value="cach_sua_loi">Cách sửa lỗi</option></select></label></p>
+<div id="admTaskArchiveList"><p>Chưa có mục nào trong kho.</p></div>
 <div class="form-card">
 <p><label>Vấn đề *<br><input id="admTaskTitle" type="text" maxlength="200" placeholder="VD: Nút Đăng bài ở tab Viết bài bấm không được" style="width:100%"></label></p>
+<p><label>Loại <select id="admTaskCategory" style="width:100%"><option value="loi">Lỗi</option><option value="can_giup">Cần giúp</option><option value="y_tuong">Ý tưởng</option><option value="bao_cao">Báo cáo số liệu</option><option value="de_xuat">Đề xuất</option><option value="giai_phap">Giải pháp mới</option><option value="thanh_tuu">Thành tựu</option><option value="cach_sua_loi">Cách sửa lỗi</option></select></label></p>
 <p><label>Ở đâu<br><input id="admTaskLocation" type="text" maxlength="100" placeholder="VD: Tab Viết bài" style="width:100%"></label></p>
 <p><button class="btn btn-primary btn-sm" id="admTaskAdd" type="button">Thêm việc tay</button></p>
+</div>
+</aside>
 </div>
 </div>
 <div id="admTab-ai-chat" class="adm-panel" hidden>
