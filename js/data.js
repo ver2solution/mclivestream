@@ -72,6 +72,7 @@
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-thi-truong-2026-11-23 adds 4 Thi truong articles (23/11/2026, Monday): 1 seasonal keyword 'thi truong ao dai Tet 2026' #10/10 (LAST of round 1, deep: CORRECTION — 296 ty VND is Tet 2025 (CafeBiz 05/02/2026), NOT Tet 2026; Tet 2026 verified: TikTok Shop 4,8M ao dai orders (Kenh14 12/02/2026), Q4/2025 2,8M + Jan 2026 2M orders (CafeBiz 20/06/2026), 6 peak weeks 67,7 nghin ty (Ebrun 14/02/2026), segment 200-350k VND; plan for Tet Dinh Mui 2027, mung 1 Sat 06/02/2027) + 3 news (Sea/Shopee Q3 2026 10/11 — GMV 39,7 ty USD +23,3%, orders 4,5 ty +25,5%, Sea revenue 8,6 ty USD +43,4%, net 502,5 tr USD +34,0%, Shopee adj EBITDA 269 tr USD +45% record, marketplace fees 11,6% of GMV; eBay Q3 2026 28/10 — revenue 3,2 ty USD +14%, GMV 23,2 ty USD +15%, US GMV +27% vs Intl +4%, recommerce +24%, ads 607 tr USD, Depop +3pts; TikTok Shop US Black Friday LIVE 19/11 — medicube best session 299.900 USD / 8,4K orders / 12,1h, 7,41M USD in 30 days, 9/10 top sessions brand accounts, 8 categories 543,5M USD in 7 days to 20/11). SEO V2 (title suffix + link boxes). Total 625 articles (node) / 624 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-22 adds 4 Cong nghe articles (22/11/2026, Sunday): 1 seasonal keyword 'AI streamer Tet' #4/10 VONG 2 (goc moi: CA DEM TET — giu khung 0h-8h khi mau nghi; thi truong 77 ty USD 2026, chi chot 8,3% GMV; luat nhan AI — MarketingToChina 05/11/2026 + HotNews 12/11/2026 + Scienjoy 28/01/2026) + 3 news (TikTok Shop Brand LIVE Impact 14 ngay 02/11, Gemini Tasks mien phi 17/11, Shopee AI LiveStream 4 cong cu 11/02). SEO V2 (title suffix + link boxes). Total 587 articles (node) / 586 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-22 adds 4 Thi truong articles (22/11/2026, Sunday): 1 seasonal keyword 'Black Friday Viet Nam 2026' #9/10 (deep: Adobe 28/09/2026 — Black Friday $12,9 ty +9,2%, Cyber Monday $15,1 ty +6,2%, Cyber Week $47,5 ty +7,4%, season $275,1 ty +6,7%; VN: Shopee tu 25/11, TikTok Shop 24-27/11, giam toi da 50% theo ND 81/2018 sua boi ND 128/2024; Metric Q3/2026 150,4 nghin ty +45,16%) + 3 news (JD.com Q3 2026 17/11 — 309,6 ty NDT +3,5%, non-GAAP 8,3 ty NDT +43,7%, logistics 64,0 ty NDT +16,1%, CECONOMY 59,8% 1,335 ty EUR 12/11; Shopify Q3 2026 03/11 — GMV 119,1 ty USD +29,5%, revenue 3,74 ty USD +32%, Payments 81,4 ty USD 68% GMV, Shop Pay GMV +50%; Amazon Q3 2026 29/10 — 201,9 ty USD +12%, AWS 46,0 ty USD +39,3%, op income 28,1 ty USD +61%, margin 13,9% ky luc). SEO V2 (title suffix + link boxes). Total 583 articles (node) / 582 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -18320,6 +18321,46 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "TJX quý 3 2026: doanh số tương đương tăng 4%, doanh thu 15,95 tỷ USD (+5,5%), EPS điều chỉnh 1,34 USD (+5%), cổ phiếu tăng 11% ngày 18/11/2026; Marmaxx +2%, HomeGoods +5%, quốc tế +8% (Morningstar/Dow Jones 18/11/2026)."
   },
+ {
+   "slug": "shopee-quy-3-2026-gmv-397-ty-usd-lai-ky-luc",
+   "title": "Shopee quý 3/2026: GMV 39,7 tỷ USD, lãi kỷ lục",
+   "cat": "Thị trường",
+   "date": "2026-11-23",
+   "desc": "Shopee quý 3/2026: GMV 39,7 tỷ USD, tăng 23,3%, đơn hàng 4,5 tỷ; Sea lãi ròng 502,5 triệu USD. Sàn Việt Nam học được gì từ quý lãi kỷ lục này?",
+   "page": "bai-viet/shopee-quy-3-2026-gmv-397-ty-usd-lai-ky-luc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-quy-3-2026-gmv-397-ty-usd-lai-ky-luc.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "ebay-quy-3-2026-gmv-232-ty-usd-hang-cu-len-ngoi",
+   "title": "eBay quý 3/2026: GMV 23,2 tỷ USD, hàng cũ lên ngôi",
+   "cat": "Thị trường",
+   "date": "2026-11-23",
+   "desc": "eBay quý 3/2026: doanh thu 3,2 tỷ USD, tăng 14%, GMV 23,2 tỷ USD, tăng 15%; hàng đã qua sử dụng và Depop kéo tăng trưởng. Bài học nào cho shop Việt?",
+   "page": "bai-viet/ebay-quy-3-2026-gmv-232-ty-usd-hang-cu-len-ngoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ebay-quy-3-2026-gmv-232-ty-usd-hang-cu-len-ngoi.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "tiktok-shop-my-black-friday-phien-live-300000-usd",
+   "title": "TikTok Shop Mỹ Black Friday: phiên live 300.000 USD",
+   "cat": "Thị trường",
+   "date": "2026-11-23",
+   "desc": "TikTok Shop Mỹ Black Friday: phiên live của medicube bán ước tính 299.900 USD trong 12 giờ, 8.400 đơn; 9/10 phiên top do tài khoản thương hiệu chạy.",
+   "page": "bai-viet/tiktok-shop-my-black-friday-phien-live-300000-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-my-black-friday-phien-live-300000-usd.jpg",
+   "pinned": false
+  },
+ {
+   "slug": "thi-truong-ao-dai-tet-2026-bai-hoc-cho-tet-2027",
+   "title": "Thị trường áo dài Tết 2026: bài học cho Tết 2027",
+   "cat": "Thị trường",
+   "date": "2026-11-23",
+   "desc": "Thị trường áo dài Tết 2026: TikTok Shop bán hơn 4,8 triệu đơn, Shopee hơn 1,11 triệu sản phẩm; con số 296 tỷ đồng thực ra là của Tết 2025.",
+   "page": "bai-viet/thi-truong-ao-dai-tet-2026-bai-hoc-cho-tet-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-ao-dai-tet-2026-bai-hoc-cho-tet-2027.jpg",
+   "pinned": false
+  }
 ],
  "lots": [
    {
