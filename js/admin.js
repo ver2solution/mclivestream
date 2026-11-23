@@ -1223,30 +1223,67 @@
     if (state.aiChatTimer) { clearInterval(state.aiChatTimer); state.aiChatTimer = null; }
   }
 
-  /* ---------- TAB: Trao đổi — Danh sách tổng hợp công việc (v118) ----------
+  /* ---------- TAB: Trao đổi — Danh sách tổng hợp công việc (v118 + v118b) ----------
      Task tự thêm bằng trigger trên admin_comments (SQL v118): tin mới chứa
      từ khóa chỉ vấn đề (lỗi, cần sửa, thiếu, hỏng...) thì sinh 1 dòng
      admin_tasks (title = câu chứa từ khóa, location trích nếu có tên hệ
      thống/trang). Task thêm tay qua RPC admin_create_task.
+     v118b (cột tóm tắt bên phải, anh Thọ duyệt 23/11): thêm cột category
+     (8 loại, chấm màu riêng — xem TASK_CATEGORY), fix_note (dòng "đã sửa
+     thế nào", bắt buộc khi đánh 'da_xong'), completed_at (lúc đánh xong).
+     Trigger v118b phân loại theo từ khóa (cách sửa > ý tưởng > đề xuất >
+     giải pháp > báo cáo > cần giúp > thành tựu > lỗi) và bắt cả tin chỉ
+     có từ khóa loại (ý tưởng/báo cáo/đã sửa...) để đưa vào kho.
+     Hiển thị 3 khối: Việc đang làm (chưa/đang xử lý, loại không thuộc kho),
+     Đã xong — chờ xóa (da_xong trong 7 ngày, loại không thuộc kho),
+     Kho ý tưởng & cách sửa lỗi (loại y_tuong/giai_phap/thanh_tuu/
+     cach_sua_loi, lưu vĩnh viễn, không tự xóa).
      Trạng thái: chua_xu_ly → dang_xu_ly → da_xong → chua_xu_ly (bấm vào
      trạng thái để đổi; admin nào cũng đổi được — người sửa lỗi cần đánh
      dấu tiến độ trên task do bên khác nêu). 'khong_phai_van_de' là trạng
      thái riêng để loại task tự thêm sai mà vẫn giữ dấu vết: không tính
      vào danh sách việc đang làm (mặc định), xem lại bằng bộ lọc.
      QUYỀN (anh Thọ chốt 00:59 ngày 10/11): sửa nội dung (tiêu đề/vị trí/
-     mô tả), xóa, và đánh dấu/khôi phục "Không phải vấn đề" CHỈ tác giả
-     (author_email trùng email đăng nhập) hoặc owner (ver2solution@gmail.com).
-     UI chỉ hiện nút Sửa/Xóa/"Không phải vấn đề" trên task của mình (owner
-     thấy hết). Server (RPC + RLS policy) kiểm tra lại — client chỉ ẩn nút.
+     mô tả/loại/dòng cách sửa), xóa, và đánh dấu/khôi phục "Không phải vấn
+     đề" CHỈ tác giả (author_email trùng email đăng nhập) hoặc owner
+     (ver2solution@gmail.com). UI chỉ hiện nút Sửa/Xóa/"Không phải vấn đề"
+     trên task của mình (owner thấy hết). Server (RPC + RLS policy) kiểm
+     tra lại — client chỉ ẩn nút.
      Không dùng window.confirm cho xóa (hộp thoại native bị tự tắt trên
      trình duyệt tự động, gây thoát im lặng — xem lỗi nút Đăng bài 09/11);
-     xóa xác nhận 2 bước ngay trên nút. */
+     xóa xác nhận 2 bước ngay trên nút. Đánh 'da_xong' cũng 2 bước: bấm 1
+     hiện ô nhập "đã sửa thế nào" ngay dưới task, bấm 2 mới gọi RPC
+     (không dùng window.prompt — cùng lý do v222). */
   var TASK_STATUS = {
     chua_xu_ly: { label: 'Chưa xử lý', next: 'dang_xu_ly', cls: 'st-todo' },
     dang_xu_ly: { label: 'Đang xử lý', next: 'da_xong', cls: 'st-doing' },
     da_xong: { label: 'Đã xong', next: 'chua_xu_ly', cls: 'st-done' },
     khong_phai_van_de: { label: 'Không phải vấn đề', next: 'chua_xu_ly', cls: 'st-notissue' }
   };
+  // v118b: 8 loại việc — chấm màu riêng (CSS .cat-* trong v20.css), tách
+  // riêng với màu trạng thái (.st-*). Nhãn + class phải khớp option của
+  // #admTaskCatFilter / #admTaskCategory / #admTaskArchiveCat trong
+  // quan-tri.html và CHECK constraint category trong SQL v118b.
+  var TASK_CATEGORY = {
+    loi: { label: 'Lỗi', cls: 'cat-loi' },
+    can_giup: { label: 'Cần giúp', cls: 'cat-can_giup' },
+    y_tuong: { label: 'Ý tưởng', cls: 'cat-y_tuong' },
+    bao_cao: { label: 'Báo cáo số liệu', cls: 'cat-bao_cao' },
+    de_xuat: { label: 'Đề xuất', cls: 'cat-de_xuat' },
+    giai_phap: { label: 'Giải pháp mới', cls: 'cat-giai_phap' },
+    thanh_tuu: { label: 'Thành tựu', cls: 'cat-thanh_tuu' },
+    cach_sua_loi: { label: 'Cách sửa lỗi', cls: 'cat-cach_sua_loi' }
+  };
+  // Loại thuộc "Kho ý tưởng & cách sửa lỗi": lưu vĩnh viễn, không vào
+  // "Việc đang làm", không tự xóa.
+  var TASK_ARCHIVE_CATS = ['y_tuong', 'giai_phap', 'thanh_tuu', 'cach_sua_loi'];
+  function taskCategory(t) {
+    var c = t && TASK_CATEGORY[t.category];
+    return c || TASK_CATEGORY.loi;
+  }
+  function taskIsArchive(t) {
+    return !!t && TASK_ARCHIVE_CATS.indexOf(t.category || 'loi') >= 0;
+  }
   var TASK_OWNER_EMAIL = 'ver2solution@gmail.com';
   var TASK_AUTHOR_NAMES = {
     'ver2solution@gmail.com': 'Ryan',
@@ -1264,12 +1301,15 @@
   }
   function taskItemHtml(t) {
     var st = TASK_STATUS[t.status] || TASK_STATUS.chua_xu_ly;
+    var cat = taskCategory(t);
     var canEdit = taskCanEdit(t);
     var html = '<div class="adm-task-item" data-tid="' + esc(t.id) + '">'
-      + '<p class="adm-task-title">' + esc(t.title) + '</p>'
+      + '<p class="adm-task-title"><span class="adm-task-cat ' + cat.cls + '">' + esc(cat.label) + '</span> ' + esc(t.title) + '</p>'
       + '<p class="adm-task-meta">' + esc(taskAuthorName(t.author_email)) + ' · '
-      + esc(t.location || 'Chưa rõ vị trí') + ' · ' + esc(vnDate(t.created_at)) + '</p>';
+      + esc(t.location || 'Chưa rõ vị trí') + ' · ' + esc(vnDate(t.created_at))
+      + (t.status === 'da_xong' && t.completed_at ? ' · xong ' + esc(vnDate(t.completed_at)) : '') + '</p>';
     if (t.body) html += '<p class="adm-task-body">' + esc(t.body) + '</p>';
+    if (t.fix_note) html += '<p class="adm-task-fix">Đã sửa: ' + esc(t.fix_note) + '</p>';
     html += '<p style="margin:6px 0 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
     // Task "Không phải vấn đề" chỉ tác giả/owner mới khôi phục được
     // (server chặn) nên với bên khác hiển thị nhãn tĩnh, không bấm được.
@@ -1286,12 +1326,25 @@
       html += '<button class="btn btn-ghost btn-sm" data-adm-act="delete-task" data-id="' + esc(t.id) + '" type="button">Xóa</button>';
     }
     html += '</p>';
+    // v118b: ô nhập "đã sửa thế nào" — hiện khi bấm trạng thái để đánh
+    // 'da_xong' (2 bước, không dùng window.prompt — xem v222). Server
+    // chặn đánh xong khi trống (RPC admin_set_task_status).
+    html += '<div class="adm-task-fixnote" data-fixnote-for="' + esc(t.id) + '" hidden>'
+      + '<p style="margin:8px 0 4px"><label>Đã sửa thế nào? *<br><input type="text" maxlength="500" value="' + esc(t.fix_note || '') + '" data-fixnote-field="note" placeholder="VD: Chuyển luật CSS lên head, CLS về 0,0045" style="width:100%"></label></p>'
+      + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="confirm-done-task" data-id="' + esc(t.id) + '" type="button">Xác nhận xong</button> '
+      + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-done-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
     // Form sửa nội tuyến (ẩn mặc định, chỉ hiện khi bấm Sửa).
     if (canEdit) {
       html += '<div class="adm-task-edit" data-edit-for="' + esc(t.id) + '" hidden>'
         + '<p style="margin:8px 0 4px"><label>Vấn đề *<br><input type="text" maxlength="200" value="' + esc(t.title) + '" data-edit-field="title" style="width:100%"></label></p>'
+        + '<p style="margin:4px 0"><label>Loại<br><select data-edit-field="category" style="width:100%">'
+        + Object.keys(TASK_CATEGORY).map(function (k) {
+            return '<option value="' + k + '"' + (k === (t.category || 'loi') ? ' selected' : '') + '>' + esc(TASK_CATEGORY[k].label) + '</option>';
+          }).join('')
+        + '</select></label></p>'
         + '<p style="margin:4px 0"><label>Ở đâu<br><input type="text" maxlength="100" value="' + esc(t.location || '') + '" data-edit-field="location" style="width:100%"></label></p>'
         + '<p style="margin:4px 0"><label>Mô tả<br><textarea maxlength="500" data-edit-field="body" style="width:100%;min-height:56px">' + esc(t.body || '') + '</textarea></label></p>'
+        + '<p style="margin:4px 0"><label>Đã sửa thế nào<br><input type="text" maxlength="500" value="' + esc(t.fix_note || '') + '" data-edit-field="fixnote" style="width:100%"></label></p>'
         + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="save-task" data-id="' + esc(t.id) + '" type="button">Lưu</button> '
         + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
     }
@@ -1299,11 +1352,72 @@
   }
   function taskFilters() {
     var sf = $('admTaskStatusFilter');
+    var cf = $('admTaskCatFilter');
     var af = $('admTaskAuthorFilter');
     return {
       status: sf ? String(sf.value || '') : '',
+      category: cf ? String(cf.value || '') : '',
       author: af ? String(af.value || '') : ''
     };
+  }
+  // v118b: chia task đã tải thành 3 khối cho cột tóm tắt bên phải.
+  // - doing: chua_xu_ly/dang_xu_ly (cộng khong_phai_van_de khi bộ lọc hỏi
+  //   riêng), loại KHÔNG thuộc kho.
+  // - done: da_xong trong 7 ngày (completed_at null = chưa rõ lúc xong
+  //   thì vẫn hiện), loại KHÔNG thuộc kho; quá 7 ngày chỉ đếm số lượng.
+  // - archive: loại thuộc kho, trạng thái khác khong_phai_van_de; lọc
+  //   thêm bằng ô tìm kiếm + chọn loại trong kho (client-side).
+  function renderTaskBlocks(list) {
+    var wrap = $('admTaskList');
+    var doneWrap = $('admTaskDoneList');
+    var archWrap = $('admTaskArchiveList');
+    if (!wrap) return;
+    var f = taskFilters();
+    var doing = [];
+    var done = [];
+    var doneOld = 0;
+    var arch = [];
+    var now = Date.now();
+    (list || []).forEach(function (t) {
+      if (taskIsArchive(t)) {
+        if (t.status !== 'khong_phai_van_de') arch.push(t);
+        return;
+      }
+      if (t.status === 'da_xong') {
+        var c = t.completed_at ? Date.parse(t.completed_at) : 0;
+        if (!c || (now - c) <= 7 * 24 * 3600 * 1000) done.push(t);
+        else doneOld++;
+        return;
+      }
+      doing.push(t);
+    });
+    wrap.innerHTML = doing.length
+      ? '<div class="adm-task-list">' + doing.map(taskItemHtml).join('') + '</div>'
+      : '<p>Chưa có việc đang làm' + (f.status || f.category || f.author ? ' theo bộ lọc' : '') + ' — vấn đề nêu trong chat sẽ tự thêm vào đây.</p>';
+    if (doneWrap) {
+      doneWrap.innerHTML = done.length
+        ? '<div class="adm-task-list">' + done.map(taskItemHtml).join('') + '</div>'
+          + (doneOld ? '<p>+' + doneOld + ' việc đã xong quá 7 ngày — xem lại bằng bộ lọc "Tất cả".</p>' : '')
+        : '<p>Chưa có việc nào xong.</p>';
+    }
+    renderTaskArchive(arch);
+  }
+  function renderTaskArchive(arch) {
+    var archWrap = $('admTaskArchiveList');
+    if (!archWrap) return;
+    var qEl = $('admTaskArchiveSearch');
+    var cEl = $('admTaskArchiveCat');
+    var q = qEl ? String(qEl.value || '').trim().toLowerCase() : '';
+    var cat = cEl ? String(cEl.value || '') : '';
+    var shown = (arch || []).filter(function (t) {
+      if (cat && (t.category || 'loi') !== cat) return false;
+      if (!q) return true;
+      var hay = ((t.title || '') + ' ' + (t.body || '') + ' ' + (t.fix_note || '') + ' ' + (t.location || '')).toLowerCase();
+      return hay.indexOf(q) >= 0;
+    });
+    archWrap.innerHTML = shown.length
+      ? '<div class="adm-task-list">' + shown.map(taskItemHtml).join('') + '</div>'
+      : '<p>Chưa có mục nào trong kho' + (q || cat ? ' theo bộ lọc' : '') + '.</p>';
   }
   async function loadTasks() {
     var wrap = $('admTaskList');
@@ -1313,29 +1427,32 @@
       var list = await rpc('get_admin_tasks', {
         p_status: f.status === 'all' ? 'all' : (f.status || null),
         p_author_email: f.author || null,
-        p_limit: 50, p_offset: 0
+        p_limit: 100, p_offset: 0,
+        p_category: f.category || null
       });
       state.tasks = Array.isArray(list) ? list : [];
-      if (!state.tasks.length) {
-        wrap.innerHTML = '<p>Chưa có công việc nào — vấn đề nêu trong chat sẽ tự thêm vào đây.</p>';
-        return;
-      }
-      wrap.innerHTML = '<div class="adm-task-list">' + state.tasks.map(taskItemHtml).join('') + '</div>';
+      renderTaskBlocks(state.tasks);
     } catch (e) {
       wrap.innerHTML = '<p>' + esc(isMissingFn(e) ? 'Chưa có dữ liệu — migration v118 (bảng admin_tasks) chưa chạy.' : friendlyErr(e)) + '</p>';
+      var doneWrap = $('admTaskDoneList');
+      if (doneWrap) doneWrap.innerHTML = '<p>Chưa tải được.</p>';
+      var archWrap = $('admTaskArchiveList');
+      if (archWrap) archWrap.innerHTML = '<p>Chưa tải được.</p>';
     }
   }
   async function onAddTask() {
     var titleEl = $('admTaskTitle');
     var locEl = $('admTaskLocation');
+    var catEl = $('admTaskCategory');
     var msg = $('admTaskMsg');
     if (!titleEl) return;
     var title = String(titleEl.value || '').trim();
     var loc = locEl ? String(locEl.value || '').trim() : '';
+    var cat = catEl ? String(catEl.value || 'loi') : 'loi';
     if (!title) { setMsg(msg, 'Nhập vấn đề trước khi thêm.', true); return; }
     if (title.length > 200) { setMsg(msg, 'Vấn đề tối đa 200 ký tự.', true); return; }
     try {
-      await rpc('admin_create_task', { p_title: title, p_location: loc || null, p_body: null });
+      await rpc('admin_create_task', { p_title: title, p_location: loc || null, p_body: null, p_category: cat });
       titleEl.value = '';
       if (locEl) locEl.value = '';
       setMsg(msg, 'Đã thêm công việc.');
@@ -1835,11 +1952,37 @@
         // Đổi trạng thái workflow: admin nào cũng được (người sửa lỗi cần
         // đánh dấu tiến độ trên task do bên khác nêu). Server chặn khôi
         // phục từ 'khong_phai_van_de' nếu không phải tác giả/owner.
+        // v118b: bước tới 'da_xong' thì hiện ô nhập "đã sửa thế nào" ngay
+        // dưới task (2 bước, không dùng window.prompt); bấm "Xác nhận
+        // xong" mới gọi RPC kèm fix_note.
         var cur = btn.getAttribute('data-status') || 'chua_xu_ly';
         var next = (TASK_STATUS[cur] || TASK_STATUS.chua_xu_ly).next;
+        if (next === 'da_xong') {
+          var itemEl0 = btn.closest ? btn.closest('.adm-task-item') : null;
+          var fixEl = itemEl0 ? itemEl0.querySelector('.adm-task-fixnote') : null;
+          if (fixEl) {
+            fixEl.hidden = false;
+            var fixInput = fixEl.querySelector('[data-fixnote-field="note"]');
+            if (fixInput) fixInput.focus();
+            return;
+          }
+        }
         await rpc('admin_set_task_status', { p_id: id, p_status: next });
         setMsg(msg, 'Đã đổi trạng thái: ' + TASK_STATUS[next].label + '.');
         await loadTasks();
+      } else if (act === 'confirm-done-task') {
+        var itemElD = btn.closest ? btn.closest('.adm-task-item') : null;
+        if (!itemElD) { setMsg(msg, 'Không tìm thấy ô nhập.', true); return; }
+        var noteInput = itemElD.querySelector('[data-fixnote-field="note"]');
+        var note = noteInput ? String(noteInput.value || '').trim() : '';
+        if (!note) { setMsg(msg, 'Ghi 1 dòng "đã sửa thế nào" trước khi đánh dấu xong.', true); return; }
+        await rpc('admin_set_task_status', { p_id: id, p_status: 'da_xong', p_fix_note: note });
+        setMsg(msg, 'Đã đánh dấu xong — task chuyển sang "Đã xong — chờ xóa".');
+        await loadTasks();
+      } else if (act === 'cancel-done-task') {
+        var itemElC = btn.closest ? btn.closest('.adm-task-item') : null;
+        var fixElC = itemElC ? itemElC.querySelector('.adm-task-fixnote') : null;
+        if (fixElC) fixElC.hidden = true;
       } else if (act === 'edit-task') {
         var itemEl = btn.closest ? btn.closest('.adm-task-item') : null;
         var editEl = itemEl ? itemEl.querySelector('.adm-task-edit') : null;
@@ -1854,11 +1997,15 @@
         var fTitle = itemEl3.querySelector('[data-edit-field="title"]');
         var fLoc = itemEl3.querySelector('[data-edit-field="location"]');
         var fBody = itemEl3.querySelector('[data-edit-field="body"]');
+        var fCat = itemEl3.querySelector('[data-edit-field="category"]');
+        var fFix = itemEl3.querySelector('[data-edit-field="fixnote"]');
         var nt = fTitle ? String(fTitle.value || '').trim() : '';
         var nl = fLoc ? String(fLoc.value || '').trim() : '';
         var nb = fBody ? String(fBody.value || '').trim() : '';
+        var nc = fCat ? String(fCat.value || 'loi') : 'loi';
+        var nf = fFix ? String(fFix.value || '').trim() : '';
         if (!nt) { setMsg(msg, 'Vấn đề không được để trống.', true); return; }
-        await rpc('admin_update_task', { p_id: id, p_title: nt, p_location: nl || null, p_body: nb || null });
+        await rpc('admin_update_task', { p_id: id, p_title: nt, p_location: nl || null, p_body: nb || null, p_category: nc, p_fix_note: nf });
         setMsg(msg, 'Đã lưu sửa đổi.');
         await loadTasks();
       } else if (act === 'notissue-task') {
@@ -2281,6 +2428,13 @@
     if (tsf) tsf.addEventListener('change', function () { loadTasks(); });
     var taf = $('admTaskAuthorFilter');
     if (taf) taf.addEventListener('change', function () { loadTasks(); });
+    // v118b: lọc theo loại + tìm/lọc trong kho (client-side, không tải lại).
+    var tcf = $('admTaskCatFilter');
+    if (tcf) tcf.addEventListener('change', function () { loadTasks(); });
+    var tas = $('admTaskArchiveSearch');
+    if (tas) tas.addEventListener('input', function () { renderTaskBlocks(state.tasks || []); });
+    var tac = $('admTaskArchiveCat');
+    if (tac) tac.addEventListener('change', function () { renderTaskBlocks(state.tasks || []); });
     var trf = $('admTaskRefresh');
     if (trf) trf.addEventListener('click', function () { loadChat(); loadTasks(); });
     var tad = $('admTaskAdd');

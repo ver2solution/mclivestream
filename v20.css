@@ -1434,3 +1434,36 @@ body.v2s-logged-in .search-cta,body.v2s-logged-in .pin-longer-text,body.v2s-logg
 .origin-gate__login{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);color:#0b5d4e;font-weight:800;text-decoration:none;border-radius:8px;padding:2px 10px;white-space:nowrap;}
 .origin-gate--open > a:not(.origin-gate__login){filter:none;opacity:1;pointer-events:auto;}
 .origin-gate--open .origin-gate__login{display:none;}
+
+/* v118b (23/11/2026): cột tóm tắt công việc bên phải tab Trao đổi (anh Thọ duyệt cột phải 23/11). Desktop: chat trái + cột tóm tắt phải (dính theo khi cuộn). Mobile: cột tóm tắt xếp TRÊN chat (đọc tóm tắt trước). Chấm màu .cat-* = loại việc (tách riêng với màu trạng thái .st-*). */
+.adm-chat-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.adm-chat-main{min-width:0}
+.adm-chat-side{min-width:0;position:sticky;top:12px}
+.adm-chat-side h4{margin:18px 0 8px}
+.adm-task-list{display:flex;flex-direction:column;gap:10px}
+.adm-task-item{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.adm-task-title{margin:0;font-weight:700}
+.adm-task-meta{font-size:13px;color:var(--mut);margin:4px 0 0}
+.adm-task-body{margin:6px 0 0;white-space:pre-wrap;word-break:break-word}
+.adm-task-fix{margin:6px 0 0;font-size:13px;color:var(--brand)}
+.adm-task-fixnote{margin-top:4px}
+.adm-task-edit{margin-top:4px}
+.adm-task-cat{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:800;vertical-align:middle}
+.cat-loi{background:#fdecea;color:#b3261e}
+.cat-can_giup{background:#fff4e5;color:#b45309}
+.cat-y_tuong{background:#f1eafe;color:#6d28d9}
+.cat-bao_cao{background:#e8f1fd;color:#1565c0}
+.cat-de_xuat{background:#e6f4ea;color:#2e7d32}
+.cat-giai_phap{background:#e0f2f1;color:#00838f}
+.cat-thanh_tuu{background:#fff8e1;color:#8d6e00}
+.cat-cach_sua_loi{background:#dff0ea;color:#0b5d4e}
+.adm-task-st{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#f4f8f6;font-size:13px;font-weight:700;cursor:pointer}
+button.adm-task-st{font:inherit}
+.st-todo{background:#fff;border-color:#d92b1f;color:#b3261e}
+.st-doing{background:#fff4e5;border-color:#b45309;color:#b45309}
+.st-done{background:#e6f4ea;border-color:#2e7d32;color:#2e7d32}
+.st-notissue{background:#f1f3f4;border-color:#9aa0a6;color:#5f6368}
+@media (max-width:900px){
+  .adm-chat-layout{grid-template-columns:1fr}
+  .adm-chat-side{position:static;order:-1}
+}
