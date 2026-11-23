@@ -18622,7 +18622,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "LEGO Black Friday 2026: 283 bo xuong gia thap nhat tung ghi nhan (BrickSleuth 19/11/2026), Amazon giam toi 40%, Walmart hon 40 bo giam toi 44% (09/11/2026), Insiders Weekend 20-21/11/2026, su kien chinh 27/11/2026."
-  }
+  },
+  {
+   "title": "395 tỷ đồng trong ngày đầu livestream — Winnie Tang: tố nhân 7 năm bán trang sức phá kỷ lục Xiaohongshu bằng cách nào?",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-23",
+   "url": "https://www.36kr.com/p/3706969918107781",
+   "page": "bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html",
+   "img": "https://img.36krcdn.com/hsossms/20260303/v2_c6e52bb11b6b45fab6abad0c545f372c@000000_oswg175591oswg1000oswg1338_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "395,5 tỷ đồng trong ngày đầu, 595 tỷ đồng trong 2 ngày livestream — Winnie Tang, tố nhân 7 năm trên Xiaohongshu, bán trang sức giá trung bình 63 triệu đồng/đơn và phá kỷ lục nền tảng. Phân tích con số, công thức và mặt trái cho shop Việt trước Black Friday 27/11 và 12.12."
+  },
 ],
  "lots": [
    {
