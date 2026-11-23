@@ -105,6 +105,7 @@
    articles-cong-nghe-2026-11-18 adds 4 Cong nghe articles (18/11/2026, Wednesday): 1 seasonal keyword 'xac thuc VNeID ban hang online' #10/10 (deep, Nghi dinh 320/2026, han 31/12/2026) + 3 news (TikTok Shop Product Diagnosis 12/11, TikTok Shop Seller AI BFCM 04/11, nhan AI Shopee Video 12.12). SEO V2 (title suffix + link boxes). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-xu-huong-2026-11-21 adds 4 Xu hướng articles (21/11/2026, Saturday): 1 seasonal keyword "xu hướng bán hàng Giáng sinh" #8/10 (deep, 2.444 words; Adobe 28/09/2026: 275,1 ty USD +6,7%, Cyber Monday 15,1 ty, Black Friday 12,9 ty, mobile 57,4%, AI +130%) + 3 news ("AI mua hàng" ChatGPT Wallet 13/11/2026, FinTech Futures 17/11/2026, 2.324 words; "quà Giáng sinh đã qua sử dụng" ThredUp 26/10/2026, 62%, FashionUnited 28/10/2026, 2.171 words; "KOC dẫn khách mua quà lễ" Syracuse 16/11/2026, 77%, 2.251 words). Zalo rotation 21/11 is topic #4 (Phan tich) — no rotation article in this batch. Total 548 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-22 adds 4 Xu hướng articles (22/11/2026, Sunday): 1 seasonal keyword "xu hướng thị trường Tết Đinh Mùi" #9/10 (deep, 2.817 words; Coc Coc 09/2026: 51% chi nhieu hon, 61% nhom 18-29, qua Brands Vietnam 16/11/2026) + 3 news ("Gen Z mua sắm lễ 2026" Deloitte 15/10/2026, 50%, 2.063 words; "livestream mua sắm lễ 2026" for.you.com 27/10/2026, LIVE x2, 2.005 words; "ngân sách mua sắm lễ 2026" BMO 19/11/2026, 2.198 USD, 2.304 words). Zalo rotation 22/11 is topic #5 (Dong tien) — no rotation article in this batch. Total 598 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
+   articles-xu-huong-2026-11-23 adds 4 Xu hướng articles (23/11/2026, Monday): 1 seasonal keyword "xu hướng tiêu dùng cuối năm 2026" #10/10 (deep, LAST of round 1; Adobe 28/09/2026: 275,1 ty USD +6,7%, mobile 57,4%, AI +130%; NRF 20/10/2026; Deloitte 15/10/2026; PwC 19/11/2026; BMO 19/11/2026) + 3 news ("Target quý 3/2026" Target 18/11/2026, 27,1 ty USD +7,1%, online +9,8%; "thẻ quà tặng lễ 2026" NRF 20/10 + 30/10-09/11/2026, 47% muon nhan vs 39% dinh tang, 26,8 ty USD; "AI mua sắm lễ 2026" PwC 19/11/2026, 36% dung AI). Zalo rotation 23/11 is topic #1 (Livestream) — no rotation article in this batch. Total 640 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -18458,6 +18459,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Bio-Essence live bang AI avatar, doat giai vang: Arche Digital (AnyMind Group, mua lai thang 05/2024) doat giai vang Best eCommerce Innovation, Asia eCommerce Awards 2026 (thong cao 05/11/2026); AI avatar AnyLive tu van cham soc da, tra loi khach + gioi thieu loi ich san pham suot ngay dem tren Shopee Live, ngoai gio hanh chinh; mo hinh lai nguoi + AI — mau nguoi giu gio vang, AI giu ca ngoai gio."
+  },
+  {
+   "title": "Xu hướng tiêu dùng cuối năm 2026: 5 thay đổi lớn",
+   "cat": "Xu hướng",
+   "source": "Adobe",
+   "date": "2026-11-23",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/xu-huong-tieu-dung-cuoi-nam-2026-5-thay-doi-lon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-tieu-dung-cuoi-nam-2026-5-thay-doi-lon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong tieu dung cuoi nam 2026: mua sam le My du bao 275,1 ty USD online (+6,7%); 57,4% qua dien thoai; luu luong AI +130%; 85% co chien luoc ngan sach; 47% muon nhan the qua tang (Adobe 28/09/2026; NRF 20/10/2026; PwC 19/11/2026)."
+  },
+  {
+   "title": "Target quý 3/2026: 27,1 tỷ USD, tăng 7,1%",
+   "cat": "Xu hướng",
+   "source": "Target",
+   "date": "2026-11-23",
+   "url": "https://corporate.target.com/news-features/article/2026/11/q3-2026-earnings",
+   "page": "bai-viet/target-quy-3-2026-doanh-so-tang-7-phan-tram-khach-quay-lai.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/target-quy-3-2026-doanh-so-tang-7-phan-tram-khach-quay-lai.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Target quy 3/2026: doanh so 27,1 ty USD (+7,1%); luot khach +5%; online +9,8% voi 2/3 giao trong ngay; Fun 101 +27% nho hang moi; 8.000 mon qua moi, hang nghin mon duoi 5 USD (Target 18/11/2026)."
+  },
+  {
+   "title": "Thẻ quà tặng lễ 2026: được mong nhất, mua ít nhất",
+   "cat": "Xu hướng",
+   "source": "FastCompany",
+   "date": "2026-11-23",
+   "url": "https://www.fastcompany.com/91627519/the-most-wanted-holiday-gift-in-america-isnt-electronics-or-jewelry-heres-what-shoppers-actually-want",
+   "page": "bai-viet/the-qua-tang-le-2026-duoc-mong-nhat-mua-it-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/the-qua-tang-le-2026-duoc-mong-nhat-mua-it-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "The qua tang le 2026: 47% nguoi My muon nhan the qua tang (mong nhat); nhung chi 39% dinh tang, thap nhat 20 nam; tong chi 26,8 ty USD, thap nhat tu 2015 (NRF 20/10/2026 va 30/10-09/11/2026)."
+  },
+  {
+   "title": "AI mua sắm lễ 2026: 36% dùng AI, chưa chốt đơn",
+   "cat": "Xu hướng",
+   "source": "PwC",
+   "date": "2026-11-23",
+   "url": "https://www.pwc.com/us/en/industries/consumer-markets/library/holiday-spending-update.html",
+   "page": "bai-viet/ai-mua-sam-le-2026-36-phan-tram-dung-ai-chua-chot-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-mua-sam-le-2026-36-phan-tram-dung-ai-chua-chot-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "AI mua sam le 2026: 36% nguoi My dung AI chon qua, tang tu 29% thang 6/2026; 74% tin goi y AI; luu luong AI +130%; 75,8 ty USD chiu anh huong AI — nhung AI moi goi y, chua chot don (PwC 19/11/2026; Salesforce 19/11/2026)."
   }
 ],
  "lots": [
