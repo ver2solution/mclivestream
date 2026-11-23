@@ -216,10 +216,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-01.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100082318996082", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2214441499504324/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-02",
    "name": "G T MY Duyênn",
@@ -243,11 +240,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-02.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "zalo", "value": "0982725840", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2210083783273429/"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100075647083103", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2210083783273429/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-03",
    "name": "Kiều Nguyễn",
@@ -271,11 +264,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-03.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "zalo", "value": "0969151680", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2119153999033075/"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100022181344685", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1490259981922483/permalink/2119153999033075/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-04",
    "name": "Bảo Trân",
@@ -299,10 +288,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61589879181097", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1018764843295910/permalink/1709354917570229/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-05",
    "name": "Bá Hùng",
@@ -326,10 +312,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-05.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100048297613095", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/1018764843295910/permalink/1649796980192690/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-06",
    "name": "Pham Thi Ngoc Diep",
@@ -353,10 +336,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-06.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100065334549357", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/224376760569987/permalink/985559207785068/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-07",
    "name": "Yen Nhi",
@@ -380,10 +360,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-07.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100054629757115", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/224376760569987/permalink/940499302291059/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-08",
    "name": "Thuỳ Trang",
@@ -407,10 +384,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-08.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100019645189131", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/173192415749028/permalink/892703943797868/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-09",
    "name": "Tran Tieu",
@@ -434,10 +408,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-09.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006855157771", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/593928429520087/permalink/748992390680356/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-10",
    "name": "Đoàn Vũ Tiến",
@@ -461,10 +432,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100021640461563", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/593928429520087/permalink/1321158746797048/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-11",
    "name": "Elena Tienn",
@@ -488,10 +456,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-11.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100054949616936", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/774093982362357/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-12",
    "name": "Trần Thị Mỹ Lương",
@@ -515,11 +480,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-12.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "zalo", "value": "0363622099", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/889318007506620/"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100040601830739", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/136266936145068/permalink/889318007506620/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-13",
    "name": "Ngoc Diep",
@@ -543,10 +504,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": "images/th-13.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100019409002255", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/817192814783431/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-14",
    "name": "Lâm Thu Hường",
@@ -570,12 +528,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-14.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "zalo", "value": "0986718540", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"},
-    {"provider": "email", "value": "huonglam2303@gmail.com", "label": "Email", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100024303263550", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/101453323024054/permalink/658426093993438/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-15",
    "name": "Nguyễn Hải Ngọc",
@@ -599,10 +552,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-15.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100004386730543", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/4313382758756244/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-16",
    "name": "Anh Diep",
@@ -626,10 +576,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-16.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100081152650541", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6747171492044013/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-17",
    "name": "Mộng Nghi",
@@ -653,11 +600,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-17.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "zalo", "value": "0932542626", "label": "Zalo", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6667029263391570/"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100008442013188", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6667029263391570/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-18",
    "name": "Minh Thuyên",
@@ -681,10 +624,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-18.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100011275561537", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/7720950844666068/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-19",
    "name": "Kiều Thư",
@@ -708,10 +648,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-19.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "facebook", "value": "https://facebook.com/kieu.thu.912207", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/7031338710293955/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-20",
    "name": "Nga Trần",
@@ -735,10 +672,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-20.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100009858678437", "label": "Facebook", "source": "post", "source_url": "https://facebook.com/groups/576293879131836/permalink/6763530083741487/"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-21",
    "name": "Thaor",
@@ -762,10 +696,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-21.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thao_r22", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thao_r22"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-22",
    "name": "Thư Thư",
@@ -789,10 +720,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-22.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuthu_xinhhh", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuthu_xinhhh"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-23",
    "name": "Thuý Hằngg",
@@ -816,10 +744,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-23.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@_hanglife", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@_hanglife"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-24",
    "name": "Babidaau",
@@ -843,10 +768,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-24.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@babidaau_", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@babidaau_"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-25",
    "name": "lem",
@@ -870,10 +792,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-25.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@its_lemmm", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@its_lemmm"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-26",
    "name": "Annie nhí nhảnh",
@@ -897,10 +816,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-26.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nguoidepnho", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nguoidepnho"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-27",
    "name": "Ái Hoe",
@@ -924,10 +840,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-27.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@aihoeoeoe", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@aihoeoeoe"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-28",
    "name": "Kiều Ngân Hót Lai",
@@ -951,10 +864,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-28.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kieunganhotlai", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kieunganhotlai"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-29",
    "name": "Hanna đi làm",
@@ -978,10 +888,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-29.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hannadethuong_", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hannadethuong_"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-30",
    "name": "Mỹ Ngân",
@@ -1005,10 +912,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-30.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@myngan2oo1", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@myngan2oo1"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-31",
    "name": "Tiny",
@@ -1032,10 +936,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-31.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tinynotsotiny", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tinynotsotiny"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-41",
    "name": "Quý Đức - Biển Thiên Cầm",
@@ -1059,10 +960,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://danviet.vn/ha-tinh-dua-dac-san-dia-phuong-len-song-livestream-mo-rong-thi-truong-tieu-thu-d1471432.html", "label": "Bài gốc", "source": "post", "source_url": "https://danviet.vn/ha-tinh-dua-dac-san-dia-phuong-len-song-livestream-mo-rong-thi-truong-tieu-thu-d1471432.html"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-42",
    "name": "Hoàng Hồng",
@@ -1086,10 +984,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "zalo", "value": "0965787985", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/hoang.hong.241931/posts/pfbid0xeUbk2i7YNtdBR6qdDH6fmUByRw7YMoLmyh1Rk1zCUoZiAV3qX26EHVoUT1FQ5Jgl"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-44",
    "name": "Trần Phương Nam",
@@ -1113,10 +1008,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-44.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"label": "TikTok", "provider": "tiktok", "source": "post", "source_url": "https://www.facebook.com/TranPhuongNam.Official/posts/pfbid0dPb5HE9opfmAnTPTS59WjCfBdtLojGZrESLfs12ZELEWBHjYPrTAkRMi7pVwUhb7l", "value": "https://www.tiktok.com/@hiphuongnam"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-45",
    "name": "Hồng Thi",
@@ -1140,10 +1032,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://gialai.dcs.vn/kinh-te/-/view-content/429855/livestream-ban-hang-nang-cao-nang-luc-canh-tranh-cho-san-pham-ocop", "label": "Bài gốc", "source": "post", "source_url": "https://gialai.dcs.vn/kinh-te/-/view-content/429855/livestream-ban-hang-nang-cao-nang-luc-canh-tranh-cho-san-pham-ocop"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-46",
    "name": "Quỳnh Tây Nguyên",
@@ -1167,10 +1056,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-46.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"label": "Facebook", "provider": "facebook", "source": "post", "source_url": "https://www.facebook.com/reel/1568237601610978/", "value": "https://www.facebook.com/reel/1568237601610978/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-47",
    "name": "Nguyễn Thị Ngọc Ánh",
@@ -1194,10 +1080,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-47.jpg",
-   "photoSrc": "post",
-   "contacts": [
-    {"provider": "website", "value": "https://phunumoi.net.vn/co-thon-nu-ngoc-anh-va-nhung-dieu-ky-thu-d268942.html", "label": "Bài gốc", "source": "post", "source_url": "https://phunumoi.net.vn/co-thon-nu-ngoc-anh-va-nhung-dieu-ky-thu-d268942.html"}
-   ]  },
+   "photoSrc": "post"  },
   {
    "id": "th-48",
    "name": "Nguyễn Hằng",
@@ -1221,10 +1104,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-48.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hangng7062", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hangng7062"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-49",
    "name": "Thu Hiệu",
@@ -1248,11 +1128,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-49.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@xoa.199", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@xoa.199"},
-    {"provider": "facebook", "value": "https://www.facebook.com/Oralie.1314", "label": "Facebook Thu Hiệu", "source": "post", "source_url": "https://www.facebook.com/Oralie.1314"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-50",
    "name": "Mẹ Ry",
@@ -1276,10 +1152,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-50.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@mecuary93", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@mecuary93"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-51",
    "name": "Linh Đan",
@@ -1303,11 +1176,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-51.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@linhdan123.4", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@linhdan123.4"},
-    {"provider": "facebook", "value": "https://www.facebook.com/linhdan888888", "label": "Facebook Linh Đan", "source": "post", "source_url": "https://www.facebook.com/linhdan888888"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-52",
    "name": "Khoa Trúc Trúc",
@@ -1331,11 +1200,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-52.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lethihanh1982", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lethihanh1982"},
-    {"provider": "facebook", "value": "https://www.facebook.com/hanh.le.1656/", "label": "Facebook Hanh Le", "source": "post", "source_url": "https://www.facebook.com/hanh.le.1656/"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-54",
    "name": "Lilymyanh's House",
@@ -1359,11 +1224,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-54.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lilymyanhhouse", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lilymyanhhouse"},
-    {"provider": "facebook", "value": "https://www.facebook.com/Tran.Thoa.3979", "label": "Facebook Thoa Trần", "source": "post", "source_url": "https://www.facebook.com/Tran.Thoa.3979"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-57",
    "name": "Em bé Bơ Mỡ",
@@ -1387,11 +1248,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-57.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@embebomo", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@embebomo"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006868307414", "label": "Facebook Em bé Bơ Mỡ", "source": "post", "source_url": "https://www.facebook.com/profile.php?id=100006868307414"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-58",
    "name": "Nhuhoa_38",
@@ -1415,11 +1272,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-58.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nhuhoa_38", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nhuhoa_38"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100008730046626", "label": "Facebook Nhuhoa_38", "source": "post", "source_url": "https://www.facebook.com/profile.php?id=100008730046626"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-59",
    "name": "Hôm nay đi đâu",
@@ -1443,10 +1296,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-59.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@viviucungbong", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@viviucungbong"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-60",
    "name": "Hạ My",
@@ -1470,11 +1320,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-60.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@miemie_90", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@miemie_90"},
-    {"provider": "facebook", "value": "https://www.facebook.com/hamy.vn90", "label": "Facebook Hạ My", "source": "post", "source_url": "https://www.facebook.com/hamy.vn90"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-64",
    "name": "Ngọc Châu Tran",
@@ -1498,11 +1344,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-64.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@bechaumummim", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@bechaumummim"},
-    {"provider": "facebook", "value": "https://www.facebook.com/ngocchau.tran.3551", "label": "Facebook Ngọc Châu Tran", "source": "post", "source_url": "https://www.facebook.com/ngocchau.tran.3551"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-65",
    "name": "Bông vi",
@@ -1526,10 +1368,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-65.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@vivipham03022000", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@vivipham03022000"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-66",
    "name": "Hoàng Phương Thảo",
@@ -1553,10 +1392,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-66.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thaoemxinh08", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thaoemxinh08"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-67",
    "name": "Phạm Uyên",
@@ -1580,10 +1416,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-67.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@phamuyenn_", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@phamuyenn_"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-68",
    "name": "Trân 94🇻🇳",
@@ -1607,10 +1440,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-68.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trn.nguyn4400", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trn.nguyn4400"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-69",
    "name": "Đặc sản Thái Nguyên-Thắng Lợi",
@@ -1634,10 +1464,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-69.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@chethangloilive", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@chethangloilive"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-70",
    "name": "Tranthuan",
@@ -1661,11 +1488,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-70.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tranthuan_71", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tranthuan_71"},
-    {"provider": "email", "value": "tranhonggam2103@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.tiktok.com/@tranthuan_71"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-71",
    "name": "Chợ Xe Cỏ Đăk Lăk",
@@ -1689,11 +1512,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-71.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@choxecodaklak", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@choxecodaklak"},
-    {"provider": "phone", "value": "0922547777", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@choxecodaklak"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-72",
    "name": "Trang Ở Đắk Lắk Shop",
@@ -1717,10 +1536,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-72.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trangodaklashop", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trangodaklashop"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-73",
    "name": "Thiện Nhân",
@@ -1744,11 +1560,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-73.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thiennhanreview", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thiennhanreview"},
-    {"provider": "email", "value": "teamthiennhan5272@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.tiktok.com/@thiennhanreview"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-74",
    "name": "Thanh nhàn dệ tính",
@@ -1772,10 +1584,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-74.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thanhnhandetinh", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thanhnhandetinh"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-75",
    "name": "Trần Nhi",
@@ -1799,10 +1608,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-75.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tran_nhi67", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tran_nhi67"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-76",
    "name": "Shop Mộc - Cần Thơ",
@@ -1826,10 +1632,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-76.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shopmoccantho", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shopmoccantho"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-77",
    "name": "Trang Trang",
@@ -1853,10 +1656,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-77.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trangtrang19922504", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trangtrang19922504"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-78",
    "name": "HCN Cần Thơ",
@@ -1880,10 +1680,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-78.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@ngochcn1802", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@ngochcn1802"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-79",
    "name": "Huế Huân Mart 🛍️",
@@ -1907,10 +1704,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-79.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shophuehuan", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shophuehuan"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-80",
    "name": "GChang - Thuê váy Bắc Ninh",
@@ -1934,10 +1728,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-80.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@gchang.vintage", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@gchang.vintage"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-81",
    "name": "NGUYENPHAN01",
@@ -1961,10 +1752,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-81.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@quynhanh2020strore", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@quynhanh2020strore"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-82",
    "name": "shop ngọc trinh (bán quần áo)",
@@ -1988,10 +1776,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-82.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shop.ngc.trinh.bn", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shop.ngc.trinh.bn"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-83",
    "name": "A Chá bán bánh mì Lạng Sơn",
@@ -2015,10 +1800,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-83.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@banhmiacha", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@banhmiacha"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-84",
    "name": "Nga Tích Cực",
@@ -2042,10 +1824,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-84.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@ngatichcucphutho", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@ngatichcucphutho"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-85",
    "name": "Trang Phát Makeup Hải Phòng",
@@ -2069,11 +1848,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-85.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trangphatmakeup", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trangphatmakeup"},
-    {"provider": "zalo", "value": "0948085966", "label": "Zalo", "source": "post", "source_url": "https://www.tiktok.com/@trangphatmakeup"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-86",
    "name": "Hoàng yến shop",
@@ -2097,10 +1872,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-86.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@yenthoitrang_87", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@yenthoitrang_87"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-87",
    "name": "Check-in Quảng Ngãi",
@@ -2124,11 +1896,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-87.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@checkin_quangngai", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@checkin_quangngai"},
-    {"provider": "website", "value": "https://checkinquangngai.vutudigital.com/", "label": "Website", "source": "post", "source_url": "https://www.tiktok.com/@checkin_quangngai"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-88",
    "name": "Phạm Hoàn cô gái Điện Biên",
@@ -2152,10 +1920,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-88.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tkphamhoan", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tkphamhoan"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-89",
    "name": "Tuyết Mật ong Điện Biên",
@@ -2179,11 +1944,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-89.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@buianhtuyet12", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@buianhtuyet12"},
-    {"provider": "phone", "value": "0916849276", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@buianhtuyet12"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-90",
    "name": "Kẻ Lụy Tình",
@@ -2207,12 +1968,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-90.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@congto202", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@congto202"},
-    {"provider": "phone", "value": "0346267631", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@congto202"},
-    {"provider": "website", "value": "https://youtube.com/@congvlog2", "label": "Website", "source": "post", "source_url": "https://www.tiktok.com/@congto202"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-91",
    "name": "Shop Phẩy Lào Cai",
@@ -2236,11 +1992,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-91.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tanmuiphay", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tanmuiphay"},
-    {"provider": "phone", "value": "0386146754", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@tanmuiphay"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-93",
    "name": "shop Thúy Thiện cà mau",
@@ -2264,10 +2016,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-93.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuythien_camau", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuythien_camau"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-94",
    "name": "Như Ngọc - Chợ Lách",
@@ -2291,10 +2040,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-94.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nhungoc_0707.nich", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nhungoc_0707.nich"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-95",
    "name": "Diễm Thi 1992",
@@ -2318,10 +2064,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-95.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@caygiongdiemthi1", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@caygiongdiemthi1"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-96",
    "name": "Tạp Hoá Cô Thơ Ơi 68",
@@ -2345,10 +2088,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-96.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@taphoacothooi68", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@taphoacothooi68"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-97",
    "name": "ANH ĐOẠI ĐẾN ĐÂY",
@@ -2372,10 +2112,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-97.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@anhdoaiofficial", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@anhdoaiofficial"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-98",
    "name": "MyMy ❤️",
@@ -2399,10 +2136,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-98.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@mymini25094", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@mymini25094"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-99",
    "name": "Thuhuyen",
@@ -2426,10 +2160,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-99.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuhuyen3545", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuhuyen3545"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-100",
    "name": "Nguyễn Thuý Shop -Đồng Tháp",
@@ -2453,11 +2184,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-100.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuyem4668", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuyem4668"},
-    {"provider": "phone", "value": "0377222828", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@thuyem4668"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-101",
    "name": "Khánh Nguyên Ô Tô Cũ ĐỒNG THÁP",
@@ -2481,12 +2208,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-101.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@otokhanhnguyendongthap", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@otokhanhnguyendongthap"},
-    {"provider": "phone", "value": "0948849999", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@otokhanhnguyendongthap"},
-    {"provider": "phone", "value": "0907431010", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@otokhanhnguyendongthap"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-102",
    "name": "A Lử Tuyên Quang",
@@ -2510,10 +2232,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-102.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@a.l.tuyn.quang4", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@a.l.tuyn.quang4"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-103",
    "name": "KUBOTA TUYÊN QUANG",
@@ -2537,10 +2256,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-103.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kubota.tuyen.quang", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kubota.tuyen.quang"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-104",
    "name": "Huy Quảng Ngãi",
@@ -2564,11 +2280,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-104.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@huyvuong.review", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@huyvuong.review"},
-    {"provider": "phone", "value": "0968732928", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@huyvuong.review"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-105",
    "name": "Shop.Nga.Nguyễn",
@@ -2592,10 +2304,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-105.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shop_ngoc_nga", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shop_ngoc_nga"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-106",
    "name": "Trường phú thọ shop",
@@ -2619,10 +2328,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-106.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@truong.phu.tho.shop", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@truong.phu.tho.shop"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-107",
    "name": "shop của tuan phu tho",
@@ -2646,10 +2352,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@pham.tuan.quang.p", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@pham.tuan.quang.p"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-108",
    "name": "Mestiny",
@@ -2673,10 +2376,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-108.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@mestiny.w", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@mestiny.w"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-109",
    "name": "DORE Long Xuyên đồng giá 20k",
@@ -2700,10 +2400,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-109.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@dorelongxuyen", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@dorelongxuyen"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-110",
    "name": "Cổ phục Ngọc Phụng",
@@ -2727,10 +2424,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-110.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@cophuc.ngocphung", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@cophuc.ngocphung"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-111",
    "name": "NESTY BUÔN MA THUỘT.",
@@ -2754,10 +2448,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-111.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nestybuonmathuot", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nestybuonmathuot"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-112",
    "name": "Trucdoanpham Buôn Ma Thuột",
@@ -2781,10 +2472,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-112.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trucdoanpham.buonmathuot", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trucdoanpham.buonmathuot"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-113",
    "name": "Trang PMU | Buôn Hồ",
@@ -2808,11 +2496,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-113.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nguyenhuyentrang47", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nguyenhuyentrang47"},
-    {"provider": "zalo", "value": "0971716444", "label": "Zalo", "source": "post", "source_url": "https://www.tiktok.com/@nguyenhuyentrang47"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-115",
    "name": "Sỹ Mạnh Audio 38 Hà Tĩnh",
@@ -2836,11 +2520,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-115.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@teocay38", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@teocay38"},
-    {"provider": "phone", "value": "0367275341", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@teocay38"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-116",
    "name": "Hà Thời Trang",
@@ -2864,10 +2544,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-116.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shopbaotram23", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shopbaotram23"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-117",
    "name": "SHOP HUỆ ANH’ss",
@@ -2891,10 +2568,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-117.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shophueann86", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shophueann86"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-118",
    "name": "Shop Huệ",
@@ -2918,10 +2592,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-118.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@huevoshop", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@huevoshop"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-119",
    "name": "Shop huế Quảng Châu",
@@ -2945,10 +2616,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-119.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@huy_shopvipp1", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@huy_shopvipp1"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-120",
    "name": "P.A.M BIGSIZE",
@@ -2972,11 +2640,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-120.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@in20phng", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@in20phng"},
-    {"provider": "phone", "value": "0399303280", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@in20phng"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-121",
    "name": "HạLongXanh VinAlpha",
@@ -3000,10 +2664,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-121.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tuyn.dng.hlongxan", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tuyn.dng.hlongxan"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-122",
    "name": "Trang Geely Hạ Long",
@@ -3027,10 +2688,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-122.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trang.lynk.co.qn", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trang.lynk.co.qn"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-123",
    "name": "Thuỷ đặc sản chè thái nguyên",
@@ -3054,10 +2712,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-123.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@696thanhthuy", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@696thanhthuy"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-124",
    "name": "Hợp Tác Xã Chè La Bằng",
@@ -3081,10 +2736,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-124.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@htxchelabang", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@htxchelabang"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-125",
    "name": "Buff Media (Tuyển TV)",
@@ -3108,11 +2760,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-125.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@buff.media", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@buff.media"},
-    {"provider": "website", "value": "https://forms.gle/zbzLTfV6NMgytKYA9", "label": "Website", "source": "post", "source_url": "https://www.tiktok.com/@buff.media"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-126",
    "name": "Dưỡng Sinh Nàng Thơ Lạng Sơn",
@@ -3136,10 +2784,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-126.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nangthospalangson", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nangthospalangson"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-147",
    "name": "Bloomode",
@@ -3163,11 +2808,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/bloomode/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/bloomode/"},
-    {"provider": "phone", "value": "0924061580", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/bloomode/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-148",
    "name": "Morethanbasis_official",
@@ -3191,11 +2832,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/morethanbasis_official/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/morethanbasis_official/"},
-    {"provider": "phone", "value": "0919951994", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/morethanbasis_official/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-149",
    "name": "Wiin House",
@@ -3219,11 +2856,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/wiin_house/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/wiin_house/"},
-    {"provider": "phone", "value": "0984222373", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/wiin_house/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-150",
    "name": "Skin House",
@@ -3247,12 +2880,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/skinhousevn/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/skinhousevn/"},
-    {"provider": "phone", "value": "0986136861", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/skinhousevn/"},
-    {"provider": "phone", "value": "0961218006", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/skinhousevn/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-151",
    "name": "Cock Stock",
@@ -3276,10 +2904,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/cock.stock/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/cock.stock/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-152",
    "name": "She by Shj",
@@ -3303,11 +2928,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/she.by.shj/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/she.by.shj/"},
-    {"provider": "phone", "value": "0817521979", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/she.by.shj/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-153",
    "name": "Usthebasic",
@@ -3331,11 +2952,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/usthebasic/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/usthebasic/"},
-    {"provider": "phone", "value": "0909838539", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/usthebasic/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-154",
    "name": "Sixty Eight",
@@ -3359,11 +2976,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/sixty.eightt/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/sixty.eightt/"},
-    {"provider": "phone", "value": "0919681994", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/sixty.eightt/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-155",
    "name": "Nhà kho Liti",
@@ -3387,11 +3000,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/nhakholiti/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/nhakholiti/"},
-    {"provider": "phone", "value": "0909661170", "label": "Điện thoại", "source": "post", "source_url": "https://www.instagram.com/nhakholiti/"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-156",
    "name": "Leuleu.accessorize",
@@ -3415,12 +3024,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@leuleu.accessorize", "label": "Threads", "source": "post", "source_url": "https://www.threads.net/@leuleu.accessorize"},
-    {"provider": "instagram", "value": "https://www.instagram.com/leuleu.accessorize/", "label": "Instagram", "source": "post", "source_url": "https://www.threads.net/@leuleu.accessorize"},
-    {"provider": "phone", "value": "0375674428", "label": "Điện thoại", "source": "post", "source_url": "https://www.threads.net/@leuleu.accessorize"}
-   ]  },
+   "photoSrc": null  },
 {
    "id": "th-157",
    "name": "TTV STORE",
@@ -3444,11 +3048,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-157.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@TTVSTORE", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@TTVSTORE"},
-    {"provider": "zalo", "value": "0356116937", "label": "Zalo", "source": "post", "source_url": "https://www.youtube.com/@TTVSTORE"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-158",
    "name": "Nguyễn Trang - Chuyên đồ bộ",
@@ -3472,12 +3072,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-158.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@nguyentrang-chuyenobo8841", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@nguyentrang-chuyenobo8841"},
-    {"provider": "phone", "value": "0929973333", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/@nguyentrang-chuyenobo8841"},
-    {"provider": "phone", "value": "0865933460", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/@nguyentrang-chuyenobo8841"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-159",
    "name": "Cháy túi vì mỹ phẩm",
@@ -3501,10 +3096,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-159.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@chaytuivimypham2360", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@chaytuivimypham2360"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-160",
    "name": "Vân28 - Thời Trang Trung Niên Quảng Châu Cao Cấp",
@@ -3528,12 +3120,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-160.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/channel/UCZqyq_ItB_-Emw-JiLTGz3A", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/channel/UCZqyq_ItB_-Emw-JiLTGz3A"},
-    {"provider": "zalo", "value": "0843479728", "label": "Zalo", "source": "post", "source_url": "https://www.youtube.com/channel/UCZqyq_ItB_-Emw-JiLTGz3A"},
-    {"provider": "zalo", "value": "0339292728", "label": "Zalo", "source": "post", "source_url": "https://www.youtube.com/channel/UCZqyq_ItB_-Emw-JiLTGz3A"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-161",
    "name": "Louie Trung Hiếu",
@@ -3557,10 +3144,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-161.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@louietrunghieu", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@louietrunghieu"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-162",
    "name": "Ánh Tuyết (TK Shop Giày Dép)",
@@ -3584,10 +3168,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-162.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@anhtuyet3928", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@anhtuyet3928"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-163",
    "name": "Twinkle Sandal - Giày Dép Thời Trang Thiết Kế",
@@ -3611,10 +3192,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-163.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@twinkle.sandal", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@twinkle.sandal"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-164",
    "name": "Xu Boutique - Giầy Xuất Tuyển Chọn",
@@ -3638,12 +3216,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-164.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@xuboutique-giayxuattuyench4938", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@xuboutique-giayxuattuyench4938"},
-    {"provider": "phone", "value": "0906228089", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/@xuboutique-giayxuattuyench4938"},
-    {"provider": "phone", "value": "0986330828", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/@xuboutique-giayxuattuyench4938"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-165",
    "name": "KT Food Stories",
@@ -3667,10 +3240,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-165.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@KTFoodStories", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@KTFoodStories"}
-   ]  },
+   "photoSrc": "profile"  },
 {
    "id": "th-166",
    "name": "Mê Áo dài",
@@ -3694,10 +3264,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-166.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/@meaodaivietnam", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/@meaodaivietnam"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-127",
    "name": "Huyền| try-on đồ xinh🫶🏻",
@@ -3721,11 +3288,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-127.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@huyen.mixdo", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@huyen.mixdo"},
-    {"provider": "phone", "value": "0968688517", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@huyen.mixdo"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-128",
    "name": "Thời Trang Nam Việt Thành ✅",
@@ -3749,10 +3312,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-128.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thoitrangnamvietthanh", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thoitrangnamvietthanh"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-129",
    "name": "SHOP GIÀY DÉP DŨNG HẠNH",
@@ -3776,10 +3336,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shopgiaydepbitishanh", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shopgiaydepbitishanh"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-130",
    "name": "Thời Trang Nam Hiếu Dương",
@@ -3803,10 +3360,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-130.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hieuduong_sale", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hieuduong_sale"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-131",
    "name": "Thời trang nam Minh Hương",
@@ -3830,10 +3384,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-131.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@sh_kalinovic", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@sh_kalinovic"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-132",
    "name": "KIM Thời Trang Việt",
@@ -3857,10 +3408,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-132.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hemfashion", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hemfashion"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-133",
    "name": "Thời trang việt nữ 123",
@@ -3884,11 +3432,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-133.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thi.trang.vit.n.2", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thi.trang.vit.n.2"},
-    {"provider": "phone", "value": "0837039065", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@thi.trang.vit.n.2"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-134",
    "name": "Angelux Cosmetic Việt Nam",
@@ -3912,10 +3456,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-134.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@angeluxvn", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@angeluxvn"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-135",
    "name": "LAL.AMOS",
@@ -3939,10 +3480,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-135.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lalamosmypham", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lalamosmypham"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-136",
    "name": "Mỹ phẩm quỳnh chi",
@@ -3966,11 +3504,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-136.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@myphamtockarseell", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@myphamtockarseell"},
-    {"provider": "phone", "value": "0968128343", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@myphamtockarseell"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-137",
    "name": "Hằng giày dép - túi xách 99",
@@ -3994,10 +3528,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-137.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hanggiay88", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hanggiay88"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-138",
    "name": "Túi Xách GENCE",
@@ -4021,10 +3552,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-138.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tuixachgence", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tuixachgence"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-139",
    "name": "MỸ PHẨM KIM ANH 1",
@@ -4048,11 +3576,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-139.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kho_si_kim_anh_1", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kho_si_kim_anh_1"},
-    {"provider": "phone", "value": "0352751478", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@kho_si_kim_anh_1"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-140",
    "name": "Shop Mỹ Phẩm Hạnh Hoàng",
@@ -4076,10 +3600,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-140.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@hanhdao1391", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@hanhdao1391"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-141",
    "name": "CAMON-Mỹ phẩm thiên nhiên Việt",
@@ -4103,10 +3624,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": true,
    "photoUrl": "images/th-141.jpg",
-   "photoSrc": "profile",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@camon.cosmetic", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@camon.cosmetic"}
-   ]  },
+   "photoSrc": "profile"  },
   {
    "id": "th-167",
    "name": "Kim Khánh Lucie Thốt Nốt",
@@ -4130,10 +3648,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kimkhanhlucie.thotnot", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kimkhanhlucie.thotnot"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-168",
    "name": "Shop Tiên Clothing",
@@ -4157,10 +3672,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tien1997clothing", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tien1997clothing"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-169",
    "name": "Tiệm nhà sóc",
@@ -4184,11 +3696,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@annhieen2025", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@annhieen2025"},
-    {"provider": "zalo", "value": "0359409174", "label": "Zalo", "source": "post", "source_url": "https://www.tiktok.com/@annhieen2025"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-170",
    "name": "NgọcThanh Boutique",
@@ -4212,11 +3720,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thanhngc.boutique", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thanhngc.boutique"},
-    {"provider": "phone", "value": "0359307817", "label": "Điện thoại", "source": "post", "source_url": "https://www.tiktok.com/@thanhngc.boutique"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-171",
    "name": "Love Store-Đồ bộ xinh",
@@ -4240,10 +3744,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lovestore_doboxinh", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lovestore_doboxinh"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-172",
    "name": "Thủy Anh Shop Đồ Ngủ",
@@ -4267,10 +3768,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@shop_thuyanh89", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@shop_thuyanh89"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-173",
    "name": "Tiệm đồ nhỏ của Vy",
@@ -4294,10 +3792,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@vybandore", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@vybandore"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-174",
    "name": "Xưởng đồ bộ pijama..",
@@ -4321,10 +3816,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@jiang5456", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@jiang5456"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-175",
    "name": "ĐỒ BỘ THU HÀ",
@@ -4348,10 +3840,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuhashop_08", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuhashop_08"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-176",
    "name": "Simple Skincare Vietnam",
@@ -4375,10 +3864,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@simplevietnam", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@simplevietnam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-177",
    "name": "SKC SkinLab Vietnam",
@@ -4402,11 +3888,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@skcskinlab", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@skcskinlab"},
-    {"provider": "website", "value": "https://skcskinlab.com", "label": "Website", "source": "post", "source_url": "https://www.tiktok.com/@skcskinlab"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-178",
    "name": "HUYỀN XƯỞNG GIÀY DÉP SANDAL",
@@ -4430,10 +3912,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@huyensandal", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@huyensandal"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-179",
    "name": "SANDAL VENTO",
@@ -4457,10 +3936,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@sandal.vento.vietnam", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@sandal.vento.vietnam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-180",
    "name": "Giày dép Thảo Tân Quy",
@@ -4484,10 +3960,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thao_tanquy", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thao_tanquy"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-181",
    "name": "Giày dép Thắm Toản NĐ",
@@ -4511,11 +3984,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@giaydepthamtoannd", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@giaydepthamtoannd"},
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@maianhchuoi", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@giaydepthamtoannd"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-182",
    "name": "TIAIPI VIỆT NAM STORE",
@@ -4539,10 +4008,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tiaipi.vietnam", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tiaipi.vietnam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-183",
    "name": "Góc Ăn Vặt Nhà Mẹ Bơ",
@@ -4566,10 +4032,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lylybui2890", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lylybui2890"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-184",
    "name": "Bếp nhà Rơm",
@@ -4593,11 +4056,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@bepnharom", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@bepnharom"},
-    {"provider": "email", "value": "bepnharom97@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.tiktok.com/@bepnharom"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-185",
    "name": "THUYỀN XƯA FOODS",
@@ -4621,10 +4080,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@thuyenxuafoods", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@thuyenxuafoods"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-186",
    "name": "Đỗ Thảo My",
@@ -4648,10 +4104,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@mymeo2302", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@mymeo2302/post/DfT6MxiCfZo"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-187",
    "name": "Gia Như Hà",
@@ -4675,10 +4128,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@hagianhu_", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hagianhu_/post/Dc010_tAVSp"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-188",
    "name": "Bang Bang Le",
@@ -4702,10 +4152,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@_fkrystal", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@_fkrystal/post/DfZDDx4kxbD"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-189",
    "name": "Phương Thảo Nhi",
@@ -4729,10 +4176,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@phuongthaonhii", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@phuongthaonhii/post/DflfTPlk5JM"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-190",
    "name": "Nguyễn Thụy Tuyết Nhi",
@@ -4756,12 +4200,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@hananhi97", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hananhi97/post/Db_7UE0E611"},
-    {"provider": "phone", "value": "0842185887", "label": "Điện thoại", "source": "post", "source_url": "https://www.threads.com/@hananhi97/post/Db_7UE0E611"},
-    {"provider": "zalo", "value": "0328781564", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@hananhi97/post/Db_7UE0E611"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-191",
    "name": "Nguyễn Thanh Chúc",
@@ -4785,10 +4224,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@_nthanhchuc_", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@_nthanhchuc_/post/DewjLjHk3I0"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-192",
    "name": "Ánh Duyên",
@@ -4812,10 +4248,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@dinen_iooi", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@dinen_iooi/post/DegylU3ASsL"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-193",
    "name": "Phạm Tường Vy",
@@ -4839,10 +4272,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@tuongzy22", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@tuongzy22/post/DfAOnwakqYH"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-194",
    "name": "Ngọc Anh Vũ",
@@ -4866,10 +4296,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@o_oo.vna", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@o_oo.vna/post/DfWbLpslIv-"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-195",
    "name": "Nhật Ký Riêng",
@@ -4893,10 +4320,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@trailong.68", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@trailong.68/post/Dfd90u6E47x"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-196",
    "name": "Mothaiba",
@@ -4920,10 +4344,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@bat.8526316", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@bat.8526316/post/DfeS-KJmQOu"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-197",
    "name": "Ngân Kim",
@@ -4947,10 +4368,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.net/@k_ngan.3", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@k_ngan.3/post/Dfbw0kAoEdR"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-198",
    "name": "ELDY - Thời Trang Nữ Công Sở",
@@ -4974,10 +4392,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@eldy_thoitrangcongso/live?_r=1&checksum=b4c8b7bc05a182c488113a663fb2373e6fb6749e5be813e5b1f0194280d25644&sec_user_id=MS4wLjABAAAAm5enVIcdG3Fol3sWdAGB_MT_cJyHV-ff0t5TVIGx0gI0ROVC-OC6yWz3YaOTaZYb&share_app_id=1180&share_link_id=FEFC4C41-C1FA-4F09-AD89-2984AC0351EA&social_share_type=10&", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@eldy_thoitrangcongso/live?_r=1&checksum=b4c8b7bc05a182c488113a663fb2373e6fb6749e5be813e5b1f0194280d25644&sec_user_id=MS4wLjABAAAAm5enVIcdG3Fol3sWdAGB_MT_cJyHV-ff0t5TVIGx0gI0ROVC-OC6yWz3YaOTaZYb&share_app_id=1180&share_link_id=FEFC4C41-C1FA-4F09-AD89-2984AC0351EA&social_share_type=10&"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-199",
    "name": "KIỀU Chị 12 . Thời trang nữ",
@@ -5001,10 +4416,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kieu.shop.thi.trang.tu6/live?_d=secCgYIASAHKAESPgo8DwhHY%2BQn07CT%2FckvCZoZFITW2w7LDakGB%2FYUpHGA3ZutJv2W0mPqj59n7h2KbCKiOpQaWhHKLs3y3OJCGgA%3D&_r=1&_svg=1&checksum=b3718676554b83a6781bc02bc33fce45a18d502e26bb3b9acab9cc1335aafddf&enter_from_merge=share&enter_method=share&sec_user_id=MS4w", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kieu.shop.thi.trang.tu6/live?_d=secCgYIASAHKAESPgo8DwhHY%2BQn07CT%2FckvCZoZFITW2w7LDakGB%2FYUpHGA3ZutJv2W0mPqj59n7h2KbCKiOpQaWhHKLs3y3OJCGgA%3D&_r=1&_svg=1&checksum=b3718676554b83a6781bc02bc33fce45a18d502e26bb3b9acab9cc1335aafddf&enter_from_merge=share&enter_method=share&sec_user_id=MS4w"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-200",
    "name": "Vương Vỹ Thành Thời Trang Nữ",
@@ -5028,10 +4440,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@vuongvythanhfashion/live?_d=secCgYIASAHKAESPgo8n%2BrGrVWxlHxM50hUTTt9urhgISPfgR7UBB2Q8a6YmaVFJRgnHlSQf131ijNTCxUrCPt9kMWNwZO%2FuvVXGgA%3D&_r=1&_svg=1&checksum=cd4390535012c762596244b8ebca23384b6c9719c9597cdcc58a149985e9b61e&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjAB", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@vuongvythanhfashion/live?_d=secCgYIASAHKAESPgo8n%2BrGrVWxlHxM50hUTTt9urhgISPfgR7UBB2Q8a6YmaVFJRgnHlSQf131ijNTCxUrCPt9kMWNwZO%2FuvVXGgA%3D&_r=1&_svg=1&checksum=cd4390535012c762596244b8ebca23384b6c9719c9597cdcc58a149985e9b61e&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjAB"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-201",
    "name": "Thời trang nữ May May Shop",
@@ -5055,10 +4464,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@maymayshop.vn/live?_r=1&_svg=1&checksum=fd257438ca70bb4c3d14d7c98ea575796b892009a82c25d8ab4e9a92f2b40363&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAApoqj_yQ47OqeSgLrwgvUKD1pTa3ZHpgPc7CKJHL-siu6DFYP8h3S6rPoyXCrjno&share_app_id=1180&share_from_user_id=71709123791", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@maymayshop.vn/live?_r=1&_svg=1&checksum=fd257438ca70bb4c3d14d7c98ea575796b892009a82c25d8ab4e9a92f2b40363&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAApoqj_yQ47OqeSgLrwgvUKD1pTa3ZHpgPc7CKJHL-siu6DFYP8h3S6rPoyXCrjno&share_app_id=1180&share_from_user_id=71709123791"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-202",
    "name": "Mi bán đồ bộ",
@@ -5082,10 +4488,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@mymy240195/live?_d=secCgYIASAHKAESPgo8U%2BHRXKZI%2B6UnyD8mzV%2FLPUggBzsLoBygihWTfwsBjYtHvdKdE246ARUo1XUn%2BN5%2Ft7TKUK1SmPmbrVTZGgA%3D&_r=1&_svg=1&checksum=77edcc6ce8398c836258a601b6c4ce0688d35f2725078312f5e7a055ec7bf318&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAhlPsxuQCUev07JCR8OtsMr-2Rd0NcS7WuWX3BNRGBwTs8USI5YcrmjE0lqxShCEF&share_app_id=1180&share_enter_from=message&share_from_user_id=6858024697100108802&share_link_id=ba96756d-1d9f-4812-8fd1-7ac34d13ae11&share_region=VN&social_share_type=10&source=h5_t&timestamp=1782352584&ug_btm=b9081%2Cb4180&ugbiz_name=LIVE&user_id=6858024697100108802&utm_campaign=client_share&utm_medium=android&utm_source=copy", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@mymy240195/live?_d=secCgYIASAHKAESPgo8U%2BHRXKZI%2B6UnyD8mzV%2FLPUggBzsLoBygihWTfwsBjYtHvdKdE246ARUo1XUn%2BN5%2Ft7TKUK1SmPmbrVTZGgA%3D&_r=1&_svg=1&checksum=77edcc6ce8398c836258a601b6c4ce0688d35f2725078312f5e7a055ec7bf318&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAhlPsxuQCUev07JCR8OtsMr-2Rd0NcS7WuWX3BNRGBwTs8USI5YcrmjE0lqxShCEF&share_app_id=1180&share_enter_from=message&share_from_user_id=6858024697100108802&share_link_id=ba96756d-1d9f-4812-8fd1-7ac34d13ae11&share_region=VN&social_share_type=10&source=h5_t&timestamp=1782352584&ug_btm=b9081%2Cb4180&ugbiz_name=LIVE&user_id=6858024697100108802&utm_campaign=client_share&utm_medium=android&utm_source=copy"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-203",
    "name": "SHOP LIỄU VÕ",
@@ -5109,10 +4512,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@m.ca.khnh.phuong/live?_r=1&_svg=1&checksum=b33119fff22b81b4fb70fb836a15ef15aefa8042705b5905dc3a2b9c199cb299&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAA-RdSU8m8TxfFrzLwohrznY5EDGqiJw7ZiYZRjCZArUMpK62LHutLlLmSMYKW8IxT&share_app_id=1180&share_from_user_id=73809057", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@m.ca.khnh.phuong/live?_r=1&_svg=1&checksum=b33119fff22b81b4fb70fb836a15ef15aefa8042705b5905dc3a2b9c199cb299&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAA-RdSU8m8TxfFrzLwohrznY5EDGqiJw7ZiYZRjCZArUMpK62LHutLlLmSMYKW8IxT&share_app_id=1180&share_from_user_id=73809057"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-204",
    "name": "LAN TÍCH CỰC",
@@ -5136,10 +4536,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@em.iu8371/live?_d=secCgYIASAHKAESPgo8cRyeF94dxAcJw%2FT6aRsHSI1JubJrm91Vq6Jju0%2BplKjmqJLEGcnxcmbvqP%2FlxkkeCpeuktrHgvpMNjgdGgA%3D&_r=1&_svg=1&checksum=f6dba751e1a6bd9156dbc8fc03380750e9edc25100c533b878fc57d1d33a3212&enter_from_merge=share&enter_method=share&panel_source_v2=share_panel&sec_user_id=MS4wLjABAAAAHA7yOya_CqAJHw4_sPi325MPK4xzM70pqiSHO-4qDuBCmrRYe-ioXhVfmyZ4V_LA&share_app_id=1180&share_enter_from=camera&share_from_user_id=7410410467459679250&share_link_id=EAE47065-42A8-494C-89CD-BD892C1C2AC8&share_region=VN&social_share_type=10&source=h5_t&timestamp=1781619807&tt_from=facebook&ug_btm=b1736%2Cb0&user_id=7410410467459679250&utm_campaign=client_share&utm_medium=ios&utm_source=facebook", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@em.iu8371/live?_d=secCgYIASAHKAESPgo8cRyeF94dxAcJw%2FT6aRsHSI1JubJrm91Vq6Jju0%2BplKjmqJLEGcnxcmbvqP%2FlxkkeCpeuktrHgvpMNjgdGgA%3D&_r=1&_svg=1&checksum=f6dba751e1a6bd9156dbc8fc03380750e9edc25100c533b878fc57d1d33a3212&enter_from_merge=share&enter_method=share&panel_source_v2=share_panel&sec_user_id=MS4wLjABAAAAHA7yOya_CqAJHw4_sPi325MPK4xzM70pqiSHO-4qDuBCmrRYe-ioXhVfmyZ4V_LA&share_app_id=1180&share_enter_from=camera&share_from_user_id=7410410467459679250&share_link_id=EAE47065-42A8-494C-89CD-BD892C1C2AC8&share_region=VN&social_share_type=10&source=h5_t&timestamp=1781619807&tt_from=facebook&ug_btm=b1736%2Cb0&user_id=7410410467459679250&utm_campaign=client_share&utm_medium=ios&utm_source=facebook"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-205",
    "name": "Lê Ngọc Phương Vy",
@@ -5163,10 +4560,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@pvythichmakeup/live?_r=1&_svg=1&checksum=6e371e959d93871f993cd525beb367843b97c93d08c29227b259daa99da55959&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAm3lfggS-i6rXweX6T1NxUg6-1ODqno16uk9RCnsj6QAY3GvZbCqI1XqG4iVolR1W&share_app_id=1180&share_link_id=A8A55B0B-3130-4276-9C8C-D58772DC3AAB&share_region=VN&social_share_type=10&source=h5_t&timestamp=1774621910&tt_from=facebook&ug_btm=b9081%2Cb4180&user_id=6631436733107437569&utm_campaign=client_share&utm_medium=ios&utm_source=facebook", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@pvythichmakeup/live?_r=1&_svg=1&checksum=6e371e959d93871f993cd525beb367843b97c93d08c29227b259daa99da55959&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAm3lfggS-i6rXweX6T1NxUg6-1ODqno16uk9RCnsj6QAY3GvZbCqI1XqG4iVolR1W&share_app_id=1180&share_link_id=A8A55B0B-3130-4276-9C8C-D58772DC3AAB&share_region=VN&social_share_type=10&source=h5_t&timestamp=1774621910&tt_from=facebook&ug_btm=b9081%2Cb4180&user_id=6631436733107437569&utm_campaign=client_share&utm_medium=ios&utm_source=facebook"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-206",
    "name": "Sally",
@@ -5190,11 +4584,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/_u/sallysallyvn", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DeYkIX9MUA9/"},
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DeYkIX9MUA9/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DeYkIX9MUA9/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-207",
    "name": "Phan Thị Lâm",
@@ -5218,10 +4608,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DKkLUfmvfHT/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DKkLUfmvfHT/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-208",
    "name": "Trần Bích Diệp",
@@ -5245,10 +4632,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DfgwvwLTvUQ/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DfgwvwLTvUQ/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-209",
    "name": "Thuy Anh Le",
@@ -5272,10 +4656,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/p/DfmdLjKo0i-/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/p/DfmdLjKo0i-/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-210",
    "name": "CINA ORDER",
@@ -5299,10 +4680,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/p/DfpZwZyv5Dk/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/p/DfpZwZyv5Dk/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-211",
    "name": "OYSTER",
@@ -5326,10 +4704,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/p/DfovNf8AfCs/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/p/DfovNf8AfCs/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-212",
    "name": "Phenomenal.bb",
@@ -5353,10 +4728,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DfmPpOhyWUm/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DfmPpOhyWUm/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-213",
    "name": "Koolcheng Trinh Tu Trung",
@@ -5380,10 +4752,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/p/DKoznWpSf3N/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/p/DKoznWpSf3N/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-214",
    "name": "MC Hoàng Việt",
@@ -5407,10 +4776,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DfpOEaiuI7o/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DfpOEaiuI7o/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-215",
    "name": "MOI cosmetics",
@@ -5434,10 +4800,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/Dfj9vE-FLIf/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/Dfj9vE-FLIf/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-216",
    "name": "Tiep Vien Hang Khong",
@@ -5461,10 +4824,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/p/Dfj2zFfgS3E/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/p/Dfj2zFfgS3E/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-217",
    "name": "Trần Thị Phương",
@@ -5488,10 +4848,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/Dfo5nmPBONO/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/Dfo5nmPBONO/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-218",
    "name": "Nguyễn Mai Thu Trang",
@@ -5515,10 +4872,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "instagram", "value": "https://www.instagram.com/reel/DfcaCroTUaK/", "label": "Instagram", "source": "post", "source_url": "https://www.instagram.com/reel/DfcaCroTUaK/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-219",
    "name": "Thời trang Đan Châu",
@@ -5542,10 +4896,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/danchaufashion/posts/pfbid02CRF7Mvsqsj6hBVPWbRGBxYg6BSs1Jj4Vfd88yst2Swo8uneRKpBwZc5CphqJj3DYl", "label": "Website", "source": "post", "source_url": "https://www.facebook.com/danchaufashion/posts/pfbid02CRF7Mvsqsj6hBVPWbRGBxYg6BSs1Jj4Vfd88yst2Swo8uneRKpBwZc5CphqJj3DYl"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-220",
    "name": "Thảo Silk Boutique 2",
@@ -5569,10 +4920,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/reel/1724064435735305/", "label": "Website", "source": "post", "source_url": "https://www.facebook.com/reel/1724064435735305/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-221",
    "name": "Monoco Fashion",
@@ -5596,10 +4944,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/reel/1135166755547493/", "label": "Website", "source": "post", "source_url": "https://www.facebook.com/reel/1135166755547493/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-222",
    "name": "GUMAC",
@@ -5623,10 +4968,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/reel/2216599895925489/", "label": "Website", "source": "post", "source_url": "https://www.facebook.com/reel/2216599895925489/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-223",
    "name": "Tiến Hồ",
@@ -5650,10 +4992,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/reel/1093092773291712/", "label": "Website", "source": "post", "source_url": "https://www.facebook.com/reel/1093092773291712/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-224",
    "name": "Như 🦀 Cà Mau",
@@ -5677,10 +5016,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@nhucua_962696/live?_r=1&_svg=1&checksum=a825c8434e01160b1279913dd7641457a663a761622c6c60127f9813affdb740&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAejIvkMr8crVSbQIuFOm4pQndR-DGYhg3u31NrQeHAbHnVa-oQ_TU4ifDEoih8zVV&share_app_id=1180&share_link_id=5895A0EF-1A88-47", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@nhucua_962696/live?_r=1&_svg=1&checksum=a825c8434e01160b1279913dd7641457a663a761622c6c60127f9813affdb740&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAAejIvkMr8crVSbQIuFOm4pQndR-DGYhg3u31NrQeHAbHnVa-oQ_TU4ifDEoih8zVV&share_app_id=1180&share_link_id=5895A0EF-1A88-47"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-225",
    "name": "Trọng Cà Mau",
@@ -5704,10 +5040,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@trongcamau1983/live?_d=secCgYIASAHKAESPgo8F5BVzsor%2FgOe4wARHkQ9j1mLLOK71AoV0v2i6zU8KtSkv2QaWGbpPsbmAjlnNCmnAfh2Lvn9O2OWjxwNGgA%3D&_r=1&_svg=1&checksum=c6d9ab76309f2137cc92cd85f2d608629874e280502d11a719e534c4d325ab8d&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAA_cP", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@trongcamau1983/live?_d=secCgYIASAHKAESPgo8F5BVzsor%2FgOe4wARHkQ9j1mLLOK71AoV0v2i6zU8KtSkv2QaWGbpPsbmAjlnNCmnAfh2Lvn9O2OWjxwNGgA%3D&_r=1&_svg=1&checksum=c6d9ab76309f2137cc92cd85f2d608629874e280502d11a719e534c4d325ab8d&enter_from_merge=share&enter_method=share&sec_user_id=MS4wLjABAAAA_cP"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-226",
    "name": "Diệp Lê",
@@ -5731,10 +5064,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@Diep.lez", "label": "TikTok", "source": "post", "source_url": "https://kenh14.vn/diep-le-gay-soc-sieu-sale-livestream-11-11-tang-vang-iphone-duo-va-hoan-tien-thang-11-trieu-dong-tien-mat-215261111092314786.chn"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-227",
    "name": "Võ Hà Linh",
@@ -5758,11 +5088,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@halinhofficial", "label": "TikTok", "source": "post", "source_url": "https://vidiq.com/youtube-stats/channel/@halinhofficial/"},
-    {"provider": "youtube", "value": "https://www.youtube.com/@halinhofficial", "label": "YouTube", "source": "post", "source_url": "https://vidiq.com/youtube-stats/channel/@halinhofficial/"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-228",
    "name": "Hannah Olala",
@@ -5786,10 +5112,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.facebook.com/hannaholala1/posts/pfbid0YypQkaZdapnfzYQ58Pg58fRFhuhiLk2EeQVKfytXNh8bamiJiFRVmeCKazkaxdJBl", "label": "Website", "source": "post", "source_url": "https://afamily.vn/hannah-olala-va-vo-ha-linh-2-ngoi-sao-gioi-skinbiz-co-su-nghiep-the-nao-236260620225724846.chn"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-229",
    "name": "Quyền Leo",
@@ -5813,10 +5136,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam", "label": "Website", "source": "post", "source_url": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-230",
    "name": "PewPew",
@@ -5840,10 +5160,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/watch?v=34GdgSu5mDM", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/watch?v=34GdgSu5mDM"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-231",
    "name": "Mai Tây Bắc",
@@ -5867,10 +5184,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam", "label": "Website", "source": "post", "source_url": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-232",
    "name": "Lương Văn Tuấn",
@@ -5894,10 +5208,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam", "label": "Website", "source": "post", "source_url": "https://www.sapo.vn/blog/nhung-nguoi-livestream-ban-hang-noi-tieng-viet-nam"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-233",
    "name": "Xoài Phạm",
@@ -5921,10 +5232,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://theinfluencer.vn/xoai-pham-se-theo-duoi-cong-viec-livestream-ban-hang-toi-khi-khong-con-san-pham-nao-phu-hop-nua", "label": "Website", "source": "post", "source_url": "https://theinfluencer.vn/xoai-pham-se-theo-duoi-cong-viec-livestream-ban-hang-toi-khi-khong-con-san-pham-nao-phu-hop-nua"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-234",
    "name": "C&C Thời Trang Trung Niên",
@@ -5948,12 +5256,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/watch?v=gzs34-XD0Mg", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/watch?v=gzs34-XD0Mg"},
-    {"provider": "phone", "value": "0979616146", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/watch?v=gzs34-XD0Mg"},
-    {"provider": "website", "value": "https://chinhchien.vn/", "label": "Website", "source": "post", "source_url": "https://www.youtube.com/watch?v=gzs34-XD0Mg"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-235",
    "name": "Kim Bảo Trí",
@@ -5977,11 +5280,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/shorts/X3dSJC3ldOU", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/shorts/X3dSJC3ldOU"},
-    {"provider": "website", "value": "https://kimbaotri.com", "label": "Website", "source": "post", "source_url": "https://www.youtube.com/shorts/X3dSJC3ldOU"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-236",
    "name": "Lam Trieu Vy Diamonds",
@@ -6005,11 +5304,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/watch?v=wvMX2kGa9BU", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/watch?v=wvMX2kGa9BU"},
-    {"provider": "website", "value": "https://www.alekseidiamonds.com", "label": "Website", "source": "post", "source_url": "https://www.youtube.com/watch?v=wvMX2kGa9BU"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-237",
    "name": "Bonsai Thanh Bình LTK",
@@ -6033,11 +5328,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "youtube", "value": "https://www.youtube.com/watch?v=RGAdNhOQYl8", "label": "YouTube", "source": "post", "source_url": "https://www.youtube.com/watch?v=RGAdNhOQYl8"},
-    {"provider": "phone", "value": "0939442212", "label": "Điện thoại", "source": "post", "source_url": "https://www.youtube.com/watch?v=RGAdNhOQYl8"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-238",
    "name": "Trang Bống 89",
@@ -6061,10 +5352,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://www.lemon8-app.com/@trang.bong7997/7535537057633190416?region=vn", "label": "Website", "source": "post", "source_url": "https://www.lemon8-app.com/@trang.bong7997/7535537057633190416?region=vn"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-239",
    "name": "Nhulan",
@@ -6088,10 +5376,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://whotag.ai/content/ai/berrybingooo-_-20251104.html", "label": "Website", "source": "post", "source_url": "https://whotag.ai/content/ai/berrybingooo-_-20251104.html"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-240",
    "name": "Lê Anh Nuôi",
@@ -6115,10 +5400,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@le_anh_nuoi", "label": "TikTok", "source": "post", "source_url": "https://afamily.vn/le-anh-nuoi-bac-si-cung-va-pham-thoai-ban-yen-sao-10-20k-hu-dong-thai-la-khi-bi-soi-thanh-phan-20250610084524227.chn"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-241",
    "name": "Bác sĩ Cung",
@@ -6142,10 +5424,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@drtranduccung", "label": "TikTok", "source": "post", "source_url": "https://afamily.vn/le-anh-nuoi-bac-si-cung-va-pham-thoai-ban-yen-sao-10-20k-hu-dong-thai-la-khi-bi-soi-thanh-phan-20250610084524227.chn"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-242",
    "name": "Julian Erbil",
@@ -6169,10 +5448,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "website", "value": "https://me.sh/profile/julian-erbil-2f197550", "label": "Website", "source": "post", "source_url": "https://me.sh/profile/julian-erbil-2f197550"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-243",
    "name": "Uyen Bao Ngo",
@@ -6196,9 +5472,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-244",
    "name": "Quýt_qiuu",
@@ -6222,9 +5496,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-245",
    "name": "Tiến Duy",
@@ -6248,9 +5520,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-246",
    "name": "Đậu Thị Hiền",
@@ -6274,9 +5544,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-247",
    "name": "IntelligentBlueberry9898",
@@ -6300,9 +5568,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-248",
    "name": "Phương Linhh",
@@ -6326,9 +5592,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-249",
    "name": "Xiao Yang",
@@ -6352,9 +5616,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-250",
    "name": "Phanh nè",
@@ -6378,10 +5640,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "phone", "value": "0963603281", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-251",
    "name": "Đổ Thị Như",
@@ -6405,9 +5664,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-252",
    "name": "BrightSloth8201",
@@ -6431,9 +5688,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-253",
    "name": "Lisacute88",
@@ -6457,9 +5712,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  } ,
+   "photoSrc": null  } ,
   {
    "id": "th-254",
    "name": "Diệu Chaau",
@@ -6483,10 +5736,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-    {"provider": "phone", "value": "0327634127", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-255",
    "name": "CherishedElk2090",
@@ -6510,9 +5760,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-256",
    "name": "HumbleRhino9518",
@@ -6536,9 +5784,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-257",
    "name": "Nguyễn Ngọc Khánh",
@@ -6562,9 +5808,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-258",
    "name": "Live_đê_ngại_dề",
@@ -6588,9 +5832,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-259",
    "name": "FriendlyBison6295",
@@ -6614,9 +5856,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  }
+   "photoSrc": null  }
 ,
   {
    "id": "th-260",
@@ -6641,9 +5881,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  },
+   "photoSrc": null  },
   {
    "id": "th-261",
    "name": "Quách Thị Nhâm",
@@ -6667,9 +5905,7 @@ window.V20_DATA = {
    "status": "Đang tìm việc",
    "photoHas": false,
    "photoUrl": null,
-   "photoSrc": null,
-   "contacts": [
-   ]  }
+   "photoSrc": null  }
 ],
  "shops": [
   {
@@ -6686,10 +5922,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2326309658137327",
    "logo": "images-shop/shop-chamloa.png",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/people/Chạm-Loa/61576944824677/", "label": "Fanpage Chạm Loa", "source": "fanpage", "source_url": "https://www.facebook.com/people/Chạm-Loa/61576944824677/"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-02",
    "name": "Đỗ Sỹ Khải",
@@ -6703,11 +5936,7 @@ window.V20_DATA = {
    "channels": "KOC TikTok",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0941722001", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100090883478300", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326274064807553"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-03",
    "name": "Lâm",
@@ -6721,11 +5950,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0367889506", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029373981234", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326266194808340"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-04",
    "name": "Lâm Hoàng Dũng",
@@ -6739,11 +5964,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0876020006", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012624346418", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326186548149638"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-05",
    "name": "Phạm Hoàng Lâm",
@@ -6757,10 +5978,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949",
-   "logo": "",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61594229461537", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2326170104817949"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-06",
    "name": "Le Paria",
@@ -6774,11 +5992,7 @@ window.V20_DATA = {
    "channels": "TikTok Shop, Shopee",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0339705529", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61580462560218", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325902704844689"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-07",
    "name": "DOLLY SECRET",
@@ -6792,13 +6006,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0377067362", "label": "Zalo liên hệ tuyển dụng (Ms. Nhàn)", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100082410553515", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325805644854395"},
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@dollysecret.tight", "label": "TikTok @dollysecret.tight", "source": "topcv", "source_url": "https://www.tiktok.com/@dollysecret.tight"},
-    {"provider": "shopee", "value": "https://shopee.vn/dollysecret.tights", "label": "Shopee Dolly Secret Tights", "source": "shopee", "source_url": "https://shopee.vn/dollysecret.tights"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-08",
    "name": "Nguyễn Minh Ngọc",
@@ -6812,10 +6020,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211",
-   "logo": "",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012425322917", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325684151533211"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-09",
    "name": "CÔNG TY TNHH TM XNK FANI / TopGia, TopGiaKids",
@@ -6830,12 +6035,7 @@ window.V20_DATA = {
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382",
    "logo": "images-shop/shop-fani-topgia.jpg",
-   "logoFit": "cover",
-   "contacts": [
-    {"provider": "zalo", "value": "0912569229", "label": "Zalo liên hệ nhanh", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"},
-    {"provider": "email", "value": "dungtvt3382@topgiafani.com", "label": "Email nhận CV", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2325675774867382"},
-    {"provider": "facebook", "value": "https://www.facebook.com/tuyendungfani", "label": "Fanpage Tuyển Dụng FANI", "source": "fanpage", "source_url": "https://www.facebook.com/tuyendungfani"}
-   ]  },
+   "logoFit": "cover"  },
   {
    "id": "sh-10",
    "name": "Ngoc Giang",
@@ -6849,11 +6049,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-09-08",
    "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0353215046", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100004639247783", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4463900403861910"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-11",
    "name": "QTC Marketing",
@@ -6867,10 +6063,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-10-04",
    "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841",
-   "logo": "",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100084326330688", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4491184424466841"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-12",
    "name": "Phuongg Thảo",
@@ -6884,11 +6077,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-10-15",
    "src": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0975848831", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100063519480617", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/book.kol.tiktok/posts/4503675873217696"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-13",
    "name": "Hiếu Ken",
@@ -6902,11 +6091,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-02",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0336190155", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100005592996221", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2323649048403388"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-14",
    "name": "Lê Thị Liễu",
@@ -6920,12 +6105,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-10-02",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0971759240", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"},
-    {"provider": "zalo", "value": "0981167717", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100012358743057", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2293148064786820"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-15",
    "name": "Nguyễn Thuý",
@@ -6939,10 +6119,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-10-18",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422",
-   "logo": "",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100028825702612", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2308402043261422"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-16",
    "name": "Lan Phương",
@@ -6956,11 +6133,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-09-16",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0352514268", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100029066784370", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2278062256295401"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-17",
    "name": "Vân Nguyễn",
@@ -6974,11 +6147,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-10-30",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0967488936", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100009152456136", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2320881055346854"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-18",
    "name": "Như Quỳnh",
@@ -6992,11 +6161,7 @@ window.V20_DATA = {
    "channels": "TikTok Shop, Shopee",
    "date": "2026-11-03",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0931482789", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61552293746603", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2324548448313448"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-19",
    "name": "Nhung Hong Pham",
@@ -7010,11 +6175,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-10-25",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0829078209", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100006865515051", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2315429035892056"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-20",
    "name": "Vũ Linh Phương",
@@ -7028,11 +6189,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-09-09",
    "src": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0333422259", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100079002122590", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1609286043173029/posts/2272207510214209"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-21",
    "name": "Javata Affiliate Team",
@@ -7046,11 +6203,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/337105752372137/posts/969098779172828",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0865863929", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61589467955549", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969098779172828"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-22",
    "name": "Truong Phuc Anh",
@@ -7064,11 +6217,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/337105752372137/posts/968270825922290",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0868553009", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100037242465269", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968270825922290"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-23",
    "name": "Thời Trang Nam Rustico",
@@ -7082,11 +6231,7 @@ window.V20_DATA = {
    "channels": "TikTok Shop",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0965765494", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=100056622261085", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705818247770165"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-24",
    "name": "Công ty TNHH Giấy Mylan",
@@ -7101,11 +6246,7 @@ window.V20_DATA = {
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/337105752372137/posts/968219079260798",
    "logo": "images-shop/shop-mylan.png",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0948972643", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"},
-    {"provider": "facebook", "value": "https://www.facebook.com/profile.php?id=61582223414128", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968219079260798"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-25",
    "name": "59K Entertainment",
@@ -7119,10 +6260,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/337105752372137/posts/969053609177345",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0369101543", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969053609177345"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-26",
    "name": "KOSS 5",
@@ -7136,10 +6274,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/337105752372137/posts/969044702511569",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0347514152", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/969044702511569"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-27",
    "name": "Anh Mai",
@@ -7153,10 +6288,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/337105752372137/posts/968970739185632",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0398717445", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968970739185632"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-28",
    "name": "GAMETOK LIVE",
@@ -7170,10 +6302,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/337105752372137/posts/968057325943640",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0398704111", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968057325943640"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-29",
    "name": "Qingxiang Nexplay",
@@ -7187,10 +6316,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/337105752372137/posts/968342475915125",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0398855402", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/968342475915125"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-30",
    "name": "YAOHAI",
@@ -7204,10 +6330,7 @@ window.V20_DATA = {
    "channels": "Chưa cập nhật",
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/1002938194724844/posts/1705679061117417",
-   "logo": "",
-   "contacts": [
-    {"provider": "zalo", "value": "0358546899", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844/posts/1705679061117417"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-31",
    "name": "Vũ Thúy Hiền",
@@ -7221,10 +6344,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-08",
    "src": "https://www.threads.com/@key_a_hyn/post/DfdrAppk86g",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@key_a_hyn", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@key_a_hyn/post/DfdrAppk86g"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-32",
    "name": "Nguyễn Việt Hoàng",
@@ -7238,10 +6358,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-08",
    "src": "https://www.threads.com/@mediahoang/post/Dfdt1mvI9o3",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@mediahoang", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@mediahoang/post/Dfdt1mvI9o3"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-33",
    "name": "SOL'S LA MODE",
@@ -7255,10 +6372,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@joella.lala/post/DfZVCbpkxhd",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@joella.lala", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@joella.lala/post/DfZVCbpkxhd"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-34",
    "name": "Vali MIA",
@@ -7272,10 +6386,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@only.workin/post/DfcZFUCk16s",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@only.workin", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@only.workin/post/DfcZFUCk16s"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-35",
    "name": "IMV",
@@ -7289,10 +6400,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@nemxinh_/post/DfYirjlH0lj",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@nemxinh_", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@nemxinh_/post/DfYirjlH0lj"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-36",
    "name": "DU DU VN",
@@ -7306,10 +6414,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@duduvn15/post/Dfblre8mY-_",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@duduvn15", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@duduvn15/post/Dfblre8mY-_"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-37",
    "name": "Nt Hòa",
@@ -7323,10 +6428,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@hoant292/post/Dfbypj5n23C",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@hoant292", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hoant292/post/Dfbypj5n23C"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-38",
    "name": "TDiu_HRn",
@@ -7340,10 +6442,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@thdiuu_267/post/DfZJGzlIOnN",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@thdiuu_267", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@thdiuu_267/post/DfZJGzlIOnN"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-39",
    "name": "Min Chang Clothing",
@@ -7357,10 +6456,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@nicktuueh/post/DfZg3V3k79l",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@nicktuueh", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@nicktuueh/post/DfZg3V3k79l"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-40",
    "name": "VSS Brand",
@@ -7374,10 +6470,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@trihngnh/post/DfbX_fGD2kY",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@trihngnh", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@trihngnh/post/DfbX_fGD2kY"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-41",
    "name": "Thiên Trường",
@@ -7391,10 +6484,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@aohuhtnart/post/Dfbm2jekp2N",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@aohuhtnart", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@aohuhtnart/post/Dfbm2jekp2N"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-42",
    "name": "Trần Bích Thảo",
@@ -7408,10 +6498,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@cam.thora_02/post/DfcPDklGpGj",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@cam.thora_02", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@cam.thora_02/post/DfcPDklGpGj"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-43",
    "name": "Diễm Quỳnh",
@@ -7425,10 +6512,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@diemquynh.b/post/DfZHvU_k52K",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@diemquynh.b", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@diemquynh.b/post/DfZHvU_k52K"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-44",
    "name": "Hồng Ngọc Shop",
@@ -7442,10 +6526,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@hongngocshop3/post/Dfb2hGOE9E7",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@hongngocshop3", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hongngocshop3/post/Dfb2hGOE9E7"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-45",
    "name": "9Sky Media",
@@ -7459,10 +6540,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@min_9sky/post/DfYtsd9Grp5",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@min_9sky", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@min_9sky/post/DfYtsd9Grp5"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-46",
    "name": "HR Tuyển Dụng",
@@ -7476,10 +6554,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@panda.6719227/post/DfbDjlVE_14",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@panda.6719227", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@panda.6719227/post/DfbDjlVE_14"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-47",
    "name": "LAUGHY",
@@ -7493,10 +6568,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-06",
    "src": "https://www.threads.com/@lflaughy/post/DfZdUQYGJJD",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@lflaughy", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@lflaughy/post/DfZdUQYGJJD"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-48",
    "name": "THE SUN MENSWEAR",
@@ -7510,10 +6582,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@thesunmenswear/post/DfcShY9mhJW",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@thesunmenswear", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@thesunmenswear/post/DfcShY9mhJW"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-49",
    "name": "Mộc Trầm Royal Agarwood",
@@ -7527,10 +6596,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@hiendehieu/post/Dfbic-BjxJk",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@hiendehieu", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hiendehieu/post/Dfbic-BjxJk"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-50",
    "name": "URMINE",
@@ -7544,10 +6610,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-07",
    "src": "https://www.threads.com/@miu.n.you/post/DfboKbBmsH7",
-   "logo": "",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@miu.n.you", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@miu.n.you/post/DfboKbBmsH7"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-51",
    "name": "Lem Shop",
@@ -7561,10 +6624,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@lemday.268",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lemday.268", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lemday.268"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-52",
    "name": "KAYLIN",
@@ -7578,10 +6638,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@kaylin.est18",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@kaylin.est18", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@kaylin.est18"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-53",
    "name": "Lanh Chanh",
@@ -7595,10 +6652,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@lanhchanh_review",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lanhchanh_review", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lanhchanh_review"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-54",
    "name": "teamMieu",
@@ -7612,10 +6666,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@teammieu",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@teammieu", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@teammieu"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-55",
    "name": "Tuyen Mau Phú Thọ",
@@ -7629,10 +6680,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@tuyenmau5",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@tuyenmau5", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@tuyenmau5"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-56",
    "name": "Daisy",
@@ -7646,10 +6694,7 @@ window.V20_DATA = {
    "channels": "TikTok",
    "date": "2026-11-08",
    "src": "https://www.tiktok.com/@lekiempzqff",
-   "logo": "",
-   "contacts": [
-    {"provider": "tiktok", "value": "https://www.tiktok.com/@lekiempzqff", "label": "TikTok", "source": "post", "source_url": "https://www.tiktok.com/@lekiempzqff"}
-   ]  },
+   "logo": ""  },
   {
    "id": "sh-57",
    "name": "Phượng Văn Trần",
@@ -7664,10 +6709,7 @@ window.V20_DATA = {
    "date": "2026-11-02",
    "src": "https://www.facebook.com/phuong.ongchu.3/posts/pfbid037HrpAVSN6THNgrEvAbcGWnfQPThg3t6wsbSUHUYbk9gpNQEu5ZbxSKehiznjpzb3l",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0988188887", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/phuong.ongchu.3/posts/pfbid037HrpAVSN6THNgrEvAbcGWnfQPThg3t6wsbSUHUYbk9gpNQEu5ZbxSKehiznjpzb3l"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-58",
    "name": "Nhóc&Mom",
@@ -7682,10 +6724,7 @@ window.V20_DATA = {
    "date": "2026-08-29",
    "src": "https://www.facebook.com/NHOCMOMSHOP/posts/pfbid0oSmc2EoDUk8y9bgfuBunx3Xeh1hG8WiDcEeKLGTfHB629Gtx8cUuWhyDihw3SWrBl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0813726685", "label": "Điện thoại (Ms Chinh)", "source": "post", "source_url": "https://www.facebook.com/NHOCMOMSHOP/posts/pfbid0oSmc2EoDUk8y9bgfuBunx3Xeh1hG8WiDcEeKLGTfHB629Gtx8cUuWhyDihw3SWrBl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-59",
    "name": "Lò Thị Hương",
@@ -7700,10 +6739,7 @@ window.V20_DATA = {
    "date": "2026-09-09",
    "src": "https://www.facebook.com/lothihuong2006/posts/pfbid0v2CzDpC8nWHCkbcEjhjXmYoErP881ZhUuksWKZwdr4W1N6rHZM7zBErPrJx91F2ml",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://facebook.com/lothihuong2006", "label": "Facebook Lò Thị Hương", "source": "post", "source_url": "https://www.facebook.com/lothihuong2006/posts/pfbid0v2CzDpC8nWHCkbcEjhjXmYoErP881ZhUuksWKZwdr4W1N6rHZM7zBErPrJx91F2ml"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-60",
    "name": "IDOL VIỆT",
@@ -7718,10 +6754,7 @@ window.V20_DATA = {
    "date": "2026-10-22",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02KFLav8Ju5bfjBcjSaqFjko6gbEoQ3N4XsPYNUo7GFuk4oH3n9i9kuGF7jPBUozcol&id=61554040480370",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0367164423", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02KFLav8Ju5bfjBcjSaqFjko6gbEoQ3N4XsPYNUo7GFuk4oH3n9i9kuGF7jPBUozcol&id=61554040480370"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-61",
    "name": "Trang Xinh",
@@ -7736,11 +6769,7 @@ window.V20_DATA = {
    "date": "2026-10-28",
    "src": "https://www.facebook.com/trang.xinh.74148/posts/pfbid0263EU2HxhHRA9dtLHVP1JjUcjWRHztRgxx2x21UcXY6v1n4ctSVRsYzc69FB38KeLl",
    "logo": "images-shop/shop-trang-xinh.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0367274914", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/trang.xinh.74148/posts/pfbid0263EU2HxhHRA9dtLHVP1JjUcjWRHztRgxx2x21UcXY6v1n4ctSVRsYzc69FB38KeLl"},
-    {"provider": "facebook", "value": "https://facebook.com/trang.xinh.74148", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/trang.xinh.74148/posts/pfbid0263EU2HxhHRA9dtLHVP1JjUcjWRHztRgxx2x21UcXY6v1n4ctSVRsYzc69FB38KeLl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-62",
    "name": "Tiến Đạt",
@@ -7755,10 +6784,7 @@ window.V20_DATA = {
    "date": "2026-10-11",
    "src": "https://www.facebook.com/tien.at.459092/posts/pfbid02rjyqcf3uEiikyjSu8Jb7ybZZ9kRYNWYdx6g2Suwz5Yn4aPMoR6hgHZXsgin52943l",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://facebook.com/tien.at.459092", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/tien.at.459092/posts/pfbid02rjyqcf3uEiikyjSu8Jb7ybZZ9kRYNWYdx6g2Suwz5Yn4aPMoR6hgHZXsgin52943l"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-63",
    "name": "MEN'S CORNER",
@@ -7773,10 +6799,7 @@ window.V20_DATA = {
    "date": "2026-10-09",
    "src": "https://www.facebook.com/Dinhphuongnam779/posts/pfbid0geBFR4dfNd8q7GwjLGmouXVhLFTXhbqK7ijNDKv8GG5vNUiwofG9Fvv4sA8QyShxl",
    "logo": "images-shop/shop-mens-corner.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://facebook.com/Dinhphuongnam779", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/Dinhphuongnam779/posts/pfbid0geBFR4dfNd8q7GwjLGmouXVhLFTXhbqK7ijNDKv8GG5vNUiwofG9Fvv4sA8QyShxl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-64",
    "name": "Đồ Gỗ Thuần Như",
@@ -7791,11 +6814,7 @@ window.V20_DATA = {
    "date": "2026-10-12",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02aHV6mowrxzkHnEnS3NwZZ42Cj9nDQRqJgn2iqoS8FPcR5vnEuz4oN2SFogpduYqal&id=100063686621671",
    "logo": "images-shop/shop-do-go-thuan-nhu.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0973549886", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02aHV6mowrxzkHnEnS3NwZZ42Cj9nDQRqJgn2iqoS8FPcR5vnEuz4oN2SFogpduYqal&id=100063686621671"},
-    {"provider": "facebook", "value": "https://facebook.com/people/%C4%90%E1%BB%92-G%E1%BB%96-THU%E1%BA%A6N-NH%C6%AF/100063686621671/", "label": "Fanpage Đồ Gỗ Thuần Như", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02aHV6mowrxzkHnEnS3NwZZ42Cj9nDQRqJgn2iqoS8FPcR5vnEuz4oN2SFogpduYqal&id=100063686621671"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-65",
    "name": "Lam Giang Media",
@@ -7810,10 +6829,7 @@ window.V20_DATA = {
    "date": "2026-10-06",
    "src": "https://www.facebook.com/tinnongxunghe1/posts/pfbid02mBwDPTN9hbbsGqoN4o6TNtytYJiR68YKkqtsMujfkkxJNxcLYJ7w8RJWibzsFb78l",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0924617777", "label": "Hotline", "source": "post", "source_url": "https://www.facebook.com/tinnongxunghe1/posts/pfbid02mBwDPTN9hbbsGqoN4o6TNtytYJiR68YKkqtsMujfkkxJNxcLYJ7w8RJWibzsFb78l"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-66",
    "name": "MAKILANA",
@@ -7828,10 +6844,7 @@ window.V20_DATA = {
    "date": "2026-09-28",
    "src": "https://www.facebook.com/makilana.vn/posts/pfbid02drRuvQ1sGv1i5KWoRtSEhU5kGCzpUXGKPDNxjQXdEMsYLNPRPPettKKQBheiBhGvl",
    "logo": "images-shop/shop-makilana.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/makilana.vn", "label": "Fanpage MAKILANA", "source": "fanpage", "source_url": "https://www.facebook.com/makilana.vn"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-67",
    "name": "Nhung Hươu Trầm Nhân",
@@ -7846,10 +6859,7 @@ window.V20_DATA = {
    "date": "2026-10-03",
    "src": "https://www.facebook.com/nhunghuoutramnhan/posts/pfbid02Rr8WgsdLvJt575mDbrUPoLRYM7diGLoRKmDEJWi1UZfhFHGoD6ziHQRpqmEiotanl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0982533248", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/nhunghuoutramnhan/posts/pfbid02Rr8WgsdLvJt575mDbrUPoLRYM7diGLoRKmDEJWi1UZfhFHGoD6ziHQRpqmEiotanl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-68",
    "name": "EVY Quảng Bình",
@@ -7864,11 +6874,7 @@ window.V20_DATA = {
    "date": "2025-12-25",
    "src": "https://www.facebook.com/quangbinh.evy/posts/pfbid02xQwKinyoYopWWkPPCYk9ppXQtEGkgfNqtcZd2ogMyMaZX4uTgKxdgC8jNRaGS8TVl",
    "logo": "images-shop/shop-evy-quang-binh.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0949935889", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/quangbinh.evy/posts/pfbid02xQwKinyoYopWWkPPCYk9ppXQtEGkgfNqtcZd2ogMyMaZX4uTgKxdgC8jNRaGS8TVl"},
-    {"provider": "phone", "value": "0915066511", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/quangbinh.evy/posts/pfbid02xQwKinyoYopWWkPPCYk9ppXQtEGkgfNqtcZd2ogMyMaZX4uTgKxdgC8jNRaGS8TVl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-69",
    "name": "Thùy Trâm Shop",
@@ -7883,10 +6889,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "src": "https://www.facebook.com/thuy.tram.661266/posts/pfbid02jXibf2Ku63CN3YeQ9kGCUkD2BjMB3vx5zpn2AztKATv1TmCMWLihXzovWjwGaJrBl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"label": "Facebook", "provider": "facebook", "source": "post", "source_url": "https://www.facebook.com/thuy.tram.661266/posts/pfbid02jXibf2Ku63CN3YeQ9kGCUkD2BjMB3vx5zpn2AztKATv1TmCMWLihXzovWjwGaJrBl", "value": "https://www.facebook.com/thuy.tram.661266"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-70",
    "name": "Thanh Loan Nàng Sâm",
@@ -7901,10 +6904,7 @@ window.V20_DATA = {
    "date": "2026-10-21",
    "src": "https://taynguyenjob.vn/job/livestream-thanh-loan-nang-sam-phuong-kon-tum-22h1",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"label": "Zalo", "provider": "zalo", "source": "post", "source_url": "https://taynguyenjob.vn/job/livestream-thanh-loan-nang-sam-phuong-kon-tum-22h1", "value": "0961640719"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-71",
    "name": "My Nguyễn",
@@ -7919,10 +6919,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "src": "https://www.facebook.com/chuot.248/posts/pfbid0uN865YZqZ8VgLS5erU6j69BP3N8Tutq5g3gZQRQU6g1y2rdt38PKKJWR7pHPXmUNl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"label": "Zalo", "provider": "zalo", "source": "post", "source_url": "https://www.facebook.com/chuot.248/posts/pfbid0uN865YZqZ8VgLS5erU6j69BP3N8Tutq5g3gZQRQU6g1y2rdt38PKKJWR7pHPXmUNl", "value": "0393049378"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-72",
    "name": "Kho đồ sỉ An Nhỏ",
@@ -7937,10 +6934,7 @@ window.V20_DATA = {
    "date": "2026-11-02",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid05UuknwJAxUMokiHwFV5bFw6nxFCtnJM1CDGZuYfJK8hy1Mf1fHs4EBdNxMBhbxCel&id=61552995029384",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"label": "Zalo", "provider": "zalo", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid05UuknwJAxUMokiHwFV5bFw6nxFCtnJM1CDGZuYfJK8hy1Mf1fHs4EBdNxMBhbxCel&id=61552995029384", "value": "0366601748"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-73",
    "name": "Shop Đồ Tole Hân Đoàn",
@@ -7955,10 +6949,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.facebook.com/pht8122006/posts/pfbid0qRYrnUfT33Wh5FGRnNb7XyVywLiLG1VwvFFok5kBmNaYLXoL3JxDs36UypcH68QLl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://facebook.com/pht8122006", "label": "Facebook người đăng tin", "source": "post", "source_url": "https://www.facebook.com/pht8122006/posts/pfbid0qRYrnUfT33Wh5FGRnNb7XyVywLiLG1VwvFFok5kBmNaYLXoL3JxDs36UypcH68QLl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-74",
    "name": "Ba Tre Đồng Tháp",
@@ -7973,10 +6964,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.facebook.com/thuykieu.nguyen.77377692/posts/pfbid0my9dLaj1UaoF4X24x53izwwE9BJEonuyPPRt9y427ReTRqqTQ2WoNaaSRPCuXu5Sl",
    "logo": "images-shop/shop-ba-tre-dong-thap.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0932995866", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/thuykieu.nguyen.77377692/posts/pfbid0my9dLaj1UaoF4X24x53izwwE9BJEonuyPPRt9y427ReTRqqTQ2WoNaaSRPCuXu5Sl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-75",
    "name": "Shop Trang Áo Bà Ba",
@@ -7991,10 +6979,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xZfqRtbsG9ftdJKADtCrmBRKmCyEqAsggyGyxrWu9o3QUdcrhTKytgAidZTkpMiSl&id=61553211067862",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0939023477", "label": "Zalo (Ms. Trang)", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xZfqRtbsG9ftdJKADtCrmBRKmCyEqAsggyGyxrWu9o3QUdcrhTKytgAidZTkpMiSl&id=61553211067862"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-76",
    "name": "Muối Tôm Như Ý",
@@ -8009,11 +6994,7 @@ window.V20_DATA = {
    "date": "2026-08-13",
    "src": "https://www.facebook.com/muoitomnhuy/posts/pfbid0s9NJfiVTZkR8Px2dCxRBLNPAnsfZEmqk7waffb5pLrGei3Bz3ZW7AUUXkc3xrg7Ql",
    "logo": "images-shop/shop-muoi-tom-nhu-y.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0946964488", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/muoitomnhuy/posts/pfbid0s9NJfiVTZkR8Px2dCxRBLNPAnsfZEmqk7waffb5pLrGei3Bz3ZW7AUUXkc3xrg7Ql"},
-    {"provider": "zalo", "value": "0333999919", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/muoitomnhuy/posts/pfbid0s9NJfiVTZkR8Px2dCxRBLNPAnsfZEmqk7waffb5pLrGei3Bz3ZW7AUUXkc3xrg7Ql"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-77",
    "name": "Trần Mỹ Hạ",
@@ -8028,11 +7009,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@myha.iam/post/DfcbqITEhkZ",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0326463426", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@myha.iam/post/DfcbqITEhkZ"},
-    {"provider": "threads", "value": "https://www.threads.com/@myha.iam", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@myha.iam"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-78",
    "name": "HOA SEN HOME",
@@ -8047,10 +7024,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@cotsongnhansu/post/DfbLf1mlMvu",
    "logo": "images-shop/shop-hoa-sen-home.jpg",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@cotsongnhansu", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@cotsongnhansu"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-79",
    "name": "Nguyễn Hằng My",
@@ -8065,10 +7039,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.threads.com/@hanggmy_/post/DfgNNEfmup2",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@hanggmy_", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hanggmy_"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-80",
    "name": "The Mini Agency",
@@ -8083,10 +7054,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.threads.com/@miewang95/post/DfeWzjhCWjr",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@miewang95", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@miewang95"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-81",
    "name": "Lezon In The House",
@@ -8101,10 +7069,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.threads.com/@lezonindahouse/post/DfeUR1FE_XN",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@lezonindahouse", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@lezonindahouse"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-82",
    "name": "EMIX Studio",
@@ -8119,11 +7084,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.threads.com/@emix.studioo/post/DfeOZhslLk-",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0961737277", "label": "Điện thoại/Zalo", "source": "post", "source_url": "https://www.threads.com/@emix.studioo/post/DfeOZhslLk-"},
-    {"provider": "threads", "value": "https://www.threads.com/@emix.studioo", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@emix.studioo"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-83",
    "name": "Thanh Bình",
@@ -8138,10 +7099,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@tbinh2201/post/DfbVgM9DxGV",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@tbinh2201", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@tbinh2201"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-84",
    "name": "Shop quần áo livestream Pleiku",
@@ -8156,10 +7114,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@na_china0402/post/Dfa5p9oAeKo",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0935937042", "label": "Điện thoại (gọi trực tiếp, không inbox)", "source": "post", "source_url": "https://www.threads.com/@na_china0402/post/Dfa5p9oAeKo"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-85",
    "name": "Emma",
@@ -8174,10 +7129,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@feem_0.0/post/Dfbrh56Eusk",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@feem_0.0", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@feem_0.0"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-86",
    "name": "Topwin Media",
@@ -8192,11 +7144,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.threads.com/@hrtopwin/post/DfgFxk0n1B_",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0856467645", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@hrtopwin/post/DfgFxk0n1B_"},
-    {"provider": "threads", "value": "https://www.threads.com/@hrtopwin", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@hrtopwin"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-87",
    "name": "FS MEDIA",
@@ -8211,10 +7159,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@emtuchuu/post/Dfb-EdoGXXc",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@emtuchuu", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@emtuchuu"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-88",
    "name": "Vyra Network",
@@ -8229,10 +7174,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@aoaao.019/post/DfbMgJLkt6L",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@aoaao.019", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@aoaao.019"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-89",
    "name": "Vanta Shop",
@@ -8247,11 +7189,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.threads.com/@babythu02/post/DfeC6fMnyD3",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0365254602", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@babythu02/post/DfeC6fMnyD3"},
-    {"provider": "threads", "value": "https://www.threads.com/@babythu02", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@babythu02"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-90",
    "name": "Ngânn",
@@ -8266,10 +7204,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.threads.com/@chuppaa.chup_/post/DffBKwLk_58",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@chuppaa.chup_", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@chuppaa.chup_"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-91",
    "name": "MINGYANG MEDIA",
@@ -8284,11 +7219,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@ditim_rucro/post/DffPtNRmLD2",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0372242385", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@ditim_rucro/post/DffPtNRmLD2"},
-    {"provider": "threads", "value": "https://www.threads.com/@ditim_rucro", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@ditim_rucro"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-92",
    "name": "Mỹ Tâm",
@@ -8303,10 +7234,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.threads.com/@iam.mytame/post/DfgWvB-oM_h",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "threads", "value": "https://www.threads.com/@iam.mytame", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@iam.mytame"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-93",
    "name": "Đinh Thảo",
@@ -8321,11 +7249,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@chuymi_03/post/Dfb68SukpHR",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0911156385", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@chuymi_03/post/Dfb68SukpHR"},
-    {"provider": "threads", "value": "https://www.threads.com/@chuymi_03", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@chuymi_03"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-94",
    "name": "X MEDIA",
@@ -8340,11 +7264,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.threads.com/@sovz.y/post/DfgUv3wmDFj",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0908102728", "label": "Điện thoại (liên hệ Na, nhắn 'LIVE')", "source": "post", "source_url": "https://www.threads.com/@sovz.y/post/DfgUv3wmDFj"},
-    {"provider": "threads", "value": "https://www.threads.com/@sovz.y", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@sovz.y"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-95",
    "name": "XINGDAN MEDIA",
@@ -8359,11 +7279,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@mtinnie_.hrrrr/post/Dfb4UFKD4S-",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0392969270", "label": "Zalo", "source": "post", "source_url": "https://www.threads.com/@mtinnie_.hrrrr/post/Dfb4UFKD4S-"},
-    {"provider": "threads", "value": "https://www.threads.com/@mtinnie_.hrrrr", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@mtinnie_.hrrrr"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-96",
    "name": "WAVE MEDIA",
@@ -8378,11 +7294,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.threads.com/@thuyduyhr/post/Dfb2jHAEsAl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0942422875", "label": "Điện thoại", "source": "post", "source_url": "https://www.threads.com/@thuyduyhr/post/Dfb2jHAEsAl"},
-    {"provider": "threads", "value": "https://www.threads.com/@thuyduyhr", "label": "Threads", "source": "post", "source_url": "https://www.threads.com/@thuyduyhr"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-97",
    "name": "CÔNG TY CỔ PHẦN ZENITH MEDIA",
@@ -8397,10 +7309,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-streamer-tieng-anh-tai-ha-noi-hai-phong/1597067.html?ta_source=JobPortal_PTIT",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-streamer-tieng-anh-tai-ha-noi-hai-phong/1597067.html?ta_source=JobPortal_PTIT", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-streamer-tieng-anh-tai-ha-noi-hai-phong/1597067.html?ta_source=JobPortal_PTIT"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-98",
    "name": "CÔNG TY CỔ PHẦN GREEN SPEED",
@@ -8415,10 +7324,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-part-time-thu-nhap-15-20-trieu-di-lam-ngay/1627368.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ul12enTELHRC8Lbt9kTsOoIk3Lxv7nSRgXMkJ98g_1740873280",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-part-time-thu-nhap-15-20-trieu-di-lam-ngay/1627368.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ul12enTELHRC8Lbt9kTsOoIk3Lxv7nSRgXMkJ98g_1740873280", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-part-time-thu-nhap-15-20-trieu-di-lam-ngay/1627368.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ul12enTELHRC8Lbt9kTsOoIk3Lxv7nSRgXMkJ98g_1740873280"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-99",
    "name": "CÔNG TY TNHH FUSION GROUP",
@@ -8433,10 +7339,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-host-tu-van-san-pham/1976164.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-host-tu-van-san-pham/1976164.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-host-tu-van-san-pham/1976164.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-100",
    "name": "CÔNG TY TNHH TRUNG TÂM TOKYO",
@@ -8451,10 +7354,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-thu-nhap-upto-30-trieu-lam-viec-tai-my-hao-hung-yen/1938102.html?basic-ui=1",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-thu-nhap-upto-30-trieu-lam-viec-tai-my-hao-hung-yen/1938102.html?basic-ui=1", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-thu-nhap-upto-30-trieu-lam-viec-tai-my-hao-hung-yen/1938102.html?basic-ui=1"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-101",
    "name": "CÔNG TY TNHH TRUYỀN THÔNG STAR FACTORY",
@@ -8469,10 +7369,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mc-host-livestream/2133467.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mc-host-livestream/2133467.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mc-host-livestream/2133467.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-102",
    "name": "CÔNG TY TNHH DỊCH VỤ SỐ MOPAY VIỆT NAM",
@@ -8487,10 +7384,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-van-hanh-livestream-biet-tieng-trung/2153952.html?ta_source=JobSearchList_LinkDetail&u_sr_id=X5O1Dw3m822gOzeKIctxA1d6Y8kSLoMJbX5HwptD_1778816463",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-van-hanh-livestream-biet-tieng-trung/2153952.html?ta_source=JobSearchList_LinkDetail&u_sr_id=X5O1Dw3m822gOzeKIctxA1d6Y8kSLoMJbX5HwptD_1778816463", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-van-hanh-livestream-biet-tieng-trung/2153952.html?ta_source=JobSearchList_LinkDetail&u_sr_id=X5O1Dw3m822gOzeKIctxA1d6Y8kSLoMJbX5HwptD_1778816463"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-103",
    "name": "Shop tuyển Host Live Stream — Đồng Nai (tên công ty không hiển thị trên trang TopCV)",
@@ -8505,10 +7399,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/host-live-stream/2157795.html?ta_source=JobSearchList_LinkDetail&u_sr_id=rPVcTLasuzXbxI4tYzsJJnlpY5B6QPivep54mCSD_1786510129",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-live-stream/2157795.html?ta_source=JobSearchList_LinkDetail&u_sr_id=rPVcTLasuzXbxI4tYzsJJnlpY5B6QPivep54mCSD_1786510129", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-live-stream/2157795.html?ta_source=JobSearchList_LinkDetail&u_sr_id=rPVcTLasuzXbxI4tYzsJJnlpY5B6QPivep54mCSD_1786510129"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-104",
    "name": "CÔNG TY TNHH SẢN XUẤT DƯỢC MỸ PHẨM VÀ TRUYỀN THÔNG TRIỆU SƠN",
@@ -8523,10 +7414,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-my-pham-skincare-thu-nhap-tu-6-trieu-tro-len/1382009.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-my-pham-skincare-thu-nhap-tu-6-trieu-tro-len/1382009.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-my-pham-skincare-thu-nhap-tu-6-trieu-tro-len/1382009.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-105",
    "name": "CÔNG TY TNHH DƯỢC PHẨM ATAMI",
@@ -8541,10 +7429,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-phat-song-truc-tiep/1649917.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-phat-song-truc-tiep/1649917.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-phat-song-truc-tiep/1649917.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-106",
    "name": "CÔNG TY CỔ PHẦN XUẤT NHẬP KHẨU VÀ THƯƠNG MẠI FOREVER",
@@ -8559,10 +7444,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-thoi-gian/2260680.html?ta_source=JobSearchList_LinkDetail&u_sr_id=Xt4Q0YidWBman9ULBYNcHvJ7pGgLBHkId0xEBqT3_1786056408",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-thoi-gian/2260680.html?ta_source=JobSearchList_LinkDetail&u_sr_id=Xt4Q0YidWBman9ULBYNcHvJ7pGgLBHkId0xEBqT3_1786056408", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-thoi-gian/2260680.html?ta_source=JobSearchList_LinkDetail&u_sr_id=Xt4Q0YidWBman9ULBYNcHvJ7pGgLBHkId0xEBqT3_1786056408"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-107",
    "name": "CÔNG TY TNHH SẢN XUẤT & TMDV TRANG ANH",
@@ -8577,10 +7459,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mau-livetreams/1413609.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-livetreams/1413609.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-livetreams/1413609.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-108",
    "name": "ULTIMATE SUP",
@@ -8595,10 +7474,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/livestream-video-model-nam/1704239.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CUtadPHgOnwtu3wz5cmA5HRZFGfi4IbfU16l7RgV_1746862586",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/livestream-video-model-nam/1704239.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CUtadPHgOnwtu3wz5cmA5HRZFGfi4IbfU16l7RgV_1746862586", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/livestream-video-model-nam/1704239.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CUtadPHgOnwtu3wz5cmA5HRZFGfi4IbfU16l7RgV_1746862586"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-109",
    "name": "Adagum",
@@ -8613,10 +7489,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mau-nam-nu-livestream-part-time/1481519.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-nam-nu-livestream-part-time/1481519.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-nam-nu-livestream-part-time/1481519.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-110",
    "name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ UPBASE",
@@ -8631,10 +7504,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-tiktok-shopee-my-pham-skincare-me-be/2145613.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-tiktok-shopee-my-pham-skincare-me-be/2145613.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-tiktok-shopee-my-pham-skincare-me-be/2145613.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-111",
    "name": "CÔNG TY CỔ PHẦN DƯỢC MỸ PHẨM CVI",
@@ -8649,10 +7519,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mau-livestream/1348570.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-livestream/1348570.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-livestream/1348570.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-112",
    "name": "Wonmom (Công ty TNHH Thương Mại và Dịch Vụ Wonmom)",
@@ -8667,10 +7534,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mau-livestream-ao-dai/1171628.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-livestream-ao-dai/1171628.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-livestream-ao-dai/1171628.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-113",
    "name": "CÔNG TY CỔ PHẦN THIÊN MỘC HƯƠNG",
@@ -8685,10 +7549,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/mau-livestream-nganh-hang-cao-cap/1680687.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-livestream-nganh-hang-cao-cap/1680687.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-livestream-nganh-hang-cao-cap/1680687.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-114",
    "name": "DIKIKI (CÔNG TY TNHH ANDES BRAND MANAGEMENT VIETNAM)",
@@ -8703,10 +7564,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.topcv.vn/viec-lam/full-time-livestream-hostmc-livestream/2209040.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/full-time-livestream-hostmc-livestream/2209040.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/full-time-livestream-hostmc-livestream/2209040.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-115",
    "name": "CHA&MOM (chiến dịch Mẹ Bỉm Kết Nối × CHA&MOM)",
@@ -8721,11 +7579,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://mebimketnoi.com/kocs/me-bim-ket-noi-x-chamom-tuyen-20-koc-livestream-cast-1-trieu-nhan-qua-hon-11-trieu-thuong-gmv/",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0968712271", "label": "Hotline (Ms Linh)", "source": "post", "source_url": "https://mebimketnoi.com/kocs/me-bim-ket-noi-x-chamom-tuyen-20-koc-livestream-cast-1-trieu-nhan-qua-hon-11-trieu-thuong-gmv/"},
-    {"provider": "website", "value": "https://mebimketnoi.com/kocs/me-bim-ket-noi-x-chamom-tuyen-20-koc-livestream-cast-1-trieu-nhan-qua-hon-11-trieu-thuong-gmv/", "label": "Mẹ Bỉm Kết Nối", "source": "post", "source_url": "https://mebimketnoi.com/kocs/me-bim-ket-noi-x-chamom-tuyen-20-koc-livestream-cast-1-trieu-nhan-qua-hon-11-trieu-thuong-gmv/"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-116",
    "name": "LILA (MERSTUDIO)",
@@ -8740,12 +7594,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://docs.google.com/forms/d/e/1FAIpQLSf8Oe2oPuE2aNEF1Y-QGNYqn4DqICpmt-h2YHHHqnCTkwqKrQ/viewform?usp=embed_facebook",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/merstudio.me", "label": "Facebook", "source": "post", "source_url": "https://docs.google.com/forms/d/e/1FAIpQLSf8Oe2oPuE2aNEF1Y-QGNYqn4DqICpmt-h2YHHHqnCTkwqKrQ/viewform?usp=embed_facebook"},
-    {"provider": "facebook", "value": "https://www.facebook.com/dodoi.lila", "label": "Facebook", "source": "post", "source_url": "https://docs.google.com/forms/d/e/1FAIpQLSf8Oe2oPuE2aNEF1Y-QGNYqn4DqICpmt-h2YHHHqnCTkwqKrQ/viewform?usp=embed_facebook"},
-    {"provider": "website", "value": "https://docs.google.com/forms/d/e/1FAIpQLSf8Oe2oPuE2aNEF1Y-QGNYqn4DqICpmt-h2YHHHqnCTkwqKrQ/viewform?usp=embed_facebook", "label": "Form đăng ký", "source": "post", "source_url": "https://docs.google.com/forms/d/e/1FAIpQLSf8Oe2oPuE2aNEF1Y-QGNYqn4DqICpmt-h2YHHHqnCTkwqKrQ/viewform?usp=embed_facebook"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-117",
    "name": "CÔNG TY TNHH XUẤT NHẬP KHẨU PHÁT TRIỂN ĐÔNG DƯƠNG - TẬP ĐOÀN THỂ THAO KINGSPORT",
@@ -8760,10 +7609,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-tai-dien-bien-lai-chau-yen-bai-10-15-trieu-thang/2187002.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-tai-dien-bien-lai-chau-yen-bai-10-15-trieu-thang/2187002.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-tai-dien-bien-lai-chau-yen-bai-10-15-trieu-thang/2187002.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-118",
    "name": "CHI NHÁNH VĨNH LONG - CÔNG TY CP ỨNG DỤNG CÔNG NGHỆ XANH VIỆT NAM",
@@ -8778,10 +7624,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/chuyen-vien-sale-marketing/2053158.html?ta_source=JobSearchList_LinkDetail&u_sr_id=8KLhF9qh6eUU8fJuulBNvJEVVPD2emuvC3zkajHf_1777464003",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/chuyen-vien-sale-marketing/2053158.html?ta_source=JobSearchList_LinkDetail&u_sr_id=8KLhF9qh6eUU8fJuulBNvJEVVPD2emuvC3zkajHf_1777464003", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/chuyen-vien-sale-marketing/2053158.html?ta_source=JobSearchList_LinkDetail&u_sr_id=8KLhF9qh6eUU8fJuulBNvJEVVPD2emuvC3zkajHf_1777464003"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-119",
    "name": "CÔNG TY TNHH CÔNG NGHỆ TRUYỀN THÔNG TỔNG LỰC",
@@ -8796,10 +7639,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-phat-trien-kenh-social-tiktok-facebook/1512028.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-phat-trien-kenh-social-tiktok-facebook/1512028.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-phat-trien-kenh-social-tiktok-facebook/1512028.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-120",
    "name": "CÔNG TY TNHH TRUYỀN THÔNG SỰ KIỆN ALIBABA MEDIA",
@@ -8814,10 +7654,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1656789.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1656789.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1656789.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-121",
    "name": "FPT Shop",
@@ -8832,10 +7669,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-tu-van-ban-hang-da-nhiem-fpt-shop/1406969.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-tu-van-ban-hang-da-nhiem-fpt-shop/1406969.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-tu-van-ban-hang-da-nhiem-fpt-shop/1406969.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-122",
    "name": "CÔNG TY CỔ PHẦN IN & SẢN XUẤT BAO BÌ THÁI BÌNH DƯƠNG",
@@ -8850,10 +7684,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/truong-nhom-van-hanh-live-stream/2280464.html?ta_source=JobSearchList_LinkDetail&u_sr_id=cfVeaT4266HzdugXJyiUHZ0FuEEHJKWsh69AyZUs_1787431769",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/truong-nhom-van-hanh-live-stream/2280464.html?ta_source=JobSearchList_LinkDetail&u_sr_id=cfVeaT4266HzdugXJyiUHZ0FuEEHJKWsh69AyZUs_1787431769", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/truong-nhom-van-hanh-live-stream/2280464.html?ta_source=JobSearchList_LinkDetail&u_sr_id=cfVeaT4266HzdugXJyiUHZ0FuEEHJKWsh69AyZUs_1787431769"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-123",
    "name": "Công ty Cổ phần Y Dược Đại Việt",
@@ -8868,10 +7699,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/leader-content-thu-nhap-15-35-trieu-tai-da-lat/1421926.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CBKo7MYo9pnk8LVWhBQwJ8CRPgRKkmTxYXeTYL0k_1723440958",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/leader-content-thu-nhap-15-35-trieu-tai-da-lat/1421926.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CBKo7MYo9pnk8LVWhBQwJ8CRPgRKkmTxYXeTYL0k_1723440958", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/leader-content-thu-nhap-15-35-trieu-tai-da-lat/1421926.html?ta_source=JobSearchList_LinkDetail&u_sr_id=CBKo7MYo9pnk8LVWhBQwJ8CRPgRKkmTxYXeTYL0k_1723440958"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-124",
    "name": "CÔNG TY TNHH THƯƠNG MẠI MEDICAR",
@@ -8886,10 +7714,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-vj/1643521.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-vj/1643521.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-vj/1643521.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-125",
    "name": "CÔNG TY TNHH DỊCH VỤ HẢI SẢN MỸ HẠNH",
@@ -8904,10 +7729,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-vj-livestream/1746398.html?ta_source=JobSearchList_LinkDetail&u_sr_id=w7WpnMnPZ9REzgcFqGdYic86r8VroqPqDgZheZYg_1749251932",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-vj-livestream/1746398.html?ta_source=JobSearchList_LinkDetail&u_sr_id=w7WpnMnPZ9REzgcFqGdYic86r8VroqPqDgZheZYg_1749251932", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-vj-livestream/1746398.html?ta_source=JobSearchList_LinkDetail&u_sr_id=w7WpnMnPZ9REzgcFqGdYic86r8VroqPqDgZheZYg_1749251932"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-126",
    "name": "CÔNG TY CỔ PHẦN TẬP ĐOÀN LSG",
@@ -8922,10 +7744,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-marketing/2189557.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-marketing/2189557.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-marketing/2189557.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-127",
    "name": "CÔNG TY TNHH TMDV KHẢI TÍN",
@@ -8940,10 +7759,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-dien-thoai/2237999.html?ta_source=JobSearchList_LinkDetail&u_sr_id=MLOTW64PGykIFd46bV2AlGx9h4iH2dn8hlYGe8Lw_1786401933",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-dien-thoai/2237999.html?ta_source=JobSearchList_LinkDetail&u_sr_id=MLOTW64PGykIFd46bV2AlGx9h4iH2dn8hlYGe8Lw_1786401933", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-dien-thoai/2237999.html?ta_source=JobSearchList_LinkDetail&u_sr_id=MLOTW64PGykIFd46bV2AlGx9h4iH2dn8hlYGe8Lw_1786401933"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-128",
    "name": "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN KINH DOANH HOÀNG PHÁT",
@@ -8958,10 +7774,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-marketing-vj-livestream/1373009.html?ta_source=JobSearchList_LinkDetail&u_sr_id=zysArhohoSLXUirHXGiFHCVQLi9z5n7EnKLga9PT_1719028508",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-marketing-vj-livestream/1373009.html?ta_source=JobSearchList_LinkDetail&u_sr_id=zysArhohoSLXUirHXGiFHCVQLi9z5n7EnKLga9PT_1719028508", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-marketing-vj-livestream/1373009.html?ta_source=JobSearchList_LinkDetail&u_sr_id=zysArhohoSLXUirHXGiFHCVQLi9z5n7EnKLga9PT_1719028508"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-129",
    "name": "CÔNG TY CỔ PHẦN EVERSTAR GLOBAL",
@@ -8976,10 +7789,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/2270083.html?ta_source=JobSearchList_LinkDetail&u_sr_id=YglrXd98qpt9j4rxsRAQXxkS8PR0FwMhpKf4Anzg_1786603891",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/2270083.html?ta_source=JobSearchList_LinkDetail&u_sr_id=YglrXd98qpt9j4rxsRAQXxkS8PR0FwMhpKf4Anzg_1786603891", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/2270083.html?ta_source=JobSearchList_LinkDetail&u_sr_id=YglrXd98qpt9j4rxsRAQXxkS8PR0FwMhpKf4Anzg_1786603891"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-130",
    "name": "Generos",
@@ -8994,10 +7804,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1549680.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1549680.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1549680.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-131",
    "name": "CÔNG TY TNHH TIPI GLOBAL",
@@ -9012,10 +7819,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1457032.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1457032.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1457032.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-132",
    "name": "CÔNG TY TNHH XUẤT NHẬP KHẨU SẢN XUẤT THƯƠNG MẠI DỊCH VỤ KIM LINH",
@@ -9030,10 +7834,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-do-gia-dung-part-time/2087774.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-do-gia-dung-part-time/2087774.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tiktok-do-gia-dung-part-time/2087774.html?ta_source=JobSearchList_LinkDetail&u_sr_id=q35QXtjgHz4e7cHXzmVrbfSoNFFVK6948AEl51Q2_1778248437"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-133",
    "name": "Nha Khoa True Dental",
@@ -9048,10 +7849,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://ybox.vn/tuyen-dung/hcm-nha-khoa-true-dental-tuyen-dung-nhan-vien-content-creator-facebook-ads-google-ads-ke-toan-tong-hop-phu-ta-nha-khoa-chuyen-vien-tu-van-tam-ly-full-time-2026-6ae06171b5415f56a7b78e07",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-nha-khoa-true-dental-tuyen-dung-nhan-vien-content-creator-facebook-ads-google-ads-ke-toan-tong-hop-phu-ta-nha-khoa-chuyen-vien-tu-van-tam-ly-full-time-2026-6ae06171b5415f56a7b78e07", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-nha-khoa-true-dental-tuyen-dung-nhan-vien-content-creator-facebook-ads-google-ads-ke-toan-tong-hop-phu-ta-nha-khoa-chuyen-vien-tu-van-tam-ly-full-time-2026-6ae06171b5415f56a7b78e07"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-134",
    "name": "Vibrant Glamour (CÔNG TY TNHH QUỐC TẾ VGA)",
@@ -9066,10 +7864,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://ybox.vn/tuyen-dung/hcm-cong-ty-vibrant-glamour-tuyen-dung-nhan-vien-nhan-vien-quay-dung-booking-kol-koc-duoc-my-pham-thuan-chay-kol-booking-quoc-te-truong-nhom-van-hanh-kenh-livestream-tiktok-live-quan-ly-kol-koc-full-time-2026-6abe04f0fd3b6e3a8d75eac9",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-cong-ty-vibrant-glamour-tuyen-dung-nhan-vien-nhan-vien-quay-dung-booking-kol-koc-duoc-my-pham-thuan-chay-kol-booking-quoc-te-truong-nhom-van-hanh-kenh-livestream-tiktok-live-quan-ly-kol-koc-full-time-2026-6abe04f0fd3b6e3a8d75eac9", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-cong-ty-vibrant-glamour-tuyen-dung-nhan-vien-nhan-vien-quay-dung-booking-kol-koc-duoc-my-pham-thuan-chay-kol-booking-quoc-te-truong-nhom-van-hanh-kenh-livestream-tiktok-live-quan-ly-kol-koc-full-time-2026-6abe04f0fd3b6e3a8d75eac9"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-135",
    "name": "Social Elite",
@@ -9084,10 +7879,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.brandsvietnam.com/job/3334-livestream-operation-intern",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.brandsvietnam.com/job/3334-livestream-operation-intern", "label": "Brands Vietnam", "source": "post", "source_url": "https://www.brandsvietnam.com/job/3334-livestream-operation-intern"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-136",
    "name": "Yaoyao Vietnam Info Tech (CÔNG TY TNHH YAOYAO VIETNAM INFO TECH)",
@@ -9102,10 +7894,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://vieclam24h.vn/marketing/host-livestream-fulltime-lam-viec-tai-tphcm-c12p122id200932909.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vieclam24h.vn/marketing/host-livestream-fulltime-lam-viec-tai-tphcm-c12p122id200932909.html", "label": "vieclam24h", "source": "post", "source_url": "https://vieclam24h.vn/marketing/host-livestream-fulltime-lam-viec-tai-tphcm-c12p122id200932909.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-137",
    "name": "Hè Studio",
@@ -9120,10 +7909,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://cc45efc7-6ad4-40f3-906b-6587bff4126c.filesusr.com/ugd/456a4a_e718c41f1e334ec4916aa2c629a37d36.pdf",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://cc45efc7-6ad4-40f3-906b-6587bff4126c.filesusr.com/ugd/456a4a_e718c41f1e334ec4916aa2c629a37d36.pdf", "label": "Tài liệu PDF", "source": "post", "source_url": "https://cc45efc7-6ad4-40f3-906b-6587bff4126c.filesusr.com/ugd/456a4a_e718c41f1e334ec4916aa2c629a37d36.pdf"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-138",
    "name": "Astra Media (CÔNG TY TNHH THƯƠNG MẠI ĐIỆN TỬ GOBUY VIỆT NAM)",
@@ -9138,10 +7924,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://aniday.com/vi/headhunter/solution-hr-7010/host-livestream-12562",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://aniday.com/vi/headhunter/solution-hr-7010/host-livestream-12562", "label": "Aniday", "source": "post", "source_url": "https://aniday.com/vi/headhunter/solution-hr-7010/host-livestream-12562"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-139",
    "name": "ENGU Việt Nam (CÔNG TY TNHH CÔNG NGHỆ ENGU VIỆT NAM)",
@@ -9156,10 +7939,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-6-tieng-duoc-dong-bhxh/2290692.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-6-tieng-duoc-dong-bhxh/2290692.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-6-tieng-duoc-dong-bhxh/2290692.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-140",
    "name": "DO-WIN VIETNAM (CÔNG TY TNHH ĐỒ DÙNG THỂ THAO DO-WIN VIETNAM)",
@@ -9174,10 +7954,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1760817.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1760817.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1760817.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-141",
    "name": "MOSON MEDIA (CÔNG TY TNHH MOSON MEDIA)",
@@ -9192,10 +7969,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-live-don/2148217.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-live-don/2148217.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-live-don/2148217.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-142",
    "name": "BIO-TECH (CÔNG TY TNHH MỸ PHẨM BIO-TECH)",
@@ -9210,10 +7984,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-kinh-nghiem-tot/1653251.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-kinh-nghiem-tot/1653251.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-kinh-nghiem-tot/1653251.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-143",
    "name": "Karofi Holding",
@@ -9228,10 +7999,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://jobs.neu.edu.vn/jobs/nhan-vien-livestream-tuyen-dung-karofi-holding-1202611091547",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://jobs.neu.edu.vn/jobs/nhan-vien-livestream-tuyen-dung-karofi-holding-1202611091547", "label": "NEU Jobs", "source": "post", "source_url": "https://jobs.neu.edu.vn/jobs/nhan-vien-livestream-tuyen-dung-karofi-holding-1202611091547"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-144",
    "name": "Liam English",
@@ -9246,10 +8014,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://jobs.neu.edu.vn/jobs/giao-vien-tieng-anh-host-livestream-liam-education-1202607141541",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://jobs.neu.edu.vn/jobs/giao-vien-tieng-anh-host-livestream-liam-education-1202607141541", "label": "NEU Jobs", "source": "post", "source_url": "https://jobs.neu.edu.vn/jobs/giao-vien-tieng-anh-host-livestream-liam-education-1202607141541"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-145",
    "name": "Công ty Cổ phần Công nghệ IRTECH",
@@ -9264,10 +8029,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-di-lam-ngay-cong-ty-cong-nghe-irtech-a2f55ce7-952a-4c28-a47a-509e9b05ccea",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-di-lam-ngay-cong-ty-cong-nghe-irtech-a2f55ce7-952a-4c28-a47a-509e9b05ccea", "label": "Vieclamngay", "source": "post", "source_url": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-di-lam-ngay-cong-ty-cong-nghe-irtech-a2f55ce7-952a-4c28-a47a-509e9b05ccea"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-146",
    "name": "Paula's Choice",
@@ -9282,10 +8044,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://vn.linkedin.com/posts/tuyendung247_talentnet-tuyendung247-hiring-activity-7516402767041835008-qm-G",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vn.linkedin.com/posts/tuyendung247_talentnet-tuyendung247-hiring-activity-7516402767041835008-qm-G", "label": "LinkedIn", "source": "post", "source_url": "https://vn.linkedin.com/posts/tuyendung247_talentnet-tuyendung247-hiring-activity-7516402767041835008-qm-G"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-147",
    "name": "BlueMedia Việt Nam (CÔNG TY TNHH BlueMedia Việt Nam)",
@@ -9300,10 +8059,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://aniday.com/vi/headhunter/annie-chan-15252/livestream-operation-management-14841",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://aniday.com/vi/headhunter/annie-chan-15252/livestream-operation-management-14841", "label": "Aniday", "source": "post", "source_url": "https://aniday.com/vi/headhunter/annie-chan-15252/livestream-operation-management-14841"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-148",
    "name": "BN JEWELRY (CÔNG TY TNHH BN JEWELRY)",
@@ -9318,10 +8074,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-livestream-creator/2165506.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-livestream-creator/2165506.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-livestream-creator/2165506.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-149",
    "name": "CÔNG TY TNHH GOLDEN ARC STUDIO",
@@ -9336,10 +8089,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.vietnamworks.com/toan-quoc-hybrid-tiktok-livestream-host-thu-nhap-20-35-trieuthang-2103573-jv",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.vietnamworks.com/toan-quoc-hybrid-tiktok-livestream-host-thu-nhap-20-35-trieuthang-2103573-jv", "label": "VietnamWorks", "source": "post", "source_url": "https://www.vietnamworks.com/toan-quoc-hybrid-tiktok-livestream-host-thu-nhap-20-35-trieuthang-2103573-jv"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-150",
    "name": "CÔNG TY TNHH THIẾT BỊ ĐIỆN AN LẠC PHÁT",
@@ -9354,10 +8104,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://vieclamdanang247.com/vi/viec-lam/nhan-vien-ban-hang-online-livestream-tiktok-shopee-social",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vieclamdanang247.com/vi/viec-lam/nhan-vien-ban-hang-online-livestream-tiktok-shopee-social", "label": "vieclamdanang247", "source": "post", "source_url": "https://vieclamdanang247.com/vi/viec-lam/nhan-vien-ban-hang-online-livestream-tiktok-shopee-social"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-151",
    "name": "Công ty TNHH N7",
@@ -9372,10 +8119,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-toi-thieu-06-thang-kinh-nghiem/1790897.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-toi-thieu-06-thang-kinh-nghiem/1790897.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-toi-thieu-06-thang-kinh-nghiem/1790897.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-152",
    "name": "Shop tuyển Host Live Stream — Hà Nội (tên công ty không hiển thị trên trang TopCV)",
@@ -9390,10 +8134,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-tieng-anh-thoi-trang/2250522.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-tieng-anh-thoi-trang/2250522.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-tieng-anh-thoi-trang/2250522.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-153",
    "name": "GLC Livestream",
@@ -9408,10 +8149,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/2243424.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/2243424.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/2243424.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-154",
    "name": "CÔNG TY TNHH THƯƠNG MẠI BẰNG TRÌNH VIỆT NAM",
@@ -9426,10 +8164,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-part-time-60k-gio-hoa-hong-thu-nhap-7-18-trieu/2353264.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-part-time-60k-gio-hoa-hong-thu-nhap-7-18-trieu/2353264.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-part-time-60k-gio-hoa-hong-thu-nhap-7-18-trieu/2353264.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-155",
    "name": "CÔNG TY CỔ PHẦN THỰC PHẨM CHAY HƯƠNG QUÊ",
@@ -9444,10 +8179,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2347071.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2347071.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2347071.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-156",
    "name": "CÔNG TY TNHH YOLO BEAUTY",
@@ -9462,10 +8194,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2282439.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2282439.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2282439.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-157",
    "name": "CÔNG TY CỔ PHẦN THƯƠNG MẠI QUỐC TẾ GOYA",
@@ -9480,10 +8209,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-thu-nhap-tu-18-25-trieu-tai-ha-noi/2340061.html?ta_source=JobSearchList_LinkDetail&u_sr_id=50FsTkHUPDBT6JFouneMs55BHpHYiARoZKi7dmxX_1793311742",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-thu-nhap-tu-18-25-trieu-tai-ha-noi/2340061.html?ta_source=JobSearchList_LinkDetail&u_sr_id=50FsTkHUPDBT6JFouneMs55BHpHYiARoZKi7dmxX_1793311742", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-thu-nhap-tu-18-25-trieu-tai-ha-noi/2340061.html?ta_source=JobSearchList_LinkDetail&u_sr_id=50FsTkHUPDBT6JFouneMs55BHpHYiARoZKi7dmxX_1793311742"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-158",
    "name": "CÔNG TY TNHH THỰC PHẨM PLAZA",
@@ -9498,10 +8224,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2282542.html?ta_source=JobSearchList_LinkDetail&u_sr_id=io8WSOCkxyuhn8Uq6OPM5BzvYmZGEJrkvUS0wKpM_1787734173",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2282542.html?ta_source=JobSearchList_LinkDetail&u_sr_id=io8WSOCkxyuhn8Uq6OPM5BzvYmZGEJrkvUS0wKpM_1787734173", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2282542.html?ta_source=JobSearchList_LinkDetail&u_sr_id=io8WSOCkxyuhn8Uq6OPM5BzvYmZGEJrkvUS0wKpM_1787734173"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-159",
    "name": "HỘ KINH DOANH ONLINE NGUYỄN THỊ HUYỀN THANH",
@@ -9516,10 +8239,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/host-live-nganh-my-pham/2198191.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ROBx0d8CObovSsLgMibA1dRvZCy5ihkk93NJF1Yw_1787629574",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-live-nganh-my-pham/2198191.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ROBx0d8CObovSsLgMibA1dRvZCy5ihkk93NJF1Yw_1787629574", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-live-nganh-my-pham/2198191.html?ta_source=JobSearchList_LinkDetail&u_sr_id=ROBx0d8CObovSsLgMibA1dRvZCy5ihkk93NJF1Yw_1787629574"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-160",
    "name": "CÔNG TY TNHH DC&C GROUP",
@@ -9534,10 +8254,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/tro-ly-livestreams-tro-live-thu-nhap-12-15-trieu-xoay-ca-linh-hoat/2342200.html?ta_source=JobSearchList_LinkDetail&u_sr_id=7eJTEEZ0FGZZc0Zs9l4AtuTCrXOcY8jUnbuN7S23_1793312254",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/tro-ly-livestreams-tro-live-thu-nhap-12-15-trieu-xoay-ca-linh-hoat/2342200.html?ta_source=JobSearchList_LinkDetail&u_sr_id=7eJTEEZ0FGZZc0Zs9l4AtuTCrXOcY8jUnbuN7S23_1793312254", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/tro-ly-livestreams-tro-live-thu-nhap-12-15-trieu-xoay-ca-linh-hoat/2342200.html?ta_source=JobSearchList_LinkDetail&u_sr_id=7eJTEEZ0FGZZc0Zs9l4AtuTCrXOcY8jUnbuN7S23_1793312254"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-161",
    "name": "CÔNG TY TNHH VELALIVE",
@@ -9552,10 +8269,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/idol-live-nhay-nhom/2143599.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/idol-live-nhay-nhom/2143599.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/idol-live-nhay-nhom/2143599.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-162",
    "name": "CÔNG TY TNHH LANBENA",
@@ -9570,10 +8284,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/1558697.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/1558697.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream/1558697.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-163",
    "name": "Công ty TNHH OQR",
@@ -9588,10 +8299,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/tro-ly-livestream-my-pham-ctv-support-livestream/2286062.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/tro-ly-livestream-my-pham-ctv-support-livestream/2286062.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/tro-ly-livestream-my-pham-ctv-support-livestream/2286062.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-164",
    "name": "CÔNG TY CP CÔNG NGHỆ MỘT GIẢI PHÁP",
@@ -9606,10 +8314,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream/2186738.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream/2186738.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream/2186738.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-165",
    "name": "CÔNG TY CỔ PHẦN TẬP ĐOÀN VIBULA",
@@ -9624,10 +8329,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/host-livestream-inhouse/2060124.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream-inhouse/2060124.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream-inhouse/2060124.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-166",
    "name": "CÔNG TY CỔ PHẦN TẬP ĐOÀN KALPEN",
@@ -9642,10 +8344,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime/2281663.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime/2281663.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime/2281663.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-167",
    "name": "Shop tuyển Nhân Viên Livestream Part Time — Hà Nội (tên công ty không hiển thị)",
@@ -9660,10 +8359,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2296550.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2296550.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2296550.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-168",
    "name": "CÔNG TY TNHH GREEN FASHION GROUP",
@@ -9678,10 +8374,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-luong-13-20-trieu/2256930.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-luong-13-20-trieu/2256930.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-luong-13-20-trieu/2256930.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-169",
    "name": "CÔNG TY TNHH HOTAKI",
@@ -9696,10 +8389,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2346760.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2346760.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-part-time/2346760.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-170",
    "name": "Công ty Cổ phần Tập đoàn Giáo dục và Đào tạo WinEdu",
@@ -9714,10 +8404,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-parttime/1953266.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-parttime/1953266.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-parttime/1953266.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-171",
    "name": "CÔNG TY TNHH YOLO BEAUTY",
@@ -9732,10 +8419,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2312710.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2312710.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-nganh-my-pham/2312710.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-172",
    "name": "Chi nhánh Dệt may Delta Sài Gòn",
@@ -9750,10 +8434,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2000339.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2000339.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2000339.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-173",
    "name": "TO Media",
@@ -9768,10 +8449,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://toidol.live/",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://toidol.live/", "label": "TO Media", "source": "post", "source_url": "https://toidol.live/"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-174",
    "name": "Thế Giới Sữa Ori Baby Đà Nẵng",
@@ -9786,10 +8464,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://vieclamdn.vn/the-gioi-sua-ori-baby-da-nang/",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vieclamdn.vn/the-gioi-sua-ori-baby-da-nang/", "label": "vieclamdn.vn", "source": "post", "source_url": "https://vieclamdn.vn/the-gioi-sua-ori-baby-da-nang/"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-175",
    "name": "CÔNG TY TNHH MỘT THÀNH VIÊN KINH DOANH VÀ DỊCH VỤ Ô TÔ HÀ",
@@ -9804,10 +8479,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-quay-dung-di-lam-ngay-thu-nhap-tu-cong-ty-tnhh-mot-thanh-vien-kinh-doanh-va-dich-vu-o-to-ha-e9ea3743-ee69-46a5-a8ed-61a35eebfa30",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-quay-dung-di-lam-ngay-thu-nhap-tu-cong-ty-tnhh-mot-thanh-vien-kinh-doanh-va-dich-vu-o-to-ha-e9ea3743-ee69-46a5-a8ed-61a35eebfa30", "label": "Vieclamngay", "source": "post", "source_url": "https://www.vieclamngay.vn/viec-lam/nhan-vien-media-quay-dung-di-lam-ngay-thu-nhap-tu-cong-ty-tnhh-mot-thanh-vien-kinh-doanh-va-dich-vu-o-to-ha-e9ea3743-ee69-46a5-a8ed-61a35eebfa30"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-176",
    "name": "SVR Vietnam",
@@ -9822,10 +8494,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://aniday.com/vi/headhunter/vivian-hr-21866/ba-livestreamers-12505",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://aniday.com/vi/headhunter/vivian-hr-21866/ba-livestreamers-12505", "label": "Aniday", "source": "post", "source_url": "https://aniday.com/vi/headhunter/vivian-hr-21866/ba-livestreamers-12505"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-177",
    "name": "ILA Vietnam",
@@ -9840,10 +8509,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://aniday.com/vi/headhunter/annie-chan-15252/content-commercial-officer-12983",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://aniday.com/vi/headhunter/annie-chan-15252/content-commercial-officer-12983", "label": "Aniday", "source": "post", "source_url": "https://aniday.com/vi/headhunter/annie-chan-15252/content-commercial-officer-12983"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-178",
    "name": "CÔNG TY CỔ PHẦN DƯỢC PHẨM REVO",
@@ -9858,10 +8524,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://careerviet.vn/viec-lam/cong-ty-co-phan-duoc-pham-revo-p35A9AC84-vi.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://careerviet.vn/viec-lam/cong-ty-co-phan-duoc-pham-revo-p35A9AC84-vi.html", "label": "CareerViet", "source": "post", "source_url": "https://careerviet.vn/viec-lam/cong-ty-co-phan-duoc-pham-revo-p35A9AC84-vi.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-179",
    "name": "LG CLINIC",
@@ -9876,10 +8539,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://careerviet.vn/viec-lam/cong-ty-little-garden-lg-clinic-p35A9C893-vi.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://careerviet.vn/viec-lam/cong-ty-little-garden-lg-clinic-p35A9C893-vi.html", "label": "CareerViet", "source": "post", "source_url": "https://careerviet.vn/viec-lam/cong-ty-little-garden-lg-clinic-p35A9C893-vi.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-180",
    "name": "Con Cưng",
@@ -9894,10 +8554,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://careerviet.vn/viec-lam/concung-com-con-cung-joint-stock-company-p35A70491-vi.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://careerviet.vn/viec-lam/concung-com-con-cung-joint-stock-company-p35A70491-vi.html", "label": "CareerViet", "source": "post", "source_url": "https://careerviet.vn/viec-lam/concung-com-con-cung-joint-stock-company-p35A70491-vi.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-181",
    "name": "Brushie Việt Nam",
@@ -9912,10 +8569,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://jobs.neu.edu.vn/jobs/nhan-vien-van-hanh-livestream-brushie-careers-1202512291524",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://jobs.neu.edu.vn/jobs/nhan-vien-van-hanh-livestream-brushie-careers-1202512291524", "label": "NEU Jobs", "source": "post", "source_url": "https://jobs.neu.edu.vn/jobs/nhan-vien-van-hanh-livestream-brushie-careers-1202512291524"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-182",
    "name": "Brushie Official",
@@ -9930,10 +8584,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://jobs.neu.edu.vn/jobs?typeJob%5B0%5D=4&page=2",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://jobs.neu.edu.vn/jobs?typeJob%5B0%5D=4&page=2", "label": "NEU Jobs", "source": "post", "source_url": "https://jobs.neu.edu.vn/jobs?typeJob%5B0%5D=4&page=2"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-183",
    "name": "Công Ty TNHH Loli & The Wolf",
@@ -9948,10 +8599,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-livestream-ban-hang-c13p122id200877106.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-livestream-ban-hang-c13p122id200877106.html", "label": "vieclam24h", "source": "post", "source_url": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-livestream-ban-hang-c13p122id200877106.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-184",
    "name": "Học Viện Tài Năng Á Châu",
@@ -9966,10 +8614,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://ybox.vn/tuyen-dung/hcm-hoc-vien-tai-nang-a-chau-tuyen-dung-thuc-tap-sinh-content-creator-video-editor-cameraman-designer-chuyen-vien-truyen-thong-tro-ly-marketing-van-hanh-and-dan-dat-live-part-time-2026-6a30ff5d8856282656c6f8b2",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-hoc-vien-tai-nang-a-chau-tuyen-dung-thuc-tap-sinh-content-creator-video-editor-cameraman-designer-chuyen-vien-truyen-thong-tro-ly-marketing-van-hanh-and-dan-dat-live-part-time-2026-6a30ff5d8856282656c6f8b2", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-hoc-vien-tai-nang-a-chau-tuyen-dung-thuc-tap-sinh-content-creator-video-editor-cameraman-designer-chuyen-vien-truyen-thong-tro-ly-marketing-van-hanh-and-dan-dat-live-part-time-2026-6a30ff5d8856282656c6f8b2"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-185",
    "name": "Điện Máy Siêu Tiết Kiệm",
@@ -9984,10 +8629,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://dienmaysieutietkiem.com/blog/tuyen-cong-tac-vien-ban-hang-livestream",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://dienmaysieutietkiem.com/blog/tuyen-cong-tac-vien-ban-hang-livestream", "label": "dienmaysieutietkiem.com", "source": "post", "source_url": "https://dienmaysieutietkiem.com/blog/tuyen-cong-tac-vien-ban-hang-livestream"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-186",
    "name": "KIDO Group",
@@ -10002,10 +8644,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-van-hanh-livestream-shopee-c13p122id200876159.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-van-hanh-livestream-shopee-c13p122id200876159.html", "label": "vieclam24h", "source": "post", "source_url": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-van-hanh-livestream-shopee-c13p122id200876159.html"}
-   ]  },
+   "logoFit": "contain"  },
 {
    "id": "sh-187",
    "name": "VIETNAMIDOL ENTERTAINMENT",
@@ -10020,10 +8659,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://docs.google.com/forms/d/e/1FAIpQLSfXe6yXAw0oNMDZ4P4sb7g4X8kVtulDWLjWv2sxfDtagTRHQg/viewform?usp=send_form",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://docs.google.com/forms/d/e/1FAIpQLSfXe6yXAw0oNMDZ4P4sb7g4X8kVtulDWLjWv2sxfDtagTRHQg/viewform?usp=send_form", "label": "Form đăng ký", "source": "post", "source_url": "https://docs.google.com/forms/d/e/1FAIpQLSfXe6yXAw0oNMDZ4P4sb7g4X8kVtulDWLjWv2sxfDtagTRHQg/viewform?usp=send_form"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-188",
    "name": "CÔNG TY TNHH THƯƠNG MẠI XUẤT KHẨU DLS",
@@ -10038,10 +8674,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/video-creator-live-commerce-host-thi-truong-my-phap-eu/2108369.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/video-creator-live-commerce-host-thi-truong-my-phap-eu/2108369.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/video-creator-live-commerce-host-thi-truong-my-phap-eu/2108369.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-189",
    "name": "Công ty TNHH XNK Thuận Phát",
@@ -10056,10 +8689,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-elene-paper/2088359.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-elene-paper/2088359.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-elene-paper/2088359.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-190",
    "name": "CÔNG TY CỔ PHẦN THƯƠNG MẠI SSA",
@@ -10074,10 +8704,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nu-livestream/1842969.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nu-livestream/1842969.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nu-livestream/1842969.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-191",
    "name": "CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG NHÂN PHARMA",
@@ -10092,10 +8719,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-full-time-part-time/2101030.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-full-time-part-time/2101030.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-full-time-part-time/2101030.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-192",
    "name": "CÔNG TY TNHH SẢN XUẤT TẬP ĐOÀN ĐẠI VIỆT",
@@ -10110,10 +8734,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2049746.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2049746.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/2049746.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-193",
    "name": "CÔNG TY TNHH XUẤT NHẬP KHẨU LAM HÀ SG",
@@ -10128,10 +8749,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/host-livestream/2181724.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/host-livestream/2181724.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/host-livestream/2181724.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-194",
    "name": "NOAM (thương hiệu thời trang unisex — tên công ty không hiển thị trên trang TopCV)",
@@ -10146,10 +8764,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/mau-livestream-thoi-trang-unisex/1936736.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/mau-livestream-thoi-trang-unisex/1936736.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/mau-livestream-thoi-trang-unisex/1936736.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-195",
    "name": "CÔNG TY TNHH KIM LÂM ENJOY MART",
@@ -10164,10 +8779,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nguoi-dan-livestream/2248905.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nguoi-dan-livestream/2248905.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nguoi-dan-livestream/2248905.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-196",
    "name": "CÔNG TY TNHH ORRO HOME",
@@ -10182,10 +8794,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1547477.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1547477.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang/1547477.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-197",
    "name": "Công ty TNHH Giải pháp Công nghệ Zotech",
@@ -10200,10 +8809,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/ctv-live-stream/2206664.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/ctv-live-stream/2206664.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/ctv-live-stream/2206664.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-198",
    "name": "CÔNG TY TNHH AQUARIUS COSMETIC-VY VY HAIR CARE",
@@ -10218,10 +8824,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-content-creator/1789646.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-content-creator/1789646.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-content-creator/1789646.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-199",
    "name": "Công ty TNHH HDG CORPORATION",
@@ -10236,10 +8839,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/livestream-ca-toi-20h-22h/2005390.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/livestream-ca-toi-20h-22h/2005390.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/livestream-ca-toi-20h-22h/2005390.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-200",
    "name": "CÔNG TY TNHH DANDIHOME VIỆT NAM",
@@ -10254,10 +8854,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-san-thuong-mai-dien-tu-shopee-tiktok-shop-biet-livestream-tu-1-nam-kinh-nghiem-tai-phuong-phu-thanh-ho-chi-minh-quan-tan-phu-cu/2052144.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-san-thuong-mai-dien-tu-shopee-tiktok-shop-biet-livestream-tu-1-nam-kinh-nghiem-tai-phuong-phu-thanh-ho-chi-minh-quan-tan-phu-cu/2052144.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-san-thuong-mai-dien-tu-shopee-tiktok-shop-biet-livestream-tu-1-nam-kinh-nghiem-tai-phuong-phu-thanh-ho-chi-minh-quan-tan-phu-cu/2052144.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-201",
    "name": "CÔNG TY CỔ PHẦN DROCOM",
@@ -10272,10 +8869,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-tiktok-shopee/2060663.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-tiktok-shopee/2060663.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-tiktok-shopee/2060663.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-202",
    "name": "CÔNG TY TNHH CÔNG NGHỆ XDS VIỆT NAM",
@@ -10290,10 +8884,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-san-pham-dien-tu-fulltime-parttime-hoa-hong-hap-dan/2241774.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-san-pham-dien-tu-fulltime-parttime-hoa-hong-hap-dan/2241774.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-san-pham-dien-tu-fulltime-parttime-hoa-hong-hap-dan/2241774.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-203",
    "name": "CÔNG TY TNHH THƯƠNG MẠI VÀ XUẤT NHẬP KHẨU TÍN PHÚC",
@@ -10308,10 +8899,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-hang-gia-dung/2078166.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-hang-gia-dung/2078166.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-hang-gia-dung/2078166.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-204",
    "name": "Công Ty TNHH Một Thành Viên Sannadle",
@@ -10326,10 +8914,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/2248774.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/2248774.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/2248774.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-205",
    "name": "CÔNG TY TNHH TRUYỀN THÔNG MELOT VIỆT NAM",
@@ -10344,10 +8929,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/idol-livestream-giai-tri-tiktok/2157330.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/idol-livestream-giai-tri-tiktok/2157330.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/idol-livestream-giai-tri-tiktok/2157330.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-206",
    "name": "CÔNG TY CỔ PHẦN MỸ PHẨM THIÊN NHIÊN CỎ MỀM",
@@ -10362,10 +8944,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-sale-online-san-thuong-mai-dien-tu/1432812.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-sale-online-san-thuong-mai-dien-tu/1432812.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-sale-online-san-thuong-mai-dien-tu/1432812.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-207",
    "name": "CÔNG TY TNHH MARS AGENCY",
@@ -10380,10 +8959,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-va-host-livestream-video-jockey/2154147.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-va-host-livestream-video-jockey/2154147.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-va-host-livestream-video-jockey/2154147.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-208",
    "name": "CÔNG TY CỔ PHẦN METUB VIỆT NAM",
@@ -10398,10 +8974,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://ybox.vn/idysu7jq97l0me",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/idysu7jq97l0me", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/idysu7jq97l0me"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-209",
    "name": "MOWA ENTERTAINMENT",
@@ -10416,10 +8989,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@geon.jackie2003/post/DfouqXloHFm",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@geon.jackie2003/post/DfouqXloHFm", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@geon.jackie2003/post/DfouqXloHFm"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-210",
    "name": "CÔNG TY WINTOK VIỆT NAM",
@@ -10434,10 +9004,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02E5twSzjh11gMWmdR27NQ7z3bZkCPVRUuTSUcCtY7dUmCxgLCAdzmkN1b68wnjXoxl&id=61592211486129",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/permalink.php?story_fbid=pfbid02E5twSzjh11gMWmdR27NQ7z3bZkCPVRUuTSUcCtY7dUmCxgLCAdzmkN1b68wnjXoxl&id=61592211486129", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02E5twSzjh11gMWmdR27NQ7z3bZkCPVRUuTSUcCtY7dUmCxgLCAdzmkN1b68wnjXoxl&id=61592211486129"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-211",
    "name": "RITA VÕ",
@@ -10452,10 +9019,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://vn.linkedin.com/posts/manhvuhr_videocontentcreator-video-talent-activity-7523308449548427264-Mc0f",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vn.linkedin.com/posts/manhvuhr_videocontentcreator-video-talent-activity-7523308449548427264-Mc0f", "label": "LinkedIn", "source": "post", "source_url": "https://vn.linkedin.com/posts/manhvuhr_videocontentcreator-video-talent-activity-7523308449548427264-Mc0f"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-212",
    "name": "NOÛS VIỆT NAM",
@@ -10470,10 +9034,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://vn.linkedin.com/company/no%C3%BBs-vi%E1%BB%87t-nam",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://vn.linkedin.com/company/no%C3%BBs-vi%E1%BB%87t-nam", "label": "LinkedIn", "source": "post", "source_url": "https://vn.linkedin.com/company/no%C3%BBs-vi%E1%BB%87t-nam"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-213",
    "name": "CÔNG TY CỔ PHẦN DƯỢC PHẨM HOA LINH",
@@ -10488,10 +9049,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/DuocPhamHoaLinh/posts/pfbid02bcpUHb8RH1r4tESVQ8e1Gvn4pTNdDJq3zQTUA6TKu8byARTMrZPKFwNtRtPZxuKXl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/DuocPhamHoaLinh/posts/pfbid02bcpUHb8RH1r4tESVQ8e1Gvn4pTNdDJq3zQTUA6TKu8byARTMrZPKFwNtRtPZxuKXl", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/DuocPhamHoaLinh/posts/pfbid02bcpUHb8RH1r4tESVQ8e1Gvn4pTNdDJq3zQTUA6TKu8byARTMrZPKFwNtRtPZxuKXl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-214",
    "name": "BELIEF HOLDINGS",
@@ -10506,10 +9064,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/belief.tuyendung/posts/pfbid02pXLqRGF7HdFyWBrh6qNgN9kkovaNWjNsYYnoojBQETn67RLJB93SCpmtDhjCsJGul",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/belief.tuyendung/posts/pfbid02pXLqRGF7HdFyWBrh6qNgN9kkovaNWjNsYYnoojBQETn67RLJB93SCpmtDhjCsJGul", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/belief.tuyendung/posts/pfbid02pXLqRGF7HdFyWBrh6qNgN9kkovaNWjNsYYnoojBQETn67RLJB93SCpmtDhjCsJGul"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-215",
    "name": "5677VN MEDIA",
@@ -10524,10 +9079,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid082THqDDts5H5MmtkrwGwJj8JyDN8avza6DptQQwie8ypFrNtgAq43tueasjnZk74l&id=61592843009934",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/permalink.php?story_fbid=pfbid082THqDDts5H5MmtkrwGwJj8JyDN8avza6DptQQwie8ypFrNtgAq43tueasjnZk74l&id=61592843009934", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid082THqDDts5H5MmtkrwGwJj8JyDN8avza6DptQQwie8ypFrNtgAq43tueasjnZk74l&id=61592843009934"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-216",
    "name": "GUTOU",
@@ -10542,10 +9094,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@mei_lin_1996/post/DfjQ3MMnQr6",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@mei_lin_1996/post/DfjQ3MMnQr6", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@mei_lin_1996/post/DfjQ3MMnQr6"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-217",
    "name": "CÔNG TY TNHH SẢN XUẤT VÀ THƯƠNG MẠI HẠNH LÂM ĐƯỜNG",
@@ -10560,10 +9109,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@gocnho.cuatuiii/post/DfgyUVUmGty",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@gocnho.cuatuiii/post/DfgyUVUmGty", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@gocnho.cuatuiii/post/DfgyUVUmGty"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-218",
    "name": "JIADI MEDIA",
@@ -10578,10 +9124,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@mot_con_vit_78/post/DfZPn_mE9IX",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@mot_con_vit_78/post/DfZPn_mE9IX", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@mot_con_vit_78/post/DfZPn_mE9IX"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-219",
    "name": "GOLDMARK OAKHAM",
@@ -10596,10 +9139,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@hoabich_005/post/DegrDQNE6NB",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@hoabich_005/post/DegrDQNE6NB", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@hoabich_005/post/DegrDQNE6NB"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-220",
    "name": "55KG.LINH",
@@ -10614,10 +9154,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@55kg.linh/post/DfYiTAOCYnc",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@55kg.linh/post/DfYiTAOCYnc", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@55kg.linh/post/DfYiTAOCYnc"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-221",
    "name": "CÔNG TY TNHH DREAM STAR",
@@ -10632,10 +9169,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@may.7858635/post/DevhNLHEuFg",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@may.7858635/post/DevhNLHEuFg", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@may.7858635/post/DevhNLHEuFg"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-222",
    "name": "KOPAN",
@@ -10650,10 +9184,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@huyentrangg.__/post/DfV7VDRgSpK",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@huyentrangg.__/post/DfV7VDRgSpK", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@huyentrangg.__/post/DfV7VDRgSpK"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-223",
    "name": "DR.BEE",
@@ -10668,10 +9199,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@cuongmkmtpgoldfinchfocus/post/DfXspDgAZyq",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@cuongmkmtpgoldfinchfocus/post/DfXspDgAZyq", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@cuongmkmtpgoldfinchfocus/post/DfXspDgAZyq"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-224",
    "name": "HIỀN HƠI ĐIỆU",
@@ -10686,10 +9214,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@sangbq271/post/DfomdxIku8U",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@sangbq271/post/DfomdxIku8U", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@sangbq271/post/DfomdxIku8U"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-225",
    "name": "VNI",
@@ -10704,10 +9229,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@ltkyr_/post/DfJHSqpn6uz",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@ltkyr_/post/DfJHSqpn6uz", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@ltkyr_/post/DfJHSqpn6uz"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-226",
    "name": "NEW WORLD",
@@ -10722,10 +9244,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@gudjob.nw_/post/DfZGjyhiUfg",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@gudjob.nw_/post/DfZGjyhiUfg", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@gudjob.nw_/post/DfZGjyhiUfg"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-227",
    "name": "Công ty TNHH Lavender Hà Nội",
@@ -10740,10 +9259,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.vieclamngay.vn/viec-lam/nhan-vien-content-marketing-thoi-trang-thu-nhap-14-16tr-di-lam-ngay-cong-ty-tnhh-lavender-ha-noi-03aa3f2d-8283-4121-9449-fa7edb0ab1df",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.vieclamngay.vn/viec-lam/nhan-vien-content-marketing-thoi-trang-thu-nhap-14-16tr-di-lam-ngay-cong-ty-tnhh-lavender-ha-noi-03aa3f2d-8283-4121-9449-fa7edb0ab1df", "label": "Vieclamngay", "source": "post", "source_url": "https://www.vieclamngay.vn/viec-lam/nhan-vien-content-marketing-thoi-trang-thu-nhap-14-16tr-di-lam-ngay-cong-ty-tnhh-lavender-ha-noi-03aa3f2d-8283-4121-9449-fa7edb0ab1df"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-229",
    "name": "Công ty Cổ phần Diana Unicharm",
@@ -10758,10 +9274,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.vieclamngay.vn/viec-lam/giam-sat-phat-trien-doi-tac-e-shop-kenh-gt-phu-trach-mekong-cong-ty-co-phan-diana-unicharm-b4c910ac-50b8-444c-b14c-c5467ea54c4f",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.vieclamngay.vn/viec-lam/giam-sat-phat-trien-doi-tac-e-shop-kenh-gt-phu-trach-mekong-cong-ty-co-phan-diana-unicharm-b4c910ac-50b8-444c-b14c-c5467ea54c4f", "label": "Vieclamngay", "source": "post", "source_url": "https://www.vieclamngay.vn/viec-lam/giam-sat-phat-trien-doi-tac-e-shop-kenh-gt-phu-trach-mekong-cong-ty-co-phan-diana-unicharm-b4c910ac-50b8-444c-b14c-c5467ea54c4f"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-230",
    "name": "Công ty TNHH WINTOK MEDIA",
@@ -10776,10 +9289,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@candy.hr00/post/Dfl4Z2jmdKT",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@candy.hr00/post/Dfl4Z2jmdKT", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@candy.hr00/post/Dfl4Z2jmdKT"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-231",
    "name": "Công ty TNHH ĐTTM & SX Chính Phát",
@@ -10794,10 +9304,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://docs.google.com/document/d/1oLrHdeEyevHhIsG91o2BEaOQ_9EgTFbvPhzpN8zxzn0/mobilebasic",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://docs.google.com/document/d/1oLrHdeEyevHhIsG91o2BEaOQ_9EgTFbvPhzpN8zxzn0/mobilebasic", "label": "Form đăng ký", "source": "post", "source_url": "https://docs.google.com/document/d/1oLrHdeEyevHhIsG91o2BEaOQ_9EgTFbvPhzpN8zxzn0/mobilebasic"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-232",
    "name": "Lixibox",
@@ -10812,10 +9319,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.instagram.com/p/De0b1thEra9/",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.instagram.com/p/De0b1thEra9/", "label": "www.instagram.com", "source": "post", "source_url": "https://www.instagram.com/p/De0b1thEra9/"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-233",
    "name": "CÔNG TY CỔ PHẦN DƯỢC PHẨM H&D",
@@ -10830,10 +9334,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-thu-nhap-tu-12-trieu-ho-chi-minh/1633258.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-thu-nhap-tu-12-trieu-ho-chi-minh/1633258.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-ban-hang-thu-nhap-tu-12-trieu-ho-chi-minh/1633258.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-234",
    "name": "Công ty cổ phần sách MCBooks",
@@ -10848,10 +9349,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream-parttime/2211444.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream-parttime/2211444.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/cong-tac-vien-livestream-parttime/2211444.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-235",
    "name": "CÔNG TY TNHH ĐIỆN MÁY GIA KHANG",
@@ -10866,10 +9364,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime-parttime/1008963.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime-parttime/1008963.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-fulltime-parttime/1008963.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-236",
    "name": "CÔNG TY TNHH VIETNAM PREMIUM PRODUCTS TRADING",
@@ -10884,10 +9379,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/1656469.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/1656469.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-ban-hang-livestream/1656469.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-237",
    "name": "CÔNG TY TNHH STARS COMMERCE",
@@ -10902,10 +9394,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-ban-hang/2014987.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-ban-hang/2014987.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-host-livestream-ban-hang/2014987.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-238",
    "name": "CÔNG TY TNHH ENEXTREND.VN",
@@ -10920,10 +9409,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/social-media-host-e-commerce/2152658.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/social-media-host-e-commerce/2152658.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/social-media-host-e-commerce/2152658.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-239",
    "name": "CÔNG TY TNHH HUDA GROWTHS",
@@ -10938,10 +9424,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-luong-upto-15-trieu-thang-khong-yeu-cau-kinh-nghiem-bac-giang/2293502.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-luong-upto-15-trieu-thang-khong-yeu-cau-kinh-nghiem-bac-giang/2293502.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tuyen-dung-luong-upto-15-trieu-thang-khong-yeu-cau-kinh-nghiem-bac-giang/2293502.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-240",
    "name": "Fixecom",
@@ -10956,10 +9439,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tren-tiktokshop-shopee/1626406.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tren-tiktokshop-shopee/1626406.html", "label": "TopCV", "source": "post", "source_url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream-tren-tiktokshop-shopee/1626406.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-242",
    "name": "NACY Studio",
@@ -10974,13 +9454,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html", "label": "www.danang43.vn", "source": "post", "source_url": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html"},
-    {"provider": "email", "value": "nacystudio@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html"},
-    {"provider": "phone", "value": "0867533682", "label": "Điện thoại", "source": "post", "source_url": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html"},
-    {"provider": "facebook", "value": "https://www.facebook.com/nacytrangsuccogu", "label": "www.facebook.com", "source": "post", "source_url": "https://www.danang43.vn/nacy-studio-tuyen-dung-p81859.html"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-243",
    "name": "NPP VIFON Hiền Thành",
@@ -10995,11 +9469,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/lethi.huong.731/posts/pfbid09bedhG6v8G7EPtpL43NMjFNfg37dwdRv3JhJiSkB7sxQE1Nf3JdP9AMMLDiKhB73l",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/lethi.huong.731/posts/pfbid09bedhG6v8G7EPtpL43NMjFNfg37dwdRv3JhJiSkB7sxQE1Nf3JdP9AMMLDiKhB73l", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/lethi.huong.731/posts/pfbid09bedhG6v8G7EPtpL43NMjFNfg37dwdRv3JhJiSkB7sxQE1Nf3JdP9AMMLDiKhB73l"},
-    {"provider": "phone", "value": "0944910393", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/lethi.huong.731/posts/pfbid09bedhG6v8G7EPtpL43NMjFNfg37dwdRv3JhJiSkB7sxQE1Nf3JdP9AMMLDiKhB73l"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-244",
    "name": "HOÀNG THỊNH SOLAR",
@@ -11014,11 +9484,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02JyBpSiX5Bw9zH8abwjej6XGsiYUtQrue9hj2umiNHWPhp3YkEHVhNjJDfW9BoM58l&id=61593498415114",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/permalink.php?story_fbid=pfbid02JyBpSiX5Bw9zH8abwjej6XGsiYUtQrue9hj2umiNHWPhp3YkEHVhNjJDfW9BoM58l&id=61593498415114", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02JyBpSiX5Bw9zH8abwjej6XGsiYUtQrue9hj2umiNHWPhp3YkEHVhNjJDfW9BoM58l&id=61593498415114"},
-    {"provider": "phone", "value": "0966955678", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02JyBpSiX5Bw9zH8abwjej6XGsiYUtQrue9hj2umiNHWPhp3YkEHVhNjJDfW9BoM58l&id=61593498415114"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-245",
    "name": "Hà Thi Beauty Career",
@@ -11033,10 +9499,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/aohang.96488/posts/pfbid02ACVBLgxrqrwyiEE9GhyN6VkRxr4WSwwDsokW8KuF2C9GvJp2npSND4AkwgrgbWfTl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/aohang.96488/posts/pfbid02ACVBLgxrqrwyiEE9GhyN6VkRxr4WSwwDsokW8KuF2C9GvJp2npSND4AkwgrgbWfTl", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/aohang.96488/posts/pfbid02ACVBLgxrqrwyiEE9GhyN6VkRxr4WSwwDsokW8KuF2C9GvJp2npSND4AkwgrgbWfTl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-246",
    "name": "NGOC LINH HOME (NGỌC LINH SHOP)",
@@ -11051,11 +9514,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/ngoclinhhomengoclinh/posts/pfbid0n3dW5Y9UR8NkzjkchE54mAGTwhvutbcaoYSxfftMDztfKSNBUEsRHSgs1h6cNBNMl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/ngoclinhhomengoclinh/posts/pfbid0n3dW5Y9UR8NkzjkchE54mAGTwhvutbcaoYSxfftMDztfKSNBUEsRHSgs1h6cNBNMl", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/ngoclinhhomengoclinh/posts/pfbid0n3dW5Y9UR8NkzjkchE54mAGTwhvutbcaoYSxfftMDztfKSNBUEsRHSgs1h6cNBNMl"},
-    {"provider": "phone", "value": "0913861329", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/ngoclinhhomengoclinh/posts/pfbid0n3dW5Y9UR8NkzjkchE54mAGTwhvutbcaoYSxfftMDztfKSNBUEsRHSgs1h6cNBNMl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-247",
    "name": "Sam Perfumes",
@@ -11070,10 +9529,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/KhanhlinhKl1999/posts/pfbid02brUU43E9swNNM2y2qsk6RRkuvBwFGFSDj9kfBv5AjtBdcs3XPXnpuWJKHpc2koQEl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/KhanhlinhKl1999/posts/pfbid02brUU43E9swNNM2y2qsk6RRkuvBwFGFSDj9kfBv5AjtBdcs3XPXnpuWJKHpc2koQEl", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/KhanhlinhKl1999/posts/pfbid02brUU43E9swNNM2y2qsk6RRkuvBwFGFSDj9kfBv5AjtBdcs3XPXnpuWJKHpc2koQEl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-248",
    "name": "Nhungg Nexi Beauty",
@@ -11088,11 +9544,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.threads.com/@nhungnexibeauty/post/DeqISLkk8fC",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://www.threads.com/@nhungnexibeauty/post/DeqISLkk8fC", "label": "www.threads.com", "source": "post", "source_url": "https://www.threads.com/@nhungnexibeauty/post/DeqISLkk8fC"},
-    {"provider": "website", "value": "https://www.threads.net/@nhungnexibeauty", "label": "www.threads.net", "source": "post", "source_url": "https://www.threads.com/@nhungnexibeauty/post/DeqISLkk8fC"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-249",
    "name": "Zevra Media",
@@ -11107,11 +9559,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid034EBSS3STPpUeUmvZgiPrK1BXzSiX2KT5qb7NiGkoSg2oo9FdtByPkdBxXeZmDrHil&id=61570799183262",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/permalink.php?story_fbid=pfbid034EBSS3STPpUeUmvZgiPrK1BXzSiX2KT5qb7NiGkoSg2oo9FdtByPkdBxXeZmDrHil&id=61570799183262", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid034EBSS3STPpUeUmvZgiPrK1BXzSiX2KT5qb7NiGkoSg2oo9FdtByPkdBxXeZmDrHil&id=61570799183262"},
-    {"provider": "phone", "value": "0342751253", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid034EBSS3STPpUeUmvZgiPrK1BXzSiX2KT5qb7NiGkoSg2oo9FdtByPkdBxXeZmDrHil&id=61570799183262"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-250",
    "name": "Công ty CP cung ứng NNL Hưng Thịnh Family",
@@ -11126,12 +9574,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/cungungnhanluchaiduong/posts/pfbid06b2GbCHHfWZ2nJ4kEVtK9TPWif9pEptpq3bat3p6ds1LQX3gtPXTxeY4xAexnTkgl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "facebook", "value": "https://www.facebook.com/cungungnhanluchaiduong/posts/pfbid06b2GbCHHfWZ2nJ4kEVtK9TPWif9pEptpq3bat3p6ds1LQX3gtPXTxeY4xAexnTkgl", "label": "www.facebook.com", "source": "post", "source_url": "https://www.facebook.com/cungungnhanluchaiduong/posts/pfbid06b2GbCHHfWZ2nJ4kEVtK9TPWif9pEptpq3bat3p6ds1LQX3gtPXTxeY4xAexnTkgl"},
-    {"provider": "phone", "value": "0988999488", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/cungungnhanluchaiduong/posts/pfbid06b2GbCHHfWZ2nJ4kEVtK9TPWif9pEptpq3bat3p6ds1LQX3gtPXTxeY4xAexnTkgl"},
-    {"provider": "email", "value": "hungthinhhaiphong.hr@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/cungungnhanluchaiduong/posts/pfbid06b2GbCHHfWZ2nJ4kEVtK9TPWif9pEptpq3bat3p6ds1LQX3gtPXTxeY4xAexnTkgl"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-251",
    "name": "Công ty TNHH Chicmax Việt Nam",
@@ -11146,10 +9589,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa",
    "logo": "images-shop/shop-chicmax.png",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-252",
    "name": "Công ty TNHH Chicmax Việt Nam",
@@ -11164,10 +9604,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa",
    "logo": "images-shop/shop-chicmax.png",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "website", "value": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa", "label": "Ybox", "source": "post", "source_url": "https://ybox.vn/tuyen-dung/hcm-cong-ty-chicmax-viet-nam-tuyen-dung-thuc-tap-sinh-content-marketing-nhan-vien-booking-kol-koc-host-livesteam-va-tro-ly-livestream-full-time-2026-thu-nhap-7-20-trieu-thang-moi-truong-lam-viec-nang-dong-6ab5fc7b357dce0803b8b7aa"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-253",
    "name": "Đầm Bầu Mami",
@@ -11182,10 +9619,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0917682340", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-254",
    "name": "Thời trang nam Remmy",
@@ -11200,11 +9634,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0942421111", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"},
-    {"provider": "email", "value": "phongnhansu.remmy@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-255",
    "name": "Thùy Vân",
@@ -11219,10 +9649,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0972697177", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-256",
    "name": "Phương Liên",
@@ -11237,10 +9664,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0388173469", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-257",
    "name": "Ly Sam",
@@ -11255,10 +9679,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0829899028", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-258",
    "name": "VNIDOL",
@@ -11273,10 +9694,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0944126602", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-259",
    "name": "Huệ – Xnk Haiquan.HT",
@@ -11291,11 +9709,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0702065222", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"},
-    {"provider": "phone", "value": "0977685488", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/1002938194724844"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-260",
    "name": "Phương Nguyễn SHOP",
@@ -11310,9 +9724,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-261",
    "name": "Ngoc Anh",
@@ -11327,11 +9739,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0793435555", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"},
-    {"provider": "zalo", "value": "0869411944", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-262",
    "name": "An Nguyễn",
@@ -11346,10 +9754,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0949826267", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-263",
    "name": "Tuyen Pham",
@@ -11364,10 +9769,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0945558070", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-264",
    "name": "Nguyệt Minh",
@@ -11382,10 +9784,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0829538675", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-265",
    "name": "Lê Thanh Long / 51K ENTERTAINMENT",
@@ -11400,9 +9799,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-266",
    "name": "Đào Tử / VTT MEDIA",
@@ -11417,9 +9814,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-267",
    "name": "Lê Thanh Đình",
@@ -11434,10 +9829,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0898142499", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-268",
    "name": "Bùi Thị Kim Ngân / TEAM KIMCUONGSOKIU",
@@ -11452,10 +9844,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0903771814", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-269",
    "name": "Nguyễn Vũ Hải",
@@ -11470,9 +9859,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/1002938194724844",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-270",
    "name": "Như Ý Trương",
@@ -11487,9 +9874,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-271",
    "name": "Hạ Nhật",
@@ -11504,9 +9889,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-272",
    "name": "Hải Nguyên",
@@ -11521,9 +9904,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  } ,
+   "logoFit": "contain"  } ,
   {
    "id": "sh-273",
    "name": "Thuy Tran Nguyen",
@@ -11538,10 +9919,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/337105752372137/posts/977943681621671",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0935376492", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/977943681621671"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-274",
    "name": "Tran Thi Hoai Thuong",
@@ -11556,10 +9934,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.facebook.com/groups/337105752372137/posts/973141495435223",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0926513206", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137/posts/973141495435223"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-275",
    "name": "Mỹ Hàn",
@@ -11574,9 +9949,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "src": "https://www.facebook.com/groups/337105752372137/posts/965239592892080",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-276",
    "name": "Gia Hân",
@@ -11591,9 +9964,7 @@ window.V20_DATA = {
    "date": "2026-10-28",
    "src": "https://www.facebook.com/groups/337105752372137",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-277",
    "name": "Trần Thị Thuý",
@@ -11608,10 +9979,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0973581614", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-278",
    "name": "Tô Quang Huy",
@@ -11626,10 +9994,7 @@ window.V20_DATA = {
    "date": "2026-11-03",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0963934854", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-279",
    "name": "Như Nguyệt / FS MEDIA",
@@ -11644,10 +10009,7 @@ window.V20_DATA = {
    "date": "2026-11-09",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0376527796", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-280",
    "name": "BronzePenguin6637",
@@ -11662,10 +10024,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0357680529", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-281",
    "name": "Vòng Ngọc Phong Thuỷ / Y&Y",
@@ -11680,9 +10039,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-282",
    "name": "Kiều Trinh",
@@ -11697,9 +10054,7 @@ window.V20_DATA = {
    "date": "2026-11-06",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-283",
    "name": "Thanh Mai",
@@ -11714,9 +10069,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-284",
    "name": "Trang Ly Thuy",
@@ -11731,9 +10084,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-285",
    "name": "Nguyễn Ngoc Anh / BYSCOM",
@@ -11748,11 +10099,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0384516542", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"},
-    {"provider": "email", "value": "nnganh1205@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-286",
    "name": "Nguyễn Xuân Mai",
@@ -11767,10 +10114,7 @@ window.V20_DATA = {
    "date": "2026-11-14",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0965342896", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-287",
    "name": "Nguyễn Duy Phương",
@@ -11785,10 +10129,7 @@ window.V20_DATA = {
    "date": "2026-11-10",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0344553491", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-288",
    "name": "Bảo Ngọc",
@@ -11803,10 +10144,7 @@ window.V20_DATA = {
    "date": "2026-11-04",
    "src": "https://www.facebook.com/groups/812667316880352",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0777901478", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/812667316880352"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-289",
    "name": "Nguyễn Ngọc",
@@ -11821,10 +10159,7 @@ window.V20_DATA = {
    "date": "2026-10-02",
    "src": "https://www.facebook.com/groups/337105752372137",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0703150265", "label": "Điện thoại", "source": "post", "source_url": "https://www.facebook.com/groups/337105752372137"}
-   ]  }
+   "logoFit": "contain"  }
 ,
   {
    "id": "sh-290",
@@ -11840,9 +10175,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "src": "https://www.facebook.com/groups/337105752372137/posts/979280004821372",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-291",
    "name": "WIN LIVE",
@@ -11857,10 +10190,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "src": "https://www.facebook.com/groups/1546946925709046/posts/2519966688407060",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0337655284", "label": "Zalo", "source": "post", "source_url": "https://www.facebook.com/groups/1546946925709046/posts/2519966688407060"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-292",
    "name": "HOAI VU",
@@ -11875,10 +10205,7 @@ window.V20_DATA = {
    "date": "2026-10-20",
    "src": "https://www.facebook.com/groups/2930003470551216/posts/4542495535968660",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "email", "value": "Phuongdh312@gmail.com", "label": "Email", "source": "post", "source_url": "https://www.facebook.com/groups/2930003470551216/posts/4542495535968660"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-293",
    "name": "MIUCHO",
@@ -11893,8 +10220,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "src": "https://www.threads.com/@miucho.com_/post/Df1EuixERGp",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
   {
    "id": "sh-294",
@@ -11910,10 +10236,7 @@ window.V20_DATA = {
    "date": "2026-11-18",
    "src": "https://www.facebook.com/groups/1007825283653307/posts/1754647802304381",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0901341102", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/groups/1007825283653307/posts/1754647802304381"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-295",
    "name": "BRILLIANT STARS",
@@ -11928,10 +10251,7 @@ window.V20_DATA = {
    "date": "2026-11-17",
    "src": "https://www.facebook.com/groups/1007825283653307/posts/1754325065669988",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0916356625", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/groups/1007825283653307/posts/1754325065669988"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-296",
    "name": "WORTHFIND",
@@ -11946,8 +10266,7 @@ window.V20_DATA = {
    "date": "2026-10-30",
    "src": "https://vieclam.tuoitre.vn/vi/tim-viec-lam/host-livestream-tiktok.35C88F41.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
   {
    "id": "sh-297",
@@ -11963,8 +10282,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "src": "https://vieclam24h.vn/short/job/200985474",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
   {
    "id": "sh-298",
@@ -11980,8 +10298,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "src": "https://vieclam24h.vn/ban-hang-kinh-doanh/nhan-vien-ban-hang-livestream-c13p210000187id200980046.html?open_from=2701_9_10",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
   {
    "id": "sh-299",
@@ -11997,8 +10314,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "src": "https://www.threads.com/@may_bongbenh_00/post/Df1MFXUGAAU",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
   {
    "id": "sh-300",
@@ -12014,10 +10330,7 @@ window.V20_DATA = {
    "date": "2026-11-15",
    "src": "https://www.threads.com/@0201mytiendat/post/DfylkADn2_y",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0919920338", "label": "Zalo tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@0201mytiendat/post/DfylkADn2_y"}
-   ]  },
+   "logoFit": "contain"  },
   {
    "id": "sh-301",
    "name": "Công Ty Cổ Phần Sản Xuất Dược Mỹ Phẩm Vincos Việt Nam",
@@ -12032,8 +10345,7 @@ window.V20_DATA = {
    "date": "2026-10-24",
    "src": "https://jobsgo.vn/viec-lam/chuyen-vien-livestream-video-ban-hang-29478854785.html",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": []
+   "logoFit": "contain"
   },
 {
    "id": "sh-302",
@@ -12049,10 +10361,7 @@ window.V20_DATA = {
    "date": "2026-11-16",
    "src": "https://www.threads.com/@coqui.official/post/Df07LXEHVqp",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0911798399", "label": "Zalo HR (Ms Nhi, theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@coqui.official/post/Df07LXEHVqp"}
-   ]
+   "logoFit": "contain"
   },
 {
    "id": "sh-303",
@@ -12068,10 +10377,7 @@ window.V20_DATA = {
    "date": "2026-11-13",
    "src": "https://www.facebook.com/kiet.la.175471/posts/pfbid02ZSFRQHRjXmJ6HmB9wgsJbYpuYXGSfo7a43Ap1SEtpr2hcUrfZhBxH7uUCNWBPX4Jl",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "phone", "value": "0823208756", "label": "Liên hệ Kiet (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/kiet.la.175471/posts/pfbid02ZSFRQHRjXmJ6HmB9wgsJbYpuYXGSfo7a43Ap1SEtpr2hcUrfZhBxH7uUCNWBPX4Jl"}
-   ]
+   "logoFit": "contain"
   },
 {
    "id": "sh-304",
@@ -12087,10 +10393,7 @@ window.V20_DATA = {
    "date": "2026-11-08",
    "src": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ZasdAQw8AAkV28Xk3hAtKUnyRHHsvrXE7cbzBzqUaL4qfSRJUZbEhoNbcJjGjXeGl&id=61595801087159",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "zalo", "value": "0788662108", "label": "Zalo HCNS (theo bài đăng)", "source": "post", "source_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ZasdAQw8AAkV28Xk3hAtKUnyRHHsvrXE7cbzBzqUaL4qfSRJUZbEhoNbcJjGjXeGl&id=61595801087159"}
-   ]
+   "logoFit": "contain"
   },
 {
    "id": "sh-305",
@@ -12106,10 +10409,7 @@ window.V20_DATA = {
    "date": "2026-10-30",
    "src": "https://www.threads.com/@tuyendung6676/post/DfHMqQhgYd2",
    "logo": "",
-   "logoFit": "contain",
-   "contacts": [
-    {"provider": "email", "value": "tuyendung@cchat.vn", "label": "Email tuyển dụng (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@tuyendung6676/post/DfHMqQhgYd2"}
-   ]
+   "logoFit": "contain"
   },
 {
    "id": "sh-306",
@@ -12124,10 +10424,7 @@ window.V20_DATA = {
    "channels": "Threads",
    "date": "2026-11-11",
    "src": "https://www.threads.com/@wyn_nhu03/post/DfoKsOymcmt",
-   "logo": "",
-   "contacts": [
-    {"provider": "phone", "value": "0772560008", "label": "Liên hệ (theo bài đăng)", "source": "post", "source_url": "https://www.threads.com/@wyn_nhu03/post/DfoKsOymcmt"}
-   ]
+   "logo": ""
   }
 ],
  "articles": [
