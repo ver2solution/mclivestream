@@ -72,6 +72,7 @@
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-23 adds 4 Thi truong articles (23/11/2026, Monday): 1 seasonal keyword 'thi truong ao dai Tet 2026' #10/10 (LAST of round 1, deep: CORRECTION — 296 ty VND is Tet 2025 (CafeBiz 05/02/2026), NOT Tet 2026; Tet 2026 verified: TikTok Shop 4,8M ao dai orders (Kenh14 12/02/2026), Q4/2025 2,8M + Jan 2026 2M orders (CafeBiz 20/06/2026), 6 peak weeks 67,7 nghin ty (Ebrun 14/02/2026), segment 200-350k VND; plan for Tet Dinh Mui 2027, mung 1 Sat 06/02/2027) + 3 news (Sea/Shopee Q3 2026 10/11 — GMV 39,7 ty USD +23,3%, orders 4,5 ty +25,5%, Sea revenue 8,6 ty USD +43,4%, net 502,5 tr USD +34,0%, Shopee adj EBITDA 269 tr USD +45% record, marketplace fees 11,6% of GMV; eBay Q3 2026 28/10 — revenue 3,2 ty USD +14%, GMV 23,2 ty USD +15%, US GMV +27% vs Intl +4%, recommerce +24%, ads 607 tr USD, Depop +3pts; TikTok Shop US Black Friday LIVE 19/11 — medicube best session 299.900 USD / 8,4K orders / 12,1h, 7,41M USD in 30 days, 9/10 top sessions brand accounts, 8 categories 543,5M USD in 7 days to 20/11). SEO V2 (title suffix + link boxes). Total 625 articles (node) / 624 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15930,6 +15931,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Sàn việc làm livestream vieclamlivestream.online: 238 mẫu, 304 shop, 613 bài, 31 tỉnh/thành + live online (23/11/2026); idol tìm việc, shop tìm idol, liên hệ trực tiếp không qua trung gian, không phí giới thiệu; mùa tuyển gấp: 12.12 còn 19 ngày, Tết 2027 còn 75 ngày."
+  },
+  {
+   "title": "Doanh thu shop online Tết: chốt sổ quý 4/2026",
+   "cat": "Dòng tiền",
+   "source": "vieclamlivestream.online (tổng hợp từ Metric, Adobe, NRF, BMO)",
+   "date": "2026-11-23",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doanh-thu-shop-online-tet-quy-4-2026-chot-so-sau-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Doanh thu shop online Tết quý 4/2026 chốt theo 3 mốc 12.12, Giáng sinh và Tết 06/02/2027 — đăng ký chiến dịch 12.12 trước 25/11/2026; doanh thu thực nhận trừ phí sàn thật (TikTok Shop 6% + Xtra 4%, Shopee 6% + 3.000 đồng/đơn); chốt sổ sau Tết mới biết cả mùa lãi hay lỗ."
+  },
+  {
+   "title": "Bitcoin hồi lên 61.000 USD sau đáy 55.130 USD",
+   "cat": "Dòng tiền",
+   "source": "Bitcoin.com (22/11/2026)",
+   "date": "2026-11-23",
+   "url": "https://news.bitcoin.com/market-updates/bitcoin-price-takes-a-beating-as-november-rout-erases-summer-gains/",
+   "page": "bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-hoi-len-61000-usd-sau-day-55130-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin hồi lên 61.000 USD sáng 23/11/2026, ngày tăng thứ 2 liên tiếp sau đáy 55.130 USD ngày 21/11 — thanh lý 2,56 tỷ USD ngày 22/11 quét sạch phe bán khống; phép thử là dòng tiền ETF, 3,47 tỷ USD đã rút trong tháng 11."
+  },
+  {
+   "title": "PCE Mỹ tăng 3,8%: Fed họp 09/12, vay đắt thêm?",
+   "cat": "Dòng tiền",
+   "source": "BusinessMirror (Bloomberg, 22/11/2026)",
+   "date": "2026-11-23",
+   "url": "https://businessmirror.com.ph/2026/11/22/us-consumers-holding-up-vs-inflation-into-holidays/",
+   "page": "bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/pce-my-tang-38-phan-tram-fed-hop-09-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "PCE Mỹ tăng 3,8% trong tháng 10, gần gấp đôi mục tiêu của Fed, công bố thứ Tư 25/11/2026 — thị trường đặt cược 97,9% Fed tăng lãi suất ngày 09/12; shop nhỏ nên chốt tiền hàng Tết trước 04/12/2026 và khóa ngân sách quảng cáo."
+  },
+  {
+   "title": "Giá vàng hôm nay 23/11: thế giới hồi, SJC đứng yên",
+   "cat": "Dòng tiền",
+   "source": "Stockbiz (23/11/2026)",
+   "date": "2026-11-23",
+   "url": "https://stockbiz.vn/en/news/gold-prices-today-november-23-continue-to-rise/42877145",
+   "page": "bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-hom-nay-23-11-the-gioi-hoi-sjc-dung-yen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá vàng hôm nay 23/11/2026: vàng thế giới hồi lên 3.577 USD (+1,3%) nhưng SJC đứng yên 128,5–133,5 triệu; chênh lệch mua–bán 5 triệu, SJC cao hơn thế giới hơn 22 triệu đồng/lượng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
