@@ -18271,7 +18271,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Livestream bán hàng Giáng sinh: Monserrat Meraz bán 1 triệu peso, khoảng 1,4 tỷ đồng, trong 10 giờ live TikTok Shop Mexico — hơn 4.100 đơn, 187.000 người xem cùng lúc, 6,2 triệu lượt hiển thị (Merca2.0 03/11/2026 qua Grou 09/11/2026)."
-  }
+  },
+  {
+   "title": "Phân tích doanh số Tết 2026: 73,7 nghìn tỷ, 5 bài học",
+   "cat": "Phân tích",
+   "source": "Metric (Báo cáo thị trường mua sắm Tết 2026)",
+   "date": "2026-11-23",
+   "url": "https://stockbiz.vn/en/news/vietnamese-consumers-are-increasingly-cautious-with-spending-businesses-face-a-challenging-tet-season/42874836",
+   "page": "bai-viet/phan-tich-doanh-so-tet-2026-737-nghin-ty-5-bai-hoc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-doanh-so-tet-2026-737-nghin-ty-5-bai-hoc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phân tích doanh số Tết 2026: 73,7 nghìn tỷ đồng/9 tuần (+51%, Metric 01/2026); TikTok Shop 34,6 nghìn tỷ vượt Shopee 33,1 nghìn tỷ lần đầu (6 tuần 15/12/2025–25/01/2026); NIQ 17/11/2026: Tết chiếm ~27% doanh số FMCG cả năm, người Việt chi tiêu thận trọng hơn."
+  },
+  {
+   "title": "Khách bỏ giỏ hàng trên live: 70% giỏ bị bỏ vì 5 lý do",
+   "cat": "Phân tích",
+   "source": "Baymard Institute",
+   "date": "2026-11-23",
+   "url": "https://baymard.com/blog/cart-abandonment-rate",
+   "page": "bai-viet/khach-bo-gio-hang-tren-live-70-phan-tram-gio-bi-bo.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khach-bo-gio-hang-tren-live-70-phan-tram-gio-bi-bo.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Khách bỏ giỏ hàng trên live: 70,22% giỏ hàng online bị bỏ (trung bình 50 nghiên cứu, Baymard cập nhật 28/10/2026); 42% chỉ xem cho vui; phí phát sinh là lý do số 1 (40%); TikTok Shop hoàn hàng 8–15%, thời trang 18–25% (MarginMints 10/11/2026)."
+  },
+  {
+   "title": "Quá tải lựa chọn trên live: nhiều mã, khách càng ngại mua",
+   "cat": "Phân tích",
+   "source": "Iyengar & Lepper 2000 (Journal of Personality and Social Psychology)",
+   "date": "2026-11-23",
+   "url": "https://psycnet.apa.org/doi/10.1037/0022-3514.79.6.995",
+   "page": "bai-viet/qua-tai-lua-chon-tren-live-nhieu-ma-khach-cang-ngai-mua.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/qua-tai-lua-chon-tren-live-nhieu-ma-khach-cang-ngai-mua.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quá tải lựa chọn trên live: thí nghiệm Iyengar & Lepper (2000) — 6 loại mứt 30% mua, 24 loại chỉ 3%; phân tích gộp 50 thí nghiệm năm 2010 cho thấy hiệu ứng có điều kiện; não quá tải nhất ở 12 lựa chọn (nghiên cứu não bộ, IESE)."
+  },
+  {
+   "title": "TJX quý 3 2026: doanh số tăng 4%, cổ phiếu tăng 11%",
+   "cat": "Phân tích",
+   "source": "Morningstar (Dow Jones)",
+   "date": "2026-11-23",
+   "url": "https://www.morningstar.com/news/dow-jones/202611183976/tjx-raises-fiscal-year-outlook-expects-sales-trends-to-accelerate-through-holiday-season",
+   "page": "bai-viet/tjx-quy-3-2026-doanh-so-tang-4-phan-tram-co-phieu-tang-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tjx-quy-3-2026-doanh-so-tang-4-phan-tram-co-phieu-tang-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TJX quý 3 2026: doanh số tương đương tăng 4%, doanh thu 15,95 tỷ USD (+5,5%), EPS điều chỉnh 1,34 USD (+5%), cổ phiếu tăng 11% ngày 18/11/2026; Marmaxx +2%, HomeGoods +5%, quốc tế +8% (Morningstar/Dow Jones 18/11/2026)."
+  },
 ],
  "lots": [
    {
