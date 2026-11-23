@@ -18634,6 +18634,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "395,5 tỷ đồng trong ngày đầu, 595 tỷ đồng trong 2 ngày livestream — Winnie Tang, tố nhân 7 năm trên Xiaohongshu, bán trang sức giá trung bình 63 triệu đồng/đơn và phá kỷ lục nền tảng. Phân tích con số, công thức và mặt trái cho shop Việt trước Black Friday 27/11 và 12.12."
   },
+  {
+   "title": "1.610 tỷ đồng trong 5 tuần — 7 mẹo biến buổi live thành \"sự kiện\" bán hàng",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-23",
+   "url": "https://www.36kr.com/p/3706969918107781",
+   "page": "bai-viet/meo-bien-buoi-live-thanh-su-kien-1610-ty-dong-5-tuan.html",
+   "img": "https://img.36krcdn.com/hsossms/20260303/v2_c6e52bb11b6b45fab6abad0c545f372c@000000_oswg175591oswg1000oswg1338_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "pinned": false,
+   "takeaway": "3 gala trang sức Xiaohongshu bán 460 triệu NDT (khoảng 1.610 tỷ đồng) trong 5 tuần, MegaLIVE TP.HCM chốt hơn 63.000 đơn trong 1 phiên — 7 mẹo biến buổi live thành sự kiện bán hàng, áp dụng ngay trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
