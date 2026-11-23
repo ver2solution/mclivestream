@@ -72,6 +72,7 @@
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-23 adds 4 Thi truong articles (23/11/2026, Monday): 1 seasonal keyword 'thi truong ao dai Tet 2026' #10/10 (LAST of round 1, deep: CORRECTION — 296 ty VND is Tet 2025 (CafeBiz 05/02/2026), NOT Tet 2026; Tet 2026 verified: TikTok Shop 4,8M ao dai orders (Kenh14 12/02/2026), Q4/2025 2,8M + Jan 2026 2M orders (CafeBiz 20/06/2026), 6 peak weeks 67,7 nghin ty (Ebrun 14/02/2026), segment 200-350k VND; plan for Tet Dinh Mui 2027, mung 1 Sat 06/02/2027) + 3 news (Sea/Shopee Q3 2026 10/11 — GMV 39,7 ty USD +23,3%, orders 4,5 ty +25,5%, Sea revenue 8,6 ty USD +43,4%, net 502,5 tr USD +34,0%, Shopee adj EBITDA 269 tr USD +45% record, marketplace fees 11,6% of GMV; eBay Q3 2026 28/10 — revenue 3,2 ty USD +14%, GMV 23,2 ty USD +15%, US GMV +27% vs Intl +4%, recommerce +24%, ads 607 tr USD, Depop +3pts; TikTok Shop US Black Friday LIVE 19/11 — medicube best session 299.900 USD / 8,4K orders / 12,1h, 7,41M USD in 30 days, 9/10 top sessions brand accounts, 8 categories 543,5M USD in 7 days to 20/11). SEO V2 (title suffix + link boxes). Total 625 articles (node) / 624 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-22 adds 4 Dong tien articles (22/11/2026, Sunday): 1 seasonal keyword 'ke hoach tai chinh shop cuoi nam' #10/10 (deep, LAST vong 1: 6 buoc chot so truoc Tet 06/02/2027, phi san that, KHONG so minh hoa) + 2 news 21/11 (Bitcoin roi ve 55.130 USD sang 21/11, thap nhat tu thang 9/2024, thanh ly 2,4 ty USD + vang SJC trua 21/11 ve 128,5-133,5 trieu, nguoi mua lo 9,5 trieu/luong) + 1 rotation Zalo #5 'nguoi My cat ngan sach le gan 600 USD' (BMO 19/11/2026 + EY 29/10/2026 + PwC 19/11/2026, added LAST for Zalo 10:00). SEO V2 (title suffix + link boxes). Total 591 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-22 adds 4 Cong nghe articles (22/11/2026, Sunday): 1 seasonal keyword 'AI streamer Tet' #4/10 VONG 2 (goc moi: CA DEM TET — giu khung 0h-8h khi mau nghi; thi truong 77 ty USD 2026, chi chot 8,3% GMV; luat nhan AI — MarketingToChina 05/11/2026 + HotNews 12/11/2026 + Scienjoy 28/01/2026) + 3 news (TikTok Shop Brand LIVE Impact 14 ngay 02/11, Gemini Tasks mien phi 17/11, Shopee AI LiveStream 4 cong cu 11/02). SEO V2 (title suffix + link boxes). Total 587 articles (node) / 586 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -18360,6 +18361,54 @@ window.V20_DATA = {
    "page": "bai-viet/thi-truong-ao-dai-tet-2026-bai-hoc-cho-tet-2027.html",
    "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-ao-dai-tet-2026-bai-hoc-cho-tet-2027.jpg",
    "pinned": false
+  },
+  {
+   "title": "Công cụ livestream Tết: 5 món mới của TikTok Shop",
+   "cat": "Công nghệ",
+   "source": "Calywire",
+   "date": "2026-11-23",
+   "url": "https://calywire.com/tiktok-shop-live-auctions-holiday-2026/",
+   "page": "bai-viet/cong-cu-livestream-tet-5-cong-cu-moi-tiktok-shop.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cong-cu-livestream-tet-5-cong-cu-moi-tiktok-shop.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cong cu livestream Tet vong 2: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 (trang Seller University My 12/11/2026) — LIVE Auction dau gia truc tiep; Price Cut ha gia theo dam dong (SharkNinja chay dau o Duc cuoi thang 10/2026); Group Buy du nhom la mo ban; Rush Reward thuong nguoi tra tien dau tien (toi da 3 san pham, tong gia tri 5.000 USD); Reward Ladder toi da 5 bac, 5 qua moi bac — CHUA RO co o Viet Nam chua, shop kiem tra Seller Center truoc lich 12.12."
+  },
+  {
+   "title": "Thuật toán Instagram Reels: 45% video dưới 24 giờ",
+   "cat": "Công nghệ",
+   "source": "SUC Media",
+   "date": "2026-11-23",
+   "url": "https://sucmedia.com/blog/instagrams-reels-algorithm-is-changing-nearly-45-of-recommended-videos-are-less-than-a-day-old",
+   "page": "bai-viet/instagram-reels-thuat-toan-45-phan-tram-duoi-24-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/instagram-reels-thuat-toan-45-phan-tram-duoi-24-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thuat toan Instagram Reels Q3/2026 (Meta, bao cao ket qua 21/10/2026): gan 45% Reels duoc goi y chua day 24 gio tuoi (+11 diem % so voi quy 2); he thong moi xep hang theo chuoi video thay vi tung video le; thoi gian xem Reels +4% trong quy 3; tim kiem Instagram +1% tuong tac nho AI hieu noi dung; Facebook Reels cung co kien truc truy hoi moi — shop live nen dang Reels moi deu, noi ro chu de ngay tu dau."
+  },
+  {
+   "title": "TikTok Shop ra app riêng: mua sắm tách khỏi TikTok",
+   "cat": "Công nghệ",
+   "source": "Creator News Desk",
+   "date": "2026-11-23",
+   "url": "https://www.creatornewsdesk.com/platforms/tiktok/tiktok-launches-standalone-shopping-app-with-livestream-features/",
+   "page": "bai-viet/tiktok-shop-app-rieng-mua-sam-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-app-rieng-mua-sam-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop ra app rieng tu 05/11/2026 (Creator News Desk 06/11/2026): ung dung mua sam doc lap tach khoi TikTok chinh; goi y ca nhan hoa; live + video ngan mua ngay trong ung dung; uu dai rieng chi co trong app; thanh toan trong ung dung; theo doi don + ho tro khach hang trong app — shop Viet chuan bi listing ro rang + live deu de don khach co y dinh mua, truoc 12.12."
+  },
+  {
+   "title": "Bio-Essence live bằng AI avatar, đoạt giải vàng",
+   "cat": "Công nghệ",
+   "source": "AnyMind Group",
+   "date": "2026-11-23",
+   "url": "https://anymindgroup.com/news/press-release/bioessence-asiaecom-my2026",
+   "page": "bai-viet/bio-essence-shopee-live-ai-avatar-giai-vang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bio-essence-shopee-live-ai-avatar-giai-vang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bio-Essence live bang AI avatar, doat giai vang: Arche Digital (AnyMind Group, mua lai thang 05/2024) doat giai vang Best eCommerce Innovation, Asia eCommerce Awards 2026 (thong cao 05/11/2026); AI avatar AnyLive tu van cham soc da, tra loi khach + gioi thieu loi ich san pham suot ngay dem tren Shopee Live, ngoai gio hanh chinh; mo hinh lai nguoi + AI — mau nguoi giu gio vang, AI giu ca ngoai gio."
   }
 ],
  "lots": [
