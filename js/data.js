@@ -17105,7 +17105,7 @@ window.V20_DATA = {
    "date": "2026-11-23",
    "url": "https://www.36kr.com/p/3706969918107781",
    "page": "bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.html",
-   "img": "https://img.36krcdn.com/hsossms/20260303/v2_c6e52bb11b6b45fab6abad0c545f372c@000000_oswg175591oswg1000oswg1338_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/winnie-tang-395-ty-dong-1-ngay-live-trang-suc-to-nhan-pha-ky-luc-xiaohongshu.jpg",
    "pinned": false,
    "takeaway": "395,5 tỷ đồng trong ngày đầu, 595 tỷ đồng trong 2 ngày livestream — Winnie Tang, tố nhân 7 năm trên Xiaohongshu, bán trang sức giá trung bình 63 triệu đồng/đơn và phá kỷ lục nền tảng. Phân tích con số, công thức và mặt trái cho shop Việt trước Black Friday 27/11 và 12.12."
   },
@@ -17116,7 +17116,7 @@ window.V20_DATA = {
    "date": "2026-11-23",
    "url": "https://www.36kr.com/p/3706969918107781",
    "page": "bai-viet/meo-bien-buoi-live-thanh-su-kien-1610-ty-dong-5-tuan.html",
-   "img": "https://img.36krcdn.com/hsossms/20260303/v2_c6e52bb11b6b45fab6abad0c545f372c@000000_oswg175591oswg1000oswg1338_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-bien-buoi-live-thanh-su-kien-1610-ty-dong-5-tuan.jpg",
    "pinned": false,
    "takeaway": "3 gala trang sức Xiaohongshu bán 460 triệu NDT (khoảng 1.610 tỷ đồng) trong 5 tuần, MegaLIVE TP.HCM chốt hơn 63.000 đơn trong 1 phiên — 7 mẹo biến buổi live thành sự kiện bán hàng, áp dụng ngay trước Black Friday 27/11."
   },
@@ -17127,7 +17127,7 @@ window.V20_DATA = {
    "date": "2026-11-23",
    "url": "https://cafef.vn/gmv-shopee-live-tang-gap-12-lan-trong-ngay-11-11-188261120140632266.chn",
    "page": "bai-viet/shopee-live-11-11-gmv-tang-12-lan-don-tang-9-lan-shop-viet-hoc-gi-truoc-black-friday.html",
-   "img": "https://cafefcdn.com/thumb_w/640/203337114487263232/2026/11/20/shopee-dem-den-10-phuong-thuc-th-17951583126131008508421.jpg",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-live-11-11-gmv-tang-12-lan-don-tang-9-lan-shop-viet-hoc-gi-truoc-black-friday.jpg",
    "pinned": false,
    "takeaway": "Shopee công bố chính thức kết quả 11.11/2026: GMV Shopee Live tăng 12 lần, đơn qua live tăng 9 lần, gần 2,5 tỷ lượt xem, người tiêu dùng tiết kiệm 16.000 tỷ đồng. 7 bài học cho shop Việt trước Black Friday 27/11."
   },
@@ -17138,7 +17138,7 @@ window.V20_DATA = {
    "date": "2026-11-23",
    "url": "https://dantri.com.vn/kinh-doanh/giam-gia-sap-san-truoc-black-friday-khach-xem-nhieu-chot-don-it-20261121085930005.htm",
    "page": "bai-viet/xem-nhieu-chot-don-it-black-friday-2026-giam-toi-80-van-thua-khach.html",
-   "img": "https://static-images.vnncdn.net/vps_images_publish/000001/000003/2026/11/17/w-giam-gia-black-friday-3300.jpg?width=260&s=tqPzA9JIq3ra-Gf-_ScKIA",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xem-nhieu-chot-don-it-black-friday-2026-giam-toi-80-van-thua-khach.jpg",
    "pinned": false,
    "takeaway": "Giảm 50–80% từ giữa tháng 11 nhưng nhiều cửa hàng Hà Nội vẫn thưa khách; TPHCM tối 20/11 đông nghịt nhưng ưu đãi thực chỉ khoảng 30% và hết size. Vì sao khách \"xem nhiều, chốt đơn ít\" và shop livestream cần làm gì trước Black Friday 27/11/2026?"
   },
@@ -17149,7 +17149,7 @@ window.V20_DATA = {
    "date": "2026-11-23",
    "url": "https://www.36kr.com/p/1070734969383042",
    "page": "bai-viet/la-vinh-hao-hoa-thieu-luu-dao-uong-ham-ai-thang-cuoc-dua-live-dau-2020.html",
-   "img": "https://img.36krcdn.com/20210126/v2_29ea6438052646bfb84a4372526b2d0b_img_000?x-oss-process=image/format,jpg/interlace,1",
+   "img": "https://vieclamlivestream.online/images/bai-viet/la-vinh-hao-hoa-thieu-luu-dao-uong-ham-ai-thang-cuoc-dua-live-dau-2020.jpg",
    "pinned": false,
    "takeaway": "Hoa Thiếu 609 tỷ, Uông Hàm 546 tỷ, Lưu Đào 518 tỷ, La Vĩnh Hạo 385 tỷ đồng trong buổi live đầu tiên năm 2020. So sánh 4 buổi live đầu và cái giá 6 năm sau cho shop Việt trước Black Friday 27/11."
   },
