@@ -72,6 +72,7 @@
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-23 adds 5 Đời Sống articles (23/11/2026, Monday): 1 seasonal keyword "kế hoạch kinh doanh năm mới 2027" #10/10 CUOI vong 1 (2,066 words, deep; e-Conomy SEA 2026 05/11/2026 — kinh te so 49 ty USD +20%, TMDT 32 ty USD +22%; Tet 06/02/2027) + 3 news "("tháng 1 du lịch đâu đẹp nhất" 1,292 words; "ngủ trưa 26 phút" 1,423 words; "chi tiêu Giáng sinh 2026" 1,343 words) + 1 cafe "quán cafe check-in đẹp Cafe Đinh Hà Nội" 1,149 words. Total 650 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
+   articles-dang-hot-2026-11-23 adds 4 Dang hot articles (23/11/2026, Monday): 1 seasonal keyword 'cach nhap hang 1688' #6/10 VONG 2 (GOC MOI: chon xuong uy tin tren 1688 + dat hang Tet truoc khi xuong nghi — Super Factory, giay phep kinh doanh, 4 buoc kiem tra; wiki.1688.com 29/07/2026 — xuong chua kiem tra tranh chap cao hon 67%; lich TradeRouteGuide 10/11/2026: xuong ngung ~26/01/2027, tau cuoi 15-25/01/2027, dat truoc 10/12/2026) + 3 news (Nintendo Switch 2 BF 2026: bundle Mario Kart World 499,99 USD, giam 50 USD, 22/11-05/12/2026, cong bo 12/11/2026; Dyson BF 2026: giam toi 400 USD toi 28/11/2026, Amazon toi 251 USD, Airwrap i.d. 499,99 USD — DealNews 20/11/2026; LEGO BF 2026: 283 bo gia thap nhat tung ghi nhan — BrickSleuth 19/11/2026, Amazon toi 40%, Walmart hon 40 bo toi 44% — PopSci 09/11/2026). SEO V2 (title suffix + link boxes). Total 654 articles (node) / 653 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -18573,6 +18574,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Cafe Đinh Hà Nội: 13 Đinh Tiên Hoàng, tầng 2 nhà cổ, mở 07:00–22:00; cà phê trứng từ 1946, nóng 30.000đ, đá 35.000đ (Trip Moments 01/2026)."
+  },
+  {
+   "title": "Cách nhập hàng 1688 trước Tết: chọn xưởng uy tín",
+   "cat": "Đang hot",
+   "source": "wiki.1688.com",
+   "date": "2026-11-23",
+   "url": "https://wiki.1688.com/en/WKfthui4b4rtvk",
+   "page": "bai-viet/cach-nhap-hang-1688-truoc-tet-chon-xuong-uy-tin.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-nhap-hang-1688-truoc-tet-chon-xuong-uy-tin.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cach nhap hang 1688 truoc Tet: xuong chua kiem tra thuc dia co ty le tranh chap cao hon 67% (wiki.1688.com 29/07/2026) — chon xuong Super Factory, kiem tra giay phep kinh doanh, dat truoc 10/12/2026 de kip tau cuoi 15-25/01/2027."
+  },
+  {
+   "title": "Nintendo Switch 2 Black Friday 2026: bundle 499 USD",
+   "cat": "Đang hot",
+   "source": "Nintendo Insider",
+   "date": "2026-11-23",
+   "url": "https://www.nintendo-insider.com/nintendo-black-friday-2026-deals/",
+   "page": "bai-viet/nintendo-switch-2-black-friday-2026-bundle-499-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nintendo-switch-2-black-friday-2026-bundle-499-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nintendo Switch 2 Black Friday 2026 (cong bo 12/11/2026): bundle Mario Kart World 499,99 USD (giam 50 USD) tu 22/11 toi 05/12/2026, game dia giam 20 USD chi 22-29/11/2026, eShop giam gia tu 19/11/2026 — chi ap dung tai My."
+  },
+  {
+   "title": "Dyson Black Friday 2026: giảm tới 400 USD, Airwrap 499 USD",
+   "cat": "Đang hot",
+   "source": "DealNews",
+   "date": "2026-11-23",
+   "url": "https://www.dealnews.com/Dyson-Black-Friday-Deals-Up-to-400-off-free-shipping/22415375.html",
+   "page": "bai-viet/dyson-black-friday-2026-giam-toi-400-usd-airwrap-499-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dyson-black-friday-2026-giam-toi-400-usd-airwrap-499-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Dyson Black Friday 2026: Dyson giam toi 400 USD toi 28/11/2026, Amazon giam toi 251 USD toi 30/11/2026; Airwrap i.d. 499,99 USD, V15 Detect 598,50 USD, Supersonic Nural 349,99 USD la gia thap that (kiem tra 20/11/2026)."
+  },
+  {
+   "title": "LEGO Black Friday 2026: 283 bộ giá thấp nhất lịch sử",
+   "cat": "Đang hot",
+   "source": "BrickSleuth",
+   "date": "2026-11-23",
+   "url": "https://bricksleuth.com/en-us/articles/us-deals/black-friday-lego-deals-283-sets-at-the-lowest-price-weve-tracked-us",
+   "page": "bai-viet/lego-black-friday-2026-283-bo-gia-thap-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lego-black-friday-2026-283-bo-gia-thap-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "LEGO Black Friday 2026: 283 bo xuong gia thap nhat tung ghi nhan (BrickSleuth 19/11/2026), Amazon giam toi 40%, Walmart hon 40 bo giam toi 44% (09/11/2026), Insiders Weekend 20-21/11/2026, su kien chinh 27/11/2026."
   }
 ],
  "lots": [
