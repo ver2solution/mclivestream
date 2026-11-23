@@ -71,6 +71,7 @@
    articles-viec-lam-2026-11-21 adds 4 Viec Lam articles (21/11/2026, Saturday): 1 stats (0 models + 0 shops 20/11, web-search only; 5 shops 19/11 went live morning 21/11) + 1 seasonal keyword 'viec lam livestream part time Tet' #8/10 (deep: NRF 15/10/2026 + Challenger 23/09/2026 + Indeed Hiring Lab + 27 part-time shops) + 1 bo 100 keyword STT 18 'mau livestream thoi trang' (Douyin 2026 fashion report 31/08/2026 + 91 fashion models / 61 shops) + 1 news 'tuyen mau livestream Thanh Hoa' (4 shops / 2 models). SEO V2. Total 525 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-22 adds 5 Đời Sống articles (22/11/2026, Sunday): 1 seasonal keyword "nghỉ Tết shop online" #9/10 (2,062 words, deep; Vietnam Briefing 16/11/2026 + AZ Chinh Ngach 11/2026) + 3 news ("du lịch Đà Nẵng tháng 12" 1,451 words; "Gen Z không có quỹ dự phòng" 1,366 words; "ngủ bù cuối tuần" 1,471 words) + 1 cafe "quán cafe check-in đẹp Jungle Coffee Nha Trang" 1,382 words. Total 604 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-22 adds 4 Viec Lam articles (22/11/2026, Sunday): 1 stats (0 models + 1 shop 21/11: sh-307 ThuKa Villa, Lai Chau first shop, awaiting deploy; sh-187 adds An Giang branch) + 1 seasonal keyword #9 'tuyen mau live ban ao dai Tet' (deep: TikTok Shop 2.8M ao dai orders Q4/2025 + 2M Jan 2026, Shopee Live 16B views Tet 2026, 2 ao dai shops 50k-200k/h) + 1 bo 100 keyword STT 22 'mau livestream my pham' (NIQ 31/03/2026 livestream 70% beauty sales Douyin + 37 models / 32 shops) + 1 news 'tuyen mau livestream Hai Phong' (3 shops / 1 model). SEO V2. Total 571 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-doi-song-2026-11-23 adds 5 Đời Sống articles (23/11/2026, Monday): 1 seasonal keyword "kế hoạch kinh doanh năm mới 2027" #10/10 CUOI vong 1 (2,066 words, deep; e-Conomy SEA 2026 05/11/2026 — kinh te so 49 ty USD +20%, TMDT 32 ty USD +22%; Tet 06/02/2027) + 3 news "("tháng 1 du lịch đâu đẹp nhất" 1,292 words; "ngủ trưa 26 phút" 1,423 words; "chi tiêu Giáng sinh 2026" 1,343 words) + 1 cafe "quán cafe check-in đẹp Cafe Đinh Hà Nội" 1,149 words. Total 650 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -18512,7 +18513,67 @@ window.V20_DATA = {
 {"title":"Soda pizza 4 phô mai: 120 yên, uống mà như ăn pizza","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-23","url":"https://soranews24.com/2026/11/21/4-cheese-pizza-flavored-soda-unleashed-on-japan-taste-test/","page": "bai-viet/soda-pizza-4-pho-mai-120-yen-cheerio.html","img":"https://vieclamlivestream.online/images/bai-viet/soda-pizza-4-pho-mai-120-yen-cheerio.jpg","pinned":false,"takeaway":"Soda pizza 4 phô mai Cheerio: soda vị pizza 4 loại phô mai, 120 yên (0,75 USD), 350 ml; cheddar, Gouda, cream cheese, Gorgonzola + mật ong; bán tại siêu thị, cửa hàng tiện lợi khắp Nhật Bản và máy bán hàng ở Kansai, Chubu, Okinawa (SoraNews24, 21/11/2026)."},
 {"title":"Máy nén quần áo Pocket Tips: ép 8 món còn 1/7","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-23","url":"https://soranews24.com/2026/09/17/get-more-room-in-your-luggage-with-new-clothing-compression-machines-at-haneda-and-narita-airports/","page": "bai-viet/may-nen-quan-ao-pocket-tips-san-bay-nhat-ban.html","img":"https://vieclamlivestream.online/images/bai-viet/may-nen-quan-ao-pocket-tips-san-bay-nhat-ban.jpg","pinned":false,"takeaway":"Máy nén quần áo Pocket Tips: máy nén tự động tại sân bay Nhật Bản, ép 8 món đồ còn 1/7 thể tích trong khoảng 1 phút, không cần túi nhựa; 400 người thử, khoảng 70% từng bỏ mua quà vì vali chật, khoảng 89% muốn dùng lại; mục tiêu vận hành 2027 (SoraNews24, 17/09/2026)."},
 {"title":"Trạm điện EcoFlow Delta 4: +570%, 275.600 USD/tuần","cat":"Hàng hoá","source":"TokConnect","date":"2026-11-23","url":"https://tokconnect.com/trends/tiktok-shop/rising-products/","page": "bai-viet/tram-dien-ecoflow-delta-4-tang-570-phan-tram-tiktok-shop-my.html","img":"https://vieclamlivestream.online/images/bai-viet/tram-dien-ecoflow-delta-4-tang-570-phan-tram-tiktok-shop-my.jpg","pinned":false,"takeaway":"Trạm điện EcoFlow Delta 4: trạm điện 3.800 Wh giá 1.350 USD, doanh thu 275.600 USD trong 7 ngày tới 17/11/2026, tăng 570%, bán 204 chiếc qua 114 creator, hoa hồng 8%; EcoFlow Delta 3 Max +260%, DELTA 3 Classic +87% (TokConnect, 19/11/2026; số liệu ước tính)."},
-{"title":"Bao lì xì Tết bán online: giá in từ 494 đồng/cái","cat":"Hàng hoá","source":"Metric (qua Brands Vietnam)","date":"2026-11-23","url":"https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt","page": "bai-viet/bao-li-xi-tet-ban-online-gia-in-494-dong.html","img":"https://vieclamlivestream.online/images/bai-viet/bao-li-xi-tet-ban-online-gia-in-494-dong.jpg","pinned":false,"takeaway":"Bao lì xì Tết bán online: giá in Tết Đinh Mùi 2027 từ 494 đồng/cái (in 30.000 cái) tới 1.600 đồng (in 1.000 cái); bao mỹ thuật 3.000–7.000 đồng, set bán lẻ 20.000–56.000 đồng; thị trường Tết 2026 đạt 73,7 nghìn tỷ đồng/9 tuần, tăng 51% (Metric, qua Brands Vietnam 12/01/2026; bảng giá Tân Hoa Mai 07/11/2026)."}
+{"title":"Bao lì xì Tết bán online: giá in từ 494 đồng/cái","cat":"Hàng hoá","source":"Metric (qua Brands Vietnam)","date":"2026-11-23","url":"https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt","page": "bai-viet/bao-li-xi-tet-ban-online-gia-in-494-dong.html","img":"https://vieclamlivestream.online/images/bai-viet/bao-li-xi-tet-ban-online-gia-in-494-dong.jpg","pinned":false,"takeaway":"Bao lì xì Tết bán online: giá in Tết Đinh Mùi 2027 từ 494 đồng/cái (in 30.000 cái) tới 1.600 đồng (in 1.000 cái); bao mỹ thuật 3.000–7.000 đồng, set bán lẻ 20.000–56.000 đồng; thị trường Tết 2026 đạt 73,7 nghìn tỷ đồng/9 tuần, tăng 51% (Metric, qua Brands Vietnam 12/01/2026; bảng giá Tân Hoa Mai 07/11/2026)."},
+  {
+   "title": "Kế hoạch kinh doanh năm mới 2027: 7 bước shop nhỏ",
+   "cat": "Đời Sống",
+   "source": "Vietnam Briefing",
+   "date": "2026-11-23",
+   "url": "https://www.vietnam-briefing.com/news/vietnam-digital-economy-2026.html/",
+   "page": "bai-viet/ke-hoach-kinh-doanh-nam-moi-2027-shop-nho-7-buoc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ke-hoach-kinh-doanh-nam-moi-2027-shop-nho-7-buoc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kế hoạch kinh doanh năm mới 2027 cho shop nhỏ: 7 bước từ số liệu e-Conomy SEA 2026 (kinh tế số 49 tỷ USD, TMĐT 32 tỷ USD, công bố 05/11/2026) + lịch Tết Đinh Mùi 06/02/2027."
+  },
+  {
+   "title": "Tháng 1 du lịch đâu đẹp nhất? Mộc Châu hoa mận",
+   "cat": "Đời Sống",
+   "source": "Vietnam Paradise Travel",
+   "date": "2026-11-23",
+   "url": "https://www.vietnamparadisetravel.com/guide/best-places-to-visit-in-vietnam-in-january",
+   "page": "bai-viet/thang-1-du-lich-dau-dep-nhat-moc-chau-hoa-man.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thang-1-du-lich-dau-dep-nhat-moc-chau-hoa-man.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tháng 1 du lịch đâu đẹp nhất: Mộc Châu hoa mận từ giữa tháng 1 + Vietnam Trail Marathon 16/01/2027; Hội An đêm rằm 21/01/2027; Tết Đinh Mùi 06/02/2027."
+  },
+  {
+   "title": "Ngủ trưa 26 phút: NASA đo tăng hiệu suất 34%",
+   "cat": "Đời Sống",
+   "source": "Sleep Foundation",
+   "date": "2026-11-23",
+   "url": "https://www.sleepfoundation.org/sleep-hygiene/nasa-nap",
+   "page": "bai-viet/ngu-trua-26-phut-nasa-tang-hieu-suat-34-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ngu-trua-26-phut-nasa-tang-hieu-suat-34-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ngủ trưa 26 phút theo NASA 1995: 21 phi công đường dài, nhóm nghỉ 25,8 phút tỉnh táo hơn; Rosekind tóm tắt hiệu suất +34%, tỉnh táo +54% so với nhóm không nghỉ."
+  },
+  {
+   "title": "Chi tiêu Giáng sinh 2026: Mỹ chi 1.654 USD/hộ",
+   "cat": "Đời Sống",
+   "source": "Deloitte",
+   "date": "2026-11-23",
+   "url": "https://www.deloitte.com/content/dam/insights/articles/2026/amer189387_cic_holiday-retail-survey/pdf/DI_2026-Holiday-Retail-Survey.pdf",
+   "page": "bai-viet/chi-tieu-giang-sinh-2026-my-1654-usd-tu-thuong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/chi-tieu-giang-sinh-2026-my-1654-usd-tu-thuong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Chi tiêu Giáng sinh 2026: người Mỹ chi 1.654 USD/hộ (+4% so với 1.595 USD năm 2025, Deloitte 10/2026); 33% tự mua quà cho mình; NRF dự báo 1.013 nghìn tỷ USD."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Cafe Đinh Hà Nội",
+   "cat": "Đời Sống",
+   "source": "Trip Moments",
+   "date": "2026-11-23",
+   "url": "https://sg.trip.com/moments/poi-cafe-dinh-31287511/",
+   "page": "bai-viet/quan-cafe-check-in-dep-cafe-dinh-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-cafe-dinh-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Cafe Đinh Hà Nội: 13 Đinh Tiên Hoàng, tầng 2 nhà cổ, mở 07:00–22:00; cà phê trứng từ 1946, nóng 30.000đ, đá 35.000đ (Trip Moments 01/2026)."
+  }
 ],
  "lots": [
    {
