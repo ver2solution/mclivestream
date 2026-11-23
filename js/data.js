@@ -18645,6 +18645,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "3 gala trang sức Xiaohongshu bán 460 triệu NDT (khoảng 1.610 tỷ đồng) trong 5 tuần, MegaLIVE TP.HCM chốt hơn 63.000 đơn trong 1 phiên — 7 mẹo biến buổi live thành sự kiện bán hàng, áp dụng ngay trước Black Friday 27/11."
   },
+  {
+   "title": "16.000 tỷ đồng tiết kiệm trong ngày 11.11 — Shopee Live: GMV tăng 12 lần, đơn tăng 9 lần, shop Việt học gì trước Black Friday 27/11?",
+   "cat": "Xu hướng",
+   "source": "CafeF",
+   "date": "2026-11-23",
+   "url": "https://cafef.vn/gmv-shopee-live-tang-gap-12-lan-trong-ngay-11-11-188261120140632266.chn",
+   "page": "bai-viet/shopee-live-11-11-gmv-tang-12-lan-don-tang-9-lan-shop-viet-hoc-gi-truoc-black-friday.html",
+   "img": "https://cafefcdn.com/thumb_w/640/203337114487263232/2026/11/20/shopee-dem-den-10-phuong-thuc-th-17951583126131008508421.jpg",
+   "pinned": false,
+   "takeaway": "Shopee công bố chính thức kết quả 11.11/2026: GMV Shopee Live tăng 12 lần, đơn qua live tăng 9 lần, gần 2,5 tỷ lượt xem, người tiêu dùng tiết kiệm 16.000 tỷ đồng. 7 bài học cho shop Việt trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
