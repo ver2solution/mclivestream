@@ -18224,6 +18224,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Hoa Thiếu bán 609 tỷ đồng trong 5 giờ live đầu trên Kuaishou, một năm sau chỉ còn 75 tỷ trên Douyin. Câu chuyện lên xuống của MC 'cái lưỡi tốt nhất Trung Quốc' phơi bày cái giá của hào quang minh tinh trong livestream."
   },
+  {
+   "title": "Khung giờ vàng livestream Tết: 3 khung giờ theo ngày",
+   "cat": "Livestream",
+   "source": "Sold Out Brands",
+   "date": "2026-11-23",
+   "url": "https://soldoutbrands.com/blog/tiktok-shop-live-streaming-frequency",
+   "page": "bai-viet/khung-gio-vang-livestream-tet-3-khung-gio-theo-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khung-gio-vang-livestream-tet-3-khung-gio-theo-ngay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Khung giờ vàng livestream Tết là 3 khung giờ theo ngày: trưa 12–14h, tối 19–21h, khuya 21–23h — tối thứ Năm và tối Chủ nhật chuyển đổi mạnh nhất; live chuyển đổi khoảng 7,8% so với 2,1% quảng cáo feed (Sold Out Brands 14/08/2026)."
+  },
+  {
+   "title": "Mẹo livestream chốt đơn Tết: 47% mua nhờ kể chuyện",
+   "cat": "Livestream",
+   "source": "Dizplai",
+   "date": "2026-11-23",
+   "url": "https://dizplai.com/our-thinking/the-10-commandments-of-live-shopping/",
+   "page": "bai-viet/meo-livestream-chot-don-tet-7-meo-ke-chuyen-truoc-giam-gia-sau.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-livestream-chot-don-tet-7-meo-ke-chuyen-truoc-giam-gia-sau.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẹo livestream chốt đơn Tết: kể chuyện trước, giảm giá sau — 47% người xem có khả năng mua cao hơn khi live kể chuyện trước; chỉ 8% vào live đã muốn mua, 60% mua khi đúng lúc (Dizplai 2026)."
+  },
+  {
+   "title": "Livestream bán giỏ quà Tết: 303 triệu USD trong 7 ngày",
+   "cat": "Livestream",
+   "source": "TokConnect",
+   "date": "2026-11-23",
+   "url": "https://tokconnect.com/trends/tiktok-shop/black-friday-2026/",
+   "page": "bai-viet/livestream-ban-gio-qua-tet-3-muc-gia-qua-tang-303-trieu-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-gio-qua-tet-3-muc-gia-qua-tang-303-trieu-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán giỏ quà Tết: 4 nhóm quà tặng bán 303,1 triệu USD trong 7 ngày tới 20/11/2026 (+7,6%), mỹ phẩm dẫn đầu 168,9 triệu USD (TokConnect 22/11/2026); giỏ quà mở 3 mức giá, cho khách đổi món trên live, chốt giao trước 01/02/2027."
+  },
+  {
+   "title": "Livestream bán hàng Giáng sinh: 1,4 tỷ đồng trong 10 giờ",
+   "cat": "Livestream",
+   "source": "Grou",
+   "date": "2026-11-23",
+   "url": "https://grou.com/en/blog/real-cases-november-how-creators-sell-in-season",
+   "page": "bai-viet/livestream-ban-hang-giang-sinh-14-ty-dong-10-gio-meraz.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-giang-sinh-14-ty-dong-10-gio-meraz.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán hàng Giáng sinh: Monserrat Meraz bán 1 triệu peso, khoảng 1,4 tỷ đồng, trong 10 giờ live TikTok Shop Mexico — hơn 4.100 đơn, 187.000 người xem cùng lúc, 6,2 triệu lượt hiển thị (Merca2.0 03/11/2026 qua Grou 09/11/2026)."
+  }
 ],
  "lots": [
    {
