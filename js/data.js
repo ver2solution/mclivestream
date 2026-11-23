@@ -11350,20 +11350,6 @@ window.V20_DATA = {
    "takeaway": "Mẫu livestream không phải là người đẹp nhất, mà là người bán được hàng cho đúng mặt hàng của shop. Trước khi thuê, shop hãy xem clip live thật, thử live 15–20 phút với sản phẩm thật và thỏa thuận rõ lương, ca, hoa hồng bằng tin nhắn. Người mới làm mẫu thì bắt đầu bằng ca part-time 50.000–80.000 đồng/giờ, tích đủ 5–10 ca live thật rồi mới đòi mức cao hơn. Xem hồ sơ mẫu có clip live thử tại danh sách mẫu của vieclamlivestream.online để chọn đúng người ngay hôm nay."
   },
   {
-   "title": "Hôm qua (07/11): 30 shop tuyển mẫu livestream mới, 1 mẫu mới lên sàn",
-   "cat": "Livestream",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-08",
-   "dateNote": "Số liệu thu thập ngày 07/11/2026",
-   "url": null,
-   "page": "bai-viet/thong-ke-ho-so-moi-07-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-07-11-2026.png",
-   "imgSelf": true,
-   "kind": "news",
-   "pinned": false,
-   "takeaway": "Ngày 07/11 có 30 shop chờ người live nhưng chỉ 1 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút với sản phẩm thật và nộp vào ca part-time trước. Shop hãy đăng tin ghi rõ lương, ca và địa điểm, rồi thử live ngắn trước khi ký dài hạn. Xem hồ sơ mẫu và shop mới nhất tại danh sách mẫu và danh sách shop của vieclamlivestream.online."
-  },
-  {
    "title": "Giá vàng hôm nay 8/11/2026: SJC 138–141 triệu, tiền của khách đang chảy đi đâu?",
    "cat": "Dòng tiền",
    "source": "Báo Công Thương",
@@ -11551,18 +11537,6 @@ window.V20_DATA = {
    "kind": "keyword",
    "pinned": false,
    "takeaway": "Tuyển idol livestream 2026: lương cứng 15–36 triệu đồng/tháng tại TP. Hồ Chí Minh (59K Entertainment, KOSS 5, Anh Mai), streamer game 8–18 triệu/tháng (GAMETOK LIVE, Qingxiang Nexplay), tin tuyển tỉnh tại Tuyên Quang và Điện Biên. Đa số không yêu cầu kinh nghiệm, đào tạo từ đầu — ứng viên cần clip 2–3 phút và live thử 15–20 phút, hỏi rõ lương cứng và KPI, không đóng phí trước."
-  },
-  {
-   "title": "Hôm qua (08/11): 11 mẫu mới, 26 shop mới lên sàn — host live thị trường Mỹ 300–500k/giờ",
-   "cat": "Livestream",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-09",
-   "url": null,
-   "page": "bai-viet/thong-ke-ho-so-moi-08-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-08-11-2026.png",
-   "imgSelf": true,
-   "pinned": false,
-   "takeaway": "Ngày 08/11 có 26 shop chờ người live nhưng chỉ 11 mẫu mới xuất hiện — cơ hội đang nghiêng về phía mẫu nào có hồ sơ tốt. Nổi bật: host live thị trường Mỹ 300.000–500.000 đồng/giờ, mẫu thời trang Hà Nội 120.000–150.000 đồng/giờ, host live mẹ & bé 17–25 triệu/tháng. Mẫu hãy làm đủ 7 mục hồ sơ, quay clip live thử 15–20 phút và nộp vào ca part-time trước. Doanh thu livestream cao nhất đợt này đang xác minh, chưa ghi số."
   },
   {
    "title": "TikTok Shop tăng phí từ 3/8: hoa hồng làm đẹp lên 19,8%, đơn 100k mất 33,8%",
@@ -11898,18 +11872,6 @@ window.V20_DATA = {
    "kind": "keyword",
    "pinned": false,
    "takeaway": "Tuyển streamer game 2026: lương cứng 8–18 triệu đồng/tháng tại TP. Hồ Chí Minh (GAMETOK LIVE, Qingxiang Nexplay), 15–17 triệu + hoa hồng 16–20% tại Hà Nội (YAOHAI). Đa số đào tạo từ đầu, không yêu cầu kinh nghiệm — ứng viên cần clip 2–3 phút và live thử 15–20 phút."
-  },
-  {
-   "title": "Hôm qua (10/11): 20 mẫu mới, 20 shop mới lên sàn — Đồng Tháp",
-   "cat": "Livestream",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-11",
-   "url": null,
-   "page": "bai-viet/thong-ke-ho-so-moi-10-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-10-11-2026.png",
-   "imgSelf": true,
-   "pinned": false,
-   "takeaway": "Hôm qua (10/11): 20 mẫu mới, 20 shop mới lên sàn — cân bằng hiếm hoi sau nhiều ngày thiếu mẫu. Nổi bật: Thiện Nhân (Đồng Tháp, 1,4 triệu follower) từng live bán 3,5 tấn dứa mật trong 90 phút; Nga Tích Cực 599.000 follower; mẫu tỉnh chiếm đa số."
   },
   {
    "title": "56.209 gian hàng biến mất 1 quý: sàn tăng 45% vẫn sàng lọc",
@@ -12403,18 +12365,6 @@ window.V20_DATA = {
    "takeaway": "Đỉnh doanh thu D+1 12/11: năm 2025, GMV ngày D+1 đạt 1,67 lần ngày thường ở cả 11.11 (913,4 tỷ đồng) và 12.12 (1.009,7 tỷ đồng) — cả hai đều là số năm 2025, chỉ làm mốc so sánh; D+2 đến D+4 vẫn cao hơn ngày thường 24–51%. Hôm nay 12/11/2026 mới là ngày bán chạy nhất."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 11/11: 39 mẫu, 36 shop lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-12",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-11-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-11-11-2026.png",
-   "imgSelf": true,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới 11/11/2026: 39 mẫu mới, 36 shop mới, 80 nhóm Facebook mới (khoảng 9,42 triệu thành viên, chưa kiểm chứng); sàn hiện 108 mẫu thật và 152 shop; lương cao nhất 50 triệu đồng/tháng tại BN JEWELRY; mẫu Lào Cai và Thái Nguyên có việc tới 20 triệu đồng/tháng."
-  },
-  {
    "title": "500 triệu USD trong 4 ngày: TikTok Shop Mỹ Black Friday",
    "cat": "Thị trường",
    "source": "TikTok Newsroom",
@@ -12832,18 +12782,6 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu livestream Tết 2027 đã bắt đầu: ca Tết 120.000đ/giờ + 1% hoa hồng, lương nhân đôi ca Tết, host 18–30 triệu/tháng; shop tuyển gấp trước 12.12, mẫu chuẩn bị áo dài và kịch bản Tết từ tháng 11/2026."
-  },
-  {
-   "title": "Hồ sơ mẫu livestream mới 12/11: 35 shop, 20 tài khoản",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-13",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-12-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-12-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới 12/11/2026: 20 tài khoản thời trang mới, 35 shop mới, 80 nhóm Facebook mới (khoảng 10,43 triệu thành viên, chưa kiểm chứng); sàn hiện 108 mẫu và 152 shop; lương cao nhất 50 triệu đồng/tháng (mức trần cần kiểm chứng lại)."
   },
   {
    "title": "Mẫu livestream không cần kinh nghiệm: Mỹ trả 30–40 USD/giờ",
@@ -13298,18 +13236,6 @@ window.V20_DATA = {
    "takeaway": "Lịch sale cuối năm 2026: Black Friday 27/11, 12.12, Giáng sinh 25/12, 1.1 và Tết 2027 mùng 1 ngày 6/2 — shop nhỏ lên lịch live và chốt đơn đúng hạn."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 13/11: 76 mẫu, 63 shop lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-14",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-13-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-13-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 13/11/2026: 76 mẫu + 63 shop đã lên sàn (thu thập 80 mẫu + 69 shop + 80 nhóm); tổng live 219 mẫu, 250 shop; 4 hồ sơ doanh thu khủng đứng đầu là Diệp Lê 1 triệu USD/phiên và Võ Hà Linh 237 tỷ đồng/phiên 6/6/2024."
-  },
-  {
    "title": "Mẫu live TikTok: 12–70 USD/giờ, không cần kinh nghiệm",
    "cat": "Việc Làm",
    "source": "ZipRecruiter / Glassdoor / TikTok Newsroom",
@@ -13634,18 +13560,6 @@ window.V20_DATA = {
    "takeaway": "TikTok Shop Black Friday 11–30/11/2026: Black Friday 27/11, Cyber Monday 30/11; đợt 2025 vượt 500 triệu USD trong 4 ngày, người bán live tăng 84% với 760.000 phiên và 1,6 tỷ lượt xem; phí Smart Promotion 4,5% trong chiến dịch; tính điểm hòa vốn trước khi giảm giá."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 15/11: 6 mẫu, 17 shop lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-16",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-15-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-15-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 15/11/2026: 6 mẫu + 17 shop đã lên sàn (thu thập 6 mẫu + 17 shop + 10 nhóm đợt 2, 2 nhóm dùng được); tổng live 236 mẫu, 287 shop; lương giờ cao nhất đợt 150.000–250.000đ tại Mỹ Hàn; 4 hồ sơ doanh thu khủng vẫn dẫn đầu."
-  },
-  {
    "title": "Thị trường livestream tuần qua: TMĐT quý 3 150,4 nghìn tỷ",
    "cat": "Việc Làm",
    "source": "Metric",
@@ -13680,18 +13594,6 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Việc làm livestream part time tháng 11/2026: 8 tin TopCV mới, lương giờ 40.000–250.000đ (cao nhất NEXTGEN CONNECT 150.000–250.000đ/giờ, thấp nhất MCBooks 40.000–50.000đ/giờ); ca linh hoạt 2–5 tiếng/ngày; 55/287 shop trên sàn trả lương theo giờ; 5/8 tin đã hết hạn ứng tuyển tính tới 16/11/2026."
-  },
-  {
-   "title": "Hồ sơ mẫu livestream mới 14/11: 11 mẫu, 20 shop lên sàn",
-   "cat": "Việc Làm",
-   "source": "Ver2Solution",
-   "date": "2026-11-15",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-14-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-14-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 14/11/2026: 11 mẫu + 20 shop đã lên sàn (thu thập 11 mẫu + 20 shop + 10 nhóm, 5 nhóm dùng được); tổng live 230 mẫu, 270 shop; 4 hồ sơ doanh thu khủng đứng đầu là Diệp Lê 1 triệu USD/phiên và Võ Hà Linh 237 tỷ đồng/phiên 6/6/2024."
   },
   {
    "title": "Tuyển mẫu live TP HCM: 100 shop, lương 30.000–500.000đ/giờ",
@@ -13874,18 +13776,6 @@ window.V20_DATA = {
    "takeaway": "Amazon Black Friday 2026: sale 19–30/11/2026, 12 ngày deal theo chủ đề, giảm tới 60%, thả deal 2 lần lúc nửa đêm và 8 giờ sáng giờ Thái Bình Dương ngày 27/11 và 30/11; bối cảnh Adobe: Black Friday online Mỹ 12,9 tỷ USD (+9,2%), Cyber Monday 15,1 tỷ USD (+6,2%)."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 16/11: 2 mẫu, 3 shop lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-17",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-16-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-16-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 16/11/2026: 2 mẫu + 3 shop đã lên sàn (thu thập 2 mẫu + 3 shop, loại 3 mẫu trùng + 10 nhóm đợt 2); tổng live 238 mẫu, 290 shop; lương tháng cao nhất đợt 15–40 triệu tại TY MEDIA; 4 hồ sơ doanh thu khủng vẫn dẫn đầu."
-  },
-  {
    "title": "Mẫu livestream thời vụ Tết: lương 8–15 triệu/tháng",
    "cat": "Việc Làm",
    "source": "Blog Fidovn",
@@ -13920,18 +13810,6 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tìm mẫu livestream (17/11/2026): 238 mẫu, 290 shop trên sàn; lương giờ Việt Nam phổ biến 80.000–150.000đ, lương tháng phổ biến 10–18 triệu đồng; host Douyin 1–2 năm kinh nghiệm 15.000–20.000 NDT/tháng (Tài Liên Xã 03/04/2025); 5 bước lọc hồ sơ theo tỉnh, ngành, lương, video demo, thử live."
-  },
-  {
-   "title": "Hồ sơ mẫu livestream mới 17/11: sàn giữ 238 mẫu, 290 shop",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-18",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-17-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-17-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 17/11/2026: 0 mẫu + 0 shop mới (lượt thu thập chạy trễ 2h42' và không mở browser); tổng live giữ 238 mẫu, 290 shop, 367 bài; 3 shop mới nhất ngày 16/11 vẫn tuyển với lương tháng tới 40 triệu đồng."
   },
   {
    "title": "Việc làm thời vụ Tết livestream: tìm ở đâu, lương bao nhiêu",
@@ -14066,18 +13944,6 @@ window.V20_DATA = {
    "takeaway": "Kiếm tiền ăn Tết bằng livestream: tháng 11+12 là 23,2% GMV cả năm — bắt đầu bằng live thuê/host thời vụ 8–15 triệu/tháng, chốt deal bằng văn bản, giữ lịch D+1 13/12 và 2 tuần cuối tháng 1/2027."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 18/11: 9 shop, 0 mẫu lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-19",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-18-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-18-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 18/11/2026: 0 mẫu + 9 shop mới (sh-293..sh-301, 6 shop TP. Hồ Chí Minh + 3 shop Hà Nội); tổng live 238 mẫu, 299 shop, 425 bài; 2 shop tuyển idol live trả lương tháng tới 35 triệu đồng."
-  },
-  {
    "title": "Tuyển idol live Tết: lương 15–40 triệu, shop tuyển gấp",
    "cat": "Việc Làm",
    "source": "vieclamlivestream.online",
@@ -14208,18 +14074,6 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok LIVE trả 10–150 USD mỗi giờ (2026): 100 người xem cùng lúc cho khoảng 13 USD/giờ sau khi TikTok giữ ~50%; creator 50.000+ follower kiếm 3.000–15.000 USD/tháng."
-  },
-  {
-   "title": "Hồ sơ mẫu livestream mới 19/11: 5 shop, 0 mẫu lên sàn",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-20",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-19-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-19-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 19/11/2026: 0 mẫu + 5 shop mới thu thập (sh-302..sh-306, chưa lên sàn lúc bài đăng — chờ deploy dữ liệu lượt sau); tổng live 238 mẫu, 299 shop, 474 bài; 3 shop trả lương tháng tới 30 triệu đồng."
   },
   {
    "title": "Lương tháng 13 mẫu livestream: 10 tin tuyển trả thế nào",
@@ -14354,18 +14208,6 @@ window.V20_DATA = {
    "takeaway": "Chi phí quảng cáo Tết tăng 20–40% dịp Tết: tính ngân sách theo CPA tối đa (một nửa lãi gộp/đơn) × số đơn mục tiêu, tăng tối đa 40%/lần, dồn 60% ngân sách vào 13/12/2026–25/01/2027."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 20/11: 0 mẫu, 0 shop mới",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-21",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-20-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-20-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 20/11/2026: 0 mẫu + 0 shop mới thu thập (chỉ tìm kiếm web, 12 tin đều hết hạn hoặc đã có); 5 shop đợt 19/11 (sh-302..sh-306) đã lên sàn sáng 21/11/2026; tổng live 238 mẫu, 304 shop, 521 bài."
-  },
-  {
    "title": "Việc làm livestream part time Tết: lương theo giờ 2026",
    "cat": "Việc Làm",
    "source": "NRF",
@@ -14450,18 +14292,6 @@ window.V20_DATA = {
    "takeaway": "Doanh thu TikTok Shop tháng 12: GMV Mỹ dự báo 23,41 tỷ USD năm 2026 (+48%), chiến dịch Black Friday chạy tới 30/11 — shop nhỏ làm 5 việc trước 12.12: chốt sản phẩm, tính lãi lỗ, đăng ký GMV Max, chốt hoa hồng affiliate, kiểm tồn kho."
   },
   {
-   "title": "Hồ sơ mẫu livestream mới 21/11: 1 shop Lai Châu đầu tiên",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-22",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-21-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-21-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 21/11/2026: 0 mẫu + 1 shop mới (ThuKa Villa sh-307, Lai Châu — shop đầu tiên của tỉnh, lương cứng 10 triệu/tháng + hoa hồng, chờ deploy); sh-187 thêm chi nhánh An Giang; tổng live 238 mẫu, 304 shop, 567 bài."
-  },
-  {
    "title": "Tuyển mẫu livestream Hải Phòng: 3 shop, lương 300.000đ/ca",
    "cat": "Việc Làm",
    "source": "vieclamlivestream.online",
@@ -14544,18 +14374,6 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Người Mỹ cắt ngân sách lễ gần 600 USD mùa lễ 2026, còn 2.198 USD, vì 67% lo lạm phát — nhưng người mua qua mạng xã hội chi 3.639 USD và người dùng AI chi 2.745 USD: tiền chảy về live, video ngắn và người ảnh hưởng."
-  },
-  {
-   "title": "Hồ sơ mẫu livestream mới 22/11: 0 mẫu, 0 shop mới",
-   "cat": "Việc Làm",
-   "source": "vieclamlivestream.online",
-   "date": "2026-11-23",
-   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
-   "page": "bai-viet/thong-ke-ho-so-moi-22-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thong-ke-ho-so-moi-22-11-2026.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Hồ sơ mẫu livestream mới ngày 22/11/2026: 0 mẫu + 0 shop mới (checkpoint selfie Facebook từ 08:53 chặn lượt thu thập 10:21; nick về hẳn 22:06 tối 22/11); sh-307 ThuKa Villa (Lai Châu) vẫn chờ lên sàn; tổng live 238 mẫu, 304 shop, 613 bài."
   },
   {
    "title": "Mẫu livestream làm xuyên Tết: lương 400% theo luật",
