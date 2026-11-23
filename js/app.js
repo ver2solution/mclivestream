@@ -730,7 +730,7 @@ function miniHTML(m){
    `contacts`, so they are never rendered and never shown as "Chưa cập nhật". */
 var CONTACT_NOTE = 'Các bên chủ động liên hệ trao đổi, thông tin là công khai.';
 function defaultContactLabel(p){
-  return {facebook:'Facebook', zalo:'Zalo', phone:'Số điện thoại', email:'Email', tiktok:'TikTok', shopee:'Shopee', threads:'Threads'}[p] || 'Liên hệ';
+  return {facebook:'Facebook', zalo:'Zalo', phone:'Số điện thoại', email:'Email', tiktok:'TikTok', shopee:'Shopee', threads:'Threads', website:'Website', instagram:'Instagram', youtube:'YouTube'}[p] || 'Liên hệ';
 }
 function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
 function contactHref(c){
@@ -756,20 +756,40 @@ function contactsBlockHTML(contacts, trackAttr){
   return '<ul class="contact-list">'+contacts.map(function(c){ return contactItemHTML(c, trackAttr); }).join('')+'</ul>';
 }
 /* Xu v2 (GĐ2, 20:22 07/11): xem liên hệ 1 hồ sơ = 5 xu/lần bấm (1 lần/
-   ngày/hồ sơ). contactsBlockHTML() giữ nguyên (render danh sách đầy đủ,
-   dùng sau khi đã trả xu + test cũ); hàm này bọc nó trong khối ẩn + nút
-   "Xem liên hệ". LƯU Ý: số liên hệ vẫn nằm trong js/data.js công
-   khai nên đây là cửa thu xu ở giao diện, không phải kiểm soát truy cập
-   thật — xem spec §12. Nút bấm được xử lý tập trung trong initPointsUI.
+   ngày/hồ sơ). V5-01a (23/11/2026, Contact Gate — E-189): liên hệ KHÔNG
+   còn nằm trong js/data.js công khai. Hàm này chỉ render nút "Xem liên
+   hệ" + khối ẩn TRỐNG; khi bấm (đã đăng nhập) initPointsUI gọi RPC
+   get_item_contacts qua fetchItemContacts() rồi mới render
+   contactsBlockHTML() từ kết quả RPC. Khách vãng lai thấy lời mời đăng
+   nhập, không bao giờ thấy liên hệ. CẤM render liên hệ từ data.js.
    v92 (08/11/2026): xem liên hệ TẠM MIỄN PHÍ (cờ V20_FREE_SERVICES ở
    js/reward.js) — nhãn nút bỏ "(5 xu)", bấm hiện ngay không trừ xu;
    code trừ xu giữ nguyên để mở lại chỉ bằng 1 cờ. */
-function gatedContactsHTML(targetType, targetId, contacts){
-  if(!contacts || !contacts.length) return '';
-  var trackAttr = targetType==='model_profile' ? 'data-track="nhan-zalo-mau"' : 'data-track="nhan-zalo-shop"';
+function gatedContactsHTML(targetType, targetId){
   return '<div class="v2s-contacts-gated" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
-  + '<div class="v2s-contacts-hidden" hidden>'+contactsBlockHTML(contacts, trackAttr)+contactNoteHTML()+'</div>'
+  + '<div class="v2s-contacts-hidden" hidden></div>'
   + '<p><button class="btn btn-ghost btn-sm" type="button" data-v2s-view-contact>👁 Xem liên hệ</button> <span class="v2s-contact-msg" role="status"></span></p></div>';
+}
+/* V5-01a: lấy liên hệ 1 hồ sơ qua RPC get_item_contacts (SECURITY DEFINER,
+   chỉ authenticated, giới hạn 50 lượt/ngày, ghi audit contact_views).
+   targetType 'model_profile'/'shop_profile' -> p_type 'model'/'shop'.
+   Trả Promise<mảng {provider,value,label,source_url}>; lỗi -> reject
+   với Error có message thân thiện. CẤM đọc item.contacts (đã strip
+   khỏi data.js). */
+function fetchItemContacts(targetType, targetId){
+  var pType = targetType === 'shop_profile' ? 'shop' : 'model';
+  var api = (typeof window !== 'undefined') ? window.McLivestreamAPI : null;
+  var client = api && api.client;
+  if (!client || typeof client.rpc !== 'function') {
+    return Promise.reject(new Error('Hệ thống liên hệ chưa bật, thử lại sau.'));
+  }
+  return client.rpc('get_item_contacts', { p_type: pType, p_id: String(targetId) }).then(function (res){
+    if (res && res.error) throw new Error(res.error.message || 'không tải được liên hệ.');
+    var rows = (res && res.data) || [];
+    return rows.map(function (r){
+      return { provider: r.provider, value: r.value, label: r.label, source_url: r.source_url, source: 'db' };
+    });
+  });
 }
 function contactNoteHTML(){ return '<p class="contact-note">'+CONTACT_NOTE+'</p>'; }
 /* Shops (v22): tin tuyển công khai thu thập từ bài tuyển shop tự đăng.
@@ -4249,7 +4269,7 @@ function initDetail(){
   + '<p class="detail-star">Ấn sao để đưa hồ sơ này lên top 60 phút: ' + starButtonHTML('model_profile', m.id) + '</p>'
   + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('model', m.id)+'</div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ trực tiếp với mẫu</h2>'
-  + gatedContactsHTML('model_profile', m.id, m.contacts)
+  + gatedContactsHTML('model_profile', m.id)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính mẫu công khai trong bài đăng hoặc trên kênh công khai của mẫu. Thông tin chưa công khai không hiển thị. Trước khi chốt, shop xác nhận lại lịch làm việc và tình trạng tìm việc với mẫu, vì lịch ghi trong bài là tại thời điểm bài đăng.</p>'
   + originGateHTML(m.src, 'Xem bài gốc →', 'btn btn-light', 'xem-bai-goc-mau')
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a>'
@@ -4314,7 +4334,7 @@ function initShopDetail(){
   + '<p class="detail-star">Ấn sao để đưa shop này lên top 60 phút: ' + starButtonHTML('shop_profile', s.id) + '</p>'
   + '<p class="disclaimer">'+DISCLAIMER+'</p>'+ownerNoteHTML('shop', s.id)+'</div></div>'
   + '<div><div class="contact-card"><h2>Liên hệ với shop</h2>'
-  + gatedContactsHTML('shop_profile', s.id, s.contacts)
+  + gatedContactsHTML('shop_profile', s.id)
   + '<p>Chỉ hiển thị thông tin liên hệ do chính shop công khai trong bài tuyển hoặc trên kênh công khai của shop. Thông tin chưa công khai không hiển thị.</p>'
   + '<a class="btn btn-light" data-track="nhan-zalo-ver2solution" href="https://zalo.me/0329983699" target="_blank" rel="noopener">Nhắn Zalo vieclamlivestream.online 032 998 3699</a></div></div></div>';
   var others=document.getElementById('otherShops');
@@ -5057,6 +5077,20 @@ function initPointsUI(){
       // khong co .catch nen khach bam "Xem lien he" thay nhu chet.
       if (cmsg) cmsg.textContent = 'Đang kiểm tra đăng nhập…';
       var reveal = function(){ if (hidden) hidden.hidden = false; vc.style.display = 'none'; if (cmsg) cmsg.textContent = ''; };
+      // V5-01a (Contact Gate — E-189): liên hệ KHÔNG còn trong data.js.
+      // Sau khi qua cửa đăng nhập + xu, tải liên hệ qua RPC rồi mới
+      // render vào khối ẩn + hiện ra. Lỗi RPC giữ nút để bấm lại.
+      var showContacts = function(){
+        if (cmsg) cmsg.textContent = 'Đang tải liên hệ…';
+        fetchItemContacts(tt, ti).then(function (list){
+          if (!list || !list.length) { if (cmsg) cmsg.textContent = 'Hồ sơ này chưa cập nhật liên hệ.'; vc.style.display = 'none'; return; }
+          var trackAttr = tt === 'model_profile' ? 'data-track="nhan-zalo-mau"' : 'data-track="nhan-zalo-shop"';
+          if (hidden) hidden.innerHTML = contactsBlockHTML(list, trackAttr) + contactNoteHTML();
+          reveal();
+        }).catch(function (err){
+          if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((err && err.message) || 'lỗi mạng, thử lại sau.');
+        });
+      };
       loadPointsScripts().then(function(){
         return pointsSessionUser().then(function (user){
           if (!user) { if (cmsg) cmsg.innerHTML = 'Hãy <a href="dang-ky.html">đăng ký</a> để xem liên hệ — đăng ký đủ nhận 10 xu! <a href="dang-nhap.html">Đăng nhập</a>';
@@ -5067,13 +5101,13 @@ function initPointsUI(){
             v2sToast('Hãy đăng ký để xem liên hệ — đăng ký đủ nhận 10 xu!');
             return; }
           var R = window.Ver2Reward;
-          if (R && R.FREE_SERVICES === true) { reveal(); return; } // v92: miễn phí
-          if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { reveal(); return; }
+          if (R && R.FREE_SERVICES === true) { showContacts(); return; } // v92: miễn phí
+          if (R && typeof R.hasViewedContactToday === 'function' && R.hasViewedContactToday(tt, ti)) { showContacts(); return; }
           if (!R || typeof R.spendPoints !== 'function') { if (cmsg) cmsg.textContent = 'Hệ thống xu chưa bật (đang chờ migration M7), chưa xem được liên hệ.'; return; }
           var day = (typeof R.dayKeySaigon === 'function') ? R.dayKeySaigon(new Date()) : '';
           var key = (typeof R.contactViewKey === 'function') ? R.contactViewKey(tt, ti, day) : '';
           R.spendPoints('contact_view', 5, tt, ti, key).then(function (res){
-            if (res && res.ok) { if (typeof R.markContactViewed === 'function') R.markContactViewed(tt, ti, day); reveal(); }
+            if (res && res.ok) { if (typeof R.markContactViewed === 'function') R.markContactViewed(tt, ti, day); showContacts(); }
             else if (res && res.code === 'insufficient_balance') { if (cmsg) cmsg.innerHTML = 'Bạn đã hết xu để xem liên hệ. <a href="huong-dan-diem.html">Xem cách kiếm xu →</a>'; }
             else { if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: ' + ((res && res.error) || 'hệ thống xu chưa bật.'); }
           }).catch(function(){ if (cmsg) cmsg.textContent = 'Chưa xem được liên hệ: lỗi mạng, thử lại sau.'; });
@@ -5425,7 +5459,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
    nào đó không gắn được dropdown, thử lại khi trang tải xong.
    initNewsDropdown idempotent nên gọi 2 lần không chèn trùng. */
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
-window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initHeaderAuth:initHeaderAuth, initLogoBadge:initLogoBadge, initActivationStrip:initActivationStrip, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, imgFallback:imgFallback, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, liveCount:liveCount, renderLiveStats:renderLiveStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, KIOT_SUBTYPES:KIOT_SUBTYPES, kiotSubtypeLabel:kiotSubtypeLabel, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
+window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initHeaderAuth:initHeaderAuth, initLogoBadge:initLogoBadge, initActivationStrip:initActivationStrip, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, imgFallback:imgFallback, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, liveCount:liveCount, renderLiveStats:renderLiveStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, fetchItemContacts:fetchItemContacts, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, KIOT_SUBTYPES:KIOT_SUBTYPES, kiotSubtypeLabel:kiotSubtypeLabel, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
 /* v99 (the rut gon + sao len top) */
 catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
