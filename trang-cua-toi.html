@@ -755,10 +755,14 @@
     try{
       var all=[]; lstRows={};
       var kinds=['lot','factory','kiot'];
-      for(var i=0;i<kinds.length;i++){
-        var rows=await McLivestreamAPI.fetchMyListings(kinds[i]);
+      // v431 (#72): 3 lượt fetch độc lập chạy song song thay vì tuần tự —
+      // mục Tin đăng của tôi tải nhanh gấp ~3 lần (mỗi lượt 0,3–1s).
+      var settled=await Promise.all(kinds.map(function(k){
+        return McLivestreamAPI.fetchMyListings(k);
+      }));
+      settled.forEach(function(rows, i){
         rows.forEach(function(r){ r._kind=kinds[i]; all.push(r); lstRows[kinds[i]+':'+r.id]=r; });
-      }
+      });
       all.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
       // Đếm tin mới hôm nay (theo ngày ở máy người dùng — chỉ để hiển
       // thị; giới hạn 5/ngày thật do trigger DB kiểm tra theo giờ VN).
