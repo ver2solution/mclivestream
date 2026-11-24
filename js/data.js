@@ -17619,6 +17619,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Trang sức Việt Nam 1,25 tỷ USD, lên 1,83 tỷ USD năm 2035. Mỹ ký lãi 50–70%, bạc 925 lãi 35–50%. Tìm hiểu 5 xu hướng và 7 việc cần làm trước Black Friday 27/11."
   },
+  {
+   "title": "Top 50 phụ kiện trang sức TikTok Shop: 3.416 đơn/7 ngày",
+   "cat": "Hàng hoá",
+   "source": "ShopeeAnalytics",
+   "date": "2026-11-24",
+   "url": "https://www.shopeeanalytics.com/vn/search/tiktok?cat=Ph%E1%BB%A5+ki%E1%BB%87n+trang+s%E1%BB%A9c+%26+s%E1%BA%A3n+ph%E1%BA%A9m+li%C3%AAn+quan",
+   "page": "bai-viet/tiktok-shop-vn-top-50-phu-kien-trang-suc-3416-don-7-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-vn-top-50-phu-kien-trang-suc-3416-don-7-ngay-og.jpg",
+   "pinned": false,
+   "takeaway": "Top 50 phụ kiện trang sức TikTok Shop bán 3.416 đơn, GMV ước tính 1,1 tỷ đồng/7 ngày. Hanada và Asimi chiếm 61% đơn — 7 bài học cho shop trước Black Friday."
+  },
 ],
  "lots": [
    {
