@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "655" || (echo "BASE DOI: data.js khong con 655 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "677" || (echo "BASE DOI: sitemap khong con 677 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "659" || (echo "BASE DOI: data.js khong con 659 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "681" || (echo "BASE DOI: sitemap khong con 681 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip cong-nghe-2411 package
         run: |
           unzip -o mclivestream-cong-nghe-2411-deploy.zip
@@ -47,12 +47,12 @@ jobs:
             grep -q "<loc>https://vieclamlivestream.online/bai-viet/instagram-gan-link-amazon-affiliate-trong-reels.html</loc>" sitemap.xml || (echo "THIEU instagram-gan-link-amazon-affiliate-trong-reels trong sitemap"; exit 1)
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "681" || (echo "SAI TONG sitemap, phai 681"; exit 1)
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "659" || (echo "SAI TONG data.js, phai 659 bai-viet page"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "685" || (echo "SAI TONG sitemap, phai 685"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "663" || (echo "SAI TONG data.js, phai 663 bai-viet page"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Guard node-parse (bai hoc v370)
         run: |
-          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==660) { console.log('SAI: articles.length phai 660'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong','meta-advantage-quang-cao-facebook-tu-chay-toi-dau','video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia','instagram-gan-link-amazon-affiliate-trong-reels']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==664) { console.log('SAI: articles.length phai 664'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong','meta-advantage-quang-cao-facebook-tu-chay-toi-dau','video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia','instagram-gan-link-amazon-affiliate-trong-reels']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
