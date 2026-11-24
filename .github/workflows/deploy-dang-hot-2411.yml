@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "671" || (echo "BASE DOI: data.js khong con 671 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "693" || (echo "BASE DOI: sitemap khong con 693 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "676" || (echo "BASE DOI: data.js khong con 676 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "698" || (echo "BASE DOI: sitemap khong con 698 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip dang-hot-2411 package
         run: |
           unzip -o mclivestream-dang-hot-2411-deploy.zip
@@ -47,12 +47,12 @@ jobs:
             grep -q "<loc>https://vieclamlivestream.online/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html</loc>" sitemap.xml || (echo "THIEU sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay trong sitemap"; exit 1)
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "697" || (echo "SAI TONG sitemap, phai 697"; exit 1)
-          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "675" || (echo "SAI TONG data.js, phai 675 bai-viet page"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "702" || (echo "SAI TONG sitemap, phai 702"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "680" || (echo "SAI TONG data.js, phai 680 bai-viet page"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Guard node-parse (bai hoc v370)
         run: |
-          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==676) { console.log('SAI: articles.length phai 676'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao','adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram','pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc','sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==681) { console.log('SAI: articles.length phai 681'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao','adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram','pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc','sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
