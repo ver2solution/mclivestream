@@ -1,0 +1,53 @@
+name: "Deploy hang-hoa-2411 (4 bai Hang hoa 24/11/2026)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-hang-hoa-2411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-hang-hoa-2411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "01a2d1c27ce4f0e954789a7c2b5bd70d" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "663" || (echo "BASE DOI: data.js khong con 663 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "685" || (echo "BASE DOI: sitemap khong con 685 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip hang-hoa-2411 package
+        run: |
+          unzip -o mclivestream-hang-hoa-2411-deploy.zip
+          echo "--- verify hang-hoa-2411 (4 bai) ---"
+          for slug in pnj-lo-258-ty-quy-3-2026-shop-nho-ban-trang-suc-hoc-gi phu-kien-trang-suc-tiktok-shop-vang-duoc-tim-tang-1134-phan-tram goi-om-hello-kitty-3300-yen-giup-ngoi-thang-ban-26-11 gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "689" || (echo "SAI TONG sitemap, phai 689"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "667" || (echo "SAI TONG data.js, phai 667"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-hang-hoa-2411-deploy.zip || rm -f mclivestream-hang-hoa-2411-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-hang-hoa-2026-11-24: 4 bai moi (SEO V2)"
+            git push
+          fi
