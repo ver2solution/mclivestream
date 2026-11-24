@@ -4481,6 +4481,7 @@ function initHeaderAuth(){
   var headerNameUserId = null; // v224 (S3-10): nguoi dung ma headerName dang cho — doi phien thi lookup cu khong duoc ghi de
   var headerBalanceLoading = false; // v114 (P3-4): dang tai so du -> "Ten · …", khong hien 0 gia.
   var headerBalanceSeq = 0; // v117: so thu tu lan doc so du — chi lan doc moi nhat duoc ap dung ket qua.
+  var headerBalanceRetried = false; // v276 (P2-1b): doc so du that bai thi thu lai 1 lan sau 2s thay vi giu so cu.
   var menuEl = null, menuNameEl = null, menuPointsEl = null, menuWrap = null;
   /* v261 (MC-97/MC-93): cache ten + so du header o localStorage — tai lai
      trang hien ngay ten da biet thay vi "…" ~10s cho getSession + lookup
@@ -4539,19 +4540,32 @@ function initHeaderAuth(){
   // moi; chi lan doc moi nhat duoc ap dung ket qua (ca thanh cong lan loi).
   function loadHeaderBalance(){
     var seq = ++headerBalanceSeq;
+    // v276 (P2-1b): doc so du that bai (RPC loi / script chua nap) thi thu
+    // lai 1 lan sau 2s thay vi im lang giu so du cu trong cache (vong 3:
+    // tai lai trang header hien 10 xu thay vi 12 xu). Thanh cong thi
+    // reset co thu lai de lan loi sau van duoc thu.
+    function scheduleBalanceRetry(){
+      if (headerBalanceRetried) return;
+      headerBalanceRetried = true;
+      try { setTimeout(function(){ loadHeaderBalance(); }, 2000); } catch (e) {}
+    }
     try {
       headerBalanceLoading = true; renderHeaderLabel();
       loadPointsScripts().then(function(){
         if(seq !== headerBalanceSeq) return; // da co lan doc moi hon — bo qua
         var R = window.Ver2Reward;
-        if(!R || typeof R.getMyPointsBalanceResult !== 'function'){ headerBalanceLoading = false; renderHeaderLabel(); return; }
+        if(!R || typeof R.getMyPointsBalanceResult !== 'function'){ headerBalanceLoading = false; renderHeaderLabel(); scheduleBalanceRetry(); return; }
         R.getMyPointsBalanceResult().then(function (r){
           if(seq !== headerBalanceSeq) return; // ket qua cu — khong ghi de so moi
           headerBalanceLoading = false;
-          if(r && r.ok){ headerBalance = Number(r.balance) || 0; }
+          if(r && r.ok){
+            headerBalance = Number(r.balance) || 0;
+            headerBalanceRetried = false;
+            writeHeaderCache(); // v276 (P2-1b): luu so du moi vao cache de lan tai sau khong hien so cu.
+          } else { scheduleBalanceRetry(); }
           renderHeaderLabel();
-        }).catch(function () { if(seq !== headerBalanceSeq) return; headerBalanceLoading = false; renderHeaderLabel(); });
-      }).catch(function () { if(seq !== headerBalanceSeq) return; headerBalanceLoading = false; renderHeaderLabel(); });
+        }).catch(function () { if(seq !== headerBalanceSeq) return; headerBalanceLoading = false; renderHeaderLabel(); scheduleBalanceRetry(); });
+      }).catch(function () { if(seq !== headerBalanceSeq) return; headerBalanceLoading = false; renderHeaderLabel(); scheduleBalanceRetry(); });
     } catch (e) { if(seq !== headerBalanceSeq) return; headerBalanceLoading = false; /* bo qua — header giu ten khong so du */ }
   }
   // v90: cho phep lam moi so du header sau khi tru diem (reward.js goi
@@ -4750,9 +4764,26 @@ function initHeaderAuth(){
        "Đăng Nhập" roi moi hien ten); catch cu RONG lam nut ket "…" mai khi
        getSession reject — gio loi thi apply(null) de ve "Đăng Nhập" dut
        khoat thay vi ket. */
-    var _getSession = (typeof A.getSessionRobust === 'function') ? function(){ return A.getSessionRobust(2000); } : function(){ return A.getSession(); };
-    _getSession().then(function (s) { apply(s && s.user ? s.user : null); }).catch(function () { apply(null); });
+    // v276 (P2-1a): dang ky onSessionChange TRUOC khi doc session lan dau —
+    // su kien co the toi truoc khi subscribe, luc do header ket o "Đăng Nhập"
+    // cho toi khi co su kien moi/dieu huong (vong 3: dang nhap xong ve trang
+    // chu van hien nut "Đăng Nhập" du phien da song).
     if(typeof A.onSessionChange === 'function') A.onSessionChange(function (user) { apply(user); });
+    var _getSession = (typeof A.getSessionRobust === 'function') ? function(){ return A.getSessionRobust(2000); } : function(){ return A.getSession(); };
+    _getSession().then(function (s) {
+      if (s && s.user) { apply(s.user); return; }
+      apply(null);
+      // Phien khoi phuc cham hon 2s (trang lanh, chuyen huong sau dang nhap)
+      // thi lan doc dau tra null — kiem lai 1 lan sau 4s, neu co phien thi
+      // ap dung ngay thay vi doi su kien moi. Chi chay khi header van o
+      // trang thai chua dang nhap.
+      try {
+        setTimeout(function(){
+          if (headerName !== null || headerNameUserId !== null) return;
+          try { _getSession().then(function (s2) { if (s2 && s2.user) apply(s2.user); }).catch(function(){}); } catch (e2) {}
+        }, 4000);
+      } catch (e3) {}
+    }).catch(function () { apply(null); });
   } catch (e) { apply(null); /* v261: loi dong bo thi ve "Đăng Nhập" thay vi giu "…" */ }
 }
 /* v96: dai kich hoat ho so tren trang chu (chi index.html co phan tu
