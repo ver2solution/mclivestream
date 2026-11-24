@@ -17630,6 +17630,50 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Top 50 phụ kiện trang sức TikTok Shop bán 3.416 đơn, GMV ước tính 1,1 tỷ đồng/7 ngày. Hanada và Asimi chiếm 61% đơn — 7 bài học cho shop trước Black Friday."
   },
+  {
+   "title": "Vỡ mộng mua hàng gắn mác \"Mall\": sự thật nhãn chính hãng",
+   "cat": "Hàng hoá",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-24",
+   "url": null,
+   "page": "bai-viet/vo-mong-mua-hang-gan-mac-mall-su-that-phia-sau-nhan-chinh-hang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vo-mong-mua-hang-gan-mac-mall-su-that-phia-sau-nhan-chinh-hang-hero.jpg",
+   "pinned": false,
+   "takeaway": "Mall không đồng nghĩa 100% chính hãng. Điều kiện Shopee Mall, LazMall, TikTok Shop Mall, các kẽ hở, vụ việc 2025–2026 và cách kiểm chứng trước khi chốt đơn."
+  },
+  {
+   "title": "Giá vàng 167,5 triệu/lượng: shop bán charm giữ lãi",
+   "cat": "Phân tích",
+   "source": "An Thư (JCK)",
+   "date": "2026-11-24",
+   "url": "https://anthu.vn/article/xu-huong-trang-suc-cuoi-2026-charm-va-chuoi-hat-len-ngoi/",
+   "page": "bai-viet/gia-vang-cao-shop-trang-suc-xoay-sang-ban-gi-de-giu-lai-charm-chuoi-hat-da-mau.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-cao-shop-trang-suc-xoay-sang-ban-gi-de-giu-lai-charm-chuoi-hat-da-mau-hero.jpg",
+   "pinned": false,
+   "takeaway": "Giá vàng SJC từng chạm 167,5 triệu đồng/lượng. Khi vàng đắt, shop trang sức xoay sang bán charm, chuỗi hạt đá để giữ lãi — xem ngay xu hướng tại JIS Show Miami."
+  },
+  {
+   "title": "980 tỷ đồng/2 phiên live: 7 bí quyết bán trang sức chốt đơn",
+   "cat": "Phân tích",
+   "source": "Fashion China Agency",
+   "date": "2026-11-24",
+   "url": "https://fashionchinaagency.com/live-streaming-is-driving-high-sales-for-fine-jewelry-in-china/",
+   "page": "bai-viet/bi-quyet-livestream-ban-trang-suc-chot-don-nhanh-yun-shang-xu-980-ty-dong-2-phien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bi-quyet-livestream-ban-trang-suc-chot-don-nhanh-yun-shang-xu-980-ty-dong-2-phien-hero.jpg",
+   "pinned": false,
+   "takeaway": "Yun Shang Xu bán 980 tỷ đồng trong 2 phiên live tháng 6/2023. Khám phá 7 bí quyết chốt đơn: ánh sáng, tay mẫu, kịch bản, kể chuyện, kiểm định, khan hiếm."
+  },
+  {
+   "title": "560 tỷ đồng/1 phiên live: bán trang sức \"chậm mà chắc\"",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-24",
+   "url": "https://www.36kr.com/p/3706969918107781",
+   "page": "bai-viet/xiaohongshu-ban-trang-suc-cham-ma-chac-560-ty-dong-1-phien-tiet-giai-ngung-karena-ng-huong-thai.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xiaohongshu-ban-trang-suc-cham-ma-chac-560-ty-dong-1-phien-tiet-giai-ngung-karena-ng-huong-thai-hero.jpg",
+   "pinned": false,
+   "takeaway": "3 phiên live bán trang sức trên Xiaohongshu cán mốc 100–160 triệu NDT/phiên trong 5 tuần — chỉ bán gu và niềm tin. Xem ngay 7 bài học cho shop Việt."
+  },
 ],
  "lots": [
    {
