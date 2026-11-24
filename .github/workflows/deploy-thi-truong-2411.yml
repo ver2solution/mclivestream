@@ -1,0 +1,54 @@
+name: "Deploy thi-truong-2411 (4 bai Thi truong 24/11/2026)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-thi-truong-2411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-thi-truong-2411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "5fedbc464e0f2cb84e9f600bb5de2bdc" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "655" || (echo "BASE DOI: data.js khong con 655 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "677" || (echo "BASE DOI: sitemap khong con 677 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip thi-truong-2411 package
+        run: |
+          unzip -o mclivestream-thi-truong-2411-deploy.zip
+          echo "--- verify thi-truong-2411 (4 bai) ---"
+          for slug in thi-truong-tet-2026-chuan-bi-tet-dinh-mui-2027 thi-truong-livestream-viet-nam kim-cuong-nhan-tao-chiem-61-phan-tram-nhan-cuoi-my-2026 walmart-quy-3-2026-ban-online-tang-23-phan-tram-my; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "681" || (echo "SAI TONG sitemap, phai 681"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "659" || (echo "SAI TONG data.js, phai 659"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-thi-truong-2411-deploy.zip || rm -f mclivestream-thi-truong-2411-deploy.zip
+          git rm -q .github/workflows/deploy-thi-truong-2411.yml || rm -f .github/workflows/deploy-thi-truong-2411.yml
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-thi-truong-2026-11-24: 4 bai moi (SEO V2)"
+            git push
+          fi
