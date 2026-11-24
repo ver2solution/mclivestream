@@ -18,8 +18,8 @@ jobs:
       - name: Unzip doi-song-2411 package
         run: |
           echo "--- BASE guard (bai hoc v233/v234: khong deploy chong) ---"
-          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" = "667" || (echo "BASE DOI: data.js khong con 667 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "689" || (echo "BASE DOI: sitemap khong con 689 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" = "671" || (echo "BASE DOI: data.js khong con 671 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "693" || (echo "BASE DOI: sitemap khong con 693 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
           unzip -o mclivestream-doi-song-2411-deploy.zip
           echo "--- verify doi-song-2411 (5 bai moi) ---"
           test "$(unzip -l mclivestream-doi-song-2411-deploy.zip | grep -c ' bai-viet/.*\.html$')" -eq 5 || (echo "SAI: goi doi-song-2411 phai co dung 5 file bai-viet HTML"; exit 1)
@@ -33,15 +33,15 @@ jobs:
             grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
           done
           echo "--- verify KHONG mat bai ---"
-          for slug in double-12-2026-phan-tich-lich-dem-nguoc-18-ngay-shop-nho gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet goi-om-hello-kitty-3300-yen-giup-ngoi-thang-ban-26-11 instagram-gan-link-amazon-affiliate-trong-reels kim-cuong-nhan-tao-chiem-61-phan-tram-nhan-cuoi-my-2026 livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday lvmh-quy-3-2026-trang-suc-tang-6-phan-tram-thoi-trang-giam-5 mau-live-trung-quoc-mat-viec-ai-avatar-re-bang-1-10 mau-livestream-kiem-tien-tet-bang-gia-ca-live meta-advantage-quang-cao-facebook-tu-chay-toi-dau mua-sam-black-friday-2026-5-bay-tam-ly phu-kien-trang-suc-mon-moi-tang-gia-tri-don-live phu-kien-trang-suc-tiktok-shop-vang-duoc-tim-tang-1134-phan-tram pnj-lo-258-ty-quy-3-2026-shop-nho-ban-trang-suc-hoc-gi quan-cafe-check-in-dep-gem-valley-sapa thang-12-du-lich-dau-dep-nhat-sapa-san-may thi-truong-livestream-viet-nam thi-truong-phu-kien-trang-suc-2026-397-ty-usd-shop-nho-ban-gi thi-truong-tet-2026-chuan-bi-tet-dinh-mui-2027 tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong tuyen-mau-live-ban-phu-kien-trang-suc tuyen-mau-livestream-tet-chot-nguoi-truoc-12-12 uong-ca-phe-luc-nao-tot-nhat-sau-9h30 video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia viec-lam-livestream-shopee walmart-quy-3-2026-ban-online-tang-23-phan-tram-my; do
+          for slug in double-12-2026-phan-tich-lich-dem-nguoc-18-ngay-shop-nho gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet goi-om-hello-kitty-3300-yen-giup-ngoi-thang-ban-26-11 instagram-gan-link-amazon-affiliate-trong-reels kim-cuong-nhan-tao-chiem-61-phan-tram-nhan-cuoi-my-2026 kim-cuong-nuoi-cay-61-phan-tram-nhan-dinh-hon-my livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday lvmh-quy-3-2026-trang-suc-tang-6-phan-tram-thoi-trang-giam-5 mau-live-trung-quoc-mat-viec-ai-avatar-re-bang-1-10 mau-livestream-kiem-tien-tet-bang-gia-ca-live meta-advantage-quang-cao-facebook-tu-chay-toi-dau mua-sam-black-friday-2026-5-bay-tam-ly phu-kien-trang-suc-mon-moi-tang-gia-tri-don-live phu-kien-trang-suc-tiktok-shop-vang-duoc-tim-tang-1134-phan-tram pnj-lo-258-ty-quy-3-2026-shop-nho-ban-trang-suc-hoc-gi quan-cafe-check-in-dep-gem-valley-sapa thang-12-du-lich-dau-dep-nhat-sapa-san-may thi-truong-livestream-viet-nam thi-truong-phu-kien-trang-suc-2026-397-ty-usd-shop-nho-ban-gi thi-truong-phu-kien-trang-suc-vang-dat-do-nhe-thang thi-truong-tet-2026-chuan-bi-tet-dinh-mui-2027 tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong tuyen-mau-live-ban-phu-kien-trang-suc tuyen-mau-livestream-tet-chot-nguoi-truoc-12-12 uong-ca-phe-luc-nao-tot-nhat-sau-9h30 video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia viec-lam-livestream-shopee walmart-quy-3-2026-ban-online-tang-23-phan-tram-my xu-huong-ban-hang-online-2027-5-viec-lam-ngay-tu-thang-11 xu-huong-mua-hang-moi-ai-mua-ho-shop-nho-lam-gi; do
             grep -q "bai-viet/$slug.html" js/data.js || (echo "MAT BAI: $slug khong co trong data.js"; exit 1)
             grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "MAT BAI: $slug khong co trong sitemap"; exit 1)
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js articles: $(grep -c '"page":\s*"bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" -eq 694 || (echo "SAI: sitemap phai co 694 URL (689 live + 5 bai)"; exit 1)
-          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" -eq 672 || (echo "SAI: data.js phai co 672 bai (667 live + 5 bai)"; exit 1)
-          echo "verify OK: 5 bai moi + data.js (672 bai) + sitemap (694 URL), 0 bai hom nay bi mat"
+          test "$(grep -c '<loc>' sitemap.xml)" -eq 698 || (echo "SAI: sitemap phai co 698 URL (693 live + 5 bai)"; exit 1)
+          test "$(grep -c '"page":\s*"bai-viet/' js/data.js)" -eq 676 || (echo "SAI: data.js phai co 676 bai (671 live + 5 bai)"; exit 1)
+          echo "verify OK: 5 bai moi + data.js (676 bai) + sitemap (698 URL), 0 bai hom nay bi mat"
       - name: Commit deployed files
         run: |
           git config user.name "github-actions[bot]"
