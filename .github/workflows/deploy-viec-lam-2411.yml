@@ -1,0 +1,53 @@
+name: Deploy articles-viec-lam-2026-11-24 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-viec-lam-2411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-viec-lam-2411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "7934f75d64fd60664e0899c5df7b7887" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "643" || (echo "BASE DOI: data.js khong con 643 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "665" || (echo "BASE DOI: sitemap khong con 665 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip viec-lam-2411 package
+        run: |
+          unzip -o mclivestream-viec-lam-2411-deploy.zip
+          echo "--- verify viec-lam-2411 (4 bai moi) ---"
+          for slug in tuyen-mau-livestream-tet-chot-nguoi-truoc-12-12 viec-lam-livestream-shopee tuyen-mau-live-ban-phu-kien-trang-suc mau-live-trung-quoc-mat-viec-ai-avatar-re-bang-1-10; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "669" || (echo "SAI TONG sitemap, phai 669"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "647" || (echo "SAI TONG data.js, phai 647 bai-viet page (648 bai tong, 1 bai cu dung truong url)"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-viec-lam-2411-deploy.zip || rm -f mclivestream-viec-lam-2411-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-viec-lam-2026-11-24: 4 bai moi (SEO V2)"
+            git push
+          fi
