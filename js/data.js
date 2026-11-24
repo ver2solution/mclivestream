@@ -76,6 +76,7 @@
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-24 adds 5 Đời Sống articles (24/11/2026, Tuesday): 1 seasonal keyword "mẫu livestream kiếm tiền Tết" #1/10 VONG 2 goc moi (2,151 words, deep; e-Conomy SEA 2026 05/11/2026 — TMDT 32 ty USD +22%; luong le 400% Dieu 98 BLLD 2019; dang ky chien dich 12.12 het 25/11/2026) + 3 news "("tháng 12 du lịch đâu đẹp nhất" Sapa 1,462 words; "mua sắm Black Friday 2026" 1,559 words; "uống cà phê lúc nào tốt nhất" 1,534 words) + 1 cafe "quán cafe check-in đẹp Gem Valley Sapa" 1,630 words. Total 677 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dang-hot-2026-11-24 adds 4 Dang hot articles (24/11/2026, Tuesday): 1 seasonal keyword 'sale 12.12' #7/10 VONG 2 (GOC MOI: 5 cach kiem tra gia giam that hay ao — Groundwork 'Deal or Decoy?' 16/11/2026: 29,1% deal khong re hon gia 30 ngay truoc, 57,3% vs 90 ngay; EU bat ghi gia thap nhat 30 ngay, My chua co) + 3 news (Adidas BF 2026: giam toi 60% + ma SD15/DN15 them 15%, 20-28/11/2026, Runfalcon 5 20 USD — DealNews 22/11/2026; Pandora BF 2026: giam toi 40% My / 30% Anh, 12/11-01/12/2026, Cyber Monday toi 50% — The Independent 23/11/2026; Sephora BF 2026: Cyber Week 23-30/11/2026, moi ngay 1 nhom thuong hieu giam 30% — Cool Mom Picks 17/11/2026). SEO V2 (title suffix + link boxes). Total 681 articles (node) / 680 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-24 adds 4 Cong nghe articles (24/11/2026, Tuesday): 1 seasonal keyword 'TikTok Shop Affiliate Tet' #6/10 VONG 2 (GOC MOI so voi vong 1 16/11 'hoa hong nhan doi den 30/11': cong thuc hoa hong khi giam gia — san pham 40 USD, 15%, giam 30% do shop tra con 4,20 USD/don, can 143 don moi bang 100 don gia goc; tien ve ngay thu 15 sau giao (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay; han dang ky chien dich 12.12 VN het 25/11/2026; ugc.live 15/11/2026 + Modern Retail 09/11 + SMT 10/11) + 3 news (Meta Advantage+ thang 11/2026: video tu anh tinh mo cho moi nha quang cao tu thang 10/2026, tro ly AI dung chien dich con thu nghiem — Kult Studios 10/11/2026; video AI lam clip san pham 12.12: 7 mo hinh thu tren 1 anh ngay 11/11/2026, clip 0,18-1,17 USD — GenMagic 11/11/2026; Instagram thang 11/2026: gan link Amazon affiliate trong Reels tu 16/11 + chan Reels bi danh cap tu 17/11 — Geekout 20/11/2026). SEO V2 (title suffix + link boxes). Total 664 articles (node) / 663 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17509,6 +17510,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Gem Valley Coffee, 08 Cát Cát, Sa Pa, Lào Cai, mở cửa 7:00–22:00, cà phê từ khoảng 40.000 đồng, giờ vàng chụp ảnh là sáng sớm và chiều muộn khi mây tràn thung lũng Mường Hoa."
+  },
+  {
+   "title": "Sale 12.12: 5 cách kiểm tra giá giảm thật hay ảo",
+   "cat": "Đang hot",
+   "source": "Digital Trends",
+   "date": "2026-11-24",
+   "url": "https://www.digitaltrends.com/business/amazons-crossed-out-prices-might-be-the-biggest-lie-in-your-cart-this-black-friday/",
+   "page": "bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sale 12.12 (thứ Bảy 12/12/2026): gần 1/3 \"deal\" Black Friday 2024–2025 không rẻ hơn giá 30 ngày trước, theo Groundwork ngày 16/11/2026 — chụp giá hôm nay 24/11/2026, tra lịch sử giá, so 3 sàn rồi mới chốt đơn."
+  },
+  {
+   "title": "Adidas Black Friday 2026: giảm tới 60%, thêm mã 15%",
+   "cat": "Đang hot",
+   "source": "DealNews",
+   "date": "2026-11-24",
+   "url": "https://www.dealnews.com/adidas-Black-Friday-Sale-2026-Up-to-60-off-extra-15-off-free-shipping/22414575.html",
+   "page": "bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Adidas Black Friday 2026 (20–28/11/2026): giảm tới 60% + mã SD15/DN15 giảm thêm 15%, miễn phí giao hàng cho thành viên adiClub — Runfalcon 5 chỉ 20 USD (giá gốc 60 USD)."
+  },
+  {
+   "title": "Pandora Black Friday 2026: giảm tới 40% trang sức",
+   "cat": "Đang hot",
+   "source": "The Independent",
+   "date": "2026-11-24",
+   "url": "https://indy-web-prod.brightsites.co.uk/extras/indybest/black-friday/pandora-black-friday-sale-2026-b3053566.html",
+   "page": "bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Pandora Black Friday 2026 (12/11–01/12/2026): giảm tới 40% tại Mỹ, tới 30% tại Anh với hơn 1.500 món — Cyber Monday 30/11–01/12/2026 giảm tới 50% và miễn phí giao hàng."
+  },
+  {
+   "title": "Sephora Black Friday 2026: 30% mỗi ngày, 10 ngày",
+   "cat": "Đang hot",
+   "source": "Cool Mom Picks",
+   "date": "2026-11-24",
+   "url": "https://coolmompicks.com/sephora-black-friday",
+   "page": "bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sephora Black Friday 2026 (Cyber Week 23–30/11/2026): mỗi ngày 1 nhóm thương hiệu giảm 30% — hôm nay 24/11 là Youth To The People, Laura Mercier và Kiehl's; quà Black Friday mở bán 26/11 lúc 18h PT."
   }
 ],
  "lots": [
