@@ -75,6 +75,7 @@
    articles-dang-hot-2026-11-23 adds 4 Dang hot articles (23/11/2026, Monday): 1 seasonal keyword 'cach nhap hang 1688' #6/10 VONG 2 (GOC MOI: chon xuong uy tin tren 1688 + dat hang Tet truoc khi xuong nghi — Super Factory, giay phep kinh doanh, 4 buoc kiem tra; wiki.1688.com 29/07/2026 — xuong chua kiem tra tranh chap cao hon 67%; lich TradeRouteGuide 10/11/2026: xuong ngung ~26/01/2027, tau cuoi 15-25/01/2027, dat truoc 10/12/2026) + 3 news (Nintendo Switch 2 BF 2026: bundle Mario Kart World 499,99 USD, giam 50 USD, 22/11-05/12/2026, cong bo 12/11/2026; Dyson BF 2026: giam toi 400 USD toi 28/11/2026, Amazon toi 251 USD, Airwrap i.d. 499,99 USD — DealNews 20/11/2026; LEGO BF 2026: 283 bo gia thap nhat tung ghi nhan — BrickSleuth 19/11/2026, Amazon toi 40%, Walmart hon 40 bo toi 44% — PopSci 09/11/2026). SEO V2 (title suffix + link boxes). Total 654 articles (node) / 653 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-24 adds 4 Cong nghe articles (24/11/2026, Tuesday): 1 seasonal keyword 'TikTok Shop Affiliate Tet' #6/10 VONG 2 (GOC MOI so voi vong 1 16/11 'hoa hong nhan doi den 30/11': cong thuc hoa hong khi giam gia — san pham 40 USD, 15%, giam 30% do shop tra con 4,20 USD/don, can 143 don moi bang 100 don gia goc; tien ve ngay thu 15 sau giao (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay; han dang ky chien dich 12.12 VN het 25/11/2026; ugc.live 15/11/2026 + Modern Retail 09/11 + SMT 10/11) + 3 news (Meta Advantage+ thang 11/2026: video tu anh tinh mo cho moi nha quang cao tu thang 10/2026, tro ly AI dung chien dich con thu nghiem — Kult Studios 10/11/2026; video AI lam clip san pham 12.12: 7 mo hinh thu tren 1 anh ngay 11/11/2026, clip 0,18-1,17 USD — GenMagic 11/11/2026; Instagram thang 11/2026: gan link Amazon affiliate trong Reels tu 16/11 + chan Reels bi danh cap tu 17/11 — Geekout 20/11/2026). SEO V2 (title suffix + link boxes). Total 664 articles (node) / 663 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-23 adds 4 Thi truong articles (23/11/2026, Monday): 1 seasonal keyword 'thi truong ao dai Tet 2026' #10/10 (LAST of round 1, deep: CORRECTION — 296 ty VND is Tet 2025 (CafeBiz 05/02/2026), NOT Tet 2026; Tet 2026 verified: TikTok Shop 4,8M ao dai orders (Kenh14 12/02/2026), Q4/2025 2,8M + Jan 2026 2M orders (CafeBiz 20/06/2026), 6 peak weeks 67,7 nghin ty (Ebrun 14/02/2026), segment 200-350k VND; plan for Tet Dinh Mui 2027, mung 1 Sat 06/02/2027) + 3 news (Sea/Shopee Q3 2026 10/11 — GMV 39,7 ty USD +23,3%, orders 4,5 ty +25,5%, Sea revenue 8,6 ty USD +43,4%, net 502,5 tr USD +34,0%, Shopee adj EBITDA 269 tr USD +45% record, marketplace fees 11,6% of GMV; eBay Q3 2026 28/10 — revenue 3,2 ty USD +14%, GMV 23,2 ty USD +15%, US GMV +27% vs Intl +4%, recommerce +24%, ads 607 tr USD, Depop +3pts; TikTok Shop US Black Friday LIVE 19/11 — medicube best session 299.900 USD / 8,4K orders / 12,1h, 7,41M USD in 30 days, 9/10 top sessions brand accounts, 8 categories 543,5M USD in 7 days to 20/11). SEO V2 (title suffix + link boxes). Total 625 articles (node) / 624 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17345,6 +17346,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Walmart quý 3/2026: doanh thu 188,8 tỷ USD, tăng 5,2%; bán online toàn cầu tăng 17%, tại Mỹ tăng 23%; quảng cáo Mỹ tăng 37%; phí thành viên toàn cầu tăng 17% (báo cáo 19/11/2026)."
+  },
+  {
+   "title": "TikTok Shop Affiliate Tết: giảm giá ăn vào hoa hồng",
+   "cat": "Công nghệ",
+   "source": "ugc.live",
+   "date": "2026-11-24",
+   "url": "https://ugc.live/blog/tiktok-shop-black-friday",
+   "page": "bai-viet/tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-affiliate-tet-giam-gia-an-vao-hoa-hong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Affiliate Tet vong 2: hoa hong tinh tren gia sau khi tru giam gia do SHOP tra — san pham 40 USD, 15%, giam 30% do shop tra chi con 4,20 USD/don (can 143 don moi bang 100 don gia goc); giam gia do TikTok tra thi giu nguyen 6,00 USD; tien ve ngay thu 15 sau giao hang (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay va luon thang Open."
+  },
+  {
+   "title": "Meta Advantage+: quảng cáo Facebook tự chạy tới đâu",
+   "cat": "Công nghệ",
+   "source": "Kult Studios",
+   "date": "2026-11-24",
+   "url": "https://kult-studios.com/en/blog/meta-pubblicita-automatica-ai",
+   "page": "bai-viet/meta-advantage-quang-cao-facebook-tu-chay-toi-dau.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meta-advantage-quang-cao-facebook-tu-chay-toi-dau.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Meta Advantage+ thang 11/2026 (Kult Studios 10/11/2026): video tu anh tinh mo cho moi nha quang cao tu thang 10/2026; video san pham tu catalogue dang beta; tro ly AI dung chien dich dang thu nghiem; dich 11 ngon ngu thi diem WPP tu thang 6/2026; ASC cu doi thanh Advantage+ sales (API v25.0 chan tao ASC moi); thu nghiem ROAS Advantage+ cao hon thu cong 4,25 so voi 3,78; doanh thu Meta Q3 64,6 ty USD +26%."
+  },
+  {
+   "title": "Video AI làm clip sản phẩm: 7 mô hình thử 1 ảnh",
+   "cat": "Công nghệ",
+   "source": "GenMagic",
+   "date": "2026-11-24",
+   "url": "https://genmagic.co/blog/best-ai-product-video-generator-tested",
+   "page": "bai-viet/video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/video-ai-lam-clip-san-pham-12-12-7-mo-hinh-thu-gia.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Video AI lam clip san pham 12.12 (GenMagic, thu 11/11/2026): 7 mo hinh tren 1 anh coc — Grok Imagine 1.5 Lite re nhat 0,18 USD nhung xoay coc sai chu; Seedance 2.0 Mini 0,25 USD, giu dung chu + chuyen dong quay, re nhat cho catalog; Hailuo 3 dat nhat 1,17 USD, chu net nhat; Kling 3.0 0,95 USD; Wan 3.0 0,45 USD; Veo 3.1 Lite gan nhu khong chuyen dong; cho 35 giay toi 4 phut moi clip."
+  },
+  {
+   "title": "Instagram gắn link Amazon affiliate trong Reels",
+   "cat": "Công nghệ",
+   "source": "Geekout (Matt Navarra)",
+   "date": "2026-11-24",
+   "url": "https://geekout.mattnavarra.com/instagram-updates",
+   "page": "bai-viet/instagram-gan-link-amazon-affiliate-trong-reels.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/instagram-gan-link-amazon-affiliate-trong-reels.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Instagram thang 11/2026 (Geekout 20/11/2026): gan link Amazon affiliate trong Reels tu 16/11 (toi da 30 link/Reels, 20 link/bai, mo app Amazon; Shein, Lowe, Halara tham gia; link LTK dung duoc trong Reels); cong cu bao ve noi dung tu 17/11 (theo doi ban sao ke ca ban AI, chan hoac ghi cong); sua Story trong 15 phut tu 18/11; carousel 30 slide dang thu; Insights moi 4 tab tu 06/11."
   }
 ],
  "lots": [
