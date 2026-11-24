@@ -1467,3 +1467,8 @@ button.adm-task-st{font:inherit}
   .adm-chat-layout{grid-template-columns:1fr}
   .adm-chat-side{position:static;order:-1}
 }
+
+/* trust-stats-links (24/11/2026): 16 chi so trang chu thanh link — giu nguyen giao dien, chi them trang thai hover/focus de biet bam duoc. */
+a.trust-num{text-decoration:none}
+a.trust-num:hover b{text-decoration:underline}
+a.trust-num:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
