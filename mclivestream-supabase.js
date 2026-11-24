@@ -195,6 +195,12 @@
     else if (lower.indexOf('user already registered') !== -1) out = 'Email này đã đăng ký. Hãy đăng nhập hoặc dùng chức năng quên mật khẩu.';
     else if (lower.indexOf('email rate limit exceeded') !== -1) out = 'Đã gửi quá nhiều email trong 1 giờ. Hãy thử lại sau 1 giờ.';
     else if (lower.indexOf('password should be at least') !== -1) out = 'Mật khẩu cần ít nhất 8 ký tự.';
+    // v426 (24/11/2026, Glint VLL L5 hoi quy): dat MK moi loi server 2 lan
+    // nhung chi hien cau chung chung — GoTrue tu choi MK trung MK cu / MK
+    // yeu / MK tung bi lo / link het han ma khong co nhanh dich rieng.
+    else if (lower.indexOf('different from the old') !== -1 || lower.indexOf('same as the old') !== -1 || lower.indexOf('should be different') !== -1) out = 'Mật khẩu mới phải khác mật khẩu cũ.';
+    else if (lower.indexOf('breach') !== -1 || lower.indexOf('pwned') !== -1 || lower.indexOf('commonly used') !== -1 || lower.indexOf('too common') !== -1 || lower.indexOf('too weak') !== -1) out = 'Mật khẩu này quá yếu hoặc đã từng bị lộ, hãy chọn mật khẩu khác mạnh hơn.';
+    else if (lower.indexOf('session expired') !== -1 || lower.indexOf('invalid jwt') !== -1 || lower.indexOf('auth session missing') !== -1 || lower.indexOf('session not found') !== -1) out = 'Link đặt lại đã hết hạn, hãy gửi lại link mới.';
     else if (lower.indexOf('failed to fetch') !== -1 || lower.indexOf('networkerror') !== -1 || lower.indexOf('network request failed') !== -1) out = 'Không kết nối được mạng, hãy kiểm tra lại kết nối rồi thử lại.';
     else if (code === '23505' || lower.indexOf('23505') !== -1 || lower.indexOf('duplicate key') !== -1) {
       if (context === 'review') out = 'Bạn đã đánh giá hồ sơ này rồi.';
