@@ -97,7 +97,8 @@
       e.status = raw.status || '';
     } else if (type === 'shop') {
       e.title = raw.name || ''; e.desc = raw.product || ''; e.cat = raw.product || ''; e.prov = raw.province || '';
-      e.field = [raw.product, raw.channels].join(' '); e.img = raw.logo || ''; e.salary = raw.salary || '';
+      /* #20 khung chat (24/11/2026): tin tuyển = shop — yêu cầu (req), ca (shifts), quận (district) trước đây không vào chỉ mục nên tìm "giao tiếp tốt" / "ca tối" / "Tân Phú" ra 0 tin tuyển. Đưa cả 3 vào field (điểm 40); không đổi title/desc/chips/url. */
+      e.field = [raw.product, raw.channels, raw.req, (raw.shifts || []).join(' '), raw.district].join(' '); e.img = raw.logo || ''; e.salary = raw.salary || '';
       e.url = 'danh-sach-shop.html#' + raw.id;
       e.chips = [raw.province, raw.district, raw.channels].filter(Boolean);
     } else if (type === 'bai') {
