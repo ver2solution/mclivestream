@@ -74,6 +74,7 @@
    articles-doi-song-2026-11-23 adds 5 Đời Sống articles (23/11/2026, Monday): 1 seasonal keyword "kế hoạch kinh doanh năm mới 2027" #10/10 CUOI vong 1 (2,066 words, deep; e-Conomy SEA 2026 05/11/2026 — kinh te so 49 ty USD +20%, TMDT 32 ty USD +22%; Tet 06/02/2027) + 3 news "("tháng 1 du lịch đâu đẹp nhất" 1,292 words; "ngủ trưa 26 phút" 1,423 words; "chi tiêu Giáng sinh 2026" 1,343 words) + 1 cafe "quán cafe check-in đẹp Cafe Đinh Hà Nội" 1,149 words. Total 650 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dang-hot-2026-11-23 adds 4 Dang hot articles (23/11/2026, Monday): 1 seasonal keyword 'cach nhap hang 1688' #6/10 VONG 2 (GOC MOI: chon xuong uy tin tren 1688 + dat hang Tet truoc khi xuong nghi — Super Factory, giay phep kinh doanh, 4 buoc kiem tra; wiki.1688.com 29/07/2026 — xuong chua kiem tra tranh chap cao hon 67%; lich TradeRouteGuide 10/11/2026: xuong ngung ~26/01/2027, tau cuoi 15-25/01/2027, dat truoc 10/12/2026) + 3 news (Nintendo Switch 2 BF 2026: bundle Mario Kart World 499,99 USD, giam 50 USD, 22/11-05/12/2026, cong bo 12/11/2026; Dyson BF 2026: giam toi 400 USD toi 28/11/2026, Amazon toi 251 USD, Airwrap i.d. 499,99 USD — DealNews 20/11/2026; LEGO BF 2026: 283 bo gia thap nhat tung ghi nhan — BrickSleuth 19/11/2026, Amazon toi 40%, Walmart hon 40 bo toi 44% — PopSci 09/11/2026). SEO V2 (title suffix + link boxes). Total 654 articles (node) / 653 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-23 adds 4 Cong nghe articles (23/11/2026, Monday): 1 seasonal keyword 'cong cu livestream Tet' #5/10 VONG 2 (GOC MOI: 5 cong cu LIVE moi cua TikTok Shop mua le 2026 — LIVE Auction, Price Cut, Group Buy, Rush Reward, Reward Ladder; trang Seller University My 12/11/2026; CHUA RO co o VN chua — Calywire 09/11 + CreatorsHub 12/11 + Kolvant 12-13/11) + 3 news (thuat toan Instagram Reels Q3/2026: 45% Reels goi y duoi 24h — SUC Media 25/10/2026, Meta 21/10/2026; TikTok Shop app rieng 05/11 — Creator News Desk 06/11; Bio-Essence AI avatar Shopee Live, giai vang Asia eCommerce Awards 2026 — AnyMind 05/11). SEO V2 (title suffix + link boxes). Total 633 articles (node) / 632 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-thi-truong-2026-11-23 adds 4 Thi truong articles (23/11/2026, Monday): 1 seasonal keyword 'thi truong ao dai Tet 2026' #10/10 (LAST of round 1, deep: CORRECTION — 296 ty VND is Tet 2025 (CafeBiz 05/02/2026), NOT Tet 2026; Tet 2026 verified: TikTok Shop 4,8M ao dai orders (Kenh14 12/02/2026), Q4/2025 2,8M + Jan 2026 2M orders (CafeBiz 20/06/2026), 6 peak weeks 67,7 nghin ty (Ebrun 14/02/2026), segment 200-350k VND; plan for Tet Dinh Mui 2027, mung 1 Sat 06/02/2027) + 3 news (Sea/Shopee Q3 2026 10/11 — GMV 39,7 ty USD +23,3%, orders 4,5 ty +25,5%, Sea revenue 8,6 ty USD +43,4%, net 502,5 tr USD +34,0%, Shopee adj EBITDA 269 tr USD +45% record, marketplace fees 11,6% of GMV; eBay Q3 2026 28/10 — revenue 3,2 ty USD +14%, GMV 23,2 ty USD +15%, US GMV +27% vs Intl +4%, recommerce +24%, ads 607 tr USD, Depop +3pts; TikTok Shop US Black Friday LIVE 19/11 — medicube best session 299.900 USD / 8,4K orders / 12,1h, 7,41M USD in 30 days, 9/10 top sessions brand accounts, 8 categories 543,5M USD in 7 days to 20/11). SEO V2 (title suffix + link boxes). Total 625 articles (node) / 624 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -14458,6 +14459,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Giá vàng hôm nay 23/11/2026: vàng thế giới hồi lên 3.577 USD (+1,3%) nhưng SJC đứng yên 128,5–133,5 triệu; chênh lệch mua–bán 5 triệu, SJC cao hơn thế giới hơn 22 triệu đồng/lượng."
+  },
+  {
+   "title": "Tuyển mẫu livestream Tết: chốt người trước 12.12",
+   "cat": "Việc Làm",
+   "source": "Master Franchise",
+   "date": "2026-11-24",
+   "url": "https://masterfranchise.vn/en/tin-tuc/viet-nam-ngay-thuong-mai-dien-tu-quoc-gia-12-12-online-friday-2026",
+   "page": "bai-viet/tuyen-mau-livestream-tet-chot-nguoi-truoc-12-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-tet-chot-nguoi-truoc-12-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu livestream Tết đợt 1 chốt trước 12.12: đăng ký chiến dịch TikTok Shop hết 25/11/2026; 12/12 là Ngày Thương mại điện tử quốc gia đầu tiên, Online Friday 10–16/12/2026; sàn có 246 mẫu, 313 shop, 8 mẫu + 9 shop mới ngày 23/11/2026; lương Tết ít nhất 400% theo luật."
+  },
+  {
+   "title": "Việc làm livestream Shopee: lương, cách đăng ký",
+   "cat": "Việc Làm",
+   "source": "Shopee",
+   "date": "2026-11-24",
+   "url": "https://help.shopee.sg/portal/10/article/191914-Commissions%20Structure%20(W.e.f.%202%20January%202026)",
+   "page": "bai-viet/viec-lam-livestream-shopee.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-shopee.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm livestream Shopee: 2 đường (làm mẫu cho shop hoặc tự live Affiliate); hoa hồng live tới 10% Shopee + 40% thương hiệu, tối đa 50% từ 02/01/2026; Sea Q3/2026 GMV 39,7 tỷ USD +23,3% (10/11/2026); đăng ký 5 bước trong ứng dụng Shopee."
+  },
+  {
+   "title": "Tuyển mẫu live bán phụ kiện trang sức: biết vàng",
+   "cat": "Việc Làm",
+   "source": "Rapaport",
+   "date": "2026-11-24",
+   "url": "https://rapaport.com/news/pandora-reports-strong-third-quarter-performance/",
+   "page": "bai-viet/tuyen-mau-live-ban-phu-kien-trang-suc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ban-phu-kien-trang-suc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live bán phụ kiện trang sức: Pandora Q3/2026 +6% (04/11/2026), vàng trang sức Trung Quốc 66 tấn +30% so với quý 2/2026 (03/11/2026), Thủy Bối 9.000 công ty/70.000 lao động; sàn có 11 shop trang sức; mẫu cần biết giá vàng, quay cận cảnh, tư vấn size."
+  },
+  {
+   "title": "Mẫu live Trung Quốc mất việc vào tay AI avatar",
+   "cat": "Việc Làm",
+   "source": "Tech Times",
+   "date": "2026-11-24",
+   "url": "https://www.techtimes.co.uk/china-ai-hosts-livestreaming-streamer-pay-1809120",
+   "page": "bai-viet/mau-live-trung-quoc-mat-viec-ai-avatar-re-bang-1-10.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-live-trung-quoc-mat-viec-ai-avatar-re-bang-1-10.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu live Trung Quốc mất việc vào tay AI avatar rẻ bằng 1/10 lương người: host hạng trung Hàng Châu dưới 20.000 NDT/tháng (36Kr qua Tech Times); part-time 100–150 NDT/giờ; luật gắn nhãn AI từ 01/02/2026; mẫu Việt Nam giữ việc bằng 3 kỹ năng AI chưa có."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
