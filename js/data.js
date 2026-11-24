@@ -74,6 +74,7 @@
    articles-doi-song-2026-11-23 adds 5 Đời Sống articles (23/11/2026, Monday): 1 seasonal keyword "kế hoạch kinh doanh năm mới 2027" #10/10 CUOI vong 1 (2,066 words, deep; e-Conomy SEA 2026 05/11/2026 — kinh te so 49 ty USD +20%, TMDT 32 ty USD +22%; Tet 06/02/2027) + 3 news "("tháng 1 du lịch đâu đẹp nhất" 1,292 words; "ngủ trưa 26 phút" 1,423 words; "chi tiêu Giáng sinh 2026" 1,343 words) + 1 cafe "quán cafe check-in đẹp Cafe Đinh Hà Nội" 1,149 words. Total 650 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-dang-hot-2026-11-23 adds 4 Dang hot articles (23/11/2026, Monday): 1 seasonal keyword 'cach nhap hang 1688' #6/10 VONG 2 (GOC MOI: chon xuong uy tin tren 1688 + dat hang Tet truoc khi xuong nghi — Super Factory, giay phep kinh doanh, 4 buoc kiem tra; wiki.1688.com 29/07/2026 — xuong chua kiem tra tranh chap cao hon 67%; lich TradeRouteGuide 10/11/2026: xuong ngung ~26/01/2027, tau cuoi 15-25/01/2027, dat truoc 10/12/2026) + 3 news (Nintendo Switch 2 BF 2026: bundle Mario Kart World 499,99 USD, giam 50 USD, 22/11-05/12/2026, cong bo 12/11/2026; Dyson BF 2026: giam toi 400 USD toi 28/11/2026, Amazon toi 251 USD, Airwrap i.d. 499,99 USD — DealNews 20/11/2026; LEGO BF 2026: 283 bo gia thap nhat tung ghi nhan — BrickSleuth 19/11/2026, Amazon toi 40%, Walmart hon 40 bo toi 44% — PopSci 09/11/2026). SEO V2 (title suffix + link boxes). Total 654 articles (node) / 653 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-doi-song-2026-11-24 adds 5 Đời Sống articles (24/11/2026, Tuesday): 1 seasonal keyword "mẫu livestream kiếm tiền Tết" #1/10 VONG 2 goc moi (2,151 words, deep; e-Conomy SEA 2026 05/11/2026 — TMDT 32 ty USD +22%; luong le 400% Dieu 98 BLLD 2019; dang ky chien dich 12.12 het 25/11/2026) + 3 news "("tháng 12 du lịch đâu đẹp nhất" Sapa 1,462 words; "mua sắm Black Friday 2026" 1,559 words; "uống cà phê lúc nào tốt nhất" 1,534 words) + 1 cafe "quán cafe check-in đẹp Gem Valley Sapa" 1,630 words. Total 677 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-24 adds 4 Cong nghe articles (24/11/2026, Tuesday): 1 seasonal keyword 'TikTok Shop Affiliate Tet' #6/10 VONG 2 (GOC MOI so voi vong 1 16/11 'hoa hong nhan doi den 30/11': cong thuc hoa hong khi giam gia — san pham 40 USD, 15%, giam 30% do shop tra con 4,20 USD/don, can 143 don moi bang 100 don gia goc; tien ve ngay thu 15 sau giao (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay; han dang ky chien dich 12.12 VN het 25/11/2026; ugc.live 15/11/2026 + Modern Retail 09/11 + SMT 10/11) + 3 news (Meta Advantage+ thang 11/2026: video tu anh tinh mo cho moi nha quang cao tu thang 10/2026, tro ly AI dung chien dich con thu nghiem — Kult Studios 10/11/2026; video AI lam clip san pham 12.12: 7 mo hinh thu tren 1 anh ngay 11/11/2026, clip 0,18-1,17 USD — GenMagic 11/11/2026; Instagram thang 11/2026: gan link Amazon affiliate trong Reels tu 16/11 + chan Reels bi danh cap tu 17/11 — Geekout 20/11/2026). SEO V2 (title suffix + link boxes). Total 664 articles (node) / 663 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-23 adds 4 Dong tien articles (23/11/2026, Monday): 1 seasonal keyword #1 VONG 2 'doanh thu shop online Tet' (deep, goc MOI: doanh thu that quy 4/2026 + 3 moc chot so 12.12 - Giang sinh - Tet 06/02/2027 + chot so SAU Tet; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 3 news 22-23/11 (Bitcoin hoi len 61.000 USD sang 23/11, ngay tang thu 2 sau day 55.130 USD 21/11, thanh ly 2,56 ty USD 22/11 + PCE My tang 3,8% thang 10, cong bo thu Tu 25/11, Fed hop 09/12 voi 97,9% dat cuoc tang lai suat + gia vang hom nay 23/11: the gioi hoi 3.577 USD +1,3%, SJC dung yen 128,5-133,5 trieu — chu de top tu khoa Google #1 CHUA TEST). SEO V2 (title suffix + link boxes). Total 637 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17448,6 +17449,66 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Xu huong mua hang moi: AI mua ho — nguoi dung AI mua xong bang AI tang tu 10% len 17%; don mua ho qua vi Link tang 38 lan/thang; chi 11% san sang de AI tu quyet; thi truong 190-385 ty USD toi 2030 (McKinsey; WooCommerce 19/11/2026; Gartner 05/2026)."
+  },
+  {
+   "title": "Mẫu livestream kiếm tiền Tết: bảng giá ca live",
+   "cat": "Đời Sống",
+   "source": "e-Conomy SEA 2026 (Google, Temasek, Bain & Company)",
+   "date": "2026-11-24",
+   "url": "https://en.vietstock.vn/2026/11/viet-nams-digital-economy-to-reach-49-billion-in-2026-fastest-growing-in-southeast-asia-38-646428.htm",
+   "page": "bai-viet/mau-livestream-kiem-tien-tet-bang-gia-ca-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-kiem-tien-tet-bang-gia-ca-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thương mại điện tử Việt Nam được dự báo đạt 32 tỷ USD năm 2026, tăng 22% (e-Conomy SEA 2026, công bố 05/11/2026), nên mẫu livestream chốt ca Tết đợt 1 trước 12.12 và dùng mức 400% làm căn cứ thương lượng lương ngày lễ Tết."
+  },
+  {
+   "title": "Tháng 12 du lịch đâu đẹp nhất? Sapa săn mây",
+   "cat": "Đời Sống",
+   "source": "Sapa Nomad",
+   "date": "2026-11-24",
+   "url": "https://sapanomad.com/sapa-in-december/",
+   "page": "bai-viet/thang-12-du-lich-dau-dep-nhat-sapa-san-may.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thang-12-du-lich-dau-dep-nhat-sapa-san-may.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Sapa tháng 12 lạnh 8–15°C, biển mây đẹp nhất từ 5:30–7:30 sáng, vé cáp treo Fansipan 850.000 đồng khứ hồi theo giá công bố 2026 kiểm chứng ngày 24/11/2026 — đi cuối tuần để kịp chợ tình tối thứ 7."
+  },
+  {
+   "title": "Mua sắm Black Friday 2026: 5 bẫy tâm lý",
+   "cat": "Đời Sống",
+   "source": "Adobe",
+   "date": "2026-11-24",
+   "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record",
+   "page": "bai-viet/mua-sam-black-friday-2026-5-bay-tam-ly.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-black-friday-2026-5-bay-tam-ly.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua sắm Black Friday 2026 (27/11/2026): 5 bẫy neo giá, khan hiếm giả, BNPL, FOMO và giỏ hàng — Adobe dự báo chi online lễ 2026 của Mỹ đạt 275,1 tỷ USD, theo dự báo công bố ngày 28/09/2026."
+  },
+  {
+   "title": "Uống cà phê lúc nào tốt nhất? Sau 9h30",
+   "cat": "Đời Sống",
+   "source": "Cleveland Clinic",
+   "date": "2026-11-24",
+   "url": "https://health.clevelandclinic.org/best-time-to-drink-coffee",
+   "page": "bai-viet/uong-ca-phe-luc-nao-tot-nhat-sau-9h30.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/uong-ca-phe-luc-nao-tot-nhat-sau-9h30.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Uống cà phê lúc nào tốt nhất: ly đầu 9h30–11h sáng khi cortisol đã hạ, ly cuối cách giờ ngủ ít nhất 8 giờ — Cleveland Clinic, bài đăng ngày 17/11/2023; caffeine uống trước giờ ngủ 6 giờ vẫn làm mất hơn 1 giờ ngủ (Drake và cộng sự, 2013)."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Gem Valley Sapa",
+   "cat": "Đời Sống",
+   "source": "Sapa Nomad",
+   "date": "2026-11-24",
+   "url": "https://sapanomad.com/gem-valley-art-gallery-coffee-homestay-review/",
+   "page": "bai-viet/quan-cafe-check-in-dep-gem-valley-sapa.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-gem-valley-sapa.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Gem Valley Coffee, 08 Cát Cát, Sa Pa, Lào Cai, mở cửa 7:00–22:00, cà phê từ khoảng 40.000 đồng, giờ vàng chụp ảnh là sáng sớm và chiều muộn khi mây tràn thung lũng Mường Hoa."
   }
 ],
  "lots": [
