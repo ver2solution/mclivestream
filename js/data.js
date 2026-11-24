@@ -110,6 +110,7 @@
    articles-xu-huong-2026-11-21 adds 4 Xu hướng articles (21/11/2026, Saturday): 1 seasonal keyword "xu hướng bán hàng Giáng sinh" #8/10 (deep, 2.444 words; Adobe 28/09/2026: 275,1 ty USD +6,7%, Cyber Monday 15,1 ty, Black Friday 12,9 ty, mobile 57,4%, AI +130%) + 3 news ("AI mua hàng" ChatGPT Wallet 13/11/2026, FinTech Futures 17/11/2026, 2.324 words; "quà Giáng sinh đã qua sử dụng" ThredUp 26/10/2026, 62%, FashionUnited 28/10/2026, 2.171 words; "KOC dẫn khách mua quà lễ" Syracuse 16/11/2026, 77%, 2.251 words). Zalo rotation 21/11 is topic #4 (Phan tich) — no rotation article in this batch. Total 548 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-22 adds 4 Xu hướng articles (22/11/2026, Sunday): 1 seasonal keyword "xu hướng thị trường Tết Đinh Mùi" #9/10 (deep, 2.817 words; Coc Coc 09/2026: 51% chi nhieu hon, 61% nhom 18-29, qua Brands Vietnam 16/11/2026) + 3 news ("Gen Z mua sắm lễ 2026" Deloitte 15/10/2026, 50%, 2.063 words; "livestream mua sắm lễ 2026" for.you.com 27/10/2026, LIVE x2, 2.005 words; "ngân sách mua sắm lễ 2026" BMO 19/11/2026, 2.198 USD, 2.304 words). Zalo rotation 22/11 is topic #5 (Dong tien) — no rotation article in this batch. Total 598 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-23 adds 4 Xu hướng articles (23/11/2026, Monday): 1 seasonal keyword "xu hướng tiêu dùng cuối năm 2026" #10/10 (deep, LAST of round 1; Adobe 28/09/2026: 275,1 ty USD +6,7%, mobile 57,4%, AI +130%; NRF 20/10/2026; Deloitte 15/10/2026; PwC 19/11/2026; BMO 19/11/2026) + 3 news ("Target quý 3/2026" Target 18/11/2026, 27,1 ty USD +7,1%, online +9,8%; "thẻ quà tặng lễ 2026" NRF 20/10 + 30/10-09/11/2026, 47% muon nhan vs 39% dinh tang, 26,8 ty USD; "AI mua sắm lễ 2026" PwC 19/11/2026, 36% dung AI). Zalo rotation 23/11 is topic #1 (Livestream) — no rotation article in this batch. Total 640 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
+   articles-xu-huong-2026-11-24 adds 4 Xu hướng articles (24/11/2026, Tuesday): 1 seasonal keyword "xu hướng bán hàng online 2027" #1/10 VONG 2 (deep, goc moi: chuan bi 2027 tu thang 11/2026; e-Conomy SEA 05/11/2026: TMDT 32 ty USD +22%, 44% hanh trinh mua bat dau bang AI; han dang ky TikTok Shop 12.12 het 25/11/2026) + 2 chu de tuan "thi truong phu kien trang suc" (WGC 03/11/2026: trang suc vang Q3 -17% con 313 tan; The Knot 18/02/2026: kim cuong nuoi cay 61% nhan dinh hon) + 1 Zalo rotation #2 "xu huong mua hang moi" (agentic commerce; McKinsey 10%->17%; WooCommerce 19/11/2026; VIET CUOI, entry cuoi data.js). Total 671 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -17399,7 +17400,55 @@ window.V20_DATA = {
 {"title":"PNJ lỗ 258 tỷ quý 3/2026: shop nhỏ bán trang sức học gì","cat":"Hàng hoá","source":"Stockbiz","date":"2026-11-24","url":"https://stockbiz.vn/en/news/pnj-nearly-vnd-1700-billion-provision-for-diamond-losses/42565113","page": "bai-viet/pnj-lo-258-ty-quy-3-2026-shop-nho-ban-trang-suc-hoc-gi.html","img":"https://vieclamlivestream.online/images/bai-viet/pnj-lo-258-ty-quy-3-2026-shop-nho-ban-trang-suc-hoc-gi.jpg","pinned":false,"takeaway":"PNJ lỗ 258 tỷ đồng quý 3/2026 (doanh thu 6.995 tỷ, -14%; lãi gộp 609 tỷ, -62%; biên 8,7% từ 19,8%); tồn kho 18.855 tỷ, dự phòng kim cương 1.685 tỷ; bán lẻ -20%, bán sỉ +69%; 9 tháng lãi 471 tỷ, -71% (BCTC PNJ công bố 30/10/2026)."},
 {"title":"Phụ kiện trang sức TikTok Shop: tìm vàng tăng 1.134%","cat":"Hàng hoá","source":"TokConnect","date":"2026-11-24","url":"https://tokconnect.com/trends/tiktok-shop/black-friday-2026/","page": "bai-viet/phu-kien-trang-suc-tiktok-shop-vang-duoc-tim-tang-1134-phan-tram.html","img":"https://vieclamlivestream.online/images/bai-viet/phu-kien-trang-suc-tiktok-shop-vang-duoc-tim-tang-1134-phan-tram.jpg","pinned":false,"takeaway":"Phụ kiện thời trang bán 39,9 triệu USD trong 7 ngày tới 21/11/2026 trên TikTok Shop Mỹ, +7,8%, 14.782 shop; tìm kiếm trang sức vàng tăng 1.134%, nhẫn opal +825%, #friendshipbracelet +120%; 4 nhóm quà tặng 303,1 triệu USD, +7,6% (TokConnect 23/11/2026; số liệu TikTok tháng 9–10/2026)."},
 {"title":"Gối ôm Hello Kitty 3.300 yên giúp ngồi thẳng, bán 26/11","cat":"Hàng hoá","source":"SoraNews24","date":"2026-11-24","url":"https://soranews24.com/2026/11/22/hello-kitty-would-like-to-be-squeezed-between-your-thighs-in-her-new-plushie-form-pics/","page": "bai-viet/goi-om-hello-kitty-3300-yen-giup-ngoi-thang-ban-26-11.html","img":"https://vieclamlivestream.online/images/bai-viet/goi-om-hello-kitty-3300-yen-giup-ngoi-thang-ban-26-11.jpg","pinned":false,"takeaway":"Gối ôm Hello Kitty Mugyuuus 420 gam, giá 3.300 yên (21 USD), mở bán 26/11/2026 tại Nhật Bản; 6 nhân vật Sanrio; hãng Dreams nói giúp tập cơ đùi và cải thiện tư thế khi ngồi làm việc (SoraNews24 22/11/2026; ảnh: PR Times)."},
-{"title":"Giỏ quà Tết 2026: 5 sai lầm khiến shop tồn kho sau Tết","cat":"Hàng hoá","source":"Metric (qua Brands Vietnam)","date":"2026-11-24","url":"https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt","page": "bai-viet/gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet.html","img":"https://vieclamlivestream.online/images/bai-viet/gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet.jpg","pinned":false,"takeaway":"Giỏ quà Tết 2026: thị trường Tết 73,7 nghìn tỷ đồng/9 tuần, +51%; 5 sai lầm khiến shop tồn kho — một mức giá, nhập muộn sau 10/12/2026, giỏ sẵn lãi mỏng, quên phí sàn 11,6%, không có giỏ doanh nghiệp; giỏ 500.000–750.000 đồng bán chạy nhất (Metric 12/01/2026)."}
+{"title":"Giỏ quà Tết 2026: 5 sai lầm khiến shop tồn kho sau Tết","cat":"Hàng hoá","source":"Metric (qua Brands Vietnam)","date":"2026-11-24","url":"https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt","page": "bai-viet/gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet.html","img":"https://vieclamlivestream.online/images/bai-viet/gio-qua-tet-2026-5-sai-lam-khien-shop-ton-kho-sau-tet.jpg","pinned":false,"takeaway":"Giỏ quà Tết 2026: thị trường Tết 73,7 nghìn tỷ đồng/9 tuần, +51%; 5 sai lầm khiến shop tồn kho — một mức giá, nhập muộn sau 10/12/2026, giỏ sẵn lãi mỏng, quên phí sàn 11,6%, không có giỏ doanh nghiệp; giỏ 500.000–750.000 đồng bán chạy nhất (Metric 12/01/2026)."},
+  {
+   "title": "Xu hướng bán hàng online 2027: 5 việc làm ngay từ tháng 11",
+   "cat": "Xu hướng",
+   "source": "Vietstock",
+   "date": "2026-11-24",
+   "url": "https://en.vietstock.vn/2026/11/viet-nams-digital-economy-to-reach-49-billion-in-2026-fastest-growing-in-southeast-asia-38-646428.htm",
+   "page": "bai-viet/xu-huong-ban-hang-online-2027-5-viec-lam-ngay-tu-thang-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-ban-hang-online-2027-5-viec-lam-ngay-tu-thang-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong ban hang online 2027: TMDT Viet Nam 32 ty USD (+22%), kinh te so 49 ty USD (+20%); 44% hanh trinh mua bat dau bang AI; han dang ky TikTok Shop 12.12 het 25/11/2026; Tet Dinh Mui 06/02/2027 (e-Conomy SEA 05/11/2026; Z Media 10/2026)."
+  },
+  {
+   "title": "Thị trường phụ kiện trang sức: vàng đắt, đồ nhẹ thắng",
+   "cat": "Xu hướng",
+   "source": "World Gold Council",
+   "date": "2026-11-24",
+   "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026",
+   "page": "bai-viet/thi-truong-phu-kien-trang-suc-vang-dat-do-nhe-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-phu-kien-trang-suc-vang-dat-do-nhe-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thi truong phu kien trang suc: nhu cau trang suc vang Q3/2026 giam 17% con 313 tan (thap nhat lich su quy 3); gia vang trung binh 4.262 USD/ounce; gia tri van tang 2% len 43 ty USD; Trung Quoc -22%, An Do -20% (WGC 03/11/2026)."
+  },
+  {
+   "title": "Kim cương nuôi cấy chiếm 61% nhẫn đính hôn Mỹ",
+   "cat": "Xu hướng",
+   "source": "The Knot",
+   "date": "2026-11-24",
+   "url": "https://www.theknotww.com/news/the-knot-worldwide-unveils-2026-real-weddings-study-5",
+   "page": "bai-viet/kim-cuong-nuoi-cay-61-phan-tram-nhan-dinh-hon-my.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kim-cuong-nuoi-cay-61-phan-tram-nhan-dinh-hon-my.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kim cuong nuoi cay chiem 61% nhan dinh hon tai My nam 2025 (+239% so voi 2020); gia ban le 1 carat 564 USD thang 05/2026, re hon 80-90% so voi da tu nhien; gia ban buon giam khoang 92% tu 2018 (The Knot 18/02/2026; StoneAlgo 05/2026)."
+  },
+  {
+   "title": "Xu hướng mua hàng mới: AI mua hộ, shop nhỏ làm gì?",
+   "cat": "Xu hướng",
+   "source": "WooCommerce",
+   "date": "2026-11-24",
+   "url": "https://woocommerce.com/posts/agentic-commerce-payments/",
+   "page": "bai-viet/xu-huong-mua-hang-moi-ai-mua-ho-shop-nho-lam-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-hang-moi-ai-mua-ho-shop-nho-lam-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong mua hang moi: AI mua ho — nguoi dung AI mua xong bang AI tang tu 10% len 17%; don mua ho qua vi Link tang 38 lan/thang; chi 11% san sang de AI tu quyet; thi truong 190-385 ty USD toi 2030 (McKinsey; WooCommerce 19/11/2026; Gartner 05/2026)."
+  }
 ],
  "lots": [
    {
