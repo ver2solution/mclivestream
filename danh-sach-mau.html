@@ -286,6 +286,25 @@
 <script>
 window.__v199_newobj = '';
 try { window.__v199_newobj = new URLSearchParams(location.search).get('newobj') || ''; } catch (e) {}
+/* v421 (24/11/2026, fix 2/8 FAIL kiem live v408): bam nut khi app.js da gan
+   listener — tu v374 (20/11) js/app.js tren trang Mau chay defer nen
+   DOMContentLoaded cua script nay dang ky TRUOC app.js: bam ngay thi nut
+   chua co listener (initUniCatSwitch chay trong initList), click roi vao
+   khoang trong, initList sau do render mac dinh 'model'. Trang Shop/Kiot
+   dung app.js dong bo nen khong loi. Sua: bam lai moi 50ms toi khi nut
+   co class .active (setCat bat dong bo khi click), toi da 3s; qua 3s thi
+   thoi (giong hanh vi cu, khong treo trang). KHONG cuon trang (v207). */
+function clickUniCatWhenReady(btn, done){
+  if(!btn){ if(typeof done === 'function') done(false); return; }
+  var tries = 0;
+  (function attempt(){
+    try { btn.click(); } catch (e) {}
+    if(btn.classList && btn.classList.contains('active')){ if(typeof done === 'function') done(true); return; }
+    tries++;
+    if(tries >= 60){ if(typeof done === 'function') done(false); return; }
+    setTimeout(attempt, 50);
+  })();
+}
 document.addEventListener('DOMContentLoaded', function(){
   var ncat = window.__v199_newobj || '';
   /* v307 (F-R2-10, 17/11/2026): muc event-mkt / class-live / class-makeup
@@ -300,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   if(ncat === 'logistics' || ncat === 'agency-ads'){
     var nbtn = document.querySelector('.uni-cat-btn[data-uni-cat="' + ncat + '"]');
-    if(nbtn) nbtn.click();
+    clickUniCatWhenReady(nbtn);
     return;
   }
   var map = {
@@ -310,11 +329,12 @@ document.addEventListener('DOMContentLoaded', function(){
   var cfg = map[location.hash || ''];
   if(!cfg) return;
   var btn = document.querySelector('.uni-cat-btn[data-uni-cat="' + cfg.cat + '"]');
-  if(btn) btn.click();
-  var s = document.getElementById(cfg.sectionId);
-  if(s) s.classList.remove('collapsed');
-  var b = document.getElementById(cfg.moreBtnId);
-  if(b){ b.setAttribute('aria-expanded', 'true'); b.textContent = 'Thu gọn ↑'; }
+  clickUniCatWhenReady(btn, function(){
+    var s = document.getElementById(cfg.sectionId);
+    if(s) s.classList.remove('collapsed');
+    var b = document.getElementById(cfg.moreBtnId);
+    if(b){ b.setAttribute('aria-expanded', 'true'); b.textContent = 'Thu gọn ↑'; }
+  });
 });
 </script>
 <script>
