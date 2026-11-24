@@ -1303,14 +1303,15 @@
     var st = TASK_STATUS[t.status] || TASK_STATUS.chua_xu_ly;
     var cat = taskCategory(t);
     var canEdit = taskCanEdit(t);
+    // v407 (24/11/2026): muc thu gon mac dinh — chi hien tieu de tom tat +
+    // nut trang thai + nut "Chi tiet"; meta/noi dung/ghi chu sua + nut
+    // Sua/Khong phai van de/Xoa nam trong .adm-task-detail (an, bam
+    // "Chi tiet" moi mo). O nhap "da sua the nao" (fixnote) o NGOAI
+    // detail vi nut trang thai (van hien khi thu gon) mo no khi chuyen
+    // sang "Da xong"; form sua nam TRONG detail vi nut Sua o trong do.
     var html = '<div class="adm-task-item" data-tid="' + esc(t.id) + '">'
       + '<p class="adm-task-title"><span class="adm-task-cat ' + cat.cls + '">' + esc(cat.label) + '</span> ' + esc(t.title) + '</p>'
-      + '<p class="adm-task-meta">' + esc(taskAuthorName(t.author_email)) + ' · '
-      + esc(t.location || 'Chưa rõ vị trí') + ' · ' + esc(vnDate(t.created_at))
-      + (t.status === 'da_xong' && t.completed_at ? ' · xong ' + esc(vnDate(t.completed_at)) : '') + '</p>';
-    if (t.body) html += '<p class="adm-task-body">' + esc(t.body) + '</p>';
-    if (t.fix_note) html += '<p class="adm-task-fix">Đã sửa: ' + esc(t.fix_note) + '</p>';
-    html += '<p style="margin:6px 0 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
+      + '<p style="margin:6px 0 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
     // Task "Không phải vấn đề" chỉ tác giả/owner mới khôi phục được
     // (server chặn) nên với bên khác hiển thị nhãn tĩnh, không bấm được.
     if (t.status === 'khong_phai_van_de' && !canEdit) {
@@ -1318,21 +1319,23 @@
     } else {
       html += '<button class="adm-task-st ' + st.cls + '" data-adm-act="cycle-task" data-id="' + esc(t.id) + '" data-status="' + esc(t.status) + '" type="button" title="Bấm để đổi trạng thái">' + esc(st.label) + '</button>';
     }
+    html += '<button class="btn btn-ghost btn-sm" data-adm-act="toggle-task-detail" data-id="' + esc(t.id) + '" type="button" aria-expanded="false">Chi tiết ▸</button>';
+    html += '</p>';
+    html += '<div class="adm-task-detail" hidden>'
+      + '<p class="adm-task-meta">' + esc(taskAuthorName(t.author_email)) + ' · '
+      + esc(t.location || 'Chưa rõ vị trí') + ' · ' + esc(vnDate(t.created_at))
+      + (t.status === 'da_xong' && t.completed_at ? ' · xong ' + esc(vnDate(t.completed_at)) : '') + '</p>';
+    if (t.body) html += '<p class="adm-task-body">' + esc(t.body) + '</p>';
+    if (t.fix_note) html += '<p class="adm-task-fix">Đã sửa: ' + esc(t.fix_note) + '</p>';
     if (canEdit) {
+      html += '<p style="margin:6px 0 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
       html += '<button class="btn btn-ghost btn-sm" data-adm-act="edit-task" data-id="' + esc(t.id) + '" type="button">Sửa</button>';
       if (t.status !== 'khong_phai_van_de') {
         html += '<button class="btn btn-ghost btn-sm" data-adm-act="notissue-task" data-id="' + esc(t.id) + '" type="button">Không phải vấn đề</button>';
       }
       html += '<button class="btn btn-ghost btn-sm" data-adm-act="delete-task" data-id="' + esc(t.id) + '" type="button">Xóa</button>';
+      html += '</p>';
     }
-    html += '</p>';
-    // v118b: ô nhập "đã sửa thế nào" — hiện khi bấm trạng thái để đánh
-    // 'da_xong' (2 bước, không dùng window.prompt — xem v222). Server
-    // chặn đánh xong khi trống (RPC admin_set_task_status).
-    html += '<div class="adm-task-fixnote" data-fixnote-for="' + esc(t.id) + '" hidden>'
-      + '<p style="margin:8px 0 4px"><label>Đã sửa thế nào? *<br><input type="text" maxlength="500" value="' + esc(t.fix_note || '') + '" data-fixnote-field="note" placeholder="VD: Chuyển luật CSS lên head, CLS về 0,0045" style="width:100%"></label></p>'
-      + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="confirm-done-task" data-id="' + esc(t.id) + '" type="button">Xác nhận xong</button> '
-      + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-done-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
     // Form sửa nội tuyến (ẩn mặc định, chỉ hiện khi bấm Sửa).
     if (canEdit) {
       html += '<div class="adm-task-edit" data-edit-for="' + esc(t.id) + '" hidden>'
@@ -1348,6 +1351,14 @@
         + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="save-task" data-id="' + esc(t.id) + '" type="button">Lưu</button> '
         + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
     }
+    html += '</div>';
+    // v118b: ô nhập "đã sửa thế nào" — hiện khi bấm trạng thái để đánh
+    // 'da_xong' (2 bước, không dùng window.prompt — xem v222). Server
+    // chặn đánh xong khi trống (RPC admin_set_task_status).
+    html += '<div class="adm-task-fixnote" data-fixnote-for="' + esc(t.id) + '" hidden>'
+      + '<p style="margin:8px 0 4px"><label>Đã sửa thế nào? *<br><input type="text" maxlength="500" value="' + esc(t.fix_note || '') + '" data-fixnote-field="note" placeholder="VD: Chuyển luật CSS lên head, CLS về 0,0045" style="width:100%"></label></p>'
+      + '<p style="margin:6px 0 0"><button class="btn btn-primary btn-sm" data-adm-act="confirm-done-task" data-id="' + esc(t.id) + '" type="button">Xác nhận xong</button> '
+      + '<button class="btn btn-ghost btn-sm" data-adm-act="cancel-done-task" data-id="' + esc(t.id) + '" type="button">Hủy</button></p></div>';
     return html + '</div>';
   }
   function taskFilters() {
@@ -1989,6 +2000,16 @@
         var itemElC = btn.closest ? btn.closest('.adm-task-item') : null;
         var fixElC = itemElC ? itemElC.querySelector('.adm-task-fixnote') : null;
         if (fixElC) fixElC.hidden = true;
+      } else if (act === 'toggle-task-detail') {
+        // v407 (24/11/2026): thu gon/mo chi tiet task — chi an/hien
+        // .adm-task-detail, khong goi RPC, khong tai lai danh sach.
+        var itemElT = btn.closest ? btn.closest('.adm-task-item') : null;
+        var detEl = itemElT ? itemElT.querySelector('.adm-task-detail') : null;
+        if (!detEl) return;
+        var open = detEl.hidden;
+        detEl.hidden = !open;
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'Ẩn chi tiết ▾' : 'Chi tiết ▸';
       } else if (act === 'edit-task') {
         var itemEl = btn.closest ? btn.closest('.adm-task-item') : null;
         var editEl = itemEl ? itemEl.querySelector('.adm-task-edit') : null;
