@@ -17202,6 +17202,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Hoa Thiếu 609 tỷ, Uông Hàm 546 tỷ, Lưu Đào 518 tỷ, La Vĩnh Hạo 385 tỷ đồng trong buổi live đầu tiên năm 2020. So sánh 4 buổi live đầu và cái giá 6 năm sau cho shop Việt trước Black Friday 27/11."
   },
+  {
+   "title": "Livestream bán hàng bị bóp reach dịp Tết: xem giảm 31%",
+   "cat": "Livestream",
+   "source": "KampaignLab",
+   "date": "2026-11-24",
+   "url": "https://www.kampaignlab.com/social-media-marketing/tiktok-in-2026-where-organic-reach-stands-now",
+   "page": "bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán hàng bị bóp reach dịp Tết: lượt xem mỗi bài giảm 31%, reach giảm 29% trong khi lượng video tăng 72% (Metricool 05/2026); chẩn đoán bằng 4 chỉ số — lượt xem, tương tác theo lượt xem, tỷ lệ For You và sức khỏe shop — trước khi sửa."
+  },
+  {
+   "title": "Livestream bán hàng Tết: 5 nhóm hàng bán chạy nhất",
+   "cat": "Livestream",
+   "source": "TokConnect",
+   "date": "2026-11-24",
+   "url": "https://tokconnect.com/trends/tiktok-shop/black-friday-2026/",
+   "page": "bai-viet/livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán hàng Tết: 5 nhóm hàng bán chạy nhất trong 7 ngày tới 21/11/2026 là mỹ phẩm 168,9 triệu USD, thời trang nữ 104,9 triệu USD, thể thao 59,1 triệu USD, điện tử 53,2 triệu USD (+31,9%) và đồ gia dụng 41,1 triệu USD (TokConnect 23/11/2026)."
+  },
+  {
+   "title": "Livestream TikTok bán hàng: 543 triệu USD trong 7 ngày",
+   "cat": "Livestream",
+   "source": "TokConnect",
+   "date": "2026-11-24",
+   "url": "https://tokconnect.com/trends/tiktok-shop/top-live/",
+   "page": "bai-viet/livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream TikTok bán hàng: 8 ngành lớn bán 543,5 triệu USD trong 7 ngày tới 21/11/2026; medicube dẫn đầu live với 9,35 triệu USD trong 30 ngày, phiên mạnh nhất 208.700 USD trong 6 giờ (TokConnect 23/11/2026)."
+  },
+  {
+   "title": "Livestream 12.12: đăng ký trước 25/11, 7 việc phải xong",
+   "cat": "Livestream",
+   "source": "z.media",
+   "date": "2026-11-24",
+   "url": "https://www.z.media/insights/tiktok-shop-mega-sales-calendar-2026",
+   "page": "bai-viet/livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream 12.12: cửa đăng ký chiến dịch đóng 25/11/2026, sale 12–14/12/2026 (z.media 10/2026, ngày ước tính); 7 việc phải xong: SPS từ 3,5, AHR trên 150, giao muộn dưới 20%, đăng ký sản phẩm, niêm yết trước 2 tuần, tính phí, lịch giao hàng."
+  }
 ],
  "lots": [
    {
