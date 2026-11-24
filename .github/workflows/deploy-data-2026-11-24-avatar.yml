@@ -1,0 +1,51 @@
+name: Deploy data 2026-11-24 avatar
+
+on:
+  push:
+    paths:
+      - .github/workflows/deploy-data-2026-11-24-avatar.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip data package
+        run: |
+          ls -l
+          test -f mclivestream-data-2026-11-24-avatar-fix-deploy.zip
+          unzip -o mclivestream-data-2026-11-24-avatar-fix-deploy.zip
+          ls -l js/data.js images-new | head -40
+      - name: Verify data package
+        run: |
+          set -e
+          test -f js/data.js
+          test -f images-new/rt-27.jpg
+          test "$(ls images-new/*.jpg | wc -l)" = "26"
+          FAC="$(grep -o '"id": "fac-[0-9]*"' js/data.js | sort -u | wc -l)"
+          echo "factories=$FAC"
+          test "$FAC" = "437"
+          KIOT="$(grep -o '"id": "kiot-[0-9]*"' js/data.js | sort -u | wc -l)"
+          echo "kiots=$KIOT"
+          test "$KIOT" = "381"
+          AV="$(grep -o 'images-new/[a-z0-9-]*\.jpg' js/data.js | sort -u | wc -l)"
+          echo "avatars=$AV"
+          test "$AV" = "26"
+          grep -q 'images-new/rt-27.jpg' js/data.js
+          grep -q 'fac-437' js/data.js
+      - name: Commit data to main
+        run: |
+          git config user.name "ver2solution"
+          git config user.email "ver2solution@users.noreply.github.com"
+          git add -A
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+          git commit -m "Deploy data 2026-11-24 avatar: 437 xuong, 381 kiot, 26 avatar moi (images-new/)"
+          git push origin HEAD:main
