@@ -60,6 +60,19 @@
     return 'Đã có lỗi xảy ra, hãy thử lại sau.';
   }
 
+  // ---- v430 (#66): timeout cho lời gọi mạng auth ----
+  // GoTrue fetch không có timeout mặc định: mạng treo thì promise không
+  // bao giờ settle, guardSubmit không bao giờ mở khóa nút (kẹt chữ
+  // "Đang xử lý…" vĩnh viễn). Hết timeout thì ném lỗi thân thiện →
+  // handler catch → nút mở lại. Race không hủy request gốc (phản hồi
+  // muộn bị bỏ qua). 20 giây: đủ cho mạng chậm, vẫn mở nút kịp lúc.
+  var AUTH_TIMEOUT_MS = 20000;
+  function withAuthTimeout(promise) {
+    return Promise.race([promise, new Promise(function (_, reject) {
+      setTimeout(function () { reject(new Error('Mạng chậm, hãy thử lại sau.')); }, AUTH_TIMEOUT_MS);
+    })]);
+  }
+
   // ---- F-07: chống gửi trùng ----
   // Khóa nút submit (disabled + chữ "Đang xử lý…") + cờ inFlight; mở
   // lại khi xong/lỗi. Lỗi trong fn được ghi console và KHÔNG ném lại —
@@ -650,7 +663,7 @@
         var desiredField = signupField('authSuDesiredField');
         var priorityField = signupField('authSuPriorityField');
         try {
-          var res = await api().signUp({
+          var res = await withAuthTimeout(api().signUp({
             email: email,
             password: p1,
             phoneZalo: normalizePhone(phone),
@@ -659,7 +672,7 @@
             workLocation: workLocation,
             desiredField: desiredField,
             priorityField: priorityField
-          });
+          }));
           if (res && res.session) {
             invalidateSessionCache(); // v165: vo hieu cache phien cu truoc khi showUser() doc
             msg('Đăng ký thành công! Đang chuyển tới trang của bạn…', 'ok');
@@ -807,10 +820,10 @@
         if (bad) return;
         if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
-          var siRes = await api().signIn({
+          var siRes = await withAuthTimeout(api().signIn({
             email: email,
             password: pass
-          });
+          }));
           if (siRes && siRes.session) invalidateSessionCache(); // v165: vo hieu cache phien cu truoc khi showUser() doc
           msg('Đăng nhập thành công.', 'ok');
           await showUser();
@@ -834,7 +847,7 @@
         }
         if (!api()) { msg('Chưa kết nối được Supabase, hãy thử lại sau.', 'err'); return; }
         try {
-          await api().resetPassword(email);
+          await withAuthTimeout(api().resetPassword(email));
           msg('Đã gửi link đặt lại mật khẩu về email đã đăng ký.', 'ok');
         } catch (err) { msg('Gửi link chưa thành công: ' + friendly(err), 'err'); }
       });
@@ -858,7 +871,7 @@
          getSession() luc do van thay user cu neu cache chua xoa → UI render lai
          so du cu va khong bao gio chay lai. */
       invalidateSessionCache();
-      try { if (api()) await api().signOut(); } catch (e) {}
+      try { if (api()) await withAuthTimeout(api().signOut()); } catch (e) {}
       sessionCache = null;
       sessionCacheReady = false;
       so.disabled = false;
