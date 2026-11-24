@@ -186,29 +186,43 @@
     } catch (e4) { /* GĐ2 chưa chạy — bỏ qua, tab Tổng quan vẫn hiện số online */ }
   }
   async function loadOverview() {
-    var rows = await rpc('get_online_breakdown');
-    if (!Array.isArray(rows) || !rows.length) throw new Error('Chưa có dữ liệu online.');
-    var byPage = {};
-    rows.forEach(function (r) { byPage[r.page] = r; });
-    var body = $('qtBody');
-    var html = '';
-    ORDER.forEach(function (k) {
-      var r = byPage[k];
-      if (!r) return;
-      var strong = (k === 'total') ? ' style="font-weight:800;border-top:2px solid #ddd"' : '';
-      html += '<tr' + strong + '><td style="padding:8px;border-bottom:1px solid #eee">' + esc(LABELS[k] || k) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.real_count) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.base_count) + '</td>'
-        + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.display_count) + '</td></tr>';
-    });
-    if (body) body.innerHTML = html;
-    // v200: khối tóm tắt nổi bật Số ảo / Số thật (tổng) — chỉ trong console admin, không lộ ra web công khai.
-    var tot = byPage['total'];
-    var sumEl = $('qtOnlineSummary');
-    if (sumEl && tot) {
-      sumEl.textContent = 'Số ảo (tổng cơ số): ' + fmt(tot.base_count) + ' · Số người thật đang online: ' + fmt(tot.real_count) + ' · Số hiển thị (gộp): ' + fmt(tot.display_count);
-    } else if (sumEl) {
-      sumEl.textContent = 'Chưa có dữ liệu tổng.';
+    /* v427 (24/11/2026, khung chat: 3 khoi Tong quan ket "Dang tai..." >2h):
+       get_online_breakdown loi thi ca ham nem ra ngoai, 2 khoi sau (luot
+       xem that, lich su chuyen xu) + so dem GĐ2 khong bao gio chay va bang
+       giu "Dang tai..." mai. Tach khoi online ra try/catch rieng: loi thi
+       hien loi + huong dan thu lai (bam lai tab Tong quan — tab tu tai lai
+       vi state.loaded.overview chua set), cac khoi khac van chay. */
+    try {
+      var rows = await rpc('get_online_breakdown');
+      if (!Array.isArray(rows) || !rows.length) throw new Error('Chưa có dữ liệu online.');
+      var byPage = {};
+      rows.forEach(function (r) { byPage[r.page] = r; });
+      var body = $('qtBody');
+      var html = '';
+      ORDER.forEach(function (k) {
+        var r = byPage[k];
+        if (!r) return;
+        var strong = (k === 'total') ? ' style="font-weight:800;border-top:2px solid #ddd"' : '';
+        html += '<tr' + strong + '><td style="padding:8px;border-bottom:1px solid #eee">' + esc(LABELS[k] || k) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.real_count) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.base_count) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(r.display_count) + '</td></tr>';
+      });
+      if (body) body.innerHTML = html;
+      // v200: khối tóm tắt nổi bật Số ảo / Số thật (tổng) — chỉ trong console admin, không lộ ra web công khai.
+      var tot = byPage['total'];
+      var sumEl = $('qtOnlineSummary');
+      if (sumEl && tot) {
+        sumEl.textContent = 'Số ảo (tổng cơ số): ' + fmt(tot.base_count) + ' · Số người thật đang online: ' + fmt(tot.real_count) + ' · Số hiển thị (gộp): ' + fmt(tot.display_count);
+      } else if (sumEl) {
+        sumEl.textContent = 'Chưa có dữ liệu tổng.';
+      }
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.error) { try { console.error('[loadOverview] get_online_breakdown', e); } catch (_) {} }
+      var bodyErr = $('qtBody');
+      if (bodyErr) bodyErr.innerHTML = '<tr><td colspan="4" style="padding:8px;color:#b3261e">Không tải được số người online — bấm lại tab Tổng quan để thử lại.</td></tr>';
+      var sumErr = $('qtOnlineSummary');
+      if (sumErr) sumErr.textContent = 'Không tải được số người online.';
     }
     // Lượt xem thật 24 giờ qua (không bắt buộc).
     try {
