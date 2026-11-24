@@ -4904,11 +4904,16 @@ function scrollToResults(category){
 /* v118 (P2-4): goi y "Cần đăng nhập — ..." chi hien khi CHUA dang nhap.
    Trang thai doi trong phien (dang nhap/xuat o form cuoi trang) thi an/
    hien theo qua onSessionChange; luc mo trang kiem tra 1 lan qua
-   getSession. Khong co V2SAuthUI thi giu nguyen hien thi (mac dinh an toan). */
+   getSession. Khong co V2SAuthUI thi giu nguyen hien thi (mac dinh an toan).
+   #21 khung chat (24/11/2026): selector cu '.filter-hint' an NHAM ca goi y
+   chung "Chọn tiêu chí rồi bấm Áp dụng để lọc." (danh-sach-mau/shop) + TOAN
+   BO goi y huong dan tren console quan-tri.html khi da dang nhap — vi hien
+   khong con phan tu .filter-hint nao la goi y "Cần đăng nhập". Tu nay chi
+   an cac hint danh dau rieng data-login-only; hint chung luon hien. */
 function initFilterHint(){
   if (typeof document === 'undefined' || typeof document.querySelectorAll !== 'function') return;
   function apply(loggedIn){
-    var hints = document.querySelectorAll('.filter-hint');
+    var hints = document.querySelectorAll('.filter-hint[data-login-only]');
     for (var i = 0; i < hints.length; i++) { hints[i].hidden = !!loggedIn; }
   }
   try {
