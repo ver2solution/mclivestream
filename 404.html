@@ -23,6 +23,9 @@
 <main class="wrap">
 <!-- v267 (route /bai/, 15/11/2026): trang 404 có thương hiệu + chuyển hướng
      đường dẫn bài cũ /bai/<slug> và /bai/<slug>.html sang /bai-viet/<slug>.html.
+     v424 (24/11/2026, P1 /api/bai khung chat): thêm /api/bai/<slug> (có/không
+     .html) — 3 URL MC báo 404, 31 URL gốc chờ Rion gửi; 1 regex này xử hết
+     (kể cả URL chưa biết) thay vì tạo từng file stub.
      GitHub Pages không có chuyển hướng phía server nên chuyển bằng JS ngay
      khi tải trang; người tắt JS vẫn thấy link bấm tay. Các đường dẫn khác
      hiện trang 404 bình thường. -->
@@ -43,7 +46,10 @@
   var btn=document.getElementById('menuBtn'), nav=document.getElementById('mainNav');
   if(btn&&nav){ btn.addEventListener('click',function(){ var open=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',open?'true':'false'); }); }
   var path=window.location.pathname.replace(/\/+$/,'');
-  var m=path.match(/^\/bai\/([^\/]+?)(\.html)?$/);
+  /* v424: /api/bai/<slug> cung ve /bai-viet/<slug>.html (P1 /api/bai 404).
+     Regex cu chi co /bai/ — them nhanh api/bai de xu ly ca 31 URL goc
+     (chi biet 3 URL khi code) ma khong can file stub rieng tung URL. */
+  var m=path.match(/^\/(?:bai|api\/bai)\/([^\/]+?)(\.html)?$/);
   if(m&&m[1]){
     var slug=decodeURIComponent(m[1]);
     var target='/bai-viet/'+slug+'.html';
