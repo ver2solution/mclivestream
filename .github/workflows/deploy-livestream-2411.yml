@@ -1,0 +1,54 @@
+name: "Deploy livestream-2411 (4 bai Livestream 24/11/2026)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-livestream-2411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-livestream-2411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          if grep -qF 'livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong' js/data.js; then echo "livestream-2411 DA DEPLOY ROI - dung"; exit 1; fi
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "dce31250451f60ab556eb8ae52b9ef22" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "647" || (echo "BASE DOI: data.js khong con 647 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "669" || (echo "BASE DOI: sitemap khong con 669 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip livestream-2411 package
+        run: |
+          unzip -o mclivestream-livestream-2411-deploy.zip
+          echo "--- verify livestream-2411 (4 bai) ---"
+          for slug in livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "673" || (echo "SAI TONG sitemap, phai 673"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "651" || (echo "SAI TONG data.js, phai 651"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-livestream-2411-deploy.zip || rm -f mclivestream-livestream-2411-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-livestream-2026-11-24: 4 bai (livestream-ban-hang-bi-bop-reach-dip-tet-chan-doan-4-chi-so, livestream-ban-hang-tet-5-nhom-hang-ban-chay-nhat, livestream-tiktok-ban-hang-543-trieu-usd-truoc-black-friday, livestream-12-12-dang-ky-truoc-25-11-7-viec-phai-xong)"
+            git push
+          fi
