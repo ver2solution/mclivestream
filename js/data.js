@@ -17249,7 +17249,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Livestream 12.12: cửa đăng ký chiến dịch đóng 25/11/2026, sale 12–14/12/2026 (z.media 10/2026, ngày ước tính); 7 việc phải xong: SPS từ 3,5, AHR trên 150, giao muộn dưới 20%, đăng ký sản phẩm, niêm yết trước 2 tuần, tính phí, lịch giao hàng."
-  }
+  },
+  {
+   "title": "Double 12 2026 phân tích: 18 ngày cho shop nhỏ",
+   "cat": "Phân tích",
+   "source": "TikTok Shop Seller University (Hướng dẫn chiến dịch BFCM 2026)",
+   "date": "2026-11-24",
+   "url": "https://www.hubfluence.io/blog/tiktok-shop-bfcm-campaign",
+   "page": "bai-viet/double-12-2026-phan-tich-lich-dem-nguoc-18-ngay-shop-nho.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/double-12-2026-phan-tich-lich-dem-nguoc-18-ngay-shop-nho.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double 12 2026 phân tích: còn 18 ngày (24/11–12/12/2026); đăng ký chiến dịch 12.12 tới 25/11/2026; TikTok Shop BFCM 11–30/11/2026, xét duyệt 5–14 ngày làm việc; Metric dự báo Q4/2026 165,5 nghìn tỷ đồng (+10,05% so với Q3/2026, Stockbiz 29/10/2026)."
+  },
+  {
+   "title": "Thị trường phụ kiện trang sức 2026: 397,7 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Grand View Research (Jewelry Market Report 2026–2033)",
+   "date": "2026-11-24",
+   "url": "https://www.grandviewresearch.com/industry-analysis/jewelry-market",
+   "page": "bai-viet/thi-truong-phu-kien-trang-suc-2026-397-ty-usd-shop-nho-ban-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-phu-kien-trang-suc-2026-397-ty-usd-shop-nho-ban-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường phụ kiện trang sức 2026: toàn cầu 397,7 tỷ USD (Grand View Research 2026), lên 578,5 tỷ USD năm 2033 (+5,5%/năm); online +8,0%/năm; trang sức thời trang 35,6 tỷ USD; vòng cổ tăng nhanh nhất +6,0%/năm."
+  },
+  {
+   "title": "Phụ kiện trang sức bán live: món 'mồi' tăng giá trị đơn",
+   "cat": "Phân tích",
+   "source": "McKinsey và Business of Fashion (State of Fashion 2026)",
+   "date": "2026-11-24",
+   "url": "https://www.grandviewresearch.com/industry-analysis/jewelry-market",
+   "page": "bai-viet/phu-kien-trang-suc-mon-moi-tang-gia-tri-don-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phu-kien-trang-suc-mon-moi-tang-gia-tri-don-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phụ kiện trang sức món 'mồi': thị trường tăng bằng số lượng +4,1%/năm, giá chỉ +1,2%/năm (McKinsey và Business of Fashion, 2025–2028); trang sức thời trang 35,6 tỷ USD năm 2026 (Grand View Research); Winnie Tang 63 triệu đồng/đơn."
+  },
+  {
+   "title": "LVMH quý 3 2026: trang sức tăng 6%, thời trang giảm 5%",
+   "cat": "Phân tích",
+   "source": "LVMH (Thông cáo doanh thu quý 3/2026)",
+   "date": "2026-11-24",
+   "url": "https://www.nasdaq.com/press-release/lvmh-continued-growth-third-quarter-2026-2026-10-12",
+   "page": "bai-viet/lvmh-quy-3-2026-trang-suc-tang-6-phan-tram-thoi-trang-giam-5.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lvmh-quy-3-2026-trang-suc-tang-6-phan-tram-thoi-trang-giam-5.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "LVMH quý 3/2026 (công bố 12/10/2026): doanh thu 18,504 tỷ euro (+1% hữu cơ); đồng hồ và trang sức +6% (9 tháng +8%, 7,725 tỷ euro); thời trang và đồ da -5% (8,245 tỷ euro); bán lẻ chọn lọc +8%."
+  },
 ],
  "lots": [
    {
