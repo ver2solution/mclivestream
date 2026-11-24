@@ -17298,6 +17298,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "LVMH quý 3/2026 (công bố 12/10/2026): doanh thu 18,504 tỷ euro (+1% hữu cơ); đồng hồ và trang sức +6% (9 tháng +8%, 7,725 tỷ euro); thời trang và đồ da -5% (8,245 tỷ euro); bán lẻ chọn lọc +8%."
   },
+  {
+   "title": "Thị trường Tết 2026: chuẩn bị gì cho Tết 2027",
+   "cat": "Thị trường",
+   "source": "Metric (Brands Vietnam)",
+   "date": "2026-11-24",
+   "url": "https://www.brandsvietnam.com/congdong/topic/metric-tet-2026-nen-kinh-doanh-gi-phan-tich-xu-huong-mua-sam-tu-du-lieu-tren-san-tmdt",
+   "page": "bai-viet/thi-truong-tet-2026-chuan-bi-tet-dinh-mui-2027.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-tet-2026-chuan-bi-tet-dinh-mui-2027.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường Tết 2026: 73,7 nghìn tỷ đồng trong 9 tuần trước Tết, tăng 51% (Metric 01/2026); 51% người Việt chi nhiều hơn dịp Tết 2027 (Cốc Cốc 09/2026); lộ trình 10 tuần tới mùng 1 Tết Đinh Mùi 06/02/2027 — chốt mẫu trước 12.12, tuyển mẫu live từ tháng 11."
+  },
+  {
+   "title": "Thị trường livestream Việt Nam: 32 tỷ USD, ai hưởng lợi",
+   "cat": "Thị trường",
+   "source": "Vietnam Briefing",
+   "date": "2026-11-24",
+   "url": "https://www.vietnam-briefing.com/news/vietnam-digital-economy-2026.html/",
+   "page": "bai-viet/thi-truong-livestream-viet-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-viet-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường livestream Việt Nam: thương mại điện tử đạt 32 tỷ USD năm 2026, tăng 22% (e-Conomy SEA 05/11/2026); 4 sàn quý 3/2026 đạt 150,4 nghìn tỷ đồng, tăng 45,16% (Metric 29/10/2026); sàn có 246 mẫu và 313 shop tính tới 24/11/2026."
+  },
+  {
+   "title": "Kim cương nhân tạo chiếm 61% nhẫn cưới Mỹ 2026",
+   "cat": "Thị trường",
+   "source": "CareEdge Global",
+   "date": "2026-11-24",
+   "url": "http://www.careedgeglobal.com/uploads/global-reports/Diamonds_are_not_forever_Final.pdf",
+   "page": "bai-viet/kim-cuong-nhan-tao-chiem-61-phan-tram-nhan-cuoi-my-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kim-cuong-nhan-tao-chiem-61-phan-tram-nhan-cuoi-my-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kim cương nhân tạo chiếm 61% nhẫn đính hôn ở Mỹ năm 2026 (The Knot); giá bán buôn 1 carat 564 USD tháng 05/2026, giảm 74% so với 2020 (StoneAlgo); thị phần theo lượng 20–25% năm 2026, có thể lên 30–40% năm 2030 (CareEdge 07/08/2026)."
+  },
+  {
+   "title": "Walmart quý 3/2026: bán online tăng 23% tại Mỹ",
+   "cat": "Thị trường",
+   "source": "Business Wire (Walmart)",
+   "date": "2026-11-24",
+   "url": "https://www.businesswire.com/news/home/20261118447417/en/Walmart-reports-revenue-growth-of-5.2-up-4.5-in-constant-currency-cc",
+   "page": "bai-viet/walmart-quy-3-2026-ban-online-tang-23-phan-tram-my.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/walmart-quy-3-2026-ban-online-tang-23-phan-tram-my.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Walmart quý 3/2026: doanh thu 188,8 tỷ USD, tăng 5,2%; bán online toàn cầu tăng 17%, tại Mỹ tăng 23%; quảng cáo Mỹ tăng 37%; phí thành viên toàn cầu tăng 17% (báo cáo 19/11/2026)."
+  }
 ],
  "lots": [
    {
