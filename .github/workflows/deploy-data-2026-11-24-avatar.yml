@@ -24,19 +24,24 @@ jobs:
         run: |
           set -e
           test -f js/data.js
+          echo "data.js exists"
           test -f images-new/rt-27.jpg
-          test "$(ls images-new/*.jpg | wc -l)" = "26"
-          FAC="$(grep -o '"id": "fac-[0-9]*"' js/data.js | sort -u | wc -l)"
+          echo "rt-27.jpg exists"
+          IMG="$(ls images-new/*.jpg | grep -c .)"
+          echo "images=$IMG"
+          test "$IMG" = "26"
+          FAC="$(grep -c '"id": "fac-' js/data.js)"
           echo "factories=$FAC"
           test "$FAC" = "437"
-          KIOT="$(grep -o '"id": "kiot-[0-9]*"' js/data.js | sort -u | wc -l)"
+          KIOT="$(grep -c '"id": "kiot-' js/data.js)"
           echo "kiots=$KIOT"
           test "$KIOT" = "381"
-          AV="$(grep -o 'images-new/[a-z0-9-]*\.jpg' js/data.js | sort -u | wc -l)"
+          AV="$(grep -o 'images-new/' js/data.js | grep -c .)"
           echo "avatars=$AV"
           test "$AV" = "26"
           grep -q 'images-new/rt-27.jpg' js/data.js
           grep -q 'fac-437' js/data.js
+          echo "verify OK"
       - name: Commit data to main
         run: |
           git config user.name "ver2solution"
