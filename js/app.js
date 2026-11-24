@@ -295,6 +295,47 @@ function markLiked(btn){
 /* v111 (NEW-07): trang thai Thich luu localStorage theo ngay (giong sao).
    Gioi han server la 1 lan/ngay/loai (awardInteraction) nen 1 nut chi
    hien "Da thich" trong ngay da bam; sang ngay moi duoc thich lai. */
+/* v275 (P2-2, vong 3 24/11): trang thai Thich/Chia se/Sao truoc day luu
+   theo bai (type:id) nen 2 tai khoan tren cung trinh duyet thay nhau
+   "Da thich" — TK thu 2 khong thich/sao duoc, mat xu. Khoa them uid
+   dang dang nhap (doc dong bo tu header cache v2s_header_cache_v1, do
+   initHeaderAuth ghi khi apply() chay); khach (khong uid) giu khoa cu.
+   Server van la ben co tham quyen gioi han 1 lan/ngay (awardInteraction);
+   localStorage chi la hien thi. */
+var HEADER_CACHE_KEY = 'v2s_header_cache_v1';
+function likeUserScope(){
+  try {
+    if (typeof localStorage === 'undefined') return '';
+    var raw = localStorage.getItem(HEADER_CACHE_KEY);
+    if (!raw) return '';
+    var c = JSON.parse(raw);
+    return (c && c.uid) ? String(c.uid) : '';
+  } catch (e) { return ''; }
+}
+function isUserScopedKey(key){
+  var first = String(key || '').split(':')[0] || '';
+  if (first.indexOf('@') !== -1) return true;
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(first);
+}
+function purgeLegacyLikeEntries(){
+  // Xoa muc Thich/Chia se/Sao cu luu theo bai (khong gan tai khoan) vi
+  // chung mo ho giua cac tai khoan tren cung trinh duyet. Muc da gan uid
+  // duoc giu nguyen. Truong hop xau nhat khi xoa nham muc cua chinh TK
+  // hien tai: nut hien lai "Thich", bam thi server tra "da tinh hom nay"
+  // (gioi han 1 lan/ngay) va nut lai thanh "Da thich" — khong mat xu,
+  // khong cong trung.
+  try {
+    if (typeof localStorage === 'undefined') return;
+    [LIKE_STORE_KEY, SHARE_STORE_KEY, STAR_STORE_KEY].forEach(function(k){
+      var raw = localStorage.getItem(k); if (!raw) return;
+      var map = null; try { map = JSON.parse(raw); } catch (e) { return; }
+      if (!map || typeof map !== 'object') return;
+      var changed = false;
+      Object.keys(map).forEach(function(key){ if (!isUserScopedKey(key)) { delete map[key]; changed = true; } });
+      if (changed) localStorage.setItem(k, JSON.stringify(map));
+    });
+  } catch (e) {}
+}
 var LIKE_STORE_KEY = 'v2s_likes_v1';
 function likeStoreRead(){
   try { var raw = (typeof localStorage !== 'undefined') ? localStorage.getItem(LIKE_STORE_KEY) : null; return raw ? JSON.parse(raw) : {}; } catch (e) { return {}; }
@@ -302,7 +343,7 @@ function likeStoreRead(){
 function likeStoreWrite(map){
   try { if (typeof localStorage !== 'undefined') localStorage.setItem(LIKE_STORE_KEY, JSON.stringify(map)); } catch (e) {}
 }
-function likeKey(type, id){ return String(type || '') + ':' + String(id || ''); }
+function likeKey(type, id){ var u = likeUserScope(); return (u ? u + ':' : '') + String(type || '') + ':' + String(id || ''); }
 function likedToday(type, id, today){
   if (!type || !id) return false;
   var map = likeStoreRead();
@@ -322,7 +363,7 @@ function shareStoreRead(){
 function shareStoreWrite(map){
   try { if (typeof localStorage !== 'undefined') localStorage.setItem(SHARE_STORE_KEY, JSON.stringify(map)); } catch (e) {}
 }
-function shareKey(type, id){ return String(type || '') + ':' + String(id || ''); }
+function shareKey(type, id){ var u = likeUserScope(); return (u ? u + ':' : '') + String(type || '') + ':' + String(id || ''); }
 function sharedToday(type, id, today){
   if (!type || !id) return false;
   var map = shareStoreRead();
@@ -389,8 +430,9 @@ function starStoreWrite(map){
   try { if (typeof localStorage !== 'undefined') localStorage.setItem(STAR_STORE_KEY, JSON.stringify(map)); } catch (e) {}
 }
 function starKey(a, b, c){ // v185: khoa theo noi:type:id. Goi 2 doi so (type, id) -> noi hien tai.
-  if (c !== undefined) return String(a || 'home') + ':' + String(b || '') + ':' + String(c || '');
-  return starPlace() + ':' + String(a || '') + ':' + String(b || '');
+  var u = likeUserScope(); // v275 (P2-2): gan them uid dang dang nhap, nhu like/share.
+  if (c !== undefined) return (u ? u + ':' : '') + String(a || 'home') + ':' + String(b || '') + ':' + String(c || '');
+  return (u ? u + ':' : '') + starPlace() + ':' + String(a || '') + ':' + String(b || '');
 }
 function starTodayStr(d){ d = d || new Date(); var y = d.getFullYear(), m = ('0' + (d.getMonth() + 1)).slice(-2), dd = ('0' + d.getDate()).slice(-2); return y + '-' + m + '-' + dd; }
 function starredWithin12h(type, id, nowMs, place){
@@ -4445,8 +4487,9 @@ function initHeaderAuth(){
      ho so xong, va ten NHAT QUAN giua cac trang (truoc day trang thi hien
      ten shop, trang thi hien phan truoc @ tuy lookup kip hay khong). Chi la
      hien thi lac quan: phien that ve se xac nhan/sua (neu da dang xuat thi
-     apply(null) tra ve "Đăng Nhập"); moi hanh dong van can phien that. */
-  var HEADER_CACHE_KEY = 'v2s_header_cache_v1';
+     apply(null) tra ve "Đăng Nhập"); moi hanh dong van can phien that.
+     v275 (P2-2): HEADER_CACHE_KEY gio o muc module (tren, gan like store)
+     de likeUserScope() doc duoc uid dang dang nhap. */
   function readHeaderCache(){
     try{
       if(typeof localStorage === 'undefined') return null;
@@ -4616,6 +4659,13 @@ function initHeaderAuth(){
   function apply(user){
     if(user){
       headerNameUserId = (user && (user.id || user.email)) || null;
+      /* v275 (P2-2): tai khoan vua doi (hoac dang nhap lan dau sau khi
+         fix) — xoa muc Thich/Chia se/Sao cu luu theo bai de TK moi khong
+         thay "Da thich" cua TK cu. Chi chay khi uid doi so voi cache cu. */
+      try {
+        var _pc = readHeaderCache();
+        if (!_pc || _pc.uid !== headerNameUserId) purgeLegacyLikeEntries();
+      } catch (e) {}
       btn.setAttribute('href', pathPrefix + 'trang-cua-toi.html');
       /* v246 (MC-71): danh dau da dang nhap len body de CSS an cac loi moi
          dang ky (search-cta, pin-longer-*) — bao ca ban tinh trong HTML lan
