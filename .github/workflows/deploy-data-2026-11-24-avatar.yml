@@ -38,7 +38,9 @@ jobs:
           test "$KIOT" = "381"
           AV="$(grep -o 'images-new/' js/data.js | grep -c .)"
           echo "avatars=$AV"
-          test "$AV" = "26"
+          test "$AV" = "170"
+          for f in cl-24 cl-25 cl-26 cl-27 cm-25 cm-26 cm-27 cm-28 em-23 em-24 em-25 em-26 em-27 lg-23 lg-25 lg-26 lg-27 lg-28 lg-29 lg-30 rt-23 rt-24 rt-25 rt-26 rt-27 rt-29; do grep -q "images-new/$f.jpg" js/data.js || { echo "missing avatar ref images-new/$f.jpg"; exit 1; }; done
+          echo "26 new avatar refs exist"
           grep -q 'images-new/rt-27.jpg' js/data.js
           grep -q 'fac-437' js/data.js
           echo "verify OK"
