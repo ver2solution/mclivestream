@@ -1,0 +1,69 @@
+name: "Deploy articles-dang-hot-2026-11-24 (4 bai)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dang-hot-2411.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dang-hot-2411:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "667" || (echo "BASE DOI: data.js khong con 667 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "689" || (echo "BASE DOI: sitemap khong con 689 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip dang-hot-2411 package
+        run: |
+          unzip -o mclivestream-dang-hot-2411-deploy.zip
+          echo "--- verify dang-hot-2411 (4 bai moi) ---"
+            test -f "bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.html" || (echo "THIEU bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.html"; exit 1)
+            test -f "images/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.jpg" || (echo "THIEU images/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.jpg"; exit 1)
+            test -f "images/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao-og.jpg" || (echo "THIEU images/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao-og.jpg"; exit 1)
+            grep -q "bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.html" js/data.js || (echo "THIEU sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao.html</loc>" sitemap.xml || (echo "THIEU sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao trong sitemap"; exit 1)
+            test -f "bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.html" || (echo "THIEU bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.html"; exit 1)
+            test -f "images/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.jpg" || (echo "THIEU images/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.jpg"; exit 1)
+            test -f "images/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram-og.jpg" || (echo "THIEU images/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram-og.jpg"; exit 1)
+            grep -q "bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.html" js/data.js || (echo "THIEU adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram.html</loc>" sitemap.xml || (echo "THIEU adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram trong sitemap"; exit 1)
+            test -f "bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.html" || (echo "THIEU bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.html"; exit 1)
+            test -f "images/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.jpg" || (echo "THIEU images/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.jpg"; exit 1)
+            test -f "images/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc-og.jpg" || (echo "THIEU images/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc-og.jpg"; exit 1)
+            grep -q "bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.html" js/data.js || (echo "THIEU pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc.html</loc>" sitemap.xml || (echo "THIEU pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc trong sitemap"; exit 1)
+            test -f "bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html" || (echo "THIEU bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html"; exit 1)
+            test -f "images/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.jpg" || (echo "THIEU images/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.jpg"; exit 1)
+            test -f "images/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay-og.jpg" || (echo "THIEU images/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay-og.jpg"; exit 1)
+            grep -q "bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html" js/data.js || (echo "THIEU sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay.html</loc>" sitemap.xml || (echo "THIEU sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "693" || (echo "SAI TONG sitemap, phai 693"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "671" || (echo "SAI TONG data.js, phai 671 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Guard node-parse (bai hoc v370)
+        run: |
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==672) { console.log('SAI: articles.length phai 672'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao','adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram','pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc','sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-dang-hot-2411-deploy.zip || rm -f mclivestream-dang-hot-2411-deploy.zip
+          git rm -q .github/workflows/deploy-dang-hot-2411.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-dang-hot-2026-11-24: 4 bai (sale-12-12-5-cach-kiem-tra-gia-giam-that-hay-ao adidas-black-friday-2026-giam-toi-60-phan-tram-ma-15-phan-tram pandora-black-friday-2026-giam-toi-40-phan-tram-trang-suc sephora-black-friday-2026-30-phan-tram-moi-ngay-10-ngay)"
+            git push
+          fi
