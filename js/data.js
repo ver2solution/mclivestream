@@ -17607,7 +17607,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Sephora Black Friday 2026 (Cyber Week 23–30/11/2026): mỗi ngày 1 nhóm thương hiệu giảm 30% — hôm nay 24/11 là Youth To The People, Laura Mercier và Kiehl's; quà Black Friday mở bán 26/11 lúc 18h PT."
-  }
+  },
+  {
+   "title": "Phụ kiện trang sức 2026: thị trường 32.500 tỷ, shop bán gì?",
+   "cat": "Xu hướng",
+   "source": "Expert Market Research",
+   "date": "2026-11-24",
+   "url": "https://www.expertmarketresearch.com/vi/reports/vietnam-jewellery-market",
+   "page": "bai-viet/thi-truong-phu-kien-trang-suc-2026-32500-ty-dong-shop-viet-ban-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-phu-kien-trang-suc-2026-32500-ty-dong-shop-viet-ban-gi-og.jpg",
+   "pinned": false,
+   "takeaway": "Trang sức Việt Nam 1,25 tỷ USD, lên 1,83 tỷ USD năm 2035. Mỹ ký lãi 50–70%, bạc 925 lãi 35–50%. Tìm hiểu 5 xu hướng và 7 việc cần làm trước Black Friday 27/11."
+  },
 ],
  "lots": [
    {
