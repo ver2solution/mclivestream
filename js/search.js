@@ -1,7 +1,12 @@
 /* Tìm kiếm v173 (12/11/2026) — theo thiết kế đã duyệt 14:48 ngày 12/11/2026
    (D1 chỉ dữ liệu web mình, D2 trang riêng tim-kiem.html, D3 khớp tên lên trước).
    Tính năng ĐỘC LẬP: chỉ ĐỌC window.V20_DATA (js/data.js), không ghi/sửa dữ liệu,
-   không gọi server/Supabase, không log từ khóa (riêng tư — v1 không ghi lại từ khóa).
+   không log từ khóa (riêng tư — v1 không ghi lại từ khóa).
+   NGOẠI LỆ v432 (MC-3-06, 25/11/2026): chỉ mục GỘP THÊM tin tuyển đã duyệt
+   từ Supabase (view công khai public_shop_job_posts, chỉ tin đã duyệt) qua
+   McLivestreamAPI.fetchApprovedJobPosts() — tin tuyển là dữ liệu live của
+   người dùng, không thể nằm trong data.js tĩnh. Fetch chạy nền, lỗi thì lặng
+   lẽ giữ chỉ mục data.js; tìm kiếm không bao giờ vỡ vì thiếu tin tuyển.
    Chạy 100% trong trình duyệt: chuẩn hóa → quét 11 mảng → chấm điểm 0–100 → lọc → render.
    Core (normalize/score/search/parseDeepLink/suggest) là hàm thuần — dùng chung cho
    trình duyệt (window.V2S_Search) và test Node (module.exports), 1 nguồn duy nhất.
@@ -63,8 +68,8 @@
     return ms.toFixed(1).replace('.', ',') + ' ms';
   }
 
-  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
-  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
+  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', tuyen: 'Tin tuyển', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
+  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'tuyen', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
   /* v179 + v196 + v198: 8 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
   var NEWOBJ_META = {
     'lop-live': {label: 'Lớp Livestream / MC / Thuyết trình', page: 'danh-sach-mau.html'},
@@ -121,6 +126,22 @@
       e.field = raw.cat || ''; e.img = raw.img || ''; e.label = raw.label || '';
       e.url = 'thanh-ly-kiot.html#' + raw.id;
       e.chips = [raw.price, raw.prov, raw.date].filter(Boolean);
+    } else if (type === 'tuyen') {
+      /* v432 (MC-3-06, 25/11/2026): tin tuyển đã duyệt từ view công khai
+         public_shop_job_posts — tiêu đề = tên shop + lĩnh vực (như mục
+         "Tin tuyển mẫu đã duyệt" ở danh-sach-mau.html); link về đúng
+         mục đó. dateMs lấy từ created_at (ISO). */
+      e.title = (raw.shop_name || 'Shop đã duyệt') + ' — ' + (raw.field || 'Chưa ghi lĩnh vực');
+      e.desc = raw.description || '';
+      e.cat = 'Tin tuyển';
+      e.prov = raw.province || '';
+      e.field = [raw.field, raw.schedule, (raw.channels || []).join(' '), raw.salary].join(' ');
+      e.img = '';
+      e.salary = raw.salary || '';
+      e.url = 'danh-sach-mau.html#approvedJobsList';
+      e.chips = [raw.province, raw.salary, raw.schedule].filter(Boolean);
+      e.dateMs = parseDateMs(raw.created_at);
+      e.dateLabel = raw.created_at || '';
     } else if (NEWOBJ_META[type]) {
       /* v179 + v196: 7 danh muc moi — tieu de = ten, mo ta = noi dung chi tiet,
          field = don vi to chuc + nhan danh muc (+ hinh thuc van chuyen),
@@ -145,7 +166,7 @@
     e.provK = provKey(e.prov);
     return e;
   }
-  function buildIndex(data) {
+  function buildIndex(data, jobs) {
     data = data || {};
     var out = [];
     var map = { mau: data.models, shop: data.shops, bai: data.articles, lo: data.lots, xuong: data.factories, kiot: data.kiots };
@@ -154,10 +175,13 @@
     Object.keys(map).forEach(function (t) {
       (map[t] || []).forEach(function (raw) { out.push(entryFor(t, raw)); });
     });
+    /* v432 (MC-3-06): tin tuyển đã duyệt (Supabase, view công khai) — gộp
+       vào chỉ mục khi có; không có thì tìm kiếm vẫn chạy với data.js. */
+    (jobs || []).forEach(function (raw) { out.push(entryFor('tuyen', raw)); });
     return out;
   }
   function countByType(index) {
-    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0, 'agency-ads': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
+    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, tuyen: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0, 'agency-ads': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
     index.forEach(function (e) { if (c[e.type] != null) c[e.type]++; });
     return c;
   }
@@ -572,6 +596,17 @@
         return;
       }
       index = buildIndex(data);
+      /* v432 (MC-3-06): gộp tin tuyển đã duyệt vào chỉ mục khi API sẵn —
+         fetch chạy nền, lỗi thì lặng lẽ giữ chỉ mục data.js; tìm kiếm
+         không bao giờ vỡ vì thiếu tin tuyển. */
+      if (typeof window !== 'undefined' && window.McLivestreamAPI && typeof window.McLivestreamAPI.fetchApprovedJobPosts === 'function') {
+        window.McLivestreamAPI.fetchApprovedJobPosts().then(function (jobs) {
+          if (jobs && jobs.length) {
+            index = buildIndex(data, jobs);
+            runSearch(false);
+          }
+        }).catch(function () { /* giữ chỉ mục data.js */ });
+      }
       applyStateFromUrl();
       var qEl = $('searchQ'), form = $('searchForm');
       if (form) form.addEventListener('submit', function (e) { e.preventDefault(); hideSuggest(); runSearch(true); if (qEl) qEl.blur(); });
