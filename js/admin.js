@@ -1544,10 +1544,10 @@
     };
   }
   function draftToJson(d) {
-    // v122: keyword + image_alt chỉ có trong JSON tải về (publisher dùng
-    // image_alt cho og:image:alt; RPC admin_submit_article không có 2
-    // trường này nên chúng KHÔNG lưu vào article_drafts — xem ghi chú
-    // ở ô Từ khóa chính trong quan-tri.html).
+    // v124 (fix FORM-VIET-BAI-2211): keyword + image_alt nay ĐƯỢC lưu vào
+    // article_drafts qua RPC (migration thêm 2 cột) — JSON tải về chỉ là
+    // bản sao của bản ghi đã lưu, không còn là nơi duy nhất giữ 2 trường này.
+    // (Trước v124: RPC không có 2 trường này nên chúng KHÔNG lưu được.)
     // GĐ4b: kèm id + status + page để pipeline biết bản nào là bản đăng
     // lại (page đã có = bài đã đăng, sửa xong cần ghi đè — xem
     // tools/publish-article-drafts.mjs --rejections-out).
@@ -1613,7 +1613,7 @@
         var mark = it.ok ? '✅' : (it.warn ? '⚠️' : '⬜');
         html += '<li>' + mark + ' ' + it.label + '</li>';
       });
-      html += '</ul><p style="margin:6px 0 0;font-size:12px;color:#666">Mục ⚠️ là cảnh báo (vẫn gửi được); mục chặn gửi là các lỗi ở validateArticleDraft (tiêu đề/slug/chuyên mục/mô tả/nội dung/ảnh). Từ khóa chính chỉ dùng để kiểm tra live + ghi vào JSON tải về, không lưu vào bảng bản thảo (RPC chưa có trường này).</p>';
+      html += '</ul><p style="margin:6px 0 0;font-size:12px;color:#666">Mục ⚠️ là cảnh báo (vẫn gửi được); mục chặn gửi là các lỗi ở validateArticleDraft (tiêu đề/slug/chuyên mục/mô tả/nội dung/ảnh). Từ khóa chính + alt-text ảnh được lưu vào bản thảo và dùng cho SEO khi đăng bài.</p>';
       panel.innerHTML = html;
     } catch (e) { /* kiểm tra SEO không được chặn form */ }
   }
@@ -1631,6 +1631,10 @@
     set('admArtCat', d.category);
     set('admArtSummary', d.summary);
     set('admArtImg', d.image_url);
+    // v124 (fix FORM-VIET-BAI-2211): nạp lại cả alt-text + từ khóa đã lưu
+    // (trước đây 2 trường này không có trong bản ghi nên nạp vào form bị mất).
+    set('admArtImgAlt', d.image_alt);
+    set('admArtKeyword', d.keyword);
     set('admArtSourceUrl', d.source_url);
     set('admArtSourceName', d.source_name);
     set('admArtDate', d.publish_date);
@@ -1769,7 +1773,8 @@
         p_title: v.title, p_slug: v.slug, p_category: v.category,
         p_summary: v.summary, p_body: v.body, p_image_url: v.image_url,
         p_source_url: v.source_url || null, p_source_name: v.source_name || null,
-        p_publish_date: v.publish_date || null
+        p_publish_date: v.publish_date || null,
+        p_keyword: v.keyword || null, p_image_alt: v.image_alt || null
       });
       setArtMsg('Đã đăng bài (lưu bản thảo). Slug: ' + (out && out.slug ? out.slug : v.slug) + ' — đã tải JSON bản thảo để đưa cho publisher.', false);
       if (out) downloadDraftJson(out);
@@ -1790,7 +1795,8 @@
         p_id: id, p_title: v.title, p_slug: v.slug, p_category: v.category,
         p_summary: v.summary, p_body: v.body, p_image_url: v.image_url,
         p_source_url: v.source_url || null, p_source_name: v.source_name || null,
-        p_publish_date: v.publish_date || null
+        p_publish_date: v.publish_date || null,
+        p_keyword: v.keyword || null, p_image_alt: v.image_alt || null
       });
       setArtMsg(wasPublished
         ? 'Đã lưu bản sửa — bài sẽ được đăng lại trong lượt pipeline tiếp theo (trạng thái Chờ đăng).'
