@@ -1531,3 +1531,57 @@ a.trust-num:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .fl-contact-note{margin:8px 0 0;color:var(--mut);font-size:13px}
 .fl-empty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center}
 .fl-empty p{margin:0 0 12px;color:var(--mut)}
+/* v423 — Phase 1 V2.0 Dynamic Onboarding: wizard 4 buoc tren dang-ky.html.
+   (js/onboarding-fields.js + js/onboarding.js). Giu dung ngon ngu hinh anh
+   hien co: xanh la chu #0b5d4e, nut .btn/.btn-primary, the .form-card. */
+.ob-resume{margin:16px 0;padding:14px 16px;border:1px solid #e8c97a;background:#fff8e6;border-radius:12px}
+.ob-resume p{margin:6px 0}
+.ob-wizard{margin:16px 0;padding:18px;border:1px solid #dfe8e3;background:#fff;border-radius:14px}
+.ob-wizard h2{margin:0 0 8px;font-size:20px}
+.ob-wizard h3{margin:18px 0 6px;font-size:16px}
+.ob-progress{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.ob-step{flex:1;min-width:90px;padding:8px 6px;border-radius:8px;background:#eef3f1;color:#5b6b66;font-size:13px;font-weight:700;text-align:center}
+.ob-step.active{background:#0b5d4e;color:#fff}
+.ob-step.done{background:#d9efe6;color:#0b5d4e}
+.ob-why{margin:4px 0 12px;color:#5b6b66;font-size:14px;line-height:1.5}
+.ob-help{margin:6px 0;color:#7a8a84;font-size:13px}
+.ob-sub{margin:12px 0 6px;font-weight:700}
+.ob-section{margin:14px 0;padding:14px;border:1px solid #e6ece9;border-radius:12px;background:#fbfdfc}
+.ob-section h3{margin-top:0}
+.ob-role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.ob-role-card{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px;border:1px solid #dfe8e3;border-radius:12px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.ob-role-card:hover{border-color:#0b5d4e}
+.ob-role-card.sel{border-color:#0b5d4e;background:#eef7f2;box-shadow:0 0 0 1px #0b5d4e inset}
+.ob-role-card.primary{border-width:2px}
+.ob-role-ic{font-size:24px;line-height:1}
+.ob-role-card b{font-size:14px}
+.ob-role-card span{font-size:13px;color:#5b6b66}
+.ob-role-main{font-size:12px !important;font-weight:800;color:#0b5d4e !important}
+.ob-chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.ob-chip{padding:7px 12px;border:1px solid #cfd8d3;border-radius:999px;background:#fff;font:inherit;font-size:13px;cursor:pointer;color:#234}
+.ob-chip:hover{border-color:#0b5d4e}
+.ob-chip.sel{background:#0b5d4e;color:#fff;border-color:#0b5d4e}
+.ob-field{margin:10px 0}
+.ob-label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
+.ob-field input[type=text],.ob-field input[type=number],.ob-field input[type=url],.ob-field textarea,.ob-field select{width:100%;padding:9px 10px;border:1px solid #cfd8d3;border-radius:8px;font:inherit;font-size:14px;background:#fff}
+.ob-field textarea{resize:vertical}
+.ob-check{display:flex;align-items:center;gap:8px;font-weight:600;cursor:pointer}
+.ob-range{display:flex;align-items:center;gap:8px}
+.ob-range input{flex:1}
+.ob-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.ob-nav .btn{flex:0 0 auto}
+.ob-draft-note{margin:10px 0 0;color:#7a8a84;font-size:13px}
+.ob-err{color:#b3261e;font-size:13px;margin:4px 0 0}
+.ob-err-main{color:#b3261e;font-weight:700}
+.ob-complete{margin:12px 0}
+.ob-complete-bar{height:12px;border-radius:999px;background:#eef3f1;overflow:hidden}
+.ob-complete-fill{height:100%;background:#0b5d4e;border-radius:999px;transition:width .3s}
+.ob-checklist{list-style:none;margin:8px 0;padding:0}
+.ob-checklist li{padding:5px 0;border-bottom:1px solid #eef3f1;font-size:14px}
+.ob-prio-row{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:14px}
+.ob-prio-row select{padding:6px 8px;border:1px solid #cfd8d3;border-radius:8px;font:inherit}
+@media (max-width:640px){
+  .ob-role-grid{grid-template-columns:1fr 1fr}
+  .ob-wizard{padding:12px}
+  .ob-step{min-width:70px;font-size:12px}
+}>>>>>>> /tmp/v423-other-v20.css
