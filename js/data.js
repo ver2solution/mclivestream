@@ -18381,6 +18381,83 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Đồ gia dụng bán bằng công dụng, không bán bằng hình ảnh. Mẫu live cần dùng thử thật, nắm thông tin kỹ thuật và trả lời được câu hỏi về độ bền."
   },
+  {
+   "title": "Case idol live: từ 0 đơn tới đơn đầu tiên, đổi gì?",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/case-idol-live-tu-phien-live-0-don-toi-don-dau-tien-mau-va-shop-da-doi-nhung-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/case-idol-live-tu-phien-live-0-don-toi-don-dau-tien-mau-va-shop-da-doi-nhung-gi.jpg",
+   "pinned": false,
+   "takeaway": "Phiên live đầu 0 đơn không phải kết luận. Đổi 3 điều — mở đầu nói thẳng, ngừng nói một mình, chốt ít sản phẩm mà nói kỹ — phiên sau đã có đơn đầu tiên."
+  },
+  {
+   "title": "Mẫu live gắn bó với shop sau Black Friday: điều gì giữ chân",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/case-mau-live-gan-bo-voi-mot-shop-sau-black-friday-dieu-gi-giu-chan-nhau.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/case-mau-live-gan-bo-voi-mot-shop-sau-black-friday-dieu-gi-giu-chan-nhau.jpg",
+   "pinned": false,
+   "takeaway": "Sau Black Friday, cặp shop — mẫu gắn bó nhờ 3 điều: lịch đều sau mùa cao điểm, dữ liệu sau mỗi phiên để cùng tiến bộ, và nói thẳng khi có vấn đề."
+  },
+  {
+   "title": "Shop nhỏ tuyển mẫu live lần đầu: quy trình 4 bước",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/case-shop-nho-tuyen-mau-live-lan-dau-quy-trinh-4-buoc-tu-dang-tin-toi-len-song.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/case-shop-nho-tuyen-mau-live-lan-dau-quy-trinh-4-buoc-tu-dang-tin-toi-len-song.jpg",
+   "pinned": false,
+   "takeaway": "Shop nhỏ tuyển mẫu lần đầu chỉ cần quy trình 4 bước: tin tuyển rõ, chọn bằng video, thử live có kịch bản, lên sóng có kịch bản 30 phút đầu."
+  },
+  {
+   "title": "Kịch bản 30 phút đầu phiên live: mở đầu, chốt đơn",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/kich-ban-30-phut-dau-phien-live-mo-dau-gioi-thieu-va-chot-don-dau-tien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kich-ban-30-phut-dau-phien-live-mo-dau-gioi-thieu-va-chot-don-dau-tien.jpg",
+   "pinned": false,
+   "takeaway": "Phiên live hỏng thường hỏng từ 30 phút đầu. Kịch bản chia từng mốc 5 phút: mở đầu nói thẳng, một món nói kỹ, chốt đơn đầu tiên rồi chuyển nhịp."
+  },
+  {
+   "title": "Mẫu live mới vào nghề: 5 lỗi tuần đầu và cách sửa",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/mau-live-moi-vao-nghe-5-loi-thuong-gap-trong-tuan-dau-va-cach-sua.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-live-moi-vao-nghe-5-loi-thuong-gap-trong-tuan-dau-va-cach-sua.jpg",
+   "pinned": false,
+   "takeaway": "Tuần đầu mẫu mới chỉ cần tránh 5 lỗi: mở đầu lan man, nói quá nhanh, im lặng khi vắng bình luận, nói cảm nhận thay vì thông tin, không xem lại phiên live."
+  },
+  {
+   "title": "Shop viết tin tuyển mẫu live rõ ràng: mẫu ứng tuyển nhanh",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/shop-viet-tin-tuyen-mau-live-ro-rang-mau-ung-tuyen-nhanh-shop-do-mat-thoi-gian.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shop-viet-tin-tuyen-mau-live-ro-rang-mau-ung-tuyen-nhanh-shop-do-mat-thoi-gian.jpg",
+   "pinned": false,
+   "takeaway": "Tin tuyển rõ ràng giúp shop tuyển nhanh: ghi đủ 6 thông tin, tránh 3 lỗi thường gặp, mẫu tự lọc được mình có hợp không trước khi nhắn."
+  },
+  {
+   "title": "Tuyển mẫu live Hà Nội, Đà Nẵng, TP.HCM: khác nhau ở điểm nào",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/tuyen-mau-live-ha-noi-da-nang-tp-hcm-khac-nhau-o-diem-nao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ha-noi-da-nang-tp-hcm-khac-nhau-o-diem-nao.jpg",
+   "pinned": false,
+   "takeaway": "Hà Nội mạnh thời trang, mỹ phẩm; Đà Nẵng mạnh du lịch, đặc sản; TP.HCM nhịp nhanh nhất. Tuyển đúng khu vực là tuyển đúng một nửa."
+  },
 ],
  "lots": [
    {
