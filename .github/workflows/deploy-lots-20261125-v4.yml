@@ -4,7 +4,7 @@
 # Luu y: data.js dung khoa co ngoac kep "lots": [ va khoa mang kiot la "kiots" (so nhieu).
 # Ham section() xu ly dung 2 diem nay (giong file v3).
 # Articles KHONG co truong id/slug: moi bai co "page": "bai-viet/<slug>.html" + "title",
-# nen dem articles theo truong page (object) va title, kiem slug theo chuoi con trong doan articles.
+# nen dem articles theo object (quet cap ngoac, bo qua chuoi) va title, kiem slug theo chuoi con trong doan articles.
 name: Deploy lots 20261125 v4
 
 on:
@@ -93,6 +93,37 @@ jobs:
               # Dem object theo truong id: "id" | 'id' | id:
               return len(re.findall(r'["\']?id["\']?\s*:', sec))
 
+          def count_top_objects(sec):
+              # Dem object cap 1 trong mang: moac { khi dang o trong mang ngoai cung
+              # va ngoai moi object (bo qua { } trong chuoi "..." / '...' / `...`).
+              depth_arr = 0
+              depth_obj = 0
+              instr = None
+              esc = False
+              n = 0
+              for c in sec:
+                  if instr:
+                      if esc:
+                          esc = False
+                      elif c == '\\':
+                          esc = True
+                      elif c == instr:
+                          instr = None
+                      continue
+                  if c in ('"', "'", '`'):
+                      instr = c
+                  elif c == '[':
+                      depth_arr += 1
+                  elif c == ']':
+                      depth_arr -= 1
+                  elif c == '{':
+                      if depth_arr == 1 and depth_obj == 0:
+                          n += 1
+                      depth_obj += 1
+                  elif c == '}':
+                      depth_obj -= 1
+              return n
+
           lots = section(data, 'lots')
           kiots = section(data, 'kiots')
           factories = section(data, 'factories')
@@ -101,16 +132,17 @@ jobs:
           n_lots = count_objects(lots)
           n_kiots = count_objects(kiots)
           n_factories = count_objects(factories)
-          # Articles khong co truong id/slug: dem object qua truong page (moi bai 1 page),
-          # doi chieu voi so truong title.
-          art_pages = len(re.findall(r'["\']?page["\']?\s*:', articles))
+          # Articles khong co truong id/slug (moi bai co "page" + "title", 1 bai thieu page):
+          # dem object truc tiep trong mang articles, doi chieu voi so truong title.
+          n_articles = count_top_objects(articles)
           art_titles = len(re.findall(r'["\']?title["\']?\s*:', articles))
-          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {art_pages} (title: {art_titles})')
+          art_pages = len(re.findall(r'["\']?page["\']?\s*:', articles))
+          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {n_articles} (title: {art_titles}, page: {art_pages})')
 
           check(n_lots == 330, f'Lots = 330 (thuc te {n_lots})')
           check(n_kiots == 384, f'Kiot = 384 (thuc te {n_kiots})')
           check(n_factories == 442, f'Xuong = 442 (thuc te {n_factories})')
-          check(art_pages == 747, f'Articles = 747 (dem theo truong page) (thuc te {art_pages})')
+          check(n_articles == 747, f'Articles = 747 (dem object) (thuc te {n_articles})')
           check(art_titles == 747, f'Articles dem theo truong title = 747 (thuc te {art_titles})')
 
           lot_ids = re.findall(r'["\']?id["\']?\s*:\s*["\']([^"\']+)["\']', lots)
