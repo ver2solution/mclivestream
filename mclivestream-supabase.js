@@ -182,9 +182,27 @@
   // F-09 (v46): dịch lỗi Supabase/PostgREST sang câu tiếng Việt thân thiện.
   // Thông điệp do chính web tự ném (đã là tiếng Việt) giữ nguyên; lỗi
   // tiếng Anh kỹ thuật không bao giờ hiện ra màn hình — lỗi gốc chỉ ghi
-  // console.error để debug. context: 'review' | 'jobpost' để dịch mã
-  // trùng lặp 23505 cho đúng chỗ.
+  // console.error để debug. context: 'review' | 'jobpost' | 'signup' để
+  // dịch mã trùng lặp 23505 cho đúng chỗ.
   var VIETNAMESE_RE = /[àáảãạăắằẳẵặâấầẩẫậđèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]/;
+  // B-20261124-01: nhận diện lỗi trùng SĐT từ phản hồi server — các tín
+  // hiệu đã biết (thiết kế §5.3): chuỗi chứa 'phone' + 'already' /
+  // 'duplicate' / 'registered'; mã 23505 trên ràng buộc liên quan SĐT;
+  // thông điệp tiếng Việt chứa 'số điện thoại' + 'đã'. TÍN HIỆU ĐÃ XÁC
+  // MINH 24/11/2026: server HIỆN KHÔNG chặn đăng ký trùng SĐT (test live
+  // 13:58–14:01: TK thứ 2 cùng SĐT 0329983699 vẫn tạo được, +10 xu) nên
+  // nhánh này hôm nay chưa kích hoạt trên live — nó là nhánh SẴN SÀNG cho
+  // ngày server chặn (Q-N57 chờ anh Thọ quyết); KHÔNG tự thêm chặn ở đây.
+  function isDuplicatePhoneError(err) {
+    var raw = String((err && (err.message || err.code)) || err || '');
+    var lower = raw.toLowerCase();
+    var code = String((err && err.code) || '');
+    if (lower.indexOf('số điện thoại') !== -1 && lower.indexOf('đã') !== -1) return true;
+    if (lower.indexOf('phone') === -1) return false;
+    if (lower.indexOf('already') !== -1 || lower.indexOf('duplicate') !== -1 || lower.indexOf('registered') !== -1) return true;
+    if (code === '23505' || lower.indexOf('23505') !== -1 || lower.indexOf('duplicate key') !== -1) return true;
+    return false;
+  }
   function friendlyError(err, context) {
     var raw = String((err && (err.message || err.code)) || err || '');
     var lower = raw.toLowerCase();
@@ -202,9 +220,17 @@
     else if (lower.indexOf('breach') !== -1 || lower.indexOf('pwned') !== -1 || lower.indexOf('commonly used') !== -1 || lower.indexOf('too common') !== -1 || lower.indexOf('too weak') !== -1) out = 'Mật khẩu này quá yếu hoặc đã từng bị lộ, hãy chọn mật khẩu khác mạnh hơn.';
     else if (lower.indexOf('session expired') !== -1 || lower.indexOf('invalid jwt') !== -1 || lower.indexOf('auth session missing') !== -1 || lower.indexOf('session not found') !== -1) out = 'Link đặt lại đã hết hạn, hãy gửi lại link mới.';
     else if (lower.indexOf('failed to fetch') !== -1 || lower.indexOf('networkerror') !== -1 || lower.indexOf('network request failed') !== -1) out = 'Không kết nối được mạng, hãy kiểm tra lại kết nối rồi thử lại.';
+    // B-20261124-01: nhánh trùng SĐT CHỈ trong ngữ cảnh đăng ký — các
+    // ngữ cảnh khác (review/jobpost/...) giữ nguyên hành vi cũ, tránh
+    // câu '...hãy đăng nhập...' lọt sang form không phải đăng ký.
+    else if (context === 'signup' && isDuplicatePhoneError(err)) out = 'SĐT này đã được đăng ký rồi. Nếu đây là SĐT của bạn, hãy đăng nhập hoặc lấy lại mật khẩu thay vì đăng ký mới.';
     else if (code === '23505' || lower.indexOf('23505') !== -1 || lower.indexOf('duplicate key') !== -1) {
       if (context === 'review') out = 'Bạn đã đánh giá hồ sơ này rồi.';
       else if (context === 'jobpost') out = 'Tin này đã được gửi, hãy xem mục tin của tôi.';
+      // B-20261124-01 (D): 23505 trong ngữ cảnh đăng ký KHÔNG BAO GIỜ
+      // được dịch thành 'Nội dung này đã được gửi rồi.' — trùng SĐT đã
+      // bắt ở nhánh trên; 23505 khác thì về câu chung dự phòng (§4).
+      else if (context === 'signup') out = 'Đăng ký chưa thành công. Hãy kiểm tra lại thông tin rồi thử lại, hoặc nhắn Zalo 032 998 3699 nếu vẫn không được.';
       else out = 'Nội dung này đã được gửi rồi.';
     }
     else if (code === '42501' || lower.indexOf('42501') !== -1 || lower.indexOf('row-level security') !== -1) out = 'Bạn chưa có quyền thực hiện việc này.';
@@ -782,6 +808,7 @@
     signUp: signUp, signIn: signIn, signOut: signOut, getSession: getSession,
     resetPassword: resetPassword, updatePassword: updatePassword,
     friendlyError: friendlyError,
+    isDuplicatePhoneError: isDuplicatePhoneError,
     fetchPublicProfiles: fetchPublicProfiles, fetchTopProfiles: fetchTopProfiles,
     fetchMyProfile: fetchMyProfile, saveMyProfile: saveMyProfile,
     submitProfileClaim: submitProfileClaim, fetchMyProfileClaim: fetchMyProfileClaim,
