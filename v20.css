@@ -71,6 +71,15 @@ a:hover{text-decoration:underline}
 .nav-news-caret{margin-left:2px;font-size:11px}
 .nav-news-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:80;min-width:300px;max-width:calc(100vw - 32px);background:#0b5d4e;border:1px solid #0e8a6d;border-top:3px solid var(--amber);border-radius:14px;box-shadow:0 14px 34px rgba(11,93,78,.28);padding:8px}
 .nav-news-wrap:hover .nav-news-dropdown,.nav-news-wrap:focus-within .nav-news-dropdown,.nav-news-wrap.open .nav-news-dropdown{display:block}
+/* v433 (#64, 25/11/2026): cầu hover 6px — panel đặt top:calc(100% + 6px)
+   nên có dải trống 6px ngoài vùng hover của wrap; rê chuột từ link xuống
+   panel đi qua dải trống thì :hover mất, panel tự đóng trước khi bấm được
+   tiểu mục. ::before trong suốt phủ đúng dải 6px đó, giữ hover liền mạch
+   mà không đổi khoảng cách nhìn thấy. Chỉ desktop (min-width:1201px):
+   mobile panel là position:static, không có khe hở. */
+@media(min-width:1201px){
+.nav-news-dropdown::before{content:'';position:absolute;left:0;right:0;top:-6px;height:6px}
+}
 .main-nav .nav-news-dropdown a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:#fff;white-space:normal}
 .main-nav .nav-news-dropdown a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
 .nav-news-head{display:block;padding:8px 12px 6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8fd4c0}
