@@ -229,7 +229,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-01.jpg",
    "photoSrc": "profile"  },
   {
@@ -277,7 +277,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-03.jpg",
    "photoSrc": "profile"  },
   {
@@ -325,7 +325,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-05.jpg",
    "photoSrc": "profile"  },
   {
@@ -373,7 +373,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-07.jpg",
    "photoSrc": "profile"  },
   {
@@ -493,7 +493,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-12.jpg",
    "photoSrc": "profile"  },
   {
@@ -517,7 +517,7 @@ window.V20_DATA = {
    "views": 0,
    "comments": 0,
    "status": "Đang tìm việc",
-   "photoHas": false,
+   "photoHas": true,
    "photoUrl": "images/th-13.jpg",
    "photoSrc": "profile"  },
   {
@@ -11144,7 +11144,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "url": null,
    "page": "bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ho-so-mc-livestream-7-muc-bat-buoc.jpg",
    "imgSelf": true,
    "takeaway": "Mẫu muốn được shop tìm thấy nhanh thì điền đủ 7 mục bắt buộc — tên thật, ngày sinh, quê quán, nơi làm việc, học vấn, kinh nghiệm và lĩnh vực — càng cụ thể càng dễ lọt bộ lọc. Mục nào chưa có thì để hệ thống ghi \"Chưa cập nhật\", đừng bỏ trống hay ghi chung chung."
   },
@@ -11155,7 +11155,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "url": null,
    "page": "bai-viet/luong-mc-livestream-theo-buoi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mc-livestream-theo-buoi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mc-livestream-theo-buoi.jpg",
    "imgSelf": true,
    "takeaway": "Chưa có số liệu lương theo buổi đã kiểm chứng trên sàn: 17/20 mẫu ghi \"Thỏa thuận\", shop thường trả theo tháng. Mẫu và shop nên thỏa thuận theo 5 yếu tố — lĩnh vực, kinh nghiệm, thời lượng phiên, hình thức live và hoa hồng — và chốt rõ 6 câu bằng tin nhắn trước phiên đầu tiên."
   },
@@ -11176,7 +11176,7 @@ window.V20_DATA = {
    "date": "2026",
    "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/who-wins-when-ai-does-the-shopping-new-evidence-on-agentic-commerce",
    "page": "bai-viet/ai-lam-thay-phan-tim-hang.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/ai-lam-thay-phan-tim-hang.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-lam-thay-phan-tim-hang.jpg",
    "imgSelf": true,
    "takeaway": "AI đang trở thành “người gác cổng” trước khi khách nhìn thấy sản phẩm. Shop nhỏ không cần mua công nghệ đắt tiền, chỉ cần làm đúng 3 việc ngay: ghi đầy đủ và chính xác tên, thông số, chất liệu, size, giá và tình trạng còn hàng trên mỗi sản phẩm (đừng để trống hoặc ghi chung chung); giữ giá và tồn kho cập nhật, vì AI sẽ bỏ qua sản phẩm có dữ liệu sai hoặc cũ; và gom đánh giá thật của khách vào trang sản phẩm, vì đó là thứ AI dùng để xếp hạng uy tín. Ai làm xong 3 việc này trước thì khi khách hỏi AI “mua áo này ở đâu tốt”, sản phẩm của shop đó mới có cửa xuất hiện."
   },
@@ -11197,7 +11197,7 @@ window.V20_DATA = {
    "date": "2026-10-27",
    "url": "https://for.you.com/posts/tiktok-shop-in-2026-how-tiktok-became-a-commerce-platform-2a948e6f",
    "page": "bai-viet/tiktok-shop-tien-toi-100-ty-usd.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-tien-toi-100-ty-usd.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-tien-toi-100-ty-usd.jpg",
    "takeaway": "Đừng chọn một trong hai — video và gian hàng phải đi cùng nhau, nhưng chia vai rõ ràng: video ngắn và micro-live 15–20 phút là “mồi” kéo khách mới (mỗi video chỉ nói 1 món, 1 lợi ích, 1 lý do mua ngay), gian hàng là “kho” giữ khách (đủ món, giá rõ, đánh giá thật, link mua dễ tìm). Mỗi tuần làm 3–5 video ngắn + 2–3 micro-live cho 1–2 món chủ lực, rồi đo xem món nào ra đơn từ video để dồn lực vào đó — thay vì đăng đều cả gian hàng mà không biết món nào đang kéo khách."
   },
   {
@@ -11207,7 +11207,7 @@ window.V20_DATA = {
    "date": "2026-11-03",
    "url": "https://www.reuters.com/business/retail-consumer/chinas-lipstick-king-touts-ai-tokens-first-singles-day-festival-2026-11-03/",
    "page": "bai-viet/le-11-11-trung-quoc-ban-goi-ai-qua-livestream.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/le-11-11-trung-quoc-ban-goi-ai-qua-livestream.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/le-11-11-trung-quoc-ban-goi-ai-qua-livestream.jpg",
    "imgSelf": true,
    "takeaway": "Cơn sốt token AI cho thấy khách bây giờ mua cả \"khả năng làm việc\", không chỉ mua đồ vật. Shop nhỏ không cần bán AI, nhưng cần học 3 điều: bán theo thói quen khách đã có (khách quen dùng gì thì gom ưu đãi cho thứ đó vào dịp sale), live có người thật hiểu sản phẩm để giải thích thay vì chỉ đọc giá, và bán kèm hệ sinh thái (món chính + món bổ trợ) thay vì bán lẻ từng món. Riêng với hàng công nghệ đổi nhanh, đừng đẩy khách mua tích trữ quá nhiều — giữ uy tín lâu dài quan trọng hơn một phiên live bùng nổ."
   },
@@ -11218,7 +11218,7 @@ window.V20_DATA = {
    "date": "2025-11-05",
    "url": "http://www.businesswire.com/news/home/20251105486775/en/Euromonitor-International-unveils-Global-Consumer-Trends-for-2026",
    "page": "bai-viet/nguoi-tieu-dung-2026-vua-thoai-mai-vua-that.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/nguoi-tieu-dung-2026-vua-thoai-mai-vua-that.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nguoi-tieu-dung-2026-vua-thoai-mai-vua-that.jpg",
    "imgSelf": true,
    "takeaway": "Người tiêu dùng 2026 mua bằng cả tim và óc: tim cần sự thoải mái và chân thật, óc cần bằng chứng khoa học và giá trị cá nhân hóa. Shop nhỏ hãy làm 3 việc: live bằng cảnh thật và lời thật (đừng dàn dựng hoàn hảo), ghi rõ thành phần — nguồn gốc — bằng chứng trong từng sản phẩm, và chia khách thành nhóm nhỏ để tư vấn đúng người đúng nỗi đau. Ai chỉ bán cảm xúc sẽ bị hỏi \"bằng chứng đâu\"; ai chỉ đọc thông số sẽ bị khách lướt qua vì khô khan. Bán cả hai, theo đúng thứ tự: cảm xúc trước, bằng chứng sau."
   },
@@ -11271,7 +11271,7 @@ window.V20_DATA = {
    "date": "2026-10-30",
    "url": "https://comaker.me/blog/2026-10-30-shopee-ai-cho-nguoi-ban",
    "page": "bai-viet/shopee-ai-cho-nguoi-ban.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-ai-cho-nguoi-ban.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-ai-cho-nguoi-ban.jpg",
    "imgSelf": true,
    "takeaway": "Dùng AI của sàn cho việc lặp lại như gợi ý tiêu đề, mô tả, ảnh bìa và trả lời chat lúc nửa đêm, nhưng video bán hàng thì tự làm một bản gốc thật rồi mới gắn nhãn AI đúng luật từng sàn. Ảnh người mẫu ảo phải đúng màu và đúng phom hàng thật, vì sai màu và sai phom là con đường nhanh nhất tới trả hàng và đánh giá xấu."
   },
@@ -11282,7 +11282,7 @@ window.V20_DATA = {
    "date": "2026-10-20",
    "url": "https://www.modernretail.co/marketing/brands-briefing-how-brands-are-gearing-up-for-tiktok-shops-biggest-holiday-season-yet/",
    "page": "bai-viet/tiktok-shop-my-black-friday-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-my-black-friday-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-my-black-friday-2026.jpg",
    "imgSelf": true,
    "takeaway": "Shop nhỏ Việt Nam không cần bắt chước quy mô của thương hiệu Mỹ, nhưng nên học đúng 2 điểm: live là nơi chốt đơn và lấy phản hồi thật, không chỉ là nơi giảm giá, và hàng độc quyền hoặc combo chỉ có trong phiên live mới là thứ giữ khách quay lại sau sale, thay vì giảm giá mà shop nào cũng có. Trước 11.11, chuẩn bị 1 món chỉ bán trong live và 1 câu chuyện thật về sản phẩm đó, thay vì chỉ chuẩn bị mã giảm."
   },
@@ -11293,7 +11293,7 @@ window.V20_DATA = {
    "date": "2026-11-06",
    "url": null,
    "page": "bai-viet/tuyen-mau-livestream.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream.jpg",
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
@@ -11316,7 +11316,7 @@ window.V20_DATA = {
    "date": "2026-10-30",
    "url": "https://m.ajupress.com/view/20261030180870483",
    "page": "bai-viet/san-11st-mc-ai-live-sale-11-11.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/san-11st-mc-ai-live-sale-11-11.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/san-11st-mc-ai-live-sale-11-11.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "11st không dùng MC AI để thay người, mà dùng AI để live đều hơn, chia live theo ngành hàng và biến người xem thành người chơi. Shop nhỏ học được 3 điều ngay mà không cần mua công nghệ AI: live theo món chủ lực và mẫu đúng ngành hàng; cho khách bình chọn trong phiên để giữ họ ở lại; và dùng điểm thưởng hay quà nhỏ mỗi ngày để khách quay lại, thay vì giảm giá sâu một lần rồi hết chuyện. AI live là công cụ giữ nhịp, còn người bán mới là người giữ khách."
@@ -11329,7 +11329,7 @@ window.V20_DATA = {
    "dateNote": "Bài gốc đăng 30/10/2026, cập nhật 05/11/2026",
    "url": "https://continentalbrief.org/economy/eu-customs-duty-low-value-parcels-temu-shein",
    "page": "bai-viet/eu-thu-phi-buu-kien-temu-shein.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/eu-thu-phi-buu-kien-temu-shein.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/eu-thu-phi-buu-kien-temu-shein.jpg",
    "imgSelf": true,
    "takeaway": "Từ 01/11, mỗi mặt hàng Temu, Shein vào EU chịu 5 euro (3 euro thuế cộng 2 euro phí) — và phí 2 euro không hoàn lại dù hàng bị trả. Shop bán sang EU thì tính ngay 5 euro mỗi mặt hàng vào giá trước sale 11/11 và Black Friday; shop nhập hàng Trung Quốc bán trong nước thì đọc đây làm tín hiệu: hàng rẻ không đạt chuẩn sẽ bị siết, nên chọn nhà cung cấp có giấy tờ đầy đủ ngay từ bây giờ. Đừng để một đơn hàng giá rẻ hôm nay thành một kiện hàng kẹt hải quan và một đánh giá xấu ngày mai."
   },
@@ -11405,7 +11405,7 @@ window.V20_DATA = {
    "date": "2026-11-07",
    "url": null,
    "page": "bai-viet/viec-lam-mau-livestream.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-mau-livestream.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-mau-livestream.jpg",
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
@@ -11418,7 +11418,7 @@ window.V20_DATA = {
    "date": "2026-10-28",
    "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-affiliate-mua-cuoi-nam-2026-koc-can-chuan-bi-gi-khi-luat-choi-da-doi",
    "page": "bai-viet/tiktok-shop-siet-video-gan-gio-hang.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-siet-video-gan-gio-hang.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-siet-video-gan-gio-hang.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Luật giới hạn video gắn giỏ không cấm KOC bán hàng — nó cấm cách bán hàng bằng video không có người thật, không có tương tác. KOC nào đổi kịp từ \"đăng nhiều\" sang \"đăng ít mà thật\" thì không những không bị giới hạn, mà còn được vào campaign hoa hồng cao nhất mùa sale. Shop nhỏ cũng vậy: thuê KOC có tài khoản sạch và video người thật, thay vì thuê KOC đăng hàng loạt slideshow, là cách rẻ nhất để giữ giỏ hàng của mình luôn bấm được trong cả mùa 11.11."
@@ -11453,7 +11453,7 @@ window.V20_DATA = {
    "date": "2026-11-05",
    "url": "https://chinamarketbrief.com/en/insight/d11-syntun-singles-day-2026-first-round-sales-categories/",
    "page": "bai-viet/singles-day-2026-trung-quoc-ban-qua-livestream.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/singles-day-2026-trung-quoc-ban-qua-livestream.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/singles-day-2026-trung-quoc-ban-qua-livestream.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Singles Day 2026 cho thấy kỷ nguyên “giảm giá là thắng” đang qua đi — thị trường nghìn tỷ NDT vẫn tăng, nhưng chỉ còn 2,4% và người mua chọn hàng có giá trị thật. Shop nhỏ không cần bắt chước quy mô Tmall hay JD.com, chỉ cần mở bán sớm theo nhiều đợt, livestream demo thật để tạo niềm tin, và bán bằng cam kết rõ ràng thay vì đua giá rẻ."
@@ -11465,7 +11465,7 @@ window.V20_DATA = {
    "date": "2026-11-04",
    "url": "https://www.chinadaily.com.cn/a/202611/04/WS6aea85e4e4b06d4aa0566e7e.html",
    "page": "bai-viet/nhap-hang-trung-quoc-cuoi-nam-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "hàng cho 11.11 giờ chỉ còn kịp nếu đã ở kho Việt Nam, hàng cho 12.12 phải chốt trước 25/11 và trừ hao ít nhất 7–10 ngày. Tính đủ phí ship vào giá và luôn có phương án dự phòng — đó là cách shop nhỏ giữ được lời và không lỡ mùa sale lớn nhất năm."
