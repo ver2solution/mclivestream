@@ -1,0 +1,59 @@
+name: Deploy articles-xu-huong-2026-11-25 (4 bai Xu huong 25/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-xu-huong-2511.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-xu-huong-2511:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "8923d2591d43bd9d2e26c2750848185d" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "710" || (echo "BASE DOI: data.js khong con 710 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "732" || (echo "BASE DOI: sitemap khong con 732 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip xu-huong-2511 package
+        run: |
+          test "$(stat -c %s mclivestream-xu-huong-2511-deploy.zip)" = "1400751" || (echo "SAI KICH THUOC zip tai ve, phai 1400751"; exit 1)
+          unzip -o mclivestream-xu-huong-2511-deploy.zip
+          echo "--- verify xu-huong-2511 (4 bai) ---"
+          for slug in xu-huong-thuong-mai-dien-tu-2027-ai-mua-ho-len-ngoi thoi-trang-secondhand-nu-2026-393-ty-usd-vao-2030 athleisure-nam-2026-thi-truong-459-7-ty-usd xu-huong-mua-sam-black-friday-2026; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "736" || (echo "SAI TONG sitemap, phai 736"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "714" || (echo "SAI TONG data.js, phai 714"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-xu-huong-2511-deploy.zip || rm -f mclivestream-xu-huong-2511-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-xu-huong-2026-11-25: 4 bai Xu huong 25/11/2026 (xu huong thuong mai dien tu 2027 AI mua ho keyword #2 vong 2 deep + thoi trang secondhand nu 393 ty USD ThredUp + athleisure nam 459,7 ty USD Straits + Black Friday 2026 87% nguoi My Adobe/Deloitte); SEO V2"
+            git fetch origin main
+            git rebase origin/main || (echo "REBASE CONFLICT: mot cron khac da deploy xong trong luc chay, DUNG LAI de rebuild"; exit 1)
+            test "$(grep -c '<loc>' sitemap.xml)" = "736" || (echo "SAI TONG sitemap sau rebase, phai 736"; exit 1)
+            test "$(grep -c '"page": "bai-viet/' js/data.js)" = "714" || (echo "SAI TONG data.js sau rebase, phai 714"; exit 1)
+            node --check js/data.js || (echo "data.js LOI CU PHAP sau rebase"; exit 1)
+            git push
+          fi
