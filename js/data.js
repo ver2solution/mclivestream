@@ -18073,6 +18073,66 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Bán 595 tỷ đồng trong 1 ngày Double 11/2017, Trương Đại Dịch đưa Ruhnn lên Nasdaq 2019 rồi rớt 73%, hủy niêm yết sau 2 năm. Shop Việt học gì trước Black Friday?"
   },
+  {
+   "title": "Làm thêm cuối năm kiếm tiền Tết: 5 việc mẫu live làm được",
+   "cat": "Đời Sống",
+   "source": "Vietstock",
+   "date": "2026-11-25",
+   "url": "https://en.vietstock.vn/2026/11/viet-nams-digital-economy-to-reach-49-billion-in-2026-fastest-growing-in-southeast-asia-38-646428.htm",
+   "page": "bai-viet/lam-them-cuoi-nam-kiem-tien-tet-5-viec-mau-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lam-them-cuoi-nam-kiem-tien-tet-5-viec-mau-livestream.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Làm thêm cuối năm kiếm tiền Tết là câu hỏi của nhiều mẫu livestream lúc này: chỉ còn đúng hôm nay để shop đăng ký chiến dịch 12.12, hạn cuối ngày 25/11/2026 theo lịch mega sale của Z Media cập nhật tháng 10/2026 — và đây"
+  },
+  {
+   "title": "Du lịch Đà Lạt tháng 12 đẹp nhất: hoa dã quỳ, săn mây",
+   "cat": "Đời Sống",
+   "source": "Vietpower Travel",
+   "date": "2026-11-25",
+   "url": "https://vietpowertravel.com/blog/da-lat-in-december.html",
+   "page": "bai-viet/du-lich-da-lat-thang-12-dep-nhat-hoa-da-quy-san-may.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-da-lat-thang-12-dep-nhat-hoa-da-quy-san-may.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Đà Lạt tháng 12 là lựa chọn của nhiều người trẻ lúc này: nhiệt độ trung bình 14–24°C, trời nắng ráo vì tháng 12 mở đầu mùa khô ở Tây Nguyên, theo hướng dẫn của Vietpower Travel đăng ngày 25/11/2026."
+  },
+  {
+   "title": "Mẫu livestream quản lý tiền theo buổi: chia 3 hũ đón Tết",
+   "cat": "Đời Sống",
+   "source": "Upwork",
+   "date": "2026-11-25",
+   "url": "https://www.upwork.com/resources/how-much-do-freelancers-make",
+   "page": "bai-viet/mau-livestream-quan-ly-tien-thu-nhap-theo-buoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-quan-ly-tien-thu-nhap-theo-buoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream quản lý tiền theo buổi bắt đầu từ một thực tế mà số liệu quốc tế đã đo được: 63% freelancer coi thu nhập khó đoán là khó khăn lớn nhất của mình, theo khảo sát Freelance Forward 2025 của Upwork, và 76,4 tri"
+  },
+  {
+   "title": "Mẫu livestream mặc gì lên sóng: 5 nguyên tắc chốt đơn",
+   "cat": "Đời Sống",
+   "source": "Kalodata",
+   "date": "2026-11-25",
+   "url": "https://www.kalodata.com/blog/tiktok/tiktok-shop-us-black-friday-2026-category-trends/",
+   "page": "bai-viet/mau-livestream-mac-gi-len-song-5-nguyen-tac-chot-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-mac-gi-len-song-5-nguyen-tac-chot-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream mặc gì lên sóng không phải là câu hỏi về gu thời trang, mà là câu hỏi về doanh số: thời trang nữ trên TikTok Shop Mỹ đạt 102,29 triệu USD chỉ trong tuần 09–15/11/2026, tăng 29,45%, còn thời trang nam đạt 3"
+  },
+  {
+   "title": "Quán cafe check-in đẹp Cafe Giảng Hà Nội 1946",
+   "cat": "Đời Sống",
+   "source": "Vietnam Travel Guide (vietnam-gift.com)",
+   "date": "2026-11-25",
+   "url": "https://vietnam-gift.com/en/news/cafe-giang-eggcoffee/",
+   "page": "bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Cafe Giảng Hà Nội là nơi khai sinh ra cà phê trứng — món đồ uống đã trở thành biểu tượng của cà phê Việt Nam trên thế giới."
+  }
 ],
  "lots": [
    {
