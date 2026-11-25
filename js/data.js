@@ -17723,6 +17723,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "3 phiên live bán trang sức trên Xiaohongshu cán mốc 100–160 triệu NDT/phiên trong 5 tuần — chỉ bán gu và niềm tin. Xem ngay 7 bài học cho shop Việt."
   },
+  {
+   "title": "Phân tích Double Day 2026: cả năm 4 nấc, còn 12.12",
+   "cat": "Phân tích",
+   "source": "Ecomobi (Advertising Vietnam)",
+   "date": "2026-11-25",
+   "url": "https://advertisingvietnam.com/article/giai-ma-double-day-2026-ngay-sale-lon-nhat-chua-chac-la-ngay-ban-chay-nhat-tren-tiktok-shop",
+   "page": "bai-viet/phan-tich-double-day-2026-nhin-lai-ca-nam-con-black-friday-12-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-double-day-2026-nhin-lai-ca-nam-con-black-friday-12-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Double Day 2026: 11.11 Trung Quốc 1.776,4 tỷ NDT, tăng 4,8% (Syntun 12/11/2026); TikTok Shop Việt Nam tháng 11–12 chiếm 23,2% GMV cả năm 2025 (Ecomobi 06/11/2026); ngày D+1 mới bán chạy nhất — 913,4 tỷ đồng ngày 12/11/2025; hạn đăng ký 12.12 hết 25/11/2026."
+  },
+  {
+   "title": "Thị trường thời trang nữ 2026: 1,1 nghìn tỷ USD",
+   "cat": "Phân tích",
+   "source": "Grand View Research",
+   "date": "2026-11-25",
+   "url": "https://www.grandviewresearch.com/industry-analysis/women-wear-market",
+   "page": "bai-viet/thi-truong-thoi-trang-nu-2026-11-nghin-ty-usd-tiktok-shop-645-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-nu-2026-11-nghin-ty-usd-tiktok-shop-645-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thời trang nữ 2026: khoảng 1,1 nghìn tỷ USD toàn cầu (Grand View Research 2026); Việt Nam bán 17.465,1 tỷ đồng quý 3/2026, tăng 47,9% (Metric 29/10/2026); TikTok Shop chiếm 64,5% khi so với Shopee."
+  },
+  {
+   "title": "Thị trường thời trang nam 2026: 681 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Grand View Research",
+   "date": "2026-11-25",
+   "url": "https://www.grandviewresearch.com/industry-analysis/mens-wear-market",
+   "page": "bai-viet/thi-truong-thoi-trang-nam-2026-681-ty-usd-tiktok-shop-681-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-nam-2026-681-ty-usd-tiktok-shop-681-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thời trang nam 2026: 681,1 tỷ USD toàn cầu, tăng 6,1%/năm tới 2033 (Grand View Research 2026); Việt Nam: TikTok Shop chiếm 68,1% thời trang nam quý 3/2026 (Metric 29/10/2026)."
+  },
+  {
+   "title": "Adidas quý 3 2026: lãi 1 tỷ euro đầu tiên",
+   "cat": "Phân tích",
+   "source": "adidas",
+   "date": "2026-11-25",
+   "url": "https://company.adidas.com/en/media/press-releases/adidas-achieves-record-results-in-the-third-quarter-of-2026-and-increases-full-year-profit-outlook",
+   "page": "bai-viet/adidas-quy-3-2026-lai-1-ty-euro-ban-gia-day-du-thang-giam-gia.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/adidas-quy-3-2026-lai-1-ty-euro-ban-gia-day-du-thang-giam-gia.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Adidas quý 3 2026: doanh thu kỷ lục 7.252 triệu euro, tăng 9%; lãi hoạt động 1.008 triệu euro, tăng 37% — lần đầu vượt 1 tỷ euro một quý (adidas 29/10/2026); quần áo tăng 19%, giày đứng yên; Nike giảm 4%."
+  }
 ],
  "lots": [
    {
