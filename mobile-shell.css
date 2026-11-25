@@ -18,6 +18,14 @@
   .ms-tab--post .ms-post-circle svg{width:26px;height:26px}
   /* Nút nổi dưới-phải + nút hiệu ứng: nhấc lên trên thanh tab để không bị che. */
   .gopy-fab{bottom:calc(60px + env(safe-area-inset-bottom,0px) + 14px)}
+  /* v422 (24/11/2026, P3-mobile-FAB): popup "N người đang online" phải
+     nằm TRÊN nút Góp ý đã nhấc lên trên thanh tab — v20.css bottom:84px
+     (≤768px) đặt popup đúng tầm FAB (FAB bottom 60+14=74px, cao 48px →
+     mép trên 122px tính từ đáy; popup 84–164px chồng FAB 38px dọc).
+     bottom = 60 + 14 + 48 + 10 khe = 132px, cùng công thức với FAB nên
+     khe 10px giữ nguyên dù có safe-area. File này load SAU v20.css
+     (index.html:22) nên rule này thắng rule bottom:84px. */
+  .online-popup{bottom:calc(60px + env(safe-area-inset-bottom,0px) + 14px + 48px + 10px)}
   .theme-fx-toggle{bottom:calc(60px + env(safe-area-inset-bottom,0px) + 12px)}
 }
 @media (prefers-reduced-motion:reduce){
