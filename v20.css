@@ -1509,3 +1509,20 @@ button.adm-task-st{font:inherit}
 a.trust-num{text-decoration:none}
 a.trust-num:hover b{text-decoration:underline}
 a.trust-num:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+/* v444 (25/11/2026): Lao Dong Tu Do — the tin + trang thai trong. Tab dung
+   chung .uni-cat-switch/.uni-cat-btn; loc dung chung .filter-card; danh
+   sach dung chung .news-list; phan trang dung chung .pager. */
+.fl-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 12px}
+.fl-card h3{margin:0 0 6px;font-size:17px}
+.fl-meta{margin:0 0 6px;color:var(--mut);font-size:14px}
+.fl-cat{font-weight:800;color:#0b5d4e}
+.fl-kind{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800}
+.fl-kind-tim-viec{background:#e6f4ea;color:#137333}
+.fl-kind-tim-nguoi{background:#fef3c7;color:#92400e}
+.fl-salary{margin:0 0 6px;font-size:15px}
+.fl-desc{margin:0 0 6px;color:#333}
+.fl-date{margin:0;color:var(--mut);font-size:13px}
+.fl-contact-note{margin:8px 0 0;color:var(--mut);font-size:13px}
+.fl-empty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center}
+.fl-empty p{margin:0 0 12px;color:var(--mut)}
