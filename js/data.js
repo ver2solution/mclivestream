@@ -18469,6 +18469,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Top 50 thời trang nữ 294.763 đơn, top 50 nam 207.161 đơn trong 7 ngày tới 09/11/2026 trên TikTok Shop VN — nữ chốt áo thun, nam chốt polo, jean ống suông."
   },
+  {
+   "title": "Cách livestream bán hàng hiệu quả cho shop mới",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/cach-livestream-ban-hang-hieu-qua-cho-shop-moi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-livestream-ban-hang-hieu-qua-cho-shop-moi.jpg",
+   "pinned": false,
+   "takeaway": "Shop mới live mãi không ai chốt đơn? 7 bước chuẩn bị trước giờ live, kịch bản chốt đơn và cách giữ người xem ở lại — kèm ví dụ thật từ các phiên live trăm tỷ."
+  },
 ],
  "lots": [
    {
