@@ -5206,6 +5206,19 @@ function applyPinnedOrder(container, pins){
   kids.forEach(function (el){ container.appendChild(el); });
 }
 function applyPinnedOrderToLists(){
+  /* v434 (#68, 25/11/2026): khi user đang sắp xếp tường minh (ô Sắp xếp
+     có giá trị — trang Mẫu fUniSort / trang Shop fShSort), thứ tự sắp xếp
+     thắng: KHÔNG đưa bài ghim lên đầu. Ghim chạy sau render (initPointsUI)
+     nên sẽ kéo bài ghim lên đầu trang 1 bất chấp thứ tự lương — mẫu ghim
+     th-76..th-80 không có salaryNum, sort lương xếp cuối nhưng ghim kéo
+     lên đầu, user thấy "lương giờ đảo thứ tự nhỏ". Trang không có ô sắp
+     xếp (tin tức/lô/xưởng) thì ghim vẫn lên đầu như cũ. */
+  var sorted = false;
+  ['fUniSort', 'fShSort'].forEach(function(id){
+    var el = (typeof document !== 'undefined' && document.getElementById) ? document.getElementById(id) : null;
+    if (el && el.value) sorted = true;
+  });
+  if (sorted) return;
   // Category = enum M7.2 (trang danh sách): mau/shop/lo/xuong/bai-viet/kiot.
   var jobs = [
     ['listGrid', 'mau'], ['publicShopsList', 'shop'],
