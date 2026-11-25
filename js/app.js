@@ -141,12 +141,16 @@ function lotValueLine(l){
   // tong gia tri, hoac loai mat hang, hoac so luong (uu tien tong gia tri
   // -> loai mat hang -> so luong).
   // - Du gia + so luong: tong gia tri (don gia x so luong).
+  // - Gia CA LO (priceTotal, v425): priceNum LA tong gia ca lo, KHONG nhan
+  //   qty — lot-53/65/218: gia hien 6.625tr/308tr/552.5tr sai vi nhan gia
+  //   ca lo voi so luong mon (vd lot-218: 6,5tr ca lo x 85 doi = 552,5tr).
   // - Chi co don gia (thieu so luong): don gia /cai (hoac don vi rieng).
   // - Khong co gia: loai mat hang (catLabel); khong co loai thi so luong.
   // - Khong co gi: "Chưa cập nhật".
   // (v118 tung doi thanh CHI HIEN GIA / "Chưa cập nhật" khi thieu gia —
   // khoi phuc fallback theo quy tac 08/11 theo chi dao 10/11. Ten nganh
   // van hien trong o anh ("Xả kho: Quần áo" / "Thu mua: Quần áo").)
+  if(l && l.priceTotal === true && typeof l.priceNum === 'number' && l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ';
   if(l && typeof l.priceNum === 'number' && typeof l.qty === 'number' && l.qty > 0) return fmtVnd(l.priceNum * l.qty) + 'đ';
   if(l && typeof l.priceNum === 'number' && typeof l.priceNum > 0) return fmtVnd(l.priceNum) + 'đ/' + (l.priceUnit || 'cái');
   // v241 (F-R2-03b): lo khong co priceNum nhung co chuoi price (vd "Bán lẻ
