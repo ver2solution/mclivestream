@@ -41,7 +41,23 @@ jobs:
 
       - name: Verify data counts and moved articles
         run: |
-          node -e "const fs=require('fs'); const src=fs.readFileSync('js/data.js','utf8'); const m=src.match(/const\\s+DATA\\s*=\\s*(\\{[\\s\\S]*?\\n\\});/); if(!m){console.error('DATA block not found');process.exit(1);} const DATA=eval('('+m[1]+')'); console.log('lots:',DATA.lots.length,'kiot:',DATA.kiot.length,'factories:',DATA.factories.length,'articles:',DATA.articles.length); if(DATA.lots.length!==330){console.error('lots must be 330');process.exit(1);} if(DATA.kiot.length!==384){console.error('kiot must be 384');process.exit(1);} if(DATA.factories.length!==442){console.error('factories must be 442');process.exit(1);} const slugs=['tet-nguyen-dan-2027-ngay-nao-con-73-ngay-shop-mau-live-lam-gi','uniqlo-black-friday-2026-giam-toi-50-phan-tram-het-26-11','hm-black-friday-2026-giam-toi-50-phan-tram-online-tu-26-11','levis-black-friday-2026-giam-40-phan-tram-501-chi-66-usd']; for(const s of slugs){ if(!DATA.articles.some(a=>a.slug===s)){console.error('slug not in articles:',s);process.exit(1);} if(DATA.lots.some(l=>l.slug===s)){console.error('slug still in lots:',s);process.exit(1);} } console.log('4 hot slugs are in articles and not in lots: OK');"
+          cat > /tmp/check.js <<'EOF'
+          const fs=require('fs');
+          const src=fs.readFileSync('js/data.js','utf8');
+          const start=src.indexOf('const DATA');
+          const eq=src.indexOf('=', start);
+          const end=src.indexOf('};', eq);
+          if(start<0||eq<0||end<0){console.error('DATA block not found');process.exit(1);}
+          const DATA=eval(src.slice(eq+1, end+1));
+          console.log('lots:',DATA.lots.length,'kiot:',DATA.kiot.length,'factories:',DATA.factories.length,'articles:',DATA.articles.length);
+          if(DATA.lots.length!==330){console.error('lots must be 330');process.exit(1);}
+          if(DATA.kiot.length!==384){console.error('kiot must be 384');process.exit(1);}
+          if(DATA.factories.length!==442){console.error('factories must be 442');process.exit(1);}
+          const slugs=['tet-nguyen-dan-2027-ngay-nao-con-73-ngay-shop-mau-live-lam-gi','uniqlo-black-friday-2026-giam-toi-50-phan-tram-het-26-11','hm-black-friday-2026-giam-toi-50-phan-tram-online-tu-26-11','levis-black-friday-2026-giam-40-phan-tram-501-chi-66-usd'];
+          for(const s of slugs){ if(!DATA.articles.some(a=>a.slug===s)){console.error('slug not in articles:',s);process.exit(1);} if(DATA.lots.some(l=>l.slug===s)){console.error('slug still in lots:',s);process.exit(1);} }
+          console.log('4 hot slugs are in articles and not in lots: OK');
+          EOF
+          node /tmp/check.js
 
       - name: Commit deployed files and remove zip + workflow
         run: |
