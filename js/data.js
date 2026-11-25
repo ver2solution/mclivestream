@@ -18254,6 +18254,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Trương Đại Dịch bán 70 tỷ đồng trong 2 giờ live đầu tiên năm 2016 mà không giảm giá. Xem ngay 7 mẹo bán thời trang livestream cho shop Việt."
   },
+  {
+   "title": "Thế hệ không cưới, không đẻ, chỉ nuôi thú cưng: 134 triệu",
+   "cat": "Đời Sống",
+   "source": "Báo Hải Phòng",
+   "date": "2026-11-25",
+   "url": "https://baohaiphong.vn/print/378671.html",
+   "page": "bai-viet/the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung.jpg",
+   "pinned": false,
+   "takeaway": "134 triệu người trẻ Trung Quốc chưa kết hôn, sẵn sàng chi cho sở thích và thú cưng thay vì đám cưới. Thế hệ không cưới đang tạo nên nền kinh tế độc thân ra sao?"
+  },
 ],
  "lots": [
    {
