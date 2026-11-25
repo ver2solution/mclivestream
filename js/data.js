@@ -37806,6 +37806,18 @@ window.V20_DATA = {
   {"id": "ag-14", "type": "agencyAds", "name": "Chạy quảng cáo đa nền tảng + livestream TikTok Shop — Do Agency", "provider": "Do Agency", "price": 8900000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/tháng", "province": "Đà Nẵng", "avatar": "images-new/ag-14.jpg", "detail": "Do Agency (Đà Nẵng) là đối tác chính thức của TikTok Shop (TSP, MCN), cung cấp dịch vụ trọn gói: chạy quảng cáo đa nền tảng (Facebook, TikTok, YouTube, Google), livestream bán hàng TikTok Shop, xây kênh, booking KOL/KOC. Dịch vụ từ 8.900.000đ/tháng (chưa gồm VAT và ngân sách quảng cáo). Khách hàng tiêu biểu: Olay (P&G) đạt 1,5 tỷ doanh thu trong 1,5 tháng, ROAS 14,9. Văn phòng: 35 Nại Nam, Hòa Cường, Đà Nẵng.", "sourceUrl": "https://doagency.vn/news/thue-don-vi-cong-ty-truyen-thong-agency-marketing-da-nang", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"},
   {"id": "ag-15", "type": "agencyAds", "name": "Vận hành fanpage + chạy quảng cáo livestream — Em Tâm Làm Ads", "provider": "Em Tâm Làm Ads", "price": 7500000, "priceLabel": "Phí dịch vụ", "priceSuffix": "/dự án", "province": "Online", "avatar": "images-new/ag-15.jpg", "detail": "Em Tâm Làm Ads lo trọn marketing cho shop: vận hành fanpage và mạng xã hội, quay chụp – dựng video sản phẩm và chạy quảng cáo ra đơn, trong đó có quảng cáo livestream cho shop thời trang (khách Style by BaoAnh). Gói vận hành Ads + Edit clip 7.500.000đ/dự án (ngân sách quảng cáo tính riêng), chạy trên tài khoản quảng cáo của agency và báo cáo chi tiêu rõ ràng.", "sourceUrl": "https://emtamlamads.com/", "dateAdded": "2026-11-18", "expiresAt": "2026-12-18"}
  ],
+ "freelanceJobs": [],
+ "freelancePeople": [],
+ "freelanceCats": [
+  {"key": "san-xuat", "label": "Sản xuất và nhà máy", "examples": "Lắp ráp linh kiện điện tử, may mặc, giày dép, chế biến thực phẩm, đứng máy, đóng gói, kiểm tra hàng hóa"},
+  {"key": "van-tai", "label": "Vận tải, kho bãi và giao nhận", "examples": "Shipper, phụ kho, bốc vác, lái xe, sắp xếp hàng hóa"},
+  {"key": "dich-vu", "label": "Dịch vụ, ăn uống và bán lẻ", "examples": "Bán hàng, thu ngân, phục vụ nhà hàng/quán ăn, phụ bếp, dọn dẹp/tạp vụ, bảo vệ"},
+  {"key": "cham-soc", "label": "Chăm sóc gia đình và làm đẹp", "examples": "Giúp việc nhà, chăm sóc trẻ em/người già, thợ phụ nail/tóc/trang điểm"},
+  {"key": "xay-dung", "label": "Xây dựng và sửa chữa", "examples": "Phụ hồ, vận chuyển vật liệu, dọn dẹp công trường, thợ phụ cơ khí/mộc/sơn/sửa xe"},
+  {"key": "nong-nghiep", "label": "Nông nghiệp", "examples": "Trồng trọt, chăn nuôi, thu hoạch, sơ chế nông sản"}
+ ],
+ "freelanceTab7": {"key": "ca-nhan", "label": "Cá Nhân & Cửa hàng tìm người"}
+
 };
 window.V20_PHOTOS = {"th-01": "images/th-01.jpg", "th-02": "images/th-02.jpg", "th-03": "images/th-03.jpg", "th-05": "images/th-05.jpg", "th-06": "images/th-06.jpg", "th-07": "images/th-07.jpg", "th-08": "images/th-08.jpg", "th-09": "images/th-09.jpg", "th-11": "images/th-11.jpg", "th-12": "images/th-12.jpg", "th-13": "images/th-13.jpg", "th-14": "images/th-14.jpg", "th-15": "images/th-15.jpg", "th-16": "images/th-16.jpg", "th-17": "images/th-17.jpg", "th-18": "images/th-18.jpg", "th-19": "images/th-19.jpg", "th-20": "images/th-20.jpg"};
 
