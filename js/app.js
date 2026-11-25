@@ -1137,7 +1137,7 @@ function initSectionFilter(opts){
        nao) van la loc dang hoat dong: hien dong dem + bang "Chua co du lieu"
        khi 0 ket qua + mo rong section. Truoc day active khong tinh gia nen
        dong dem rong khi chi loc gia. */
-    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption || f.subType || f.priceMin != null || f.priceMax != null); /* v179: + logisticsOption (5 danh muc moi); v229: + subType (loai con Kiot) */
+    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption || f.subType || f.scope || f.status || f.priceMin != null || f.priceMax != null); /* v179: + logisticsOption (5 danh muc moi); v229: + subType (loai con Kiot); v443: + scope/status (Logistic noi dia) */
     var total = 0, first = null;
     grids.forEach(function(g){
       var matched = [], rest = [];
@@ -2297,6 +2297,7 @@ var NEWOBJ_UNI_CATS = {
   'class-makeup': {type: 'classesMakeup', sectionId: 'lop-makeup', provId: 'fUniProv', moreBtnId: 'classMakeupMoreBtn', countId: 'classMakeupCount', label: 'Lớp học dạy Makeup'},
   'event-mkt': {type: 'eventsMarketing', sectionId: 'su-kien-marketing', provId: 'fShProv', moreBtnId: 'eventMarketingMoreBtn', countId: 'eventMarketingCount', label: 'Sự kiện Marketing chia sẻ kiến thức'},
   'logistics': {type: 'logistics', sectionId: 'logistics-trung-viet', provId: 'fShProv', optionId: 'fShopLogOpt', moreBtnId: 'logisticsMoreBtn', countId: 'logisticsCount', label: 'Công ty logistics Trung–Việt'},
+  'logistics-noi-dia': {type: 'logisticsNoiDia', sectionId: 'logistics-noi-dia', moreBtnId: 'logisticsNoiDiaMoreBtn', countId: 'logisticsNoiDiaCount', label: 'Hãng vận chuyển nội địa'},
   'rentals': {type: 'rentals', sectionId: 'cho-thue-cua-hang-kho', provId: 'kiotProv', moreBtnId: 'rentalsMoreBtn', countId: 'rentalsCount', label: 'Cho thuê cửa hàng/kho hàng'},
   'agency-ads': {type: 'agencyAds', sectionId: 'agency-ads-livestream', provId: 'fShProv', moreBtnId: 'agencyAdsMoreBtn', countId: 'agencyAdsCount', label: 'Agency Ads Livestream'},
   'chuyen-nha': {type: 'movingServices', sectionId: 'dich-vu-chuyen-nha', provId: 'kiotProv', moreBtnId: 'movingMoreBtn', countId: 'movingCount', label: 'Dịch vụ chuyển nhà'},
@@ -2317,7 +2318,7 @@ function newObjProvCount(type, prov){ var n = 0; (D[type] || []).forEach(functio
    live). LUAT CUNG: khong bao gio de so thong ke o canh ten muc DANG CHON
    — nut switch dang active thi an .uni-cat-count cua nut do, het active
    thi hien lai neu muc duoc phep hien so (agency-ads giu so khi chua chon). */
-var NEWOBJ_NO_COUNT = {'class-live': 1, 'class-makeup': 1, 'event-mkt': 1, 'logistics': 1, 'rentals': 1, 'chuyen-nha': 1, 'thiet-bi-live': 1};
+var NEWOBJ_NO_COUNT = {'class-live': 1, 'class-makeup': 1, 'event-mkt': 1, 'logistics': 1, 'logistics-noi-dia': 1, 'rentals': 1, 'chuyen-nha': 1, 'thiet-bi-live': 1};
 /* Cap nhat so dem (N) tren cac nut muc con trong uni-cat-switch (ca 3 trang). */
 function refreshNewObjCatCounts(){
   if(typeof document === 'undefined' || !document.querySelectorAll) return;
@@ -2360,10 +2361,11 @@ function setMauListVisibility(cat){
     'lot': ['lo-hang-xa-kho'],
     'factory': ['xuong-may-gia-cong'],
     'logistics': ['logistics-trung-viet'],
+    'logistics-noi-dia': ['logistics-noi-dia'],
     'agency-ads': ['agency-ads-livestream']
   };
   var show = map[cat] || map['model'];
-  ['model-list-section','lo-hang-xa-kho','xuong-may-gia-cong','logistics-trung-viet','agency-ads-livestream'].forEach(function(id){
+  ['model-list-section','lo-hang-xa-kho','xuong-may-gia-cong','logistics-trung-viet','logistics-noi-dia','agency-ads-livestream'].forEach(function(id){
     var s = document.getElementById(id);
     if(s) s.hidden = (show.indexOf(id) === -1);
   });
@@ -2594,6 +2596,89 @@ function initNewObjSections(){
     }
     refreshClassMoreBtn(secId);
   });
+  initCarrierSection(); /* v443: Logistic noi dia (section rieng, khong phai muc newobj) */
+}
+
+/* v443 (25/11/2026): Logistic noi dia — the hang tu mang logisticsNoiDia
+   (data.js, 11 hang). The khong anh (chi text) theo mau newobj-card; the
+   hang da ngung (status 'stopped') mo + nhan do + xep cuoi; cac buoc dang ky
+   an trong <details> de the gon. Loc: pham vi (fCarrierScope) + trang thai
+   (fCarrierStatus) — 2 o select trong section, doc qua initSectionFilter
+   (readForm tra scope/status; active check o initSectionFilter da mo rong
+   cho 2 truong nay). */
+function carrierPriceModelLabel(m){
+  if(m === 'per-km') return 'Theo km';
+  if(m === 'flat') return 'Đồng giá';
+  return 'Theo kg';
+}
+function carrierScopeLabel(sc){ return sc === 'noi-thanh' ? 'Nội thành' : 'Toàn quốc'; }
+function carrierCardHTML(c){
+  if(!c) return '';
+  var stopped = c.status === 'stopped';
+  var cls = 'lot-card newobj-card carrier-card' + (stopped ? ' carrier-stopped' : '');
+  var h = '<article class="' + cls + '" id="' + esc(c.id) + '" data-scope="' + esc(c.scope || '') + '" data-status="' + esc(c.status || '') + '">'
+    + '<div class="newobj-lines"><p class="newobj-name">' + esc(c.name || '') + ' <span class="tag">' + carrierPriceModelLabel(c.priceModel) + '</span> <span class="tag soft">' + carrierScopeLabel(c.scope) + '</span>' + (stopped ? ' <span class="tag tag-stopped">Đã ngừng</span>' : '') + '</p>'
+    + '<p class="newobj-provider">☎ ' + esc(c.hotline || '') + ' • <a href="' + esc(c.website || '') + '" target="_blank" rel="noopener">' + esc((c.website || '').replace(/^https?:\/\//, '')) + '</a> • ' + esc(c.coverage || '') + ' • ' + esc(c.deliveryTime || '') + '</p>';
+  if(c.services && c.services.length){
+    var chips = c.services.slice(0, 4).map(function(sv){ return '<span class="tag soft">' + esc(sv) + '</span>'; }).join(' ');
+    if(c.services.length > 4) chips += ' <span class="tag soft">…</span>';
+    h += '<p class="tags">' + chips + '</p>';
+  }
+  if(c.priceSummary){
+    h += '<p class="newobj-price">Giá tham khảo: <b>' + esc(c.priceSummary) + '</b></p>';
+  }
+  if(c.priceNote){
+    h += '<p>' + esc(c.priceNote) + ' — <a href="' + esc(c.priceUrl || '') + '" target="_blank" rel="noopener">Xem bảng giá chính thức ↗</a></p>';
+  }
+  if(c.weightFormula){ h += '<p>Cách tính: ' + esc(c.weightFormula) + '</p>'; }
+  if(c.itemPricing){ h += '<p>Theo loại hàng: ' + esc(c.itemPricing) + '</p>'; }
+  if(c.codNote){ h += '<p>COD: ' + esc(c.codNote) + '</p>'; }
+  if(c.insuranceNote){ h += '<p>Bảo hiểm: ' + esc(c.insuranceNote) + '</p>'; }
+  if(!stopped && c.registerSteps && c.registerSteps.length){
+    h += '<details><summary>Cách đăng ký ▸</summary><ol>' + c.registerSteps.map(function(st){ return '<li>' + esc(st) + '</li>'; }).join('') + '</ol>' + (c.registerUrl ? '<p><a href="' + esc(c.registerUrl) + '" target="_blank" rel="noopener">Đăng ký tại ' + esc((c.registerUrl || '').replace(/^https?:\/\//, '')) + ' ↗</a></p>' : '') + '</details>';
+  }
+  if(stopped && c.statusNote){ h += '<p>' + esc(c.statusNote) + '</p>'; }
+  if(c.unverified && c.unverified.length){
+    h += '<p class="carrier-unverified">Chưa xác minh: ' + esc(c.unverified.join('; ')) + '</p>';
+  }
+  h += '<p class="carrier-source">Nguồn: ' + esc(c.source || '') + '</p></div></article>';
+  return h;
+}
+function renderCarrierCards(){
+  var grid = document.getElementById('logisticsNoiDiaGrid');
+  if(!grid) return 0;
+  var list = (D.logisticsNoiDia || []).filter(function(x){ return !!x; });
+  /* Hang da ngung xep cuoi (ke ca khi data.js doi thu tu). */
+  list.sort(function(a, b){ return (a.status === 'stopped' ? 1 : 0) - (b.status === 'stopped' ? 1 : 0); });
+  grid.innerHTML = list.map(function(c){ return carrierCardHTML(c); }).join('');
+  var sub = document.getElementById('logisticsNoiDiaSub');
+  if(sub) sub.textContent = 'Hãng vận chuyển nội địa cho shop online/livestream: giá tham khảo, cách đăng ký, phạm vi và thời gian giao. — đang có ' + list.length + ' hãng.';
+  var h2 = document.getElementById('logisticsNoiDiaCountH2');
+  if(h2) h2.textContent = '(' + list.length + ')';
+  return list.length;
+}
+function carrierMatches(card, f){
+  if(f.scope && card.getAttribute('data-scope') !== f.scope) return false;
+  if(f.status && card.getAttribute('data-status') !== f.status) return false;
+  return true;
+}
+function initCarrierSection(){
+  var grid = document.getElementById('logisticsNoiDiaGrid');
+  if(!grid) return null;
+  renderCarrierCards();
+  var h = initSectionFilter({
+    sectionId: 'logistics-noi-dia', moreBtnId: 'logisticsNoiDiaMoreBtn',
+    countId: 'logisticsNoiDiaCount', emptyId: 'logisticsNoiDiaEmpty',
+    label: 'hãng vận chuyển',
+    noScroll: true,
+    readForm: function(){
+      return { scope: elVal('fCarrierScope'), status: elVal('fCarrierStatus') };
+    },
+    matches: carrierMatches
+  });
+  if(!h) return null;
+  if(typeof window !== 'undefined'){ window.V2S_NEWOBJ_FILTERS = window.V2S_NEWOBJ_FILTERS || {}; window.V2S_NEWOBJ_FILTERS['logistics-noi-dia'] = h; }
+  return h;
 }
 /* ---------- v124: Tin lô / xưởng / kiot do thành viên đăng ---------- */
 /* Chuyển 1 dòng từ public view (Supabase) sang đúng shape data.js (đặc tả
@@ -3584,6 +3669,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       collapseSection('xuong-may-gia-cong', 'factoryMoreBtn');
       collapseSection('su-kien-marketing', 'eventMarketingMoreBtn');
       collapseSection('logistics-trung-viet', 'logisticsMoreBtn');
+      collapseSection('logistics-noi-dia', 'logisticsNoiDiaMoreBtn');
       collapseSection('agency-ads-livestream', 'agencyAdsMoreBtn');
       expandSection(ncfg.sectionId, ncfg.moreBtnId);
     } else if(cat === 'lot'){
@@ -3591,6 +3677,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       collapseSection('xuong-may-gia-cong', 'factoryMoreBtn');
       collapseSection('su-kien-marketing', 'eventMarketingMoreBtn');
       collapseSection('logistics-trung-viet', 'logisticsMoreBtn');
+      collapseSection('logistics-noi-dia', 'logisticsNoiDiaMoreBtn');
       collapseSection('agency-ads-livestream', 'agencyAdsMoreBtn');
       expandSection('lo-hang-xa-kho', 'lotMoreBtn');
     } else if(cat === 'factory'){
@@ -3598,6 +3685,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       collapseSection('lo-hang-xa-kho', 'lotMoreBtn');
       collapseSection('su-kien-marketing', 'eventMarketingMoreBtn');
       collapseSection('logistics-trung-viet', 'logisticsMoreBtn');
+      collapseSection('logistics-noi-dia', 'logisticsNoiDiaMoreBtn');
       collapseSection('agency-ads-livestream', 'agencyAdsMoreBtn');
       expandSection('xuong-may-gia-cong', 'factoryMoreBtn');
     } else {
@@ -3606,6 +3694,7 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
       collapseSection('xuong-may-gia-cong', 'factoryMoreBtn');
       collapseSection('su-kien-marketing', 'eventMarketingMoreBtn');
       collapseSection('logistics-trung-viet', 'logisticsMoreBtn');
+      collapseSection('logistics-noi-dia', 'logisticsNoiDiaMoreBtn');
       collapseSection('agency-ads-livestream', 'agencyAdsMoreBtn');
     }
     /* v343 (P1-2/P1-3, phuong an B): chi section cua tab dang chon hien — dat SAU cac lenh

@@ -60,6 +60,7 @@
 <button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="logistics-noi-dia" aria-pressed="false" data-track="chon-logistic-noi-dia" title="Hãng vận chuyển nội địa cho shop">🚚 Logistic nội địa <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
@@ -123,6 +124,20 @@
 <button class="lot-more" id="logisticsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 </section>
 <script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
+<section class="lot-section filter-section collapsed" id="logistics-noi-dia" aria-labelledby="logistics-noi-dia-title">
+<h2 id="logistics-noi-dia-title">Logistic nội địa <span id="logisticsNoiDiaCountH2"></span></h2>
+<p class="lot-sub" id="logisticsNoiDiaSub">Hãng vận chuyển nội địa cho shop online/livestream: giá tham khảo, cách đăng ký, phạm vi và thời gian giao.</p>
+<p style="font-size:13px;color:#666">Giá dưới đây chỉ là THAM KHẢO ngày 25/11/2026 — mỗi hãng đổi bảng giá theo kỳ và theo hợp đồng/sản lượng của shop. Shop đối chiếu bảng giá chính thức của hãng (link trong từng thẻ) trước khi áp dụng. LEX (Lazada Logistics) đã rút, chấm dứt giao hàng chặng cuối tháng 3/2026 — shop Lazada dùng đơn vị vận chuyển do sàn chỉ định.</p>
+<div class="carrier-filters">
+<div class="uni-field"><label for="fCarrierScope">Phạm vi</label><select id="fCarrierScope" data-track="loc-pham-vi-van-chuyen"><option value="">Tất cả phạm vi</option><option value="toan-quoc">Toàn quốc</option><option value="noi-thanh">Nội thành</option></select></div>
+<div class="uni-field"><label for="fCarrierStatus">Trạng thái</label><select id="fCarrierStatus" data-track="loc-trang-thai-van-chuyen"><option value="">Tất cả trạng thái</option><option value="active">Đang hoạt động</option><option value="stopped">Đã ngừng</option></select></div>
+</div>
+<p class="filter-count" id="logisticsNoiDiaCount"></p>
+<p class="filter-empty" id="logisticsNoiDiaEmpty" hidden>Chưa có hãng vận chuyển nào khớp bộ lọc.</p>
+<div class="lot-grid" id="logisticsNoiDiaGrid"></div>
+<button class="lot-more" id="logisticsNoiDiaMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
+</section>
+<script>(function(){var s=document.getElementById("logistics-noi-dia");if(!s)return;var b=document.getElementById("logisticsNoiDiaMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="agency-ads-livestream" aria-labelledby="agencyAds-title">
 <h2 id="agencyAds-title">Agency Ads Livestream <span id="agencyAdsCountH2"></span></h2>
 <p class="lot-sub" id="agencyAdsSub">Agency chạy quảng cáo livestream TikTok/Facebook, booking KOL livestream cho shop online.</p>
