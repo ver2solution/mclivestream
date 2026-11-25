@@ -97,15 +97,17 @@ t('trustStats 06/11/2026: 9 lo / 3 thu mua / 2 cho / 40 xuong / 7 tinh',
 t('trustStats: so mau/shop cu nguyen (20/30)', st.modelCount === 20 && st.shopCount === 30);
 t('trustStats: goi 2 doi so (nhu test-v41) van chay, so lo/xuong = 0 khi khong truyen lots/factories',
   (() => { const s2 = V.trustStats(D.models, D.shops); return s2.modelCount === 20 && s2.lotCount === 0 && s2.factoryCount === 0; })());
-t('lotActive: lo nhom 1 ngay 12/10/2026 con hieu luc dung 11/12/2026 (tron 60 ngay), het han 12/12/2026',
+// v282 (24/11/2026, anh Tho HUY quy tac 30 ngay — GHI DE quy tac 60 ngay
+// cu): lotActive LUON true, khong con han ngay — lo cu khong bi an nua.
+t('lotActive v282: lo nhom 1 ngay 12/10/2026 VAN HIEN ca 11/12/2026 lan 12/12/2026 (huy han ngay)',
   V.lotActive(D.lots.find(l => l.date === '12/10/2026'), new Date(2026, 11, 11)) === true
-  && V.lotActive(D.lots.find(l => l.date === '12/10/2026'), new Date(2026, 11, 12)) === false);
-t('lotActive: lo nhom 2 ngay 16/06/2025 (Tmark, hon 1 nam) KHONG bi quy tac 60 ngay',
+  && V.lotActive(D.lots.find(l => l.date === '12/10/2026'), new Date(2026, 11, 12)) === true);
+t('lotActive v282: lo nhom 2 ngay 16/06/2025 (Tmark, hon 1 nam) van hien',
   V.lotActive(D.lots.find(l => l.group === 2), new Date(2027, 0, 15)) === true);
-t('trustStats 15/01/2027: lo nhom 1 het han het (0), thu mua/cho/xuong giu nguyen (3/2/40/7)',
-  (() => { const s3 = V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2027, 0, 15)); return s3.lotCount === 0 && s3.buyerCount === 3 && s3.batchCount === 2 && s3.factoryCount === 40 && s3.factoryProvinceCount === 7; })());
-t('trustStats 12/12/2026: chi lo 12/10 het han (8 lo con lai)',
-  V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2026, 11, 12)).lotCount === 8);
+t('trustStats v282 15/01/2027: lo nhom 1 VAN DU 9 (khong het han), thu mua/cho/xuong giu nguyen (3/2/40/7)',
+  (() => { const s3 = V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2027, 0, 15)); return s3.lotCount === 9 && s3.buyerCount === 3 && s3.batchCount === 2 && s3.factoryCount === 40 && s3.factoryProvinceCount === 7; })());
+t('trustStats v282 12/12/2026: lo 12/10 van tinh (9 lo)',
+  V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2026, 11, 12)).lotCount === 9);
 
 // ---- (C) Render the tu data.js khop noi dung goc ----
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
