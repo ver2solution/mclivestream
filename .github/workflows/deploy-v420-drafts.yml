@@ -1,0 +1,53 @@
+name: Deploy v420-drafts (article drafts)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v420-drafts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v420-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v420-drafts package
+        run: |
+          unzip -o mclivestream-v420-drafts-deploy.zip
+          echo "--- verify v420-drafts (6 bai) ---"
+          test -f bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html || (echo "THIEU bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html"; exit 1)
+          grep -q "bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html" js/data.js || (echo "THIEU live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html</loc>" sitemap.xml || (echo "THIEU live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan trong sitemap"; exit 1)
+          test -f bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html || (echo "THIEU bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html"; exit 1)
+          grep -q "bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html" js/data.js || (echo "THIEU phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html</loc>" sitemap.xml || (echo "THIEU phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet trong sitemap"; exit 1)
+          test -f bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html || (echo "THIEU bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html"; exit 1)
+          grep -q "bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html" js/data.js || (echo "THIEU tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html</loc>" sitemap.xml || (echo "THIEU tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live trong sitemap"; exit 1)
+          test -f bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html || (echo "THIEU bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html"; exit 1)
+          grep -q "bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html" js/data.js || (echo "THIEU checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html</loc>" sitemap.xml || (echo "THIEU checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don trong sitemap"; exit 1)
+          test -f bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html || (echo "THIEU bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html"; exit 1)
+          grep -q "bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html" js/data.js || (echo "THIEU phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html</loc>" sitemap.xml || (echo "THIEU phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi trong sitemap"; exit 1)
+          test -f bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html || (echo "THIEU bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html"; exit 1)
+          grep -q "bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html" js/data.js || (echo "THIEU tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe trong data.js"; exit 1)
+          grep -q "<loc>https://vieclamlivestream.online/bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html</loc>" sitemap.xml || (echo "THIEU tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f mclivestream-v420-drafts-deploy.zip
+          git add bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy v420-drafts: 6 bai viet tu ban thao (Muse Zalo/admin) — live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan, phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet, tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live, checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don, phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi, tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe"
+            git push
+          fi
