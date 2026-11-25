@@ -1137,7 +1137,7 @@ function initSectionFilter(opts){
        nao) van la loc dang hoat dong: hien dong dem + bang "Chua co du lieu"
        khi 0 ket qua + mo rong section. Truoc day active khong tinh gia nen
        dong dem rong khi chi loc gia. */
-    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption || f.subType || f.scope || f.status || f.priceMin != null || f.priceMax != null); /* v179: + logisticsOption (5 danh muc moi); v229: + subType (loai con Kiot); v443: + scope/status (Logistic noi dia) */
+    var active = !!(f.price || f.qty || f.prov || f.value || f.moq || f.cat || f.group || f.logisticsOption || f.subType || f.scope || f.status || f.priceMin != null || f.priceMax != null); /* v179: + logisticsOption (5 danh muc moi); v229: + subType (loai con Kiot); v443: + scope/status (Logistics noi dia) */
     var total = 0, first = null;
     grids.forEach(function(g){
       var matched = [], rest = [];
@@ -2611,10 +2611,10 @@ function initNewObjSections(){
     }
     refreshClassMoreBtn(secId);
   });
-  initCarrierSection(); /* v443: Logistic noi dia (section rieng, khong phai muc newobj) */
+  initCarrierSection(); /* v443: Logistics noi dia (section rieng, khong phai muc newobj) */
 }
 
-/* v443 (25/11/2026): Logistic noi dia — the hang tu mang logisticsNoiDia
+/* v443 (25/11/2026): Logistics noi dia — the hang tu mang logisticsNoiDia
    (data.js, 11 hang). The khong anh (chi text) theo mau newobj-card; the
    hang da ngung (status 'stopped') mo + nhan do + xep cuoi; cac buoc dang ky
    an trong <details> de the gon. Loc: pham vi (fCarrierScope) + trang thai
