@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(f.genderReq.value) lines.push('Giới tính yêu cầu: '+f.genderReq.value);
       if(f.ageReq.value.trim()) lines.push('Độ tuổi yêu cầu: '+f.ageReq.value.trim());
       if(f.expReq.value) lines.push('Kinh nghiệm yêu cầu: '+f.expReq.value);
-      if(f.deadline.value) lines.push('Hạn nhận hồ sơ: '+f.deadline.value);
+      if(f.deadline.value){ /* v280 (P3-7b): input date tra ISO YYYY-MM-DD — doi sang dd/mm/yyyy truoc khi ghep vao mo ta (nhu formatArticleDate o js/app.js); bai cu giu dong ISO trong mo ta, khong sua nguoc (theo tien le v227). */ var dm=f.deadline.value.match(/^(\d{4})-(\d{2})-(\d{2})$/); lines.push('Hạn nhận hồ sơ: '+(dm?dm[3]+'/'+dm[2]+'/'+dm[1]:f.deadline.value)); }
       if(f.district.value.trim()) lines.push('Quận / huyện, địa điểm làm việc: '+f.district.value.trim());
       if(f.appearanceReq.value.trim()) lines.push('Chiều cao / cân nặng / size yêu cầu: '+f.appearanceReq.value.trim());
       if(f.commission.value.trim()) lines.push('Hoa hồng: '+f.commission.value.trim());
