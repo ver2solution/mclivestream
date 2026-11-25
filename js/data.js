@@ -18132,7 +18132,29 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Cafe Giảng Hà Nội là nơi khai sinh ra cà phê trứng — món đồ uống đã trở thành biểu tượng của cà phê Việt Nam trên thế giới."
-  }
+  },
+  {
+   "title": "3 giây đầu: MC mở đầu phiên live sao cho người xem ở lại",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/3-giay-dau-quyet-dinh-nguoi-xem-o-lai-hay-thoat-cach-mc-mo-dau-phien-live.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Người xem quyết định ở lại hay thoát trong 3 giây đầu. Xem ngay 3 cách MC mở đầu phiên live bằng con số hoặc câu hỏi trực tiếp, kèm ví dụ đo được từ Reel thật."
+  },
+  {
+   "title": "Black Friday 27/11: 3 việc shop cần chốt khi tuyển mẫu live",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/black-friday-27-11-shop-tuyen-mau-live-gap-3-viec-can-chot-truoc-gio-live.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Black Friday 27/11/2026 đang tới gần, shop cần mẫu live gấp. Bài này nêu 3 việc phải chốt trước giờ live: đúng người, đúng kịch bản chốt đơn, đúng lịch chạy."
+  },
 ],
  "lots": [
    {
