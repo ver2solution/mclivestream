@@ -61,6 +61,14 @@
 <div class="form-card"><h2>Lượt xem thật</h2>
 <p id="qtViews">Đang tải…</p>
 <p style="font-size:13px;color:#666">Nguồn: bảng web_analytics_events (hàm get_analytics_summary) — số lượt xem trang (pageview) trong 24 giờ qua. Nếu hiện “chưa có dữ liệu” thì migration analytics chưa chạy.</p></div>
+<div class="form-card"><h2>Lượt xem + đăng ký theo UTM (7 ngày qua)</h2>
+<p id="qtUtmMsg">Đang tải…</p>
+<div id="qtUtmWrap" hidden>
+<table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ngày</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Nguồn</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Kênh</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Chiến dịch</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Lượt xem</th></tr></thead><tbody id="qtUtmTrafficBody"></tbody></table>
+<h3 style="margin-top:16px">Đăng ký thành công theo UTM</h3>
+<table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ngày</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Nguồn</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Kênh</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Chiến dịch</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Đăng ký</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Tỉ lệ chuyển đổi</th></tr></thead><tbody id="qtUtmSignupBody"></tbody></table>
+<p id="qtUtmNoUtm" style="font-weight:700"></p>
+<p style="font-size:13px;color:#666">Cách đọc: chỉ đo được đăng ký khi URL trang đăng ký lúc bấm nút CÓ UTM (link seeding/video trỏ thẳng trang đăng ký kèm UTM). Tỉ lệ chuyển đổi tính THEO NGÀY (đăng ký có UTM / lượt xem có UTM cùng ngày, cùng chiến dịch) — không phải phễu theo phiên, vì hàm get_analytics_summary không trả session_id. Đăng ký qua trang chủ rồi mới sang đăng ký sẽ mất UTM và rơi vào mục “không gắn được UTM”.</p></div></div>
 <div class="form-card"><h2>Lịch sử chuyển xu (toàn bộ tài khoản)</h2>
 <p id="qtTransfers">Đang tải…</p>
 <div id="qtTransfersWrap" hidden><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người gửi</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Người nhận</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Xu</th><th style="text-align:left;padding:8px;border-bottom:2px solid #ddd">Ghi chú</th><th style="text-align:right;padding:8px;border-bottom:2px solid #ddd">Thời gian</th></tr></thead><tbody id="qtTransfersBody"></tbody></table></div>

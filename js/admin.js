@@ -185,6 +185,110 @@
       }
     } catch (e4) { /* GĐ2 chưa chạy — bỏ qua, tab Tổng quan vẫn hiện số online */ }
   }
+  /* ---------- UTM dashboard 1a (v442, 25/11/2026 — #25 / B-20261124-02) ----------
+     Thiet ke: design-2026-11-24-tracking-utm-phieu-dang-ky-nv4.md (giai doan 1a:
+     bang UTM trong console, KHONG migration, KHONG doi client). Nguon: RPC
+     get_analytics_summary hien co (p_days=7), tach UTM tu cot `page` (tracker
+     js/analytics.js ghi UTM vao page tu v79).
+     HIEU DINH SO VOI THIET KE (tu quyet 25/11): RPC KHONG tra session_id (xem
+     migration web-analytics: GROUP BY day,page,event_type,element,error_message)
+     nen KHONG noi pheu theo phien duoc. Ti le chuyen doi o day la THEO NGAY:
+     dang ky thanh cong co UTM X trong page / luot xem co UTM X cung ngay. Dang ky
+     qua trang chu roi moi sang trang dang ky se roi vao muc "Khong gan duoc UTM"
+     (giai doan 1b — sessionStorage — la goi rieng sau). */
+  var UTM_SIGNUP_ELEMENTS = ['signUp', 'shopSignUp', 'mauSignUp'];
+  function parseUtm(page) {
+    var s = String(page || '');
+    var q = s.indexOf('?');
+    if (q < 0) return null;
+    var out = { source: '', medium: '', campaign: '', content: '', term: '' };
+    s.slice(q + 1).split('&').forEach(function (pair) {
+      var kv = pair.split('=');
+      var k = kv[0] || '';
+      var v = '';
+      try { v = decodeURIComponent((kv[1] || '').replace(/\+/g, ' ')); } catch (e) { v = kv[1] || ''; }
+      if (k === 'utm_source') out.source = v;
+      else if (k === 'utm_medium') out.medium = v;
+      else if (k === 'utm_campaign') out.campaign = v;
+      else if (k === 'utm_content') out.content = v;
+      else if (k === 'utm_term') out.term = v;
+    });
+    if (!out.source) return null; // khong co utm_source thi khong tinh la UTM
+    return out;
+  }
+  function groupUtmRows(rows) {
+    var traffic = {}; // key ngay|source|medium|campaign|content -> so luot xem
+    var signups = {}; // key nhu tren -> so dang ky thanh cong
+    var noUtmSignups = 0;
+    var noUtmByDay = {};
+    (rows || []).forEach(function (r) {
+      if (!r) return;
+      var n = Number(r.event_count) || 0;
+      if (r.event_type === 'pageview') {
+        var u = parseUtm(r.page);
+        if (!u) return;
+        var k = [r.day, u.source, u.medium, u.campaign, u.content].join('|');
+        traffic[k] = (traffic[k] || 0) + n;
+      } else if (r.event_type === 'form_result' && !r.error_message && UTM_SIGNUP_ELEMENTS.indexOf(r.element) >= 0) {
+        var u2 = parseUtm(r.page);
+        if (!u2) { noUtmSignups += n; noUtmByDay[r.day] = (noUtmByDay[r.day] || 0) + n; return; }
+        var k2 = [r.day, u2.source, u2.medium, u2.campaign, u2.content].join('|');
+        signups[k2] = (signups[k2] || 0) + n;
+      }
+    });
+    return { traffic: traffic, signups: signups, noUtmSignups: noUtmSignups, noUtmByDay: noUtmByDay, capped: (rows || []).length >= 1000 };
+  }
+  async function loadUtmStats() {
+    var msg = $('qtUtmMsg');
+    var wrap = $('qtUtmWrap');
+    try {
+      var rows = await rpc('get_analytics_summary', { p_days: 7 });
+      if (!Array.isArray(rows)) throw new Error('Chưa có dữ liệu.');
+      var g = groupUtmRows(rows);
+      var trafficKeys = Object.keys(g.traffic).sort(function (a, b) {
+        var ka = a.split('|'); var kb = b.split('|');
+        if (ka[0] !== kb[0]) return ka[0] < kb[0] ? 1 : -1;
+        return g.traffic[b] - g.traffic[a];
+      });
+      var trafficHtml = '';
+      trafficKeys.forEach(function (k) {
+        var parts = k.split('|');
+        trafficHtml += '<tr><td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[0]) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[1]) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[2] || '—') + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[3] || '—') + (parts[4] ? ' (' + esc(parts[4]) + ')' : '') + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(g.traffic[k]) + '</td></tr>';
+      });
+      var tb = $('qtUtmTrafficBody');
+      if (tb) tb.innerHTML = trafficHtml || '<tr><td colspan="5" style="padding:8px">Chưa có lượt xem nào mang UTM trong 7 ngày qua.</td></tr>';
+      var signupKeys = Object.keys(g.signups).sort(function (a, b) {
+        var ka = a.split('|'); var kb = b.split('|');
+        if (ka[0] !== kb[0]) return ka[0] < kb[0] ? 1 : -1;
+        return g.signups[b] - g.signups[a];
+      });
+      var signupHtml = '';
+      signupKeys.forEach(function (k) {
+        var parts = k.split('|');
+        var views = g.traffic[k] || 0;
+        var rate = views > 0 ? ((g.signups[k] / views) * 100).toFixed(1) + '%' : '—';
+        signupHtml += '<tr><td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[0]) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[1]) + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[2] || '—') + '</td>'
+          + '<td style="padding:8px;border-bottom:1px solid #eee">' + esc(parts[3] || '—') + (parts[4] ? ' (' + esc(parts[4]) + ')' : '') + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + fmt(g.signups[k]) + '</td>'
+          + '<td style="text-align:right;padding:8px;border-bottom:1px solid #eee">' + rate + '</td></tr>';
+      });
+      var sb = $('qtUtmSignupBody');
+      if (sb) sb.innerHTML = signupHtml || '<tr><td colspan="6" style="padding:8px">Chưa có đăng ký nào gắn được UTM trong 7 ngày qua.</td></tr>';
+      var noEl = $('qtUtmNoUtm');
+      if (noEl) noEl.textContent = 'Đăng ký thành công KHÔNG gắn được UTM (7 ngày qua): ' + fmt(g.noUtmSignups) + ' — những lượt này vào trang đăng ký không qua link UTM, hoặc qua trang chủ rồi mới sang đăng ký (xem ghi chú bên dưới).';
+      if (msg) msg.textContent = (g.capped ? 'CẢNH BÁO: kết quả đã chạm giới hạn 1.000 dòng của RPC — số liệu có thể thiếu, hãy đối chiếu theo từng ngày. ' : '') + 'Nguồn: get_analytics_summary (7 ngày qua).';
+      if (wrap) wrap.hidden = false;
+    } catch (e) {
+      if (msg) msg.textContent = 'Không tải được số liệu UTM — ' + friendlyErr(e);
+    }
+  }
+
   async function loadOverview() {
     /* v427 (24/11/2026, khung chat: 3 khoi Tong quan ket "Dang tai..." >2h):
        get_online_breakdown loi thi ca ham nem ra ngoai, 2 khoi sau (luot
@@ -238,6 +342,8 @@
       var v2 = $('qtViews');
       if (v2) v2.textContent = 'Chưa có dữ liệu.';
     }
+    // UTM dashboard 1a (v442, #25): tai bang UTM cung tab Tong quan.
+    await loadUtmStats();
     // Lịch sử chuyển xu toàn bộ tài khoản (không bắt buộc).
     try {
       var tr = await rpc('get_all_transfer_history_admin', { p_limit: 100 });
