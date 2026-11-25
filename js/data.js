@@ -18155,6 +18155,72 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Black Friday 27/11/2026 đang tới gần, shop cần mẫu live gấp. Bài này nêu 3 việc phải chốt trước giờ live: đúng người, đúng kịch bản chốt đơn, đúng lịch chạy."
   },
+  {
+   "title": "Live vắng người xem: seeding, CTA và cách giữ chân",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Live vắng người là vấn đề thường gặp nhất của shop mới. Bài này nêu 3 cách xử lý: seeding làm live đông, lời kêu gọi rõ ràng và tương tác giữ chân. Xem ngay."
+  },
+  {
+   "title": "Phiên live 237 tỷ: 3 điều shop tuyển mẫu live cần biết",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "237 tỷ là con số phiên live trong video đầu tiên của Trang Tuyển Mẫu Live. Bài này phân tích 3 điều shop cần biết khi tuyển mẫu live cho phiên lớn. Xem ngay."
+  },
+  {
+   "title": "Tuyển MC live mỹ phẩm: yêu cầu thật và buổi thử live",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "MC live mỹ phẩm cần gì khác mẫu live thời trang, shop nên yêu cầu những gì trong tin tuyển, và mẫu nên chuẩn bị ra sao cho buổi thử live."
+  },
+  {
+   "title": "Checklist trước giờ live: 4 nhóm cần kiểm tra",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Phiên live hỏng thường do khâu chuẩn bị, không phải lúc đang live. Checklist 4 nhóm: âm thanh, ánh sáng, kịch bản, chốt đơn — kiểm tra xong mới bấm live."
+  },
+  {
+   "title": "Phiên live 58 tỷ trong 36 giờ: shop đã chuẩn bị những gì?",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "58 tỷ trong 36 giờ là case phiên live trong sổ tay vận hành. Bài này phân tích 3 khâu chuẩn bị đứng sau con số đó để shop và mẫu học theo. Xem ngay."
+  },
+  {
+   "title": "Tuyển mẫu live thời trang: công việc, lịch làm, ứng tuyển",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Mẫu live thời trang làm gì trong một phiên live, lịch làm thường ra sao, cần chuẩn bị gì khi ứng tuyển — viết rõ để cả shop và mẫu đều không mất thời gian."
+  },
 ],
  "lots": [
    {
