@@ -17867,6 +17867,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok Shop UK mở cổng IPPC ngày 21/11/2026 để chủ sở hữu đăng ký tài sản trí tuệ, tìm vi phạm, khiếu nại và theo dõi tiến độ tại một nơi; cùng lúc, việc đổi tài khoản quảng cáo chính trong Seller Center dễ hơn nhưng sẽ tạm dừng GMV Max của tài khoản cũ, nên shop phải kiểm tra tài khoản chính trước khi chạy quảng cáo."
+  },
+  {
+   "title": "Thị trường livestream Việt Nam 2026: thời trang dẫn sóng",
+   "cat": "Thị trường",
+   "source": "TokConnect",
+   "date": "2026-11-25",
+   "url": "https://tokconnect.com/trends/tiktok-shop/categories/",
+   "page": "bai-viet/thi-truong-livestream-viet-nam-2026-thoi-trang-nu-nam-dan-song.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-viet-nam-2026-thoi-trang-nu-nam-dan-song.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường livestream Việt Nam 2026: thời trang nữ bán 104,92 triệu USD/tuần trên TikTok Shop Mỹ, thời trang nam 41,08 triệu USD/tuần (TokConnect 23/11/2026); thời trang nam tăng 46,28% tuần 9–15/11/2026 (Kalodata); TMĐT Việt Nam 32 tỷ USD, tăng 22% (e-Conomy SEA 05/11/2026); sale 12.12 diễn ra 12–14/12/2026."
+  },
+  {
+   "title": "Thị trường thời trang nữ nam: shop nhỏ bán gì",
+   "cat": "Thị trường",
+   "source": "Textile Today (VNA)",
+   "date": "2026-11-25",
+   "url": "https://www.textiletoday.com.bd/vietnams-garment-exports-rise-39-but-fabric-imports-expose-supply-chain-gaps",
+   "page": "bai-viet/thi-truong-thoi-trang-nu-nam-shop-nho-ban-gi-cuoi-nam-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-nu-nam-shop-nho-ban-gi-cuoi-nam-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thời trang nữ nam: xuất khẩu dệt may Việt Nam 39,84 tỷ USD sau 10 tháng 2026, tăng 3,9% (VITAS qua VNA, 11/2026); thời trang nữ 104,92 triệu USD/tuần, thời trang nam 41,08 triệu USD/tuần trên TikTok Shop Mỹ (TokConnect 23/11/2026); mục tiêu xuất khẩu cả năm 48–49 tỷ USD."
+  },
+  {
+   "title": "Thời trang toàn cầu 2026: tăng chậm, bán lại tăng tốc",
+   "cat": "Thị trường",
+   "source": "McKinsey",
+   "date": "2026-11-25",
+   "url": "https://www.mckinsey.com/industries/retail/our-insights/what-to-expect-in-the-global-fashion-industry-in-2026",
+   "page": "bai-viet/thoi-trang-toan-cau-2026-tang-cham-ban-lai-tang-toc.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-toan-cau-2026-tang-cham-ban-lai-tang-toc.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang toàn cầu 2026: tăng trưởng 1 chữ số thấp; 46% lãnh đạo lo điều kiện xấu đi (so với 39% năm ngoái); thuế quan làm giá may mặc tăng khoảng 35%; bán lại tăng nhanh gấp 2–3 lần thị trường mới năm 2027; 70% người tiêu dùng định chi ít hơn (McKinsey, State of Fashion 2026)."
+  },
+  {
+   "title": "Nike quý 1/2027: doanh thu 11,2 tỷ USD, giảm 4%",
+   "cat": "Thị trường",
+   "source": "Nike (Business Wire)",
+   "date": "2026-11-25",
+   "url": "https://investors.nike.com/news-events/press-releases/detail/575/nike-inc-reports-fiscal-2027-first-quarter-results",
+   "page": "bai-viet/nike-quy-1-2027-doanh-thu-112-ty-usd-giam-4-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nike-quy-1-2027-doanh-thu-112-ty-usd-giam-4-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Nike quý 1/2027: doanh thu 11,2 tỷ USD, giảm 4%; Bắc Mỹ tăng 2%, châu Âu giảm 5%, Trung Quốc giảm 22%; bán sỉ 6,8 tỷ USD, giảm 1%; bán trực tiếp 4,1 tỷ USD, giảm 8%; lợi nhuận ròng 712 triệu USD, giảm 2% (báo cáo 01/10/2026)."
   }
 ],
  "lots": [
