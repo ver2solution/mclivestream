@@ -1,0 +1,52 @@
+name: "Deploy v444 nav sweep (Lao Dong Tu Do — 6 muc menu)"
+
+# v444 (25/11/2026): doi nav 6 muc tren toan bo file HTML (789 file).
+# Chay khi file workflow nay duoc day len nhanh deploy (browser upload) hoac
+# workflow_dispatch. Script tools/nav-sweep-lao-dong-tu-do.mjs lam viec,
+# workflow chi verify + commit. Sau khi workflow xong, tao PR tu nhanh deploy.
+# Luu y: so file HTML tang moi ngay (bai moi) nen verify KHONG hardcode 791 —
+# chi so sanh so file co nav vs so file co nav moi.
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-v444-nav-sweep.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  nav-sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run nav sweep (dry-run)
+        run: |
+          node tools/nav-sweep-lao-dong-tu-do.mjs --dry-run
+      - name: Run nav sweep (write)
+        run: |
+          node tools/nav-sweep-lao-dong-tu-do.mjs --write
+      - name: Verify — moi file co nav deu co nav moi, khong con nav cu
+        run: |
+          NAV=$(grep -rl 'id="mainNav"' --include='*.html' . | wc -l)
+          NEW=$(grep -rl 'Lao Động Tự Do</a>' --include='*.html' . | wc -l)
+          echo "files with nav: $NAV; files with new nav: $NEW"
+          test "$NAV" -eq "$NEW" || (echo "SAI: $NAV file co nav nhung chi $NEW file co nav moi"; exit 1)
+          OLD=$(grep -rl 'hoi-dap.html" class="">Hỏi đáp</a>' --include='*.html' . | wc -l)
+          echo "files with old nav hoi-dap link: $OLD"
+          test "$OLD" -eq 0 || (echo "SAI: van con $OLD file co link Hoi dap trong nav"; exit 1)
+          echo "verify OK"
+      - name: Commit swept files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -20
+          echo "changed files: $(git diff --cached --name-only | wc -l)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "v444: sweep nav 6 muc (Lao Dong Tu Do) — doi nav tren toan bo file HTML"
+            git push
+          fi
