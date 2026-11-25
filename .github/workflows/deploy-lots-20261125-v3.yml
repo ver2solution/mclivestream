@@ -36,67 +36,68 @@ jobs:
           import re, subprocess
           src = open('js/data.js', encoding='utf-8').read()
           print('data.js size:', len(src))
+          print('--- all array keys ("key": [) ---')
+          for k in sorted(set(re.findall(r'"([^"]{1,40})"\s*:\s*\[', src))):
+              print('  KEY:', k)
           print('--- array assignments (name = [) ---')
           seen = []
           for m in re.finditer(r"([A-Za-z_$][\w$]*)\s*=\s*\[", src):
               if m.group(1) not in seen:
                   seen.append(m.group(1))
                   print(' ', m.group(1), 'at offset', m.start())
-          print('--- key-style hits (name: [) ---')
-          for m in re.finditer(r"['\"]?(lots|kiot|factories|articles)['\"]?\s*:\s*\[", src):
-              print(' ', repr(src[max(0, m.start()-60):m.end()+10]))
           print('--- global id/slug counts (whole file) ---')
           print(' lot- ids:', len(set(re.findall(r'lot-\d+', src))))
           print(' kiot- ids:', len(set(re.findall(r'kiot-\d+', src))))
           print(' fac- ids:', len(set(re.findall(r'fac-\d+', src))))
           print(' slugs:', len(re.findall(r"['\"]slug['\"]\s*:", src)))
-          def section(text, name):
-              pats = [r'\b["\']?' + name + r'["\']?\s*[:=]\s*\[',
-                      r'(?i)\b["\']?' + name + r'["\']?\s*[:=]\s*\[']
-              for p in pats:
-                  m = re.search(p, text)
-                  if not m:
-                      continue
-                  i = m.end() - 1
-                  depth = 0
-                  j = i
-                  instr = None
-                  esc = False
-                  line_comment = False
-                  block_comment = False
-                  while j < len(text):
-                      c = text[j]
-                      nxt = text[j + 1] if j + 1 < len(text) else ''
-                      if line_comment:
-                          if c == '\n':
-                              line_comment = False
-                      elif block_comment:
-                          if c == '*' and nxt == '/':
-                              block_comment = False
-                              j += 1
-                      elif instr:
-                          if esc:
-                              esc = False
-                          elif c == '\\':
-                              esc = True
-                          elif c == instr:
-                              instr = None
-                      else:
-                          if c == '/' and nxt == '/':
-                              line_comment = True
-                              j += 1
-                          elif c == '/' and nxt == '*':
-                              block_comment = True
-                              j += 1
-                          elif c in ("'", '"', '`'):
-                              instr = c
-                          elif c == '[':
-                              depth += 1
-                          elif c == ']':
-                              depth -= 1
-                              if depth == 0:
-                                  return text[i:j + 1]
-                      j += 1
+          def section(text, name, alts=()):
+              for nm in [name] + list(alts):
+                  pats = [r'\b["\']?' + nm + r'["\']?\s*[:=]\s*\[',
+                          r'(?i)\b["\']?' + nm + r'["\']?\s*[:=]\s*\[']
+                  for p in pats:
+                      m = re.search(p, text)
+                      if not m:
+                          continue
+                      i = m.end() - 1
+                      depth = 0
+                      j = i
+                      instr = None
+                      esc = False
+                      line_comment = False
+                      block_comment = False
+                      while j < len(text):
+                          c = text[j]
+                          nxt = text[j + 1] if j + 1 < len(text) else ''
+                          if line_comment:
+                              if c == '\n':
+                                  line_comment = False
+                          elif block_comment:
+                              if c == '*' and nxt == '/':
+                                  block_comment = False
+                                  j += 1
+                          elif instr:
+                              if esc:
+                                  esc = False
+                              elif c == '\\':
+                                  esc = True
+                              elif c == instr:
+                                  instr = None
+                          else:
+                              if c == '/' and nxt == '/':
+                                  line_comment = True
+                                  j += 1
+                              elif c == '/' and nxt == '*':
+                                  block_comment = True
+                                  j += 1
+                              elif c in ("'", '"', '`'):
+                                  instr = c
+                              elif c == '[':
+                                  depth += 1
+                              elif c == ']':
+                                  depth -= 1
+                                  if depth == 0:
+                                      return text[i:j + 1]
+                          j += 1
               print('CONTEXT for missing array', name)
               for m in list(re.finditer(r'\b' + name + r'\b', text))[:5]:
                   print('  ...', repr(text[max(0, m.start()-80):m.end()+80]))
@@ -122,7 +123,7 @@ jobs:
           def ids(sec, prefix):
               return sorted(set(re.findall(prefix + r'-\d+', sec)))
           lots = section(src, 'lots')
-          kiot = section(src, 'kiot')
+          kiot = section(src, 'kiot', ['kiots', 'kiosk', 'kiosks', 'stalls', 'shops', 'quay', 'kiotList', 'listKiot'])
           fac = section(src, 'factories')
           art = section(src, 'articles')
           lot_ids = ids(lots, 'lot')
