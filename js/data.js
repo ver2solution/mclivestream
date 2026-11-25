@@ -76,6 +76,7 @@
    articles-viec-lam-2026-11-23 adds 4 Viec Lam articles (23/11/2026, Monday): 1 stats (0 models + 0 shops 22/11: Facebook selfie checkpoint from 08:53 22/11 blocked collection, no collection file 22/11; sh-307 ThuKa Villa still not on the site) + 1 seasonal keyword #10 'mau livestream lam xuyen Tet' (deep, LAST of round 1: Tet 2027 holiday 04-10/02/2027, Art. 98 Labour Code 300%/400%/490%, JD 1.3 ty NDT Tet bonus, 4 night-shift shops) + 1 market stats (Q3/2026 earnings: Shopify GMV +29.5%, Kuaishou live -19%, JD logistics +16.1%, Metric VN Q3 150.4k ty +45.16%) + 1 intro 'san viec lam livestream' (Tet hiring angle). STT 23 'viec lam livestream Shopee' moves to 24/11. SEO V2. Total 617 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-doi-song-2026-11-24 adds 5 Đời Sống articles (24/11/2026, Tuesday): 1 seasonal keyword "mẫu livestream kiếm tiền Tết" #1/10 VONG 2 goc moi (2,151 words, deep; e-Conomy SEA 2026 05/11/2026 — TMDT 32 ty USD +22%; luong le 400% Dieu 98 BLLD 2019; dang ky chien dich 12.12 het 25/11/2026) + 3 news "("tháng 12 du lịch đâu đẹp nhất" Sapa 1,462 words; "mua sắm Black Friday 2026" 1,559 words; "uống cà phê lúc nào tốt nhất" 1,534 words) + 1 cafe "quán cafe check-in đẹp Gem Valley Sapa" 1,630 words. Total 677 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-24 adds 4 Dong tien articles (24/11/2026, Tuesday): 1 seasonal keyword #2 VONG 2 'cach tinh lai lo livestream Tet' (deep, goc MOI: tinh lai lo THEO TUNG SAN — TikTok Shop 10%/don vs Shopee 6% + 3.000d/don, diem ngang don 75.000d + hoa hong mau 5-20% + chi phi hoan/huy + nguong GMV hoa von 1 phien; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 2 theme tuan Thu Ba 24/11 'thi truong phu kien trang suc' (PNJ quy 1/2026 doanh thu 17.245 ty +79%, lai rong +116,5%, bien lai gop ~20%; Winnie 395,5 ty/1 ngay live + vang hoi 3.634,6 USD +2,71% sang 24/11 keo SJC len 130-135 trieu, +1,5 trieu; vang trang suc Phu Quy 127,5-132,5 trieu) + 1 news 24/11 (Bitcoin cham 64.603 USD rang sang 24/11 roi roi ve 61.546 USD, ETF rut 4 tuan lien tiep). SEO V2 (title suffix + link boxes). Total 685 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dang-hot-2026-11-24 adds 4 Dang hot articles (24/11/2026, Tuesday): 1 seasonal keyword 'sale 12.12' #7/10 VONG 2 (GOC MOI: 5 cach kiem tra gia giam that hay ao — Groundwork 'Deal or Decoy?' 16/11/2026: 29,1% deal khong re hon gia 30 ngay truoc, 57,3% vs 90 ngay; EU bat ghi gia thap nhat 30 ngay, My chua co) + 3 news (Adidas BF 2026: giam toi 60% + ma SD15/DN15 them 15%, 20-28/11/2026, Runfalcon 5 20 USD — DealNews 22/11/2026; Pandora BF 2026: giam toi 40% My / 30% Anh, 12/11-01/12/2026, Cyber Monday toi 50% — The Independent 23/11/2026; Sephora BF 2026: Cyber Week 23-30/11/2026, moi ngay 1 nhom thuong hieu giam 30% — Cool Mom Picks 17/11/2026). SEO V2 (title suffix + link boxes). Total 681 articles (node) / 680 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-24 adds 4 Cong nghe articles (24/11/2026, Tuesday): 1 seasonal keyword 'TikTok Shop Affiliate Tet' #6/10 VONG 2 (GOC MOI so voi vong 1 16/11 'hoa hong nhan doi den 30/11': cong thuc hoa hong khi giam gia — san pham 40 USD, 15%, giam 30% do shop tra con 4,20 USD/don, can 143 don moi bang 100 don gia goc; tien ve ngay thu 15 sau giao (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay; han dang ky chien dich 12.12 VN het 25/11/2026; ugc.live 15/11/2026 + Modern Retail 09/11 + SMT 10/11) + 3 news (Meta Advantage+ thang 11/2026: video tu anh tinh mo cho moi nha quang cao tu thang 10/2026, tro ly AI dung chien dich con thu nghiem — Kult Studios 10/11/2026; video AI lam clip san pham 12.12: 7 mo hinh thu tren 1 anh ngay 11/11/2026, clip 0,18-1,17 USD — GenMagic 11/11/2026; Instagram thang 11/2026: gan link Amazon affiliate trong Reels tu 16/11 + chan Reels bi danh cap tu 17/11 — Geekout 20/11/2026). SEO V2 (title suffix + link boxes). Total 664 articles (node) / 663 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -14561,6 +14562,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Bitcoin chạm 64.600 USD lúc rạng sáng 24/11/2026 (cao nhất 64.603,12 USD) rồi rơi về 61.546,42 USD, khi ETF rút vốn 4 tuần liên tiếp (1,79 tỷ USD tuần trước); tiền hàng Tết phải nằm trong tài khoản ngân hàng."
+  },
+  {
+   "title": "Việc làm livestream Tết: chốt ca 12.12 hết hôm nay",
+   "cat": "Việc Làm",
+   "source": "z.media",
+   "date": "2026-11-25",
+   "url": "https://www.z.media/insights/tiktok-shop-mega-sales-calendar-2026",
+   "page": "bai-viet/viec-lam-livestream-tet-chot-ca-12-12-hom-nay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-livestream-tet-chot-ca-12-12-hom-nay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm livestream Tết: hôm nay 25/11/2026 là ngày cuối đăng ký chiến dịch TikTok Shop 12.12 (z.media, tháng 10/2026); sale 12–14/12/2026, Online Friday 10–16/12/2026; sàn có 246 mẫu, 313 shop, 60 shop ghi lương theo giờ; lương lễ Tết ít nhất 400% theo luật."
+  },
+  {
+   "title": "Tuyển mẫu live bán thời trang nữ nam: 102 triệu USD",
+   "cat": "Việc Làm",
+   "source": "Kalodata",
+   "date": "2026-11-25",
+   "url": "https://www.kalodata.com/blog/tiktok/tiktok-shop-us-black-friday-2026-category-trends/",
+   "page": "bai-viet/tuyen-mau-live-ban-thoi-trang-nu-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ban-thoi-trang-nu-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live bán thời trang nữ nam: thời trang nữ Mỹ 102,29 triệu USD/7 ngày 09–15/11/2026 (+29,45%), nam 37,05 triệu USD (+46,28%) theo Kalodata; 3/10 phiên live top là host cá nhân bán thời trang nữ (TokConnect 23/11/2026); sàn có 64 shop thời trang, 18 shop ghi lương giờ."
+  },
+  {
+   "title": "Lương host livestream Trung Quốc tháng 11/2026",
+   "cat": "Việc Làm",
+   "source": "Jooble",
+   "date": "2026-11-25",
+   "url": "https://jooble.org/jobs-swing-shift/China",
+   "page": "bai-viet/luong-host-livestream-trung-quoc-thang-11-2026.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-host-livestream-trung-quoc-thang-11-2026.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương host livestream Trung Quốc tháng 11/2026: Douyin trả 15.000–22.000 NDT/tháng, host TikTok Yantai 100–200 NDT/giờ (03/11/2026), host Thâm Quyến 10.000–15.000 NDT/tháng (24/11/2026); host hạng trung Hàng Châu dưới 20.000 NDT/tháng (36Kr); đội Douyin Hà Nội trả 17–40 triệu đồng/tháng."
+  },
+  {
+   "title": "Mẫu live Mexico bán 1 triệu peso 1 phiên 10 giờ",
+   "cat": "Việc Làm",
+   "source": "Grou (dẫn Merca2.0)",
+   "date": "2026-11-25",
+   "url": "https://grou.com/en/blog/real-cases-november-how-creators-sell-in-season",
+   "page": "bai-viet/mau-live-mexico-ban-1-trieu-peso-1-phien-10-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-live-mexico-ban-1-trieu-peso-1-phien-10-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu live Mexico Monserrat Meraz bán gần 1 triệu peso (khoảng 55.000 USD) trong 1 phiên live 10 giờ (Merca2.0 03/11/2026 qua Grou 09/11/2026): hơn 4.100 đơn, 187.000 người xem cùng lúc, 6,2 triệu lượt hiển thị; 33% thời trang TikTok Shop Mexico qua livestream; bài học: ngày sự kiện + ca dài + giá vừa."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
