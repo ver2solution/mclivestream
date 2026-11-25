@@ -77,6 +77,7 @@
    articles-doi-song-2026-11-24 adds 5 Đời Sống articles (24/11/2026, Tuesday): 1 seasonal keyword "mẫu livestream kiếm tiền Tết" #1/10 VONG 2 goc moi (2,151 words, deep; e-Conomy SEA 2026 05/11/2026 — TMDT 32 ty USD +22%; luong le 400% Dieu 98 BLLD 2019; dang ky chien dich 12.12 het 25/11/2026) + 3 news "("tháng 12 du lịch đâu đẹp nhất" Sapa 1,462 words; "mua sắm Black Friday 2026" 1,559 words; "uống cà phê lúc nào tốt nhất" 1,534 words) + 1 cafe "quán cafe check-in đẹp Gem Valley Sapa" 1,630 words. Total 677 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-25 adds 4 Cong nghe articles (25/11/2026, Wednesday): 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' (GOC MOI so voi vong 1 13/11: het hom nay 25/11 con lam duoc gi — Product vs LIVE GMV Max, Product ROI, tang ngan sach 30-50%, GMV Max trong Open Collaboration 22/11/2026; z.media 10/2026 + small-patterns 11/2026 + kolvant 22/11 + emarspro) + 1 theme tuan thoi trang nu nam 'AI thu do ao' (Google Try on 18 nuoc 02/11/2026, chua co VN; Doppl ngung 30/04/2026; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%) + 2 news (TikTok Shop Seller Assistant tu chay GMV Max — emarspro; TikTok Shop mo cong khieu nai ban quyen IPPC 21/11/2026 + doi tai khoan quang cao chinh — kolvant 22/11/2026). SEO V2 (title suffix + link boxes). Total 707 articles (node) / 706 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-24 adds 4 Dong tien articles (24/11/2026, Tuesday): 1 seasonal keyword #2 VONG 2 'cach tinh lai lo livestream Tet' (deep, goc MOI: tinh lai lo THEO TUNG SAN — TikTok Shop 10%/don vs Shopee 6% + 3.000d/don, diem ngang don 75.000d + hoa hong mau 5-20% + chi phi hoan/huy + nguong GMV hoa von 1 phien; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 2 theme tuan Thu Ba 24/11 'thi truong phu kien trang suc' (PNJ quy 1/2026 doanh thu 17.245 ty +79%, lai rong +116,5%, bien lai gop ~20%; Winnie 395,5 ty/1 ngay live + vang hoi 3.634,6 USD +2,71% sang 24/11 keo SJC len 130-135 trieu, +1,5 trieu; vang trang suc Phu Quy 127,5-132,5 trieu) + 1 news 24/11 (Bitcoin cham 64.603 USD rang sang 24/11 roi roi ve 61.546 USD, ETF rut 4 tuan lien tiep). SEO V2 (title suffix + link boxes). Total 685 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dang-hot-2026-11-24 adds 4 Dang hot articles (24/11/2026, Tuesday): 1 seasonal keyword 'sale 12.12' #7/10 VONG 2 (GOC MOI: 5 cach kiem tra gia giam that hay ao — Groundwork 'Deal or Decoy?' 16/11/2026: 29,1% deal khong re hon gia 30 ngay truoc, 57,3% vs 90 ngay; EU bat ghi gia thap nhat 30 ngay, My chua co) + 3 news (Adidas BF 2026: giam toi 60% + ma SD15/DN15 them 15%, 20-28/11/2026, Runfalcon 5 20 USD — DealNews 22/11/2026; Pandora BF 2026: giam toi 40% My / 30% Anh, 12/11-01/12/2026, Cyber Monday toi 50% — The Independent 23/11/2026; Sephora BF 2026: Cyber Week 23-30/11/2026, moi ngay 1 nhom thuong hieu giam 30% — Cool Mom Picks 17/11/2026). SEO V2 (title suffix + link boxes). Total 681 articles (node) / 680 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-24 adds 4 Cong nghe articles (24/11/2026, Tuesday): 1 seasonal keyword 'TikTok Shop Affiliate Tet' #6/10 VONG 2 (GOC MOI so voi vong 1 16/11 'hoa hong nhan doi den 30/11': cong thuc hoa hong khi giam gia — san pham 40 USD, 15%, giam 30% do shop tra con 4,20 USD/don, can 143 don moi bang 100 don gia goc; tien ve ngay thu 15 sau giao (don Black Friday rut duoc 17-25/12/2026, cham nhat 10/01/2027); tra hang toi 10/02/2027; doi Open rate mat 30 ngay, Target Collaboration chi 5 ngay; han dang ky chien dich 12.12 VN het 25/11/2026; ugc.live 15/11/2026 + Modern Retail 09/11 + SMT 10/11) + 3 news (Meta Advantage+ thang 11/2026: video tu anh tinh mo cho moi nha quang cao tu thang 10/2026, tro ly AI dung chien dich con thu nghiem — Kult Studios 10/11/2026; video AI lam clip san pham 12.12: 7 mo hinh thu tren 1 anh ngay 11/11/2026, clip 0,18-1,17 USD — GenMagic 11/11/2026; Instagram thang 11/2026: gan link Amazon affiliate trong Reels tu 16/11 + chan Reels bi danh cap tu 17/11 — Geekout 20/11/2026). SEO V2 (title suffix + link boxes). Total 664 articles (node) / 663 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -17819,6 +17820,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Mẹo livestream chốt đơn: xả kho trước Black Friday 27/11/2026 — tuần Black Friday 2025 bán 29,7 triệu đơn (+96%), món chạy nhất bán 84% doanh số trước khi hết ngày Black Friday, đỉnh vào Lễ Tạ ơn (FastMoss)."
   },
+  {
+   "title": "Quảng cáo TikTok Shop 12.12: hết hôm nay còn làm gì",
+   "cat": "Công nghệ",
+   "source": "z.media",
+   "date": "2026-11-25",
+   "url": "https://www.z.media/insights/tiktok-shop-mega-sales-calendar-2026",
+   "page": "bai-viet/quang-cao-tiktok-shop-12-12-het-hom-nay-25-11-con-lam-duoc-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quang-cao-tiktok-shop-12-12-het-hom-nay-25-11-con-lam-duoc-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Ngày 25/11/2026 là hạn cuối đăng ký chiến dịch 12.12 theo lịch ước tính của z.media, sale diễn ra 12–14/12/2026. Shop nhỏ chốt trong hôm nay: chọn Product GMV Max nếu bán qua video, LIVE GMV Max nếu bán qua live, đặt Product ROI theo lợi nhuận thật, tăng ngân sách 30–50% trong đợt sale, và chỉ chạy sản phẩm đã duyệt, đủ hàng, gian hàng đạt SPS từ 3,5 trở lên."
+  },
+  {
+   "title": "AI thử đồ ảo: Google Try on đã tới Đông Nam Á",
+   "cat": "Công nghệ",
+   "source": "Chulair",
+   "date": "2026-11-25",
+   "url": "https://www.chulair.com/best-virtual-try-on-apps/",
+   "page": "bai-viet/ai-thu-do-ao-google-try-on-thoi-trang-nu-nam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-thu-do-ao-google-try-on-thoi-trang-nu-nam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Google Try on, tính năng thử đồ ảo bằng AI trong Search và Shopping, đã tới 18 nước tính đến ngày 02/11/2026, gồm Indonesia, Malaysia, Singapore và Philippines, nhưng chưa có Việt Nam. Shop thời trang nữ và nam chuẩn bị từ bây giờ: ảnh sản phẩm nền trắng, bảng size đo thật, video mẫu mặc thật trên live, để sẵn sàng khi tính năng tới và bán tốt hơn ngay từ hôm nay."
+  },
+  {
+   "title": "TikTok Shop Seller Assistant: AI tự chạy GMV Max",
+   "cat": "Công nghệ",
+   "source": "eMarsPro",
+   "date": "2026-11-25",
+   "url": "https://emarspro.com/blog/tiktok-shop-black-friday-strategy/",
+   "page": "bai-viet/tiktok-shop-seller-assistant-tro-ly-ai-tu-chay-gmv-max.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-seller-assistant-tro-ly-ai-tu-chay-gmv-max.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Seller Assistant là trợ lý AI tự hành trong Seller Center, dùng được cho mọi nhà bán; khi được cấp quyền, nó tự mở GMV Max, cập nhật mã vận đơn, nộp lại hồ sơ sau vi phạm và bắt đầu khiếu nại sau bán hàng, nhưng giá, ngân sách, sản phẩm và tồn kho vẫn do shop tự quyết trước mỗi đợt chạy Black Friday 2026."
+  },
+  {
+   "title": "TikTok Shop bản quyền: mở cổng khiếu nại IPPC",
+   "cat": "Công nghệ",
+   "source": "Kolvant",
+   "date": "2026-11-25",
+   "url": "https://kolvant.com/news/tiktok-shop-news-nov-22-2026/",
+   "page": "bai-viet/tiktok-shop-mo-cong-khieu-nai-ban-quyen-va-doi-tai-khoan-quang-cao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-mo-cong-khieu-nai-ban-quyen-va-doi-tai-khoan-quang-cao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop UK mở cổng IPPC ngày 21/11/2026 để chủ sở hữu đăng ký tài sản trí tuệ, tìm vi phạm, khiếu nại và theo dõi tiến độ tại một nơi; cùng lúc, việc đổi tài khoản quảng cáo chính trong Seller Center dễ hơn nhưng sẽ tạm dừng GMV Max của tài khoản cũ, nên shop phải kiểm tra tài khoản chính trước khi chạy quảng cáo."
+  }
 ],
  "lots": [
    {
