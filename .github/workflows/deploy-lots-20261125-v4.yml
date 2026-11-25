@@ -1,0 +1,145 @@
+# Deploy lots 25/11 v4 — 25 lo moi lot-306..330 + chuyen 4 bai Dang hot ve mang articles
+# (rebase tu live 0a7eeb5, 25/11; thay the v3 — PR #87 huy do xung dot voi deploy v424-drafts)
+# Giai nen ZIP goc repo -> js/data.js + images/lo/ -> commit -> verify
+# Luu y: data.js dung khoa co ngoac kep "lots": [ va khoa mang kiot la "kiots" (so nhieu).
+# Ham section() xu ly dung 2 diem nay (giong file v3).
+name: Deploy lots 20261125 v4
+
+on:
+  push:
+    branches: [deploy/lots-20261125-v4]
+    paths:
+      - mclivestream-data-2026-11-25-lots-deploy-v4.zip
+      - .github/workflows/deploy-lots-20261125-v4.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-lots-v4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: deploy/lots-20261125-v4
+          fetch-depth: 0
+
+      - name: Unzip deploy package
+        run: |
+          ZIP=mclivestream-data-2026-11-25-lots-deploy-v4.zip
+          test -f "$ZIP" || { echo "❌ Khong tim thay $ZIP"; exit 1; }
+          echo "== ZIP contents =="
+          unzip -l "$ZIP"
+          # ZIP du 25 file: js/data.js + 24 anh lot-306..318, lot-320..330
+          COUNT=$(unzip -l "$ZIP" | awk 'NR>3 && $4 != "" && $4 !~ /\/$/ {n++} END {print n+0}')
+          echo "So file trong ZIP: $COUNT"
+          test "$COUNT" -eq 25 || { echo "❌ ZIP phai co dung 25 file (js/data.js + 24 anh)"; exit 1; }
+          unzip -o "$ZIP"
+          test -f js/data.js || { echo "❌ Thieu js/data.js sau khi giai nen"; exit 1; }
+          # Kiem tra du 24 anh lo moi
+          MISSING=0
+          for n in $(seq 306 318) $(seq 320 330); do
+            f=$(ls images/lo/lot-$n.* 2>/dev/null | head -1)
+            if [ -z "$f" ]; then echo "❌ Thieu anh lot-$n"; MISSING=1; fi
+          done
+          test "$MISSING" -eq 0 || exit 1
+          echo "✅ ZIP du 25 file, du 24 anh lot-306..318 + lot-320..330"
+
+      - name: Commit data + images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/lo/
+          git status --short
+          if git diff --cached --quiet; then
+            echo "ℹ️ Khong co thay doi de commit"
+          else
+            git commit -m "data: 25 lô mới lot-306..330 + chuyển 4 bài Đang hot về mảng articles + rebase từ live 0a7eeb5 (25/11)"
+            git push origin deploy/lots-20261125-v4
+          fi
+
+      - name: Verify counts
+        run: |
+          python3 - <<'PY'
+          import re, sys
+
+          data = open('js/data.js', encoding='utf-8').read()
+          ok = True
+          def check(cond, msg):
+              global ok
+              print(('✅ ' if cond else '❌ ') + msg)
+              ok = ok and cond
+
+          # Cat mang theo ten khoa: xu ly dung "lots": [ (khoa co ngoac kep)
+          # va "kiots" (so nhieu, khong phai "kiot").
+          def section(src, name):
+              m = re.search(r'\b["\']?' + name + r'["\']?\s*[:=]\s*\[', src)
+              assert m, f'Khong tim thay mang {name}'
+              i, depth = m.end() - 1, 0
+              while i < len(src):
+                  c = src[i]
+                  if c == '[': depth += 1
+                  elif c == ']':
+                      depth -= 1
+                      if depth == 0: return src[m.start():i + 1]
+                  i += 1
+              raise AssertionError(f'Mang {name} khong dong ngoac')
+
+          def count_objects(sec):
+              # Dem object theo truong id: "id" | 'id' | id:
+              return len(re.findall(r'["\']?id["\']?\s*:', sec))
+
+          lots = section(data, 'lots')
+          kiots = section(data, 'kiots')
+          factories = section(data, 'factories')
+          articles = section(data, 'articles')
+
+          n_lots = count_objects(lots)
+          n_kiots = count_objects(kiots)
+          n_factories = count_objects(factories)
+          n_articles = count_objects(articles)
+          art_titles = len(re.findall(r'["\']?title["\']?\s*:', articles))
+          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {n_articles} (title: {art_titles})')
+
+          check(n_lots == 330, f'Lots = 330 (thuc te {n_lots})')
+          check(n_kiots == 384, f'Kiot = 384 (thuc te {n_kiots})')
+          check(n_factories == 442, f'Xuong = 442 (thuc te {n_factories})')
+          check(n_articles == 747, f'Articles = 747 (thuc te {n_articles})')
+          check(art_titles == 747, f'Articles dem theo truong title = 747 (thuc te {art_titles})')
+
+          lot_ids = re.findall(r'["\']?id["\']?\s*:\s*["\']([^"\']+)["\']', lots)
+          art_slugs = re.findall(r'["\']?slug["\']?\s*:\s*["\']([^"\']+)["\']', articles)
+
+          # Du 25 lo moi: lot-306..318 + lot-320..330
+          new_lots = [f'lot-{n}' for n in list(range(306, 319)) + list(range(320, 331))]
+          missing = [x for x in new_lots if x not in lot_ids]
+          check(not missing, f'Du 25 lo moi lot-306..330 trong mang lots (thieu: {missing})')
+
+          # 4 bai Dang hot phai nam trong doan articles
+          hot = ['tet-nguyen-dan-2027', 'uniqlo-black-friday-2026',
+                 'hm-black-friday-2026', 'levis-black-friday-2026']
+          for s in hot:
+              check(s in art_slugs, f'"{s}" trong articles')
+              check(s not in lot_ids, f'"{s}" khong nam trong lots')
+
+          # 2 bai v424 (da co tren main 0a7eeb5) van con trong articles
+          v424 = ['the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung-2020',
+                  'chon-thu-cung-thay-vi-sinh-con']
+          for s in v424:
+              check(s in art_slugs, f'"{s}" (v424) con trong articles')
+
+          # Doi chieu main: 25 lo moi chua co tren main (data.js goc 0a7eeb5)
+          import subprocess
+          main = subprocess.check_output(
+              ['git', 'show', 'origin/main:js/data.js'], text=True, encoding='utf-8')
+          main_lots = section(main, 'lots')
+          main_ids = re.findall(r'["\']?id["\']?\s*:\s*["\']([^"\']+)["\']', main_lots)
+          already = [x for x in new_lots if x in main_ids]
+          check(not already, f'25 lo moi chua co tren main (da co: {already})')
+
+          if not ok:
+              sys.exit(1)
+          print('🎉 Verify OK: lots 330, kiot 384, xuong 442, articles 747; 25 lo moi + 4 bai Dang hot + 2 bai v424 day du.')
+          PY
