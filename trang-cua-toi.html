@@ -940,7 +940,7 @@
         html+='<div class="my-listing" data-jp-id="'+r.id+'">'
           +'<div class="my-listing-main"><b>'+lstEsc(title)+'</b> <span class="listing-badge st-'+lstEsc(r.moderation_status||'pending')+'">'+lstEsc(st)+'</span>'
           +'<br><span style="font-size:13px;color:#666">'+lstEsc(lstFmtDate(r.created_at))+(r.quantity?' · cần tuyển '+lstEsc(String(r.quantity))+' mẫu':'')+(r.salary?' · '+lstEsc(r.salary):'')+'</span>'
-          +(r.description?'<br><span style="font-size:13px">'+lstEsc(String(r.description).slice(0,200))+'</span>':'')
+          +(r.description?'<br><span style="font-size:13px">'+lstEsc(String(r.description).slice(0,200))+(String(r.description).length>200?'…':'')+'</span>':'')
           +'</div>'
           +'<div class="my-listing-actions">'
           +'<button type="button" class="btn btn-ghost" data-jp-act="edit">Sửa</button>'
