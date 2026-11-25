@@ -1177,7 +1177,9 @@ function initSectionFilter(opts){
     // hoac section khong phai muc moi. Bam hang muc/switch/?newobj=/Dat lai
     // goi apply() khong truyen doScroll nen VAN KHONG cuon (giữ v207).
     // Section muc moi (noScroll) KHONG cuon khi goi tu duong khac.
-    if((doScroll === true || !opts.noScroll) && target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+    // v449 (#61): doScroll === false (goi tu setCat/setShopCat khi chuyen tab)
+    // thi KHONG bao gio cuon — chuyen tab chi ap dung lai bo loc, khong trôi trang (v207/v213).
+    if(doScroll !== false && (doScroll === true || !opts.noScroll) && target.scrollIntoView){ target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   }
   function reset(){
     grids.forEach(function(g){
@@ -3743,6 +3745,29 @@ function initUniCatSwitch(lotCtl, facCtl, modelRender, syncPayMinFn, onResetFn){
     /* v343 (P1-2/P1-3, phuong an B): chi section cua tab dang chon hien — dat SAU cac lenh
        showOnly/showAll o tren de trang thai hidden cuoi cung do ham nay quyet dinh. */
     setMauListVisibility(cat);
+    /* v449 (#61): chuyen tab thi ap dung lai bo loc chung cho muc vua chon
+       (KHONG cuon — apply(false), giu v207/v213). Truoc day setCat chi doi
+       section + dem nen muc moi hien danh sach chua loc trong khi form + URL
+       van giu tham so loc cu. Khong qua cong diem (chuyen tab khong phai
+       hanh dong Ap dung). Tab Mau giu nguyen trang phan trang hien tai
+       (doc ?page= tu URL, render tu clamp ve tong so trang). */
+    (function(){
+      var ncfg2 = NEWOBJ_UNI_CATS[cat];
+      if(ncfg2){
+        var h2 = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg2.sectionId] : null;
+        if(h2 && h2.apply) h2.apply(false);
+      } else if(cat === 'lot'){
+        if(lotCtl && lotCtl.apply) lotCtl.apply(false);
+      } else if(cat === 'factory'){
+        if(facCtl && facCtl.apply) facCtl.apply(false);
+      } else if(cat === 'model'){
+        if(typeof modelRender === 'function'){
+          var pg = 1;
+          try { var pp = parseInt(new URLSearchParams(location.search).get('page'), 10); if(pp > 0) pg = pp; } catch(e){}
+          modelRender(pg);
+        }
+      }
+    })();
   }
   btns.forEach(function(b){
     b.addEventListener('click', function(){ setCat(b.getAttribute('data-uni-cat')); });
@@ -3973,6 +3998,24 @@ function initShops(){
     /* v343 (P1-2/P1-3, phuong an B): chi section cua tab dang chon hien — dat SAU cac lenh
        showOnly/showAll o tren de trang thai hidden cuoi cung do ham nay quyet dinh. */
     setShopListVisibility(cat);
+    /* v449 (#61, giong setCat trang Mau): chuyen tab thi ap dung lai bo loc
+       chung cho muc vua chon (KHONG cuon — apply(false), giu v207/v213).
+       Truoc day setShopCat chi doi section + dem nen muc moi hien danh sach
+       chua loc trong khi form + URL van giu tham so loc cu. Tab Shop render
+       lai giu nguyen trang phan trang hien tai (doc ?page= tu URL). */
+    (function(){
+      var ncfg3 = NEWOBJ_UNI_CATS[cat];
+      if(ncfg3){
+        var h3 = (typeof window !== 'undefined' && window.V2S_NEWOBJ_FILTERS) ? window.V2S_NEWOBJ_FILTERS[ncfg3.sectionId] : null;
+        if(h3 && h3.apply) h3.apply(false);
+      } else if(cat === 'shop'){
+        if(typeof render === 'function'){
+          var pg3 = 1;
+          try { var pp3 = parseInt(new URLSearchParams(location.search).get('page'), 10); if(pp3 > 0) pg3 = pp3; } catch(e){}
+          render(pg3);
+        }
+      }
+    })();
   }
   shopCatBtns.forEach(function(b){
     b.addEventListener('click', function(){ setShopCat(b.getAttribute('data-uni-cat')); });
