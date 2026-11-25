@@ -18031,6 +18031,54 @@ window.V20_DATA = {
      "url": "https://www.facebook.com/ngocthuy.le.5095110/posts/pfbid032BgUZcxUX3TCZrDGrfz5PXMPN83Cgpgsf5QVS4mJebjcgBYfb61CC5HQsHC4A6Qol",
      "linkText": "Xem bài đăng gốc →"
    },
+  {
+   "title": "Tết Nguyên đán 2027 ngày nào? Còn 73 ngày, shop làm gì",
+   "cat": "Đang hot",
+   "source": "Thư viện Pháp luật",
+   "date": "2026-11-25",
+   "url": "https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/03-phuong-an-bo-tri-lich-nghi-tet-nguyen-dan-2027-ma-doanh-nghiep-duoc-lua-chon-theo-thong-bao-1148-236970.html",
+   "page": "bai-viet/tet-nguyen-dan-2027-ngay-nao-con-73-ngay-shop-mau-live-lam-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tet-nguyen-dan-2027-ngay-nao-con-73-ngay-shop-mau-live-lam-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tết Nguyên đán 2027 rơi vào thứ Bảy 06/02/2027, còn 73 ngày từ 25/11/2026 — công chức nghỉ 7 ngày 04–10/02/2027, shop chốt đơn vận chuyển trước 01/02/2027, lương làm thêm ngày Tết 400% theo Điều 98 Bộ luật Lao động 2019."
+  },
+  {
+   "title": "Uniqlo Black Friday 2026: giảm tới 50%, hết 26/11",
+   "cat": "Đang hot",
+   "source": "HerCampus",
+   "date": "2026-11-25",
+   "url": "https://www.hercampus.com/style/uniqlo-early-black-friday-sale-deals-2026/",
+   "page": "bai-viet/uniqlo-black-friday-2026-giam-toi-50-phan-tram-het-26-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/uniqlo-black-friday-2026-giam-toi-50-phan-tram-het-26-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Uniqlo Black Friday 2026 (Thank You Event 19–26/11/2026): giảm tới 50%, áo khoác nữ 39,90 USD, áo len cashmere 80 USD, hoàn tiền Rakuten 7% — đợt sale sớm hết ngày 26/11/2026, còn đợt hai tuần sau lễ Tạ ơn."
+  },
+  {
+   "title": "H&M Black Friday 2026: giảm tới 50%, online từ 26/11",
+   "cat": "Đang hot",
+   "source": "Phia",
+   "date": "2026-11-25",
+   "url": "https://phia.com/editorials/hm-black-friday-sale-2026-online-starts-november-26-collection-202611-126cca5cd398601f",
+   "page": "bai-viet/hm-black-friday-2026-giam-toi-50-phan-tram-online-tu-26-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/hm-black-friday-2026-giam-toi-50-phan-tram-online-tu-26-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "H&M Black Friday 2026 (online 26/11, cửa hàng 27–30/11/2026): giảm tới 50% toàn cửa hàng, thành viên mới giảm thêm 10%, nam tới 55%, trẻ em tới 60% — đợt sale sớm kết thúc 25/11/2026."
+  },
+  {
+   "title": "Levi's Black Friday 2026: giảm 40%, 501 chỉ còn 66 USD",
+   "cat": "Đang hot",
+   "source": "DealNews",
+   "date": "2026-11-25",
+   "url": "https://www.dealnews.com/Levis-Black-Friday-Mens-Jeans-Pants-Sale-Extra-40-to-60-off-free-shipping/22427854.html",
+   "page": "bai-viet/levis-black-friday-2026-giam-40-phan-tram-501-chi-66-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/levis-black-friday-2026-giam-40-phan-tram-501-chi-66-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Levi's Black Friday 2026 (tới 01/12/2026): giảm 40% toàn bộ trang web, thêm 40% hàng sale tới 27/11/2026 — quần 501 còn 66 USD, áo khoác Trucker còn 55 USD, miễn phí vận chuyển và trả hàng."
+  },
    {
      "id": "lot-02",
      "group": 1,
