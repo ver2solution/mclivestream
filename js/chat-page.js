@@ -611,15 +611,41 @@
     var btn = document.querySelector('.site-head .btn.btn-primary.btn-sm');
     if (!btn) return;
     if (user) {
+      var uid = user.id || null;
       var name = displayNameFromSession(user);
+      var balTxt = '';
+      var render = function () { btn.textContent = name + balTxt; };
       btn.textContent = name;
       btn.setAttribute('href', '/trang-cua-toi.html');
       btn.setAttribute('title', 'Mở Trang của tôi');
       var R = (typeof window !== 'undefined' && window.Ver2Reward) ? window.Ver2Reward : null;
       if (R && typeof R.getMyPointsBalanceResult === 'function') {
         R.getMyPointsBalanceResult().then(function (r) {
-          if (r && r.ok) btn.textContent = name + ' · ' + (Number(r.balance) || 0) + ' xu';
+          if (state.myId !== uid) return; // da doi phien — khong ghi de
+          if (r && r.ok) { balTxt = ' · ' + (Number(r.balance) || 0) + ' xu'; render(); }
         }).catch(function () { /* giu ten khong so du */ });
+      }
+      /* v278 (P3-5, vong 3 24/11): metadata khong co ten that thi hoi them
+         profiles.full_name / shop_profiles.shop_name nhu header chinh
+         (js/app.js apply) — khong thi trang chat hien ten dang email
+         (nguyenthilan2411) thay vi ten hien thi (Nguyen Thi Lan). Hien tam
+         ten email truoc, lookup ve thi doi ten (giu nguyen so xu neu co). */
+      var meta = (user && user.user_metadata) || {};
+      var hasMetaName = String(meta.full_name || meta.name || '').trim() !== '';
+      var M = (typeof window !== 'undefined' && window.McLivestreamAPI) ? window.McLivestreamAPI : null;
+      if (!hasMetaName && M && typeof M.fetchMyProfile === 'function') {
+        M.fetchMyProfile().then(function (p) {
+          if (state.myId !== uid) return;
+          var n = (p && p.full_name) ? String(p.full_name).trim() : '';
+          if (n) { name = n; render(); return; }
+          if (typeof M.fetchMyShopProfile === 'function') {
+            M.fetchMyShopProfile().then(function (s) {
+              if (state.myId !== uid) return;
+              var sn = (s && s.shop_name) ? String(s.shop_name).trim() : '';
+              if (sn) { name = sn; render(); }
+            }).catch(function () { /* giu ten email */ });
+          }
+        }).catch(function () { /* giu ten email */ });
       }
     } else {
       btn.textContent = 'Đăng Nhập';
