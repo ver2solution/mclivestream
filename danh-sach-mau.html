@@ -55,12 +55,17 @@
      3 muc moi tren 1 hang). 2 muc dich vu (logistics/agency) tu hang nut
      rieng trong bo loc (v210) CHUYEN VAO switch chinh; bo han nhan "Dich vu cho shop"
      va #shopServicesSwitch. Bam nut mo section ngay tai cho, KHONG nhay trang,
-     KHONG cuon. So dem (11) chi tren nut muc moi; nut chinh khong co so dem. -->
+     KHONG cuon. So dem (11) chi tren nut muc moi; nut chinh khong co so dem.
+     v445 (25/11/2026, anh quyet 21:51 — GHI DE luat "1 hang" cua v211):
+     1 hang switch chi chua TOI DA 4 tieu muc; neu nhieu hon thi cac tieu muc
+     thua xuong DONG THU 2 (CSS .uni-cat-switch.list-switch .uni-cat-btn
+     flex-basis calc(25% - 5px), v20.css). Hien co 6 nut -> 4 tren dong 1,
+     2 xuong dong 2. -->
 <button type="button" class="uni-cat-btn active" data-uni-cat="model" aria-pressed="true" data-track="chon-tim-mau">👩 Tìm Mẫu Livestream</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="lot" aria-pressed="false" data-track="chon-tim-lo">📦 Tìm lô hàng xả kho</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="factory" aria-pressed="false" data-track="chon-tim-xuong">🏭 Tìm xưởng may sản xuất</button>
 <button type="button" class="uni-cat-btn" data-uni-cat="logistics" aria-pressed="false" data-track="chon-logistics" title="Công ty logistics Trung–Việt">🚚 Logistics Trung–Việt <span class="uni-cat-count"></span></button>
-<button type="button" class="uni-cat-btn" data-uni-cat="logistics-noi-dia" aria-pressed="false" data-track="chon-logistic-noi-dia" title="Hãng vận chuyển nội địa cho shop">🚚 Logistic nội địa <span class="uni-cat-count"></span></button>
+<button type="button" class="uni-cat-btn" data-uni-cat="logistics-noi-dia" aria-pressed="false" data-track="chon-logistic-noi-dia" title="Hãng vận chuyển nội địa cho shop">🚚 Logistics nội địa <span class="uni-cat-count"></span></button>
 <button type="button" class="uni-cat-btn" data-uni-cat="agency-ads" aria-pressed="false" data-track="chon-agency-ads" title="Agency Ads Livestream">🎯 Agency Ads Livestream <span class="uni-cat-count"></span></button>
 </div>
 <div class="filter-card cols-6" id="uniFilter">
@@ -125,7 +130,7 @@
 </section>
 <script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="logistics-noi-dia" aria-labelledby="logistics-noi-dia-title">
-<h2 id="logistics-noi-dia-title">Logistic nội địa <span id="logisticsNoiDiaCountH2"></span></h2>
+<h2 id="logistics-noi-dia-title">Logistics nội địa <span id="logisticsNoiDiaCountH2"></span></h2>
 <p class="lot-sub" id="logisticsNoiDiaSub">Hãng vận chuyển nội địa cho shop online/livestream: giá tham khảo, cách đăng ký, phạm vi và thời gian giao.</p>
 <p style="font-size:13px;color:#666">Giá dưới đây chỉ là THAM KHẢO ngày 25/11/2026 — mỗi hãng đổi bảng giá theo kỳ và theo hợp đồng/sản lượng của shop. Shop đối chiếu bảng giá chính thức của hãng (link trong từng thẻ) trước khi áp dụng. LEX (Lazada Logistics) đã rút, chấm dứt giao hàng chặng cuối tháng 3/2026 — shop Lazada dùng đơn vị vận chuyển do sàn chỉ định.</p>
 <div class="carrier-filters">
