@@ -77,6 +77,7 @@
    articles-doi-song-2026-11-24 adds 5 Đời Sống articles (24/11/2026, Tuesday): 1 seasonal keyword "mẫu livestream kiếm tiền Tết" #1/10 VONG 2 goc moi (2,151 words, deep; e-Conomy SEA 2026 05/11/2026 — TMDT 32 ty USD +22%; luong le 400% Dieu 98 BLLD 2019; dang ky chien dich 12.12 het 25/11/2026) + 3 news "("tháng 12 du lịch đâu đẹp nhất" Sapa 1,462 words; "mua sắm Black Friday 2026" 1,559 words; "uống cà phê lúc nào tốt nhất" 1,534 words) + 1 cafe "quán cafe check-in đẹp Gem Valley Sapa" 1,630 words. Total 677 articles (node). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-25 adds 4 Dong tien articles (25/11/2026, Wednesday): 1 seasonal keyword #3 VONG 2 'von nhap hang Tet' (deep, goc MOI so voi vong 1 15/11 '5 muc von': von nhap THEO NGANH HANG thoi trang nu nam — chia von theo ty le doanh so that (Metric Q3/2026 nu 17.465,1 ty +47,9%; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%; Grand View 2026 nu ~1,1 nghin ty USD, nam 681,1 ty USD) + 3 tang von minh hoa + gia hoa von theo phi san; han dang ky chien dich TikTok Shop 12.12 la HOM NAY 25/11/2026) + 1 theme tuan Thu Tu 25/11 'thi truong thoi trang nu nam' (phi san + hoa hong mau live an bao nhieu tren 1 don thoi trang — TikTok Shop 10%/don, Shopee 6% + 3.000d/don, affiliate 5-20%; gia hoa von ao 150k von/300k ban la 187.500d) + 2 news 25/11 (vang the gioi roi 79,1 USD -2,17% ve 3.555,1 USD nhung SJC DUNG YEN 130-135 trieu, chenh lech noi rong len ~23,7 trieu; Bitcoin thung 60.000 USD lan nua ve 59.892 USD, ETF rut ky luc 4,71 ty USD thang 11). SEO V2 (title suffix + link boxes). Total 702 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-25 adds 4 Cong nghe articles (25/11/2026, Wednesday): 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' (GOC MOI so voi vong 1 13/11: het hom nay 25/11 con lam duoc gi — Product vs LIVE GMV Max, Product ROI, tang ngan sach 30-50%, GMV Max trong Open Collaboration 22/11/2026; z.media 10/2026 + small-patterns 11/2026 + kolvant 22/11 + emarspro) + 1 theme tuan thoi trang nu nam 'AI thu do ao' (Google Try on 18 nuoc 02/11/2026, chua co VN; Doppl ngung 30/04/2026; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%) + 2 news (TikTok Shop Seller Assistant tu chay GMV Max — emarspro; TikTok Shop mo cong khieu nai ban quyen IPPC 21/11/2026 + doi tai khoan quang cao chinh — kolvant 22/11/2026). SEO V2 (title suffix + link boxes). Total 707 articles (node) / 706 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-24 adds 4 Dong tien articles (24/11/2026, Tuesday): 1 seasonal keyword #2 VONG 2 'cach tinh lai lo livestream Tet' (deep, goc MOI: tinh lai lo THEO TUNG SAN — TikTok Shop 10%/don vs Shopee 6% + 3.000d/don, diem ngang don 75.000d + hoa hong mau 5-20% + chi phi hoan/huy + nguong GMV hoa von 1 phien; han dang ky chien dich TikTok Shop 12.12 la 25/11/2026) + 2 theme tuan Thu Ba 24/11 'thi truong phu kien trang suc' (PNJ quy 1/2026 doanh thu 17.245 ty +79%, lai rong +116,5%, bien lai gop ~20%; Winnie 395,5 ty/1 ngay live + vang hoi 3.634,6 USD +2,71% sang 24/11 keo SJC len 130-135 trieu, +1,5 trieu; vang trang suc Phu Quy 127,5-132,5 trieu) + 1 news 24/11 (Bitcoin cham 64.603 USD rang sang 24/11 roi roi ve 61.546 USD, ETF rut 4 tuan lien tiep). SEO V2 (title suffix + link boxes). Total 685 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dang-hot-2026-11-24 adds 4 Dang hot articles (24/11/2026, Tuesday): 1 seasonal keyword 'sale 12.12' #7/10 VONG 2 (GOC MOI: 5 cach kiem tra gia giam that hay ao — Groundwork 'Deal or Decoy?' 16/11/2026: 29,1% deal khong re hon gia 30 ngay truoc, 57,3% vs 90 ngay; EU bat ghi gia thap nhat 30 ngay, My chua co) + 3 news (Adidas BF 2026: giam toi 60% + ma SD15/DN15 them 15%, 20-28/11/2026, Runfalcon 5 20 USD — DealNews 22/11/2026; Pandora BF 2026: giam toi 40% My / 30% Anh, 12/11-01/12/2026, Cyber Monday toi 50% — The Independent 23/11/2026; Sephora BF 2026: Cyber Week 23-30/11/2026, moi ngay 1 nhom thuong hieu giam 30% — Cool Mom Picks 17/11/2026). SEO V2 (title suffix + link boxes). Total 681 articles (node) / 680 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -14612,6 +14613,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Mẫu live Mexico Monserrat Meraz bán gần 1 triệu peso (khoảng 55.000 USD) trong 1 phiên live 10 giờ (Merca2.0 03/11/2026 qua Grou 09/11/2026): hơn 4.100 đơn, 187.000 người xem cùng lúc, 6,2 triệu lượt hiển thị; 33% thời trang TikTok Shop Mexico qua livestream; bài học: ngày sự kiện + ca dài + giá vừa."
+  },
+  {
+   "title": "Vốn nhập hàng Tết: shop nữ nam cần bao nhiêu vốn",
+   "cat": "Dòng tiền",
+   "source": "vieclamlivestream.online (tổng hợp từ Kalodata, Metric, Grand View Research)",
+   "date": "2026-11-25",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/von-nhap-hang-tet-shop-thoi-trang-nu-nam-can-bao-nhieu-von.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/von-nhap-hang-tet-shop-thoi-trang-nu-nam-can-bao-nhieu-von.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vốn nhập hàng Tết cho shop thời trang nữ nam: chia theo tỷ lệ doanh số thật — nữ 73,4%, nam 26,6% (Kalodata 09–15/11/2026); nữ VN bán 17.465,1 tỷ đồng quý 3/2026, +47,9% (Metric 29/10/2026); nhập 2 đợt, trừ 10% dự phòng, đăng ký 12.12 trước hết ngày 25/11/2026."
+  },
+  {
+   "title": "Thời trang nữ nam: phí sàn ăn bao nhiêu trên 1 đơn",
+   "cat": "Dòng tiền",
+   "source": "vieclamlivestream.online (tổng hợp từ Kalodata, Metric, Grand View Research)",
+   "date": "2026-11-25",
+   "url": "https://vieclamlivestream.online/",
+   "page": "bai-viet/thoi-trang-nu-nam-phi-san-an-bao-nhieu-tren-1-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-nu-nam-phi-san-an-bao-nhieu-tren-1-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang nữ nam: nữ bán 102,29 triệu USD, nam 37,05 triệu USD (Kalodata 09–15/11/2026); phí sàn TikTok Shop 10%/đơn, Shopee 6% + 3.000 đồng/đơn — mã trên 75.000 đồng thì Shopee rẻ hơn; cộng hoa hồng 5–20%, mã áo giá vốn 150.000 đồng có giá hòa vốn 187.500 đồng."
+  },
+  {
+   "title": "Vàng rơi 79 USD: SJC vẫn giữ mốc 135 triệu đồng",
+   "cat": "Dòng tiền",
+   "source": "Bongdaplus (Kitco, 25/11/2026)",
+   "date": "2026-11-25",
+   "url": "https://bongdaplus.vn/bong-da-cuoc-song/gia-vang-ty-gia-ngoai-te-hom-nay-25-11-vang-the-gioi-giam-5299592611.html",
+   "page": "bai-viet/vang-roi-79-usd-sjc-van-giu-moc-135-trieu-dong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vang-roi-79-usd-sjc-van-giu-moc-135-trieu-dong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Vàng rơi 79 USD sáng 25/11/2026, về 3.555,1 USD (−2,17%), mất gần hết đợt hồi hôm qua; SJC đứng yên 130–135 triệu đồng/lượng, chênh lệch với thế giới nới rộng lên khoảng 23,7 triệu đồng/lượng; chờ PCE tối nay 20h30."
+  },
+  {
+   "title": "Bitcoin thủng 60.000 USD lần nữa: ETF rút 4,71 tỷ",
+   "cat": "Dòng tiền",
+   "source": "The Block (24/11/2026)",
+   "date": "2026-11-25",
+   "url": "https://www.theblock.co/news/markets/2026-11-24-bitcoin-etfs-another-570-million-net-outflows-november-total-nears-5-billion-btc-dips-below-60k-445548",
+   "page": "bai-viet/bitcoin-thung-60000-usd-etf-rut-ky-luc-471-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bitcoin-thung-60000-usd-etf-rut-ky-luc-471-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bitcoin thủng 60.000 USD sáng 25/11/2026 (59.892 USD, −2,04%), chỉ 1 ngày sau khi chạm 64.500 USD; ETF rút 569,7 triệu USD phiên 23/11, tháng 11 rút kỷ lục 4,71 tỷ USD; thanh lý 844 triệu USD/24 giờ; tiền hàng Tết phải nằm trong tài khoản ngân hàng."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
