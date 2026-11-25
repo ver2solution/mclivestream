@@ -31,23 +31,23 @@ jobs:
       - name: Unzip deploy package
         run: |
           ZIP=mclivestream-data-2026-11-25-lots-deploy-v4.zip
-          test -f "$ZIP" || { echo "❌ Khong tim thay $ZIP"; exit 1; }
+          test -f "$ZIP" || { echo "Khong tim thay $ZIP"; exit 1; }
           echo "== ZIP contents =="
           unzip -l "$ZIP"
           # ZIP du 25 file: js/data.js + 24 anh lot-306..318, lot-320..330
           COUNT=$(unzip -l "$ZIP" | awk 'NR>3 && $4 != "" && $4 !~ /\/$/ {n++} END {print n+0}')
           echo "So file trong ZIP: $COUNT"
-          test "$COUNT" -eq 25 || { echo "❌ ZIP phai co dung 25 file (js/data.js + 24 anh)"; exit 1; }
+          test "$COUNT" -eq 25 || { echo "ZIP phai co dung 25 file (js/data.js + 24 anh)"; exit 1; }
           unzip -o "$ZIP"
-          test -f js/data.js || { echo "❌ Thieu js/data.js sau khi giai nen"; exit 1; }
+          test -f js/data.js || { echo "Thieu js/data.js sau khi giai nen"; exit 1; }
           # Kiem tra du 24 anh lo moi
           MISSING=0
           for n in $(seq 306 318) $(seq 320 330); do
             f=$(ls images/lo/lot-$n.* 2>/dev/null | head -1)
-            if [ -z "$f" ]; then echo "❌ Thieu anh lot-$n"; MISSING=1; fi
+            if [ -z "$f" ]; then echo "Thieu anh lot-$n"; MISSING=1; fi
           done
           test "$MISSING" -eq 0 || exit 1
-          echo "✅ ZIP du 25 file, du 24 anh lot-306..318 + lot-320..330"
+          echo "ZIP du 25 file, du 24 anh lot-306..318 + lot-320..330"
 
       - name: Commit data + images
         run: |
@@ -56,7 +56,7 @@ jobs:
           git add js/data.js images/lo/
           git status --short
           if git diff --cached --quiet; then
-            echo "ℹ️ Khong co thay doi de commit"
+            echo "Khong co thay doi de commit"
           else
             git commit -m "data: 25 lô mới lot-306..330 + chuyển 4 bài Đang hot về mảng articles + rebase từ live 0a7eeb5 (25/11)"
             git push origin deploy/lots-20261125-v4
@@ -71,11 +71,14 @@ jobs:
           ok = True
           def check(cond, msg):
               global ok
-              print(('✅ ' if cond else '❌ ') + msg)
+              print(('OK ' if cond else 'FAIL ') + msg)
               ok = ok and cond
 
           # Cat mang theo ten khoa: xu ly dung "lots": [ (khoa co ngoac kep)
           # va "kiots" (so nhieu, khong phai "kiot").
+          # Tra ve lat cat TU DAU NGOAC [ (khong lay phan khoa "articles": ):
+          # neu lay ca khoa, dau ngoac kep DONG cua khoa se lam lech viec nhan
+          # dien chuoi khi quet cap ngoac { } (dem object sai).
           def section(src, name):
               m = re.search(r'\b["\']?' + name + r'["\']?\s*[:=]\s*\[', src)
               assert m, f'Khong tim thay mang {name}'
@@ -85,7 +88,7 @@ jobs:
                   if c == '[': depth += 1
                   elif c == ']':
                       depth -= 1
-                      if depth == 0: return src[m.start():i + 1]
+                      if depth == 0: return src[m.end() - 1:i + 1]
                   i += 1
               raise AssertionError(f'Mang {name} khong dong ngoac')
 
@@ -186,5 +189,5 @@ jobs:
 
           if not ok:
               sys.exit(1)
-          print('🎉 Verify OK: lots 330, kiot 384, xuong 442, articles 747; 25 lo moi + 4 bai Dang hot + 2 bai v424 day du.')
+          print('Verify OK: lots 330, kiot 384, xuong 442, articles 747; 25 lo moi + 4 bai Dang hot + 2 bai v424 day du.')
           PY
