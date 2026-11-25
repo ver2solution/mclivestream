@@ -662,6 +662,17 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .newobj-photo img{width:100%;height:100%;object-fit:cover;display:block}
 /* v310 (F-R2-02, 17/11/2026): logo hang (logistics / agency-ads) hien TRON (contain) — cover cat 2 ben logo (vd "HOA NAM" con "OA NAI"). Anh su kien/lop hoc (anh that) giu cover. */
 .newobj-card[data-type="logistics"] .newobj-photo img,.newobj-card[data-type="agencyAds"] .newobj-photo img{object-fit:contain}
+/* v443 (25/11/2026): the hang Logistic noi dia — the khong anh (chi text),
+   the hang da ngung mo + nhan do; 2 o loc trong section xep ngang. */
+.carrier-filters{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 12px}
+.carrier-card .newobj-lines{gap:6px}
+.carrier-card.carrier-stopped{opacity:.65}
+.tag-stopped{background:#fdecec;color:#b91c1c}
+.carrier-card details{font-size:13px;line-height:1.5}
+.carrier-card details summary{cursor:pointer;font-weight:700}
+.carrier-card details ol{margin:6px 0;padding-left:20px}
+.carrier-card .carrier-unverified{color:var(--mut);font-size:12px}
+.carrier-card .carrier-source{color:var(--mut);font-size:12px}
 .newobj-lines{padding:12px 14px 14px;display:grid;gap:4px}
 .newobj-lines p{margin:0;font-size:13px;line-height:1.45;overflow-wrap:break-word}
 .newobj-lines .newobj-name{font-weight:800;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
