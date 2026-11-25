@@ -18013,7 +18013,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Xu huong mua sam Black Friday 2026: 12,9 ty USD mua online rieng ngay 27/11/2026 (+9,2%); 87% nguoi My san sale, cao nhat 10 nam; Gen Z chi 752 USD (+23%); mobile 63% ngay Le Ta on (Adobe 28/09/2026; Deloitte 23/11/2026)."
-  }
+  },
+  {
+   "title": "Áo dài Tết 2026: shop nhỏ nên nhập mẫu nào, giá nào",
+   "cat": "Hàng hoá",
+   "source": "CafeBiz",
+   "date": "2026-11-25",
+   "url": "https://cafebiz.vn/ao-dai-tro-thanh-hien-tuong-thuong-mai-dien-tu-don-hang-tang-gan-17-lan-176260620122509394.chn",
+   "page": "bai-viet/ao-dai-tet-2026-shop-nho-nen-nhap-mau-nao-gia-nao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ao-dai-tet-2026-shop-nho-nen-nhap-mau-nao-gia-nao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Áo dài Tết 2026: TikTok Shop hơn 4,8 triệu đơn (Kenh14 12/02/2026); riêng quý 4/2025 có 2,8 triệu đơn và tháng 1/2026 thêm 2 triệu đơn (CafeBiz 20/06/2026); con số 296 tỷ đồng là của Tết 2025 (CafeBiz 05/02/2026)."
+  },
+  {
+   "title": "Thời trang nữ nam: shop nên nhập loại nào dịp Tết",
+   "cat": "Hàng hoá",
+   "source": "Kalodata",
+   "date": "2026-11-25",
+   "url": "https://www.kalodata.com/blog/tiktok/tiktok-shop-us-black-friday-2026-category-trends/",
+   "page": "bai-viet/thoi-trang-nu-nam-shop-nen-nhap-loai-nao-dip-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-nu-nam-shop-nen-nhap-loai-nao-dip-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang nữ nam: nữ 102,29 triệu USD trong 7 ngày 09–15/11/2026, nam tăng nhanh nhất 46,28% (Kalodata); tuần Black Friday 2025, nam bán gấp 2,34 lần tuần thường, nữ gấp 1,75 lần (FastMoss)."
+  },
+  {
+   "title": "KFC Nhật bán kem mềm kẹp bánh quy, giá 290 yên",
+   "cat": "Hàng hoá",
+   "source": "SoraNews24",
+   "date": "2026-11-25",
+   "url": "https://soranews24.com/?p=749353",
+   "page": "bai-viet/kfc-nhat-kem-mem-kep-banh-quy-290-yen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kfc-nhat-kem-mem-kep-banh-quy-290-yen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "KFC Nhật bán kem mềm kẹp bánh quy từ cuối tháng 10/2026: kem 290 yên một chiếc, set bánh quy và đồ uống 680 yên, chỉ bán tại 3 điểm ở Tokyo (SoraNews24 12/11/2026)."
+  },
+  {
+   "title": "Lịch đếm ngược Giáng sinh: 26.000 chiếc trong 30 ngày",
+   "cat": "Hàng hoá",
+   "source": "TokConnect",
+   "date": "2026-11-25",
+   "url": "https://tokconnect.com/trends/tiktok-shop/breakout-products/",
+   "page": "bai-viet/lich-dem-nguoc-giang-sinh-do-choi-bop-mem-26000-chiec.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lich-dem-nguoc-giang-sinh-do-choi-bop-mem-26000-chiec.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lịch đếm ngược Giáng sinh dạng đồ chơi bóp mềm: 26.000 chiếc trong 30 ngày, ra mắt 28/10/2026, 754 creator (TokConnect 23/11/2026); 13 sản phẩm bứt phá bán tổng 130.000 đơn trong 30 ngày."
+  },
 ],
  "lots": [
    {
