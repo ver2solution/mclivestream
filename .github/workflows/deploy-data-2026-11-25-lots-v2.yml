@@ -49,7 +49,7 @@ jobs:
           const end=src.indexOf(String.fromCharCode(10) + '};', eq);
           console.log('start', start, 'eq', eq, 'end', end);
           if(start<0||eq<0||end<0){console.error('DATA block not found');process.exit(1);}
-          const DATA=eval(src.slice(eq+1, end+2));
+          const DATA=eval('(' + src.slice(eq+1, end+2) + ')');
           console.log('lots:',DATA.lots.length,'kiot:',DATA.kiot.length,'factories:',DATA.factories.length,'articles:',DATA.articles.length);
           if(DATA.lots.length!==330){console.error('lots must be 330');process.exit(1);}
           if(DATA.kiot.length!==384){console.error('kiot must be 384');process.exit(1);}
