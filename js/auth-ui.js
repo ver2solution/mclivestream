@@ -28,7 +28,11 @@
    v166 (BƯỚC 1): cảnh báo SĐT trùng hồ sơ đã có lúc đăng ký (chỉ cảnh
    báo, không chặn); v166 (C1/N1):
    lắng nghe 'storage' khóa auth + kiểm tra lại khi tab hiện lại để
-   header/panel luôn theo đúng session trong localStorage. Tùy chọn cfg mới (đều tùy chọn, trang cũ không
+   header/panel luôn theo đúng session trong localStorage. B-20261124-01
+   (24/11/2026): trạng thái lỗi trùng SĐT khi bấm Đăng ký (lỗi đỏ dưới ô
+   SĐT + hộp đỏ 2 link + event dang-ky-trung-sdt), quy tắc "không bao giờ
+   im lặng" + map 23505 trong ngữ cảnh đăng ký về câu dự phòng (§4).
+   Tùy chọn cfg mới (đều tùy chọn, trang cũ không
    truyền vẫn chạy như trước): initialView, initialMessage,
    signupSuccessUrl, signupSessionUrl.
    Trạng thái đăng nhập là 1 nguồn đúng duy nhất: sessionCache +
@@ -427,6 +431,42 @@
       var raw = String((err && (err.message || err.code)) || err || '').toLowerCase();
       return raw.indexOf('user already registered') !== -1;
     }
+    // B-20261124-01: nhận diện lỗi trùng SĐT (xem isDuplicatePhoneError
+    // trong mclivestream-supabase.js — cùng danh sách tín hiệu; bản dự
+    // phòng dưới đây chỉ dùng khi API chưa có hàm đó, vd file supabase
+    // cũ còn trong cache SW).
+    function isDupPhoneError(err) {
+      var a = api();
+      if (a && typeof a.isDuplicatePhoneError === 'function') return a.isDuplicatePhoneError(err);
+      var raw = String((err && (err.message || err.code)) || err || '').toLowerCase();
+      var code = String((err && err.code) || '');
+      if (raw.indexOf('số điện thoại') !== -1 && raw.indexOf('đã') !== -1) return true;
+      if (raw.indexOf('phone') === -1) return false;
+      if (raw.indexOf('already') !== -1 || raw.indexOf('duplicate') !== -1 || raw.indexOf('registered') !== -1) return true;
+      return code === '23505' || raw.indexOf('23505') !== -1 || raw.indexOf('duplicate key') !== -1;
+    }
+    // B-20261124-01 (E): 1 event đo mới — bắn khi trạng thái lỗi trùng
+    // SĐT hiện. Dùng đúng pipeline data-track hiện có (analytics.js
+    // record 'click'); không thêm event cho hộp vàng B.
+    function trackDupPhoneError() {
+      try {
+        var A = (typeof window !== 'undefined') ? window.V2SAnalytics : null;
+        if (A && typeof A.record === 'function') A.record('click', 'dang-ky-trung-sdt', null, null, null);
+      } catch (e) { /* bỏ qua — đo lường không chặn form */ }
+    }
+    // B-20261124-01 (§6.6): bấm Đăng ký lỗi chỉ cuộn tới ô SĐT KHI ô
+    // nằm ngoài viewport (tiền lệ 34.1.2 §6.6a — lỗi là kết quả cần
+    // thấy); block 'nearest', không smooth-scroll toàn trang. Gõ SĐT
+    // (hộp vàng B hiện) KHÔNG cuộn — luật v213.
+    function scrollToPhoneFieldIfNeeded() {
+      try {
+        var inp = $(cfg.inputs.signupPhone);
+        if (!inp || typeof inp.getBoundingClientRect !== 'function') return;
+        var r = inp.getBoundingClientRect();
+        var h = (typeof window !== 'undefined' && window.innerHeight) || 0;
+        if (r.top < 0 || r.bottom > h) inp.scrollIntoView({ block: 'nearest' });
+      } catch (e) { /* bỏ qua */ }
+    }
 
     var AUTH_VIEWS = ['login', 'register', 'forgot'];
     function viewEl(v) { return $(cfg.views[v]); }
@@ -565,6 +605,11 @@
     var su = $(cfg.forms.signup);
     // v166 (BƯỚC 1): ô cảnh báo SĐT trùng — tạo 1 lần dưới ô SĐT, ẩn
     // mặc định; chỉ cảnh báo, không chặn đăng ký.
+    // B-20261124-01 (B): GIỚI HẠN đã ghi rõ trong thiết kế — hộp vàng
+    // này CHỈ soi được SĐT trùng hồ sơ CÔNG KHAI trong data.js, KHÔNG
+    // soi được SĐT chỉ có ở tài khoản chưa có hồ sơ công khai (client
+    // không đọc được auth.users). Trạng thái lỗi A sau khi bấm Đăng ký
+    // mới là lớp phản hồi chính — không được ỷ lại vào hộp vàng này.
     var phoneWarnEl = null;
     var authBase = '';
     try { authBase = String(location.pathname || '').indexOf('/bai-viet/') !== -1 ? '../' : ''; } catch (e) { authBase = ''; }
@@ -793,7 +838,26 @@
             msgHtml('Email này đã được đăng ký. Bạn có muốn lấy lại mật khẩu không? <a href="dat-lai-mat-khau.html?email=' + encodeURIComponent(email) + '">Lấy lại mật khẩu →</a>', 'err');
             return;
           }
-          msg('Đăng ký chưa thành công: ' + friendly(err), 'err');
+          // B-20261124-01 (A): lỗi trùng SĐT — lỗi đỏ dưới ô SĐT + hộp
+          // đỏ kèm 2 link (Đăng nhập / Lấy lại mật khẩu, KHÔNG kèm
+          // ?email= vì client không biết SĐT trùng thuộc email nào);
+          // nút Đăng ký mở lại nhờ guardSubmit (xem §7.4). Link gắn
+          // data-track để đo click theo pipeline hiện có (§5.5).
+          if (isDupPhoneError(err)) {
+            setFieldError(cfg.inputs.signupPhone, 'SĐT này đã được dùng để đăng ký. Nếu đây là SĐT của bạn, hãy đăng nhập thay vì đăng ký mới.');
+            msgHtml('SĐT này đã được đăng ký rồi. Nếu đây là SĐT của bạn, hãy <a href="' + authBase + 'dang-nhap.html" data-track="dang-nhap-loi-trung-sdt">đăng nhập</a> hoặc <a href="' + authBase + 'dat-lai-mat-khau.html" data-track="lay-lai-mat-khau-loi-trung-sdt">lấy lại mật khẩu</a> thay vì đăng ký mới.', 'err');
+            trackDupPhoneError();
+            scrollToPhoneFieldIfNeeded();
+            return;
+          }
+          // B-20261124-01 (C): không bao giờ im lặng — lỗi không nhận
+          // diện được thì hiện câu chung dự phòng (§4), KHÔNG hiện
+          // 'Đăng ký chưa thành công: ' kèm lý do chung chung/trống.
+          // friendly(err, 'signup') đã map 23505 về câu dự phòng này
+          // nên không gắn tiền tố lần nữa (nhận biết bằng tiền tố).
+          var f = friendly(err, 'signup');
+          if (!f || f === 'Đã có lỗi xảy ra, hãy thử lại sau.' || f.indexOf('Đăng ký chưa thành công') === 0) msg('Đăng ký chưa thành công. Hãy kiểm tra lại thông tin rồi thử lại, hoặc nhắn Zalo 032 998 3699 nếu vẫn không được.', 'err');
+          else msg('Đăng ký chưa thành công: ' + f, 'err');
         }
       });
     });
