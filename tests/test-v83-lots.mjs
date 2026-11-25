@@ -43,7 +43,7 @@ if (lot) {
   t('lot-14: source link + label + linkText', lot.url === 'https://www.youtube.com/watch?v=4byznxwITAU'
     && lot.label === 'Chưa xác thực — không phải lô chính hãng của thương hiệu' && lot.linkText === 'Xem bài đăng gốc →');
   t('lot-14: card renders with target=_blank rel=noopener', (() => { const h = V.lotCardHTML(lot); return h.includes('target="_blank"') && h.includes('rel="noopener"') && h.includes('href="https://www.youtube.com/watch?v=4byznxwITAU"') && h.includes('data-cat="giay-dep"'); })());
-  t('lot-14: active at 06/11/2026 (24/10 = 13 days, within 60)', V.lotActive(lot, new Date(2026, 10, 6)) === true);
+  t('lot-14: active at 06/11/2026 (v282: huy han ngay — lo nao cung hien)', V.lotActive(lot, new Date(2026, 10, 6)) === true);
 }
 t('trustStats 06/11/2026: lotCount 9', V.trustStats(D.models, D.shops, D.lots, D.factories, new Date(2026, 10, 6)).lotCount === 9);
 t('no duplicate lot titles/urls', new Set(D.lots.map(l => l.title)).size === 14 && new Set(D.lots.map(l => l.url)).size === 14);

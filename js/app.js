@@ -2081,11 +2081,13 @@ function sortShopsBy(list, sort){
   return list.slice();
 }
 /* v76: lo/xuong trong data.js — so PR tinh tu data.js, khong con so ghi cung.
-   Quy tac 60 ngay: chi ap dung nhom 1 (lo si). Ngay trong data.js la ngay dang
-   goc trong bai goc (khong co ngay dang len web rieng); lo co (ngay hien tai -
-   ngay dang) > 60 ngay thi khong render va khong tinh vao so PR. Nhom 2
-   (thu mua/ky gui), nhom 3 (cho/san/TTTM/chuong trinh) va xuong may khong
-   gioi han thoi gian — render het. */
+   HUY QUY TAC HAN NGAY (anh Tho quyet 24/11/2026 — GHI DE quyet 13:01
+   14/11): truoc day chi nhom 1 (lo si) chiu han 30 ngay (truoc nua 60 ngay),
+   qua han thi khong render/khong tinh so. Nay KHONG con han ngay nao:
+   moi lo deu render het, khong bao gio tu an/tu xoa vi cu — neu xoa het se
+   thieu du lieu (dem 23/11: 350/381 kiot + 41 lo da qua 30 ngay van dang
+   dung). Chi chu so huu tu xoa du lieu cua minh. Nhom 2 (thu mua/ky gui),
+   nhom 3 (cho/san/TTTM/chuong trinh) va xuong may von khong gioi han. */
 function parseVnDate(s){
   if(!s) return null;
   var m = String(s).match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
@@ -2093,15 +2095,11 @@ function parseVnDate(s){
   var d = new Date(parseInt(m[3], 10), parseInt(m[2], 10) - 1, parseInt(m[1], 10));
   return isNaN(d.getTime()) ? null : d;
 }
+/* v282 (24/11/2026, anh Tho HUY quy tac 30 ngay): KHONG con han ngay nao
+   cho lo — moi lo deu hien, ke ca nhom 1 cu hon 30 ngay. Ham giu nguyen
+   chu ky (ref khong dung nua) vi ~10 cho goi + window.V20 export. */
 function lotActive(l, ref){
-  if(!l || l.group !== 1) return true; /* v223: chi nhom 1 chiu quy tac 30 ngay (anh chot 13:01 14/11 — thu hoi 60 ngay cu) */
-  var d = parseVnDate(l.date);
-  if(!d) return true; /* khong co ngay hop le: hien de khoi mat du lieu */
-  /* kiem tra kieu Date bang duck-type (khong dung instanceof) de chay dung
-     ca khi ref duoc tao o realm khac (vd test chay qua vm). */
-  var r = (ref && typeof ref.getTime === 'function') ? ref : new Date();
-  var days = (r.getTime() - d.getTime()) / 86400000;
-  return days <= 30; /* ngay tuong lai (days am) van hien */
+  return !!l; /* chi lo null/undefined moi khong hien */
 }
 function lotsByGroup(lots, ref){
   var out = {g1: [], g2: [], g3: []};
@@ -2119,8 +2117,9 @@ function lotFactoryStats(lots, factories, ref){
   return {lotCount: byGroup.g1.length + byGroup.g2.length + byGroup.g3.length, buyerCount: byGroup.g2.length, batchCount: byGroup.g3.length, factoryCount: (factories || []).length, factoryProvinceCount: Object.keys(provs).length};
   /* v223 (S2-4): lotCount truoc day chi dem nhom 1 (18) trong khi link trang chu
      + tong the tren trang danh sach lo dem ca 3 nhom (71) — banner ghi 18, link ghi
-     71. Nay dem TONG lo dang hoat dong (g1 active + g2 + g3); voi han 30 ngay:
-     15 + 6 + 47 = 68. */
+     71. Nay dem TONG lo dang hoat dong (g1 + g2 + g3); v282 (24/11/2026, huy quy
+     tac 30 ngay) g1 tinh HET, khong tru lo cu: 38 + 40 + 227 = 305 (so cu co han
+     30 ngay chi dem g1 con han: 24 + 40 + 227 = 291). */
 }
 /* v279: bo dem tu dong dong bo — 1 ham chung, dem tu data.js (D), KHONG dem
    tu menu/DOM (chuyen muc sang menu khac so van dung). Moi the
