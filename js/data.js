@@ -18142,7 +18142,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/3-giay-dau-quyet-dinh-nguoi-xem-o-lai-hay-thoat-cach-mc-mo-dau-phien-live.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/3-giay-dau-quyet-dinh-nguoi-xem-o-lai-hay-thoat-cach-mc-mo-dau-phien-live.jpg",
    "pinned": false,
    "takeaway": "Người xem quyết định ở lại hay thoát trong 3 giây đầu. Xem ngay 3 cách MC mở đầu phiên live bằng con số hoặc câu hỏi trực tiếp, kèm ví dụ đo được từ Reel thật."
   },
@@ -18153,7 +18153,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/black-friday-27-11-shop-tuyen-mau-live-gap-3-viec-can-chot-truoc-gio-live.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-27-11-shop-tuyen-mau-live-gap-3-viec-can-chot-truoc-gio-live.jpg",
    "pinned": false,
    "takeaway": "Black Friday 27/11/2026 đang tới gần, shop cần mẫu live gấp. Bài này nêu 3 việc phải chốt trước giờ live: đúng người, đúng kịch bản chốt đơn, đúng lịch chạy."
   },
@@ -18164,7 +18164,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/live-vang-nguoi-xem-phai-lam-sao-seeding-cta-va-tuong-tac-giu-chan.jpg",
    "pinned": false,
    "takeaway": "Live vắng người là vấn đề thường gặp nhất của shop mới. Bài này nêu 3 cách xử lý: seeding làm live đông, lời kêu gọi rõ ràng và tương tác giữ chân. Xem ngay."
   },
@@ -18175,7 +18175,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phien-live-237-ty-3-dieu-shop-tuyen-mau-live-can-biet.jpg",
    "pinned": false,
    "takeaway": "237 tỷ là con số phiên live trong video đầu tiên của Trang Tuyển Mẫu Live. Bài này phân tích 3 điều shop cần biết khi tuyển mẫu live cho phiên lớn. Xem ngay."
   },
@@ -18186,7 +18186,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mc-livestream-my-pham-yeu-cau-that-va-cach-chuan-bi-buoi-thu-live.jpg",
    "pinned": false,
    "takeaway": "MC live mỹ phẩm cần gì khác mẫu live thời trang, shop nên yêu cầu những gì trong tin tuyển, và mẫu nên chuẩn bị ra sao cho buổi thử live."
   },
@@ -18197,7 +18197,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/checklist-truoc-gio-live-am-thanh-anh-sang-kich-ban-va-chot-don.jpg",
    "pinned": false,
    "takeaway": "Phiên live hỏng thường do khâu chuẩn bị, không phải lúc đang live. Checklist 4 nhóm: âm thanh, ánh sáng, kịch bản, chốt đơn — kiểm tra xong mới bấm live."
   },
@@ -18208,7 +18208,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phien-live-58-ty-trong-36-gio-shop-da-chuan-bi-nhung-gi.jpg",
    "pinned": false,
    "takeaway": "58 tỷ trong 36 giờ là case phiên live trong sổ tay vận hành. Bài này phân tích 3 khâu chuẩn bị đứng sau con số đó để shop và mẫu học theo. Xem ngay."
   },
@@ -18219,7 +18219,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-thoi-trang-mo-ta-cong-viec-lich-lam-va-cach-ung-tuyen-dung-nghe.jpg",
    "pinned": false,
    "takeaway": "Mẫu live thời trang làm gì trong một phiên live, lịch làm thường ra sao, cần chuẩn bị gì khi ứng tuyển — viết rõ để cả shop và mẫu đều không mất thời gian."
   },
@@ -18230,7 +18230,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/100-ty-trong-17-gio-bai-hoc-chon-mau-live-dung-nganh-dung-tinh.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/100-ty-trong-17-gio-bai-hoc-chon-mau-live-dung-nganh-dung-tinh.jpg",
    "pinned": false,
    "takeaway": "100 tỷ trong 17 giờ không đến từ mẫu nổi nhất mà từ mẫu đúng ngành, đúng tỉnh. Bài này phân tích bài học đó và 3 việc shop cần chuẩn bị. Xem ngay."
   },
@@ -18241,7 +18241,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": null,
    "page": "bai-viet/xuong-va-kiot-tuyen-mau-live-tai-cho-khac-gi-so-voi-mau-live-online.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xuong-va-kiot-tuyen-mau-live-tai-cho-khac-gi-so-voi-mau-live-online.jpg",
    "pinned": false,
    "takeaway": "Mẫu live tại chỗ khác mẫu online ở địa điểm, giờ giấc và cách phối hợp. Bài này nêu rõ yêu cầu của xưởng, kiot để shop và mẫu khỏi hiểu lầm. Xem ngay."
   },
@@ -18252,7 +18252,7 @@ window.V20_DATA = {
    "date": "2026-11-25",
    "url": "https://jingdaily.com/posts/uncovering-business-secrets-chinas-top-web-celebrity-zhang-dayi",
    "page": "bai-viet/meo-ban-thoi-trang-livestream-hoc-truong-dai-dich-70-ty-dong-2-gio-live.html",
-   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-ban-thoi-trang-livestream-hoc-truong-dai-dich-70-ty-dong-2-gio-live.jpg",
    "pinned": false,
    "takeaway": "Trương Đại Dịch bán 70 tỷ đồng trong 2 giờ live đầu tiên năm 2016 mà không giảm giá. Xem ngay 7 mẹo bán thời trang livestream cho shop Việt."
   },
