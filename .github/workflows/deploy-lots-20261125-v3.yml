@@ -1,0 +1,134 @@
+name: Deploy lots 20261125 v3
+on:
+  push:
+    paths:
+      - .github/workflows/deploy-lots-20261125-v3.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip package
+        run: |
+          set -e
+          ZIP="mclivestream-data-2026-11-25-lots-deploy-v3.zip"
+          test -f "$ZIP"
+          echo "=== ZIP contents ==="
+          unzip -l "$ZIP"
+          COUNT=$(unzip -l "$ZIP" | grep -c -E '\.jpg$|\.js$')
+          echo "ZIP file entries (js + jpg): $COUNT (expected 25)"
+          test "$COUNT" -eq 25
+          unzip -o "$ZIP" -d .
+          echo "=== extracted ==="
+          ls -l js/data.js
+          for n in $(seq 306 318) $(seq 320 330); do
+            test -f "images/lo/lot-$n.jpg" || { echo "missing images/lo/lot-$n.jpg"; exit 1; }
+          done
+          echo "24 lot images present (lot-306..318, lot-320..330); lot-319 has no image by design"
+          node --check js/data.js && echo "js/data.js syntax OK"
+      - name: Verify counts in js/data.js
+        run: |
+          set -e
+          python3 - <<'PY'
+          import re, subprocess
+          def section(text, name):
+              m = re.search(r'\b' + name + r'\s*=\s*\[', text)
+              assert m, 'array ' + name + ' not found'
+              i = m.end() - 1
+              depth = 0
+              j = i
+              instr = None
+              esc = False
+              line_comment = False
+              block_comment = False
+              while j < len(text):
+                  c = text[j]
+                  nxt = text[j + 1] if j + 1 < len(text) else ''
+                  if line_comment:
+                      if c == '\n':
+                          line_comment = False
+                  elif block_comment:
+                      if c == '*' and nxt == '/':
+                          block_comment = False
+                          j += 1
+                  elif instr:
+                      if esc:
+                          esc = False
+                      elif c == '\\':
+                          esc = True
+                      elif c == instr:
+                          instr = None
+                  else:
+                      if c == '/' and nxt == '/':
+                          line_comment = True
+                          j += 1
+                      elif c == '/' and nxt == '*':
+                          block_comment = True
+                          j += 1
+                      elif c in ("'", '"', '`'):
+                          instr = c
+                      elif c == '[':
+                          depth += 1
+                      elif c == ']':
+                          depth -= 1
+                          if depth == 0:
+                              return text[i:j + 1]
+                  j += 1
+              raise AssertionError('array ' + name + ' not closed')
+          def slugs(sec):
+              return re.findall(r"""['"]slug['"]\s*:\s*['"]([^'"]+)['"]""", sec)
+          def ids(sec, prefix):
+              return sorted(set(re.findall(prefix + r'-\d+', sec)))
+          src = open('js/data.js', encoding='utf-8').read()
+          lots = section(src, 'lots')
+          kiot = section(src, 'kiot')
+          fac = section(src, 'factories')
+          art = section(src, 'articles')
+          lot_ids = ids(lots, 'lot')
+          kiot_ids = ids(kiot, 'kiot')
+          fac_ids = ids(fac, 'fac')
+          art_slugs = slugs(art)
+          print('lots unique ids =', len(lot_ids), '(expected 330)')
+          print('kiot unique ids =', len(kiot_ids), '(expected 384)')
+          print('factories unique ids =', len(fac_ids), '(expected 442)')
+          print('articles slugs =', len(art_slugs), '(expected 745)')
+          assert len(lot_ids) == 330, 'lots != 330'
+          assert len(kiot_ids) == 384, 'kiot != 384'
+          assert len(fac_ids) == 442, 'factories != 442'
+          assert len(art_slugs) == 745, 'articles != 745'
+          v423 = 'the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung'
+          assert v423 in art_slugs, 'v423 article missing from articles'
+          print('v423 article present in articles: OK')
+          for n in list(range(306, 319)) + list(range(320, 331)):
+              assert 'lot-' + str(n) in lot_ids, 'lot-%d missing' % n
+          print('lot-306..318 + lot-320..330 all present in lots: OK')
+          subprocess.run(['git', 'fetch', 'origin', 'main', '--depth', '1'], check=True)
+          old = subprocess.run(['git', 'show', 'origin/main:js/data.js'], capture_output=True, text=True, check=True).stdout
+          old_art = slugs(section(old, 'articles'))
+          old_lots = section(old, 'lots')
+          new_slugs = sorted(set(art_slugs) - set(old_art))
+          print('new slugs in articles vs main:', len(new_slugs))
+          for s in new_slugs:
+              print('  NEW-ARTICLE:', s)
+          moved = [s for s in new_slugs if s in old_lots]
+          print('of which moved from lots section:', len(moved))
+          for s in moved:
+              print('  MOVED-FROM-LOTS:', s)
+          for s in new_slugs:
+              assert s not in lots, 'hot slug still in lots: ' + s
+          print('hot slugs not in lots: OK')
+          PY
+      - name: Commit files
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/lo/
+          git rm -q -- "mclivestream-data-2026-11-25-lots-deploy-v3.zip" || true
+          git status --short
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "data: 25 lô mới lot-306..330 + chuyển 4 bài Đang hot về mảng articles + rebase từ live a7e1de8 (25/11)"
+          git push
