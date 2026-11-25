@@ -1,0 +1,180 @@
+name: Deploy lots 20261125 v3
+on:
+  push:
+    paths:
+      - .github/workflows/deploy-lots-20261125-v3.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip package
+        run: |
+          set -e
+          ZIP="mclivestream-data-2026-11-25-lots-deploy-v3.zip"
+          test -f "$ZIP"
+          echo "=== ZIP contents ==="
+          unzip -l "$ZIP"
+          COUNT=$(unzip -l "$ZIP" | grep -c -E '\.jpg$|\.js$')
+          echo "ZIP file entries (js + jpg): $COUNT (expected 25)"
+          test "$COUNT" -eq 25
+          unzip -o "$ZIP" -d .
+          echo "=== extracted ==="
+          ls -l js/data.js
+          for n in $(seq 306 318) $(seq 320 330); do
+            test -f "images/lo/lot-$n.jpg" || { echo "missing images/lo/lot-$n.jpg"; exit 1; }
+          done
+          echo "24 lot images present (lot-306..318, lot-320..330); lot-319 has no image by design"
+          node --check js/data.js && echo "js/data.js syntax OK"
+      - name: Verify counts in js/data.js
+        run: |
+          set -e
+          python3 - <<'PY'
+          import re, subprocess
+          src = open('js/data.js', encoding='utf-8').read()
+          print('data.js size:', len(src))
+          print('--- all array keys ("key": [) ---')
+          for k in sorted(set(re.findall(r'"([^"]{1,40})"\s*:\s*\[', src))):
+              print('  KEY:', k)
+          print('--- array assignments (name = [) ---')
+          seen = []
+          for m in re.finditer(r"([A-Za-z_$][\w$]*)\s*=\s*\[", src):
+              if m.group(1) not in seen:
+                  seen.append(m.group(1))
+                  print(' ', m.group(1), 'at offset', m.start())
+          print('--- global id/slug counts (whole file) ---')
+          print(' lot- ids:', len(set(re.findall(r'lot-\d+', src))))
+          print(' kiot- ids:', len(set(re.findall(r'kiot-\d+', src))))
+          print(' fac- ids:', len(set(re.findall(r'fac-\d+', src))))
+          print(' slugs:', len(re.findall(r"['\"]slug['\"]\s*:", src)))
+          def section(text, name, alts=()):
+              for nm in [name] + list(alts):
+                  pats = [r'\b["\']?' + nm + r'["\']?\s*[:=]\s*\[',
+                          r'(?i)\b["\']?' + nm + r'["\']?\s*[:=]\s*\[']
+                  for p in pats:
+                      m = re.search(p, text)
+                      if not m:
+                          continue
+                      i = m.end() - 1
+                      depth = 0
+                      j = i
+                      instr = None
+                      esc = False
+                      line_comment = False
+                      block_comment = False
+                      while j < len(text):
+                          c = text[j]
+                          nxt = text[j + 1] if j + 1 < len(text) else ''
+                          if line_comment:
+                              if c == '\n':
+                                  line_comment = False
+                          elif block_comment:
+                              if c == '*' and nxt == '/':
+                                  block_comment = False
+                                  j += 1
+                          elif instr:
+                              if esc:
+                                  esc = False
+                              elif c == '\\':
+                                  esc = True
+                              elif c == instr:
+                                  instr = None
+                          else:
+                              if c == '/' and nxt == '/':
+                                  line_comment = True
+                                  j += 1
+                              elif c == '/' and nxt == '*':
+                                  block_comment = True
+                                  j += 1
+                              elif c in ("'", '"', '`'):
+                                  instr = c
+                              elif c == '[':
+                                  depth += 1
+                              elif c == ']':
+                                  depth -= 1
+                                  if depth == 0:
+                                      return text[i:j + 1]
+                          j += 1
+              print('CONTEXT for missing array', name)
+              for m in list(re.finditer(r'\b' + name + r'\b', text))[:5]:
+                  print('  ...', repr(text[max(0, m.start()-80):m.end()+80]))
+              raise AssertionError('array ' + name + ' not found')
+          def count_items(sec):
+              bdepth = 0; odepth = 0; n = 0; instr = None; esc = False
+              for c in sec:
+                  if instr:
+                      if esc: esc = False
+                      elif c == '\\': esc = True
+                      elif c == instr: instr = None
+                  else:
+                      if c in ("'", '"', '`'): instr = c
+                      elif c == '[': bdepth += 1
+                      elif c == ']': bdepth -= 1
+                      elif c == '{':
+                          if bdepth == 1 and odepth == 0: n += 1
+                          odepth += 1
+                      elif c == '}': odepth -= 1
+              return n
+          def slugs(sec):
+              return re.findall(r"""['"]slug['"]\s*:\s*['"]([^'"]+)['"]""", sec)
+          def ids(sec, prefix):
+              return sorted(set(re.findall(prefix + r'-\d+', sec)))
+          lots = section(src, 'lots')
+          kiot = section(src, 'kiot', ['kiots', 'kiosk', 'kiosks', 'stalls', 'shops', 'quay', 'kiotList', 'listKiot'])
+          fac = section(src, 'factories')
+          art = section(src, 'articles')
+          lot_ids = ids(lots, 'lot')
+          kiot_ids = ids(kiot, 'kiot')
+          fac_ids = ids(fac, 'fac')
+          art_slugs = slugs(art)
+          art_count = count_items(art)
+          art_titles = len(re.findall(r'"title"\s*:', art))
+          print('lots unique ids =', len(lot_ids), '(expected 330)')
+          print('kiot unique ids =', len(kiot_ids), '(expected 384)')
+          print('factories unique ids =', len(fac_ids), '(expected 442)')
+          print('articles objects =', art_count, '(expected 745)')
+          print('articles title fields =', art_titles)
+          print('articles slugs =', len(art_slugs))
+          for s in art_slugs:
+              print('  ARTICLE-SLUG:', s)
+          assert len(lot_ids) == 330, 'lots != 330'
+          assert len(kiot_ids) == 384, 'kiot != 384'
+          assert len(fac_ids) == 442, 'factories != 442'
+          assert art_count == 745, 'articles != 745'
+          v423 = 'the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung'
+          assert v423 in art or v423 in art_slugs, 'v423 article missing from articles'
+          print('v423 article present in articles: OK')
+          for n in list(range(306, 319)) + list(range(320, 331)):
+              assert 'lot-' + str(n) in lot_ids, 'lot-%d missing' % n
+          print('lot-306..318 + lot-320..330 all present in lots: OK')
+          subprocess.run(['git', 'fetch', 'origin', 'main', '--depth', '1'], check=True)
+          old = subprocess.run(['git', 'show', 'origin/main:js/data.js'], capture_output=True, text=True, check=True).stdout
+          old_art = section(old, 'articles')
+          old_lots = section(old, 'lots')
+          old_slugs = slugs(old_art)
+          new_slugs = sorted(set(art_slugs) - set(old_slugs))
+          print('new slugs in articles vs main:', len(new_slugs))
+          for s in new_slugs:
+              print('  NEW-ARTICLE:', s)
+          moved = [s for s in new_slugs if s in old_lots]
+          print('of which moved from lots section:', len(moved))
+          for s in moved:
+              print('  MOVED-FROM-LOTS:', s)
+          for s in new_slugs:
+              assert s not in lots, 'hot slug still in lots: ' + s
+          print('hot slugs not in lots: OK')
+          PY
+      - name: Commit files
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images/lo/
+          git rm -q -- "mclivestream-data-2026-11-25-lots-deploy-v3.zip" || true
+          git status --short
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "data: 25 lô mới lot-306..330 + chuyển 4 bài Đang hot về mảng articles + rebase từ live a7e1de8 (25/11)"
+          git push
