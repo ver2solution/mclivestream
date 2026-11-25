@@ -18221,6 +18221,28 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Mẫu live thời trang làm gì trong một phiên live, lịch làm thường ra sao, cần chuẩn bị gì khi ứng tuyển — viết rõ để cả shop và mẫu đều không mất thời gian."
   },
+  {
+   "title": "100 tỷ trong 17 giờ: chọn mẫu live đúng ngành, đúng tỉnh",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/100-ty-trong-17-gio-bai-hoc-chon-mau-live-dung-nganh-dung-tinh.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "100 tỷ trong 17 giờ không đến từ mẫu nổi nhất mà từ mẫu đúng ngành, đúng tỉnh. Bài này phân tích bài học đó và 3 việc shop cần chuẩn bị. Xem ngay."
+  },
+  {
+   "title": "Xưởng, kiot tuyển mẫu live tại chỗ khác gì mẫu online?",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/xuong-va-kiot-tuyen-mau-live-tai-cho-khac-gi-so-voi-mau-live-online.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Mẫu live tại chỗ khác mẫu online ở địa điểm, giờ giấc và cách phối hợp. Bài này nêu rõ yêu cầu của xưởng, kiot để shop và mẫu khỏi hiểu lầm. Xem ngay."
+  },
 ],
  "lots": [
    {
