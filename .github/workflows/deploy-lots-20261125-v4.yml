@@ -94,13 +94,17 @@ jobs:
               return len(re.findall(r'["\']?id["\']?\s*:', sec))
 
           def count_top_objects(sec):
-              # Dem object cap 1 trong mang: moac { khi dang o trong mang ngoai cung
-              # va ngoai moi object (bo qua { } trong chuoi "..." / '...' / `...`).
+              # Dem moac { o cap ngoai cung (depth_obj == 0), bat ke cap mang —
+              # bai viet co the nam truc tiep trong mang articles hay trong mang con.
+              # Bo qua { } trong chuoi "..." / '...' / `...`.
+              # Tra ve (tong, o cap mang 1, o cap mang 2).
               depth_arr = 0
               depth_obj = 0
               instr = None
               esc = False
               n = 0
+              n1 = 0
+              n2 = 0
               for c in sec:
                   if instr:
                       if esc:
@@ -117,12 +121,16 @@ jobs:
                   elif c == ']':
                       depth_arr -= 1
                   elif c == '{':
-                      if depth_arr == 1 and depth_obj == 0:
+                      if depth_obj == 0:
                           n += 1
+                          if depth_arr == 1:
+                              n1 += 1
+                          elif depth_arr == 2:
+                              n2 += 1
                       depth_obj += 1
                   elif c == '}':
                       depth_obj -= 1
-              return n
+              return n, n1, n2
 
           lots = section(data, 'lots')
           kiots = section(data, 'kiots')
@@ -134,10 +142,11 @@ jobs:
           n_factories = count_objects(factories)
           # Articles khong co truong id/slug (moi bai co "page" + "title", 1 bai thieu page):
           # dem object truc tiep trong mang articles, doi chieu voi so truong title.
-          n_articles = count_top_objects(articles)
+          n_articles, n_art1, n_art2 = count_top_objects(articles)
           art_titles = len(re.findall(r'["\']?title["\']?\s*:', articles))
           art_pages = len(re.findall(r'["\']?page["\']?\s*:', articles))
-          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {n_articles} (title: {art_titles}, page: {art_pages})')
+          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {n_articles} (title: {art_titles}, page: {art_pages}) [obj cap mang 1: {n_art1}, cap mang 2: {n_art2}]')
+          print('DEBUG articles[:300] = ' + repr(articles[:300]))
 
           check(n_lots == 330, f'Lots = 330 (thuc te {n_lots})')
           check(n_kiots == 384, f'Kiot = 384 (thuc te {n_kiots})')
