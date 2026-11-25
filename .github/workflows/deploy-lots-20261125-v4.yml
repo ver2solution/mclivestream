@@ -3,6 +3,8 @@
 # Giai nen ZIP goc repo -> js/data.js + images/lo/ -> commit -> verify
 # Luu y: data.js dung khoa co ngoac kep "lots": [ va khoa mang kiot la "kiots" (so nhieu).
 # Ham section() xu ly dung 2 diem nay (giong file v3).
+# Articles KHONG co truong id/slug: moi bai co "page": "bai-viet/<slug>.html" + "title",
+# nen dem articles theo truong page (object) va title, kiem slug theo chuoi con trong doan articles.
 name: Deploy lots 20261125 v4
 
 on:
@@ -99,36 +101,38 @@ jobs:
           n_lots = count_objects(lots)
           n_kiots = count_objects(kiots)
           n_factories = count_objects(factories)
-          n_articles = count_objects(articles)
+          # Articles khong co truong id/slug: dem object qua truong page (moi bai 1 page),
+          # doi chieu voi so truong title.
+          art_pages = len(re.findall(r'["\']?page["\']?\s*:', articles))
           art_titles = len(re.findall(r'["\']?title["\']?\s*:', articles))
-          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {n_articles} (title: {art_titles})')
+          print(f'Lots: {n_lots} | Kiot: {n_kiots} | Xuong: {n_factories} | Articles: {art_pages} (title: {art_titles})')
 
           check(n_lots == 330, f'Lots = 330 (thuc te {n_lots})')
           check(n_kiots == 384, f'Kiot = 384 (thuc te {n_kiots})')
           check(n_factories == 442, f'Xuong = 442 (thuc te {n_factories})')
-          check(n_articles == 747, f'Articles = 747 (thuc te {n_articles})')
+          check(art_pages == 747, f'Articles = 747 (dem theo truong page) (thuc te {art_pages})')
           check(art_titles == 747, f'Articles dem theo truong title = 747 (thuc te {art_titles})')
 
           lot_ids = re.findall(r'["\']?id["\']?\s*:\s*["\']([^"\']+)["\']', lots)
-          art_slugs = re.findall(r'["\']?slug["\']?\s*:\s*["\']([^"\']+)["\']', articles)
 
           # Du 25 lo moi: lot-306..318 + lot-320..330
           new_lots = [f'lot-{n}' for n in list(range(306, 319)) + list(range(320, 331))]
           missing = [x for x in new_lots if x not in lot_ids]
           check(not missing, f'Du 25 lo moi lot-306..330 trong mang lots (thieu: {missing})')
 
-          # 4 bai Dang hot phai nam trong doan articles
+          # 4 bai Dang hot phai nam trong doan articles — slug nam trong truong page
+          # "bai-viet/<slug>.html" (articles khong co truong slug rieng).
           hot = ['tet-nguyen-dan-2027', 'uniqlo-black-friday-2026',
                  'hm-black-friday-2026', 'levis-black-friday-2026']
           for s in hot:
-              check(s in art_slugs, f'"{s}" trong articles')
+              check(s in articles, f'"{s}" trong articles')
               check(s not in lot_ids, f'"{s}" khong nam trong lots')
 
           # 2 bai v424 (da co tren main 0a7eeb5) van con trong articles
           v424 = ['the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung-2020',
                   'chon-thu-cung-thay-vi-sinh-con']
           for s in v424:
-              check(s in art_slugs, f'"{s}" (v424) con trong articles')
+              check(s in articles, f'"{s}" (v424) con trong articles')
 
           # Doi chieu main: 25 lo moi chua co tren main (data.js goc 0a7eeb5)
           import subprocess
