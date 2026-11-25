@@ -18348,6 +18348,39 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Thị trường quần áo Việt Nam đạt 5,26 tỷ USD, tăng 12,8%/năm. TikTok Shop dẫn đầu thời trang với 56,2% thị phần. Xem ngay livestream chia lại miếng bánh ra sao."
   },
+  {
+   "title": "Livestream buổi trưa: shop tận dụng khung giờ ít cạnh tranh",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/livestream-buoi-trua-khung-gio-it-canh-tranh-shop-tan-dung-ra-sao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-buoi-trua-khung-gio-it-canh-tranh-shop-tan-dung-ra-sao.jpg",
+   "pinned": false,
+   "takeaway": "Buổi trưa ít shop live nhưng vẫn có người xem. Phiên trưa nên ngắn, gọn, vào sản phẩm sớm — hợp ngành hàng quyết định nhanh, giá vừa phải."
+  },
+  {
+   "title": "Buổi thử live đầu tiên: mẫu mới chuẩn bị gì để shop chốt",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/buoi-thu-live-dau-tien-cua-mau-moi-chuan-bi-gi-de-shop-chot-nhan-viec.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/buoi-thu-live-dau-tien-cua-mau-moi-chuan-bi-gi-de-shop-chot-nhan-viec.jpg",
+   "pinned": false,
+   "takeaway": "Buổi thử live thường ngắn nhưng shop xem rất kỹ. Mẫu mới hỏi trước, tập nói trước, tới đúng giờ và giữ được nhịp thì shop chốt nhận việc nhanh."
+  },
+  {
+   "title": "Tuyển mẫu live đồ gia dụng: mẫu cần biết gì khác thời trang",
+   "cat": "Livestream",
+   "source": "Vieclamlivestream",
+   "date": "2026-11-25",
+   "url": null,
+   "page": "bai-viet/tuyen-mau-live-do-gia-dung-nganh-hang-moi-noi-mau-can-biet-gi-khac-thoi-trang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-do-gia-dung-nganh-hang-moi-noi-mau-can-biet-gi-khac-thoi-trang.jpg",
+   "pinned": false,
+   "takeaway": "Đồ gia dụng bán bằng công dụng, không bán bằng hình ảnh. Mẫu live cần dùng thử thật, nắm thông tin kỹ thuật và trả lời được câu hỏi về độ bền."
+  },
 ],
  "lots": [
    {
