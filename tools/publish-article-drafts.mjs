@@ -1039,11 +1039,16 @@ function main() {
     // v396-seo-lastmod 23/11/2026: sitemap phải có <lastmod> (ISO YYYY-MM-DD)
     // từ publish_date của bản thảo — Google dùng lastmod để ưu tiên thu thập
     // lại; sitemap cũ 637 URL không có lastmod nào nên Google không biết
-    // trang nào mới. publish_date không đúng định dạng ISO thì bỏ qua
-    // lastmod thay vì ghi sai.
+    // trang nào mới.
+    // D-SITEMAP-2WRITER 25/11/2026: lastmod PHẢI trùng `date` trong data.js
+    // (dataJsEntry dùng publish_date || hôm nay). Trước đây thiếu publish_date
+    // thì sitemap bỏ lastmod (lmTag = '') trong khi data.js vẫn ghi date = hôm
+    // nay — tạo gap loc != lastmod. Giờ dùng cùng fallback; nếu vẫn không có
+    // ngày hợp lệ thì FAIL cả lượt (không ghi sitemap thiếu lastmod).
     const smEntries = jobs.map((j) => {
-      const lm = String(j.d.publish_date || '').trim().slice(0, 10);
+      const lm = String(j.d.publish_date || new Date().toISOString().slice(0, 10)).trim().slice(0, 10);
       const lmTag = /^\d{4}-\d{2}-\d{2}$/.test(lm) ? '<lastmod>' + lm + '</lastmod>' : '';
+      if (!lmTag) fail('Bản thảo "' + String(j.d.title || j.slug) + '" không có ngày đăng hợp lệ — không ghi sitemap thiếu lastmod.');
       return '  <url><loc>' + j.url + '</loc>' + lmTag + '</url>';
     }).join('\n');
     smLines.splice(closeSm, 0, smEntries);
