@@ -68,20 +68,21 @@
     return ms.toFixed(1).replace('.', ',') + ' ms';
   }
 
-  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', tuyen: 'Tin tuyển', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
-  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'tuyen', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
+  var TYPE_LABELS = { all: 'Tất cả', mau: 'Mẫu', shop: 'Shop', lo: 'Lô', xuong: 'Xưởng', kiot: 'Kiot', tuyen: 'Tin tuyển', bai: 'Bài báo', 'lop-live': 'Lớp Livestream', 'lop-makeup': 'Lớp Makeup', 'su-kien': 'Sự kiện Marketing', logistics: 'Logistics', 'logistics-noi-dia': 'Logistics nội địa', 'thue-mb': 'Cho thuê mặt bằng', 'agency-ads': 'Agency Ads Livestream', 'chuyen-nha': 'Dịch vụ chuyển nhà', 'thiet-bi-live': 'Thiết bị Phòng Live' };
+  var TYPE_ORDER = ['all', 'mau', 'shop', 'lo', 'xuong', 'kiot', 'tuyen', 'lop-live', 'lop-makeup', 'su-kien', 'logistics', 'logistics-noi-dia', 'thue-mb', 'agency-ads', 'chuyen-nha', 'thiet-bi-live', 'bai'];
   /* v179 + v196 + v198: 8 danh muc doi tuong moi — anh xa loai tim kiem -> mang data.js + trang hien thi. */
   var NEWOBJ_META = {
     'lop-live': {label: 'Lớp Livestream / MC / Thuyết trình', page: 'danh-sach-mau.html'},
     'lop-makeup': {label: 'Lớp Makeup', page: 'danh-sach-mau.html'},
     'su-kien': {label: 'Sự kiện Marketing', page: 'danh-sach-shop.html'},
     'logistics': {label: 'Logistics Trung – Việt', page: 'danh-sach-shop.html'},
+    'logistics-noi-dia': {label: 'Logistics nội địa', page: 'danh-sach-mau.html'},
     'thue-mb': {label: 'Cho thuê cửa hàng / kho hàng', page: 'thanh-ly-kiot.html'},
     'agency-ads': {label: 'Agency Ads Livestream', page: 'danh-sach-shop.html'},
     'chuyen-nha': {label: 'Dịch vụ chuyển nhà', page: 'thanh-ly-kiot.html'},
     'thiet-bi-live': {label: 'Thiết bị Phòng Live', page: 'thanh-ly-kiot.html'}
   };
-  var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'thue-mb': 'rentals', 'agency-ads': 'agencyAds', 'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment'};
+  var NEWOBJ_DATA_MAP = {'lop-live': 'classesLive', 'lop-makeup': 'classesMakeup', 'su-kien': 'eventsMarketing', 'logistics': 'logistics', 'logistics-noi-dia': 'logisticsNoiDia', 'thue-mb': 'rentals', 'agency-ads': 'agencyAds', 'chuyen-nha': 'movingServices', 'thiet-bi-live': 'liveEquipment'};
   /* v229: nhan loai con Kiot — BAN SAO cua KIOT_SUBTYPES trong js/app.js
      (search.js doc lap, chay ca trong Node test khong co window.V20;
      test v229 doi chieu 2 map phai khop nhau tung ma). */
@@ -142,6 +143,21 @@
       e.chips = [raw.province, raw.salary, raw.schedule].filter(Boolean);
       e.dateMs = parseDateMs(raw.created_at);
       e.dateLabel = raw.created_at || '';
+    } else if (type === 'logistics-noi-dia') {
+      /* v445 (25/11/2026): hang van chuyen noi dia — tieu de = ten hang,
+         mo ta = gia tham khao, field = ten + ten viet tat + dich vu + nhan
+         danh muc + pham vi, chip = pham vi + hotline. Khong dung nhanh chung
+         NEWOBJ_META vi doi tuong hang khong co provider/province/avatar/
+         price/dateAdded (nhanh chung se sinh chip ': Liên hệ' rac). */
+      var nm2 = NEWOBJ_META[type];
+      e.title = raw.name || '';
+      e.desc = raw.priceSummary || '';
+      e.cat = nm2.label;
+      e.prov = '';
+      e.field = [raw.name, raw.shortName, (raw.services || []).join(' '), nm2.label, raw.coverage || '', raw.scope === 'noi-thanh' ? 'Nội thành' : 'Toàn quốc'].join(' ');
+      e.img = '';
+      e.url = nm2.page + '#' + raw.id;
+      e.chips = [raw.coverage, raw.hotline].filter(Boolean);
     } else if (NEWOBJ_META[type]) {
       /* v179 + v196: 7 danh muc moi — tieu de = ten, mo ta = noi dung chi tiet,
          field = don vi to chuc + nhan danh muc (+ hinh thuc van chuyen),
@@ -181,7 +197,7 @@
     return out;
   }
   function countByType(index) {
-    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, tuyen: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'thue-mb': 0, 'agency-ads': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
+    var c = { all: index.length, mau: 0, shop: 0, lo: 0, xuong: 0, kiot: 0, tuyen: 0, bai: 0, 'lop-live': 0, 'lop-makeup': 0, 'su-kien': 0, logistics: 0, 'logistics-noi-dia': 0, 'thue-mb': 0, 'agency-ads': 0, 'chuyen-nha': 0, 'thiet-bi-live': 0 };
     index.forEach(function (e) { if (c[e.type] != null) c[e.type]++; });
     return c;
   }
