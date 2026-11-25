@@ -18265,6 +18265,28 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "134 triệu người trẻ Trung Quốc chưa kết hôn, sẵn sàng chi cho sở thích và thú cưng thay vì đám cưới. Thế hệ không cưới đang tạo nên nền kinh tế độc thân ra sao?"
   },
+  {
+   "title": "Thế hệ không cưới, chỉ nuôi thú cưng: 134 triệu (2020)",
+   "cat": "Đời Sống",
+   "source": "Báo Hải Phòng",
+   "date": "2026-11-25",
+   "url": "https://baohaiphong.vn/print/378671.html",
+   "page": "bai-viet/the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung-2020.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/the-he-khong-cuoi-khong-de-chi-nuoi-thu-cung-2020.jpg",
+   "pinned": false,
+   "takeaway": "134 triệu người trẻ Trung Quốc chưa kết hôn (nghiên cứu 2020), sẵn sàng chi cho sở thích và thú cưng. Thế hệ không cưới tạo nên kinh tế độc thân ra sao?"
+  },
+  {
+   "title": "Chọn thú cưng thay vì sinh con: 40% người Mỹ chọn pet",
+   "cat": "Đời Sống",
+   "source": "The Harris Poll",
+   "date": "2026-11-25",
+   "url": "https://theharrispoll.com/articles/why-americans-are-choosing-pets-over-kids/",
+   "page": "bai-viet/chon-thu-cung-thay-vi-sinh-con.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/chon-thu-cung-thay-vi-sinh-con.jpg",
+   "pinned": false,
+   "takeaway": "40% người Mỹ chọn thú cưng thay vì sinh con, 83% coi pet như con ruột. Họ cắt chi tiêu bản thân để nuôi pet, nhưng lại vung tiền cho pet — vì sao? Xem ngay."
+  },
 ],
  "lots": [
    {
