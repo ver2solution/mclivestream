@@ -17770,7 +17770,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Adidas quý 3 2026: doanh thu kỷ lục 7.252 triệu euro, tăng 9%; lãi hoạt động 1.008 triệu euro, tăng 37% — lần đầu vượt 1 tỷ euro một quý (adidas 29/10/2026); quần áo tăng 19%, giày đứng yên; Nike giảm 4%."
-  }
+  },
+  {
+   "title": "Kịch bản livestream Tết: khung 60 phút chuẩn TikTok",
+   "cat": "Livestream",
+   "source": "TikTok Seller University",
+   "date": "2026-11-25",
+   "url": "https://seller-us.tiktok.com/university/essay?knowledge_id=4034166326036267",
+   "page": "bai-viet/kich-ban-livestream-tet-khung-60-phut-chuan-tiktok.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kich-ban-livestream-tet-khung-60-phut-chuan-tiktok.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kịch bản livestream Tết theo khung 60 phút chuẩn TikTok: mở đầu 5 phút, demo từng món 5 phút, tương tác hơn 10 phút, vòng lặp 6 bước móc–cho xem–kể–báo giá–tương tác–nhá hàng (TikTok Seller University 14/05/2026, LiveSellerLab 17/11/2026)."
+  },
+  {
+   "title": "Livestream bán quần áo: nam tăng 46%, nữ 102 triệu USD",
+   "cat": "Livestream",
+   "source": "Kalodata",
+   "date": "2026-11-25",
+   "url": "https://www.kalodata.com/blog/tiktok/tiktok-shop-us-black-friday-2026-category-trends/",
+   "page": "bai-viet/livestream-ban-quan-ao-nam-tang-46-nu-102-trieu-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-quan-ao-nam-tang-46-nu-102-trieu-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán quần áo: thời trang nữ 102,29 triệu USD trong 7 ngày 09–15/11/2026, thời trang nam tăng nhanh nhất 46,28% (Kalodata); tuần Black Friday 2025, thời trang nam bán gấp 2,34 lần tuần thường, nữ gấp 1,75 lần (FastMoss)."
+  },
+  {
+   "title": "Cách nói chuyện khi livestream bán hàng: 6 câu chốt đơn",
+   "cat": "Livestream",
+   "source": "LiveSellerLab",
+   "date": "2026-11-25",
+   "url": "https://livesellerlab.org/tiktok-shop-live/tiktok-live-selling-script/",
+   "page": "bai-viet/cach-noi-chuyen-khi-livestream-ban-hang-6-cau-chot-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-noi-chuyen-khi-livestream-ban-hang-6-cau-chot-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách nói chuyện khi livestream bán hàng: vòng lặp 6 bước móc–cho xem–kể–báo giá–tương tác–nhá hàng, mở đầu 30 giây, 6 câu trả lời phản đối, 5 câu cấm nói (LiveSellerLab 17/11/2026)."
+  },
+  {
+   "title": "Mẹo livestream chốt đơn: xả kho trước Black Friday 27/11",
+   "cat": "Livestream",
+   "source": "FastMoss",
+   "date": "2026-11-25",
+   "url": "https://www.fastmoss.com/blog/tiktok-shop-black-friday-products-creators-2026/",
+   "page": "bai-viet/meo-livestream-chot-don-xa-kho-truoc-black-friday.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/meo-livestream-chot-don-xa-kho-truoc-black-friday.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẹo livestream chốt đơn: xả kho trước Black Friday 27/11/2026 — tuần Black Friday 2025 bán 29,7 triệu đơn (+96%), món chạy nhất bán 84% doanh số trước khi hết ngày Black Friday, đỉnh vào Lễ Tạ ơn (FastMoss)."
+  },
 ],
  "lots": [
    {
