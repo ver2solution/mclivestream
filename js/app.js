@@ -1603,11 +1603,26 @@ function filterModels(list, f){
     return true;
   });
 }
-function renderPager(el, page, totalPages, total, onPage, perPage, label){
+/* v441 (#70): day so trang gon cho danh sach dai (tin tuc 748 bai = 38
+   trang) — luon hien trang 1, trang cuoi va trang hien tai ±1; '…' cho
+   khoang cach > 1. Thuan — test qua Node (test-v286). */
+function pagerWindow(page, totalPages){
+  var out=[], i;
+  if(totalPages<=7){ for(i=1;i<=totalPages;i++) out.push(i); return out; }
+  var set=[1,totalPages,page-1,page,page+1].filter(function(n){ return n>=1&&n<=totalPages; });
+  set.sort(function(a,b){ return a-b; });
+  var uniq=[];
+  set.forEach(function(n){ if(uniq.indexOf(n)===-1) uniq.push(n); });
+  for(i=0;i<uniq.length;i++){ if(i>0&&uniq[i]-uniq[i-1]>1) out.push('…'); out.push(uniq[i]); }
+  return out;
+}
+function renderPager(el, page, totalPages, total, onPage, perPage, label, opts){
   if(!el) return;
   perPage=perPage||6; label=label||'hồ sơ';
   var html='<button type="button" data-track="chuyen-trang" data-p="'+(page-1)+'"'+(page<=1?' disabled':'')+'>← Trang trước</button>';
-  for(var i=1;i<=totalPages;i++) html+='<button type="button" data-track="chuyen-trang" data-p="'+i+'"'+(i===page?' class="current" disabled':'')+'>'+i+'</button>';
+  var pages=(opts&&opts.windowed)?pagerWindow(page,totalPages):null;
+  if(pages){ pages.forEach(function(pn){ if(pn==='…'){ html+='<span class="pager-info" aria-hidden="true">…</span>'; } else { html+='<button type="button" data-track="chuyen-trang" data-p="'+pn+'"'+(pn===page?' class="current" disabled':'')+'>'+pn+'</button>'; } }); }
+  else { for(var i=1;i<=totalPages;i++) html+='<button type="button" data-track="chuyen-trang" data-p="'+i+'"'+(i===page?' class="current" disabled':'')+'>'+i+'</button>'; }
   html+='<button type="button" data-track="chuyen-trang" data-p="'+(page+1)+'"'+(page>=totalPages?' disabled':'')+'>Trang sau →</button>';
   html+='<span class="pager-info">Trang '+page+' / '+totalPages+' — đang hiện '+(total===0?0:((page-1)*perPage+1))+'–'+Math.min(page*perPage,total)+' trên tổng số '+total+' '+label+'.</span>';
   el.innerHTML=html;
@@ -4288,7 +4303,8 @@ function initNews(){
   function linkHTML(a){
     return articleLink(a);
   }
-  function render(){
+  var perPage=20; /* v441 (#70): 20 bài/trang cho danh sách tin chính (khớp sidebar "20 bài mới nhất") */
+  function render(pg){ pg=pg||1;
     var list=D.articles.slice();
     if(catSel.value) list=list.filter(function(a){return a.cat===catSel.value;});
     list.sort(function(x,y){var dx=x.date||'',dy=y.date||''; return sortSel.value==='oldest' ? (dx<dy?-1:dx>dy?1:0) : (dx>dy?-1:dx<dy?1:0);});
@@ -4311,7 +4327,10 @@ function initNews(){
     // la loi hien thi rieng (L15), KHONG sua trong goi nay.
     var topIds = renderTopRows(list);
     var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
-    main.innerHTML=mainList.map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
+    var totalPages=Math.max(1,Math.ceil(mainList.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
+    main.innerHTML=mainList.slice((pg-1)*perPage,pg*perPage).map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
+    renderPager(document.getElementById('newsPager'),pg,totalPages,mainList.length,function(np){ render(np); var m=document.getElementById('newsMain'); if(m) m.scrollIntoView(); },perPage,'bài',{windowed:true});
+    setParams({cat:catSel.value,page:String(pg)});
     /* v308 (F-R2-01, 17/11/2026): GIU quyet v238 — dem = tong bai KHOP BO
        LOC (list.length), khong phai so the trong danh sach chinh. Chi them
        dong giai thich tach bach (so bai ghim o hang tren + so bai ben
@@ -4372,7 +4391,8 @@ function initNews(){
   // URLSearchParams, nen qp.cat doc truc tiep duoc.
   var qp = params();
   if (qp.cat && cats.indexOf(qp.cat) !== -1) catSel.value = qp.cat;
-  catSel.addEventListener('change',render); sortSel.addEventListener('change',render); render(); // v114 (P3-3): render() da goi renderTopRows(list) o trong
+  var page=parseInt(qp.page||'1',10)||1; /* v441 (#70): trang hien tai tu ?page= */
+  catSel.addEventListener('change',function(){ render(1); }); sortSel.addEventListener('change',function(){ render(1); }); render(page); // v114 (P3-3): render() da goi renderTopRows(list) o trong
 }
 /* Detail: 2-column layout + mini-card list of the other 19 (names, never ids) */
 function initDetail(){
