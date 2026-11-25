@@ -1,0 +1,59 @@
+name: Deploy articles-doi-song-2026-11-25 (5 bai Doi Song 25/11/2026)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-doi-song-2511.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-doi-song-2511:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "72e2a3fadb401041a80aba43a7cc79bd" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "727" || (echo "BASE DOI: data.js khong con 727 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "749" || (echo "BASE DOI: sitemap khong con 749 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip doi-song-2511 package
+        run: |
+          test "$(stat -c %s mclivestream-doi-song-2511-deploy.zip)" = "2320114" || (echo "SAI KICH THUOC zip tai ve, phai 2320114"; exit 1)
+          unzip -o mclivestream-doi-song-2511-deploy.zip
+          echo "--- verify doi-song-2511 (5 bai) ---"
+          for slug in lam-them-cuoi-nam-kiem-tien-tet-5-viec-mau-livestream du-lich-da-lat-thang-12-dep-nhat-hoa-da-quy-san-may mau-livestream-quan-ly-tien-thu-nhap-theo-buoi mau-livestream-mac-gi-len-song-5-nguyen-tac-chot-don quan-cafe-check-in-dep-cafe-giang-ha-noi; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -q "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "754" || (echo "SAI TONG sitemap, phai 754"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "732" || (echo "SAI TONG data.js, phai 732"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-doi-song-2511-deploy.zip || rm -f mclivestream-doi-song-2511-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-doi-song-2026-11-25: 5 bai Doi Song 25/11/2026 (lam them cuoi nam kiem tien Tet keyword #2 vong 2 deep + du lich Da Lat thang 12 hoa da quy + mau livestream quan ly tien theo buoi + mau livestream mac gi len song thoi trang nu nam + quan cafe check-in dep Cafe Giang Ha Noi); SEO V2"
+            git fetch origin main
+            git rebase origin/main || (echo "REBASE CONFLICT: mot cron khac da deploy xong trong luc chay, DUNG LAI de rebuild"; exit 1)
+            test "$(grep -c '<loc>' sitemap.xml)" = "754" || (echo "SAI TONG sitemap sau rebase, phai 754"; exit 1)
+            test "$(grep -c '"page": "bai-viet/' js/data.js)" = "732" || (echo "SAI TONG data.js sau rebase, phai 732"; exit 1)
+            node --check js/data.js || (echo "data.js LOI CU PHAP sau rebase"; exit 1)
+            git push
+          fi
