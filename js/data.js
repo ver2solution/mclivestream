@@ -18480,6 +18480,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Shop mới live mãi không ai chốt đơn? 7 bước chuẩn bị trước giờ live, kịch bản chốt đơn và cách giữ người xem ở lại — kèm ví dụ thật từ các phiên live trăm tỷ."
   },
+  {
+   "title": "Shein gần 1 triệu tỷ/năm nhờ mô hình thời trang siêu nhanh",
+   "cat": "Phân tích",
+   "source": "Reuters (qua The Business Times)",
+   "date": "2026-11-25",
+   "url": "https://www.businesstimes.com.sg/international/global/shein-set-huge-vietnam-warehouse-us-tariff-hedge-sources",
+   "page": "bai-viet/shein-gan-1-trieu-ty-dong-nam-mo-hinh-thoi-trang-sieu-nhanh-nu-18-35.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shein-gan-1-trieu-ty-dong-nam-mo-hinh-thoi-trang-sieu-nhanh-nu-18-35.jpg",
+   "pinned": false,
+   "takeaway": "Shein đạt gần 1 triệu tỷ đồng doanh thu năm 2024 nhờ thời trang siêu nhanh — lô thử 100 cái, 3 ngày lên kệ. Cách Shein kiếm tiền và 5 bài học cho shop Việt."
+  },
 ],
  "lots": [
    {
