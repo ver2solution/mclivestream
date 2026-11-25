@@ -18243,6 +18243,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Mẫu live tại chỗ khác mẫu online ở địa điểm, giờ giấc và cách phối hợp. Bài này nêu rõ yêu cầu của xưởng, kiot để shop và mẫu khỏi hiểu lầm. Xem ngay."
   },
+  {
+   "title": "70 tỷ trong 2 giờ live: 7 mẹo bán thời trang livestream",
+   "cat": "Livestream",
+   "source": "Jing Daily",
+   "date": "2026-11-25",
+   "url": "https://jingdaily.com/posts/uncovering-business-secrets-chinas-top-web-celebrity-zhang-dayi",
+   "page": "bai-viet/meo-ban-thoi-trang-livestream-hoc-truong-dai-dich-70-ty-dong-2-gio-live.html",
+   "img": "https://vieclamlivestream.online/logo-c-mark.png",
+   "pinned": false,
+   "takeaway": "Trương Đại Dịch bán 70 tỷ đồng trong 2 giờ live đầu tiên năm 2016 mà không giảm giá. Xem ngay 7 mẹo bán thời trang livestream cho shop Việt."
+  },
 ],
  "lots": [
    {
