@@ -4524,7 +4524,14 @@ function initHeaderAuth(){
   }catch(e){}
   function renderHeaderLabel(){
     if(headerName === null) return;
-    btn.textContent = headerName + (headerBalanceLoading ? ' · …' : (headerBalance === null ? '' : ' · ' + headerBalance + ' xu'));
+    /* v279 (P3-4, vong 3 24/11): ten dai + so xu la 1 text node nen ellipsis
+       cat tu phai, che mat so xu ("Shop Thời Trang Minh Anh · 11 xu" thanh
+       "… · …"). Tach ten + so xu thanh 2 span: ten co lai (ellipsis), so xu
+       khong co lai, luon hien. Ten la du lieu nguoi dung nen esc() truoc
+       khi dua vao innerHTML. */
+    var bal = headerBalanceLoading ? ' · …' : (headerBalance === null ? '' : ' · ' + headerBalance + ' xu');
+    if (bal) btn.innerHTML = '<span class="v2s-hdr-name">' + esc(headerName) + '</span><span class="v2s-hdr-bal">' + esc(bal) + '</span>';
+    else btn.textContent = headerName;
     // v90 (F): dong bo ten + diem vao dropdown dang xuat.
     if(menuNameEl) menuNameEl.textContent = headerName;
     if(menuPointsEl){

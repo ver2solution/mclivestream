@@ -614,7 +614,12 @@
       var uid = user.id || null;
       var name = displayNameFromSession(user);
       var balTxt = '';
-      var render = function () { btn.textContent = name + balTxt; };
+      /* v279 (P3-4): nhu header chinh (js/app.js renderHeaderLabel) — tach
+         ten + so xu thanh 2 span de ten dai khong che mat so xu. */
+      var render = function () {
+        if (balTxt) btn.innerHTML = '<span class="v2s-hdr-name">' + esc(name) + '</span><span class="v2s-hdr-bal">' + esc(balTxt) + '</span>';
+        else btn.textContent = name;
+      };
       btn.textContent = name;
       btn.setAttribute('href', '/trang-cua-toi.html');
       btn.setAttribute('title', 'Mở Trang của tôi');
