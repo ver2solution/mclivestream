@@ -5245,6 +5245,13 @@ function mountPointsDetail(targetType, targetId){
   }
   if (!targetId) return;
   if (document.getElementById('v2sPinBox')) return; // chỉ gắn 1 lần
+  // v283 (24/11/2026): trang bài báo — initArticleComments (v166) đã sở
+  // hữu khối Bình luận sau .share-box; mountPointsDetail chỉ gắn hộp ghim,
+  // KHÔNG render thêm khối Bình luận thứ hai ở #v2sCommentsMount (lỗi 2
+  // khối "Bình luận" trùng trên trang bài, Thọ Zalo báo 09:38 24/11).
+  // Trang chi tiết hồ sơ/shop (có #detailRoot/#shopDetailRoot) giữ nguyên:
+  // mount này là khối Bình luận duy nhất ở đó.
+  var isArticle = !!articleEl;
   var wrap = document.createElement('div');
   wrap.innerHTML = '<section class="v2s-pin-box" id="v2sPinBox" data-v2s-target-type="'+esc(targetType)+'" data-v2s-target-id="'+esc(targetId)+'">'
     + '<h2>📌 Ghim lên top</h2>'
@@ -5253,7 +5260,7 @@ function mountPointsDetail(targetType, targetId){
     + '<label>Số giờ ghim (1–720)<input type="number" class="v2s-pin-hours" min="1" max="720" value="24"></label> '
     + '<button class="btn btn-primary btn-sm" type="button" data-v2s-pin-confirm>Ghim lên top</button>'
     + '<p class="v2s-pin-msg" role="status"></p></section>'
-    + '<div class="v2s-comments-mount" id="v2sCommentsMount"></div>';
+    + (isArticle ? '' : '<div class="v2s-comments-mount" id="v2sCommentsMount"></div>');
   if (anchor && typeof anchor.insertAdjacentElement === 'function') anchor.insertAdjacentElement('afterend', wrap);
   else if (articleEl && typeof articleEl.insertAdjacentElement === 'function') articleEl.insertAdjacentElement('afterend', wrap);
   else return;
@@ -5278,7 +5285,7 @@ function mountPointsDetail(targetType, targetId){
       } else if (bal) { bal.textContent = 'Hệ thống xu thưởng chưa bật (đang chờ migration M7).'; }
     });
     var mount = document.getElementById('v2sCommentsMount');
-    if (mount && C && typeof C.renderComments === 'function') C.renderComments(targetType, targetId, mount);
+    if (!isArticle && mount && C && typeof C.renderComments === 'function') C.renderComments(targetType, targetId, mount);
   });
 }
 function initPointsUI(){
@@ -5413,7 +5420,9 @@ function initPointsUI(){
       });
     });
   });
-  // Trang bài báo tĩnh (bai-viet/*.html): gắn hộp ghim + bình luận sau bài.
+  // Trang bài báo tĩnh (bai-viet/*.html): gắn hộp ghim sau bài (bình luận
+  // do initArticleComments v166 sở hữu — v283: không render thêm khối
+  // Bình luận thứ hai trong mountPointsDetail).
   if (typeof document.querySelector === 'function'
     && document.querySelector('.form-card.article article[itemtype], article[itemtype*="NewsArticle"]')) {
     mountPointsDetail('article', '');
