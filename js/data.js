@@ -18458,6 +18458,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Hà Nội mạnh thời trang, mỹ phẩm; Đà Nẵng mạnh du lịch, đặc sản; TP.HCM nhịp nhanh nhất. Tuyển đúng khu vực là tuyển đúng một nửa."
   },
+  {
+   "title": "501.924 đơn/7 ngày: top 50 thời trang nữ nam TikTok Shop",
+   "cat": "Phân tích",
+   "source": "ShopeeAnalytics, Metric, Kalodata Việt Nam, TokConnect",
+   "date": "2026-11-25",
+   "url": "https://www.shopeeanalytics.com/vn/search/tiktok?cat=Trang+ph%E1%BB%A5c+n%E1%BB%AF+%26+%C4%91%E1%BB%93+l%C3%B3t",
+   "page": "bai-viet/tiktok-shop-vn-top-50-thoi-trang-nu-nam-501924-don-7-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-vn-top-50-thoi-trang-nu-nam-501924-don-7-ngay.jpg",
+   "pinned": false,
+   "takeaway": "Top 50 thời trang nữ 294.763 đơn, top 50 nam 207.161 đơn trong 7 ngày tới 09/11/2026 trên TikTok Shop VN — nữ chốt áo thun, nam chốt polo, jean ống suông."
+  },
 ],
  "lots": [
    {
