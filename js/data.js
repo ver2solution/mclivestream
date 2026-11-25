@@ -18062,6 +18062,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Lịch đếm ngược Giáng sinh dạng đồ chơi bóp mềm: 26.000 chiếc trong 30 ngày, ra mắt 28/10/2026, 754 creator (TokConnect 23/11/2026); 13 sản phẩm bứt phá bán tổng 130.000 đơn trong 30 ngày."
   },
+  {
+   "title": "595 tỷ đồng/1 ngày Double 11: Trương Đại Dịch rớt 73%",
+   "cat": "Phân tích",
+   "source": "Kr-Asia",
+   "date": "2026-11-25",
+   "url": "https://kr-asia.com/alibaba-backed-e-commerce-kol-facilitator-ruhnn-aims-to-raise-200m-via-us-ipo",
+   "page": "bai-viet/truong-dai-dich-595-ty-dong-1-ngay-double-11-nu-hoang-thoi-trang-taobao-ipo-nasdaq.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/truong-dai-dich-595-ty-dong-1-ngay-double-11-nu-hoang-thoi-trang-taobao-ipo-nasdaq-hero.jpg",
+   "pinned": false,
+   "takeaway": "Bán 595 tỷ đồng trong 1 ngày Double 11/2017, Trương Đại Dịch đưa Ruhnn lên Nasdaq 2019 rồi rớt 73%, hủy niêm yết sau 2 năm. Shop Việt học gì trước Black Friday?"
+  },
 ],
  "lots": [
    {
