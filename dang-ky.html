@@ -63,6 +63,11 @@
 <p class="auth-note">Sau khi đăng ký, bạn điền tiếp hồ sơ (Trang của tôi / Hồ sơ shop) với các thông tin bắt buộc theo bộ lọc — tỉnh, lĩnh vực, giờ làm, lương — để hồ sơ hiện lên và được tìm thấy. Thông tin liên hệ (Số điện thoại/Zalo, email) dùng để xác nhận quyền sở hữu hồ sơ và cộng xu thưởng cho tài khoản của bạn.</p>
 <p style="font-size:13px">Sau khi đăng ký xong, bạn đăng nhập ngay để điền hồ sơ — hiện không cần xác nhận qua email.</p>
 <p class="auth-links"><a href="dang-nhap.html" id="goLoginLink" data-track="ve-dang-nhap">Đã có tài khoản? Đăng nhập</a></p></div>
+<div id="onboardingResume" class="ob-resume" hidden>
+<p><b>Bạn đã bắt đầu đăng ký nhưng chưa hoàn thiện hồ sơ theo vai trò.</b></p>
+<p><button class="btn btn-primary" type="button" data-ob-resume data-track="tiep-tuc-dang-ky">Tiếp tục hoàn thiện hồ sơ →</button></p>
+</div>
+<section id="onboardingWizard" class="ob-wizard" hidden aria-label="Hoàn thiện hồ sơ theo vai trò"></section>
 <div id="authUserBox" style="display:none"><p>Đã đăng nhập: <span id="authUserEmail"></span></p><p><a class="btn btn-primary" href="trang-cua-toi.html">Vào Trang của tôi →</a> <button class="btn btn-ghost btn-sm" id="authSignOut" data-track="nut-dang-xuat" type="button">Đăng xuất</button></p>
 <p class="notice">Sau khi đăng nhập, mẫu bấm vào <a href="trang-cua-toi.html">Trang của tôi</a> để tạo và sửa hồ sơ riêng. Hồ sơ mới ở trạng thái chờ duyệt, chỉ hiện công khai sau khi admin duyệt và xác nhận đồng ý.</p></div>
 <div id="activationPanel" class="activation-panel" hidden>
@@ -113,7 +118,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="mclivestream-supabase.js"></script>
-<script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
+<script src="js/onboarding-fields.js"></script><script src="js/onboarding.js"></script><script src="js/auth-ui.js"></script><script src="js/activation.js"></script><script src="js/reward.js"></script><script src="js/comments.js"></script>
 <script src="js/themes.js"></script><script src="js/app.js"></script>
 <script src="js/analytics.js"></script><script src="js/online-counter.js"></script>
 <script>
@@ -151,6 +156,18 @@
   if (params.get('next')) successQs.push('next=' + encodeURIComponent(params.get('next')));
   var authCfg = {
     accountType: 'model',
+    /* v423 (Phase 1 V2.0, diem noi): sau khi dang ky co session, mo wizard
+       buoc 2 thay vi redirect ngay. Tra ve true = giu o lai trang lam
+       wizard; false/loi = redirect nhu cu (xem js/auth-ui.js). */
+    onSignupSession: function (res) {
+      try {
+        if (window.V2SOnboarding && typeof window.V2SOnboarding.openWizard === 'function') {
+          var dest = params.get('next') ? nextUrl : undefined;
+          return window.V2SOnboarding.openWizard(res, dest);
+        }
+      } catch (e) { /* bo qua — redirect nhu cu */ }
+      return false;
+    },
     cardId: 'dang-ky',
     initialView: 'register',
     signupSuccessUrl: 'dang-nhap.html?' + successQs.join('&'),
@@ -241,6 +258,14 @@
   if (suForm) suForm.addEventListener('submit', function () { signedInNow = true; });
   var presetType = params.get('type');
   if (presetType === 'model' || presetType === 'shop') pickType(presetType);
+  /* v423 (Phase 1 V2.0): khoi dong wizard onboarding (neu script tai duoc).
+     ?type=model → goi y vai tro chinh A; ?type=shop → C. */
+  if (window.V2SOnboarding && typeof window.V2SOnboarding.initPage === 'function') {
+    var presetRole = null;
+    if (presetType === 'model') presetRole = 'A';
+    else if (presetType === 'shop') presetRole = 'C';
+    window.V2SOnboarding.initPage({ presetRole: presetRole });
+  }
   /* Link "Đã có tài khoản? Đăng nhập" giu ?next= ve dang-nhap.html. */
   var goLogin = document.getElementById('goLoginLink');
   if (goLogin && params.get('next')) goLogin.href = 'dang-nhap.html?next=' + encodeURIComponent(params.get('next'));

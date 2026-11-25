@@ -818,6 +818,13 @@
             // TK lay tu user_metadata.account_type vua dang ky, fallback
             // cfg.accountType luc submit. Panel kich hoat (activation.js)
             // von da chia dich theo loai — redirect nay khop voi panel.
+            // v423 (Phase 1 V2.0, diem noi): neu trang truyen onSignupSession
+            // thi goi no truoc khi redirect — tra ve true = trang giu nguoi
+            // dung o lai lam wizard (khong redirect); false/loi = redirect
+            // nhu cu. Trang khac khong truyen callback nen khong anh huong.
+            if (typeof cfg.onSignupSession === 'function') {
+              try { if (cfg.onSignupSession(res)) return; } catch (e) { /* bo qua — redirect nhu cu */ }
+            }
             var dest = cfg.signupSessionUrl || cfg.signupSuccessUrl;
             var hasNext = false;
             try { hasNext = !!(typeof location !== 'undefined' && new URLSearchParams(location.search).get('next')); } catch (e) { hasNext = false; }
