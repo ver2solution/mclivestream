@@ -5436,6 +5436,7 @@ function initTransferForm(){
   var streakEl = document.getElementById('transferStreak');
   var msgEl = document.getElementById('transferMsg');
   var histEl = document.getElementById('transferHistory');
+  var ptsEl = document.getElementById('pointsHistory'); // v281 (P3-6): lich su cong xu (points_ledger)
   var submitBtn = document.getElementById('transferSubmit');
   var emailEl = document.getElementById('transferEmail');
   var amountEl = document.getElementById('transferAmount');
@@ -5449,6 +5450,23 @@ function initTransferForm(){
     if (!st || !st.ok) return 'Chưa tải được chuỗi online (hệ thống xu chưa bật hoặc mất mạng).';
     if (st.eligible) return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — bạn đã đủ điều kiện chuyển xu.';
     return 'Đã online liên tiếp ' + st.current_streak + '/30 ngày — còn ' + st.days_remaining + ' ngày nữa mới được chuyển xu.';
+  }
+  /* v281 (P3-6, vong 3 24/11): lich su CONG xu (dang ky +10, thich +1,
+     binh luan +1...) tu points_ledger — trang vi.html truoc day chi co
+     lich su CHUYEN xu nen nguoi dung khong thay xu minh kiem duoc o dau.
+     Cung mau render o vi-tien-ao.html (v91 BUG-05): delta + nhan loai +
+     ly do + gio VN + so du sau giao dich. */
+  function pointsHistHTML(items){
+    if (!items || !items.length) return '<p>Chưa có giao dịch xu nào.</p>';
+    var R = window.Ver2Reward;
+    return '<ul class="v2s-transfer-history">' + items.map(function (it){
+      var d = Number(it.delta) || 0;
+      var label = (R && typeof R.pointsHistoryLabel === 'function') ? R.pointsHistoryLabel(it.type) : (it.type || 'Xu thưởng');
+      var when = '';
+      try { when = (R && typeof R.formatVnDateTime === 'function') ? R.formatVnDateTime(it.created_at, true) : (it.created_at || ''); } catch (e) { when = it.created_at || ''; }
+      var bal = (it.balance_after !== undefined && it.balance_after !== null) ? (' · Còn lại: ' + it.balance_after + ' xu') : '';
+      return '<li><b>' + (d > 0 ? '+' : '') + d + ' xu</b> — ' + esc(label) + (it.reason ? ' · ' + esc(it.reason) : '') + (when ? ' · ' + esc(when) : '') + esc(bal) + '</li>';
+    }).join('') + '</ul>';
   }
   function histHTML(items){
     if (!items || !items.length) return '<p>Chưa có lần chuyển xu nào.</p>';
@@ -5477,6 +5495,7 @@ function initTransferForm(){
         if (streakEl) streakEl.innerHTML = 'Cần <a href="dang-nhap.html">đăng nhập</a> để chuyển xu. Chưa có tài khoản? <a href="dang-ky.html">Đăng ký đủ nhận 10 xu</a>.';
         if (balEl) balEl.textContent = 'Cần đăng nhập để xem số dư xu.';
         if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển xu.</p>';
+        if (ptsEl) ptsEl.innerHTML = '<p>Cần đăng nhập để xem lịch sử cộng xu.</p>'; // v281 (P3-6)
         if (submitBtn) submitBtn.disabled = true;
         return;
       }
@@ -5488,6 +5507,7 @@ function initTransferForm(){
       // user đã đăng nhập, đúng mẫu Zalo gặp 03:47 ngày 12/11).
       if (balEl) balEl.textContent = 'Đang tải số dư xu…';
       if (histEl) histEl.innerHTML = '<p>Đang tải lịch sử chuyển xu…</p>';
+      if (ptsEl) ptsEl.innerHTML = '<p>Đang tải lịch sử cộng xu…</p>'; // v281 (P3-6)
       if (typeof R.getMyPointsBalanceResult === 'function') {
         R.getMyPointsBalanceResult().then(function (r){
           if (balEl && r && r.ok) balEl.textContent = 'Số dư xu của bạn: ' + (Number(r.balance) || 0) + ' xu.';
@@ -5503,6 +5523,14 @@ function initTransferForm(){
           if (histEl && h && h.ok) histEl.innerHTML = histHTML(h.items);
           else if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển xu, hãy tải lại trang.</p>';
         }).catch(function () { if (histEl) histEl.innerHTML = '<p>Chưa tải được lịch sử chuyển xu, hãy tải lại trang.</p>'; }));
+      }
+      // v281 (P3-6): lich su cong xu (points_ledger) — doc cung luc voi
+      // lich su chuyen; loi rieng chi trong muc nay, khong hong muc khac.
+      if (typeof R.getMyPointsHistory === 'function') {
+        jobs.push(R.getMyPointsHistory(20).then(function (h){
+          if (ptsEl && h && h.ok) ptsEl.innerHTML = pointsHistHTML(h.items);
+          else if (ptsEl) ptsEl.innerHTML = '<p>Chưa tải được lịch sử cộng xu, hãy tải lại trang.</p>';
+        }).catch(function () { if (ptsEl) ptsEl.innerHTML = '<p>Chưa tải được lịch sử cộng xu, hãy tải lại trang.</p>'; }));
       }
       if (typeof R.getMyPointsBalanceResult === 'function') {
         jobs.push(R.getMyPointsBalanceResult().then(function (r){ if (r && r.ok) balance = Number(r.balance) || 0; }));
