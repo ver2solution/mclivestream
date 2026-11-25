@@ -40,7 +40,15 @@ a:hover{text-decoration:underline}
    nut van la con truc tiep cua .user-menu-wrap (position:relative), JS toggleMenu
    tren nut giu nguyen. */
 .site-head .user-menu-wrap{min-width:0}
-.site-head .user-menu-wrap>.btn{display:inline-block;min-width:0;text-align:left}
+.site-head .user-menu-wrap>.btn{display:inline-flex;align-items:center;justify-content:flex-start;gap:0;min-width:0;text-align:left}
+/* v279 (P3-4, vong 3 24/11): chip header cat ten dai che mat so xu — tach
+   ten + so xu thanh 2 span (xem renderHeaderLabel js/app.js + syncHeader
+   js/chat-page.js): ten co lai (ellipsis), so xu khong co lai. Nut ve
+   inline-flex CAN TRAI (justify-content:flex-start) de 2 span xep hang;
+   gap:0 vi dau " · " da nam trong span so xu. Can trai + span rieng nen
+   khong tai hien loi v111 (text tho can giua bi cat ca 2 dau). */
+.v2s-hdr-name{min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v2s-hdr-bal{flex:0 0 auto;white-space:nowrap}
 /* v90: hamburger hien som tu <=1200px (truoc la <=1000px) — o 1000-1200px
    6 link nav + pill diem khong du cho, chu rot 2 dong (anh nguoi dung 23:11).
    Do rong that do duoc: logo 230 + nav 675 (padding 10px) + pill 196 + gap = 1129px
