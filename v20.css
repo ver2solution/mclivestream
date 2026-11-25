@@ -233,12 +233,15 @@ a:hover{text-decoration:underline}
 /* v445 (25/11/2026, anh quyet 21:51 — GHI DE luat "1 hang" cua v211):
    1 hang switch chi chua TOI DA 4 tieu muc; neu nhieu hon thi cac tieu muc
    thua xuong DONG THU 2. flex-basis calc(25% - 5px) (tru 3 khe 6px/4 nut);
-   flex-grow:1 cho nut o dong cuoi gian deu. Bo tron 16px (thay vi 999px)
-   cho khung 2 hang cho gon. Chi ap cho .list-switch (2 trang danh sach);
-   switch Kiot (4 nut, khong co class nay) giu nguyen. Mobile <=600px
-   giu luat cu (hang ngang cuon — quy tac @media sau ghi de). */
+   Bo tron 16px (thay vi 999px) cho khung 2 hang cho gon. Chi ap cho
+   .list-switch (2 trang danh sach); switch Kiot (4 nut, khong co class
+   nay) giu nguyen. Mobile <=600px giu luat cu (hang ngang cuon — quy tac
+   @media sau ghi de).
+   v446 (25/11/2026, anh quyet 22:52 — GHI DE "flex-grow:1 cho nut o dong
+   cuoi gian deu" cua v445): flex-grow:0 — nut dong cuoi KHONG gian ra
+   het hang; moi nut dung dung 1 o (25%), dong 2 xep gon ve trai. */
 .uni-cat-switch.list-switch{border-radius:16px}
-.uni-cat-switch.list-switch .uni-cat-btn{flex:1 1 calc(25% - 5px)}
+.uni-cat-switch.list-switch .uni-cat-btn{flex:0 1 calc(25% - 5px)}
 .uni-cat-switch .uni-cat-btn.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(11,93,78,.28)}
 .uni-cat-switch .uni-cat-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .uni-cat-switch .uni-cat-btn .uni-cat-count{white-space:nowrap}
@@ -671,17 +674,19 @@ html.theme-fx-off body::after,html.theme-fx-off::after{display:none}
 .newobj-photo img{width:100%;height:100%;object-fit:cover;display:block}
 /* v310 (F-R2-02, 17/11/2026): logo hang (logistics / agency-ads) hien TRON (contain) — cover cat 2 ben logo (vd "HOA NAM" con "OA NAI"). Anh su kien/lop hoc (anh that) giu cover. */
 .newobj-card[data-type="logistics"] .newobj-photo img,.newobj-card[data-type="agencyAds"] .newobj-photo img{object-fit:contain}
-/* v443 (25/11/2026): the hang Logistic noi dia — the khong anh (chi text),
-   the hang da ngung mo + nhan do; 2 o loc trong section xep ngang. */
+/* v443 (25/11/2026): the hang Logistic noi dia — the hang da ngung mo +
+   nhan do; 2 o loc trong section xep ngang. */
+/* v447 (25/11/2026): the hang dang gon (v443: the khong anh) — logo hien
+   TRON (contain, nen trang) nhu the logistics Trung-Viet (v310); gia
+   tham khao CLAMP 2 dong (du lieu day du o modal). Bo CSS cu cua the do
+   het noi dung (details/summary/ol, .carrier-unverified, .carrier-source). */
 .carrier-filters{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 12px}
 .carrier-card .newobj-lines{gap:6px}
 .carrier-card.carrier-stopped{opacity:.65}
 .tag-stopped{background:#fdecec;color:#b91c1c}
-.carrier-card details{font-size:13px;line-height:1.5}
-.carrier-card details summary{cursor:pointer;font-weight:700}
-.carrier-card details ol{margin:6px 0;padding-left:20px}
-.carrier-card .carrier-unverified{color:var(--mut);font-size:12px}
-.carrier-card .carrier-source{color:var(--mut);font-size:12px}
+.carrier-card .newobj-photo{background:#fff}
+.carrier-card .newobj-photo img{object-fit:contain;padding:8px}
+.carrier-card .carrier-price{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .newobj-lines{padding:12px 14px 14px;display:grid;gap:4px}
 .newobj-lines p{margin:0;font-size:13px;line-height:1.45;overflow-wrap:break-word}
 .newobj-lines .newobj-name{font-weight:800;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -1509,3 +1514,20 @@ button.adm-task-st{font:inherit}
 a.trust-num{text-decoration:none}
 a.trust-num:hover b{text-decoration:underline}
 a.trust-num:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+/* v444 (25/11/2026): Lao Dong Tu Do — the tin + trang thai trong. Tab dung
+   chung .uni-cat-switch/.uni-cat-btn; loc dung chung .filter-card; danh
+   sach dung chung .news-list; phan trang dung chung .pager. */
+.fl-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 12px}
+.fl-card h3{margin:0 0 6px;font-size:17px}
+.fl-meta{margin:0 0 6px;color:var(--mut);font-size:14px}
+.fl-cat{font-weight:800;color:#0b5d4e}
+.fl-kind{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800}
+.fl-kind-tim-viec{background:#e6f4ea;color:#137333}
+.fl-kind-tim-nguoi{background:#fef3c7;color:#92400e}
+.fl-salary{margin:0 0 6px;font-size:15px}
+.fl-desc{margin:0 0 6px;color:#333}
+.fl-date{margin:0;color:var(--mut);font-size:13px}
+.fl-contact-note{margin:8px 0 0;color:var(--mut);font-size:13px}
+.fl-empty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center}
+.fl-empty p{margin:0 0 12px;color:var(--mut)}
