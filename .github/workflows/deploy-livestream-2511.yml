@@ -20,9 +20,9 @@ jobs:
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
           if grep -qF 'kich-ban-livestream-tet-khung-60-phut-chuan-tiktok' js/data.js; then echo "livestream-2511 DA DEPLOY ROI - dung"; exit 1; fi
-          test "$(md5sum js/data.js | cut -d' ' -f1)" = "48b58f08ef025806ca9717b03cd05b46" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "694" || (echo "BASE DOI: data.js khong con 694 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "716" || (echo "BASE DOI: sitemap khong con 716 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "61bd532b1efb53f26c9204bb1e9dcf34" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "698" || (echo "BASE DOI: data.js khong con 698 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "720" || (echo "BASE DOI: sitemap khong con 720 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip livestream-2511 package
         run: |
           unzip -o mclivestream-livestream-2511-deploy.zip
@@ -36,8 +36,8 @@ jobs:
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "720" || (echo "SAI TONG sitemap, phai 720"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "698" || (echo "SAI TONG data.js, phai 698"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "724" || (echo "SAI TONG sitemap, phai 724"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "702" || (echo "SAI TONG data.js, phai 702"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
