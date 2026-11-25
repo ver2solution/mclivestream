@@ -4782,6 +4782,17 @@ function initHeaderAuth(){
     /* v161 (Rion 9b): menu tai khoan chi co ten + so xu + Dang xuat — them
        2 link tinh Vi diem / Quy tac diem (link tinh nen khong nhap nhay
        theo trang thai tai so du); Rion bao "chua vao duoc Vi diem" cung duoc sua. */
+    /* v435 (#60, 25/11/2026): tài khoản thường không tìm thấy "Tin nhắn" —
+       khung chat cộng đồng (cong-dong/chat.html) chỉ link từ trang chủ và
+       tab mobile, menu tài khoản không có lối vào. Thêm link Tin nhắn vào
+       menu (sau tên + số xu, trước Ví điểm). "Thông báo" CHƯA có hệ thống
+       nào để link (không chuông, không trang thông báo — thuộc Notification
+       Engine Phase 2 Live Workspace) nên không thêm link giả. */
+    var chatLink = document.createElement('a');
+    chatLink.className = 'user-menu-link';
+    chatLink.setAttribute('href', pathPrefix + 'cong-dong/chat.html');
+    chatLink.textContent = 'Tin nhắn';
+    menuEl.appendChild(chatLink);
     var walletLink = document.createElement('a');
     walletLink.className = 'user-menu-link';
     walletLink.setAttribute('href', pathPrefix + 'vi.html');
