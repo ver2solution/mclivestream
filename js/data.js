@@ -18764,6 +18764,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Shein đạt gần 1 triệu tỷ đồng doanh thu năm 2024 nhờ thời trang siêu nhanh — lô thử 100 cái, 3 ngày lên kệ. Cách Shein kiếm tiền và 5 bài học cho shop Việt."
   },
+  {
+   "title": "Cách tăng mắt xem livestream Tết: lịch cố định, lì xì",
+   "cat": "Livestream",
+   "source": "streamer.guide",
+   "date": "2026-11-26",
+   "url": "https://streamer.guide/guides/how-to-get-viewers-on-tiktok-live",
+   "page": "bai-viet/cach-tang-mat-xem-livestream-tet-lich-co-dinh-li-xi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cach-tang-mat-xem-livestream-tet-lich-co-dinh-li-xi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cách tăng mắt xem livestream Tết: lịch live cố định, LIVE Event nhắc hẹn, teaser 1–2 giờ trước phiên, minigame lì xì cuối phiên — mắt xem quay lại thay vì mua bằng quảng cáo (streamer.guide, Medium 05/11/2026)."
+  },
+  {
+   "title": "Livestream bán thực phẩm chức năng: thị trường 1,32 tỷ USD",
+   "cat": "Livestream",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/vietnam-dietary-supplements-market-report",
+   "page": "bai-viet/livestream-ban-thuc-pham-chuc-nang-thi-truong-132-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-thuc-pham-chuc-nang-thi-truong-132-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán thực phẩm chức năng: thị trường Việt Nam 1,32 tỷ USD năm 2026 (Grand View Research), TikTok Shop Mỹ bán 784 triệu USD thực phẩm bổ sung trong 52 tuần tới 02/2026 (NielsenIQ) — nhưng quảng cáo phải duyệt trước từ 16/04/2026 (Nghị định 46/2026)."
+  },
+  {
+   "title": "Livestream Black Friday 27/11: checklist 24 giờ cuối",
+   "cat": "Livestream",
+   "source": "FastMoss",
+   "date": "2026-11-26",
+   "url": "https://www.fastmoss.com/blog/tiktok-shop-black-friday-products-creators-2026/",
+   "page": "bai-viet/livestream-black-friday-27-11-checklist-24-gio-cuoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-black-friday-27-11-checklist-24-gio-cuoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream Black Friday 27/11: checklist 24 giờ cuối — Adobe dự báo Black Friday online Mỹ 12,9 tỷ USD, tăng 9,2% năm 2026 (28/09/2026); tuần Black Friday 2025 bán 29,7 triệu đơn, đỉnh vào Lễ Tạ ơn (FastMoss)."
+  },
+  {
+   "title": "Shopee Live 11.11: GMV tăng 12 lần, 2,5 tỷ lượt xem",
+   "cat": "Livestream",
+   "source": "Media OutReach Newswire",
+   "date": "2026-11-26",
+   "url": "https://smartinvestor.com.my/media-outreach/2026/11/23/503400/shopee-live-sales-grew-8x-during-11-11-with-local-creators-and-sellers-breaking-records/",
+   "page": "bai-viet/shopee-live-11-11-gmv-tang-12-lan-25-ty-luot-xem.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-live-11-11-gmv-tang-12-lan-25-ty-luot-xem.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopee Live 11.11: GMV tăng 12 lần, đơn qua live tăng 9 lần ở Việt Nam (Shopee công bố 20/11/2026); Malaysia tăng 8 lần, Brazil 85 triệu lượt xem trong 24 giờ (Media OutReach Newswire, 23/11/2026)."
+  },
 ],
  "lots": [
    {
