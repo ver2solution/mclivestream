@@ -15991,18 +15991,6 @@ window.V20_DATA = {
    "takeaway": "Uống cà phê buổi sáng có tốt không là câu hỏi nhiều mẫu livestream đặt ra khi vừa muốn tỉnh táo để live khuya, vừa sợ mất ngủ sau ca live."
   },
   {
-   "title": "Quán cafe check-in đẹp Cafe Giảng Hà Nội 1946",
-   "cat": "Đời Sống",
-   "source": "Tatinta",
-   "date": "2026-11-18",
-   "url": "https://tatinta.com/en/diem-den/ca-phe-giang/9210",
-   "page": "bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-cafe-giang-ha-noi.jpg",
-   "imgSelf": false,
-   "pinned": false,
-   "takeaway": "Quán cafe check-in đẹp Cafe Giảng nằm ở số 39 Nguyễn Hữu Huân, ngay trong một con ngõ nhỏ của phố cổ Hà Nội, là địa chỉ mà bất cứ ai yêu cà phê cũng nên ghé một lần trong đời."
-  },
-  {
    "title": "Xả kho cuối năm bằng livestream: 7 bước chốt đơn",
    "cat": "Đang hot",
    "source": "Media OutReach Newswire",
