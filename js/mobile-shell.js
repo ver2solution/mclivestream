@@ -15,14 +15,24 @@
       'chat':['/cong-dong/chat.html','/cong-dong/chat'],
       'me':['/trang-cua-toi.html']
     };
+    // Các trang con thuộc một mục, nhưng không phải đích trực tiếp của tab.
+    var sections={
+      '/tin-tuc.html':'feed',
+      '/lao-dong-tu-do.html':'jobs',
+      '/danh-sach-lo.html':'jobs',
+      '/danh-sach-xuong.html':'jobs',
+      '/thanh-ly-kiot.html':'jobs'
+    };
     var active=null;
     Object.keys(map).forEach(function(key){
       if(map[key].indexOf(path)!==-1) active=key;
     });
+    var current=active?'page':'location';
+    active=active||sections[path];
     nav.querySelectorAll('.ms-tab').forEach(function(tab){
       var on=tab.getAttribute('data-ms-tab')===active;
       tab.classList.toggle('is-active',on);
-      if(on){ tab.setAttribute('aria-current','page'); }
+      if(on){ tab.setAttribute('aria-current',current); }
       else{ tab.removeAttribute('aria-current'); }
     });
   }
