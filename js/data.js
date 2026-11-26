@@ -12963,7 +12963,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.cndsw.com.cn/business/105429.html",
    "page": "bai-viet/shopee-vs-tiktok-shop-song-ma-11-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-vs-tiktok-shop-song-ma-11-11-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-vs-tiktok-shop-song-ma-11-11-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Shopee TikTok Shop 11/11: quý III/2026 Shopee 74.400 tỷ đồng (+8%), TikTok Shop 70.100 tỷ đồng (+60%), chỉ cách nhau 4.300 tỷ đồng; Shopee mở bán 111 phút đầu ngày 11/11/2026: doanh số xuyên biên giới tăng 10 lần, Shopee Live xuyên biên giới tăng 16 lần."
@@ -12975,7 +12975,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
    "page": "bai-viet/dinh-doanh-thu-d1-12-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/dinh-doanh-thu-d1-12-11-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dinh-doanh-thu-d1-12-11-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Đỉnh doanh thu D+1 12/11: năm 2025, GMV ngày D+1 đạt 1,67 lần ngày thường ở cả 11.11 (913,4 tỷ đồng) và 12.12 (1.009,7 tỷ đồng) — cả hai đều là số năm 2025, chỉ làm mốc so sánh; D+2 đến D+4 vẫn cao hơn ngày thường 24–51%. Hôm nay 12/11/2026 mới là ngày bán chạy nhất."
@@ -12987,7 +12987,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://newsroom.tiktok.com/tiktok-shop-had-our-biggest-bfcm-weekend-ever?lang=en",
    "page": "bai-viet/tiktok-shop-my-black-friday-2025-500-trieu-usd-4-ngay.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-my-black-friday-2025-500-trieu-usd-4-ngay.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-my-black-friday-2025-500-trieu-usd-4-ngay.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "TikTok Shop Mỹ Black Friday 2025: hơn 500 triệu USD trong 4 ngày (gấp 5 lần doanh thu 1 ngày Black Friday 2024), live tăng 84% với 760.000 phiên và 1,6 tỷ lượt xem, gần 10 triệu video bán hàng; loa JBL bán 12,9 triệu USD trong 1 tuần; video ngắn chiếm 64,8% doanh thu thời trang nữ trong tuần sale."
@@ -12999,7 +12999,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://brunch.co.kr/@venture-digest/156",
    "page": "bai-viet/live-commerce-han-quoc-47-nghin-ty-won-2025.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/live-commerce-han-quoc-47-nghin-ty-won-2025.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/live-commerce-han-quoc-47-nghin-ty-won-2025.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Live commerce Hàn Quốc: 4,7 nghìn tỷ won năm 2025, tăng 35%, dự báo vượt 6 nghìn tỷ won năm 2026; số buổi live giảm 14,9% nhưng doanh thu mỗi buổi tăng 61,6% lên 9,98 triệu won; Naver Shopping Live giao dịch tích lũy vượt 4 nghìn tỷ won; đồ điện tử chiếm 40% thị trường với 706,9 tỷ won."
@@ -13011,7 +13011,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://mjzj.com/article/g32mra7fs16p",
    "page": "bai-viet/tan-tuyen-kuaishou-double-11-2026-600-trieu-ndt.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tan-tuyen-kuaishou-double-11-2026-600-trieu-ndt.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tan-tuyen-kuaishou-double-11-2026-600-trieu-ndt.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Tân Tuyển Double 11 Kuaishou: tân binh Trần Tiên Sinh bán gần 600 triệu NDT trong 5 phiên live, riêng ngày 24/10/2026 đạt khoảng 596 triệu NDT với 1,263 triệu món hàng; cả đội tăng lượt xem 68,4%; streamer vừa và nhỏ đã chiếm 89,34% GMV toàn ngành năm 2025."
@@ -13023,7 +13023,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.topcv.vn/viec-lam/nhan-vien-tiktok-livestream-creator/2165506.html",
    "page": "bai-viet/mau-livestream-luong-theo-gio-bang-luong-tin-tuyen-11-11.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-luong-theo-gio-bang-luong-tin-tuyen-11-11.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-luong-theo-gio-bang-luong-tin-tuyen-11-11.jpg",
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
@@ -13036,7 +13036,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.topcv.vn/viec-lam/nhan-vien-livestream/1760817.html",
    "page": "bai-viet/tuyen-mau-livestream-part-time-ha-noi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-part-time-ha-noi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-livestream-part-time-ha-noi.jpg",
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
@@ -13049,7 +13049,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://amp.kr-asia.com/comparative-analysis-between-livestream-hosts-and-delivery-riders-reveal-disparities-in-chinas-gig-economy",
    "page": "bai-viet/viec-lam-mc-livestream.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-mc-livestream.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-mc-livestream.jpg",
    "imgSelf": true,
    "kind": "keyword",
    "pinned": false,
@@ -13062,7 +13062,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://seller-id.tokopedia.com/university/essay?knowledge_id=6837732781442818&lang=en",
    "page": "bai-viet/tiktok-shop-dong-bang-hoa-hong-90-ngay-koc-can-biet.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-dong-bang-hoa-hong-90-ngay-koc-can-biet.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-dong-bang-hoa-hong-90-ngay-koc-can-biet.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "TikTok Shop đóng băng hoa hồng tối đa 90 ngày khi vi phạm chính sách (quy định ngày 25/09/2026): 6 lần vi phạm cùng lỗi trong 90 ngày là mất quyền bán hàng, 3 strike nhãn hiệu có thể mất tài khoản, kháng cáo chỉ có 30 ngày — KOC mỹ phẩm cần rà soát video ngay."
@@ -13074,7 +13074,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://medialabs-co.com/blog/tiktok-shop-affiliate-commission-rates",
    "page": "bai-viet/phi-tiktok-shop-2026-hoa-hong-9-178-phan-tram.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/phi-tiktok-shop-2026-hoa-hong-9-178-phan-tram.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phi-tiktok-shop-2026-hoa-hong-9-178-phan-tram.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Phí TikTok Shop 2026: phí giới thiệu 6% tại Mỹ (9% tại Anh), hoa hồng affiliate trung vị 9%, ngành Sức khỏe trung bình 17,88% (MediaLabs 21/10/2026) — trên đơn 500.000 đồng qua affiliate, hai khoản phí ngốn gần 20% giá bán, shop phải tính đủ cả hai mới biết lãi thật."
@@ -13086,7 +13086,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://retailnews.asia/anymind-and-meta-partner-to-bring-live-commerce-ads-to-asia-pacific",
    "page": "bai-viet/quang-cao-facebook-live-2026-shop-nho-chay-the-nao.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/quang-cao-facebook-live-2026-shop-nho-chay-the-nao.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quang-cao-facebook-live-2026-shop-nho-chay-the-nao.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Quảng cáo Facebook Live 2026: Meta và AnyMind hợp tác ngày 27/10/2026, chạy từ quý IV/2026; thử nghiệm Hàn Quốc (30/09/2026) tăng 17,1% lượt mua, ROAS gấp 2,7 lần — shop nhỏ nên bắt đầu bằng quảng cáo bản phát lại, ngân sách thử 200.000–500.000 đồng/phiên."
@@ -13098,7 +13098,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.gra.world/ai-presenters-now-sell-around-the-clock-on-chinas-biggest-shopping-stages/",
    "page": "bai-viet/ai-livestream-thay-mc-that-shop-nho-co-nen-dung.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/ai-livestream-thay-mc-that-shop-nho-co-nen-dung.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-livestream-thay-mc-that-shop-nho-co-nen-dung.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "AI livestream bán hàng: 9 triệu giờ live AI trong 19 ngày (12–30/10/2026), hơn 100.000 nhà bán, chi phí 1/10 MC thật, miễn phí tới 31/12/2026 — nhưng thời gian xem chỉ bằng 40% MC thật và Douyin đã phạt hơn 450.000 phòng live năm 2025 vì phát sóng không người trông."
@@ -13110,7 +13110,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://sinoshipment.com/blogs/china-us-shipping-costs-q4-2026-rate-outlook-after-golden-week/",
    "page": "bai-viet/nhap-hang-trung-quoc-cuoi-nam-chot-don-truoc-thang-12.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-chot-don-truoc-thang-12.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nhap-hang-trung-quoc-cuoi-nam-chot-don-truoc-thang-12.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Nhập hàng Trung Quốc cuối năm: Tết 2027 vào 06/02/2027 (sớm 11 ngày), cước biển 7.400–11.000 USD/container 40 feet (SinoShipment 23/10/2026), SCFI 3.633,45 điểm ngày 06/11/2026 — shop Việt cần chốt đơn và đặt cọc trước 30/11/2026 để hàng về kho trước 15/12."
@@ -13122,7 +13122,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://ackodrive.com/news/xiaomi-su7-gets-88-898-pre-orders-on-day-1-sold-out-for-2024/",
    "page": "bai-viet/livestream-ban-xe-xiaomi-su7-88898-don-24-gio.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-xe-xiaomi-su7-88898-don-24-gio.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-xe-xiaomi-su7-88898-don-24-gio.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Livestream bán xe Xiaomi SU7: 88.898 đơn đặt trong 24 giờ sau buổi live ra mắt tối 28/03/2024 (số liệu đã cũ, công bố 29/03/2024), giá từ 215.900 NDT, 7.058 xe giao tới 30/04/2024 và hơn 360.000 xe giao sau 1 năm 9 tháng — hàng giá trị cao vẫn bán được qua live nếu có niềm tin và cọc rủi ro thấp."
@@ -13134,7 +13134,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.caixinglobal.com/2020-06-02/after-1-billion-yuan-livestream-gree-says-it-wont-give-up-on-real-life-retail-101562256.html",
    "page": "bai-viet/dong-minh-chau-livestream-ban-dieu-hoa-1027-ty-ndt-mot-ngay.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/dong-minh-chau-livestream-ban-dieu-hoa-1027-ty-ndt-mot-ngay.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-minh-chau-livestream-ban-dieu-hoa-1027-ty-ndt-mot-ngay.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Livestream bán điện máy: Đổng Minh Châu (Gree) bán 10,27 tỷ NDT, khoảng 36.000 tỷ đồng, trong phiên live ngày 18/06/2020 (số liệu đã cũ) — từ 230.000 NDT phiên đầu lên 10,27 tỷ chỉ sau 5 phiên trong 2 tháng, tổng hơn 17,8 tỷ NDT, nhờ 30.000 cửa hàng offline cùng bán."
