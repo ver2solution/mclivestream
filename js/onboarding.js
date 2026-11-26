@@ -661,7 +661,10 @@
   function finish() {
     syncPrefill();
     saveDraft(true);
-    safe(function () { window.localStorage.setItem(doneKey(userId), JSON.stringify({ at: Date.now(), step: 4, pct: computeCompletion(state).pct })); });
+    /* v454 (T-v423-polish, 26/11/2026): hoan tat thi XOA nhap — truoc day
+       chi ghi doneKey, nhap con lai nen banner khoi phuc van hien + mo lai
+       Buoc 4 sau khi da hoan tat. Giu doneKey lam ban ghi hoan tat. */
+    safe(function () { window.localStorage.setItem(doneKey(userId), JSON.stringify({ at: Date.now(), step: 4, pct: computeCompletion(state).pct })); window.localStorage.removeItem(draftKey(userId)); });
     track('signup_complete');
     window.location.href = destUrl;
   }
@@ -701,7 +704,10 @@
             userId = sess.user.id;
             var d = loadDraft();
             var done = safe(function () { return !!window.localStorage.getItem(doneKey(userId)); }, false);
-            if ((d || !done) && resumeEl) {
+            /* v454 (T-v423-polish): chi hien banner khi co nhap VA chua hoan
+               tat — lop phong thu cho nhap cu con sot tu truoc fix (dieu kien
+               cu (d || !done) luon dung khi nhap ton tai). */
+            if (d && !done && resumeEl) {
               resumeEl.hidden = false;
               var btn = resumeEl.querySelector('[data-ob-resume]');
               if (btn) btn.addEventListener('click', function () {
