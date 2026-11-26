@@ -19,12 +19,12 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(md5sum js/data.js | cut -d' ' -f1)" = "2861d21259e9df39070b57c3c2fbbfb9" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "792" || (echo "BASE DOI: data.js khong con 792 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "816" || (echo "BASE DOI: sitemap khong con 816 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "5d7ff4920ac7a3fbad4552e21a672e48" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "796" || (echo "BASE DOI: data.js khong con 796 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "820" || (echo "BASE DOI: sitemap khong con 820 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip doi-song-2611 package
         run: |
-          test "$(stat -c %s mclivestream-doi-song-2611-deploy.zip)" = "1928005" || (echo "SAI KICH THUOC zip tai ve, phai 1928005"; exit 1)
+          test "$(stat -c %s mclivestream-doi-song-2611-deploy.zip)" = "1928797" || (echo "SAI KICH THUOC zip tai ve, phai 1928797"; exit 1)
           unzip -o mclivestream-doi-song-2611-deploy.zip
           echo "--- verify doi-song-2611 (5 bai) ---"
           for slug in shop-online-sau-tet-ban-gi-thang-gieng-lich-nhap-hang mau-livestream-dung-thuc-pham-chuc-nang-5-dieu-can-biet du-lich-hoi-an-thang-12-le-hoi-den-long mau-livestream-giu-giong-an-gi-tranh-gi-truoc-live quan-cafe-check-in-dep-cong-ca-phe-ha-noi; do
@@ -36,8 +36,8 @@ jobs:
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "821" || (echo "SAI TONG sitemap, phai 821"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "797" || (echo "SAI TONG data.js, phai 797"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "825" || (echo "SAI TONG sitemap, phai 825"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "801" || (echo "SAI TONG data.js, phai 801"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
@@ -52,8 +52,8 @@ jobs:
             git commit -m "Deploy articles-doi-song-2026-11-26: 5 bai Doi Song 26/11/2026 (shop online sau Tet ban gi thang Gieng keyword #3 vong 2 deep + mau livestream dung thuc pham chuc nang + du lich Hoi An thang 12 le hoi den long + mau livestream giu giong + quan cafe check-in dep Cong Ca Phe Ha Noi); SEO V2"
             git fetch origin main
             git rebase origin/main || (echo "REBASE CONFLICT: mot cron khac da deploy xong trong luc chay, DUNG LAI de rebuild"; exit 1)
-            test "$(grep -c '<loc>' sitemap.xml)" = "821" || (echo "SAI TONG sitemap sau rebase, phai 821"; exit 1)
-            test "$(grep -c '"page": "bai-viet/' js/data.js)" = "797" || (echo "SAI TONG data.js sau rebase, phai 797"; exit 1)
+            test "$(grep -c '<loc>' sitemap.xml)" = "825" || (echo "SAI TONG sitemap sau rebase, phai 825"; exit 1)
+            test "$(grep -c '"page": "bai-viet/' js/data.js)" = "801" || (echo "SAI TONG data.js sau rebase, phai 801"; exit 1)
             node --check js/data.js || (echo "data.js LOI CU PHAP sau rebase"; exit 1)
             git push
           fi
