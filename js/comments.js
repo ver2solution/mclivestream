@@ -301,6 +301,19 @@
       var out = await submitComment(targetType, targetRef, text, name);
       if (msgEl) msgEl.textContent = out.message;
       if (out.ok) { form.v2sText.value = ''; await refreshList(); } // v372 (B-20261120-09): gui xong tai lai danh sach de binh luan moi hien ngay — truoc day chi xoa o nhap, list khong doi moi cho toi khi tai lai trang/mo lai toggle
+      if (out.ok) { // v457 (BUG-032): so tren nut toggle + cache phien cung +1 — truoc day chi list trong khung mo duoc tai lai, nut van giu so cu toi khi tai lai trang (dong khung doc attribute cu; refreshCommentCounts doc cache cu).
+        try {
+          var ckey = targetType + ':' + String(targetRef);
+          var ccached = readCountCache();
+          var ccounts = (ccached && ccached.counts) ? ccached.counts : {};
+          ccounts[ckey] = (ccounts[ckey] || 0) + 1;
+          writeCountCache(ccounts);
+          if (typeof document !== 'undefined' && document.querySelector) {
+            var cbtn = document.querySelector('[data-v2s-comment-toggle][data-v2s-target-type="' + targetType + '"][data-v2s-target-id="' + String(targetRef).replace(/"/g, '') + '"]');
+            if (cbtn) cbtn.setAttribute('data-v2s-comments-count', String(ccounts[ckey])); // chi doi attribute — nhan van "Dong binh luan" khi dang mo, luc dong se hien so moi
+          }
+        } catch (e2) { /* bo qua — so dem se dung lai sau khi tai lai trang */ }
+      }
       if (btn) btn.disabled = false;
     });
     await refreshList();
