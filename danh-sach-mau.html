@@ -35,7 +35,7 @@
 @media(max-width:600px){.filter-actions .btn{flex:1}}
 </style>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">28</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
-<section class="section filter-section"><div class="section-head"><div><h1>Tìm mẫu livestream</h1></div></div>
+<section class="section filter-section">
 <button class="filter-toggle" id="filterToggleShop" type="button" aria-expanded="false" data-track="mo-bo-loc-shop">🔍 Bộ lọc tìm kiếm</button>
 <div class="filter-area">
 <div class="uni-cat-switch list-switch" role="group" aria-label="Chọn loại hạng mục tìm kiếm">
@@ -78,10 +78,9 @@
 </div>
 <div class="filter-actions"><button class="btn btn-primary" id="uniApplyBtn" data-track="ap-dung-loc-chung" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="uniResetBtn" data-track="dat-lai-loc-chung" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p>
-<p class="filter-count" id="uniCount"></p><p class="filter-empty" id="uniEmpty" hidden><b>Chưa có dữ liệu.</b> Không có kết quả nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại toàn bộ.</p>
+<p class="filter-empty" id="uniEmpty" hidden><b>Chưa có dữ liệu.</b> Không có kết quả nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại toàn bộ.</p>
 </div>
-<section class="section" id="model-list-section" aria-labelledby="model-list-title">
-<h2 id="model-list-title">Danh sách mẫu livestream</h2>
+<section class="section" id="model-list-section">
 <div class="grid" id="listGrid" style="margin-top:18px"></div>
 <nav class="pager" id="pager" aria-label="Chuyển trang hồ sơ"></nav>
 </section>
@@ -113,34 +112,31 @@
 </section>
 <script>(function(){var s=document.getElementById("xuong-may-gia-cong");if(!s)return;var b=document.getElementById("factoryMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="logistics-trung-viet" aria-labelledby="logistics-title">
-<h2 id="logistics-title">Công ty logistics Trung – Việt <span id="logisticsCountH2"></span></h2>
+<h2 id="logistics-title">Công ty logistics Trung – Việt</h2>
 <p class="lot-sub" id="logisticsSub">Công ty logistics Trung – Việt: vận chuyển chính ngạch, trọn gói – tiểu ngạch và dịch vụ mua hàng hộ.</p>
 <!-- v186: bo loc logistics da gop len loc chung tren top (tinh fShProv + hinh thuc fShopLogOpt + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="logisticsCount"></p>
 <p class="filter-empty" id="logisticsEmpty" hidden>Chưa có đơn vị vận chuyển nào khớp bộ lọc.</p>
 <div class="lot-grid" id="logisticsGrid"></div>
 <button class="lot-more" id="logisticsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 </section>
 <script>(function(){var s=document.getElementById("logistics-trung-viet");if(!s)return;var b=document.getElementById("logisticsMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="logistics-noi-dia" aria-labelledby="logistics-noi-dia-title">
-<h2 id="logistics-noi-dia-title">Logistics nội địa <span id="logisticsNoiDiaCountH2"></span></h2>
+<h2 id="logistics-noi-dia-title">Logistics nội địa</h2>
 <p class="lot-sub" id="logisticsNoiDiaSub">Hãng vận chuyển nội địa cho shop online/livestream: giá tham khảo, cách đăng ký, phạm vi và thời gian giao.</p>
 <p style="font-size:13px;color:#666">Giá dưới đây chỉ là THAM KHẢO ngày 25/11/2026 — mỗi hãng đổi bảng giá theo kỳ và theo hợp đồng/sản lượng của shop. Shop đối chiếu bảng giá chính thức của hãng (link trong từng thẻ) trước khi áp dụng. LEX (Lazada Logistics) đã rút, chấm dứt giao hàng chặng cuối tháng 3/2026 — shop Lazada dùng đơn vị vận chuyển do sàn chỉ định.</p>
 <div class="carrier-filters">
 <div class="uni-field"><label for="fCarrierScope">Phạm vi</label><select id="fCarrierScope" data-track="loc-pham-vi-van-chuyen"><option value="">Tất cả phạm vi</option><option value="toan-quoc">Toàn quốc</option><option value="noi-thanh">Nội thành</option></select></div>
 <div class="uni-field"><label for="fCarrierStatus">Trạng thái</label><select id="fCarrierStatus" data-track="loc-trang-thai-van-chuyen"><option value="">Tất cả trạng thái</option><option value="active">Đang hoạt động</option><option value="stopped">Đã ngừng</option></select></div>
 </div>
-<p class="filter-count" id="logisticsNoiDiaCount"></p>
 <p class="filter-empty" id="logisticsNoiDiaEmpty" hidden>Chưa có hãng vận chuyển nào khớp bộ lọc.</p>
 <div class="lot-grid" id="logisticsNoiDiaGrid"></div>
 <button class="lot-more" id="logisticsNoiDiaMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 </section>
 <script>(function(){var s=document.getElementById("logistics-noi-dia");if(!s)return;var b=document.getElementById("logisticsNoiDiaMoreBtn");if(!b)return;b.addEventListener("click",function(){var collapsed=s.classList.toggle("collapsed");var open=!collapsed;b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Thu gọn ↑":"Xem thêm ↓";});})();</script>
 <section class="lot-section filter-section collapsed" id="agency-ads-livestream" aria-labelledby="agencyAds-title">
-<h2 id="agencyAds-title">Agency Ads Livestream <span id="agencyAdsCountH2"></span></h2>
+<h2 id="agencyAds-title">Agency Ads Livestream</h2>
 <p class="lot-sub" id="agencyAdsSub">Agency chạy quảng cáo livestream TikTok/Facebook, booking KOL livestream cho shop online.</p>
 <!-- v198: muc moi Agency Ads Livestream — loc doc tu loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="agencyAdsCount"></p>
 <p class="filter-empty" id="agencyAdsEmpty" hidden>Chưa có agency nào khớp bộ lọc.</p>
 <div class="lot-grid" id="agencyAdsGrid"></div>
 <button class="lot-more" id="agencyAdsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>

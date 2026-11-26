@@ -32,7 +32,7 @@
 <style>
 </style>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">136</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
-<section class="section"><h1>Lô hàng xả kho</h1>
+<section class="section">
 <p>Doanh nghiệp và shop xả hàng tồn kho theo lô sỉ, đơn vị thu mua/ký gửi tồn kho và chương trình xả kho theo đợt của chợ, sàn, trung tâm thương mại. Liên hệ trực tiếp với bên xả kho qua thông tin trong tin đăng — vieclamlivestream.online không thu phí dịch vụ, đây chỉ là trang cộng đồng kết nối.</p></section>
 
 <!-- v135: bo loc lo rieng (chuan v98) — khung 2 hang x 6 o + 3 nut chon doi tuong. -->
@@ -54,14 +54,12 @@
 <div class="uni-field uni-actions"><button class="btn btn-primary" id="lotApplyBtn" data-track="ap-dung-loc-lo" type="button">Áp dụng lọc</button></div>
 <div class="uni-field uni-actions"><button class="btn btn-ghost" id="lotResetBtn" data-track="dat-lai-loc-lo" type="button">Đặt lại toàn bộ</button></div>
 <p class="filter-hint" hidden>Chọn tiêu chí rồi bấm Áp dụng để lọc.</p>
-<p class="filter-count" id="lotCount"></p>
 <p class="filter-empty" id="lotEmpty" hidden><b>Chưa có dữ liệu.</b> Không có lô nào khớp bộ lọc. Hãy nới bộ lọc hoặc bấm Đặt lại toàn bộ.</p>
 </div>
 </div>
 </section>
 
-<section class="lot-section collapsed" id="lo-hang-xa-kho" aria-labelledby="lot-title">
-<h2 id="lot-title">Lô hàng xả kho</h2>
+<section class="lot-section collapsed" id="lo-hang-xa-kho">
 <!-- v124: nút đăng tin lô cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
 <p><a class="btn btn-primary" href="trang-cua-toi.html#myListingsSection">+ Đăng tin xả kho của bạn</a> <span style="font-size:13px;color:#666">Miễn phí — chỉ tài khoản Doanh nghiệp có hồ sơ shop đã duyệt.</span></p>
 

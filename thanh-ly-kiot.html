@@ -45,7 +45,7 @@
 .kiot-price-field.locked .kiot-price-btn{opacity:.55;cursor:not-allowed}
 </style>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">10</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
-<section class="section"><div class="section-head"><div><h1>Kiot đang thanh lý</h1></div></div>
+<section class="section">
 <!-- v209 (13/11/2026): tieu de trang doi h2 -> h1 (trang truoc day khong co the h1 nao — loi SEO phat hien trong full test 21:04); boc trong .section-head nhu trang Mau/Shop de giu co chu 28px. -->
 <!-- v124: nút đăng tin kiot cho tài khoản Doanh nghiệp (mở mục Tin đăng của tôi). -->
 
@@ -74,9 +74,8 @@
 <!-- v214 (diem 2+5): o loc gia dang overlay tran xuong — nut hien muc gia dang chon, bam mo panel khoang gia theo muc (gia thue / gia van chuyen / gia ban / gia sang nhuong); panel position absolute, KHONG day layout. -->
 <div class="uni-field kiot-price-field" id="kiotPriceField"><label id="kiotPriceLabel" for="kiotPriceBtn">Giá sang nhượng</label><button type="button" class="kiot-price-btn" id="kiotPriceBtn" aria-haspopup="listbox" aria-expanded="false" data-track="loc-gia-kiot">Tất cả mức giá</button><div class="kiot-price-panel" id="kiotPricePanel" role="listbox" hidden></div></div>
 </div>
-<!-- v214 (diem 4): 2 nut Ap dung / Dat lai chuyen ra khoi luoi loc, thanh hang rieng can phai duoi khung loc (dong bo Mau/Shop, v205); dong dem #kiotCount giu duoi hang nut. -->
+<!-- v214 (diem 4): 2 nut Ap dung / Dat lai chuyen ra khoi luoi loc, thanh hang rieng can phai duoi khung loc (dong bo Mau/Shop, v205); dong dem #kiotCount DA BO 26/11/2026 theo lenh anh (chi giu o loc + ket qua). -->
 <div class="filter-actions"><button class="btn btn-primary" id="kiotApplyBtn" data-track="ap-dung-loc-kiot" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="kiotResetBtn" data-track="dat-lai-loc-kiot" type="button">Đặt lại toàn bộ</button></div>
-<p class="filter-count" id="kiotCount"></p>
 </div>
 </section>
 <!-- v123: hang 4 o tin dang hot & livestream cho kiot (render boi initKiotNewsRow) -->
@@ -87,30 +86,27 @@
 <p style="font-size:13px;color:#666">Tin đăng được tổng hợp từ bài đăng công khai của cộng đồng và hồ sơ chủ kiot tự đăng ký. Liên hệ trực tiếp với chủ kiot qua thông tin trong tin đăng.</p>
 </div>
 <section class="lot-section filter-section collapsed" id="dich-vu-chuyen-nha" aria-labelledby="moving-title">
-<h2 id="moving-title">Dịch vụ chuyển nhà <span id="movingCountH2"></span></h2>
+<h2 id="moving-title">Dịch vụ chuyển nhà</h2>
 <p class="lot-sub" id="movingSub">Dịch vụ chuyển nhà, chuyển trọ, chở đồ ghép xe cho shop và hộ kinh doanh online.</p>
 <!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
-<p class="filter-count" id="movingCount"></p>
 <p class="filter-empty" id="movingEmpty" hidden>Chưa có dịch vụ chuyển nhà nào khớp bộ lọc.</p>
 <div class="lot-grid" id="movingGrid"></div>
 <button class="lot-more" id="movingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <section class="lot-section filter-section collapsed" id="thiet-bi-phong-live" aria-labelledby="liveequip-title">
-<h2 id="liveequip-title">Thiết bị Phòng Live <span id="liveEquipCountH2"></span></h2>
+<h2 id="liveequip-title">Thiết bị Phòng Live</h2>
 <p class="lot-sub" id="liveEquipSub">Thiết bị phòng live: đèn, mic, webcam, capture card cho livestream bán hàng.</p>
 <!-- v196: 2 muc moi trang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
-<p class="filter-count" id="liveEquipCount"></p>
 <p class="filter-empty" id="liveEquipEmpty" hidden>Chưa có thiết bị phòng live nào khớp bộ lọc.</p>
 <div class="lot-grid" id="liveEquipGrid"></div>
 <button class="lot-more" id="liveEquipMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 <p class="lot-note">Miễn trừ trách nhiệm: Chúng tôi hỗ trợ kết nối cung cầu do chủ nội dung public công khai. Thông tin được tổng hợp từ bài đăng công khai của cộng đồng, giữ nguyên nội dung gốc. Thông tin liên hệ hiển thị để các bên tự trao đổi công việc trực tiếp với nhau. vieclamlivestream.online không thu bất kỳ phí dịch vụ nào — đây chỉ là trang cộng đồng kết nối.<br><span class="pin-longer-text">Muốn ghim hồ sơ lên top lâu hơn? <a href="dang-ky.html">Đăng ký</a> / <a href="dang-nhap.html">Đăng nhập</a> để ghim lâu hơn.</span><br><a class="btn btn-primary btn-sm pin-longer-btn" href="dang-ky.html">Đăng ký để ghim lâu hơn</a></p>
 </section>
 <section class="lot-section filter-section collapsed" id="cho-thue-cua-hang-kho" aria-labelledby="rentals-title">
-<h2 id="rentals-title">Cho thuê cửa hàng / kho hàng <span id="rentalsCountH2"></span></h2>
+<h2 id="rentals-title">Cho thuê cửa hàng / kho hàng</h2>
 <p class="lot-sub" id="rentalsSub">Cho thuê cửa hàng và kho hàng cho shop online và hộ kinh doanh.</p>
 <!-- v198: muc Cho thue chuyen tu trang Shop sang Kiot — loc doc tu loc chung tren top (tinh kiotProv + sap xep kiotSort); section chi giu dem/trong. -->
-<p class="filter-count" id="rentalsCount"></p>
 <p class="filter-empty" id="rentalsEmpty" hidden>Chưa có mặt bằng nào khớp bộ lọc.</p>
 <div class="lot-grid" id="rentalsGrid"></div>
 <button class="lot-more" id="rentalsMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>

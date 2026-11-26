@@ -35,7 +35,7 @@
 @media(max-width:600px){.filter-actions .btn{flex:1}}
 </style>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">47</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
-<section class="section filter-section"><div class="section-head"><div><h1>Tìm shop tuyển mẫu livestream</h1></div></div>
+<section class="section filter-section">
 <button class="filter-toggle" id="filterToggleShop" type="button" aria-expanded="false" data-track="mo-bo-loc-shop">🔍 Bộ lọc tìm shop</button>
 <div class="filter-area">
 <!-- v182: switch chon hang muc cho bo loc shop (nhu uni-cat-switch trang Mau)
@@ -64,9 +64,8 @@
 <div class="uni-field locked" id="uf-shop-pricesort"><label for="fShopPriceSort">Sắp xếp theo giá</label><select id="fShopPriceSort" data-track="sap-xep-gia-shop" disabled><option value="">Mới nhất</option><option value="price-asc">Giá thấp → cao</option><option value="price-desc">Giá cao → thấp</option></select></div>
 </div>
 <div class="filter-actions"><button class="btn btn-primary" id="shopApplyBtn" data-track="ap-dung-loc-shop" type="button">Áp dụng lọc</button><button class="btn btn-ghost" id="shopResetBtn" data-track="dat-lai-loc-shop" type="button">Đặt lại toàn bộ</button></div>
-<p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p><p class="filter-count" id="shopCount"></p>
+<p class="filter-hint">Chọn tiêu chí rồi bấm Áp dụng để lọc.</p>
 </div>
-<h2 id="shop-list-title">Danh sách shop tuyển mẫu livestream</h2>
 <div class="shop-grid" id="publicShopsList" style="margin-top:18px"></div>
 <nav class="pager" id="shopPager" aria-label="Chuyển trang shop"></nav></section>
 <!-- v343 (P1-2/P1-3): Tin tuyen doi len ngay sau danh sach shop (truoc day nam sau form dang nhap) -->
@@ -75,29 +74,26 @@
 <p style="font-size:13px">Chỉ tin ở trạng thái đã duyệt mới hiện ở đây. Tin mới gửi ở trạng thái chờ duyệt. Số điện thoại và email riêng của shop không hiện công khai; cần ứng tuyển thì nhắn <a href="https://zalo.me/0329983699" target="_blank" rel="noopener">Zalo vieclamlivestream.online 032 998 3699</a> và ghi tên tin tuyển.</p></section>
 <!-- v210 (13/11/2026): 2 muc lop hoc CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo tieu de menu — lop hoc la nhu cau cua MAU. v213: 2 muc lop hoc hien 2 hang (bo class rows-1 cua v181 — mac dinh collapsed hien 2 hang); nut Xem them hien so luong do app.js refreshClassMoreBtn lam chu duy nhat (da bo 2 script inline rieng). -->
 <section class="lot-section filter-section collapsed" id="lop-livestream-mc" aria-labelledby="class-live-title">
-<h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông <span id="classLiveCountH2"></span></h2>
+<h2 id="class-live-title">Lớp học Livestream / MC / Thuyết trình trước đám đông</h2>
 <p class="lot-sub" id="classLiveSub">Lớp học livestream, MC và thuyết trình trước đám đông cho mẫu live và người mới bắt đầu.</p>
 <!-- v186: bo loc lop Live da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
-<p class="filter-count" id="classLiveCount"></p>
 <p class="filter-empty" id="classLiveEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
 <div class="lot-grid" id="classLiveGrid"></div>
 <button class="lot-more" id="classLiveMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 </section>
 <section class="lot-section filter-section collapsed" id="lop-makeup" aria-labelledby="class-makeup-title">
-<h2 id="class-makeup-title">Lớp học dạy Makeup <span id="classMakeupCountH2"></span></h2>
+<h2 id="class-makeup-title">Lớp học dạy Makeup</h2>
 <p class="lot-sub" id="classMakeupSub">Lớp học dạy makeup cá nhân và makeup lên hình livestream.</p>
 <!-- v186: bo loc lop Makeup da gop len loc chung tren top (tinh fUniProv + sap xep hoc phi fUniClassSort); section chi giu dem/trong. -->
-<p class="filter-count" id="classMakeupCount"></p>
 <p class="filter-empty" id="classMakeupEmpty" hidden>Chưa có lớp học nào khớp bộ lọc.</p>
 <div class="lot-grid" id="classMakeupGrid"></div>
 <button class="lot-more" id="classMakeupMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
 </section>
 <!-- v247 (15/11/2026): muc Su kien Marketing CHUYEN TU trang Shop (danh-sach-mau.html) SANG trang Mau (danh-sach-shop.html) theo lenh anh 01:06 — du lieu + bo loc (tinh fShProv + sap xep gia fShopPriceSort) di cung. -->
 <section class="lot-section filter-section collapsed" id="su-kien-marketing" aria-labelledby="event-marketing-title">
-<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức <span id="eventMarketingCountH2"></span></h2>
+<h2 id="event-marketing-title">Sự kiện Marketing chia sẻ kiến thức</h2>
 <p class="lot-sub" id="eventMarketingSub">Sự kiện marketing, workshop và buổi chia sẻ kiến thức cho chủ shop online.</p>
 <!-- v186: bo loc su kien da gop len loc chung tren top (tinh fShProv + sap xep gia fShopPriceSort); section chi giu dem/trong. -->
-<p class="filter-count" id="eventMarketingCount"></p>
 <p class="filter-empty" id="eventMarketingEmpty" hidden>Chưa có sự kiện nào khớp bộ lọc.</p>
 <div class="lot-grid" id="eventMarketingGrid"></div>
 <button class="lot-more" id="eventMarketingMoreBtn" type="button" aria-expanded="false">Xem thêm ↓</button>
