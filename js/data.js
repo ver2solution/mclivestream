@@ -12667,7 +12667,7 @@ window.V20_DATA = {
    "date": "2026-09-07",
    "url": "https://kolvant.com/playbooks/cash-flow-settlement-and-deposits/",
    "page": "bai-viet/shop-nho-giu-tien-mua-11-11-tien-ve-khi-nao.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/shop-nho-giu-tien-mua-11-11-tien-ve-khi-nao.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shop-nho-giu-tien-mua-11-11-tien-ve-khi-nao.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Tiền bán 11.11 về chậm: shop thường chờ 8 ngày sau giao hàng, shop mới 31 ngày, một phần bị giữ 30 ngày làm dự phòng, cộng 1–3 ngày chuyển khoản. Phí sàn khoảng 23.000đ/đơn 100.000đ. Giữ lại 30–40% tiền thực về làm quỹ nhập hàng Tết."
@@ -12701,7 +12701,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "url": "https://tuychon.vn/gia-vang-hom-nay/",
    "page": "bai-viet/gia-vang-hom-nay-11-11-2026-sjc-140-9-trieu.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-hom-nay-11-11-2026-sjc-140-9-trieu.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-hom-nay-11-11-2026-sjc-140-9-trieu.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Vàng SJC đứng yên ở 140,9 triệu đồng/lượng trong ngày sale 11.11 — khách đang giữ tiền mặt và sẵn sàng chi tiêu, shop nhỏ nên dồn sức cho live tối nay."
@@ -12724,7 +12724,7 @@ window.V20_DATA = {
    "date": "2026-09-30",
    "url": "https://seller-vn.tiktok.com/university/essay?knowledge_id=3396736626312961&lang=vi-VN",
    "page": "bai-viet/phi-san-shopee-tiktok-shop-lazada-thang-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/phi-san-shopee-tiktok-shop-lazada-thang-11-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phi-san-shopee-tiktok-shop-lazada-thang-11-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Ba sàn, ba mức phí: Lazada rẻ nhất (3–4%), TikTok Shop mặc định 14%, Shopee 1,5–20,8% tùy ngành — tính thử đơn 100k trước khi đặt giá."
@@ -12736,7 +12736,7 @@ window.V20_DATA = {
    "date": "2026-10-27",
    "url": "https://www.brandsvietnam.com/congdong/topic/tiktok-shop-thu-hep-khoang-cach-gmv-quy-iii-voi-shopee-chi-con-4-3-nghin-ty-vnd",
    "page": "bai-viet/tiktok-shop-vs-shopee-cuoi-2026-shop-nho-chon-san-nao.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-vs-shopee-cuoi-2026-shop-nho-chon-san-nao.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-vs-shopee-cuoi-2026-shop-nho-chon-san-nao.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "TikTok Shop tăng 60%, chỉ còn cách Shopee 4,3 nghìn tỷ GMV — nhưng đông nhà bán hơn 57%. Chọn sàn theo ngành, không chọn theo tin đồn."
@@ -12748,7 +12748,7 @@ window.V20_DATA = {
    "date": "2026-11-06",
    "url": "https://medium.com/@salsabilah050506/pengaruh-fomo-dan-flash-sale-terhadap-perilaku-belanja-impulsif-pada-konsumen-e-commerce-e44bc24d29b6",
    "page": "bai-viet/fomo-khach-chot-don-trong-live-3-nghien-cuu-moi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/fomo-khach-chot-don-trong-live-3-nghien-cuu-moi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/fomo-khach-chot-don-trong-live-3-nghien-cuu-moi.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Ba nghiên cứu 2025 (354 người): FOMO là đòn bẩy chốt đơn mạnh nhất trong live — dùng số thật, giờ thật, đừng bịa khan hiếm."
@@ -12760,7 +12760,7 @@ window.V20_DATA = {
    "date": "2026-10-31",
    "url": "https://danviet.vn/bo-cong-thuong-yeu-cau-siet-kiem-tra-chan-dau-co-va-tang-gia-hang-hoa-tu-nay-den-tet-dinh-mui-d1471343.html",
    "page": "bai-viet/mat-hang-tiem-nang-ban-livestream-tet-2027.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mat-hang-tiem-nang-ban-livestream-tet-2027.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mat-hang-tiem-nang-ban-livestream-tet-2027.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Tết 2027: quần áo, bánh kẹo, hoa quả và đồ gia dụng tiếp khách tiềm năng nhất; đơn cuối năm tăng 25–40%; nhập 3 đợt, chốt mẫu sớm."
@@ -12783,7 +12783,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/thue-mau-livestream-gia-bao-nhieu-1-gio-theo-tinh.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thue-mau-livestream-gia-bao-nhieu-1-gio-theo-tinh.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thue-mau-livestream-gia-bao-nhieu-1-gio-theo-tinh.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Mặt bằng 2026 từ tin tuyển thật: 50–150k/giờ phổ thông, 120–150k/giờ ở Hà Nội và TP.HCM, tới 500k/giờ host thị trường Mỹ."
@@ -12795,7 +12795,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "url": null,
    "page": "bai-viet/thue-mau-livestream-lan-dau-5-sai-lam-live-flop.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thue-mau-livestream-lan-dau-5-sai-lam-live-flop.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thue-mau-livestream-lan-dau-5-sai-lam-live-flop.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "5 sai lầm khi thuê mẫu lần đầu: không thử live, không ghi rõ lương, thuê giá rẻ nhất, không có kịch bản, không thỏa thuận bằng tin nhắn."
@@ -12808,7 +12808,7 @@ window.V20_DATA = {
    "dateNote": "Bài gốc không ghi rõ ngày đăng",
    "url": "https://www.gra.world/ai-presenters-now-sell-around-the-clock-on-chinas-biggest-shopping-stages/",
    "page": "bai-viet/mc-ai-live-24-7-hon-100000-shop-tq-da-dung.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mc-ai-live-24-7-hon-100000-shop-tq-da-dung.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mc-ai-live-24-7-hon-100000-shop-tq-da-dung.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "MC AI live bán hàng ở Trung Quốc đã vượt 100.000 shop dùng, live hơn 9 triệu giờ trong 18 ngày, chi phí chỉ bằng 1/10 người thật — nhưng bắt buộc gắn nhãn AI, có người giám sát, và thời gian xem chỉ bằng khoảng 40% người thật. Shop Việt nên dùng AI phủ khung đêm, người thật giữ khung vàng."
@@ -12843,7 +12843,7 @@ window.V20_DATA = {
    "date": "2026-11-01",
    "url": "https://danviet.vn/shopee-va-tiktok-shop-canh-tranh-sat-nut-thuong-mai-dien-tu-viet-nam-dat-doanh-so-hon-150000-ty-dong-d1471683.html",
    "page": "bai-viet/mat-hang-nao-noi-nhat-mua-11-11-bach-hoa-tang-806-phan-tram.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mat-hang-nao-noi-nhat-mua-11-11-bach-hoa-tang-806-phan-tram.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mat-hang-nao-noi-nhat-mua-11-11-bach-hoa-tang-806-phan-tram.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Mặt hàng nổi nhất mùa 11.11/2026 là bách hóa – thực phẩm với doanh số tăng 80,6% quý III/2026; 4 sàn bán 150.380 tỷ đồng (+45,16%). TikTok Shop dẫn đầu thời trang (nam 68,1%, nữ 64,5%), Shopee dẫn đầu điện thoại (72,1%). Shop nhỏ nên chọn sàn theo ngành và bán combo thay vì đua giảm giá."
@@ -12855,7 +12855,7 @@ window.V20_DATA = {
    "date": "2026-11-11",
    "url": "https://www.lazada.vn/",
    "page": "bai-viet/lazada-11-11-2026-live-9-tieng-voucher-11-trieu-shop-nho-lam-gi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/lazada-11-11-2026-live-9-tieng-voucher-11-trieu-shop-nho-lam-gi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lazada-11-11-2026-live-9-tieng-voucher-11-trieu-shop-nho-lam-gi.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Lazada 11.11 hôm nay: live 9 tiếng mỗi ngày tới 13/11, voucher tới 11 triệu, đổi trả 30 ngày. Thị phần chỉ ~2,5% nhưng ít cạnh tranh — shop bán hàng giá trị cao nên live, chia ca theo giờ, giữ deal sâu nhất cho khung tối."
@@ -12915,7 +12915,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.brandsvietnam.com/congdong/topic/ecomobi-x-kalodata-ra-mat-bao-cao-giai-ma-double-day-2026",
    "page": "bai-viet/tong-ket-double-11-viet-nam-d1-12-11-dinh-doanh-thu.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tong-ket-double-11-viet-nam-d1-12-11-dinh-doanh-thu.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tong-ket-double-11-viet-nam-d1-12-11-dinh-doanh-thu.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Double 11 Việt Nam 2026: đỉnh doanh thu rơi vào ngày D+1 12/11/2026, đạt 1,67 lần ngày thường theo dữ liệu năm 2025 (913,4 tỷ đồng ngày 12/11/2025); số phiên 11/11/2026 chưa công bố tính đến sáng 12/11 — shop nên live tiếp trong ngày D+1 và giữ ngân sách cho D+2 đến D+4."
@@ -12927,7 +12927,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://Cafebiz.vn/phien-livestream-ky-luc-nhung-bat-on-cua-ha-linh-tu-hon-300k-mat-xem-bong-chi-con-hon-1k-thuc-hu-the-nao-176240609075756596.chn",
    "page": "bai-viet/vo-ha-linh-237-ty-so-voi-phien-11-11-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/vo-ha-linh-237-ty-so-voi-phien-11-11-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/vo-ha-linh-237-ty-so-voi-phien-11-11-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Võ Hà Linh 237 tỷ: super live 6/6/2024 thu 237 tỷ đồng, đỉnh 316.000 mắt xem, chốt 90% mục tiêu sau 1,5 giờ; phiên 11/11/2024 đạt hơn 7,7 triệu lượt xem và gần 1,4 triệu đơn. Phiên 11/11/2026 trên Shopee chưa có số chính thức tính đến sáng 12/11 — shop nên live tiếp ngày D+1."
@@ -12939,7 +12939,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://kjy3.china.com/shehui/13002708/20261111/49862400.html",
    "page": "bai-viet/ly-giai-ky-toi-11-11-taobao-live-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/ly-giai-ky-toi-11-11-taobao-live-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ly-giai-ky-toi-11-11-taobao-live-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Lý Giai Kỳ 11/11: tối 2/11/2026 bán gần 100.000 thẻ hội viên AI giá 0,01 tệ trong nửa giờ, tương đương 2.000 tỷ Token; mở bán 15/10/2026 vượt 10 triệu lượt xem trong 1 giờ với 600 sản phẩm. Số phiên tối 11/11/2026 chưa công bố tính đến sáng 12/11."
@@ -12951,7 +12951,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://hao.cnyes.com/post/272987",
    "page": "bai-viet/dong-vu-huy-double-11-2026-mo-hinh-sieu-ca-the.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/dong-vu-huy-double-11-2026-mo-hinh-sieu-ca-the.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-vu-huy-double-11-2026-mo-hinh-sieu-ca-the.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Đổng Vũ Huy Double 11: 679 triệu NDT trong 3 ngày gia dụng 15–17/10/2026 (dữ liệu bên thứ ba); băng vệ sinh đặt riêng bán 100.000 đơn trong 30 phút ngày 14/10/2026 và hết 300.000 đơn trong ngày; nửa đầu 2026 đạt 14 tỷ NDT GMV theo Hurun — mô hình siêu cá thể đã trưởng thành."
