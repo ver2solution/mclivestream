@@ -19151,6 +19151,66 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Black Friday 2026: AirPods Pro 3 chỉ 149 USD, MacBook Air M5 1.049 USD, Switch 2 469 USD, Sony XM6 348 USD, Fire TV 4K 19 USD — giá cập nhật ngày 25/11/2026, sale giữ tới Cyber Monday 30/11/2026."
+  },
+  {
+   "title": "Shop online sau Tết bán gì: 5 nhóm hàng tháng Giêng",
+   "cat": "Đời Sống",
+   "source": "NRF & Happy Returns",
+   "date": "2026-11-26",
+   "url": "https://www.clickpost.ai/en-us/blog/return-policy-statistics",
+   "page": "bai-viet/shop-online-sau-tet-ban-gi-thang-gieng-lich-nhap-hang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shop-online-sau-tet-ban-gi-thang-gieng-lich-nhap-hang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shop online sau Tết bán gì là câu hỏi mà mọi shop nhỏ đều phải trả lời ngay từ hôm nay, ngày 26/11/2026: Tết Nguyên đán 2027 rơi vào thứ Bảy ngày 06/02/2027, lịch nghỉ chính thức là 04–10/02/2027 theo Vietnam Briefing ng"
+  },
+  {
+   "title": "Mẫu livestream dùng thực phẩm chức năng: 5 điều cần biết",
+   "cat": "Đời Sống",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/vietnam-dietary-supplements-market-report",
+   "page": "bai-viet/mau-livestream-dung-thuc-pham-chuc-nang-5-dieu-can-biet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-dung-thuc-pham-chuc-nang-5-dieu-can-biet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream dùng thực phẩm chức năng là chuyện vừa cá nhân vừa nghề nghiệp: nhiều mẫu tự dùng vitamin, collagen hay men vi sinh mỗi ngày, và cũng chính những mẫu đó được shop mời lên sóng bán thực phẩm chức năng."
+  },
+  {
+   "title": "Du lịch Hội An tháng 12: lễ hội đèn lồng 3–6/12",
+   "cat": "Đời Sống",
+   "source": "Visit Da Nang",
+   "date": "2026-11-26",
+   "url": "https://visitdanang.org/da-nang-events-december-2026/",
+   "page": "bai-viet/du-lich-hoi-an-thang-12-le-hoi-den-long.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-hoi-an-thang-12-le-hoi-den-long.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch Hội An tháng 12 là lựa chọn của người thích phố cổ lúc vắng và mát: nhiệt độ trung bình tháng 12 chỉ 19–25°C, mưa nhẹ cuối mùa, và tháng 12 năm nay có thêm một lý do đặc biệt — Lễ hội đèn lồng quốc tế Hội An lần "
+  },
+  {
+   "title": "Mẫu livestream giữ giọng: ăn gì, tránh gì trước live",
+   "cat": "Đời Sống",
+   "source": "Cleveland Clinic Abu Dhabi",
+   "date": "2026-11-26",
+   "url": "https://www.clevelandclinicabudhabi.ae/en/health-library/health-byte/health/how-to-take-care-of-your-voice",
+   "page": "bai-viet/mau-livestream-giu-giong-an-gi-tranh-gi-truoc-live.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mau-livestream-giu-giong-an-gi-tranh-gi-truoc-live.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mẫu livestream giữ giọng là kỹ năng sống còn của nghề: giọng khàn thì không live được, không live được thì không có tiền, mà mẫu live 3–4 giờ mỗi phiên, có ngày 2 phiên, thì giọng là thứ hao mòn nhanh nhất."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Cộng Cà Phê Hà Nội 2007",
+   "cat": "Đời Sống",
+   "source": "Space T",
+   "date": "2026-11-26",
+   "url": "https://spacet.vn/blog/nguon-cam-hung/review-chi-tiet-khong-gian-va-do-uong-cong-cafe",
+   "page": "bai-viet/quan-cafe-check-in-dep-cong-ca-phe-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-cong-ca-phe-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Cộng Cà Phê Hà Nội là cái tên mà mẫu livestream nào cũng nên biết: quán đầu tiên mở năm 2007 tại 152D phố Triệu Việt Vương, quận Hai Bà Trưng, theo Wikipedia — gần 20 năm sau, Cộng đã có hơn 70 cửa"
   }
 ],
  "lots": [
