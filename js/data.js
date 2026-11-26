@@ -19103,6 +19103,55 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Bánh donut Slowpoke 345 yên ra mắt 25/11/2026 tại Mister Donut Nhật Bản, sau Pikachu và Diglett ngày 04/11/2026 — món donut Pokémon đầu tiên của Slowpoke, bán bằng ảnh chụp và bao bì sưu tầm (SoraNews24)."
   },
+
+  {
+   "title": "Lịch sale cuối năm 2026: Black Friday 27/11, 12.12",
+   "cat": "Đang hot",
+   "source": "TechSpot",
+   "date": "2026-11-26",
+   "url": "https://www.techspot.com/news/114707-best-black-friday-2026-deals-tech-pc-hardware.html",
+   "page": "bai-viet/lich-sale-cuoi-nam-2026-black-friday-27-11-12-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lich-sale-cuoi-nam-2026-black-friday-27-11-12-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lịch sale cuối năm 2026 từ 26/11/2026: Black Friday 27–30/11, Cyber Monday 30/11, sale 12.12 còn 16 ngày, Giáng sinh 25/12, Tết 2027 còn 72 ngày — shop chốt đơn vận chuyển trước 01/02/2027."
+  },
+  {
+   "title": "Thực phẩm chức năng Black Friday: iHerb giảm tới 30%",
+   "cat": "Đang hot",
+   "source": "GatorSports",
+   "date": "2026-11-26",
+   "url": "https://www.gatorsports.com/story/shopping/deals/black-friday/2026/11/23/iherb-black-friday-sale-vitamins-supplements-2026/92927508007/",
+   "page": "bai-viet/thuc-pham-chuc-nang-black-friday-2026-iherb-giam-toi-30-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-black-friday-2026-iherb-giam-toi-30-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm chức năng Black Friday 2026: iHerb giảm tới 30% hơn 20.000 sản phẩm từ 18/11 tới 02/12/2026, mã BFCMSALE30 — collagen 35 USD, vitamin D3 8,83 USD, omega-3 bán chạy nhất với hơn 20.000 lượt mua."
+  },
+  {
+   "title": "Cà phê nấm 2026: RYZE hơn 300 triệu USD, vượt Nescafé",
+   "cat": "Đang hot",
+   "source": "Mushroom Coffee Lab",
+   "date": "2026-11-26",
+   "url": "https://mushroomcoffeelab.com/guides/state-of-mushroom-coffee-2026/",
+   "page": "bai-viet/ca-phe-nam-2026-ryze-300-trieu-usd-vuot-nescafe-amazon.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ca-phe-nam-2026-ryze-300-trieu-usd-vuot-nescafe-amazon.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cà phê nấm 2026: RYZE doanh thu hơn 300 triệu USD năm 2025, vào 1.900 cửa hàng Target từ tháng 01/2026, chiếm 18,7% thị phần cà phê hòa tan trên Amazon, vượt Nescafé 13,2%."
+  },
+  {
+   "title": "Black Friday 2026: AirPods Pro 3 chỉ 149 USD",
+   "cat": "Đang hot",
+   "source": "TechSpot",
+   "date": "2026-11-26",
+   "url": "https://www.techspot.com/news/114707-best-black-friday-2026-deals-tech-pc-hardware.html",
+   "page": "bai-viet/black-friday-2026-airpods-pro-3-chi-149-usd-macbook-1049-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-2026-airpods-pro-3-chi-149-usd-macbook-1049-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Black Friday 2026: AirPods Pro 3 chỉ 149 USD, MacBook Air M5 1.049 USD, Switch 2 469 USD, Sony XM6 348 USD, Fire TV 4K 19 USD — giá cập nhật ngày 25/11/2026, sale giữ tới Cyber Monday 30/11/2026."
+  }
 ],
  "lots": [
    {
