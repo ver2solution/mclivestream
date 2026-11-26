@@ -72,3 +72,19 @@
 .fwa-toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--fwa-dark);color:#fff;z-index:30;padding:11px 18px;border-radius:10px;max-width:90%;box-shadow:var(--fwa-shadow);font-size:13px}
 .fwa-toast[hidden]{display:none}
 @media(max-width:720px){.fwa-toast{bottom:78px}}
+
+/* LÁT 3 — Hero trang chủ theo ngôn ngữ V1 (26/11/2026, sau lát 2).
+ * CHỈ restyle .hero trên index.html (search-card/chips chỉ dùng ở đây) — không đổi
+ * markup, không đụng form tìm kiếm (phễu chính: heroSearchV2 giữ nguyên action,
+ * field, grid). Gradient V1 115deg #103a35→#176a58 thay gradient cũ 135deg;
+ * bo 15px theo panel V1; vòng tròn trang trí kiểu demo (ring + 2 vòng mờ);
+ * eyebrow chữ mint hoa, h1 giữ cỡ clamp hiện tại + letter-spacing V1;
+ * search-card bo 13px + viền + shadow V1, focus ring #51bfa2. */
+.hero{background:linear-gradient(115deg,#103a35,#176a58);border-radius:15px}
+.hero:after{content:"";position:absolute;right:-70px;top:-95px;width:240px;height:240px;border-radius:50%;background:transparent;border:1px solid #ffffff27;box-shadow:0 0 0 30px #ffffff0b,0 0 0 62px #ffffff08;pointer-events:none}
+.hero .eyebrow{background:transparent;padding:0;color:#b9ead9;font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+.hero h1{letter-spacing:-.9px}
+.hero .search-card{border:1px solid var(--fwa-line);border-radius:13px;box-shadow:var(--fwa-shadow)}
+.hero .search-card input:focus-visible,.hero .search-card select:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
+.hero .search-card .btn-primary{background:var(--fwa-green);border-radius:8px}
+.hero .chips a:hover{color:var(--fwa-green)}
