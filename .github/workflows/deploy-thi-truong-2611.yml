@@ -19,9 +19,9 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(md5sum js/data.js | cut -d' ' -f1)" = "547b77f676796185b5cf4d75f58f57d6" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "772" || (echo "BASE DOI: data.js khong con 772 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "796" || (echo "BASE DOI: sitemap khong con 796 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "32651bfa2c34c968fb93a4ec13a12c6d" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "776" || (echo "BASE DOI: data.js khong con 776 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "800" || (echo "BASE DOI: sitemap khong con 800 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip thi-truong-2611 package
         run: |
           unzip -o mclivestream-thi-truong-2611-deploy.zip
@@ -35,8 +35,8 @@ jobs:
           done
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "800" || (echo "SAI TONG sitemap, phai 800"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "776" || (echo "SAI TONG data.js, phai 776"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "804" || (echo "SAI TONG sitemap, phai 804"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "780" || (echo "SAI TONG data.js, phai 780"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
