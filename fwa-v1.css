@@ -88,3 +88,20 @@
 .hero .search-card input:focus-visible,.hero .search-card select:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
 .hero .search-card .btn-primary{background:var(--fwa-green);border-radius:8px}
 .hero .chips a:hover{color:var(--fwa-green)}
+
+/* LÁT 4 — Thẻ Việc làm + panel Chat theo ngôn ngữ V1 (26/11/2026, sau lát 3; STAGED, chưa deploy).
+ * CSS-only, không đổi markup/JS/dữ liệu. Thẻ render bởi js/app.js (.card.card-compact
+ * mẫu, .shop-card.card-compact shop); tên thẻ là overlay gradient trên ảnh — giữ nguyên
+ * để đọc được. Chat: .chat-page 3 cột (phòng | hội thoại | Top tương tác).
+ * CHƯA làm: tô bong bóng tin của mình (không có class own trong js/chat-page.js —
+ * cần sửa JS, để lát sau). */
+.card.card-compact,.shop-card.card-compact{border-radius:13px;border-color:var(--fwa-line);box-shadow:var(--fwa-shadow)}
+.shop-card{border-radius:13px;border-color:var(--fwa-line);box-shadow:var(--fwa-shadow)}
+.card-line-link{color:var(--fwa-green)}
+.chat-page{border-radius:13px;border-color:var(--fwa-line);box-shadow:var(--fwa-shadow)}
+.chat-rooms{background:var(--fwa-bg)}
+.chat-room-item:hover,.chat-room-item.active{background:var(--fwa-mint)}
+.chat-room-open{color:var(--fwa-green)}
+.chat-side-note a{color:var(--fwa-green)}
+.chat-page-composer textarea:focus-visible,.chat-rooms-head input:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
+.chat-page-composer .btn-primary{background:var(--fwa-green);border-radius:8px}
