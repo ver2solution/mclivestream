@@ -79,7 +79,7 @@
   var STORAGE_KEY = 'v20_online_counters_v2';
   var SESSION_KEY = 'v2s_analytics_session'; // tái dùng mã phiên của js/analytics.js
   var RESET_AFTER_MS = 4 * 60 * 60 * 1000; // 4 giờ
-  var BASE = { mau: 28, shop: 47, kiot: 10, hoidap: 4, tintuc: 47 }; // v136: moc 136 tu 00:00 13/11/2026 (28+47+10+4+47)
+  var BASE = { mau: 28, shop: 47, kiot: 10, hoidap: 4, tintuc: 47, laodongtudo: 47 }; // v136: moc 136 tu 00:00 13/11/2026 (28+47+10+4+47); v456 (BUG-038): laodongtudo 47 — trang Lao Dong Tu Do dung data-online="laodongtudo" (khong trong KEYS, khong cong vao tong trang chu); muc goc 47 khop so tinh trong lao-dong-tu-do.html.
   var KEYS = ['mau', 'shop', 'kiot', 'hoidap', 'tintuc'];
   var INTERVALS_MS = [16000, 20000]; // v93: xen kẽ 16s rồi 20s (trung bình 18s/tick)
   // v93: Stagger lệch nhau 3,6s trong chu kỳ 36s (16+20) → 10 tick/chu kỳ,
@@ -381,11 +381,13 @@
 
   // Lấy số gộp từ server qua RPC get_online_display(p_page). Chỉ trả về 1
   // số nguyên (ảo + thật); phía khách không bao giờ biết số thật riêng.
+  // v456 (BUG-038): RPC trả null với key lạ (vd laodongtudo) — Number(null)
+  // = 0 nên phải bỏ qua null, không gán mergedValue = 0.
   function fetchMerged() {
     var client = apiClient();
     if (!client || typeof client.rpc !== 'function' || !mergedKey) return;
     client.rpc('get_online_display', { p_page: mergedKey }).then(function (res) {
-      if (res && !res.error && isFinite(Number(res.data))) {
+      if (res && !res.error && res.data !== null && res.data !== undefined && isFinite(Number(res.data))) {
         var next = Math.floor(Number(res.data));
         var localBase = (mergedKey === 'total') ? TOTAL_BASE : BASE[mergedKey];
         if (state && serverBaseChanged(next, localBase, mergedKey === 'total')) {
@@ -422,7 +424,7 @@
     var els = document.querySelectorAll('[data-online]');
     for (var i = 0; i < els.length; i++) {
       var key = els[i].getAttribute('data-online');
-      if (key !== 'total' && KEYS.indexOf(key) === -1) continue;
+      if (key !== 'total' && KEYS.indexOf(key) === -1 && !Object.prototype.hasOwnProperty.call(BASE, key)) continue; // v456 (BUG-038): cho phep key co trong BASE (vd laodongtudo) cap nhat badge.
       var num = els[i].querySelector('.online-num');
       if (num) num.textContent = formatVi(valueForKey(key, mergedValue, state.tick));
     }

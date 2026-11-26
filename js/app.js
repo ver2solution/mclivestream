@@ -4472,7 +4472,7 @@ function initNews(){
     var mainList = topIds ? list.filter(function(a){ return topIds.indexOf(a) === -1; }) : list;
     var totalPages=Math.max(1,Math.ceil(mainList.length/perPage)); if(pg>totalPages) pg=totalPages; if(pg<1) pg=1;
     main.innerHTML=mainList.slice((pg-1)*perPage,pg*perPage).map(function(a){ return newsCardHTML(a, null, true); }).join('') || emptyResultsHTML('Chưa có bài báo nào khớp bộ lọc.');
-    renderPager(document.getElementById('newsPager'),pg,totalPages,mainList.length,function(np){ render(np); var m=document.getElementById('newsMain'); if(m) m.scrollIntoView(); },perPage,'bài',{windowed:true});
+    renderPager(document.getElementById('newsPager'),pg,totalPages,mainList.length,function(np){ render(np); var m=document.getElementById('newsMain'); if(m) m.scrollIntoView(); },perPage,'bài bên dưới',{windowed:true}); /* v456 (N02/M-02): pager đếm mainList (đã trừ 4 bài ghim) nên ghi rõ 'bài bên dưới', khớp dòng #newsCount v308. */
     setParams({cat:catSel.value,page:String(pg)});
     /* v308 (F-R2-01, 17/11/2026): GIU quyet v238 — dem = tong bai KHOP BO
        LOC (list.length), khong phai so the trong danh sach chinh. Chi them
