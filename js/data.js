@@ -125,6 +125,7 @@
    articles-xu-huong-2026-11-23 adds 4 Xu hướng articles (23/11/2026, Monday): 1 seasonal keyword "xu hướng tiêu dùng cuối năm 2026" #10/10 (deep, LAST of round 1; Adobe 28/09/2026: 275,1 ty USD +6,7%, mobile 57,4%, AI +130%; NRF 20/10/2026; Deloitte 15/10/2026; PwC 19/11/2026; BMO 19/11/2026) + 3 news ("Target quý 3/2026" Target 18/11/2026, 27,1 ty USD +7,1%, online +9,8%; "thẻ quà tặng lễ 2026" NRF 20/10 + 30/10-09/11/2026, 47% muon nhan vs 39% dinh tang, 26,8 ty USD; "AI mua sắm lễ 2026" PwC 19/11/2026, 36% dung AI). Zalo rotation 23/11 is topic #1 (Livestream) — no rotation article in this batch. Total 640 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-24 adds 4 Xu hướng articles (24/11/2026, Tuesday): 1 seasonal keyword "xu hướng bán hàng online 2027" #1/10 VONG 2 (deep, goc moi: chuan bi 2027 tu thang 11/2026; e-Conomy SEA 05/11/2026: TMDT 32 ty USD +22%, 44% hanh trinh mua bat dau bang AI; han dang ky TikTok Shop 12.12 het 25/11/2026) + 2 chu de tuan "thi truong phu kien trang suc" (WGC 03/11/2026: trang suc vang Q3 -17% con 313 tan; The Knot 18/02/2026: kim cuong nuoi cay 61% nhan dinh hon) + 1 Zalo rotation #2 "xu huong mua hang moi" (agentic commerce; McKinsey 10%->17%; WooCommerce 19/11/2026; VIET CUOI, entry cuoi data.js). Total 671 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-25 adds 4 Xu hướng articles (25/11/2026, Wednesday): 1 seasonal keyword "xu hướng thương mại điện tử 2027" #2/10 VONG 2 (deep, goc moi: AI mua ho + social commerce + mobile + livestream; Shopify 17/11/2026: TMDT 7,37 nghin ty USD; McKinsey 28/10/2026: 53% dung AI) + 2 chu de tuan "thi truong thoi trang nu nam" (ThredUp 02/04/2026: secondhand nu 393 ty USD vao 2030; Straits Research 13/10/2026: athleisure nam 459,7 ty USD) + 1 tin Black Friday 2026 (Adobe 28/09/2026: 12,9 ty USD; Deloitte 23/11/2026: 87% nguoi My san sale). KHONG co bai xoay vong Zalo (25/11 la #3 Hang hoa). Total 714 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
+   articles-xu-huong-2026-11-26 adds 4 Xu hướng articles (26/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 VONG 2 (deep, goc moi: 76% cho khuyen mai + 46% chua len ke hoach + 41% chon combo san; Coc Coc 09/2026 qua Brands Vietnam 16/11/2026) + 2 chu de tuan "thi truong thuc pham chuc nang" (NCHS Data Brief 561 21/05/2026: 60,2% nguoi My dung trong 30 ngay; GVR 12/10/2026: collagen uong vien + keo deo 59,7%) + 1 tin Cyber Week 2026 (Salesforce 19/11/2026: 357 ty USD, AI dan 21%). KHONG co bai xoay vong Zalo (26/11 la #4 Phan tich). 1/4 bai dung bao Viet lam nguon chinh (A1). Total 788 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -19005,6 +19006,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Herbalife quý 3/2026: doanh thu 1,35 tỷ USD, tăng 6,0% (+7,6% nếu không tính tỷ giá), quý tăng thứ 5 liên tiếp; châu Á–Thái Bình Dương 517,9 triệu USD, tăng 18,4%; lãi ròng 58,8 triệu USD; dự báo cả năm nâng lên +4,9% đến +5,9% (02/11/2026)."
+  },
+  {
+   "title": "Xu hướng mua sắm online Tết: 76% chờ khuyến mãi",
+   "cat": "Xu hướng",
+   "source": "Brands Vietnam",
+   "date": "2026-11-26",
+   "url": "https://www.brandsvietnam.com/congdong/topic/toan-canh-thi-truong-tet-2027-phan-tich-xu-huong-chi-tieu-va-hanh-vi-mua-sam-cua-nguoi-viet",
+   "page": "bai-viet/xu-huong-mua-sam-online-tet-76-phan-tram-cho-khuyen-mai.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-sam-online-tet-76-phan-tram-cho-khuyen-mai.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong mua sam online Tet: 76% cho khuyen mai moi chot don, 51% chi nhieu hon so voi Tet 2026, 41% chon combo san, 52% uu tien thuc pham/banh mut/gio qua (Coc Coc, khao sat thang 9/2026 qua Brands Vietnam 16/11/2026)."
+  },
+  {
+   "title": "Thực phẩm chức năng: 60,2% người Mỹ dùng mỗi tháng",
+   "cat": "Xu hướng",
+   "source": "Trung tâm Thống kê Y tế Quốc gia Mỹ (NCHS)",
+   "date": "2026-11-26",
+   "url": "https://www.cdc.gov/nchs/products/databriefs/db561.htm",
+   "page": "bai-viet/thuc-pham-chuc-nang-602-phan-tram-nguoi-my-dung-moi-thang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-602-phan-tram-nguoi-my-dung-moi-thang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thuc pham chuc nang: 60,2% nguoi My tu 20 tuoi da dung trong 30 ngay, 38,7% dung tu 2 san pham tro len, 75,9% nguoi tren 60 tuoi (NCHS Data Brief 561, 21/05/2026); thi truong toan cau 228,2 ty USD nam 2026 (Grand View Research)."
+  },
+  {
+   "title": "Collagen uống 2026: viên và kẹo dẻo chiếm 59,7%",
+   "cat": "Xu hướng",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/collagen-supplement-market-report",
+   "page": "bai-viet/collagen-uong-2026-vien-va-keo-deo-chiem-597-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/collagen-uong-2026-vien-va-keo-deo-chiem-597-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Collagen uong 2026: vien va keo deo chiem 59,7% thi truong nam 2025, dang bot tang nhanh nhat 6,9%/nam, kenh online tang 7,1%/nam; thi truong 2,6 ty USD nam 2026 (Grand View Research 12/10/2026)."
+  },
+  {
+   "title": "Xu hướng mua sắm Cyber Week 2026: AI dẫn 21%",
+   "cat": "Xu hướng",
+   "source": "Salesforce",
+   "date": "2026-11-26",
+   "url": "https://www.salesforce.com/news/stories/cyber-week-ai-sales-2026/?bc=OTH",
+   "page": "bai-viet/xu-huong-mua-sam-cyber-week-2026-ai-dan-21-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-mua-sam-cyber-week-2026-ai-dan-21-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong mua sam Cyber Week 2026: 357 ty USD mua online toan cau, 75,8 ty USD do AI dan dat (21%), luu luong AI tang 104%, 74% tin goi y cua AI (Salesforce 19/11/2026)."
   }
 ],
  "lots": [
