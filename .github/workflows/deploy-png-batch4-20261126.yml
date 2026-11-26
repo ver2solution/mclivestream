@@ -1,0 +1,55 @@
+# Deploy PNG batch 4 20261126 — 15 bai thay anh PNG do hoa bang anh that local
+# (base live 5cfc8ea sau PNG batch 3, PR #130; mau theo batch 1, PR #119)
+# Giai nen ZIP goc repo -> 15 file bai-viet + 15 anh jpg + data.js + test v287
+# -> chay test -> commit len nhanh deploy -> PR merge vao main
+# KHONG bump CACHE (theo batch 1; anh moi chi la file moi + data.js img).
+name: Deploy PNG batch 4 20261126
+
+on:
+  push:
+    branches: [deploy/png-batch4-20261126]
+    paths:
+      - mclivestream-png-batch4-20261126.zip
+      - .github/workflows/deploy-png-batch4-20261126.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-png-batch4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: deploy/png-batch4-20261126
+          fetch-depth: 0
+
+      - name: Unzip PNG batch 4 + verify + test
+        run: |
+          ZIP=mclivestream-png-batch4-20261126.zip
+          test -f "$ZIP" || { echo "Khong tim thay $ZIP"; exit 1; }
+          COUNT=$(unzip -l "$ZIP" | awk 'NR>3 && $4 != "" && $4 !~ /\/$/ {n++} END {print n+0}')
+          echo "So file trong ZIP: $COUNT"
+          test "$COUNT" -eq 32 || { echo "ZIP phai co dung 32 file"; exit 1; }
+          unzip -o "$ZIP"
+          EMPTY=$(find bai-viet js tests -name "*.html" -o -name "*.js" -o -name "*.mjs" | xargs -I{} sh -c 'test -s "{}" || echo "{}"' | head -5)
+          if [ -n "$EMPTY" ]; then echo "File rong:"; echo "$EMPTY"; exit 1; fi
+          echo "0 file rong — OK"
+          node --check js/data.js || { echo "data.js loi cu phap"; exit 1; }
+          node tests/test-v287-png-batch4.mjs || { echo "test v287 FAIL"; exit 1; }
+
+      - name: Commit PNG batch 4
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -10
+          git diff --cached --stat | tail -3
+          if git diff --cached --quiet; then
+            echo "Khong co thay doi de commit"
+          else
+            git commit -m "PNG batch 4: 15 bai thay anh PNG do hoa bang anh that local (Pexels) — test v287 182/182"
+            git push origin deploy/png-batch4-20261126
+          fi
