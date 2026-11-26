@@ -65,8 +65,9 @@
 <script>
 /* v46 (F-03): trang đặt mật khẩu mới sau khi bấm link khôi phục trong
    email. supabase-js tự nhận session từ hash #access_token=...&type=recovery
-   (detectSessionInUrl mặc định). Không có session thì link đã hết hạn
-   hoặc không hợp lệ. Đổi xong thì đăng xuất ngay (kết thúc phiên recovery
+   (detectSessionInUrl mặc định). Không có session (mở trang trực tiếp, chưa
+   bấm link trong email — v456 M-01) thì KHÔNG báo 'hết hạn' mà hiện form
+   gửi link mới. Đổi xong thì đăng xuất ngay (kết thúc phiên recovery
    dùng một lần) rồi về trang đăng nhập. */
 (function(){
   var status=document.getElementById('resetStatus'), form=document.getElementById('resetForm'),
@@ -98,7 +99,7 @@
     try{ session = window.V2SAuthUI ? await V2SAuthUI.getSession() : await McLivestreamAPI.getSession(); }
     catch(e){ session=null; }
     if(!session){
-      status.textContent='Link đã hết hạn hoặc không hợp lệ. Nhập email đã đăng ký bên dưới để gửi lại link đặt lại mật khẩu.';
+      status.textContent='Chưa có link đặt lại mật khẩu. Nhập email đã đăng ký bên dưới để nhận link mới.';
       links.hidden=false;
       document.getElementById('requestResetForm').hidden=false;
       return;
