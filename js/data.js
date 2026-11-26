@@ -18908,6 +18908,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Facebook Your Algorithm ra mắt ngày 13/10/2026, Meta giải thích kỹ cơ chế trong bài kỹ thuật ngày 10/11/2026: người dùng gõ chủ đề muốn xem nhiều hay ít, hệ thống xếp hạng theo 4 bước, tín hiệu tích cực chỉ làm tăng khả năng phân phối còn tín hiệu tiêu cực mạnh hơn hẳn. Shop và mẫu live cần nói rõ chủ đề ngay từ khung hình đầu, dùng hình thật thay vì ảnh AI, và xác định lane rõ cho từng Page."
+  },
+  {
+   "title": "TikTok Shop 12.12: 16 ngày còn lại, shop bán gì",
+   "cat": "Thị trường",
+   "source": "z.media",
+   "date": "2026-11-26",
+   "url": "https://www.z.media/insights/tiktok-shop-mega-sales-calendar-2026",
+   "page": "bai-viet/tiktok-shop-12-12-16-ngay-con-lai-shop-ban-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-12-12-16-ngay-con-lai-shop-ban-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop 12.12 diễn ra 12–14/12/2026, hạn đăng ký hết ngày 25/11/2026 (z.media, 10/2026); từ 26/11 còn 16 ngày; Black Friday 27/11/2026 là buổi test cuối; thực phẩm chức năng Việt Nam 1,45 tỷ USD năm 2026, tăng 10,2%/năm (MobilityForesights 2026)."
+  },
+  {
+   "title": "Thị trường thực phẩm chức năng: shop bán gì",
+   "cat": "Thị trường",
+   "source": "MobilityForesights",
+   "date": "2026-11-26",
+   "url": "https://mobilityforesights.com/product/vietnam-functional-foods-market",
+   "page": "bai-viet/thi-truong-thuc-pham-chuc-nang-shop-nho-ban-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thuc-pham-chuc-nang-shop-nho-ban-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thực phẩm chức năng Việt Nam 1,45 tỷ USD năm 2026, tăng 10,2%/năm tới 2032 (MobilityForesights 2026); vitamin và khoáng chất 42% thị phần 2025, Hà Nội 38%, bán online tăng nhanh nhất 13,1%/năm (Credence 2026); 14.102 gian hàng giả bị gỡ 6 tháng đầu 2026 (TechSci 2026)."
+  },
+  {
+   "title": "Thực phẩm chức năng toàn cầu 2026: 421,3 tỷ USD",
+   "cat": "Thị trường",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/functional-food-market",
+   "page": "bai-viet/thuc-pham-chuc-nang-toan-cau-2026-421-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-toan-cau-2026-421-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm chức năng toàn cầu 2026 đạt 421,3 tỷ USD, tăng 8,7%/năm tới 753,4 tỷ USD năm 2033 (Grand View Research 2026); Mỹ 93,3 tỷ USD, châu Á–Thái Bình Dương 155,5 tỷ USD; Việt Nam 1,45 tỷ USD, tăng 10,2%/năm."
+  },
+  {
+   "title": "Herbalife quý 3/2026: doanh thu 1,35 tỷ USD, tăng 6%",
+   "cat": "Thị trường",
+   "source": "Herbalife (Business Wire)",
+   "date": "2026-11-26",
+   "url": "https://www.businesswire.com/news/home/20261102380224/en/Herbalife-Achieves-Third-Quarter-Net-Sales-Growth-of-6.0-Strong-Profitability-and-Robust-Operating-Cash-Flow-Fifth-Consecutive-Quarter-of-Expansion",
+   "page": "bai-viet/herbalife-quy-3-2026-doanh-thu-135-ty-usd-tang-6-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/herbalife-quy-3-2026-doanh-thu-135-ty-usd-tang-6-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Herbalife quý 3/2026: doanh thu 1,35 tỷ USD, tăng 6,0% (+7,6% nếu không tính tỷ giá), quý tăng thứ 5 liên tiếp; châu Á–Thái Bình Dương 517,9 triệu USD, tăng 18,4%; lãi ròng 58,8 triệu USD; dự báo cả năm nâng lên +4,9% đến +5,9% (02/11/2026)."
   }
 ],
  "lots": [
