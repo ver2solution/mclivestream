@@ -82,6 +82,7 @@
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-26 adds 4 Viec Lam articles (26/11/2026, Thursday): 1 seasonal keyword #3 ROUND 2 'luong mau livestream Tet' (NEW angle vs round 1 15/11: pay BY SHIFT/STAGE — BF 27/11 tomorrow, 12.12 in 16 days, campaign registration CLOSED 25/11; night shift 230k/h sh-92, DU DU VN 300-500k/h; 5 new shops sh-316..320; US benchmark Squishable $22-32/h 07/10/2026) + 1 theme Thu 'tuyen mau live ban thuc pham chuc nang' (FastMoss Health +29.0% Oct->Nov 2025, Toplux Magnesium 145,401 units Nov 2025; VN functional food USD 5.60B 2026 per The Report Cubes; 11 TPCN shops + 8 models incl. NEW sh-318 Healthy Care VN 19/11; Decree 46/2026 ad approval from 16/04/2026) + 1 news 'affiliate Black Friday 27/11' (ugc.live 13/11/2026: double commission 27/11 + 30/11, 10% -> 20%; commission math on $40 product; FastMoss lifts; eports.global eligibility) + 1 news 'tuyen mau livestream Lao Cai' (3 shops / 3 models, 2 NEW shops sh-319..320 this morning; pay 10-20 trieu/month; Coc Leu border trade; source = site danh-sach-shop). NO keyword article: cluster A EXHAUSTED; KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). NO Zalo rotation (26/11 topic #4 belongs to Phan tich). SEO V2. Total 764 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-26 adds 4 Dong tien articles (26/11/2026, Thursday): 1 seasonal keyword #4 VONG 2 'doanh thu Double 12' (deep, goc MOI so voi vong 1 16/11 'don song sale cuoi nam': ngay ban chay nhat KHONG phai 12.12 ma la 13/12 — D+1 GMV gap 1,67 lan ngay thuong (Ecomobi/Kalodata, 07/11/2026); thang 11-12/2025 40,86 nghin ty = 23,2% ca nam; AOV ngay sale +21-31% nhung so don chung; 12/12 la Ngay TMDT quoc gia (Nghi dinh 248, 30/06/2026); bang tinh lai lo theo phi san VN — giam 20% la lo 21.000d/don) + 2 theme tuan Thu Nam 26/11 'thi truong thuc pham chuc nang' (A2: ban TPCN lai bao nhieu 1 don — lo collagen 300k con lai 42k (14%), giam 30% lo 7,5k/don; phi san 14% + 6% + 3.000d; NĐ 46/2026 hieu luc 16/04/2026; A3: thuc pham bo sung ban chay nhat TikTok Shop My — 784 trieu USD, 52 tuan toi 02/2026, NielsenIQ 23/06/2026; Toplux Magnesium 14,23 trieu USD quy 2/2026) + 1 news 26/11 (gia vang SJC mat moc 135 trieu, ve 129,1-134,1 trieu, giam 900.000d; the gioi 3.588 USD, chenh ~21,44 trieu). SEO V2 (title suffix + link boxes). Total 784 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-26 adds 4 Cong nghe articles (26/11/2026, Thursday): 1 seasonal keyword #8/10 VONG 2 'quang cao Shopee Tet' (GOC MOI so voi vong 1 13/11: de cu 12.12 mo 25/11-13/12/2026, toi da 2 diem phat; warm-up Shopee Ads 1-2 tuan; luat giam toi da 50% TT39/2025, 2 cua so toi 100% 01/12/2026-05/01/2027 + 07/01-05/02/2027; live Shopee TP.HCM 12/12 + 15/01/2027, 305 seller; skipjackdigital 12/11/2026 + bigseller 20/11/2026 + ordinex 11/2026) + 1 theme tuan thuc pham chuc nang 'AI tra loi khach' (Fortune Business Insights 11/2026: 437,62 ty USD 2026 -> 983,17 ty USD 2034, CAGR 10,65%; TikTok AI Assistance gop chatbot 11-12/2026; ND 46/2026 duyet quang cao tu 16/04/2026) + 2 news (TikTok Shop AI Diagnosis cho LIVE 20/11/2026, bao cao sau 48h — etailrocket; Facebook Your Algorithm 13/10/2026, Meta giai thich 10/11/2026 — honestfred). SEO V2 (title suffix + link boxes). Total 777 articles (node) / 776 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-25 adds 4 Dong tien articles (25/11/2026, Wednesday): 1 seasonal keyword #3 VONG 2 'von nhap hang Tet' (deep, goc MOI so voi vong 1 15/11 '5 muc von': von nhap THEO NGANH HANG thoi trang nu nam — chia von theo ty le doanh so that (Metric Q3/2026 nu 17.465,1 ty +47,9%; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%; Grand View 2026 nu ~1,1 nghin ty USD, nam 681,1 ty USD) + 3 tang von minh hoa + gia hoa von theo phi san; han dang ky chien dich TikTok Shop 12.12 la HOM NAY 25/11/2026) + 1 theme tuan Thu Tu 25/11 'thi truong thoi trang nu nam' (phi san + hoa hong mau live an bao nhieu tren 1 don thoi trang — TikTok Shop 10%/don, Shopee 6% + 3.000d/don, affiliate 5-20%; gia hoa von ao 150k von/300k ban la 187.500d) + 2 news 25/11 (vang the gioi roi 79,1 USD -2,17% ve 3.555,1 USD nhung SJC DUNG YEN 130-135 trieu, chenh lech noi rong len ~23,7 trieu; Bitcoin thung 60.000 USD lan nua ve 59.892 USD, ETF rut ky luc 4,71 ty USD thang 11). SEO V2 (title suffix + link boxes). Total 702 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-25 adds 4 Cong nghe articles (25/11/2026, Wednesday): 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' (GOC MOI so voi vong 1 13/11: het hom nay 25/11 con lam duoc gi — Product vs LIVE GMV Max, Product ROI, tang ngan sach 30-50%, GMV Max trong Open Collaboration 22/11/2026; z.media 10/2026 + small-patterns 11/2026 + kolvant 22/11 + emarspro) + 1 theme tuan thoi trang nu nam 'AI thu do ao' (Google Try on 18 nuoc 02/11/2026, chua co VN; Doppl ngung 30/04/2026; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%) + 2 news (TikTok Shop Seller Assistant tu chay GMV Max — emarspro; TikTok Shop mo cong khieu nai ban quyen IPPC 21/11/2026 + doi tai khoan quang cao chinh — kolvant 22/11/2026). SEO V2 (title suffix + link boxes). Total 707 articles (node) / 706 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -14937,6 +14938,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Tuyển mẫu livestream Lào Cai: 3 shop, 3 mẫu theo js/data.js 26/11/2026; 2 shop mới lên sàn sáng 26/11 (sh-319, sh-320); lương 10–20 triệu đồng/tháng; Trương Thái Bảo chính thức 15 triệu + hoa hồng; Hạ Bài tuyển host túi xách Cốc Lếu 10 triệu/tháng."
+  },
+  {
+   "title": "Doanh thu Double 12: ngày 13/12 mới là đỉnh bán",
+   "cat": "Dòng tiền",
+   "source": "126Insights (số liệu Ecomobi “Giải mã Double Day 2026”)",
+   "date": "2026-11-26",
+   "url": "https://www.126insights.com/en/posts/tiktok-shop-12-12-sale-vietnam-13-december",
+   "page": "bai-viet/doanh-thu-double-12-ngay-13-12-moi-la-dinh-ban.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/doanh-thu-double-12-ngay-13-12-moi-la-dinh-ban.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Doanh thu Double 12: ngày 13/12/2025 mới là đỉnh bán (GMV ngày D+1 gấp 1,67 lần ngày thường, theo Ecomobi 07/11/2026); tháng 11–12/2025 đạt 40,86 nghìn tỷ đồng, bằng 23,2% cả năm; giá trị đơn bình quân ngày sale +21% tới +31% nhưng số đơn chững; 12/12 là Ngày thương mại điện tử quốc gia từ Nghị định 248 ngày 30/06/2026; mã áo vốn 150.000đ bán 300.000đ chỉ chịu được tối đa khoảng 7% giảm giá."
+  },
+  {
+   "title": "Bán thực phẩm chức năng lãi bao nhiêu 1 đơn",
+   "cat": "Dòng tiền",
+   "source": "NutraProducer (số liệu NielsenIQ qua NutraIngredients)",
+   "date": "2026-11-26",
+   "url": "https://nutraproducer.com/tiktok-shop-affiliate-program-supplement-brands/",
+   "page": "bai-viet/ban-thuc-pham-chuc-nang-lai-bao-nhieu-1-don.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ban-thuc-pham-chuc-nang-lai-bao-nhieu-1-don.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bán thực phẩm chức năng: lọ collagen 300.000 đồng, vốn 120.000 đồng, còn lãi 42.000 đồng (14%) sau phí sàn 63.000 đồng, affiliate 15% và quảng cáo 10%; giảm 30% còn 210.000 đồng thì lỗ 7.500 đồng mỗi đơn; phí sàn TikTok Shop VN 14% + 6% + 3.000 đồng; Nghị định 46/2026 có hiệu lực 16/04/2026 — quảng cáo phải duyệt trước, không hứa chữa bệnh."
+  },
+  {
+   "title": "Thực phẩm bổ sung bán chạy nhất TikTok Shop",
+   "cat": "Dòng tiền",
+   "source": "NutraIngredients (số liệu NielsenIQ)",
+   "date": "2026-11-26",
+   "url": "https://www.nutraingredients.com/Article/2026/06/23/tiktok-shops-largest-health-beauty-category-supplements/",
+   "page": "bai-viet/thuc-pham-bo-sung-ban-chay-nhat-tiktok-shop.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-bo-sung-ban-chay-nhat-tiktok-shop.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm bổ sung bán chạy nhất TikTok Shop Mỹ: 784 triệu USD trong 52 tuần tới tháng 02/2026, +11,0%, vượt chăm sóc da mặt 637 triệu USD (NielsenIQ qua NutraIngredients 23/06/2026); Toplux Magnesium Complex 8 trong 1 bán 14,23 triệu USD quý 2/2026, đứng thứ 2 toàn sàn (FastMoss); người mua 2,8 đơn mỗi năm, chi 98 USD mỗi năm; TikTok Shop là nhà bán lẻ sức khỏe và làm đẹp lớn thứ 4 tại Mỹ tháng 04/2026."
+  },
+  {
+   "title": "Giá vàng SJC mất mốc 135 triệu đồng/lượng",
+   "cat": "Dòng tiền",
+   "source": "Bóng đá Plus (giá vàng, tỷ giá ngày 26/11/2026)",
+   "date": "2026-11-26",
+   "url": "https://bongdaplus.vn/bong-da-cuoc-song/gia-vang-ty-gia-ngoai-te-hom-nay-26-11-gia-vang-phuc-hoi-5300442611.html",
+   "page": "bai-viet/gia-vang-sjc-mat-moc-135-trieu-dong-luong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/gia-vang-sjc-mat-moc-135-trieu-dong-luong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Giá vàng SJC mất mốc 135 triệu đồng/lượng sáng 26/11/2026, về 129,1–134,1 triệu đồng/lượng, giảm 900.000 đồng so với ngày 24/11/2026; vàng thế giới Kitco 3.588 USD/ounce, quy đổi khoảng 112,56 triệu đồng/lượng, chênh SJC khoảng 21,44 triệu đồng; vàng nhẫn PNJ rẻ hơn vàng miếng SJC 2,6 triệu đồng; tỷ giá Vietcombank bán ra 26.020 đồng/USD."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
