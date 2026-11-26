@@ -37,6 +37,10 @@
 .game-entry .game-entry-ic{font-size:28px;line-height:1;flex:none}
 .game-entry small{display:none}
 @media (max-width:480px){.game-entry{width:92px;min-height:92px;padding:7px 5px;font-size:12px}}
+/* v451 (26/11/2026): dong bo bo loc LDTD voi trang Mau/Shop — nut Ap dung/Dat lai ra ngoai filter-card, can phai, auto-width, min-height 48px; mobile flex:1 chia doi (copy luat .filter-actions cua danh-sach-mau.html/danh-sach-shop.html). */
+.filter-actions{display:flex;justify-content:flex-end;gap:10px;margin:10px 2px 0}
+.filter-actions .btn{width:auto;min-height:48px}
+@media(max-width:600px){.filter-actions .btn{flex:1}}
 </style>
 <a class="game-entry" id="gameEntry" href="https://truyenthuaphatphap.online/nong-trai.html" data-track="game-nong-trai"><span class="game-entry-ic" aria-hidden="true">🌾</span><span>Chuyển Sinh Thế Giới Mới<small>Chơi game kiếm Xu · gieo lúa, nuôi gà, thu hoạch</small></span></a>
 <div class="online-popup" id="onlinePopup" aria-label="Số người đang online" hidden><svg class="online-popup-stall" viewBox="0 0 64 58" aria-hidden="true"><rect x="7" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="54" y="22" width="3" height="28" fill="#8a5a2b"/><rect x="4" y="6" width="56" height="16" fill="#fff3d6"/><rect x="12" y="6" width="8" height="16" fill="#d92b1f"/><rect x="28" y="6" width="8" height="16" fill="#d92b1f"/><rect x="44" y="6" width="8" height="16" fill="#d92b1f"/><circle cx="8" cy="22" r="4" fill="#fff3d6"/><circle cx="16" cy="22" r="4" fill="#d92b1f"/><circle cx="24" cy="22" r="4" fill="#fff3d6"/><circle cx="32" cy="22" r="4" fill="#d92b1f"/><circle cx="40" cy="22" r="4" fill="#fff3d6"/><circle cx="48" cy="22" r="4" fill="#d92b1f"/><circle cx="56" cy="22" r="4" fill="#fff3d6"/><rect x="8" y="36" width="48" height="4" fill="#8a5a2b"/><rect x="8" y="40" width="48" height="10" fill="#b07a3e"/><rect x="8" y="44" width="48" height="1" fill="#8a5a2b" opacity=".6"/><circle cx="20" cy="33" r="3.5" fill="#1faa59"/><rect x="30" y="29" width="9" height="7" rx="1" fill="#ff8c1a"/><circle cx="46" cy="33" r="3.5" fill="#d92b1f"/><rect x="10" y="50" width="44" height="4" fill="#8a5a2b"/></svg><div class="online-popup-body"><p class="online-popup-line"><span class="online-dot" aria-hidden="true"></span><span class="online-popup-num">47</span>&nbsp;người đang online</p><p class="online-popup-points" id="onlinePopupPoints" hidden>Đã tiêu: <b class="online-popup-spent">0</b> xu • Còn lại: <b class="online-popup-left">0</b> xu</p></div><button class="online-popup-close" id="onlinePopupClose" type="button" aria-label="Đóng popup">×</button></div>
@@ -51,14 +55,15 @@
 <button type="button" class="uni-cat-btn fl-tab-btn" data-fl-tab="nong-nghiep" role="tab" aria-selected="false">Nông nghiệp</button>
 <button type="button" class="uni-cat-btn fl-tab-btn" data-fl-tab="ca-nhan" role="tab" aria-selected="false">Cá Nhân &amp; Cửa hàng tìm người</button>
 </div>
-<div class="filter-card">
-<div><label for="flProv">Tỉnh / Thành phố</label><select id="flProv" data-track="loc-tinh-lao-dong"><option value="">Tất cả tỉnh / thành</option></select></div>
-<div><label for="flExp">Yêu cầu kinh nghiệm</label><select id="flExp" data-track="loc-kinh-nghiem-lao-dong"><option value="">Tất cả</option><option value="none">Không yêu cầu</option><option value="experienced">Có kinh nghiệm</option><option value="preferred">Ưu tiên có kinh nghiệm</option></select></div>
-<div><label for="flWorkType">Hình thức làm việc</label><select id="flWorkType" data-track="loc-hinh-thuc-lao-dong"><option value="">Tất cả</option><option value="full">Toàn thời gian</option><option value="part">Bán thời gian</option><option value="shift">Theo ca</option><option value="seasonal">Thời vụ</option></select></div>
-<div><label for="flMinSalary">Mức lương tối thiểu (đồng/tháng)</label><input id="flMinSalary" type="number" min="0" step="500000" placeholder="VD: 5000000" data-track="loc-luong-toi-thieu-lao-dong"></div>
-<div><label for="flSort">Sắp xếp</label><select id="flSort" data-track="sap-xep-lao-dong"><option value="newest">Mới nhất trước (mặc định)</option><option value="oldest">Cũ nhất trước</option></select></div>
-<div class="full"><button class="btn btn-primary" type="button" id="flApplyBtn" data-track="ap-dung-loc-lao-dong">Áp dụng</button><button class="btn btn-ghost" type="button" id="flResetBtn" data-track="dat-lai-loc-lao-dong">Đặt lại</button><p id="flCount" style="margin:0;font-weight:800"></p></div>
+<div class="filter-card cols-6">
+<div class="uni-field"><label for="flProv">Tỉnh / Thành phố</label><select id="flProv" data-track="loc-tinh-lao-dong"><option value="">Tất cả tỉnh / thành</option></select></div>
+<div class="uni-field"><label for="flExp">Yêu cầu kinh nghiệm</label><select id="flExp" data-track="loc-kinh-nghiem-lao-dong"><option value="">Tất cả</option><option value="none">Không yêu cầu</option><option value="experienced">Có kinh nghiệm</option><option value="preferred">Ưu tiên có kinh nghiệm</option></select></div>
+<div class="uni-field"><label for="flWorkType">Hình thức làm việc</label><select id="flWorkType" data-track="loc-hinh-thuc-lao-dong"><option value="">Tất cả</option><option value="full">Toàn thời gian</option><option value="part">Bán thời gian</option><option value="shift">Theo ca</option><option value="seasonal">Thời vụ</option></select></div>
+<div class="uni-field"><label for="flMinSalary">Mức lương tối thiểu (đồng/tháng)</label><input id="flMinSalary" type="number" min="0" step="500000" placeholder="VD: 5000000" data-track="loc-luong-toi-thieu-lao-dong"></div>
+<div class="uni-field"><label for="flSort">Sắp xếp</label><select id="flSort" data-track="sap-xep-lao-dong"><option value="newest">Mới nhất trước (mặc định)</option><option value="oldest">Cũ nhất trước</option></select></div>
 </div>
+<div class="filter-actions"><button class="btn btn-primary" type="button" id="flApplyBtn" data-track="ap-dung-loc-lao-dong">Áp dụng</button><button class="btn btn-ghost" type="button" id="flResetBtn" data-track="dat-lai-loc-lao-dong">Đặt lại</button></div>
+<p class="filter-count" id="flCount" style="margin:8px 2px 0;font-weight:800"></p>
 <div class="news-list" id="flList" style="grid-template-columns:1fr;margin-top:18px"></div>
 <div class="fl-empty" id="flEmpty" hidden><p>Chưa có tin nào trong mục này. Bạn là người đầu tiên đăng tin — tin được admin duyệt rồi mới hiện công khai.</p><a class="btn btn-primary" href="dang-nhap.html?next=lao-dong-tu-do.html" data-track="dang-tin-lao-dong">Đăng tin</a></div>
 <div class="pager" id="flPager"></div>
