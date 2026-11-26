@@ -105,3 +105,24 @@
 .chat-side-note a{color:var(--fwa-green)}
 .chat-page-composer textarea:focus-visible,.chat-rooms-head input:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
 .chat-page-composer .btn-primary{background:var(--fwa-green);border-radius:8px}
+
+/* LÁT 5 — Hồ sơ/onboarding theo ngôn ngữ V1 (26/11/2026, sau lát 4; STAGED, chưa deploy).
+ * CSS-only, giữ nguyên logic v423 (wizard render bởi js/onboarding.js, 4 bước/9 vai trò
+ * trên dang-ky.html; form hồ sơ #myProfileForm trên trang-cua-toi.html). Không đổi
+ * markup/JS/dữ liệu. .ob-resume (hổ phách) và .ob-err (đỏ) giữ nguyên. */
+.ob-wizard{border-radius:13px;border-color:var(--fwa-line);box-shadow:var(--fwa-shadow)}
+.ob-step{background:var(--fwa-bg);color:var(--fwa-muted)}
+.ob-step.active{background:var(--fwa-green);color:#fff}
+.ob-step.done{background:var(--fwa-mint);color:var(--fwa-green)}
+.ob-role-card:hover{border-color:var(--fwa-green)}
+.ob-role-card.sel{border-color:var(--fwa-green);background:var(--fwa-mint);box-shadow:0 0 0 1px var(--fwa-green) inset}
+.ob-role-main{color:var(--fwa-green)!important}
+.ob-chip:hover{border-color:var(--fwa-green)}
+.ob-chip.sel{background:var(--fwa-green);border-color:var(--fwa-green)}
+.ob-field input[type=text]:focus-visible,.ob-field input[type=number]:focus-visible,.ob-field input[type=url]:focus-visible,.ob-field textarea:focus-visible,.ob-field select:focus-visible,.ob-prio-row select:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
+.ob-complete-bar{background:var(--fwa-bg)}
+.ob-complete-fill{background:var(--fwa-green)}
+.ob-section{border-color:var(--fwa-line)}
+.ob-nav .btn-primary{background:var(--fwa-green);border-radius:8px}
+#myProfileForm{border:1px solid var(--fwa-line);border-radius:13px;box-shadow:var(--fwa-shadow)}
+#myProfileForm input:focus-visible,#myProfileForm select:focus-visible,#myProfileForm textarea:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
