@@ -13146,7 +13146,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://ejournal.unitomo.ac.id/index.php/jsk/article/download/9578/4675",
    "page": "bai-viet/shopee-live-indonesia-erigo-raffi-ahmad-305000-usd-10-phut.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-live-indonesia-erigo-raffi-ahmad-305000-usd-10-phut.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopee-live-indonesia-erigo-raffi-ahmad-305000-usd-10-phut.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Shopee Live Indonesia: Erigo bán 305.197 USD (khoảng 7,3 tỷ đồng) trong chưa đầy 10 phút ngày 18/08/2023 nhờ Raffi Ahmad và Zee JKT48. Bí kíp: người dẫn có sẵn fan, deal tính theo phút, mặc thử thật trên sóng."
@@ -13158,7 +13158,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.businesstoday.com.my/2026/09/09/khairul-aming-breaks-own-record-with-rm4-3-million-tiktok-shop-live-sales/",
    "page": "bai-viet/khairul-aming-43-trieu-rm-mot-phien-live-tiktok-shop-malaysia.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/khairul-aming-43-trieu-rm-mot-phien-live-tiktok-shop-malaysia.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khairul-aming-43-trieu-rm-mot-phien-live-tiktok-shop-malaysia.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Khairul Aming bán 4,3 triệu RM (khoảng 26,7 tỷ đồng) trong một phiên TikTok Shop Live Malaysia dịp 9.9, theo Business Today ngày 09/09/2026. Bí kíp: bán món ăn vặt của chính mình, video mồi trước 3–5 ngày, live đều để phá kỷ lục của chính mình."
@@ -13170,7 +13170,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.statista.com/topics/5385/amazon-prime-day/",
    "page": "bai-viet/amazon-prime-day-2025-241-ty-usd-4-ngay-live-ban-hang.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/amazon-prime-day-2025-241-ty-usd-4-ngay-live-ban-hang.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/amazon-prime-day-2025-241-ty-usd-4-ngay-live-ban-hang.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Amazon Prime Day 2025 đạt 24,1 tỷ USD trong 4 ngày 08–11/07/2025, lớn nhất lịch sử Amazon, với 12,8 tỷ USD từ điện thoại và 2 tỷ USD qua mua trước trả sau. Bí kíp: bán lâu hơn, live nhiều hơn, chia nhỏ giá để dễ chốt."
@@ -13182,7 +13182,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.laitimes.com/en/article/6soss_79137.html",
    "page": "bai-viet/tieu-duong-ca-douyin-100-trieu-ndt-mot-dem.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tieu-duong-ca-douyin-100-trieu-ndt-mot-dem.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tieu-duong-ca-douyin-100-trieu-ndt-mot-dem.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Tiểu Dương Ca vượt 100 triệu NDT (khoảng 360 tỷ đồng) doanh số một đêm trên Douyin, đứng đầu bảng 2 phiên liên tiếp, theo Laitimes tháng 05/2024. Bí kíp: live như show hài; bài học: giá phải minh bạch, khủng hoảng xử lý nhanh, đừng xây shop quanh một người."
@@ -13194,7 +13194,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.laitimes.com/en/article/6u8fl_7akpo.html",
    "page": "bai-viet/simba-kuaishou-1427-ty-ndt-phien-mo-man-618.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/simba-kuaishou-1427-ty-ndt-phien-mo-man-618.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/simba-kuaishou-1427-ty-ndt-phien-mo-man-618.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Simba Kuaishou mở màn 618 ngày 25/05/2024 đạt 1,427 tỷ NDT (khoảng 5.100 tỷ đồng) một phiên; cả đợt Xinxuan live 229 phiên, gần 40 triệu đơn, nhưng chỉ 10 phiên vượt 100 triệu NDT, kém 16 phiên năm 2023. Bài học: xây đội live và thương hiệu riêng để sống sót khi thị trường chững."
@@ -13228,7 +13228,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.indmoney.com/blog/us-stocks/fed-rate-decision-october-inflation-stock-market-impact",
    "page": "bai-viet/lai-suat-ty-gia-dau-tu-cong-anh-huong-shop-nho-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/lai-suat-ty-gia-dau-tu-cong-anh-huong-shop-nho-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/lai-suat-ty-gia-dau-tu-cong-anh-huong-shop-nho-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Lãi suất tỷ giá shop nhỏ: Fed giữ 3,75–4,00% ngày 28/10/2026, lạm phát Mỹ 3,4%, vàng SJC 140,9 triệu đồng/lượng ngày 11/11/2026. Shop nên chốt tỷ giá trước khi ôm lô Tết, định giá theo giá vốn mới và giữ tiền mặt tới sau họp Fed 08–09/12/2026."
@@ -13240,7 +13240,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.singsaver.com.sg/travel-insurance/blog/cold-places-in-southeast-asia",
    "page": "bai-viet/du-lich-thang-12-mau-livestream-nghi-sau-mua-sale.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-thang-12-mau-livestream-nghi-sau-mua-sale.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-thang-12-mau-livestream-nghi-sau-mua-sale.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Du lịch tháng 12: Sa Pa khoảng 15°C, Đà Lạt khoảng 18°C với Festival Hoa 19–31/12/2026 là 2 điểm đáng tiền nhất cho mẫu livestream; Đà Nẵng mưa 272 mm nên tránh. Lịch nghỉ 3–4 ngày, live xen kẽ, quay sẵn 5–7 video ngắn."
@@ -13252,7 +13252,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.statista.com/topics/8757/social-commerce/",
    "page": "bai-viet/mua-sam-qua-video-ngan-social-commerce-tang-manh-2026.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-qua-video-ngan-social-commerce-tang-manh-2026.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-sam-qua-video-ngan-social-commerce-tang-manh-2026.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Mua sắm qua video ngắn: social commerce toàn cầu 586 tỷ USD năm 2026 (15,2% bán lẻ trực tuyến), TikTok Shop Mỹ 23,41 tỷ USD, 40,4% GMV từ video ngắn. Shop nhỏ: 5 video demo trong 7 ngày, 3 video mồi trước mỗi phiên live."
@@ -13275,7 +13275,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://technode.global/prnasia/tiktok-shops-gebrakan-by-mami-louisse-live-event-has-successfully-set-a-new-record-achieving-1-million-usd-in-sales-within-a-single-day/",
    "page": "bai-viet/mami-louisse-1-trieu-usd-1-ngay-koc-indonesia-ban-my-pham.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mami-louisse-1-trieu-usd-1-ngay-koc-indonesia-ban-my-pham.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mami-louisse-1-trieu-usd-1-ngay-koc-indonesia-ban-my-pham.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "KOC Indonesia Mami Louisse bán hơn 1 triệu USD mỹ phẩm trong 1 ngày (29/07/2023) nhờ phiên live 18 giờ, 2,8 triệu lượt xem và một tháng chuẩn bị — shop Việt nên học cấu trúc affiliate live của cô: chọn KOC có câu chuyện thật, chuẩn bị quà và flash sale theo giờ, đừng hứa giảm giá quá sức chịu của mình."
@@ -13287,7 +13287,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.itiger.com/news/1140800623",
    "page": "bai-viet/nong-dan-son-dong-80000-don-dao-livestream-nong-san.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/nong-dan-son-dong-80000-don-dao-livestream-nong-san.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nong-dan-son-dong-80000-don-dao-livestream-nong-san.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Nông dân Sơn Đông bán 80.000 đơn đào một mùa nhờ livestream nông sản, trong khi Douyin bán 10,2 tỷ đơn nông sản từ tháng 09/2024 tới tháng 09/2025 — shop Việt bán đặc sản nên quay tại vườn, chọn một món đinh và live đều theo mùa vụ thay vì live một lần rồi bỏ."
@@ -13310,7 +13310,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.sliner.sg/en/insights/workshop-recap-sliner-x-onpoint-empower-vietnamese-brands-entering-tiktok-shop-us",
    "page": "bai-viet/thuong-hieu-viet-tiktok-shop-my-151-ty-usd-xuyen-bien-gioi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thuong-hieu-viet-tiktok-shop-my-151-ty-usd-xuyen-bien-gioi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuong-hieu-viet-tiktok-shop-my-151-ty-usd-xuyen-bien-gioi.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "TikTok Shop Mỹ đạt 15,1 tỷ USD GMV năm 2025 (+68%), shop dùng live trong Black Friday 2025 tăng 84% doanh số — nhưng hơn một nửa trong 803.500 gian hàng không có doanh số, nên thương hiệu Việt hãy thử thị trường bằng phòng live chung 90 ngày trước khi lập pháp nhân và kho riêng."
@@ -13322,7 +13322,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://fint-global.com/q4-mega-sales-strategy-the-ultimate-guide-for-every-tiktok-seller/",
    "page": "bai-viet/tiktok-shop-100-ngay-toi-tet-2027-shop-nho-lam-gi.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-100-ngay-toi-tet-2027-shop-nho-lam-gi.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-100-ngay-toi-tet-2027-shop-nho-lam-gi.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "TikTok Shop 100 ngày tới Tết thưởng cho shop chia sức ra ít nhất 3 ngày cao điểm (GMV gấp 2,0 lần ngày thường): chuẩn hàng và nội dung từ chặng 1, live 5–8 giờ và bán combo ở chặng 2, chốt giao hàng đúng hẹn ở chặng cao điểm Tết và giữ khách sau Tết."
@@ -13334,7 +13334,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://conversion.studio/blog/price-anchoring",
    "page": "bai-viet/mo-neo-gia-livestream-tam-ly-khach-chot-don.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/mo-neo-gia-livestream-tam-ly-khach-chot-don.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mo-neo-gia-livestream-tam-ly-khach-chot-don.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Mỏ neo giá livestream quyết định khách thấy rẻ hay đắt: thí nghiệm Ariely 2003 cho thấy giá đấu tăng 60–120% chỉ vì hai chữ số ngẫu nhiên, meta-analysis 40 nghiên cứu ghi mức ảnh hưởng 30–50% — shop nên cho khách thấy món đắt nhất trước, dùng giá gốc thật làm neo, đừng bao giờ bịa giá gốc."
@@ -13346,7 +13346,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://www.timvest.ch/vietnams-e-commerce-market-grows-22-with-fmcgs-taking-the-lead",
    "page": "bai-viet/thi-truong-livestream-viet-nam-q4-2026-shopee-tiktok-shop.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-viet-nam-q4-2026-shopee-tiktok-shop.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-livestream-viet-nam-q4-2026-shopee-tiktok-shop.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Thị trường livestream Việt Nam quý III/2026: Shopee 74.400 tỷ đồng (+8%), TikTok Shop 70.100 tỷ đồng (+60%), chênh chỉ 4.300 tỷ đồng, dự báo quý IV/2026 đạt 165.500 tỷ đồng — số phiên 11/11/2026 chưa công bố, shop nên chuẩn bị cho 12.12 thay vì chờ số."
@@ -13358,7 +13358,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://vieclamlivestream.online/danh-sach-mau.html",
    "page": "bai-viet/tinh-nao-dang-can-lo-xa-kho-thoi-trang-nhat.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/tinh-nao-dang-can-lo-xa-kho-thoi-trang-nhat.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tinh-nao-dang-can-lo-xa-kho-thoi-trang-nhat.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Lô xả kho thời trang tỉnh nào cần nhất: TP.HCM 112 hồ sơ và Hà Nội 70 hồ sơ ngày 11/11/2026 là hai thị trường lớn nhất, nhưng 12 tỉnh mới vượt mốc 5 hồ sơ như Đà Nẵng, Cần Thơ mới là nơi lãi tốt nhờ ít cạnh tranh — còn Cà Mau, Điện Biên, Lào Cai chưa nên vào vội."
@@ -13370,7 +13370,7 @@ window.V20_DATA = {
    "date": "2026-11-12",
    "url": "https://retailnews.asia/southeast-asian-online-retail-revenue-climbed-21-in-q4-2025",
    "page": "bai-viet/dong-tien-11-11-nguoi-viet-mua-gi-sau-sale.html",
-   "img": "https://vieclamlivestream.online/images/bai-viet/dong-tien-11-11-nguoi-viet-mua-gi-sau-sale.png",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-tien-11-11-nguoi-viet-mua-gi-sau-sale.jpg",
    "imgSelf": true,
    "pinned": false,
    "takeaway": "Dòng tiền 11/11 chảy mạnh nhất vào ngày D+1 12/11, đạt 1,67 lần ngày thường với 913,4 tỷ đồng trong ngày 11/11/2025 (số 2025, mốc so sánh) — shop nhỏ nên live tiếp ngày 12/11, tung mã D+1 cho khách đã xem mà chưa mua, và chuyển sang đồ gia dụng, quà tặng từ tháng 12."
