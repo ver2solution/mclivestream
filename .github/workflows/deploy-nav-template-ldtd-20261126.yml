@@ -1,0 +1,69 @@
+# Deploy nav-template-ldtd 20261126 — template bai bao + 41 bai 26/11: nav moi 6 muc
+# (base live f85d81c v454; template publish-article-drafts.mjs chua cap nhat tu v444)
+# Giai nen ZIP goc repo -> 41 file bai-viet + 1 file tools -> commit len nhanh deploy -> PR merge vao main
+# HTML la network-first nen KHONG bump CACHE (sw.js khong doi).
+name: Deploy nav template LDTD 20261126
+
+on:
+  push:
+    branches: [deploy/nav-template-ldtd-20261126]
+    paths:
+      - mclivestream-nav-template-ldtd-20261126.zip
+      - .github/workflows/deploy-nav-template-ldtd-20261126.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-nav-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: deploy/nav-template-ldtd-20261126
+          fetch-depth: 0
+
+      - name: Unzip nav package
+        run: |
+          ZIP=mclivestream-nav-template-ldtd-20261126.zip
+          test -f "$ZIP" || { echo "Khong tim thay $ZIP"; exit 1; }
+          COUNT=$(unzip -l "$ZIP" | awk 'NR>3 && $4 != "" && $4 !~ /\/$/ {n++} END {print n+0}')
+          echo "So file trong ZIP: $COUNT"
+          test "$COUNT" -eq 42 || { echo "ZIP phai co dung 42 file"; exit 1; }
+          unzip -o "$ZIP"
+          python3 - << 'PYEOF'
+          import re, glob, sys
+          bad = []
+          for f in glob.glob('bai-viet/*.html'):
+              h = open(f, encoding='utf-8', errors='ignore').read()
+              m = re.search(r'<nav class="main-nav".*?</nav>', h, re.S)
+              if not m:
+                  continue
+              nav = m.group(0)
+              if 'lao-dong-tu-do' not in nav or 'hoi-dap' in nav:
+                  bad.append(f)
+          if bad:
+              print("NAV SAI trong:", bad[:10]); sys.exit(1)
+          t = open('tools/publish-article-drafts.mjs', encoding='utf-8').read()
+          assert 'lao-dong-tu-do.html' in t and 'hoi-dap.html' not in t, "template nav chua dung"
+          print("Verify OK: 42 file, nav bai-viet deu co LDTD + khong co hoi-dap, template dung")
+          PYEOF
+          EMPTY=$(find . -path ./.git -prune -o -name "*.html" -size 0 -print | head -5)
+          if [ -n "$EMPTY" ]; then echo "File HTML rong:"; echo "$EMPTY"; exit 1; fi
+          echo "0 file rong — OK"
+
+      - name: Commit nav fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -10
+          git diff --cached --stat | tail -3
+          if git diff --cached --quiet; then
+            echo "Khong co thay doi de commit"
+          else
+            git commit -m "Nav: template bai bao + 41 bai 26/11 — them Lao Dong Tu Do, bo Hoi dap (template chua cap nhat tu v444)"
+            git push origin deploy/nav-template-ldtd-20261126
+          fi
