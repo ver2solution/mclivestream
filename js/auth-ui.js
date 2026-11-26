@@ -132,6 +132,12 @@
         var user = session && session.user ? session.user : null;
         notifySession(user);
         if (user) syncMarketingConsent(user);
+        /* v454 (T-v423-polish, 26/11/2026): dang xuat thi lam moi header
+           TUONG MINH — truoc day chi dua vao notifySession -> apply(null),
+           header khong doi toi khi tai lai trang. */
+        if (event === 'SIGNED_OUT') {
+          try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
+        }
       });
     } catch (e) { /* bỏ qua */ }
   }
@@ -956,6 +962,9 @@
       /* v224 (S2-8): bao lai cho moi listener toan cuc SAU khi cache da sach —
          showUser() chi goi cfg.onSessionChange, khong goi notifySession. */
       try { notifySession(null); } catch (e) {}
+      /* v454 (T-v423-polish, 26/11/2026): lam moi header TUONG MINH sau khi
+         signOut xong — khong doi su kien SIGNED_OUT hay lan tai lai sau. */
+      try { if (typeof window !== 'undefined' && typeof window.V20HeaderRefresh === 'function') window.V20HeaderRefresh(); } catch (e) {}
     });
 
     showUser();

@@ -4814,7 +4814,11 @@ function initHeaderAuth(){
     closeMenu();
     // Cap nhat UI NGAY (giong luong signOut hien co o auth-ui.js:443-462),
     // roi moi doi api().signOut() xong; sau do ve trang chu.
-    headerName = null; headerBalance = null;
+    /* v454 (T-v423-polish, 26/11/2026): xoa ca headerNameUserId — truoc day
+       chi xoa headerName/headerBalance nen _settle (lookup ten ho so, toi da
+       3s — TK moi khong co full_name trong metadata) van thay uid cu va ve
+       lai ten cu len header sau khi dang xuat, chi het khi tai lai trang. */
+    headerName = null; headerBalance = null; headerNameUserId = null;
     clearHeaderCache(); /* v261: dang xuat chu dong — xoa ten cache ngay, khong doi su kien SIGNED_OUT */
     try { btn.textContent = btn._loginLabel; btn.setAttribute('href', btn._loginHref); } catch (e) {}
     function goHome(){
@@ -4975,6 +4979,10 @@ function initHeaderAuth(){
       headerName = null; headerNameUserId = null; headerBalance = null;
       clearHeaderCache(); /* v261: da dang xuat — xoa ten cache de lan sau khong hien ten cu */
       closeMenu(); // v90 (F): dang xuat tu noi khac cung dong dropdown
+      /* v454 (T-v423-polish, 26/11/2026): dua ca menu tai khoan ve trang thai
+         chua dang nhap (ten + so xu cu khong duoc nam lai trong dropdown an). */
+      if (menuNameEl) menuNameEl.textContent = '';
+      if (menuPointsEl) { menuPointsEl.hidden = true; menuPointsEl.textContent = ''; }
       btn.textContent = btn._loginLabel;
       btn.setAttribute('href', btn._loginHref);
       try { if(document.body && document.body.classList) document.body.classList.remove('v2s-logged-in'); } catch (e) {}
