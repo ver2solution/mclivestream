@@ -18812,6 +18812,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Shopee Live 11.11: GMV tăng 12 lần, đơn qua live tăng 9 lần ở Việt Nam (Shopee công bố 20/11/2026); Malaysia tăng 8 lần, Brazil 85 triệu lượt xem trong 24 giờ (Media OutReach Newswire, 23/11/2026)."
   },
+  {
+   "title": "Lương mẫu livestream 2026 phân tích: 12.12 trả cao",
+   "cat": "Phân tích",
+   "source": "vieclamlivestream.online (dữ liệu tin tuyển)",
+   "date": "2026-11-26",
+   "url": "https://vieclamlivestream.online/danh-sach-mau.html",
+   "page": "bai-viet/luong-mau-livestream-2026-phan-tich-1212-tra-cao-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/luong-mau-livestream-2026-phan-tich-1212-tra-cao-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Lương mẫu livestream 2026 phân tích (vòng 2, 26/11/2026): 69 tin tuyển ghi lương giờ, 44 tin trả 50.000–150.000 đồng/giờ; 115 tin ghi lương tháng, tập trung 10–20 triệu đồng/tháng (60 tin); 177/251 hồ sơ mẫu chỉ ghi “thỏa thuận”; ca đêm 10–11/11 trả 230.000 đồng/giờ."
+  },
+  {
+   "title": "Thị trường thực phẩm chức năng 2026: 421 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/functional-food-market",
+   "page": "bai-viet/thi-truong-thuc-pham-chuc-nang-2026-421-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thuc-pham-chuc-nang-2026-421-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thực phẩm chức năng 2026: 421,3 tỷ USD toàn cầu, tăng 8,7%/năm tới 2033 (Grand View Research 2026); thực phẩm bổ sung 228,2 tỷ USD, tăng 9,5%/năm; Mỹ 74,06 tỷ USD; collagen 12,7 tỷ USD."
+  },
+  {
+   "title": "Thực phẩm chức năng Việt Nam 2026: 1,3 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Grand View Research",
+   "date": "2026-11-26",
+   "url": "https://www.grandviewresearch.com/industry-analysis/vietnam-dietary-supplements-market-report",
+   "page": "bai-viet/thuc-pham-chuc-nang-viet-nam-2026-13-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-viet-nam-2026-13-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm chức năng Việt Nam 2026: 1.315,5 triệu USD, tăng 8,3%/năm tới 2033 (Grand View Research 2026); men vi sinh tăng nhanh nhất 9,8%/năm; kênh online tăng nhanh nhất 13,1%/năm; Nghị định 46/2026 hiệu lực 16/04/2026."
+  },
+  {
+   "title": "Herbalife quý 3 2026: bán 1,35 tỷ USD nhờ châu Á",
+   "cat": "Phân tích",
+   "source": "Herbalife",
+   "date": "2026-11-26",
+   "url": "https://www.businesswire.com/news/home/20261102380224/en/Herbalife-Achieves-Third-Quarter-Net-Sales-Growth-of-6.0-Strong-Profitability-and-Robust-Operating-Cash-Flow-Fifth-Consecutive-Quarter-of-Expansion",
+   "page": "bai-viet/herbalife-quy-3-2026-ban-135-ty-usd-chau-a-tang-184-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/herbalife-quy-3-2026-ban-135-ty-usd-chau-a-tang-184-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Herbalife quý 3 2026: doanh thu 1,35 tỷ USD, tăng 6,0% (Herbalife 02/11/2026); châu Á – Thái Bình Dương 517,9 triệu USD, tăng 18,4%; Trung Quốc 55,6 triệu USD, giảm 22,0%; lãi ròng 58,8 triệu USD; quý tăng trưởng thứ 5 liên tiếp."
+  }
 ],
  "lots": [
    {
