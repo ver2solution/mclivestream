@@ -1,0 +1,74 @@
+/* FWA V1 — shared stylesheet (STAGED, chưa deploy)
+ * Nguồn: design tokens trích nguyên văn từ demo FWA-V1-Direct-Upload.zip (index.html).
+ * Cách dùng: nạp SAU v20.css; các trang opt-in bằng class fwa-* (tiền tố riêng để không
+ * đụng class cũ của v20.css). Font giữ Be Vietnam Pro của site (demo dùng system-ui
+ * chỉ là mặc định prototype). Mobile nav: KHÔNG thêm nav mới — shell hiện tại
+ * (.mobile-shell, S1 21/11) đã đúng bộ 5 tab theo lệnh Owner; file này chỉ
+ * restyle shell đó sang màu V1 (xem khối cuối file).
+ */
+
+:root{
+  --fwa-ink:#18313d; --fwa-muted:#627784; --fwa-line:#dce6e8; --fwa-bg:#f2f6f5;
+  --fwa-green:#087f68; --fwa-dark:#103a35; --fwa-mint:#e3f3ed; --fwa-white:#fff;
+  --fwa-amber:#b26b23; --fwa-shadow:0 6px 24px #173d3210;
+}
+
+/* Nút */
+.fwa-btn{background:var(--fwa-green);color:#fff;font-weight:700;padding:9px 13px;border-radius:8px;white-space:nowrap;font-size:13px;border:0;cursor:pointer}
+.fwa-btn:hover{background:#076853}
+.fwa-btn.secondary{color:var(--fwa-green);background:var(--fwa-mint)}
+.fwa-btn.ghost{color:var(--fwa-ink);background:#fff;border:1px solid var(--fwa-line)}
+.fwa-btn:focus-visible{outline:3px solid #51bfa2;outline-offset:2px}
+
+/* Panel / thẻ */
+.fwa-panel{background:#fff;border:1px solid var(--fwa-line);border-radius:13px;box-shadow:var(--fwa-shadow);min-width:0;overflow:hidden}
+.fwa-panel-head{display:flex;align-items:center;gap:10px;padding:16px 17px;border-bottom:1px solid var(--fwa-line)}
+.fwa-panel-body{padding:17px}
+
+/* Badge / pill / chip */
+.fwa-badge{display:inline-block;font-size:10px;background:#e7f5ec;color:#236a4b;border-radius:5px;padding:3px 6px;font-weight:750}
+.fwa-pill{font-size:11px;padding:5px 9px;border-radius:100px;background:#ffffff19;color:#e0f6ed}
+.fwa-chip{border:1px solid var(--fwa-line);border-radius:20px;font-size:12px;padding:6px 10px;white-space:nowrap;background:#fff}
+.fwa-chip.active{background:var(--fwa-mint);color:var(--fwa-green);border-color:#a8d6c5;font-weight:750}
+
+/* Hero intro */
+.fwa-hero{background:linear-gradient(115deg,#103a35,#176a58);color:#fff;border-radius:15px;padding:23px 24px;margin-bottom:16px;position:relative;overflow:hidden}
+.fwa-hero:after{content:"";position:absolute;border:1px solid #ffffff27;width:240px;height:240px;border-radius:50%;right:-70px;top:-95px;box-shadow:0 0 0 30px #ffffff0b,0 0 0 62px #ffffff08;pointer-events:none}
+.fwa-hero .eyebrow{color:#b9ead9;font-weight:700;font-size:11px;letter-spacing:1.4px;margin-bottom:8px;text-transform:uppercase}
+.fwa-hero h1{font-size:27px;line-height:1.2;letter-spacing:-.9px}
+.fwa-hero p{color:#d1e8e1;font-size:13px;margin-top:8px;max-width:500px}
+
+/* Job card (lưới 2 cột desktop, 1 cột mobile) */
+.fwa-jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fwa-job{padding:15px}
+.fwa-job-top{display:flex;gap:10px;align-items:center}
+.fwa-job-icon{width:40px;height:40px;background:#eaf3fa;color:#37668c;border-radius:10px;display:grid;place-items:center;font-size:18px;flex:none}
+.fwa-job h3{margin-top:12px;font-size:16px;line-height:1.35}
+.fwa-salary{font-weight:800;color:var(--fwa-green);font-size:20px;letter-spacing:-.5px;margin:7px 0 3px}
+.fwa-job p{font-size:12px;color:var(--fwa-muted);margin:5px 0}
+.fwa-job-actions{display:flex;gap:7px;margin-top:13px}
+.fwa-job-actions .fwa-btn{flex:1}
+
+/* Thanh shell mobile — responsive phụ (lưới job / hero) */
+@media(max-width:720px){
+  .fwa-jobs{grid-template-columns:1fr}
+  .fwa-hero{padding:17px 15px;border-radius:12px}
+  .fwa-hero h1{font-size:23px}
+  .fwa-job-actions{flex-wrap:wrap}
+}
+
+/* Restyle thanh shell mobile CÓ SẴN (.mobile-shell, S1 21/11) theo màu V1 — KHÔNG thêm nav thứ 2.
+ * Shell hiện tại đã đúng bộ 5 tab theo lệnh Owner (Bảng tin · Tìm việc · Đăng tin (+) · Chat · Cá nhân),
+ * breakpoint ≤768px theo mobile-shell.css. Chỉ đổi màu active / nút Đăng tin (+) sang xanh V1 #087f68
+ * (gần màu --brand #0b5d4e sẵn có) và tab không active sang muted V1. */
+@media(max-width:768px){
+  .mobile-shell{border-top-color:var(--fwa-line)}
+  .ms-tab{color:var(--fwa-muted)}
+  .ms-tab.is-active{color:var(--fwa-green)}
+  .ms-tab--post .ms-post-circle{background:var(--fwa-green);box-shadow:0 8px 20px rgba(8,127,104,.35)}
+}
+
+/* Toast + dialog (dùng chung) */
+.fwa-toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--fwa-dark);color:#fff;z-index:30;padding:11px 18px;border-radius:10px;max-width:90%;box-shadow:var(--fwa-shadow);font-size:13px}
+.fwa-toast[hidden]{display:none}
+@media(max-width:720px){.fwa-toast{bottom:78px}}
