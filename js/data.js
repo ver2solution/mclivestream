@@ -19054,7 +19054,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Xu huong mua sam Cyber Week 2026: 357 ty USD mua online toan cau, 75,8 ty USD do AI dan dat (21%), luu luong AI tang 104%, 74% tin goi y cua AI (Salesforce 19/11/2026)."
-  }
+  },
+  {
+   "title": "Bánh kẹo Tết bán online: nhập kẹo ngoại hay kẹo Việt",
+   "cat": "Hàng hoá",
+   "source": "Báo Công Thương",
+   "date": "2026-11-26",
+   "url": "https://kinhte.congthuong.vn/thi-truong-banh-keo-tet-2026-bat-dau-vao-mua-435294.html",
+   "page": "bai-viet/banh-keo-tet-ban-online-nhap-keo-ngoai-hay-keo-viet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/banh-keo-tet-ban-online-nhap-keo-ngoai-hay-keo-viet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bánh kẹo Tết bán online: catalogue sỉ kẹo ngoại Tết 2027 đã mở từ đầu tháng 11/2026 (KEKEWISH, ROVAN, Weisiel — Facebook 03/11 và 07/11/2026); kẹo Việt phổ thông 70.000–150.000đ, hộp quà 200.000–700.000đ (Báo Công Thương)."
+  },
+  {
+   "title": "Thực phẩm chức năng bán Tết: shop nên nhập nhóm nào",
+   "cat": "Hàng hoá",
+   "source": "Deviantly",
+   "date": "2026-11-26",
+   "url": "https://dev.deviantly.ai/trending/products/health",
+   "page": "bai-viet/thuc-pham-chuc-nang-ban-tet-shop-nen-nhap-nhom-nao.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-ban-tet-shop-nen-nhap-nhom-nao.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm chức năng bán Tết: 5 nhóm bán chạy nhất TikTok Shop Mỹ 7 ngày 19–25/11/2026 là lymphatic 34.680 lọ, magnesium 33.342 lọ, collagen/creatine/protein 27.076 lọ, probiotics nữ 26.118 lọ, ngủ/thư giãn 15.920 lọ (Deviantly)."
+  },
+  {
+   "title": "Thực phẩm chức năng TikTok Shop: magnesium dẫn đầu",
+   "cat": "Hàng hoá",
+   "source": "Deviantly",
+   "date": "2026-11-26",
+   "url": "https://deviantly.ai/trending/products/health/today",
+   "page": "bai-viet/thuc-pham-chuc-nang-tiktok-shop-magnesium-dan-dau-7-ngay.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thuc-pham-chuc-nang-tiktok-shop-magnesium-dan-dau-7-ngay.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thực phẩm chức năng TikTok Shop: ngày 25/11/2026 YESNAP bán 3.038 lọ, vượt Toplux 3.026 lọ trong 1 ngày; cả 7 ngày 19–25/11/2026, Toplux Magnesium dẫn đầu với 24.489 lọ, top 20 bán 174.790 lọ (Deviantly)."
+  },
+  {
+   "title": "Bánh donut Slowpoke 345 yên: Pokémon bán bằng ảnh",
+   "cat": "Hàng hoá",
+   "source": "SoraNews24",
+   "date": "2026-11-26",
+   "url": "https://soranews24.com/2026/11/25/japans-first-ever-pokemon-slowpoke-donuts-are-here-and-weve-eaten-them-photos/",
+   "page": "bai-viet/banh-donut-slowpoke-345-yen-pokemon-ban-bang-anh.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/banh-donut-slowpoke-345-yen-pokemon-ban-bang-anh.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Bánh donut Slowpoke 345 yên ra mắt 25/11/2026 tại Mister Donut Nhật Bản, sau Pikachu và Diglett ngày 04/11/2026 — món donut Pokémon đầu tiên của Slowpoke, bán bằng ảnh chụp và bao bì sưu tầm (SoraNews24)."
+  },
 ],
  "lots": [
    {
