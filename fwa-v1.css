@@ -1,4 +1,4 @@
-/* FWA V1 — shared stylesheet (STAGED, chưa deploy)
+/* FWA V1 — shared stylesheet (LIVE — lát 1–5 đã deploy 26/11/2026)
  * Nguồn: design tokens trích nguyên văn từ demo FWA-V1-Direct-Upload.zip (index.html).
  * Cách dùng: nạp SAU v20.css; các trang opt-in bằng class fwa-* (tiền tố riêng để không
  * đụng class cũ của v20.css). Font giữ Be Vietnam Pro của site (demo dùng system-ui
@@ -89,7 +89,7 @@
 .hero .search-card .btn-primary{background:var(--fwa-green);border-radius:8px}
 .hero .chips a:hover{color:var(--fwa-green)}
 
-/* LÁT 4 — Thẻ Việc làm + panel Chat theo ngôn ngữ V1 (26/11/2026, sau lát 3; STAGED, chưa deploy).
+/* LÁT 4 — Thẻ Việc làm + panel Chat theo ngôn ngữ V1 (26/11/2026, sau lát 3; ĐÃ LIVE 21:40, PR #138).
  * CSS-only, không đổi markup/JS/dữ liệu. Thẻ render bởi js/app.js (.card.card-compact
  * mẫu, .shop-card.card-compact shop); tên thẻ là overlay gradient trên ảnh — giữ nguyên
  * để đọc được. Chat: .chat-page 3 cột (phòng | hội thoại | Top tương tác).
@@ -106,7 +106,7 @@
 .chat-page-composer textarea:focus-visible,.chat-rooms-head input:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
 .chat-page-composer .btn-primary{background:var(--fwa-green);border-radius:8px}
 
-/* LÁT 5 — Hồ sơ/onboarding theo ngôn ngữ V1 (26/11/2026, sau lát 4; STAGED, chưa deploy).
+/* LÁT 5 — Hồ sơ/onboarding theo ngôn ngữ V1 (26/11/2026, sau lát 4; ĐÃ LIVE 21:51, PR #139).
  * CSS-only, giữ nguyên logic v423 (wizard render bởi js/onboarding.js, 4 bước/9 vai trò
  * trên dang-ky.html; form hồ sơ #myProfileForm trên trang-cua-toi.html). Không đổi
  * markup/JS/dữ liệu. .ob-resume (hổ phách) và .ob-err (đỏ) giữ nguyên. */
@@ -126,3 +126,10 @@
 .ob-nav .btn-primary{background:var(--fwa-green);border-radius:8px}
 #myProfileForm{border:1px solid var(--fwa-line);border-radius:13px;box-shadow:var(--fwa-shadow)}
 #myProfileForm input:focus-visible,#myProfileForm select:focus-visible,#myProfileForm textarea:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
+
+/* LÁT 6A — Form Đăng tin theo ngôn ngữ V1 (26/11/2026, sau lát 5; STAGED, chưa deploy).
+ * CSS-only, giữ nguyên logic gửi tin (McLivestreamAPI.submitJobPost, gate #jobGate).
+ * Form #dang-tin trên danh-sach-mau.html (đã nạp fwa-v1.css từ lát 1). */
+#dang-tin{border:1px solid var(--fwa-line);border-radius:13px;box-shadow:var(--fwa-shadow)}
+#dang-tin input:focus-visible,#dang-tin select:focus-visible,#dang-tin textarea:focus-visible{outline:3px solid #51bfa2;outline-offset:1px}
+#dang-tin .btn-primary{background:var(--fwa-green);border-radius:8px}
