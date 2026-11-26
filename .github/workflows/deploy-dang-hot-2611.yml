@@ -21,8 +21,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "788" || (echo "BASE DOI: data.js khong con 788 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)" = "812" || (echo "BASE DOI: sitemap khong con 812 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"   = "792" || (echo "BASE DOI: data.js khong con 792 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)"   = "816" || (echo "BASE DOI: sitemap khong con 816 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip dang-hot-2611 package
         run: |
           unzip -o mclivestream-dang-hot-2611-deploy.zip
@@ -41,8 +41,8 @@ jobs:
           grep -qF "Black Friday 2026 đang giảm sâu nhất ở nhóm công nghệ: AirPods Pro 3 còn 149 USD từ giá gốc 250 USD" bai-viet/black-friday-2026-airpods-pro-3-chi-149-usd-macbook-1049-usd.html || (echo "LEAD SAI bai airpods"; exit 1)
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)" = "816" || (echo "SAI TONG sitemap, phai 816"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "792" || (echo "SAI TONG data.js, phai 792 bai-viet page"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)"  = "820" || (echo "SAI TONG sitemap, phai 820"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"  = "796" || (echo "SAI TONG data.js, phai 796 bai-viet page"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
