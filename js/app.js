@@ -5794,7 +5794,7 @@ function safeInit(fn){
    khong tu cuon khi doi tab/bo loc (v213), chi Ap dung co ket qua moi cuon.
    Du lieu: D.freelanceJobs (6 tab dau, loc theo cat) + D.freelancePeople
    (tab 7, kind tim-viec/tim-nguoi). Lien he qua Cong lien he E-189. */
-var FREELANCE_PER_PAGE = 20;
+var FREELANCE_PER_PAGE = 24; /* v453 (26/11/2026): 24 tin/trang = 4 hang x 6 o, khop form chuan mau/kiot (v345). */
 /* v452 (26/11/2026): icon dai dien theo nhom nghe cho the + modal LDTD
    (the freelance khong co anh that — dung icon nhu modal chung van dung). */
 var FREELANCE_CAT_ICONS = {'san-xuat': '🏭', 'van-tai': '🚚', 'dich-vu': '🍽️', 'cham-soc': '💆', 'xay-dung': '🏗️', 'nong-nghiep': '🌾', 'ca-nhan': '👤'};

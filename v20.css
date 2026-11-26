@@ -1540,17 +1540,16 @@ a.trust-num:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .fl-contact-note{margin:8px 0 0;color:var(--mut);font-size:13px}
 .fl-empty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center}
 .fl-empty p{margin:0 0 12px;color:var(--mut)}
-/* v452 (26/11/2026): the LDTD gon theo form chung — hang ngang: o icon
-   dai dien ben trai (bam mo modal nhu anh the lo/xuong/kiot) + noi dung
-   ben phai; mo ta cat 2 dong; nut Xem chi tiet mo modal dung chung. */
-.fl-card{display:flex;gap:12px;align-items:flex-start}
-.card-compact-photo--freelance{flex:none;width:72px;aspect-ratio:1;background:linear-gradient(160deg,#d9efe6,#0b5d4e);cursor:pointer}
-.card-compact-photo--freelance .ph-holder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:36px}
-.fl-body{flex:1;min-width:0}
+/* v453 (26/11/2026): the LDTD vao form chuan — luoi 6 o/hang (.grid) + the
+   doc: o icon len tren (full-width, ti le 4/5 nhu .card-compact-photo) +
+   noi dung ben duoi; mo ta cat 2 dong; nut Xem chi tiet mo modal dung chung. */
+.fl-card{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.card-compact-photo--freelance{width:100%;background:linear-gradient(160deg,#d9efe6,#0b5d4e);cursor:pointer}
+.card-compact-photo--freelance .ph-holder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px}
+.fl-body{flex:1;min-width:0;padding:12px 14px 14px}
 .fl-desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .fl-detail-link{margin:8px 0 0;padding:0;border:0;background:none;color:#0b5d4e;font-weight:800;font-size:14px;cursor:pointer}
 .fl-detail-link:hover{text-decoration:underline}
-@media(max-width:600px){.card-compact-photo--freelance{width:56px}.card-compact-photo--freelance .ph-holder{font-size:28px}}
 /* v423 — Phase 1 V2.0 Dynamic Onboarding: wizard 4 buoc tren dang-ky.html.
    (js/onboarding-fields.js + js/onboarding.js). Giu dung ngon ngu hinh anh
    hien co: xanh la chu #0b5d4e, nut .btn/.btn-primary, the .form-card. */
