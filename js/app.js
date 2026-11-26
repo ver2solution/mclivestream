@@ -1398,6 +1398,12 @@ function findDetailItem(id){
   if(m) return {kind: 'model', item: m};
   var s = (D.shops || []).filter(function(x){ return x && x.id === id; })[0];
   if(s) return {kind: 'shop', item: s};
+  /* v452: Lao Dong Tu Do — id 'fl-*' (viec) / 'fp-*' (nguoi); mo modal
+     chi tiet dung chung nhu lo/xuong/kiot. */
+  var fj = (D.freelanceJobs || []).filter(function(x){ return x && x.id === id; })[0];
+  if(fj) return {kind: 'freelance', item: fj};
+  var fp = (D.freelancePeople || []).filter(function(x){ return x && x.id === id; })[0];
+  if(fp) return {kind: 'freelance', item: fp};
   /* v447: hang van chuyen noi dia (logisticsNoiDia, data.js) — id
      'carrier-*'; mo modal chi tiet dung chung. */
   var cr = (D.logisticsNoiDia || []).filter(function(x){ return x && x.id === id; })[0];
@@ -1420,7 +1426,7 @@ function findDetailItem(id){
 function lotFactoryKiotDetailHTML(kind, item){
   var isNewObj = !!(kind && NEWOBJ_TYPES[kind]); /* v179: 5 danh muc doi tuong moi */
   var title = kind === 'model' ? ((item.province || '') + ' — ' + (item.name || '')) : (item.title || item.name || 'Chi tiết');
-  var icon = isNewObj ? NEWOBJ_TYPES[kind].icon : kind === 'carrier' ? '🚚' : kind === 'factory' ? '🏭' : kind === 'kiot' ? '🏪' : kind === 'model' ? '👤' : kind === 'shop' ? '🛍️' : '📦';
+  var icon = kind === 'freelance' ? freelanceCatIcon(item) : isNewObj ? NEWOBJ_TYPES[kind].icon : kind === 'carrier' ? '🚚' : kind === 'factory' ? '🏭' : kind === 'kiot' ? '🏪' : kind === 'model' ? '👤' : kind === 'shop' ? '🛍️' : '📦';
   var photoLabel = '';
   if(kind === 'model') photoLabel = hasReal(item.cat) ? item.cat : 'Mẫu livestream';
   else if(kind === 'shop') photoLabel = hasReal(item.product) ? item.product : 'Shop tuyển mẫu';
@@ -1428,9 +1434,27 @@ function lotFactoryKiotDetailHTML(kind, item){
   else if(kind === 'factory') photoLabel = hasReal(item.cat) ? catLabel(item.cat) : 'Xưởng gia công';
   else if(kind === 'kiot') photoLabel = hasReal(item.cat) ? catLabel(item.cat) : 'Kiot thanh lý';
   else if(kind === 'carrier') photoLabel = 'Hãng vận chuyển';
+  else if(kind === 'freelance') photoLabel = item.kind ? freelanceTab7Label() : freelanceCatLabel(item.cat);
   else photoLabel = (item.group === 2 ? 'Thu mua: ' : 'Xả kho: ') + (hasReal(item.cat) ? catLabel(item.cat) : 'Lô hàng');
   var facts = '';
-  if(kind === 'model'){
+  var freelanceContact = '';
+  if(kind === 'freelance'){
+    /* v452: Lao Dong Tu Do — mo ta day du + bang facts + lien he trong modal chung. */
+    var flCat = item.kind ? freelanceTab7Label() : freelanceCatLabel(item.cat);
+    facts += '<div class="fact"><b>Nhóm nghề</b><span>' + esc(flCat) + '</span></div>';
+    if(item.kind) facts += '<div class="fact"><b>Loại</b><span>' + (item.kind === 'tim-nguoi' ? 'Tìm người' : 'Tìm việc') + '</span></div>';
+    if(hasReal(item.province)) facts += '<div class="fact"><b>Tỉnh / thành phố</b><span>' + esc(item.province) + '</span></div>';
+    if(item.exp) facts += '<div class="fact"><b>Kinh nghiệm</b><span>' + esc(freelanceExpLabel(item.exp)) + '</span></div>';
+    if(item.workType) facts += '<div class="fact"><b>Hình thức làm việc</b><span>' + esc(freelanceWorkTypeLabel(item.workType)) + '</span></div>';
+    facts += '<div class="fact"><b>Mức lương</b><span>' + esc(freelanceSalaryText(item)) + '</span></div>';
+    if(hasReal(item.source)) facts += '<div class="fact"><b>Nguồn</b><span>' + esc(item.source) + '</span></div>';
+    facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(freelanceDateStr(item.postedAt)) + '</span></div>';
+    if(item.contactRef && typeof gatedContactsHTML === 'function'){
+      freelanceContact = gatedContactsHTML('freelance', item.contactRef);
+    } else {
+      freelanceContact = '<p class="fl-contact-note">Liên hệ qua Cổng liên hệ sau khi đăng nhập.</p>';
+    }
+  } else if(kind === 'model'){
     facts += '<div class="fact"><b>Tỉnh / nơi muốn làm việc</b><span>' + esc(item.province) + '</span></div>';
     facts += '<div class="fact"><b>Giỏi livestream nhất</b><span>' + esc(item.cat) + '</span></div>';
     facts += '<div class="fact"><b>Lương mong muốn</b><span>' + esc(item.salary) + '</span></div>';
@@ -1502,11 +1526,11 @@ function lotFactoryKiotDetailHTML(kind, item){
   // moi — nhanh isNewObj o tren da co hang "Ngày đăng" tu dateAdded; ca
   // 88 muc moi chi co dateAdded (khong co date) nen hang chung truoc day
   // hien them 1 hang "Ngày đăng" TRONG (modal Thiet bi hien "NGÀY ĐĂNG ×2").
-  if(!isNewObj && kind !== 'carrier') facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(item.date || '') + '</span></div>';
+  if(!isNewObj && kind !== 'carrier' && kind !== 'freelance') facts += '<div class="fact"><b>Ngày đăng</b><span>' + esc(item.date || '') + '</span></div>';
   // Anh dai dien: mau dung anh ho so, shop dung logo, lo/xuong/kiot dung anh bai goc, 5 loai moi dung avatar (v339: khong co avatar thi dung logo.png tam).
-  var photo = kind === 'model' ? photoHTML(item) : kind === 'shop' ? shopLogoHTML(item) : kind === 'carrier' ? '<img src="' + esc(hasReal(item.logo) ? item.logo : 'logo.png') + '" alt="Logo ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : isNewObj ? '<img src="' + esc(hasReal(item.avatar) ? item.avatar : 'logo.png') + '" alt="Ảnh đại diện của ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : lotFactoryPhotoHTML(item, title);
+  var photo = kind === 'model' ? photoHTML(item) : kind === 'shop' ? shopLogoHTML(item) : kind === 'carrier' ? '<img src="' + esc(hasReal(item.logo) ? item.logo : 'logo.png') + '" alt="Logo ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : isNewObj ? '<img src="' + esc(hasReal(item.avatar) ? item.avatar : 'logo.png') + '" alt="Ảnh đại diện của ' + esc(item.name || '') + '" loading="lazy" onerror="this.remove()">' : kind === 'freelance' ? '' : lotFactoryPhotoHTML(item, title);
   // Meta: mau dung tieu de ho so, shop dung mat hang + tinh, lo/xuong/kiot dung meta san co, 5 loai moi dung don vi + tinh.
-  var meta = kind === 'model' ? item.title : kind === 'shop' ? ((hasReal(item.product) ? '🎯 ' + item.product + ' · ' : '') + '📍 ' + (item.province || '')) : isNewObj ? ((item.provider || '') + (item.province ? ' · 📍 ' + item.province : '')) : item.meta;
+  var meta = kind === 'model' ? item.title : kind === 'shop' ? ((hasReal(item.product) ? '🎯 ' + item.product + ' · ' : '') + '📍 ' + (item.province || '')) : isNewObj ? ((item.provider || '') + (item.province ? ' · 📍 ' + item.province : '')) : kind === 'freelance' ? ((item.kind ? freelanceTab7Label() : freelanceCatLabel(item.cat)) + (item.province ? ' · 📍 ' + item.province : '')) : item.meta;
   // Nut hanh dong: mau/shop co nut "Xem day du" dan toi trang chi tiet
   // (lien he + binh luan + ho so khac van o do); nut sao dung loai
   // 'model_profile'/'shop_profile' nhu trang chi tiet (dong bo sao).
@@ -1543,14 +1567,16 @@ function lotFactoryKiotDetailHTML(kind, item){
   + '<h2 id="lfkDetailTitle">' + esc(title) + '</h2>'
   + (hasReal(meta) ? '<p class="detail-meta">' + esc(meta) + '</p>' : '')
   + '<div class="fact-grid">' + facts + '</div>'
+  + freelanceContact
+  + (kind === 'freelance' && hasReal(item.desc) ? '<p style="white-space:pre-wrap;overflow-wrap:break-word">' + esc(item.desc) + '</p>' : '')
   + carrierSteps
   + (isNewObj && hasReal(item.detail) ? '<p style="white-space:pre-wrap;overflow-wrap:break-word">' + esc(item.detail) + '</p>' : '')
-  + '<div class="detail-actions">' + ((isNewObj || kind === 'carrier') ? '' : starButtonHTML(starKind, item.id)) + fullLink + origin + '</div>' /* v179: 5 loai moi chua co nut sao (enum RPC sao chua co cac loai nay); v447: hang van chuyen cung chua co nut sao */
+  + '<div class="detail-actions">' + ((isNewObj || kind === 'carrier' || kind === 'freelance') ? '' : starButtonHTML(starKind, item.id)) + fullLink + origin + '</div>' /* v179: 5 loai moi chua co nut sao (enum RPC sao chua co cac loai nay); v447: hang van chuyen cung chua co nut sao; v452: freelance cung chua co nut sao */
   + '<p class="detail-note">' + note + '</p>'
   /* v177: mien tru o cuoi thong tin chi tiet cho ca 5 loai (lo/xuong/kiot
      truoc day chua co; mau/shop modal cung hien nhu trang chi tiet day du).
      Dat sau note, truoc phan binh luan. */
-  + '<p class="disclaimer">'+(isNewObj ? DISCLAIMER.replace(' Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).', '') : DISCLAIMER)+'</p>' /* v179: 5 loai moi khong co nut sao nen bo cau ghim sao khoi mien tru */
+  + '<p class="disclaimer">'+(isNewObj || kind === 'freelance' ? DISCLAIMER.replace(' Để ghim hồ sơ này lên top, hãy ấn sao ★ (mỗi sao lên top 60 phút).', '') : DISCLAIMER)+'</p>' /* v179: 5 loai moi khong co nut sao nen bo cau ghim sao khoi mien tru; v452: freelance cung vay */
   + comments;
 }
 function openLotFactoryKiotDetail(id){
@@ -5769,6 +5795,24 @@ function safeInit(fn){
    Du lieu: D.freelanceJobs (6 tab dau, loc theo cat) + D.freelancePeople
    (tab 7, kind tim-viec/tim-nguoi). Lien he qua Cong lien he E-189. */
 var FREELANCE_PER_PAGE = 20;
+/* v452 (26/11/2026): icon dai dien theo nhom nghe cho the + modal LDTD
+   (the freelance khong co anh that — dung icon nhu modal chung van dung). */
+var FREELANCE_CAT_ICONS = {'san-xuat': '🏭', 'van-tai': '🚚', 'dich-vu': '🍽️', 'cham-soc': '💆', 'xay-dung': '🏗️', 'nong-nghiep': '🌾', 'ca-nhan': '👤'};
+function freelanceCatIcon(item){
+  if(item && item.kind) return FREELANCE_CAT_ICONS['ca-nhan'];
+  return FREELANCE_CAT_ICONS[(item && item.cat) || ''] || '💼';
+}
+/* v452: luong luu dang chuoi ("285.000đ/ca", "10.000.000–14.000.000") —
+   Number() tra NaN nen loc luong toi thieu truoc day loai het cac tin nay.
+   Lay so dau tien cua chuoi (bo dau cham phan cach nghin) de so sanh. */
+function freelanceSalaryNum(item){
+  if(item == null || item.salary == null || item.salary === '') return NaN;
+  if(typeof item.salary === 'number') return item.salary;
+  var m = String(item.salary).match(/(\d[\d.]*)/);
+  if(!m) return NaN;
+  var n = Number(m[1].replace(/\./g, ''));
+  return isNaN(n) ? NaN : n;
+}
 function freelanceCats(){
   var cats = (typeof D !== 'undefined' && D.freelanceCats) ? D.freelanceCats : [];
   return Array.isArray(cats) ? cats : [];
@@ -5824,13 +5868,17 @@ function freelanceCardHTML(item){
   } else {
     contact = '<p class="fl-contact-note">Liên hệ qua Cổng liên hệ sau khi đăng nhập.</p>';
   }
-  return '<article class="fl-card" data-fl-id="' + esc(item.id || '') + '">'
+  return '<article class="fl-card" data-v2s-id="' + esc(item.id || '') + '" data-fl-id="' + esc(item.id || '') + '">'
+    + '<span class="card-compact-photo card-compact-photo--freelance" aria-hidden="true"><span class="ph-holder">' + freelanceCatIcon(item) + '</span></span>'
+    + '<div class="fl-body">'
     + '<h3>' + esc(title) + '</h3>'
     + '<p class="fl-meta"><span class="fl-cat">' + esc(cat) + '</span>' + kindTag + (meta.length ? ' · ' + meta.join(' · ') : '') + '</p>'
     + '<p class="fl-salary"><b>' + esc(freelanceSalaryText(item)) + '</b></p>'
     + (item.desc ? '<p class="fl-desc">' + esc(item.desc) + '</p>' : '')
     + (posted ? '<p class="fl-date">Đăng ngày ' + esc(posted) + '</p>' : '')
     + contact
+    + '<button class="fl-detail-link" type="button" data-fl-id="' + esc(item.id || '') + '" data-track="xem-chi-tiet-lao-dong">Xem chi tiết →</button>'
+    + '</div>'
     + '</article>';
 }
 function freelanceMatches(item, f){
@@ -5839,7 +5887,7 @@ function freelanceMatches(item, f){
   if(f.workType && item.workType !== f.workType) return false;
   if(f.minSalary != null && f.minSalary !== ''){
     var min = Number(f.minSalary);
-    var sal = Number(item.salary);
+    var sal = freelanceSalaryNum(item); /* v452: luong dang chuoi van loc duoc */
     if(!isNaN(min) && (isNaN(sal) || sal < min)) return false;
   }
   return true;
@@ -5942,6 +5990,14 @@ function initFreelancePage(){
   tabBtns.forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.getAttribute('data-fl-tab'), false); });
   });
+  /* v452: nut "Xem chi tiet" tren the mo modal dung chung (o icon mo bang
+     delegate toan cuc cua initLotFactoryDetail). */
+  if(listEl) listEl.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.fl-detail-link') : null;
+    if(!btn) return;
+    var id = btn.getAttribute('data-fl-id');
+    if(id && typeof openLotFactoryKiotDetail === 'function') openLotFactoryKiotDetail(id);
+  });
   if(applyBtn) applyBtn.addEventListener('click', function(){ page = 1; render(true); });
   if(resetBtn) resetBtn.addEventListener('click', function(){
     if(provSel) provSel.value = '';
@@ -5987,7 +6043,7 @@ if(typeof document!=='undefined') document.addEventListener('DOMContentLoaded',f
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', function(){ safeInit(initNewsDropdown); });
 window.V20 = {esc:esc, cardHTML:cardHTML, photoNote:photoNote, decisionHTML:decisionHTML, hasRealValue:hasReal, verifiedRevenue:verifiedRevenue, revenueText:revenueText, headerDisplayName:headerDisplayName, headerMetaName:headerMetaName, initHeaderAuth:initHeaderAuth, initLogoBadge:initLogoBadge, initActivationStrip:initActivationStrip, miniHTML:miniHTML, filterModels:filterModels, filterShops:filterShops, shopCatGroup:shopCatGroup, withPhotoFirst:withPhotoFirst, clean:clean, shopCardHTML:shopCardHTML, shopDecisionHTML:shopDecisionHTML, shopLogoHTML:shopLogoHTML, contactsBlockHTML:contactsBlockHTML, contactNoteHTML:contactNoteHTML, contactItemHTML:contactItemHTML, sortShopsNewest:sortShopsNewest, articleLink:articleLink, articleHref:articleHref, sortByDateDesc:sortByDateDesc, sortByDMYDesc:sortByDMYDesc, renderHomeSection:renderHomeSection, articleTarget:articleTarget, articleTitleHTML:articleTitleHTML, articleMediaHTML:articleMediaHTML, imgFallback:imgFallback, getPinnedRow:getPinnedRow, pinCardHTML:pinCardHTML, newsCardHTML:newsCardHTML, formatArticleDate:formatArticleDate, initModelNewsRow:initModelNewsRow, initShopNewsRow:initShopNewsRow, initKiotNewsRow:initKiotNewsRow, pickMostViewedArticle:pickMostViewedArticle, newsRowNewest:newsRowNewest, newsRowFinalList:newsRowFinalList, newsDropdownHTML:newsDropdownHTML, newsDropdownRoot:newsDropdownRoot, initNewsDropdown:initNewsDropdown, NEWS_DROPDOWN_CATS:NEWS_DROPDOWN_CATS, dayOfYear:dayOfYear, rotateDaily:rotateDaily, rotateWindow:rotateWindow, window6h:window6h, photoTier:photoTier, homeModels12:homeModels12, countLabel:countLabel, applyOptionCounts:applyOptionCounts, initOptionCounts:initOptionCounts, refreshUniCounts:refreshUniCounts, uniProvCount:uniProvCount, uniCatCount:uniCatCount, uniTotal:uniTotal, defaultShopOrder:defaultShopOrder, logoTier:logoTier, rotateStaticGrids:rotateStaticGrids, lotMatches:lotMatches, facMatches:facMatches, inRange:inRange, initLotFilter:initLotFilter, initFactoryFilter:initFactoryFilter, initSectionFilter:initSectionFilter, initLotPageFilter:initLotPageFilter, initFactoryPageFilter:initFactoryPageFilter, lotSortComparator:lotSortComparator, facSortComparator:facSortComparator, findLotFactoryKiot:findLotFactoryKiot, findDetailItem:findDetailItem, lotFactoryKiotDetailHTML:lotFactoryKiotDetailHTML, openLotFactoryKiotDetail:openLotFactoryKiotDetail, closeLotFactoryKiotDetail:closeLotFactoryKiotDetail, initLotFactoryDetail:initLotFactoryDetail, initFilterToggle:initFilterToggle, filterSectionOf:filterSectionOf, closeFilters:closeFilters, closeFilterOf:closeFilterOf, initShopDetail:initShopDetail, initDetail:initDetail, trustStats:trustStats, renderTrustStats:renderTrustStats, parseMonthlyMax:parseMonthlyMax, parseRevenue:parseRevenue, fmtVnd:fmtVnd, parseHourlyMin:parseHourlyMin, sortModelsBy:sortModelsBy, sortShopsBy:sortShopsBy, parseMoneyInput:parseMoneyInput, ownerNoteHTML:ownerNoteHTML, defaultModelOrder:defaultModelOrder, hubZaloHref:hubZaloHref, hubCardHTML:hubCardHTML, hubResults:hubResults, hubAllLink:hubAllLink, hubEmptyHTML:hubEmptyHTML, demoUrlOf:demoUrlOf, initHub:initHub, initFaqToggle:initFaqToggle, parseVnDate:parseVnDate, lotActive:lotActive, lotsByGroup:lotsByGroup, lotFactoryStats:lotFactoryStats, liveCount:liveCount, renderLiveStats:renderLiveStats, lotFactoryPhotoHTML:lotFactoryPhotoHTML, lotCardHTML:lotCardHTML, factoryCardHTML:factoryCardHTML, renderLotSections:renderLotSections, userListingToLot:userListingToLot, userListingToFactory:userListingToFactory, userListingToKiot:userListingToKiot, registerUserListing:registerUserListing, loadUserListings:loadUserListings, toggleUserListingPanel:toggleUserListingPanel, closeUserListingPanel:closeUserListingPanel, userListingPanelHTML:userListingPanelHTML, userListingBadgeHTML:userListingBadgeHTML, userListingShopLineHTML:userListingShopLineHTML, pointsButtonsHTML:pointsButtonsHTML, articleRef:articleRef, fetchActivePins:fetchActivePins, applyPinnedOrder:applyPinnedOrder, mountPointsDetail:mountPointsDetail, initPointsUI:initPointsUI, gatedContactsHTML:gatedContactsHTML, fetchItemContacts:fetchItemContacts, gateFilterApply:gateFilterApply, initFilterHint:initFilterHint, filterMsgEl:filterMsgEl, selectHasValue:selectHasValue, setSelectOptions:setSelectOptions, modelCatOptions:modelCatOptions, shopGroupOptions:shopGroupOptions, rebuildUniCatOptions:rebuildUniCatOptions, rebuildShopCatOptions:rebuildShopCatOptions, UNI_CAT_DEFS:UNI_CAT_DEFS, UNI_LOCKABLE:UNI_LOCKABLE, UNI_LOCKABLE_ALL:UNI_LOCKABLE_ALL, initTransferForm:initTransferForm, emptyResultsHTML:emptyResultsHTML, pinUntilText:pinUntilText, initArticleComments:initArticleComments, markLiked:markLiked, LIKE_STORE_KEY:LIKE_STORE_KEY, likedToday:likedToday, markLikedToday:markLikedToday, markShared:markShared, SHARE_STORE_KEY:SHARE_STORE_KEY, sharedToday:sharedToday, markSharedToday:markSharedToday, commentToggleHTML:commentToggleHTML, uniCatToShop:uniCatToShop, uniCatToModel:uniCatToModel, uniCatToLotFac:uniCatToLotFac, shopCatToUni:shopCatToUni, uniProvToFactory:uniProvToFactory, getUniCat:getUniCat, setUniCatFieldStates:setUniCatFieldStates, syncHubFromUni:syncHubFromUni, setParams:setParams, initUniCatSwitch:initUniCatSwitch, initShopPage:initShopPage, uniSortToModelSort:uniSortToModelSort, MODEL_CAT_TO_UNI:MODEL_CAT_TO_UNI, newObjCardHTML:newObjCardHTML, newObjPriceText:newObjPriceText, renderNewObjSections:renderNewObjSections, initNewObjSections:initNewObjSections, initNewObjSection:initNewObjSection, newObjMatches:newObjMatches, NEWOBJ_TYPES:NEWOBJ_TYPES, NEWOBJ_ARRAYS:NEWOBJ_ARRAYS, NEWOBJ_SECTIONS:NEWOBJ_SECTIONS, NEWOBJ_LOGISTICS_OPTIONS:NEWOBJ_LOGISTICS_OPTIONS, KIOT_SUBTYPES:KIOT_SUBTYPES, kiotSubtypeLabel:kiotSubtypeLabel, NEWOBJ_UNI_CATS:NEWOBJ_UNI_CATS, newObjUniCatCfg:newObjUniCatCfg, newObjCount:newObjCount, newObjProvCount:newObjProvCount, refreshNewObjCatCounts:refreshNewObjCatCounts, showOnlyNewObjSection:showOnlyNewObjSection, showAllNewObjSections:showAllNewObjSections, refreshClassMoreBtn:refreshClassMoreBtn, refreshShopProvCounts:refreshShopProvCounts, refreshShopLogOptCounts:refreshShopLogOptCounts, rebuildProvOptions:rebuildProvOptions, provEntriesForCat:provEntriesForCat, kiotPriceRange:KIOT_PRICE_RANGE, setKiotPriceRange:setKiotPriceRange, payLevels:payLevels, fillPayDatalist:fillPayDatalist, NEWOBJ_NO_COUNT:NEWOBJ_NO_COUNT, dedupeProfiles:dedupeProfiles, profileKey:profileKey, sortNewObjByDateDesc:sortNewObjByDateDesc, renderHomeNewObj:renderHomeNewObj, HOME_NEWOBJ_SECTIONS:HOME_NEWOBJ_SECTIONS, pageOfId:pageOfId, scrollToHashedCard:scrollToHashedCard,
 /* v99 (the rut gon + sao len top) */
-catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML, initFreelancePage:initFreelancePage, freelanceCardHTML:freelanceCardHTML, freelanceMatches:freelanceMatches, freelanceCatLabel:freelanceCatLabel, FREELANCE_PER_PAGE:FREELANCE_PER_PAGE};
+catLabel:catLabel, sourceDetailLink:sourceDetailLink, findProvinceInText:findProvinceInText, normProv:normProv, normProvKiot:normProvKiot, lotProvOf:lotProvOf, MERGED_PROV:MERGED_PROV, modelFields:modelFields, modelFieldLine:modelFieldLine, modelLocationLine:modelLocationLine, shopLocationLine:shopLocationLine, shopSalaryLine:shopSalaryLine, lotLocationLine:lotLocationLine, lotValueLine:lotValueLine, factoryLocationLine:factoryLocationLine, factoryItemsLine:factoryItemsLine, kiotLocationLine:kiotLocationLine, kiotTypeLine:kiotTypeLine, CAT_LABELS:CAT_LABELS, STAR_STORE_KEY:STAR_STORE_KEY, STAR_WINDOW_MS:STAR_WINDOW_MS, STAR_LIMIT_MS:STAR_LIMIT_MS, starPlace:starPlace, starStoreRead:starStoreRead, starStoreWrite:starStoreWrite, starKey:starKey, starTodayStr:starTodayStr, starredWithin12h:starredWithin12h, markStarred:markStarred, starredToday:starredToday, markStarredToday:markStarredToday, starCountOf:starCountOf, starButtonHTML:starButtonHTML, starTierOf:starTierOf, applyStarOrder:applyStarOrder, refreshStarCounts:refreshStarCounts, fetchStarStats:fetchStarStats, starClick:starClick, starToast:starToast, v2sSignupPopup:v2sSignupPopup, v2sToast:v2sToast, showPendingToast:showPendingToast, initStars:initStars, DISCLAIMER:DISCLAIMER, PIN_LONGER_HTML:PIN_LONGER_HTML, initFreelancePage:initFreelancePage, freelanceCardHTML:freelanceCardHTML, freelanceMatches:freelanceMatches, freelanceCatLabel:freelanceCatLabel, freelanceSalaryNum:freelanceSalaryNum, freelanceCatIcon:freelanceCatIcon, FREELANCE_PER_PAGE:FREELANCE_PER_PAGE};
 if(typeof module!=='undefined' && module.exports) module.exports = window.V20;
 })();
 
