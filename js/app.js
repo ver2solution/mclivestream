@@ -3130,6 +3130,13 @@ function renderTrustStats(){
   var tk = document.getElementById('trustKiots'); if(tk) tk.textContent = String((D.kiots || []).length);
   /* v205: 8 so lieu muc moi — lay tu data.js bang newObjCount (khop so tren switch + section). */
   [['trustNewObjClassesLive','classesLive'],['trustNewObjClassesMakeup','classesMakeup'],['trustNewObjEventsMarketing','eventsMarketing'],['trustNewObjLogistics','logistics'],['trustNewObjRentals','rentals'],['trustNewObjAgencyAds','agencyAds'],['trustNewObjMovingServices','movingServices'],['trustNewObjLiveEquipment','liveEquipment']].forEach(function(p){ var el = document.getElementById(p[0]); if(el) el.textContent = String(newObjCount(p[1])); });
+  /* v458 (27/11/2026): 7 so lieu Lao Dong Tu Do — dem tin theo tab (6 tab dau dem
+     freelanceJobs theo cat; tab ca-nhan dem freelancePeople). Lenh anh Tho 12:29
+     27/11 — 7 muc vao hang 3 tong hop so lieu trang chu, moi o link ?tab=. */
+  var flCounts = {};
+  (D.freelanceJobs || []).forEach(function(j){ if(j && j.cat) flCounts[j.cat] = (flCounts[j.cat] || 0) + 1; });
+  [['trustFLSanXuat','san-xuat'],['trustFLVanTai','van-tai'],['trustFLDichVu','dich-vu'],['trustFLChamSoc','cham-soc'],['trustFLXayDung','xay-dung'],['trustFLNongNghiep','nong-nghiep']].forEach(function(p){ var el = document.getElementById(p[0]); if(el) el.textContent = String(flCounts[p[1]] || 0); });
+  var flp = document.getElementById('trustFLCaNhan'); if(flp) flp.textContent = String((D.freelancePeople || []).length);
 }
 /* v130: sap xep lo/xuong/kiot theo ngay dd/mm/yyyy giam dan. Dung
    parseVnDate co san (khong dung new Date() truc tiep len chuoi
