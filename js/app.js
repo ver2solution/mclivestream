@@ -1208,6 +1208,12 @@ function initSectionFilter(opts){
     });
     var countEl = document.getElementById(opts.countId);
     if(countEl) countEl.textContent = active ? (total + ' ' + opts.label + ' khớp bộ lọc') : '';
+    /* v462 (27/11/2026 — bai hoc v207 + lenh anh 19:49 "co thong ke so lieu o muc loc": so dem trong dong mo ta cua section phai theo bo loc): section nao truyen subId/subText thi cap nhat dong mo ta — loc thi "N/TONG ... khop bo loc", khong loc thi ve tong goc. */
+    var subEl = opts.subId ? document.getElementById(opts.subId) : null;
+    if(subEl && opts.subText){
+      var origTotal = 0; grids.forEach(function(g){ origTotal += g.orig.length; });
+      subEl.textContent = active ? (opts.subText + ' — đang có ' + total + '/' + origTotal + ' ' + opts.label + ' khớp bộ lọc.') : (opts.subText + ' — đang có ' + origTotal + ' ' + (opts.subShort || 'mục') + '.');
+    }
     var emptyEl = document.getElementById(opts.emptyId);
     if(emptyEl) emptyEl.hidden = !(active && total === 0);
     if(active){ setExpanded(true); }
@@ -1238,6 +1244,12 @@ function initSectionFilter(opts){
     if(fEl){ var fSels = fEl.querySelectorAll('select'); for(var fi = 0; fi < fSels.length; fi++){ fSels[fi].value = ''; } }
     var countEl = document.getElementById(opts.countId);
     if(countEl) countEl.textContent = '';
+    /* v462: Dat lai thi dong mo ta ve tong goc (xem apply()). */
+    var subEl2 = opts.subId ? document.getElementById(opts.subId) : null;
+    if(subEl2 && opts.subText){
+      var origTotal2 = 0; grids.forEach(function(g){ origTotal2 += g.orig.length; });
+      subEl2.textContent = opts.subText + ' — đang có ' + origTotal2 + ' ' + (opts.subShort || 'mục') + '.';
+    }
     var emptyEl = document.getElementById(opts.emptyId);
     if(emptyEl) emptyEl.hidden = true;
     setExpanded(false);
@@ -2397,14 +2409,17 @@ var NEWOBJ_TYPES = {
 var NEWOBJ_ARRAYS = ['classesLive', 'classesMakeup', 'eventsMarketing', 'logistics', 'rentals', 'agencyAds', 'movingServices', 'liveEquipment'];
 var NEWOBJ_LOGISTICS_OPTIONS = {'chinh-ngach': 'Vận chuyển chính ngạch', 'tieu-ngach': 'Vận chuyển trọn gói – tiểu ngạch', 'mua-ho': 'Dịch vụ mua hàng hộ'};
 /* v229 (14/11/2026 — thiet ke loai hinh con Kiot da duyet, agent-design
-   13:21): LOAI CON cua 3 muc moi trang Thanh ly Kiot — NGUON DUY NHAT
-   (single source of truth) cho: build option cua #kiotCat, loc the,
-   dem so, hien thi trong modal, index tim kiem. Moi muc trong 3 mang
-   (movingServices/liveEquipment/rentals) co dung 1 ma; muc chua phan
-   loai (khong co subType) chi hien duoi "Tat ca loai hinh", khong roi
-   vao loai con nao. Luu y: rentals co 11 muc (rental-01 mau + rt-02..
-   rt-11) — mat-pho = 9, tong 3 mang = 33 (thiet ke ghi 32 do dem thieu
-   rental-01 vi grep chi '"id": "rt-'). */
+   13:21): LOAI CON cua 3 muc moi trang Thanh ly Kiot — BANG NHAN + THU TU
+   cho: build option cua #kiotCat, loc the, dem so, hien thi trong modal,
+   index tim kiem. v462 (27/11/2026): DANH SACH MA khong con chi doc tu day
+   — refreshKiotCatOptions (thanh-ly-kiot.html) suy ra cac ma loai con TU
+   DATA (KIOT_SUBTYPES chi cho nhan + thu tu; ma moi trong data tu them vao
+   cuoi voi nhan = chinh ma) de the ghi ma moi khong bao gio bien mat khoi
+   o loc. Moi muc trong 3 mang (movingServices/liveEquipment/rentals) co
+   dung 1 ma; muc chua phan loai (khong co subType) chi hien duoi "Tat ca
+   loai hinh", khong roi vao loai con nao. Luu y: rentals co 11 muc
+   (rental-01 mau + rt-02.. rt-11) — mat-pho = 9, tong 3 mang = 33 (thiet
+   ke ghi 32 do dem thieu rental-01 vi grep chi '"id": "rt-'). */
 var KIOT_SUBTYPES = {
   movingServices: [
     {code: 'tron-goi', label: 'Chuyển nhà trọn gói'},
@@ -2660,9 +2675,20 @@ function refreshClassMoreBtn(secId){
 function initNewObjSection(cfg){
   var sectionId = cfg.sectionId;
   if(!document.getElementById(sectionId)) return null;
+  /* v462: tim subId/subText/subShort cho section nay (de apply() cap nhat dong mo ta theo bo loc): NEWOBJ_UNI_CATS cho sectionId -> type, NEWOBJ_SECTIONS cho type -> subId/subText, NEWOBJ_TYPES cho type -> short. */
+  var subCfg = null, subShort = '';
+  if(typeof NEWOBJ_UNI_CATS !== 'undefined'){
+    var foundType = '';
+    Object.keys(NEWOBJ_UNI_CATS).forEach(function(k){ if(NEWOBJ_UNI_CATS[k] && NEWOBJ_UNI_CATS[k].sectionId === sectionId) foundType = NEWOBJ_UNI_CATS[k].type; });
+    if(foundType){
+      if(typeof NEWOBJ_SECTIONS !== 'undefined'){ NEWOBJ_SECTIONS.forEach(function(s){ if(s.type === foundType) subCfg = s; }); }
+      if(typeof NEWOBJ_TYPES !== 'undefined' && NEWOBJ_TYPES[foundType]) subShort = NEWOBJ_TYPES[foundType].short || '';
+    }
+  }
   var h = initSectionFilter({
     sectionId: sectionId, moreBtnId: cfg.moreBtnId, filterId: cfg.filterId,
     countId: cfg.countId, emptyId: cfg.emptyId, label: cfg.label,
+    subId: subCfg ? subCfg.subId : undefined, subText: subCfg ? subCfg.subText : undefined, subShort: subShort,
     /* v207: CẤM cuộn (trôi) cho mục mới khi BAM HANG MUC/switch/?newobj= —
        apply() của section mục mới chỉ cuộn khi được gọi TỪ NÚT Áp dụng
        (doScroll=true, v213); xem guard trong apply(). */
