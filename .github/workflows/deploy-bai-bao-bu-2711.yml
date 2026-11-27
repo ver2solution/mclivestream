@@ -1,0 +1,192 @@
+name: Deploy bai bao bu KPI 27/11 (40 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-bai-bao-bu-2711.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-bai-bao-bu-2711:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip bai bao bu 27/11 package
+        run: |
+          # 28/11 bu KPI 27/11: 10 goi bai bao buoi sang 27/11 (viec-lam/livestream/
+          # phan-tich/cong-nghe/thi-truong/dong-tien/xu-huong/hang-hoa/dang-hot/
+          # doi-song) — 40 bai moi, gop 1 goi vi data.js/sitemap cua tung goi cu
+          # deu build tren nen 26/11, deploy rieng se ghi de lan nhau (bai hoc
+          # kiot+lots 28/11). data.js moi = live 4f8600ce + 40 entry (0 dong xoa).
+          # Slug trung thi-truong-thoi-trang-tre-em-2026-482-ty-usd: giu ban
+          # thi-truong (4321 tu, 482,7 ty), bo ban phan-tich.
+          LIVE_SHA="$(curl -s https://vieclamlivestream.online/js/data.js | sha256sum | cut -d' ' -f1)"
+          echo "live data.js sha: $LIVE_SHA"
+          test "$LIVE_SHA" = "2c493253a223cbef4f8615c63dd2f46138f09bb2468c3d95a359f9090d471789" || (echo "LIVE data.js changed since package built (another deploy landed?) - aborting to avoid clobber"; exit 1)
+          LIVE_SM="$(curl -s https://vieclamlivestream.online/sitemap.xml | grep -c '<url>')"
+          echo "live sitemap urls: $LIVE_SM"
+          test "$LIVE_SM" = "830" || (echo "LIVE sitemap changed since package built - aborting"; exit 1)
+          unzip -o mclivestream-bai-bao-bu-2711-deploy.zip
+          ls -l js/data.js sitemap.xml
+          sha256sum js/data.js sitemap.xml
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "96cfe0b19e8d9421233baef765118498fd16bab882a30cb053d596bfee8053e6" || (echo "BAD data.js sha256"; exit 1)
+          test "$(sha256sum sitemap.xml | cut -d' ' -f1)" = "cd834da19fcdf418a510637a6c94bdd33d9c67c392b76a6a18bfa2180e0790e1" || (echo "BAD sitemap sha256"; exit 1)
+          echo "models: $(grep -c '"id": "th-' js/data.js)"
+          echo "shops: $(grep -c '"id": "sh-' js/data.js)"
+          echo "lots: $(grep -c '"id": "lot-' js/data.js)"
+          echo "factories: $(grep -c '"id": "fac-' js/data.js)"
+          echo "kiots: $(grep -c '"id": "kiot-' js/data.js)"
+          echo "articles (grep page): $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls: $(grep -c '<url>' sitemap.xml)"
+          test "$(grep -c '"id": "th-' js/data.js)" = "263" || (echo "BAD models count"; exit 1)
+          test "$(grep -c '"id": "sh-' js/data.js)" = "332" || (echo "BAD shops count"; exit 1)
+          test "$(grep -c '"id": "lot-' js/data.js)" = "352" || (echo "BAD lots count"; exit 1)
+          test "$(grep -c '"id": "fac-' js/data.js)" = "452" || (echo "BAD factories count"; exit 1)
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "390" || (echo "BAD kiots count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "845" || (echo "BAD articles grep count"; exit 1)
+          test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.articles.length)")" = "846" || (echo "BAD articles parsed count"; exit 1)
+          test "$(grep -c '<url>' sitemap.xml)" = "870" || (echo "BAD sitemap count"; exit 1)
+          test -f bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.html || (echo "THIEU HTML: black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.html"; exit 1)
+          test -f images/bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.jpg || (echo "THIEU ANH: black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.jpg"; exit 1)
+          test -f images/bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale-og.jpg || (echo "THIEU ANH: black-friday-2026-825-ty-usd-chi-truoc-ngay-sale-og.jpg"; exit 1)
+          test -f bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.html || (echo "THIEU HTML: black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.html"; exit 1)
+          test -f images/bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.jpg || (echo "THIEU ANH: black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.jpg"; exit 1)
+          test -f images/bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu-og.jpg || (echo "THIEU ANH: black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu-og.jpg"; exit 1)
+          test -f bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.html || (echo "THIEU HTML: black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.html"; exit 1)
+          test -f images/bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.jpg || (echo "THIEU ANH: black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.jpg"; exit 1)
+          test -f images/bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live-og.jpg || (echo "THIEU ANH: black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live-og.jpg"; exit 1)
+          test -f bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.html || (echo "THIEU HTML: carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.html"; exit 1)
+          test -f images/bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.jpg || (echo "THIEU ANH: carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.jpg"; exit 1)
+          test -f images/bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang-og.jpg || (echo "THIEU ANH: carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang-og.jpg"; exit 1)
+          test -f bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.html || (echo "THIEU HTML: chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.html"; exit 1)
+          test -f images/bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.jpg || (echo "THIEU ANH: chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.jpg"; exit 1)
+          test -f images/bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12-og.jpg || (echo "THIEU ANH: chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12-og.jpg"; exit 1)
+          test -f bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.html || (echo "THIEU HTML: do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.html"; exit 1)
+          test -f images/bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.jpg || (echo "THIEU ANH: do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.jpg"; exit 1)
+          test -f images/bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12-og.jpg || (echo "THIEU ANH: do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12-og.jpg"; exit 1)
+          test -f bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.html || (echo "THIEU HTML: doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.html"; exit 1)
+          test -f images/bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.jpg || (echo "THIEU ANH: doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.jpg"; exit 1)
+          test -f images/bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g-og.jpg || (echo "THIEU ANH: doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g-og.jpg"; exit 1)
+          test -f bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay.html || (echo "THIEU HTML: doi-song-mau-livestream-dip-tet-lich-live-7-ngay.html"; exit 1)
+          test -f images/bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay.jpg || (echo "THIEU ANH: doi-song-mau-livestream-dip-tet-lich-live-7-ngay.jpg"; exit 1)
+          test -f images/bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay-og.jpg || (echo "THIEU ANH: doi-song-mau-livestream-dip-tet-lich-live-7-ngay-og.jpg"; exit 1)
+          test -f bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.html || (echo "THIEU HTML: du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.html"; exit 1)
+          test -f images/bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.jpg || (echo "THIEU ANH: du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.jpg"; exit 1)
+          test -f images/bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026-og.jpg || (echo "THIEU ANH: du-lich-chau-au-thang-12-5-cho-giang-sinh-2026-og.jpg"; exit 1)
+          test -f bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.html || (echo "THIEU HTML: gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.html"; exit 1)
+          test -f images/bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.jpg || (echo "THIEU ANH: gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.jpg"; exit 1)
+          test -f images/bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd-og.jpg || (echo "THIEU ANH: gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd-og.jpg"; exit 1)
+          test -f bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.html || (echo "THIEU HTML: hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.html"; exit 1)
+          test -f images/bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.jpg || (echo "THIEU ANH: hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.jpg"; exit 1)
+          test -f images/bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live-og.jpg || (echo "THIEU ANH: hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live-og.jpg"; exit 1)
+          test -f bai-viet/host-live-black-friday-my-tra-30-40-usd-gio.html || (echo "THIEU HTML: host-live-black-friday-my-tra-30-40-usd-gio.html"; exit 1)
+          test -f images/bai-viet/host-live-black-friday-my-tra-30-40-usd-gio.jpg || (echo "THIEU ANH: host-live-black-friday-my-tra-30-40-usd-gio.jpg"; exit 1)
+          test -f images/bai-viet/host-live-black-friday-my-tra-30-40-usd-gio-og.jpg || (echo "THIEU ANH: host-live-black-friday-my-tra-30-40-usd-gio-og.jpg"; exit 1)
+          test -f bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.html || (echo "THIEU HTML: kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.html"; exit 1)
+          test -f images/bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.jpg || (echo "THIEU ANH: kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.jpg"; exit 1)
+          test -f images/bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11-og.jpg || (echo "THIEU ANH: kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11-og.jpg"; exit 1)
+          test -f bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.html || (echo "THIEU HTML: lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.html"; exit 1)
+          test -f images/bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.jpg || (echo "THIEU ANH: lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.jpg"; exit 1)
+          test -f images/bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap-og.jpg || (echo "THIEU ANH: lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap-og.jpg"; exit 1)
+          test -f bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.html || (echo "THIEU HTML: livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.html"; exit 1)
+          test -f images/bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.jpg || (echo "THIEU ANH: livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.jpg"; exit 1)
+          test -f images/bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai-og.jpg || (echo "THIEU ANH: livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai-og.jpg"; exit 1)
+          test -f bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.html || (echo "THIEU HTML: livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.html"; exit 1)
+          test -f images/bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.jpg || (echo "THIEU ANH: livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.jpg"; exit 1)
+          test -f images/bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach-og.jpg || (echo "THIEU ANH: livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach-og.jpg"; exit 1)
+          test -f bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.html || (echo "THIEU HTML: mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.html"; exit 1)
+          test -f images/bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.jpg || (echo "THIEU ANH: mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.jpg"; exit 1)
+          test -f images/bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12-og.jpg || (echo "THIEU ANH: mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12-og.jpg"; exit 1)
+          test -f bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien.html || (echo "THIEU HTML: mua-sam-black-friday-2026-5-quy-tac-giu-tien.html"; exit 1)
+          test -f images/bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien.jpg || (echo "THIEU ANH: mua-sam-black-friday-2026-5-quy-tac-giu-tien.jpg"; exit 1)
+          test -f images/bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien-og.jpg || (echo "THIEU ANH: mua-sam-black-friday-2026-5-quy-tac-giu-tien-og.jpg"; exit 1)
+          test -f bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11.html || (echo "THIEU HTML: phi-san-tiktok-shop-shopee-2026-black-friday-27-11.html"; exit 1)
+          test -f images/bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11.jpg || (echo "THIEU ANH: phi-san-tiktok-shop-shopee-2026-black-friday-27-11.jpg"; exit 1)
+          test -f images/bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11-og.jpg || (echo "THIEU ANH: phi-san-tiktok-shop-shopee-2026-black-friday-27-11-og.jpg"; exit 1)
+          test -f bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat.html || (echo "THIEU HTML: quan-cafe-check-in-dep-cafe-tung-da-lat.html"; exit 1)
+          test -f images/bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat.jpg || (echo "THIEU ANH: quan-cafe-check-in-dep-cafe-tung-da-lat.jpg"; exit 1)
+          test -f images/bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat-og.jpg || (echo "THIEU ANH: quan-cafe-check-in-dep-cafe-tung-da-lat-og.jpg"; exit 1)
+          test -f bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don.html || (echo "THIEU HTML: quang-cao-facebook-12-12-meta-doi-cach-dem-don.html"; exit 1)
+          test -f images/bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don.jpg || (echo "THIEU ANH: quang-cao-facebook-12-12-meta-doi-cach-dem-don.jpg"; exit 1)
+          test -f images/bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don-og.jpg || (echo "THIEU ANH: quang-cao-facebook-12-12-meta-doi-cach-dem-don-og.jpg"; exit 1)
+          test -f bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.html || (echo "THIEU HTML: quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.html"; exit 1)
+          test -f images/bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.jpg || (echo "THIEU ANH: quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.jpg"; exit 1)
+          test -f images/bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11-og.jpg || (echo "THIEU ANH: quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11-og.jpg"; exit 1)
+          test -f bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.html || (echo "THIEU HTML: shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.html"; exit 1)
+          test -f images/bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.jpg || (echo "THIEU ANH: shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.jpg"; exit 1)
+          test -f images/bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30-og.jpg || (echo "THIEU ANH: shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30-og.jpg"; exit 1)
+          test -f bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.html || (echo "THIEU HTML: shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.html"; exit 1)
+          test -f images/bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.jpg || (echo "THIEU ANH: shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.jpg"; exit 1)
+          test -f images/bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi-og.jpg || (echo "THIEU ANH: shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi-og.jpg"; exit 1)
+          test -f bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.html || (echo "THIEU HTML: thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.html"; exit 1)
+          test -f images/bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.jpg || (echo "THIEU ANH: thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.jpg"; exit 1)
+          test -f images/bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac-og.jpg || (echo "THIEU ANH: thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac-og.jpg"; exit 1)
+          test -f bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd.html || (echo "THIEU HTML: thi-truong-thoi-trang-tre-em-2026-482-ty-usd.html"; exit 1)
+          test -f images/bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd.jpg || (echo "THIEU ANH: thi-truong-thoi-trang-tre-em-2026-482-ty-usd.jpg"; exit 1)
+          test -f images/bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd-og.jpg || (echo "THIEU ANH: thi-truong-thoi-trang-tre-em-2026-482-ty-usd-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.html || (echo "THIEU HTML: thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.jpg || (echo "THIEU ANH: thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore-og.jpg || (echo "THIEU ANH: thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.html || (echo "THIEU HTML: thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram-og.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac.html || (echo "THIEU HTML: thoi-trang-nguoi-gia-2026-thi-truong-bac.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-2026-thi-truong-bac.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac-og.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-2026-thi-truong-bac-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.html || (echo "THIEU HTML: thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi-og.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.html || (echo "THIEU HTML: thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd-og.jpg || (echo "THIEU ANH: thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.html || (echo "THIEU HTML: thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.jpg || (echo "THIEU ANH: thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram-og.jpg || (echo "THIEU ANH: thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.html || (echo "THIEU HTML: thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.jpg || (echo "THIEU ANH: thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram-og.jpg || (echo "THIEU ANH: thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.html || (echo "THIEU HTML: thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.jpg || (echo "THIEU ANH: thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap-og.jpg || (echo "THIEU ANH: thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap-og.jpg"; exit 1)
+          test -f bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.html || (echo "THIEU HTML: thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.html"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.jpg || (echo "THIEU ANH: thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.jpg"; exit 1)
+          test -f images/bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay-og.jpg || (echo "THIEU ANH: thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay-og.jpg"; exit 1)
+          test -f bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.html || (echo "THIEU HTML: tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.html"; exit 1)
+          test -f images/bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.jpg || (echo "THIEU ANH: tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.jpg"; exit 1)
+          test -f images/bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia-og.jpg || (echo "THIEU ANH: tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia-og.jpg"; exit 1)
+          test -f bai-viet/tuyen-mau-livestream-cao-bang.html || (echo "THIEU HTML: tuyen-mau-livestream-cao-bang.html"; exit 1)
+          test -f images/bai-viet/tuyen-mau-livestream-cao-bang.jpg || (echo "THIEU ANH: tuyen-mau-livestream-cao-bang.jpg"; exit 1)
+          test -f images/bai-viet/tuyen-mau-livestream-cao-bang-og.jpg || (echo "THIEU ANH: tuyen-mau-livestream-cao-bang-og.jpg"; exit 1)
+          test -f bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12.html || (echo "THIEU HTML: van-chuyen-tet-2027-han-chot-that-giua-thang-12.html"; exit 1)
+          test -f images/bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12.jpg || (echo "THIEU ANH: van-chuyen-tet-2027-han-chot-that-giua-thang-12.jpg"; exit 1)
+          test -f images/bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12-og.jpg || (echo "THIEU ANH: van-chuyen-tet-2027-han-chot-that-giua-thang-12-og.jpg"; exit 1)
+          test -f bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.html || (echo "THIEU HTML: video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.html"; exit 1)
+          test -f images/bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.jpg || (echo "THIEU ANH: video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.jpg"; exit 1)
+          test -f images/bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11-og.jpg || (echo "THIEU ANH: video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11-og.jpg"; exit 1)
+          test -f bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.html || (echo "THIEU HTML: xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.html"; exit 1)
+          test -f images/bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.jpg || (echo "THIEU ANH: xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.jpg"; exit 1)
+          test -f images/bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai-og.jpg || (echo "THIEU ANH: xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai-og.jpg"; exit 1)
+          # Bai hoc v171: KHONG hardcode tong so file — kiem tra bat bien "0 file thieu":
+          # moi anh bai-viet moi trong data.js phai ton tai tren dia sau khi giai nen.
+          missing=0
+          for f in $(grep -o 'images/bai-viet/[a-z0-9-]*\.jpg' js/data.js | sort -u); do
+            [ -f "$f" ] || { echo "THIEU ANH: $f"; missing=$((missing+1)); }
+          done
+          echo "anh bai-viet thieu: $missing"
+          [ "$missing" -eq 0 ]
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js sitemap.xml bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.html bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.html bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.html bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.html bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.html bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.html bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.html bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay.html bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.html bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.html bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.html bai-viet/host-live-black-friday-my-tra-30-40-usd-gio.html bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.html bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.html bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.html bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.html bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.html bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien.html bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11.html bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat.html bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don.html bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.html bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.html bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.html bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.html bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd.html bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.html bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.html bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac.html bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.html bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.html bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.html bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.html bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.html bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.html bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.html bai-viet/tuyen-mau-livestream-cao-bang.html bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12.html bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.html bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.html images/bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale.jpg images/bai-viet/black-friday-2026-825-ty-usd-chi-truoc-ngay-sale-og.jpg images/bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu.jpg images/bai-viet/black-friday-2026-tien-mua-sam-chay-vao-do-thiet-yeu-og.jpg images/bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live.jpg images/bai-viet/black-friday-27-11-tiktok-shop-my-1-ty-usd-nho-live-og.jpg images/bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang.jpg images/bai-viet/carters-quy-3-2026-lai-tang-92-doanh-thu-di-ngang-og.jpg images/bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12.jpg images/bai-viet/chatbot-cham-soc-khach-tet-bat-ai-assistance-truoc-12-12-og.jpg images/bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12.jpg images/bai-viet/do-trang-tri-tet-ban-chay-linh-vat-de-2027-dat-truoc-10-12-og.jpg images/bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g.jpg images/bai-viet/doanh-thu-black-friday-2026-825-ty-usd-truoc-gio-g-og.jpg images/bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay.jpg images/bai-viet/doi-song-mau-livestream-dip-tet-lich-live-7-ngay-og.jpg images/bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026.jpg images/bai-viet/du-lich-chau-au-thang-12-5-cho-giang-sinh-2026-og.jpg images/bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd.jpg images/bai-viet/gen-z-mua-sam-black-friday-2026-94-phan-tram-chi-752-usd-og.jpg images/bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live.jpg images/bai-viet/hoa-hong-mau-livestream-tet-thuong-moc-gmv-phien-live-og.jpg images/bai-viet/host-live-black-friday-my-tra-30-40-usd-gio.jpg images/bai-viet/host-live-black-friday-my-tra-30-40-usd-gio-og.jpg images/bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11.jpg images/bai-viet/kfc-nhat-ban-double-doom-burger-1750-yen-tu-25-11-og.jpg images/bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap.jpg images/bai-viet/lam-tu-do-2026-749-trieu-nguoi-kiem-tien-doc-lap-og.jpg images/bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai.jpg images/bai-viet/livestream-ban-hang-12-12-3-phien-ngan-thay-phien-dai-og.jpg images/bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach.jpg images/bai-viet/livestream-ban-thoi-trang-tre-em-va-nguoi-gia-2-nhom-khach-og.jpg images/bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12.jpg images/bai-viet/mau-livestream-thoi-vu-tet-dot-tuyen-cuoi-truoc-12-12-og.jpg images/bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien.jpg images/bai-viet/mua-sam-black-friday-2026-5-quy-tac-giu-tien-og.jpg images/bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11.jpg images/bai-viet/phi-san-tiktok-shop-shopee-2026-black-friday-27-11-og.jpg images/bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat.jpg images/bai-viet/quan-cafe-check-in-dep-cafe-tung-da-lat-og.jpg images/bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don.jpg images/bai-viet/quang-cao-facebook-12-12-meta-doi-cach-dem-don-og.jpg images/bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11.jpg images/bai-viet/quang-cao-tiktok-shop-12-12-hoc-tu-black-friday-27-11-og.jpg images/bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30.jpg images/bai-viet/shopee-12-12-2026-live-rm12-moi-ngay-voucher-vip-30-og.jpg images/bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi.jpg images/bai-viet/shopee-12-12-mo-man-dong-nam-a-shop-viet-lam-gi-og.jpg images/bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac.jpg images/bai-viet/thi-truong-thoi-trang-nguoi-gia-2026-kinh-te-bac-og.jpg images/bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd.jpg images/bai-viet/thi-truong-thoi-trang-tre-em-2026-482-ty-usd-og.jpg images/bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore.jpg images/bai-viet/thoi-trang-nguoi-cao-tuoi-1893-ty-usd-song-silvercore-og.jpg images/bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram.jpg images/bai-viet/thoi-trang-nguoi-gia-2026-652-ty-usd-online-tang-958-phan-tram-og.jpg images/bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac.jpg images/bai-viet/thoi-trang-nguoi-gia-2026-thi-truong-bac-og.jpg images/bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi.jpg images/bai-viet/thoi-trang-nguoi-gia-ban-chay-quan-ao-thich-ung-len-ngoi-og.jpg images/bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd.jpg images/bai-viet/thoi-trang-nguoi-gia-tet-thi-truong-1575-ty-usd-og.jpg images/bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram.jpg images/bai-viet/thoi-trang-tre-em-2026-482-ty-usd-online-tang-64-phan-tram-og.jpg images/bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram.jpg images/bai-viet/thoi-trang-tre-em-2026-48267-ty-usd-online-tang-64-phan-tram-og.jpg images/bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap.jpg images/bai-viet/thoi-trang-tre-em-ban-chay-4-nhom-hang-shop-nho-nen-nhap-og.jpg images/bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay.jpg images/bai-viet/thoi-trang-tre-em-tet-2027-nhap-gi-ban-chay-og.jpg images/bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia.jpg images/bai-viet/tuyen-mau-live-ban-thoi-trang-tre-em-nguoi-gia-og.jpg images/bai-viet/tuyen-mau-livestream-cao-bang.jpg images/bai-viet/tuyen-mau-livestream-cao-bang-og.jpg images/bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12.jpg images/bai-viet/van-chuyen-tet-2027-han-chot-that-giua-thang-12-og.jpg images/bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11.jpg images/bai-viet/video-commerce-viet-nam-tiktok-tach-app-shop-rieng-05-11-og.jpg images/bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai.jpg images/bai-viet/xu-huong-livestream-2027-live-ve-web-rieng-do-luot-xem-lai-og.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy bai bao bu KPI 27/11: 40 bai moi (10 goi sang 27/11: viec-lam/livestream/phan-tich/cong-nghe/thi-truong/dong-tien/xu-huong/hang-hoa/dang-hot/doi-song), 806 -> 846 bai, sitemap 830 -> 870"
+            git push
+          fi
