@@ -19783,7 +19783,51 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Cộng Cà Phê Hà Nội là cái tên mà mẫu livestream nào cũng nên biết: quán đầu tiên mở năm 2007 tại 152D phố Triệu Việt Vương, quận Hai Bà Trưng, theo Wikipedia — gần 20 năm sau, Cộng đã có hơn 70 cửa"
-  }
+  },
+  {
+   "title": "44,1 tỷ/tháng: 7 mẹo livestream thời trang trẻ em, người già",
+   "cat": "Livestream",
+   "source": "36Kr / 锌刻度",
+   "date": "2026-11-27",
+   "url": "https://www.36kr.com/p/3320537760033030",
+   "page": "bai-viet/7-meo-livestream-ban-thoi-trang-tre-em-nguoi-gia-chot-don-nhanh.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/7-meo-livestream-ban-thoi-trang-tre-em-nguoi-gia-chot-don-nhanh.jpg",
+   "pinned": false,
+   "takeaway": "Vân ba ba bán 44,1 tỷ đồng/tháng nhờ các chú mặc mẫu, không hét giá. Xem ngay 7 mẹo livestream bán thời trang trẻ em và người già chốt đơn nhanh."
+  },
+  {
+   "title": "Balabala 37.800 tỷ/năm: bà cụ 79 tuổi bán 18,8 tỷ/phiên",
+   "cat": "Phân tích",
+   "source": "36Kr / Đại V Thương nghiệp",
+   "date": "2026-11-27",
+   "url": "https://www.36kr.com/p/3541654462634117",
+   "page": "bai-viet/37800-ty-dong-nam-thoi-trang-tre-em-balabala-so-1-chau-a-ba-cu-79-tuoi-ban-188-ty-phien.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/37800-ty-dong-nam-thoi-trang-tre-em-balabala-so-1-chau-a-ba-cu-79-tuoi-ban-188-ty-phien.jpg",
+   "pinned": false,
+   "takeaway": "Balabala bán 37.800 tỷ đồng năm 2025, dẫn đầu Tmall Double 11 2026; bà cụ 79 tuổi livestream bán 18,8 tỷ đồng/phiên. Xem ngay 7 bài học cho shop Việt."
+  },
+  {
+   "title": "350 tỷ/quý: “Năm nữ bác sĩ” bán collagen bằng nỗi lo",
+   "cat": "Phân tích",
+   "source": "36Kr",
+   "date": "2026-11-26",
+   "url": "https://www.36kr.com/p/2249096639180422",
+   "page": "bai-viet/nam-nu-bac-si-350-ty-dong-quy-ban-collagen-bang-noi-lo.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/nam-nu-bac-si-350-ty-dong-quy-ban-collagen-bang-noi-lo.jpg",
+   "pinned": false,
+   "takeaway": "Quý 2/2025, “Năm nữ bác sĩ” bán hơn 100 triệu NDT collagen peptide trên Douyin, khoảng 350 tỷ đồng một quý. Xem ngay mô hình 4 trụ đằng sau con số này."
+  },
+  {
+   "title": "Đổng Vũ Huy bán 73.500 tỷ/năm nhờ kể chuyện",
+   "cat": "Phân tích",
+   "source": "Sohu / Radar Tài chính",
+   "date": "2026-11-26",
+   "url": "https://www.sohu.com/a/1098175504_477212",
+   "page": "bai-viet/dong-vu-huy-73500-ty-dong-1-nam-livestream-ban-thuc-pham-chuc-nang-bang-cach-ke-chuyen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-vu-huy-73500-ty-dong-1-nam-livestream-ban-thuc-pham-chuc-nang-bang-cach-ke-chuyen.jpg",
+   "pinned": false,
+   "takeaway": "Đổng Vũ Huy bán hơn 21 tỷ NDT thực phẩm chức năng trong năm 2025. Xem ngay cách anh kể chuyện để chốt đơn và bài học cho shop Việt."
+  },
 ],
  "lots": [
    {
