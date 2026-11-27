@@ -1,0 +1,47 @@
+name: Deploy v458 ldtd-row3
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-ldtd-row3-20261127.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-v458-ldtd-row3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip v458 ldtd-row3 package
+        run: |
+          LIVE_SHA="$(curl -s https://vieclamlivestream.online/js/data.js | sha256sum | cut -d' ' -f1)"
+          echo "live data.js sha: $LIVE_SHA"
+          test "$LIVE_SHA" = "9fb4bf25a8f474702a497f6839e33a5b89a71e25b55022518a60185b22226e23" || (echo "LIVE data.js changed since package built (another deploy landed?) - aborting to avoid clobber; rebase package onto new base first"; exit 1)
+          LIVE_CACHE="$(curl -s https://vieclamlivestream.online/sw.js | grep -o "CACHE = '[^']*'")"
+          echo "live sw.js: $LIVE_CACHE"
+          test "$LIVE_CACHE" = "CACHE = 'v457-chat-fixes-2'" || (echo "LIVE sw.js CACHE is not v457 - another deploy took v458 or base moved; renumber package first"; exit 1)
+          unzip -o mclivestream-ldtd-row3-20261127-deploy.zip
+          test "$(md5sum index.html | cut -d' ' -f1)" = "2fc3647b06b9e43ed7548564005d5915" || (echo "BAD index.html md5"; exit 1)
+          test "$(md5sum js/app.js | cut -d' ' -f1)" = "e3f21a5388770b92329a2987f2f28a52" || (echo "BAD js/app.js md5"; exit 1)
+          test "$(md5sum sw.js | cut -d' ' -f1)" = "d5e14efd88db3fc6b3838b459fc5a78b" || (echo "BAD sw.js md5"; exit 1)
+          test "$(grep -c 'lao-dong-tu-do.html?tab=' index.html)" = "7" || (echo "BAD LDTD tile count"; exit 1)
+          test "$(grep -c 'class="trust-num"' index.html)" = "23" || (echo "BAD trust-num total"; exit 1)
+          grep -q "trustFLSanXuat" js/app.js || (echo "BAD app.js marker"; exit 1)
+          grep -q "CACHE = 'v458-ldtd-row3-1'" sw.js || (echo "BAD sw.js CACHE marker"; exit 1)
+          node --check js/app.js
+          echo "counts check: san-xuat 24, van-tai 22, dich-vu 23, cham-soc 14, xay-dung 17, nong-nghiep 12, ca-nhan 19"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html js/app.js sw.js
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "v458-ldtd-row3: 7 muc Lao Dong Tu Do vao hang 3 tong hop so lieu trang chu (index.html .trust-nums + js/app.js renderTrustStats + sw.js CACHE v458)"
+            git push
+          fi
