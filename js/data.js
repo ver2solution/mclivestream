@@ -19828,6 +19828,17 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Đổng Vũ Huy bán hơn 21 tỷ NDT thực phẩm chức năng trong năm 2025. Xem ngay cách anh kể chuyện để chốt đơn và bài học cho shop Việt."
   },
+  {
+   "title": "75.400 tỷ đồng/năm: Carter's lãi rơi một nửa sau 160 năm",
+   "cat": "Phân tích",
+   "source": "Ủy ban Chứng khoán Mỹ (SEC) — Carter's Q4 & FY2025 Results",
+   "date": "2026-11-27",
+   "url": "https://www.sec.gov/Archives/edgar/data/1060822/000106082226000015/ex991cri-q42025.htm",
+   "page": "bai-viet/carters-75400-ty-dong-nam-lai-roi-mot-nua-mo-hinh-kinh-doanh-thoi-trang-tre-em-patpat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/carters-thoi-trang-tre-em.jpg",
+   "pinned": false,
+   "takeaway": "Carter's bán 75.400 tỷ đồng/năm mà lãi hoạt động rơi một nửa vì thuế quan; PatPat mất 45% doanh thu web. Bài học Black Friday 27/11 cho shop Việt livestream."
+  },
 ],
  "lots": [
    {
