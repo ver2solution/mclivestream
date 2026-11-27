@@ -27,8 +27,8 @@ jobs:
           test "$(md5sum index.html | cut -d' ' -f1)" = "2fc3647b06b9e43ed7548564005d5915" || (echo "BAD index.html md5"; exit 1)
           test "$(md5sum js/app.js | cut -d' ' -f1)" = "e3f21a5388770b92329a2987f2f28a52" || (echo "BAD js/app.js md5"; exit 1)
           test "$(md5sum sw.js | cut -d' ' -f1)" = "d5e14efd88db3fc6b3838b459fc5a78b" || (echo "BAD sw.js md5"; exit 1)
-          test "$(grep -c 'lao-dong-tu-do.html?tab=' index.html)" = "7" || (echo "BAD LDTD tile count"; exit 1)
-          test "$(grep -c 'class="trust-num"' index.html)" = "23" || (echo "BAD trust-num total"; exit 1)
+          test "$(grep -o 'lao-dong-tu-do.html?tab=' index.html | wc -l)" = "7" || (echo "BAD LDTD tile count"; exit 1)
+          test "$(grep -o 'class="trust-num"' index.html | wc -l)" = "23" || (echo "BAD trust-num total"; exit 1)
           grep -q "trustFLSanXuat" js/app.js || (echo "BAD app.js marker"; exit 1)
           grep -q "CACHE = 'v458-ldtd-row3-1'" sw.js || (echo "BAD sw.js CACHE marker"; exit 1)
           node --check js/app.js
