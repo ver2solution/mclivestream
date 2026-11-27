@@ -407,7 +407,7 @@
     var src = (cat === 'kiot') ? kiots : ((window.V20_DATA && window.V20_DATA[typeMap[cat]]) || []);
     src.forEach(function(x){
       if(!x) return;
-      if(cat !== 'kiot' && !x.avatar) return;
+      /* v462 (27/11/2026): BO loc avatar o muc con — khop v339 (render + newObjCount da tinh TAT CA muc, the khong anh van hien voi logo.png); truoc day the khong anh (vd le-12/le-13) bi mat khoi so dem tinh. */
       var np = x.prov ? normFn(x.prov) : (x.province ? normFn(x.province) : '');
       if(!np) return;
       counts[np] = (counts[np] || 0) + 1; total++;
@@ -428,7 +428,7 @@
   }
   /* v229 (thiet ke loai hinh con §3.3 + §4.2): #kiotCat co 2 nghia tuy tab
      — tab Kiot: 4 loai kiot cu (giong HTML goc, so dem nhu initOptionCounts);
-     tab muc con: chi loai con cua tab do, lay tu KIOT_SUBTYPES (app.js).
+     tab muc con: chi loai con cua tab do, suy ra tu data (nhan + thu tu tu KIOT_SUBTYPES, app.js) — v462.
      Doi tab (resetValue=true) thi reset ve "Tat ca" truoc khi build lai
      option; doi tinh/sap xep (resetValue=false) thi giu lua chon hien tai,
      chi cap nhat so dem theo tinh dang chon. Option tao bang createElement
@@ -441,7 +441,7 @@
     var normFn = (window.V20 && typeof window.V20.normProv === 'function') ? window.V20.normProv : function(p){ return String(p || '').trim(); };
     var n = 0;
     arr.forEach(function(x){
-      if(!x || !x.avatar) return;
+      if(!x) return; /* v462: BO loc avatar — khop v339, xem kiotProvCounts. */
       if(x.subType !== code) return;
       if(prov && normFn(x.province || '') !== normFn(prov)) return;
       n++;
@@ -456,10 +456,18 @@
     if(cat === 'kiot'){
       entries = KIOT_CAT_OLD.slice();
     } else {
+      /* v462 (27/11/2026 — lenh anh "code thuat toan, tu dem so": loai con suy ra TU DATA, khong chi doc danh sach tay KIOT_SUBTYPES): giu thu tu + nhan cua cac ma da dang ky, them cac ma moi xuat hien trong data (nhan mac dinh = chinh ma) de the moi khong bao gio bien mat khoi o loc. So dem moi option van dem tu data theo tinh dang chon (kiotSubtypeCount). */
       var type = KIOT_SUB_TYPEMAP[cat];
-      var list = (window.V20 && window.V20.KIOT_SUBTYPES && window.V20.KIOT_SUBTYPES[type]) || [];
+      var regList = (window.V20 && window.V20.KIOT_SUBTYPES && window.V20.KIOT_SUBTYPES[type]) || [];
+      var labelByCode = {};
+      regList.forEach(function(st){ labelByCode[st.code] = st.label; });
+      var dataArr = (window.V20_DATA && window.V20_DATA[type]) || [];
+      var seenCodes = {};
+      var codes = [];
+      regList.forEach(function(st){ if(!seenCodes[st.code]){ seenCodes[st.code] = true; codes.push(st.code); } });
+      dataArr.forEach(function(x){ var c = x && x.subType; if(c && !seenCodes[c]){ seenCodes[c] = true; codes.push(c); } });
       entries = [['', 'Tất cả loại hình']];
-      list.forEach(function(st){ entries.push([st.code, st.label]); });
+      codes.forEach(function(c){ entries.push([c, labelByCode[c] || c]); });
     }
     catSel.options.length = 0;
     entries.forEach(function(en){
