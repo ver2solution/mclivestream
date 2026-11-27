@@ -6001,11 +6001,22 @@ function initFreelancePage(){
   var emptyEl = document.getElementById('flEmpty');
   var pagerEl = document.getElementById('flPager');
   var tabTitleEl = document.getElementById('flTabTitle');
-  /* Nap tinh tu D.provinces (34 don vi + Toan quoc / Live online). */
-  if(provSel && typeof D !== 'undefined' && Array.isArray(D.provinces)){
-    D.provinces.forEach(function(p){
-      var o = document.createElement('option'); o.value = p; o.textContent = p; provSel.appendChild(o);
-    });
+  /* v460 (27/11/2026): dropdown Tinh hien so luong THAT theo TAB DANG CHON
+     (nhu cac trang con khac — dung lai v214 rebuildProvOptions +
+     countLabel "Ten (n)"). Chi hien tinh co tin trong tab; doi tab thi
+     dem lai; tinh dang chon duoc giu neu van co tin trong tab moi,
+     khong thi ve "Tat ca" (setSelectOptions). Dem bang so sanh khop
+     chinh xac province — giong ham loc freelanceMatches — va moi tinh
+     cua 112 viec + 19 nguoi deu nam trong D.provinces nen tong dem
+     luon bang tong tin cua tab. */
+  function rebuildFlProvOptions(){
+    if(!provSel || typeof rebuildProvOptions !== 'function') return;
+    var items = currentItems();
+    rebuildProvOptions('flProv', activeTab, function(p){
+      var n = 0;
+      items.forEach(function(it){ if(it && it.province === p) n++; });
+      return n;
+    }, items.length);
   }
   var activeTab = 'san-xuat';
   try{
@@ -6071,6 +6082,7 @@ function initFreelancePage(){
       url.searchParams.set('tab', tab);
       history.replaceState(null, '', url.toString());
     }catch(e){}
+    rebuildFlProvOptions(); /* v460: doi tab thi dem lai so luong tung tinh */
     render(doScroll);
   }
   tabBtns.forEach(function(b){
