@@ -27,8 +27,8 @@ jobs:
           ls -l js/data.js
           sha256sum js/data.js
           test "$(sha256sum js/data.js | cut -d' ' -f1)" = "9fb4bf25a8f474702a497f6839e33a5b89a71e25b55022518a60185b22226e23" || (echo "BAD data.js sha256"; exit 1)
-          test "$(grep -c '"id": "fl-' js/data.js)" = "112" || (echo "BAD freelanceJobs count"; exit 1)
-          test "$(grep -c '"id": "fp-' js/data.js)" = "19" || (echo "BAD freelancePeople count"; exit 1)
+          test "$(grep -c '"id":"fl-' js/data.js)" = "112" || (echo "BAD freelanceJobs count"; exit 1)
+          test "$(grep -c '"id":"fp-' js/data.js)" = "19" || (echo "BAD freelancePeople count"; exit 1)
           test "$(node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));console.log(window.V20_DATA.freelanceJobs.length)")" = "112" || (echo "BAD jobs parsed count"; exit 1)
       - name: Commit deployed files
         run: |
