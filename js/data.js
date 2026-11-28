@@ -20416,6 +20416,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Phiên live nghìn đơn Black Friday: Mikayla bán 472.000 USD, 8.386 đơn trong 3 giờ ngày 23/11/2026 — phiên live đơn kỷ lục của creator vượt 480.000 USD (Ebrun 20/11/2026); 10 phiên bán chạy nhất tuần đều dùng chung công thức: 1 món chủ lực, đúng giờ vàng, affiliate dẫn đơn (TokConnect 27/11/2026)."
   },
+  {
+   "title": "Phân tích ngành hàng bán chạy Tết: Black Friday 13 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Adobe Analytics (qua Reuters)",
+   "date": "2026-11-28",
+   "url": "https://dukecountry.fm/2026/11/27/us-black-friday-online-sales-to-cross-13-billion-adobe-says/",
+   "page": "bai-viet/phan-tich-nganh-hang-ban-chay-tet-black-friday-13-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phan-tich-nganh-hang-ban-chay-tet-black-friday-13-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phân tích ngành hàng bán chạy Tết (vòng 2, 28/11/2026): Black Friday 27/11 online Mỹ vượt 13 tỷ USD, tăng 12,8% tới 18:30 ET (Adobe qua Reuters 27/11/2026); quần áo cơ bản +210%, đồ vệ sinh +150% trong Cyber Week; nhóm chạy Tết: quần áo cơ bản, đồ chơi, giỏ quà và thực phẩm, áo dài."
+  },
+  {
+   "title": "Thị trường thời trang văn phòng 2026: 277 tỷ USD",
+   "cat": "Phân tích",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-28",
+   "url": "https://www.mordorintelligence.com/industry-reports/workwear-market",
+   "page": "bai-viet/thi-truong-thoi-trang-van-phong-2026-277-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-van-phong-2026-277-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thời trang văn phòng 2026: 276,95 tỷ USD toàn cầu, tăng 4,47%/năm tới 2031 (Mordor Intelligence); nam chiếm 60,31% năm 2025, nữ tăng nhanh nhất 5,76%/năm; nhóm cao cấp tăng 6,12%/năm; giày công sở tăng nhanh nhất 5,89%/năm."
+  },
+  {
+   "title": "Thời trang công sở 2026: nam nữ mặc gì đi làm",
+   "cat": "Phân tích",
+   "source": "Flannels",
+   "date": "2026-11-28",
+   "url": "https://www.flannels.com/stylenews/fashion/the-business-of-style",
+   "page": "bai-viet/thoi-trang-cong-so-2026-nam-nu-mac-gi-di-lam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-cong-so-2026-nam-nu-mac-gi-di-lam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang công sở 2026: nam chuộng blazer len mềm 200–400 USD, quần hopsack, sneaker da tối giản; nữ chuộng quần ống rộng cạp cao, blazer dài, giày kitten heels và loafer; chuẩn chung là thoải mái mà vẫn lịch sự, mua theo capsule 5–7 món."
+  },
+  {
+   "title": "Miniso quý 3 2026: doanh thu tăng, lãi giảm 35,7%",
+   "cat": "Phân tích",
+   "source": "Nasdaq (Miniso Q3 2026)",
+   "date": "2026-11-28",
+   "url": "https://www.nasdaq.com/articles/miniso-mnso-q3-2026-earnings-call-transcript",
+   "page": "bai-viet/miniso-quy-3-2026-doanh-thu-tang-lai-giam-357-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/miniso-quy-3-2026-doanh-thu-tang-lai-giam-357-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Miniso quý 3 2026 (công bố 17/11/2026): doanh thu 6,63 tỷ NDT +14,3%, lãi ròng 283 triệu NDT -35,7% do lỗ mark-to-market 192,1 triệu NDT từ khoản đầu tư quỹ AI; Trung Quốc +29,6%, nước ngoài +1,7%, TOP TOY -12,5%; 8.665 cửa hàng."
+  }
 ],
  "lots": [
    {
