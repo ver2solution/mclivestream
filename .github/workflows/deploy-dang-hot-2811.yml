@@ -1,0 +1,60 @@
+name: Deploy articles-dang-hot-2026-11-28 (4 bai)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dang-hot-2811.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-dang-hot-2811:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"   = "869" || (echo "BASE DOI: data.js khong con 869 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)"   = "894" || (echo "BASE DOI: sitemap khong con 894 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip dang-hot-2811 package
+        run: |
+          unzip -o mclivestream-dang-hot-2811-deploy.zip
+          echo "--- verify dang-hot-2811 (4 bai moi) ---"
+          for slug in xa-kho-cuoi-nam-3-ngay-vang-sau-black-friday do-cong-so-black-friday-2026-giam-toi-60-phan-tram thoi-trang-van-phong-5-mon-tuan-nay-gia-that-tu-4850-usd shopify-black-friday-2026-68-trieu-usd-moi-phut; do
+            test -f "bai-viet/$slug.html" || (echo "THIEU bai-viet/$slug.html"; exit 1)
+            test -f "images/bai-viet/$slug.jpg" || (echo "THIEU images/bai-viet/$slug.jpg"; exit 1)
+            test -f "images/bai-viet/$slug-og.jpg" || (echo "THIEU images/bai-viet/$slug-og.jpg"; exit 1)
+            grep -qF "bai-viet/$slug.html" js/data.js || (echo "THIEU $slug trong data.js"; exit 1)
+            grep -qF "<loc>https://vieclamlivestream.online/bai-viet/$slug.html</loc>" sitemap.xml || (echo "THIEU $slug trong sitemap"; exit 1)
+          done
+          echo "--- verify lead 4 bai moi ---"
+          grep -qF "Xả kho cuối năm có 3 ngày vàng mà shop nhỏ không nên bỏ qua" bai-viet/xa-kho-cuoi-nam-3-ngay-vang-sau-black-friday.html || (echo "LEAD SAI bai xa-kho-cuoi-nam"; exit 1)
+          grep -qF "Đồ công sở Black Friday 2026 đang giảm tới 60% tại nhiều hãng lớn, theo danh sách sale của Corporette cập nhật ngày 25/11/2026" bai-viet/do-cong-so-black-friday-2026-giam-toi-60-phan-tram.html || (echo "LEAD SAI bai do-cong-so"; exit 1)
+          grep -qF "Thời trang văn phòng tuần này có 5 món đồ thật với giá thật, từ áo kẻ tartan 48,50 USD tới blazer kẻ 159 USD" bai-viet/thoi-trang-van-phong-5-mon-tuan-nay-gia-that-tu-4850-usd.html || (echo "LEAD SAI bai thoi-trang-van-phong"; exit 1)
+          grep -qF "Shopify Black Friday 2026 đạt đỉnh 6,8 triệu USD doanh số mỗi phút lúc 12h01 trưa 27/11/2026 theo giờ miền Đông nước Mỹ" bai-viet/shopify-black-friday-2026-68-trieu-usd-moi-phut.html || (echo "LEAD SAI bai shopify"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)"  = "898" || (echo "SAI TONG sitemap, phai 898"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"  = "873" || (echo "SAI TONG data.js, phai 873 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-dang-hot-2811-deploy.zip || rm -f mclivestream-dang-hot-2811-deploy.zip
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-dang-hot-2026-11-28: 4 bai (xa-kho-cuoi-nam-3-ngay-vang-sau-black-friday do-cong-so-black-friday-2026-giam-toi-60-phan-tram thoi-trang-van-phong-5-mon-tuan-nay-gia-that-tu-4850-usd shopify-black-friday-2026-68-trieu-usd-moi-phut)"
+            git pull --rebase origin main || (echo "REBASE THAT BAI - co cron khac push chen, DUNG LAI de rebuild"; exit 1)
+            git push
+          fi
