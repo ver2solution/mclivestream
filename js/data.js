@@ -20925,6 +20925,66 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Cyber Monday 2026: 15,1 ty USD trong 1 ngay 30/11/2026, lan dau vuot moc 15 ty USD (Adobe, 28/09/2026); luu luong AI tang 130% ca mua, khach mua bang AI chot don tot hon 90% (Adobe, 27/11/2026); tra gop 1,09 ty USD trong ngay."
+  },
+  {
+   "title": "Cân bằng làm việc ngày Tết: 3 lịch mẫu live cần có",
+   "cat": "Đời Sống",
+   "source": "Resume.io & Vietnam Briefing",
+   "date": "2026-11-28",
+   "url": "https://resume.io/blog/holiday-spending-squeeze",
+   "page": "bai-viet/can-bang-lam-viec-ngay-tet-3-lich-mau-live-can-co.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/can-bang-lam-viec-ngay-tet-3-lich-mau-live-can-co.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cân bằng làm việc ngày Tết là bài toán khó nhất của mẫu livestream trong năm, vì Tết vừa là mùa khách rủng rỉnh nhất, vừa là lúc người làm dễ kiệt sức nhất."
+  },
+  {
+   "title": "Small Business Saturday 2026: shop nhỏ hút 118 tỷ USD",
+   "cat": "Đời Sống",
+   "source": "Retail TouchPoints",
+   "date": "2026-11-28",
+   "url": "https://www.retailtouchpoints.com/news/for-small-business-saturday-2026-holiday-shoppers-plan-to-spend-where-the-value-is-clear/622228/",
+   "page": "bai-viet/small-business-saturday-2026-shop-nho-hut-118-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/small-business-saturday-2026-shop-nho-hut-118-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Small Business Saturday 2026 rơi vào hôm nay, thứ Bảy 28/11/2026, và đây là ngày của shop nhỏ: 52% người Mỹ dự định mua sắm trong ngày này, theo khảo sát AT&T Business Holiday Shopping Survey lần thứ 3 mà Retail TouchPoi"
+  },
+  {
+   "title": "Đi máy bay dịp lễ 2026: 17,6 triệu khách, vé tăng 39%",
+   "cat": "Đời Sống",
+   "source": "TSA & Reuters",
+   "date": "2026-11-28",
+   "url": "https://www.dhs.gov/news/2026/11/24/tsa-ready-thanksgiving-passenger-volumes-urges-travelers-plan-ahead",
+   "page": "bai-viet/di-may-bay-dip-le-2026-176-trieu-khach-ve-tang-39-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/di-may-bay-dip-le-2026-176-trieu-khach-ve-tang-39-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đi máy bay dịp lễ 2026 đang đông kỷ lục: Cơ quan An ninh Vận tải Mỹ (TSA) dự báo soi chiếu khoảng 17,6 triệu lượt hành khách trong 7 ngày từ 24 đến 30/11/2026, với riêng Chủ Nhật 29/11/2026 vượt 3 triệu lượt, theo thông "
+  },
+  {
+   "title": "Du lịch tháng 12: 5 điểm đến rẻ nhất trước 19/12",
+   "cat": "Đời Sống",
+   "source": "Blue Passport Travel",
+   "date": "2026-11-28",
+   "url": "https://bluepassporttravel.com/advice/best-places-to-travel-in-december",
+   "page": "bai-viet/du-lich-thang-12-5-diem-den-re-nhat-truoc-19-12.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/du-lich-thang-12-5-diem-den-re-nhat-truoc-19-12.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Du lịch tháng 12 có một quy tắc vàng mà nhiều người bỏ qua: đi trước ngày 19/12/2026 thì rẻ, đi sau ngày đó thì đắt."
+  },
+  {
+   "title": "Quán cafe check-in đẹp Xofa Café Hà Nội",
+   "cat": "Đời Sống",
+   "source": "iPOS.vn",
+   "date": "2026-11-28",
+   "url": "https://ipos.vn/top-8-quan-cafe-mo-24-24-tai-ha-noi/",
+   "page": "bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Quán cafe check-in đẹp Xofa Café Hà Nội là một trong số ít quán cà phê ở thủ đô mở cửa 24/24, từ năm 2015 tới nay, ở số 14 Tống Duy Tân, quận Hoàn Kiếm."
   }
 ],
  "lots": [
