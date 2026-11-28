@@ -83,6 +83,7 @@
    articles-viec-lam-2026-11-24 adds 4 Viec Lam articles (24/11/2026, Tuesday): 1 seasonal keyword #1 ROUND 2 'tuyen mau livestream Tet' (NEW angle: lock staff before 12.12; 12/12 first National E-commerce Day, Online Friday 10-16/12, campaign registration ends 25/11; 8 new models + 9 new shops 23/11 incl. sh-307 ThuKa Villa finally live) + 1 keyword STT 23 'viec lam livestream Shopee' (LAST of cluster A: Affiliate Live up to 10% + Brand up to 40% = 50% max from 02/01/2026; Sea Q3 GMV 39.7 ty USD +23.3% 10/11/2026) + 1 theme Tue 'tuyen mau live ban phu kien trang suc' (Pandora Q3 +6% 04/11/2026, WGC gold jewellery 66t +30% QoQ, Shuibei 9,000 companies/70,000 workers) + 1 news 'mau live Trung Quoc mat viec vao tay AI avatar' (36Kr via TechTimes: Hangzhou mid-tier <20,000 NDT/month, AI avatar 1/10 human cost, labelling rules 01/02/2026). NO profile-stats article (owner order 24/11). SEO V2. Total 648 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-26 adds 4 Viec Lam articles (26/11/2026, Thursday): 1 seasonal keyword #3 ROUND 2 'luong mau livestream Tet' (NEW angle vs round 1 15/11: pay BY SHIFT/STAGE — BF 27/11 tomorrow, 12.12 in 16 days, campaign registration CLOSED 25/11; night shift 230k/h sh-92, DU DU VN 300-500k/h; 5 new shops sh-316..320; US benchmark Squishable $22-32/h 07/10/2026) + 1 theme Thu 'tuyen mau live ban thuc pham chuc nang' (FastMoss Health +29.0% Oct->Nov 2025, Toplux Magnesium 145,401 units Nov 2025; VN functional food USD 5.60B 2026 per The Report Cubes; 11 TPCN shops + 8 models incl. NEW sh-318 Healthy Care VN 19/11; Decree 46/2026 ad approval from 16/04/2026) + 1 news 'affiliate Black Friday 27/11' (ugc.live 13/11/2026: double commission 27/11 + 30/11, 10% -> 20%; commission math on $40 product; FastMoss lifts; eports.global eligibility) + 1 news 'tuyen mau livestream Lao Cai' (3 shops / 3 models, 2 NEW shops sh-319..320 this morning; pay 10-20 trieu/month; Coc Leu border trade; source = site danh-sach-shop). NO keyword article: cluster A EXHAUSTED; KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). NO Zalo rotation (26/11 topic #4 belongs to Phan tich). SEO V2. Total 764 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-viec-lam-2026-11-28 adds 4 Viec Lam articles (28/11/2026, Saturday): 1 seasonal keyword #5 ROUND 2 'viec lam thoi vu Tet livestream' (NEW angle vs round 1 18/11 'luong 8-15 trieu/thang + hoa hong, overview' and vs A1 27/11 #4 'dot tuyen cuoi truoc 12.12': CUA VAO NGHE CHO NGUOI MOI — 5 NEW shops sh-331..335 dated 27/11/2026, OMNIX hires 10 with NO experience 10-15M, evening shifts FROM HOME sh-331 total up to 20-40M, 4-hour shifts Vulcano hires 10; BF DONE 27/11, Cyber Monday 30/11, 12.12 in 14 days) + 1 theme Sat 'tuyen mau live ban thoi trang van phong nam, nu' (Mordor workwear $276.95B 2026 -> $344.71B 2031, CAGR 4.47%; men 60.31% 2025, women fastest CAGR 5.76%; sh-08 Hang cong so 150-170k/h, sh-48 so mi nam 50k/h + 3%, sh-335 Vulcano hires 10) + 1 news 'host live My tra toi 100 USD/gio, lam tu xa' (Backstage Turtles $100/h remote, published 23/11/2026; Kariisma $70/h, 16/11/2026; SWT $19-30+/h, recruitment began 23/11/2026; Handshake $25/h no experience, apply by 03/12/2026) + 1 news 'Mars, LEGO, Adidas tuyen van hanh livestream Douyin' (Built In Mars 24/11/2026, LEGO 16/11/2026, BoF Adidas 13/11/2026, GoSpooky 12/11/2026 — hiring ops people, not hosts, before 12.12). NO keyword article from bo 100: cluster A EXHAUSTED; KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). NO Zalo rotation (28/11 topic #1 belongs to Livestream). SEO V2. Total 849 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-26 adds 4 Dong tien articles (26/11/2026, Thursday): 1 seasonal keyword #4 VONG 2 'doanh thu Double 12' (deep, goc MOI so voi vong 1 16/11 'don song sale cuoi nam': ngay ban chay nhat KHONG phai 12.12 ma la 13/12 — D+1 GMV gap 1,67 lan ngay thuong (Ecomobi/Kalodata, 07/11/2026); thang 11-12/2025 40,86 nghin ty = 23,2% ca nam; AOV ngay sale +21-31% nhung so don chung; 12/12 la Ngay TMDT quoc gia (Nghi dinh 248, 30/06/2026); bang tinh lai lo theo phi san VN — giam 20% la lo 21.000d/don) + 2 theme tuan Thu Nam 26/11 'thi truong thuc pham chuc nang' (A2: ban TPCN lai bao nhieu 1 don — lo collagen 300k con lai 42k (14%), giam 30% lo 7,5k/don; phi san 14% + 6% + 3.000d; NĐ 46/2026 hieu luc 16/04/2026; A3: thuc pham bo sung ban chay nhat TikTok Shop My — 784 trieu USD, 52 tuan toi 02/2026, NielsenIQ 23/06/2026; Toplux Magnesium 14,23 trieu USD quy 2/2026) + 1 news 26/11 (gia vang SJC mat moc 135 trieu, ve 129,1-134,1 trieu, giam 900.000d; the gioi 3.588 USD, chenh ~21,44 trieu). SEO V2 (title suffix + link boxes). Total 784 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-26 adds 4 Cong nghe articles (26/11/2026, Thursday): 1 seasonal keyword #8/10 VONG 2 'quang cao Shopee Tet' (GOC MOI so voi vong 1 13/11: de cu 12.12 mo 25/11-13/12/2026, toi da 2 diem phat; warm-up Shopee Ads 1-2 tuan; luat giam toi da 50% TT39/2025, 2 cua so toi 100% 01/12/2026-05/01/2027 + 07/01-05/02/2027; live Shopee TP.HCM 12/12 + 15/01/2027, 305 seller; skipjackdigital 12/11/2026 + bigseller 20/11/2026 + ordinex 11/2026) + 1 theme tuan thuc pham chuc nang 'AI tra loi khach' (Fortune Business Insights 11/2026: 437,62 ty USD 2026 -> 983,17 ty USD 2034, CAGR 10,65%; TikTok AI Assistance gop chatbot 11-12/2026; ND 46/2026 duyet quang cao tu 16/04/2026) + 2 news (TikTok Shop AI Diagnosis cho LIVE 20/11/2026, bao cao sau 48h — etailrocket; Facebook Your Algorithm 13/10/2026, Meta giai thich 10/11/2026 — honestfred). SEO V2 (title suffix + link boxes). Total 777 articles (node) / 776 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-25 adds 4 Dong tien articles (25/11/2026, Wednesday): 1 seasonal keyword #3 VONG 2 'von nhap hang Tet' (deep, goc MOI so voi vong 1 15/11 '5 muc von': von nhap THEO NGANH HANG thoi trang nu nam — chia von theo ty le doanh so that (Metric Q3/2026 nu 17.465,1 ty +47,9%; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%; Grand View 2026 nu ~1,1 nghin ty USD, nam 681,1 ty USD) + 3 tang von minh hoa + gia hoa von theo phi san; han dang ky chien dich TikTok Shop 12.12 la HOM NAY 25/11/2026) + 1 theme tuan Thu Tu 25/11 'thi truong thoi trang nu nam' (phi san + hoa hong mau live an bao nhieu tren 1 don thoi trang — TikTok Shop 10%/don, Shopee 6% + 3.000d/don, affiliate 5-20%; gia hoa von ao 150k von/300k ban la 187.500d) + 2 news 25/11 (vang the gioi roi 79,1 USD -2,17% ve 3.555,1 USD nhung SJC DUNG YEN 130-135 trieu, chenh lech noi rong len ~23,7 trieu; Bitcoin thung 60.000 USD lan nua ve 59.892 USD, ETF rut ky luc 4,71 ty USD thang 11). SEO V2 (title suffix + link boxes). Total 702 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15571,6 +15572,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Giá vàng SJC mất mốc 135 triệu đồng/lượng sáng 26/11/2026, về 129,1–134,1 triệu đồng/lượng, giảm 900.000 đồng so với ngày 24/11/2026; vàng thế giới Kitco 3.588 USD/ounce, quy đổi khoảng 112,56 triệu đồng/lượng, chênh SJC khoảng 21,44 triệu đồng; vàng nhẫn PNJ rẻ hơn vàng miếng SJC 2,6 triệu đồng; tỷ giá Vietcombank bán ra 26.020 đồng/USD."
+  },
+  {
+   "title": "Việc làm thời vụ Tết livestream: 5 shop mới tuyển",
+   "cat": "Việc Làm",
+   "source": "vieclamlivestream.online",
+   "date": "2026-11-27",
+   "url": "https://vieclamlivestream.online/danh-sach-shop.html",
+   "page": "bai-viet/viec-lam-thoi-vu-tet-livestream-5-shop-moi-tuyen-nguoi-moi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/viec-lam-thoi-vu-tet-livestream-5-shop-moi-tuyen-nguoi-moi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Việc làm thời vụ Tết livestream cho người mới: 5 shop mới sh-331..sh-335 ngày 27/11/2026; OMNIX tuyển 10 người không cần kinh nghiệm, 10–15 triệu/tháng; Học viện Marketing live tối tại nhà, tổng tới 20–40 triệu/tháng; Vulcano tuyển 10 người, ca 4 giờ; Black Friday đã qua 27/11/2026, Cyber Monday 30/11/2026, 12.12 còn 14 ngày."
+  },
+  {
+   "title": "Tuyển mẫu live bán thời trang văn phòng nam, nữ",
+   "cat": "Việc Làm",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-27",
+   "url": "https://www.mordorintelligence.com/industry-reports/workwear-market",
+   "page": "bai-viet/tuyen-mau-live-ban-thoi-trang-van-phong-nam-nu.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tuyen-mau-live-ban-thoi-trang-van-phong-nam-nu.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Tuyển mẫu live bán thời trang văn phòng: thị trường đồ công sở 276,95 tỷ USD năm 2026 → 344,71 tỷ USD năm 2031 (Mordor Intelligence); nam chiếm 60,31% năm 2025, nữ tăng nhanh nhất 5,76%/năm; sàn có shop Hàng công sở trả 150.000–170.000đ/giờ (sh-08), sơ mi nam 50.000đ/giờ + 3% (sh-48), Vulcano tuyển 10 người ngày 27/11/2026."
+  },
+  {
+   "title": "Host live Mỹ trả tới 100 USD/giờ, làm từ xa",
+   "cat": "Việc Làm",
+   "source": "Backstage",
+   "date": "2026-11-27",
+   "url": "https://www.backstage.com/casting/live-shopping-streams-hosts-3343685/live-stream-host-5686471/",
+   "page": "bai-viet/host-live-my-tra-toi-100-usd-gio-lam-tu-xa.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/host-live-my-tra-toi-100-usd-gio-lam-tu-xa.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Host live Mỹ trả tới 100 USD/giờ, làm từ xa: Turtles 100 USD/giờ, tổng 2.000 USD cho 20 giờ (Backstage 23/11/2026); Kariisma 70 USD/giờ, tổng 7.560 USD cho 108 giờ (16/11/2026); SWT 19–30 USD/giờ (tuyển từ 23/11/2026); Handshake 25 USD/giờ, không cần kinh nghiệm, hạn nộp 03/12/2026."
+  },
+  {
+   "title": "Mars, LEGO, Adidas tuyển vận hành livestream Douyin",
+   "cat": "Việc Làm",
+   "source": "Built In",
+   "date": "2026-11-27",
+   "url": "https://builtin.com/job/e-commerce-manager-tiktok/12440086",
+   "page": "bai-viet/mars-lego-adidas-tuyen-van-hanh-livestream-douyin.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mars-lego-adidas-tuyen-van-hanh-livestream-douyin.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mars, LEGO, Adidas tuyển vận hành livestream Douyin: Mars đăng 24/11/2026 (quản lý gian hàng Douyin + lịch live + GMV), LEGO đăng 16/11/2026 (truyền thông trả phí Douyin + đào tạo host), Adidas đăng 13/11/2026 (thương mại điện tử Douyin + sự kiện sale lớn); GoSpooky tuyển host TikTok Shop châu Âu, hợp đồng 3 tháng, đăng 12/11/2026; 12.12 còn 14 ngày."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
