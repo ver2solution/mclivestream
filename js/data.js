@@ -130,6 +130,7 @@
    articles-xu-huong-2026-11-24 adds 4 Xu hướng articles (24/11/2026, Tuesday): 1 seasonal keyword "xu hướng bán hàng online 2027" #1/10 VONG 2 (deep, goc moi: chuan bi 2027 tu thang 11/2026; e-Conomy SEA 05/11/2026: TMDT 32 ty USD +22%, 44% hanh trinh mua bat dau bang AI; han dang ky TikTok Shop 12.12 het 25/11/2026) + 2 chu de tuan "thi truong phu kien trang suc" (WGC 03/11/2026: trang suc vang Q3 -17% con 313 tan; The Knot 18/02/2026: kim cuong nuoi cay 61% nhan dinh hon) + 1 Zalo rotation #2 "xu huong mua hang moi" (agentic commerce; McKinsey 10%->17%; WooCommerce 19/11/2026; VIET CUOI, entry cuoi data.js). Total 671 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-25 adds 4 Xu hướng articles (25/11/2026, Wednesday): 1 seasonal keyword "xu hướng thương mại điện tử 2027" #2/10 VONG 2 (deep, goc moi: AI mua ho + social commerce + mobile + livestream; Shopify 17/11/2026: TMDT 7,37 nghin ty USD; McKinsey 28/10/2026: 53% dung AI) + 2 chu de tuan "thi truong thoi trang nu nam" (ThredUp 02/04/2026: secondhand nu 393 ty USD vao 2030; Straits Research 13/10/2026: athleisure nam 459,7 ty USD) + 1 tin Black Friday 2026 (Adobe 28/09/2026: 12,9 ty USD; Deloitte 23/11/2026: 87% nguoi My san sale). KHONG co bai xoay vong Zalo (25/11 la #3 Hang hoa). Total 714 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    articles-xu-huong-2026-11-26 adds 4 Xu hướng articles (26/11/2026, Thursday): 1 seasonal keyword "xu hướng mua sắm online Tết" #3/10 VONG 2 (deep, goc moi: 76% cho khuyen mai + 46% chua len ke hoach + 41% chon combo san; Coc Coc 09/2026 qua Brands Vietnam 16/11/2026) + 2 chu de tuan "thi truong thuc pham chuc nang" (NCHS Data Brief 561 21/05/2026: 60,2% nguoi My dung trong 30 ngay; GVR 12/10/2026: collagen uong vien + keo deo 59,7%) + 1 tin Cyber Week 2026 (Salesforce 19/11/2026: 357 ty USD, AI dan 21%). KHONG co bai xoay vong Zalo (26/11 la #4 Phan tich). 1/4 bai dung bao Viet lam nguon chinh (A1). Total 788 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
+   articles-xu-huong-2026-11-28 adds 4 Xu hướng articles (28/11/2026, Saturday): 1 seasonal keyword "xu hướng quà Tết 2027" #5/10 VONG 2 (deep, goc moi: 1 mon tot thay gio qua day ap; CustomInk 24/11/2026 + Clove & Twine 17/11/2026) + 2 chu de tuan "thi truong thoi trang van phong nam nu" (Ayerhs 15/11/2026: office siren 50 mon/10 thuong hieu; AlwaySIM 09/11/2026: 1/3 Fortune 500 siet dress code, vest nam 19,52 ty USD 2026) + 1 tin Cyber Monday 2026 (Adobe 27/11/2026: 15,1 ty USD, AI +130%, chot don tot hon 90%). KHONG co bai xoay vong Zalo (28/11 la #1 Livestream). 0/4 bai dung bao Viet lam nguon chinh. Total 869 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix; link boxes (H3 + 2 links before sig).
    v329 adds 4 Livestream articles (18/11/2026, Wednesday): 1 seasonal keyword "livestream bán giỏ quà Tết" #8/10 (deep, gift sets 275M USD/7 days + 8,444 units 1 live, Zalo rotation topic #1, added LAST) + 3 cluster B keywords "livestream Shopee" (STT 31, 330K SGD 1 live + watch time 5X), "mẹo livestream chốt đơn" (STT 32, 15 tips Stremify), "cách livestream trên Facebook bán hàng" (STT 35, 2 ways after Meta ended Live Shopping 01/10/2022). Total 382 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
    v330 adds 4 Hang hoa articles (18/11/2026, Wednesday): 1 seasonal keyword "đặc sản vùng miền Tết" #5/10 (3050 words, deep) + 2 cluster D keywords "nhập hàng Quảng Châu" STT 64 (2874 words) + "nguồn hàng giá sỉ" STT 65 (3240 words) + 1 news/invention "muỗng sữa chua Marna" (2276 words, SoraNews24 09/11/2026). WRITTEN 17/11 (v317 prep), DEPLOYED 18/11 (browser publish stuck 17/11). SEO V2 titles: core <=60 + suffix. A1 factual fix 18/11: source date 21/01->12/01 + gift-set comparison year Tet 2025->Tet 2024 (live source check). Total 398 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).\
    v348 adds 4 Livestream articles (19/11/2026, Thursday): 1 cluster B keyword "livestream bán hàng hiệu quả" (STT 27, cao, deep, McKinsey 30% + VTEX 28/10/2026) + 1 seasonal keyword "livestream bán hàng Giáng sinh" #9/10 (deep, TokConnect 26/10/2026, added LAST) + 2 news keywords "livestream TikTok bán hàng" (STT 30, cao, TikTok Shop Plus 10/11/2026) + "cách giữ chân người xem livestream" (STT 37, Douyin Double 11 +98%, TheRedScroll 13/11/2026). Total 432 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST). SEO V2 titles: core <=60 + suffix.\
@@ -20561,6 +20562,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "TikTok Shop Mỹ bán 550,3 triệu USD trong 7 ngày tới 25/11/2026; beauty 172,8 triệu USD với 80,1% từ affiliate, womenswear 102,8 triệu USD với 78,4% từ affiliate. Shop Việt bật affiliate, sửa listing bằng Seller AI và mở bán sớm từ 05/12 cho sale 12.12."
+  },
+  {
+   "title": "Xu hướng quà Tết 2027: 1 món tốt thay giỏ quà đầy ắp",
+   "cat": "Xu hướng",
+   "source": "CustomInk",
+   "date": "2026-11-28",
+   "url": "https://www.customink.com/blog/the-corporate-holiday-gift-guide/",
+   "page": "bai-viet/xu-huong-qua-tet-2027-1-mon-tot-thay-gio-qua-day-ap.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-qua-tet-2027-1-mon-tot-thay-gio-qua-day-ap.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong qua Tet 2027: 55% nhan vien thich 1 mon cao cap thay vi nhieu mon re (CustomInk, 24/11/2026); 94% thich qua ca nhan, chi 17% muon logo lon; 10 mon tang nhieu nhat 2026 tu tai nghe 273 USD toi binh nuoc 36 USD (Clove & Twine, 17/11/2026); chot don truoc 10/12/2026, giao xong truoc 04/02/2027."
+  },
+  {
+   "title": "Xu hướng office siren: nữ công sở 2026 mặc đẹp đi làm",
+   "cat": "Xu hướng",
+   "source": "Ayerhs Magazine",
+   "date": "2026-11-28",
+   "url": "https://ayerhsmagazine.com/2026/11/15/office-siren-aesthetic-brands/",
+   "page": "bai-viet/xu-huong-office-siren-2026-cong-so-nu-mac-dep-di-lam.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xu-huong-office-siren-2026-cong-so-nu-mac-dep-di-lam.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xu huong office siren 2026: blazer vai nhon, chan vay but chi, kinh gong manh (Ayerhs Magazine, 15/11/2026); 50 mon tu 10 thuong hieu; gia tu 45 USD tai Zara va Reformation toi hang hieu Khaite, Victoria Beckham; hop van phong sang tao, can tiet che o van phong truyen thong."
+  },
+  {
+   "title": "Dress code công sở 2026: vest thưa dần, hoodie hết thời",
+   "cat": "Xu hướng",
+   "source": "Fashionaholic",
+   "date": "2026-11-28",
+   "url": "https://fashion-a-holic.com/reports/return-to-office-dressing-2026/",
+   "page": "bai-viet/dress-code-cong-so-2026-nam-gioi-vest-thua-hoodie-het-thoi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dress-code-cong-so-2026-nam-gioi-vest-thua-hoodie-het-thoi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Dress code cong so 2026: khoang 1/3 cong ty Fortune 500 siet lai quy dinh an mac (AlwaySIM, 09/11/2026); mac dinh moi la elevated casual; vest nam 19,52 ty USD nam 2026, may san chiem 72%, mua online chiem 33% (Business Research Insights, 2026)."
+  },
+  {
+   "title": "Cyber Monday 2026: AI mua hộ, 15,1 tỷ USD trong 1 ngày",
+   "cat": "Xu hướng",
+   "source": "Adobe qua TradingView",
+   "date": "2026-11-28",
+   "url": "https://www.tradingview.com/news/stocktwits:03038d20c094b:0-adbe-stock-on-track-for-4-day-rally-adobe-reports-surge-in-ai-traffic-7-1b-thanksgiving-sales/",
+   "page": "bai-viet/cyber-monday-2026-ai-mua-ho-151-ty-usd-shop-nho-lam-gi.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/cyber-monday-2026-ai-mua-ho-151-ty-usd-shop-nho-lam-gi.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Cyber Monday 2026: 15,1 ty USD trong 1 ngay 30/11/2026, lan dau vuot moc 15 ty USD (Adobe, 28/09/2026); luu luong AI tang 130% ca mua, khach mua bang AI chot don tot hon 90% (Adobe, 27/11/2026); tra gop 1,09 ty USD trong ngay."
   }
 ],
  "lots": [
