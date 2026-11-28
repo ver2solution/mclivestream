@@ -84,6 +84,8 @@
    articles-viec-lam-2026-11-25 adds 4 Viec Lam articles (25/11/2026, Wednesday): 1 seasonal keyword #2 ROUND 2 'viec lam livestream Tet' (NEW angle, job-seeker side: TODAY 25/11 is the last day to register for the TikTok Shop 12.12 campaign per z.media Mega Sales calendar Oct 2026; pay table from live data.js: 60 shops hourly wage, 4 night-shift shops; 246 models / 313 shops) + 1 theme Wed 'tuyen mau live ban thoi trang nu nam' (Kalodata US 09-15/11/2026: womenswear $102.29M +29.45%, menswear $37.05M +46.28%; TokConnect top LIVE womenswear sessions to 21/11/2026; 64 fashion shops / 96 fashion models) + 1 news 'luong host livestream Trung Quoc thang 11/2026' (Jooble/HiredChina/eChinacities listings Nov 2026: Douyin co-host 15,000-22,000 NDT/month; Yantai TikTok host 100-200 NDT/hour; Shenzhen anchor 10,000-15,000 NDT/month posted 24/11/2026) + 1 news 'mau live Mexico ban 1 trieu peso 1 phien 10 gio' (Monserrat Meraz, Merca2.0 03/11/2026 via Grou 09/11/2026: ~MXN 1,000,000, 4,100+ units, 187,000 concurrent viewers). NO keyword article: cluster A EXHAUSTED (STT 23 Shopee was last, 24/11); KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). SEO V2. Total 694 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-26 adds 4 Viec Lam articles (26/11/2026, Thursday): 1 seasonal keyword #3 ROUND 2 'luong mau livestream Tet' (NEW angle vs round 1 15/11: pay BY SHIFT/STAGE — BF 27/11 tomorrow, 12.12 in 16 days, campaign registration CLOSED 25/11; night shift 230k/h sh-92, DU DU VN 300-500k/h; 5 new shops sh-316..320; US benchmark Squishable $22-32/h 07/10/2026) + 1 theme Thu 'tuyen mau live ban thuc pham chuc nang' (FastMoss Health +29.0% Oct->Nov 2025, Toplux Magnesium 145,401 units Nov 2025; VN functional food USD 5.60B 2026 per The Report Cubes; 11 TPCN shops + 8 models incl. NEW sh-318 Healthy Care VN 19/11; Decree 46/2026 ad approval from 16/04/2026) + 1 news 'affiliate Black Friday 27/11' (ugc.live 13/11/2026: double commission 27/11 + 30/11, 10% -> 20%; commission math on $40 product; FastMoss lifts; eports.global eligibility) + 1 news 'tuyen mau livestream Lao Cai' (3 shops / 3 models, 2 NEW shops sh-319..320 this morning; pay 10-20 trieu/month; Coc Leu border trade; source = site danh-sach-shop). NO keyword article: cluster A EXHAUSTED; KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). NO Zalo rotation (26/11 topic #4 belongs to Phan tich). SEO V2. Total 764 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-viec-lam-2026-11-28 adds 4 Viec Lam articles (28/11/2026, Saturday): 1 seasonal keyword #5 ROUND 2 'viec lam thoi vu Tet livestream' (NEW angle vs round 1 18/11 'luong 8-15 trieu/thang + hoa hong, overview' and vs A1 27/11 #4 'dot tuyen cuoi truoc 12.12': CUA VAO NGHE CHO NGUOI MOI — 5 NEW shops sh-331..335 dated 27/11/2026, OMNIX hires 10 with NO experience 10-15M, evening shifts FROM HOME sh-331 total up to 20-40M, 4-hour shifts Vulcano hires 10; BF DONE 27/11, Cyber Monday 30/11, 12.12 in 14 days) + 1 theme Sat 'tuyen mau live ban thoi trang van phong nam, nu' (Mordor workwear $276.95B 2026 -> $344.71B 2031, CAGR 4.47%; men 60.31% 2025, women fastest CAGR 5.76%; sh-08 Hang cong so 150-170k/h, sh-48 so mi nam 50k/h + 3%, sh-335 Vulcano hires 10) + 1 news 'host live My tra toi 100 USD/gio, lam tu xa' (Backstage Turtles $100/h remote, published 23/11/2026; Kariisma $70/h, 16/11/2026; SWT $19-30+/h, recruitment began 23/11/2026; Handshake $25/h no experience, apply by 03/12/2026) + 1 news 'Mars, LEGO, Adidas tuyen van hanh livestream Douyin' (Built In Mars 24/11/2026, LEGO 16/11/2026, BoF Adidas 13/11/2026, GoSpooky 12/11/2026 — hiring ops people, not hosts, before 12.12). NO keyword article from bo 100: cluster A EXHAUSTED; KW-101-140 gated by Recovery V1 section 3. NO profile-stats article (owner order 24/11). NO Zalo rotation (28/11 topic #1 belongs to Livestream). SEO V2. Total 849 pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-cong-nghe-2026-11-27 adds 4 Cong nghe articles (27/11/2026, Friday) — live via bu-KPI deploy ff43a30c 28/11 06:43 +07 (HTML + data.js OK; sitemap URLs bi loi .html.html, da sua trong goi nay: 40 URL ve .html dung). 1 seasonal keyword #9/10 VONG 2 'chatbot cham soc khach Tet' + 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' + 2 news (quang cao Facebook 12.12; video commerce Viet Nam). SEO V2 19/19. Total 858 articles (node) / 857 bai-viet pages (grep) luc ghi log.
+   articles-cong-nghe-2026-11-28 adds 4 Cong nghe articles (28/11/2026, Saturday): 1 seasonal keyword #10/10 VONG 2 'xac thuc VNeID ban hang online' (GOC MOI so voi vong 1 18/11: 3 MOC THOI HAN — ND 320/2026 han 31/12/2026, ND 248/2026 san phai xac thuc tu 01/01/2027, Luat Dinh danh thong qua 20/11/2026 hieu luc 01/07/2027; han noi bo 21/12/2026; doanhnhanplus 24/11/2026 + noahwiseinsight 26/11/2026) + 1 theme Sat 'AI thu do ao thoi trang cong so' (Daydream Agent 17/11/2026: 1 anh thu ca tu do, 10.000+ thuong hieu, 2 trieu nguoi dung tu 6/2025) + 2 news ('AI mua ho Black Friday': don AI dat tang 109 lan, 230 USD/don, Muse 52% — Forter live 27/11/2026; 'TikTok Shop Black Friday 550 trieu USD/tuan': beauty 172,8 trieu USD, affiliate 80,1% — TokConnect 27/11/2026; Shopee 12.12 mo ban 25-26/11/2026). SEO V2 (title suffix + link boxes). Total 866 articles (node) / 865 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-26 adds 4 Dong tien articles (26/11/2026, Thursday): 1 seasonal keyword #4 VONG 2 'doanh thu Double 12' (deep, goc MOI so voi vong 1 16/11 'don song sale cuoi nam': ngay ban chay nhat KHONG phai 12.12 ma la 13/12 — D+1 GMV gap 1,67 lan ngay thuong (Ecomobi/Kalodata, 07/11/2026); thang 11-12/2025 40,86 nghin ty = 23,2% ca nam; AOV ngay sale +21-31% nhung so don chung; 12/12 la Ngay TMDT quoc gia (Nghi dinh 248, 30/06/2026); bang tinh lai lo theo phi san VN — giam 20% la lo 21.000d/don) + 2 theme tuan Thu Nam 26/11 'thi truong thuc pham chuc nang' (A2: ban TPCN lai bao nhieu 1 don — lo collagen 300k con lai 42k (14%), giam 30% lo 7,5k/don; phi san 14% + 6% + 3.000d; NĐ 46/2026 hieu luc 16/04/2026; A3: thuc pham bo sung ban chay nhat TikTok Shop My — 784 trieu USD, 52 tuan toi 02/2026, NielsenIQ 23/06/2026; Toplux Magnesium 14,23 trieu USD quy 2/2026) + 1 news 26/11 (gia vang SJC mat moc 135 trieu, ve 129,1-134,1 trieu, giam 900.000d; the gioi 3.588 USD, chenh ~21,44 trieu). SEO V2 (title suffix + link boxes). Total 784 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-26 adds 4 Cong nghe articles (26/11/2026, Thursday): 1 seasonal keyword #8/10 VONG 2 'quang cao Shopee Tet' (GOC MOI so voi vong 1 13/11: de cu 12.12 mo 25/11-13/12/2026, toi da 2 diem phat; warm-up Shopee Ads 1-2 tuan; luat giam toi da 50% TT39/2025, 2 cua so toi 100% 01/12/2026-05/01/2027 + 07/01-05/02/2027; live Shopee TP.HCM 12/12 + 15/01/2027, 305 seller; skipjackdigital 12/11/2026 + bigseller 20/11/2026 + ordinex 11/2026) + 1 theme tuan thuc pham chuc nang 'AI tra loi khach' (Fortune Business Insights 11/2026: 437,62 ty USD 2026 -> 983,17 ty USD 2034, CAGR 10,65%; TikTok AI Assistance gop chatbot 11-12/2026; ND 46/2026 duyet quang cao tu 16/04/2026) + 2 news (TikTok Shop AI Diagnosis cho LIVE 20/11/2026, bao cao sau 48h — etailrocket; Facebook Your Algorithm 13/10/2026, Meta giai thich 10/11/2026 — honestfred). SEO V2 (title suffix + link boxes). Total 777 articles (node) / 776 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-25 adds 4 Dong tien articles (25/11/2026, Wednesday): 1 seasonal keyword #3 VONG 2 'von nhap hang Tet' (deep, goc MOI so voi vong 1 15/11 '5 muc von': von nhap THEO NGANH HANG thoi trang nu nam — chia von theo ty le doanh so that (Metric Q3/2026 nu 17.465,1 ty +47,9%; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%; Grand View 2026 nu ~1,1 nghin ty USD, nam 681,1 ty USD) + 3 tang von minh hoa + gia hoa von theo phi san; han dang ky chien dich TikTok Shop 12.12 la HOM NAY 25/11/2026) + 1 theme tuan Thu Tu 25/11 'thi truong thoi trang nu nam' (phi san + hoa hong mau live an bao nhieu tren 1 don thoi trang — TikTok Shop 10%/don, Shopee 6% + 3.000d/don, affiliate 5-20%; gia hoa von ao 150k von/300k ban la 187.500d) + 2 news 25/11 (vang the gioi roi 79,1 USD -2,17% ve 3.555,1 USD nhung SJC DUNG YEN 130-135 trieu, chenh lech noi rong len ~23,7 trieu; Bitcoin thung 60.000 USD lan nua ve 59.892 USD, ETF rut ky luc 4,71 ty USD thang 11). SEO V2 (title suffix + link boxes). Total 702 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -20511,6 +20513,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Thời trang văn phòng nam 2026: nam chiếm 60,63% thị trường corporate fashion 440,25 tỷ USD (Fortune Business Insights, 2026); suit chiếm 28,4%, là món lớn nhất (Dataintelo); formal wear 21,11 tỷ USD, đồ công sở chiếm 45% (Industry Research, 2026); nam chiếm 60,31% thị trường workwear (Mordor Intelligence, 06/07/2026)."
+  },
+  {
+   "title": "Xác thực VNeID bán hàng online: còn 33 ngày",
+   "cat": "Công nghệ",
+   "source": "doanhnhanplus.vn",
+   "date": "2026-11-28",
+   "url": "https://doanhnhanplus.vn/lien-ket-vneid-nguoi-ban-online-kol-doanh-nghiep-713902.html",
+   "page": "bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xác thực VNeID bán hàng online có 3 mốc: tài khoản cũ liên kết trước 31/12/2026, sàn phải xác thực người bán từ 01/01/2027, Luật Định danh điện tử có hiệu lực 01/07/2027. Shop làm 5 việc trước hạn nội bộ 21/12/2026 để không bị gián đoạn bán hàng dịp Tết."
+  },
+  {
+   "title": "AI thử đồ ảo thời trang công sở: 1 ảnh thử cả tủ",
+   "cat": "Công nghệ",
+   "source": "giftcartonline.com",
+   "date": "2026-11-28",
+   "url": "https://giftcartonline.com/press-releases/daydream-launches-first-ever-autonomous-agent-for-fashion-shopping-styling-and-checkout",
+   "page": "bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Daydream Agent ra mắt 17/11/2026: stylist AI phối đồ, thử đồ ảo bằng 1 ảnh duy nhất, tìm trên hơn 10.000 thương hiệu, hơn 2 triệu người mua đã dùng từ tháng 6/2025. Mẫu live Việt quay video 1 ảnh thử 5 set đồ công sở theo 5 dịp để bán hàng tháng 12/2026."
+  },
+  {
+   "title": "AI mua hộ Black Friday: đơn AI đặt tăng 109 lần",
+   "cat": "Công nghệ",
+   "source": "ai.forter.com",
+   "date": "2026-11-28",
+   "url": "https://ai.forter.com/agentic-bfcm",
+   "page": "bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đơn do AI đặt hộ trong Cyber Week tăng 109 lần so với 2025, trung bình 230 USD/đơn, gấp hơn 2 lần đơn người mua 105 USD; Muse chiếm 52% đơn agent. Shop Việt viết mô tả cho AI đọc, giữ giá và kho đúng theo thời gian thực để AI chọn hàng mình trong sale 12.12."
+  },
+  {
+   "title": "TikTok Shop Black Friday: 550 triệu USD/tuần",
+   "cat": "Công nghệ",
+   "source": "tokconnect.com",
+   "date": "2026-11-28",
+   "url": "https://tokconnect.com/trends/tiktok-shop/black-friday-2026/",
+   "page": "bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "TikTok Shop Mỹ bán 550,3 triệu USD trong 7 ngày tới 25/11/2026; beauty 172,8 triệu USD với 80,1% từ affiliate, womenswear 102,8 triệu USD với 78,4% từ affiliate. Shop Việt bật affiliate, sửa listing bằng Seller AI và mở bán sớm từ 05/12 cho sale 12.12."
   }
 ],
  "lots": [
