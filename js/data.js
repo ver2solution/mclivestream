@@ -87,6 +87,7 @@
    articles-cong-nghe-2026-11-27 adds 4 Cong nghe articles (27/11/2026, Friday) — live via bu-KPI deploy ff43a30c 28/11 06:43 +07 (HTML + data.js OK; sitemap URLs bi loi .html.html, da sua trong goi nay: 40 URL ve .html dung). 1 seasonal keyword #9/10 VONG 2 'chatbot cham soc khach Tet' + 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' + 2 news (quang cao Facebook 12.12; video commerce Viet Nam). SEO V2 19/19. Total 858 articles (node) / 857 bai-viet pages (grep) luc ghi log.
    articles-cong-nghe-2026-11-28 adds 4 Cong nghe articles (28/11/2026, Saturday): 1 seasonal keyword #10/10 VONG 2 'xac thuc VNeID ban hang online' (GOC MOI so voi vong 1 18/11: 3 MOC THOI HAN — ND 320/2026 han 31/12/2026, ND 248/2026 san phai xac thuc tu 01/01/2027, Luat Dinh danh thong qua 20/11/2026 hieu luc 01/07/2027; han noi bo 21/12/2026; doanhnhanplus 24/11/2026 + noahwiseinsight 26/11/2026) + 1 theme Sat 'AI thu do ao thoi trang cong so' (Daydream Agent 17/11/2026: 1 anh thu ca tu do, 10.000+ thuong hieu, 2 trieu nguoi dung tu 6/2025) + 2 news ('AI mua ho Black Friday': don AI dat tang 109 lan, 230 USD/don, Muse 52% — Forter live 27/11/2026; 'TikTok Shop Black Friday 550 trieu USD/tuan': beauty 172,8 trieu USD, affiliate 80,1% — TokConnect 27/11/2026; Shopee 12.12 mo ban 25-26/11/2026). SEO V2 (title suffix + link boxes). Total 866 articles (node) / 865 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-26 adds 4 Dong tien articles (26/11/2026, Thursday): 1 seasonal keyword #4 VONG 2 'doanh thu Double 12' (deep, goc MOI so voi vong 1 16/11 'don song sale cuoi nam': ngay ban chay nhat KHONG phai 12.12 ma la 13/12 — D+1 GMV gap 1,67 lan ngay thuong (Ecomobi/Kalodata, 07/11/2026); thang 11-12/2025 40,86 nghin ty = 23,2% ca nam; AOV ngay sale +21-31% nhung so don chung; 12/12 la Ngay TMDT quoc gia (Nghi dinh 248, 30/06/2026); bang tinh lai lo theo phi san VN — giam 20% la lo 21.000d/don) + 2 theme tuan Thu Nam 26/11 'thi truong thuc pham chuc nang' (A2: ban TPCN lai bao nhieu 1 don — lo collagen 300k con lai 42k (14%), giam 30% lo 7,5k/don; phi san 14% + 6% + 3.000d; NĐ 46/2026 hieu luc 16/04/2026; A3: thuc pham bo sung ban chay nhat TikTok Shop My — 784 trieu USD, 52 tuan toi 02/2026, NielsenIQ 23/06/2026; Toplux Magnesium 14,23 trieu USD quy 2/2026) + 1 news 26/11 (gia vang SJC mat moc 135 trieu, ve 129,1-134,1 trieu, giam 900.000d; the gioi 3.588 USD, chenh ~21,44 trieu). SEO V2 (title suffix + link boxes). Total 784 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
+   articles-dong-tien-2026-11-28 adds 4 Dong tien articles (28/11/2026, Saturday): 1 seasonal keyword #6 VONG 2 'kiem tien an Tet bang livestream' (deep, goc MOI so voi vong 1 18/11 '5 cach cho mau moi, bang thu nhap, lich 2 thang, von, 3 sai lam, checklist 7 ngay': TINH TIEN THEO PHIEN SAU BLACK FRIDAY — Adobe qua Reuters 27/11/2026: 9,7 ty USD toi 18h30 ET, +12,8%, ca ngay du kien 13-13,4 ty USD; Thanksgiving 7,1 ty USD, +10,4%; 5 ngay 47,5 ty USD, +7,4%; Salesforce My 18,7 ty USD, +4%; 2 dot song con lai: 12.12 (con 14 ngay, dang ky TikTok Shop het 25/11/2026) va Tet 06/02/2027 (con 70 ngay); bang tinh 3 moc GMV phien 50/150/300 trieu dong theo hoa hong 13,02% (MS Growth Lab 10/2026) + luong gio My 25-100 USD/gio; checklist 7 ngay 28/11-05/12/2026) + 2 theme tuan Thu Bay 28/11 'thi truong thoi trang van phong nam nu' (A2: dong phuc — cho thue dong phuc toan cau 18,4 ty USD 2026, Cintas 8,62 ty USD nam tai chinh 2026 (+8,1%), quy 1 nam tai chinh 2027 cho thue 2,29 ty USD (ket thuc 31/08/2026, SEC 10-Q); A3: do cong so secondhand — ThredUp 2026 (GlobalData, 02/04/2026): do cu toan cau 257 ty USD 2025 -> 393 ty USD 2030, CAGR ~9%, My 78,8 ty USD vao 2030; 59% nguoi tieu dung mua do cu nam 2025; tu do van phong 20 trieu ban lai 6-10 trieu) + 1 news 28/11 (mua truoc tra sau Black Friday: Adobe 807 trieu USD ngay 27/11, 1,09 ty USD Cyber Monday, 21,3 ty USD ca mua (+6,6%); the tin dung lai 22,36% (Fed Q3/2026), phi tre Klarna toi 7 USD, Afterpay toi 8 USD; tivi 700 USD tra toi thieu thanh 884,04 USD sau 2 nam 2 thang (Payney)). SEO V2 (title suffix + link boxes). Total 878 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-26 adds 4 Cong nghe articles (26/11/2026, Thursday): 1 seasonal keyword #8/10 VONG 2 'quang cao Shopee Tet' (GOC MOI so voi vong 1 13/11: de cu 12.12 mo 25/11-13/12/2026, toi da 2 diem phat; warm-up Shopee Ads 1-2 tuan; luat giam toi da 50% TT39/2025, 2 cua so toi 100% 01/12/2026-05/01/2027 + 07/01-05/02/2027; live Shopee TP.HCM 12/12 + 15/01/2027, 305 seller; skipjackdigital 12/11/2026 + bigseller 20/11/2026 + ordinex 11/2026) + 1 theme tuan thuc pham chuc nang 'AI tra loi khach' (Fortune Business Insights 11/2026: 437,62 ty USD 2026 -> 983,17 ty USD 2034, CAGR 10,65%; TikTok AI Assistance gop chatbot 11-12/2026; ND 46/2026 duyet quang cao tu 16/04/2026) + 2 news (TikTok Shop AI Diagnosis cho LIVE 20/11/2026, bao cao sau 48h — etailrocket; Facebook Your Algorithm 13/10/2026, Meta giai thich 10/11/2026 — honestfred). SEO V2 (title suffix + link boxes). Total 777 articles (node) / 776 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-dong-tien-2026-11-25 adds 4 Dong tien articles (25/11/2026, Wednesday): 1 seasonal keyword #3 VONG 2 'von nhap hang Tet' (deep, goc MOI so voi vong 1 15/11 '5 muc von': von nhap THEO NGANH HANG thoi trang nu nam — chia von theo ty le doanh so that (Metric Q3/2026 nu 17.465,1 ty +47,9%; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%; Grand View 2026 nu ~1,1 nghin ty USD, nam 681,1 ty USD) + 3 tang von minh hoa + gia hoa von theo phi san; han dang ky chien dich TikTok Shop 12.12 la HOM NAY 25/11/2026) + 1 theme tuan Thu Tu 25/11 'thi truong thoi trang nu nam' (phi san + hoa hong mau live an bao nhieu tren 1 don thoi trang — TikTok Shop 10%/don, Shopee 6% + 3.000d/don, affiliate 5-20%; gia hoa von ao 150k von/300k ban la 187.500d) + 2 news 25/11 (vang the gioi roi 79,1 USD -2,17% ve 3.555,1 USD nhung SJC DUNG YEN 130-135 trieu, chenh lech noi rong len ~23,7 trieu; Bitcoin thung 60.000 USD lan nua ve 59.892 USD, ETF rut ky luc 4,71 ty USD thang 11). SEO V2 (title suffix + link boxes). Total 702 articles. Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
    articles-cong-nghe-2026-11-25 adds 4 Cong nghe articles (25/11/2026, Wednesday): 1 seasonal keyword #7/10 VONG 2 'quang cao TikTok Shop 12.12' (GOC MOI so voi vong 1 13/11: het hom nay 25/11 con lam duoc gi — Product vs LIVE GMV Max, Product ROI, tang ngan sach 30-50%, GMV Max trong Open Collaboration 22/11/2026; z.media 10/2026 + small-patterns 11/2026 + kolvant 22/11 + emarspro) + 1 theme tuan thoi trang nu nam 'AI thu do ao' (Google Try on 18 nuoc 02/11/2026, chua co VN; Doppl ngung 30/04/2026; Kalodata 09-15/11/2026 nu 102,29 trieu USD +29,45%, nam 37,05 trieu USD +46,28%) + 2 news (TikTok Shop Seller Assistant tu chay GMV Max — emarspro; TikTok Shop mo cong khieu nai ban quyen IPPC 21/11/2026 + doi tai khoan quang cao chinh — kolvant 22/11/2026). SEO V2 (title suffix + link boxes). Total 707 articles (node) / 706 bai-viet pages (grep). Articles-only deploy: sw.js NOT touched (data.js is NETWORK-FIRST).
@@ -15841,6 +15842,102 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Mars, LEGO, Adidas tuyển vận hành livestream Douyin: Mars đăng 24/11/2026 (quản lý gian hàng Douyin + lịch live + GMV), LEGO đăng 16/11/2026 (truyền thông trả phí Douyin + đào tạo host), Adidas đăng 13/11/2026 (thương mại điện tử Douyin + sự kiện sale lớn); GoSpooky tuyển host TikTok Shop châu Âu, hợp đồng 3 tháng, đăng 12/11/2026; 12.12 còn 14 ngày."
+  },
+  {
+   "title": "Đặc sản vùng miền Tết: HTX chuẩn bị 500 tấn miến dong",
+   "cat": "Hàng hoá",
+   "source": "Công nghiệp Nông thôn",
+   "date": "2026-11-28",
+   "url": "https://congnghiepnongthon.vn/nong-san-tay-bac-tang-toc-chuan-bi-nguon-hang-phuc-vu-tet-nguyen-dan-2027-6484.htm",
+   "page": "bai-viet/dac-san-vung-mien-tet-livestream-htx-chuan-bi-hang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dac-san-vung-mien-tet-livestream-htx-chuan-bi-hang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đặc sản vùng miền Tết 2027: HTX Điện Biên chuẩn bị 500 tấn miến dong, Thái Nguyên làm 1.000 gói quà, ngày hội Quảng Trị 15–17/01 và 22–24/01/2027; shop nhỏ nên nhập miến dong, chè, chả cá, thịt sấy, bánh dân tộc và bán qua livestream (Công nghiệp Nông thôn, 25/11/2026)."
+  },
+  {
+   "title": "Blazer nữ văn phòng bán chạy: 5 kiểu shop nên nhập",
+   "cat": "Hàng hoá",
+   "source": "Straits Research",
+   "date": "2026-11-28",
+   "url": "https://straitsresearch.com/report/womens-blazer-market",
+   "page": "bai-viet/blazer-nu-van-phong-ban-chay-5-kieu-shop-nen-nhap.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/blazer-nu-van-phong-ban-chay-5-kieu-shop-nen-nhap.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Blazer nữ văn phòng bán chạy: thị trường 74,49 tỷ USD năm 2026, dự báo 100,15 tỷ USD năm 2034 (Straits Research, 24/08/2026); 5 kiểu bán chạy nhất giá 26,98–90,99 USD, đứng đầu là blazer vintage 30,68 USD bán 2.933 chiếc/tháng trên Shein (Accio, 12/11/2026)."
+  },
+  {
+   "title": "Suit nam văn phòng bán chạy: 2.583 bộ/tháng Amazon",
+   "cat": "Hàng hoá",
+   "source": "Gitnux",
+   "date": "2026-11-28",
+   "url": "https://gitnux.org/suit-industry-statistics/",
+   "page": "bai-viet/suit-nam-van-phong-ban-chay-amazon-gia-55-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/suit-nam-van-phong-ban-chay-amazon-gia-55-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Suit nam văn phòng bán chạy: thị trường 40,6 tỷ USD năm 2026, dự báo 52,8 tỷ USD năm 2031 (Gitnux, 21/11/2026); mẫu WULFUL 55,69 USD bán 2.583 bộ/tháng trên Amazon, đứng đầu bảng xếp hạng suit nam tháng 11/2026 (Accio, 09/11/2026)."
+  },
+  {
+   "title": "Omusubi FamilyMart Nhật: 4 vị thơm, 181 yên từ 24/11",
+   "cat": "Hàng hoá",
+   "source": "SoraNews24",
+   "date": "2026-11-28",
+   "url": "https://soranews24.com/2026/11/28/super-satisfying-aromatic-omusubi-rice-balls-are-now-on-sale-at-family-mart/",
+   "page": "bai-viet/omusubi-family-mart-nhat-ban-4-vi-181-yen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/omusubi-family-mart-nhat-ban-4-vi-181-yen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Omusubi FamilyMart Nhật Bản bán từ 24/11/2026: 4 vị cơm nắm thơm, giá 181–258 yên, hợp tác với Kuzefuku Shoten; sự kiện phát 1.500 nắm miễn phí ngày 27/11/2026 tại Tokyo (SoraNews24, 27/11/2026)."
+  },
+  {
+   "title": "Kiếm tiền ăn Tết bằng livestream: sóng 12.12",
+   "cat": "Dòng tiền",
+   "source": "Reuters (số liệu Adobe, Salesforce ngày 27/11/2026)",
+   "date": "2026-11-28",
+   "url": "https://wdsm710.com/2026/11/27/us-black-friday-online-sales-to-cross-13-billion-adobe-says/",
+   "page": "bai-viet/kiem-tien-an-tet-bang-livestream-song-12-12-tet.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/kiem-tien-an-tet-bang-livestream-song-12-12-tet.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Kiếm tiền ăn Tết bằng livestream sau Black Friday: Mỹ chi 9,7 tỷ USD online tới 18h30 ngày 27/11/2026 (+12,8%, Adobe qua Reuters), cả ngày dự kiến 13–13,4 tỷ USD; còn 2 sóng — 12.12 (14 ngày) và Tết 06/02/2027 (70 ngày); phiên 90 phút GMV 50/150/300 triệu đồng cho hoa hồng khoảng 6,5/19,5/39 triệu đồng theo tỷ lệ 13,02% (MS Growth Lab 10/2026); host Mỹ 25–100 USD/giờ; checklist 7 ngày 28/11–05/12/2026."
+  },
+  {
+   "title": "Đồng phục văn phòng: thuê hay mua, trả bao nhiêu",
+   "cat": "Dòng tiền",
+   "source": "Cintas / SEC (số liệu Axiobench cập nhật 21/11/2026)",
+   "date": "2026-11-28",
+   "url": "https://www.sec.gov/Archives/edgar/data/723254/000072325426000047/R22.htm",
+   "page": "bai-viet/dong-phuc-van-phong-thue-hay-mua-doanh-nghiep-tra-bao-nhieu.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dong-phuc-van-phong-thue-hay-mua-doanh-nghiep-tra-bao-nhieu.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đồng phục văn phòng: thị trường cho thuê toàn cầu 18,4 tỷ USD năm 2026 (Axiobench 21/11/2026); Cintas thu 8,62 tỷ USD năm tài chính 2026 (+8,1%), quý 1 năm tài chính 2027 đạt 2,29 tỷ USD (SEC, quý kết thúc 31/08/2026), biên lãi gộp 50%; UniFirst 2,30 tỷ USD; doanh nghiệp nên tính tổng chi phí 2 năm trước khi chọn thuê hay mua; shop nhỏ nên bán gói đồng phục B2B, chốt đơn may Tết trước 15/01/2027."
+  },
+  {
+   "title": "Đồ công sở secondhand: bán lại tủ đồ văn phòng",
+   "cat": "Dòng tiền",
+   "source": "ThredUp (Báo cáo Bán lại 2026 cùng GlobalData, 02/04/2026)",
+   "date": "2026-11-28",
+   "url": "https://www.businesswire.com/news/home/20260402799816/en/ThredUps-14th-Annual-Resale-Report-Reveals-New-Era-of-Structural-Competition-and-AI-Driven-Discovery",
+   "page": "bai-viet/do-cong-so-secondhand-ban-lai-tu-do-van-phong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/do-cong-so-secondhand-ban-lai-tu-do-van-phong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đồ công sở secondhand: thị trường đồ cũ toàn cầu 257 tỷ USD năm 2025 (+13%), dự kiến 393 tỷ USD vào 2030 (ThredUp/GlobalData 02/04/2026); Mỹ 78,8 tỷ USD vào 2030; 59% người tiêu dùng mua đồ cũ năm 2025; tủ đồ văn phòng mua mới 20 triệu đồng bán lại được 6–10 triệu đồng; shop thu mua vest 400.000 đồng bán lại 800.000 đồng lãi 350.000 đồng; thu mua ngay 28/11–12/12/2026 trước Tết 06/02/2027."
+  },
+  {
+   "title": "Mua trước trả sau Black Friday: 807 triệu USD",
+   "cat": "Dòng tiền",
+   "source": "Payney (số liệu Adobe, Fed, Reuters ngày 27/11/2026)",
+   "date": "2026-11-28",
+   "url": "https://payney.com/black-friday-2026/",
+   "page": "bai-viet/mua-truoc-tra-sau-black-friday-807-trieu-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/mua-truoc-tra-sau-black-friday-807-trieu-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Mua trước trả sau Black Friday: 807 triệu USD trong ngày 27/11/2026, 1,09 tỷ USD Cyber Monday 30/11/2026, 21,3 tỷ USD cả mùa lễ (+6,6%, Adobe 25/11/2026); thẻ tín dụng lãi 22,36%/năm (Fed Q3/2026); phí trễ Klarna tới 7 USD, Afterpay tới 8 USD; tivi 700 USD trả tối thiểu thành 884,04 USD sau 2 năm 2 tháng, trả 100 USD/tháng thành 757,24 USD sau 8 tháng (Payney); chỉ trả góp khi trả hết trong 6 tuần."
   },
   {
    "title": "Ý tưởng bán hàng online: 58 tỷ đồng trong 36 giờ live",
