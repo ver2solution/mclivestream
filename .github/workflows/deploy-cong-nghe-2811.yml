@@ -1,0 +1,76 @@
+name: "Deploy articles-cong-nghe-2026-11-28 (4 bai)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-cong-nghe-2811.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-cong-nghe-2811:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "861" || (echo "BASE DOI: data.js khong con 861 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "886" || (echo "BASE DOI: sitemap khong con 886 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip cong-nghe-2811 package
+        run: |
+          unzip -o mclivestream-cong-nghe-2811-deploy.zip
+          echo "--- verify cong-nghe-2811 (4 bai moi) ---"
+            test -f "bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.html" || (echo "THIEU bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.html"; exit 1)
+            test -f "images/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.jpg" || (echo "THIEU images/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.jpg"; exit 1)
+            test -f "images/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01-og.jpg" || (echo "THIEU images/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01-og.jpg"; exit 1)
+            grep -q "bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.html" js/data.js || (echo "THIEU xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01.html</loc>" sitemap.xml || (echo "THIEU xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01 trong sitemap"; exit 1)
+            test -f "bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.html" || (echo "THIEU bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.html"; exit 1)
+            test -f "images/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.jpg" || (echo "THIEU images/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.jpg"; exit 1)
+            test -f "images/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11-og.jpg" || (echo "THIEU images/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11-og.jpg"; exit 1)
+            grep -q "bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.html" js/data.js || (echo "THIEU ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11.html</loc>" sitemap.xml || (echo "THIEU ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11 trong sitemap"; exit 1)
+            test -f "bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.html" || (echo "THIEU bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.html"; exit 1)
+            test -f "images/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.jpg" || (echo "THIEU images/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.jpg"; exit 1)
+            test -f "images/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan-og.jpg" || (echo "THIEU images/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan-og.jpg"; exit 1)
+            grep -q "bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.html" js/data.js || (echo "THIEU ai-mua-ho-black-friday-don-ai-dat-tang-109-lan trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/ai-mua-ho-black-friday-don-ai-dat-tang-109-lan.html</loc>" sitemap.xml || (echo "THIEU ai-mua-ho-black-friday-don-ai-dat-tang-109-lan trong sitemap"; exit 1)
+            test -f "bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.html" || (echo "THIEU bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.html"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.jpg"; exit 1)
+            test -f "images/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80-og.jpg" || (echo "THIEU images/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80-og.jpg"; exit 1)
+            grep -q "bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.html" js/data.js || (echo "THIEU tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80 trong data.js"; exit 1)
+            grep -q "<loc>https://vieclamlivestream.online/bai-viet/tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80.html</loc>" sitemap.xml || (echo "THIEU tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80 trong sitemap"; exit 1)
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '\"page\": \"bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "890" || (echo "SAI TONG sitemap, phai 890"; exit 1)
+          test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "865" || (echo "SAI TONG data.js, phai 865 bai-viet page"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Guard node-parse (bai hoc v370)
+        run: |
+          node -e "global.window={};const fs=require('fs');eval(fs.readFileSync('js/data.js','utf8'));const a=window.V20_DATA.articles;console.log('articles.length =',a.length);console.log('empty =',a.filter(x=>!x).length);if(a.length!==866) { console.log('SAI: articles.length phai 866'); process.exit(1); } if(a.filter(x=>!x).length){ console.log('CO EMPTY ITEM'); process.exit(1); } const want=['xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01','ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11','ai-mua-ho-black-friday-don-ai-dat-tang-109-lan','tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80']; const miss=want.filter(s=>!a.some(x=>x&&x.page==='bai-viet/'+s+'.html')); if(miss.length){ console.log('SLUG NGOAI MANG articles:', miss); process.exit(1); } console.log('node guard OK: 4 slug moi deu TRONG mang articles');"
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-cong-nghe-2811-deploy.zip || rm -f mclivestream-cong-nghe-2811-deploy.zip
+          git rm -q mclivestream-fix-sitemap-2811-deploy.zip || rm -f mclivestream-fix-sitemap-2811-deploy.zip
+          git rm -q .github/workflows/deploy-fix-sitemap-2811.yml || true
+          git rm -q .github/workflows/deploy-cong-nghe-2811.yml || true
+          git add bai-viet images js/data.js sitemap.xml
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy articles-cong-nghe-2026-11-28: 4 bai (xac-thuc-vneid-ban-hang-online-3-moc-31-12-01-01 ai-thu-do-ao-thoi-trang-cong-so-daydream-17-11 ai-mua-ho-black-friday-don-ai-dat-tang-109-lan tiktok-shop-black-friday-550-trieu-usd-tuan-affiliate-80)"
+            git fetch origin main
+            git rebase origin/main || (echo "REBASE CONFLICT: mot cron khac da deploy xong trong luc chay, DUNG LAI de rebuild"; exit 1)
+            test "$(grep -c '<loc>' sitemap.xml)" = "890" || (echo "SAI TONG sitemap sau rebase, phai 890"; exit 1)
+            test "$(grep -c '\"page\": \"bai-viet/' js/data.js)" = "865" || (echo "SAI TONG data.js sau rebase, phai 865"; exit 1)
+            node --check js/data.js || (echo "data.js LOI CU PHAP sau rebase"; exit 1)
+            git push
+          fi
