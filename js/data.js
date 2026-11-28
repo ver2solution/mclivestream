@@ -21048,7 +21048,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Phiên live Đổng Khiết thứ ba trên Tiểu Hồng Thư đạt GMV 60 triệu nhân dân tệ, khoảng 210 tỷ đồng, trong 7 giờ live cuối tháng 3/2023 — và cả 3 phiên live của cô đều không hét giá, không giảm sốc."
-  }
+  },
+  {
+   "title": "Thời trang văn phòng 2026: thị trường 7,2 triệu tỷ đồng/năm",
+   "cat": "Xu hướng",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-28",
+   "url": "https://www.mordorintelligence.com/industry-reports/workwear-market",
+   "page": "bai-viet/thi-truong-thoi-trang-van-phong-nam-nu-2026-72-trieu-ty-dong-livestream.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-van-phong-nam-nu-2026.jpg",
+   "pinned": false,
+   "takeaway": "Đồ công sở toàn cầu 2026 đạt 7,2 triệu tỷ đồng/năm, nữ chiếm 5,46 triệu tỷ. Livestream đang chia lại miếng bánh — xem ngay 7 việc shop Việt cần làm trước 12.12."
+  },
 ],
  "lots": [
    {
