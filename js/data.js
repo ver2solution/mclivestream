@@ -20610,7 +20610,55 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Cyber Monday 2026: 15,1 ty USD trong 1 ngay 30/11/2026, lan dau vuot moc 15 ty USD (Adobe, 28/09/2026); luu luong AI tang 130% ca mua, khach mua bang AI chot don tot hon 90% (Adobe, 27/11/2026); tra gop 1,09 ty USD trong ngay."
-  }
+  },
+  {
+   "title": "Đặc sản vùng miền Tết: HTX chuẩn bị 500 tấn miến dong",
+   "cat": "Hàng hoá",
+   "source": "Công nghiệp Nông thôn",
+   "date": "2026-11-28",
+   "url": "https://congnghiepnongthon.vn/nong-san-tay-bac-tang-toc-chuan-bi-nguon-hang-phuc-vu-tet-nguyen-dan-2027-6484.htm",
+   "page": "bai-viet/dac-san-vung-mien-tet-livestream-htx-chuan-bi-hang.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/dac-san-vung-mien-tet-livestream-htx-chuan-bi-hang.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đặc sản vùng miền Tết 2027: HTX Điện Biên chuẩn bị 500 tấn miến dong, Thái Nguyên làm 1.000 gói quà, ngày hội Quảng Trị 15–17/01 và 22–24/01/2027; shop nhỏ nên nhập miến dong, chè, chả cá, thịt sấy, bánh dân tộc và bán qua livestream (Công nghiệp Nông thôn, 25/11/2026)."
+  },
+  {
+   "title": "Blazer nữ văn phòng bán chạy: 5 kiểu shop nên nhập",
+   "cat": "Hàng hoá",
+   "source": "Straits Research",
+   "date": "2026-11-28",
+   "url": "https://straitsresearch.com/report/womens-blazer-market",
+   "page": "bai-viet/blazer-nu-van-phong-ban-chay-5-kieu-shop-nen-nhap.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/blazer-nu-van-phong-ban-chay-5-kieu-shop-nen-nhap.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Blazer nữ văn phòng bán chạy: thị trường 74,49 tỷ USD năm 2026, dự báo 100,15 tỷ USD năm 2034 (Straits Research, 24/08/2026); 5 kiểu bán chạy nhất giá 26,98–90,99 USD, đứng đầu là blazer vintage 30,68 USD bán 2.933 chiếc/tháng trên Shein (Accio, 12/11/2026)."
+  },
+  {
+   "title": "Suit nam văn phòng bán chạy: 2.583 bộ/tháng Amazon",
+   "cat": "Hàng hoá",
+   "source": "Gitnux",
+   "date": "2026-11-28",
+   "url": "https://gitnux.org/suit-industry-statistics/",
+   "page": "bai-viet/suit-nam-van-phong-ban-chay-amazon-gia-55-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/suit-nam-van-phong-ban-chay-amazon-gia-55-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Suit nam văn phòng bán chạy: thị trường 40,6 tỷ USD năm 2026, dự báo 52,8 tỷ USD năm 2031 (Gitnux, 21/11/2026); mẫu WULFUL 55,69 USD bán 2.583 bộ/tháng trên Amazon, đứng đầu bảng xếp hạng suit nam tháng 11/2026 (Accio, 09/11/2026)."
+  },
+  {
+   "title": "Omusubi FamilyMart Nhật: 4 vị thơm, 181 yên từ 24/11",
+   "cat": "Hàng hoá",
+   "source": "SoraNews24",
+   "date": "2026-11-28",
+   "url": "https://soranews24.com/2026/11/28/super-satisfying-aromatic-omusubi-rice-balls-are-now-on-sale-at-family-mart/",
+   "page": "bai-viet/omusubi-family-mart-nhat-ban-4-vi-181-yen.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/omusubi-family-mart-nhat-ban-4-vi-181-yen.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Omusubi FamilyMart Nhật Bản bán từ 24/11/2026: 4 vị cơm nắm thơm, giá 181–258 yên, hợp tác với Kuzefuku Shoten; sự kiện phát 1.500 nắm miễn phí ngày 27/11/2026 tại Tokyo (SoraNews24, 27/11/2026)."
+  },
 ],
  "lots": [
    {
