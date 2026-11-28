@@ -20986,6 +20986,55 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Xofa Café Hà Nội là một trong số ít quán cà phê ở thủ đô mở cửa 24/24, từ năm 2015 tới nay, ở số 14 Tống Duy Tân, quận Hoàn Kiếm."
   }
+,
+  {
+   "title": "Xả kho cuối năm: 3 ngày vàng sau Black Friday",
+   "cat": "Đang hot",
+   "source": "Business News Malaysia",
+   "date": "2026-11-28",
+   "url": "https://businessnews.com.my/adobe-us-online-holiday-spending-thanksgiving/",
+   "page": "bai-viet/xa-kho-cuoi-nam-3-ngay-vang-sau-black-friday.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/xa-kho-cuoi-nam-3-ngay-vang-sau-black-friday.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Xả kho cuối năm: 3 ngày vàng 28–30/11/2026 sau Black Friday — Adobe ghi 9,7 tỷ USD tới 18h30 ngày 27/11, Cyber Monday 30/11 dự báo 15,1 tỷ USD; kiểm kho, tính giá hòa vốn rồi live 90 phút đúng giờ vàng."
+  },
+  {
+   "title": "Đồ công sở Black Friday 2026: giảm tới 60%",
+   "cat": "Đang hot",
+   "source": "Corporette",
+   "date": "2026-11-28",
+   "url": "https://corporette.com/long-sleeve-sheath-dress-5/",
+   "page": "bai-viet/do-cong-so-black-friday-2026-giam-toi-60-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/do-cong-so-black-friday-2026-giam-toi-60-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Đồ công sở Black Friday 2026 giảm tới 60%, theo Corporette ngày 25/11/2026: Nordstrom và Theory tới 60%, Banana Republic Factory 60%, Ann Taylor 40% + thêm 50% đồ sale; 4 món giá thật từ 48,50 USD."
+  },
+  {
+   "title": "Thời trang văn phòng: 5 món tuần này từ 48,50 USD",
+   "cat": "Đang hot",
+   "source": "Corporette",
+   "date": "2026-11-28",
+   "url": "https://corporette.com/the-plaid-crosby-blazer/",
+   "page": "bai-viet/thoi-trang-van-phong-5-mon-tuan-nay-gia-that-tu-4850-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-van-phong-5-mon-tuan-nay-gia-that-tu-4850-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang văn phòng tuần này: 5 món giá thật từ 48,50 USD tới 298 USD, theo Corporette tới ngày 25/11/2026 — áo tartan 48,50 USD rẻ nhất, blazer kẻ 159 USD đáng mua nhất, kẻ sọc và váy midi là xu hướng mùa đông."
+  },
+  {
+   "title": "Shopify Black Friday 2026: 6,8 triệu USD mỗi phút",
+   "cat": "Đang hot",
+   "source": "Shopify",
+   "date": "2026-11-28",
+   "url": "https://www.instagram.com/reel/DgQ2qyyPN3J/",
+   "page": "bai-viet/shopify-black-friday-2026-68-trieu-usd-moi-phut.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/shopify-black-friday-2026-68-trieu-usd-moi-phut.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Shopify Black Friday 2026: đỉnh 6,8 triệu USD mỗi phút lúc 12h01 ngày 27/11, vượt đỉnh 5,1 triệu USD năm 2025 — 27.000 đơn/phút, 21 triệu khách, 26.983 shop có ngày bán tốt nhất, AI mua hộ tăng 3,3 lần."
+  }
 ],
  "lots": [
    {
