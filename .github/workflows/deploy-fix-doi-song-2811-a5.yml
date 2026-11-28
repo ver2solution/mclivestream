@@ -1,0 +1,51 @@
+name: "Deploy fix doi-song-2811-a5 (sua anh bai Xofa, CC BY-SA)"
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-fix-doi-song-2811-a5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-fix-doi-song-2811-a5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Guard base counts (chong ghi de cron khac)
+        run: |
+          echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
+          echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
+          test "$(md5sum js/data.js | cut -d' ' -f1)" = "40550985b82e7fa0633044f10df22537" || (echo "BASE DOI: data.js md5 doi - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "882" || (echo "BASE DOI: data.js khong con 882 bai - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)" = "907" || (echo "BASE DOI: sitemap khong con 907 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+      - name: Unzip fix package
+        run: |
+          unzip -o mclivestream-doi-song-2811-fix-a5.zip
+          echo "--- verify fix a5 ---"
+          test -f "bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.html" || (echo "THIEU bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.html"; exit 1)
+          test -f "images/bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.jpg" || (echo "THIEU anh hero"; exit 1)
+          test -f "images/bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi-og.jpg" || (echo "THIEU anh og"; exit 1)
+          grep -q "ePi.Longo" "bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.html" || (echo "HTML chua co caption anh moi (ePi.Longo)"; exit 1)
+          if grep -q "Debbs" "bai-viet/quan-cafe-check-in-dep-xofa-cafe-ha-noi.html"; then echo "HTML van con anh cu Debbs - LOI"; exit 1; fi
+          echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
+          echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
+          test "$(grep -c '<loc>' sitemap.xml)" = "907" || (echo "SAI TONG sitemap, phai 907"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "882" || (echo "SAI TONG data.js, phai 882"; exit 1)
+          node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
+      - name: Commit fixed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q mclivestream-doi-song-2811-fix-a5.zip || rm -f mclivestream-doi-song-2811-fix-a5.zip
+          git add bai-viet images
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Fix doi-song-2811-a5: thay anh bai Xofa Cafe (Flickr CC BY-NC -> Wikimedia CC BY-SA 2.0, ePi.Longo 22/09/2019)"
+            git push
+          fi
