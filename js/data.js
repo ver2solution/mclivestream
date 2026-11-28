@@ -21036,6 +21036,18 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Shopify Black Friday 2026: đỉnh 6,8 triệu USD mỗi phút lúc 12h01 ngày 27/11, vượt đỉnh 5,1 triệu USD năm 2025 — 27.000 đơn/phút, 21 triệu khách, 26.983 shop có ngày bán tốt nhất, AI mua hộ tăng 3,3 lần."
+  },
+  {
+   "title": "Bài học từ phiên live Đổng Khiết 210 tỷ cho shop",
+   "cat": "Phân tích",
+   "source": "36Kr & TechNode",
+   "date": "2026-11-28",
+   "url": "https://www.36kr.com/p/2162377050305026",
+   "page": "bai-viet/bai-hoc-phien-live-dong-khiet-210-ty-shop-van-phong.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/bai-hoc-phien-live-dong-khiet-210-ty-shop-van-phong.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phiên live Đổng Khiết thứ ba trên Tiểu Hồng Thư đạt GMV 60 triệu nhân dân tệ, khoảng 210 tỷ đồng, trong 7 giờ live cuối tháng 3/2023 — và cả 3 phiên live của cô đều không hét giá, không giảm sốc."
   }
 ],
  "lots": [
