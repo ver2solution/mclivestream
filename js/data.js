@@ -20463,6 +20463,54 @@ window.V20_DATA = {
    "imgSelf": false,
    "pinned": false,
    "takeaway": "Miniso quý 3 2026 (công bố 17/11/2026): doanh thu 6,63 tỷ NDT +14,3%, lãi ròng 283 triệu NDT -35,7% do lỗ mark-to-market 192,1 triệu NDT từ khoản đầu tư quỹ AI; Trung Quốc +29,6%, nước ngoài +1,7%, TOP TOY -12,5%; 8.665 cửa hàng."
+  },
+  {
+   "title": "Thị trường thương mại điện tử cuối năm: 82,5 tỷ USD",
+   "cat": "Thị trường",
+   "source": "Adobe",
+   "date": "2026-11-28",
+   "url": "https://www.digitalcommerce360.com/2026/11/25/adobe-online-holiday-spending-data/",
+   "page": "bai-viet/thi-truong-thuong-mai-dien-tu-cuoi-nam-825-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thuong-mai-dien-tu-cuoi-nam-825-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thương mại điện tử cuối năm: 82,5 tỷ USD sau 22 ngày đầu mùa lễ, tăng 9,1% (Adobe, 25/11/2026); Lễ Tạ Ơn 7,1 tỷ USD kỷ lục, mobile 63,2% (27/11/2026); Black Friday 9,7 tỷ USD tới 18 giờ 30, dự kiến cả ngày 13–13,4 tỷ USD (Reuters, 27/11/2026); AI chiếm 21% doanh số Cyber Week toàn cầu (Salesforce, 19/11/2026)."
+  },
+  {
+   "title": "Thị trường thời trang văn phòng 2026: 276,95 tỷ USD",
+   "cat": "Thị trường",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-28",
+   "url": "https://www.mordorintelligence.com/industry-reports/workwear-market",
+   "page": "bai-viet/thi-truong-thoi-trang-van-phong-2026-276-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thi-truong-thoi-trang-van-phong-2026-276-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thị trường thời trang văn phòng 2026 đạt 276,95 tỷ USD, tăng từ 265,12 tỷ USD năm 2025 (Mordor Intelligence, 06/07/2026); châu Á–Thái Bình Dương chiếm 35,41% và tăng nhanh nhất 5,94%/năm; nam chiếm 60,31%, nữ tăng nhanh nhất 5,76%/năm; xuất khẩu dệt may Việt Nam 39,84 tỷ USD trong 10 tháng đầu năm 2026 (VITAS, 16/11/2026)."
+  },
+  {
+   "title": "Thời trang văn phòng nữ 2026: tăng nhanh nhất 5,76%",
+   "cat": "Thị trường",
+   "source": "Fortune Business Insights",
+   "date": "2026-11-28",
+   "url": "https://www.fortunebusinessinsights.com/corporate-fashion-market-110902",
+   "page": "bai-viet/thoi-trang-van-phong-nu-2026-tang-nhanh-nhat.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-van-phong-nu-2026-tang-nhanh-nhat.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang văn phòng nữ 2026 tăng nhanh nhất 5,76%/năm (Mordor Intelligence, 06/07/2026); blazer nữ tăng 7,2%/năm (Dataintelo); thị trường corporate fashion 440,25 tỷ USD năm 2026, châu Á–Thái Bình Dương chiếm 40,5% (Fortune Business Insights, 2026); Fast Retailing lãi ròng 542,5 tỷ yên, tăng 25,3% (08/10/2026)."
+  },
+  {
+   "title": "Thời trang văn phòng nam 2026: nam chiếm 60% thị trường",
+   "cat": "Thị trường",
+   "source": "Fortune Business Insights",
+   "date": "2026-11-28",
+   "url": "https://www.fortunebusinessinsights.com/corporate-fashion-market-110902",
+   "page": "bai-viet/thoi-trang-van-phong-nam-2026-nam-chiem-60-phan-tram.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/thoi-trang-van-phong-nam-2026-nam-chiem-60-phan-tram.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Thời trang văn phòng nam 2026: nam chiếm 60,63% thị trường corporate fashion 440,25 tỷ USD (Fortune Business Insights, 2026); suit chiếm 28,4%, là món lớn nhất (Dataintelo); formal wear 21,11 tỷ USD, đồ công sở chiếm 45% (Industry Research, 2026); nam chiếm 60,31% thị trường workwear (Mordor Intelligence, 06/07/2026)."
   }
 ],
  "lots": [
