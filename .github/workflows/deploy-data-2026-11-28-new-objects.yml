@@ -1,0 +1,46 @@
+name: Deploy data 2026-11-28 new-objects
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-data-2026-11-28-new-objects.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-data-2026-11-28-new-objects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Unzip data 2026-11-28 new-objects package
+        run: |
+          LIVE_SHA="$(curl -s https://vieclamlivestream.online/js/data.js | sha256sum | cut -d' ' -f1)"
+          echo "live data.js sha: $LIVE_SHA"
+          test "$LIVE_SHA" = "5feb0cccab5bcee60d1e369f2aa032c16a89416dd58f689306df4694c4114d24" || (echo "LIVE data.js changed since package built (another deploy landed?) - aborting to avoid clobber; rebase package onto new base first"; exit 1)
+          unzip -o mclivestream-data-2026-11-28-new-objects-deploy.zip
+          ls -l js/data.js
+          sha256sum js/data.js
+          test "$(sha256sum js/data.js | cut -d' ' -f1)" = "f0406e56ad62fb74de1beafbf0b3e683b2f725240628162ee26d6a42b1341c1f" || (echo "BAD data.js sha256"; exit 1)
+          test "$(grep -c '"id": "th-' js/data.js)" = "268" || (echo "BAD models count"; exit 1)
+          test "$(grep -c '"id": "sh-' js/data.js)" = "337" || (echo "BAD shops count"; exit 1)
+          test "$(grep -c '"id": "lot-' js/data.js)" = "363" || (echo "BAD lots count"; exit 1)
+          test "$(grep -c '"id": "fac-' js/data.js)" = "457" || (echo "BAD factories count"; exit 1)
+          test "$(grep -c '"id": "kiot-' js/data.js)" = "393" || (echo "BAD kiots count"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)" = "886" || (echo "BAD articles grep count"; exit 1)
+          node -e "global.window={};eval(require('fs').readFileSync('js/data.js','utf8'));const d=window.V20_DATA;const w={articles:887,classesLive:45,classesMakeup:46,eventsMarketing:45,logistics:48,rentals:46,agencyAds:18,movingServices:17,liveEquipment:16};let b=0;for(const k of Object.keys(w)){if(d[k].length!==w[k]){console.error('BAD '+k,d[k].length,'!=',w[k]);b++;}else console.log(k,d[k].length,'OK');}const ids=['cl-43','cl-44','cl-45','cm-44','cm-45','cm-46','em-43','em-44','em-45','lg-46','lg-47','lg-48','rt-45','rt-46','rt-47','ag-16','ag-17','ag-18','mv-15','mv-16','mv-17','le-14','le-15','le-16'];const have=new Set();for(const k of ['classesLive','classesMakeup','eventsMarketing','logistics','rentals','agencyAds','movingServices','liveEquipment'])d[k].forEach(x=>have.add(x.id));for(const id of ids)if(!have.has(id)){console.error('MISSING '+id);b++;}if(b)process.exit(1);console.log('all 24 new ids present');"
+          for f in cl-43 cl-44 cl-45 cm-44 cm-45 cm-46 em-43 em-44 em-45 lg-46 lg-47 lg-48 rt-45 rt-46 rt-47 ag-16 ag-17 ag-18 mv-15 mv-16 mv-17 le-14 le-15 le-16; do ls -l images-new/$f.jpg; done
+      - name: Commit deployed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/data.js images-new/cl-43.jpg images-new/cl-44.jpg images-new/cl-45.jpg images-new/cm-44.jpg images-new/cm-45.jpg images-new/cm-46.jpg images-new/em-43.jpg images-new/em-44.jpg images-new/em-45.jpg images-new/lg-46.jpg images-new/lg-47.jpg images-new/lg-48.jpg images-new/rt-45.jpg images-new/rt-46.jpg images-new/rt-47.jpg images-new/ag-16.jpg images-new/ag-17.jpg images-new/ag-18.jpg images-new/mv-15.jpg images-new/mv-16.jpg images-new/mv-17.jpg images-new/le-14.jpg images-new/le-15.jpg images-new/le-16.jpg
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy data 2026-11-28 new-objects: 24 doi tuong moi (cl-43/44/45, cm-44/45/46, em-43/44/45, lg-46/47/48, rt-45/46/47, ag-16/17/18, mv-15/16/17, le-14/15/16; 24 anh moi), 281 muc 8 tieu muc / 268 mau / 337 shop / 457 xuong / 393 kiot / 887 bai viet"
+            git push
+          fi
