@@ -20368,6 +20368,54 @@ window.V20_DATA = {
    "pinned": false,
    "takeaway": "Quán cafe check-in đẹp Café Tùng Đà Lạt là một trong những quán cà phê lâu đời nhất của thành phố ngàn hoa, mở cửa từ thập niên 1950 ở số 6 khu Hòa Bình, ngay đối diện bức tường vàng của tiệm bánh Cối Xay Gió."
   },
+  {
+   "title": "Khung giờ vàng livestream Tết: 3 khung theo nhóm khách",
+   "cat": "Livestream",
+   "source": "TokConnect",
+   "date": "2026-11-28",
+   "url": "https://tokconnect.com/trends/tiktok-shop/black-friday-2026/",
+   "page": "bai-viet/khung-gio-vang-livestream-tet-3-khung-theo-nhom-khach.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/khung-gio-vang-livestream-tet-3-khung-theo-nhom-khach.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Khung giờ vàng livestream Tết: 3 khung theo nhóm khách — trưa 11h30 cho mẹ bỉm, tối 19h–20h cho dân văn phòng, đêm 21h–22h30 cho người mua quà Tết; đỉnh mua buổi tối đã được Black Friday 27/11 chứng minh (Adobe: 9,7 tỷ USD tới 18h30, Reuters 27/11/2026)."
+  },
+  {
+   "title": "Livestream bán thời trang văn phòng: nam nữ mua gì?",
+   "cat": "Livestream",
+   "source": "Mordor Intelligence",
+   "date": "2026-11-28",
+   "url": "https://www.mordorintelligence.com/industry-reports/workwear-market",
+   "page": "bai-viet/livestream-ban-thoi-trang-van-phong-nam-nu.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/livestream-ban-thoi-trang-van-phong-nam-nu.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Livestream bán thời trang văn phòng: nam mua sơ mi, quần âu, vest (nam chiếm 60,31% thị trường năm 2025), nữ mua blazer, váy, chân váy midi (nữ tăng nhanh nhất 5,76%/năm) — thị trường 276,95 tỷ USD năm 2026 (Mordor Intelligence); thời trang nữ TikTok Shop Mỹ bán 102,8 triệu USD trong 7 ngày tới 25/11/2026, live chiếm 12,7% (TokConnect 27/11/2026)."
+  },
+  {
+   "title": "Doanh thu Black Friday 2026: online Mỹ vượt 13 tỷ USD",
+   "cat": "Livestream",
+   "source": "Reuters",
+   "date": "2026-11-28",
+   "url": "https://www.mix1069.com/2026/11/27/us-black-friday-online-sales-to-cross-13-billion-adobe-says/",
+   "page": "bai-viet/black-friday-27-11-online-my-vuot-13-ty-usd.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/black-friday-27-11-online-my-vuot-13-ty-usd.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Doanh thu Black Friday 2026: online Mỹ đạt 9,7 tỷ USD tới 18h30 ngày 27/11, tăng 12,8%, kỳ vọng cả ngày 13,0–13,4 tỷ USD — vượt dự báo 12,9 tỷ USD (Adobe qua Reuters 27/11/2026); live chiếm 17,8% doanh số 4 nhóm quà tặng trên TikTok Shop Mỹ (TokConnect 27/11/2026)."
+  },
+  {
+   "title": "Phiên live nghìn đơn Black Friday: 472.000 USD/3 giờ",
+   "cat": "Livestream",
+   "source": "Ebrun",
+   "date": "2026-11-28",
+   "url": "https://english.ebrun.com/20261120/721710.shtml",
+   "page": "bai-viet/phien-live-nghin-don-black-friday-472000-usd-3-gio.html",
+   "img": "https://vieclamlivestream.online/images/bai-viet/phien-live-nghin-don-black-friday-472000-usd-3-gio.jpg",
+   "imgSelf": false,
+   "pinned": false,
+   "takeaway": "Phiên live nghìn đơn Black Friday: Mikayla bán 472.000 USD, 8.386 đơn trong 3 giờ ngày 23/11/2026 — phiên live đơn kỷ lục của creator vượt 480.000 USD (Ebrun 20/11/2026); 10 phiên bán chạy nhất tuần đều dùng chung công thức: 1 món chủ lực, đúng giờ vàng, affiliate dẫn đơn (TokConnect 27/11/2026)."
+  },
 ],
  "lots": [
    {
