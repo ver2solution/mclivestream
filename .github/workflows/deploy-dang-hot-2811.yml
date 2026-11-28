@@ -21,8 +21,8 @@ jobs:
         run: |
           echo "data.js article pages truoc unzip: $(grep -c '"page": "bai-viet/' js/data.js)"
           echo "sitemap urls truoc unzip: $(grep -c '<loc>' sitemap.xml)"
-          test "$(grep -c '"page": "bai-viet/' js/data.js)"   = "869" || (echo "BASE DOI: data.js khong con 869 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
-          test "$(grep -c '<loc>' sitemap.xml)"   = "898" || (echo "BASE DOI: sitemap khong con 898 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"   = "877" || (echo "BASE DOI: data.js khong con 877 bai-viet page - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)"   = "902" || (echo "BASE DOI: sitemap khong con 902 URL - mot cron khac da deploy, DUNG LAI de rebuild"; exit 1)
       - name: Unzip dang-hot-2811 package
         run: |
           unzip -o mclivestream-dang-hot-2811-deploy.zip
@@ -41,8 +41,8 @@ jobs:
           grep -qF "Shopify Black Friday 2026 đạt đỉnh 6,8 triệu USD doanh số mỗi phút lúc 12h01 trưa 27/11/2026 theo giờ miền Đông nước Mỹ" bai-viet/shopify-black-friday-2026-68-trieu-usd-moi-phut.html || (echo "LEAD SAI bai shopify"; exit 1)
           echo "sitemap urls: $(grep -c '<loc>' sitemap.xml)"
           echo "data.js article pages: $(grep -c '"page": "bai-viet/' js/data.js)"
-          test "$(grep -c '<loc>' sitemap.xml)"  = "902" || (echo "SAI TONG sitemap, phai 902"; exit 1)
-          test "$(grep -c '"page": "bai-viet/' js/data.js)"  = "873" || (echo "SAI TONG data.js, phai 873 bai-viet page"; exit 1)
+          test "$(grep -c '<loc>' sitemap.xml)"  = "906" || (echo "SAI TONG sitemap, phai 906"; exit 1)
+          test "$(grep -c '"page": "bai-viet/' js/data.js)"  = "881" || (echo "SAI TONG data.js, phai 881 bai-viet page"; exit 1)
           node --check js/data.js || (echo "data.js LOI CU PHAP"; exit 1)
       - name: Commit deployed files
         run: |
